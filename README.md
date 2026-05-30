@@ -10,9 +10,10 @@ This repository is a **plugin marketplace**. Each plugin bundles one or more *sk
 
 | Plugin | Status | Description |
 |--------|--------|-------------|
+| `eviction-defense` | v0.1.0 — DRAFT, attorney validation pending | Eviction notice defect screening and defense identification for CA, TX, and NY. Uses live statute retrieval via MCP connectors. |
 | `consumer-debt` | v0.1.0 — in development | Consumer debt collection defense screening and validation. |
 
-More plugins (eviction defense, public benefits screening, expungement, and others) may be added over time.
+More plugins (public benefits screening, expungement, and others) may be added over time.
 
 ## Who this is for
 
