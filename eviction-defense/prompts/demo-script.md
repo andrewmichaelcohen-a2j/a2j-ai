@@ -10,9 +10,10 @@ Before the demo, open this file alongside Cowork. Each prompt below is a complet
 
 1. Open Cowork
 2. Open this file in a separate window
-3. Open two browser tabs:
-   - Tab A: Your GitHub repo → `eviction-defense/jurisdictions/ca_eviction_rules_v0.1.json`
+3. Open three browser tabs:
+   - Tab A: GitHub repo → `eviction-defense/jurisdictions/ca_eviction_v1.2.json` (the new v1.2 file)
    - Tab B: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.
+   - Tab C: `eviction-defense/components/RulesComparisonWidget.html` — open this locally in Chrome (double-click the file). Pre-load with CA selected.
 4. Open your slide deck (Google Slides or PowerPoint)
 5. Arrange your screen: slides on the left half, Cowork on the right half
 
@@ -58,24 +59,62 @@ Include confidence levels and live statute citations in the output.
 
 **SAY:** "This is not a chatbot making things up. Let me show you where this comes from."
 
-**ACTION:** Switch to browser Tab B (the leginfo.legislature.ca.gov URL). Point to subdivision 2 of CCP §1161. Read the key sentence aloud: *"...stating the amount that is due..."* — then point out that the notice included $200 in late fees on top of the rent amount.
+**ACTION:** Switch to browser Tab B (leginfo.legislature.ca.gov). Point to subdivision 2 of CCP §1161. Read aloud: *"...stating the amount that is due..."* — then point out that the notice demanded $200 in late fees on top of rent.
 
-**SAY:** "That statute was retrieved in real time, right now, via Legal Data Hunter. One month ago this capability did not exist for A2J tools. Every AI tool before this was answering from training data that might be months or years out of date. This is categorically different."
-
----
-
-## DEMO BEAT 3 — Show the rules file
-*(Switch to browser Tab A — GitHub — showing ca_eviction_rules_v0.1.json)*
-
-**SAY:** "Here is what made that analysis possible. This is the California rules file. It's 45 lines of structured data. It encodes the decision logic: *if the notice includes any amount other than unpaid rent, flag as defective.* It's not AI guessing — it's explicit, auditable, human-reviewable rules."
-
-**Point to the DRAFT label in the metadata. SAY:** "You'll notice it says DRAFT. That means a licensed California tenant attorney has not yet validated this file. That validation process — coordinating the expert review, managing versions across 50 states — is exactly what the LHC is designed to do. Nobody is doing this systematically yet. This is the LHC's first major project."
-
-**Then point to the TX rules file link. SAY:** "Here's the Texas version. Let me show you what portability looks like."
+**SAY:** "That statute was retrieved in real time via Legal Data Hunter. Every AI tool before this was answering from training data that might be months or years out of date. This is categorically different."
 
 ---
 
-## DEMO BEAT 4 — Texas portability
+## DEMO BEAT 3 — Transition to the rules layer (NEW — 4:00 mark)
+*(Complete the statute moment. Then say:)*
+
+**SAY:** "That was the law retrieved live. Now let me show you the second piece — what the system does with that law. This is where the rules file comes in."
+
+---
+
+## DEMO BEAT 3A — Open the CA rules file (NEW — 4:30 mark)
+*(Switch to browser Tab A — GitHub — showing ca_eviction_v1.2.json)*
+
+**SAY:** "Here is the California rules file. It's 45 lines of structured data. Walk through four fields: the notice type, the tenancy threshold, the defect trigger for late fees, and the local overlays for Los Angeles. I drafted this in hours. It needs attorney validation before production use — that is the community project. But the structure is complete."
+
+**Point to the `_validation_flag` field. SAY:** "You'll notice it flags a specific legal question for attorney review — the 15-day notice period claim. That level of transparency about what still needs human expert review is built into the architecture. DRAFT files say what they don't know."
+
+---
+
+## DEMO BEAT 3B — Show the React comparison widget (NEW — 5:00 mark)
+*(Switch to browser Tab C — RulesComparisonWidget.html in Chrome)*
+
+**SAY nothing at first.** Let the audience see the two panels side by side. Give them 5–10 seconds to read.
+
+**THEN SAY:** "Left panel: a capable AI model answering from training data. Confident. Plausible. Wrong — because the law includes a late fee prohibition and a notice period requirement that the model doesn't know about. Right panel: the same model grounded in the rules file. Deterministic. Cited. Correct. The difference is not the AI. It is the rules layer."
+
+**Point to "DEFECTS FOUND: 0" on the left. Then "DEFECTS FOUND: 2" on the right.**
+
+**SAY:** "Zero versus two. That difference is the one that matters when someone is about to be evicted."
+
+---
+
+## DEMO BEAT 3C — Switch to Texas (NEW — 5:20 mark)
+*(Click the TX button in the jurisdiction switcher on the widget)*
+
+**SAY:** "Now watch what happens when I switch to Texas."
+
+*(Wait for the panels to re-render.)*
+
+**SAY:** "The reasoning engine did not change. The rules file did. Texas has no just-cause requirement, simpler notice rules — the analysis is shorter because the law is simpler. That's what portability looks like. No team needs to encode notice periods again. Building and maintaining this library — with expert review, version control, and open access — is the most important infrastructure gap in A2J AI today. And nobody has built it yet."
+
+---
+
+## DEMO BEAT 3D — Return to demo flow (5:45 mark)
+*(Close the widget. Return to slides — go to the Gaps slide.)*
+
+**SAY:** "Let me be honest about what this doesn't do yet — because the gaps are where you come in."
+
+---
+
+## DEMO BEAT 4 — Texas portability (original — now REPLACED by 3C above)
+
+*(This beat is superseded by Demo Beat 3C. The Texas Cowork prompt below is retained as a backup only — use it if the widget is unavailable.)*
 *(Back to Cowork. Paste this:)*
 
 **PASTE THIS INTO COWORK:**
@@ -136,12 +175,14 @@ That's fine — it shows the depth of the analysis. Scroll to the DEFECT DETECTE
 | Beat | Content | Target Time |
 |------|---------|-------------|
 | Slides 1–5 | Setup, hook, problem, what changed, five things, Maria | 0:00–2:00 |
-| Beat 1 | Paste CA prompt, output appears | 2:00–3:30 |
-| Beat 2 | Show live statute in browser | 3:30–4:30 |
-| Beat 3 | Show rules file on GitHub | 4:30–5:30 |
-| Beat 4 | Paste TX prompt, output appears | 5:30–6:30 |
-| Beat 5 | Portability moment | 6:30–7:15 |
-| Beat 6 | Gaps + LHC Opportunity + Ask slides | 7:15–9:30 |
+| Beat 1 | Paste CA prompt into Cowork, output appears | 2:00–3:30 |
+| Beat 2 | Show live statute in browser (Tab B) | 3:30–4:00 |
+| Beat 3 | Transition: "Now let me show you the rules layer" | 4:00–4:30 |
+| Beat 3A | Open ca_eviction_v1.2.json on GitHub (Tab A) | 4:30–5:00 |
+| Beat 3B | Open comparison widget in browser (Tab C), CA view | 5:00–5:20 |
+| Beat 3C | Switch widget to TX — portability moment | 5:20–5:45 |
+| Beat 3D | Return to slides — Gaps slide | 5:45–6:00 |
+| Beat 6 | Gaps + LHC Opportunity + Ask slides | 6:00–9:30 |
 | Close | Questions | 9:30+ |
 
 *Legal Help Commons · Demo Script v0.1 · May 2026 · Not for distribution*
