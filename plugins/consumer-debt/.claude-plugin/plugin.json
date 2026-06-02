@@ -1,0 +1,9 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "name": "consumer-debt",
+  "version": "0.1.0",
+  "description": "Access-to-justice workflows for consumer debt collection defense. Screens debt collection matters against the FDCPA, statute of limitations, and chain-of-title requirements to support self-represented litigants and supervising attorneys.",
+  "author": {
+    "name": "Andrew M Cohen"
+  }
+}

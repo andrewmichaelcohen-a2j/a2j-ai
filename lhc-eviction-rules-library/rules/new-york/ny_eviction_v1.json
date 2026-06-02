@@ -1,0 +1,122 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v1",
+  "jurisdiction": {
+    "state": "NY",
+    "state_name": "New York",
+    "type": "state"
+  },
+  "last_updated": "2026-06-01",
+  "validation_status": "DRAFT",
+  "validation_note": "AI-generated. Not reviewed by a licensed attorney. NOT for production use with real clients. All citation periods and legal rules require attorney verification.",
+  "reviewer": null,
+  "statutory_retrieval_performed": true,
+  "statutory_retrieval_date": "2026-05-30",
+  "statutory_retrieval_url": "https://www.nysenate.gov/legislation/laws/RPA/711",
+  "source_for_retrieval": null,
+  "source_statutes": [
+    "NY Good Cause Eviction Law (L. 2024, Ch. 56, Part BB)",
+    "RPAPL \u00a7711(2)",
+    "RPAPL \u00a7753(4)",
+    "RPL \u00a7226-c"
+  ],
+  "ai_drafter_notes": [
+    "RPAPL \u00a7711(2) verified via LDH retrieval 2026-05-30",
+    "14-day nonpayment notice \u2014 extended from 3 days by HSTPA 2019",
+    "NY Good Cause Eviction Law enacted 2024 \u2014 statewide just cause with complex exemptions (buildings <10 units, units <30 years old, etc.)",
+    "NYC rent stabilization is its own complex system \u2014 HSTPA 2019 eliminated most high-rent deregulation",
+    "Graduated termination notice periods (30/60/90 days) by tenancy length per RPL \u00a7226-c",
+    "Good Cause Eviction rent increase protection: eviction for nonpayment tied to increase exceeding 5% or CPI is not good cause",
+    "No LDH legislation source available for this state \u2014 retrieve from official state legislature website"
+  ],
+  "notice_types": {
+    "pay_or_quit": {
+      "description": "Nonpayment of rent",
+      "permitted_amounts": [
+        "unpaid_rent_only"
+      ],
+      "late_fees_permitted": false,
+      "utilities_permitted": false,
+      "tenancy_all": {
+        "days": 14,
+        "statute": "RPAPL \u00a7711(2)",
+        "count_method": "calendar_days"
+      },
+      "tenancy_under_1yr": {
+        "days": 14,
+        "statute": "RPAPL \u00a7711(2)"
+      },
+      "tenancy_over_1yr": {
+        "days": 14,
+        "statute": "RPAPL \u00a7711(2)"
+      }
+    },
+    "cure_or_quit": {
+      "description": "Curable lease violation",
+      "days": 10,
+      "statute": "RPAPL \u00a7753(4)",
+      "curable": true
+    },
+    "no_fault_termination": {
+      "statute": "RPL \u00a7226-c",
+      "tenancy_under_1yr": {
+        "days": 30
+      },
+      "tenancy_1_to_2yr": {
+        "days": 60
+      },
+      "tenancy_over_2yr": {
+        "days": 90
+      },
+      "just_cause_required": true,
+      "just_cause_statute": "NY Good Cause Eviction Law (L. 2024, Ch. 56, Part BB)"
+    }
+  },
+  "notice_defects": [
+    {
+      "defect": "improper_service_method",
+      "result": "INVALID",
+      "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+    },
+    {
+      "defect": "notice_period_too_short",
+      "result": "INVALID",
+      "note": "Notice must provide minimum 14 day(s) \u2014 verify calculation method"
+    },
+    {
+      "defect": "missing_just_cause_reason",
+      "result": "INVALID",
+      "statute": "NY Good Cause Eviction Law (L. 2024, Ch. 56, Part BB)",
+      "note": "Just cause required \u2014 notice must state qualifying reason"
+    }
+  ],
+  "affirmative_defenses": [
+    "habitability",
+    "retaliatory_eviction",
+    "discriminatory_eviction",
+    "waiver_by_landlord",
+    "no_just_cause"
+  ],
+  "service_methods": {
+    "personal": {
+      "adds_days": 0
+    },
+    "certified_mail": {
+      "adds_days": 3,
+      "note": "Days added for mail service \u2014 verify state-specific rule"
+    },
+    "post_and_mail": {
+      "adds_days": 5,
+      "note": "Post and mail/nail and mail \u2014 verify whether available in this state"
+    }
+  },
+  "local_overlays": {
+    "new_york_city": {
+      "rent_stabilization": true,
+      "ordinance": "NYC Rent Stabilization Code; NYC Admin Code",
+      "note": "NYC rent stabilization covers most pre-1974 buildings with 6+ units \u2014 Legal Regulated Rent (LRR) set by Rent Guidelines Board annually. HSTPA 2019 significantly strengthened protections."
+    }
+  },
+  "just_cause_required": true,
+  "statewide_rent_control": false
+}

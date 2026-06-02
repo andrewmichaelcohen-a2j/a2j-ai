@@ -1,43 +1,75 @@
-# A2J Claude Legal Plugins
+# A2J AI — Open Infrastructure for Access to Justice
 
-Open-source [Claude](https://claude.com) plugins and skills for **access to justice (A2J)** — reusable, attorney-authored workflows that help legal aid organizations, law clinics, and self-represented litigants navigate common civil legal problems.
+Open-source plugins, rules, skills, and playbooks that make AI genuinely useful for the tens of millions of people who can't afford an attorney.
 
-## What this is
+**Built by:** Andrew M Cohen  
+**License:** Apache 2.0 — free to use, modify, and deploy in any context, on any AI model, with attribution  
+**Status:** Active development · v0.1 · June 2026
 
-This repository is a **plugin marketplace**. Each plugin bundles one or more *skills* — structured, plain-language protocols that an AI assistant follows to perform a specific legal task (intake, screening, analysis, or drafting). Lawyers author the skills; the AI runs them; supervising attorneys review the output.
+---
 
-## Plugins in this marketplace
+## The problem this solves
 
-| Plugin | Status | Description |
-|--------|--------|-------------|
-| `eviction-defense` | v0.1.0 — DRAFT, attorney validation pending | Eviction notice defect screening and defense identification for CA, TX, and NY. Uses live statute retrieval via MCP connectors. |
-| `consumer-debt` | v0.1.0 — in development | Consumer debt collection defense screening and validation. |
+Every A2J organization that has tried to build AI legal tools faces the same compounding problem: no shared infrastructure, no shared rules layer, no portability across jurisdictions. Each team reinvents what others already built — for a single jurisdiction, in isolation, with no path to scale.
 
-More plugins (public benefits screening, expungement, and others) may be added over time.
+This repository is the shared foundation that ends that pattern.
 
-## Who this is for
+---
 
-- **Legal aid attorneys and paralegals** who want to serve more clients per hour.
-- **Law school clinics and pro bono programs** authoring and contributing skills.
-- **Court self-help centers** supporting self-represented litigants.
-- **A2J coordinating bodies** (such as the Legal Help Commons) curating and validating shared infrastructure.
+## Repository structure
 
-## Important: this software assists, it does not practice law
+```
+a2j-ai-claude/
+├── plugins/            ← Deployable Claude plugins (one per A2J workflow)
+│   ├── eviction-defense/
+│   └── consumer-debt/
+├── rules/              ← Rules / decision logic layer (portable across AI models)
+│   ├── schema/         ← JSON schemas (one per workflow)
+│   ├── eviction/       ← 50 states + DC (DRAFT)
+│   └── validation/     ← Automated validation battery (Layers 1–6)
+├── demos/              ← Demo materials by workflow
+│   └── eviction/
+├── playbooks/          ← Deployment guides for legal aid orgs, courts, clinics
+└── docs/               ← Project documentation, status labels, disclaimer
+```
 
-Nothing in this repository constitutes legal advice or the practice of law. Every skill is designed to **assist** a person or attorney, not replace professional judgment. Outputs should be reviewed by a supervising attorney before being relied upon or provided to a client. See each skill's scope and out-of-scope statements.
+### `/plugins` — Workflow Plugins
+Deployable Claude plugin packages. Each plugin bundles the skills, prompt logic, and intake workflows for a specific A2J use case. Plugins read from the `/rules` layer — they do not embed the rules directly.
 
-## No client data
+→ [plugins/README.md](plugins/README.md)
 
-This repository contains **no real client information**, and contributions must not introduce any. All examples and test cases are fully fabricated. See [CONTRIBUTING.md](CONTRIBUTING.md).
+### `/rules` — Rules / Decision Logic Layer
+Machine-readable JSON files encoding A2J legal decision logic by jurisdiction and workflow. Organized by workflow category, covering all 50 states + DC per workflow. Designed to be portable across AI models — the rules are data, not code.
 
-## Installing
+Currently covers: **eviction notice triage** (51 jurisdictions, DRAFT)  
+Planned: debt collection defense, benefits denial appeals, expungement
 
-These plugins are installable through Claude Code's plugin marketplace system. Installation instructions will be finalized once the first plugin is validated. (Roughly: add this repository as a marketplace, then install the `consumer-debt` plugin.)
+→ [rules/README.md](rules/README.md)
 
-## License
+### `/demos` — Demo Materials
+Slides, live demo scripts, and the Rules Comparison Widget showing the difference between raw-LLM legal answers and rules-grounded answers.
 
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE). You are free to use, modify, and redistribute, including for adaptation to other jurisdictions, with attribution.
+→ [demos/README.md](demos/README.md)
 
-## Status
+### `/playbooks` — Deployment Playbooks
+Step-by-step guides for legal aid organizations, courts, and law school clinics deploying these tools.
 
-This is an early-stage project (v0.x). Structure and content will change. Feedback from the A2J community is welcome and encouraged.
+→ [playbooks/README.md](playbooks/README.md)
+
+---
+
+## The architecture in one paragraph
+
+Anthropic's plugin and MCP connector framework provides the infrastructure layer: Claude as the reasoning engine, Legal Data Hunter and CourtListener as live statutory retrieval connectors. This repository contributes the **content layer**: jurisdiction-specific rules files encoding A2J decision logic, workflow skills, and deployment playbooks. The rules layer is designed to be portable to any AI model — not locked to Claude or Anthropic.
+
+## How to contribute
+
+The highest-value contribution is **attorney validation of the rules files**. Every DRAFT file needs one licensed attorney per state to verify statutory citations and sign off. See [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) and [docs/REVIEWER_CHECKLIST.md](docs/REVIEWER_CHECKLIST.md).
+
+## Important disclaimers
+
+All rules files are DRAFT status — AI-generated, not attorney-reviewed. Nothing here constitutes legal advice. See [docs/DISCLAIMER.md](docs/DISCLAIMER.md).
+
+---
+
+*Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*

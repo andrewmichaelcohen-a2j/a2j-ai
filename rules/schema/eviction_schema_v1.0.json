@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/andrewmichaelcohen-a2j/a2j-claude-legal-plugins/eviction-rules-library/schema/eviction_schema_v1.0.json",
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "title": "Eviction Rules File",
+  "description": "Schema for residential eviction notice rules files. Each file encodes jurisdiction-specific eviction decision logic as structured, machine-readable data. All generated files are DRAFT until reviewed by a licensed attorney (Layer 7 human review).",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "jurisdiction",
+    "last_updated",
+    "validation_status",
+    "validation_note",
+    "source_statutes",
+    "notice_types",
+    "notice_defects",
+    "affirmative_defenses",
+    "service_methods",
+    "local_overlays",
+    "ai_drafter_notes"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "eviction-v1",
+      "description": "Schema version identifier. Must be 'eviction-v1' for all files in this release."
+    },
+    "_copyright": {
+      "type": "string",
+      "description": "Copyright notice."
+    },
+    "jurisdiction": {
+      "type": "object",
+      "required": ["state", "state_name", "type"],
+      "properties": {
+        "state": { "type": "string", "minLength": 2, "maxLength": 2, "description": "Two-letter state abbreviation (uppercase)" },
+        "state_name": { "type": "string", "description": "Full state name" },
+        "type": { "type": "string", "enum": ["state", "district", "territory"] }
+      }
+    },
+    "last_updated": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "ISO 8601 date of last update"
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": ["DRAFT", "UNDER REVIEW", "VALIDATED", "CERTIFIED", "NEEDS UPDATE"],
+      "description": "Current validation tier. All files in this release are DRAFT."
+    },
+    "validation_note": {
+      "type": "string",
+      "description": "Human-readable note about validation status."
+    },
+    "reviewer": {
+      "type": ["string", "null"],
+      "description": "Name and bar number of reviewing attorney. Null until Layer 7 review is complete."
+    },
+    "source_statutes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "List of primary statutes governing residential eviction in this jurisdiction. Populated from live retrieval where performed."
+    },
+    "statutory_retrieval_performed": {
+      "type": "boolean",
+      "description": "True if statutory text was retrieved via Legal Data Hunter or equivalent connector for this file. False if generated from model knowledge alone."
+    },
+    "statutory_retrieval_date": {
+      "type": ["string", "null"],
+      "description": "Date statutory text was retrieved, if performed."
+    },
+    "ai_drafter_notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Required. List of fields where the source was ambiguous, the law appeared to have changed recently, or where human reviewers should look first. Empty array only if no flags exist. This field directs Layer 7 human review."
+    },
+    "notice_types": {
+      "type": "object",
+      "description": "Notice types available in this jurisdiction. At minimum, 'pay_or_quit' must be present for states with nonpayment-of-rent eviction procedures.",
+      "properties": {
+        "pay_or_quit": {
+          "type": "object",
+          "properties": {
+            "tenancy_under_1yr": {
+              "type": "object",
+              "required": ["days", "statute"],
+              "properties": {
+                "days": { "type": "integer", "minimum": 1 },
+                "statute": { "type": "string" },
+                "count_method": { "type": "string", "enum": ["calendar_days", "calendar_days_exclude_first", "business_days"] }
+              }
+            },
+            "tenancy_over_1yr": {
+              "type": "object",
+              "properties": {
+                "days": { "type": "integer", "minimum": 1 },
+                "statute": { "type": "string" },
+                "note": { "type": "string" }
+              }
+            },
+            "permitted_amounts": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "late_fees_permitted": { "type": "boolean" },
+            "utilities_permitted": { "type": "boolean" }
+          }
+        },
+        "cure_or_quit": {
+          "type": "object",
+          "properties": {
+            "days": { "type": "integer", "minimum": 1 },
+            "statute": { "type": "string" },
+            "curable": { "type": "boolean" }
+          }
+        },
+        "no_fault_termination": {
+          "type": "object",
+          "properties": {
+            "tenancy_under_1yr": { "type": "object" },
+            "tenancy_1_to_2yr": { "type": "object" },
+            "tenancy_over_2yr": { "type": "object" },
+            "just_cause_required": { "type": "boolean" },
+            "statute": { "type": "string" }
+          }
+        }
+      }
+    },
+    "notice_defects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["defect", "result"],
+        "properties": {
+          "defect": { "type": "string" },
+          "result": { "type": "string", "enum": ["INVALID", "POTENTIALLY_INVALID", "VOIDABLE"] },
+          "statute": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "affirmative_defenses": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "service_methods": {
+      "type": "object",
+      "description": "Valid service methods and number of days added to notice period for each.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["adds_days"],
+        "properties": {
+          "adds_days": { "type": "integer", "minimum": 0 },
+          "statute": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "local_overlays": {
+      "type": "object",
+      "description": "City/county-level protections that exceed state law. Required field — empty object if no significant local overlays exist.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "just_cause_required": { "type": "boolean" },
+          "ordinance": { "type": "string" },
+          "rent_control": { "type": "boolean" },
+          "relocation_assistance": { "type": "boolean" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "just_cause_required": { "type": "boolean" },
+    "statewide_rent_control": { "type": "boolean" },
+    "cares_act_check": { "type": "object" }
+  },
+  "additionalProperties": true,
+  "_schema_notes": [
+    "Required fields: schema_version, jurisdiction, last_updated, validation_status, validation_note, source_statutes, notice_types, notice_defects, affirmative_defenses, service_methods, local_overlays, ai_drafter_notes.",
+    "local_overlays and ai_drafter_notes must be present but may be empty objects/arrays for simple jurisdictions.",
+    "All files in this library release are DRAFT. No file may be relabeled beyond DRAFT without a named attorney completing Layer 7 review.",
+    "statutory_retrieval_performed must be set to false for any file where live retrieval was not performed; human reviewers must perform retrieval as part of Layer 7."
+  ]
+}

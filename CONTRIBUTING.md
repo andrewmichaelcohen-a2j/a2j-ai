@@ -34,3 +34,8 @@ These choices keep skills valuable regardless of which AI model, platform, or ju
 - `v0.x` means early and changeable.
 - `v1.0` means stable and validated for the listed jurisdictions.
 - Bump the version and update the last-reviewed date whenever legal content changes.
+
+
+---
+
+*Copyright 2026 Andrew M Cohen. Licensed under the [Apache License, Version 2.0](LICENSE).*

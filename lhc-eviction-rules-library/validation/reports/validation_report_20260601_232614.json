@@ -1,0 +1,1866 @@
+{
+  "generated": "2026-06-01T23:26:14.337373Z",
+  "total_files": 51,
+  "library_stats": {
+    "mean_nonpay_period": 7.3,
+    "median_nonpay_period": 5
+  },
+  "files": {
+    "AK": {
+      "state": "Alaska",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/AK-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for AK \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "AL": {
+      "state": "Alabama",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/AL-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for AL \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "AR": {
+      "state": "Arkansas",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for AR \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "AZ": {
+      "state": "Arizona",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/AZ-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for AZ \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "CA": {
+      "state": "California",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": true,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "RETRIEVED",
+          "flags": [
+            "L1-RETRIEVED: retrieval performed 2026-05-30 \u2014 https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for CA \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "CO": {
+      "state": "Colorado",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for CO \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "CT": {
+      "state": "Connecticut",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/CT-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for CT \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "DC": {
+      "state": "District of Columbia",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/DC-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for DC \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "FLAGS",
+          "flags": [
+            "L5-PERIOD-HIGH: nonpayment period (30 days) is >2x median (5) \u2014 verify"
+          ]
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "DE": {
+      "state": "Delaware",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/DE-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for DE \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "FL": {
+      "state": "Florida",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": true,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "RETRIEVED",
+          "flags": [
+            "L1-RETRIEVED: retrieval performed 2026-06-01 \u2014 https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0000-0099/0083/Sections/0083.56.html"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for FL \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "GA": {
+      "state": "Georgia",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/GA-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for GA \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "HI": {
+      "state": "Hawaii",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/HI-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for HI \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "IA": {
+      "state": "Iowa",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/IA-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for IA \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "ID": {
+      "state": "Idaho",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for ID \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "IL": {
+      "state": "Illinois",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for IL \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "IN": {
+      "state": "Indiana",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for IN \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "KS": {
+      "state": "Kansas",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/KS-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for KS \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "KY": {
+      "state": "Kentucky",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/KY-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for KY \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "LA": {
+      "state": "Louisiana",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/LA-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for LA \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "MA": {
+      "state": "Massachusetts",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/MA-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for MA \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "FLAGS",
+          "flags": [
+            "L5-PERIOD-HIGH: nonpayment period (14 days) is >2x median (5) \u2014 verify"
+          ]
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "MD": {
+      "state": "Maryland",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/MD-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for MD \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "ME": {
+      "state": "Maine",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/ME-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for ME \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "MI": {
+      "state": "Michigan",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for MI \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "MN": {
+      "state": "Minnesota",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/MN-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for MN \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "FLAGS",
+          "flags": [
+            "L5-PERIOD-HIGH: nonpayment period (14 days) is >2x median (5) \u2014 verify"
+          ]
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "MO": {
+      "state": "Missouri",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/MO-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for MO \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "MS": {
+      "state": "Mississippi",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for MS \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "MT": {
+      "state": "Montana",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/MT-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for MT \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "NC": {
+      "state": "North Carolina",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/NC-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for NC \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "ND": {
+      "state": "North Dakota",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/ND-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for ND \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "NE": {
+      "state": "Nebraska",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/NE-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for NE \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "NH": {
+      "state": "New Hampshire",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for NH \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "NJ": {
+      "state": "New Jersey",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for NJ \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "FLAGS",
+          "flags": [
+            "L5-PERIOD-HIGH: nonpayment period (30 days) is >2x median (5) \u2014 verify"
+          ]
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "NM": {
+      "state": "New Mexico",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/NM-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for NM \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "NV": {
+      "state": "Nevada",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/NV-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for NV \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "NY": {
+      "state": "New York",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": true,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "RETRIEVED",
+          "flags": [
+            "L1-RETRIEVED: retrieval performed 2026-05-30 \u2014 https://www.nysenate.gov/legislation/laws/RPA/711"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": [
+            "3.31: cure_or_quit.days (10) < pay_or_quit days (14) \u2014 unusual, verify"
+          ]
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for NY \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "FLAGS",
+          "flags": [
+            "L5-PERIOD-HIGH: nonpayment period (14 days) is >2x median (5) \u2014 verify"
+          ]
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "OH": {
+      "state": "Ohio",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/OH-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for OH \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "OK": {
+      "state": "Oklahoma",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/OK-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for OK \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "OR": {
+      "state": "Oregon",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for OR \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "PA": {
+      "state": "Pennsylvania",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for PA \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "RI": {
+      "state": "Rhode Island",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for RI \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "SC": {
+      "state": "South Carolina",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/SC-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for SC \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "SD": {
+      "state": "South Dakota",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/SD-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for SD \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "TN": {
+      "state": "Tennessee",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/TN-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for TN \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "FLAGS",
+          "flags": [
+            "L5-PERIOD-HIGH: nonpayment period (14 days) is >2x median (5) \u2014 verify"
+          ]
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "TX": {
+      "state": "Texas",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": true,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "RETRIEVED",
+          "flags": [
+            "L1-RETRIEVED: retrieval performed 2026-05-30 \u2014 https://statutes.capitol.texas.gov/Docs/PR/htm/PR.24.htm"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for TX \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "UT": {
+      "state": "Utah",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/UT-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for UT \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "VA": {
+      "state": "Virginia",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/VA-Law"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for VA \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "VT": {
+      "state": "Vermont",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for VT \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "FLAGS",
+          "flags": [
+            "L5-PERIOD-HIGH: nonpayment period (14 days) is >2x median (5) \u2014 verify"
+          ]
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "WA": {
+      "state": "Washington",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/WA-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": [
+            "3.31: cure_or_quit.days (10) < pay_or_quit days (14) \u2014 unusual, verify"
+          ]
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for WA \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "FLAGS",
+          "flags": [
+            "L5-PERIOD-HIGH: nonpayment period (14 days) is >2x median (5) \u2014 verify"
+          ]
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "WI": {
+      "state": "Wisconsin",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. No LDH source \u2014 retrieve from official state legislature website."
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for WI \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "WV": {
+      "state": "West Virginia",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/WV-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for WV \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    },
+    "WY": {
+      "state": "Wyoming",
+      "validation_status": "DRAFT",
+      "statutory_retrieved": false,
+      "overall": "PASS",
+      "layers": {
+        "L1_statutory_grounding": {
+          "status": "PENDING",
+          "flags": [
+            "L1-RETRIEVE-PENDING: statutory retrieval not performed. LDH source available: US/WY-Legislation"
+          ]
+        },
+        "L2_multi_model_consensus": {
+          "status": "NOT_RUN",
+          "note": "Layer 2 requires multi-model comparison \u2014 run separately"
+        },
+        "L3_internal_consistency": {
+          "status": "PASS",
+          "errors": [],
+          "warnings": []
+        },
+        "L4_golden_set": {
+          "status": "NO_GOLDEN_SET",
+          "note": "L4-NO-GOLDEN-SET: no golden set exists for WY \u2014 authoring needed (see Workstream B spec)",
+          "cases_run": 0
+        },
+        "L5_cross_jurisdiction": {
+          "status": "PASS",
+          "flags": []
+        },
+        "L6_temporal_freshness": {
+          "status": "NOT_RUN",
+          "note": "Layer 6 requires legislative feed integration \u2014 run as CI step"
+        }
+      }
+    }
+  }
+}

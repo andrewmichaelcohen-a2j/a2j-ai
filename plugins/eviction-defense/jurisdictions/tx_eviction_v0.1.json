@@ -1,0 +1,80 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v1",
+  "jurisdiction": {
+    "state": "TX",
+    "state_name": "Texas",
+    "type": "state"
+  },
+  "last_updated": "2026-05-01",
+  "validation_status": "DRAFT",
+  "validation_note": "AI-generated. Not reviewed by licensed attorney. NOT for production use.",
+  "reviewer": null,
+  "source_statutes": [
+    "Tex. Prop. Code \u00a724.005",
+    "Tex. Prop. Code \u00a792"
+  ],
+  "_schema_note": "This file uses schema eviction-v1, introduced in the June 2026 integration brief. It supersedes tx_eviction_rules_v0.1.json for demo purposes. Intentionally simpler than CA \u2014 Texas law has fewer notice types, no statewide just-cause requirement, and limited local overlays. The simplicity is a feature: it makes the portability point visually obvious in the comparison widget.",
+  "notice_types": {
+    "vacate_notice": {
+      "description": "Notice to vacate (nonpayment or lease violation)",
+      "default_days": 3,
+      "statute": "Tex. Prop. Code \u00a724.005",
+      "note": "Lease may specify longer period; 3 days is statutory minimum"
+    },
+    "month_to_month_termination": {
+      "days": 30,
+      "statute": "Tex. Prop. Code \u00a791.001"
+    }
+  },
+  "notice_defects": [
+    {
+      "defect": "insufficient_notice_period",
+      "result": "INVALID",
+      "note": "Less than 3 days (or lease-specified period if longer)"
+    },
+    {
+      "defect": "improper_delivery",
+      "result": "INVALID",
+      "statute": "Tex. Prop. Code \u00a724.005(f)"
+    },
+    {
+      "defect": "cares_act_noncompliance",
+      "result": "POTENTIALLY_INVALID",
+      "note": "30-day notice required for federally backed properties; verify applicability"
+    }
+  ],
+  "affirmative_defenses": [
+    "habitability",
+    "retaliatory_eviction",
+    "discriminatory_eviction",
+    "waiver_by_landlord"
+  ],
+  "service_methods": {
+    "personal": {
+      "adds_days": 0,
+      "statute": "Tex. Prop. Code \u00a724.005(f)"
+    },
+    "mail": {
+      "adds_days": 3,
+      "note": "Certified mail or regular mail"
+    },
+    "posted_on_door": {
+      "adds_days": 0,
+      "statute": "Tex. Prop. Code \u00a724.005(f)(3)"
+    }
+  },
+  "just_cause_required": false,
+  "statewide_rent_control": false,
+  "local_overlays": {
+    "note": "Texas law preempts most local tenant protections.",
+    "austin": {
+      "note": "Austin has limited relocation assistance ordinance; verify current status"
+    }
+  },
+  "cares_act_check": {
+    "required": true,
+    "note": "For federally backed properties, 30-day notice required. Verify property status.",
+    "source": "CARES Act \u00a74024 (federal)"
+  }
+}

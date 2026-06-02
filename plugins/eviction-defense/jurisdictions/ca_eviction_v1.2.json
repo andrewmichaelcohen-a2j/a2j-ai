@@ -1,0 +1,155 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v1",
+  "jurisdiction": {
+    "state": "CA",
+    "state_name": "California",
+    "type": "state"
+  },
+  "last_updated": "2026-05-01",
+  "validation_status": "DRAFT",
+  "validation_note": "AI-generated. Not reviewed by licensed attorney. NOT for production use.",
+  "reviewer": null,
+  "source_statutes": [
+    "CCP \u00a71161",
+    "CCP \u00a71161.1",
+    "CCP \u00a71013",
+    "AB 1482 (Civ. Code \u00a71946.2)"
+  ],
+  "_schema_note": "This file uses schema eviction-v1, introduced in the June 2026 integration brief. It supersedes ca_eviction_rules_v0.1.json for demo purposes.",
+  "_validation_flag": "ATTORNEY REVIEW NEEDED on 15-day notice period claim: the brief states tenancy_over_1yr requires 15 days, citing CCP \u00a71161(2) + AB 1482. However, live retrieval of CCP \u00a71161 on 2026-05-30 shows the statute text states 'three days notice' for nonpayment. The 15-day period may reflect a specific AB 1482 interpretation or local overlay \u2014 this must be confirmed by a licensed CA tenant attorney before the file is used in any deployment.",
+  "notice_types": {
+    "pay_or_quit": {
+      "description": "Nonpayment of rent",
+      "tenancy_under_1yr": {
+        "days": 3,
+        "statute": "CCP \u00a71161(2)",
+        "count_method": "calendar_days_exclude_first"
+      },
+      "tenancy_over_1yr": {
+        "days": 15,
+        "statute": "CCP \u00a71161(2), AB 1482",
+        "note": "AB 1482 extended period for tenancies 12+ months. ATTORNEY VALIDATION REQUIRED \u2014 see _validation_flag above."
+      },
+      "permitted_amounts": [
+        "unpaid_rent_only"
+      ],
+      "late_fees_permitted": false,
+      "utilities_permitted": false
+    },
+    "cure_or_quit": {
+      "description": "Curable lease violation",
+      "days": 3,
+      "statute": "CCP \u00a71161(3)",
+      "curable": true
+    },
+    "no_fault_termination": {
+      "tenancy_under_1yr": {
+        "days": 30,
+        "statute": "Civ. Code \u00a71946.1"
+      },
+      "tenancy_1_to_2yr": {
+        "days": 60,
+        "statute": "Civ. Code \u00a71946.1"
+      },
+      "tenancy_over_2yr": {
+        "days": 60,
+        "statute": "Civ. Code \u00a71946.1"
+      },
+      "just_cause_required_if_ab1482_applies": true,
+      "relocation_assistance_if_no_fault": "1_month_rent",
+      "statute": "Civ. Code \u00a71946.2 (AB 1482)"
+    }
+  },
+  "notice_defects": [
+    {
+      "defect": "includes_late_fees",
+      "result": "INVALID",
+      "statute": "CCP \u00a71161(2)",
+      "note": "Any amount other than unpaid rent renders pay-or-quit notice void"
+    },
+    {
+      "defect": "includes_utilities_if_not_in_lease",
+      "result": "POTENTIALLY_INVALID",
+      "statute": "CCP \u00a71161(2)"
+    },
+    {
+      "defect": "incorrect_period_under_1yr",
+      "result": "INVALID",
+      "note": "3-day minimum for tenancies under 1 year"
+    },
+    {
+      "defect": "incorrect_period_over_1yr",
+      "result": "INVALID",
+      "note": "15-day minimum for tenancies 12+ months (per brief \u2014 ATTORNEY VALIDATION REQUIRED)"
+    },
+    {
+      "defect": "improper_service_method",
+      "result": "INVALID",
+      "statute": "CCP \u00a71162"
+    },
+    {
+      "defect": "missing_ab3088_language",
+      "result": "INVALID",
+      "note": "COVID-era disclosure requirement; verify current applicability"
+    }
+  ],
+  "affirmative_defenses": [
+    "habitability",
+    "retaliatory_eviction",
+    "discriminatory_eviction",
+    "waiver_by_landlord",
+    "covid_hardship_ca",
+    "no_just_cause_ab1482"
+  ],
+  "service_methods": {
+    "personal": {
+      "adds_days": 0,
+      "statute": "CCP \u00a71162(a)(1)"
+    },
+    "substituted": {
+      "adds_days": 0,
+      "statute": "CCP \u00a71162(a)(2)"
+    },
+    "post_and_mail": {
+      "adds_days": 5,
+      "statute": "CCP \u00a71013",
+      "note": "Nail and mail: post copy + mail copy same day"
+    }
+  },
+  "local_overlays": {
+    "los_angeles": {
+      "just_cause_required": true,
+      "ordinance": "LAMC 151.09",
+      "relocation_assistance": true,
+      "note": "LA RSO covers most rental units built before 10/1/1978"
+    },
+    "san_francisco": {
+      "just_cause_required": true,
+      "ordinance": "SF Admin Code Ch. 37",
+      "rent_control": true
+    },
+    "oakland": {
+      "just_cause_required": true,
+      "ordinance": "Oakland Just Cause for Eviction Ordinance (OMC 8.22)",
+      "relocation_assistance": true
+    },
+    "berkeley": {
+      "just_cause_required": true,
+      "ordinance": "Berkeley Rent Stabilization Ordinance"
+    }
+  },
+  "ab1482_applicability": {
+    "covered_if": [
+      "multi_unit_building",
+      "tenancy_over_12_months"
+    ],
+    "exempt": [
+      "single_family_home_with_notice",
+      "condo_with_notice",
+      "owner_occupied_duplex",
+      "new_construction_15yr_rolling"
+    ],
+    "statute": "Civ. Code \u00a71946.2"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v1",
+  "jurisdiction": {
+    "state": "GA",
+    "state_name": "Georgia",
+    "type": "state"
+  },
+  "last_updated": "2026-06-01",
+  "validation_status": "DRAFT",
+  "validation_note": "AI-generated. Not reviewed by a licensed attorney. NOT for production use with real clients. All citation periods and legal rules require attorney verification.",
+  "reviewer": null,
+  "statutory_retrieval_performed": false,
+  "statutory_retrieval_date": null,
+  "statutory_retrieval_url": null,
+  "source_for_retrieval": "US/GA-Legislation",
+  "source_statutes": [
+    "OCGA \u00a744-7-50",
+    "OCGA \u00a744-7-7"
+  ],
+  "ai_drafter_notes": [
+    "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+    "LDH source US/GA-Legislation very limited (60 docs, 2022) \u2014 retrieve current text from Georgia General Assembly website during attorney review",
+    "Georgia is generally very landlord-friendly \u2014 very limited tenant protections",
+    "3-day notice is a demand for possession only \u2014 no cure right for nonpayment",
+    "Verify current OCGA provisions \u2014 limited LDH coverage",
+    "LDH legislation source available for retrieval verification: US/GA-Legislation"
+  ],
+  "notice_types": {
+    "pay_or_quit": {
+      "description": "Nonpayment of rent",
+      "permitted_amounts": [
+        "unpaid_rent_only"
+      ],
+      "late_fees_permitted": false,
+      "utilities_permitted": false,
+      "tenancy_all": {
+        "days": 3,
+        "statute": "OCGA \u00a744-7-50",
+        "count_method": "calendar_days"
+      }
+    },
+    "cure_or_quit": {
+      "description": "Curable lease violation",
+      "days": 3,
+      "statute": "OCGA \u00a744-7-50",
+      "curable": true
+    },
+    "no_fault_termination": {
+      "statute": "OCGA \u00a744-7-7",
+      "tenancy_any": {
+        "days": 30
+      },
+      "just_cause_required": false
+    }
+  },
+  "notice_defects": [
+    {
+      "defect": "improper_service_method",
+      "result": "INVALID",
+      "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+    },
+    {
+      "defect": "notice_period_too_short",
+      "result": "INVALID",
+      "note": "Notice must provide minimum 3 day(s) \u2014 verify calculation method"
+    }
+  ],
+  "affirmative_defenses": [
+    "habitability",
+    "retaliatory_eviction",
+    "discriminatory_eviction",
+    "waiver_by_landlord"
+  ],
+  "service_methods": {
+    "personal": {
+      "adds_days": 0
+    },
+    "certified_mail": {
+      "adds_days": 3,
+      "note": "Days added for mail service \u2014 verify state-specific rule"
+    },
+    "post_and_mail": {
+      "adds_days": 5,
+      "note": "Post and mail/nail and mail \u2014 verify whether available in this state"
+    }
+  },
+  "local_overlays": {
+    "atlanta": {
+      "note": "No significant overlays beyond state law; verify Atlanta Code of Ordinances"
+    }
+  },
+  "just_cause_required": false,
+  "statewide_rent_control": false
+}

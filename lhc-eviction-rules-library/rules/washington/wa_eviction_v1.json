@@ -1,0 +1,110 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v1",
+  "jurisdiction": {
+    "state": "WA",
+    "state_name": "Washington",
+    "type": "state"
+  },
+  "last_updated": "2026-06-01",
+  "validation_status": "DRAFT",
+  "validation_note": "AI-generated. Not reviewed by a licensed attorney. NOT for production use with real clients. All citation periods and legal rules require attorney verification.",
+  "reviewer": null,
+  "statutory_retrieval_performed": false,
+  "statutory_retrieval_date": null,
+  "statutory_retrieval_url": null,
+  "source_for_retrieval": "US/WA-Legislation",
+  "source_statutes": [
+    "RCW \u00a759.12.030",
+    "RCW \u00a759.18.180",
+    "RCW \u00a759.18.200",
+    "RCW \u00a759.18.650 (HB 1236, 2021)"
+  ],
+  "ai_drafter_notes": [
+    "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+    "Retrieve via LDH: US/WA-Legislation (2026 version)",
+    "HB 1236 (2021): Washington enacted statewide just cause eviction \u2014 RCW \u00a759.18.650",
+    "14-day pay-or-vacate notice for nonpayment (extended from 3 days in 2019)",
+    "Seattle has especially strong tenant protections that exceed state law",
+    "Just cause statute has specific enumerated reasons \u2014 verify all applicable grounds",
+    "LDH legislation source available for retrieval verification: US/WA-Legislation"
+  ],
+  "notice_types": {
+    "pay_or_quit": {
+      "description": "Nonpayment of rent",
+      "permitted_amounts": [
+        "unpaid_rent_only"
+      ],
+      "late_fees_permitted": false,
+      "utilities_permitted": false,
+      "tenancy_all": {
+        "days": 14,
+        "statute": "RCW \u00a759.12.030",
+        "count_method": "calendar_days"
+      }
+    },
+    "cure_or_quit": {
+      "description": "Curable lease violation",
+      "days": 10,
+      "statute": "RCW \u00a759.18.180",
+      "curable": true
+    },
+    "no_fault_termination": {
+      "statute": "RCW \u00a759.18.200",
+      "tenancy_any": {
+        "days": 20
+      },
+      "just_cause_required": true,
+      "just_cause_statute": "RCW \u00a759.18.650 (HB 1236, 2021)"
+    }
+  },
+  "notice_defects": [
+    {
+      "defect": "improper_service_method",
+      "result": "INVALID",
+      "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+    },
+    {
+      "defect": "notice_period_too_short",
+      "result": "INVALID",
+      "note": "Notice must provide minimum 14 day(s) \u2014 verify calculation method"
+    },
+    {
+      "defect": "missing_just_cause_reason",
+      "result": "INVALID",
+      "statute": "RCW \u00a759.18.650 (HB 1236, 2021)",
+      "note": "Just cause required \u2014 notice must state qualifying reason"
+    }
+  ],
+  "affirmative_defenses": [
+    "habitability",
+    "retaliatory_eviction",
+    "discriminatory_eviction",
+    "waiver_by_landlord",
+    "no_just_cause"
+  ],
+  "service_methods": {
+    "personal": {
+      "adds_days": 0
+    },
+    "certified_mail": {
+      "adds_days": 3,
+      "note": "Days added for mail service \u2014 verify state-specific rule"
+    },
+    "post_and_mail": {
+      "adds_days": 5,
+      "note": "Post and mail/nail and mail \u2014 verify whether available in this state"
+    }
+  },
+  "local_overlays": {
+    "seattle": {
+      "just_cause_required": true,
+      "ordinance": "Seattle Just Cause Eviction Ordinance (SMC 22.206.160)",
+      "rent_control": false,
+      "relocation_assistance": true,
+      "note": "Seattle has strong just cause ordinance \u2014 predates state law. Also has winter eviction moratorium and other tenant protections."
+    }
+  },
+  "just_cause_required": true,
+  "statewide_rent_control": false
+}

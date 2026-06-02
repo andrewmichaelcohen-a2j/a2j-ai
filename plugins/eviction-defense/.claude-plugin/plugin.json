@@ -1,0 +1,9 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "name": "eviction-defense",
+  "version": "0.1.0",
+  "description": "Access-to-justice workflows for eviction defense. Screens eviction notices for procedural defects and affirmative defenses across CA, TX, and NY, using live statute retrieval via MCP connectors. Supports legal aid intake workers and self-represented tenants.",
+  "author": {
+    "name": "Andrew M Cohen / Andrew M Cohen"
+  }
+}
