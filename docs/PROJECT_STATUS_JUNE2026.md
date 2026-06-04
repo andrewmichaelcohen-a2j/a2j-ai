@@ -1,5 +1,41 @@
 # A2J AI Project — Status Document
-*Andrew M Cohen · June 2, 2026 · For reference and continuity*
+*Andrew M Cohen · Updated June 4, 2026 · For reference and continuity*
+
+---
+
+## SESSION CONTINUITY — How to Brief Claude at the Start of a New Session
+
+Claude does not retain memory between sessions. At the start of each session, paste this into Cowork:
+
+> "I'm Andy Cohen working on the A2J AI project. Please read `/Users/andrewcohen/Documents/GitHub/a2j-ai/docs/PROJECT_STATUS_JUNE2026.md` to get current context, then we can pick up where we left off."
+
+Claude will then ask you to connect the `a2j-ai` folder (click the dialog, navigate to `Documents/GitHub/a2j-ai`, click Open), and it will read this file and be fully briefed.
+
+**Key facts for fast re-orientation:**
+- Repo: `github.com/andrewmichaelcohen-a2j/a2j-ai` — public but eviction files not yet pushed
+- Local repo path: `/Users/andrewcohen/Documents/GitHub/a2j-ai/`
+- GitHub username: `andrewmichaelcohen-a2j`
+- Active focus: Eviction defense demo — consumer-debt is paused/deprioritized
+- Widget: `demos/eviction/widget/RulesComparisonWidget.html` (open by double-clicking in Finder)
+- Demo script: `demos/eviction/prompts/demo-script.md`
+- Rules files: `rules/eviction/[state]/[state]_eviction_v1.json`
+
+---
+
+## STRATEGIC CONTEXT (updated June 4, 2026)
+
+The project has evolved from a "plugin marketplace" framing to a more focused thesis:
+
+**Eviction defense is the initial proof of concept for a larger project: building a "civil justice as code" rules layer** — structured, version-controlled, attorney-validated rules files covering A2J legal domains across all 50 states. The eviction demo shows what's currently possible with legal plugins; the 50-state rules library is the first community contribution ask.
+
+The roadmap is: fully validate eviction rules → use that process as the template → expand to debt collection, benefits appeals, and other A2J domains. Consumer-debt work is on pause until eviction is validated and published.
+
+**Phase sequencing:**
+1. Finalize messaging content (overall deck, detailed project paper, 2-pager) — *in progress*
+2. Finalize demo — script, slides, widget all confirmed working — *in progress*
+3. Push to GitHub: eviction demo + slides + 50-state rules — *not yet done*
+4. Update README and repo docs to reflect eviction-first / rules-as-infrastructure framing
+5. Outreach and attorney validation recruitment
 
 ---
 
@@ -160,11 +196,22 @@ The local folder is still called `a2j-claude-legal-plugins` even though the GitH
 - [x] Remote URL updated to a2j-ai
 - [x] Apache 2.0 license, NOTICE, DISCLAIMER in place
 
-### 🔲 Immediate Next Steps (this week)
-- [ ] Commit + push current changes (GitHub Desktop)
-- [ ] Delete old LHC_Demo_Deck_v0.1.pptx from plugins/eviction-defense/
-- [ ] Run full demo rehearsal in Cowork — time it, confirm output is clean
-- [ ] Make repo public on GitHub.com (after rehearsal)
+### ✅ Fixed June 4, 2026 (Cowork session)
+- [x] All file references in `demo-script.md` corrected — old `ca_eviction_rules_v0.1.json`, `v1.2`, and `eviction-defense/jurisdictions/` paths replaced with actual filenames and `rules/eviction/[state]/` paths
+- [x] `RulesComparisonWidget.html` (original in `demos/eviction/widget/`) fixed — stale filenames `ca_eviction_v1.2.json`, `tx_eviction_v0.1.json`, `ny_eviction_rules_v0.1.json` corrected to `v1.json` throughout; path footer corrected
+- [x] Duplicate widget I accidentally created in `demos/eviction/prompts/` deleted
+- [x] Pre-demo checklist added to top of `demo-script.md` with verifiable URLs for Tab A and Tab B
+- [x] Setup section in `demo-script.md` updated with correct widget path (`demos/eviction/widget/`)
+- [x] Repo confirmed public at `github.com/andrewmichaelcohen-a2j/a2j-ai`
+
+### 🔲 Immediate Next Steps (before GitHub push)
+- [ ] Finalize messaging content — overall deck, project paper, 2-pager
+- [ ] Run full demo rehearsal in Cowork — time it, confirm triage output is clean
+- [ ] Verify Tab A GitHub URL works once eviction files are pushed
+- [ ] Delete old `LHC_Demo_Deck_v0.1.pptx` from `plugins/eviction-defense/` (pre-push cleanup)
+- [ ] Commit + push all eviction files (GitHub Desktop): demo, slides, rules, widget
+- [ ] Update README.md to reflect eviction-first / rules-as-infrastructure framing (not plugin marketplace)
+- [ ] Confirm repo is public after push (it already is, just verify eviction files appear)
 
 ### 🔲 Near-Term (before first live audience demo)
 - [ ] Record 60-second widget interaction clip for the deck

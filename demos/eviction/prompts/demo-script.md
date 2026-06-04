@@ -6,14 +6,25 @@ Before the demo, open this file alongside Cowork. Each prompt below is a complet
 
 ---
 
+## PRE-DEMO CHECKLIST (verify before every demo)
+
+- [ ] **Tab A** — CA rules file loads on GitHub: https://github.com/andrewmichaelcohen-a2j/a2j-ai/blob/main/rules/eviction/california/ca_eviction_v1.json
+- [ ] **Tab B** — CA statute loads: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.
+- [ ] **Tab C** — Widget opens locally (double-click `demos/eviction/widget/RulesComparisonWidget.html`), CA panel shows DEFECTS FOUND: 2, TX button switches panels correctly
+- [ ] **Cowork** — plugin loaded, eviction-triage skill available
+- [ ] **Slide deck** — open, on Slide 1, presenter view off
+- [ ] **This file** — open in a second window for copy-paste prompts
+
+---
+
 ## SETUP (do before audience arrives)
 
 1. Open Cowork
 2. Open this file in a separate window
 3. Open three browser tabs:
-   - Tab A: GitHub repo → `eviction-defense/jurisdictions/ca_eviction_v1.2.json` (the new v1.2 file)
-   - Tab B: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.
-   - Tab C: `eviction-defense/components/RulesComparisonWidget.html` — open this locally in Chrome (double-click the file). Pre-load with CA selected.
+   - Tab A: [CA rules file on GitHub](https://github.com/andrewmichaelcohen-a2j/a2j-ai/blob/main/rules/eviction/california/ca_eviction_v1.json)
+   - Tab B: [CCP § 1161 — California Legislature](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.)
+   - Tab C: `RulesComparisonWidget.html` — double-click the file at `demos/eviction/widget/RulesComparisonWidget.html` to open locally in Chrome. Pre-load with CA selected.
 4. Open your slide deck (Google Slides or PowerPoint)
 5. Arrange your screen: slides on the left half, Cowork on the right half
 
@@ -27,7 +38,7 @@ Before the demo, open this file alongside Cowork. Each prompt below is a complet
 ```
 You are running the eviction-triage skill from the eviction defense plugin.
 
-The jurisdiction rules file is: eviction-defense/jurisdictions/ca_eviction_rules_v0.1.json
+The jurisdiction rules file is: rules/eviction/california/ca_eviction_v1.json
 
 Here are the intake facts for this case:
 
@@ -73,9 +84,9 @@ Include confidence levels and live statute citations in the output.
 ---
 
 ## DEMO BEAT 3A — Open the CA rules file (NEW — 4:30 mark)
-*(Switch to browser Tab A — GitHub — showing ca_eviction_v1.2.json)*
+*(Switch to browser Tab A — GitHub — showing ca_eviction_v1.json)*
 
-**SAY:** "Here is the California rules file. It's 45 lines of structured data. Walk through four fields: the notice type, the tenancy threshold, the defect trigger for late fees, and the local overlays for Los Angeles. I drafted this in hours. It needs attorney validation before production use — that is the community project. But the structure is complete."
+**SAY:** "Here is the California rules file. It's structured data. Walk through four fields: the notice type, the tenancy threshold, the defect trigger for late fees, and the local overlays for Los Angeles. I drafted this in hours. It needs attorney validation before production use — that is the community project. But the structure is complete."
 
 **Point to the `_validation_flag` field. SAY:** "You'll notice it flags a specific legal question for attorney review — the 15-day notice period claim. That level of transparency about what still needs human expert review is built into the architecture. DRAFT files say what they don't know."
 
@@ -121,7 +132,7 @@ Include confidence levels and live statute citations in the output.
 
 ```
 Now run the same analysis using the Texas rules file instead:
-eviction-defense/jurisdictions/tx_eviction_rules_v0.1.json
+rules/eviction/texas/tx_eviction_v1.json
 
 Same tenant facts — but now the property is in Houston, Texas.
 The tenant was current on rent before this month.
@@ -178,7 +189,7 @@ That's fine — it shows the depth of the analysis. Scroll to the DEFECT DETECTE
 | Beat 1 | Paste CA prompt into Cowork, output appears | 2:00–3:30 |
 | Beat 2 | Show live statute in browser (Tab B) | 3:30–4:00 |
 | Beat 3 | Transition: "Now let me show you the rules layer" | 4:00–4:30 |
-| Beat 3A | Open ca_eviction_v1.2.json on GitHub (Tab A) | 4:30–5:00 |
+| Beat 3A | Open ca_eviction_v1.json on GitHub (Tab A) | 4:30–5:00 |
 | Beat 3B | Open comparison widget in browser (Tab C), CA view | 5:00–5:20 |
 | Beat 3C | Switch widget to TX — portability moment | 5:20–5:45 |
 | Beat 3D | Return to slides — Gaps slide | 5:45–6:00 |

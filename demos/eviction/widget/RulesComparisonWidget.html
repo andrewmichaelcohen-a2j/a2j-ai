@@ -41,7 +41,7 @@ const LLM_RESPONSES = {
 
 const RULES_RESPONSES = {
   CA: {
-    rulesFile: "ca_eviction_v1.2.json (DRAFT)",
+    rulesFile: "ca_eviction_v1.json (DRAFT)",
     defects: [
       { id: "CA-DEFECT-01", title: "Late fees included in notice amount", detail: "California law (CCP §1161(2)) prohibits including late fees in a Pay or Quit notice. Only unpaid rent may be demanded. The $200 late fee renders this notice void.", statute: "CCP §1161(2)", severity: "INVALID" },
       { id: "CA-DEFECT-02", title: "Incorrect notice period for tenancy length", detail: "For a tenancy of 3 years, California requires a 15-day Pay or Quit notice (not 3 days) under AB 1482. ⚠ Attorney validation required on 15-day period.", statute: "CCP §1161(2); AB 1482", severity: "INVALID" },
@@ -49,20 +49,20 @@ const RULES_RESPONSES = {
     defenses: ["Habitability (uninhabitable conditions)", "Retaliatory eviction", "LA RSO just-cause requirement (LAMC 151.09)"],
     localOverlay: "Los Angeles RSO applies to pre-1978 multi-unit buildings — additional just-cause protections may apply.",
     nextStep: "Contact a legal aid attorney immediately. This notice may be void.",
-    statusBadge: "Grounded in rules file ca_eviction_v1.2.json",
+    statusBadge: "Grounded in rules file ca_eviction_v1.json",
   },
   TX: {
-    rulesFile: "tx_eviction_v0.1.json (DRAFT)",
+    rulesFile: "tx_eviction_v1.json (DRAFT)",
     defects: [
       { id: "TX-DEFECT-01", title: "CARES Act check required", detail: "If this property has a federally backed mortgage or receives HUD/Section 8 assistance, a 30-day notice is required under the CARES Act (§4024), not 3 days. Verify property status.", statute: "CARES Act §4024", severity: "POTENTIALLY_INVALID" },
     ],
     defenses: ["Habitability", "Retaliatory eviction", "Discrimination"],
     localOverlay: "Texas has no statewide just-cause requirement. No statewide rent control. Note: Texas analysis is shorter — simpler law, different rules file.",
     nextStep: "Verify whether property has federally backed mortgage. Contact Texas legal aid immediately.",
-    statusBadge: "Grounded in rules file tx_eviction_v0.1.json",
+    statusBadge: "Grounded in rules file tx_eviction_v1.json",
   },
   NY: {
-    rulesFile: "ny_eviction_rules_v0.1.json (DRAFT)",
+    rulesFile: "ny_eviction_v1.json (DRAFT)",
     defects: [
       { id: "NY-DEFECT-01", title: "Incorrect notice period — NY requires 14 days", detail: "New York law (RPAPL §711(2), amended by HSTPA 2019) requires a 14-day notice for nonpayment — not 3 days. A 3-day notice in New York is legally defective.", statute: "RPAPL §711(2); HSTPA 2019", severity: "INVALID" },
     ],
@@ -198,7 +198,7 @@ function Widget() {
       {/* Snippet toggle */}
       <div style={{marginTop:10,border:"1px solid #CBD5E0",borderRadius:8,overflow:"hidden"}}>
         <button onClick={() => setShowSnippet(!showSnippet)} style={{width:"100%",background:"#F7F9FC",border:"none",padding:"12px 16px",display:"flex",justifyContent:"space-between",cursor:"pointer",fontSize:13,fontWeight:"bold",color:"#0E7C87"}}>
-          <span>See the rules file that powered this ({j === "CA" ? "ca_eviction_v1.2.json" : j === "TX" ? "tx_eviction_v0.1.json" : "ny_eviction_rules_v0.1.json"}) — notice_defects section</span>
+          <span>See the rules file that powered this ({j === "CA" ? "ca_eviction_v1.json" : j === "TX" ? "tx_eviction_v1.json" : "ny_eviction_v1.json"}) — notice_defects section</span>
           <span>{showSnippet ? "▲" : "▼"}</span>
         </button>
         {showSnippet && (
@@ -207,7 +207,7 @@ function Widget() {
               {snippet}
             </div>
             <div style={{background:"#F0F4F8",padding:"8px 16px",fontSize:11,color:"#6B7280",borderTop:"1px solid #E2E8F0"}}>
-              DRAFT — AI-generated, not attorney-validated. Full file in GitHub repo: eviction-defense/jurisdictions/
+              DRAFT — AI-generated, not attorney-validated. Full file in GitHub repo: rules/eviction/
             </div>
           </div>
         )}
