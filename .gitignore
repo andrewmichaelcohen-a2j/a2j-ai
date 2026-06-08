@@ -1,0 +1,19 @@
+# macOS Finder metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Editor / temp files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs
+*.log
