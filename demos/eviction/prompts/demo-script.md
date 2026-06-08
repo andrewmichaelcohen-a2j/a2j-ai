@@ -12,8 +12,8 @@ Open and arrange these on your screen before you start:
 | Tab / Window | What it is |
 |-------------|-----------|
 | **Cowork** | Active session, blank chat ready |
-| **Browser Tab A** | `demos/eviction/widget/RulesComparisonWidget.html` — open in Chrome, pre-loaded on **CA** |
-| **Browser Tab B** | Your GitHub repo → `rules/eviction/california/ca_eviction_v1.json` |
+| **Browser Tab A** | Paste into Chrome address bar: `file:///Users/andrewcohen/Documents/GitHub/a2j-ai/demos/eviction/widget/RulesComparisonWidget.html` — pre-load on **CA** |
+| **Browser Tab B** | Paste into Chrome address bar: `file:///Users/andrewcohen/Documents/GitHub/a2j-ai/rules/eviction/california/ca_eviction_v1.json` — or open on GitHub.com |
 
 Record your **full screen** in Loom (Screen + Camera is recommended — your face in the corner adds warmth).
 
