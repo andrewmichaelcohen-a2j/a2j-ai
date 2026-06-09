@@ -81,7 +81,7 @@ and the source URL.
 *Point to the LEFT panel ("Without Rules File"):*
 
 **SAY:**
-"Left panel: this is what you get when you combine a capable AI model with live statute retrieval — but nothing else. Read what it says. The notice appears valid. No defects found. Zero."
+"Left panel: the AI just read the live statute — CCP §1161. It retrieved the current text, the same text you just saw in Cowork. And it returned this answer: the notice appears valid. No defects found. Zero."
 
 *Pause. Let them read.*
 
@@ -96,9 +96,9 @@ and the source URL.
 *Pause.*
 
 **SAY:**
-"Same AI model. Same statute. Completely different result. Why?"
+"Same AI model. Same live statute. Completely different result. Why?"
 
-"The statute tells you what the law *says*. It does not tell you which specific facts about Maria's notice constitute a legal defect. That reasoning — 'if this notice includes late fees, then it is void under §1161' — has to be encoded separately. That's what the rules layer is."
+"The statute says the notice must state 'the amount that is due.' What it doesn't encode is this: California courts have interpreted that to mean rent only — late fees are prohibited, and including them voids the notice. That's legal doctrine — the synthesis of statutory text and judicial interpretation. An AI reading the statute text alone doesn't have that. The rules file encodes it as explicit, auditable logic: if the notice includes late fees, the result is INVALID under §1161(2). That's the layer that was missing."
 
 *Point to the safety disclaimer in the right panel output:*
 
@@ -116,13 +116,13 @@ and the source URL.
 *Pause on the `includes_late_fees` entry.*
 
 **SAY:**
-"Forty-five lines of JSON. This is the decision-logic layer. Look at this entry: defect — 'includes late fees.' Result — INVALID. Statute — CCP §1161. Note — 'any amount other than unpaid rent renders the notice void.'"
+"Here's the file that made the difference. Forty-five lines of JSON. Look at this entry: defect — 'includes late fees.' Result — INVALID. Statute — CCP §1161(2)."
 
-"That's it. That's the rule. The AI reads it, applies it to Maria's facts, and returns a deterministic result — not a prediction, not a guess. An explicit rule applied to specific facts."
+"This rule didn't come from reading the statute in isolation. It came from synthesizing the statute, how California courts have interpreted it, and how practitioners apply it. The AI encoded that synthesis as explicit, auditable logic: if this fact is present, this legal consequence follows."
 
-"The statute is the law. This file is the reasoning. Both are required. One without the other gives you a confident-sounding answer that's wrong."
+"That's what's new here. Not statute lookup. Not AI predicting an answer. AI encoding legal doctrine — the accumulated interpretation of the law — as structured rules that can be inspected, tested, and validated."
 
-"I drafted this file in a few hours. A licensed California attorney needs to validate it before production use — that's the first item on the project roadmap. But the structure is complete, and the method is proven."
+"I drafted this file in a few hours. A licensed California attorney needs to confirm the synthesis is accurate — that the encoded doctrine reflects how the law actually applies. That's the first item on the validation roadmap, and it's the reason attorney review is genuinely required, not just a formality."
 
 ---
 
