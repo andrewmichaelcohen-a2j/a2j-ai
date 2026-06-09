@@ -19,6 +19,8 @@ Record your **full screen** in Loom (Screen + Camera is recommended — your fac
 
 Have this script open on a **second monitor or device** — not on your recorded screen.
 
+> **⚠️ IMPORTANT:** Do NOT type Maria's scenario into Cowork in Scene 1. Just narrate it verbally while Cowork is visible on screen. Typing it triggers a full analysis that will contradict the gap moment in Scene 3.
+
 ---
 
 ## THE SCRIPT
@@ -26,26 +28,26 @@ Have this script open on a **second monitor or device** — not on your recorded
 ---
 
 ### SCENE 1 — The Setup (0:00–0:35)
-*Start on Cowork. Camera briefly on your face if using face cam, then share screen.*
+*Start on Cowork. Camera briefly on your face if using face cam, then share screen. Cowork is open and blank — you are NOT typing into it yet.*
 
 **SAY:**
 "I'm going to show you a working eviction-defense tool — built in three days, for essentially zero dollars, by a non-engineer attorney. Not a prototype in name only. A real tool. And I want to walk you through the specific things that made it possible — because understanding how it was built is the whole point."
 
 "Let's start with Maria. It's 10pm. She just found this taped to her door."
 
-*Type or paste into Cowork — visible on screen:*
-
-> Maria Garcia. Los Angeles, California. She's lived in her apartment for 3 years. Tonight she received a 3-Day Notice to Pay Rent or Quit demanding $2,050 — $1,850 in rent, plus $200 in late fees. She has no lawyer. She has no idea whether this notice is even valid.
+*Point to Cowork on screen — it will be the tool you use shortly.*
 
 **SAY:**
+"Maria Garcia. Los Angeles, California. She's lived in her apartment for 3 years. Tonight she received a 3-Day Notice to Pay Rent or Quit demanding $2,050 — $1,850 in rent, plus $200 in late fees. She has no lawyer. She has no idea whether this notice is even valid."
+
 "This is one of 3.6 million eviction filings a year. 95% of those tenants have no attorney."
 
 ---
 
 ### SCENE 2 — Live Statute Retrieval (0:35–1:35)
-*Still in Cowork. Paste the demo prompt.*
+*Still in Cowork. NOW type the demo prompt below. This is the first thing you type.*
 
-*Paste into Cowork:*
+*Type or paste into Cowork:*
 ```
 Use Legal Data Hunter to retrieve the current text of California Code of 
 Civil Procedure Section 1161 — specifically the requirement for a 3-Day 
@@ -63,7 +65,7 @@ and the source URL.
 **SAY:**
 "That's leginfo.legislature.ca.gov — the California Legislature's own website. That URL is real. Past legal AI tools guessed the law from memory and might be wrong or out of date. This one reads it. That's what the infrastructure changed — from predictive to deterministic."
 
-"And I want to mention: I didn't build this from scratch. I used existing skills and plugins from Anthropic's legal infrastructure — reusable modules built by others that I connected in three days."
+"And I want to mention: I didn't build this from scratch. I used existing infrastructure from Anthropic — reusable connectors and tools that I assembled in three days."
 
 *Pause briefly — let the statute text be visible on screen for 5 seconds.*
 
@@ -76,12 +78,12 @@ and the source URL.
 *Switch to Browser Tab A — the Comparison Widget, CA selected.*
 
 **SAY:**
-"Now here's the most important thing I learned building this. I want to show it to you directly."
+"To make this concrete, I built a comparison tool. It runs Maria's notice two different ways, side by side. Left panel: AI with live statute retrieval — the same statute you just saw — but no rules file. Right panel: AI with live statute AND the rules file. Let me show you what happens."
 
 *Point to the LEFT panel ("Without Rules File"):*
 
 **SAY:**
-"Left panel: the AI just read the live statute — CCP §1161. It retrieved the current text, the same text you just saw in Cowork. And it returned this answer: the notice appears valid. No defects found. Zero."
+"Left panel: the AI read the live statute — CCP §1161. It retrieved the current text. And it returned this answer: the notice appears valid. No defects found. Zero."
 
 *Pause. Let them read.*
 
@@ -116,7 +118,7 @@ and the source URL.
 *Pause on the `includes_late_fees` entry.*
 
 **SAY:**
-"Here's the file that made the difference. Forty-five lines of JSON. Look at this entry: defect — 'includes late fees.' Result — INVALID. Statute — CCP §1161(2)."
+"Forty-five lines of JSON. Look at this entry: defect — 'includes late fees.' Result — INVALID. Statute — CCP §1161(2)."
 
 "This rule didn't come from reading the statute in isolation. It came from synthesizing the statute, how California courts have interpreted it, and how practitioners apply it. The AI encoded that synthesis as explicit, auditable logic: if this fact is present, this legal consequence follows."
 
@@ -161,7 +163,7 @@ and the source URL.
 
 | Scene | Content | Target |
 |-------|---------|--------|
-| 1 | Setup + Maria | 0:00–0:35 |
+| 1 | Setup + Maria (narrate verbally — no Cowork input) | 0:00–0:35 |
 | 2 | Live statute retrieval | 0:35–1:35 |
 | 3 | The gap moment (widget) | 1:35–2:45 |
 | 4 | The rules file (GitHub) | 2:45–3:45 |
@@ -175,7 +177,9 @@ Allow up to 6:00 for natural pauses and Cowork output loading time.
 
 ## RECORDING TIPS
 
+- **Scene 1: Do NOT type into Cowork.** Just narrate. The first thing you type is the Scene 2 statute retrieval prompt.
 - **Don't rush Scene 3.** The gap moment is the payload. Protect the time here.
+- **Set up the widget before you mention it.** The 15-second context line at the top of Scene 3 ("I built a comparison tool...") is the only explanation the audience gets — deliver it before pointing at anything.
 - **Point explicitly** at what's on screen. Your audience is watching a recording; use your cursor and verbal cues to direct attention.
 - **Let the Cowork output load in real time** during Scene 2 — don't cut. Watching it retrieve the live statute is part of the demo.
 - **Scene 6 is the hardest to deliver naturally.** Practice it separately a few times before recording.
@@ -194,4 +198,4 @@ Allow up to 6:00 for natural pauses and Cowork output loading time.
 ---
 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*
-*Demo recording script v2 — June 2026. Replaces prior live-session script.*
+*Demo recording script v3 — June 2026. Key changes from v2: Scene 1 no longer pastes into Cowork (narrate only). Scene 3 adds widget context line.*
