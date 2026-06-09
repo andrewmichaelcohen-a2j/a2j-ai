@@ -47,29 +47,28 @@ Have this script open on a **second monitor or device** — not on your recorded
 
 *Paste into Cowork:*
 ```
-Using the eviction-triage skill and the California rules file, analyze Maria's situation.
-First, retrieve California Code of Civil Procedure Section 1161 via Legal Data Hunter
-to ground the analysis in the current live statute.
-
-Tenant: Maria Garcia
-Jurisdiction: Los Angeles, California
-Notice type: 3-Day Notice to Pay Rent or Quit
-Amount demanded: $2,050 ($1,850 rent + $200 late fees)
-Tenancy: 3 years
-Service method: Posted on door
+Use Legal Data Hunter to retrieve the current text of California Code of 
+Civil Procedure Section 1161 — specifically the requirement for a 3-Day 
+Pay or Quit notice for nonpayment of rent. Show me the key statutory language 
+and the source URL.
 ```
 
-*Let it run. While the output is loading:*
+*This is a short retrieval call — output will appear in 15–30 seconds. While it loads:*
 
 **SAY:**
-"The first thing I want you to notice is what's happening right now. The tool is retrieving the actual current text of California Code of Civil Procedure Section 1161 — live, from the California Legislature's website. Not from AI training data. Not a paraphrase the model learned months ago and may have gotten wrong. The actual statute, as it reads today."
+"What's happening right now is the tool is making a live call to retrieve the actual current text of California Code of Civil Procedure Section 1161 — from the California Legislature's website. Not from AI training data. Not a paraphrase the model memorized months ago. The current statute."
 
-*When the statute URL appears in output, point to it:*
+*When the output appears, point your cursor at the leginfo.legislature.ca.gov URL:*
 
 **SAY:**
-"That link — leginfo.legislature.ca.gov — that's not generated. That's the real source. Past AI tools for legal aid guessed the law from memory. This one reads it. That's what the infrastructure changed."
+"That's leginfo.legislature.ca.gov — the California Legislature's own website. That URL is real. Past legal AI tools guessed the law from memory and might be wrong or out of date. This one reads it. That's what the infrastructure changed — from predictive to deterministic."
 
-"I also want to mention: I didn't build this intake workflow from scratch. I connected existing skills and plugins from Anthropic's legal infrastructure — reusable modules built and shared by others. Three days of work. Not three months."
+"And I want to mention: I didn't build this from scratch. I used existing skills and plugins from Anthropic's legal infrastructure — reusable modules built by others that I connected in three days."
+
+*Pause briefly — let the statute text be visible on screen for 5 seconds.*
+
+**SAY:**
+"But here's what I discovered when I actually built this — reading the statute isn't enough."
 
 ---
 
