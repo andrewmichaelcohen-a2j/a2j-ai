@@ -44,7 +44,6 @@ const RULES_RESPONSES = {
     rulesFile: "ca_eviction_v1.json (DRAFT)",
     defects: [
       { id: "CA-DEFECT-01", title: "Late fees included in notice amount", detail: "California law (CCP §1161(2)) prohibits including late fees in a Pay or Quit notice. Only unpaid rent may be demanded. The $200 late fee renders this notice void.", statute: "CCP §1161(2)", severity: "INVALID" },
-      { id: "CA-DEFECT-02", title: "Incorrect notice period for tenancy length", detail: "For a tenancy of 3 years, California requires a 15-day Pay or Quit notice (not 3 days) under AB 1482. ⚠ Attorney validation required on 15-day period.", statute: "CCP §1161(2); AB 1482", severity: "INVALID" },
     ],
     defenses: ["Habitability (uninhabitable conditions)", "Retaliatory eviction", "LA RSO just-cause requirement (LAMC 151.09)"],
     localOverlay: "Los Angeles RSO applies to pre-1978 multi-unit buildings — additional just-cause protections may apply.",
@@ -74,7 +73,7 @@ const RULES_RESPONSES = {
 };
 
 const RULES_SNIPPETS = {
-  CA: `"notice_defects": [\n  {\n    "defect": "includes_late_fees",\n    "result": "INVALID",\n    "statute": "CCP §1161(2)",\n    "note": "Any amount other than unpaid rent renders notice void"\n  },\n  {\n    "defect": "incorrect_period_over_1yr",\n    "result": "INVALID",\n    "note": "15-day minimum for tenancies 12+ months (AB 1482)"\n  }\n]`,
+  CA: `"notice_defects": [\n  {\n    "defect": "includes_late_fees",\n    "result": "INVALID",\n    "statute": "CCP §1161(2)",\n    "note": "Any amount other than unpaid rent renders notice void"\n  }\n]`,
   TX: `"notice_defects": [\n  {\n    "defect": "cares_act_noncompliance",\n    "result": "POTENTIALLY_INVALID",\n    "note": "30-day notice required for federally backed properties"\n  }\n],\n"just_cause_required": false,\n"statewide_rent_control": false`,
   NY: `"notice_defects": [\n  {\n    "defect": "insufficient_notice_period",\n    "result": "INVALID",\n    "statute": "RPAPL §711(2)",\n    "note": "NY requires 14-day notice (HSTPA 2019), not 3 days"\n  }\n]`,
 };
