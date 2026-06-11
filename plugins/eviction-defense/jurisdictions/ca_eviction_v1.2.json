@@ -17,7 +17,7 @@
     "AB 1482 (Civ. Code \u00a71946.2)"
   ],
   "_schema_note": "This file uses schema eviction-v1, introduced in the June 2026 integration brief. It supersedes ca_eviction_rules_v0.1.json for demo purposes.",
-  "_validation_flag": "ATTORNEY REVIEW NEEDED on 15-day notice period claim: the brief states tenancy_over_1yr requires 15 days, citing CCP \u00a71161(2) + AB 1482. However, live retrieval of CCP \u00a71161 on 2026-05-30 shows the statute text states 'three days notice' for nonpayment. The 15-day period may reflect a specific AB 1482 interpretation or local overlay \u2014 this must be confirmed by a licensed CA tenant attorney before the file is used in any deployment.",
+  "_correction_note": "2026-06-10: Removed erroneous 15-day notice period for tenancies over 1 year. CCP \u00a71161(2) requires 3 days for nonpayment regardless of tenancy length. AB 1482 governs just-cause termination requirements, not notice period length. The 15-day figure was a conflation with expired COVID-era law (SB 91/AB 832). Corrected by Andrew Cohen.",
   "notice_types": {
     "pay_or_quit": {
       "description": "Nonpayment of rent",
@@ -27,9 +27,9 @@
         "count_method": "calendar_days_exclude_first"
       },
       "tenancy_over_1yr": {
-        "days": 15,
-        "statute": "CCP \u00a71161(2), AB 1482",
-        "note": "AB 1482 extended period for tenancies 12+ months. ATTORNEY VALIDATION REQUIRED \u2014 see _validation_flag above."
+        "days": 3,
+        "statute": "CCP \u00a71161(2)",
+        "note": "3-day notice required regardless of tenancy length. AB 1482 governs just-cause termination, not the notice period for nonpayment."
       },
       "permitted_amounts": [
         "unpaid_rent_only"
@@ -65,8 +65,8 @@
     {
       "defect": "includes_late_fees",
       "result": "INVALID",
-      "statute": "CCP \u00a71161(2)",
-      "note": "Any amount other than unpaid rent renders pay-or-quit notice void"
+      "statute": "CCP \u00a71161(2); see e.g. Orozco v. Casimiro, 121 Cal. App. 4th Supp. 7 (2004)",
+      "note": "Any amount other than unpaid rent renders pay-or-quit notice void. Late fees are void as liquidated damages under Civ. Code \u00a71671 per Orozco v. Casimiro."
     },
     {
       "defect": "includes_utilities_if_not_in_lease",
@@ -79,19 +79,14 @@
       "note": "3-day minimum for tenancies under 1 year"
     },
     {
-      "defect": "incorrect_period_over_1yr",
-      "result": "INVALID",
-      "note": "15-day minimum for tenancies 12+ months (per brief \u2014 ATTORNEY VALIDATION REQUIRED)"
-    },
-    {
       "defect": "improper_service_method",
       "result": "INVALID",
       "statute": "CCP \u00a71162"
     },
     {
       "defect": "missing_ab3088_language",
-      "result": "INVALID",
-      "note": "COVID-era disclosure requirement; verify current applicability"
+      "result": "EXPIRED",
+      "note": "COVID-era disclosure requirement (AB 3088 / SB 91 / AB 832). Provisions expired September 2021. Do not apply to current notices."
     }
   ],
   "affirmative_defenses": [

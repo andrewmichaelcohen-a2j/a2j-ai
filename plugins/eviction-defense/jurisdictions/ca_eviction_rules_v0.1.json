@@ -33,8 +33,8 @@
         {
           "id": "CA-DEFECT-01",
           "description": "Notice includes late fees, utilities, or any charge other than unpaid rent",
-          "rule": "The notice amount must reflect ONLY unpaid rent. Including late fees, utility charges, or any other amount in the demanded sum renders the notice void.",
-          "statute": "CCP \u00a71161(2)",
+          "rule": "The notice amount must reflect ONLY unpaid rent. Including late fees, utility charges, or any other amount in the demanded sum renders the notice void. Late fees are void as liquidated damages under Civ. Code \u00a71671.",
+          "statute": "CCP \u00a71161(2); see e.g. Orozco v. Casimiro, 121 Cal. App. 4th Supp. 7 (2004)",
           "confidence": "HIGH",
           "priority": "CRITICAL \u2014 most common defect"
         },

@@ -68,6 +68,12 @@
   },
   "notice_defects": [
     {
+      "defect": "includes_late_fees",
+      "result": "INVALID",
+      "statute": "CCP §1161(2); see e.g. Orozco v. Casimiro, 121 Cal. App. 4th Supp. 7 (2004)",
+      "note": "Any amount other than unpaid rent renders pay-or-quit notice void. Late fees are void as liquidated damages under Civ. Code §1671. Including them in the demanded amount invalidates the notice."
+    },
+    {
       "defect": "improper_service_method",
       "result": "INVALID",
       "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
