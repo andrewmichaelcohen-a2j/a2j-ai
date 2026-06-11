@@ -107,9 +107,9 @@
       "statute": "CCP \u00a71162(a)(2)"
     },
     "post_and_mail": {
-      "adds_days": 5,
-      "statute": "CCP \u00a71013",
-      "note": "Nail and mail: post copy + mail copy same day"
+      "adds_days": 0,
+      "statute": "CCP \u00a71162(a)(3)",
+      "note": "Nail and mail: post copy + mail copy same day. CCP \u00a71013 mail-extension does NOT apply to UD notices per Losornio v. Motta (1998) 67 Cal.App.4th 110. Valid only as last resort after personal and substituted service have been attempted."
     }
   },
   "local_overlays": {

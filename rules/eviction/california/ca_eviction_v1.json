@@ -106,8 +106,8 @@
       "note": "Days added for mail service \u2014 verify state-specific rule"
     },
     "post_and_mail": {
-      "adds_days": 5,
-      "note": "Post and mail/nail and mail \u2014 verify whether available in this state"
+      "adds_days": 0,
+      "note": "Nail and mail \u2014 valid in CA as last resort under CCP \u00a71162(a)(3), after personal and substituted service have been attempted. CCP \u00a71013 mail-extension rule does NOT apply to UD notices per Losornio v. Motta (1998) 67 Cal.App.4th 110."
     }
   },
   "local_overlays": {

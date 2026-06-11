@@ -216,8 +216,8 @@
       {
         "id": "CA-DEFECT-13",
         "description": "Notice period counted from wrong date (e.g., from mailing date rather than posting/delivery date)",
-        "rule": "For post-and-mail service, the notice period begins running from the date of posting, not mailing. Error in calculating the start date can make the filing premature.",
-        "statute": "CCP \u00a71162",
+        "rule": "For post-and-mail service, the notice period begins running from the date of posting, not mailing. Error in calculating the start date can make the filing premature. NOTE: CCP \u00a71013's mail-extension rule (adds 5 days) does NOT apply to unlawful detainer notices \u2014 Losornio v. Motta (1998) 67 Cal.App.4th 110 settled this. A 3-day notice served by nail-and-mail is still a 3-day notice.",
+        "statute": "CCP \u00a71162; see Losornio v. Motta (1998) 67 Cal.App.4th 110",
         "confidence": "HIGH",
         "priority": "HIGH"
       }
