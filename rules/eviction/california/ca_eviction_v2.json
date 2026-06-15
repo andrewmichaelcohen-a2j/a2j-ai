@@ -1,0 +1,501 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v2",
+  "jurisdiction": {
+    "state": "CA",
+    "state_name": "California",
+    "type": "state"
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-06-15",
+      "model": "claude-sonnet-4-6",
+      "method": "v1-migration+stub-expansion"
+    },
+    "statutory_sources": [
+      {
+        "cite": "CCP \u00a71161(2)",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "CCP \u00a71161(3)",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code \u00a71946.1",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code \u00a71946.2 (AB 1482)",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code \u00a71947.12 (AB 1482)",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "CCP \u00a71162",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "CCP \u00a71013",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code \u00a71946.2",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code \u00a71947.12",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code \u00a71941; Green v. Superior Court (1974)",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      }
+    ],
+    "per_module_sources": {
+      "notice": [
+        "CCP \u00a71161(2)",
+        "CCP \u00a71161(3)",
+        "Civ. Code \u00a71946.1",
+        "Civ. Code \u00a71946.2 (AB 1482)",
+        "Civ. Code \u00a71947.12 (AB 1482)"
+      ],
+      "service": [
+        "CCP \u00a71162",
+        "CCP \u00a71013"
+      ],
+      "overlays": [
+        "Civ. Code \u00a71946.2",
+        "Civ. Code \u00a71947.12",
+        "Civ. Code \u00a71941; Green v. Superior Court (1974)"
+      ],
+      "substantive_defenses": [
+        "42 U.S.C. \u00a73604 (Fair Housing Act)",
+        "[state implied warranty of habitability statute]",
+        "[state anti-retaliation statute]",
+        "[state just cause eviction statute]"
+      ],
+      "procedural_defects": [
+        "CCP \u00a71167",
+        "CCP \u00a71170"
+      ]
+    },
+    "ai_drafter_notes": [
+      "Statute verified via live LDH retrieval 2026-05-30 \u2014 CCP \u00a71161 operative Feb 1, 2025 (amended by SB 611)",
+      "ATTORNEY VALIDATION REQUIRED: 15-day notice period for tenancies 12+ months is disputed \u2014 live CCP \u00a71161 retrieval shows 3-day text; AB 1482 interpretation requires attorney confirmation",
+      "AB 1482 (Civ. Code \u00a71946.2) amended by AB 1529 (Stats. 2025) \u2014 REPEALED as of Jan 1, 2030 unless extended",
+      "AB 2347 (eff. Jan 1, 2025) extended UD summons response from 5 to 10 business days",
+      "Late fees in pay-or-quit demand = notice VOID per CCP \u00a71161(2) \u2014 high-confidence defect",
+      "LDH legislation source available for retrieval verification: US/CA-Legislation",
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
+    ]
+  },
+  "validation": {
+    "file_status": "AUTOMATED-CHECKS-PASSED",
+    "module_status": {
+      "notice": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "service": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "overlays": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "substantive_defenses": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "procedural_defects": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      }
+    },
+    "automated_layers": {
+      "L1_grounding": "pass",
+      "L2_consensus": "not_implemented",
+      "L3_consistency": "pass",
+      "L4_golden": "not_implemented",
+      "L5_crossjuris": "pass",
+      "L6_freshness": "not_implemented"
+    },
+    "coverage_level": "L1,L3,L5",
+    "flags": [],
+    "validation_note": "Automated validation run 2026-06-15. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+  },
+  "notice": {
+    "notice_types": {
+      "pay_or_quit": {
+        "description": "Nonpayment of rent",
+        "permitted_amounts": [
+          "unpaid_rent_only"
+        ],
+        "late_fees_permitted": false,
+        "utilities_permitted": false,
+        "tenancy_all": {
+          "days": 3,
+          "statute": "CCP \u00a71161(2)",
+          "count_method": "calendar_days_excluding_weekends_holidays"
+        },
+        "tenancy_under_1yr": {
+          "days": 3,
+          "statute": "CCP \u00a71161(2)",
+          "count_method": "calendar_days"
+        },
+        "tenancy_over_1yr": {
+          "days": 3,
+          "statute": "CCP \u00a71161(2)",
+          "count_method": "calendar_days"
+        }
+      },
+      "cure_or_quit": {
+        "description": "Curable lease violation",
+        "days": 3,
+        "statute": "CCP \u00a71161(3)",
+        "curable": true
+      },
+      "termination": {
+        "statute": "Civ. Code \u00a71946.1; Civ. Code \u00a71946.2 (AB 1482)",
+        "just_cause_required": true,
+        "just_cause_statute": "Civ. Code \u00a71946.2 (AB 1482)",
+        "tenancy_under_1yr": {
+          "days": 30,
+          "statute": "Civ. Code \u00a71946.1; Civ. Code \u00a71946.2 (AB 1482)",
+          "count_method": "calendar_days"
+        }
+      }
+    },
+    "notice_defects": [
+      {
+        "defect": "includes_late_fees",
+        "consequence": "notice_void",
+        "statute": "CCP \u00a71161(2); see e.g. Orozco v. Casimiro, 121 Cal. App. 4th Supp. 7 (2004)",
+        "case_law": [
+          {
+            "cite": "Orozco v. Casimiro, 121 Cal. App. 4th Supp. 7 (2004)",
+            "holding": "Any amount other than unpaid rent, including late fees, renders pay-or-quit notice void"
+          }
+        ],
+        "severity": "void",
+        "note": "Any amount other than unpaid rent renders pay-or-quit notice void. Late fees are void as liquidated damages under Civ. Code \u00a71671. Including them in the demanded amount invalidates the notice."
+      },
+      {
+        "defect": "improper_service_method",
+        "consequence": "notice_void",
+        "statute": null,
+        "case_law": [],
+        "severity": "void",
+        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+      },
+      {
+        "defect": "notice_period_too_short",
+        "consequence": "notice_void",
+        "statute": null,
+        "case_law": [],
+        "severity": "void",
+        "note": "Notice must provide minimum 3 day(s) \u2014 verify calculation method"
+      },
+      {
+        "defect": "missing_just_cause_reason",
+        "consequence": "notice_void",
+        "statute": "Civ. Code \u00a71946.2 (AB 1482)",
+        "case_law": [],
+        "severity": "void",
+        "note": "Just cause required \u2014 notice must state qualifying reason"
+      }
+    ],
+    "notice_period_basis": {
+      "tenancy_length_matters": true,
+      "breakpoints": [
+        {
+          "months": 12,
+          "description": "Tenancy length affects notice period in some states"
+        }
+      ]
+    }
+  },
+  "service": {
+    "permitted_methods": [
+      "personal",
+      "substituted",
+      "nail_and_mail"
+    ],
+    "method_rules": [
+      {
+        "method": "personal",
+        "requirements": "Delivery to tenant in person",
+        "statute": "CCP \u00a71162(a)(1)",
+        "adds_days_for_mail": null,
+        "note": null
+      },
+      {
+        "method": "substituted",
+        "requirements": "Delivery to person of suitable age at premises, plus mail copy",
+        "statute": "CCP \u00a71162(a)(2)",
+        "adds_days_for_mail": null,
+        "note": null
+      },
+      {
+        "method": "nail_and_mail",
+        "requirements": "Posting on main entry door plus mail copy; last resort after personal and substituted attempted",
+        "statute": "CCP \u00a71162(a)(3)",
+        "adds_days_for_mail": null,
+        "note": "CCP \u00a71013 mail-extension rule does NOT apply to UD notices per Losornio v. Motta (1998) 67 Cal.App.4th 110"
+      }
+    ],
+    "service_defects": [
+      {
+        "defect": "mail_only_without_prior_attempts",
+        "consequence": "notice_void",
+        "statute": "CCP \u00a71162",
+        "case_law": [
+          {
+            "cite": "Losornio v. Motta (1998) 67 Cal.App.4th 110",
+            "holding": "Nail-and-mail requires prior unsuccessful attempts at personal and substituted service"
+          }
+        ]
+      },
+      {
+        "defect": "no_mailed_copy_with_nail_and_mail",
+        "consequence": "notice_void",
+        "statute": "CCP \u00a71162(a)(3)",
+        "case_law": []
+      }
+    ]
+  },
+  "overlays": {
+    "federal": [
+      {
+        "name": "CARES Act \u00a74024",
+        "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
+        "statute": "15 U.S.C. \u00a79058",
+        "status": "conditional"
+      }
+    ],
+    "state_protective": [
+      {
+        "name": "AB 1482 Just Cause (statewide)",
+        "effect": "Just cause required for no-fault termination for tenants with 12+ months tenancy in covered units; relocation assistance required for no-fault evictions",
+        "statute": "Civ. Code \u00a71946.2"
+      },
+      {
+        "name": "AB 1482 Rent Cap",
+        "effect": "Annual rent increase cap of 5% + local CPI (max 10%) for covered units",
+        "statute": "Civ. Code \u00a71947.12"
+      },
+      {
+        "name": "Implied Warranty of Habitability",
+        "effect": "Tenant may withhold rent or repair-and-deduct for substantial habitability defects",
+        "statute": "Civ. Code \u00a71941; Green v. Superior Court (1974)"
+      }
+    ],
+    "local": [
+      {
+        "jurisdiction": "Los Angeles",
+        "type": "rent_control",
+        "effect": "RSO covers pre-1978 units; just cause required; relocation fees for no-fault",
+        "source": "LAMC \u00a7151.09",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "San Francisco",
+        "type": "rent_control",
+        "effect": "Rent Ordinance covers most pre-1979 units; just cause required; Costa-Hawkins exemptions apply",
+        "source": "SF Admin Code Ch. 37",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "Oakland",
+        "type": "just_cause",
+        "effect": "Just cause required for all non-exempt tenancies; relocation assistance for no-fault",
+        "source": "OMC \u00a78.22",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "Berkeley",
+        "type": "rent_control",
+        "effect": "Rent Stabilization; just cause required; Costa-Hawkins exemptions apply",
+        "source": "Berkeley Rent Stabilization Ordinance",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "Santa Monica",
+        "type": "rent_control",
+        "effect": "Rent Control Charter Amendment; just cause required for covered units",
+        "source": "Santa Monica Rent Control Charter Amendment",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "San Jose",
+        "type": "rent_control",
+        "effect": "Apartment Rent Ordinance; just cause required for covered units",
+        "source": "San Jose Municipal Code Ch. 17.23",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "Los Angeles (County unincorporated)",
+        "type": "just_cause",
+        "effect": "Just cause and relocation assistance for tenants in unincorporated LA County",
+        "source": "LA County Code Tit. 8, Ch. 8.52",
+        "digitization_note": null
+      }
+    ]
+  },
+  "substantive_defenses": [
+    {
+      "defense": "habitability_warranty",
+      "elements": [
+        "Landlord knew or had notice of the defect",
+        "Defect substantially impairs habitability (health, safety, or welfare)",
+        "Tenant gave landlord reasonable time to repair",
+        "Landlord failed to repair",
+        "Tenant did not cause or waive the defect"
+      ],
+      "statute": "[VERIFY STATE STATUTE \u2014 e.g., implied warranty of habitability]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Elements, remedy, and availability as rent-withholding defense vary significantly by state \u2014 attorney verification required"
+    },
+    {
+      "defense": "retaliation",
+      "elements": [
+        "Tenant engaged in protected activity (habitability complaint, union organizing, exercising legal rights)",
+        "Landlord knew of the protected activity",
+        "Adverse action (eviction, rent increase, service reduction) followed protected activity",
+        "Causal connection between protected activity and adverse action",
+        "Action was within state-defined presumption period (varies: 60 days to 12 months)"
+      ],
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Presumption period and available remedies vary significantly by state"
+    },
+    {
+      "defense": "discrimination",
+      "elements": [
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
+        "Landlord took adverse housing action",
+        "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
+      ],
+      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); [VERIFY STATE ANTI-DISCRIMINATION STATUTE]",
+      "case_law": [],
+      "openness": "open_textured",
+      "review_weight": "specialist_required",
+      "note": "Federal FHA applies universally; state law may add protected classes (e.g., source of income, sexual orientation, immigration status). Litigation-heavy area; specialist review required."
+    },
+    {
+      "defense": "breach_of_quiet_enjoyment",
+      "elements": [
+        "Tenant had a valid lease or tenancy",
+        "Landlord substantially interfered with tenant's right to peaceful possession",
+        "Interference was intentional or negligent",
+        "Tenant suffered damages"
+      ],
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Availability as affirmative defense to eviction (vs. counterclaim) varies by state"
+    },
+    {
+      "defense": "improper_rent_calculation",
+      "elements": [
+        "Amount demanded in notice exceeds lawfully owed rent",
+        "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
+      ],
+      "statute": "[VERIFY STATE STATUTE \u2014 e.g., CA CCP \u00a71161(2)]",
+      "case_law": [],
+      "openness": "bright_line",
+      "review_weight": "automated_ok",
+      "note": "This is the notice-level defect for non-rent charges; also available as substantive defense. Bright-line in most states but verify state-specific rule."
+    },
+    {
+      "defense": "other",
+      "elements": [
+        "Landlord lacks just cause ground enumerated in applicable just cause statute",
+        "Notice does not state required just cause ground",
+        "Stated ground is not one of the enumerated grounds"
+      ],
+      "statute": "[VERIFY STATE JUST CAUSE STATUTE]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "This state has a just cause eviction requirement \u2014 verify applicable statute, enumerated grounds, and coverage exemptions"
+    }
+  ],
+  "procedural_defects": [
+    {
+      "defect": "complaint_filed_before_notice_period_expired",
+      "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "note": "Filing before the notice period runs is a bright-line defect in most states"
+    },
+    {
+      "defect": "wrong_court",
+      "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
+      "statute": "[VERIFY STATE COURT JURISDICTION RULES]",
+      "case_law": [],
+      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
+    },
+    {
+      "defect": "failure_to_attach_lease_or_notice_to_complaint",
+      "consequence": "Complaint defective; may be dismissed or require amendment",
+      "statute": "[VERIFY STATE PLEADING REQUIREMENTS]",
+      "case_law": [],
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
+    },
+    {
+      "defect": "summons_improperly_issued_or_served",
+      "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
+      "statute": "[VERIFY STATE CIVIL PROCEDURE RULES]",
+      "case_law": [],
+      "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
+    },
+    {
+      "defect": "complaint_filed_before_10_business_day_response_period",
+      "consequence": "Complaint premature; court may dismiss",
+      "statute": "CCP \u00a71167 (as amended by AB 2347, eff. Jan 1, 2025)",
+      "case_law": [],
+      "note": "AB 2347 extended UD summons response from 5 to 10 business days effective Jan 1, 2025"
+    }
+  ]
+}

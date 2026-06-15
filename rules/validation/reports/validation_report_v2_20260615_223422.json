@@ -1,0 +1,2429 @@
+{
+  "generated": "2026-06-15T22:34:22.514968Z",
+  "schema_version": "eviction-v2",
+  "total_files": 51,
+  "library_stats": {
+    "mean_nonpay_period": 7.3,
+    "median_nonpay_period": 5
+  },
+  "coverage": "L1,L3,L5",
+  "files": {
+    "AK": {
+      "state": "Alaska",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "AL": {
+      "state": "Alabama",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "AR": {
+      "state": "Arkansas",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "AZ": {
+      "state": "Arizona",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "CA": {
+      "state": "California",
+      "file_status": "AUTOMATED-CHECKS-PASSED",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "pass",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        }
+      }
+    },
+    "CO": {
+      "state": "Colorado",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "CT": {
+      "state": "Connecticut",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "DC": {
+      "state": "District of Columbia",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (30 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "DE": {
+      "state": "Delaware",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "FL": {
+      "state": "Florida",
+      "file_status": "AUTOMATED-CHECKS-PASSED",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "pass",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        }
+      }
+    },
+    "GA": {
+      "state": "Georgia",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "HI": {
+      "state": "Hawaii",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "IA": {
+      "state": "Iowa",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "ID": {
+      "state": "Idaho",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "IL": {
+      "state": "Illinois",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "IN": {
+      "state": "Indiana",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "KS": {
+      "state": "Kansas",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "KY": {
+      "state": "Kentucky",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "LA": {
+      "state": "Louisiana",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "MA": {
+      "state": "Massachusetts",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "MD": {
+      "state": "Maryland",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "ME": {
+      "state": "Maine",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "MI": {
+      "state": "Michigan",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "MN": {
+      "state": "Minnesota",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "MO": {
+      "state": "Missouri",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "MS": {
+      "state": "Mississippi",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "MT": {
+      "state": "Montana",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "NC": {
+      "state": "North Carolina",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "ND": {
+      "state": "North Dakota",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "NE": {
+      "state": "Nebraska",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "NH": {
+      "state": "New Hampshire",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "NJ": {
+      "state": "New Jersey",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (30 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "NM": {
+      "state": "New Mexico",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "NV": {
+      "state": "Nevada",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "NY": {
+      "state": "New York",
+      "file_status": "AUTOMATED-CHECKS-PASSED",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "pass",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 1,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [
+            "3-NOTICE-07: cure_or_quit.days (10) < pay_or_quit days (14) \u2014 unusual, verify"
+          ],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        }
+      }
+    },
+    "OH": {
+      "state": "Ohio",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "OK": {
+      "state": "Oklahoma",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "OR": {
+      "state": "Oregon",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "PA": {
+      "state": "Pennsylvania",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "RI": {
+      "state": "Rhode Island",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "SC": {
+      "state": "South Carolina",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "SD": {
+      "state": "South Dakota",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "TN": {
+      "state": "Tennessee",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "TX": {
+      "state": "Texas",
+      "file_status": "AUTOMATED-CHECKS-PASSED",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "pass",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        }
+      }
+    },
+    "UT": {
+      "state": "Utah",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "VA": {
+      "state": "Virginia",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "VT": {
+      "state": "Vermont",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "WA": {
+      "state": "Washington",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 1,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [
+            "3-NOTICE-07: cure_or_quit.days (10) < pay_or_quit days (14) \u2014 unusual, verify"
+          ],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "WI": {
+      "state": "Wisconsin",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "WV": {
+      "state": "West Virginia",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    },
+    "WY": {
+      "state": "Wyoming",
+      "file_status": "DRAFT",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "fail",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 0,
+      "l5_total_flags": 0,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "DRAFT"
+        }
+      }
+    }
+  }
+}

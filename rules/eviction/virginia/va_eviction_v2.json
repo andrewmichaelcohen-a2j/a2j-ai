@@ -1,0 +1,475 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v2",
+  "jurisdiction": {
+    "state": "VA",
+    "state_name": "Virginia",
+    "type": "state"
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-06-15",
+      "model": "claude-sonnet-4-6",
+      "method": "v1-migration+stub-expansion"
+    },
+    "statutory_sources": [
+      {
+        "cite": "Va. Code \u00a755.1-1245",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": null
+      },
+      {
+        "cite": "Va. Code \u00a755.1-1253",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": null
+      },
+      {
+        "cite": "[VERIFY STATE STATUTE \u2014 most states recognize this doctrine]",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": null
+      },
+      {
+        "cite": "[VERIFY STATE STATUTE]",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": null
+      }
+    ],
+    "per_module_sources": {
+      "notice": [
+        "Va. Code \u00a755.1-1245",
+        "Va. Code \u00a755.1-1253"
+      ],
+      "service": [],
+      "overlays": [
+        "[VERIFY STATE STATUTE \u2014 most states recognize this doctrine]",
+        "[VERIFY STATE STATUTE]"
+      ],
+      "substantive_defenses": [
+        "42 U.S.C. \u00a73604 (Fair Housing Act)",
+        "[state implied warranty of habitability statute]",
+        "[state anti-retaliation statute]"
+      ],
+      "procedural_defects": [
+        "[VERIFY STATE UD PROCEDURE STATUTES]"
+      ]
+    },
+    "ai_drafter_notes": [
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "Retrieve via LDH: US/VA-Law (2026 version)",
+      "Va. Code \u00a755.1-1245: 5-day pay-or-quit notice for nonpayment",
+      "Virginia Residential Landlord and Tenant Act (VRLTA) \u2014 Va. Code Ch. 55.1-12",
+      "Richmond, Norfolk, Arlington: verify local housing court rules",
+      "Virginia significantly amended landlord-tenant law in 2019-2020 \u2014 verify current provisions",
+      "LDH legislation source available for retrieval verification: US/VA-Law",
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
+    ]
+  },
+  "validation": {
+    "file_status": "DRAFT",
+    "module_status": {
+      "notice": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": null
+      },
+      "service": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": null
+      },
+      "overlays": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": null
+      },
+      "substantive_defenses": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": null
+      },
+      "procedural_defects": {
+        "status": "DRAFT",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": null
+      }
+    },
+    "automated_layers": {
+      "L1_grounding": "fail",
+      "L2_consensus": "not_implemented",
+      "L3_consistency": "pass",
+      "L4_golden": "not_implemented",
+      "L5_crossjuris": "pass",
+      "L6_freshness": "not_implemented"
+    },
+    "coverage_level": "L1,L3,L5",
+    "flags": [],
+    "validation_note": "Automated validation run 2026-06-15. Layers run: L1,L3,L5. file_status=DRAFT."
+  },
+  "notice": {
+    "notice_types": {
+      "pay_or_quit": {
+        "description": "Nonpayment of rent",
+        "permitted_amounts": [
+          "unpaid_rent_only"
+        ],
+        "late_fees_permitted": false,
+        "utilities_permitted": false,
+        "tenancy_all": {
+          "days": 5,
+          "statute": "Va. Code \u00a755.1-1245",
+          "count_method": "calendar_days"
+        }
+      },
+      "cure_or_quit": {
+        "description": "Curable lease violation",
+        "days": 21,
+        "statute": "Va. Code \u00a755.1-1245",
+        "curable": true
+      },
+      "termination": {
+        "statute": "Va. Code \u00a755.1-1253",
+        "just_cause_required": false,
+        "just_cause_statute": null,
+        "tenancy_any": {
+          "days": 30,
+          "statute": "Va. Code \u00a755.1-1253",
+          "count_method": "calendar_days"
+        }
+      }
+    },
+    "notice_defects": [
+      {
+        "defect": "improper_service_method",
+        "consequence": "notice_void",
+        "statute": null,
+        "case_law": [],
+        "severity": "void",
+        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+      },
+      {
+        "defect": "notice_period_too_short",
+        "consequence": "notice_void",
+        "statute": null,
+        "case_law": [],
+        "severity": "void",
+        "note": "Notice must provide minimum 5 day(s) \u2014 verify calculation method"
+      }
+    ],
+    "notice_period_basis": {
+      "tenancy_length_matters": false,
+      "breakpoints": []
+    }
+  },
+  "service": {
+    "permitted_methods": [
+      "personal",
+      "substituted",
+      "certified_mail"
+    ],
+    "method_rules": [
+      {
+        "method": "personal",
+        "requirements": "In-person delivery to tenant",
+        "statute": "[VERIFY STATE STATUTE]",
+        "adds_days_for_mail": null,
+        "note": "Verify requirements under state law"
+      },
+      {
+        "method": "substituted",
+        "requirements": "Delivery to adult household member plus mail copy",
+        "statute": "[VERIFY STATE STATUTE]",
+        "adds_days_for_mail": null,
+        "note": "Verify availability and requirements under state law"
+      },
+      {
+        "method": "certified_mail",
+        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
+        "statute": "[VERIFY STATE STATUTE]",
+        "adds_days_for_mail": 3,
+        "note": "Number of added days and availability require attorney verification"
+      }
+    ],
+    "service_defects": [
+      {
+        "defect": "improper_service_method",
+        "consequence": "notice_void",
+        "statute": null,
+        "case_law": []
+      },
+      {
+        "defect": "notice_period_too_short",
+        "consequence": "notice_void",
+        "statute": null,
+        "case_law": []
+      }
+    ]
+  },
+  "overlays": {
+    "federal": [
+      {
+        "name": "CARES Act \u00a74024",
+        "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
+        "statute": "15 U.S.C. \u00a79058",
+        "status": "conditional"
+      }
+    ],
+    "state_protective": [
+      {
+        "name": "Implied Warranty of Habitability",
+        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction \u2014 verify state-specific elements and remedy",
+        "statute": "[VERIFY STATE STATUTE \u2014 most states recognize this doctrine]"
+      },
+      {
+        "name": "Anti-Retaliation Protection",
+        "effect": "Landlord may not evict in retaliation for tenant's exercise of legal rights (habitability complaints, organizing, etc.); verify state-specific presumption period and elements",
+        "statute": "[VERIFY STATE STATUTE]"
+      }
+    ],
+    "local": [
+      {
+        "jurisdiction": "(see digitization note)",
+        "type": "other",
+        "effect": "Local rent control or just cause ordinances may apply in some municipalities \u2014 not systematically encoded for this state",
+        "source": "[local ordinances]",
+        "digitization_note": "Local overlay coverage for this state has not been systematically researched. Attorney review required to identify any applicable local ordinances."
+      },
+      {
+        "jurisdiction": "phoenix",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "tucson",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "denver",
+        "type": "just_cause",
+        "effect": "Just cause required: True; Ordinance: Denver Just Cause Ordinance (Ord. 300, 2023)",
+        "source": "Denver Just Cause Ordinance (Ord. 300, 2023)",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "atlanta",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "chicago",
+        "type": "just_cause",
+        "effect": "Just cause required: True; Ordinance: Chicago Residential Landlord and Tenant Ordinance (RLTO) \u2014 Chicago Municipal Code Ch. 5-12",
+        "source": "Chicago Residential Landlord and Tenant Ordinance (RLTO) \u2014 Chicago Municipal Code Ch. 5-12",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "cook_county",
+        "type": "just_cause",
+        "effect": "Just cause required: True; Ordinance: Cook County Residential Tenant and Landlord Ordinance (RTLO) \u2014 enacted 2021",
+        "source": "Cook County Residential Tenant and Landlord Ordinance (RTLO) \u2014 enacted 2021",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "baltimore_city",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "montgomery_county",
+        "type": "rent_control",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "prince_georges",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "boston",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "cambridge",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "minneapolis",
+        "type": "just_cause",
+        "effect": "Just cause required: True; Ordinance: Minneapolis Tenant Protections Ordinance (2020)",
+        "source": "Minneapolis Tenant Protections Ordinance (2020)",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "saint_paul",
+        "type": "rent_control",
+        "effect": "Just cause required: False; Ordinance: St. Paul Rent Stabilization Ordinance (2021)",
+        "source": "St. Paul Rent Stabilization Ordinance (2021)",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "kansas_city",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "st_louis",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "henderson",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "las_vegas",
+        "type": "other",
+        "effect": "Just cause required: False; Ordinance: see source",
+        "source": "[VERIFY]",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "philadelphia",
+        "type": "just_cause",
+        "effect": "Just cause required: True; Ordinance: Philadelphia Good Cause Eviction legislation \u2014 verify current status",
+        "source": "Philadelphia Good Cause Eviction legislation \u2014 verify current status",
+        "digitization_note": null
+      }
+    ]
+  },
+  "substantive_defenses": [
+    {
+      "defense": "habitability_warranty",
+      "elements": [
+        "Landlord knew or had notice of the defect",
+        "Defect substantially impairs habitability (health, safety, or welfare)",
+        "Tenant gave landlord reasonable time to repair",
+        "Landlord failed to repair",
+        "Tenant did not cause or waive the defect"
+      ],
+      "statute": "[VERIFY STATE STATUTE \u2014 e.g., implied warranty of habitability]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Elements, remedy, and availability as rent-withholding defense vary significantly by state \u2014 attorney verification required"
+    },
+    {
+      "defense": "retaliation",
+      "elements": [
+        "Tenant engaged in protected activity (habitability complaint, union organizing, exercising legal rights)",
+        "Landlord knew of the protected activity",
+        "Adverse action (eviction, rent increase, service reduction) followed protected activity",
+        "Causal connection between protected activity and adverse action",
+        "Action was within state-defined presumption period (varies: 60 days to 12 months)"
+      ],
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Presumption period and available remedies vary significantly by state"
+    },
+    {
+      "defense": "discrimination",
+      "elements": [
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
+        "Landlord took adverse housing action",
+        "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
+      ],
+      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); [VERIFY STATE ANTI-DISCRIMINATION STATUTE]",
+      "case_law": [],
+      "openness": "open_textured",
+      "review_weight": "specialist_required",
+      "note": "Federal FHA applies universally; state law may add protected classes (e.g., source of income, sexual orientation, immigration status). Litigation-heavy area; specialist review required."
+    },
+    {
+      "defense": "breach_of_quiet_enjoyment",
+      "elements": [
+        "Tenant had a valid lease or tenancy",
+        "Landlord substantially interfered with tenant's right to peaceful possession",
+        "Interference was intentional or negligent",
+        "Tenant suffered damages"
+      ],
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Availability as affirmative defense to eviction (vs. counterclaim) varies by state"
+    },
+    {
+      "defense": "improper_rent_calculation",
+      "elements": [
+        "Amount demanded in notice exceeds lawfully owed rent",
+        "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
+      ],
+      "statute": "[VERIFY STATE STATUTE \u2014 e.g., CA CCP \u00a71161(2)]",
+      "case_law": [],
+      "openness": "bright_line",
+      "review_weight": "automated_ok",
+      "note": "This is the notice-level defect for non-rent charges; also available as substantive defense. Bright-line in most states but verify state-specific rule."
+    }
+  ],
+  "procedural_defects": [
+    {
+      "defect": "complaint_filed_before_notice_period_expired",
+      "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "note": "Filing before the notice period runs is a bright-line defect in most states"
+    },
+    {
+      "defect": "wrong_court",
+      "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
+      "statute": "[VERIFY STATE COURT JURISDICTION RULES]",
+      "case_law": [],
+      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
+    },
+    {
+      "defect": "failure_to_attach_lease_or_notice_to_complaint",
+      "consequence": "Complaint defective; may be dismissed or require amendment",
+      "statute": "[VERIFY STATE PLEADING REQUIREMENTS]",
+      "case_law": [],
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
+    },
+    {
+      "defect": "summons_improperly_issued_or_served",
+      "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
+      "statute": "[VERIFY STATE CIVIL PROCEDURE RULES]",
+      "case_law": [],
+      "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
+    }
+  ]
+}

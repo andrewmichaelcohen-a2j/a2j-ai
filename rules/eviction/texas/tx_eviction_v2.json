@@ -1,0 +1,350 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v2",
+  "jurisdiction": {
+    "state": "TX",
+    "state_name": "Texas",
+    "type": "state"
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-06-15",
+      "model": "claude-sonnet-4-6",
+      "method": "v1-migration+stub-expansion"
+    },
+    "statutory_sources": [
+      {
+        "cite": "Tex. Prop. Code \u00a724.005",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Tex. Prop. Code \u00a791.001",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Tex. Prop. Code \u00a792.056\u201392.061",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Tex. Prop. Code \u00a792.331",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      }
+    ],
+    "per_module_sources": {
+      "notice": [
+        "Tex. Prop. Code \u00a724.005",
+        "Tex. Prop. Code \u00a791.001"
+      ],
+      "service": [
+        "Tex. Prop. Code \u00a724.005"
+      ],
+      "overlays": [
+        "Tex. Prop. Code \u00a792.056\u201392.061",
+        "Tex. Prop. Code \u00a792.331"
+      ],
+      "substantive_defenses": [
+        "42 U.S.C. \u00a73604 (Fair Housing Act)",
+        "[state implied warranty of habitability statute]",
+        "[state anti-retaliation statute]"
+      ],
+      "procedural_defects": [
+        "[VERIFY STATE UD PROCEDURE STATUTES]"
+      ]
+    },
+    "ai_drafter_notes": [
+      "Statute verified via LDH retrieval (US/TX-Legislation) 2026-05-30",
+      "3-day notice minimum \u2014 lease may specify longer period",
+      "Texas SB 38 (eff. Jan 1, 2026): if tenant was current on rent before the month of default, notice must be pay-or-vacate \u2014 cannot be unconditional",
+      "Texas law preempts most local tenant protections \u2014 very limited local overlays",
+      "CARES Act 30-day notice requirement applies to federally backed properties",
+      "LDH legislation source available for retrieval verification: US/TX-Legislation",
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
+    ]
+  },
+  "validation": {
+    "file_status": "AUTOMATED-CHECKS-PASSED",
+    "module_status": {
+      "notice": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "service": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "overlays": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "substantive_defenses": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "procedural_defects": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      }
+    },
+    "automated_layers": {
+      "L1_grounding": "pass",
+      "L2_consensus": "not_implemented",
+      "L3_consistency": "pass",
+      "L4_golden": "not_implemented",
+      "L5_crossjuris": "pass",
+      "L6_freshness": "not_implemented"
+    },
+    "coverage_level": "L1,L3,L5",
+    "flags": [],
+    "validation_note": "Automated validation run 2026-06-15. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+  },
+  "notice": {
+    "notice_types": {
+      "pay_or_quit": {
+        "description": "Nonpayment of rent",
+        "permitted_amounts": [
+          "unpaid_rent_only"
+        ],
+        "late_fees_permitted": false,
+        "utilities_permitted": false,
+        "tenancy_all": {
+          "days": 3,
+          "statute": "Tex. Prop. Code \u00a724.005",
+          "count_method": "calendar_days"
+        }
+      },
+      "cure_or_quit": {
+        "description": "Curable lease violation",
+        "days": 3,
+        "statute": "Tex. Prop. Code \u00a724.005",
+        "curable": true
+      },
+      "termination": {
+        "statute": "Tex. Prop. Code \u00a791.001",
+        "just_cause_required": false,
+        "just_cause_statute": null,
+        "tenancy_any": {
+          "days": 30,
+          "statute": "Tex. Prop. Code \u00a791.001",
+          "count_method": "calendar_days"
+        }
+      }
+    },
+    "notice_defects": [
+      {
+        "defect": "improper_service_method",
+        "consequence": "notice_void",
+        "statute": null,
+        "case_law": [],
+        "severity": "void",
+        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+      },
+      {
+        "defect": "notice_period_too_short",
+        "consequence": "notice_void",
+        "statute": null,
+        "case_law": [],
+        "severity": "void",
+        "note": "Notice must provide minimum 3 day(s) \u2014 verify calculation method"
+      }
+    ],
+    "notice_period_basis": {
+      "tenancy_length_matters": false,
+      "breakpoints": []
+    }
+  },
+  "service": {
+    "permitted_methods": [
+      "personal",
+      "mail",
+      "posting"
+    ],
+    "method_rules": [
+      {
+        "method": "personal",
+        "requirements": "In-person delivery to tenant or occupant 16+ at premises",
+        "statute": "Tex. Prop. Code \u00a724.005(f)",
+        "adds_days_for_mail": null,
+        "note": null
+      },
+      {
+        "method": "mail",
+        "requirements": "Regular mail to premises; 3 additional days added to notice period",
+        "statute": "Tex. Prop. Code \u00a724.005(f)",
+        "adds_days_for_mail": 3,
+        "note": null
+      },
+      {
+        "method": "posting",
+        "requirements": "Affixing notice to main entry door of premises",
+        "statute": "Tex. Prop. Code \u00a724.005(f)",
+        "adds_days_for_mail": null,
+        "note": null
+      }
+    ],
+    "service_defects": [
+      {
+        "defect": "notice_not_in_writing",
+        "consequence": "notice_void",
+        "statute": "Tex. Prop. Code \u00a724.005(a)",
+        "case_law": []
+      },
+      {
+        "defect": "improper_service_method",
+        "consequence": "notice_void",
+        "statute": "Tex. Prop. Code \u00a724.005(f)",
+        "case_law": []
+      }
+    ]
+  },
+  "overlays": {
+    "federal": [
+      {
+        "name": "CARES Act \u00a74024",
+        "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
+        "statute": "15 U.S.C. \u00a79058",
+        "status": "conditional"
+      }
+    ],
+    "state_protective": [
+      {
+        "name": "Implied Warranty of Habitability",
+        "effect": "Landlord must make repairs affecting health and safety; tenant may repair-and-deduct up to one month's rent if landlord fails to repair in 7 days after notice",
+        "statute": "Tex. Prop. Code \u00a792.056\u201392.061"
+      },
+      {
+        "name": "Anti-Retaliation",
+        "effect": "Landlord may not retaliate against tenant for good-faith exercise of rights; presumption of retaliation if adverse action within 6 months",
+        "statute": "Tex. Prop. Code \u00a792.331"
+      }
+    ],
+    "local": [
+      {
+        "jurisdiction": "Austin",
+        "type": "other",
+        "effect": "Austin has limited additional tenant protections; verify current ordinances \u2014 state law preempts most rent control",
+        "source": "Austin City Code",
+        "digitization_note": "Texas state law preempts local rent control ordinances (Tex. Prop. Code \u00a7214.902)"
+      }
+    ]
+  },
+  "substantive_defenses": [
+    {
+      "defense": "habitability_warranty",
+      "elements": [
+        "Landlord knew or had notice of the defect",
+        "Defect substantially impairs habitability (health, safety, or welfare)",
+        "Tenant gave landlord reasonable time to repair",
+        "Landlord failed to repair",
+        "Tenant did not cause or waive the defect"
+      ],
+      "statute": "[VERIFY STATE STATUTE \u2014 e.g., implied warranty of habitability]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Elements, remedy, and availability as rent-withholding defense vary significantly by state \u2014 attorney verification required"
+    },
+    {
+      "defense": "retaliation",
+      "elements": [
+        "Tenant engaged in protected activity (habitability complaint, union organizing, exercising legal rights)",
+        "Landlord knew of the protected activity",
+        "Adverse action (eviction, rent increase, service reduction) followed protected activity",
+        "Causal connection between protected activity and adverse action",
+        "Action was within state-defined presumption period (varies: 60 days to 12 months)"
+      ],
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Presumption period and available remedies vary significantly by state"
+    },
+    {
+      "defense": "discrimination",
+      "elements": [
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
+        "Landlord took adverse housing action",
+        "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
+      ],
+      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); [VERIFY STATE ANTI-DISCRIMINATION STATUTE]",
+      "case_law": [],
+      "openness": "open_textured",
+      "review_weight": "specialist_required",
+      "note": "Federal FHA applies universally; state law may add protected classes (e.g., source of income, sexual orientation, immigration status). Litigation-heavy area; specialist review required."
+    },
+    {
+      "defense": "breach_of_quiet_enjoyment",
+      "elements": [
+        "Tenant had a valid lease or tenancy",
+        "Landlord substantially interfered with tenant's right to peaceful possession",
+        "Interference was intentional or negligent",
+        "Tenant suffered damages"
+      ],
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "human_required",
+      "note": "Availability as affirmative defense to eviction (vs. counterclaim) varies by state"
+    },
+    {
+      "defense": "improper_rent_calculation",
+      "elements": [
+        "Amount demanded in notice exceeds lawfully owed rent",
+        "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
+      ],
+      "statute": "[VERIFY STATE STATUTE \u2014 e.g., CA CCP \u00a71161(2)]",
+      "case_law": [],
+      "openness": "bright_line",
+      "review_weight": "automated_ok",
+      "note": "This is the notice-level defect for non-rent charges; also available as substantive defense. Bright-line in most states but verify state-specific rule."
+    }
+  ],
+  "procedural_defects": [
+    {
+      "defect": "complaint_filed_before_notice_period_expired",
+      "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
+      "statute": "[VERIFY STATE STATUTE]",
+      "case_law": [],
+      "note": "Filing before the notice period runs is a bright-line defect in most states"
+    },
+    {
+      "defect": "wrong_court",
+      "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
+      "statute": "[VERIFY STATE COURT JURISDICTION RULES]",
+      "case_law": [],
+      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
+    },
+    {
+      "defect": "failure_to_attach_lease_or_notice_to_complaint",
+      "consequence": "Complaint defective; may be dismissed or require amendment",
+      "statute": "[VERIFY STATE PLEADING REQUIREMENTS]",
+      "case_law": [],
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
+    },
+    {
+      "defect": "summons_improperly_issued_or_served",
+      "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
+      "statute": "[VERIFY STATE CIVIL PROCEDURE RULES]",
+      "case_law": [],
+      "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
+    }
+  ]
+}
