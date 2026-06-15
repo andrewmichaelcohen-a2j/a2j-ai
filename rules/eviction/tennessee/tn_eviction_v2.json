@@ -113,6 +113,26 @@
     "coverage_level": "L1,L3,L5",
     "flags": [
       {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"TCA \u00a766-28-505\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"TCA \u00a766-28-512\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-PLACEHOLDER",
+        "message": "Placeholder citation not resolved: \"[VERIFY STATE STATUTE \u2014 most states recognize this doctrine]\". Statutory source unknown at L1 retrieval pass. Attorney review required to identify and retrieve applicable statute."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-PLACEHOLDER",
+        "message": "Placeholder citation not resolved: \"[VERIFY STATE STATUTE]\". Statutory source unknown at L1 retrieval pass. Attorney review required to identify and retrieve applicable statute."
+      },
+      {
         "layer": "L5",
         "field": "notice",
         "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify",

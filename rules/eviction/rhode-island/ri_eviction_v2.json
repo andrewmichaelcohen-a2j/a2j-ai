@@ -117,7 +117,33 @@
       "L6_freshness": "not_implemented"
     },
     "coverage_level": "L1,L3,L5",
-    "flags": [],
+    "flags": [
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"RI Gen Laws \u00a734-18-35\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"RI Gen Laws \u00a734-18-36\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"RI Gen Laws \u00a734-18-37\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-PLACEHOLDER",
+        "message": "Placeholder citation not resolved: \"[VERIFY STATE STATUTE \u2014 most states recognize this doctrine]\". Statutory source unknown at L1 retrieval pass. Attorney review required to identify and retrieve applicable statute."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-PLACEHOLDER",
+        "message": "Placeholder citation not resolved: \"[VERIFY STATE STATUTE]\". Statutory source unknown at L1 retrieval pass. Attorney review required to identify and retrieve applicable statute."
+      }
+    ],
     "validation_note": "Automated validation run 2026-06-15. Layers run: L1,L3,L5. file_status=DRAFT."
   },
   "notice": {

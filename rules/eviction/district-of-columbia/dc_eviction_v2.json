@@ -122,6 +122,31 @@
     "coverage_level": "L1,L3,L5",
     "flags": [
       {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"DC Code \u00a742-3501 et seq.\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"DC Code \u00a742-3505.01\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"D.C. Code \u00a742-3501 et seq.\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"D.C. Code \u00a742-3404.02\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"D.C. Code \u00a742-3505.01\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
         "layer": "L5",
         "field": "notice",
         "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (30 days) is >2x median (5) \u2014 verify",

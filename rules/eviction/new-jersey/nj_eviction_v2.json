@@ -115,6 +115,26 @@
     "coverage_level": "L1,L3,L5",
     "flags": [
       {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"NJ Rev. Stat. \u00a72A:18-56\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"NJ Rev. Stat. \u00a72A:18-61.1\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"N.J.S.A. 2A:18-61.1\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L1",
+        "code": "L1-URL-NOT-RESOLVED",
+        "message": "Citation \"N.J.S.A. 46:8-43\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
         "layer": "L5",
         "field": "notice",
         "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (30 days) is >2x median (5) \u2014 verify",

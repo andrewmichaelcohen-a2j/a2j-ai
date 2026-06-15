@@ -605,9 +605,13 @@ def write_back_results(file_path, data, l1_result, l3_module_results, l5_module_
                 "disposition": "open"
             })
 
-    # Preserve existing acknowledged/resolved flags
+    # Preserve existing acknowledged/resolved flags AND L1 retrieval flags
+    # (L1 flags are written by the L1 retrieval pass, not by validate.py; they must persist across runs)
     existing_flags = val.get("flags", [])
-    preserved = [f for f in existing_flags if f.get("disposition") in {"acknowledged", "resolved"}]
+    preserved = [
+        f for f in existing_flags
+        if f.get("disposition") in {"acknowledged", "resolved"} or f.get("layer") == "L1"
+    ]
     val["flags"] = preserved + all_flags
 
     val["coverage_level"] = COVERAGE_LEVEL
