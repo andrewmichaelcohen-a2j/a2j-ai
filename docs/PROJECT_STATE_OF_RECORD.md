@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 14, 2026 · **Next update:** after each significant session
+**Generated:** June 15, 2026 · **Next update:** after each significant session
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -15,7 +15,7 @@
 | Visibility | **Public** (confirmed) |
 | License | Apache 2.0 |
 | Active branch | `main` |
-| Last commit | 2026-06-11 — `update ca rules json file` |
+| Last commit | 2026-06-11 — `update ca rules json file` (v2 changes not yet pushed — see §7) |
 
 ---
 
@@ -59,17 +59,27 @@ a2j-ai/
 ├── rules/
 │   ├── README.md
 │   ├── schema/
-│   │   └── eviction_schema_v1.0.json        ← Canonical schema
-│   ├── eviction/                             ← 51 jurisdiction files (see Section 3)
-│   │   ├── alabama/al_eviction_v1.json
-│   │   ├── alaska/ak_eviction_v1.json
-│   │   ├── ... [all 50 states + DC]
-│   │   └── wyoming/wy_eviction_v1.json
+│   │   ├── eviction_schema_v1.0.json        ← v1 schema (notice-centric; still used by v1 files)
+│   │   └── eviction_schema_v2.0.json        ← ✅ NEW — v2 schema (5-module full-defense scope)
+│   ├── eviction/                             ← 51 jurisdictions; each has v1 + v2 files
+│   │   ├── alabama/
+│   │   │   ├── al_eviction_v1.json          ← v1 (notice-centric; DRAFT)
+│   │   │   └── al_eviction_v2.json          ← ✅ NEW v2 (5 modules; DRAFT — L1 not retrieved)
+│   │   ├── alaska/ak_eviction_v1.json + ak_eviction_v2.json
+│   │   ├── ... [all 50 states + DC; same pattern]
+│   │   ├── california/
+│   │   │   ├── ca_eviction_v1 copy.json     ← ⚠️ Source v1 (original was deleted; copy is canonical)
+│   │   │   └── ca_eviction_v2.json          ← ✅ NEW v2 · AUTOMATED-CHECKS-PASSED (all 5 modules)
+│   │   ├── florida/fl_eviction_v2.json      ← ✅ NEW v2 · AUTOMATED-CHECKS-PASSED (all 5 modules)
+│   │   ├── new_york/ny_eviction_v2.json     ← ✅ NEW v2 · AUTOMATED-CHECKS-PASSED (all 5 modules)
+│   │   └── texas/tx_eviction_v2.json        ← ✅ NEW v2 · AUTOMATED-CHECKS-PASSED (all 5 modules)
 │   └── validation/
-│       ├── battery/validate.py               ← Layers 1–6 runner (see Section 4)
+│       ├── battery/validate.py              ← ✅ UPDATED — v2-aware; enforces 3 guardrails
 │       └── reports/
-│           ├── validation_report_20260601_232614.json
-│           └── validation_report_latest.json ← Most recent run
+│           ├── validation_report_20260601_232614.json   ← v1 report (archive)
+│           ├── validation_report_latest.json            ← v1 latest (archive)
+│           ├── validation_report_v2_20260615_223422.json ← ✅ NEW v2 report
+│           └── validation_report_v2_latest.json         ← ✅ NEW v2 latest
 │
 ├── demos/
 │   ├── README.md
@@ -90,104 +100,87 @@ a2j-ai/
     ├── CONTRIBUTING.md
     ├── Decision_Logic_Briefing_for_Claude.md
     ├── DISCLAIMER.md
-    ├── PROJECT_STATE_OF_RECORD.md           ← This file
+    ├── PROJECT_PLAN.md                      ← Master project plan (Claude does NOT edit)
+    ├── PROJECT_STATE_OF_RECORD.md           ← This file (Claude updates each session)
     ├── PROJECT_STATUS_JUNE2026.md           ← Older; superseded by this file
     ├── Review_Slides_v0.1.pptx
     ├── Review_Slides_v0.2.pptx
     ├── REVIEWER_CHECKLIST.md
-    └── STATUS_LABELS.md
+    └── STATUS_LABELS.md                     ← ✅ UPDATED to v2 (module-level + guardrails)
 ```
 
 ---
 
 ## 3. Rules File Inventory — Eviction (51 Jurisdictions)
 
-**Validation last run:** 2026-06-01T23:26:14Z  
-**All 51 files:** `validation_status = DRAFT` · `reviewer = null` · `last_updated = 2026-06-01`  
-**Schema version:** `eviction-v1` throughout  
-**Library stats:** mean nonpayment notice period = 7.3 days · median = 5 days
+### v2 Summary (current)
 
-| State | File | Statutory Retrieved? | L3 | L5 |
-|-------|------|---------------------|----|----|
-| AL | al_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| AK | ak_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| AZ | az_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| AR | ar_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| CA | ca_eviction_v1.json | ✅ RETRIEVED | ✅ PASS | ✅ PASS |
-| CO | co_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| CT | ct_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| DC | dc_eviction_v1.json | ❌ PENDING | ✅ PASS | ⚠️ FLAG (30-day period >2× median) |
-| DE | de_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| FL | fl_eviction_v1.json | ✅ RETRIEVED | ✅ PASS | ✅ PASS |
-| GA | ga_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| HI | hi_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| ID | id_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| IL | il_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| IN | in_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| IA | ia_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| KS | ks_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| KY | ky_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| LA | la_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| ME | me_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| MD | md_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| MA | ma_eviction_v1.json | ❌ PENDING | ✅ PASS | ⚠️ FLAG (14-day period >2× median) |
-| MI | mi_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| MN | mn_eviction_v1.json | ❌ PENDING | ✅ PASS | ⚠️ FLAG (14-day period >2× median) |
-| MS | ms_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| MO | mo_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| MT | mt_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| NE | ne_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| NV | nv_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| NH | nh_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| NJ | nj_eviction_v1.json | ❌ PENDING | ✅ PASS | ⚠️ FLAG (30-day period >2× median) |
-| NM | nm_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| NY | ny_eviction_v1.json | ✅ RETRIEVED | ✅ PASS | ⚠️ FLAG (14-day period >2× median) + L3 WARNING (cure_or_quit.days=10 < pay_or_quit.days=14) |
-| NC | nc_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| ND | nd_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| OH | oh_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| OK | ok_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| OR | or_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| PA | pa_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| RI | ri_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| SC | sc_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| SD | sd_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| TN | tn_eviction_v1.json | ❌ PENDING | ✅ PASS | ⚠️ FLAG (14-day period >2× median) |
-| TX | tx_eviction_v1.json | ✅ RETRIEVED | ✅ PASS | ✅ PASS |
-| UT | ut_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| VT | vt_eviction_v1.json | ❌ PENDING | ✅ PASS | ⚠️ FLAG (14-day period >2× median) |
-| VA | va_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| WA | wa_eviction_v1.json | ❌ PENDING | ✅ PASS | ⚠️ FLAG (14-day period >2× median) + L3 WARNING (cure_or_quit.days=10 < pay_or_quit.days=14) |
-| WV | wv_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| WI | wi_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
-| WY | wy_eviction_v1.json | ❌ PENDING | ✅ PASS | ✅ PASS |
+**Schema:** `eviction-v2` · **5 modules per file:** `notice`, `service`, `overlays`, `substantive_defenses`, `procedural_defects`  
+**Validation last run:** 2026-06-15T22:34Z (v2)  
+**Layers run:** L1, L3, L5 · L2/L4/L6: `not_implemented`  
+**file_status rule:** `min(module_status)` — enforced by `validate.py`
 
-**Statutory retrieval confirmed for:** CA (CCP §1161; Civ. Code §1946.2), TX (Prop. Code §24.005; SB 38), NY (RPAPL §711, §735; HSTPA 2019; Good Cause Eviction Law 2024), FL (§83.56). All 4 via Legal Data Hunter or direct legislature website.  
-**Note on L5 flags:** The 8 flagged states (DC 30 days, MA/MN/NJ 30 days, NY/TN/VT/WA 14 days) likely reflect genuine statutory outliers, not errors — but each needs attorney confirmation. DC and NJ 30-day periods are well-established; others require spot-check.
+| Metric | Count |
+|--------|-------|
+| Total v2 files | 51 |
+| L3 PASS | 51 / 51 |
+| L1 retrieved (statutory text confirmed) | 4 (CA, TX, NY, FL) |
+| file_status = AUTOMATED-CHECKS-PASSED | **4** (CA, TX, NY, FL — all 5 modules) |
+| file_status = DRAFT | 47 (L1 not retrieved) |
+| L5 flags (notice period outliers) | ~8 states (see below) |
+
+**Per-module status for AUTOMATED-CHECKS-PASSED states:**
+
+| State | notice | service | overlays | substantive_defenses | procedural_defects | file_status |
+|-------|--------|---------|----------|----------------------|--------------------|-------------|
+| CA | ACP† | ACP† | ACP† | ACP† | ACP† | **AUTOMATED-CHECKS-PASSED** |
+| TX | ACP† | ACP† | ACP† | ACP† | ACP† | **AUTOMATED-CHECKS-PASSED** |
+| NY | ACP† | ACP† | ACP† | ACP† | ACP† | **AUTOMATED-CHECKS-PASSED** |
+| FL | ACP† | ACP† | ACP† | ACP† | ACP† | **AUTOMATED-CHECKS-PASSED** |
+
+†ACP = AUTOMATED-CHECKS-PASSED · coverage = L1,L3,L5 · reviewer = null
+
+All 47 remaining states: all 5 modules DRAFT · file_status = DRAFT (L1 statutory retrieval not performed).
+
+**L5 flags from v2 run** (notice period outliers — likely correct but need attorney confirmation):
+- TN, VT, WA: L5 notice period flag (period >2× library median)
+
+**v1 files:** Still present alongside v2 files. v1 is notice-centric (pre-5-module schema). v1 files are the source for v2 migration — do not delete.
 
 ---
 
-## 4. Validation Harness Status (Layers 1–6)
+## 4. Validation Harness Status
 
-**Script:** `rules/validation/battery/validate.py`  
-**Last run:** 2026-06-01T23:26:14Z · All 51 files  
-**Run command:** `python3 rules/validation/battery/validate.py --report`
+**Script:** `rules/validation/battery/validate.py` ← **UPDATED June 15, 2026 (v2-aware)**  
+**Run command:** `python3 rules/validation/battery/validate.py [--state CA] [--no-writeback] [--report]`
 
-| Layer | Name | Implementation | Last-Run Results | Coverage |
-|-------|------|---------------|-----------------|----------|
-| **L1** | Statutory grounding | ✅ Implemented (checks `statutory_retrieved` flag; calls LDH if enabled) | 4 RETRIEVED / 47 PENDING | 8% (4/51) |
-| **L2** | Multi-model consensus | ⚠️ Scaffolded — NOT RUN | 0/51 run (requires separate multi-model runner not yet built) | 0% |
-| **L3** | Internal consistency | ✅ Fully implemented (~40 checks per file) | 51/51 PASS · 2 WARNINGS (NY, WA: cure_or_quit days < pay_or_quit days) · 0 ERRORS | 100% |
-| **L4** | Golden set testing | ⚠️ Scaffolded — NOT RUN | 0/51 have golden sets (need authoring) | 0% |
-| **L5** | Cross-jurisdiction | ✅ Implemented (outlier detection vs. library median) | 43/51 PASS · 8/51 FLAGS (L5-PERIOD-HIGH) · 0 ERRORS | 100% |
-| **L6** | Temporal freshness | ⚠️ Scaffolded — NOT RUN | Requires legislative feed integration / CI hook | 0% |
-| **L7** | Attorney review | 🔴 Not started | 0/51 validated | 0% |
+### v2 Validation Architecture
 
-**Summary:** L3 and L5 are fully operational. L1 partially runs (4 states have retrieval; 47 flagged for retrieval). L2, L4, L6 are scaffolded in the script but require additional infrastructure or data to run. L7 has not started.
+| Layer | Name | Status | v2 Result (2026-06-15) |
+|-------|------|--------|------------------------|
+| **L1** | Statutory grounding | ✅ Operational | 4 pass / 47 not_run |
+| **L2** | Multi-model consensus | ⚠️ not_implemented | — |
+| **L3** | Internal consistency | ✅ Operational | 51/51 PASS · 0 errors · 0 warnings |
+| **L4** | Golden-set tests | ⚠️ not_implemented | — |
+| **L5** | Cross-jurisdiction anomaly | ✅ Operational | PASS for most; ~8 notice-period flags |
+| **L6** | Temporal freshness | ⚠️ not_implemented | — |
+| **L7** | Attorney review | 🔴 Not started | 0/51 modules attorney-reviewed |
 
-**Divergence counts:** 0 L3 errors across 51 files. 2 L3 warnings (NY, WA). 8 L5 period-high flags.  
-**Anomaly flags requiring follow-up:**
-- NY: cure_or_quit.days (10) < pay_or_quit.days (14) — verify with RPAPL §711
-- WA: cure_or_quit.days (10) < pay_or_quit.days (14) — verify with RCW 59.12.030
+### Three enforced guardrails (new in v2)
+
+1. **G1 — No auto-advance:** Any module at UNDER REVIEW/VALIDATED/CERTIFIED with `reviewer=null` is a hard validation FAIL. No automated process may advance past AUTOMATED-CHECKS-PASSED.
+2. **G2 — file_status = min(module_status):** `validate.py` computes and writes back the correct `file_status` on every run. Never set directly.
+3. **G3 — Option-A gate:** A module advances to AUTOMATED-CHECKS-PASSED only when all currently-implemented layers (today: L1, L3, L5) pass with no errors. `not_implemented` layers don't block.
+
+### Write-back behavior
+
+On each run, `validate.py` writes results back to each v2 file:
+- Updates `validation.automated_layers` (L1/L3/L5 results)
+- Advances DRAFT modules to AUTOMATED-CHECKS-PASSED if Option-A gate passes
+- Recomputes and writes `file_status = min(module_status)`
+- Appends open flags to `validation.flags`
+
+Use `--no-writeback` to run read-only (report only, no file updates).
 
 ---
 
@@ -246,7 +239,7 @@ All rules files are DRAFT status — AI-generated, not attorney-reviewed.
 Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 ```
 
-**Known gap in README:** The "repository structure" section still shows the old `a2j-ai-claude/` path. Actual root is `a2j-ai/`. Low priority but should be corrected before next major outreach push.
+**Known gap in README:** Does not mention the v2 schema or 5-module structure. Should be updated before next outreach push.
 
 ---
 
@@ -282,54 +275,59 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 ## 7. Changelog — Past Two Weeks (Cowork Activity)
 
-**Source:** `git log` · June 1–14, 2026
+**Source:** `git log` + this session · June 1–15, 2026
 
-| Date | Commit | What changed |
-|------|--------|-------------|
-| 2026-06-11 | `update ca rules json file` | CA eviction rules file updated (exact changes not annotated in commit) |
-| 2026-06-10 | `update demo` (×2) | Demo assets updated — likely widget or slide iteration |
-| 2026-06-10 | `Update demo-script.md` | Demo script updated — v5 current |
-| 2026-06-10 | `Update RulesComparisonWidget.html` | Widget HTML updated |
-| 2026-06-10 | `demo updates` (×2) | Additional demo asset updates |
-| 2026-06-09 | `demo updates` (×3) | Further demo iteration |
-| 2026-06-09 | `process updates` | Process/workflow updates |
-| 2026-06-09 | `update eviction notice widget for demo` | Widget update specifically for demo rehearsal |
-| 2026-06-08 | `Update demo-script.md` | Demo script update |
-| 2026-06-08 | `updated eviction prototype demo script` | Earlier demo script version |
-| 2026-06-04 | `fixes to address file name changes and slight demo flow updates` | File reference cleanup |
-| 2026-06-02 | `project checklist` | PROJECT_STATUS_JUNE2026.md created |
-| 2026-06-02 | `Restructure repo: plugins/, rules/, demos/; 51-state rules library; attribution` | Major restructure commit |
+| Date | What changed |
+|------|-------------|
+| **2026-06-15** | **v2 schema and rules library — full implementation (this session)** |
+| | Created `rules/schema/eviction_schema_v2.0.json` (5-module full-defense schema) |
+| | Generated all 51 `*_eviction_v2.json` files (v1-migration + stub-expansion) |
+| | Updated `validate.py` to v2-aware: per-module L3/L5, 3 guardrails, write-back |
+| | Ran full v2 validation: 51/51 L3 PASS; CA/TX/NY/FL → AUTOMATED-CHECKS-PASSED |
+| | Overwrote `docs/STATUS_LABELS.md` with v2 (module-level granularity, guardrail language) |
+| | Updated `docs/PROJECT_PLAN.md` + `docs/PROJECT_STATE_OF_RECORD.md` |
+| 2026-06-11 | `update ca rules json file` — CA eviction rules file updated |
+| 2026-06-10 | `update demo` (×2) — Demo assets updated |
+| 2026-06-10 | `Update demo-script.md` — Demo script v5 |
+| 2026-06-10 | `Update RulesComparisonWidget.html` — Widget HTML updated |
+| 2026-06-09 | `demo updates` (×3) + `process updates` + `update eviction notice widget for demo` |
+| 2026-06-08 | `Update demo-script.md` + `updated eviction prototype demo script` |
+| 2026-06-04 | `fixes to address file name changes and slight demo flow updates` |
+| 2026-06-02 | `project checklist` + `Restructure repo: plugins/, rules/, demos/; 51-state rules library; attribution` |
 
-**Net: Most recent work (June 8–11) has been demo iteration** — script, widget, and CA rules file refinements. The 51-state rules library and validation harness have not changed since June 1.
+**⚠️ Pending commit:** All June 15 v2 work is local-only. Needs commit + push via GitHub Desktop.
 
 ---
 
 ## 8. Open Issues / Known Defects
 
 ### Demo — Blocking for Recording
-- [ ] **Demo rehearsal not completed.** Full 6-scene flow needs one clean end-to-end run in Cowork before recording. Scenes 3–4 (Orozco + live rules attachment) are highest-risk — practice these first.
+- [ ] **Demo rehearsal not completed.** Full 6-scene flow needs one clean end-to-end run in Cowork before recording. Scenes 3–4 (Orozco + live rules attachment) are highest-risk.
 - [ ] **Demo not yet recorded.** No Loom link exists. Slide 7 placeholder `[ link to demo ]` not yet filled.
-- [ ] **Scene 4 file to attach:** The script says to attach `ca_eviction_rules_v0.1.json` — this is in `plugins/eviction-defense/jurisdictions/`. Confirm this file is still the one you want to use in the demo (vs. `rules/eviction/california/ca_eviction_v1.json`). The plugin-local file is the demo-purpose file; the `rules/` file is the canonical one. Decide which appears in the demo before recording.
+- [ ] **Scene 4 file decision:** Script says to attach `ca_eviction_rules_v0.1.json` (plugin-local demo file). The canonical v2 file is `rules/eviction/california/ca_eviction_v2.json`. Decide which to use in the demo before recording.
+- [ ] **v2 files not yet reflected in widget.** `RulesComparisonWidget.html` still references v1 data. Consider updating or noting in the demo that v2 is the new library format.
 
 ### Repo — Cleanup Needed
 - [ ] **`plugins/eviction-defense/LHC_Demo_Deck_v0.1.pptx`** still in repo. Old deck with LHC naming. Delete before next push.
-- [ ] **README path error.** Shows `a2j-ai-claude/` as root; actual root is `a2j-ai/`.
-- [ ] **Demo script canonical copy:** `plugins/eviction-defense/prompts/demo-script.md` and `demos/eviction/prompts/demo-script.md` may diverge. The `demos/` copy is canonical; the `plugins/` copy may be stale.
+- [ ] **README** does not mention v2 schema or 5-module structure. Update before next outreach push.
+- [ ] **`ca_eviction_v1 copy.json`** — the "copy" naming is an artifact of a macOS Finder rename. Rename to `ca_eviction_v1.json` when convenient (original was accidentally deleted earlier).
+- [ ] **Demo script canonical copy:** `plugins/eviction-defense/prompts/demo-script.md` may be stale vs. `demos/eviction/prompts/demo-script.md`. The `demos/` copy is canonical.
 
-### Validation Pipeline — Not Blocking But Needs Work
-- [ ] **L2 (multi-model consensus):** Not implemented. Needs a runner that queries a second model (e.g., GPT-4) on the same rules questions and compares outputs. Infrastructure not yet designed.
-- [ ] **L4 (golden sets):** 0/51 states have golden sets. Need at least CA and TX for meaningful L4 testing before outreach. See `test-cases/README.md` for format.
-- [ ] **L6 (temporal freshness):** Scaffolded but not runnable. Needs a legislative feed or scheduled check against the citing statute URLs.
-- [ ] **L7 (attorney validation):** Not started. CA is the priority first state. Need to recruit one licensed CA tenant attorney. See `docs/REVIEWER_CHECKLIST.md` for the protocol.
-- [ ] **NY and WA L3 warnings:** `cure_or_quit.days < pay_or_quit.days` — both 10 vs. 14. Likely correct (NY RPAPL requires shorter notice for lease violations vs. nonpayment) but needs attorney confirmation.
-- [ ] **8 L5-PERIOD-HIGH flags** (DC, MA, MN, NJ, NY, TN, VT, WA): All are plausibly correct outliers given those states' tenant-protective laws, but each should be spot-checked by an attorney during L7 review.
+### Validation Pipeline
+- [ ] **L1 retrieval needed for 47 states.** Only CA, TX, NY, FL have `L1_grounding = pass`. Remaining 47 are DRAFT because L1 fails. Next priority: run Legal Data Hunter retrieval for remaining states to advance them.
+- [ ] **L2 (multi-model consensus):** not_implemented. Needs a runner that queries a second model and compares outputs.
+- [ ] **L4 (golden sets):** not_implemented. 0/51 states have golden sets. Need at least CA and TX before outreach. See `test-cases/README.md`.
+- [ ] **L6 (temporal freshness):** not_implemented. Needs legislative feed / CI hook.
+- [ ] **L7 (attorney review):** Not started. CA is priority #1. Need one licensed CA tenant attorney to review CA's 5 modules. See `docs/REVIEWER_CHECKLIST.md`.
+- [ ] **L5 notice-period flags (TN, VT, WA and others):** Likely correct outliers but need attorney confirmation during L7 review.
+- [ ] **Re-run on L2/L4/L6 expansion:** When new layers come online, all AUTOMATED-CHECKS-PASSED modules must be re-run. Modules that fail revert to DRAFT per STATUS_LABELS v2.
 
 ### Strategic / Project Level
-- [ ] **Formal paper:** Not started. Raw material exists in Cowork session transcripts.
+- [ ] **Formal paper:** Not started. Raw material in prior Cowork sessions.
 - [ ] **2-pager:** Not started.
 - [ ] **Substack / website:** Not set up.
-- [ ] **Margaret/Stanford pitch:** Deck ready; 2-pager and paper not yet done. Send after paper review.
-- [ ] **Content identity decision:** Personal name vs. A2J project brand — decide before Substack/website setup.
+- [ ] **Margaret/Stanford pitch:** Deck ready; 2-pager and paper not done. Send after paper.
+- [ ] **Content identity decision:** Personal name vs. A2J project brand — decide before Substack/website.
 
 ---
 
@@ -340,8 +338,11 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 **If working on demo rehearsal / recording:**
 > "Read the State of Record, then open `demos/eviction/prompts/demo-script.md` and help me run a rehearsal. I need to practice Scenes 3 and 4 especially."
 
-**If working on validation:**
-> "Read the State of Record, then run `rules/validation/battery/validate.py --report` to see current validation status, and let's work on [L1 retrieval for TX / building L4 golden sets for CA / NY+WA L3 warnings]."
+**If working on L1 retrieval (advancing 47 states):**
+> "Read the State of Record. Let's run L1 statutory retrieval for [state] using Legal Data Hunter, update the v2 file, and re-run validate.py to advance it to AUTOMATED-CHECKS-PASSED."
+
+**If working on attorney validation (L7):**
+> "Read the State of Record. Let's prepare the CA v2 file for attorney review. Start with the notice module — generate a plain-language reviewer summary from ca_eviction_v2.json and the REVIEWER_CHECKLIST."
 
 **If working on the paper or 2-pager:**
 > "Read the State of Record. I want to start drafting the formal paper. The key source material is in our previous Cowork sessions — the AI layer vs. rules layer discussion, the certification maturity model, the liability architecture, and the LSC governance parallel."
@@ -349,4 +350,4 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 ---
 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*  
-*State of Record generated by Claude (Cowork) — June 14, 2026. Replace this file at the start of each session after significant work.*
+*State of Record generated by Claude (Cowork) — June 15, 2026. Replace this file at the start of each session after significant work.*
