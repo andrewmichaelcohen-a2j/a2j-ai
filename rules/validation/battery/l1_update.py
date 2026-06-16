@@ -45,6 +45,11 @@ RETRIEVED = {
         "url": "https://law.justia.com/codes/arizona/title-33/section-33-1368/",
         "extra_flags": [],
     },
+    "arkansas": {
+        "fragment": "18-17-701",
+        "url": "https://law.justia.com/codes/arkansas/title-18/subtitle-2/chapter-17/subchapter-7/section-18-17-701/",
+        "extra_flags": [],
+    },
     # ── C ─────────────────────────────────────────────────────────────────────
     "colorado": {
         "fragment": "13-40-104",
@@ -88,6 +93,33 @@ RETRIEVED = {
     "indiana": {
         "fragment": "32-31-1-6",
         "url": "https://law.justia.com/codes/indiana/title-32/article-31/chapter-1/section-32-31-1-6/",
+        "extra_flags": [],
+    },
+    "illinois": {
+        # cite in JSON: "735 ILCS 5/9-207" — termination/holdover statute retrieved via FindLaw.
+        # Pay-or-quit statute (§9-209) is the primary nonpayment authority but was not retrievable.
+        "fragment": "5/9-207",
+        "url": "https://codes.findlaw.com/il/chapter-735-civil-procedure/il-st-sect-735-5-9-207/",
+        "extra_flags": [
+            {
+                "layer": "L1",
+                "code": "L1-MACHINE-ASSIST",
+                "message": (
+                    "735 ILCS 5/9-207 retrieved via FindLaw (text confirmed). "
+                    "Machine-assisted finding: §9-207 ('Notice to terminate tenancy for less than a year') "
+                    "governs holdover and periodic-tenancy termination (7-day for week-to-week; 30-day for other "
+                    "terms less than one year) — a no-cause termination statute, NOT the pay-or-quit notice for nonpayment. "
+                    "The pay-or-quit authority is 735 ILCS 5/9-209 (5-day notice for nonpayment, business days), "
+                    "which could not be retrieved from any available source. "
+                    "L7 attorney must confirm §9-209 text and the 5-business-day notice period. NOT verification."
+                ),
+            }
+        ],
+    },
+    "iowa": {
+        # cite in JSON: "Iowa Code §562A.27" — note: Justia URL requires title-xiv in path
+        "fragment": "562A.27",
+        "url": "https://law.justia.com/codes/iowa/2022/title-xiv/chapter-562a/section-562a-27/",
         "extra_flags": [],
     },
     # ── K ─────────────────────────────────────────────────────────────────────
@@ -267,16 +299,55 @@ RETRIEVED = {
         "url": "https://oregon.public.law/statutes/ors_90.394",
         "extra_flags": [],
     },
+    "pennsylvania": {
+        # cite in JSON: "68 Pa. C.S. §250.501" — retrieved via FindLaw as "68 P.S. §250.501"
+        # The Landlord and Tenant Act exists as P.S. (Purdon's Statutes), not C.S. (Consolidated Statutes).
+        # Same statutory text; minor citation format discrepancy. Fragment matches on section number.
+        "fragment": "250.501",
+        "url": "https://codes.findlaw.com/pa/title-68-ps-real-and-personal-property/pa-st-sect-68-250-501/",
+        "extra_flags": [],
+    },
     # ── R ─────────────────────────────────────────────────────────────────────
     "rhode-island": {
         "fragment": "34-18-35",
         "url": "https://codes.findlaw.com/ri/title-34-property/ri-gen-laws-sect-34-18-35/",
         "extra_flags": [],
     },
+    "south-carolina": {
+        "fragment": "27-40-710",
+        "url": "https://law.justia.com/codes/south-carolina/2024/title-27/chapter-40/section-27-40-710/",
+        "extra_flags": [],
+    },
+    "south-dakota": {
+        # cite in JSON: "SDCL §21-16-1" — FED grounds statute; nonpayment is in subsection (4)
+        "fragment": "21-16-1",
+        "url": "https://law.justia.com/codes/south-dakota/title-21/chapter-16/section-21-16-1/",
+        "extra_flags": [
+            {
+                "layer": "L1",
+                "code": "L1-MACHINE-ASSIST",
+                "message": (
+                    "SDCL §21-16-1 retrieved via Justia (text confirmed). "
+                    "Machine-assisted finding: §21-16-1 is the FED grounds statute listing when forcible "
+                    "entry and detainer is available. Subsection (4) covers nonpayment ('fails to pay his "
+                    "rent for three days after the same shall be due'). The statute does not use the "
+                    "'pay-or-quit notice' framing; it establishes grounds for FED action rather than "
+                    "a standalone pay-or-quit notice requirement. "
+                    "L7 attorney must confirm the 3-day notice period and procedure under South Dakota law. NOT verification."
+                ),
+            }
+        ],
+    },
     # ── T ─────────────────────────────────────────────────────────────────────
     "tennessee": {
         "fragment": "66-28-505",
         "url": "https://codes.findlaw.com/tn/title-66-property/tn-code-sect-66-28-505/",
+        "extra_flags": [],
+    },
+    "utah": {
+        # cite in JSON: "Utah Code §78B-6-802" — Justia URL uses section-802 (not section-78b-6-802)
+        "fragment": "78B-6-802",
+        "url": "https://law.justia.com/codes/utah/2020/title-78b/chapter-6/part-8/section-802/",
         "extra_flags": [],
     },
     # ── V ─────────────────────────────────────────────────────────────────────
