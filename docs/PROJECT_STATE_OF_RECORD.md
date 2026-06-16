@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 16, 2026 (Overlays cleanup — cross-state contamination removed; local de-scoped to CA-only; L5 xstate check added) · **Next update:** after each significant session
+**Generated:** June 15, 2026 · **Last updated:** June 16, 2026 (Five-module build — service, state_protective, procedural_defects, substantive_defenses populated across all 51 files; 789 field updates; L7 triage list generated) · **Next update:** after each significant session
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -15,7 +15,7 @@
 | Visibility | **Public** (confirmed) |
 | License | Apache 2.0 |
 | Active branch | `main` |
-| Last commit | 2026-06-16 — overlays cleanup, coverage audit, L5 xstate check (pushed via GitHub Desktop) |
+| Last commit | 2026-06-16 — overlays cleanup, coverage audit, L5 xstate check (pushed via GitHub Desktop); five-module build pending commit |
 
 ---
 
@@ -116,7 +116,7 @@ a2j-ai/
 ### v2 Summary (current)
 
 **Schema:** `eviction-v2` · **5 modules per file:** `notice`, `service`, `overlays`, `substantive_defenses`, `procedural_defects`  
-**Validation last run:** 2026-06-15 (v2, L1 retrieval pass complete — all 51 states retrieved)  
+**Validation last run:** 2026-06-16 (five-module build — all 5 modules populated across 51 files)  
 **Layers run:** L1, L3, L5 · L2/L4/L6: `not_implemented`  
 **file_status rule:** `min(module_status)` — enforced by `validate.py`
 
@@ -127,6 +127,8 @@ a2j-ai/
 | L1 retrieved (statutory text statutorily retrieved) | **51 / 51** (CA/TX/NY/FL Wave 0 + 40 Wave 1/2 + 7 Wave 3 — all complete) |
 | file_status = AUTOMATED-CHECKS-PASSED | **44** |
 | file_status = DRAFT — L1 pass but L5 flags | **7** — DC, MA, MN, NJ, TN, VT, WA |
+| Five-module build | **Complete (2026-06-16)** — 789 field updates across 51 files; 0 [VERIFY] remaining |
+| L7 triage entries | **264** — all in substantive_defenses; grounding_gap / specialist_required (see `docs/L7_TRIAGE_LIST_2026-06-16.md`) |
 
 **States at AUTOMATED-CHECKS-PASSED (44):**
 
@@ -202,7 +204,7 @@ Statutory text retrieved for all 7. L5 flags require L7 attorney review to resol
 | **L4** | Golden-set tests | ⚠️ not_implemented | — |
 | **L5** | Cross-jurisdiction anomaly | ✅ Operational | PASS for 44 states (ACP); flags on DC/MA/MN/NJ/NY/TN/VT/WA notice-period (7 DRAFT); **new sub-check added 2026-06-16: L5-LOCAL-XSTATE detects wrong-state jurisdiction entries in overlays.local — all 51 states pass clean after overlays cleanup** |
 | **L6** | Temporal freshness | ⚠️ not_implemented | — |
-| **L7** | Attorney review | 🔴 Not started | 0/51 modules attorney-reviewed |
+| **L7** | Attorney review | 🔴 Not started | 0/51 modules attorney-reviewed · **triage list generated 2026-06-16** (264 entries, all substantive_defenses — see `docs/L7_TRIAGE_LIST_2026-06-16.md`) |
 
 ### Three enforced guardrails (new in v2)
 
@@ -317,6 +319,14 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 | Date | What changed |
 |------|-------------|
+| **2026-06-16** | **Five-module build — all 4 under-built modules populated across all 51 v2 files** |
+| | **Service (module 2):** 47 non-demo states — method_rules statutes filled from state RLTA/FED statutes (ARS §33-1313, ORC 1923.04, NRS 40.280, etc.); service_defect statutes filled. 0 [VERIFY] remaining in service module. |
+| | **Overlays.state_protective (module 3):** 43 states — habitability warranty and anti-retaliation statutes filled from state RLTA (Ala. Code §35-9A-204, CRS §38-12-503, ORS 90.320, etc.). 0 [VERIFY] remaining. |
+| | **Procedural_defects (module 5):** All 51 states — [VERIFY] placeholders replaced with state UD/FED procedure statutes (ARS §12-1171, 735 ILCS 5/9-201, M.G.L. c. 239 §1, etc.) and court jurisdiction citations. CA's existing AB 2347 entry preserved. |
+| | **Substantive_defenses (module 4 — flag-don't-fabricate):** All 51 states — habitability and retaliation statutes filled; discrimination grounded to 42 U.S.C. §3604 + state fair housing act; breach_of_quiet_enjoyment and improper_rent_calculation marked grounding_gap; 9 just-cause states (CA, DC, MD, ME, NH, NJ, NY, OR, WA) filled with just-cause statute (Civ. Code §1946.2, NJSA 2A:18-61.1, ORS 90.427, etc.). All entries carry specialist_required. |
+| | Ran validate.py → **44 ACP / 7 DRAFT — unchanged** (no regressions from build). 0 new L5 flags introduced. |
+| | Generated L7 triage list → **264 entries** across 51 states, all substantive_defenses. Saved to `docs/L7_TRIAGE_LIST_2026-06-16.md`. |
+| | **Total field updates: 789** across 51 files. **0 [VERIFY] entries remain in any module.** |
 | **2026-06-16** | **Overlays local cleanup — cross-state contamination removed; local de-scoped to CA-only; L5 xstate check added** |
 | | Coverage audit (`docs/COVERAGE_AUDIT_2026-06-16.md`) — full per-module content audit across all 51 v2 files; found 472 wrong-state local entries (cascading templating artifact) across 42 states |
 | | Removed all 472 cross-state contamination entries from `overlays.local` across 47 affected files |
@@ -377,6 +387,7 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 ### Validation Pipeline
 - [x] **L1 retrieval pass COMPLETE (2026-06-15 — all waves).** 51/51 states statutorily retrieved. 44 states at AUTOMATED-CHECKS-PASSED. Wave 3 resolved previously unresolvable states (AR, IA, IL, PA, SC, SD, UT) using corrected URL structures and FindLaw as alternative source. Machine-assist flags added for ME, OH, WV, MO, MS, ND (Waves 1/2) and IL, SD (Wave 3). L1 retrieval is **closed** — no further retrieval work needed.
 - [x] **Overlays local cleanup complete (2026-06-16).** 472 cross-state contamination entries removed from 47 files. Local layer de-scoped to CA-only for Phase 1. L5-LOCAL-XSTATE check added to validate.py; all 51 states pass clean.
+- [x] **Five-module build complete (2026-06-16).** Service, state_protective overlays, procedural_defects, and substantive_defenses populated across all 51 files. 789 field updates. 0 [VERIFY] remaining. L7 triage list (264 entries) saved to `docs/L7_TRIAGE_LIST_2026-06-16.md`. Validate: 44 ACP / 7 DRAFT — no regressions.
 - [ ] **L5 flags — 7 states DRAFT despite L1 pass** (DC, MA, MN, NJ, TN, VT, WA). Statutory text retrieved. L5 cross-jurisdiction anomaly flags on notice period. All require L7 attorney review to resolve and advance.
 - [ ] **L2 (multi-model consensus):** not_implemented. Needs a runner that queries a second model and compares outputs.
 - [ ] **L4 (golden sets):** not_implemented. 0/51 states have golden sets. Need at least CA and TX before outreach. See `test-cases/README.md`.
@@ -410,4 +421,4 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 ---
 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*  
-*State of Record last updated by Claude (Cowork) — June 16, 2026 (Overlays cleanup complete; 472 cross-state entries removed; local de-scoped to CA-only; L5-LOCAL-XSTATE check added; 44 ACP / 7 DRAFT unchanged; re-run clean). Replace this file at the start of each session after significant work.*
+*State of Record last updated by Claude (Cowork) — June 16, 2026 (Five-module build complete: 789 field updates across 51 files; 0 [VERIFY] remaining; 264 L7 triage entries; 44 ACP / 7 DRAFT unchanged). Previous update same date: overlays cleanup, L5-LOCAL-XSTATE check. Replace this file at the start of each session after significant work.*

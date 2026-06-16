@@ -1,0 +1,11 @@
+{
+  "generated": "2026-06-16T19:57:53.286111Z",
+  "schema_version": "eviction-v2",
+  "total_files": 51,
+  "library_stats": {
+    "mean_nonpay_period": 7.3,
+    "median_nonpay_period": 5
+  },
+  "coverage": "L1,L3,L5",
+  "files": {}
+}

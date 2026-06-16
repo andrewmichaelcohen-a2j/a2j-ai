@@ -1,0 +1,63 @@
+{
+  "generated": "2026-06-16T19:57:58.155117Z",
+  "schema_version": "eviction-v2",
+  "total_files": 51,
+  "library_stats": {
+    "mean_nonpay_period": 7.3,
+    "median_nonpay_period": 5
+  },
+  "coverage": "L1,L3,L5",
+  "files": {
+    "NY": {
+      "state": "New York",
+      "file_status": "AUTOMATED-CHECKS-PASSED",
+      "overall": "PASS",
+      "guardrail_errors": [],
+      "l1": "pass",
+      "l3_total_errors": 0,
+      "l3_total_warnings": 1,
+      "l5_total_flags": 1,
+      "modules": {
+        "notice": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [
+            "3-NOTICE-07: cure_or_quit.days (10) < pay_or_quit days (14) \u2014 unusual, verify"
+          ],
+          "l5_flags": [
+            "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify"
+          ],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "service": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "overlays": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "substantive_defenses": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        },
+        "procedural_defects": {
+          "l3_pass": true,
+          "l3_errors": [],
+          "l3_warnings": [],
+          "l5_flags": [],
+          "status_after": "AUTOMATED-CHECKS-PASSED"
+        }
+      }
+    }
+  }
+}
