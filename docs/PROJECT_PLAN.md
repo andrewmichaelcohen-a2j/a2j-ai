@@ -1,234 +1,187 @@
-# A2J AI — Master Project Plan
-**Working Document | Last Updated: June 3, 2026**
-**Owner: Andrew Cohen**
+# Civil Justice as Code — Project Plan
+
+**Version 3.0 (full rebuild) · June 16, 2026 · Andrew M. Cohen · Pro bono / Apache 2.0**
+
+**This is the MAP** — what we're doing, in what order, and why. Its companion `PROJECT_STATE_OF_RECORD.md` is the DASHBOARD — where things stand right now. **Read both at the start of every session; update the relevant one at the end.**
+
+**Rebuild note:** This version fully replaces the prior `PROJECT_PLAN.md` (last genuinely updated June 3, 2026, under the retired "Legal Help Commons / LHC" framing). That file had fallen badly out of sync — it predated the v2 schema, the five-module scope, L1 retrieval, and the Civil Justice as Code reframing. Trust this file and the State of Record; discard the June-3 content. The State of Record (Cowork-maintained) has remained reliable and is the authority for live status.
 
 ---
 
-## Overview
+## Document System & Session Ritual
 
-This document tracks all workstreams for the A2J AI / Legal Help Commons project. It is intended as a living working doc — upload to Google Docs and update regularly. Cross-reference with the GitHub repo (`github.com/andrewmichaelcohen-a2j/a2j-ai`) and Cowork sessions for build activity.
+**The repo is the single source of truth — not any chat, not any AI's memory.**
 
-**Core thesis:** A shared open-source infrastructure layer ("Legal Help Commons") — built on verified legal rules, AI-assisted intake/comprehension, and a structured certification framework — can dramatically close the access-to-justice gap at scale, with the rigor and trust required for adoption by legal aid organizations, courts, and funders.
+| File | Role | Sole writer |
+| :---- | :---- | :---- |
+| `PROJECT_PLAN.md` (this file) | The map: scope, sequencing, decisions, open items | Andy \+ Claude (planning/chat) |
+| `PROJECT_STATE_OF_RECORD.md` | The dashboard: live per-module/per-state status | Cowork |
 
----
+**Single-writer rule:** one writer per file, to prevent silent overwrites. **Session ritual (manual, not automatic):** start by reading both files; end by updating the relevant one and committing. AI memory is a convenience on top of the files — never a substitute.
 
-## Workstream 1: Publications & Content
-
-### 1A. Formal Paper
-
-**Purpose:** Establish intellectual credibility; primary vehicle for Margaret/Stanford pitch and broader thought-leadership. To be reviewed by friendly expert relationships before sending to Margaret or publicizing.
-
-| Task | Status | Notes |
-|------|--------|-------|
-| Develop thesis and outline | 🟡 In Progress | Architecture conversations across multiple sessions provide raw material; AI layer vs. rules layer framing is well-developed |
-| Draft paper | 🔴 Not Started | Raw material exists in Cowork conversations (LHC architecture, certification framework, governance model, liability architecture) |
-| Internal review — friendly experts | 🔴 Not Started | Identify reviewers; send before Margaret or public distribution |
-| Iterate and finalize | 🔴 Not Started | |
-| Publish / distribute | 🔴 Not Started | See Workstream 4 for sequencing with outreach |
-
-**Key source material already developed:**
-- Two structural tensions + three design layers (free-rider problem, contribution-confidence problem)
-- AI layer vs. rules layer boundary analysis (with workflow examples: debt, eviction, record sealing, benefits, license reinstatement)
-- Four-level certification maturity model (L1 Technical → L2 Process → L3 Legal Accuracy → L4 Outcome Quality)
-- Liability architecture (direct harm, outdated law, UPL exposure) + strategic leverage mechanisms
-- LSC governance model as structural parallel
-- Three governance model options + hard due-diligence questions
+**Lesson logged (June 16):** the prior Plan drifted because Cowork's reported "updated the Plan" edits never actually landed in the repo file. Mitigation: the Plan is maintained only in the planning surface; when updated, the full file is regenerated and pushed via GitHub Desktop, then visually confirmed in the repo. Do not rely on a reported update without confirming the file changed.
 
 ---
 
-### 1B. 2-Pager
+## Thesis
 
-**Purpose:** Concise executive summary for outreach conversations; shareable without requiring someone to read the full paper.
-
-| Task | Status | Notes |
-|------|--------|-------|
-| Draft 2-pager | 🔴 Not Started | Distill from paper + LHC deck |
-| Iterate and finalize | 🔴 Not Started | |
-| Publish / share | 🔴 Not Started | Use in Margaret pitch and other outreach |
+The civil-justice AI ecosystem can already *retrieve* what statutes say. What no one has built and validated is the layer encoding what the law *requires* — the if/then decision logic — in open, machine-readable, jurisdiction-specific form. **Civil Justice as Code (CJaC)** builds that layer as open-source legal plugins, starting with 50-state **residential eviction defense**, validated with the discipline of safety-critical software plus expert legal review. Output is Apache-2.0, model-agnostic, and intended for institutional stewardship — not a product, not a company.
 
 ---
 
-### 1C. Deck
+## Scope: Residential Eviction Defense \= Five Modules
 
-**Purpose:** Visual presentation of the LHC pitch and A2J AI vision. Supports outreach meetings and conference presentations.
+"Residential eviction defense" is operationalized as five rules modules per jurisdiction, ordered bright-line \-\> open-textured:
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Core LHC pitch deck | ✅ Done | `Legal_Help_Commons_Deck.pptx` — 17 slides, iterated multiple times. Includes cascade problem, three governance models, certification framework, liability architecture, ask slide |
-| Demo deck (eviction-specific) | 🟡 In Progress | Eviction demo built; demo rehearsal pending |
-| Iterate and finalize | 🟡 In Progress | Deck is strong; may need tailoring for specific audiences (Stanford vs. funders vs. legal aid orgs) |
-| Due diligence guide | ✅ Done | Six sections, Section H (Governance & Certification Specialists) added; scoring rubric in Appendix B |
-| Expert review before distributing | 🔴 Not Started | Same reviewers as paper |
+1. **Notice** — validity of the eviction notice itself: pay-or-quit, cure-or-quit, termination; periods; content defects that void it. *Bright-line. Built out and automated-checked across 51 jurisdictions.*  
+2. **Service** — how the notice/summons must be served; method rules (e.g., CCP §1013 mail add-on days); service defects. *Bright-line.*  
+3. **Overlays** — federal (CARES Act), state-protective (e.g., CA AB 1482 just-cause), and local (rent control, just-cause, moratoria) rules layered on base state law. *Federal/state bright-line; the local layer is poorly digitized — see de-scope below.*  
+4. **Substantive defenses** — retaliation, habitability/warranty, discrimination, quiet enjoyment. *Case-law-dependent, open-textured. Automated layers check structure, not substance; specialist L7 required.*  
+5. **Procedural defects** — flaws in the unlawful-detainer filing itself. *Bright-line.*
 
----
+**Phase-selection principle (every phase and module):** chosen by **prevalence × harm × rule-governability**, never by ease of encoding.
 
-## Workstream 2: Cowork Builds
+**Confidence calibration:** modules carry `openness` (bright\_line / fact\_dependent / open\_textured) and `review_weight` (automated\_ok / human\_required / specialist\_required) metadata. A passed open-textured module carries **less automated assurance** than a passed bright-line module — same label, but the metadata records the difference honestly. A passed substantive-defense module is *structurally checked, not substantively blessed.*
 
-### 2A. Eviction Defense Demo
-
-**Purpose:** Concrete demonstration of the LHC concept in action; primary vehicle for showing (not just telling) what the platform does.
-
-| Task | Status | Notes |
-|------|--------|-------|
-| Build eviction demo (functional app) | ✅ Done | Built and committed to `a2j-ai` GitHub repo (`demos/` folder). Standalone HTML + React app. |
-| Commit and push to GitHub | ✅ Done | Committed to main branch, `a2j-ai` repo |
-| Make repo public | 🔴 Not Started | Repo exists; needs to be set to public on GitHub.com |
-| Demo rehearsal | 🟡 In Progress | Full 10-minute flow scripted; rehearsal not yet completed |
-| Record demo video | 🔴 Not Started | Record after rehearsal is clean |
-| Publish demo video | 🔴 Not Started | YouTube, GitHub repo, possibly embedded on website/Substack |
-| Write demo write-up / README | 🔴 Not Started | Explain what the demo shows, how to run it, what's next |
+**Local-overlay de-scope (DECIDED June 16):** local-ordinance coverage is **California-only for Phase 1\.** Local law is poorly digitized; CA is the only clean state. Other states carry an honest OUT\_OF\_SCOPE marker. Building local broadly now would create overclaiming risk. Revisit at a later phase.
 
 ---
 
-### 2B. 50-State JSON Rules Library (starting with Eviction)
+## Status Labels & Advancement
 
-**Purpose:** Open-source, verified, machine-readable legal rules layer that is the technical foundation of LHC. Published under clear versioning with transparent validation labeling.
+Authoritative source: `docs/STATUS_LABELS.md` (v2). Ladder:
 
-**Labeling philosophy:** Rules published immediately with clear stage labels (Draft → Automated Validation → Attorney Review → Validated). This makes progress visible and invites contribution without waiting for perfection.
+DRAFT \-\> AUTOMATED-CHECKS-PASSED \-\> UNDER REVIEW \-\> VALIDATED \-\> CERTIFIED
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Build initial rules library | ✅ Done | 51-state rules library built and committed to `a2j-ai` (`rules/` folder) |
-| Eviction rules — all 50 states | ✅ Done | Committed; review status unclear |
-| Label rules by validation stage | 🔴 Not Started | Add metadata: Draft / Automated-Validated / Attorney-Reviewed / Certified |
-| Make repo public | 🔴 Not Started | Same step as 2A above |
-| Define roadmap for additional A2J rule sets | 🔴 Not Started | Candidates: debt defense (SOL by state/debt type), record sealing, benefits eligibility, license reinstatement |
-| Design automated validation pipeline (Layers 1–6) | 🔴 Not Started | Six layers: statutory citation check, cross-reference consistency, jurisdictional coverage, date/currency, format schema validation, test case suite |
-| Initiate Layer 7 — attorney validation project | 🔴 Not Started | Recruit attorneys by state; structured review protocol; track status publicly |
-| Publish validation status publicly | 🔴 Not Started | Live dashboard or GitHub table showing per-state, per-rule status |
-| Publish results of each validation layer as completed | 🔴 Not Started | Transparency as a feature; builds trust with legal aid org evaluators |
+                                 ^ guardrail: no automated process crosses this line
+
+Tracked **per module**; `file_status = min(module_status)` (a file is only as validated as its weakest module). **Option-A gate:** a module reaches AUTOMATED-CHECKS-PASSED when all *currently-implemented* layers pass (today L1/L3/L5); `not_implemented` layers don't block; coverage recorded. **No automated process advances past AUTOMATED-CHECKS-PASSED** — VALIDATED requires a named attorney; CERTIFIED requires a second independent attorney \+ advisory board (board to be constituted at stewardship). NEEDS UPDATE (L6 statute change) re-enters at DRAFT; prior human status suspended pending re-review.
+
+**Precise external claim:** "50 states drafted; all pass the implemented automated checks; the flagship state and a stratified sample are attorney-VALIDATED, with a measured error rate." Never "we validated a 50-state library" when it's automated-only.
 
 ---
 
-## Workstream 3: Additional Content
+## Current Status (as of June 16, 2026\)
 
-**Purpose:** Build audience, thought leadership, and inbound interest over time. Lower-stakes than formal paper; can publish more freely and frequently.
+Live detail in the State of Record. Summary:
 
-**Channels:** Personal website, Substack, LinkedIn. Video content on YouTube.
-
-| Task | Status | Notes |
-|------|--------|-------|
-| Set up Substack | 🔴 Not Started | Recommended as primary channel for longer-form updates |
-| Set up personal website | 🔴 Not Started | Can be simple; links to GitHub, Substack, key papers |
-| Write introductory post (LHC concept) | 🔴 Not Started | Adapt from 2-pager; good first Substack piece |
-| Social posts about demo launch | 🔴 Not Started | LinkedIn-first; link to GitHub + demo video |
-| Brief update posts (ongoing) | 🔴 Not Started | Short LinkedIn posts as milestones hit (rules published, states validated, etc.) |
-| Video content | 🔴 Not Started | Demo recording is first; explainer videos later |
-| Paper promotion post (on publication) | 🔴 Not Started | After expert review and finalization |
-
-**Sequencing note:** Don't start heavy content production until there's something real to point to. The demo video + GitHub publication is the right first content anchor. Paper/2-pager launch should be sequenced with outreach (Workstream 4).
+- **Schema v2** (5 modules) implemented; all 51 files migrated.  
+- **L1 statutory retrieval: complete, 51/51 retrieved.** 44 states AUTOMATED-CHECKS-PASSED; 7 DRAFT held only by L5 notice-period outlier flags (DC, MA, MN, NJ, TN, VT, WA — retrieved, awaiting confirmation). 8 states carry L1-MACHINE-ASSIST flags (ME, OH, WV, MO, MS, ND, IL, SD) — retrieval reached an adjacent statute, not squarely the pay-or-quit authority; first verification targets.  
+- **L3** 51/51 PASS. **L5** operational. **L2/L4/L6** `not_implemented`.  
+- **Coverage audit (June 16):** notice complete; service \+ state-protective overlays structurally present but ungrounded for non-demo states; procedural\_defects \+ substantive\_defenses skeleton-only. **Contamination finding (fixed):** 244 local-overlay entries across 42 states named wrong-state cities — removed in the June 16 cleanup; L5 extended with a jurisdiction-consistency check so it can't recur.  
+- **Demo:** recorded; Loom link [https://www.loom.com/share/8f1274d5a3d74a4bb4ca8a5181fde3dc](https://www.loom.com/share/8f1274d5a3d74a4bb4ca8a5181fde3dc) ; on Slide 7\.  
+- **Collateral:** deck (v3 \+ scope slides pending), working paper v0.7, 2-pager v13 — all in draft with tracked changes; not yet finalized/published.  
+- **Repo:** public; Apache 2.0; `andrewmichaelcohen-a2j/a2j-ai`.
 
 ---
 
-## Workstream 4: Strategic Outreach
+## Validation Roadmap (summary)
 
-**Sequencing principle:** Get real content published (or ready to publish) before reaching out. An ask is much stronger with a demo, a live GitHub repo, and a draft paper in hand. Articulate a clear, concrete ask before initiating each relationship.
+Full detail: `docs/VALIDATION_ROADMAP.md`.
 
-### 4A. Margaret / Stanford (Renewed LHC Pitch)
+**Organizing truth:** automated layers (L1–L6) cost under \~$200 total; L2 multi-model consensus \~$20–70 in API tokens. **L7 attorney review is the entire cost and timeline.**
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Initial Stanford/Courts call | ✅ Done | Zoom call with Courts + Stanford Legal Design Lab group (April 2026). Positive. |
-| Finalize LHC pitch materials (deck + 2-pager) | 🟡 In Progress | Deck strong; 2-pager not yet drafted |
-| Paper review by friendly experts | 🔴 Not Started | Before sending to Margaret |
-| Send Margaret the renewed pitch | 🔴 Not Started | Sequence after paper review + 2-pager ready |
-| Follow-up / next steps | 🔴 Not Started | |
-
-**Ask to articulate:** Stanford partnership or endorsement; connection to the LASC/Stanford project; access to their existing rules/IP; potential research collaboration or co-publication.
+- **L2 subscriptions (specific):** pay-as-you-go **API** access (not consumer chat plans) — OpenAI (GPT-5.4, \~$2.50/$15 per 1M) and Google Gemini (3.1 Pro, \~$2/$12 per 1M); \~$20–50 load each; Batch API (50% off).  
+- **L2 as the machine-assist fix:** L2 is the right *automated* next step for the 8 L1-machine-assist flags — independent re-check by two other model families resolves the clear cases, sharpens the rest, before any L7 spend. Cheap pre-step: targeted re-retrieval of the specific provision a flag already names (e.g., IL §9-209).  
+- **L7 sourcing: PAID flagship (conservative baseline).** Pay expert CA tenant attorney(s) to get California to VALIDATED fast — \~20–50 hrs, \~$6K mid placeholder (not a quote). Donate for breadth via law-school partners thereafter. Andy (licensed attorney) self-clears bright-line outlier gates (\<2 hrs); open-textured review wants a specialist alongside him.
 
 ---
 
-### 4B. University of Michigan Law
+## Standards
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Identify the right contacts | 🔴 Not Started | Who at U of M law is working on A2J / legal technology? |
-| Prepare outreach materials | 🔴 Not Started | 2-pager + demo link |
-| Initial outreach | 🔴 Not Started | After demo published and paper in draft |
-| Articulate ask | 🔴 Not Started | Research collaboration? Clinical partnership for attorney validation (Layer 7)? |
+Three reference standards, all in the messaging: **NIST AI RMF** (process), **enterprise software testing** (validate before release), **autonomous-vehicle standard** (certified performance under defined conditions, openly measured — not perfection).
 
----
+**NIST AI RMF — staged, proactive (do not wait to be asked):**
 
-### 4C. Other Leaders in the Space
+- **Now:** lightweight RMF *mapping* (seven layers \-\> Govern/Map/Measure/Manage, honest per-function status). Guides the work; few hours.  
+- **Downstream:** full evidenced *self-assessment*, after L2/L4/L6 \+ flagship L7, when it reflects a process that genuinely meets the standard. Legitimate because timed to when the work exists, not to hide gaps.  
+- **ISO/IEC 42001:** formal certification candidate at the stewardship phase, with an institutional host.
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Map the landscape | 🔴 Not Started | Who are the key players? LSC, Learned Hands, Suffolk LIT Lab, Self-Help Support, state court A2J programs, law school clinics |
-| Identify where LHC has clear value prop vs. existing efforts | 🔴 Not Started | Position LHC as infrastructure/commons, not a competitor |
-| Prioritize outreach targets | 🔴 Not Started | Sequence by: (a) those who can validate/endorse, (b) those who can contribute rules/attorneys, (c) funders |
-| Outreach | 🔴 Not Started | After content is published and ask is clear |
-
-**Contacts already active:**
-- Tien Tzuo: exchange completed (May 2026), positive
-- Luca: Zoom call (April 2026)
+Tense discipline: NIST \= "aligned to" (now) · academic evaluation \= substantive accuracy (Phase 1\) · ISO \= "candidate for" (Phase 3).
 
 ---
 
-## GitHub Repo Status
+## Build Sequence (current)
 
-**Repo:** `github.com/andrewmichaelcohen-a2j/a2j-ai`
-**Local path:** `/Users/andrewcohen/Documents/GitHub/a2j-ai/`
+1. **Overlays cleanup** *(in progress, Cowork)* — remove cross-state contamination, de-scope local to CA, add L5 jurisdiction check, fix stale State-of-Record items. *Run and confirm before the build.*  
+2. **Five-module build** *(next, Cowork; direction ready)* — tier-ordered with two disciplines: **push-to-100%** on bright-line modules (service, state-protective overlays, procedural defects); **flag-don't-fabricate** on open-textured (substantive defenses). One concentrated effort; validate the whole library in one pass (no per-module multiplier). Local overlays NOT built.  
+3. **L1-flag review \+ outlier confirmations** — Andy clears the 7 bright-line L5 outliers (\<2 hrs); the 8 machine-assist flags route to L2 then residual L7.  
+4. **L2 / L4 / L6** — automated layers; L2 prioritized (attacks machine-assist flags); L4 golden sets (CA-\>TX-\>NY); L6 freshness.  
+5. **Flagship L7** — California to VALIDATED (paid), with published error rate.  
+6. **Docs pass \+ outreach** — see below.
 
-| Folder | Contents | Status |
-|--------|----------|--------|
-| `rules/` | 51-state eviction rules (JSON) | ✅ Committed; not yet public |
-| `demos/` | Eviction defense demo (HTML/React) | ✅ Committed; not yet public |
-| `plugins/` | A2J Claude plugins | ✅ Committed; not yet public |
-| `playbooks/` | Legal workflow playbooks | ✅ Committed; not yet public |
-| `docs/` | PROJECT_STATUS_JUNE2026.md, architecture notes | ✅ Committed; not yet public |
-
-**Immediate action needed:** Set repo visibility to **Public** on GitHub.com to publish all content.
+**Gating:** scope/scaffolding (1–2) completes before the flag review and L2/L4/L6, so those run against a stable library.
 
 ---
 
-## Key Decisions / Open Questions
+## Working with Cowork: completion discipline
 
-1. **Paper scope:** Is this an academic paper, a practitioner white paper, or both? Who is the primary audience — legal aid executives, funders, academics, court administrators?
+Observed failure mode: Cowork declares completion prematurely (L1 at \~60%, again \~90%) on completable tasks. Directions counter this, **scoped by module risk:**
 
-2. **LHC entity structure:** Has a formal entity (nonprofit, LLC) been determined? This affects how the rules library and certification framework are governed publicly.
+- **Bright-line modules:** completion \= 100% of states, no exceptions; retry failed retrievals with alternate sources / corrected URLs; "I can't get this one" \= try harder before flagging.  
+- **Open-textured modules:** the opposite — populate only what can be grounded; **flag-don't-fabricate**; a confident uncited answer is a failure (this discipline's absence caused the contamination). Record gaps via `review_weight: specialist_required` \+ `grounding_gap`.
 
-3. **Attorney validation network:** How will Layer 7 attorneys be recruited and compensated? Law school clinics (U of M, Stanford, others) as partners? LSC-connected organizations?
-
-4. **Certification body:** Who ultimately certifies rules as Validated? This is the hardest governance question and should be addressed before publishing the certification framework publicly.
-
-5. **Demo tech stack:** The current demo is a standalone HTML app. Is there a plan for a live hosted version, or will the demo stay as a local/GitHub download?
-
-6. **Content identity:** Will you publish under your personal name, under "Legal Help Commons," or both? This affects website/Substack setup.
+Also: Cowork's reported doc updates must be **confirmed in the file**, not trusted on report (see the Plan-drift lesson above).
 
 ---
 
-## Logical Sequencing (Recommended Order)
+## Collateral
 
-1. **Publish the repo (public)** — flip the switch on GitHub. Zero effort, maximum credibility gain.
-2. **Complete demo rehearsal + record demo video** — first concrete shareable artifact.
-3. **Draft 2-pager** — can be done quickly using existing deck + conversations.
-4. **Draft paper** — longer effort; use all the raw material from architecture conversations.
-5. **Expert review of paper** — before sending to Margaret or publicizing.
-6. **Send Margaret the full pitch** (deck + 2-pager + paper + live demo link).
-7. **Launch Substack / website + first posts** — timed with or just after GitHub goes public.
-8. **Initiate rules validation pipeline** (Layers 1–6 automated; recruit Layer 7 attorneys).
-9. **U of M Law outreach** — by this point you have the paper, demo, and a clear ask (clinical partnership for attorney validation).
-10. **Broader landscape outreach** — once LHC has real published content and some early validation.
+| Item | Version | Status |
+| :---- | :---- | :---- |
+| Pitch deck (Civil Justice as Code) | v3 \+ scope slides pending | Draft; demo embedded |
+| Working paper | v0.7 | Draft, tracked changes |
+| 2-pager | v13 | Draft, tracked changes |
+| Demo (Loom) | v5 script | Recorded & linked |
 
----
+**Lifecycle:** draft in Mac/Google Docs \+ A2J project chat \-\> finalize (accept changes) \-\> publish clean paper/2-pager to repo (deck optional, often kept as controlled link). Not in Cowork; not in public repo while in tracked-change draft.
 
-## Collateral Inventory
+**OPEN ITEM — deferred docs pass (do not lose):** the local de-scope and the contamination finding are intentionally **not** in the paper/deck/2-pager now (de-scope is below the docs' architectural altitude; contamination is a *conversational* trust asset, not a written claim). **Trigger:** after the five-module build lands, the docs need a pass anyway to reflect populated modules — fold any scope-language tightening into that single pass. Recorded here so it survives in the repo, not in memory.
 
-| Item | Location | Status |
-|------|----------|--------|
-| LHC Pitch Deck (17 slides) | `a2j-ai/` + Cowork session (LSC governance) | ✅ Done |
-| LHC Due Diligence Guide | Cowork session (LSC governance) | ✅ Done |
-| LHC Architecture Doc (v0.2) | Google Drive | ✅ Done (needs minor update for new folder structure) |
-| Eviction Defense Demo (HTML app) | `a2j-ai/demos/` | ✅ Done |
-| Legal-Help-Commons.html (web prototype) | Documents/Legal Commons/A2J (saved by user) | ✅ Done |
-| 51-State Eviction Rules (JSON) | `a2j-ai/rules/` | ✅ Done |
-| PROJECT_STATUS_JUNE2026.md | `a2j-ai/docs/` | ✅ Done (session-level checklist; superseded by this doc) |
-| LHC Meeting Brief (debt collection experts) | Cowork session (debt collection) | ✅ Done |
-| Formal Paper | — | 🔴 Not Started |
-| 2-Pager | — | 🔴 Not Started |
-| Demo Video | — | 🔴 Not Started |
-| Substack / Website | — | 🔴 Not Started |
+**Contamination as narrative asset:** "our audit caught confident-wrong data, we removed it, and we hardened the validation layer so it can't recur" — use conversationally if a partner probes rigor. Evidence the discipline works.
 
 ---
 
-*Last updated by Claude (Cowork) — June 3, 2026. Update this doc after each significant session or milestone.*
+## Outreach
+
+**Sequence (holds):** **law schools first \-\> institutions/funders \-\> Anthropic.** Each conversation uses the same kit: deck \+ live demo link \+ validation report. Gate on demo recorded (done) \+ validation report published \+ at least the flagship state genuinely VALIDATED, so every conversation is show, not tell.
+
+**Targets:**
+
+- **Stanford** — Legal Design Lab (human-centered A2J / human-review layer), RegLab (AI with agencies/courts), liftlab (industry prototyping), CodeX (computational-law tradition). Co-author/independent-evaluate the validation methodology.  
+- **University of Michigan Law** — A2J / legal-tech faculty; potential clinical partnership for L7 attorney validation.  
+- **Anthropic** — legal team \+ product leaders; the rules layer as the complement that makes the A2J axis of Claude for Legal deliver.  
+- **Broader landscape** (later) — LSC, Suffolk LIT Lab, court A2J programs, law-school clinics; positioned as commons/infrastructure, not competitor.
+
+*(Individual contacts intentionally omitted from this plan; tracked separately.)*
+
+---
+
+## Phases
+
+- **Phase 1 — Eviction defense, proven (now \-\> \~3 mo):** five modules populated; 50-state automated checks; CA \+ a stratified sample attorney-VALIDATED with a published error rate; collateral finalized; first institutional conversations.  
+- **Phase 2 — Conditional expansion:** a second domain (likely consumer-debt defense or benefits appeals), chosen by prevalence × harm × rule-governability; broaden attorney validation via partners.  
+- **Phase 3 — Stewardship:** institutional home; recognition (LSC, state bars); ISO/IEC 42001; coverage extension through the partner network.
+
+---
+
+## Open Decisions
+
+- **L7 flagship sourcing:** paid baseline set; confirm budget appetite / specific reviewer.  
+- **Content identity:** personal name vs. project brand — gates Substack/website.  
+- **Long-term institutional home:** Stanford / LSC / foundation; and when to open the handoff conversation.  
+- **Funding posture:** Andy pro bono confirmed; decide whether L7 is donated (clinics) or underwritten via an institutional host.  
+- **Loose-file cleanup:** a stale `PROJECT_PLAN.md` copy exists in `Documents/` (outside the repo) — delete/rename so only the repo copy remains.
+
+---
+
+## Out of Scope (explicit)
+
+- Not a business or product. Not competing with existing A2J tools (complementary).  
+- No automated advancement past AUTOMATED-CHECKS-PASSED.  
+- No broad local-overlay build (CA-only, Phase 1).  
+- No L2/L6 infrastructure build until scope/scaffolding is stable.
+
+---
+
+*Civil Justice as Code · Project Plan v3.0 · June 16, 2026 · Maintained by Andy \+ Claude (planning surface). Companion: PROJECT\_STATE\_OF\_RECORD.md (Cowork). Replaces the retired June-3 LHC-era plan.*  
