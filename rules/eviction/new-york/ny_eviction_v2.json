@@ -325,13 +325,6 @@
         "effect": "Rent Control and Rent Stabilization systems; DHCR enforcement; regulated unit counts declining \u2014 verify current status",
         "source": "NYC Administrative Code \u00a726-401 et seq.",
         "digitization_note": null
-      },
-      {
-        "jurisdiction": "Nassau County, Westchester, etc.",
-        "type": "rent_control",
-        "effect": "Some municipalities have local rent stabilization ordinances; verify jurisdiction-by-jurisdiction",
-        "source": "[various local ordinances]",
-        "digitization_note": "Local rent stabilization outside NYC requires municipality-by-municipality verification; many ordinances not fully digitized"
       }
     ]
   },

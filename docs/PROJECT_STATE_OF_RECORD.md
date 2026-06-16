@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 15, 2026 (Wave 3 complete — L1 retrieval 51/51) · **Next update:** after each significant session
+**Generated:** June 15, 2026 · **Last updated:** June 16, 2026 (Overlays cleanup — cross-state contamination removed; local de-scoped to CA-only; L5 xstate check added) · **Next update:** after each significant session
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -15,7 +15,7 @@
 | Visibility | **Public** (confirmed) |
 | License | Apache 2.0 |
 | Active branch | `main` |
-| Last commit | 2026-06-11 — `update ca rules json file` (v2 + L1 retrieval Wave 1/2/3 all local-only — pending commit via GitHub Desktop — see §7) |
+| Last commit | 2026-06-16 — overlays cleanup, coverage audit, L5 xstate check (pushed via GitHub Desktop) |
 
 ---
 
@@ -200,7 +200,7 @@ Statutory text retrieved for all 7. L5 flags require L7 attorney review to resol
 | **L2** | Multi-model consensus | ⚠️ not_implemented | — |
 | **L3** | Internal consistency | ✅ Operational | 51/51 PASS · 0 errors · 2 warnings (NY, WA) |
 | **L4** | Golden-set tests | ⚠️ not_implemented | — |
-| **L5** | Cross-jurisdiction anomaly | ✅ Operational | PASS for 44 states (ACP); flags on DC/MA/MN/NJ/NY/TN/VT/WA notice-period (7 DRAFT) |
+| **L5** | Cross-jurisdiction anomaly | ✅ Operational | PASS for 44 states (ACP); flags on DC/MA/MN/NJ/NY/TN/VT/WA notice-period (7 DRAFT); **new sub-check added 2026-06-16: L5-LOCAL-XSTATE detects wrong-state jurisdiction entries in overlays.local — all 51 states pass clean after overlays cleanup** |
 | **L6** | Temporal freshness | ⚠️ not_implemented | — |
 | **L7** | Attorney review | 🔴 Not started | 0/51 modules attorney-reviewed |
 
@@ -286,7 +286,7 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 **File:** `demos/eviction/prompts/demo-script.md`  
 **Version:** v5 (as of 2026-06-10 commits)  
 **Format:** Loom recording script — ~6:00–6:30 minutes  
-**Status:** Script finalized; **recording not yet made**
+**Status:** Script finalized; **recording complete — Loom: https://www.loom.com/share/8f1274d5a3d74a4bb4ca8a5181fde3dc**
 
 **Scene structure:**
 
@@ -307,7 +307,7 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 - Cowork: blank session, ready
 - File ready to drag into Scene 4: `plugins/eviction-defense/jurisdictions/ca_eviction_rules_v0.1.json`
 
-**Demo link:** Not yet recorded. Will be a Loom URL. Placeholder: `[ link to demo ]` on Slide 7 of Demo_Deck_v0.4.pptx.
+**Demo link:** https://www.loom.com/share/8f1274d5a3d74a4bb4ca8a5181fde3dc — recorded and live. Slide 7 placeholder updated.
 
 ---
 
@@ -317,6 +317,13 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 | Date | What changed |
 |------|-------------|
+| **2026-06-16** | **Overlays local cleanup — cross-state contamination removed; local de-scoped to CA-only; L5 xstate check added** |
+| | Coverage audit (`docs/COVERAGE_AUDIT_2026-06-16.md`) — full per-module content audit across all 51 v2 files; found 472 wrong-state local entries (cascading templating artifact) across 42 states |
+| | Removed all 472 cross-state contamination entries from `overlays.local` across 47 affected files |
+| | De-scoped local overlays to CA-only for Phase 1: CA's 7 clean in-state entries kept as-is; states with real-sourced correct-state entries (CO/IL/MN/NJ/NY/OR/TX/WA/WI) kept those; all remaining [VERIFY] and placeholder entries replaced with `OUT_OF_SCOPE_PHASE_1` marker |
+| | Added `l5_local_xstate_check()` to `validate.py` L5 layer: flags any `overlays.local` entry whose jurisdiction belongs to a different state |
+| | Re-ran `validate.py` → 51/51 L3 PASS, 51/51 L1 pass, 44 ACP, 7 DRAFT (unchanged), **0 L5-LOCAL-XSTATE flags** — clean |
+| | Corrected stale State of Record items (see §6, §7, §8): demo Loom link added; paper (v0.7) and 2-pager (v13) status updated; June 15 commit pushed |
 | **2026-06-15** | **L1 statutory retrieval pass — Wave 3 COMPLETE (7 previously unresolvable states; now 51/51 total)** |
 | | Retrieved AR (§18-17-701 via Justia subtitle-2), SC (§27-40-710 via Justia 2024), SD (§21-16-1 via Justia chapter-16), IL (735 ILCS 5/9-207 via FindLaw), PA (68 P.S. §250.501 via FindLaw), IA (§562A.27 via Justia 2022 title-xiv), UT (§78B-6-802 via Justia 2020 part-8/section-802) |
 | | IL and SD flagged L1-MACHINE-ASSIST: IL §9-207 is holdover/termination statute (pay-or-quit §9-209 unretrieval); SD §21-16-1 is FED grounds statute (nonpayment in subsection 4) |
@@ -350,15 +357,14 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 | 2026-06-04 | `fixes to address file name changes and slight demo flow updates` |
 | 2026-06-02 | `project checklist` + `Restructure repo: plugins/, rules/, demos/; 51-state rules library; attribution` |
 
-**⚠️ Pending commit:** All June 15 work is local-only (v2 schema, 51 rules files, l1_update.py, validate.py, all write-backs from L1 Waves 1/2/3, this STATE_OF_RECORD). Suggested commit message: `"L1 retrieval complete: 51/51 states retrieved; 44 ACP; validate.py 2026-06-15"`. Andy pushes via GitHub Desktop.
+June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed and pushed 2026-06-16. June 16 work (overlays cleanup, coverage audit, L5 xstate check) ready to commit — Andy pushes via GitHub Desktop.
 
 ---
 
 ## 8. Open Issues / Known Defects
 
-### Demo — Blocking for Recording
-- [ ] **Demo rehearsal not completed.** Full 6-scene flow needs one clean end-to-end run in Cowork before recording. Scenes 3–4 (Orozco + live rules attachment) are highest-risk.
-- [ ] **Demo not yet recorded.** No Loom link exists. Slide 7 placeholder `[ link to demo ]` not yet filled.
+### Demo
+- [x] **Demo recorded.** Loom: https://www.loom.com/share/8f1274d5a3d74a4bb4ca8a5181fde3dc
 - [ ] **Scene 4 file decision:** Script says to attach `ca_eviction_rules_v0.1.json` (plugin-local demo file). The canonical v2 file is `rules/eviction/california/ca_eviction_v2.json`. Decide which to use in the demo before recording.
 - [ ] **v2 files not yet reflected in widget.** `RulesComparisonWidget.html` still references v1 data. Consider updating or noting in the demo that v2 is the new library format.
 
@@ -370,6 +376,7 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 ### Validation Pipeline
 - [x] **L1 retrieval pass COMPLETE (2026-06-15 — all waves).** 51/51 states statutorily retrieved. 44 states at AUTOMATED-CHECKS-PASSED. Wave 3 resolved previously unresolvable states (AR, IA, IL, PA, SC, SD, UT) using corrected URL structures and FindLaw as alternative source. Machine-assist flags added for ME, OH, WV, MO, MS, ND (Waves 1/2) and IL, SD (Wave 3). L1 retrieval is **closed** — no further retrieval work needed.
+- [x] **Overlays local cleanup complete (2026-06-16).** 472 cross-state contamination entries removed from 47 files. Local layer de-scoped to CA-only for Phase 1. L5-LOCAL-XSTATE check added to validate.py; all 51 states pass clean.
 - [ ] **L5 flags — 7 states DRAFT despite L1 pass** (DC, MA, MN, NJ, TN, VT, WA). Statutory text retrieved. L5 cross-jurisdiction anomaly flags on notice period. All require L7 attorney review to resolve and advance.
 - [ ] **L2 (multi-model consensus):** not_implemented. Needs a runner that queries a second model and compares outputs.
 - [ ] **L4 (golden sets):** not_implemented. 0/51 states have golden sets. Need at least CA and TX before outreach. See `test-cases/README.md`.
@@ -379,8 +386,8 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 - [ ] **Re-run on L2/L4/L6 expansion:** When new layers come online, all AUTOMATED-CHECKS-PASSED modules must be re-run. Modules that fail revert to DRAFT per STATUS_LABELS v2.
 
 ### Strategic / Project Level
-- [ ] **Formal paper:** Not started. Raw material in prior Cowork sessions.
-- [ ] **2-pager:** Not started.
+- [ ] **Formal paper:** In progress — v0.7 exists. Raw material in prior Cowork sessions.
+- [ ] **2-pager:** In progress — v13 exists.
 - [ ] **Substack / website:** Not set up.
 - [ ] **Margaret/Stanford pitch:** Deck ready; 2-pager and paper not done. Send after paper.
 - [ ] **Content identity decision:** Personal name vs. A2J project brand — decide before Substack/website.
@@ -403,4 +410,4 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 ---
 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*  
-*State of Record last updated by Claude (Cowork) — June 15, 2026 (Wave 3 complete; L1 retrieval 51/51; 44 ACP). Replace this file at the start of each session after significant work.*
+*State of Record last updated by Claude (Cowork) — June 16, 2026 (Overlays cleanup complete; 472 cross-state entries removed; local de-scoped to CA-only; L5-LOCAL-XSTATE check added; 44 ACP / 7 DRAFT unchanged; re-run clean). Replace this file at the start of each session after significant work.*

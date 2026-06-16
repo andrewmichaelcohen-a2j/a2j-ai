@@ -434,6 +434,61 @@ def layer3_all(data, state):
     return results
 
 
+# ── Layer 5: Local-overlay jurisdiction consistency ────────────────────────────
+# Mapping of known city/county names (normalized lowercase) to their home state.
+# Used by L5 to detect cross-state contamination in overlays.local.
+_LOCAL_CITY_TO_STATE = {
+    "phoenix": "AZ", "tucson": "AZ",
+    "denver": "CO",
+    "atlanta": "GA",
+    "chicago": "IL", "cook_county": "IL",
+    "baltimore_city": "MD", "montgomery_county": "MD", "prince_georges": "MD",
+    "boston": "MA", "cambridge": "MA",
+    "minneapolis": "MN", "saint_paul": "MN",
+    "kansas_city": "MO", "st_louis": "MO",
+    "henderson": "NV", "las_vegas": "NV",
+    "newark": "NJ", "jersey city": "NJ",
+    "new york city": "NY", "nassau county, westchester, etc.": "NY",
+    "portland": "OR",
+    "philadelphia": "PA",
+    "austin": "TX",
+    "seattle": "WA",
+    "madison": "WI",
+    "los angeles": "CA", "san francisco": "CA", "oakland": "CA",
+    "berkeley": "CA", "santa monica": "CA", "san jose": "CA",
+    "los angeles (county unincorporated)": "CA",
+}
+
+_OUT_OF_SCOPE_SENTINEL = "out_of_scope_phase_1"
+
+
+def l5_local_xstate_check(state_code, overlays_data):
+    """
+    L5 sub-check: flag any overlays.local entry whose jurisdiction is a known
+    city/county that belongs to a different state. Returns list of flag strings.
+    """
+    flags = []
+    local = overlays_data.get("local", []) if isinstance(overlays_data, dict) else []
+    if not isinstance(local, list):
+        return flags
+    for entry in local:
+        if not isinstance(entry, dict):
+            continue
+        jur = entry.get("jurisdiction", "")
+        if not jur:
+            continue
+        norm = jur.strip().lower()
+        if norm == _OUT_OF_SCOPE_SENTINEL:
+            continue  # Explicit out-of-scope marker — not an error
+        mapped_state = _LOCAL_CITY_TO_STATE.get(norm)
+        if mapped_state and mapped_state != state_code:
+            flags.append(
+                f"L5-LOCAL-XSTATE: overlays.local entry jurisdiction='{jur}' "
+                f"belongs to {mapped_state}, not {state_code} — cross-state contamination"
+            )
+    return flags
+
+
 # ── Layer 5: Cross-Jurisdiction Anomaly Detection (per-module) ────────────────
 
 def layer5_cross_jurisdiction(all_files_data):
@@ -503,6 +558,10 @@ def layer5_cross_jurisdiction(all_files_data):
             per_module_flags["overlays"].append(
                 "L5-OVERLAY-NO-FEDERAL: no federal overlays — CARES Act stub expected in all states"
             )
+
+        # Overlays: cross-state local jurisdiction check (new — June 16, 2026)
+        xstate_flags = l5_local_xstate_check(code, data.get("overlays", {}))
+        per_module_flags["overlays"].extend(xstate_flags)
 
         results[code] = per_module_flags
 

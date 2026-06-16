@@ -251,11 +251,11 @@
     ],
     "local": [
       {
-        "jurisdiction": "(statewide note)",
+        "jurisdiction": "OUT_OF_SCOPE_PHASE_1",
         "type": "other",
-        "effect": "Florida state law preempts local rent control; no local rent control ordinances currently enforceable after 2023 constitutional challenge \u2014 verify current status",
-        "source": "Fla. Stat. \u00a7125.0103; Fla. Stat. \u00a7166.043",
-        "digitization_note": "Local rent control in FL legally uncertain; verify current enforceability before relying on any local ordinance"
+        "effect": "Local ordinance coverage deferred; see Project Plan. Federal and state-protective overlays apply.",
+        "source": "OUT_OF_SCOPE_PHASE_1",
+        "digitization_note": "Local overlay coverage for this state is deferred to a future build phase. California is the only state with local overlay data in Phase 1."
       }
     ]
   },

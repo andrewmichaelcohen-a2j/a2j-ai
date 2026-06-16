@@ -263,32 +263,11 @@
     ],
     "local": [
       {
-        "jurisdiction": "(see digitization note)",
+        "jurisdiction": "OUT_OF_SCOPE_PHASE_1",
         "type": "other",
-        "effect": "Local rent control or just cause ordinances may apply in some municipalities \u2014 not systematically encoded for this state",
-        "source": "[local ordinances]",
-        "digitization_note": "Local overlay coverage for this state has not been systematically researched. Attorney review required to identify any applicable local ordinances."
-      },
-      {
-        "jurisdiction": "phoenix",
-        "type": "other",
-        "effect": "Just cause required: False; Ordinance: see source",
-        "source": "[VERIFY]",
-        "digitization_note": null
-      },
-      {
-        "jurisdiction": "tucson",
-        "type": "other",
-        "effect": "Just cause required: False; Ordinance: see source",
-        "source": "[VERIFY]",
-        "digitization_note": null
-      },
-      {
-        "jurisdiction": "denver",
-        "type": "just_cause",
-        "effect": "Just cause required: True; Ordinance: Denver Just Cause Ordinance (Ord. 300, 2023)",
-        "source": "Denver Just Cause Ordinance (Ord. 300, 2023)",
-        "digitization_note": null
+        "effect": "Local ordinance coverage deferred; see Project Plan. Federal and state-protective overlays apply.",
+        "source": "OUT_OF_SCOPE_PHASE_1",
+        "digitization_note": "Local overlay coverage for this state is deferred to a future build phase. California is the only state with local overlay data in Phase 1."
       }
     ]
   },

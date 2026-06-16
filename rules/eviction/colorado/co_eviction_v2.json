@@ -259,27 +259,6 @@
     ],
     "local": [
       {
-        "jurisdiction": "(see digitization note)",
-        "type": "other",
-        "effect": "Local rent control or just cause ordinances may apply in some municipalities \u2014 not systematically encoded for this state",
-        "source": "[local ordinances]",
-        "digitization_note": "Local overlay coverage for this state has not been systematically researched. Attorney review required to identify any applicable local ordinances."
-      },
-      {
-        "jurisdiction": "phoenix",
-        "type": "other",
-        "effect": "Just cause required: False; Ordinance: see source",
-        "source": "[VERIFY]",
-        "digitization_note": null
-      },
-      {
-        "jurisdiction": "tucson",
-        "type": "other",
-        "effect": "Just cause required: False; Ordinance: see source",
-        "source": "[VERIFY]",
-        "digitization_note": null
-      },
-      {
         "jurisdiction": "denver",
         "type": "just_cause",
         "effect": "Just cause required: True; Ordinance: Denver Just Cause Ordinance (Ord. 300, 2023)",
