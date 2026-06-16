@@ -15,7 +15,7 @@
 | Visibility | **Public** (confirmed) |
 | License | Apache 2.0 |
 | Active branch | `main` |
-| Last commit | 2026-06-11 — `update ca rules json file` (v2 changes not yet pushed — see §7) |
+| Last commit | 2026-06-11 — `update ca rules json file` (v2 + L1 retrieval changes not yet pushed — see §7) |
 
 ---
 
@@ -116,7 +116,7 @@ a2j-ai/
 ### v2 Summary (current)
 
 **Schema:** `eviction-v2` · **5 modules per file:** `notice`, `service`, `overlays`, `substantive_defenses`, `procedural_defects`  
-**Validation last run:** 2026-06-15 (v2, post-L1 retrieval pass)  
+**Validation last run:** 2026-06-15 (v2, L1 retrieval pass complete — all 51 states processed)  
 **Layers run:** L1, L3, L5 · L2/L4/L6: `not_implemented`  
 **file_status rule:** `min(module_status)` — enforced by `validate.py`
 
@@ -124,44 +124,64 @@ a2j-ai/
 |--------|-------|
 | Total v2 files | 51 |
 | L3 PASS | 51 / 51 |
-| L1 retrieved (statutory text confirmed) | **19** (CA, TX, NY, FL + 15 new — see below) |
-| file_status = AUTOMATED-CHECKS-PASSED | **18** (all 5 modules; see table below) |
-| file_status = DRAFT | **33** (32 L1-fail + VT special case) |
-| L5 notice-period flags | VT notice module (14 days), plus TN/WA/NJ flags |
+| L1 retrieved (statutory text statutorily retrieved) | **44** (CA/TX/NY/FL prior session + 40 this session) |
+| file_status = AUTOMATED-CHECKS-PASSED | **37** |
+| file_status = DRAFT — L1 fail (text not retrievable) | **7** — AR, IA, IL, PA, SC, SD, UT |
+| file_status = DRAFT — L1 pass but L5 flags | **7** — DC, MA, MN, NJ, TN, VT, WA |
 
-**States at AUTOMATED-CHECKS-PASSED (all 5 modules; coverage L1,L3,L5; reviewer=null):**
+**States at AUTOMATED-CHECKS-PASSED (37):**
 
-| State | Citation retrieved | Note |
-|-------|--------------------|------|
+| State | Key citation statutorily retrieved | Source |
+|-------|------------------------------------|--------|
 | CA | CCP §1161 | Prior session |
 | TX | Tex. Prop. Code §24.005 | Prior session |
-| NY | RPAPL §711 | Prior session |
+| NY | RPAPL §711 | Prior session; L5 flag present but ACP |
 | FL | Fla. Stat. §83.56 | Prior session |
-| AL | Ala. Code §35-9A-421 | L1 pass: 7-business-day period |
-| AZ | A.R.S. §33-1368 | L1 pass: 5-day period |
-| CO | C.R.S. §13-40-104 | L1 pass: 10-day period |
-| HI | HRS §521-68 | L1 pass: 5-business-day period |
-| ID | Idaho Code §6-303 | L1 pass: 3-day period |
-| IN | Ind. Code §32-31-1-6 | L1 pass: 10-day period |
-| KS | K.S.A. §58-2564 | L1 pass: 3-day period |
-| LA | La. C.C.P. Art. 4701 | L1 pass: 5-day period |
-| ME | 14 M.R.S. §6001 | L1 pass; machine-assist flag: pay-or-quit period in §6002 — L7 must confirm |
-| MT | MCA §70-24-422 | L1 pass: 3-day period |
-| NM | NMSA §47-8-33 | L1 pass: 3-day period |
-| OH | ORC §1923.02 | L1 pass; machine-assist flag: notice period in §1923.04 — L7 must confirm |
-| WI | Wis. Stat. §704.17 | L1 pass: 5-day period |
-| WV | W. Va. Code §37-6-5 | L1 pass; machine-assist flag: §37-6-5 is termination statute; pay-or-quit authority unclear — L7 must identify |
+| AK | AS §34.03.220 | Justia |
+| AL | Ala. Code §35-9A-421 | Justia |
+| AZ | A.R.S. §33-1368 | Justia |
+| CO | C.R.S. §13-40-104 | Justia |
+| CT | Conn. Gen. Stat. §47a-23 | Justia |
+| DE | Del. Code tit. 25 §5501 | Justia |
+| GA | O.C.G.A. §44-7-50 | Justia |
+| HI | HRS §521-68 | Justia |
+| ID | Idaho Code §6-303 | Justia |
+| IN | Ind. Code §32-31-1-6 | Justia |
+| KS | K.S.A. §58-2564 | Justia |
+| KY | KRS §383.660 | Justia |
+| LA | La. C.C.P. Art. 4701 | Justia |
+| MD | Md. Code, Real Prop. §8-401 | Justia |
+| ME | 14 M.R.S. §6001 | Justia — machine-assist: pay-or-quit period in §6002; L7 must confirm |
+| MI | MCL §554.134 | michigan.gov |
+| MO | RSMo §441.050 | MO Revisor — machine-assist: §441.050 is termination statute; nonpayment in §535.020; L7 must confirm |
+| MS | Miss. Code Ann. §89-7-23 | Justia — machine-assist: §89-7-23 excludes RLTA tenancies (§89-8 et seq.); L7 must confirm |
+| MT | MCA §70-24-422 | Justia |
+| NC | N.C. Gen. Stat. §42-3 | ncleg.gov |
+| ND | NDCC §47-16-15 | FindLaw — machine-assist: §47-16-15 is termination statute; pay-or-quit authority unclear; L7 must confirm |
+| NE | Neb. Rev. Stat. §76-1431 | nebraskalegislature.gov |
+| NH | RSA 540:3 | gencourt.state.nh.us |
+| NM | NMSA §47-8-33 | Justia |
+| NV | NRS §40.253 | nevada.public.law |
+| OH | ORC §1923.02 | Justia — machine-assist: 3-day notice period in §1923.04; L7 must confirm |
+| OK | 41 O.S. §131 | Justia |
+| OR | ORS §90.394 | oregon.public.law |
+| RI | R.I. Gen. Laws §34-18-35 | FindLaw |
+| VA | Va. Code §55.1-1245 | law.lis.virginia.gov |
+| WI | Wis. Stat. §704.17 | Justia |
+| WV | W. Va. Code §37-6-5 | Justia — machine-assist: §37-6-5 is termination statute; pay-or-quit authority unclear; L7 must confirm |
+| WY | Wyo. Stat. §1-21-1002 | Justia |
 
-**VT — special case (L1 pass but file_status = DRAFT):**
-- L1 pass: 9 V.S.A. §4467 retrieved (14-day nonpayment notice confirmed)
-- L5 anomaly flag on `notice` module (14 days is >2× library median) blocks notice module advancement
-- 4 of 5 modules at AUTOMATED-CHECKS-PASSED; `notice` remains DRAFT
-- file_status = DRAFT (min rule). L7 attorney must confirm 14-day period is correct.
+**States at DRAFT (14 total):**
 
-**32 states with file_status = DRAFT (L1 fail — citation URL not resolved via Justia):**
-AK, AR, CT, DE, DC, GA, IA, IL, KY, MA, MD, MI, MN, MO, MS, NC, NE, NH, NJ, ND, NV, OK, OR, PA, RI, SC, SD, TN, UT, VA, WA, WY
+*L1 fail — text not retrievable (7 states; all sources JS-rendered or returned empty):*  
+AR (§18-17-701), IA (§562A.27), IL (735 ILCS 5/9-207), PA (68 Pa. C.S. §250.501), SC (§27-40-710), SD (§21-16-1), UT (§78B-6-802)  
+Attempted sources: Justia, FindLaw, state legislature sites, public.law. L7 attorney must retrieve directly.
 
-**v1 files:** Still present alongside v2 files. v1 is notice-centric (pre-5-module schema). v1 files are the source for v2 migration — do not delete.
+*L1 pass but L5 notice-period or cross-jurisdiction flag (7 states):*  
+DC (§42-3505.01), MA (MGL c. 186 §11), MN (§504B.285), NJ (§2A:18-61.1), TN (§66-28-505), VT (9 V.S.A. §4467 — 14-day notice; >2× library median), WA (§59.12.030 — L5 flag + L3 warn)  
+Statutory text retrieved for all 7. L5 flags require L7 attorney review to resolve.
+
+**v1 files:** Still present alongside v2 files. v1 is notice-centric (pre-5-module schema). Do not delete.
 
 ---
 
@@ -174,11 +194,11 @@ AK, AR, CT, DE, DC, GA, IA, IL, KY, MA, MD, MI, MN, MO, MS, NC, NE, NH, NJ, ND, 
 
 | Layer | Name | Status | v2 Result (2026-06-15) |
 |-------|------|--------|------------------------|
-| **L1** | Statutory grounding | ✅ Operational | **19 pass / 32 fail** (15 newly retrieved 2026-06-15) |
+| **L1** | Statutory grounding | ✅ Operational | **44 pass / 7 fail** (40 newly retrieved 2026-06-15; 7 unresolvable) |
 | **L2** | Multi-model consensus | ⚠️ not_implemented | — |
-| **L3** | Internal consistency | ✅ Operational | 51/51 PASS · 0 errors · 0 warnings |
+| **L3** | Internal consistency | ✅ Operational | 51/51 PASS · 0 errors · 2 warnings (NY, WA) |
 | **L4** | Golden-set tests | ⚠️ not_implemented | — |
-| **L5** | Cross-jurisdiction anomaly | ✅ Operational | PASS for most; VT/TN/NJ/WA notice-period flags |
+| **L5** | Cross-jurisdiction anomaly | ✅ Operational | PASS for 44 states; flags on DC/MA/MN/NJ/NY/TN/VT/WA notice-period |
 | **L6** | Temporal freshness | ⚠️ not_implemented | — |
 | **L7** | Attorney review | 🔴 Not started | 0/51 modules attorney-reviewed |
 
@@ -295,15 +315,17 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 | Date | What changed |
 |------|-------------|
-| **2026-06-15** | **L1 statutory retrieval pass — 47 states (this session)** |
-| | Retrieved statutory text for 15 of 47 remaining states via Justia |
+| **2026-06-15** | **L1 statutory retrieval pass — COMPLETE (40 additional states; 44/51 total)** |
+| | Retrieved statutory text for 40 of 47 remaining states (Justia, FindLaw, state legislative sites) |
+| | Sources used: Justia (primary), FindLaw (TN, RI, ND), nebraskalegislature.gov, michigan.gov, MO Revisor, gencourt.state.nh.us, ncleg.gov, nevada.public.law, oregon.public.law, law.lis.virginia.gov, code.dccouncil.gov, malegislature.gov |
 | | Marked `retrieved=True` + URL in `provenance.statutory_sources` for all resolved citations |
-| | Flagged 32 states as L1-non-resolving (Justia URL returned no content; see §3 for list) |
-| | Flagged all `[VERIFY STATE STATUTE]` placeholders with L1-PLACEHOLDER codes |
-| | Added machine-assist L1 flags for ME (§6001 vs §6002), OH (§1923.02 vs §1923.04), WV (§37-6-5 mismatch) |
-| | Re-ran `validate.py` → 14 new states advanced to AUTOMATED-CHECKS-PASSED (total: 18) |
-| | VT: L1 retrieved but notice module L5-flagged (14-day period); file_status = DRAFT |
+| | Added machine-assist L1 flags for ME, OH, WV, MO, MS, ND (statute retrieved but not precisely the pay-or-quit authority) |
+| | 7 states unresolvable (AR, IA, IL, PA, SC, SD, UT) — all sites JS-rendered or returned empty; flagged L1-URL-NOT-RESOLVED |
+| | Re-ran `validate.py` → 37 states at AUTOMATED-CHECKS-PASSED; 14 remain DRAFT (7 L1-fail + 7 L5-flagged) |
 | | Updated `docs/PROJECT_STATE_OF_RECORD.md` |
+| **2026-06-15** | **L1 statutory retrieval pass — wave 1 (15 states; earlier this session)** |
+| | Retrieved statutory text for 15 of 47 remaining states via Justia |
+| | Re-ran `validate.py` → 14 new states at AUTOMATED-CHECKS-PASSED (total: 18 at that point) |
 | **2026-06-15** | **v2 schema and rules library — full implementation (earlier this session)** |
 | | Created `rules/schema/eviction_schema_v2.0.json` (5-module full-defense schema) |
 | | Generated all 51 `*_eviction_v2.json` files (v1-migration + stub-expansion) |
@@ -339,13 +361,14 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 - [ ] **Demo script canonical copy:** `plugins/eviction-defense/prompts/demo-script.md` may be stale vs. `demos/eviction/prompts/demo-script.md`. The `demos/` copy is canonical.
 
 ### Validation Pipeline
-- [x] **L1 retrieval pass completed (2026-06-15).** 15 of 47 remaining states retrieved via Justia; 14 advanced to AUTOMATED-CHECKS-PASSED. 32 states remain DRAFT — Justia returned no content after 1–2 attempts (non-resolving flagged per L1 handoff protocol). Three machine-assist flags added (ME, OH, WV) for attorney confirmation. VT L1 retrieved but notice module L5-flagged; file_status = DRAFT pending attorney review.
-- [ ] **L1 retrieval: 32 remaining states** (AK, AR, CT, DE, DC, GA, IA, IL, KY, MA, MD, MI, MN, MO, MS, NC, NE, NH, NJ, ND, NV, OK, OR, PA, RI, SC, SD, TN, UT, VA, WA, WY). Justia failed for these. Options: (a) try alternate URL patterns for specific states; (b) use state legislature websites directly; (c) defer to L7 attorney retrieval. Not blocking demo or pitch — CA/TX/NY/FL/14-more are already AUTOMATED-CHECKS-PASSED.
+- [x] **L1 retrieval pass COMPLETE (2026-06-15).** 44/51 states statutorily retrieved (40 new this session). 37 states at AUTOMATED-CHECKS-PASSED. 7 states unresolvable (AR, IA, IL, PA, SC, SD, UT) — JS-rendered sites or consistently empty returns across Justia, FindLaw, state legislative sites, public.law. Machine-assist flags added for ME, OH, WV, MO, MS, ND.
+- [ ] **L1 retrieval: 7 unresolvable states** (AR, IA, IL, PA, SC, SD, UT). Text not retrievable via automated means. L7 attorney must retrieve directly from state sources. Not blocking demo — CA/TX/NY/FL + 33 more are AUTOMATED-CHECKS-PASSED or have text retrieved.
+- [ ] **L5 flags — 7 states DRAFT despite L1 pass** (DC, MA, MN, NJ, TN, VT, WA). Statutory text retrieved. L5 cross-jurisdiction anomaly flags on notice period. All require L7 attorney review to resolve and advance.
 - [ ] **L2 (multi-model consensus):** not_implemented. Needs a runner that queries a second model and compares outputs.
 - [ ] **L4 (golden sets):** not_implemented. 0/51 states have golden sets. Need at least CA and TX before outreach. See `test-cases/README.md`.
 - [ ] **L6 (temporal freshness):** not_implemented. Needs legislative feed / CI hook.
 - [ ] **L7 (attorney review):** Not started. CA is priority #1. Need one licensed CA tenant attorney to review CA's 5 modules. See `docs/REVIEWER_CHECKLIST.md`.
-- [ ] **L5 notice-period flags (VT, TN, NJ, WA):** VT's 14-day period is the most prominent — §4467 text retrieved and confirms 14 days, but L5 flag keeps VT notice module DRAFT. All require attorney confirmation during L7 review.
+- [ ] **L5 notice-period flags (DC, MA, MN, NJ, TN, VT, WA):** VT's 14-day period is most prominent — §4467 text retrieved and confirms 14 days, but L5 flag keeps notice module DRAFT. All 7 require attorney confirmation during L7 review.
 - [ ] **Re-run on L2/L4/L6 expansion:** When new layers come online, all AUTOMATED-CHECKS-PASSED modules must be re-run. Modules that fail revert to DRAFT per STATUS_LABELS v2.
 
 ### Strategic / Project Level

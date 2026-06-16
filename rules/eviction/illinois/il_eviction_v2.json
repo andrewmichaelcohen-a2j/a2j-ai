@@ -145,7 +145,7 @@
         "message": "Placeholder citation not resolved: \"[VERIFY STATE STATUTE]\". Statutory source unknown at L1 retrieval pass. Attorney review required to identify and retrieve applicable statute."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-15. Layers run: L1,L3,L5. file_status=DRAFT."
+    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=DRAFT."
   },
   "notice": {
     "notice_types": {

@@ -144,7 +144,7 @@
         "message": "ORC \u00a71923.02 retrieved (2025 text confirmed). Machine-assisted finding: \u00a71923.02 defines grounds for FED (including nonpayment); the specific 3-day pay-or-quit notice period for nonpayment is governed by \u00a71923.04, which was not separately retrieved. L7 attorney must confirm \u00a71923.04 notice period. NOT verification."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-15. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {
