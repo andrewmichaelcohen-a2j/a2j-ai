@@ -171,13 +171,18 @@ def layer3_notice(notice, state):
         else:
             pq = nt["pay_or_quit"]
             # Notice period
+            # notice_required=False means no statutory notice period for this ground (e.g., NJ nonpayment)
+            notice_required = pq.get("notice_required")  # None = not specified (defaults to required)
             days = None
             for subkey in ["tenancy_all", "tenancy_under_1yr", "tenancy_any"]:
                 if subkey in pq and isinstance(pq[subkey], dict):
                     days = pq[subkey].get("days")
                     break
             if days is None:
-                warnings.append("3-NOTICE-04: cannot determine pay_or_quit notice period — check notice_types.pay_or_quit structure")
+                if notice_required is False:
+                    pass  # Explicitly no notice required — valid; no warning (see docs/SCHEMA_V2_DESIGN_SPEC.md)
+                else:
+                    warnings.append("3-NOTICE-04: cannot determine pay_or_quit notice period — check notice_types.pay_or_quit structure")
             elif not isinstance(days, int) or days < 1:
                 errors.append(f"3-NOTICE-04: pay_or_quit notice period must be positive integer, got {days!r}")
             elif days > 60:

@@ -144,6 +144,23 @@
                 "permitted_amounts": { "type": "array", "items": { "type": "string" } },
                 "late_fees_permitted": { "type": "boolean" },
                 "utilities_permitted": { "type": "boolean" },
+                "notice_required": {
+                  "type": "boolean",
+                  "description": "Explicit boolean: false when no statutory notice is required for this ground before filing (e.g., NJ nonpayment — §2A:18-61.2 excludes nonpayment from notice-to-quit requirement). When false, tenancy_all.days should be null. Omit or set true for normal states. Canonical pattern: notice_required=false + exceptions[] for subsidy carve-outs."
+                },
+                "exceptions": {
+                  "type": "array",
+                  "description": "Conditions under which notice IS required (or a different period applies) despite notice_required=false. Canonical use: federally-subsidized housing carve-out. This is the library-wide pattern for 'no notice period / subsidy-conditional notice' — see docs/SCHEMA_V2_DESIGN_SPEC.md.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "condition": { "type": "string", "description": "Machine-readable condition identifier, e.g. federally_subsidized_housing" },
+                      "notice_required": { "type": "boolean" },
+                      "notice_period_days": { "type": ["integer", "null"] },
+                      "authority": { "type": "string", "description": "Statutory or regulatory authority for this exception" }
+                    }
+                  }
+                },
                 "tenancy_all": { "$ref": "#/definitions/notice_period" },
                 "tenancy_under_1yr": { "$ref": "#/definitions/notice_period" },
                 "tenancy_over_1yr": { "$ref": "#/definitions/notice_period" }
@@ -355,7 +372,11 @@
     "notice_period": {
       "type": "object",
       "properties": {
-        "days": { "type": "integer", "minimum": 1 },
+        "days": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "Notice period in days. null when no notice is required (use with notice_required=false on parent pay_or_quit). minimum:1 applies only when value is an integer."
+        },
         "statute": { "type": "string" },
         "count_method": { "type": "string", "enum": ["calendar_days", "business_days", "calendar_days_excluding_weekends_holidays"] }
       }

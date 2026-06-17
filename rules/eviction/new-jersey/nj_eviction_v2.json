@@ -79,13 +79,13 @@
     ]
   },
   "validation": {
-    "file_status": "DRAFT",
+    "file_status": "AUTOMATED-CHECKS-PASSED",
     "module_status": {
       "notice": {
-        "status": "DRAFT",
-        "reviewer": null,
-        "reviewed_date": null,
-        "coverage_level": null
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": "Andrew Cohen",
+        "reviewed_date": "2026-06-16",
+        "coverage_level": "L1,L3,L5"
       },
       "service": {
         "status": "AUTOMATED-CHECKS-PASSED",
@@ -117,7 +117,7 @@
       "L2_consensus": "not_implemented",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
-      "L5_crossjuris": "warning",
+      "L5_crossjuris": "pass",
       "L6_freshness": "not_implemented"
     },
     "coverage_level": "L1,L3,L5",
@@ -136,23 +136,35 @@
         "layer": "L5",
         "field": "notice",
         "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (30 days) is >2x median (5) \u2014 verify",
-        "disposition": "open"
+        "disposition": "resolved-corrected",
+        "reviewer": "Andrew Cohen",
+        "reviewed_date": "2026-06-16",
+        "reviewer_note": "30-day value was INCORRECT. Attorney review (Andrew Cohen, 2026-06-16) confirmed NJ has NO statutory nonpayment notice period \u2014 \u00a72A:18-61.2 expressly excludes nonpayment from the notice-to-quit requirement. Content corrected: days set to null, notice_required=false, federally-subsidized-housing exception added (14 days). Flag resolves by content correction."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=DRAFT."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {
       "pay_or_quit": {
-        "description": "Nonpayment of rent \u2014 ATTORNEY FINDING: NJ has no statutory nonpayment notice period (\u00a72A:18-61.2 expressly excludes nonpayment from notice-to-quit requirement). The 30-day value currently in this file is INCORRECT. Schema representation of 'no notice period' pending confirmation. Do not use for operational purposes. Stays DRAFT.",
+        "description": "Nonpayment of rent \u2014 NJ has no statutory notice period for nonpayment. N.J.S.A. \u00a72A:18-61.2 expressly carves nonpayment out of the notice-to-quit requirement; a covered landlord may file the summary dispossess action immediately. Exception: federally subsidized housing requires 14 days. Separately, habitual late payment (after a notice to cease) carries a one-month notice under \u00a72A:18-61.2(b) \u2014 that is a different ground, not the nonpayment period. Attorney confirmed: Andrew Cohen, 2026-06-16.",
         "permitted_amounts": [
           "unpaid_rent_only"
         ],
         "late_fees_permitted": false,
         "utilities_permitted": false,
+        "notice_required": false,
+        "exceptions": [
+          {
+            "condition": "federally_subsidized_housing",
+            "notice_required": true,
+            "notice_period_days": 14,
+            "authority": "federal subsidy program rules; cf. N.J.S.A. \u00a72A:18-61.2 carve-out"
+          }
+        ],
         "tenancy_all": {
-          "days": 30,
-          "statute": "N.J.S.A. \u00a72A:18-61.1 \u2014 NOTE: per attorney review, \u00a72A:18-61.2 expressly excludes nonpayment from notice-to-quit requirement; 30-day value below is INCORRECT and must be corrected",
+          "days": null,
+          "statute": "N.J.S.A. \u00a72A:18-61.1 (nonpayment ground); N.J.S.A. \u00a72A:18-61.2 (nonpayment excluded from notice-to-quit requirement \u2014 immediate filing permitted for market-rate tenancy)",
           "count_method": "calendar_days"
         }
       },
@@ -185,10 +197,10 @@
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": null,
+        "statute": "N.J.S.A. \u00a72A:18-61.2",
         "case_law": [],
         "severity": "void",
-        "note": "NJ ATTORNEY FINDING (2026-06-16, Andrew Cohen): NJ has NO minimum notice period for nonpayment. \u00a72A:18-61.2 expressly excludes nonpayment from the notice-to-quit requirement; covered landlord may file summary dispossess action immediately. Exception: federally subsidized housing requires 14-day notice. Habitual late payment after notice-to-cease may require one-month notice (\u00a72A:18-61.2(b)). The '30 days' below is the prior incorrect value \u2014 pending schema correction."
+        "note": "NJ has no statutory notice period for nonpayment of rent \u2014 \u00a72A:18-61.2 carves nonpayment out of the notice-to-quit requirement; a covered landlord may file the summary dispossess action immediately. Exception: federally subsidized housing requires 14 days. Separately, habitual late payment (after a notice to cease) carries a one-month notice under \u00a72A:18-61.2(b) \u2014 that is a different ground, not the nonpayment period. Attorney confirmed: Andrew Cohen, 2026-06-16. This defect (notice_period_too_short) therefore applies to the federally-subsidized carve-out case only."
       },
       {
         "defect": "missing_just_cause_reason",
