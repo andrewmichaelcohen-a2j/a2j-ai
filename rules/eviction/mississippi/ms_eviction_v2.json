@@ -124,7 +124,7 @@
         "message": "Miss. Code Ann. \u00a789-7-23 retrieved (Justia text confirmed). Machine-assisted finding: \u00a789-7-23 expressly states it 'shall not apply to rental agreements governed by the Residential Landlord and Tenant Act.' Mississippi RLTA (\u00a789-8-1 et seq.) governs most modern residential tenancies; the applicable nonpayment notice provision under RLTA may differ. L7 attorney must confirm applicable statute for residential tenancies. NOT verification."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {

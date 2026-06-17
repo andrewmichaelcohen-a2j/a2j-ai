@@ -71,13 +71,13 @@
     ]
   },
   "validation": {
-    "file_status": "DRAFT",
+    "file_status": "AUTOMATED-CHECKS-PASSED",
     "module_status": {
       "notice": {
-        "status": "DRAFT",
-        "reviewer": null,
-        "reviewed_date": null,
-        "coverage_level": null
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": "Andrew Cohen",
+        "reviewed_date": "2026-06-16",
+        "coverage_level": "L1,L3,L5"
       },
       "service": {
         "status": "AUTOMATED-CHECKS-PASSED",
@@ -109,7 +109,7 @@
       "L2_consensus": "not_implemented",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
-      "L5_crossjuris": "warning",
+      "L5_crossjuris": "pass",
       "L6_freshness": "not_implemented"
     },
     "coverage_level": "L1,L3,L5",
@@ -123,10 +123,13 @@
         "layer": "L5",
         "field": "notice",
         "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify",
-        "disposition": "open"
+        "disposition": "resolved-confirmed",
+        "reviewer": "Andrew Cohen",
+        "reviewed_date": "2026-06-16",
+        "reviewer_note": "14-day nonpayment notice confirmed per \u00a766-28-505(a)(2); tenant may cure by payment within 14 days. Conditions: (1) URLTA applies only in TN counties >75,000 population; (2) in URLTA counties the 14-day notice may be waived by written lease agreement, allowing immediate filing. Other grounds have different notice periods. Non-URLTA counties governed by \u00a766-7-109."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=DRAFT."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {

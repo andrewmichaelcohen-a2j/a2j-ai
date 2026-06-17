@@ -124,7 +124,7 @@
         "message": "RSMo \u00a7441.050 retrieved from Missouri Revisor (text confirmed). Machine-assisted finding: \u00a7441.050 governs termination of year-to-year tenancies (60-day notice) \u2014 NOT the pay-or-quit nonpayment statute. RSMo \u00a7535.020 (unlawful detainer for nonpayment) is the primary nonpayment authority and was not separately retrieved. L7 attorney must confirm correct pay-or-quit authority for Missouri. NOT verification."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {

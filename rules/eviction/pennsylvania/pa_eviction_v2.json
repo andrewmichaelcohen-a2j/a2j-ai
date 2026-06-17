@@ -120,7 +120,7 @@
         "message": "Citation \"68 Pa. C.S. \u00a7250.505\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {

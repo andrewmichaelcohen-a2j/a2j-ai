@@ -123,7 +123,7 @@
         "message": "SDCL \u00a721-16-1 retrieved via Justia (text confirmed). Machine-assisted finding: \u00a721-16-1 is the FED grounds statute listing when forcible entry and detainer is available. Subsection (4) covers nonpayment ('fails to pay his rent for three days after the same shall be due'). The statute does not use the 'pay-or-quit notice' framing; it establishes grounds for FED action rather than a standalone pay-or-quit notice requirement. L7 attorney must confirm the 3-day notice period and procedure under South Dakota law. NOT verification."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {

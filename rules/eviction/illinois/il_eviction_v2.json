@@ -137,7 +137,7 @@
         "message": "735 ILCS 5/9-207 retrieved via FindLaw (text confirmed). Machine-assisted finding: \u00a79-207 ('Notice to terminate tenancy for less than a year') governs holdover and periodic-tenancy termination (7-day for week-to-week; 30-day for other terms less than one year) \u2014 a no-cause termination statute, NOT the pay-or-quit notice for nonpayment. The pay-or-quit authority is 735 ILCS 5/9-209 (5-day notice for nonpayment, business days), which could not be retrieved from any available source. L7 attorney must confirm \u00a79-209 text and the 5-business-day notice period. NOT verification."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {

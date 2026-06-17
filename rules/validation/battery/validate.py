@@ -491,7 +491,7 @@ def l5_local_xstate_check(state_code, overlays_data):
 
 # ── Layer 5: Cross-Jurisdiction Anomaly Detection (per-module) ────────────────
 
-def layer5_cross_jurisdiction(all_files_data):
+def layer5_cross_jurisdiction(all_files_data, existing_flags_map=None):
     """
     Compare each file to the full library.
     Returns per-state, per-module flags.
@@ -525,16 +525,25 @@ def layer5_cross_jurisdiction(all_files_data):
         per_module_flags = {m: [] for m in MODULES}
 
         # Notice: period outlier
+        # Skip if the flag has already been resolved by attorney review
         p = periods.get(code)
         if isinstance(p, int):
-            if p > 2 * median_period and median_period > 0:
-                per_module_flags["notice"].append(
-                    f"L5-NOTICE-PERIOD-HIGH: pay_or_quit period ({p} days) is >2x median ({median_period}) — verify"
-                )
-            elif p < 3 and median_period > 5:
-                per_module_flags["notice"].append(
-                    f"L5-NOTICE-PERIOD-LOW: pay_or_quit period ({p} days) may be very short — verify"
-                )
+            _existing = (existing_flags_map or {}).get(code, [])
+            _already_resolved = any(
+                f.get("layer") == "L5"
+                and "NOTICE-PERIOD" in f.get("note", "")
+                and f.get("disposition", "").startswith("resolved")
+                for f in _existing
+            )
+            if not _already_resolved:
+                if p > 2 * median_period and median_period > 0:
+                    per_module_flags["notice"].append(
+                        f"L5-NOTICE-PERIOD-HIGH: pay_or_quit period ({p} days) is >2x median ({median_period}) — verify"
+                    )
+                elif p < 3 and median_period > 5:
+                    per_module_flags["notice"].append(
+                        f"L5-NOTICE-PERIOD-LOW: pay_or_quit period ({p} days) may be very short — verify"
+                    )
 
         # Notice: termination missing
         nt = data.get("notice", {}).get("notice_types", {})
@@ -669,7 +678,9 @@ def write_back_results(file_path, data, l1_result, l3_module_results, l5_module_
     existing_flags = val.get("flags", [])
     preserved = [
         f for f in existing_flags
-        if f.get("disposition") in {"acknowledged", "resolved"} or f.get("layer") == "L1"
+        if (f.get("disposition") in {"acknowledged", "resolved"}
+            or str(f.get("disposition", "")).startswith("resolved")
+            or f.get("layer") == "L1")
     ]
     val["flags"] = preserved + all_flags
 
@@ -720,7 +731,12 @@ def run_validation(target_state=None, write_reports=True, write_back=True):
         return
 
     # L5 runs across all files (needs full library)
-    l5_results, l5_stats = layer5_cross_jurisdiction(all_data)
+    # Build existing flags map so L5 can skip already-resolved flags
+    existing_flags_map = {
+        code: data.get('validation', {}).get('flags', [])
+        for code, data in all_data.items()
+    }
+    l5_results, l5_stats = layer5_cross_jurisdiction(all_data, existing_flags_map)
 
     report = {
         "generated": datetime.utcnow().isoformat() + "Z",

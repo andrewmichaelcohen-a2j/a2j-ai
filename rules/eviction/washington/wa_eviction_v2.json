@@ -84,13 +84,13 @@
     ]
   },
   "validation": {
-    "file_status": "DRAFT",
+    "file_status": "AUTOMATED-CHECKS-PASSED",
     "module_status": {
       "notice": {
-        "status": "DRAFT",
-        "reviewer": null,
-        "reviewed_date": null,
-        "coverage_level": null
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": "Andrew Cohen",
+        "reviewed_date": "2026-06-16",
+        "coverage_level": "L1,L3,L5"
       },
       "service": {
         "status": "AUTOMATED-CHECKS-PASSED",
@@ -122,7 +122,7 @@
       "L2_consensus": "not_implemented",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
-      "L5_crossjuris": "warning",
+      "L5_crossjuris": "pass",
       "L6_freshness": "not_implemented"
     },
     "coverage_level": "L1,L3,L5",
@@ -151,7 +151,19 @@
         "layer": "L5",
         "field": "notice",
         "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify",
-        "disposition": "open"
+        "disposition": "resolved-confirmed",
+        "reviewer": "Andrew Cohen",
+        "reviewed_date": "2026-06-16",
+        "reviewer_note": "14-day pay-or-quit confirmed per RCW 59.12.030(3) + 59.18.057. The 10-day cure_or_quit is the lease-violation comply-or-vacate (RCW 59.12.030(4)) \u2014 different notice type; correctly shorter than the 14-day nonpayment period. L3 cure-vs-pay warning resolved as false positive. Late fees / non-rent charges cannot be demanded in the pay-or-quit notice (RCW 59.18.057)."
+      },
+      {
+        "layer": "L3",
+        "field": "notice",
+        "note": "3-NOTICE-07: cure_or_quit.days (10) < pay_or_quit days (14) \u2014 unusual, verify",
+        "disposition": "resolved-false-positive",
+        "reviewer": "Andrew Cohen",
+        "reviewed_date": "2026-06-16",
+        "reviewer_note": "10-day cure_or_quit is lease-violation comply-or-vacate (RCW 59.12.030(4)) \u2014 a different notice type. Its being shorter than the 14-day nonpayment period is correct WA law, not an inconsistency. False positive confirmed per attorney review 2026-06-16 (Andrew Cohen)."
       },
       {
         "layer": "L3",
@@ -160,7 +172,7 @@
         "disposition": "open"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=DRAFT."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
   },
   "notice": {
     "notice_types": {

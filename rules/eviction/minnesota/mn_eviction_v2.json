@@ -43,7 +43,7 @@
     "per_module_sources": {
       "notice": [
         "Minn. Stat. \u00a7504B.135",
-        "Minn. Stat. \u00a7504B.285"
+        "Minn. Stat. \u00a7504B.321 subd. 1a"
       ],
       "service": [],
       "overlays": [
@@ -125,7 +125,7 @@
         "disposition": "open"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-16. Layers run: L1,L3,L5. file_status=DRAFT."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=DRAFT."
   },
   "notice": {
     "notice_types": {
@@ -138,7 +138,7 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 14,
-          "statute": "Minn. Stat. \u00a7504B.285",
+          "statute": "Minn. Stat. \u00a7504B.321 subd. 1a",
           "count_method": "calendar_days"
         }
       },
