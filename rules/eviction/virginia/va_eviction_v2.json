@@ -125,16 +125,16 @@
         "field": "notice.notice_types.pay_or_quit",
         "disposition": "open",
         "escalation": "L7",
-        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): Noned, None. Gemini (gemini-2.5-pro): 5d, Va. Code Ann. § 55.1-1245(F). File: 5d, Va. Code §55.1-1245. Attorney review required to determine operative answer.",
+        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): 5d, Va. Code § 55.1-1245(F). Gemini (gemini-2.5-pro): 14d, Va. Code Ann. § 55.1-1245(F). File: 5d, Va. Code §55.1-1245. Attorney review required to determine operative answer.",
         "gpt_answer": {
-          "days": null,
-          "statute": null,
-          "rationale": "PARSE_ERROR: "
+          "days": 5,
+          "statute": "Va. Code § 55.1-1245(F)",
+          "rationale": "For nonpayment of rent, the tenant must fail to pay within five days after written notice of nonpayment and the landlord’s intent to terminate if rent is not paid. Only after that five-day notice period may the landlord terminate the rental agreement and proceed to obtain possession."
         },
         "gemini_answer": {
-          "days": 5,
+          "days": 14,
           "statute": "Va. Code Ann. § 55.1-1245(F)",
-          "rationale": "If rent is unpaid when due, the landlord must serve the tenant with a written notice stating that the tenant has five days to pay the rent or the rental agreement will be terminated. This notice is a prerequisite before the landlord can file an unlawful detainer action to obtain possession."
+          "rationale": "For nonpayment of rent, a landlord must provide the tenant with a 14-day written notice to pay the amount due before the landlord can file an unlawful detainer action. This notice gives the tenant an opportunity to cure the default by paying the rent owed."
         },
         "l2_run_date": "2026-06-18"
       }

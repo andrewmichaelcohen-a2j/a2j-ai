@@ -106,7 +106,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "flagged",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -130,25 +130,30 @@
       },
       {
         "layer": "L2",
-        "code": "L2-MODEL-SPLIT-L7",
-        "field": "notice.notice_types.pay_or_quit",
-        "disposition": "open",
-        "escalation": "L7",
-        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): Noned, None. Gemini (gemini-2.5-pro): 14d, Mass. Gen. Laws ch. 186, § 11. File: 14d, MGL c. 186 §11. Attorney review required to determine operative answer.",
-        "gpt_answer": {
-          "days": null,
-          "statute": null,
-          "rationale": "PARSE_ERROR: "
-        },
-        "gemini_answer": {
-          "days": 14,
-          "statute": "Mass. Gen. Laws ch. 186, § 11",
-          "rationale": "The statute specifies that upon a tenant's failure to pay rent due under a written lease, a 14-day written notice to quit from the landlord is sufficient to terminate the tenancy. This notice must be given before the landlord can commence an eviction action."
-        },
+        "code": "L2-RETRY-CONSENSUS-CONFIRM",
+        "disposition": "resolved",
+        "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 14d, Mass. Gen. Laws ch. 186, §§ 11, 12. Gemini: 14d, M.G.L. c. 186, § 11. Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
         "l2_run_date": "2026-06-18"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-18",
+      "classification": "CONSENSUS-CONFIRM",
+      "retry": true,
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 14,
+        "statute": "Mass. Gen. Laws ch. 186, §§ 11, 12",
+        "rationale": "For nonpayment of rent, Massachusetts law provides for a 14-day written notice to quit to terminate the tenancy. Section 11 establishes the 14-day nonpayment notice, and § 12 applies the nonpayment rule to tenancies at will."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 14,
+        "statute": "M.G.L. c. 186, § 11",
+        "rationale": "Massachusetts law requires a landlord to provide a tenant with a written 14-day notice to quit for nonpayment of rent. This notice must be given to terminate the tenancy before the landlord is legally permitted to file a summary process (eviction) action with the court."
+      }
+    }
   },
   "notice": {
     "notice_types": {

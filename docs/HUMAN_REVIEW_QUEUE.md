@@ -211,6 +211,48 @@ Models disagree → cannot auto-resolve. Human must check primary source.
 
 *Phase 2 run: 2026-06-18*
 
+### [AR-RETRY-01] AR (Arkansas) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Arkansas nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: 3d, Ark. Code Ann. § 18-60-304(3) — For nonpayment of rent, Arkansas defines unlawful detainer to include a tenant who fails or refuses to pay rent when due and, after three days’ written notice to quit and demand for possession, refuse
+- Gemini: 5d, A.C.A. § 18-60-304(d) — Before filing a civil eviction (unlawful detainer) action, a landlord must provide written notice to the tenant that an eviction will be filed if the overdue rent is not paid within five days from the
+- File: 3d, Ark. Code Ann. §18-17-701
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [VA-RETRY-03] VA (Virginia) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Virginia nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: 5d, Va. Code § 55.1-1245(F) — For nonpayment of rent, the tenant must fail to pay within five days after written notice of nonpayment and the landlord’s intent to terminate if rent is not paid. Only after that five-day notice peri
+- Gemini: 14d, Va. Code Ann. § 55.1-1245(F) — For nonpayment of rent, a landlord must provide the tenant with a 14-day written notice to pay the amount due before the landlord can file an unlawful detainer action. This notice gives the tenant an 
+- File: 5d, Va. Code §55.1-1245
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+
+
+*Phase 2 run: 2026-06-18*
+
 ### [AR-P2-01] AR (Arkansas) — 🔴 L7-ESCALATED
 
 **L2 classification:** MODEL-SPLIT  

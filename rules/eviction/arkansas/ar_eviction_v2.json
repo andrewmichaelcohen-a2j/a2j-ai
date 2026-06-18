@@ -104,7 +104,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "flagged",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -119,25 +119,30 @@
       },
       {
         "layer": "L2",
-        "code": "L2-MODEL-SPLIT-L7",
-        "field": "notice.notice_types.pay_or_quit",
-        "disposition": "open",
-        "escalation": "L7",
-        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): Noned, None. Gemini (gemini-2.5-pro): 3d, A.C.A. § 18-60-304(d)(1). File: 3d, Ark. Code Ann. §18-17-701. Attorney review required to determine operative answer.",
-        "gpt_answer": {
-          "days": null,
-          "statute": null,
-          "rationale": "PARSE_ERROR: "
-        },
-        "gemini_answer": {
-          "days": 3,
-          "statute": "A.C.A. § 18-60-304(d)(1)",
-          "rationale": "Arkansas law requires a landlord to provide a residential tenant with a written notice allowing at least three days to vacate the property for failure to pay rent. This notice must be delivered before the landlord can file an unlawful detainer (eviction) action."
-        },
+        "code": "L2-RETRY-CONSENSUS-CONFIRM",
+        "disposition": "resolved",
+        "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 3d, Ark. Code Ann. § 18-60-304(a)(3). Gemini: 3d, A.C.A. § 18-16-101. Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
         "l2_run_date": "2026-06-18"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-18",
+      "classification": "CONSENSUS-CONFIRM",
+      "retry": true,
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 3,
+        "statute": "Ark. Code Ann. § 18-60-304(a)(3)",
+        "rationale": "For nonpayment of rent, Arkansas defines unlawful detainer to include a tenant who fails or refuses to pay rent when due and, after three days’ notice to quit and written demand for possession, refuses to vacate. That three-day notice is the statutory prerequisite for filing the nonpayment unlawful-detainer eviction action."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 3,
+        "statute": "A.C.A. § 18-16-101",
+        "rationale": "This statute requires a landlord to provide three days' written notice to vacate to a tenant who has failed to pay rent. A tenant's willful refusal to leave the premises after receiving this notice is a prerequisite for the landlord to file an eviction action."
+      }
+    }
   },
   "notice": {
     "notice_types": {

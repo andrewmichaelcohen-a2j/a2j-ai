@@ -104,7 +104,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "flagged",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -119,25 +119,30 @@
       },
       {
         "layer": "L2",
-        "code": "L2-MODEL-SPLIT-L7",
-        "field": "notice.notice_types.pay_or_quit",
-        "disposition": "open",
-        "escalation": "L7",
-        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): Noned, None. Gemini (gemini-2.5-pro): 7d, KRS § 383.660(2). File: 7d, KRS §383.660. Attorney review required to determine operative answer.",
-        "gpt_answer": {
-          "days": null,
-          "statute": null,
-          "rationale": "PARSE_ERROR: "
-        },
-        "gemini_answer": {
-          "days": 7,
-          "statute": "KRS § 383.660(2)",
-          "rationale": "A landlord must provide a tenant with seven days' written notice of nonpayment and the intent to terminate the rental agreement if the rent is not paid. The landlord may only terminate the agreement and begin eviction proceedings if the tenant fails to pay the full amount of rent due within that seven-day period."
-        },
+        "code": "L2-RETRY-CONSENSUS-CONFIRM",
+        "disposition": "resolved",
+        "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 7d, Ky. Rev. Stat. § 383.660(2). Gemini: 7d, KRS § 383.660(2). Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
         "l2_run_date": "2026-06-18"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-18",
+      "classification": "CONSENSUS-CONFIRM",
+      "retry": true,
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 7,
+        "statute": "Ky. Rev. Stat. § 383.660(2)",
+        "rationale": "If rent is unpaid when due, the landlord must give written notice of nonpayment and intent to terminate, and the tenant has seven days to pay. If the tenant does not pay within that seven-day period, the landlord may terminate the rental agreement and proceed with eviction."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 7,
+        "statute": "KRS § 383.660(2)",
+        "rationale": "If rent is unpaid when due, the landlord must give the tenant seven days' written notice of the nonpayment and of the landlord's intention to terminate the rental agreement. The landlord may terminate the agreement and file for eviction if the tenant fails to pay the full amount within that seven-day period."
+      }
+    }
   },
   "notice": {
     "notice_types": {

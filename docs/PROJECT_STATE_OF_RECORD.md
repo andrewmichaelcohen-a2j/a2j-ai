@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 17, 2026 (L2 Phase 2 complete — 43 states; 31 CONFIRM; DE citation AI-resolved; NV period AI-resolved (5d→7d); 7 GPT-parse-error pseudo-splits flagged for retry; 1 genuine split MD; 2 errors GA/IA. Retry runner needed for 7 states before escalating to L7. Previous: Phase 2 runner written) · **Next update:** after Phase 2 retry run + commit
+**Generated:** June 15, 2026 · **Last updated:** June 18, 2026 (L2 COMPLETE — all 51 states run on notice/pay_or_quit. Final: 39 CONFIRM · 5 AI-resolved pending confirmation · 6 L7-escalated · 1 persistent error (TN/Gemini). Commit all and stop.) · **Next update:** after L7 attorney reviews + human confirmations
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -330,6 +330,11 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 | Date | What changed |
 |------|-------------|
+| **2026-06-18** | **L2 Phase 2 Retry complete — 9 states, ~$0.44 · L2 FULLY COMPLETE** |
+| | **5 CONFIRM:** DC (30d §42-3505.01(a-1)), IA (3d §562A.27(2)), KY (7d §383.660(2)), LA (5d art.4701), MA (14d §11) — all were GPT parse errors in Phase 2, resolved with 6000-token budget |
+| | **3 Genuine L7:** AR (GPT 3d §18-60-304(3) vs Gemini 5d §18-60-304(d) — same statute, divergent period); GA (file 3d but both models say no notice required per §44-7-50(a) — reasoning pass inconclusive); VA (GPT 5d vs Gemini 14d, same §55.1-1245(F) — likely tenancy-type-dependent) |
+| | **1 Persistent error: TN** — GPT confirms 14d §66-28-505(b) (consistent with file); Gemini API fails repeatedly. Single-model partial-confirm; human verification of §66-28-505(b) recommended. |
+| | **Total L2 L7-escalated: 6** (MO, ND, MD, AR, GA, VA). **Total pending human confirmation: 5** (OH, MS, DE, WV, NV). **39 states clean CONFIRM.** |
 | **2026-06-17** | **L2 Phase 2 run complete — 43 states, ~$0.94** |
 | | **Results:** 31 CONSENSUS-CONFIRM · 1 CITATION-AI-RESOLVED (DE: §5501→§5502(a)) · 1 PERIOD-AI-RESOLVED (NV: 5d→7d §40.253(1)(a)) · 8 MODEL-SPLIT-L7-flagged · 2 ERROR |
 | | **⚠️ Key finding:** 7 of 8 "model splits" are GPT parse errors (chain-of-thought fills token buffer → days=None, rationale=PARSE_ERROR), not genuine disagreements. Affected: AR, DC, KY, LA, MA, TN, VA. Gemini answered correctly for all 7. Pattern identical to SD Phase 1 (resolved by retry). MD is the only genuine split (GPT: 10d §8-401(b)(2)(i); Gemini: no notice §8-401). |
@@ -445,8 +450,27 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
   - **2 ERROR:** GA (GPT returned 0d — parse artifact), IA (Gemini errored). Need targeted retry.
   - **⚠️ 7 GPT-PARSE-ERROR pseudo-splits (NOT genuine L7):** AR, DC, KY, LA, MA, TN, VA — GPT returned `days=None, statute=None, rationale=PARSE_ERROR` (same token-limit artifact as SD Phase 1). Gemini answered for all 7. Currently flagged L7 but should be retried with higher `max_completion_tokens` before escalating to attorney. Retry runner needed.
   - **1 GENUINE MODEL-SPLIT (MD):** GPT says 10d notice required (§8-401(b)(2)(i)); Gemini says no notice period required (§8-401). Real interpretive disagreement → L7. Attorney must resolve.
-- [ ] **L2 Phase 2 retry needed — 7 GPT-parse-error states + 2 errors.** Before treating AR/DC/KY/LA/MA/TN/VA as L7, retry GPT with higher token budget. Write `l2_phase2_retry.py` targeting these 9 states. If retry converges → AI-resolve or confirm; if still splits → escalate.
-- [ ] **L2 Phase 2 human review queue:** DE + NV (pending confirmation); MD (L7 attorney review); 7 retry states (pending retry outcome); GA + IA (pending retry).
+- [x] **L2 Phase 2 retry complete (2026-06-18, ~$0.44).** `rules/validation/l2/l2_phase2_retry.py`. 9 states retried with GPT `max_completion_tokens=6000`. Results: 5 CONFIRM (DC, IA, KY, LA, MA) · 3 Genuine L7 (AR, GA, VA) · 1 persistent error (TN — GPT 14d confirmed, Gemini API keeps erroring).
+
+**L2 COMPLETE — all 51 states. Consolidated final results:**
+
+| Outcome | Count | States |
+|---------|-------|--------|
+| ✅ CONSENSUS-CONFIRM | 39 | ME, IL, SD (P1) + AK,AL,AZ,CA,CO,CT,FL,HI,ID,IN,KS,MI,MN,MT,NC,NE,NH,NJ,NM,NY,OK,OR,PA,RI,SC,TX,UT,VT,WA,WI,WY (P2) + DC,IA,KY,LA,MA (retry) |
+| 🟡 CITATION-AI-RESOLVED | 3 | OH (§1923.04(A)), MS (§89-8-13(5)(a)), DE (§5502(a)) — pending human confirmation |
+| 🟡 PERIOD-AI-RESOLVED | 2 | WV (no notice, §55-3A-1), NV (5d→7d, §40.253(1)(a)) — pending human confirmation |
+| 🔴 L7-ESCALATED | 6 | MO, ND (P1) · MD (P2 genuine) · AR, GA, VA (retry genuine) |
+| ⚠️ PERSISTENT ERROR | 1 | TN — GPT confirms 14d §66-28-505(b); Gemini API keeps erroring; treat as single-model partial-confirm |
+
+**L7 detail:**
+- **MO** — Is §535.020 demand a notice requirement (true) or precondition (false)?
+- **ND** — Is §47-32-02's 3-day period a formal notice or a ripening period?
+- **MD** — GPT: 10d notice required (§8-401(b)(2)(i)); Gemini: no notice period (§8-401)
+- **AR** — GPT: 3d (§18-60-304(3)); Gemini: 5d (§18-60-304(d)) — same statute, different subsection/period
+- **GA** — File: 3d; both models say no notice required (§44-7-50(a)). Reasoning pass inconclusive. File may be wrong.
+- **VA** — Same statute (§55.1-1245(F)); GPT: 5d; Gemini: 14d — may reflect different tenancy types
+
+**TN:** GPT confirms 14d (§66-28-505(b)), consistent with file. Gemini API erroring persistently. Recommend treating as SINGLE-MODEL-PARTIAL-CONFIRM; human should verify §66-28-505(b) directly.
 - [ ] **L2 expansion:** Extend to other modules (service, substantive_defenses, procedural_defects); add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
 - [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
 - [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.

@@ -112,7 +112,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "flagged",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -132,25 +132,30 @@
       },
       {
         "layer": "L2",
-        "code": "L2-MODEL-SPLIT-L7",
-        "field": "notice.notice_types.pay_or_quit",
-        "disposition": "open",
-        "escalation": "L7",
-        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): Noned, None. Gemini (gemini-2.5-pro): 5d, La. Code Civ. Proc. art. 4701. File: 5d, La. R.S. §9:3259; La. C.C.P. Art. 4701. Attorney review required to determine operative answer.",
-        "gpt_answer": {
-          "days": null,
-          "statute": null,
-          "rationale": "PARSE_ERROR: "
-        },
-        "gemini_answer": {
-          "days": 5,
-          "statute": "La. Code Civ. Proc. art. 4701",
-          "rationale": "When a tenant fails to pay rent, the landlord must deliver a written notice to vacate the premises. The law requires that this notice give the tenant at least five days from the date of delivery to leave before the landlord can file an eviction suit."
-        },
+        "code": "L2-RETRY-CONSENSUS-CONFIRM",
+        "disposition": "resolved",
+        "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 5d, La. Code Civ. Proc. art. 4701. Gemini: 5d, La. Code Civ. Proc. Ann. art. 4701. Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
         "l2_run_date": "2026-06-18"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-18",
+      "classification": "CONSENSUS-CONFIRM",
+      "retry": true,
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 5,
+        "statute": "La. Code Civ. Proc. art. 4701",
+        "rationale": "When a lessee’s right of occupancy has ceased because of nonpayment of rent and the landlord seeks possession, the landlord must deliver a written notice to vacate allowing at least five days from delivery before proceeding. The statute permits written waiver of this notice requirement, but the statutory notice period is five days absent such waiver."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 5,
+        "statute": "La. Code Civ. Proc. Ann. art. 4701",
+        "rationale": "For eviction due to nonpayment of rent, the lessor must deliver a written notice to vacate which allows the lessee not less than five days from delivery to vacate the premises. This notice is a required step before the lessor can obtain possession, unless it has been waived in the written lease."
+      }
+    }
   },
   "notice": {
     "notice_types": {
