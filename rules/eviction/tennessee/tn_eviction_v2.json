@@ -106,7 +106,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "flagged",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -130,25 +130,30 @@
       },
       {
         "layer": "L2",
-        "code": "L2-MODEL-SPLIT-L7",
-        "field": "notice.notice_types.pay_or_quit",
-        "disposition": "open",
-        "escalation": "L7",
-        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): Noned, None. Gemini (gemini-2.5-pro): 14d, Tenn. Code Ann. § 66-28-505(b). File: 14d, TCA §66-28-505. Attorney review required to determine operative answer.",
-        "gpt_answer": {
-          "days": null,
-          "statute": null,
-          "rationale": "PARSE_ERROR: "
-        },
-        "gemini_answer": {
-          "days": 14,
-          "statute": "Tenn. Code Ann. § 66-28-505(b)",
-          "rationale": "This statute provides the general remedy for a tenant's noncompliance with the rental agreement, which includes the nonpayment of rent. It requires the landlord to provide a written notice of termination specifying that the agreement will terminate on a date not less than 14 days after the tenant's receipt of the notice."
-        },
+        "code": "L2-RETRY-CONSENSUS-CONFIRM",
+        "disposition": "resolved",
+        "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 14d, Tenn. Code Ann. §§ 66-28-505(b); 66-7-109. Gemini: 14d, Tenn. Code Ann. § 66-28-505. Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
         "l2_run_date": "2026-06-18"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-18",
+      "classification": "CONSENSUS-CONFIRM",
+      "retry": true,
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 14,
+        "statute": "Tenn. Code Ann. §§ 66-28-505(b); 66-7-109",
+        "rationale": "For nonpayment of rent, Tennessee residential landlord-tenant statutes require written notice giving the tenant 14 days to pay the rent owed. If the tenant does not pay within that notice period, the landlord may terminate the rental agreement and proceed to recover possession."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 14,
+        "statute": "Tenn. Code Ann. § 66-28-505",
+        "rationale": "If rent is unpaid when due, the landlord may terminate the rental agreement after providing the tenant with 14 days' written notice to pay the overdue rent. The landlord may file for possession only if the tenant fails to pay by the termination date specified in the notice."
+      }
+    }
   },
   "notice": {
     "notice_types": {

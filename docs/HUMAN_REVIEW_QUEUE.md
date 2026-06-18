@@ -211,6 +211,29 @@ Models disagree → cannot auto-resolve. Human must check primary source.
 
 *Phase 2 run: 2026-06-18*
 
+### [VA-RETRY-02] VA (Virginia) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Virginia nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: 5d, Va. Code § 55.1-1245(F) — For nonpayment of rent, the landlord must serve written notice stating that rent is unpaid and that the rental agreement will terminate if the rent is not paid within five days. Only after the tenant 
+- Gemini: 14d, Va. Code Ann. § 55.1-1245(F) — If rent is unpaid when due, the landlord must serve the tenant with a 14-day written notice informing the tenant of the nonpayment and the landlord's intent to terminate the rental agreement. The land
+- File: 5d, Va. Code §55.1-1245
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+
+
+*Phase 2 run: 2026-06-18*
+
 ### [AR-RETRY-01] AR (Arkansas) — 🔴 L7-ESCALATED
 
 **L2 classification:** MODEL-SPLIT  

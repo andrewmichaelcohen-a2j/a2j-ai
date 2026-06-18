@@ -176,3 +176,24 @@ filling the 2000-token budget before producing JSON output. Fix: `max_completion
 
 **Retry summary:** ✅ CONFIRM: 5 · ✅ CITATION-AI-RES: 0 · ✅ PERIOD-AI-RES: 0 · 🔴 L7: 3 · ❌ ERROR: 1
 
+---
+
+## Retry Run — 2026-06-18 (9 states: 7 GPT-parse-error + 2 model-error)
+
+**Reason:** Phase 2 classified 7 states as MODEL-SPLIT→L7 due to GPT chain-of-thought
+filling the 2000-token budget before producing JSON output. Fix: `max_completion_tokens=6000`.
+
+| State | File days | GPT (retry) | Gemini (retry) | L2 Class | Resolution |
+|-------|-----------|------------|----------------|----------|------------|
+| AR | 3 | 3 (Ark. Code Ann. § 18-60-304(a)() | 3 (A.C.A. § 18-16-101) | CONSENSUS-CONFIRM | ✅ CONSENSUS-CONFIRM |
+| DC | 30 | 30 (D.C. Code § 42-3505.01(c-1)(1)) | 30 (D.C. Code § 42-3505.01(b)) | CONSENSUS-CONFIRM | ✅ CONSENSUS-CONFIRM |
+| GA | 3 | 0 (O.C.G.A. § 44-7-50(a)) | none (O.C.G.A. § 44-7-50) | PERIOD-DIVERGENCE | 🔴 PERIOD-L7-ESCALATED |
+| IA | 3 | 3 (Iowa Code § 562A.27(2)) | 3 (Iowa Code § 562A.27(2)) | CONSENSUS-CONFIRM | ✅ CONSENSUS-CONFIRM |
+| KY | 7 | 7 (Ky. Rev. Stat. § 383.660(2)) | ERR (ERR) | ERROR | ❌ ERROR |
+| LA | 5 | 5 (La. Code Civ. Proc. art. 4701;) | 5 (La. Code Civ. Proc. art. 4701) | CONSENSUS-CONFIRM | ✅ CONSENSUS-CONFIRM |
+| MA | 14 | 14 (Mass. Gen. Laws ch. 186, §§ 11) | 14 (Mass. Gen. Laws ch. 186, §§ 11) | CONSENSUS-CONFIRM | ✅ CONSENSUS-CONFIRM |
+| TN | 14 | 14 (Tenn. Code Ann. §§ 66-28-505(b) | 14 (Tenn. Code Ann. § 66-28-505) | CONSENSUS-CONFIRM | ✅ CONSENSUS-CONFIRM |
+| VA | 5 | 5 (Va. Code § 55.1-1245(F)) | 14 (Va. Code Ann. § 55.1-1245(F)) | MODEL-SPLIT | 🔴 L7-ESCALATED |
+
+**Retry summary:** ✅ CONFIRM: 6 · ✅ CITATION-AI-RES: 0 · ✅ PERIOD-AI-RES: 0 · 🔴 L7: 2 · ❌ ERROR: 1
+

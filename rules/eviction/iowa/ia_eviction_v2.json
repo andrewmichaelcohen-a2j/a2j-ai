@@ -123,6 +123,13 @@
         "disposition": "resolved",
         "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 3d, Iowa Code § 562A.27(2). Gemini: 3d, Iowa Code § 562A.27(2). Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
         "l2_run_date": "2026-06-18"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETRY-CONSENSUS-CONFIRM",
+        "disposition": "resolved",
+        "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 3d, Iowa Code § 562A.27(2). Gemini: 3d, Iowa Code § 562A.27(2). Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
+        "l2_run_date": "2026-06-18"
       }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -134,13 +141,13 @@
         "model": "gpt-5.5",
         "days": 3,
         "statute": "Iowa Code § 562A.27(2)",
-        "rationale": "For residential tenancies, if rent is unpaid when due, the landlord must give written notice of nonpayment and intent to terminate, and the tenant has three days to pay. If the tenant fails to pay within that three-day period, the landlord may terminate and proceed with the eviction action."
+        "rationale": "For residential tenancies, if rent is unpaid when due, the landlord may terminate the rental agreement only if the tenant fails to pay within three days after written notice of nonpayment and the landlord’s intention to terminate. This statutory three-day notice must precede termination and filing of the eviction action for nonpayment."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
         "statute": "Iowa Code § 562A.27(2)",
-        "rationale": "If rent is unpaid when due, the landlord must give the tenant a three-day written notice of nonpayment and the landlord’s intention to terminate the rental agreement. The tenant has this period to pay the rent and cure the default before the landlord can terminate the agreement and file for eviction."
+        "rationale": "If rent is unpaid when due, the landlord must give the tenant a written three-day notice of nonpayment and intent to terminate the agreement. If the tenant fails to pay the rent within that three-day period, the landlord may terminate the rental agreement and file for eviction."
       }
     }
   },

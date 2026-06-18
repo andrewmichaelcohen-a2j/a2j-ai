@@ -134,6 +134,13 @@
         "disposition": "resolved",
         "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 14d, Mass. Gen. Laws ch. 186, §§ 11, 12. Gemini: 14d, M.G.L. c. 186, § 11. Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
         "l2_run_date": "2026-06-18"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETRY-CONSENSUS-CONFIRM",
+        "disposition": "resolved",
+        "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 14d, Mass. Gen. Laws ch. 186, §§ 11, 12. Gemini: 14d, Mass. Gen. Laws ch. 186, §§ 11, 12. Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
+        "l2_run_date": "2026-06-18"
       }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -145,13 +152,13 @@
         "model": "gpt-5.5",
         "days": 14,
         "statute": "Mass. Gen. Laws ch. 186, §§ 11, 12",
-        "rationale": "For nonpayment of rent, Massachusetts law provides for a 14-day written notice to quit to terminate the tenancy. Section 11 establishes the 14-day nonpayment notice, and § 12 applies the nonpayment rule to tenancies at will."
+        "rationale": "For nonpayment of rent, Massachusetts statutes provide that a landlord may terminate the lease or tenancy by giving a written 14-day notice to quit. Section 11 covers nonpayment under a lease, and § 12 provides the same 14-day notice rule for a tenancy at will."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 14,
-        "statute": "M.G.L. c. 186, § 11",
-        "rationale": "Massachusetts law requires a landlord to provide a tenant with a written 14-day notice to quit for nonpayment of rent. This notice must be given to terminate the tenancy before the landlord is legally permitted to file a summary process (eviction) action with the court."
+        "statute": "Mass. Gen. Laws ch. 186, §§ 11, 12",
+        "rationale": "For both tenancies under a written lease and tenancies at will, the statute requires a landlord to provide a written 14-day notice to quit for nonpayment of rent. This notice is a prerequisite to terminating the tenancy and subsequently filing an eviction action."
       }
     }
   },

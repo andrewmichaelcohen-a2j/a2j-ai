@@ -129,12 +129,12 @@
         "gpt_answer": {
           "days": 5,
           "statute": "Va. Code § 55.1-1245(F)",
-          "rationale": "For nonpayment of rent, the tenant must fail to pay within five days after written notice of nonpayment and the landlord’s intent to terminate if rent is not paid. Only after that five-day notice period may the landlord terminate the rental agreement and proceed to obtain possession."
+          "rationale": "For nonpayment of rent, the landlord must serve written notice stating that rent is unpaid and that the rental agreement will terminate if the rent is not paid within five days. Only after the tenant fails to pay within that five-day period may the landlord terminate the rental agreement and proceed with eviction."
         },
         "gemini_answer": {
           "days": 14,
           "statute": "Va. Code Ann. § 55.1-1245(F)",
-          "rationale": "For nonpayment of rent, a landlord must provide the tenant with a 14-day written notice to pay the amount due before the landlord can file an unlawful detainer action. This notice gives the tenant an opportunity to cure the default by paying the rent owed."
+          "rationale": "If rent is unpaid when due, the landlord must serve the tenant with a 14-day written notice informing the tenant of the nonpayment and the landlord's intent to terminate the rental agreement. The landlord may only terminate the agreement and file for eviction if the tenant fails to pay the rent within that 14-day period."
         },
         "l2_run_date": "2026-06-18"
       }
