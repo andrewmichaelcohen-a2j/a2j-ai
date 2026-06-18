@@ -124,11 +124,13 @@
       },
       {
         "layer": "L2",
-        "code": "L2-CONSENSUS-CONFIRM",
-        "field": "notice.notice_types.pay_or_quit",
-        "disposition": "resolved-confirmed",
-        "note": "L2 Phase 1 (re-run): CONSENSUS-CONFIRM. All three sources agree: 3 days. GPT (gpt-5.5): 3d, S.D. Codified Laws § 21-16-1(2). Gemini (gemini-2.5-pro): 3d, SDCL § 21-16-2. Note: Gemini cites SDCL 21-16-2; file cites SDCL §21-16-1 (adjacent section — minor citation variant, not a divergence).",
-        "l2_run_date": "2026-06-18"
+        "code": "L2-CITATION-AMBIGUOUS",
+        "field": "notice.notice_types.pay_or_quit.tenancy_all.statute",
+        "disposition": "open",
+        "note": "Period (3 days) confirmed by L2 consensus. Citation unresolvable by AI: GPT (gpt-5.5) cited SDCL §21-16-1(2) (subsection 2); Gemini (gemini-2.5-pro) cited SDCL §21-16-2 (separate section). These are different provisions and models disagree. L1 note: §21-16-1 lists FED grounds; subsection (4) covers nonpayment. Current file citation (§21-16-1) retained pending human verification. Human must verify: is the operative notice citation §21-16-1, §21-16-1(2), §21-16-2, or another subsection?",
+        "l2_run_date": "2026-06-18",
+        "status": "pending-human-verification",
+        "escalation": "human-citation-verification"
       }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",

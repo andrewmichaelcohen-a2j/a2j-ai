@@ -126,21 +126,12 @@
       },
       {
         "layer": "L2",
-        "code": "L2-MODEL-SPLIT",
-        "field": "notice.notice_types.pay_or_quit",
-        "disposition": "open",
-        "note": "L2-MODEL-SPLIT: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): Noned | None. Gemini (gemini-2.5-pro): 7d | 14 M.R.S. § 6002(1). Human review required.",
-        "gpt_answer": {
-          "days": null,
-          "statute": null,
-          "rationale": "PARSE_ERROR: "
-        },
-        "gemini_answer": {
-          "days": 7,
-          "statute": "14 M.R.S. § 6002(1)",
-          "rationale": "A landlord must provide 7 days' written notice to a tenant who is 7 or more days in arrears for rent before filing a forcible entry and detainer action. The tenant may cure the default by paying the full arrearage within the 7-day notice period."
-        },
-        "l2_run_date": "2026-06-18"
+        "code": "L2-CITATION-CONFIRMED",
+        "field": "notice.notice_types.pay_or_quit.tenancy_all.statute",
+        "disposition": "resolved-confirmed",
+        "note": "Citation 14 M.R.S. §6002 confirmed by L2 consensus (2026-06-18). GPT (gpt-5.5) cited 14 M.R.S. §§6001, 6002(1-A)(D); Gemini (gemini-2.5-pro) cited 14 M.R.S. §6002(1). Both models confirm §6002 as the operative notice-to-quit section (7-day period for nonpayment). File citation corrected to §6002 prior to L2 run; L2 consensus confirms this is correct. Period: 7 days confirmed. Pending human confirmation.",
+        "l2_run_date": "2026-06-18",
+        "status": "pending-human-confirmation"
       }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",

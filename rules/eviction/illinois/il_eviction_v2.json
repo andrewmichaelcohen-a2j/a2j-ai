@@ -135,6 +135,15 @@
         "layer": "L1",
         "code": "L1-MACHINE-ASSIST",
         "message": "735 ILCS 5/9-207 retrieved via FindLaw (text confirmed). Machine-assisted finding: §9-207 ('Notice to terminate tenancy for less than a year') governs holdover and periodic-tenancy termination (7-day for week-to-week; 30-day for other terms less than one year) — a no-cause termination statute, NOT the pay-or-quit notice for nonpayment. The pay-or-quit authority is 735 ILCS 5/9-209 (5-day notice for nonpayment, business days), which could not be retrieved from any available source. L7 attorney must confirm §9-209 text and the 5-business-day notice period. NOT verification."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-CITATION-CONFIRMED",
+        "field": "notice.notice_types.pay_or_quit.tenancy_all.statute",
+        "disposition": "resolved-confirmed",
+        "note": "Citation 735 ILCS 5/9-209 confirmed by L2 consensus (2026-06-18). Both gpt-5.5 and gemini-2.5-pro independently cited 735 ILCS 5/9-209 as the operative 5-day pay-or-quit provision. File was already corrected to §9-209 prior to L2 run (L1 machine-assist flag referenced §9-207; that was corrected during the five-module build). Period: 5 days confirmed. Pending human confirmation.",
+        "l2_run_date": "2026-06-18",
+        "status": "pending-human-confirmation"
       }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",

@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 18, 2026 (L2 Multi-Model Consensus Phase 1 complete — 8 machine-assist flag states run; OH + MS citations AI-resolved; WV period AI-resolved (no notice required); SD confirmed clean; MO + ND L7-escalated; l2_runner.py + l2_reasoning_pass.py added to repo. Previous: June 16, 2026 — MN + NJ corrections; library 51 ACP / 0 DRAFT) · **Next update:** after each significant session
+**Generated:** June 15, 2026 · **Last updated:** June 17, 2026 (L2 Phase 2 runner written — `rules/validation/l2/l2_phase2_runner.py`; HUMAN_REVIEW_QUEUE.md seeded; VALIDATION_PHILOSOPHY.md created; IL/ME/SD citation audit trail added. Ready for Andy to run Phase 2 from Terminal and commit all. Previous: June 18, 2026 — L2 Phase 1 complete) · **Next update:** after Phase 2 run + commit
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -330,6 +330,12 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 | Date | What changed |
 |------|-------------|
+| **2026-06-17** | **L2 Phase 2 runner written + supporting docs** |
+| | **`rules/validation/l2/l2_phase2_runner.py`:** Full 43-state Phase 2 runner with tiered resolution inline. Imports `call_openai`, `call_gemini`, `build_query`, `classify`, `extract_file_claim`, `load_all_v2_files`, `_extract_section_nums`, `_parse_json_response` from l2_runner.py. Resolution: CITATION-DIV → AI-resolve if models share section nums, else UNRESOLVED flag; PERIOD-DIV → GPT+Gemini reasoning pass (max_completion_tokens=8000), converge→AI-resolve, diverge→L7; MODEL-SPLIT → L7 directly. CLI: `--dry-run`, `--states X,Y,Z`. Skips Phase 1 states automatically. NEVER advances past ACP. |
+| | **`docs/HUMAN_REVIEW_QUEUE.md` seeded:** Phase 1 items: MO (L7), ND (L7), WV/OH/MS/IL/ME/SD (pending-confirmation). Phase 2 items appended automatically when runner completes. |
+| | **`docs/VALIDATION_PHILOSOPHY.md` created:** Full validation philosophy for paper/deck insertion. Covers: automation-for-coverage/surgical-human principle, tiered resolution protocol, hard guardrail (never blesses), Phase 1 proof point, why-it-advances-the-art, trustworthy-at-scale → A2J through-line. |
+| | **IL/ME/SD citation pre-Phase-2 audit:** IL §9-209 confirmed (no change needed; L2-CITATION-CONFIRMED flag added). ME §6002 confirmed (stale error flag removed; L2-CITATION-CONFIRMED added). SD 3d confirmed but citation ambiguous (GPT: §21-16-1(2) vs Gemini: §21-16-2 — cannot auto-resolve; L2-CITATION-AMBIGUOUS flag added, human review required). |
+| | **Ready for Andy to run Phase 2 from Terminal and commit all files.** |
 | **2026-06-18** | **L2 Multi-Model Consensus — Phase 1 complete (8 machine-assist flag states)** |
 | | **Models:** gpt-5.5 (OpenAI) + gemini-2.5-pro (Google) · **Scope:** notice/pay_or_quit · **Budget:** $20 cap (not reached) |
 | | **Results:** CONFIRM:2 (ME 7d, IL 5d), CITATION-DIV:2 (OH, MS), PERIOD-DIV:2 (WV, MO), MODEL-SPLIT:2 (ND, SD→re-run→CONFIRM) · 0 ERRORs in final run |
@@ -427,7 +433,8 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 - [x] **NJ advance confirmed (Andrew Cohen, 2026-06-16).** NJ notice module correction attorney-confirmed: `notice_required: false`, `days: null` (not 0), federally-subsidized exception (14 days), 30-day nonpayment value removed, grounds kept distinct (habitual late payment is a separate ground under §2A:18-61.2(b)). NJ is settled at ACP.
 - [ ] **NJ backlog — §2A:18-56 L1 flag (future item, not urgent).** NJ file carries an L1-URL-NOT-RESOLVED flag on §2A:18-56 (termination statute). Not part of the nonpayment notice correction; flagged for future L7 attorney review or targeted retrieval pass.
 - [x] **L2 (multi-model consensus) — Phase 1 complete (2026-06-18).** 8 machine-assist flag states run on notice/pay_or_quit. Runner: `rules/validation/l2/l2_runner.py`. Reasoning pass: `rules/validation/l2/l2_reasoning_pass.py`. Results: 4 states resolved (OH, MS, WV citations/period AI-corrected; SD confirmed clean); 2 states L7-escalated (MO, ND). See `docs/L2_CONSENSUS_REPORT_2026-06-18.md`.
-- [ ] **L2 Phase 2:** Run all 51 states on notice module (after Phase 1 fully closed out and committed).
+- [x] **L2 Phase 2 runner written (2026-06-17).** `rules/validation/l2/l2_phase2_runner.py` — full tiered resolution inline (citation-div→AI-resolve; period-div→reasoning pass→converge=AI-resolve,diverge=L7; model-split→L7). Imports shared functions from l2_runner.py. Appends to HUMAN_REVIEW_QUEUE.md; writes Phase 2 consensus report to `docs/`. Andy runs from Terminal: `python3 rules/validation/l2/l2_phase2_runner.py`. Dry run: `--dry-run`. Subset: `--states CA,TX,NY`.
+- [ ] **L2 Phase 2 execution pending (Andy runs from Terminal).** 43 states (all Phase 2, skipping 8 Phase 1). Est. ~$1.50–$2.00. After run: commit Phase 2 report + updated state files + HUMAN_REVIEW_QUEUE additions.
 - [ ] **L2 expansion:** Extend to other modules (service, substantive_defenses, procedural_defects); add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
 - [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
 - [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.
