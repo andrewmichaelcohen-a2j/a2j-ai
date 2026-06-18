@@ -151,6 +151,13 @@
         "disposition": "resolved",
         "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 30d, D.C. Code § 42-3505.01(a-1)(1). Gemini: 30d, D.C. Code § 42-3505.01(a-1). Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
         "l2_run_date": "2026-06-18"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETRY-CONSENSUS-CONFIRM",
+        "disposition": "resolved",
+        "note": "Phase 2 retry (6000-token GPT budget): CONSENSUS-CONFIRM. GPT: 30d, D.C. Code § 42-3505.01(c-1)(1)-(2). Gemini: 30d, D.C. Code § 42-3505.01(b). Phase 2 GPT parse error was a token-budget artifact, not a genuine split.",
+        "l2_run_date": "2026-06-18"
       }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -161,14 +168,14 @@
       "gpt": {
         "model": "gpt-5.5",
         "days": 30,
-        "statute": "D.C. Code § 42-3505.01(a-1)(1)",
-        "rationale": "For a residential nonpayment-of-rent case, the housing provider must serve the tenant with a 30-day notice of past-due rent before filing a claim for possession. The statute bars filing the eviction action for nonpayment until that notice requirement is satisfied."
+        "statute": "D.C. Code § 42-3505.01(c-1)(1)-(2)",
+        "rationale": "Before filing a complaint for possession based on nonpayment of rent, a housing provider must give the tenant a notice of the amount due and owing. The statute prohibits filing the complaint until 30 days after service of that notice."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 30,
-        "statute": "D.C. Code § 42-3505.01(a-1)",
-        "rationale": "A housing provider must provide a tenant with a written notice of delinquent rent at least 30 days before filing a complaint for nonpayment of rent. This notice is a mandatory legal prerequisite before the housing provider may initiate an eviction action in court."
+        "statute": "D.C. Code § 42-3505.01(b)",
+        "rationale": "A landlord may not evict a tenant for non-payment of rent unless the tenant has been served with a written notice and has failed to pay the overdue rent within 30 days of service. This notice and cure period is a mandatory prerequisite to filing an eviction complaint."
       }
     }
   },
