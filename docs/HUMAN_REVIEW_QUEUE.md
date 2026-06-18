@@ -209,6 +209,199 @@ Models disagree → cannot auto-resolve. Human must check primary source.
 
 ## Phase 2 Items
 
+*Phase 2 run: 2026-06-18*
+
+### [AR-P2-01] AR (Arkansas) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Arkansas nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: Noned, None — PARSE_ERROR: 
+- Gemini: 3d, A.C.A. § 18-60-304(d)(1) — Arkansas law requires a landlord to provide a residential tenant with a written notice allowing at least three days to vacate the property for failure to pay rent. This notice must be delivered before
+- File: 3d, Ark. Code Ann. §18-17-701
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [DC-P2-02] DC (District of Columbia) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for District of Columbia nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: Noned, None — PARSE_ERROR: 
+- Gemini: 30d, D.C. Code § 42-3505.01(a-1) — The statute requires a landlord to provide a tenant with a written notice of intent to file an eviction complaint for nonpayment of rent. This notice must inform the tenant that they have at least 30 
+- File: 30d, DC Code §42-3505.01
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [DE-P2-03] DE (Delaware) — 🟡 PENDING-CONFIRMATION
+
+**L2 classification:** CITATION-DIVERGENCE  
+**Resolution:** CITATION-AI-RESOLVED  
+**Status:** 🟡 pending  
+**Run date:** 2026-06-18
+
+**Question to confirm:** Citation corrected by AI consensus. Please verify the operative section.
+
+**AI proposed statute:** 25 Del. C. § 5502(a) (both models agree)
+**Prior file statute:** 25 Del. C. §5501
+**Period:** 5d (confirmed)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [KY-P2-04] KY (Kentucky) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Kentucky nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: Noned, None — PARSE_ERROR: 
+- Gemini: 7d, KRS § 383.660(2) — A landlord must provide a tenant with seven days' written notice of nonpayment and the intent to terminate the rental agreement if the rent is not paid. The landlord may only terminate the agreement a
+- File: 7d, KRS §383.660
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [LA-P2-05] LA (Louisiana) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Louisiana nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: Noned, None — PARSE_ERROR: 
+- Gemini: 5d, La. Code Civ. Proc. art. 4701 — When a tenant fails to pay rent, the landlord must deliver a written notice to vacate the premises. The law requires that this notice give the tenant at least five days from the date of delivery to le
+- File: 5d, La. R.S. §9:3259; La. C.C.P. Art. 4701
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [MA-P2-06] MA (Massachusetts) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Massachusetts nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: Noned, None — PARSE_ERROR: 
+- Gemini: 14d, Mass. Gen. Laws ch. 186, § 11 — The statute specifies that upon a tenant's failure to pay rent due under a written lease, a 14-day written notice to quit from the landlord is sufficient to terminate the tenancy. This notice must be 
+- File: 14d, MGL c. 186 §11
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [MD-P2-07] MD (Maryland) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Maryland nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: 10d, Md. Code Ann., Real Prop. § 8-401(b)(2)(i) — For a residential tenancy, the landlord must provide the tenant a written notice of intent to file a complaint for summary ejectment at least 10 days before filing a nonpayment-of-rent eviction action
+- Gemini: Noned, Md. Code, Real Prop. § 8-401 — The statute does not mandate a notice period before filing an action for nonpayment of rent. A landlord may file a written complaint with the District Court to begin the repossession process immediate
+- File: 10d, Md. Code Real Prop. §8-401
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NV-P2-08] NV (Nevada) — 🟡 PENDING-CONFIRMATION
+
+**L2 classification:** PERIOD-DIVERGENCE  
+**Resolution:** PERIOD-AI-RESOLVED  
+**Status:** 🟡 pending  
+**Run date:** 2026-06-18
+
+**Question to confirm:** AI reasoning converged. Please verify the proposed answer is correct.
+
+**AI proposed:** notice_required=True, days=7, statute=NRS § 40.253(1)(a)
+**GPT reasoning:** Nevada’s nonpayment-of-rent eviction statute is NRS § 40.253, which requires a written notice demanding either payment of rent or surrender of the premises before the tenant is guilty of unlawful detainer for nonpayment. For residential premises, the current statutory period is 7 judicial days after
+**Gemini reasoning:** Under NRS § 40.253(1), a tenant who defaults on rent is guilty of unlawful detainer only after being served with a written notice and continuing in possession for 7 judicial days. This statute was amended in 2019, changing the period from 5 days to 7 judicial days, which resolves the conflict betwee
+**Prior file claim:** days=5, statute=NRS §40.253
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [TN-P2-09] TN (Tennessee) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Tennessee nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: Noned, None — PARSE_ERROR: 
+- Gemini: 14d, Tenn. Code Ann. § 66-28-505(b) — This statute provides the general remedy for a tenant's noncompliance with the rental agreement, which includes the nonpayment of rent. It requires the landlord to provide a written notice of terminat
+- File: 14d, TCA §66-28-505
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [VA-P2-10] VA (Virginia) — 🔴 L7-ESCALATED
+
+**L2 classification:** MODEL-SPLIT  
+**Resolution:** L7-ESCALATED  
+**Status:** 🔴 pending  
+**Run date:** 2026-06-18
+
+**Question:** Attorney must determine the correct notice requirement for Virginia nonpayment evictions.
+
+**L2 result:** Models disagreed.
+- GPT: Noned, None — PARSE_ERROR: 
+- Gemini: 5d, Va. Code Ann. § 55.1-1245(F) — If rent is unpaid when due, the landlord must serve the tenant with a written notice stating that the tenant has five days to pay the rent or the rental agreement will be terminated. This notice is a 
+- File: 5d, Va. Code §55.1-1245
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+
+
 *Will be appended automatically when `l2_phase2_runner.py` completes.*
 
 ---

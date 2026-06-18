@@ -14,13 +14,13 @@
     },
     "statutory_sources": [
       {
-        "cite": "KRS \u00a7383.660",
+        "cite": "KRS §383.660",
         "url": "https://law.justia.com/codes/kentucky/chapter-383/section-383-660/",
         "retrieved": true,
         "retrieved_date": "2026-06-15"
       },
       {
-        "cite": "KRS \u00a7383.695",
+        "cite": "KRS §383.695",
         "url": null,
         "retrieved": false,
         "retrieved_date": null
@@ -42,8 +42,8 @@
     ],
     "per_module_sources": {
       "notice": [
-        "KRS \u00a7383.660",
-        "KRS \u00a7383.695"
+        "KRS §383.660",
+        "KRS §383.695"
       ],
       "service": [],
       "overlays": [
@@ -51,7 +51,7 @@
         "KRS 383.705"
       ],
       "substantive_defenses": [
-        "42 U.S.C. \u00a73604 (Fair Housing Act)",
+        "42 U.S.C. §3604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]"
       ],
@@ -60,12 +60,12 @@
       ]
     },
     "ai_drafter_notes": [
-      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file — all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
       "Retrieve via LDH: US/KY-Legislation (2026 version available)",
-      "Kentucky URLTA \u2014 KRS Ch. 383",
-      "7-day notice for nonpayment \u2014 Louisville-Jefferson County may have additional ordinances",
+      "Kentucky URLTA — KRS Ch. 383",
+      "7-day notice for nonpayment — Louisville-Jefferson County may have additional ordinances",
       "LDH legislation source available for retrieval verification: US/KY-Legislation",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
     ]
   },
   "validation": {
@@ -104,7 +104,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "not_implemented",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -115,7 +115,26 @@
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"KRS \u00a7383.695\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"KRS §383.695\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-MODEL-SPLIT-L7",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "escalation": "L7",
+        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): Noned, None. Gemini (gemini-2.5-pro): 7d, KRS § 383.660(2). File: 7d, KRS §383.660. Attorney review required to determine operative answer.",
+        "gpt_answer": {
+          "days": null,
+          "statute": null,
+          "rationale": "PARSE_ERROR: "
+        },
+        "gemini_answer": {
+          "days": 7,
+          "statute": "KRS § 383.660(2)",
+          "rationale": "A landlord must provide a tenant with seven days' written notice of nonpayment and the intent to terminate the rental agreement if the rent is not paid. The landlord may only terminate the agreement and begin eviction proceedings if the tenant fails to pay the full amount of rent due within that seven-day period."
+        },
+        "l2_run_date": "2026-06-18"
       }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
@@ -131,23 +150,23 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 7,
-          "statute": "KRS \u00a7383.660",
+          "statute": "KRS §383.660",
           "count_method": "calendar_days"
         }
       },
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 14,
-        "statute": "KRS \u00a7383.660",
+        "statute": "KRS §383.660",
         "curable": true
       },
       "termination": {
-        "statute": "KRS \u00a7383.695",
+        "statute": "KRS §383.695",
         "just_cause_required": false,
         "just_cause_statute": null,
         "tenancy_any": {
           "days": 30,
-          "statute": "KRS \u00a7383.695",
+          "statute": "KRS §383.695",
           "count_method": "calendar_days"
         }
       }
@@ -159,7 +178,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
@@ -167,7 +186,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 7 day(s) \u2014 verify calculation method"
+        "note": "Notice must provide minimum 7 day(s) — verify calculation method"
       }
     ],
     "notice_period_basis": {
@@ -198,7 +217,7 @@
       },
       {
         "method": "certified_mail",
-        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
+        "requirements": "Certified mail to premises; adds days to notice period — verify count method",
         "statute": "KRS 383.660",
         "adds_days_for_mail": 3,
         "note": "Number of added days and availability require attorney verification"
@@ -222,17 +241,17 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act \u00a74024",
+        "name": "CARES Act §4024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
-        "statute": "15 U.S.C. \u00a79058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
+        "statute": "15 U.S.C. §9058",
         "status": "conditional"
       }
     ],
     "state_protective": [
       {
         "name": "Implied Warranty of Habitability",
-        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction \u2014 verify state-specific elements and remedy",
+        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction — verify state-specific elements and remedy",
         "statute": "KRS 383.595"
       },
       {
@@ -265,7 +284,7 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: KRS 383.595. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Habitability warranty statute: KRS 383.595. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "retaliation",
@@ -280,20 +299,20 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: KRS 383.705. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Anti-retaliation statute: KRS 383.705. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); KRS 344.360",
+      "statute": "42 U.S.C. §3604 (Fair Housing Act); KRS 344.360",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -307,7 +326,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
     },
     {
       "defense": "improper_rent_calculation",
@@ -319,7 +338,7 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
     }
   ],
   "procedural_defects": [
@@ -335,14 +354,14 @@
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
       "statute": "KRS 24A.120 (district court jurisdiction for FED)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
       "statute": "KRS 383.200 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify"
     },
     {
       "defect": "summons_improperly_issued_or_served",

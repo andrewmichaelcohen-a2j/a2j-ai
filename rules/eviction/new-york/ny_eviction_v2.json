@@ -20,25 +20,25 @@
         "retrieved_date": "2026-05-30"
       },
       {
-        "cite": "RPAPL \u00a7711(2)",
+        "cite": "RPAPL §711(2)",
         "url": null,
         "retrieved": true,
         "retrieved_date": "2026-05-30"
       },
       {
-        "cite": "RPAPL \u00a7753(4)",
+        "cite": "RPAPL §753(4)",
         "url": null,
         "retrieved": true,
         "retrieved_date": "2026-05-30"
       },
       {
-        "cite": "RPL \u00a7226-c",
+        "cite": "RPL §226-c",
         "url": null,
         "retrieved": true,
         "retrieved_date": "2026-05-30"
       },
       {
-        "cite": "RPAPL \u00a7735",
+        "cite": "RPAPL §735",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-05-30"
@@ -50,19 +50,19 @@
         "retrieved_date": "2026-05-30"
       },
       {
-        "cite": "RPL \u00a7226-f (eff. April 2024)",
+        "cite": "RPL §226-f (eff. April 2024)",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-05-30"
       },
       {
-        "cite": "Rent Stabilization Law; Administrative Code \u00a726-501 et seq.",
+        "cite": "Rent Stabilization Law; Administrative Code §26-501 et seq.",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-05-30"
       },
       {
-        "cite": "RPL \u00a7235-b",
+        "cite": "RPL §235-b",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-05-30"
@@ -71,38 +71,38 @@
     "per_module_sources": {
       "notice": [
         "NY Good Cause Eviction Law (L. 2024, Ch. 56, Part BB)",
-        "RPAPL \u00a7711(2)",
-        "RPAPL \u00a7753(4)",
-        "RPL \u00a7226-c"
+        "RPAPL §711(2)",
+        "RPAPL §753(4)",
+        "RPL §226-c"
       ],
       "service": [
-        "RPAPL \u00a7735"
+        "RPAPL §735"
       ],
       "overlays": [
         "HSTPA of 2019 (Laws of 2019, Ch. 36)",
-        "RPL \u00a7226-f (eff. April 2024)",
-        "Rent Stabilization Law; Administrative Code \u00a726-501 et seq.",
-        "RPL \u00a7235-b"
+        "RPL §226-f (eff. April 2024)",
+        "Rent Stabilization Law; Administrative Code §26-501 et seq.",
+        "RPL §235-b"
       ],
       "substantive_defenses": [
-        "42 U.S.C. \u00a73604 (Fair Housing Act)",
+        "42 U.S.C. §3604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]",
         "[state just cause eviction statute]"
       ],
       "procedural_defects": [
-        "RPAPL \u00a7701 et seq."
+        "RPAPL §701 et seq."
       ]
     },
     "ai_drafter_notes": [
-      "RPAPL \u00a7711(2) verified via LDH retrieval 2026-05-30",
-      "14-day nonpayment notice \u2014 extended from 3 days by HSTPA 2019",
-      "NY Good Cause Eviction Law enacted 2024 \u2014 statewide just cause with complex exemptions (buildings <10 units, units <30 years old, etc.)",
-      "NYC rent stabilization is its own complex system \u2014 HSTPA 2019 eliminated most high-rent deregulation",
-      "Graduated termination notice periods (30/60/90 days) by tenancy length per RPL \u00a7226-c",
+      "RPAPL §711(2) verified via LDH retrieval 2026-05-30",
+      "14-day nonpayment notice — extended from 3 days by HSTPA 2019",
+      "NY Good Cause Eviction Law enacted 2024 — statewide just cause with complex exemptions (buildings <10 units, units <30 years old, etc.)",
+      "NYC rent stabilization is its own complex system — HSTPA 2019 eliminated most high-rent deregulation",
+      "Graduated termination notice periods (30/60/90 days) by tenancy length per RPL §226-c",
       "Good Cause Eviction rent increase protection: eviction for nonpayment tied to increase exceeding 5% or CPI is not good cause",
-      "No LDH legislation source available for this state \u2014 retrieve from official state legislature website",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
+      "No LDH legislation source available for this state — retrieve from official state legislature website",
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
     ]
   },
   "validation": {
@@ -141,7 +141,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "not_implemented",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "warning",
@@ -152,17 +152,33 @@
       {
         "layer": "L5",
         "field": "notice",
-        "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) \u2014 verify",
+        "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (14 days) is >2x median (5) — verify",
         "disposition": "open"
       },
       {
         "layer": "L3",
         "field": "notice",
-        "note": "3-NOTICE-07: cure_or_quit.days (10) < pay_or_quit days (14) \u2014 unusual, verify",
+        "note": "3-NOTICE-07: cure_or_quit.days (10) < pay_or_quit days (14) — unusual, verify",
         "disposition": "open"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-18",
+      "classification": "CONSENSUS-CONFIRM",
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 14,
+        "statute": "N.Y. Real Prop. Acts. Law § 711(2)",
+        "rationale": "For a nonpayment proceeding, the tenant must have defaulted in rent and been served with a written rent demand giving at least 14 days' notice to pay the rent or surrender possession before the summary eviction proceeding may be maintained."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 14,
+        "statute": "N.Y. Real Prop. Acts. Law § 711(2)",
+        "rationale": "Before a landlord can commence a summary proceeding for nonpayment of rent, the landlord must make a written demand providing the tenant with at least fourteen days' notice. This notice gives the tenant the opportunity to pay the rent due or surrender possession of the premises to avoid an eviction filing."
+      }
+    }
   },
   "notice": {
     "notice_types": {
@@ -175,33 +191,33 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 14,
-          "statute": "RPAPL \u00a7711(2)",
+          "statute": "RPAPL §711(2)",
           "count_method": "calendar_days"
         },
         "tenancy_under_1yr": {
           "days": 14,
-          "statute": "RPAPL \u00a7711(2)",
+          "statute": "RPAPL §711(2)",
           "count_method": "calendar_days"
         },
         "tenancy_over_1yr": {
           "days": 14,
-          "statute": "RPAPL \u00a7711(2)",
+          "statute": "RPAPL §711(2)",
           "count_method": "calendar_days"
         }
       },
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 10,
-        "statute": "RPAPL \u00a7753(4)",
+        "statute": "RPAPL §753(4)",
         "curable": true
       },
       "termination": {
-        "statute": "RPL \u00a7226-c",
+        "statute": "RPL §226-c",
         "just_cause_required": true,
         "just_cause_statute": "NY Good Cause Eviction Law (L. 2024, Ch. 56, Part BB)",
         "tenancy_under_1yr": {
           "days": 30,
-          "statute": "RPL \u00a7226-c",
+          "statute": "RPL §226-c",
           "count_method": "calendar_days"
         }
       }
@@ -213,7 +229,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
@@ -221,7 +237,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 14 day(s) \u2014 verify calculation method"
+        "note": "Notice must provide minimum 14 day(s) — verify calculation method"
       },
       {
         "defect": "missing_just_cause_reason",
@@ -229,7 +245,7 @@
         "statute": "NY Good Cause Eviction Law (L. 2024, Ch. 56, Part BB)",
         "case_law": [],
         "severity": "void",
-        "note": "Just cause required \u2014 notice must state qualifying reason"
+        "note": "Just cause required — notice must state qualifying reason"
       }
     ],
     "notice_period_basis": {
@@ -252,21 +268,21 @@
       {
         "method": "personal",
         "requirements": "In-hand delivery to tenant",
-        "statute": "RPAPL \u00a7735(1)",
+        "statute": "RPAPL §735(1)",
         "adds_days_for_mail": null,
         "note": null
       },
       {
         "method": "substituted",
         "requirements": "Delivery to person of suitable age and discretion at residence plus mail copy",
-        "statute": "RPAPL \u00a7735(1)",
+        "statute": "RPAPL §735(1)",
         "adds_days_for_mail": null,
         "note": null
       },
       {
         "method": "nail_and_mail",
         "requirements": "Affixing to door plus mailing; respondent has 10 additional days to answer",
-        "statute": "RPAPL \u00a7735(1)",
+        "statute": "RPAPL §735(1)",
         "adds_days_for_mail": 10,
         "note": "10-day mail addition applies to summons response time, not notice period"
       }
@@ -275,13 +291,13 @@
       {
         "defect": "improper_service_method",
         "consequence": "notice_void",
-        "statute": "RPAPL \u00a7735",
+        "statute": "RPAPL §735",
         "case_law": []
       },
       {
         "defect": "failed_to_mail_copy_after_nail_and_mail",
         "consequence": "notice_void",
-        "statute": "RPAPL \u00a7735(1)",
+        "statute": "RPAPL §735(1)",
         "case_law": []
       }
     ]
@@ -289,10 +305,10 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act \u00a74024",
+        "name": "CARES Act §4024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
-        "statute": "15 U.S.C. \u00a79058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
+        "statute": "15 U.S.C. §9058",
         "status": "conditional"
       }
     ],
@@ -305,25 +321,25 @@
       {
         "name": "Good Cause Eviction Law (2024)",
         "effect": "Just cause required for eviction of covered tenants; rent increase cap for covered units; exemptions for small landlords, new construction",
-        "statute": "RPL \u00a7226-f (eff. April 2024)"
+        "statute": "RPL §226-f (eff. April 2024)"
       },
       {
         "name": "Rent Stabilization (NYC)",
         "effect": "Rent stabilized units: DHCR regulates increases; specific good cause grounds required; lease renewal rights",
-        "statute": "Rent Stabilization Law; Administrative Code \u00a726-501 et seq."
+        "statute": "Rent Stabilization Law; Administrative Code §26-501 et seq."
       },
       {
         "name": "Warranty of Habitability",
         "effect": "Landlord must maintain premises in habitable condition; breach may be defense or counterclaim",
-        "statute": "RPL \u00a7235-b"
+        "statute": "RPL §235-b"
       }
     ],
     "local": [
       {
         "jurisdiction": "New York City",
         "type": "rent_control",
-        "effect": "Rent Control and Rent Stabilization systems; DHCR enforcement; regulated unit counts declining \u2014 verify current status",
-        "source": "NYC Administrative Code \u00a726-401 et seq.",
+        "effect": "Rent Control and Rent Stabilization systems; DHCR enforcement; regulated unit counts declining — verify current status",
+        "source": "NYC Administrative Code §26-401 et seq.",
         "digitization_note": null
       }
     ]
@@ -338,11 +354,11 @@
         "Landlord failed to repair",
         "Tenant did not cause or waive the defect"
       ],
-      "statute": "RPL \u00a7235-b",
+      "statute": "RPL §235-b",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: RPL \u00a7235-b. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Habitability warranty statute: RPL §235-b. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "retaliation",
@@ -353,24 +369,24 @@
         "Causal connection between protected activity and adverse action",
         "Action was within state-defined presumption period (varies: 60 days to 12 months)"
       ],
-      "statute": "RPL \u00a7223-b",
+      "statute": "RPL §223-b",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: RPL \u00a7223-b. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Anti-retaliation statute: RPL §223-b. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); Exec. Law \u00a7296-a",
+      "statute": "42 U.S.C. §3604 (Fair Housing Act); Exec. Law §296-a",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -384,7 +400,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
     },
     {
       "defense": "improper_rent_calculation",
@@ -392,11 +408,11 @@
         "Amount demanded in notice exceeds lawfully owed rent",
         "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
       ],
-      "statute": "RPAPL \u00a7701 et seq.",
+      "statute": "RPAPL §701 et seq.",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
     },
     {
       "defense": "other",
@@ -405,39 +421,39 @@
         "Notice does not state required just cause ground",
         "Stated ground is not one of the enumerated grounds"
       ],
-      "statute": "RPL \u00a7226-c; RPAPL \u00a71400 et seq. (Good Cause Eviction Law, eff. April 20, 2024 for covered units)",
+      "statute": "RPL §226-c; RPAPL §1400 et seq. (Good Cause Eviction Law, eff. April 20, 2024 for covered units)",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "New York's Good Cause Eviction Law (Housing Stability and Tenant Protection Act 2024 additions) requires good cause for eviction or non-renewal for covered residential tenants statewide. Also: NYC Admin. Code \u00a726-511 (rent stabilization just cause). grounding_gap: coverage exemptions, opt-out jurisdictions, and applicable grounds vary \u2014 specialist review required."
+      "note": "New York's Good Cause Eviction Law (Housing Stability and Tenant Protection Act 2024 additions) requires good cause for eviction or non-renewal for covered residential tenants statewide. Also: NYC Admin. Code §26-511 (rent stabilization just cause). grounding_gap: coverage exemptions, opt-out jurisdictions, and applicable grounds vary — specialist review required."
     }
   ],
   "procedural_defects": [
     {
       "defect": "complaint_filed_before_notice_period_expired",
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
-      "statute": "RPAPL \u00a7701 et seq.",
+      "statute": "RPAPL §701 et seq.",
       "case_law": [],
       "note": "Filing before the notice period runs is a bright-line defect in most states"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
-      "statute": "RPAPL \u00a7401 (Housing Court / civil court) / RPAPL \u00a7701",
+      "statute": "RPAPL §401 (Housing Court / civil court) / RPAPL §701",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "RPAPL \u00a7701 et seq. (pleading requirements)",
+      "statute": "RPAPL §701 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
-      "statute": "RPAPL \u00a7701 et seq.; state civil procedure rules (service of process)",
+      "statute": "RPAPL §701 et seq.; state civil procedure rules (service of process)",
       "case_law": [],
       "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
     }

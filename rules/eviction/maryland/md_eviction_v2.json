@@ -14,26 +14,26 @@
     },
     "statutory_sources": [
       {
-        "cite": "Md. Code Real Prop. \u00a78-401",
+        "cite": "Md. Code Real Prop. §8-401",
         "url": "https://law.justia.com/codes/maryland/real-property/title-8/subtitle-4/section-8-401/",
         "retrieved": true,
         "retrieved_date": "2026-06-15"
       },
       {
-        "cite": "Md. Code Real Prop. \u00a78-402",
+        "cite": "Md. Code Real Prop. §8-402",
         "url": null,
         "retrieved": false,
         "retrieved_date": null
       },
       {
-        "cite": "Md. Code, Real Prop. \u00a78-211",
+        "cite": "Md. Code, Real Prop. §8-211",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
         "source": "machine-assisted retrieval (2026-06-16)"
       },
       {
-        "cite": "Md. Code, Real Prop. \u00a78-208.1",
+        "cite": "Md. Code, Real Prop. §8-208.1",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
@@ -42,32 +42,32 @@
     ],
     "per_module_sources": {
       "notice": [
-        "Md. Code Real Prop. \u00a78-401",
-        "Md. Code Real Prop. \u00a78-402"
+        "Md. Code Real Prop. §8-401",
+        "Md. Code Real Prop. §8-402"
       ],
       "service": [],
       "overlays": [
-        "Md. Code, Real Prop. \u00a78-211",
-        "Md. Code, Real Prop. \u00a78-208.1"
+        "Md. Code, Real Prop. §8-211",
+        "Md. Code, Real Prop. §8-208.1"
       ],
       "substantive_defenses": [
-        "42 U.S.C. \u00a73604 (Fair Housing Act)",
+        "42 U.S.C. §3604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]",
         "[state just cause eviction statute]"
       ],
       "procedural_defects": [
-        "Md. Code, Real Prop. \u00a78-401 et seq."
+        "Md. Code, Real Prop. §8-401 et seq."
       ]
     },
     "ai_drafter_notes": [
-      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file — all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
       "Retrieve via LDH: US/MD-Legislation",
-      "Maryland's eviction process is complex \u2014 failure to pay rent (FTR) action has specific procedural requirements",
-      "10-day notice for nonpayment \u2014 but landlord can file immediately in some counties after notice period",
-      "Montgomery County rent stabilization is significant \u2014 verify current guideline rates",
+      "Maryland's eviction process is complex — failure to pay rent (FTR) action has specific procedural requirements",
+      "10-day notice for nonpayment — but landlord can file immediately in some counties after notice period",
+      "Montgomery County rent stabilization is significant — verify current guideline rates",
       "LDH legislation source available for retrieval verification: US/MD-Legislation",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
     ]
   },
   "validation": {
@@ -106,7 +106,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "not_implemented",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -117,7 +117,26 @@
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"Md. Code Real Prop. \u00a78-402\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"Md. Code Real Prop. §8-402\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-MODEL-SPLIT-L7",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "escalation": "L7",
+        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): 10d, Md. Code Ann., Real Prop. § 8-401(b)(2)(i). Gemini (gemini-2.5-pro): Noned, Md. Code, Real Prop. § 8-401. File: 10d, Md. Code Real Prop. §8-401. Attorney review required to determine operative answer.",
+        "gpt_answer": {
+          "days": 10,
+          "statute": "Md. Code Ann., Real Prop. § 8-401(b)(2)(i)",
+          "rationale": "For a residential tenancy, the landlord must provide the tenant a written notice of intent to file a complaint for summary ejectment at least 10 days before filing a nonpayment-of-rent eviction action. The notice requirement is established in Maryland Real Property § 8-401(b)(2)(i)."
+        },
+        "gemini_answer": {
+          "days": null,
+          "statute": "Md. Code, Real Prop. § 8-401",
+          "rationale": "The statute does not mandate a notice period before filing an action for nonpayment of rent. A landlord may file a written complaint with the District Court to begin the repossession process immediately after a tenant fails to pay rent when it is due."
+        },
+        "l2_run_date": "2026-06-18"
       }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
@@ -133,23 +152,23 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 10,
-          "statute": "Md. Code Real Prop. \u00a78-401",
+          "statute": "Md. Code Real Prop. §8-401",
           "count_method": "calendar_days"
         }
       },
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 30,
-        "statute": "Md. Code Real Prop. \u00a78-402",
+        "statute": "Md. Code Real Prop. §8-402",
         "curable": true
       },
       "termination": {
-        "statute": "Md. Code Real Prop. \u00a78-402",
+        "statute": "Md. Code Real Prop. §8-402",
         "just_cause_required": false,
         "just_cause_statute": null,
         "tenancy_any": {
           "days": 30,
-          "statute": "Md. Code Real Prop. \u00a78-402",
+          "statute": "Md. Code Real Prop. §8-402",
           "count_method": "calendar_days"
         }
       }
@@ -161,7 +180,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
@@ -169,7 +188,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 10 day(s) \u2014 verify calculation method"
+        "note": "Notice must provide minimum 10 day(s) — verify calculation method"
       }
     ],
     "notice_period_basis": {
@@ -187,21 +206,21 @@
       {
         "method": "personal",
         "requirements": "In-person delivery to tenant",
-        "statute": "Md. Code, Real Prop. \u00a78-401(c)",
+        "statute": "Md. Code, Real Prop. §8-401(c)",
         "adds_days_for_mail": null,
         "note": "Verify requirements under state law"
       },
       {
         "method": "substituted",
         "requirements": "Delivery to adult household member plus mail copy",
-        "statute": "Md. Code, Real Prop. \u00a78-401(c)",
+        "statute": "Md. Code, Real Prop. §8-401(c)",
         "adds_days_for_mail": null,
         "note": "Verify availability and requirements under state law"
       },
       {
         "method": "certified_mail",
-        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
-        "statute": "Md. Code, Real Prop. \u00a78-401(c)",
+        "requirements": "Certified mail to premises; adds days to notice period — verify count method",
+        "statute": "Md. Code, Real Prop. §8-401(c)",
         "adds_days_for_mail": 3,
         "note": "Number of added days and availability require attorney verification"
       }
@@ -210,13 +229,13 @@
       {
         "defect": "improper_service_method",
         "consequence": "notice_void",
-        "statute": "Md. Code, Real Prop. \u00a78-401(c)",
+        "statute": "Md. Code, Real Prop. §8-401(c)",
         "case_law": []
       },
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": "Md. Code, Real Prop. \u00a78-401(c)",
+        "statute": "Md. Code, Real Prop. §8-401(c)",
         "case_law": []
       }
     ]
@@ -224,23 +243,23 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act \u00a74024",
+        "name": "CARES Act §4024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
-        "statute": "15 U.S.C. \u00a79058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
+        "statute": "15 U.S.C. §9058",
         "status": "conditional"
       }
     ],
     "state_protective": [
       {
         "name": "Implied Warranty of Habitability",
-        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction \u2014 verify state-specific elements and remedy",
-        "statute": "Md. Code, Real Prop. \u00a78-211"
+        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction — verify state-specific elements and remedy",
+        "statute": "Md. Code, Real Prop. §8-211"
       },
       {
         "name": "Anti-Retaliation Protection",
         "effect": "Landlord may not evict in retaliation for tenant's exercise of legal rights (habitability complaints, organizing, etc.); verify state-specific presumption period and elements",
-        "statute": "Md. Code, Real Prop. \u00a78-208.1"
+        "statute": "Md. Code, Real Prop. §8-208.1"
       }
     ],
     "local": [
@@ -263,11 +282,11 @@
         "Landlord failed to repair",
         "Tenant did not cause or waive the defect"
       ],
-      "statute": "Md. Code, Real Prop. \u00a78-211",
+      "statute": "Md. Code, Real Prop. §8-211",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: Md. Code, Real Prop. \u00a78-211. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Habitability warranty statute: Md. Code, Real Prop. §8-211. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "retaliation",
@@ -278,24 +297,24 @@
         "Causal connection between protected activity and adverse action",
         "Action was within state-defined presumption period (varies: 60 days to 12 months)"
       ],
-      "statute": "Md. Code, Real Prop. \u00a78-208.1",
+      "statute": "Md. Code, Real Prop. §8-208.1",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: Md. Code, Real Prop. \u00a78-208.1. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Anti-retaliation statute: Md. Code, Real Prop. §8-208.1. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); Md. Code, State Gov't \u00a720-706",
+      "statute": "42 U.S.C. §3604 (Fair Housing Act); Md. Code, State Gov't §20-706",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -309,7 +328,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
     },
     {
       "defense": "improper_rent_calculation",
@@ -317,11 +336,11 @@
         "Amount demanded in notice exceeds lawfully owed rent",
         "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
       ],
-      "statute": "Md. Code, Real Prop. \u00a78-401 et seq.",
+      "statute": "Md. Code, Real Prop. §8-401 et seq.",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
     },
     {
       "defense": "other",
@@ -330,39 +349,39 @@
         "Notice does not state required just cause ground",
         "Stated ground is not one of the enumerated grounds"
       ],
-      "statute": "Md. Code, Real Prop. \u00a78-402.1 (Baltimore City only \u2014 verify applicability; most of MD has no statewide just cause)",
+      "statute": "Md. Code, Real Prop. §8-402.1 (Baltimore City only — verify applicability; most of MD has no statewide just cause)",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "NOTE: Maryland does not have a statewide just cause eviction requirement. Baltimore City has local just cause protections. Verify applicable jurisdiction. grounding_gap: local applicability and enumerated grounds \u2014 specialist review required."
+      "note": "NOTE: Maryland does not have a statewide just cause eviction requirement. Baltimore City has local just cause protections. Verify applicable jurisdiction. grounding_gap: local applicability and enumerated grounds — specialist review required."
     }
   ],
   "procedural_defects": [
     {
       "defect": "complaint_filed_before_notice_period_expired",
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
-      "statute": "Md. Code, Real Prop. \u00a78-401 et seq.",
+      "statute": "Md. Code, Real Prop. §8-401 et seq.",
       "case_law": [],
       "note": "Filing before the notice period runs is a bright-line defect in most states"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
-      "statute": "Md. Code, Cts. & Jud. Proc. \u00a74-401 (district court)",
+      "statute": "Md. Code, Cts. & Jud. Proc. §4-401 (district court)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "Md. Code, Real Prop. \u00a78-401 et seq. (pleading requirements)",
+      "statute": "Md. Code, Real Prop. §8-401 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
-      "statute": "Md. Code, Real Prop. \u00a78-401 et seq.; state civil procedure rules (service of process)",
+      "statute": "Md. Code, Real Prop. §8-401 et seq.; state civil procedure rules (service of process)",
       "case_law": [],
       "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
     }
