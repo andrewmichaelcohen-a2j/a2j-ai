@@ -37,6 +37,7 @@ import glob
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Optional, Tuple, List
 
 # ── Key handling — load .env FIRST, before anything else ─────────────────────
 
@@ -131,8 +132,7 @@ def call_openai(query: str, dry_run: bool = False) -> dict:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": query},
             ],
-            temperature=0,
-            max_tokens=350,
+            max_completion_tokens=2000,  # reasoning models consume tokens for chain-of-thought before output; 350 caused empty responses
         )
         raw = resp.choices[0].message.content.strip()
         parsed = _parse_json_response(raw)
@@ -194,7 +194,7 @@ def _error_result(msg: str, model: str) -> dict:
 
 # ── File loading ──────────────────────────────────────────────────────────────
 
-def load_all_v2_files() -> tuple[dict, dict]:
+def load_all_v2_files() -> Tuple[dict, dict]:
     """Returns (data_by_state, path_by_state)."""
     data_by_state = {}
     path_by_state = {}
@@ -244,7 +244,7 @@ def extract_file_claim(data: dict) -> dict:
 
 # ── Classification ────────────────────────────────────────────────────────────
 
-def _normalize_days(val) -> int | None:
+def _normalize_days(val) -> Optional[int]:
     """Normalize days to int or None (None = no notice required)."""
     if val is None:
         return None

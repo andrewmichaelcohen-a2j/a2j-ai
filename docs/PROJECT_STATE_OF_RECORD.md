@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 16, 2026 (MN + NJ corrections complete — MN re-validated, NJ no-notice-period pattern attorney-confirmed (Andrew Cohen); library now 51 ACP / 0 DRAFT — 100% ACP) · **Next update:** after each significant session
+**Generated:** June 15, 2026 · **Last updated:** June 18, 2026 (L2 Multi-Model Consensus Phase 1 complete — 8 machine-assist flag states run; OH + MS citations AI-resolved; WV period AI-resolved (no notice required); SD confirmed clean; MO + ND L7-escalated; l2_runner.py + l2_reasoning_pass.py added to repo. Previous: June 16, 2026 — MN + NJ corrections; library 51 ACP / 0 DRAFT) · **Next update:** after each significant session
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -75,6 +75,9 @@ a2j-ai/
 │   │   └── texas/tx_eviction_v2.json        ← ✅ NEW v2 · AUTOMATED-CHECKS-PASSED (all 5 modules)
 │   └── validation/
 │       ├── battery/validate.py              ← ✅ UPDATED — v2-aware; enforces 3 guardrails
+│       ├── l2/                              ← ✅ NEW (2026-06-18)
+│       │   ├── l2_runner.py                ← L2 multi-model consensus runner (gpt-5.5 + gemini-2.5-pro)
+│       │   └── l2_reasoning_pass.py        ← L2 period-divergence reasoning pass; writes AI-resolved or L7 flags
 │       └── reports/
 │           ├── validation_report_20260601_232614.json   ← v1 report (archive)
 │           ├── validation_report_latest.json            ← v1 latest (archive)
@@ -100,12 +103,15 @@ a2j-ai/
     ├── CONTRIBUTING.md
     ├── Decision_Logic_Briefing_for_Claude.md
     ├── DISCLAIMER.md
+    ├── L2_CONSENSUS_REPORT_2026-06-18.md   ← ✅ NEW — L2 Phase 1 results (8 states)
+    ├── L7_TRIAGE_LIST_2026-06-16.md        ← L7 triage (264 entries; substantive_defenses)
     ├── PROJECT_PLAN.md                      ← Master project plan (Claude does NOT edit)
     ├── PROJECT_STATE_OF_RECORD.md           ← This file (Claude updates each session)
     ├── PROJECT_STATUS_JUNE2026.md           ← Older; superseded by this file
     ├── Review_Slides_v0.1.pptx
     ├── Review_Slides_v0.2.pptx
     ├── REVIEWER_CHECKLIST.md
+    ├── SCHEMA_V2_DESIGN_SPEC.md            ← Schema v2 additions (notice_required, exceptions, null days)
     └── STATUS_LABELS.md                     ← ✅ UPDATED to v2 (module-level + guardrails)
 ```
 
@@ -116,8 +122,8 @@ a2j-ai/
 ### v2 Summary (current)
 
 **Schema:** `eviction-v2` · **5 modules per file:** `notice`, `service`, `overlays`, `substantive_defenses`, `procedural_defects`  
-**Validation last run:** 2026-06-16 (MN + NJ corrections — library: **51 ACP / 0 DRAFT**)  
-**Layers run:** L1, L3, L5 · L2/L4/L6: `not_implemented`  
+**Validation last run:** 2026-06-16 (MN + NJ corrections — library: **51 ACP / 0 DRAFT**); L2 Phase 1 run 2026-06-18 (8 machine-assist flag states — notice/pay_or_quit)  
+**Layers run:** L1, L3, L5 fully · L2 partially (Phase 1: 8 states; notice module only) · L4/L6: `not_implemented`  
 **file_status rule:** `min(module_status)` — enforced by `validate.py`
 
 | Metric | Count |
@@ -154,24 +160,24 @@ a2j-ai/
 | KY | KRS §383.660 | Justia |
 | LA | La. C.C.P. Art. 4701 | Justia |
 | MD | Md. Code, Real Prop. §8-401 | Justia |
-| ME | 14 M.R.S. §6001 | Justia — machine-assist: pay-or-quit period in §6002; L7 must confirm |
+| ME | 14 M.R.S. §6001 | Justia — machine-assist: pay-or-quit period in §6002; **L2 CONSENSUS-CONFIRM** (2026-06-18): both GPT + Gemini independently confirmed §6002, 7-day period — pending human confirmation |
 | MI | MCL §554.134 | michigan.gov |
-| MO | RSMo §441.050 | MO Revisor — machine-assist: §441.050 is termination statute; nonpayment in §535.020; L7 must confirm |
-| MS | Miss. Code Ann. §89-7-23 | Justia — machine-assist: §89-7-23 excludes RLTA tenancies (§89-8 et seq.); L7 must confirm |
+| MO | RSMo §441.050 | MO Revisor — machine-assist: §441.050 is termination statute; nonpayment in §535.020; **L2 PERIOD-DIVERGENCE → L7 ESCALATED** (2026-06-18): no model convergence — GPT says notice_required=false (§535.020.1), Gemini says notice_required=true (§535.020); attorney review required (is §535.020 demand a notice or just a precondition?) |
+| MS | Miss. Code Ann. §89-7-23 | Justia — machine-assist: §89-7-23 excludes RLTA tenancies (§89-8 et seq.); **L2 CITATION-DIVERGENCE → AI-RESOLVED** (2026-06-18): corrected to §89-8-13(5)(a) (Chapter 8 RLTA — operative residential nonpayment provision; verified Justia); period 3d confirmed; pending human confirmation |
 | MT | MCA §70-24-422 | Justia |
 | NC | N.C. Gen. Stat. §42-3 | ncleg.gov |
-| ND | NDCC §47-16-15 | FindLaw — machine-assist: §47-16-15 is termination statute; pay-or-quit authority unclear; L7 must confirm |
+| ND | NDCC §47-16-15 | FindLaw — machine-assist: §47-16-15 is termination statute; pay-or-quit authority unclear; **L2 MODEL-SPLIT → L7 ESCALATED** (2026-06-18): GPT says 3-day formal notice required (§47-32-02); Gemini says no notice required, landlord may file 3 days after rent due (§47-32-02) — genuine interpretive split on same statute; attorney must resolve whether 3-day period is a notice requirement or a ripening period |
 | NE | Neb. Rev. Stat. §76-1431 | nebraskalegislature.gov |
 | NH | RSA 540:3 | gencourt.state.nh.us |
 | NM | NMSA §47-8-33 | Justia |
 | NV | NRS §40.253 | nevada.public.law |
-| OH | ORC §1923.02 | Justia — machine-assist: 3-day notice period in §1923.04; L7 must confirm |
+| OH | ORC §1923.02 | Justia — machine-assist: 3-day notice period in §1923.04; **L2 CITATION-DIVERGENCE → AI-RESOLVED** (2026-06-18): corrected to ORC §1923.04(A) (operative pre-filing notice provision; verified codes.ohio.gov); period 3d confirmed; pending human confirmation |
 | OK | 41 O.S. §131 | Justia |
 | OR | ORS §90.394 | oregon.public.law |
 | RI | R.I. Gen. Laws §34-18-35 | FindLaw |
 | VA | Va. Code §55.1-1245 | law.lis.virginia.gov |
 | WI | Wis. Stat. §704.17 | Justia |
-| WV | W. Va. Code §37-6-5 | Justia — machine-assist: §37-6-5 is termination statute; pay-or-quit authority unclear; L7 must confirm |
+| WV | W. Va. Code §37-6-5 | Justia — machine-assist: §37-6-5 is termination statute; pay-or-quit authority unclear; **L2 PERIOD-DIVERGENCE → AI-RESOLVED** (2026-06-18): both models (high confidence) say notice_required=false, §55-3A-1 (summary eviction — no prior notice period); file corrected (days=null, statute=§55-3A-1); pending human confirmation |
 | WY | Wyo. Stat. §1-21-1002 | Justia |
 | DC | D.C. Code §42-3505.01(a-1)(1) | Confirmed by attorney review 2026-06-16 (Andrew Cohen) — 30-day nonpayment notice when rent owed ≥ $600 |
 | MA | MGL c. 186 §11 | Confirmed by attorney review 2026-06-16 (Andrew Cohen) — 14-day; §12 parallel for tenancies-at-will |
@@ -182,10 +188,10 @@ a2j-ai/
 | NJ | N.J.S.A. §2A:18-61.1 + §2A:18-61.2 | No statutory nonpayment notice period (§2A:18-61.2 carve-out — immediate filing for market-rate); notice_required=false; days=null; exceptions[federally_subsidized_housing]=14 days; 30-day incorrect value removed. Content correction attorney-confirmed: Andrew Cohen, 2026-06-16. Note: §2A:18-56 (termination statute) carries L1-URL-NOT-RESOLVED flag — future verification item, not part of this correction. |
 | AR | Ark. Code Ann. §18-17-701 | Justia (subtitle-2 path) — 5-day pay-or-quit |
 | IA | Iowa Code §562A.27 | Justia (2022 with title-xiv path) — 3-day pay-or-quit |
-| IL | 735 ILCS 5/9-207 | FindLaw — machine-assist: §9-207 is holdover/termination statute; pay-or-quit is §9-209 (unretrieval); L7 must confirm |
+| IL | 735 ILCS 5/9-207 | FindLaw — machine-assist: §9-207 is holdover/termination statute; pay-or-quit is §9-209 (unretrieval); **L2 CONSENSUS-CONFIRM** (2026-06-18): both models confirmed 5-day period under §9-209; pending human confirmation of statute identity |
 | PA | 68 Pa. C.S. §250.501 | FindLaw (as 68 P.S. §250.501) — 10-day pay-or-quit |
 | SC | SC Code §27-40-710 | Justia (2024) — 5-day pay-or-quit |
-| SD | SDCL §21-16-1 | Justia (chapter-16 path) — machine-assist: FED grounds statute; nonpayment in subsection (4); L7 must confirm |
+| SD | SDCL §21-16-1 | Justia (chapter-16 path) — machine-assist: FED grounds statute; nonpayment in subsection (4); **L2 CONSENSUS-CONFIRM** (2026-06-18): both models confirmed 3-day period under §21-16-1; pending human confirmation |
 | UT | Utah Code §78B-6-802 | Justia (2020, part-8/section-802 path) — 3 business day pay-or-quit explicit in statute |
 
 **States at DRAFT: 0** — all 51 jurisdictions are AUTOMATED-CHECKS-PASSED as of 2026-06-16.
@@ -204,7 +210,7 @@ a2j-ai/
 | Layer | Name | Status | v2 Result (2026-06-15) |
 |-------|------|--------|------------------------|
 | **L1** | Statutory grounding | ✅ Operational | **51 pass / 0 fail** (Wave 3 complete 2026-06-15 — all 51 states retrieved) |
-| **L2** | Multi-model consensus | ⚠️ not_implemented | — |
+| **L2** | Multi-model consensus | ✅ Phase 1 complete (2026-06-18) | **8 machine-assist flag states (notice/pay_or_quit):** ME ✅ CONFIRM · OH ✅ AI-resolved (citation) · WV ✅ AI-resolved (no notice) · MS ✅ AI-resolved (citation) · SD ✅ CONFIRM · IL ✅ CONFIRM · MO 🔴 L7-escalated · ND 🔴 L7-escalated · Phase 2 (all 51 states) not yet run |
 | **L3** | Internal consistency | ✅ Operational | 51/51 PASS · 0 errors · 2 warnings (NY, WA) |
 | **L4** | Golden-set tests | ⚠️ not_implemented | — |
 | **L5** | Cross-jurisdiction anomaly | ✅ Operational | **51 ACP / 0 DRAFT** (2026-06-16). L5 outlier resolution complete: 5 confirmed states (DC, MA, TN, VT, WA) advanced; MN re-validated (citation §504B.321 subd. 1a, flag resolved-confirmed); NJ content-corrected (no-notice-period pattern, days=null, notice_required=false, exceptions array). validate.py updated to suppress resolved-* flags and recognize notice_required=false. **L5-LOCAL-XSTATE sub-check**: all 51 states pass clean. ⚠️ NJ advance requires Andy confirmation. |
@@ -215,7 +221,7 @@ a2j-ai/
 
 1. **G1 — No auto-advance:** Any module at UNDER REVIEW/VALIDATED/CERTIFIED with `reviewer=null` is a hard validation FAIL. No automated process may advance past AUTOMATED-CHECKS-PASSED.
 2. **G2 — file_status = min(module_status):** `validate.py` computes and writes back the correct `file_status` on every run. Never set directly.
-3. **G3 — Option-A gate:** A module advances to AUTOMATED-CHECKS-PASSED only when all currently-implemented layers (today: L1, L3, L5) pass with no errors. `not_implemented` layers don't block.
+3. **G3 — Option-A gate:** A module advances to AUTOMATED-CHECKS-PASSED only when all currently-implemented layers (today: L1, L3, L5) pass with no errors. `not_implemented` layers don't block. L2 AI-resolved items stay at ACP with a `pending-human-confirmation` flag; they never advance further via AI resolution alone.
 
 ### Write-back behavior
 
@@ -324,6 +330,18 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 | Date | What changed |
 |------|-------------|
+| **2026-06-18** | **L2 Multi-Model Consensus — Phase 1 complete (8 machine-assist flag states)** |
+| | **Models:** gpt-5.5 (OpenAI) + gemini-2.5-pro (Google) · **Scope:** notice/pay_or_quit · **Budget:** $20 cap (not reached) |
+| | **Results:** CONFIRM:2 (ME 7d, IL 5d), CITATION-DIV:2 (OH, MS), PERIOD-DIV:2 (WV, MO), MODEL-SPLIT:2 (ND, SD→re-run→CONFIRM) · 0 ERRORs in final run |
+| | **OH (citation AI-resolved):** Corrected ORC §1923.02 → ORC §1923.04(A) — verified from codes.ohio.gov. Both models identified §1923.04(A) as operative pre-filing notice provision. Period 3d confirmed. Pending human confirmation. |
+| | **MS (citation AI-resolved):** Corrected §89-7-27 → §89-8-13(5)(a) — verified from Justia. Chapter 8 (RLTA) is operative for residential tenancies; Chapter 7 excluded. Period 3d confirmed. Pending human confirmation. |
+| | **WV (period AI-resolved — convergent):** Both models high-confidence: notice_required=false, §55-3A-1 (summary eviction — no prior notice period). File corrected (days=null, statute=§55-3A-1, count_method=null). Pending human confirmation. |
+| | **SD (CONFIRM after re-run):** Initial MODEL-SPLIT from GPT parse error (token limit). Re-run → CONSENSUS-CONFIRM (3d, §21-16-1). Stale error flags removed. |
+| | **MO (L7 escalated):** AI reasoning pass — no convergence. GPT: notice_required=false (§535.020.1); Gemini: notice_required=true (§535.020). Attorney must resolve whether §535.020 demand constitutes a notice requirement or only a precondition. File's 10-day claim (§535.060) almost certainly wrong. |
+| | **ND (L7 escalated):** Genuine interpretive model-split. Both cite §47-32-02 but disagree: GPT says 3-day formal notice required; Gemini says no notice, landlord may file 3 days after rent due. Attorney must resolve whether 3-day period is a notice-to-quit requirement or a ripening period. |
+| | **New files:** `rules/validation/l2/l2_runner.py` (Phase 1 runner), `rules/validation/l2/l2_reasoning_pass.py` (reasoning pass for period-divergence) |
+| | **Report:** `docs/L2_CONSENSUS_REPORT_2026-06-18.md` |
+| | **Tiered resolution protocol established:** citation-divergence → AI-resolve; period-divergence → reasoning pass (converge=AI-resolve, diverge=L7); genuine-interpretation → L7 directly; parse-error → technical retry. AI resolution NEVER advances past ACP. |
 | **2026-06-16** | **MN + NJ corrections — library reaches 51 ACP / 0 DRAFT** |
 | | **MN (PART 1 — re-validation):** Citation already corrected to §504B.321 subd. 1a from prior session. L5 flag marked `resolved-confirmed` (Andrew Cohen, 2026-06-16): "14-day period confirmed per §504B.321 subd. 1a; citation corrected from §504B.285." validate.py re-run → MN notice module advances DRAFT → ACP. Library: 49 → 50 ACP. |
 | | **NJ (PART 2 — substantive correction per blessed approach):** Attorney finding: NJ has no statutory notice period for nonpayment (§2A:18-61.2 carve-out). Content corrected: `notice_required: false`, `days: null`, `exceptions[federally_subsidized_housing: 14 days]`; 30-day value removed. L5 flag marked `resolved-corrected`. validate.py re-run → NJ notice module advances DRAFT → ACP. Library: 50 → 51 ACP. **Attorney-confirmed same session: Andrew Cohen, 2026-06-16** — notice_required=false, days=null (not 0), 14-day subsidy exception, 30-day removed, grounds kept distinct. NJ settled at ACP. Note: §2A:18-56 (termination) carries L1-URL-NOT-RESOLVED flag — separate future item. |
@@ -408,7 +426,11 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 - [x] **L5 flags — all 7 DRAFT states resolved (2026-06-16).** DC, MA, TN, VT, WA: L5 flags confirmed by attorney (Andrew Cohen), marked `resolved-confirmed`, advanced to ACP. MN: citation corrected to §504B.321 subd. 1a, L5 flag marked `resolved-confirmed`, re-validated → ACP. NJ: substantive correction (no-notice-period pattern) per attorney finding, L5 flag marked `resolved-corrected`, advanced to ACP. ⚠️ NJ advance requires Andy's explicit confirmation.
 - [x] **NJ advance confirmed (Andrew Cohen, 2026-06-16).** NJ notice module correction attorney-confirmed: `notice_required: false`, `days: null` (not 0), federally-subsidized exception (14 days), 30-day nonpayment value removed, grounds kept distinct (habitual late payment is a separate ground under §2A:18-61.2(b)). NJ is settled at ACP.
 - [ ] **NJ backlog — §2A:18-56 L1 flag (future item, not urgent).** NJ file carries an L1-URL-NOT-RESOLVED flag on §2A:18-56 (termination statute). Not part of the nonpayment notice correction; flagged for future L7 attorney review or targeted retrieval pass.
-- [ ] **L2 (multi-model consensus):** not_implemented. Needs a runner that queries a second model and compares outputs.
+- [x] **L2 (multi-model consensus) — Phase 1 complete (2026-06-18).** 8 machine-assist flag states run on notice/pay_or_quit. Runner: `rules/validation/l2/l2_runner.py`. Reasoning pass: `rules/validation/l2/l2_reasoning_pass.py`. Results: 4 states resolved (OH, MS, WV citations/period AI-corrected; SD confirmed clean); 2 states L7-escalated (MO, ND). See `docs/L2_CONSENSUS_REPORT_2026-06-18.md`.
+- [ ] **L2 Phase 2:** Run all 51 states on notice module (after Phase 1 fully closed out and committed).
+- [ ] **L2 expansion:** Extend to other modules (service, substantive_defenses, procedural_defects); add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
+- [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
+- [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.
 - [ ] **L4 (golden sets):** not_implemented. 0/51 states have golden sets. Need at least CA and TX before outreach. See `test-cases/README.md`.
 - [ ] **L6 (temporal freshness):** not_implemented. Needs legislative feed / CI hook.
 - [ ] **L7 (attorney review):** Not started. CA is priority #1. Need one licensed CA tenant attorney to review CA's 5 modules. See `docs/REVIEWER_CHECKLIST.md`.
@@ -440,4 +462,4 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 ---
 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*  
-*State of Record last updated by Claude (Cowork) — June 16, 2026 (MN + NJ corrections: MN re-validated → ACP; NJ no-notice-period pattern implemented and attorney-confirmed (Andrew Cohen) → ACP; library now 51/51 ACP. NJ §2A:18-56 L1 flag noted as future backlog item). Previous updates same date: L5 outlier resolution (5 of 7 DRAFT states advanced); five-module build (789 field updates; 0 [VERIFY]; 264 L7 entries); overlays cleanup; L5-LOCAL-XSTATE check. Schema v2 patch: notice_required + exceptions + null days. docs/SCHEMA_V2_DESIGN_SPEC.md created. Replace this file at the start of each session after significant work.*
+*State of Record last updated by Claude (Cowork) — June 18, 2026 (L2 Phase 1 complete — 8 machine-assist flag states; OH/MS/WV AI-resolved; SD confirmed; MO/ND L7-escalated; l2_runner.py + l2_reasoning_pass.py added; tiered resolution protocol established). Previous: June 16, 2026 (MN + NJ corrections; library 51/51 ACP; L5 outlier resolution; five-module build; overlays cleanup; SCHEMA_V2_DESIGN_SPEC.md). Replace this file at the start of each session after significant work.*
