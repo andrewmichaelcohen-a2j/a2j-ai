@@ -124,16 +124,16 @@
         "field": "notice.notice_types.pay_or_quit",
         "disposition": "open",
         "escalation": "L7",
-        "note": "GA straggler retry (clean neutral query, 8000-token budget): models genuinely disagree. GPT: notice_required=True, days=3, statute=O.C.G.A. § 44-7-50(a). Gemini: notice_required=False, days=None, statute=O.C.G.A. § 44-7-50. Attorney review required.",
+        "note": "GA straggler retry (clean neutral query, 8000-token budget): models genuinely disagree. GPT: notice_required=True, days=3, statute=O.C.G.A. § 44-7-50(a), (b). Gemini: notice_required=True, days=None, statute=O.C.G.A. § 44-7-50. Attorney review required.",
         "gpt_answer": {
           "days": 3,
-          "statute": "O.C.G.A. § 44-7-50(a)",
-          "rationale": "For a residential dispossessory action based on nonpayment of rent, Georgia law requires the landlord to make a written demand for possession before filing. O.C.G.A. § 44-7-50(a) requires the landlord to give the tenant at least three business days after the written demand before filing the dispossessory affidavit."
+          "statute": "O.C.G.A. § 44-7-50(a), (b)",
+          "rationale": "O.C.G.A. § 44-7-50(a) requires the landlord to demand possession before filing a dispossessory affidavit. For residential nonpayment cases, § 44-7-50(b) requires a written pre-filing notice/demand and gives the tenant three business days from delivery before the landlord may file the dispossessory action."
         },
         "gemini_answer": {
           "days": null,
           "statute": "O.C.G.A. § 44-7-50",
-          "rationale": "Under O.C.G.A. § 44-7-50, a landlord may initiate a dispossessory action by filing a sworn affidavit as soon as the tenant fails to pay the rent when it becomes due. The statute does not mandate a formal, separate pre-filing notice or a waiting period after a demand for possession before the landlord is permitted to file the action."
+          "rationale": "Georgia law requires a landlord to first make a demand for possession of the premises from the tenant. This demand is a prerequisite to filing a dispossessory affidavit, as the landlord must swear under oath that such a demand was made and the tenant refused. However, the statute does not mandate any specific waiting period between making the demand and filing the action."
         },
         "l2_run_date": "2026-06-18"
       }
