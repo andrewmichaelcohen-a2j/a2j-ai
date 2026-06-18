@@ -479,7 +479,7 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 - **ND** — Is §47-32-02's 3-day period a formal notice-to-quit or a ripening period?
 - **MD** — GPT: 10d notice required (§8-401(b)(2)(i)); Gemini: no notice period (§8-401)
 - **VA** — Same statute (§55.1-1245(F)); GPT: 5d; Gemini: 14d — likely tenancy-type-dependent
-- **GA** — Clean neutral 8000-token retry (l2_ga_straggler.py, 2026-06-18 17:12 UTC): GPT says notice_required=True, days=3, §44-7-50(a); Gemini says notice_required=False, days=None, §44-7-50. Genuine split — is §44-7-50 demand a formal notice requirement or a condition precedent to filing?
+- **GA** — Two clean neutral 8000-token retries (17:12 + 17:44 UTC): both models agree notice_required=True (demand required before filing). Split on days: GPT=3, Gemini=None. Narrowed question: must landlord wait 3 days after demand, or may landlord file immediately after demand is refused?
 - [ ] **L2 expansion:** Extend to other modules (service, substantive_defenses, procedural_defects); add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
 - [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
 - [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.

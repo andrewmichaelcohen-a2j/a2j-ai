@@ -132,15 +132,6 @@
         "code": "L1-URL-NOT-RESOLVED",
         "message": "Citation \"N.J.S.A. 46:8-43\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
       },
-      {
-        "layer": "L5",
-        "field": "notice",
-        "note": "L5-NOTICE-PERIOD-HIGH: pay_or_quit period (30 days) is >2x median (5) — verify",
-        "disposition": "resolved-corrected",
-        "reviewer": "Andrew Cohen",
-        "reviewed_date": "2026-06-16",
-        "reviewer_note": "30-day value was INCORRECT. Attorney review (Andrew Cohen, 2026-06-16) confirmed NJ has NO statutory nonpayment notice period — §2A:18-61.2 expressly excludes nonpayment from the notice-to-quit requirement. Content corrected: days set to null, notice_required=false, federally-subsidized-housing exception added (14 days). Flag resolves by content correction."
-      }
     ],
     "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {

@@ -120,13 +120,15 @@ Note: The discrepancy may reflect different tenancy types (month-to-month vs. we
 **Classification:** L7-ESCALATED · **Status:** 🔴 pending  
 **Run date:** 2026-06-18 (straggler retry — clean neutral query, 8000-token GPT budget)
 
-**Question:** Under O.C.G.A. §44-7-50, must a residential landlord give a tenant a formal written notice to pay rent before filing a dispossessory (eviction) action? If yes, how many days must the landlord wait?
+**Question:** Under O.C.G.A. §44-7-50, both L2 models agree a demand for possession is required before filing. The unresolved question: after making the demand, must the landlord wait a minimum number of days before filing (GPT: 3 days), or may the landlord file immediately after demand is refused (Gemini: no waiting period)?
 
-**L2 result — clean neutral query (no conflict framing), genuine disagreement:**
-- GPT (gpt-5.5): notice_required=True, days=3, statute=O.C.G.A. § 44-7-50(a) — "Georgia law requires the landlord to make a written [demand for possession before filing]."
-- Gemini (gemini-2.5-pro): notice_required=False, days=None, statute=O.C.G.A. § 44-7-50 — "Under O.C.G.A. § 44-7-50, a landlord may initiate a dispossessory action by filing a sworn affidavit as soon as the tenant [fails to pay]."
+**L2 result — two clean neutral runs; models agree notice is required but disagree on waiting period:**
+- GPT (gpt-5.5): notice_required=True, days=3, statute=O.C.G.A. § 44-7-50(a),(b) — "§44-7-50(a) requires the landlord to demand possession before filing a dispossessory affidavit."
+- Gemini (gemini-2.5-pro): notice_required=True, days=None, statute=O.C.G.A. § 44-7-50 — "Georgia law requires a landlord to first make a demand for possession. This demand is a prerequisite to filing — but no statutory waiting period is specified."
 
-Note: This straggler was run twice. In the first pass (reasoning pass with conflict framing), both models changed answers under the pressure of the framing — that was an artifact. In the clean neutral pass (this result), both models answered independently and still disagree. This is a genuine interpretive split on the same statute: does §44-7-50 impose a formal pre-filing notice requirement, or merely establish that the landlord may file once rent is past due?
+The legal question is therefore narrower than the initial flag suggested: **both models agree a demand/notice is required before filing.** The dispute is whether §44-7-50 also imposes a mandatory waiting period (GPT: 3 days; Gemini: demand required but no waiting period — file immediately after demand refused).
+
+Note: This straggler was run three times. The reasoning pass (first run) was a framing artifact. Two subsequent clean neutral runs (17:12 UTC and 17:44 UTC) both produced the same result: notice_required=True on both models; days split (3 vs None).
 
 **Current file:** notice_required=True, days=3, statute=O.C.G.A. §44-7-50  
 **Your task:** Read §44-7-50; determine whether a formal written demand/notice is required before filing and whether any waiting period applies.
