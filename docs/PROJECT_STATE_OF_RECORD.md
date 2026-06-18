@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 18, 2026 (L2 fully complete + queue rebuilt. Final: 41 CONFIRM · 5 AI-resolved pending confirmation · 4 confirmed L7 + 1 pending straggler retry (GA) + 3 citation-review items. HUMAN_REVIEW_QUEUE.md rebuilt with append-only ownership rule.) · **Next update:** after GA straggler run + L7 attorney reviews + human confirmations
+**Generated:** June 15, 2026 · **Last updated:** June 18, 2026 (L2 FULLY COMPLETE. Final: 41 CONFIRM · 5 AI-resolved pending confirmation · 5 genuine L7 (MO, ND, MD, VA, GA) · 3 citation-review items. HUMAN_REVIEW_QUEUE.md rebuilt with append-only ownership rule. Ready to commit.) · **Next update:** after L7 attorney reviews + human confirmations
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -458,7 +458,7 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
   - **⚠️ 7 GPT-PARSE-ERROR pseudo-splits (NOT genuine L7):** AR, DC, KY, LA, MA, TN, VA — GPT returned `days=None, statute=None, rationale=PARSE_ERROR` (same token-limit artifact as SD Phase 1). Gemini answered for all 7. Currently flagged L7 but should be retried with higher `max_completion_tokens` before escalating to attorney. Retry runner needed.
   - **1 GENUINE MODEL-SPLIT (MD):** GPT says 10d notice required (§8-401(b)(2)(i)); Gemini says no notice period required (§8-401). Real interpretive disagreement → L7. Attorney must resolve.
 - [x] **L2 Phase 2 retry complete (2026-06-18, ~$0.44).** `rules/validation/l2/l2_phase2_retry.py`. 9 states retried with GPT `max_completion_tokens=6000`. AR and TN confirmed CONFIRM on first retry pass (Jun 17 11:55 PM write persists in files). DC, IA, KY, LA, MA → CONFIRM via second retry. GA and VA remain flagged. VA → genuine L7. GA → straggler script pending.
-- [ ] **GA straggler retry.** `l2_ga_straggler.py` written (2026-06-18) and syntax-checked. **Andy must run:** `python3 rules/validation/l2/l2_ga_straggler.py` from repo root. Outcome: if both models agree on neutral query → AI-resolve → pending-confirmation; if genuinely disagree → L7. Update STATE_OF_RECORD after run.
+- [x] **GA straggler retry complete (2026-06-18 17:12 UTC).** `l2_ga_straggler.py` run. Clean neutral query, 8000-token GPT budget. GPT: notice_required=True, days=3, §44-7-50(a). Gemini: notice_required=False, days=None, §44-7-50. Genuine split — models disagree on whether §44-7-50 imposes a formal pre-filing notice requirement. L7 flag updated in ga_eviction_v2.json. GA is genuine L7-ESCALATED (see queue entry [GA-L7-05]).
 - [x] **HUMAN_REVIEW_QUEUE.md rebuilt (2026-06-18).** Queue ownership changed: runner append-only; Andy owns resolution fields. Stale Phase 2 entries removed. Queue now has only genuine review items.
 
 **L2 COMPLETE — all 51 states. Consolidated final results (post-straggler-cleanup):**
@@ -468,20 +468,18 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 | ✅ CONSENSUS-CONFIRM | 41 | ME, IL, SD (P1) + AK,AL,AZ,CA,CO,CT,FL,HI,ID,IN,KS,MI,MN,MT,NC,NE,NH,NJ,NM,NY,OK,OR,PA,RI,SC,TX,UT,VT,WA,WI,WY (P2) + AR,DC,IA,KY,LA,MA,TN (retry — AR and TN confirmed on first retry pass) |
 | 🟡 CITATION-AI-RESOLVED | 3 | OH (§1923.04(A)), MS (§89-8-13(5)(a)), DE (§5502(a)) — pending human confirmation |
 | 🟡 PERIOD-AI-RESOLVED | 2 | WV (no notice, §55-3A-1), NV (5d→7d, §40.253(1)(a)) — pending human confirmation |
-| 🔴 L7-ESCALATED | 4 | MO, ND (P1 genuine) · MD (P2 genuine) · VA (retry genuine) |
-| ⏳ STRAGGLER PENDING | 1 | GA — straggler script written (`l2_ga_straggler.py`); Andy must run; will resolve to either pending-confirmation (if models agree on clean neutral query) or L7 |
+| 🔴 L7-ESCALATED | 5 | MO, ND (P1 genuine) · MD (P2 genuine) · VA, GA (retry/straggler genuine) |
 
 **Notes on TN and AR (why they're CONFIRM not L7):**
-- **TN:** First retry pass (11:55 PM Jun 17) wrote `L2_consensus=pass` CONSENSUS-CONFIRM (14d, §66-28-505(b)). File retains that first-pass write. The second retry pass (Jun 18 morning) showed a Gemini API error but that was a transient error, not a legal disagreement. TN has also been attorney-confirmed (Andrew Cohen, 2026-06-16). Status: CONFIRM.
-- **AR:** First retry pass also wrote `L2_consensus=pass` CONSENSUS-CONFIRM (3d, §18-60-304(a)(3)). The second retry pass showed different Gemini answers — but the first-pass confirmation persists in the file and both clean passes produced answers (not parse errors). Status: CONFIRM.
+- **TN:** First retry pass (11:55 PM Jun 17) wrote `L2_consensus=pass` CONSENSUS-CONFIRM (14d, §66-28-505(b)). File retains that first-pass write. TN also attorney-confirmed (Andrew Cohen, 2026-06-16). Status: CONFIRM.
+- **AR:** First retry pass wrote `L2_consensus=pass` CONSENSUS-CONFIRM (3d, §18-60-304(a)(3)). Status: CONFIRM.
 
-**L7 detail (4 genuine items):**
+**L7 detail (5 genuine items):**
 - **MO** — Is §535.020 demand a notice requirement (notice_required=true) or only a precondition (false)?
 - **ND** — Is §47-32-02's 3-day period a formal notice-to-quit or a ripening period?
 - **MD** — GPT: 10d notice required (§8-401(b)(2)(i)); Gemini: no notice period (§8-401)
-- **VA** — Same statute (§55.1-1245(F)); GPT: 5d; Gemini: 14d — may reflect different tenancy types
-
-**GA straggler:** File claims 3d. Neutral L2 query: both models said "no notice required" (§44-7-50(a) demand is not a waiting period). Reasoning pass was conflict-framed → both models changed answers → no convergence → spurious L7. Script `l2_ga_straggler.py` will re-run clean neutral query at 8000-token budget. If models agree → AI-resolve → pending-confirmation. If models genuinely disagree → L7.
+- **VA** — Same statute (§55.1-1245(F)); GPT: 5d; Gemini: 14d — likely tenancy-type-dependent
+- **GA** — Clean neutral 8000-token retry (l2_ga_straggler.py, 2026-06-18 17:12 UTC): GPT says notice_required=True, days=3, §44-7-50(a); Gemini says notice_required=False, days=None, §44-7-50. Genuine split — is §44-7-50 demand a formal notice requirement or a condition precedent to filing?
 - [ ] **L2 expansion:** Extend to other modules (service, substantive_defenses, procedural_defects); add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
 - [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
 - [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.

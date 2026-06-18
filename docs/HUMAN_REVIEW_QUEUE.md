@@ -2,7 +2,7 @@
 
 **Module:** Notice / pay_or_quit · **Layer:** L2 Multi-Model Consensus  
 **Runner rule:** Runners append new flagged items only. They never edit or overwrite the Resolution, Authoritative source, Resolved by, Date, or Status fields — those are owned by Andy Cohen.  
-**Last rebuilt:** 2026-06-18 (post-straggler-retry cleanup) · **Confirmed by:** Andy Cohen
+**Last rebuilt:** 2026-06-18 (post-straggler-retry cleanup; GA straggler result: genuine L7) · **Confirmed by:** Andy Cohen
 
 > **How to use this queue:**  
 > Work top-to-bottom. L7-ESCALATED = you decide from primary sources. PENDING-CONFIRMATION = you verify the AI's proposed answer and sign off (or override).  
@@ -14,8 +14,7 @@
 
 | Status | Count |
 |--------|-------|
-| 🔴 L7-ESCALATED — you decide from primary sources | 4 |
-| ⏳ GA — pending straggler retry (run l2_ga_straggler.py first) | 1 |
+| 🔴 L7-ESCALATED — you decide from primary sources | 5 |
 | 🟡 PENDING-CONFIRMATION — AI proposed, you verify | 5 |
 | 🟡 CITATION-REVIEW — verify operative section from primary source | 3 |
 | ✅ Resolved/Confirmed | 0 |
@@ -116,21 +115,25 @@ Note: The discrepancy may reflect different tenancy types (month-to-month vs. we
 
 ---
 
-## ⏳ PENDING STRAGGLER RETRY — Run before reviewing
+### [GA-L7-05] Georgia — Does §44-7-50 require formal notice before filing, or can landlord file immediately?
 
-### [GA-STRAGGLER] Georgia — Technical L7, pending clean retry
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Run date:** 2026-06-18 (straggler retry — clean neutral query, 8000-token GPT budget)
 
-**Classification:** ⏳ pending straggler retry · **Status:** run l2_ga_straggler.py first  
-**Issue:** L7 flag is a reasoning-pass artifact. Neutral query: both models said "none" (no specific notice period). Reasoning pass re-framing caused GPT→3d, Gemini→0d → no convergence → spurious L7.
+**Question:** Under O.C.G.A. §44-7-50, must a residential landlord give a tenant a formal written notice to pay rent before filing a dispossessory (eviction) action? If yes, how many days must the landlord wait?
 
-**To resolve:**  
-```bash
-cd /Users/andrewcohen/Documents/GitHub/a2j-ai
-python3 rules/validation/l2/l2_ga_straggler.py
-```
+**L2 result — clean neutral query (no conflict framing), genuine disagreement:**
+- GPT (gpt-5.5): notice_required=True, days=3, statute=O.C.G.A. § 44-7-50(a) — "Georgia law requires the landlord to make a written [demand for possession before filing]."
+- Gemini (gemini-2.5-pro): notice_required=False, days=None, statute=O.C.G.A. § 44-7-50 — "Under O.C.G.A. § 44-7-50, a landlord may initiate a dispossessory action by filing a sworn affidavit as soon as the tenant [fails to pay]."
 
-If models agree on clean neutral query → AI-resolve (remove from L7 queue; add to pending-confirmation below).  
-If models genuinely disagree → promote to [GA-L7-05] and add to L7-escalated section above.
+Note: This straggler was run twice. In the first pass (reasoning pass with conflict framing), both models changed answers under the pressure of the framing — that was an artifact. In the clean neutral pass (this result), both models answered independently and still disagree. This is a genuine interpretive split on the same statute: does §44-7-50 impose a formal pre-filing notice requirement, or merely establish that the landlord may file once rent is past due?
+
+**Current file:** notice_required=True, days=3, statute=O.C.G.A. §44-7-50  
+**Your task:** Read §44-7-50; determine whether a formal written demand/notice is required before filing and whether any waiting period applies.
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
 
 ---
 
