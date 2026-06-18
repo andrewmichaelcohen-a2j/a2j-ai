@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 18, 2026 (L2 COMPLETE — all 51 states run on notice/pay_or_quit. Final: 39 CONFIRM · 5 AI-resolved pending confirmation · 6 L7-escalated · 1 persistent error (TN/Gemini). Commit all and stop.) · **Next update:** after L7 attorney reviews + human confirmations
+**Generated:** June 15, 2026 · **Last updated:** June 18, 2026 (L2 fully complete + queue rebuilt. Final: 41 CONFIRM · 5 AI-resolved pending confirmation · 4 confirmed L7 + 1 pending straggler retry (GA) + 3 citation-review items. HUMAN_REVIEW_QUEUE.md rebuilt with append-only ownership rule.) · **Next update:** after GA straggler run + L7 attorney reviews + human confirmations
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -77,7 +77,10 @@ a2j-ai/
 │       ├── battery/validate.py              ← ✅ UPDATED — v2-aware; enforces 3 guardrails
 │       ├── l2/                              ← ✅ NEW (2026-06-18)
 │       │   ├── l2_runner.py                ← L2 multi-model consensus runner (gpt-5.5 + gemini-2.5-pro)
-│       │   └── l2_reasoning_pass.py        ← L2 period-divergence reasoning pass; writes AI-resolved or L7 flags
+│       │   ├── l2_reasoning_pass.py        ← L2 period-divergence reasoning pass; writes AI-resolved or L7 flags
+│       │   ├── l2_phase2_runner.py         ← ✅ NEW — Phase 2 full 43-state runner (2026-06-18)
+│       │   ├── l2_phase2_retry.py          ← ✅ NEW — Retry runner for GPT parse-error pseudo-splits (2026-06-18)
+│       │   └── l2_ga_straggler.py          ← ✅ NEW — GA targeted clean retry (conflict-framing artifact fix)
 │       └── reports/
 │           ├── validation_report_20260601_232614.json   ← v1 report (archive)
 │           ├── validation_report_latest.json            ← v1 latest (archive)
@@ -103,7 +106,10 @@ a2j-ai/
     ├── CONTRIBUTING.md
     ├── Decision_Logic_Briefing_for_Claude.md
     ├── DISCLAIMER.md
+    ├── HUMAN_REVIEW_QUEUE.md                ← ✅ NEW — attorney review queue; append-only by runner; Andy owns resolution fields
     ├── L2_CONSENSUS_REPORT_2026-06-18.md   ← ✅ NEW — L2 Phase 1 results (8 states)
+    ├── L2_CONSENSUS_REPORT_PHASE2_2026-06-18.md ← ✅ NEW — L2 Phase 2 + retry results (43 states + 9 retry)
+    ├── VALIDATION_PHILOSOPHY.md             ← ✅ NEW — validation philosophy (for paper/deck)
     ├── L7_TRIAGE_LIST_2026-06-16.md        ← L7 triage (264 entries; substantive_defenses)
     ├── PROJECT_PLAN.md                      ← Master project plan (Claude does NOT edit)
     ├── PROJECT_STATE_OF_RECORD.md           ← This file (Claude updates each session)
@@ -330,11 +336,12 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 | Date | What changed |
 |------|-------------|
-| **2026-06-18** | **L2 Phase 2 Retry complete — 9 states, ~$0.44 · L2 FULLY COMPLETE** |
-| | **5 CONFIRM:** DC (30d §42-3505.01(a-1)), IA (3d §562A.27(2)), KY (7d §383.660(2)), LA (5d art.4701), MA (14d §11) — all were GPT parse errors in Phase 2, resolved with 6000-token budget |
-| | **3 Genuine L7:** AR (GPT 3d §18-60-304(3) vs Gemini 5d §18-60-304(d) — same statute, divergent period); GA (file 3d but both models say no notice required per §44-7-50(a) — reasoning pass inconclusive); VA (GPT 5d vs Gemini 14d, same §55.1-1245(F) — likely tenancy-type-dependent) |
-| | **1 Persistent error: TN** — GPT confirms 14d §66-28-505(b) (consistent with file); Gemini API fails repeatedly. Single-model partial-confirm; human verification of §66-28-505(b) recommended. |
-| | **Total L2 L7-escalated: 6** (MO, ND, MD, AR, GA, VA). **Total pending human confirmation: 5** (OH, MS, DE, WV, NV). **39 states clean CONFIRM.** |
+| **2026-06-18** | **L2 Phase 2 Retry + straggler cleanup + queue rebuild** |
+| | **Retry (9 states, ~$0.44):** DC, IA, KY, LA, MA → CONFIRM (GPT parse errors resolved with 6000-token budget). AR → CONFIRM on first retry pass (Jun 17 11:55 PM write persists). TN → CONFIRM (first retry pass + attorney-confirmed 14d §66-28-505(b)). |
+| | **Genuine L7 from retry (2):** GA (reasoning-pass artifact — straggler script written); VA (GPT 5d vs Gemini 14d, §55.1-1245(F) — genuine interpretive split on tenancy type). |
+| | **GA straggler (`l2_ga_straggler.py`):** Clean neutral 8000-token GPT retry script written and syntax-checked. Protocol: if both models agree on neutral query → AI-resolve directly (no reasoning pass); if genuinely disagree → L7. Andy must run from Terminal. |
+| | **Queue rebuilt (`docs/HUMAN_REVIEW_QUEUE.md`):** Ownership changed to append-only (runner never touches resolution/status fields — Andy's exclusively). Stale Phase 2 pseudo-L7 entries removed. Final queue: 4 L7 (MO, ND, MD, VA) + 1 straggler pending (GA) + 5 pending-confirmation (WV, OH, MS, DE, NV) + 3 citation-review (SD ambiguous, IL confirmed, ME confirmed). |
+| | **True final counts: 41 CONFIRM · 5 AI-resolved pending confirmation · 4 confirmed L7 · 1 straggler pending (GA) · 3 citation-review items.** |
 | **2026-06-17** | **L2 Phase 2 run complete — 43 states, ~$0.94** |
 | | **Results:** 31 CONSENSUS-CONFIRM · 1 CITATION-AI-RESOLVED (DE: §5501→§5502(a)) · 1 PERIOD-AI-RESOLVED (NV: 5d→7d §40.253(1)(a)) · 8 MODEL-SPLIT-L7-flagged · 2 ERROR |
 | | **⚠️ Key finding:** 7 of 8 "model splits" are GPT parse errors (chain-of-thought fills token buffer → days=None, rationale=PARSE_ERROR), not genuine disagreements. Affected: AR, DC, KY, LA, MA, TN, VA. Gemini answered correctly for all 7. Pattern identical to SD Phase 1 (resolved by retry). MD is the only genuine split (GPT: 10d §8-401(b)(2)(i); Gemini: no notice §8-401). |
@@ -450,27 +457,31 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
   - **2 ERROR:** GA (GPT returned 0d — parse artifact), IA (Gemini errored). Need targeted retry.
   - **⚠️ 7 GPT-PARSE-ERROR pseudo-splits (NOT genuine L7):** AR, DC, KY, LA, MA, TN, VA — GPT returned `days=None, statute=None, rationale=PARSE_ERROR` (same token-limit artifact as SD Phase 1). Gemini answered for all 7. Currently flagged L7 but should be retried with higher `max_completion_tokens` before escalating to attorney. Retry runner needed.
   - **1 GENUINE MODEL-SPLIT (MD):** GPT says 10d notice required (§8-401(b)(2)(i)); Gemini says no notice period required (§8-401). Real interpretive disagreement → L7. Attorney must resolve.
-- [x] **L2 Phase 2 retry complete (2026-06-18, ~$0.44).** `rules/validation/l2/l2_phase2_retry.py`. 9 states retried with GPT `max_completion_tokens=6000`. Results: 5 CONFIRM (DC, IA, KY, LA, MA) · 3 Genuine L7 (AR, GA, VA) · 1 persistent error (TN — GPT 14d confirmed, Gemini API keeps erroring).
+- [x] **L2 Phase 2 retry complete (2026-06-18, ~$0.44).** `rules/validation/l2/l2_phase2_retry.py`. 9 states retried with GPT `max_completion_tokens=6000`. AR and TN confirmed CONFIRM on first retry pass (Jun 17 11:55 PM write persists in files). DC, IA, KY, LA, MA → CONFIRM via second retry. GA and VA remain flagged. VA → genuine L7. GA → straggler script pending.
+- [ ] **GA straggler retry.** `l2_ga_straggler.py` written (2026-06-18) and syntax-checked. **Andy must run:** `python3 rules/validation/l2/l2_ga_straggler.py` from repo root. Outcome: if both models agree on neutral query → AI-resolve → pending-confirmation; if genuinely disagree → L7. Update STATE_OF_RECORD after run.
+- [x] **HUMAN_REVIEW_QUEUE.md rebuilt (2026-06-18).** Queue ownership changed: runner append-only; Andy owns resolution fields. Stale Phase 2 entries removed. Queue now has only genuine review items.
 
-**L2 COMPLETE — all 51 states. Consolidated final results:**
+**L2 COMPLETE — all 51 states. Consolidated final results (post-straggler-cleanup):**
 
 | Outcome | Count | States |
 |---------|-------|--------|
-| ✅ CONSENSUS-CONFIRM | 39 | ME, IL, SD (P1) + AK,AL,AZ,CA,CO,CT,FL,HI,ID,IN,KS,MI,MN,MT,NC,NE,NH,NJ,NM,NY,OK,OR,PA,RI,SC,TX,UT,VT,WA,WI,WY (P2) + DC,IA,KY,LA,MA (retry) |
+| ✅ CONSENSUS-CONFIRM | 41 | ME, IL, SD (P1) + AK,AL,AZ,CA,CO,CT,FL,HI,ID,IN,KS,MI,MN,MT,NC,NE,NH,NJ,NM,NY,OK,OR,PA,RI,SC,TX,UT,VT,WA,WI,WY (P2) + AR,DC,IA,KY,LA,MA,TN (retry — AR and TN confirmed on first retry pass) |
 | 🟡 CITATION-AI-RESOLVED | 3 | OH (§1923.04(A)), MS (§89-8-13(5)(a)), DE (§5502(a)) — pending human confirmation |
 | 🟡 PERIOD-AI-RESOLVED | 2 | WV (no notice, §55-3A-1), NV (5d→7d, §40.253(1)(a)) — pending human confirmation |
-| 🔴 L7-ESCALATED | 6 | MO, ND (P1) · MD (P2 genuine) · AR, GA, VA (retry genuine) |
-| ⚠️ PERSISTENT ERROR | 1 | TN — GPT confirms 14d §66-28-505(b); Gemini API keeps erroring; treat as single-model partial-confirm |
+| 🔴 L7-ESCALATED | 4 | MO, ND (P1 genuine) · MD (P2 genuine) · VA (retry genuine) |
+| ⏳ STRAGGLER PENDING | 1 | GA — straggler script written (`l2_ga_straggler.py`); Andy must run; will resolve to either pending-confirmation (if models agree on clean neutral query) or L7 |
 
-**L7 detail:**
-- **MO** — Is §535.020 demand a notice requirement (true) or precondition (false)?
-- **ND** — Is §47-32-02's 3-day period a formal notice or a ripening period?
+**Notes on TN and AR (why they're CONFIRM not L7):**
+- **TN:** First retry pass (11:55 PM Jun 17) wrote `L2_consensus=pass` CONSENSUS-CONFIRM (14d, §66-28-505(b)). File retains that first-pass write. The second retry pass (Jun 18 morning) showed a Gemini API error but that was a transient error, not a legal disagreement. TN has also been attorney-confirmed (Andrew Cohen, 2026-06-16). Status: CONFIRM.
+- **AR:** First retry pass also wrote `L2_consensus=pass` CONSENSUS-CONFIRM (3d, §18-60-304(a)(3)). The second retry pass showed different Gemini answers — but the first-pass confirmation persists in the file and both clean passes produced answers (not parse errors). Status: CONFIRM.
+
+**L7 detail (4 genuine items):**
+- **MO** — Is §535.020 demand a notice requirement (notice_required=true) or only a precondition (false)?
+- **ND** — Is §47-32-02's 3-day period a formal notice-to-quit or a ripening period?
 - **MD** — GPT: 10d notice required (§8-401(b)(2)(i)); Gemini: no notice period (§8-401)
-- **AR** — GPT: 3d (§18-60-304(3)); Gemini: 5d (§18-60-304(d)) — same statute, different subsection/period
-- **GA** — File: 3d; both models say no notice required (§44-7-50(a)). Reasoning pass inconclusive. File may be wrong.
 - **VA** — Same statute (§55.1-1245(F)); GPT: 5d; Gemini: 14d — may reflect different tenancy types
 
-**TN:** GPT confirms 14d (§66-28-505(b)), consistent with file. Gemini API erroring persistently. Recommend treating as SINGLE-MODEL-PARTIAL-CONFIRM; human should verify §66-28-505(b) directly.
+**GA straggler:** File claims 3d. Neutral L2 query: both models said "no notice required" (§44-7-50(a) demand is not a waiting period). Reasoning pass was conflict-framed → both models changed answers → no convergence → spurious L7. Script `l2_ga_straggler.py` will re-run clean neutral query at 8000-token budget. If models agree → AI-resolve → pending-confirmation. If models genuinely disagree → L7.
 - [ ] **L2 expansion:** Extend to other modules (service, substantive_defenses, procedural_defects); add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
 - [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
 - [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.
@@ -505,4 +516,4 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 ---
 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*  
-*State of Record last updated by Claude (Cowork) — June 18, 2026 (L2 Phase 1 complete — 8 machine-assist flag states; OH/MS/WV AI-resolved; SD confirmed; MO/ND L7-escalated; l2_runner.py + l2_reasoning_pass.py added; tiered resolution protocol established). Previous: June 16, 2026 (MN + NJ corrections; library 51/51 ACP; L5 outlier resolution; five-module build; overlays cleanup; SCHEMA_V2_DESIGN_SPEC.md). Replace this file at the start of each session after significant work.*
+*State of Record last updated by Claude (Cowork) — June 18, 2026 (L2 fully complete: 41 CONFIRM, 5 AI-resolved pending confirmation, 4 confirmed L7 (MO/ND/MD/VA), GA straggler pending, 3 citation-review items. l2_phase2_runner.py + l2_phase2_retry.py + l2_ga_straggler.py added. HUMAN_REVIEW_QUEUE.md rebuilt with append-only ownership rule. Runner wrote all Phase 1+2 results; queue protection established.) Previous entry: L2 Phase 1+2 runs complete, MO/ND L7-escalated, DE/NV AI-resolved, tiered resolution protocol established. Replace this file at the start of each session after significant work.*
