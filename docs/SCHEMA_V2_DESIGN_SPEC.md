@@ -2,7 +2,7 @@
 
 **File:** `docs/SCHEMA_V2_DESIGN_SPEC.md`  
 **Schema:** `rules/schema/eviction_schema_v2.0.json`  
-**Last updated:** June 16, 2026 — added no-notice-period pattern (NJ correction)  
+**Last updated:** June 18, 2026 — added interoperability block (JusticeBench alignment)  
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*
 
 ---
@@ -102,12 +102,90 @@ The `validation.flags[].disposition` field supports values beyond the schema's d
 
 ---
 
+## Canonical Pattern 3: Interoperability Block (JusticeBench Alignment)
+
+**Added:** June 18, 2026  
+**Applies to:** All 51 eviction v2 rules files  
+**Source:** `docs/JUSTICEBENCH_VERIFIED_CODES.md` — implement only from confirmed values there.
+
+### Purpose
+
+The `interoperability` block is additive metadata for external classification and discovery. It does NOT change decision logic, module structure, or validation status. Tagging a file does not advance or alter its position on the validation ladder.
+
+### Fields
+
+```json
+"interoperability": {
+  "fips_jurisdiction": "06",
+  "language": ["en"],
+  "task_taxonomy_ids": [
+    "TS-03-04",
+    "TS-01-07",
+    "TS-01-05",
+    "TS-05-05",
+    "TS-03-02",
+    "TS-05-04"
+  ],
+  "list_codes": [
+    "HO-00-00-00-00",
+    "HO-02-00-00-00",
+    "HO-02-04-00-00",
+    "HO-02-04-02-00",
+    "HO-02-04-05-00"
+  ],
+  "_list_pending_subcodes": "..."
+}
+```
+
+**Field semantics:**
+
+| Field | Source | Notes |
+|-------|--------|-------|
+| `fips_jurisdiction` | Federal FIPS (stable) | 2-digit state code. 5-digit county FIPS added where rule is county-specific (e.g., TN URLTA threshold). |
+| `language` | ISO 639-1 | Default `["en"]`. Add `"es"` when Spanish-language versions are produced. |
+| `task_taxonomy_ids` | JusticeBench (justicebench.org/task) | Confirmed live June 18, 2026. Full mapping in `JUSTICEBENCH_VERIFIED_CODES.md`. |
+| `list_codes` | taxonomy.legal (Stanford Legal Design Lab) | LIST issue codes, hierarchical `XX-NN-NN-NN-NN` format. Confirmed codes listed below. |
+| `_list_pending_subcodes` | Internal note | Documents which LIST subcodes are using parent-level interim tags; not a code value. |
+
+**Task taxonomy IDs (all confirmed live from justicebench.org/task, June 18, 2026):**
+
+| ID | Task | Maps to CJaC |
+|----|------|--------------|
+| `TS-03-04` | Legal Analyzer | Core CJaC function (every file) |
+| `TS-01-07` | Issue-Spotting | Defense identification across modules |
+| `TS-01-05` | Deadline Calculator | `notice` module (notice-period clock) |
+| `TS-05-05` | Service Verification | `service` module |
+| `TS-03-02` | Document Issue-Spotter | `procedural_defects` (spot defects in notices) |
+| `TS-05-04` | Filing Screener | `procedural_defects` (procedural compliance) |
+
+**LIST codes — all 8 confirmed ✅ (taxonomy.legal, June 18, 2026):**
+
+| Code | Label | Maps to CJaC | Status |
+|------|-------|--------------|--------|
+| `HO-00-00-00-00` | Housing | All files | ✅ Confirmed |
+| `HO-02-00-00-00` | Eviction from a home | All files (primary tag) | ✅ Confirmed |
+| `HO-02-04-00-00` | Defenses to stop or delay an eviction | All files (parent) | ✅ Confirmed |
+| `HO-02-04-01-00` | Notice and Procedural defenses | `notice` + `procedural_defects` | ✅ Confirmed 2026-06-18 |
+| `HO-02-04-02-00` | Reasonable Accommodation for disability | `substantive_defenses` (disability) | ✅ Confirmed |
+| `HO-02-04-03-00` | Living conditions (habitability) defenses | `substantive_defenses` (habitability) | ✅ Confirmed 2026-06-18 |
+| `HO-02-04-04-00` | Military service-members' protections | `overlays` (SCRA/servicemembers) | ✅ Confirmed 2026-06-18 |
+| `HO-02-04-05-00` | Title and ownership defenses | `substantive_defenses` (title) | ✅ Confirmed |
+
+All 8 codes implemented in all 51 v2 files. No pending items. Subcodes -01/-03/-04 confirmed by Andy browser check at taxonomy.legal HO-02-04 page, 2026-06-18.
+
+### Insertion position in rules files
+
+The `interoperability` block is inserted after `provenance` and before `validation` at the top level of each rules file. This keeps it grouped with metadata (copyright, schema_version, jurisdiction, provenance) and separated from the decision-logic modules.
+
+---
+
 ## Schema Version History
 
 | Version | Date | Key additions |
 |---------|------|---------------|
 | v2.0 | 2026-06-15 | Initial v2 (5-module: notice, service, overlays, substantive_defenses, procedural_defects) |
 | v2.0 (patch) | 2026-06-16 | Added `notice_required` (boolean) and `exceptions` array to `pay_or_quit`; allowed `notice_period.days` to be null; validate.py L3 updated to recognize `notice_required: false` |
+| v2.0 (patch) | 2026-06-18 | Added `interoperability` block (fips_jurisdiction, language, task_taxonomy_ids, list_codes); additive metadata only; 51 files populated via `add_interoperability.py`; 3 LIST defense subcodes pending browser confirmation at taxonomy.legal |
 
 ---
 

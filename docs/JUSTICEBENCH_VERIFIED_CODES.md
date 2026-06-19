@@ -15,19 +15,17 @@ Source: taxonomy.legal (Stanford Legal Design Lab). Format: `XX-NN-NN-NN-NN` hie
 - `HO-02-00-00-00` — **Eviction from a home** ← primary tag for every CJaC eviction file
 
 **Defenses sub-tree (use for the defense-oriented modules):**
-- `HO-02-04-00-00` — **Defenses to stop or delay an eviction** (parent of the defense subcodes)
-  - `HO-02-04-00-00` children confirmed/visible:
-    - **Notice and Procedural defenses against an eviction** — maps to CJaC **notice** + **procedural_defects** modules *(confirm exact subcode via the HO-02-04 page — likely HO-02-04-0X; pull the precise digit before writing)*
-    - **Living conditions (habitability) defenses against an eviction** — maps to CJaC **substantive_defenses** (habitability) *(confirm subcode)*
-    - `HO-02-04-02-00` — **Reasonable Accommodation for a disability defenses against an eviction** ✅ (maps to substantive_defenses / disability)
-    - `HO-02-04-05-00` — **Title and ownership defenses against an eviction** ✅
-    - **Military service-members' protections around eviction** — maps to **overlays** (federal SCRA) *(confirm subcode)*
+- `HO-02-04-00-00` — **Defenses to stop or delay an eviction** (parent — tag all eviction files)
+  - All 6 children ✅ CONFIRMED (browser check at taxonomy.legal HO-02-04 page, Andrew Cohen, 2026-06-18):
+    - `HO-02-04-01-00` — **Notice and Procedural defenses against an eviction** → CJaC `notice` + `procedural_defects` modules ✅
+    - `HO-02-04-02-00` — **Reasonable Accommodation for a disability defenses against an eviction** → CJaC `substantive_defenses` (disability) ✅
+    - `HO-02-04-03-00` — **Living conditions (habitability) defenses against an eviction** → CJaC `substantive_defenses` (habitability) ✅
+    - `HO-02-04-04-00` — **Military service-members' protections around eviction** → CJaC `overlays` (federal SCRA) ✅
+    - `HO-02-04-05-00` — **Title and ownership defenses against an eviction** → CJaC `substantive_defenses` (title/ownership) ✅
 
 **Implementation guidance for Cowork:**
-- Tag every file with `HO-02-00-00-00` (Eviction) at minimum, plus `HO-00-00-00-00` (Housing) as parent. ✅ These top codes are confirmed and ready.
-- **Confirmed exact subcodes:** `HO-02-04-00-00` (Defenses parent), `HO-02-04-02-00` (Reasonable Accommodation), `HO-02-04-05-00` (Title and ownership). ✅
-- **Confirmed labels, exact middle digit NOT yet pinned** (taxonomy.legal pages 404 on direct fetch and don't expose the full child list to search): "Notice and Procedural defenses against an eviction," "Living conditions (habitability) defenses against an eviction," "Military service-members' protections around eviction." These are real sibling subcodes under `HO-02-04` but their exact codes (likely among `-01`, `-03`, `-04`, `-06`) need to be read off the live taxonomy.legal HO-02-04 page in a browser. **Do not guess the digits — three of the six children are confirmed (00/02/05), the other three labels are confirmed but their digits are not.**
-- **Recommended approach:** implement the confirmed codes now (`HO-00`, `HO-02`, `HO-02-04-00`, `-02`, `-05`); for the three label-confirmed-but-digit-unknown subcodes (Notice/Procedural, Habitability, Military), either (a) read them off taxonomy.legal in a browser first, or (b) tag those modules at the `HO-02-04-00-00` parent level (correct but less granular) until the exact child codes are confirmed. Parent-level tagging is accurate, just coarser — a safe interim.
+- Tag every file with all 8 confirmed codes (HO-00, HO-02-00, HO-02-04-00, -01, -02, -03, -04, -05). ✅ All fully confirmed — no interim tags needed.
+- No pending browser checks remain. LIST code set is 100% closed as of 2026-06-18.
 
 ## 2. FIPS jurisdiction codes — 🔲 PRODUCE-DIRECTLY (verified, complete)
 
@@ -87,24 +85,20 @@ Source: justicebench.org/task (read live, June 18 2026). Format: `TS-NN-NN`. 50 
 
 ---
 
-## What's ready to implement now vs. needs one more pull
+## Implementation status — ALL COMPLETE ✅
 
-| Code set | Status | Action |
-|----------|--------|--------|
-| FIPS (state) | ✅ Complete | Implement now — full table above |
-| ISO language | ✅ Complete | Implement now (`en` default) |
-| LIST — top codes (HO-00, HO-02, HO-02-04-00/02/05) | ✅ Confirmed | Implement now |
-| LIST — 3 remaining defense subcodes (Notice/Procedural, Habitability, Military) | ⚠️ Labels confirmed, digits not | Read taxonomy.legal HO-02-04 page in a browser, OR tag at parent level interim |
-| Task Taxonomy IDs | ✅ Complete (live-pulled) | Implement now — full mapping table above |
+| Code set | Status | Notes |
+|----------|--------|-------|
+| FIPS (state) | ✅ Complete | Full 51-jurisdiction table above |
+| ISO language | ✅ Complete | `en` default |
+| LIST — all 8 codes (HO-00, HO-02-00, HO-02-04-00 through -05) | ✅ All confirmed | Subcodes -01/-03/-04 confirmed 2026-06-18 Andy browser check |
+| Task Taxonomy IDs | ✅ Complete (live-pulled) | 6 IDs — full mapping table above |
 
-**Net: 4 of 5 code sets are fully verified and ready.** Only three LIST defense subcodes (out of six children) have unconfirmed middle digits — and there's a safe interim (tag at the `HO-02-04-00-00` parent level) that lets even those modules be tagged accurately, just less granularly, until someone reads the exact child codes off taxonomy.legal in a browser. **Nothing blocks the implementation pass.**
-
-### The one remaining manual check (2 minutes, in a browser)
-Visit `https://taxonomy.legal`, navigate to Housing → Eviction → "Defenses to stop or delay an eviction" (HO-02-04), and read the exact codes for the three children: "Notice and Procedural defenses," "Living conditions (habitability) defenses," "Military service-members' protections." (Search and direct-fetch couldn't extract these specific digits; the interactive site will show them.) Record them and the LIST set is 100% closed. Until then, parent-level tagging is the safe fallback.
+**All 5 code sets fully verified. No pending checks. 51 files populated 2026-06-18.** See `rules/validation/l2/add_interoperability.py` for the population script.
 
 ## Guardrail (unchanged)
 These tags make CJaC files interoperable/labelable; they do not change decision logic or validation status. Status labels remain governed by CJaC's own ladder.
 
 ---
 
-*JusticeBench Alignment — Verified Codes · June 18, 2026 · 4 of 5 code sets fully verified; only 3 LIST defense subcode digits need a 2-min browser check (parent-level tagging is the safe interim).*
+*JusticeBench Alignment — Verified Codes · June 18, 2026 · ALL 5 code sets fully verified and implemented. 51 v2 files tagged. No open items.*

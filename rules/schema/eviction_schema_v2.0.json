@@ -68,6 +68,31 @@
         }
       }
     },
+    "interoperability": {
+      "type": "object",
+      "description": "Additive standards-tagging block for external interoperability. Does NOT change decision logic, module structure, or validation status. Tags are metadata only.",
+      "properties": {
+        "fips_jurisdiction": {
+          "type": "string",
+          "description": "2-digit federal FIPS state code (e.g., '06' for CA, '11' for DC). 5-digit county FIPS where a rule is county-specific. Source: JUSTICEBENCH_VERIFIED_CODES.md."
+        },
+        "language": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "ISO 639-1 language codes for the rules file content. Default: ['en']. Add 'es' when Spanish-language versions are produced."
+        },
+        "task_taxonomy_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "JusticeBench Legal Help Task Taxonomy IDs (TS-NN-NN format). Source: justicebench.org/task. Confirmed live June 18, 2026. See JUSTICEBENCH_VERIFIED_CODES.md for full mapping."
+        },
+        "list_codes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "LIST issue codes from taxonomy.legal (Stanford Legal Design Lab). Format: XX-NN-NN-NN-NN hierarchical. All 8 codes confirmed June 18, 2026. HO-00-00-00-00 (Housing), HO-02-00-00-00 (Eviction), HO-02-04-00-00 (Defenses parent), HO-02-04-01-00 (Notice/Procedural → notice+procedural_defects), HO-02-04-02-00 (Reasonable Accommodation → substantive_defenses/disability), HO-02-04-03-00 (Habitability → substantive_defenses/habitability), HO-02-04-04-00 (Military → overlays/SCRA), HO-02-04-05-00 (Title/ownership → substantive_defenses/title). See JUSTICEBENCH_VERIFIED_CODES.md."
+        }
+      }
+    },
     "validation": {
       "type": "object",
       "required": ["file_status", "module_status", "automated_layers", "coverage_level"],

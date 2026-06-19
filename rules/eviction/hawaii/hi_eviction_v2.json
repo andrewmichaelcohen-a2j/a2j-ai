@@ -75,6 +75,30 @@
       "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
     ]
   },
+  "interoperability": {
+    "fips_jurisdiction": "15",
+    "language": [
+      "en"
+    ],
+    "task_taxonomy_ids": [
+      "TS-03-04",
+      "TS-01-07",
+      "TS-01-05",
+      "TS-05-05",
+      "TS-03-02",
+      "TS-05-04"
+    ],
+    "list_codes": [
+      "HO-00-00-00-00",
+      "HO-02-00-00-00",
+      "HO-02-04-00-00",
+      "HO-02-04-01-00",
+      "HO-02-04-02-00",
+      "HO-02-04-03-00",
+      "HO-02-04-04-00",
+      "HO-02-04-05-00"
+    ]
+  },
   "validation": {
     "file_status": "AUTOMATED-CHECKS-PASSED",
     "module_status": {
