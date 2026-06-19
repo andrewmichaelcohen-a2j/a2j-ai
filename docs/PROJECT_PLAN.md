@@ -116,6 +116,12 @@ Full detail: `docs/VALIDATION_ROADMAP.md`.
 - **L2 as the machine-assist fix:** L2 is the right *automated* next step for the 8 L1-machine-assist flags — independent re-check by two other model families resolves the clear cases, sharpens the rest, before any L7 spend. Cheap pre-step: targeted re-retrieval of the specific provision a flag already names (e.g., IL §9-209).
 - **L7 sourcing: PAID flagship (conservative baseline).** Pay expert CA tenant attorney(s) to get California to VALIDATED fast — ~20–50 hrs, ~$6K mid placeholder (not a quote). Donate for breadth via law-school partners thereafter. Andy (licensed attorney) self-clears bright-line outlier gates (<2 hrs); open-textured review wants a specialist alongside him.
 
+**L2 scope — it is a grid of (module × claim-type), not a single pass.** "L2 done" must not be read as "L2 complete." What has run: the **notice module's `pay_or_quit` (nonpayment) period**, across all 51 states (Phase 1 = 8 machine-assist states; Phase 2 = the other 43). That is roughly one cell of the grid. Remaining L2 work, organized by *rule type* rather than module:
+- **One consolidated bright-line L2 campaign** (run together, all states): the remaining notice types (`cure_or_quit`, `termination`), **service**, **procedural defects**, and the bright-line **overlay** claims. These are deterministic statutory facts where multi-model consensus is strong evidence — batch them as one campaign rather than module-by-module.
+- **A separate, differently-designed pass for open-textured modules** (substantive defenses, much of overlays): consensus is weak evidence here, so these follow the open-textured operating principle (AI drafts maximally; validate via sampling/adversarial/consistency testing; narrow before human review) rather than a bright-line consensus run.
+
+**Higher-order model-assisted validation (beyond statutes):** the same multi-model infrastructure also runs **completeness checks** (what's missing from a file), **schema design review**, **structured corpus assessment**, **cross-state consistency review**, and a periodic **methodology red-team** (harvest objections before outreach). All improve-and-flag only; none advance past ACP. See `VALIDATION_PHILOSOPHY.md`.
+
 ---
 
 ## Standards
@@ -200,6 +206,18 @@ Also: Cowork's reported doc updates must be **confirmed in the file**, not trust
 - **Long-term institutional home:** Stanford / LSC / foundation; and when to open the handoff conversation.
 - **Funding posture:** Andy pro bono confirmed; decide whether L7 is donated (clinics) or underwritten via an institutional host.
 - **Loose-file cleanup:** a stale `PROJECT_PLAN.md` copy exists in `Documents/` (outside the repo) — delete/rename so only the repo copy remains.
+
+---
+
+## Field Alignment & Publication Priority (June 18, 2026)
+
+**Standards alignment (Stanford Legal Design Lab / JusticeBench).** Per Hagan's June 18 "Data Standards and Datasets" article, CJaC sits in the **legal-workflow / decision-logic layer** the field names as scarcest and least-captured. Align CJaC to the field's connective-tissue standards so it's the interoperable, executed reference implementation of that layer (full spec: `JUSTICEBENCH_ALIGNMENT_SPEC.md`): adopt **LIST** issue codes, **FIPS** jurisdiction codes, **Legal Help Task Taxonomy** IDs, ISO language codes, and the **currency-status enum** (current/aging/stale/unknown); pull **JusticeBench synthetic query datasets** (esp. High Risk Legal Help Queries) to seed L4 golden sets; adopt the **rubric-as-eval** principle (reviewer checklist = automated eval, one artifact per module). Guardrail: alignment changes labeling/testing interoperability, not CJaC's validation discipline.
+
+**Publication priority — establish CJaC as the executed, citable reference implementation.** The field's framing ("rules-heavy, lightest-sufficient-tool, write-the-logic-down-and-own-it") is converging with CJaC's thesis; priority goes to whoever publishes the *built, working artifact*, not the framing. Get the executed artifact and methodology public, honestly labeled, soon:
+- **README rewrite (highest leverage)** — turn the public repo from a file pile into a clear statement of what CJaC is, its scope, status labels, and validation methodology. The thing a link resolves to.
+- **Publish `VALIDATION_PHILOSOPHY.md`** — stakes the methodology claim publicly.
+- **Finalize + publish working paper / 2-pager** (accept tracked changes first).
+- **Do NOT** escalate the rules files' claim ahead of validation — they're public at ACP with honest labels; that's correct. Establish via *visible rigorous execution*, not premature "validated" claims.
 
 ---
 

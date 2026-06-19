@@ -81,6 +81,24 @@ The destination is **trustworthy at scale** — and the two words are load-beari
 
 So the discipline — automation narrows and flags, never blesses; the label never claims more than the method delivers — is not caution for its own sake. It is the precondition for scaling responsibly. Getting it right is what earns the right to scale; scaling is what delivers the mission. The full arc: **AI assesses the entire published corpus in structured form → automation triages and humans surgically resolve the contested points → producing something trustworthy enough that scaling it helps rather than harms → so that many people who could never afford legal help receive reliable guidance.** Each link depends on the one before. The trustworthiness earns the right to scale; the scale delivers access to justice.
 
+### Why this endures: durability against AI advancement
+
+The sharpest challenge to this work is: *as frontier models improve, won't they simply know the law, making a hand-built rules layer obsolete?* The honest answer distinguishes what is subsumable from what is not.
+
+**What is not durable** — and is therefore not the contribution: raw retrieval. "What is the notice period in Ohio" is a fact-lookup that models will keep getting better at. A library that did only that would rightly be subsumed. CJaC's contribution is not the lookup.
+
+**What is durable — and is the actual contribution — is the trust layer, and AI advancement strengthens rather than erodes it:**
+
+1. **Verified ground truth.** However capable a model becomes, the question "*how do you know* this output is correct?" requires an external, human-anchored, auditable standard to check against. You cannot bootstrap trust from the system being tested. A more capable model needs verification *more* legibly, not less, as it is trusted with higher-stakes decisions. CJaC builds the standard the models get checked against — which better models make more valuable, not less.
+
+2. **The methodology itself.** The repeatable process for taking *any* legal domain from "models have opinions" to verified, labeled, trustworthy decision logic is domain- and model-independent by design. Better models make this process *faster and better* (stronger drafting, stronger triage) — they do not make it unnecessary, because the process is what converts capability into *audited trust*. The method improves with the tools rather than being replaced by them.
+
+3. **Auditability and accountability.** Open, inspectable, "we wrote the logic down and own it" decision logic is something a model's internal knowledge is not — it cannot be read, audited, corrected, version-controlled, or held accountable. For a use case where being wrong has legal consequences for vulnerable people, an auditable rules layer with documented validation provenance is a *requirement* that raw model capability does not satisfy, however high that capability climbs.
+
+The unifying point: **as models improve, the binding constraint shifts from capability to trust and verification** — and that is precisely the constraint this work addresses. The durable claim is therefore not "we have the rules" (subsumable) but "**we have the trusted, auditable, repeatable method for establishing and maintaining verified legal decision logic across domains, anchored to human ground truth.**"
+
+A caution against the opposite error: this is not a claim of permanent moat. Some of the tooling will be partly absorbed by general AI progress, and that is fine. Durability here means being the entity that *defined and demonstrated the method* and built the institutional trust and stewardship around it — so that it remains the reference point and steward even as the tools underneath evolve. The durable assets are the method, the verified ground truth, the provenance, and the trust — not any particular piece of code.
+
 ---
 
 *Civil Justice as Code · Validation Philosophy · Apache 2.0 · Copyright 2026 Andrew M. Cohen.*
