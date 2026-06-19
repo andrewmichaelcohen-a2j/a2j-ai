@@ -109,9 +109,9 @@ Note: The discrepancy may reflect different tenancy types (month-to-month vs. we
 **Current file:** notice_required=true, days=5, statute Va. Code §55.1-1245  
 **Your task:** Read §55.1-1245(F); determine the correct notice period for a standard residential nonpayment notice. Note any tenancy-type-dependent variations.
 
-**Resolution:** ________________  
-**Authoritative source:** ________________  
-**Resolved by:** ________________  **Date:** ________________
+**Resolution:** _ Both are determined to be correct - the current notice period is 5 days under Va. Code § 55.1-1245(F); however, effective, July 1, 2026, under §55.1-1245(F); amendment = HB 15/SB 48 (2026), the new notice period will be 14 days. _______________  
+**Authoritative source:** __VA Code and VA Legislative Information System (LIS)______________  
+**Resolved by:** __Andrew Cohen______________  **Date:** ___June 19, 2026_____________
 
 ---
 
@@ -156,8 +156,9 @@ The AI has proposed and applied a correction. File content updated; status stays
 **GPT reasoning:** "W. Va. Code §55-3A-1 governs summary eviction and allows a landlord to petition for immediate relief when a tenant is in arrears of rent without any prior notice period requirement. §37-6-5 addresses notice to quit for periodic tenancies, not the nonpayment eviction action itself."  
 **Gemini reasoning:** "§55-3A-1 is the summary eviction statute for nonpayment and permits filing without prior notice. §37-6-5 applies to termination of periodic tenancies, a separate situation."
 
-**Your review:** ________________  
-**Confirmed by:** ________________  **Date:** ________________
+**Your review:** __confirm notice_required=false, days=null______________  
+**Confirmed by:** _Andrew Cohen_______________  **Date:** ___June 19, 2026_____________
+Note: 2 different WV Code provisions that are adjacent but do not contain applicable notice periods: §37-6-5 governs periodic-tenancy termination; and §37-6-23 requires service and tenant can pay before trial.
 
 ---
 
@@ -171,9 +172,9 @@ The AI has proposed and applied a correction. File content updated; status stays
 
 **Reasoning:** §1923.04(A) states a party desiring to commence an FED action "shall notify the adverse party to leave the premises three or more days before beginning the action." Both GPT and Gemini independently identified §1923.04(A). Verified from codes.ohio.gov.
 
-**Your review:** ________________  
-**Confirmed by:** ________________  **Date:** ________________
-
+**Your review:** __Confirmed______________  
+**Confirmed by:** Andrew Cohen________________  **Date:** _June 19, 2026_______________
+Note: statutory language is "3 or more days"; and different notice periods may apply in narrow adjacent circumstances (termination of lease; deceased tenant in a rented mobile home). 
 ---
 
 ### [MS-PC-03] Mississippi — Confirm §89-8-13(5)(a), 3 days
@@ -186,8 +187,8 @@ The AI has proposed and applied a correction. File content updated; status stays
 
 **Reasoning:** §89-7-27 is in Chapter 7, which explicitly excludes residential tenancies governed by Chapter 8 (RLTA). §89-8-13(5)(a) is the operative residential provision: landlord may give 3-day written notice.
 
-**Your review:** ________________  
-**Confirmed by:** ________________  **Date:** ________________
+**Your review:** __Confirmed______________  
+**Confirmed by:** __Andrew Cohen______________  **Date:** _June 19, 2026_______________
 
 ---
 
@@ -201,8 +202,8 @@ The AI has proposed and applied a correction. File content updated; status stays
 
 **Reasoning:** Both GPT and Gemini cited §5502(a) independently. §5501 is likely the general jurisdiction/applicability provision.
 
-**Your review:** ________________  
-**Confirmed by:** ________________  **Date:** ________________
+**Your review:** ____Confirmed____________  
+**Confirmed by:** __Andrew Cohen______________  **Date:** __June 19, 2026______________
 
 ---
 
@@ -216,8 +217,8 @@ The AI has proposed and applied a correction. File content updated; status stays
 
 **GPT confidence:** high · **Gemini confidence:** high
 
-**Your review:** ________________  
-**Confirmed by:** ________________  **Date:** ________________
+**Your review:** __Confirmed 7 (judicial) days, not 5 days - judicial days means that weekend days are not counted for purposes of the notice______________  
+**Confirmed by:** __Andrew Cohen______________  **Date:** __June 19, 2026______________
 
 ---
 
@@ -238,9 +239,9 @@ The AI has proposed and applied a correction. File content updated; status stays
 
 **Your task:** Check primary source; determine which section is the operative nonpayment *notice* provision (vs. the grounds-for-eviction statute).
 
-**Resolution:** ________________  
-**Authoritative source:** ________________  
-**Confirmed by:** ________________  **Date:** ________________
+**Resolution:** __Not confirmed. Here the proper statement of the current notice law in SD: there is a 3 day waiting period under section 21-16-1 (tenant must fail to pay rent for 3 days after it is due before cause of action triggers), but there is no express notice period for a notice to pay or quit, as section 21-16-2 was repealed by Senate bill 90 in 2024.______________  
+**Authoritative source:** _Sdlegislature.gov/statutes/21-16_______________  
+**Confirmed by:** _Andrew Cohen_______________  **Date:** ___June 19, 2026_____________
 
 ---
 
@@ -251,8 +252,8 @@ The AI has proposed and applied a correction. File content updated; status stays
 
 **Question:** Routine confirmation. Both models confirmed §9-209. File was already corrected from §9-207 (holdover/termination) to §9-209 (nonpayment). Verify §9-209 is the operative pay-or-quit provision.
 
-**Your review:** ________________  
-**Confirmed by:** ________________  **Date:** ________________
+**Your review:** __Confirmed______________  
+**Confirmed by:** __Andrew Cohen______________  **Date:** ___June 19, 2026_____________
 
 ---
 
@@ -263,8 +264,9 @@ The AI has proposed and applied a correction. File content updated; status stays
 
 **Question:** Routine confirmation. GPT cited §§6001, 6002(1-A)(D); Gemini cited §6002(1). Both confirm §6002 is operative (§6001 is the availability-of-remedy statute). File already has §6002. Verify.
 
-**Your review:** ________________  
-**Confirmed by:** ________________  **Date:** ________________
+**Your review:** __Confirmed______________  
+**Confirmed by:** _Andrew Cohen_______________  **Date:** _June 19, 2026_______________
+Note: there is a 7 day waiting period (tenant must be 7 days in arrears on the rent before landlord can serve the (7 day) notice. 
 
 ---
 
