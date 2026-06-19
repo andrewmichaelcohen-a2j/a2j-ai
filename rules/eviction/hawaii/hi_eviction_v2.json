@@ -14,32 +14,32 @@
     },
     "statutory_sources": [
       {
-        "cite": "HRS §521-68",
+        "cite": "HRS \u00a7521-68",
         "url": "https://law.justia.com/codes/hawaii/title-28/chapter-521/section-521-68/",
         "retrieved": true,
         "retrieved_date": "2026-06-15"
       },
       {
-        "cite": "HRS §521-69",
+        "cite": "HRS \u00a7521-69",
         "url": null,
         "retrieved": false,
         "retrieved_date": null
       },
       {
-        "cite": "HRS §521-71",
+        "cite": "HRS \u00a7521-71",
         "url": null,
         "retrieved": false,
         "retrieved_date": null
       },
       {
-        "cite": "HRS §521-42",
+        "cite": "HRS \u00a7521-42",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
         "source": "machine-assisted retrieval (2026-06-16)"
       },
       {
-        "cite": "HRS §521-74",
+        "cite": "HRS \u00a7521-74",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
@@ -48,31 +48,31 @@
     ],
     "per_module_sources": {
       "notice": [
-        "HRS §521-68",
-        "HRS §521-69",
-        "HRS §521-71"
+        "HRS \u00a7521-68",
+        "HRS \u00a7521-69",
+        "HRS \u00a7521-71"
       ],
       "service": [],
       "overlays": [
-        "HRS §521-42",
-        "HRS §521-74"
+        "HRS \u00a7521-42",
+        "HRS \u00a7521-74"
       ],
       "substantive_defenses": [
-        "42 U.S.C. §3604 (Fair Housing Act)",
+        "42 U.S.C. \u00a73604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]"
       ],
       "procedural_defects": [
-        "HRS §666-1 et seq."
+        "HRS \u00a7666-1 et seq."
       ]
     },
     "ai_drafter_notes": [
-      "STATUTORY RETRIEVAL NOT PERFORMED for this file — all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
-      "LDH source US/HI-Legislation is 2017 vintage — MUST retrieve current statute from Hawaii Legislature website during attorney review",
-      "Hawaii URLTA governs statewide — HRS Chapter 521",
-      "Verify current notice periods — Hawaii made amendments since 2017",
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "LDH source US/HI-Legislation is 2017 vintage \u2014 MUST retrieve current statute from Hawaii Legislature website during attorney review",
+      "Hawaii URLTA governs statewide \u2014 HRS Chapter 521",
+      "Verify current notice periods \u2014 Hawaii made amendments since 2017",
       "LDH legislation source available for retrieval verification: US/HI-Legislation",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
     ]
   },
   "interoperability": {
@@ -146,28 +146,28 @@
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"HRS §521-69\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"HRS \u00a7521-69\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
       },
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"HRS §521-71\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"HRS \u00a7521-71\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-17. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
       "run_date": "2026-06-18",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 5,
-        "statute": "Haw. Rev. Stat. § 521-68(a)",
+        "statute": "Haw. Rev. Stat. \u00a7 521-68(a)",
         "rationale": "For nonpayment of rent, the landlord must give the tenant written notice allowing not less than five business days after receipt to pay before the rental agreement terminates. If the tenant remains in default after that notice period, the landlord may bring a summary possession action."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 5,
-        "statute": "HRS § 521-68",
+        "statute": "HRS \u00a7 521-68",
         "rationale": "The statute requires a landlord to provide a written notice demanding payment after rent is due. The notice must state that the rental agreement will be terminated if payment is not made within a period of at least five business days after the tenant receives the notice."
       }
     }
@@ -183,23 +183,23 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 5,
-          "statute": "HRS §521-68",
+          "statute": "HRS \u00a7521-68",
           "count_method": "calendar_days"
         }
       },
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 10,
-        "statute": "HRS §521-69",
+        "statute": "HRS \u00a7521-69",
         "curable": true
       },
       "termination": {
-        "statute": "HRS §521-71",
+        "statute": "HRS \u00a7521-71",
         "just_cause_required": false,
         "just_cause_statute": null,
         "tenancy_any": {
           "days": 28,
-          "statute": "HRS §521-71",
+          "statute": "HRS \u00a7521-71",
           "count_method": "calendar_days"
         }
       }
@@ -211,7 +211,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
@@ -219,7 +219,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 5 day(s) — verify calculation method"
+        "note": "Notice must provide minimum 5 day(s) \u2014 verify calculation method"
       }
     ],
     "notice_period_basis": {
@@ -237,21 +237,21 @@
       {
         "method": "personal",
         "requirements": "In-person delivery to tenant",
-        "statute": "HRS §521-71(e)",
+        "statute": "HRS \u00a7521-71(e)",
         "adds_days_for_mail": null,
         "note": "Verify requirements under state law"
       },
       {
         "method": "substituted",
         "requirements": "Delivery to adult household member plus mail copy",
-        "statute": "HRS §521-71(e)",
+        "statute": "HRS \u00a7521-71(e)",
         "adds_days_for_mail": null,
         "note": "Verify availability and requirements under state law"
       },
       {
         "method": "certified_mail",
-        "requirements": "Certified mail to premises; adds days to notice period — verify count method",
-        "statute": "HRS §521-71(e)",
+        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
+        "statute": "HRS \u00a7521-71(e)",
         "adds_days_for_mail": 3,
         "note": "Number of added days and availability require attorney verification"
       }
@@ -260,13 +260,13 @@
       {
         "defect": "improper_service_method",
         "consequence": "notice_void",
-        "statute": "HRS §521-71(e)",
+        "statute": "HRS \u00a7521-71(e)",
         "case_law": []
       },
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": "HRS §521-71(e)",
+        "statute": "HRS \u00a7521-71(e)",
         "case_law": []
       }
     ]
@@ -274,23 +274,23 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act §4024",
+        "name": "CARES Act \u00a74024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
-        "statute": "15 U.S.C. §9058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
+        "statute": "15 U.S.C. \u00a79058",
         "status": "conditional"
       }
     ],
     "state_protective": [
       {
         "name": "Implied Warranty of Habitability",
-        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction — verify state-specific elements and remedy",
-        "statute": "HRS §521-42"
+        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction \u2014 verify state-specific elements and remedy",
+        "statute": "HRS \u00a7521-42"
       },
       {
         "name": "Anti-Retaliation Protection",
         "effect": "Landlord may not evict in retaliation for tenant's exercise of legal rights (habitability complaints, organizing, etc.); verify state-specific presumption period and elements",
-        "statute": "HRS §521-74"
+        "statute": "HRS \u00a7521-74"
       }
     ],
     "local": [
@@ -313,11 +313,11 @@
         "Landlord failed to repair",
         "Tenant did not cause or waive the defect"
       ],
-      "statute": "HRS §521-42",
+      "statute": "HRS \u00a7521-42",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: HRS §521-42. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Habitability warranty statute: HRS \u00a7521-42. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
     },
     {
       "defense": "retaliation",
@@ -328,24 +328,24 @@
         "Causal connection between protected activity and adverse action",
         "Action was within state-defined presumption period (varies: 60 days to 12 months)"
       ],
-      "statute": "HRS §521-74",
+      "statute": "HRS \u00a7521-74",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: HRS §521-74. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Anti-retaliation statute: HRS \u00a7521-74. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
     },
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. §3604 (Fair Housing Act); HRS §515-3",
+      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); HRS \u00a7515-3",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details."
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -359,7 +359,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
+      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required."
     },
     {
       "defense": "improper_rent_calculation",
@@ -367,39 +367,39 @@
         "Amount demanded in notice exceeds lawfully owed rent",
         "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
       ],
-      "statute": "HRS §666-1 et seq.",
+      "statute": "HRS \u00a7666-1 et seq.",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
+      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required."
     }
   ],
   "procedural_defects": [
     {
       "defect": "complaint_filed_before_notice_period_expired",
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
-      "statute": "HRS §666-1 et seq.",
+      "statute": "HRS \u00a7666-1 et seq.",
       "case_law": [],
       "note": "Filing before the notice period runs is a bright-line defect in most states"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
-      "statute": "HRS §604-5 (district court jurisdiction)",
+      "statute": "HRS \u00a7604-5 (district court jurisdiction)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "HRS §666-1 et seq. (pleading requirements)",
+      "statute": "HRS \u00a7666-1 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify"
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
-      "statute": "HRS §666-1 et seq.; state civil procedure rules (service of process)",
+      "statute": "HRS \u00a7666-1 et seq.; state civil procedure rules (service of process)",
       "case_law": [],
       "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
     }

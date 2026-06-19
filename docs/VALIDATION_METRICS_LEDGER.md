@@ -57,9 +57,28 @@ This ledger therefore tracks not just *rates* but *coverage* — what fraction o
 
 **Proof point captured:** the tiered resolution protocol narrowed **8 Phase-1 discrepancies to 2 genuine human-judgment items** — the first recorded instance of the automation-narrows-human-load claim. To be tested for *repeatability* as the next modules run.
 
-**Pending (fills in as Andy works the review queue):**
-- Error-confirm outcome: of the AI-resolved items (WV, OH, MS, DE, NV), how many does attorney review confirm correct? *(This number is the real test of whether AI resolution is trustworthy. Log it as the queue is worked.)*
-- Genuine-L7 outcomes (MO, ND, MD, VA, GA, SD): what the attorney determined, and whether the file or a model was right.
+**Error-confirm outcomes — logged 2026-06-19 (Andy Cohen):**
+
+| Item | Type | AI proposal | Attorney outcome | AI correct? |
+|------|------|-------------|-----------------|-------------|
+| WV | PERIOD-AI-RESOLVED | notice_required=false, §55-3A-1 | ✅ Confirmed correct. §37-6-5/§37-6-23 govern separate URLTA notice situations; §55-3A-1 FED action needs no prior notice. | **Yes** |
+| OH | CITATION-AI-RESOLVED | §1923.04(A), 3d | ✅ Confirmed correct. "3 or more days" statutory language; minimum is 3. | **Yes** |
+| MS | CITATION-AI-RESOLVED | §89-8-13(5)(a), 3d | ✅ Confirmed correct. | **Yes** |
+| DE | CITATION-AI-RESOLVED | 25 Del. C. §5502(a), 5d | ✅ Confirmed correct. | **Yes** |
+| NV | PERIOD-AI-RESOLVED | days=7, §40.253(1)(a) | ✅ Days and statute confirmed correct. ⚠️ **count_method error caught by attorney review:** L2 left `calendar_days`; judicial days (weekends/holidays excluded) is correct → corrected to `calendar_days_excluding_weekends_holidays`. AI resolved the period but did not audit the count_method field. | **Partially** — period/statute correct; count_method miss |
+| IL | CONSENSUS-CONFIRM | §9-209, 5d, business_days | ✅ Confirmed correct. | **Yes** |
+| ME | CONSENSUS-CONFIRM | §6002, 7d | ✅ Confirmed correct. Additional note: 7-day arrears waiting period must also elapse before notice may be served. | **Yes** |
+| SD | CITATION-AMBIGUOUS (queue) | Both models cited §21-16-2 (GPT) or §21-16-1(2) (GPT) / §21-16-2 (Gemini) — could not AI-resolve | ⚠️ **Full statute repeal caught:** §21-16-2 was **repealed by SB 90 (2024)**. Both models cited a non-operative statute. No pay-or-quit notice required (NJ-pattern). 3-day ripening period under §21-16-1(4). | **AI flagged correctly as unresolvable** — repeal not detectable by L2 |
+| VA | MODEL-SPLIT-L7 (queue) | GPT: 5d (§55.1-1245(F)); Gemini: 14d (same section) | Time-versioned resolution: **5d is current law; 14d becomes operative 2026-07-01** under HB 15/SB 48. Both models were right at different time points. File updated with `pending_amendment` block. | **Both partially correct** — genuine temporal split |
+
+**AI-resolution trustworthiness summary (notice/pay_or_quit module):**
+- 4 AI-resolved items (WV, OH, MS, DE): **4/4 confirmed correct** (100% citation/period accuracy)
+- 2 CONFIRM items (IL, ME): **2/2 confirmed correct**
+- NV: days/statute correct; count_method miss (field not targeted by L2 runner — scoped to days + citation only)
+- SD and VA: correctly escalated (SD = statute repeal; VA = genuine temporal split) — AI did not hallucinate resolutions it couldn't support
+- **Errors caught by the process:** 1 count_method error (NV), 1 statute repeal (SD → models cited a non-operative section), 1 time-version ambiguity (VA)
+
+**L7 still open (MO, ND, MD, GA):** Not yet worked. No attorney determination yet.
 
 #### Module: Service — *(next instrumented run — service L2)*
 | Run | Date | Models | Units | Consensus-confirm | Divergence | AI-resolved | Human-escalated | Errors caught | Cost | Status |
