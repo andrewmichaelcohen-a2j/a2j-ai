@@ -329,3 +329,852 @@ The following states resolved to CONSENSUS-CONFIRM via L2 multi-model consensus 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*  
 *Runner rule: Runners append new flagged items to the "Phase 2 Items" section only. Resolution, Authoritative source, Resolved by, Date, and Status fields are owned by Andy Cohen and must never be modified by automated runners.*  
 *Status values: 🔴 pending (L7) · ⏳ retry pending · 🟡 pending (confirmation/citation) · ✅ confirmed · 🟢 resolved*
+
+## Service L2 Items
+
+*Service L2 run: 2026-06-20*
+
+### [NV-SVC-01] NV (Nevada) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['NRS 40.280(1)(b)', 'NRS 40.280(1)(c)', 'NRS 40.280(1)(a)']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: NRS 40.280(1)(a)
+- substituted: NRS 40.280(1)(b)
+- posting_and_mailing: NRS 40.280(1)(c)
+
+**Gemini:**
+- personal: NRS 40.280(1)(a)
+- substituted: NRS 40.280(1)(b)
+- posting_and_mailing: NRS 40.280(1)(c)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [TN-SVC-02] TN (Tennessee) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['TCA §66-28-505(a)(1)', 'TCA §66-28-505(a)(3)', 'TCA §66-28-505(a)(2)']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: Tenn. Code Ann. § 66-28-107(d)(3)
+- mail: Tenn. Code Ann. §§ 66-28-107(d)(3), 66-28-505(b)(1)
+
+**Gemini:**
+- personal: T.C.A. § 66-28-105(c)(3)
+- mail: T.C.A. § 66-28-105(c)(3)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+
+
+*Service L2 run: 2026-06-20*
+
+### [DE-SVC-01] DE (Delaware) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['25 Del. C. §5104(c)', '25 Del. C. §5104(a)', '25 Del. C. §5104(b)']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: 25 Del. C. § 5113(a)(1)
+- substituted: 25 Del. C. § 5113(a)(2)
+- mail: 25 Del. C. § 5113(a)(3); 25 Del. C. § 5113(b)
+
+**Gemini:**
+- personal: 25 Del. C. § 5113(a)
+- substituted_and_mail: 25 Del. C. § 5113(a)
+- posting_and_mail: 25 Del. C. § 5113(b)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [GA-SVC-02] GA (Georgia) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['OCGA §44-7-50; OCGA §9-11-4', 'OCGA §44-7-50']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- not_statutorily_specified: O.C.G.A. § 44-7-50(a)
+
+**Gemini:**
+- personal: O.C.G.A. § 44-7-50(a)
+- substituted: O.C.G.A. § 44-7-50(a)
+- mail: O.C.G.A. § 44-7-50(a)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [KS-SVC-03] KS (Kansas) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['KSA 58-2563; KSA 61-3804', 'KSA 58-2563']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: K.S.A. 58-2564(b)
+- substituted: K.S.A. 58-2564(b)
+- mail: K.S.A. 58-2564(b)
+
+**Gemini:**
+- personal: K.S.A. 58-2510a(a)
+- substituted: K.S.A. 58-2510a(b)
+- mail: K.S.A. 58-2510a(c)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [LA-SVC-04] LA (Louisiana) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['La. C.C.P. art. 4702', 'La. C.C.P. art. 4703']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: La. Code Civ. Proc. art. 4703(A)(1)
+- substituted: La. Code Civ. Proc. art. 4703(A)(2)
+- posting: La. Code Civ. Proc. art. 4703(A)(3)
+- mail: La. Code Civ. Proc. art. 4703(A)(4); La. Code Civ. Proc. art. 4703(B)
+
+**Gemini:**
+- personal: La. Code Civ. Proc. Ann. art. 4703
+- posting: La. Code Civ. Proc. Ann. art. 4703
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [ND-SVC-05] ND (North Dakota) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['NDCC 47-32-01', 'NDCC 47-32-01; 47-32-02']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: N.D. Cent. Code § 47-16-17(1)
+- substituted: N.D. Cent. Code § 47-16-17(2)
+- posting_and_mail: N.D. Cent. Code § 47-16-17(3)
+
+**Gemini:**
+- personal: N.D.C.C. § 47-32-02
+- substituted: N.D.C.C. § 47-32-02
+- mail: N.D.C.C. § 47-32-02
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NJ-SVC-06] NJ (New Jersey) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['NJSA 2A:18-53', 'NJSA 2A:18-53; R. 6:3-3']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: N.J. Stat. Ann. § 2A:18-56
+- substituted: N.J. Stat. Ann. § 2A:18-56
+- mail: N.J. Stat. Ann. § 2A:18-56
+
+**Gemini:**
+- personal: N.J.S.A. 2A:18-61.2
+- substituted: N.J.S.A. 2A:18-61.2
+- mail: N.J.S.A. 2A:18-61.2
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [SD-SVC-07] SD (South Dakota) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['SDCL 21-16-2']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: S.D. Codified Laws § 21-16-2(1)
+- substituted: S.D. Codified Laws § 21-16-2(2)
+- posting_and_mailing: S.D. Codified Laws § 21-16-2(3)
+
+**Gemini citations:**
+- personal: SDCL 21-16-2
+- substituted: SDCL 21-16-2
+- posting_and_mail: SDCL 21-16-2
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+
+
+*Service L2 run: 2026-06-20*
+
+### [AR-SVC-01] AR (Arkansas) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['Ark. Code Ann. §18-60-301; §18-17-703', 'Ark. Code Ann. §18-17-703', 'Ark. Code Ann. §18-60-301']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: Ark. Code Ann. § 18-17-105(c)(3)
+- mail: Ark. Code Ann. § 18-17-105(c)(3)
+
+**Gemini:**
+- personal_or_substituted: A.C.A. § 18-60-304(d)(1)
+- posting: A.C.A. § 18-60-304(d)(2)
+- mail: A.C.A. § 18-60-304(d)(3)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [GA-SVC-02] GA (Georgia) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['OCGA §44-7-50', 'OCGA §44-7-50; OCGA §9-11-4']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- not_statutorily_specified: O.C.G.A. § 44-7-50(a)
+
+**Gemini:**
+- personal: O.C.G.A. § 44-7-50(a)
+- substituted: None
+- mail: O.C.G.A. § 44-7-50(a)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NJ-SVC-03] NJ (New Jersey) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['NJSA 2A:18-53', 'NJSA 2A:18-53; R. 6:3-3']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+
+**Gemini:**
+- personal: N.J.S.A. 2A:18-61.2(a)
+- substituted: N.J.S.A. 2A:18-61.2(a)
+- mail: N.J.S.A. 2A:18-61.2(a)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+
+
+*Service L2 run: 2026-06-20*
+
+### [AK-SVC-01] AK (Alaska) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['AS 34.03.220', 'AS 34.03.220; AS 09.45.070']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: Alaska Stat. § 09.45.100(a)(1)
+- substituted: Alaska Stat. § 09.45.100(a)(2)
+- mail: Alaska Stat. § 09.45.100(a)(3); Alaska Stat. § 09.45.100(b)
+
+**Gemini:**
+- personal: AS 34.03.310(b)
+- mail: AS 34.03.310(b)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [AL-SVC-02] AL (Alabama) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['Ala. Code §35-9A-301']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: Ala. Code § 35-9A-141(c)(3); Ala. Code § 35-9A-421(b)
+- substituted: Ala. Code § 35-9A-141(c)(1); Ala. Code § 35-9A-421(b)
+- mail: Ala. Code § 35-9A-141(c)(3); Ala. Code § 35-9A-421(b)
+
+**Gemini citations:**
+- personal: Ala. Code § 35-9A-105(c)(3)
+- substituted: Ala. Code § 35-9A-105(c)(3)
+- mail: Ala. Code § 35-9A-105(c)(3)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [AZ-SVC-03] AZ (Arizona) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['ARS §33-1313(A)(1)', 'ARS §33-1313(A)(2)', 'ARS §33-1313(A)(3)']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: A.R.S. § 33-1313(C)(3)
+- mail: A.R.S. § 33-1313(C)(3); A.R.S. § 33-1313(D)
+
+**Gemini:**
+- personal: A.R.S. § 33-1313(B)
+- mail: A.R.S. § 33-1313(B)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [CO-SVC-04] CO (Colorado) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['CRS §13-40-108(1)(b)', 'CRS §13-40-108(1)(a)', 'CRS §13-40-108(1)(c)']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: Colo. Rev. Stat. § 13-40-106(2)(a)
+- substituted: Colo. Rev. Stat. § 13-40-106(2)(b)
+- posting_and_mail: Colo. Rev. Stat. § 13-40-106(2)(c), (3), (4)
+
+**Gemini:**
+- personal: C.R.S. § 13-40-108
+- substituted: C.R.S. § 13-40-108
+- posting: C.R.S. § 13-40-108
+- electronic: C.R.S. § 38-12-510
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [HI-SVC-05] HI (Hawaii) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['HRS §521-71(e)']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: Haw. Rev. Stat. § 521-8(a)
+- substituted: Haw. Rev. Stat. § 521-8(a)
+- mail: Haw. Rev. Stat. § 521-8(a)
+- posting: Haw. Rev. Stat. § 521-68(a)
+
+**Gemini citations:**
+- personal: HRS § 521-10(a)(1)
+- substituted: HRS § 521-10(a)(2)
+- mail: HRS § 521-10(b)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [IA-SVC-06] IA (Iowa) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['Iowa Code §562A.12']  
+**File same-statute pattern:** True  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- acknowledged_delivery: Iowa Code § 562A.29A(1)(a)
+- personal_service: Iowa Code § 562A.29A(1)(b)
+- posting_and_mailing: Iowa Code § 562A.29A(1)(c)
+
+**Gemini:**
+- personal: Iowa Code § 562A.29A(1)
+- substituted: Iowa Code § 562A.29A(1)
+- mail: Iowa Code § 562A.29A(2)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [ID-SVC-07] ID (Idaho) — 🟡 SUBSECTION-FOUND
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['Idaho Code §6-303']  
+**File same-statute pattern:** True  
+
+**Issue:** File cites parent statute for all methods; both models found method-specific subsections. Verify whether subsection-level citations are required.
+
+**GPT subsections:**
+- personal: Idaho Code § 6-304(1)
+- substituted: Idaho Code § 6-304(2)
+- posting_and_mailing: Idaho Code § 6-304(3)
+
+**Gemini subsections:**
+- personal: Idaho Code § 6-304(1)
+- substituted: Idaho Code § 6-304(2)
+- post_and_mail: Idaho Code § 6-304(3)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [IN-SVC-08] IN (Indiana) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['Ind. Code §32-31-1-6']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: Ind. Code § 32-31-1-9(b)(1)
+- substituted: Ind. Code § 32-31-1-9(b)(2)
+- mail: Ind. Code § 32-31-1-9(b)(3)
+
+**Gemini citations:**
+- personal: IC 32-31-1-9(a)
+- substituted: IC 32-31-1-9(a)
+- posting: IC 32-31-1-9(b)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [MA-SVC-09] MA (Massachusetts) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['M.G.L. c. 186, §12']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: Mass. Gen. Laws ch. 186, § 11
+- substituted: Mass. Gen. Laws ch. 186, § 11
+- mail: Mass. Gen. Laws ch. 186, § 11
+
+**Gemini citations:**
+- mail: M.G.L. c. 186, § 31
+- personal: Uniform Summary Process Rule 2(b)
+- substituted: Uniform Summary Process Rule 2(b)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [MO-SVC-10] MO (Missouri) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['Mo. Rev. Stat. §441.060; §535.030', 'Mo. Rev. Stat. §535.030']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: Mo. Rev. Stat. § 441.060
+- substituted: Mo. Rev. Stat. § 441.060
+- posting: Mo. Rev. Stat. § 441.060
+
+**Gemini:**
+- personal: Mo. Rev. Stat. § 535.020.1
+- substituted: Mo. Rev. Stat. § 535.020.1
+- mail: Mo. Rev. Stat. § 535.020.1
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [MT-SVC-11] MT (Montana) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['MCA §70-24-202']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: Mont. Code Ann. § 70-27-110(1)
+- substituted: Mont. Code Ann. § 70-27-110(2)
+- posting_and_mail: Mont. Code Ann. § 70-27-110(3)
+
+**Gemini citations:**
+- personal: MCA § 70-24-108(2)(c)
+- mail: MCA § 70-24-108(2)(c)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NC-SVC-12] NC (North Carolina) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['NCGS §42-3; §1A-1, Rule 4', 'NCGS §42-3']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- not_statutorily_specified: N.C. Gen. Stat. § 42-3
+
+**Gemini:**
+- personal: N.C. Gen. Stat. § 42-3
+- substituted: N.C. Gen. Stat. § 42-3
+- mail: N.C. Gen. Stat. § 42-3
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NH-SVC-13] NH (New Hampshire) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['RSA 540:5']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: RSA 540:5, I(a)
+- substituted: RSA 540:5, I(b)
+- mail: RSA 540:5, I(c); RSA 540:5, II
+
+**Gemini citations:**
+- personal: RSA 540:5
+- substituted: RSA 540:5
+- mail: RSA 540:5
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [OR-SVC-14] OR (Oregon) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['ORS 90.255(1)(a)', 'ORS 90.255(1)(c)', 'ORS 90.255(1)(b)']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: Or. Rev. Stat. § 90.155(1)(a)
+- first_class_mail: Or. Rev. Stat. § 90.155(1)(b); additional time under Or. Rev. Stat. § 90.155(2)
+- first_class_mail_and_attachment: Or. Rev. Stat. § 90.155(1)(c)
+
+**Gemini:**
+- personal: ORS 90.155(1)(a)
+- substituted: ORS 90.155(1)(b)
+- mail_and_attachment: ORS 90.155(1)(c)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [PA-SVC-15] PA (Pennsylvania) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['68 P.S. §250.501; Pa. R.C.P. 1009', '68 P.S. §250.501']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: 68 P.S. § 250.501(f)
+- leaving_at_principal_building: 68 P.S. § 250.501(f)
+- posting: 68 P.S. § 250.501(f)
+
+**Gemini:**
+- personal: 68 P.S. § 250.501(g)
+- substituted: 68 P.S. § 250.501(g)
+- posting: 68 P.S. § 250.501(g)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [SC-SVC-16] SC (South Carolina) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['SC Code §27-40-710(c)', 'SC Code §27-40-710(a)', 'SC Code §27-40-710(b)']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: S.C. Code Ann. § 27-40-130(C)(3)
+- mail: S.C. Code Ann. § 27-40-130(C)(3)
+
+**Gemini:**
+- personal: S.C. Code Ann. § 27-40-240(B)(3)
+- mail: S.C. Code Ann. § 27-40-240(B)(3)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [TX-SVC-17] TX (Texas) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['Tex. Prop. Code §24.005(f)']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: Tex. Prop. Code § 24.005(f)
+- inside-door posting: Tex. Prop. Code § 24.005(f)
+- mail: Tex. Prop. Code § 24.005(f)
+- outside-door alternative: Tex. Prop. Code § 24.005(f-1)
+
+**Gemini citations:**
+- personal_substituted: Texas Property Code § 24.005(f)
+- affixing_inside: Texas Property Code § 24.005(f)
+- mail: Texas Property Code § 24.005(f)
+- affixing_outside_with_mail: Texas Property Code § 24.005(f)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [UT-SVC-18] UT (Utah) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['Utah Code §78B-6-802']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: Utah Code § 78B-6-805(1)
+- mail: Utah Code § 78B-6-805(2)
+- substituted: Utah Code § 78B-6-805(3)
+- posting: Utah Code § 78B-6-805(4)
+
+**Gemini citations:**
+- personal: Utah Code Ann. § 78B-6-805(1)(a)
+- substituted: Utah Code Ann. § 78B-6-805(1)(b)
+- posting: Utah Code Ann. § 78B-6-805(1)(c)
+- mail: Utah Code Ann. § 78B-6-805(3)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [WA-SVC-19] WA (Washington) — 🔴 MODEL-SPLIT
+
+**Module:** service.method_rules  
+**Status:** 🔴 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['RCW 59.12.040(3)', 'RCW 59.12.040(2)', 'RCW 59.12.040(1)']  
+**File same-statute pattern:** False  
+
+**Issue:** Models disagree with each other — attorney review required.
+
+**GPT:**
+- personal: RCW 59.12.040(1)
+- substituted: RCW 59.12.040(2)
+- posting_and_mailing: RCW 59.12.040(3)
+
+**Gemini:**
+- personal: RCW 59.12.040(1)
+- substituted: RCW 59.12.040(2)
+- posting and mailing: RCW 59.12.040(3)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [WV-SVC-20] WV (West Virginia) — 🟡 CITATION-DIVERGENCE
+
+**Module:** service.method_rules  
+**Status:** 🟡 pending-human-verification  
+**Run date:** 2026-06-20
+
+**File unique statutes:** ['WV Code §37-6-1']  
+**File same-statute pattern:** True  
+
+**Issue:** Models agree with each other but differ from file.
+
+**GPT citations:**
+- personal: W. Va. Code § 37-6-30
+- substituted: W. Va. Code § 37-6-30
+- posting: W. Va. Code § 37-6-30
+
+**Gemini citations:**
+- personal: W. Va. Code § 56-2-1(a) (as incorporated by W. Va. Code § 55-3A-1(c))
+- substituted: W. Va. Code § 56-2-1(b) and (c) (as incorporated by W. Va. Code § 55-3A-1(c))
+- mail: W. Va. Code § 55-3A-1(c)
+
+**Resolution:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
+
+---
+
+
+## Service L7 Items
+
+### DC (District of Columbia) — L7-SERVICE-ATTORNEY-REVIEW
+- Date: 2026-06-20
+- Reason: Persistent API failure across 3+ runs of both GPT and Gemini. No model data recoverable. Service statute(s) for D.C. pay-or-quit notices require attorney verification.
+- Action needed: Identify correct service statute(s) for pay-or-quit notice
+
+### NM (New Mexico) — L7-SERVICE-ATTORNEY-REVIEW
+- Date: 2026-06-20
+- Reason: Persistent API failure across 3+ runs of both GPT and Gemini. No model data recoverable. Service statute(s) for N.M. pay-or-quit notices require attorney verification.
+- Action needed: Identify correct service statute(s) for pay-or-quit notice

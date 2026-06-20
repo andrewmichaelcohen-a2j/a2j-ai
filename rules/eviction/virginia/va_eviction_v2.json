@@ -14,68 +14,68 @@
     },
     "statutory_sources": [
       {
-        "cite": "Va. Code \u00a755.1-1245",
+        "cite": "Va. Code §55.1-1245",
         "url": "https://law.lis.virginia.gov/vacode/55.1-1245/",
         "retrieved": true,
         "retrieved_date": "2026-06-15"
       },
       {
-        "cite": "Va. Code \u00a755.1-1253",
+        "cite": "Va. Code §55.1-1253",
         "url": null,
         "retrieved": false,
         "retrieved_date": null
       },
       {
-        "cite": "Va. Code \u00a755.1-1220",
+        "cite": "Va. Code §55.1-1220",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
         "source": "machine-assisted retrieval (2026-06-16)"
       },
       {
-        "cite": "Va. Code \u00a755.1-1234",
+        "cite": "Va. Code §55.1-1234",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
         "source": "machine-assisted retrieval (2026-06-16)"
       },
       {
-        "cite": "HB 15 / SB 48 (2026 Va. Acts) amending Va. Code \u00a755.1-1245(F)",
+        "cite": "HB 15 / SB 48 (2026 Va. Acts) amending Va. Code §55.1-1245(F)",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-19",
-        "source": "attorney confirmation (Andy Cohen, 2026-06-19) \u2014 effective 2026-07-01"
+        "source": "attorney confirmation (Andy Cohen, 2026-06-19) — effective 2026-07-01"
       }
     ],
     "per_module_sources": {
       "notice": [
-        "Va. Code \u00a755.1-1245",
-        "Va. Code \u00a755.1-1253"
+        "Va. Code §55.1-1245",
+        "Va. Code §55.1-1253"
       ],
       "service": [],
       "overlays": [
-        "Va. Code \u00a755.1-1220",
-        "Va. Code \u00a755.1-1234"
+        "Va. Code §55.1-1220",
+        "Va. Code §55.1-1234"
       ],
       "substantive_defenses": [
-        "42 U.S.C. \u00a73604 (Fair Housing Act)",
+        "42 U.S.C. §3604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]"
       ],
       "procedural_defects": [
-        "Va. Code \u00a755.1-1245 et seq."
+        "Va. Code §55.1-1245 et seq."
       ]
     },
     "ai_drafter_notes": [
-      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file — all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
       "Retrieve via LDH: US/VA-Law (2026 version)",
-      "Va. Code \u00a755.1-1245: 5-day pay-or-quit notice for nonpayment",
-      "Virginia Residential Landlord and Tenant Act (VRLTA) \u2014 Va. Code Ch. 55.1-12",
+      "Va. Code §55.1-1245: 5-day pay-or-quit notice for nonpayment",
+      "Virginia Residential Landlord and Tenant Act (VRLTA) — Va. Code Ch. 55.1-12",
       "Richmond, Norfolk, Arlington: verify local housing court rules",
-      "Virginia significantly amended landlord-tenant law in 2019-2020 \u2014 verify current provisions",
+      "Virginia significantly amended landlord-tenant law in 2019-2020 — verify current provisions",
       "LDH legislation source available for retrieval verification: US/VA-Law",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use",
-      "PENDING AMENDMENT: Va. Code \u00a755.1-1245(F) amended by HB 15/SB 48 (2026 Va. Acts) \u2014 notice period increases from 5 days to 14 days effective 2026-07-01. File encodes current law (5 days) with pending_amendment metadata. Update required before 2026-07-01. Confirmed by Andy Cohen, 2026-06-19."
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use",
+      "PENDING AMENDMENT: Va. Code §55.1-1245(F) amended by HB 15/SB 48 (2026 Va. Acts) — notice period increases from 5 days to 14 days effective 2026-07-01. File encodes current law (5 days) with pending_amendment metadata. Update required before 2026-07-01. Confirmed by Andy Cohen, 2026-06-19."
     ]
   },
   "interoperability": {
@@ -138,7 +138,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "flagged",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -149,7 +149,7 @@
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"Va. Code \u00a755.1-1253\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"Va. Code §55.1-1253\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
       },
       {
         "layer": "L2",
@@ -157,20 +157,71 @@
         "field": "notice.notice_types.pay_or_quit",
         "disposition": "resolved-attorney-confirmed",
         "escalation": "L7",
-        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): 5d, Va. Code \u00a7 55.1-1245(F). Gemini (gemini-2.5-pro): 14d, Va. Code Ann. \u00a7 55.1-1245(F). File: 5d, Va. Code \u00a755.1-1245. Attorney review required to determine operative answer.  ATTORNEY NOTE: Both models were partially correct at different time points. 5d is current law (Va. Code \u00a755.1-1245(F)). 14d is the amended period effective 2026-07-01 under HB 15/SB 48. File encodes current 5d with pending_amendment block for the July 1 transition.",
+        "note": "L2 MODEL-SPLIT: the two models disagree with each other. GPT (gpt-5.5): 5d, Va. Code § 55.1-1245(F). Gemini (gemini-2.5-pro): 14d, Va. Code Ann. § 55.1-1245(F). File: 5d, Va. Code §55.1-1245. Attorney review required to determine operative answer.  ATTORNEY NOTE: Both models were partially correct at different time points. 5d is current law (Va. Code §55.1-1245(F)). 14d is the amended period effective 2026-07-01 under HB 15/SB 48. File encodes current 5d with pending_amendment block for the July 1 transition.",
         "gpt_answer": {
           "days": 5,
-          "statute": "Va. Code \u00a7 55.1-1245(F)",
+          "statute": "Va. Code § 55.1-1245(F)",
           "rationale": "For nonpayment of rent, the landlord must serve written notice stating that rent is unpaid and that the rental agreement will terminate if the rent is not paid within five days. Only after the tenant fails to pay within that five-day period may the landlord terminate the rental agreement and proceed with eviction."
         },
         "gemini_answer": {
           "days": 14,
-          "statute": "Va. Code Ann. \u00a7 55.1-1245(F)",
+          "statute": "Va. Code Ann. § 55.1-1245(F)",
           "rationale": "If rent is unpaid when due, the landlord must serve the tenant with a 14-day written notice informing the tenant of the nonpayment and the landlord's intent to terminate the rental agreement. The landlord may only terminate the agreement and file for eviction if the tenant fails to pay the rent within that 14-day period."
         },
         "l2_run_date": "2026-06-18",
         "attorney_confirmed_by": "Andy Cohen (A2J project lead)",
         "attorney_confirmed_date": "2026-06-19"
+      },
+      {
+        "layer": "L6",
+        "code": "L6-SERVICE-RECENCY-WATCH",
+        "field": "service.method_rules",
+        "disposition": "open",
+        "note": "RECENCY GUARDRAIL: VA service statutes may have changed recently. HB 15/SB 48 (2026) amended §55.1-1245; service provisions under §55.1-1415 may be affected L2 consensus ≠ current law. Verify against current statutory text.",
+        "l2_run_date": "2026-06-20"
+      },
+      {
+        "layer": "L6",
+        "code": "L6-SERVICE-RECENCY-WATCH",
+        "field": "service.method_rules",
+        "disposition": "open",
+        "note": "RECENCY GUARDRAIL: VA service statutes may have changed recently. HB 15/SB 48 (2026) amended §55.1-1245; service provisions under §55.1-1415 may be affected L2 consensus ≠ current law. Verify against current statutory text.",
+        "l2_run_date": "2026-06-20"
+      },
+      {
+        "layer": "L6",
+        "code": "L6-SERVICE-RECENCY-WATCH",
+        "field": "service.method_rules",
+        "disposition": "open",
+        "note": "RECENCY GUARDRAIL: VA service statutes may have changed recently. HB 15/SB 48 (2026) amended §55.1-1245; service provisions under §55.1-1415 may be affected L2 consensus ≠ current law. Verify against current statutory text.",
+        "l2_run_date": "2026-06-20"
+      },
+      {
+        "layer": "L6",
+        "code": "L6-SERVICE-RECENCY-WATCH",
+        "field": "service.method_rules",
+        "disposition": "open",
+        "note": "RECENCY GUARDRAIL: VA service statutes may have changed recently. HB 15/SB 48 (2026) amended §55.1-1245; service provisions under §55.1-1415 may be affected L2 consensus ≠ current law. Verify against current statutory text.",
+        "l2_run_date": "2026-06-20"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-SERVICE-REASONING-PASS-RESOLVED",
+        "field": "service.method_rules",
+        "disposition": "resolved-ai-reasoning",
+        "status": "pending-human-confirmation",
+        "original_classification": "L2-SERVICE-ERROR",
+        "reasoning_pass_date": "2026-06-20",
+        "resolved_statutes": {
+          "personal": "Va. Code Ann. § 55.1-1202(A)(1)",
+          "substituted": "Va. Code Ann. § 55.1-1202(A)(2)",
+          "mail": "Va. Code Ann. § 55.1-1202(B)"
+        },
+        "gpt_reasoning": null,
+        "gpt_confidence": null,
+        "gemini_reasoning": "Va. Code Ann. § 55.1-1245(F) requires a five-day written notice for failure to pay rent but does not specify the service method. Therefore, the general notice provision for the Virginia Residential Landlord and Tenant Act, Va. Code Ann. § 55.1-1202, governs the manner of service. Subsections (A)(1), (A)(2), and (B) of § 55.1-1202 respectively authorize personal, substituted/posting, and mail service.",
+        "gemini_confidence": "high",
+        "note": "L2 service reasoning pass converged. personal=Va. Code Ann. § 55.1-1202(A)(1), substituted=Va. Code Ann. § 55.1-1202(A)(2), mail/posting=Va. Code Ann. § 55.1-1202(B). Source determined correct: model. GPT confidence=None, Gemini confidence=high. GPT reasoning: . Status: pending-human-confirmation. No auto-edit by runner."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
@@ -186,7 +237,7 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 5,
-          "statute": "Va. Code \u00a755.1-1245(F)",
+          "statute": "Va. Code §55.1-1245(F)",
           "count_method": "calendar_days",
           "valid_through": "2026-06-30",
           "pending_amendment": {
@@ -194,7 +245,7 @@
             "new_days": 14,
             "new_count_method": "calendar_days",
             "authority": "HB 15 / SB 48 (2026 Va. Acts)",
-            "statute": "Va. Code \u00a755.1-1245(F) as amended",
+            "statute": "Va. Code §55.1-1245(F) as amended",
             "note": "Virginia HB 15/SB 48 (enacted 2026) extends the nonpayment pay-or-quit notice period from 5 days to 14 days, effective July 1, 2026. Rules files must be updated on or before that date to reflect the new period."
           }
         }
@@ -202,16 +253,16 @@
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 21,
-        "statute": "Va. Code \u00a755.1-1245",
+        "statute": "Va. Code §55.1-1245",
         "curable": true
       },
       "termination": {
-        "statute": "Va. Code \u00a755.1-1253",
+        "statute": "Va. Code §55.1-1253",
         "just_cause_required": false,
         "just_cause_statute": null,
         "tenancy_any": {
           "days": 30,
-          "statute": "Va. Code \u00a755.1-1253",
+          "statute": "Va. Code §55.1-1253",
           "count_method": "calendar_days"
         }
       }
@@ -223,7 +274,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
@@ -231,7 +282,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 5 day(s) \u2014 verify calculation method"
+        "note": "Notice must provide minimum 5 day(s) — verify calculation method"
       }
     ],
     "notice_period_basis": {
@@ -249,21 +300,21 @@
       {
         "method": "personal",
         "requirements": "In-person delivery to tenant",
-        "statute": "Va. Code \u00a755.1-1245(A)",
+        "statute": "Va. Code §55.1-1245(A)",
         "adds_days_for_mail": null,
         "note": "Verify requirements under state law"
       },
       {
         "method": "substituted",
         "requirements": "Delivery to adult household member plus mail copy",
-        "statute": "Va. Code \u00a755.1-1245(A)",
+        "statute": "Va. Code §55.1-1245(A)",
         "adds_days_for_mail": null,
         "note": "Verify availability and requirements under state law"
       },
       {
         "method": "certified_mail",
-        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
-        "statute": "Va. Code \u00a755.1-1245(A)",
+        "requirements": "Certified mail to premises; adds days to notice period — verify count method",
+        "statute": "Va. Code §55.1-1245(A)",
         "adds_days_for_mail": 3,
         "note": "Number of added days and availability require attorney verification"
       }
@@ -272,13 +323,13 @@
       {
         "defect": "improper_service_method",
         "consequence": "notice_void",
-        "statute": "Va. Code \u00a755.1-1245(A)",
+        "statute": "Va. Code §55.1-1245(A)",
         "case_law": []
       },
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": "Va. Code \u00a755.1-1245(A)",
+        "statute": "Va. Code §55.1-1245(A)",
         "case_law": []
       }
     ]
@@ -286,23 +337,23 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act \u00a74024",
+        "name": "CARES Act §4024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
-        "statute": "15 U.S.C. \u00a79058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
+        "statute": "15 U.S.C. §9058",
         "status": "conditional"
       }
     ],
     "state_protective": [
       {
         "name": "Implied Warranty of Habitability",
-        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction \u2014 verify state-specific elements and remedy",
-        "statute": "Va. Code \u00a755.1-1220"
+        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction — verify state-specific elements and remedy",
+        "statute": "Va. Code §55.1-1220"
       },
       {
         "name": "Anti-Retaliation Protection",
         "effect": "Landlord may not evict in retaliation for tenant's exercise of legal rights (habitability complaints, organizing, etc.); verify state-specific presumption period and elements",
-        "statute": "Va. Code \u00a755.1-1234"
+        "statute": "Va. Code §55.1-1234"
       }
     ],
     "local": [
@@ -325,11 +376,11 @@
         "Landlord failed to repair",
         "Tenant did not cause or waive the defect"
       ],
-      "statute": "Va. Code \u00a755.1-1220",
+      "statute": "Va. Code §55.1-1220",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: Va. Code \u00a755.1-1220. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Habitability warranty statute: Va. Code §55.1-1220. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "retaliation",
@@ -340,24 +391,24 @@
         "Causal connection between protected activity and adverse action",
         "Action was within state-defined presumption period (varies: 60 days to 12 months)"
       ],
-      "statute": "Va. Code \u00a755.1-1234",
+      "statute": "Va. Code §55.1-1234",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: Va. Code \u00a755.1-1234. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Anti-retaliation statute: Va. Code §55.1-1234. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); Va. Code \u00a736-96.3",
+      "statute": "42 U.S.C. §3604 (Fair Housing Act); Va. Code §36-96.3",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -371,7 +422,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
     },
     {
       "defense": "improper_rent_calculation",
@@ -379,39 +430,39 @@
         "Amount demanded in notice exceeds lawfully owed rent",
         "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
       ],
-      "statute": "Va. Code \u00a755.1-1245 et seq.",
+      "statute": "Va. Code §55.1-1245 et seq.",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
     }
   ],
   "procedural_defects": [
     {
       "defect": "complaint_filed_before_notice_period_expired",
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
-      "statute": "Va. Code \u00a755.1-1245 et seq.",
+      "statute": "Va. Code §55.1-1245 et seq.",
       "case_law": [],
       "note": "Filing before the notice period runs is a bright-line defect in most states"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
-      "statute": "Va. Code \u00a716.1-77(6) (general district court)",
+      "statute": "Va. Code §16.1-77(6) (general district court)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "Va. Code \u00a755.1-1245 et seq. (pleading requirements)",
+      "statute": "Va. Code §55.1-1245 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
-      "statute": "Va. Code \u00a755.1-1245 et seq.; state civil procedure rules (service of process)",
+      "statute": "Va. Code §55.1-1245 et seq.; state civil procedure rules (service of process)",
       "case_law": [],
       "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
     }

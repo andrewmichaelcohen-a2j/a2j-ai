@@ -14,26 +14,26 @@
     },
     "statutory_sources": [
       {
-        "cite": "NMSA \u00a747-8-33",
+        "cite": "NMSA §47-8-33",
         "url": "https://law.justia.com/codes/new-mexico/chapter-47/article-8/section-47-8-33/",
         "retrieved": true,
         "retrieved_date": "2026-06-15"
       },
       {
-        "cite": "NMSA \u00a747-8-37",
+        "cite": "NMSA §47-8-37",
         "url": null,
         "retrieved": false,
         "retrieved_date": null
       },
       {
-        "cite": "NMSA 1978 \u00a747-8-20",
+        "cite": "NMSA 1978 §47-8-20",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
         "source": "machine-assisted retrieval (2026-06-16)"
       },
       {
-        "cite": "NMSA 1978 \u00a747-8-39",
+        "cite": "NMSA 1978 §47-8-39",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
@@ -42,30 +42,30 @@
     ],
     "per_module_sources": {
       "notice": [
-        "NMSA \u00a747-8-33",
-        "NMSA \u00a747-8-37"
+        "NMSA §47-8-33",
+        "NMSA §47-8-37"
       ],
       "service": [],
       "overlays": [
-        "NMSA 1978 \u00a747-8-20",
-        "NMSA 1978 \u00a747-8-39"
+        "NMSA 1978 §47-8-20",
+        "NMSA 1978 §47-8-39"
       ],
       "substantive_defenses": [
-        "42 U.S.C. \u00a73604 (Fair Housing Act)",
+        "42 U.S.C. §3604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]"
       ],
       "procedural_defects": [
-        "NMSA 1978 \u00a747-8-40 et seq."
+        "NMSA 1978 §47-8-40 et seq."
       ]
     },
     "ai_drafter_notes": [
-      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file — all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
       "Retrieve via LDH: US/NM-Legislation (2026 version)",
-      "New Mexico URLTA \u2014 NMSA Ch. 47-8",
+      "New Mexico URLTA — NMSA Ch. 47-8",
       "3-day notice for nonpayment",
       "LDH legislation source available for retrieval verification: US/NM-Legislation",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
     ]
   },
   "interoperability": {
@@ -128,7 +128,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "escalated-L7",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -139,7 +139,17 @@
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"NMSA \u00a747-8-37\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"NMSA §47-8-37\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
+      },
+      {
+        "layer": "L7",
+        "code": "L7-SERVICE-ATTORNEY-REVIEW",
+        "field": "service.method_rules",
+        "disposition": "open",
+        "escalation": "L7",
+        "escalation_date": "2026-06-20",
+        "prior_l2_code": "L2-SERVICE-ERROR",
+        "note": "Persistent API failure across 3+ runs of both GPT and Gemini. No model data recoverable. Service statute(s) for N.M. pay-or-quit notices require attorney verification."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -149,13 +159,13 @@
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "N.M. Stat. Ann. \u00a7 47-8-33(D)",
-        "rationale": "For nonpayment of rent, the landlord must give the resident written notice of the nonpayment and the landlord\u2019s intent to terminate the rental agreement if the rent is not paid within three days. If the tenant does not pay within that three-day period, the landlord may terminate the rental agreement and proceed with eviction."
+        "statute": "N.M. Stat. Ann. § 47-8-33(D)",
+        "rationale": "For nonpayment of rent, the landlord must give the resident written notice of the nonpayment and the landlord’s intent to terminate the rental agreement if the rent is not paid within three days. If the tenant does not pay within that three-day period, the landlord may terminate the rental agreement and proceed with eviction."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "NMSA 1978, \u00a7 47-8-33(B)",
+        "statute": "NMSA 1978, § 47-8-33(B)",
         "rationale": "If rent is unpaid when due, the owner must provide the resident with three days' written notice of the nonpayment and of the owner's intention to terminate the rental agreement. The owner may only terminate the agreement and proceed with an eviction action if the resident fails to pay the overdue rent within that three-day period."
       }
     }
@@ -171,23 +181,23 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 3,
-          "statute": "NMSA \u00a747-8-33",
+          "statute": "NMSA §47-8-33",
           "count_method": "calendar_days"
         }
       },
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 7,
-        "statute": "NMSA \u00a747-8-33",
+        "statute": "NMSA §47-8-33",
         "curable": true
       },
       "termination": {
-        "statute": "NMSA \u00a747-8-37",
+        "statute": "NMSA §47-8-37",
         "just_cause_required": false,
         "just_cause_statute": null,
         "tenancy_any": {
           "days": 30,
-          "statute": "NMSA \u00a747-8-37",
+          "statute": "NMSA §47-8-37",
           "count_method": "calendar_days"
         }
       }
@@ -199,7 +209,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
@@ -207,7 +217,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 3 day(s) \u2014 verify calculation method"
+        "note": "Notice must provide minimum 3 day(s) — verify calculation method"
       }
     ],
     "notice_period_basis": {
@@ -225,21 +235,21 @@
       {
         "method": "personal",
         "requirements": "In-person delivery to tenant",
-        "statute": "NMSA 1978 \u00a747-8-33",
+        "statute": "NMSA 1978 §47-8-33",
         "adds_days_for_mail": null,
         "note": "Verify requirements under state law"
       },
       {
         "method": "substituted",
         "requirements": "Delivery to adult household member plus mail copy",
-        "statute": "NMSA 1978 \u00a747-8-33",
+        "statute": "NMSA 1978 §47-8-33",
         "adds_days_for_mail": null,
         "note": "Verify availability and requirements under state law"
       },
       {
         "method": "certified_mail",
-        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
-        "statute": "NMSA 1978 \u00a747-8-33",
+        "requirements": "Certified mail to premises; adds days to notice period — verify count method",
+        "statute": "NMSA 1978 §47-8-33",
         "adds_days_for_mail": 3,
         "note": "Number of added days and availability require attorney verification"
       }
@@ -248,13 +258,13 @@
       {
         "defect": "improper_service_method",
         "consequence": "notice_void",
-        "statute": "NMSA 1978 \u00a747-8-33",
+        "statute": "NMSA 1978 §47-8-33",
         "case_law": []
       },
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": "NMSA 1978 \u00a747-8-33",
+        "statute": "NMSA 1978 §47-8-33",
         "case_law": []
       }
     ]
@@ -262,23 +272,23 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act \u00a74024",
+        "name": "CARES Act §4024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
-        "statute": "15 U.S.C. \u00a79058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
+        "statute": "15 U.S.C. §9058",
         "status": "conditional"
       }
     ],
     "state_protective": [
       {
         "name": "Implied Warranty of Habitability",
-        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction \u2014 verify state-specific elements and remedy",
-        "statute": "NMSA 1978 \u00a747-8-20"
+        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction — verify state-specific elements and remedy",
+        "statute": "NMSA 1978 §47-8-20"
       },
       {
         "name": "Anti-Retaliation Protection",
         "effect": "Landlord may not evict in retaliation for tenant's exercise of legal rights (habitability complaints, organizing, etc.); verify state-specific presumption period and elements",
-        "statute": "NMSA 1978 \u00a747-8-39"
+        "statute": "NMSA 1978 §47-8-39"
       }
     ],
     "local": [
@@ -301,11 +311,11 @@
         "Landlord failed to repair",
         "Tenant did not cause or waive the defect"
       ],
-      "statute": "NMSA 1978 \u00a747-8-20",
+      "statute": "NMSA 1978 §47-8-20",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: NMSA 1978 \u00a747-8-20. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Habitability warranty statute: NMSA 1978 §47-8-20. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "retaliation",
@@ -316,24 +326,24 @@
         "Causal connection between protected activity and adverse action",
         "Action was within state-defined presumption period (varies: 60 days to 12 months)"
       ],
-      "statute": "NMSA 1978 \u00a747-8-39",
+      "statute": "NMSA 1978 §47-8-39",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: NMSA 1978 \u00a747-8-39. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use"
+      "note": "Anti-retaliation statute: NMSA 1978 §47-8-39. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
     },
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); NMSA 1978 \u00a728-1-7",
+      "statute": "42 U.S.C. §3604 (Fair Housing Act); NMSA 1978 §28-1-7",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -347,7 +357,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
     },
     {
       "defense": "improper_rent_calculation",
@@ -355,39 +365,39 @@
         "Amount demanded in notice exceeds lawfully owed rent",
         "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
       ],
-      "statute": "NMSA 1978 \u00a747-8-40 et seq.",
+      "statute": "NMSA 1978 §47-8-40 et seq.",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
     }
   ],
   "procedural_defects": [
     {
       "defect": "complaint_filed_before_notice_period_expired",
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
-      "statute": "NMSA 1978 \u00a747-8-40 et seq.",
+      "statute": "NMSA 1978 §47-8-40 et seq.",
       "case_law": [],
       "note": "Filing before the notice period runs is a bright-line defect in most states"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
-      "statute": "NMSA 1978 \u00a735-12-1 (magistrate court)",
+      "statute": "NMSA 1978 §35-12-1 (magistrate court)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "NMSA 1978 \u00a747-8-40 et seq. (pleading requirements)",
+      "statute": "NMSA 1978 §47-8-40 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify"
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
-      "statute": "NMSA 1978 \u00a747-8-40 et seq.; state civil procedure rules (service of process)",
+      "statute": "NMSA 1978 §47-8-40 et seq.; state civil procedure rules (service of process)",
       "case_law": [],
       "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
     }

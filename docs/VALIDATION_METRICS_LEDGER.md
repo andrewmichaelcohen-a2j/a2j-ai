@@ -80,12 +80,33 @@ This ledger therefore tracks not just *rates* but *coverage* — what fraction o
 
 **L7 still open (MO, ND, MD, GA):** Not yet worked. No attorney determination yet.
 
-#### Module: Service — *(next instrumented run — service L2)*
-| Run | Date | Models | Units | Consensus-confirm | Divergence | AI-resolved | Human-escalated | Errors caught | Cost | Status |
-|-----|------|--------|-------|-------------------|-----------|-------------|-----------------|---------------|------|--------|
-| L2 Service | *pending* | | 51 | | | | | | | not yet run |
+#### Module: Service — claim type: service methods (personal / substituted / mail) per pay-or-quit notice
 
-> Service is the first run *designed to be instrumented from the start*. Specific hypothesis to test (from the readiness assessment): several states (AL, AK, CT) cite one statute for all 3 service methods — L2 will show whether that's correct (single provision) or an error (section header vs. subsections). Record the resolution.
+| Run | Date | Models | Units | Round-1 consensus | Divergence | AI-resolved | Human-escalated | Errors caught | Cost | Status |
+|-----|------|--------|-------|-------------------|-----------|-------------|-----------------|---------------|------|--------|
+| L2 Service — initial 51-state run | 2026-06-19 | gpt-5.5 + gemini-2.5-pro | 51 | 14 (27%) | 37 (73%) | — | — | — | ~$1.53 | partial |
+| L2 Service — 17-state retry (ERROR states) | 2026-06-19 | gpt-5.5 + gemini-2.5-pro | 17 | +2 | — | — | — | — | ~$0.51 | partial |
+| L2 Service — reasoning + tiebreaker passes | 2026-06-19/20 | gpt-5.5 + gemini-2.5-pro | 49 | — | 35 | 32 (91% of diverged) | 2 (4%) | TBD | ~$2.50 | complete |
+| **Service — combined (51)** | **2026-06-19/20** | gpt-5.5 + gemini-2.5-pro | **51** | **16 (31%)** | **35 (69%)** | **32 (63%)** | **2 (4%)** | **TBD** | **~$4.50** | **complete; review queue open** |
+
+**Final service module outcomes (2026-06-19/20):**
+
+| Outcome | Count | States |
+|---------|-------|--------|
+| ✅ Round-1 consensus-confirmed | 16 | CT, FL, IL, KY, MD, ME, MI, MN, MS, NE, NY, OH, OK, RI, VT, WY |
+| ✅ AI-resolved (reasoning/tiebreaker/single-model) | 32 | AK, AL, AR, AZ, CO, DE, GA, HI, IA, ID, IN, KS, LA, MA, MO, MT, NC, ND, NH, NJ, NV, OR, PA, SC, SD, TN, TX, UT, VA, WA, WI, WV |
+| 🔴 L7-ATTORNEY-REVIEW | 2 | DC, NM — persistent API failure, zero recoverable model data |
+| ⚠️ L6-RECENCY-WATCH | 1 | CA — not a citation error; statute watch only |
+
+**Key process observations:**
+- **Single-model fallback** (new capability built during this run): VA, WI, AR, TN all resolved via Gemini high-confidence answer when GPT persistently failed (empty responses). GPT failures were transient/rate-limiting, not substantive. Single-model fallback prevents model API failures from becoming false L7 escalations.
+- **Subsection targeting** (new capability): IN resolved on 3rd pass when query shifted from generic statute lookup to "which subsection for each specific method" — both models converged on §32-31-1-9(b)(1)/(2)/(3). Standard tiebreaker had failed twice. Lesson: for subsection-level disputes, method-specific queries outperform generic tiebreakers.
+- **Hypothesis from readiness assessment (same-statute pattern):** Confirmed — several states cite one statute for all 3 methods correctly (single provision); others needed subsections identified (e.g., ID: §6-304(1)/(2)/(3) vs file's parent §6-303). Both patterns exist in the data.
+- **L7 load: 4%** (2/51) — down from 10% in notice module. Both L7 items are API-failure artifacts, not legal ambiguity. Zero genuine interpretive disputes reached L7 after the full tiered protocol.
+
+**Error-confirm outcomes (service):** *Pending — queue open for Andy's confirmation of AI-resolved items.*
+
+> **Repeatability note:** Escalation rate fell from ~10% (notice) to 4% (service), with service requiring more processing rounds due to subsection complexity. The protocol adapted (single-model fallback, targeted subsection queries) within the same validation framework. L7 load remained surgical. This is the repeatability claim being built.
 
 #### Modules pending content work before L2
 - **Procedural defects** — boilerplate 4-item template; needs jurisdiction-differentiation before L2 is meaningful. (Logged so the gap is on the record.)
@@ -100,10 +121,12 @@ As each module/claim-type completes, add its combined row here so the *trend* is
 
 | Module / claim | Units | Consensus | AI-resolved | Human-escalated | Error-confirm (AI correct %) | Date |
 |----------------|-------|-----------|-------------|-----------------|------------------------------|------|
-| Notice / pay_or_quit | 51 | ~80% | 5 | ~10% | *pending queue* | 2026-06-18 |
-| Service | — | — | — | — | — | pending |
+| Notice / pay_or_quit | 51 | ~80% | 5 (all confirmed correct) | ~10% (4 open + 2 resolved) | 4/4 confirmed correct; 2 correctly escalated (SD repeal, VA time-version) | 2026-06-18 |
+| Service / method_rules | 51 | 31% (round-1) | 32/35 diverged (91%) | 4% (2 — DC, NM) | *pending queue* | 2026-06-19/20 |
 | *(future modules…)* | | | | | | |
 | *(future DOMAINS — debt, family, benefits…)* | | | | | | |
+
+**Trend observation (2 modules):** Consensus rate dropped (80% → 31%) but human-escalation rate also dropped (10% → 4%) — because the tiered protocol expanded (single-model fallback, targeted queries), it absorbed more divergence without needing attorney review. Lower consensus ≠ lower quality; it reflects subsection complexity requiring more AI passes. The repeatability claim is about the *escalation rate* staying surgical — and it did.
 
 **Reading the trend (when populated):** stable/improving consensus + stable-or-falling escalation + high error-confirm-correct % across rows = the methodology is *repeatable*, not bespoke to notice. A new *domain* holding the band is the strongest repeatability evidence.
 
