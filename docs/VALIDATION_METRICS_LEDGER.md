@@ -108,6 +108,22 @@ This ledger therefore tracks not just *rates* but *coverage* — what fraction o
 
 > **Repeatability note:** Escalation rate fell from ~10% (notice) to 4% (service), with service requiring more processing rounds due to subsection complexity. The protocol adapted (single-model fallback, targeted subsection queries) within the same validation framework. L7 load remained surgical. This is the repeatability claim being built.
 
+#### LSC Baseline Cross-Check (2026-06-20) — External corroboration
+
+| Dataset | Methodology | Jurisdictions | CJaC agreement | Divergences explained |
+|---------|-------------|---------------|---------------|-----------------------|
+| LSC/Temple LawAtlas State Eviction Laws (Jan 1, 2021) | Policy-surveillance, inter-coder reliability, congressionally funded | 51 US states | **46/51 (90%)** | 3 post-2021 changes (MN/SD/VA); 1 L7-open LSC corroborates no-notice (GA); 1 L7-open LSC corroborates no-notice (MD) |
+
+**Cross-check findings summary:**
+- 44 MATCH-PERIOD: period and statute independently agree
+- 2 MATCH-NO-NOTICE: NJ and WV — CJaC `notice_required=false` matches LSC "not required to give notice"
+- 3 post-2021 statutory changes (MN: 2023 HF 3019 adds 14d; SD: §21-16-2 repealed 2024; VA: time-versioned 5d→14d 2026-07-01)
+- GA: CJaC=3d (initial-gen, L7-open); LSC="not specified" — corroborates Gemini/"no minimum" L7 position
+- MD: CJaC=10d (initial-gen, L7-open); LSC="not required" — corroborates Gemini/"no notice" L7 position
+- **No unexplained divergences.** Zero cases where CJaC has a confirmed wrong value that the process did not already flag.
+
+Full report: `docs/LSC_CROSSCHECK_REPORT_2026-06-20.md`
+
 #### Modules pending content work before L2
 - **Procedural defects** — boilerplate 4-item template; needs jurisdiction-differentiation before L2 is meaningful. (Logged so the gap is on the record.)
 - **Federal overlays (SCRA)** — absent from all 51; needs population pass. (Logged.)
