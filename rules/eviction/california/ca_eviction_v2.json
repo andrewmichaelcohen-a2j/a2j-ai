@@ -247,6 +247,189 @@
         "disposition": "open",
         "note": "RECENCY GUARDRAIL: CA service statutes may have changed recently. AB 2347 (2022) changed service and response-time rules; verify CCP §1162 currency L2 consensus ≠ current law. Verify against current statutory text.",
         "l2_run_date": "2026-06-20"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-PROCEDURAL-DEFECTS-CONTENT-PASS-PENDING",
+        "field": "procedural_defects",
+        "disposition": "content-pass-needed",
+        "status": "pending-content-differentiation",
+        "date": "2026-06-20",
+        "defect_count": 5,
+        "note": "Content pass pending (2026-06-20): 5 procedural defect items; 3 use 'et seq.' level citations (insufficient for L2 validation). Per operating protocol, L2 cannot run on undifferentiated boilerplate. Content pass requires jurisdiction-specific primary source retrieval (API needed). 50/51 states share identical 4-item template; only statutes differ. Content differentiation needed before L2 validation is meaningful."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-SCRA-OVERLAY-SINGLE-MODEL-RESOLVED",
+        "field": "overlays.federal.scra",
+        "disposition": "single-model-preliminary",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
+        "gpt_summary": {
+          "primary_citation": null,
+          "rent_threshold": null,
+          "confidence": null,
+          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+        },
+        "gemini_summary": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "rent_threshold": 4954.34,
+          "rent_threshold_year": "2024",
+          "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high",
+          "error": null
+        },
+        "resolved_content": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "current_rent_threshold_dollars": 4954.34,
+          "current_rent_threshold_year": "2024",
+          "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "core_protection": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence, for which the monthly rent is below the statutory threshold, without first obtaining a court order.",
+          "court_order_required": true,
+          "max_stay_days": 90,
+          "affidavit_required": true,
+          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high"
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-OVERLAY-STATE-PROTECTIVE-CITATIONS-VERIFIED",
+        "field": "overlays.state_protective",
+        "disposition": "pending-human-confirmation",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "overlay_results": [
+          {
+            "name": "AB 1482 Just Cause (statewide)",
+            "file_citation": "Civ. Code §1946.2",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1946.2(a)-(b) | Gem: California Civil Code § 1946.2",
+            "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1946.2(a)-(b)",
+            "gemini_citation": "California Civil Code § 1946.2"
+          },
+          {
+            "name": "AB 1482 Rent Cap",
+            "file_citation": "Civ. Code §1947.12",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1947.12(a)(1) | Gem: California Civil Code § 1947.12",
+            "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1947.12(a)(1)",
+            "gemini_citation": "California Civil Code § 1947.12"
+          },
+          {
+            "name": "Implied Warranty of Habitability",
+            "file_citation": "Civ. Code §1941; Green v. Superior Court (1974)",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, §§ 1941(a), 1941.1 | Gem: California Civil Code § 1941.1",
+            "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, §§ 1941(a), 1941.1",
+            "gemini_citation": "California Civil Code § 1941.1"
+          }
+        ],
+        "needs_queue": false,
+        "note": "All 3 overlay citations verified by L2 — no changes needed."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-HABITABILITY-WARRANTY-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.habitability_warranty.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Cal. Civ. Code §1941.1, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-DISCRIMINATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.discrimination.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Cal. Gov. Code §12955 (Fair Employment and Housing Act - FEHA), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-BREACH-OF-QUIET-ENJOYMENT-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.breach_of_quiet_enjoyment.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Cal. Civ. Code §1927, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-IMPROPER-RENT-CALCULATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.improper_rent_calculation.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=2, statute=Cal. Code Civ. Proc. §1161(2), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-ELEMENTS-CONSENSUS-CONFIRMED",
+        "field": "substantive_defenses.retaliation.layer_decomposition.elements",
+        "disposition": "resolved-confirmed",
+        "l2_run_date": "2026-06-21",
+        "classification": "CONSENSUS-CONFIRMED",
+        "note": "Both models: 180d presumption period. GPT: Cal. Civ. Code § 1942.5 (conf=high). Gemini: Cal. Civ. Code § 1942.5 (conf=high).",
+        "gpt_summary": {
+          "period": 180,
+          "statute": "Cal. Civ. Code § 1942.5",
+          "confidence": "high",
+          "error": null
+        },
+        "gemini_summary": {
+          "period": 180,
+          "statute": "Cal. Civ. Code § 1942.5",
+          "confidence": "high",
+          "error": null
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-ELEMENTS-CONSENSUS-CONFIRMED",
+        "field": "substantive_defenses.retaliation.layer_decomposition.elements",
+        "disposition": "resolved-confirmed",
+        "l2_run_date": "2026-06-21",
+        "classification": "CONSENSUS-CONFIRMED",
+        "note": "Both models: 180d presumption period. GPT: Cal. Civ. Code § 1942.5 (conf=high). Gemini: Cal. Civ. Code § 1942.5 (conf=high).",
+        "gpt_summary": {
+          "period": 180,
+          "statute": "Cal. Civ. Code § 1942.5",
+          "confidence": "high",
+          "error": null
+        },
+        "gemini_summary": {
+          "period": 180,
+          "statute": "Cal. Civ. Code § 1942.5",
+          "confidence": "high",
+          "error": null
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 5,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -415,6 +598,20 @@
         "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
         "statute": "15 U.S.C. §9058",
         "status": "conditional"
+      },
+      {
+        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+        "threshold_current_dollars": 4954.34,
+        "threshold_year": "2024",
+        "status": "active",
+        "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+        "l2_run_date": "2026-06-20",
+        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
       }
     ],
     "state_protective": [
@@ -500,7 +697,24 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: Civ. Code §1941; Green v. Superior Court (1974). Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Habitability warranty statute: Civ. Code §1941; Green v. Superior Court (1974). Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The property had substantial defects affecting habitability, violating state or local housing codes, and materially endangering the tenant's health and safety.",
+            "The landlord had actual or constructive knowledge of the defective conditions.",
+            "The landlord was given a reasonable amount of time to make the repairs and failed to do so.",
+            "The tenant did not cause the defective conditions through their own negligence or willful act."
+          ],
+          "primary_statute": "Cal. Civ. Code §1941.1",
+          "key_case": "Green v. Superior Court, 10 Cal. 3d 616 (1974)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Cal. Civ. Code §1941.1, conf=high."
+        }
+      }
     },
     {
       "defense": "retaliation",
@@ -515,7 +729,186 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: Civ. Code §1942.5. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Anti-retaliation statute: Civ. Code §1942.5. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "automation_ceiling": "high",
+          "validation_status": "L2-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "validation_date": null,
+          "state_specific": {
+            "presumption_period_days": 180,
+            "presumption_period_statute": "Cal. Civ. Code § 1942.5(a), including § 1942.5(a)(1)-(5), for the 180-day statutory period; § 1942.5(d) governs broader tenants' association/general lawful-rights retaliation but has no separate fixed presumption period",
+            "presumption_period_basis": "statute",
+            "status": "L2-confirmed-pending-human-confirmation",
+            "note": "Both models: 180d presumption period. GPT: Cal. Civ. Code § 1942.5 (conf=high). Gemini: Cal. Civ. Code § 1942.5 (conf=high)."
+          },
+          "l2_run_date": "2026-06-21",
+          "elements_confirmed": {
+            "protected_activity": "Good-faith tenantability/habitability-related activity listed in Cal. Civ. Code § 1942.5(a)(1)-(5), including giving notice or making an oral complaint to the landlord about tenantability, filing or making a recorded complaint to an appropriate agency, an inspection or citation resulting from the complaint, or commencing or obtaining a determination in a judicial/arbitration proceeding involving tenantability; also organizing or participating in a tenants' association or otherwise lawfully and peaceably exercising rights under law under § 1942.5(d).",
+            "has_anti_retaliation_statute": true,
+            "primary_statute": "Cal. Civ. Code § 1942.5(a), including § 1942.5(a)(1)-(5), for the 180-day statutory period; § 1942.5(d) governs broader tenants' association/general lawful-rights retaliation but has no separate fixed presumption period",
+            "note": "From L2 consensus; pending human confirmation."
+          }
+        },
+        "holdings": {
+          "validation_method": "L2-holdings-4-check-verification",
+          "automation_ceiling": "medium",
+          "validation_status": "L2-HOLDINGS-DRAFT",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "l2_run_date": "2026-06-21",
+          "models": {
+            "openai": "gpt-5.5",
+            "gemini": "gemini-2.5-pro"
+          },
+          "statutory_only": false,
+          "cases_draft_corroborated": [],
+          "cases_needs_attorney": [
+            {
+              "case_name": "Schweiger v. Superior Court",
+              "citation": "3 Cal.3d 507",
+              "citation_gpt": "3 Cal.3d 507",
+              "citation_gemini": "3 Cal.3d 507",
+              "year": 1970,
+              "court_gpt": "California Supreme Court",
+              "holding_gpt": "Held that a residential tenant may assert retaliatory eviction as a defense in an unlawful detainer action when the landlord seeks possession in retaliation for the tenant’s good-faith complaints or exercise of statutory habitability rights.",
+              "holding_gemini": "Recognized a common law defense of retaliatory eviction, holding that a landlord may not raise rent and then evict a tenant for nonpayment in retaliation for exercising the right to demand repairs.",
+              "inter_coder_match": true,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "pass",
+                "citation_consistency": "pass",
+                "holding_accuracy": "pass",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Both models independently identified this case.",
+                "citation_consistency": "Citation numbers overlap. GPT: 3 Cal.3d 507; Gemini: 3 Cal.3d 507.",
+                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Held that a residential tenant may assert retaliatory eviction as a defense in a'; Gemini: 'Recognized a common law defense of retaliatory eviction, holding that a landlord'.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "Aweeka v. Bonds",
+              "citation": "20 Cal.App.3d 278",
+              "citation_gpt": "20 Cal.App.3d 278",
+              "citation_gemini": "20 Cal.App.3d 278",
+              "year": 1971,
+              "court_gpt": "Cal. Ct. App.",
+              "holding_gpt": "Recognized that California’s retaliatory eviction doctrine is grounded in public policy and may protect tenants against eviction or threats of eviction in retaliation for lawful tenant activity, not merely the specific acts enumerated in the statute.",
+              "holding_gemini": "Held that a tenant may bring an affirmative lawsuit for damages and injunctive relief based on retaliatory eviction, not just use it as a defense to an unlawful detainer action.",
+              "inter_coder_match": true,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "pass",
+                "citation_consistency": "pass",
+                "holding_accuracy": "pass",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Both models independently identified this case.",
+                "citation_consistency": "Citation numbers overlap. GPT: 20 Cal.App.3d 278; Gemini: 20 Cal.App.3d 278.",
+                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Recognized that California’s retaliatory eviction doctrine is grounded in public'; Gemini: 'Held that a tenant may bring an affirmative lawsuit for damages and injunctive r'.",
+                "currency": "Currency uncertain. GPT: good_law (conf=high); Gemini: limited (conf=high)."
+              }
+            },
+            {
+              "case_name": "Barela v. Superior Court",
+              "citation": "30 Cal.3d 244",
+              "citation_gpt": "30 Cal.3d 244",
+              "citation_gemini": "30 Cal.3d 244",
+              "year": 1981,
+              "court_gpt": "California Supreme Court",
+              "holding_gpt": "Confirmed that retaliatory eviction is a cognizable defense in unlawful detainer proceedings and that Civil Code section 1942.5 should not be read narrowly to defeat the public policy against retaliatory landlord conduct.",
+              "holding_gemini": "Extended the retaliatory eviction defense to protect tenants evicted in retaliation for reporting a landlord's criminal activity to the police, broadening the scope of protected tenant conduct.",
+              "inter_coder_match": true,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "pass",
+                "citation_consistency": "pass",
+                "holding_accuracy": "pass",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Both models independently identified this case.",
+                "citation_consistency": "Citation numbers overlap. GPT: 30 Cal.3d 244; Gemini: 30 Cal.3d 244.",
+                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Confirmed that retaliatory eviction is a cognizable defense in unlawful detainer'; Gemini: 'Extended the retaliatory eviction defense to protect tenants evicted in retaliat'.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "Drouet v. Superior Court",
+              "citation": "31 Cal.4th 583",
+              "citation_gpt": "31 Cal.4th 583",
+              "citation_gemini": null,
+              "year": 2003,
+              "court_gpt": "California Supreme Court",
+              "holding_gpt": "Held that a tenant may raise retaliation under Civil Code section 1942.5 in response to an Ellis Act eviction, but the defense fails if the landlord proves a bona fide intent to withdraw the property from the residential rental market.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Currency verification failed (both models errored)."
+              }
+            },
+            {
+              "case_name": "Western Land Office, Inc. v. Cervantes",
+              "citation": "174 Cal.App.3d 724",
+              "citation_gpt": null,
+              "citation_gemini": "174 Cal.App.3d 724",
+              "year": 1985,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "Established the burden-shifting framework for the statutory defense, where once a tenant makes a prima facie showing of retaliation, the burden shifts to the landlord to prove a legitimate, non-retaliatory motive for the eviction.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            }
+          ],
+          "draft_corroborated_count": 0,
+          "needs_attorney_count": 5,
+          "total_cases_evaluated": 5,
+          "l2_note": "Phase A: GPT identified 4 cases, Gemini identified 4 cases. Phase B: 5 evaluated; 0 draft-corroborated; 5 needs-attorney. ALL draft-corroborated cases require attorney confirmation before public citation.",
+          "labeling_note": "IMPORTANT: No holdings are auto-confirmed. L2-HOLDINGS-DRAFT status requires attorney review before these cases may be cited in any public document or legal advice. Label: holdings-draft-corroborated = AI drafted + 4-check verified; attorney must confirm case is real, cited correctly, still good law."
+        },
+        "best_practices": {
+          "validation_method": "fidelity-to-authoritative-sources",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Validate fidelity to leading practice guides / clinic materials. Label as fidelity-validation, NOT correctness-validation. API access needed to run."
+        },
+        "application_to_facts": {
+          "validation_method": "human-only",
+          "automation_ceiling": "none",
+          "validation_status": "human-reserved",
+          "reason": "Genuinely interpretive: requires factual determination of landlord's motive, tenant's knowledge and intent, causation between protected activity and adverse action. Meets stopping-rule condition: open-textured judgment that consensus cannot validate."
+        }
+      }
     },
     {
       "defense": "discrimination",
@@ -528,7 +921,23 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The tenant is a member of a protected class under federal or state law.",
+            "The landlord's primary motive for seeking eviction is the tenant's protected status.",
+            "The tenant can show a causal link between their protected status and the landlord's decision to evict."
+          ],
+          "primary_statute": "Cal. Gov. Code §12955 (Fair Employment and Housing Act - FEHA)",
+          "key_case": "Abstract Investment Co. v. Hutchinson, 204 Cal. App. 2d 242 (1962)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Cal. Gov. Code §12955 (Fair Employment and Housing Act - FEHA), conf=high."
+        }
+      }
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -542,7 +951,23 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord, or their agent, committed an act or omission that substantially interfered with the tenant's use and enjoyment of the property.",
+            "The interference was substantial and not a minor or trivial inconvenience.",
+            "The interference directly impacted the tenant's possession of the premises."
+          ],
+          "primary_statute": "Cal. Civ. Code §1927",
+          "key_case": "Guntert v. City of Stockton, 55 Cal. App. 3d 131 (1976)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Cal. Civ. Code §1927, conf=high."
+        }
+      }
     },
     {
       "defense": "improper_rent_calculation",
@@ -554,7 +979,22 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The eviction is based on a notice to pay rent or quit.",
+            "The amount of rent demanded in the notice is greater than the amount of rent actually due at the time the notice was served."
+          ],
+          "primary_statute": "Cal. Code Civ. Proc. §1161(2)",
+          "key_case": "Bevill v. Zoura, 27 Cal. App. 4th 694 (1994)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=2, statute=Cal. Code Civ. Proc. §1161(2), conf=high."
+        }
+      }
     },
     {
       "defense": "other",

@@ -847,6 +847,25 @@ def run_service_l2(target_codes: list, dry_run: bool = False, no_writeback: bool
             "classification": classification,
         })
 
+    # Save raw output file (provenance record per COWORK_DIRECTION_PROVENANCE.md)
+    if not dry_run:
+        from pathlib import Path
+        import json as _json
+        OUTPUT_DIR = Path(__file__).parent / "output"
+        OUTPUT_DIR.mkdir(exist_ok=True)
+        raw_path = OUTPUT_DIR / f"service_l2_raw_{TODAY}.json"
+        raw_record = {
+            "run_date": TODAY,
+            "module": "service.method_rules",
+            "models": {"gpt": OPENAI_MODEL, "gemini": GEMINI_MODEL},
+            "states_run": len(results),
+            "spend_estimate": round(spend, 4),
+            "results": results,
+        }
+        with open(raw_path, "w") as f:
+            _json.dump(raw_record, f, indent=2, ensure_ascii=False)
+        print(f"\n  Raw output saved: {raw_path}")
+
     # Write report and update queue
     if not dry_run:
         write_service_report(results)

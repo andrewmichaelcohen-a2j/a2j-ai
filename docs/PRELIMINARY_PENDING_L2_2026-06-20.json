@@ -1,0 +1,322 @@
+{
+  "description": "Preliminary L2-pending values quarantined from canonical rules files on 2026-06-20. These were written by Claude as CLAUDE-PRELIMINARY (training-knowledge only; no GPT+Gemini L2 run). They are hypotheses pending real L2 validation. Do not use as authoritative data.",
+  "quarantine_date": "2026-06-20",
+  "requires_to_restore": "API access to OpenAI (api.openai.com) and Google (generativelanguage.googleapis.com) from a non-proxied or allowlisted environment",
+  "retaliation_elements": {
+    "alaska": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "AS 34.03.310(a)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "arizona": {
+      "presumption_period_days": 180,
+      "presumption_period_statute": "ARS §33-1381(A)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "california": {
+      "presumption_period_days": 180,
+      "presumption_period_statute": "Civ. Code §1942.5(d)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "colorado": {
+      "presumption_period_days": 60,
+      "presumption_period_statute": "CRS §38-12-509(2)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "connecticut": {
+      "presumption_period_days": 60,
+      "presumption_period_statute": "CGS §47a-20(a)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "delaware": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "25 Del. C. §5516(a)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "florida": {
+      "presumption_period_days": 60,
+      "presumption_period_statute": "Fla. Stat. §83.64(2)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "hawaii": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "HRS §521-74(b)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "indiana": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "Ind. Code §32-31-8-6(a)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "iowa": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "Iowa Code §562A.36(2)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "kansas": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "KSA §58-2572(a)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "kentucky": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "KRS §383.705(1)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "maryland": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "Md. Code Real Prop. §8-208.1(a)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "massachusetts": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "MGL c. 186 §18",
+      "confidence": "HIGH",
+      "note": "90-day (3-month) presumption period"
+    },
+    "minnesota": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "Minn. Stat. §504B.441(a)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "montana": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "MCA §70-24-431(1)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "nevada": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "NRS §118A.510(2)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "new-mexico": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "NMSA §47-8-39(A)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "new-york": {
+      "presumption_period_days": 60,
+      "presumption_period_statute": "RPL §223-b(5)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "ohio": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "ORC §5321.02(B)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "oregon": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "ORS §90.385(1)(b)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "texas": {
+      "presumption_period_days": 180,
+      "presumption_period_statute": "Tex. Prop. Code §92.331(c)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "utah": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "Utah Code §57-22-6(1)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "vermont": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "9 VSA §4465(b)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "virginia": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "Va. Code §55.1-1234(B)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "washington": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "RCW §59.18.240(2)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "wisconsin": {
+      "presumption_period_days": 90,
+      "presumption_period_statute": "Wis. Stat. §704.45(3)",
+      "confidence": "HIGH",
+      "note": ""
+    },
+    "alabama": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "Ala. Code §35-9A-501",
+      "confidence": "MEDIUM",
+      "note": "AURLTA-based; no explicit presumption period — verify"
+    },
+    "arkansas": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "Ark. Code Ann. §18-17-901",
+      "confidence": "MEDIUM",
+      "note": "URLTA-based; verify presumption period"
+    },
+    "district-of-columbia": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "D.C. Code §42-3505.02",
+      "confidence": "MEDIUM",
+      "note": "DC broad anti-retaliation; specific period — verify"
+    },
+    "georgia": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "OCGA §44-7-24",
+      "confidence": "MEDIUM",
+      "note": "GA anti-retaliation limited; no explicit presumption period — verify"
+    },
+    "idaho": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "Idaho Code §6-320",
+      "confidence": "MEDIUM",
+      "note": "URLTA-based; limited anti-retaliation — verify"
+    },
+    "illinois": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "765 ILCS 720/1",
+      "confidence": "HIGH",
+      "note": "IL has anti-retaliation; no explicit statutory presumption period in 720/1"
+    },
+    "louisiana": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "La. R.S. §9:3256.2",
+      "confidence": "MEDIUM",
+      "note": "Limited LA statutory anti-retaliation; presumption period — verify"
+    },
+    "maine": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "14 M.R.S. §6001-A",
+      "confidence": "MEDIUM",
+      "note": "ME anti-retaliation; specific period — verify"
+    },
+    "michigan": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "MCL 554.139; primarily case law",
+      "confidence": "LOW",
+      "note": "MI anti-retaliation is primarily case law; no robust statutory presumption period"
+    },
+    "mississippi": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "Miss. Code Ann. §89-8-23 (limited)",
+      "confidence": "LOW",
+      "note": "MS has limited statutory anti-retaliation; primarily equitable — verify"
+    },
+    "missouri": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "Mo. Rev. Stat. §441.205",
+      "confidence": "MEDIUM",
+      "note": "MO URLTA-based; verify presumption period"
+    },
+    "nebraska": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "Neb. Rev. Stat. §76-1439",
+      "confidence": "MEDIUM",
+      "note": "Verify specific period"
+    },
+    "new-hampshire": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "RSA §540:13-a",
+      "confidence": "HIGH",
+      "note": "NH anti-retaliation; specific period — verify"
+    },
+    "new-jersey": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "N.J.S.A. 2A:42-10.10",
+      "confidence": "MEDIUM",
+      "note": "NJ broader just-cause framework; specific retaliation presumption — verify"
+    },
+    "north-carolina": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "NCGS §42-37.1",
+      "confidence": "HIGH",
+      "note": "NC anti-retaliation; specific presumption period — verify (12 months cited for certain actions)"
+    },
+    "north-dakota": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "NDCC §47-16-17.5",
+      "confidence": "MEDIUM",
+      "note": "Verify specific period"
+    },
+    "oklahoma": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "41 O.S. §123",
+      "confidence": "MEDIUM",
+      "note": "URLTA-based; verify specific period"
+    },
+    "pennsylvania": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "Primarily case law; no robust anti-retaliation statute",
+      "confidence": "HIGH",
+      "note": "PA anti-retaliation is common law; no statutory presumption period"
+    },
+    "rhode-island": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "RI Gen Laws §34-18-46",
+      "confidence": "MEDIUM",
+      "note": "Verify specific period"
+    },
+    "south-carolina": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "SC Code §27-40-910",
+      "confidence": "MEDIUM",
+      "note": "Verify specific period"
+    },
+    "south-dakota": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "SDCL §43-32-27",
+      "confidence": "MEDIUM",
+      "note": "Verify specific period"
+    },
+    "tennessee": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "Tenn. Code Ann. §66-28-514",
+      "confidence": "MEDIUM",
+      "note": "Verify specific period"
+    },
+    "west-virginia": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "WV Code §55-3A-3(f)",
+      "confidence": "MEDIUM",
+      "note": "Verify specific period"
+    },
+    "wyoming": {
+      "presumption_period_days": null,
+      "presumption_period_statute": "No strong statutory anti-retaliation; common law",
+      "confidence": "MEDIUM",
+      "note": "WY has limited tenant anti-retaliation — verify"
+    }
+  },
+  "scra_content": {
+    "name": "SCRA §3951 (Servicemembers Civil Relief Act)",
+    "applies_when": "Tenant (or immediate dependent) is a servicemember in active military service — Army, Navy, Marine Corps, Air Force, Space Force, Coast Guard, or National Guard on federal orders. Also applies to activated Reservists.",
+    "effect": "Landlord may not evict servicemember or dependents from primary residence without a court order. Court may: (1) stay eviction proceedings for up to 90 days on application, (2) adjust the rental obligation, or (3) grant other relief as equity requires. Protection applies when the monthly rent does not exceed the threshold adjusted annually for inflation (threshold: $4,073.16/month as of 2024). Before judgment may enter, landlord must file affidavit stating whether defendant is in military service (50 U.S.C. §3931). Failure to file affidavit is a federal misdemeanor. Servicemember who demonstrates material affect on military duty may apply for stay.",
+    "statute": "50 U.S.C. §3951; Servicemembers Civil Relief Act (SCRA) §301, Pub. L. 108-189 (2003), as amended",
+    "status": "active",
+    "note": "Federal law — applies uniformly in all 50 states + DC. CLAUDE-CONTENT-PASS 2026-06-20: uniform federal law, high confidence. Formal L2 citation/currency verification pending API access. Check annual rent-threshold adjustment and any recent NDAA amendments.",
+    "_note": "All 51 states had identical content. Sample from CA shown."
+  }
+}

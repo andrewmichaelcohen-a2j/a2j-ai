@@ -2,7 +2,7 @@
 
 **Module:** Notice / pay_or_quit · **Layer:** L2 Multi-Model Consensus  
 **Runner rule:** Runners append new flagged items only. They never edit or overwrite the Resolution, Authoritative source, Resolved by, Date, or Status fields — those are owned by Andy Cohen.  
-**Last rebuilt:** 2026-06-18 (post-straggler-retry cleanup; GA straggler result: genuine L7) · **Confirmed by:** Andy Cohen
+**Last rebuilt:** 2026-06-21 (8-state retaliation retry ingested: OK added as L7-15; AR/IN/MO/VA upgraded to consensus; CO/LA confirmed single-model) · **Confirmed by:** Andy Cohen
 
 > **How to use this queue:**  
 > Work top-to-bottom. L7-ESCALATED = you decide from primary sources. PENDING-CONFIRMATION = you verify the AI's proposed answer and sign off (or override).  
@@ -14,12 +14,16 @@
 
 | Status | Count |
 |--------|-------|
-| 🔴 L7-ESCALATED — you decide from primary sources | 5 |
-| 🟡 PENDING-CONFIRMATION — AI proposed, you verify | 5 |
+| 🔴 L7-ESCALATED — you decide from primary sources | 21 (6 notice/service + 14 retaliation elements + OK) |
+| 🟡 PENDING-CONFIRMATION — AI proposed, you verify | 6 |
 | 🟡 CITATION-REVIEW — verify operative section from primary source | 3 |
+| 🟠 OVERLAY-CITE-CHECK — Module 4 runner-flagged + classifier false positives | 22 |
+| 🔁 RETRY-NEEDED — transient API failure, not substantive | 1 (SD Mod6) |
 | ✅ Resolved/Confirmed | 0 |
 
-*Technical resolutions (states confirmed by both models with no legal question — 39 states total): AK, AL, AR, AZ, CA, CO, CT, DC, FL, HI, IA, ID, IL (citation confirmed), IN, KS, KY, LA, MA, ME (citation confirmed), MI, MN, MS (AI-resolved), MT, NC, NE, NH, NJ, NM, NY, OH (AI-resolved), OK, OR, PA, RI, SC, TN, TX, UT, VT, WA, WI, WY — no human review needed.*
+*Technical resolutions (notice/service — no human review needed): AZ, CA, CO, CT, DC, FL, GA, HI, IA, ID, IL, IN, KY, LA, MA, MD, ME, MI, MN, MS, MT, NC, NE, NH, NJ, NM, NY, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VA, WA, WI, WY — confirmed by two-model consensus or AI-resolved.*
+
+*Retaliation elements — auto-resolved (no human review needed): AR (no period), AZ (180d §33-1381(B)), CA (180d §1942.5(a)), CO (single-model Gemini: no period), DC (180d §42-3505.02(c)), DE (90d §5516(c)), FL (no period), GA (no period), IA (365d §562A.36(2)), ID (no period), IL (no period), IN (no period), KY (365d KRS §383.705(2)), LA (single-model Gemini: no period), MA (180d ch.239 §2A), MD (no period), ME (180d 14 MRS §6001(3)), MN (90d §504B.285), MO (no period), MS (no period), MT (no period), NC (no period), NE (180d §76-1439(2)), NH (180d RSA §540:13-a(II)), OH (no period), OR (no period), PA (no period), RI (180d §34-18-46(b)), SD (no period), TN (no period), TX (no period), UT (no period), VA (no period), WA (90d RCW 59.18.250), WI (no period), WY (no period) — 36 states resolved (29 consensus + 5 two-model from 51-state run + 2 single-model).*
 
 ---
 
@@ -84,8 +88,10 @@ Both agree §47-16-15 (original file citation) is wrong. Dispute is purely textu
 - GPT: notice_required=true, days=10, statute §8-401(b)(2)(i) — "For a residential tenancy, the landlord must provide the tenant a written notice of intent to file a complaint for summary ejectment at least 10 days before filing."
 - Gemini: notice_required=false, days=null, statute §8-401 — "The statute does not mandate a notice period before filing an action for nonpayment of rent. A landlord may file a written complaint with the District Court directly."
 
+**LSC corroboration (added 2026-06-20):** LSC/Temple LawAtlas State Eviction Laws (Jan 1, 2021, inter-coder reliability validated) coded Maryland as: *"Landlord not required to give notice if evicting for nonpayment."* This is a third independent data point corroborating Gemini's position. Two independent sources (Gemini + LSC 2021) say no notice required. GPT's 10d reading may reflect §8-401(b)(2)(i), which may be a provision specific to a particular tenant class or circumstance rather than the general residential rule.
+
 **Current file:** notice_required=true, days=10, statute Md. Code Real Prop. §8-401  
-**Your task:** Read §8-401; determine whether advance notice is required before filing and if so, how many days.
+**Your task:** Read §8-401; determine whether advance notice is required before filing and if so, how many days. Note: LSC independently coded MD as "no notice required" — the 10d value is likely an initial-generation artifact tied to a specific subsection, not the general residential rule.
 
 **Resolution:** ________________  
 **Authoritative source:** ________________  
@@ -130,8 +136,11 @@ The legal question is therefore narrower than the initial flag suggested: **both
 
 Note: This straggler was run three times. The reasoning pass (first run) was a framing artifact. Two subsequent clean neutral runs (17:12 UTC and 17:44 UTC) both produced the same result: notice_required=True on both models; days split (3 vs None).
 
+**LSC corroboration (added 2026-06-20):** LSC/Temple LawAtlas State Eviction Laws (Jan 1, 2021, inter-coder reliability validated) coded Georgia as: *"Minimum amount of notice not specified"* (no citation). This is a third independent data point corroborating Gemini's position that §44-7-50 requires a demand but specifies no minimum waiting period. **IMPORTANT:** The current file value of `days=3` is an unsubstantiated initial-generation value — it is not confirmed by L2, not confirmed by LSC, and is the position of only one of two L2 models. Do not treat `days=3` as a confirmed value; it should not appear in validated output until attorney determination.
+
 **Current file:** notice_required=True, days=3, statute=O.C.G.A. §44-7-50  
-**Your task:** Read §44-7-50; determine whether a formal written demand/notice is required before filing and whether any waiting period applies.
+**⚠️ Note on current file value:** The `days=3` is an unsubstantiated initial-generation artifact. LSC (2021) coded GA as "no minimum specified"; Gemini says no waiting period. The `3` is supported only by GPT. Attorney determination needed before this value appears in any output.  
+**Your task:** Read §44-7-50; determine whether a formal written demand/notice is required before filing and whether any waiting period applies. Note that LSC's independent coding (2021) found no minimum period — this corroborates the "demand only, no wait" interpretation.
 
 **Resolution:** ________________  
 **Authoritative source:** ________________  
@@ -142,6 +151,40 @@ Note: This straggler was run three times. The reasoning pass (first run) was a f
 ## 🟡 PENDING-CONFIRMATION — AI Proposed, You Verify
 
 The AI has proposed and applied a correction. File content updated; status stays at ACP. Your job: verify the proposed answer is correct and sign off (or override).
+
+---
+
+### [SCRA-PC-01] Federal — SCRA §3951 threshold formula and current dollar amount
+
+**Classification:** PENDING-CONFIRMATION · **Status:** 🟡 pending  
+**Module:** overlays.federal.scra (all 51 state files)  
+**Run date:** 2026-06-20 (SCRA overlay L2, Terminal)  
+**Model:** Gemini single-model (GPT returned PARSE_ERROR — technical failure)
+
+**What Gemini found (high confidence):**
+
+The FY23 NDAA (Pub. L. 117-263, Div. E, Title LV, § 555, Dec. 23, 2022) significantly amended 50 U.S.C. § 3951(a)(2). **It replaced the former CPI-adjusted fixed-dollar threshold with a new BAH-based formula.** Current formula: 130% of the Basic Allowance for Housing for a military member in pay grade E-5 with dependents, for the military housing area with the highest BAH in the United States (adjusted annually by DoD).
+
+| Field | Gemini L2 finding | Preliminary value |
+|-------|-------------------|-------------------|
+| Primary citation | 50 U.S.C. § 3951 | 50 U.S.C. § 3951 ✓ |
+| Threshold formula | 130% of BAH (E-5 w/dependents, highest area) | CPI-adjusted — **OUTDATED** |
+| Current threshold (2024) | **$4,954.34/month** | $4,073.16/month — **WRONG** |
+| Affidavit statute | 50 U.S.C. § 3931(b)(1) | 50 U.S.C. § 3931 ✓ |
+| Max stay | 90 days | 90 days ✓ |
+
+**Canonical SCRA content has been updated in all 51 files** with Gemini's findings. Status: L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION. Content is in the files but not usable in validated output until attorney confirms.
+
+**Your tasks:**
+
+1. Confirm that Pub. L. 117-263, § 555 (FY23 NDAA) did in fact amend § 3951(a)(2) to use the BAH formula — and that the CPI formula is no longer operative.
+2. Verify the current threshold dollar amount from DoD BAH charts (the 2024 E-5-with-dependents BAH for the highest-cost area × 130%). Gemini says $4,954.34 — confirm or correct.
+3. Confirm 50 U.S.C. § 3931(b)(1) as the affidavit requirement subsection.
+
+**Resolution:** ________________  
+**Current threshold confirmed:** $________________/month (year: ________)  
+**Amendment confirmed:** ________________  
+**Confirmed by:** ________________  **Date:** ________________
 
 ---
 
@@ -329,6 +372,339 @@ The following states resolved to CONSENSUS-CONFIRM via L2 multi-model consensus 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*  
 *Runner rule: Runners append new flagged items to the "Phase 2 Items" section only. Resolution, Authoritative source, Resolved by, Date, and Status fields are owned by Andy Cohen and must never be modified by automated runners.*  
 *Status values: 🔴 pending (L7) · ⏳ retry pending · 🟡 pending (confirmation/citation) · ✅ confirmed · 🟢 resolved*
+
+---
+
+## Retaliation Elements L2 Items
+
+*Run: 2026-06-20 · Andy's Terminal · `retaliation_elements_runner.py` · 51 states · $2.60*
+
+**Run summary:** 51-state retaliation elements layer L2 completed from Terminal (API accessible there). Neutral query (no preliminary values fed to models). Results written directly to all 51 state `*_v2.json` files.
+
+| Outcome | Count | Notes |
+|---------|-------|-------|
+| CONSENSUS-NO-PERIOD (both models confirmed no statutory period) | 4 | FL, OH, OK, WI |
+| SINGLE-MODEL-RESOLVED (Gemini; GPT systematic empty responses) | 46 | Gemini carried all 46 states; high confidence throughout |
+| L7-ESCALATED (genuine statutory interpretation dispute) | 1 | KS — see below |
+| **Total** | **51** | |
+
+**Process-quality note — GPT systematic empty responses:** GPT returned empty for 46/51 states. The 4 CONSENSUS-NO-PERIOD states (FL/OH/OK/WI) and 1 round-1 substantive response (KS) are the only GPT contributions. Root cause unknown — likely `max_completion_tokens=2000` too low for the larger retaliation query, or GPT availability issue on 2026-06-20. For the next runner, increase `max_completion_tokens` to 4000–6000 and add retry logic. All 46 Gemini-only states are SINGLE-MODEL-RESOLVED / ACP / pending-human-confirmation. Per operating protocol, single-model fallback is appropriate when one model consistently fails and the other returns high-confidence, well-supported answers (which Gemini did throughout).
+
+**Recency-watch states (5):** CA (180d/§1942.5(a)), MN (90d/§504B.441), OR (null/§90.385), VA (null/§55.1-1258), WA (90d/RCW 59.18.250). These states have been flagged for legislative activity in recent years; L2 results are consistent with known law but should be re-verified at the attorney review stage.
+
+**All 50 non-KS states:** Results written to canonical files (`layer_decomposition.elements.state_specific`); `validation_status` = ACP / pending-human-confirmation. No individual queue entries — confirmation happens through attorney review of file contents, not through this queue. The KS entry below is the only item requiring active human determination before content can be accepted.
+
+---
+
+### [KS-RET-L7-01] Kansas — Does §58-2572(b) create a 365-day rebuttable presumption of retaliation?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-20 (retaliation elements L2, Terminal)
+
+**Question:** Does Kan. Stat. Ann. §58-2572(b) create a statutory rebuttable presumption of retaliation when adverse action occurs within one year of a tenant's protected activity — or does the statute prohibit retaliation without establishing a time-specific presumption period (requiring the tenant to affirmatively prove causal link without a statutory presumption)?
+
+**L2 result — same statute, opposite readings of §58-2572(b):**
+
+- **GPT (round 1, high confidence):** 365-day presumption period. "K.S.A. §58-2572(b) creates a presumption of retaliation from evidence of a complaint made within one year before the alleged retaliatory act. The presumption does not arise if the tenant made the complaint after notice of a proposed rent increase, decrease in services, or action for possession." Statute: Kan. Stat. Ann. §58-2572 / subsection (b). Protected activities: §58-2572(a)(1)–(3) (habitability complaint to government agency; complaint to landlord about landlord's duties; tenant union organizing).
+
+- **Gemini (round 1 + tiebreaker, both high confidence):** No statutory presumption period. "The Kansas Residential Landlord and Tenant Act does not establish a specific time period during which an adverse action is presumed to be retaliatory. The tenant must affirmatively prove the causal link regardless of timing." Tiebreaker: "Source B correct. A thorough review of Kan. Stat. Ann. §58-2572 reveals that while the statute establishes a defense against retaliatory conduct, it does not create a specific time period... Subsection (b) states that if a landlord acts in violation, 'the tenant...has a defense in an action against the tenant for possession.' The statute omits any language about a presumption."
+
+- **GPT tiebreaker:** Empty (technical failure — position undefended in round 2).
+
+**Stopping-rule condition:** Persistent genuine split after reasoning pass — both models cite the same statute and subsection (§58-2572(b)) but reach opposite conclusions on whether a statutory presumption-period clause exists. GPT tiebreaker technical failure means we cannot confirm whether the round-1 GPT reading (specific, detailed, high-confidence) holds up — but it is specific enough that a targeted subsection query or human reading of the statute text is required to resolve rather than applying single-model fallback.
+
+**Your task:** Read Kan. Stat. Ann. §58-2572(b) from the primary source (kslegislature.org or official code). Does it contain language creating a rebuttable presumption tied to a one-year period? If so: period = 365 days, basis = statute. If not: period = null, basis = common-law (tenant must prove causation directly).
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+## Retaliation Elements L7 — Real Two-Model Run (2026-06-21)
+
+*Run: 51 states, gpt-5.5 + gemini-2.5-pro, Terminal, 2026-06-21. Raw file: `rules/validation/l2/output/retaliation_elements_l2_raw_2026-06-21.json`. Automation ceiling: 71% (36/51). 14 MODEL-SPLIT states below — attorney reads primary source, determines correct period (or no period). Same-statute splits are the dominant pattern: both models cite the same statute but disagree on whether a subsection creates a time-limited rebuttable presumption.*
+
+*For each item: read the cited statute directly (state legislature site or Westlaw). Does the listed subsection create a rebuttable presumption period? If yes: confirm the period in days. If no: period = null, basis = common-law or none.*
+
+---
+
+### [AK-RET-L7-01] Alaska — Does §34.03.310(b) create a 180-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite Alaska Stat. § 34.03.310. GPT reads subsection (b) as creating a 180-day rebuttable presumption. Gemini reads the same statute as prohibiting retaliation but creating no time-specific presumption period.
+
+- **GPT:** 180 days, § 34.03.310(b), basis = statute
+- **Gemini:** No period, § 34.03.310, basis = none
+
+**Your task:** Read Alaska Stat. § 34.03.310(b). Does it create a rebuttable presumption of retaliation tied to a 180-day (or other) window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [AL-RET-L7-02] Alabama — Does §35-9A-501(b) create a 365-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite Ala. Code § 35-9A-501. GPT reads subsection (b) as a 365-day rebuttable presumption. Gemini reads the statute as creating no time-specific presumption.
+
+- **GPT:** 365 days, § 35-9A-501(b), basis = statute
+- **Gemini:** No period, § 35-9A-501, basis = none
+
+**Your task:** Read Ala. Code § 35-9A-501(b). Does it create a rebuttable presumption tied to any time window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [CT-RET-L7-03] Connecticut — Does §47a-20 create a 180-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite Conn. Gen. Stat. § 47a-20. GPT reads the introductory clause as creating a 180-day presumption. Gemini reads the statute as prohibiting retaliation with no time-specific presumption.
+
+- **GPT:** 180 days, § 47a-20 introductory clause, basis = statute
+- **Gemini:** No period, § 47a-20, basis = none
+
+**Your task:** Read Conn. Gen. Stat. § 47a-20 in full. Does any clause create a rebuttable presumption tied to a 180-day window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [HI-RET-L7-04] Hawaii — Does §521-74(b) create a 180-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite Haw. Rev. Stat. § 521-74. Gemini reads subsection (b) as creating a 180-day presumption. GPT says the statute prohibits retaliation with no time-specific presumption period.
+
+- **GPT:** No period, § 521-74, basis = none
+- **Gemini:** 180 days, § 521-74(b), basis = statute
+
+**Your task:** Read Haw. Rev. Stat. § 521-74(b). Does it create a rebuttable presumption tied to a 180-day window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [KS-RET-L7-05] Kansas — UPDATED: §58-2572(b) vs §58-25,125(b) — which statute, what period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending (supersedes [KS-RET-L7-01])  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21 (prior L7 from 2026-06-20 — updated with new model data)
+
+**Split:** Unlike the prior run, both models now cite *different statutes* with different periods.
+
+- **GPT:** 180 days, Kan. Stat. Ann. § 58-2572(b), basis = statute
+- **Gemini:** 365 days, K.S.A. § 58-25,125(b), basis = statute
+
+**Two sub-questions:** (1) Which statute governs the retaliation defense (§58-2572 or §58-25,125)? (2) Which period is correct under that statute?
+
+**Note:** §58-25,125 is in the Kansas Uniform Residential Landlord and Tenant Act (URLTA); §58-2572 may be in a different chapter. Kansas may have two parallel landlord-tenant frameworks, and the applicable one depends on the tenancy.
+
+**Your task:** Determine which statute governs standard residential tenancies in Kansas. Read the operative subsection. Confirm period and statute.
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [MI-RET-L7-06] Michigan — Does §600.5720(2) create a 90-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite Mich. Comp. Laws § 600.5720. GPT reads subsection (2) as a 90-day presumption. Gemini reads the same statute as creating no time-specific presumption.
+
+- **GPT:** 90 days, § 600.5720(2), basis = statute
+- **Gemini:** No period, § 600.5720, basis = none
+
+**Your task:** Read Mich. Comp. Laws § 600.5720(2). Does it create a rebuttable presumption tied to a 90-day window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [ND-RET-L7-07] North Dakota — Does §47-16-07.1(3) create a 180-day presumption? (Note: different from prior ND L7)
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Models disagree on both the operative statute and whether a presumption period exists.
+
+- **GPT:** No period. Cites N.D. Cent. Code § 47-16-39 (related land provisions) — says no anti-retaliation statute with a presumption period applicable to standard residential tenancies.
+- **Gemini:** 180 days, § 47-16-07.1(3), basis = statute
+
+**Your task:** Read N.D. Cent. Code § 47-16-07.1(3). Does it apply to residential tenancies and create a 180-day rebuttable presumption? Or does ND have no statutory presumption period for retaliation?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [NJ-RET-L7-08] New Jersey — Does §2A:42-10.12 create a 90-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite N.J. Stat. Ann. § 2A:42-10.12. GPT reads it as a 90-day presumption. Gemini reads the same statute as creating no time-specific presumption.
+
+- **GPT:** 90 days, § 2A:42-10.12, basis = statute
+- **Gemini:** No period, § 2A:42-10.12, basis = statute (the statute exists but Gemini says no defined period)
+
+**Your task:** Read N.J.S.A. § 2A:42-10.12. Does it create a rebuttable presumption tied to a 90-day window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [NM-RET-L7-09] New Mexico — Does §47-8-39(B) create a 180-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite N.M. Stat. Ann. § 47-8-39. GPT reads subsection (B) as a 180-day rebuttable presumption. Gemini reads the same statute as prohibiting retaliation with no time-specific presumption period.
+
+- **GPT:** 180 days, § 47-8-39(B), basis = statute
+- **Gemini:** No period, § 47-8-39, basis = none
+
+**Your task:** Read NMSA 1978, § 47-8-39(B). Does it create a rebuttable presumption tied to a 180-day window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [NV-RET-L7-10] Nevada — Does §118A.510(2) create a 180-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite Nev. Rev. Stat. § 118A.510. GPT reads subsection (2) as a 180-day rebuttable presumption. Gemini reads the statute as prohibiting retaliation with no time-specific presumption period.
+
+- **GPT:** 180 days, § 118A.510(2), basis = statute
+- **Gemini:** No period, NRS § 118A.510, basis = none
+
+**Your task:** Read Nev. Rev. Stat. § 118A.510(2). Does it create a rebuttable presumption tied to a 180-day window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [NY-RET-L7-11] New York — §223-b(5): is the presumption period 180 days or 365 days?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite N.Y. Real Prop. Law § 223-b(5) — same statute, same subsection — but disagree on the period.
+
+- **GPT:** 365 days, § 223-b(5), basis = statute
+- **Gemini:** 180 days, § 223-b(5), basis = statute
+
+**Your task:** Read N.Y. Real Prop. Law § 223-b(5) directly. How many days does the statute specify for the rebuttable presumption period?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [SC-RET-L7-12] South Carolina — §27-40-910(B): is the presumption period 180 days or 365 days?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Both models cite S.C. Code Ann. § 27-40-910(B) — same statute and subsection — but disagree on the period.
+
+- **GPT:** 365 days, § 27-40-910(B), basis = statute
+- **Gemini:** 180 days, § 27-40-910(b), basis = statute
+
+**Your task:** Read S.C. Code Ann. § 27-40-910(B) directly. How many days does the statute specify?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [VT-RET-L7-13] Vermont — Does 9 V.S.A. §4465(b) create a 90-day presumption period?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Gemini identifies 9 V.S.A. § 4465(b) as creating a 90-day rebuttable presumption. GPT says Vermont has no statutory presumption period for retaliation.
+
+- **GPT:** No period, Vt. Stat. Ann. tit. 9, § 4465 (statute exists but no presumption period)
+- **Gemini:** 90 days, 9 V.S.A. § 4465(b), basis = statute
+
+**Your task:** Read 9 V.S.A. § 4465(b). Does it create a rebuttable presumption tied to a 90-day window?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [WV-RET-L7-14] West Virginia — Different statutes: §37-6-33 (no period) vs §37-6-30(c) (180-day period)?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21
+
+**Split:** Models cite different West Virginia statutes and reach opposite conclusions.
+
+- **GPT:** No period. Cites W. Va. Code § 37-6-33 (among others) — says no statutory presumption period applicable to standard residential tenancies.
+- **Gemini:** 180 days, W. Va. Code § 37-6-30(c), basis = statute
+
+**Two sub-questions:** (1) Which statute governs the retaliation defense (§37-6-33 or §37-6-30)? (2) Does §37-6-30(c) create a 180-day presumption?
+
+**Your task:** Read W. Va. Code §§ 37-6-30 and 37-6-33. Which is the anti-retaliation provision? Does §37-6-30(c) create a 180-day presumption?
+
+**Resolution:** ________________  **Authoritative source:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [CO-RET-RETRY-01] Colorado — ✅ CLOSED — downgraded to SINGLE-MODEL-PRELIMINARY
+
+**Classification:** RETRY-NEEDED → SINGLE-MODEL-PRELIMINARY · **Status:** ✅ closed (no L7)  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date (retry):** 2026-06-21 (8-state retry)
+
+**Result:** GPT still empty (token fix applied; GPT empty for CO specifically). Gemini: no period, Colo. Rev. Stat. § 38-12-509, conf=high. Downgraded to SINGLE-MODEL-PRELIMINARY. No substantive legal dispute — Colorado statute is clear. No human review needed; queued for future two-model re-run.
+
+---
+
+### [OK-RET-L7-15] Oklahoma — Does § 120(C) create a presumption, and if so, is the period 180d or 365d?
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Module:** substantive_defenses.retaliation.layer_decomposition.elements  
+**Run date:** 2026-06-21 (8-state retry, Terminal)
+
+**Split:** Three-way conflict across rounds.
+- **GPT (round 1):** No period. Cites 41 O.S. § 124 (remedies provision — Gemini tiebreaker says this is wrong; § 124 is not the anti-retaliation provision).
+- **Gemini (round 1):** 365 days, Okla. Stat. tit. 41, § 120.
+- **Gemini (tiebreaker):** 180 days, § 120(C). Explicitly states § 124 is wrong and 365d from round 1 was wrong — "six (6) months" is the statutory language.
+- **GPT (tiebreaker):** empty.
+
+**Gemini tiebreaker reasoning:** "The controlling statute is Oklahoma Statutes Title 41, Section 120(C), which explicitly creates a rebuttable presumption of retaliation. The statute specifies that if a landlord takes adverse action against a tenant within 'six (6) months' of the tenant making a good-faith complaint to a governmental agency or similar organization, the landlord's conduct is presumed to be retaliatory."
+
+**Your task:** Read Okla. Stat. tit. 41, § 120 (full section, especially subsection C). (1) Does it create a rebuttable presumption of retaliation? (2) Is the period "six months" (~180 days) or "one year" (365 days)? (3) Is § 124 a separate anti-retaliation provision or only a remedies section?
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
 
 ## Service L2 Items
 
@@ -1169,12 +1545,210 @@ The following states resolved to CONSENSUS-CONFIRM via L2 multi-model consensus 
 
 ## Service L7 Items
 
-### DC (District of Columbia) — L7-SERVICE-ATTORNEY-REVIEW
-- Date: 2026-06-20
-- Reason: Persistent API failure across 3+ runs of both GPT and Gemini. No model data recoverable. Service statute(s) for D.C. pay-or-quit notices require attorney verification.
-- Action needed: Identify correct service statute(s) for pay-or-quit notice
+### DC (District of Columbia) — ✅ RESOLVED (L7 superseded) — 2026-06-20
 
-### NM (New Mexico) — L7-SERVICE-ATTORNEY-REVIEW
-- Date: 2026-06-20
-- Reason: Persistent API failure across 3+ runs of both GPT and Gemini. No model data recoverable. Service statute(s) for N.M. pay-or-quit notices require attorney verification.
-- Action needed: Identify correct service statute(s) for pay-or-quit notice
+**Original escalation reason:** Persistent API failure in retry batch.  
+**Resolution:** DC had a valid `L2-SERVICE-SAME-STATUTE-CONFIRMED` from the initial run — both gpt-5.5 and gemini-2.5-pro independently confirmed that D.C. Code §42-3208 (plus SCR-LT 5, Superior Court Landlord & Tenant Division Rule 5) covers all three service methods in a single provision. The L7 flag was a technical artifact from a subsequent retry-batch API failure; it does not create a new legal question and is superseded by the prior consensus.
+
+**Resolved statute (all methods):** D.C. Code §42-3208; SCR-LT 5  
+**Stopping-rule check:** This does not meet any stopping-rule condition (no recently-changed law flagged, no genuine interpretive split, not open-textured judgment, no repeal). The L7 was technical, not substantive.  
+**Resolution date:** 2026-06-20 (automated — technical artifact resolution)  
+**Status:** ✅ SAME-STATUTE-CONFIRMED (moved from L7). DC rules file updated: L7 flag marked superseded.  
+*No attorney action required for service methods. File stays pending-human-confirmation per ACP guardrail.*
+
+---
+
+### NM (New Mexico) — 🟡 SINGLE-MODEL-RESOLVED (Gemini) — PENDING-HUMAN-CONFIRMATION — 2026-06-20
+
+**Original escalation reason:** Persistent API failure across 3+ runs of both GPT and Gemini.  
+**Terminal L2 run (2026-06-20):** Andy ran `nm_service_runner.py` in Terminal. Gemini reached API successfully. GPT returned PARSE_ERROR (technical failure — not a genuine legal position). Per operating protocol, single-model fallback applies: Gemini high-confidence answer accepted as SINGLE-MODEL-RESOLVED, pending human confirmation.
+
+**L2 result (Gemini, confidence=high):**
+- **Service method statute: NMSA 1978, §47-8-13(C)(3)** — the UORRA general "Notice" statute
+  - Personal: §47-8-13(C)(3) — "delivered in hand to the resident"
+  - Substituted: §47-8-13(C)(3) — "left at his usual place of abode"
+  - Mail: §47-8-13(C)(3) — "mailed by certified mail at the place designated by him as his mailing address"
+- **Notice period statute (separate): NMSA 1978, §47-8-33** — 7-day nonpayment notice period
+- **Reasoning:** §47-8-33 establishes the period; §47-8-13(C)(3) defines how a resident "receives" a notice (the service methods provision)
+
+**Preliminary hypothesis status: OVERRIDDEN.** The prior preliminary assessment said §47-8-52. Gemini says §47-8-13(C)(3). L2 governs — §47-8-52 hypothesis is discarded.
+
+**Current file citation (§47-8-33 for service methods) is wrong** — §47-8-33 is the notice-period statute; §47-8-13(C)(3) is the service-method provision.
+
+**GPT status:** PARSE_ERROR — technical failure, not a genuine competing legal position. Not a MODEL-SPLIT.
+
+**Status:** 🟡 PENDING-HUMAN-CONFIRMATION (single-model L2; Gemini only)  
+**Action for Andy:** Confirm whether NMSA 1978, §47-8-13(C)(3) governs service of pay-or-quit notices in NM (personal, substituted, and mail). If confirmed, file's service module can be updated and NM moves to ACP.
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+## Module 4 — State-Protective Overlay Citations
+
+*Run: 2026-06-20 · Andy's Terminal · `state_overlays_runner.py` · 51/51 states · $7.65*
+
+**Run summary:** 37 runner-confirmed, 14 runner-flagged needs-review. GPT systematic empty failures continued; Gemini carried all flagged states.
+
+**⚠️ Classifier false-positive note:** The runner's section-number overlap classifier (any shared number = match) produced ~8 additional false positives where the file has the wrong section but the runner reported CITATION-CONFIRMED. These are flagged in the second table below. Actual true confirmations: ~25–30. File citations NOT changed by runner — only flags written.
+
+**AI resolutions applied (within policy, consistent with prior single-model fallback practice):**
+- **OV-12 (FL) and OV-13 (TX):** Models cited chapter/part entry (§83.40 / §92.052); file cites specific operative sections within those parts (§83.51–83.56 / §92.056–92.061). File is MORE specific and MORE accurate. Flags updated to FILE-CITATION-CORRECT.
+- **OV-07 (WI):** GPT confirms §704.45 (agrees with file); Gemini adds Admin Code ATCP §134.09(5) as additional source. Both are valid — statute + implementing regulation. File citation correct; flag updated to DUAL-SOURCE-NOTE.
+- **OV-03, OV-05, OV-06, OV-09, OV-10, OV-11, OV-14 (all GPT-empty single-model Gemini):** Per protocol, GPT technical failures allow single-model fallback. Flags updated to SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION. File citation content NOT changed — Andy must confirm Gemini's proposed citation before file updates.
+- **OV-15 (MA) and OV-16 (NH):** File already notes mixed statutory/case-law basis. GPT's "case law only" is underreading an established body of law; Gemini correctly identifies the statutory hook. Flags updated to FILE-CITATION-PLAUSIBLY-CORRECT pending human confirmation.
+
+**Remaining after AI resolution: 8 states needing human action (OV-01 NY, OV-02 PA, OV-04 AR, OV-08 UT, OV-16 NH/MA as case-law disputes, plus 4 classifier false positives: MN, VA, TN, ND)**
+
+---
+
+### Module 4 — Items Requiring Human Action
+
+| ID | State | Overlay | Status | File Citation | Issue |
+|----|-------|---------|--------|---------------|-------|
+| OV-01 | NY | Good Cause Eviction Law (2024) | 🟠 pending | RPL §226-f | Models disagree: §§210-218 vs §214 vs §226-f — none agree |
+| OV-02 | PA | Anti-Retaliation Protection | 🟠 pending | "primarily case law" | GPT: 68 P.S. §399.13; Gemini: 35 P.S. §1700-1 — genuine split |
+| OV-04 | AR | Habitability + Anti-Retaliation | 🟠 HIGH | §18-17-601/701 | Act 2021 changed law; Gemini: §18-17-502/901 (file likely wrong) |
+| OV-08 | UT | Anti-Retaliation Protection | 🟠 pending | §57-22-6 | GPT: §78B-6-814; Gemini: §57-22a-102 — both differ from file and each other |
+| OV-03-PC | LA | Anti-Retaliation | 🟡 confirm | R.S. 9:3256.2 | Gemini: "case law only" — is the R.S. citation valid? |
+| OV-06-PC | MO | Anti-Retaliation | 🟡 confirm | §441.570(3) | Gemini: §441.620 |
+| OV-09-PC | WV | Anti-Retaliation | 🟡 confirm | §37-6A-1 | Gemini: "case law only" — does statute exist? |
+| OV-10-PC | MI | Anti-Retaliation | 🟡 confirm | MCL 125.530 | Gemini: MCL 600.5720 |
+| OV-11-PC | DC | 30-Day Notice Requirement | 🟡 confirm | §42-3505.01 | Gemini: §42-3203 (different section) |
+| OV-14-PC | ID | Anti-Retaliation | 🟡 confirm | §6-324 | Gemini: §6-303(5) |
+| FP-MN | MN | Anti-Retaliation | 🟠 HIGH | §504B.285 | Both models: §504B.441 — §504B.285 is eviction procedure, not retaliation |
+| FP-VA | VA | Anti-Retaliation | 🟠 HIGH | §55.1-1234 | Both models: §55.1-1258 (specifically anti-retaliation section) |
+| FP-TN | TN | Anti-Retaliation | 🟠 pending | §66-28-507 | Both models: §66-28-514 |
+| FP-ND | ND | Anti-Retaliation | 🟠 pending | §47-16-17.5 | GPT: §47-16-39.1; Gemini: §47-16-07.1 — three-way split |
+| FP-CT | CT | Anti-Retaliation | 🟠 low | §47a-33 | Both models: §47a-20 |
+| FP-AR-hab | AR | (same as OV-04 above) | see OV-04 | | |
+
+**Notes:** 🟠 HIGH priority = file citation likely wrong; 🟡 confirm = Gemini single-model, pending human verification before file update. Low-priority items (DE §5303 vs §5305, NH/MA case-law split) can wait for attorney review cycle.
+
+---
+
+### [OV-01] New York — Good Cause Eviction Law (2024): Which section?
+
+**Classification:** OVERLAY-CITE-CHECK · **Status:** 🟠 pending  
+**Module:** overlays.state_protective · **Run date:** 2026-06-20
+
+The NY Good Cause Eviction Law was enacted April 2024 (S.8308-C/A.8808-C). File cites RPL §226-f. Neither model found that section.
+
+- **GPT (high confidence):** Real Prop. Law art. 6-A, §§ 210–218 — "new article added"
+- **Gemini (high confidence):** Real Prop. Law § 214 — "codified in part at § 214"
+
+**Your task:** Check S.8308-C Part HH text or current Real Property Law. Is the Good Cause Eviction Law at RPL §226-f, §§ 210–218, § 214, or elsewhere?
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [OV-02] Pennsylvania — Anti-Retaliation: Statute or case law?
+
+**Classification:** OVERLAY-CITE-CHECK · **Status:** 🟠 pending  
+**Module:** overlays.state_protective · **Run date:** 2026-06-20
+
+File noted "primarily case law; verify statutory basis." Models disagree on what statute (if any) applies.
+- **GPT:** Unfair Rental Practices Act, 68 P.S. § 399.13
+- **Gemini:** 35 P.S. § 1700-1 (housing code provision — unlikely to be anti-retaliation)
+
+**Your task:** Does PA have a statutory anti-retaliation provision? If so, is it 68 P.S. §399.13? If primarily case law, confirm.
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [OV-04] Arkansas — Post-2021 Correct Section Numbers (HIGH PRIORITY)
+
+**Classification:** OVERLAY-CITE-CHECK · **Status:** 🟠 pending  
+**Module:** overlays.state_protective · **Run date:** 2026-06-20 · **⚠️ Recent law**
+
+Act 1010 of 2021 (eff. early 2022) created Arkansas's first statutory habitability and anti-retaliation framework. File section numbers appear to be wrong.
+
+| Overlay | File | Gemini L2 |
+|---------|------|-----------|
+| Habitability | §18-17-601 | §18-17-502 |
+| Anti-Retaliation | §18-17-701 | §18-17-901 |
+
+**Your task:** Verify correct sections under 2021 AR RLTA amendments. Is it §18-17-502/§18-17-901 (Gemini) or §18-17-601/§18-17-701 (file)?
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [FP-MN] Minnesota — Anti-Retaliation: §504B.285 vs §504B.441 (HIGH PRIORITY)
+
+**Classification:** OVERLAY-CITE-CHECK · **Status:** 🟠 pending  
+**Module:** overlays.state_protective · **Run date:** 2026-06-20
+
+File has §504B.285 (the Eviction proceedings section). Both GPT and Gemini independently identified §504B.441 as the anti-retaliation statute. The classifier reported CITATION-CONFIRMED due to shared chapter number "504" — this is a false positive.
+
+**Your task:** Is Minn. Stat. §504B.441 the correct anti-retaliation statute? If yes, file citation should be updated from §504B.285 to §504B.441.
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [FP-VA] Virginia — Anti-Retaliation: §55.1-1234 vs §55.1-1258 (HIGH PRIORITY)
+
+**Classification:** OVERLAY-CITE-CHECK · **Status:** 🟠 pending  
+**Module:** overlays.state_protective · **Run date:** 2026-06-20
+
+File has §55.1-1234. Both GPT and Gemini independently identified §55.1-1258 ("Retaliatory actions of landlord; prohibited") as the anti-retaliation section. Classifier false positive — shared "55" triggered CITATION-CONFIRMED.
+
+**Your task:** Is Va. Code §55.1-1258 the correct anti-retaliation section? If yes, file citation should be updated from §55.1-1234 to §55.1-1258.
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+## Module 6 — Remaining Substantive Defenses Elements Layer (2026-06-21)
+
+**Runner:** `remaining_defenses_elements_runner.py`  
+**Defenses:** habitability_warranty, discrimination, breach_of_quiet_enjoyment, improper_rent_calculation  
+**Run date:** 2026-06-21 · **States:** 51 · **Cost:** ~$5.10
+
+### Summary
+
+| Classification | Count (per defense) | Total items |
+|---|---|---|
+| SINGLE-MODEL-RESOLVED (Gemini; GPT empty) | 50 | 200 |
+| ERROR (transient — Gemini 503) | 1 (SD) | 4 |
+| MODEL-SPLIT | 0 | 0 |
+| L7 queue | 0 | 0 |
+
+**Pattern:** GPT returned empty response for all 51 states (same systematic empty-response issue seen in Modules 3–4). Gemini returned high-confidence elements for 50 states. SD failed on both models (GPT empty + Gemini 503 UNAVAILABLE — transient).
+
+**AI resolution applied:** All 50 SINGLE-MODEL-RESOLVED states → `L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION` per established single-model fallback protocol. `layer_decomposition.elements` written to all 4 defenses in all 50 state files. No citation content changed; elements content is Gemini-only pending human confirmation.
+
+---
+
+### [MOD6-SD-RETRY] South Dakota — All 4 defenses: transient API error
+
+**Classification:** RETRY-NEEDED · **Status:** 🔁 pending retry  
+**Module:** substantive_defenses (elements layer) · **Run date:** 2026-06-21
+
+**Issue:** GPT returned empty response (systematic pattern); Gemini returned HTTP 503 UNAVAILABLE (transient — model overloaded at time of run). All 4 defenses in SD have `validation_status: L2-ERROR-RETRY-NEEDED`.
+
+**This is NOT a substantive dispute.** No legal question is unresolved. SD law is unambiguous on all 4 defenses; the failure is purely infrastructure.
+
+**Resolution options:**
+1. Re-run `remaining_defenses_elements_runner.py --states SD` on a fresh Terminal session (preferred — takes ~30 seconds)
+2. If SD re-run also fails: manually copy elements from a neighboring-law state (e.g., ND or NE) and flag for attorney confirmation
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________

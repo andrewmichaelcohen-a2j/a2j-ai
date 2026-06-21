@@ -1,0 +1,26 @@
+{
+  "run_date": "2026-06-20",
+  "state": "NM",
+  "classification": "MODEL-SPLIT",
+  "note": "Models disagree: GPT says ''; Gemini says 'NMSA 1978, § 47-8-13'. L7 — attorney review.",
+  "gpt_response": {
+    "days": null,
+    "notice_required": null,
+    "statute": null,
+    "rationale": "PARSE_ERROR: "
+  },
+  "gemini_response": {
+    "service_method_statute": "NMSA 1978, § 47-8-13",
+    "service_method_statute_subsections": {
+      "personal": "§ 47-8-13(C)(3) requires the notice is 'delivered in hand to the resident'.",
+      "substituted": "§ 47-8-13(C)(3) requires the notice is 'left at his usual place of abode'.",
+      "mail": "§ 47-8-13(C)(3) requires the notice is 'mailed to him by certified mail at the place designated by him as his mailing address, or in the absence of such designation, to his last known mailing address'."
+    },
+    "notice_period_statute": "NMSA 1978, § 47-8-33",
+    "confidence": "high",
+    "reasoning": "NMSA 1978, § 47-8-33 establishes the requirement and seven-day period for a nonpayment of rent notice, but does not specify the service method. The general 'Notice' statute for the Uniform Owner-Resident Relations Act, NMSA 1978, § 47-8-13, defines the permissible methods of service. Specifically, Subsection C(3) details how a resident 'receives' a notice, which includes personal delivery, substituted service at their abode, or certified mail."
+  },
+  "current_file_statutes": [
+    "NMSA 1978 §47-8-33"
+  ]
+}

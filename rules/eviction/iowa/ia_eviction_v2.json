@@ -173,6 +173,150 @@
         "gemini_reasoning": "Iowa Code § 562A.29A, titled \"Method of service of notice on tenant,\" is the controlling statute for serving notices in a residential tenancy. Subsection (1) explicitly provides for personal and substituted service, while subsection (2) details a conditional method involving both posting and mailing (certified and first class). The statute cited in the rules file, § 562A.12, is a general definition of \"notice\" and does not govern the specific procedures for service.",
         "gemini_confidence": "high",
         "note": "L2 service reasoning pass converged. personal=Iowa Code § 562A.29A(1)(b), substituted=Iowa Code § 562A.29A(1)(a); also § 562A.29A(1)(b) to the extent using substituted/abode service permitted by Iowa R. Civ. P. 1.305(1), mail/posting=Iowa Code § 562A.29A(1)(c), with timing under § 562A.29A(2). Source determined correct: model. GPT confidence=high, Gemini confidence=high. GPT reasoning: A residential nonpayment pay-or-quit notice under Iowa Code § 562A.27(2) must be served as provided in § 562A.29A. Section 562A.12 is the general notice provision, but § 562A.29A is the specific servi. Status: pending-human-confirmation. No auto-edit by runner."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-PROCEDURAL-DEFECTS-CONTENT-PASS-PENDING",
+        "field": "procedural_defects",
+        "disposition": "content-pass-needed",
+        "status": "pending-content-differentiation",
+        "date": "2026-06-20",
+        "defect_count": 4,
+        "note": "Content pass pending (2026-06-20): 4 procedural defect items; 3 use 'et seq.' level citations (insufficient for L2 validation). Per operating protocol, L2 cannot run on undifferentiated boilerplate. Content pass requires jurisdiction-specific primary source retrieval (API needed). 50/51 states share identical 4-item template; only statutes differ. Content differentiation needed before L2 validation is meaningful."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-SCRA-OVERLAY-SINGLE-MODEL-RESOLVED",
+        "field": "overlays.federal.scra",
+        "disposition": "single-model-preliminary",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
+        "gpt_summary": {
+          "primary_citation": null,
+          "rent_threshold": null,
+          "confidence": null,
+          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+        },
+        "gemini_summary": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "rent_threshold": 4954.34,
+          "rent_threshold_year": "2024",
+          "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high",
+          "error": null
+        },
+        "resolved_content": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "current_rent_threshold_dollars": 4954.34,
+          "current_rent_threshold_year": "2024",
+          "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "core_protection": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence, for which the monthly rent is below the statutory threshold, without first obtaining a court order.",
+          "court_order_required": true,
+          "max_stay_days": 90,
+          "affidavit_required": true,
+          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high"
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-OVERLAY-STATE-PROTECTIVE-CITATIONS-VERIFIED",
+        "field": "overlays.state_protective",
+        "disposition": "pending-human-confirmation",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "overlay_results": [
+          {
+            "name": "Implied Warranty of Habitability",
+            "file_citation": "Iowa Code §562A.15",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: Iowa Code, Title XIV (Property), Chapter 562A (Uniform Residential Landlord and Tenant Law), § 562A.15(1)(a)-(f) | Gem: Iowa Code § 562A.15",
+            "gpt_citation": "Iowa Code, Title XIV (Property), Chapter 562A (Uniform Residential Landlord and Tenant Law), § 562A.15(1)(a)-(f)",
+            "gemini_citation": "Iowa Code § 562A.15"
+          },
+          {
+            "name": "Anti-Retaliation Protection",
+            "file_citation": "Iowa Code §562A.36",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: Iowa Code, Title XIV (Property), Chapter 562A (Uniform Residential Landlord and Tenant Law), § 562A.36(1)(a)-(c) | Gem: Iowa Code § 562A.36",
+            "gpt_citation": "Iowa Code, Title XIV (Property), Chapter 562A (Uniform Residential Landlord and Tenant Law), § 562A.36(1)(a)-(c)",
+            "gemini_citation": "Iowa Code § 562A.36"
+          }
+        ],
+        "needs_queue": false,
+        "note": "All 2 overlay citations verified by L2 — no changes needed."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-HABITABILITY-WARRANTY-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.habitability_warranty.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=5, statute=Iowa Code § 562A.15; Iowa Code § 562A.24, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-DISCRIMINATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.discrimination.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Iowa Code § 216.8 (Iowa Civil Rights Act); 42 U.S.C. §§ 3601 et seq. (Federal Fair Housing Act), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-BREACH-OF-QUIET-ENJOYMENT-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.breach_of_quiet_enjoyment.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=null, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-IMPROPER-RENT-CALCULATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.improper_rent_calculation.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Iowa Code § 562A.27(2), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-ELEMENTS-CONSENSUS-CONFIRMED",
+        "field": "substantive_defenses.retaliation.layer_decomposition.elements",
+        "disposition": "resolved-confirmed",
+        "l2_run_date": "2026-06-21",
+        "classification": "CONSENSUS-CONFIRMED",
+        "note": "Both models: 365d presumption period. GPT: Iowa Code § 562A.36 (conf=high). Gemini: Iowa Code § 562A.36 (conf=high).",
+        "gpt_summary": {
+          "period": 365,
+          "statute": "Iowa Code § 562A.36",
+          "confidence": "high",
+          "error": null
+        },
+        "gemini_summary": {
+          "period": 365,
+          "statute": "Iowa Code § 562A.36",
+          "confidence": "high",
+          "error": null
+        }
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -301,6 +445,20 @@
         "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
         "statute": "15 U.S.C. §9058",
         "status": "conditional"
+      },
+      {
+        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+        "threshold_current_dollars": 4954.34,
+        "threshold_year": "2024",
+        "status": "active",
+        "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+        "l2_run_date": "2026-06-20",
+        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
       }
     ],
     "state_protective": [
@@ -339,7 +497,25 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: Iowa Code §562A.15. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Habitability warranty statute: Iowa Code §562A.15. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord failed to comply with a duty imposed by Iowa Code § 562A.15 (e.g., failed to maintain the premises in a fit and habitable condition).",
+            "The landlord's failure materially affects health and safety.",
+            "The tenant delivered a written notice to the landlord specifying the acts and omissions constituting the breach.",
+            "The landlord failed to remedy the breach within seven days after receipt of the notice.",
+            "The tenant is raising the breach as a defense or counterclaim to an action for possession or rent."
+          ],
+          "primary_statute": "Iowa Code § 562A.15; Iowa Code § 562A.24",
+          "key_case": "Mease v. Fox, 200 N.W.2d 791 (Iowa 1972)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=5, statute=Iowa Code § 562A.15; Iowa Code § 562A.24, conf=high."
+        }
+      }
     },
     {
       "defense": "retaliation",
@@ -354,7 +530,47 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: Iowa Code §562A.36. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Anti-retaliation statute: Iowa Code §562A.36. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "automation_ceiling": "high",
+          "validation_status": "L2-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "validation_date": null,
+          "state_specific": {
+            "presumption_period_days": 365,
+            "presumption_period_statute": "Iowa Code § 562A.36(2)",
+            "presumption_period_basis": "statute",
+            "status": "L2-confirmed-pending-human-confirmation",
+            "note": "Both models: 365d presumption period. GPT: Iowa Code § 562A.36 (conf=high). Gemini: Iowa Code § 562A.36 (conf=high)."
+          },
+          "l2_run_date": "2026-06-21",
+          "elements_confirmed": {
+            "protected_activity": "The tenant engaged in activity protected by Iowa Code § 562A.36(1): complaining to a governmental building/housing-code enforcement agency about a violation materially affecting health and safety; complaining to the landlord about a violation of the landlord’s obligations under Iowa Code § 562A.15; or organizing/becoming a member of a tenants’ union or similar organization.",
+            "has_anti_retaliation_statute": true,
+            "primary_statute": "Iowa Code § 562A.36(2)",
+            "note": "From L2 consensus; pending human confirmation."
+          }
+        },
+        "holdings": {
+          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+        },
+        "best_practices": {
+          "validation_method": "fidelity-to-authoritative-sources",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Validate fidelity to leading practice guides / clinic materials. Label as fidelity-validation, NOT correctness-validation. API access needed to run."
+        },
+        "application_to_facts": {
+          "validation_method": "human-only",
+          "automation_ceiling": "none",
+          "validation_status": "human-reserved",
+          "reason": "Genuinely interpretive: requires factual determination of landlord's motive, tenant's knowledge and intent, causation between protected activity and adverse action. Meets stopping-rule condition: open-textured judgment that consensus cannot validate."
+        }
+      }
     },
     {
       "defense": "discrimination",
@@ -367,7 +583,24 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The tenant is a member of a protected class under federal or state law.",
+            "The tenant was otherwise qualified to continue their tenancy.",
+            "The landlord took an adverse housing action against the tenant (i.e., initiated an eviction).",
+            "The eviction was motivated by the tenant's membership in a protected class, or the eviction would have a discriminatory effect."
+          ],
+          "primary_statute": "Iowa Code § 216.8 (Iowa Civil Rights Act); 42 U.S.C. §§ 3601 et seq. (Federal Fair Housing Act)",
+          "key_case": "Housing Auth. of City of Ames v. Green, 657 N.W.2d 464 (Iowa 2002)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Iowa Code § 216.8 (Iowa Civil Rights Act); 42 U.S.C. §§ 3601 et seq. (Federal Fair Housing Act), conf=high."
+        }
+      }
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -381,7 +614,24 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The tenant has a legal right to possess the property.",
+            "The landlord (or an agent of the landlord) committed an act or omission.",
+            "The act or omission substantially and materially interfered with the tenant's beneficial use and enjoyment of the property.",
+            "This interference caused the tenant to be, in effect, constructively evicted from the premises."
+          ],
+          "primary_statute": "null",
+          "key_case": "Kuiken v. Garrett, 51 N.W.2d 149 (Iowa 1952)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=null, conf=high."
+        }
+      }
     },
     {
       "defense": "improper_rent_calculation",
@@ -393,7 +643,23 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord initiated an eviction for non-payment of rent pursuant to Iowa Code § 562A.27(2).",
+            "The landlord's required three-day written notice to the tenant demanded an amount of rent.",
+            "The amount of rent demanded in the notice was incorrect or included charges other than 'periodic rent' (e.g., late fees, utilities, or other non-rent fees)."
+          ],
+          "primary_statute": "Iowa Code § 562A.27(2)",
+          "key_case": "Symonds v. Green, 812 N.W.2d 783 (Iowa Ct. App. 2012) (unpublished table decision)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Iowa Code § 562A.27(2), conf=high."
+        }
+      }
     }
   ],
   "procedural_defects": [

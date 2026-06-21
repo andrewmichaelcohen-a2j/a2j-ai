@@ -1,0 +1,289 @@
+{
+  "run_date": "2026-06-21",
+  "module": "Retaliation Holdings Layer L2 — 4-Check Verification",
+  "models": {
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "states_run": 1,
+  "spend_estimate": 0.20000000000000007,
+  "total_cases_evaluated": 5,
+  "total_draft_corroborated": 0,
+  "total_needs_attorney": 5,
+  "statutory_only_states": [],
+  "no_cases_states": [],
+  "results": [
+    {
+      "state": "CA",
+      "state_name": "California",
+      "statutory_only": false,
+      "gpt_identification": {
+        "has_controlling_cases": true,
+        "cases": [
+          {
+            "case_name": "Schweiger v. Superior Court",
+            "citation": "3 Cal.3d 507",
+            "year": 1970,
+            "court": "California Supreme Court",
+            "holding_summary": "Held that a residential tenant may assert retaliatory eviction as a defense in an unlawful detainer action when the landlord seeks possession in retaliation for the tenant’s good-faith complaints or exercise of statutory habitability rights."
+          },
+          {
+            "case_name": "Aweeka v. Bonds",
+            "citation": "20 Cal.App.3d 278",
+            "year": 1971,
+            "court": "Cal. Ct. App.",
+            "holding_summary": "Recognized that California’s retaliatory eviction doctrine is grounded in public policy and may protect tenants against eviction or threats of eviction in retaliation for lawful tenant activity, not merely the specific acts enumerated in the statute."
+          },
+          {
+            "case_name": "Barela v. Superior Court",
+            "citation": "30 Cal.3d 244",
+            "year": 1981,
+            "court": "California Supreme Court",
+            "holding_summary": "Confirmed that retaliatory eviction is a cognizable defense in unlawful detainer proceedings and that Civil Code section 1942.5 should not be read narrowly to defeat the public policy against retaliatory landlord conduct."
+          },
+          {
+            "case_name": "Drouet v. Superior Court",
+            "citation": "31 Cal.4th 583",
+            "year": 2003,
+            "court": "California Supreme Court",
+            "holding_summary": "Held that a tenant may raise retaliation under Civil Code section 1942.5 in response to an Ellis Act eviction, but the defense fails if the landlord proves a bona fide intent to withdraw the property from the residential rental market."
+          }
+        ],
+        "statutory_only": false,
+        "statutory_note": "California’s retaliatory eviction defense is substantially codified in Civil Code section 1942.5, but the listed cases established and significantly interpreted the defense in residential unlawful detainer practice.",
+        "confidence": "high",
+        "note": "The list is limited to leading California appellate decisions and does not include every case applying Civil Code section 1942.5 or local rent-control retaliation provisions."
+      },
+      "gem_identification": {
+        "has_controlling_cases": true,
+        "cases": [
+          {
+            "case_name": "Schweiger v. Superior Court",
+            "citation": "3 Cal.3d 507",
+            "year": 1970,
+            "court": "California Supreme Court",
+            "holding_summary": "Recognized a common law defense of retaliatory eviction, holding that a landlord may not raise rent and then evict a tenant for nonpayment in retaliation for exercising the right to demand repairs."
+          },
+          {
+            "case_name": "Aweeka v. Bonds",
+            "citation": "20 Cal.App.3d 278",
+            "year": 1971,
+            "court": "Cal. Ct. App.",
+            "holding_summary": "Held that a tenant may bring an affirmative lawsuit for damages and injunctive relief based on retaliatory eviction, not just use it as a defense to an unlawful detainer action."
+          },
+          {
+            "case_name": "Barela v. Superior Court",
+            "citation": "30 Cal.3d 244",
+            "year": 1981,
+            "court": "California Supreme Court",
+            "holding_summary": "Extended the retaliatory eviction defense to protect tenants evicted in retaliation for reporting a landlord's criminal activity to the police, broadening the scope of protected tenant conduct."
+          },
+          {
+            "case_name": "Western Land Office, Inc. v. Cervantes",
+            "citation": "174 Cal.App.3d 724",
+            "year": 1985,
+            "court": "Cal. Ct. App.",
+            "holding_summary": "Established the burden-shifting framework for the statutory defense, where once a tenant makes a prima facie showing of retaliation, the burden shifts to the landlord to prove a legitimate, non-retaliatory motive for the eviction."
+          }
+        ],
+        "statutory_only": false,
+        "statutory_note": "",
+        "confidence": "high",
+        "note": "While California's retaliatory eviction defense is codified in Civil Code § 1942.5, these cases established and interpreted a parallel common law defense which may offer broader protections in certain circumstances."
+      },
+      "cases_evaluated": 5,
+      "draft_corroborated": 0,
+      "needs_attorney": 5,
+      "case_results": [
+        {
+          "case_name": "Schweiger v. Superior Court",
+          "citation_gpt": "3 Cal.3d 507",
+          "citation_gemini": "3 Cal.3d 507",
+          "citation": "3 Cal.3d 507",
+          "year": 1970,
+          "court_gpt": "California Supreme Court",
+          "court_gemini": "California Supreme Court",
+          "holding_gpt": "Held that a residential tenant may assert retaliatory eviction as a defense in an unlawful detainer action when the landlord seeks possession in retaliation for the tenant’s good-faith complaints or exercise of statutory habitability rights.",
+          "holding_gemini": "Recognized a common law defense of retaliatory eviction, holding that a landlord may not raise rent and then evict a tenant for nonpayment in retaliation for exercising the right to demand repairs.",
+          "inter_coder_match": true,
+          "checks": {
+            "existence": "pass",
+            "citation_consistency": "pass",
+            "holding_accuracy": "pass",
+            "currency": "uncertain"
+          },
+          "check_notes": {
+            "existence": "Both models independently identified this case.",
+            "citation_consistency": "Citation numbers overlap. GPT: 3 Cal.3d 507; Gemini: 3 Cal.3d 507.",
+            "holding_accuracy": "Both models independently identified this case. GPT summary: 'Held that a residential tenant may assert retaliatory eviction as a defense in a'; Gemini: 'Recognized a common law defense of retaliatory eviction, holding that a landlord'.",
+            "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+          },
+          "disposition": "holdings-needs-attorney",
+          "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+          "needs_attorney": true,
+          "currency_gpt": {
+            "error": "empty response"
+          },
+          "currency_gemini": {
+            "still_good_law": true,
+            "currency_status": "good_law",
+            "limiting_authority": "California Civil Code § 1942.5; Barela v. Superior Court, 30 Cal.3d 244 (1981)",
+            "limitation_scope": "The common law defense of retaliatory eviction established in Schweiger has not been overruled or superseded. Instead, it was codified and supplemented by the enactment and amendment of California Civil Code § 1942.5. The California Supreme Court held in Barela v. Superior Court that the statutory remedy does not preempt the common law defense, and that the two defenses are independent and cumulative. The statute itself explicitly confirms this, stating, 'The remedies provided by this section shall be in addition to any other remedies provided by statutory or decisional law.' (Cal. Civ. Code § 1942.5(k)). Therefore, Schweiger remains good law, establishing a common law defense that coexists with the more detailed statutory scheme.",
+            "confidence": "high",
+            "note": "While the common law defense from Schweiger remains valid, most modern retaliatory eviction claims are argued under the specific provisions and rebuttable presumptions of Civil Code § 1942.5. The Schweiger defense is still important, however, for situations involving retaliatory conduct not explicitly listed in the statute."
+          }
+        },
+        {
+          "case_name": "Aweeka v. Bonds",
+          "citation_gpt": "20 Cal.App.3d 278",
+          "citation_gemini": "20 Cal.App.3d 278",
+          "citation": "20 Cal.App.3d 278",
+          "year": 1971,
+          "court_gpt": "Cal. Ct. App.",
+          "court_gemini": "Cal. Ct. App.",
+          "holding_gpt": "Recognized that California’s retaliatory eviction doctrine is grounded in public policy and may protect tenants against eviction or threats of eviction in retaliation for lawful tenant activity, not merely the specific acts enumerated in the statute.",
+          "holding_gemini": "Held that a tenant may bring an affirmative lawsuit for damages and injunctive relief based on retaliatory eviction, not just use it as a defense to an unlawful detainer action.",
+          "inter_coder_match": true,
+          "checks": {
+            "existence": "pass",
+            "citation_consistency": "pass",
+            "holding_accuracy": "pass",
+            "currency": "uncertain"
+          },
+          "check_notes": {
+            "existence": "Both models independently identified this case.",
+            "citation_consistency": "Citation numbers overlap. GPT: 20 Cal.App.3d 278; Gemini: 20 Cal.App.3d 278.",
+            "holding_accuracy": "Both models independently identified this case. GPT summary: 'Recognized that California’s retaliatory eviction doctrine is grounded in public'; Gemini: 'Held that a tenant may bring an affirmative lawsuit for damages and injunctive r'.",
+            "currency": "Currency uncertain. GPT: good_law (conf=high); Gemini: limited (conf=high)."
+          },
+          "disposition": "holdings-needs-attorney",
+          "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+          "needs_attorney": true,
+          "currency_gpt": {
+            "still_good_law": true,
+            "currency_status": "good_law",
+            "limiting_authority": null,
+            "limitation_scope": null,
+            "confidence": "high",
+            "note": "Aweeka v. Bonds, 20 Cal.App.3d 278 (1971), has not been overruled or abrogated in the residential retaliatory-eviction context. Later California Supreme Court authority has treated the retaliatory-eviction defense as valid, including S.P. Growers Assn. v. Rodriguez, 17 Cal.3d 719 (1976), and Barela v. Superior Court, 30 Cal.3d 244 (1981). Civil Code § 1942.5 now provides the principal statutory framework for retaliation claims and defenses, but it does not appear to supersede Aweeka; current § 1942.5(h) expressly preserves remedies provided by decisional law. Drouet v. Superior Court, 31 Cal.4th 583 (2003), clarifies that liability/defense under § 1942.5 turns on retaliatory purpose and permits good-faith, nonretaliatory evictions, but it does not overrule Aweeka."
+          },
+          "currency_gemini": {
+            "still_good_law": true,
+            "currency_status": "limited",
+            "limiting_authority": "California Civil Code § 1942.5",
+            "limitation_scope": "The case has not been overruled or abrogated, and its holding remains valid. However, its common law doctrine establishing a defense against retaliatory rent increases has been largely codified and expanded upon by California Civil Code § 1942.5. This statute provides a parallel, and often more advantageous, cause of action for tenants, including a 180-day rebuttable presumption of retaliation not present in the common law. Because the statute explicitly preserves all other remedies provided by decisional law (Cal. Civ. Code § 1942.5(c)), Aweeka's common law rule was not superseded and remains good law, but it is 'limited' in the sense that the statutory scheme is now the primary framework governing retaliatory eviction claims in California.",
+            "confidence": "high",
+            "note": "Aweeka v. Bonds is a foundational California case for the common law defense of retaliatory eviction, particularly for establishing that a retaliatory rent increase can constitute an unlawful eviction. While its principles are still valid, a legal analysis of this issue today would primarily focus on the detailed provisions of Cal. Civ. Code § 1942.5, using the common law doctrine as a supplement."
+          }
+        },
+        {
+          "case_name": "Barela v. Superior Court",
+          "citation_gpt": "30 Cal.3d 244",
+          "citation_gemini": "30 Cal.3d 244",
+          "citation": "30 Cal.3d 244",
+          "year": 1981,
+          "court_gpt": "California Supreme Court",
+          "court_gemini": "California Supreme Court",
+          "holding_gpt": "Confirmed that retaliatory eviction is a cognizable defense in unlawful detainer proceedings and that Civil Code section 1942.5 should not be read narrowly to defeat the public policy against retaliatory landlord conduct.",
+          "holding_gemini": "Extended the retaliatory eviction defense to protect tenants evicted in retaliation for reporting a landlord's criminal activity to the police, broadening the scope of protected tenant conduct.",
+          "inter_coder_match": true,
+          "checks": {
+            "existence": "pass",
+            "citation_consistency": "pass",
+            "holding_accuracy": "pass",
+            "currency": "uncertain"
+          },
+          "check_notes": {
+            "existence": "Both models independently identified this case.",
+            "citation_consistency": "Citation numbers overlap. GPT: 30 Cal.3d 244; Gemini: 30 Cal.3d 244.",
+            "holding_accuracy": "Both models independently identified this case. GPT summary: 'Confirmed that retaliatory eviction is a cognizable defense in unlawful detainer'; Gemini: 'Extended the retaliatory eviction defense to protect tenants evicted in retaliat'.",
+            "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+          },
+          "disposition": "holdings-needs-attorney",
+          "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+          "needs_attorney": true,
+          "currency_gpt": {
+            "error": "empty response"
+          },
+          "currency_gemini": {
+            "still_good_law": true,
+            "currency_status": "good_law",
+            "limiting_authority": null,
+            "limitation_scope": null,
+            "confidence": "high",
+            "note": "Barela v. Superior Court remains the seminal California case establishing the common law defense of retaliatory eviction, which exists independently of, and is broader than, the statutory defense found in California Civil Code § 1942.5. The common law defense can be invoked when a landlord's eviction motive contravenes a significant public policy, even if the tenant's conduct is not one of the specific acts enumerated in the statute. Later statutory developments, including amendments to § 1942.5 and the passage of the Tenant Protection Act of 2019 (Civil Code § 1946.2), have added layers of tenant protection but have not superseded or limited Barela's core holding regarding the availability of the common law defense."
+          }
+        },
+        {
+          "case_name": "Drouet v. Superior Court",
+          "citation_gpt": "31 Cal.4th 583",
+          "citation_gemini": null,
+          "citation": "31 Cal.4th 583",
+          "year": 2003,
+          "court_gpt": "California Supreme Court",
+          "court_gemini": null,
+          "holding_gpt": "Held that a tenant may raise retaliation under Civil Code section 1942.5 in response to an Ellis Act eviction, but the defense fails if the landlord proves a bona fide intent to withdraw the property from the residential rental market.",
+          "holding_gemini": null,
+          "inter_coder_match": false,
+          "checks": {
+            "existence": "uncertain",
+            "citation_consistency": "uncertain",
+            "holding_accuracy": "uncertain",
+            "currency": "uncertain"
+          },
+          "check_notes": {
+            "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+            "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+            "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+            "currency": "Currency verification failed (both models errored)."
+          },
+          "disposition": "holdings-needs-attorney",
+          "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+          "needs_attorney": true,
+          "currency_gpt": {
+            "error": "empty response"
+          },
+          "currency_gemini": null
+        },
+        {
+          "case_name": "Western Land Office, Inc. v. Cervantes",
+          "citation_gpt": null,
+          "citation_gemini": "174 Cal.App.3d 724",
+          "citation": "174 Cal.App.3d 724",
+          "year": 1985,
+          "court_gpt": null,
+          "court_gemini": "Cal. Ct. App.",
+          "holding_gpt": null,
+          "holding_gemini": "Established the burden-shifting framework for the statutory defense, where once a tenant makes a prima facie showing of retaliation, the burden shifts to the landlord to prove a legitimate, non-retaliatory motive for the eviction.",
+          "inter_coder_match": false,
+          "checks": {
+            "existence": "uncertain",
+            "citation_consistency": "uncertain",
+            "holding_accuracy": "uncertain",
+            "currency": "uncertain"
+          },
+          "check_notes": {
+            "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+            "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+            "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+            "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+          },
+          "disposition": "holdings-needs-attorney",
+          "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+          "needs_attorney": true,
+          "currency_gpt": null,
+          "currency_gemini": {
+            "still_good_law": true,
+            "currency_status": "good_law",
+            "limiting_authority": null,
+            "limitation_scope": null,
+            "confidence": "high",
+            "note": "Western Land Office, Inc. v. Cervantes remains good law and is frequently cited for its detailed analysis of the shifting burdens of proof in a retaliatory eviction affirmative defense under California Civil Code § 1942.5. The case established that once the tenant produces evidence of a retaliatory motive, the burden of producing evidence shifts to the landlord to show a legitimate, non-retaliatory reason for the eviction. However, the ultimate burden of proof (by a preponderance of the evidence) remains with the tenant. No subsequent judicial decisions have overruled this specific procedural framework, and legislative amendments to § 1942.5 have not superseded it. While later cases, such as Drouet v. Superior Court, 31 Cal.4th 583 (2003), have clarified the application of the retaliatory eviction defense in specific contexts (e.g., Ellis Act evictions), they have not abrogated or limited the core burden-shifting analysis articulated in Cervantes for general retaliatory eviction claims."
+          }
+        }
+      ],
+      "landmark_watch": true,
+      "landmark_note": "Aweeka v. Bonds (1971) or Civ. Code §1942.5 statutory regime"
+    }
+  ]
+}

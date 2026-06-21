@@ -155,6 +155,152 @@
         "gemini_reasoning": "Texas Property Code § 24.005(f) authorizes personal service to the tenant, substituted service on a co-resident 16 or older, inside-door posting, and standalone mail service. Section 24.005(f-1) provides a critical alternative method of substituted service: posting on the outside of the main entry door combined with same-day mailing. Analysis A correctly identified that both subsections govern the available service methods.",
         "gemini_confidence": "high",
         "note": "L2 service reasoning pass converged. personal=Tex. Prop. Code § 24.005(f), substituted=Tex. Prop. Code § 24.005(f); Tex. Prop. Code § 24.005(f-1), mail/posting=Tex. Prop. Code § 24.005(f). Source determined correct: analysis_a. GPT confidence=high, Gemini confidence=high. GPT reasoning: Texas Property Code § 24.005(f) governs ordinary service of a residential notice to vacate, including personal delivery to the tenant, delivery to a resident age 16 or older, inside-door posting, and . Status: pending-human-confirmation. No auto-edit by runner."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-PROCEDURAL-DEFECTS-CONTENT-PASS-PENDING",
+        "field": "procedural_defects",
+        "disposition": "content-pass-needed",
+        "status": "pending-content-differentiation",
+        "date": "2026-06-20",
+        "defect_count": 4,
+        "note": "Content pass pending (2026-06-20): 4 procedural defect items; 3 use 'et seq.' level citations (insufficient for L2 validation). Per operating protocol, L2 cannot run on undifferentiated boilerplate. Content pass requires jurisdiction-specific primary source retrieval (API needed). 50/51 states share identical 4-item template; only statutes differ. Content differentiation needed before L2 validation is meaningful."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-SCRA-OVERLAY-SINGLE-MODEL-RESOLVED",
+        "field": "overlays.federal.scra",
+        "disposition": "single-model-preliminary",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
+        "gpt_summary": {
+          "primary_citation": null,
+          "rent_threshold": null,
+          "confidence": null,
+          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+        },
+        "gemini_summary": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "rent_threshold": 4954.34,
+          "rent_threshold_year": "2024",
+          "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high",
+          "error": null
+        },
+        "resolved_content": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "current_rent_threshold_dollars": 4954.34,
+          "current_rent_threshold_year": "2024",
+          "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "core_protection": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence, for which the monthly rent is below the statutory threshold, without first obtaining a court order.",
+          "court_order_required": true,
+          "max_stay_days": 90,
+          "affidavit_required": true,
+          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high"
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-OVERLAY-STATE-PROTECTIVE-CITATIONS-AI-RESOLVED",
+        "field": "overlays.state_protective",
+        "disposition": "open",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "overlay_results": [
+          {
+            "name": "Implied Warranty of Habitability",
+            "file_citation": "Tex. Prop. Code §92.056–92.061",
+            "classification": "L2-OVERLAY-STATE-PROTECTIVE-FILE-CITATION-CORRECT",
+            "note": "Models agree with each other but differ from file. File: Tex. Prop. Code §92.056–92.061 | GPT: Texas Property Code, Title 8, Chapter 92, Subchapter B, § 92.052(a)-(b) | Gem: Texas Property Code § 92.052",
+            "gpt_citation": "Texas Property Code, Title 8, Chapter 92, Subchapter B, § 92.052(a)-(b)",
+            "gemini_citation": "Texas Property Code § 92.052",
+            "ai_resolution_note": "AI resolution: models cited §92.052 (general habitability obligation entry); file cites §92.056–92.061 (specific repair-duty sections). File is more specific and more accurate. No change required.",
+            "ai_resolution_date": "2026-06-20"
+          },
+          {
+            "name": "Anti-Retaliation",
+            "file_citation": "Tex. Prop. Code §92.331",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: Texas Property Code, Title 8, Chapter 92, Subchapter H, § 92.331(a)-(b) | Gem: Texas Property Code § 92.331",
+            "gpt_citation": "Texas Property Code, Title 8, Chapter 92, Subchapter H, § 92.331(a)-(b)",
+            "gemini_citation": "Texas Property Code § 92.331"
+          }
+        ],
+        "needs_queue": true,
+        "note": "1/2 overlays have citation issues — see overlay_results for detail."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-HABITABILITY-WARRANTY-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.habitability_warranty.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=5, statute=Tex. Prop. Code § 92.056, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-DISCRIMINATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.discrimination.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Tex. Prop. Code Chapter 301 (Texas Fair Housing Act); 42 U.S.C. §§ 3601 et seq. (Federal Fair Housing Act), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-BREACH-OF-QUIET-ENJOYMENT-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.breach_of_quiet_enjoyment.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=None, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-IMPROPER-RENT-CALCULATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.improper_rent_calculation.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Tex. Prop. Code § 24.005, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-ELEMENTS-NO-STATUTORY-PERIOD",
+        "field": "substantive_defenses.retaliation.layer_decomposition.elements",
+        "disposition": "resolved-confirmed",
+        "l2_run_date": "2026-06-21",
+        "classification": "CONSENSUS-NO-PERIOD",
+        "note": "Both models: no statutory presumption period. GPT basis: none. Gemini basis: none.",
+        "gpt_summary": {
+          "period": null,
+          "statute": "Tex. Prop. Code §§ 92.331-92.335",
+          "confidence": "high",
+          "error": null
+        },
+        "gemini_summary": {
+          "period": null,
+          "statute": "Tex. Prop. Code Ann. § 92.331",
+          "confidence": "high",
+          "error": null
+        }
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -282,6 +428,20 @@
         "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
         "statute": "15 U.S.C. §9058",
         "status": "conditional"
+      },
+      {
+        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+        "threshold_current_dollars": 4954.34,
+        "threshold_year": "2024",
+        "status": "active",
+        "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+        "l2_run_date": "2026-06-20",
+        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
       }
     ],
     "state_protective": [
@@ -320,7 +480,25 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: Tex. Prop. Code §92.052. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Habitability warranty statute: Tex. Prop. Code §92.052. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "A condition exists that materially affects the physical health or safety of an ordinary tenant.",
+            "The tenant was not delinquent in rent at the time notice(s) were given.",
+            "The tenant gave the landlord proper written notice of the condition, as required by statute.",
+            "The landlord failed to make a diligent effort to repair or remedy the condition within a reasonable time after receiving the notice.",
+            "The condition was not caused by the tenant or their lawful occupants, family, or guests through an abnormal use of the premises."
+          ],
+          "primary_statute": "Tex. Prop. Code § 92.056",
+          "key_case": "Kamarath v. Bennett, 568 S.W.2d 658 (Tex. 1978)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=5, statute=Tex. Prop. Code § 92.056, conf=high."
+        }
+      }
     },
     {
       "defense": "retaliation",
@@ -335,7 +513,46 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: Tex. Prop. Code §92.331. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Anti-retaliation statute: Tex. Prop. Code §92.331. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "automation_ceiling": "high",
+          "validation_status": "L2-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "validation_date": null,
+          "state_specific": {
+            "presumption_period_days": null,
+            "presumption_period_basis": "none",
+            "status": "L2-confirmed-no-statutory-period",
+            "note": "Both models: no statutory presumption period. GPT basis: none. Gemini basis: none."
+          },
+          "l2_run_date": "2026-06-21",
+          "elements_confirmed": {
+            "protected_activity": "Tenant must have engaged in an activity protected by Tex. Prop. Code § 92.331(a), including good-faith exercise of lease or legal rights, repair notices, qualifying complaints to enforcement/utility/civic entities, tenant-organization activity, or rent withholding/lease termination/suit under repair-remedy statutes.",
+            "has_anti_retaliation_statute": true,
+            "primary_statute": null,
+            "note": "From L2 consensus; pending human confirmation."
+          }
+        },
+        "holdings": {
+          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+        },
+        "best_practices": {
+          "validation_method": "fidelity-to-authoritative-sources",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Validate fidelity to leading practice guides / clinic materials. Label as fidelity-validation, NOT correctness-validation. API access needed to run."
+        },
+        "application_to_facts": {
+          "validation_method": "human-only",
+          "automation_ceiling": "none",
+          "validation_status": "human-reserved",
+          "reason": "Genuinely interpretive: requires factual determination of landlord's motive, tenant's knowledge and intent, causation between protected activity and adverse action. Meets stopping-rule condition: open-textured judgment that consensus cannot validate."
+        }
+      }
     },
     {
       "defense": "discrimination",
@@ -348,7 +565,24 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The tenant is a member of a protected class under federal or state law (race, color, religion, sex, familial status, national origin, or disability).",
+            "The tenant was meeting the material terms of the lease (e.g., was not in breach).",
+            "The landlord took an adverse action against the tenant by filing for eviction.",
+            "The eviction was motivated by the tenant's membership in a protected class, and the landlord's stated reason for eviction is a pretext for unlawful discrimination."
+          ],
+          "primary_statute": "Tex. Prop. Code Chapter 301 (Texas Fair Housing Act); 42 U.S.C. §§ 3601 et seq. (Federal Fair Housing Act)",
+          "key_case": null,
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Tex. Prop. Code Chapter 301 (Texas Fair Housing Act); 42 U.S.C. §§ 3601 et seq. (Federal Fair Housing Act), conf=high."
+        }
+      }
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -362,7 +596,24 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord intended for the tenant to no longer enjoy the premises (intent may be inferred).",
+            "The landlord, or someone acting under their authority, committed a material act or omission that substantially interfered with the tenant's use and enjoyment of the property.",
+            "The act or omission permanently deprived the tenant of the use and enjoyment of the premises.",
+            "The tenant abandoned (vacated) the premises within a reasonable time after the act or omission."
+          ],
+          "primary_statute": null,
+          "key_case": "Downtown Realty, Inc. v. 509 Tremont Bldg., Inc., 748 S.W.2d 309 (Tex. App.—Houston [14th Dist.] 1988, no writ)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=None, conf=high."
+        }
+      }
     },
     {
       "defense": "improper_rent_calculation",
@@ -374,7 +625,24 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The eviction is based on nonpayment of rent.",
+            "The Notice to Vacate required by Tex. Prop. Code § 24.005 demanded an amount of rent that was incorrect.",
+            "The demand was incorrect because it included charges not defined as 'rent' in the lease (e.g., unauthorized late fees, utilities, damages) or miscalculated the base rent owed.",
+            "The improper notice deprives the court of jurisdiction to hear the eviction case."
+          ],
+          "primary_statute": "Tex. Prop. Code § 24.005",
+          "key_case": "Geters v. Baytown Hous. Auth., 430 S.W.3d 578 (Tex. App.—Houston [14th Dist.] 2014, no pet.)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Tex. Prop. Code § 24.005, conf=high."
+        }
+      }
     }
   ],
   "procedural_defects": [

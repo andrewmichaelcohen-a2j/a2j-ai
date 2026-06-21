@@ -1,0 +1,1598 @@
+{
+  "run_date": "2026-06-20",
+  "models": {
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "states_run": 51,
+  "spend_estimate": 2.5999999999999988,
+  "counts": {
+    "CONSENSUS-CONFIRMED": 0,
+    "CONSENSUS-NO-PERIOD": 4,
+    "SINGLE-MODEL-RESOLVED": 46,
+    "STATUTE-DIVERGENCE": 0,
+    "PERIOD-DIVERGENCE": 0,
+    "MODEL-SPLIT": 1,
+    "ERROR": 0,
+    "REASONING-CONVERGED": 0
+  },
+  "l7_queue": [
+    {
+      "state": "KS",
+      "state_name": "Kansas",
+      "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: Noned / Kan. Stat. Ann. § 58-2572(b).",
+      "stopping_rule": "Persistent genuine split after reasoning pass on presumption period / statute",
+      "gpt_period": 365,
+      "gpt_statute": "Kan. Stat. Ann. § 58-2572",
+      "gem_period": null,
+      "gem_statute": "Kan. Stat. Ann. § 58-2572"
+    }
+  ],
+  "results": [
+    {
+      "state": "AK",
+      "state_name": "Alaska",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Alaska Stat. § 34.03.310, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Alaska Stat. § 34.03.310",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has: (1) complained to the landlord of a violation of the landlord's duty to maintain a fit premises (under AS 34.03.100); (2) sought to enforce rights and remedies granted under the landlord-tenant act; (3) organized or become a member of a tenant's union or similar organization; or (4) complained to a governmental agency responsible for enforcement of housing, wage, price, or rent controls.",
+          "landlord_knowledge": "Yes, the tenant must demonstrate that the landlord's adverse action was taken *after* the tenant engaged in a protected activity, which implicitly requires the landlord's knowledge of that activity.",
+          "adverse_action": "The landlord increases rent, decreases services, or brings or threatens to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must prove that the landlord's action was motivated by a retaliatory intent in response to the tenant's protected activity. The tenant has the burden of proof."
+        },
+        "primary_statute": "Alaska Stat. § 34.03.310",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Alaska's statute does not create a specific time period during which a landlord's adverse action is presumed to be retaliatory. The tenant bears the full burden of proving the landlord's retaliatory motive.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Under Alaska Stat. § 34.03.310(c), a landlord may still bring an eviction action, despite the timing, if the tenant is in default in rent, or if the violation of the landlord's duty to maintain the premises was caused primarily by the lack of reasonable care by the tenant or other persons on the premises with the tenant's consent."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "AL",
+      "state_name": "Alabama",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=Ala. Code § 35-9A-501, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 35-9A-501(b)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant complained to a government agency about a code violation materially affecting health and safety; or complained to the landlord about a failure to maintain the premises under Ala. Code § 35-9A-204; or organized or became a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "Yes, the landlord must have had knowledge of the tenant's protected activity for the subsequent adverse action to be considered retaliatory.",
+          "adverse_action": "Increasing rent, decreasing services, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must establish a causal link between the protected activity and the landlord's adverse action. However, a statutory presumption aids the tenant if the adverse action occurs within a specific timeframe."
+        },
+        "primary_statute": "Ala. Code § 35-9A-501",
+        "primary_statute_subsection": "§ 35-9A-501(b)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute specifies 'six months'. Evidence of a tenant's complaint within six months prior to the landlord's alleged retaliatory act creates a rebuttable presumption that the landlord's conduct was retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense is unavailable if: (1) the housing code violation was caused by the tenant; (2) the tenant is in default in rent; or (3) code compliance requires alteration or demolition that would deprive the tenant of the use of the dwelling. The presumption of retaliation does not arise if the tenant's complaint was made *after* the landlord had already given notice of a proposed rent increase or service reduction. See Ala. Code § 35-9A-501(c)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "AR",
+      "state_name": "Arkansas",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Ark. Code Ann. § 18-17-901, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Ark. Code Ann. § 18-17-901",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant (1) complained to a governmental agency about a health or safety code violation; (2) complained to the landlord about the landlord's failure to maintain the premises as required by law; or (3) organized or became a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "Yes, for the action to be retaliatory, the landlord must have had knowledge of the tenant's protected activity prior to taking the adverse action.",
+          "adverse_action": "The landlord increases rent, decreases services, or brings or threatens to bring an action for possession.",
+          "causal_connection": "Yes, the tenant has the burden to prove that the landlord's adverse action was taken in retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Ark. Code Ann. § 18-17-901",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Arkansas statute does not establish a presumption period. Ark. Code Ann. § 18-17-901(b) explicitly places the burden of proving retaliation on the tenant.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense under Ark. Code Ann. § 18-17-901(c) is NOT available to a tenant who is in default on rent or has otherwise materially breached the rental agreement. The defense is also unavailable if the code violation complained of was caused by the tenant or their guests."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "AZ",
+      "state_name": "Arizona",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=Ariz. Rev. Stat. § 33-1381, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 33-1381(B)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant engaged in a legally protected activity, such as complaining to the landlord about a failure to maintain the premises, complaining to a governmental agency about a health or safety code violation, or organizing or joining a tenants' union.",
+          "landlord_knowledge": "The landlord must have had knowledge of the tenant's protected activity before taking adverse action. This is required to establish the causal connection.",
+          "adverse_action": "The landlord took an adverse action against the tenant, which includes increasing rent, decreasing essential services, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "The tenant must demonstrate a causal link, showing that the landlord's adverse action was motivated by the tenant's protected activity. A statutory presumption aids in establishing this element if the action occurs within a specific timeframe."
+        },
+        "primary_statute": "Ariz. Rev. Stat. § 33-1381",
+        "primary_statute_subsection": "§ 33-1381(B)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute specifies a period of 'six months' prior to the alleged act of retaliation. 180 days is an approximation.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense is not absolute. Under A.R.S. § 33-1381(C), a landlord may still bring an eviction action if the tenant is in default of rent, the code violation was primarily caused by the tenant, or compliance with the code would effectively deprive the tenant of the use of the dwelling."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "CA",
+      "state_name": "California",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=Cal. Civ. Code § 1942.5, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 1942.5(a)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Tenant has lawfully and in good faith exercised a legal right, such as complaining to the landlord or a government agency about habitability, using the 'repair and deduct' remedy, or lawfully organizing/joining a tenants' union.",
+          "landlord_knowledge": "The landlord must have knowledge of the tenant's protected activity. A retaliatory motive, which is a required element, cannot exist without the landlord's awareness of the act being retaliated against.",
+          "adverse_action": "Landlord takes a prohibited adverse action, such as serving a notice of termination, filing an eviction lawsuit, increasing rent, or decreasing housing services.",
+          "causal_connection": "Tenant must show that the landlord's 'dominant purpose' in taking the adverse action was to retaliate for the tenant's exercise of a protected activity. Causation is presumed if the adverse action occurs within a specific statutory timeframe after certain protected acts."
+        },
+        "primary_statute": "Cal. Civ. Code § 1942.5",
+        "primary_statute_subsection": "§ 1942.5(a)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": null,
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The 180-day presumption of retaliation is rebuttable; a landlord can overcome it by showing a legitimate, non-retaliatory reason for the adverse action. This presumption applies specifically to the habitability-related complaints and actions listed in Cal. Civ. Code § 1942.5(a), and the tenant must be current on rent to invoke it. Other protected activities, such as tenant organizing under § 1942.5(c), are also prohibited as a basis for retaliation but do not benefit from the same 180-day statutory presumption."
+      },
+      "reasoning": null,
+      "recency_watch": true
+    },
+    {
+      "state": "CO",
+      "state_name": "Colorado",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=C.R.S. § 38-12-509, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "C.R.S. § 38-12-509",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "A tenant in good faith making a complaint to the landlord or a governmental agency about a condition that is a breach of the warranty of habitability, or organizing or becoming a member of a tenants' association or similar organization.",
+          "landlord_knowledge": "Yes, the landlord's adverse action must be 'in response to' the tenant's protected activity, which implies the landlord had knowledge of the activity.",
+          "adverse_action": "Increasing rent, decreasing services, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must establish that the landlord's adverse action was taken in response to the tenant's protected activity. The burden of proof is on the tenant."
+        },
+        "primary_statute": "C.R.S. § 38-12-509",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Colorado's residential landlord-tenant statute does not establish a specific time period during which a landlord's adverse action is presumed to be retaliatory. The tenant must affirmatively prove the causal link.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Retaliation is an affirmative defense that the tenant must raise and prove. Under C.R.S. § 38-12-509(2), a landlord can defeat the defense by proving a valid, non-retaliatory reason for the eviction, such as non-payment of rent, the tenant causing significant damage to the property, or the landlord's need to recover the unit for personal use."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "CT",
+      "state_name": "Connecticut",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Conn. Gen. Stat. § 47a-20, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Conn. Gen. Stat. § 47a-20",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant, in good faith, has: (1) complained to a government agency about a housing code violation; (2) organized or joined a tenants' union; (3) testified in a court proceeding concerning the premises; (4) requested that the landlord make repairs as required by statute; or (5) commenced an action based on the landlord's failure to supply essential services.",
+          "landlord_knowledge": "Yes, landlord knowledge of the tenant's protected activity is an implicit requirement, as the statute prohibits actions taken 'because' of the tenant's activity.",
+          "adverse_action": "The landlord (1) maintains an action to recover possession (i.e., eviction), (2) demands a rent increase, or (3) decreases services to which the tenant is entitled.",
+          "causal_connection": "Yes, the tenant must prove that the landlord's adverse action was substantially motivated by the tenant's protected activity. The timing of the action in relation to the protected activity is a key factor in establishing this connection."
+        },
+        "primary_statute": "Conn. Gen. Stat. § 47a-20",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Connecticut's statute does not create a specific time period during which a landlord's adverse action is presumed to be retaliatory. The tenant bears the burden of proving the landlord's retaliatory motive.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory action defense is not absolute. Under Conn. Gen. Stat. § 47a-20(b), a landlord may still bring an eviction action if, for example: the tenant is delinquent in rent; the code violation was caused by the tenant; the landlord seeks possession in good faith to make substantial alterations, demolish the building, or to use the unit as the landlord's own home."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "DC",
+      "state_name": "District of Columbia",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=D.C. Code § 42-3505.02, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 42-3505.02(b)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant engaged in a legally protected activity, such as requesting repairs, complaining to a government agency about housing code violations, or organizing or joining a tenant organization.",
+          "landlord_knowledge": "The landlord had knowledge of the tenant's protected activity. The statute creates a presumption of knowledge and retaliatory motive if the adverse action occurs within a specific timeframe after the activity.",
+          "adverse_action": "The landlord took an adverse action, such as filing for eviction (action for possession), increasing rent, decreasing services, refusing to renew a lease, or threatening such actions.",
+          "causal_connection": "A causal connection is presumed if the landlord's adverse action occurs within 6 months of the tenant's protected activity. The burden then shifts to the landlord to rebut this presumption with clear and convincing evidence of a non-retaliatory motive."
+        },
+        "primary_statute": "D.C. Code § 42-3505.02",
+        "primary_statute_subsection": "§ 42-3505.02(b)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute specifies a period of '6 months.' 180 days is the standard integer representation.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Under D.C. Code § 42-3505.02(b), if a tenant establishes that the landlord took adverse action within 6 months of the tenant's protected activity, a rebuttable presumption of retaliation is created. The landlord must then provide 'clear and convincing evidence' to prove a non-retaliatory reason for the action. Protected activities explicitly include: making good faith complaints to the landlord or government agencies about housing code or law violations; suing the landlord; requesting repairs in writing; organizing or joining a tenant organization; testifying in a legal proceeding; or legally withholding rent after giving proper notice."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "DE",
+      "state_name": "Delaware",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=90d, statute=25 Del. C. § 5516, conf=high.",
+      "resolved_period": 90,
+      "resolved_statute": "§ 5516(c)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Tenant has complained in good faith to a government agency about code violations, a government agency has filed a notice of violation, the tenant has organized or is an officer of a tenants' union, or the tenant has pursued any legal right or remedy related to the tenancy.",
+          "landlord_knowledge": "Yes, the landlord must have knowledge of the tenant's protected activity for the action to be considered retaliatory. The causal link is presumed if the landlord's action occurs within a specific timeframe after the activity.",
+          "adverse_action": "Increasing rent, decreasing services to which the tenant is entitled, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "A causal connection is required. It is presumed if the landlord's adverse action occurs within 90 days of the tenant's protected activity."
+        },
+        "primary_statute": "25 Del. C. § 5516",
+        "primary_statute_subsection": "§ 5516(c)",
+        "presumption_period_days": 90,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The presumption is rebuttable if the landlord can prove a legitimate, non-retaliatory reason for the action.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense is not available if: (1) the code violation complained of was caused by the tenant's lack of reasonable care; (2) the tenant is in default of rent; or (3) compliance with the applicable code requires alteration which would effectively deprive the tenant of the use of the dwelling unit. See 25 Del. C. § 5516(d)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "FL",
+      "state_name": "Florida",
+      "classification": "CONSENSUS-NO-PERIOD",
+      "note": "Both models: no statutory presumption period. GPT basis: none. Gemini basis: none.",
+      "resolved_period": null,
+      "resolved_statute": null,
+      "gpt": {
+        "elements": {
+          "protected_activity": "Tenant, acting in good faith, engaged in activity protected by Fla. Stat. § 83.64(1), including complaining to a government code-enforcement agency about suspected housing/building/health code violations; organizing, encouraging, or participating in a tenants' organization; complaining to the landlord under Fla. Stat. § 83.56(1); terminating a rental agreement as a servicemember under Fla. Stat. § 83.682; or paying rent to a condominium, cooperative, or homeowners' association after a statutory demand under Fla. Stat. §§ 718.116(11), 719.108(10), or 720.3085(8).",
+          "landlord_knowledge": "Not stated as a separate express element in the statute, but landlord knowledge of the protected activity is practically required to prove the landlord acted 'primarily because' of retaliation.",
+          "adverse_action": "The landlord discriminatorily increases rent, decreases services, brings or threatens an action for possession, or brings or threatens another civil action against the tenant. Discriminatory treatment is a prerequisite under Fla. Stat. § 83.64(4).",
+          "causal_connection": "Yes. The tenant must show the landlord's adverse action was taken primarily because the landlord was retaliating for the tenant's good-faith protected activity; the defense does not apply if the landlord proves good cause for the eviction under Fla. Stat. § 83.64(3)."
+        },
+        "primary_statute": "Fla. Stat. § 83.64",
+        "primary_statute_subsection": "none",
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Florida's residential retaliatory-conduct statute does not create a fixed statutory presumption period after protected activity during which an eviction is presumed retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Fla. Stat. § 83.64(2) expressly allows retaliatory conduct to be raised as a defense in an action for possession. The tenant must have acted in good faith. Under Fla. Stat. § 83.64(3), the defense is unavailable if the landlord proves the eviction is for good cause, including good-faith actions for nonpayment of rent, violation of the rental agreement or reasonable rules, violation of Chapter 83, or violation of applicable code or lease terms. Fla. Stat. § 83.64(4) defines 'discrimination' as treating the tenant differently as to rent, services, or landlord action, and makes such discrimination a prerequisite to a finding of retaliatory conduct."
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Complaining in good faith to a governmental agency about a building, housing, or health code violation; organizing, encouraging, or participating in a tenants' organization; complaining to the landlord about a failure to maintain the premises; being on active military duty; or a tenant paying rent to a condominium, cooperative, or homeowners' association to cover the landlord's defaulted obligation to that association.",
+          "landlord_knowledge": "Yes, knowledge is implicitly required as the landlord's action must be 'primarily because' of the tenant's protected activity.",
+          "adverse_action": "Discriminatorily increasing the tenant's rent, decreasing services to the tenant, or bringing or threatening to bring an action for possession.",
+          "causal_connection": "Yes, the tenant must establish that the landlord's primary reason for taking the adverse action was retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Fla. Stat. § 83.64",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Florida statutes do not establish a specific time-based presumption period where an adverse action is automatically considered retaliatory. The burden of proof to show the landlord's primary motive was retaliation remains on the tenant.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense under Fla. Stat. § 83.64(3) is not available if: (a) the tenant is in default on rent (with an exception for paying an association); (b) the landlord or tenant has given proper notice to terminate a fixed-term or at-will tenancy; or (c) the tenant, their family, or guest has unreasonably disturbed other tenants or breached the peace."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "GA",
+      "state_name": "Georgia",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=O.C.G.A. § 44-7-24, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "O.C.G.A. § 44-7-24",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has, in good faith: 1) complained to a governmental agency about a landlord's violation of law; 2) exercised rights related to being a victim of family violence; or 3) given the landlord notice of a violation of law.",
+          "landlord_knowledge": "Yes, knowledge of the tenant's protected activity is an implicit requirement, as the landlord's action must be taken 'because of' that activity.",
+          "adverse_action": "Evicting the tenant, increasing rent, decreasing services to which the tenant is entitled, or failing to renew a lease or rental agreement.",
+          "causal_connection": "Yes, the tenant must prove that the landlord's adverse action was taken 'solely' because of the tenant's protected activity. This is a high burden of proof."
+        },
+        "primary_statute": "O.C.G.A. § 44-7-24",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Georgia's anti-retaliation statute does not create a presumption period. The tenant bears the full burden of proving the landlord's retaliatory motive without the benefit of a statutory presumption.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The Georgia standard is very strict. Under O.C.G.A. § 44-7-24(a), the tenant must prove the landlord's action was 'solely' for a retaliatory reason. A landlord can defeat the defense by providing any valid, non-retaliatory reason for the eviction or other adverse action, as outlined in O.C.G.A. § 44-7-24(c)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "HI",
+      "state_name": "Hawaii",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Haw. Rev. Stat. § 521-74, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Haw. Rev. Stat. § 521-74",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has, in good faith: 1) complained to the landlord or a governmental agency about a breach of the landlord's obligations to maintain the premises; 2) requested in writing that the landlord make repairs; or 3) organized or become a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "Yes, landlord knowledge of the tenant's protected activity is a required element, as the landlord's action must be taken *because of* the tenant's activity.",
+          "adverse_action": "The landlord increases the tenant's rent, decreases services to which the tenant is entitled, or brings or threatens to bring an action for possession.",
+          "causal_connection": "Yes, the tenant must establish that the landlord's 'primary reason' for taking the adverse action was retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Haw. Rev. Stat. § 521-74",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Hawaii's Residential Landlord-Tenant Code does not establish a statutory presumption period where a landlord's adverse action is presumed to be retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "While there is no statutory presumption, the temporal proximity between the tenant's protected activity and the landlord's adverse action is strong circumstantial evidence a court will consider in determining the landlord's primary motive. The burden of proof is on the tenant to prove the retaliatory motive. The statute provides exceptions where a landlord may still evict, such as when the tenant is in default of rent or the condition complained of was caused by the tenant (Haw. Rev. Stat. § 521-74(c))."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "IA",
+      "state_name": "Iowa",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=365d, statute=Iowa Code § 562A.36, conf=high.",
+      "resolved_period": 365,
+      "resolved_statute": "§ 562A.36(2)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has engaged in one or more of the following: (1) Complained in good faith to a governmental agency about a building or housing code violation materially affecting health and safety; (2) Complained to the landlord about the landlord's failure to maintain the dwelling unit as required by statute; (3) Organized or become a member of a tenants' union or similar organization; or (4) Exercised or attempted to exercise any right or remedy provided under the Iowa Uniform Residential Landlord and Tenant Act.",
+          "landlord_knowledge": "Yes, the statute implies the landlord must have knowledge of the tenant's protected activity for their subsequent action to be considered retaliatory.",
+          "adverse_action": "The landlord increases rent, decreases essential services, or brings or threatens to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the landlord's adverse action must be taken *because of* the tenant's protected activity. Iowa law creates a rebuttable presumption of this connection if the adverse action occurs within a specific time frame."
+        },
+        "primary_statute": "Iowa Code § 562A.36",
+        "primary_statute_subsection": "§ 562A.36(2)",
+        "presumption_period_days": 365,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "Evidence of a tenant's good faith complaint within one year prior to the landlord's alleged retaliatory act creates a rebuttable presumption that the landlord's conduct was retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The presumption of retaliation is rebuttable. Under Iowa Code § 562A.36(3), a landlord may overcome the presumption and proceed with an eviction if: (1) the housing code violation was caused primarily by the tenant; (2) the tenant is in default on rent; (3) compliance with the housing code requires alteration that would effectively deprive the tenant of use of the unit; or (4) the landlord's notice to terminate a periodic tenancy was given prior to the tenant's protected activity."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "ID",
+      "state_name": "Idaho",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Idaho Code § 6-320, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Idaho Code § 6-320",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Making a good faith complaint to a governmental body or agency regarding a landlord's violation of statutory duties, specifically those outlined in Idaho Code Title 55, Chapter 3 (e.g., failure to maintain the premises).",
+          "landlord_knowledge": "Yes, while not explicitly stated as an element, landlord knowledge of the tenant's complaint is a necessary prerequisite to establishing a retaliatory motive.",
+          "adverse_action": "Increasing rent, decreasing services to which the tenant is entitled, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must establish that the landlord's primary motive for taking the adverse action was a reprisal for the tenant's protected complaint."
+        },
+        "primary_statute": "Idaho Code § 6-320",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Idaho's statute does not establish a specific time period during which a landlord's adverse action is presumed to be retaliatory. The tenant bears the burden of proving the causal link without the aid of a statutory presumption.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The protection under Idaho Code § 6-320 is specifically limited to complaints made to a government agency; complaints made only to the landlord are not explicitly covered. The statute also provides that a landlord may still bring an eviction action for non-retaliatory reasons, such as the tenant's default in rent, provided the action is not primarily a reprisal."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "IL",
+      "state_name": "Illinois",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=765 ILCS 720/1, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "765 ILCS 720/1",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has complained to a governmental authority about a bona fide violation of any applicable building code, health ordinance, or similar regulation.",
+          "landlord_knowledge": "Yes, the landlord must have knowledge of the tenant's protected activity to form the necessary retaliatory motive.",
+          "adverse_action": "Terminating or refusing to renew a lease or tenancy.",
+          "causal_connection": "Yes, the tenant must establish that the landlord's adverse action was taken 'on the ground that' the tenant engaged in the protected activity."
+        },
+        "primary_statute": "765 ILCS 720/1",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Illinois state law does not establish a specific time period during which an eviction is presumed to be retaliatory. The tenant bears the burden of proving the causal link between the protected activity and the landlord's action.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The Illinois Retaliatory Eviction Act is relatively narrow, focusing on complaints to governmental authorities. Broader protections, including a rebuttable presumption period (typically one year), may be available under local ordinances, most notably the Chicago Residential Landlord and Tenant Ordinance (RLTO §5-12-150)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "IN",
+      "state_name": "Indiana",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Ind. Code § 32-31-8.5, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Ind. Code § 32-31-8.5",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "A tenant engages in a protected activity by: (1) complaining to a governmental entity or the landlord about code or statutory violations; (2) filing a lawsuit against the landlord under the chapter; (3) organizing or joining a tenant's union; or (4) testifying in a proceeding against the landlord.",
+          "landlord_knowledge": "Yes, the landlord must have knowledge of the tenant's protected activity, as the statute requires the adverse action be taken 'because' of the activity.",
+          "adverse_action": "The landlord takes an adverse action such as: (1) increasing rent; (2) decreasing services; (3) bringing or threatening to bring an eviction (an action for possession); or (4) unreasonably restricting the tenant's access to the property.",
+          "causal_connection": "Yes, the tenant must prove that the landlord's 'dominant purpose' in taking the adverse action was retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Ind. Code § 32-31-8.5",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Indiana's anti-retaliation statute does not establish a specific time-based presumption of retaliation. The tenant bears the burden of proving the landlord's retaliatory motive.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The prohibition on retaliatory acts is found in Ind. Code § 32-31-8.5-5. The list of tenant protected activities is in Ind. Code § 32-31-8.5-4. A key challenge for tenants is proving the landlord's 'dominant purpose' was retaliation. Importantly, the defense is only available to an 'eligible tenant,' defined in Ind. Code § 32-31-8.5-3 as a tenant who is not delinquent in rent payment or otherwise in material breach of the rental agreement."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "KS",
+      "state_name": "Kansas",
+      "classification": "MODEL-SPLIT",
+      "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: Noned / Kan. Stat. Ann. § 58-2572(b).",
+      "resolved_period": null,
+      "resolved_statute": null,
+      "gpt": {
+        "elements": {
+          "protected_activity": "The tenant complained to a governmental agency responsible for enforcing building or housing codes about a premises violation materially affecting health and safety; complained to the landlord about the landlord's violation of K.S.A. § 58-2553; or organized or became a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "The statute does not expressly state landlord knowledge as a separate element, but because the landlord action must be retaliatory and occur after the protected activity, knowledge is practically required to prove retaliatory motive. Complaints made directly to the landlord satisfy knowledge; government complaints may require proof the landlord knew or was notified.",
+          "adverse_action": "The landlord increased rent, decreased services, or brought or threatened to bring an action for possession.",
+          "causal_connection": "Yes. The tenant must show the landlord's adverse action was retaliatory. Kansas provides a rebuttable presumption of retaliation when there is evidence of a qualifying complaint within one year before the alleged retaliatory act, subject to statutory exceptions."
+        },
+        "primary_statute": "Kan. Stat. Ann. § 58-2572",
+        "primary_statute_subsection": "Kan. Stat. Ann. § 58-2572(b)",
+        "presumption_period_days": 365,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "K.S.A. § 58-2572(b) creates a presumption of retaliation from evidence of a complaint made within one year before the alleged retaliatory act. The presumption does not arise if the tenant made the complaint after notice of a proposed rent increase, decrease in services, or action for possession.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The protected activities are listed in K.S.A. § 58-2572(a)(1)-(3). The anti-retaliation remedy and defense are in § 58-2572(b). Under § 58-2572(c), a landlord may still bring an action for possession if the code violation was caused primarily by the tenant or persons on the premises with the tenant's consent, if the tenant is in default in rent, or if compliance with the building or housing code requires alteration, remodeling, or demolition that would effectively deprive the tenant of use of the dwelling unit."
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has: (1) complained to a governmental agency about a violation materially affecting health and safety; (2) complained to the landlord about a violation of the landlord's statutory duties; or (3) organized or become a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "Yes, knowledge of the tenant's protected activity is an implicit requirement to establish the landlord's retaliatory motive.",
+          "adverse_action": "The landlord increases rent, decreases services, or brings or threatens to bring an action for possession.",
+          "causal_connection": "Yes, the tenant must prove that the landlord's adverse action was taken in retaliation for the tenant's protected activity. The tenant has the burden of proof."
+        },
+        "primary_statute": "Kan. Stat. Ann. § 58-2572",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "The Kansas Residential Landlord and Tenant Act does not establish a specific time period during which an adverse action is presumed to be retaliatory. The tenant must affirmatively prove the causal link regardless of timing.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Under Kan. Stat. Ann. § 58-2572(c), a landlord may still bring an action for possession if: (1) the violation complained of was caused primarily by the tenant or their guests; (2) the tenant is in default in rent; or (3) compliance with the applicable code requires alteration or remodeling that would effectively deprive the tenant of the use of the dwelling unit."
+      },
+      "reasoning": {
+        "converged": false,
+        "note": "Reasoning pass did not converge. GPT: Noned / None. Gemini: Noned / Kan. Stat. Ann. § 58-2572(b).",
+        "gpt_tiebreaker": {
+          "error": "empty"
+        },
+        "gemini_tiebreaker": {
+          "correct_period_days": null,
+          "correct_statute": "Kan. Stat. Ann. § 58-2572(b)",
+          "reasoning": "Source B is correct. A thorough review of the Kansas Residential Landlord and Tenant Act, specifically Kan. Stat. Ann. § 58-2572, reveals that while the statute establishes a defense against retaliatory conduct, it does not create a specific time period during which a landlord's adverse action is presumed to be retaliatory. Subsection (b) states that if a landlord acts in violation, 'the tenant...has a defense in an action against the tenant for possession.' The statute omits any language about a presumption, meaning the tenant bears the burden of proving the landlord's retaliatory motive without the aid of a statutory presumption tied to a specific timeframe like 365 days.",
+          "confidence": "high"
+        }
+      },
+      "recency_watch": false
+    },
+    {
+      "state": "KY",
+      "state_name": "Kentucky",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=365d, statute=KRS §383.705, conf=high.",
+      "resolved_period": 365,
+      "resolved_statute": "§383.705(2)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant engaged in a legally protected activity, such as complaining to the landlord or a government agency about a material health or safety violation, or organizing or joining a tenants' union.",
+          "landlord_knowledge": "While not explicitly stated as a separate element, the landlord's knowledge of the tenant's protected activity is implicitly required to establish a retaliatory motive.",
+          "adverse_action": "Subsequent to the protected activity, the landlord took an adverse action, such as increasing rent, decreasing services, or bringing or threatening to bring an eviction action.",
+          "causal_connection": "The tenant must establish a causal link between their protected activity and the landlord's adverse action. A statutory presumption of causation exists if the adverse action occurs within one year of the protected activity."
+        },
+        "primary_statute": "KRS §383.705",
+        "primary_statute_subsection": "§383.705(2)",
+        "presumption_period_days": 365,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "Evidence of a tenant's complaint within one (1) year before the landlord's alleged act of retaliation creates a rebuttable presumption that the landlord's conduct was retaliatory. The presumption does not arise if the tenant made the complaint after receiving notice of a proposed rent increase or service reduction.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The Kentucky Uniform Residential Landlord and Tenant Act (URLTA), which includes KRS §383.705, applies only in jurisdictions that have adopted it (currently 19 cities and counties). The defense is not available if: 1) the violation was caused by the tenant; 2) the tenant is in default on rent; or 3) compliance with the housing code requires alteration that would effectively deprive the tenant of the use of the unit. The landlord can also overcome the defense by showing a valid, non-retaliatory reason for the eviction."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "LA",
+      "state_name": "Louisiana",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=La. Rev. Stat. Ann. § 9:3261, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "La. Rev. Stat. Ann. § 9:3261",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant must be a member of any organization of lessees which is formed for the purpose of dealing with lessors concerning the terms or conditions of a residential lease agreement.",
+          "landlord_knowledge": "Yes, the landlord must have taken the adverse action 'because' of the tenant's membership, which implies knowledge of that membership.",
+          "adverse_action": "Causing a lessee to quit a dwelling unit involuntarily, or bringing an action to recover possession (i.e., eviction).",
+          "causal_connection": "Yes, the tenant must prove the adverse action was taken 'because' of the protected activity."
+        },
+        "primary_statute": "La. Rev. Stat. Ann. § 9:3261",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Louisiana statutes do not establish a specific time period during which an adverse action is presumed to be retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Louisiana's statutory protection against retaliatory eviction is exceptionally narrow. It applies ONLY to retaliation for membership in a tenants' organization and does not extend to other common protected activities like requesting repairs or reporting housing code violations. The statute also exempts owner-occupied buildings with four or fewer residential units per La. Rev. Stat. Ann. § 9:3261(C)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "MA",
+      "state_name": "Massachusetts",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=Mass. Gen. Laws ch. 186, § 18, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "Mass. Gen. Laws ch. 186, § 18",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "A tenant reporting code violations to a relevant enforcement agency; suing the landlord for a violation of the tenant's rights (e.g., breach of warranty of habitability); organizing or joining a tenants' union or similar organization; or exercising rights under a lawful rent withholding statute.",
+          "landlord_knowledge": "Yes, the landlord must have knowledge of the tenant's protected activity for the subsequent adverse action to be considered retaliatory. The action must be taken 'for' the tenant's protected activity.",
+          "adverse_action": "Includes commencing an action to recover possession (eviction), substantially altering the terms of the tenancy, bringing an action to increase the rent, or threatening to take any such actions.",
+          "causal_connection": "A causal link is required. If the landlord's adverse action occurs within six months of the tenant's protected activity, a rebuttable presumption of a retaliatory motive is created by statute. The burden then shifts to the landlord to prove a legitimate, non-retaliatory reason for the action."
+        },
+        "primary_statute": "Mass. Gen. Laws ch. 186, § 18",
+        "primary_statute_subsection": null,
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute specifies a period of 'six months' after most protected activities. The 180 days is an approximation. This creates a rebuttable presumption, meaning the landlord can overcome it by providing sufficient evidence of a legitimate, non-retaliatory reason for the action.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense in a summary process (eviction) case is procedurally established by Mass. Gen. Laws ch. 239, § 2A, which directly references and incorporates the protections and presumption from Mass. Gen. Laws ch. 186, § 18. The presumption does not apply if the eviction is for non-payment of rent, unless the tenant is lawfully withholding rent pursuant to statute or a court order."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "MD",
+      "state_name": "Maryland",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Md. Code, Real Prop. § 8-208.1, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Md. Code, Real Prop. § 8-208.1",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant engaged in a legally protected activity, such as making a good faith complaint, filing a lawsuit against the landlord, or participating in a tenants' organization.",
+          "landlord_knowledge": "The landlord had knowledge of the tenant's protected activity before taking the adverse action. This is an implied prerequisite for proving retaliatory motive.",
+          "adverse_action": "The landlord took an adverse action, such as bringing an action for possession, arbitrarily increasing rent, decreasing services, or terminating a periodic tenancy.",
+          "causal_connection": "The tenant must prove that the landlord's adverse action was taken 'solely as a reprisal or penalty' for the tenant's participation in the protected activity."
+        },
+        "primary_statute": "Md. Code, Real Prop. § 8-208.1",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Maryland law does not create a statutory period during which an eviction is presumed to be retaliatory. Instead, Md. Code, Real Prop. § 8-208.1(b) provides a safe harbor for the landlord, stating an action is not deemed retaliatory if it occurs more than 6 months after the merits of the tenant's initial complaint or lawsuit are determined.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense under Md. Code, Real Prop. § 8-208.1(c) is not available if the tenant is in default for nonpayment of rent, unless the tenant has a court judgment for a rent abatement related to the complained-of conditions. The requirement that the landlord's action be taken 'solely' for a retaliatory purpose can be a difficult standard for tenants to meet."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "ME",
+      "state_name": "Maine",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=14 M.R.S. § 6001, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 6001(3)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant, in good faith, engaged in a legally protected activity.",
+          "landlord_knowledge": "The landlord was aware of the tenant's protected activity. This is an implicit requirement for an action to be retaliatory.",
+          "adverse_action": "The landlord initiated an action of forcible entry and detainer (eviction), increased rent, or substantially altered the terms of the tenancy.",
+          "causal_connection": "The landlord's adverse action was taken *primarily* in retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "14 M.R.S. § 6001",
+        "primary_statute_subsection": "§ 6001(3)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute creates a rebuttable presumption that an eviction is retaliatory if commenced within 6 months of the tenant engaging in a protected activity.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory presumption is rebuttable. Under 14 M.R.S. § 6001(3), a landlord can overcome the presumption by showing an independent, non-retaliatory reason for the eviction. Furthermore, under 14 M.R.S. § 6002, an action is not considered retaliatory if based on the tenant's nonpayment of rent, causing substantial damage to the premises, holding over after the lease term, or other specified good-cause reasons."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "MI",
+      "state_name": "Michigan",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Mich. Comp. Laws § 600.5720, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Mich. Comp. Laws § 600.5720",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant must demonstrate they engaged in one or more specific legally protected activities.",
+          "landlord_knowledge": "While not explicitly stated as a separate element, causation requires that the landlord had knowledge of the tenant's protected activity.",
+          "adverse_action": "The landlord's action of terminating the tenancy or instituting summary proceedings for possession (eviction).",
+          "causal_connection": "The tenant must establish that the landlord's primary reason for the adverse action was in retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Mich. Comp. Laws § 600.5720",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Michigan's statute does not establish a specific time period during which a landlord's adverse action is presumed to be retaliatory. The tenant bears the burden of proving causation regardless of the timing of the events.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Under Mich. Comp. Laws § 600.5720(1), 'protected activity' includes: (a) attempting to secure or enforce rights under the lease or law; (b) complaining to a governmental agency about a health or safety code violation; (c) being a member of a tenants' organization; (d) filing a complaint under the Michigan Consumer Protection Act; or (e) complaining to the landlord about a violation of the Truth in Renting Act. The defense is unavailable under § 600.5720(2) if the tenant is the one who caused the health/safety violation, the eviction is for non-payment of rent not otherwise excused by law, the eviction is for a just cause violation of the lease, or the tenant is holding over after their fixed-term lease has expired without the landlord's consent."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "MN",
+      "state_name": "Minnesota",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=90d, statute=Minn. Stat. § 504B.441, conf=high.",
+      "resolved_period": 90,
+      "resolved_statute": "Minn. Stat. § 504B.441",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "A tenant's good faith attempt to secure or enforce legal rights under a lease, contract, or federal, state, or local law; or a good faith report to a governmental authority of the landlord's violation of a health, safety, housing, or building code or ordinance.",
+          "landlord_knowledge": "Required. While not explicitly stated as 'knowledge,' the statute requires the landlord's action be 'intended...as a penalty,' which necessitates the landlord's awareness of the tenant's protected activity.",
+          "adverse_action": "Serving a notice to quit, maintaining an eviction action to recover possession, increasing the tenant's rent, or decreasing services to the tenant.",
+          "causal_connection": "Yes, the tenant must establish that the landlord's adverse action was intended, in whole or in part, as a penalty for the tenant's protected activity. This connection is presumed if the landlord's action occurs within 90 days of the protected activity."
+        },
+        "primary_statute": "Minn. Stat. § 504B.441",
+        "primary_statute_subsection": null,
+        "presumption_period_days": 90,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The 90-day presumption period is established within the main body of Minn. Stat. § 504B.441, which does not use formal subdivisions. The presumption shifts the burden of proof to the landlord to prove the action was not for a retaliatory purpose.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The affirmative defense of retaliation in an eviction action is established in Minn. Stat. § 504B.285, Subd. 2. The 90-day burden-shifting presumption is located in a separate but related statute, Minn. Stat. § 504B.441. A landlord may rebut the presumption of retaliation by providing sufficient evidence of a legitimate, non-retaliatory reason for the eviction, such as nonpayment of rent or other material breach of the lease."
+      },
+      "reasoning": null,
+      "recency_watch": true
+    },
+    {
+      "state": "MO",
+      "state_name": "Missouri",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Mo. Rev. Stat. § 441.620, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Mo. Rev. Stat. § 441.620",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant (1) complained to a governmental agency about a violation of a building, housing, health, or safety code that is a danger to the tenant's health or safety; (2) complained to the landlord about the landlord's failure to meet statutory obligations; or (3) organized or became a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "Required. The landlord must have knowledge of the tenant's protected activity to have a retaliatory motive. The statute's causal requirement implies knowledge.",
+          "adverse_action": "Terminating or refusing to renew a tenancy, increasing rent, decreasing services, or bringing or threatening to bring an action for possession.",
+          "causal_connection": "Required. The tenant must demonstrate that the landlord's primary motive for taking the adverse action was retaliation for the tenant's engagement in a protected activity."
+        },
+        "primary_statute": "Mo. Rev. Stat. § 441.620",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Missouri law does not establish a statutory time period during which an adverse action is presumed to be retaliatory. The tenant bears the burden of proving the causal link.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense under Mo. Rev. Stat. § 441.620.2 is not available if: (1) the tenant is in default of rent; (2) the tenant is in material noncompliance with the rental agreement; (3) the tenant is holding over after the expiration of the lease term; or (4) the code violation was caused by the tenant or their guest. The landlord's notice of termination must state the specific reason for the termination."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "MS",
+      "state_name": "Mississippi",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Miss. Code Ann. § 89-8-17, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Miss. Code Ann. § 89-8-17",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant complained in good faith to a government agency about code violations, complained to the landlord about the landlord's failure to maintain the premises, organized or became a member of a tenant's union, or testified in a court proceeding against the landlord.",
+          "landlord_knowledge": "Yes, landlord knowledge is required. The statute prohibits adverse actions taken 'primarily because' of the tenant's protected activity, which implies the landlord must be aware of the activity.",
+          "adverse_action": "Increasing rent, decreasing services to the tenant, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must prove that the landlord's primary motive for the adverse action was retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Miss. Code Ann. § 89-8-17",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Mississippi law does not establish a statutory presumption period where an adverse action is automatically presumed to be retaliatory. The tenant bears the burden of proving the landlord's retaliatory motive.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The tenant has the burden of proof to show the landlord's 'primary' motive was retaliation. Under Miss. Code Ann. § 89-8-17(2), a landlord may still bring an action for possession if the tenant is in default of rent, if the tenant or their guest intentionally damages the property, or if the code violation was caused by the tenant."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "MT",
+      "state_name": "Montana",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=Mont. Code Ann. § 70-24-431, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 70-24-431(2)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant (1) complained to a governmental agency about a housing code violation; (2) complained to the landlord about a failure to maintain the premises; or (3) organized or became a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "While not explicitly stated as a separate element, the statute implies the landlord must have knowledge of the tenant's protected activity to be able to retaliate for it.",
+          "adverse_action": "The landlord increases rent, decreases essential services, or brings or threatens to bring an action for possession (an eviction lawsuit).",
+          "causal_connection": "The tenant must demonstrate that the landlord's adverse action was taken in response to the tenant's protected activity. This connection is aided by a statutory presumption."
+        },
+        "primary_statute": "Mont. Code Ann. § 70-24-431",
+        "primary_statute_subsection": "§ 70-24-431(2)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute specifies a period of '6 months.' Evidence of a protected complaint within 6 months before the landlord's adverse action creates a rebuttable presumption that the action was retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The presumption of retaliation does not arise if the tenant made the complaint after receiving notice of a proposed rent increase or decrease in services. Furthermore, a landlord may still bring an eviction action without it being considered retaliatory if: (1) the violation was caused primarily by the tenant; (2) the tenant is in default on rent (unrelated to the retaliatory act); or (3) compliance with the building or housing code would require alteration or demolition that would effectively deprive the tenant of the use of the dwelling."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "NC",
+      "state_name": "North Carolina",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=N.C. Gen. Stat. § 42-37.1, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "N.C. Gen. Stat. § 42-37.1",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Making a good faith complaint to a government agency about a landlord's violation of housing laws or regulations; making a good faith request to the landlord for repairs; or organizing or joining a tenants' union or similar organization.",
+          "landlord_knowledge": "Yes, while not explicitly stated as a separate element, knowledge is a necessary prerequisite for the landlord to have a retaliatory motive. The tenant must show the landlord was aware of the protected activity.",
+          "adverse_action": "Seeking to recover possession of the dwelling unit (i.e., filing for eviction), increasing the tenant's rent, or decreasing services to the tenant.",
+          "causal_connection": "Yes, the tenant must prove that the landlord's primary reason for the adverse action is retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "N.C. Gen. Stat. § 42-37.1",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "North Carolina's statute does not create a legal presumption that an eviction is retaliatory if it occurs within a specific time after a tenant's protected activity. The tenant always bears the burden of proof to show the landlord's action was substantially retaliatory, although the timing of the eviction can be used as evidence.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense is not absolute. Under N.C. Gen. Stat. § 42-37.1(d), a landlord may still evict a tenant who has engaged in protected activity if, for example, the tenant is in default on rent, has materially damaged the property, is holding over after the lease has expired, or the landlord seeks in good faith to take the property off the market or use it for their own residence."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "ND",
+      "state_name": "North Dakota",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=365d, statute=N.D. Cent. Code § 47-16-07.1, conf=high.",
+      "resolved_period": 365,
+      "resolved_statute": "§ 47-16-07.1(3)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Tenant's good-faith complaint to a governmental authority about code violations; good-faith complaint to the landlord about a failure to maintain fit premises; or organizing or joining a tenants' union.",
+          "landlord_knowledge": "While not explicitly stated as a separate element, knowledge is implied as the landlord's action must be 'in retaliation for' the tenant's protected activity.",
+          "adverse_action": "Increasing rent, decreasing services, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "Causation must be shown. North Dakota law assists the tenant by creating a rebuttable presumption of a causal connection if the adverse action occurs within one year of the protected activity."
+        },
+        "primary_statute": "N.D. Cent. Code § 47-16-07.1",
+        "primary_statute_subsection": "§ 47-16-07.1(3)",
+        "presumption_period_days": 365,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute creates a rebuttable presumption that the landlord's conduct was retaliatory if it occurs within one year of the tenant's protected complaint. The presumption is rebutted by evidence of a nonretaliatory purpose. The presumption does not arise if the tenant made the complaint after receiving notice of a proposed rent increase or diminution of services.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Under N.D. Cent. Code § 47-16-07.1(3), a landlord's action for possession is not considered retaliatory if: the tenant is in default of rent (unless the notice to quit was an invalid attempt to increase rent); the tenant committed a material lease violation; repairs are necessary which require the tenant's removal; or the landlord seeks in good faith to recover possession for personal or family use, substantial remodeling, or to sell the property."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "NE",
+      "state_name": "Nebraska",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Neb. Rev. Stat. § 76-1439, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Neb. Rev. Stat. § 76-1439",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has (1) complained to a governmental agency about a building or housing code violation materially affecting health and safety; (2) organized or become a member of a tenants' union or similar organization; or (3) exercised or attempted to exercise any right or remedy under the Uniform Residential Landlord and Tenant Act.",
+          "landlord_knowledge": "Yes, the landlord must have knowledge of the tenant's protected activity. The statute prohibits retaliation 'because the tenant has' engaged in a protected activity, which implies knowledge is a prerequisite for the retaliatory motive.",
+          "adverse_action": "The landlord increases rent, decreases services, or brings or threatens to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must establish that the landlord's adverse action was taken for the purpose of retaliating against the tenant's protected activity. The tenant must prove the landlord's primary motive was retaliatory."
+        },
+        "primary_statute": "Neb. Rev. Stat. § 76-1439",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Nebraska's Uniform Residential Landlord and Tenant Act does not contain a statutory presumption period. The tenant bears the full burden of proving that the landlord's primary motive for the adverse action was retaliation for the protected activity, without the aid of a time-based presumption.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Under Neb. Rev. Stat. § 76-1439(3), a landlord may still bring an action for possession, even after a tenant's protected activity, if: (a) the tenant is in default in rent; (b) the code violation complained of was caused primarily by the tenant or their guest; (c) compliance with the applicable code requires alteration which would effectively deprive the tenant of the use of the dwelling unit; or (d) the landlord's notice to terminate a periodic tenancy was given to the tenant prior to the tenant's protected activity."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "NH",
+      "state_name": "New Hampshire",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=N.H. Rev. Stat. Ann. § 540:13-a, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "N.H. Rev. Stat. Ann. § 540:13-b",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Engaging in activities such as: reporting a health or safety code violation to a government agency; complaining in writing to the landlord about a violation of the warranty of habitability; organizing or joining a tenants' union; filing a legal petition to enforce rights under RSA 540-A; or lawfully withholding rent after giving proper notice of a violation.",
+          "landlord_knowledge": "Implicitly required, as the landlord's adverse action must be 'in retaliation for' the tenant's protected activity, which necessitates the landlord's awareness of that activity.",
+          "adverse_action": "The landlord seeks to recover possession of the premises (i.e., evict), increase the rent, or decrease services to which the tenant is entitled.",
+          "causal_connection": "The tenant must demonstrate that the landlord's adverse action was taken 'in retaliation for' the tenant's protected activity. A statutory presumption aids in establishing this connection if the adverse action occurs within a specific timeframe after the protected activity."
+        },
+        "primary_statute": "N.H. Rev. Stat. Ann. § 540:13-a",
+        "primary_statute_subsection": "N.H. Rev. Stat. Ann. § 540:13-b",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute specifies a period of '6 months,' not a specific number of days. 180 days is the approximate equivalent. An adverse action taken within this period is presumed to be retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The presumption of retaliation is rebuttable. Under N.H. Rev. Stat. Ann. § 540:13-b, a landlord can overcome the presumption by showing a legitimate, non-retaliatory reason for the eviction, such as non-payment of rent, a substantial lease violation by the tenant, or other good cause. The defense is not available if the code violation that was reported was caused primarily by the tenant or their guests."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "NJ",
+      "state_name": "New Jersey",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=N.J.S.A. 2A:42-10.10, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "N.J.S.A. 2A:42-10.12",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant must have engaged in a protected activity, such as making a good faith complaint to a government authority, attempting to enforce rights under the lease or law, or participating in a tenants' organization.",
+          "landlord_knowledge": "While not explicitly stated as a separate element in the statute, the landlord's knowledge of the tenant's activity is a necessary predicate for the action to be retaliatory and for the presumption to arise.",
+          "adverse_action": "The landlord took an adverse action against the tenant, such as serving a notice to quit, filing for eviction, increasing rent, or substantially altering the terms of the tenancy without a valid, non-retaliatory reason.",
+          "causal_connection": "The landlord's adverse action was taken as a result of the tenant's protected activity. A rebuttable presumption of a retaliatory motive is created if the landlord's action occurs after the tenant's protected activity."
+        },
+        "primary_statute": "N.J.S.A. 2A:42-10.10",
+        "primary_statute_subsection": "N.J.S.A. 2A:42-10.12",
+        "presumption_period_days": null,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "N.J.S.A. 2A:42-10.12 establishes a rebuttable presumption of retaliation if the landlord's adverse action is taken *after* a protected activity, but it does not specify a fixed number of days (e.g., 90 or 180 days) for this presumption to apply.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense under N.J.S.A. 2A:42-10.10 et seq. creates a rebuttable presumption. The landlord can overcome this presumption by showing with a preponderance of the evidence that the action was taken for a separate, good faith, non-retaliatory reason. The statute does not apply to owner-occupied premises with not more than two rental units."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "NM",
+      "state_name": "New Mexico",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=N.M. Stat. Ann. § 47-8-39, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 47-8-39(B)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant (1) complained to a government agency about a code violation materially affecting health and safety; (2) complained to the landlord about the landlord's failure to maintain the premises as required by statute; or (3) organized or became a member of a residents' union.",
+          "landlord_knowledge": "Required for the landlord to have a retaliatory motive, which is a core component of the causal connection. The landlord cannot retaliate for an act of which they are unaware.",
+          "adverse_action": "The landlord increases rent, decreases services, or brings or threatens to bring an action for possession.",
+          "causal_connection": "The tenant must demonstrate that the landlord's adverse action was taken in response to the tenant's protected activity. A statutory presumption of retaliation arises if the landlord's adverse action occurs within six months of the tenant's protected activity."
+        },
+        "primary_statute": "N.M. Stat. Ann. § 47-8-39",
+        "primary_statute_subsection": "§ 47-8-39(B)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute specifies a period of 'six months'. 180 days is the standard integer representation for this period.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The presumption of retaliation is rebuttable. The landlord may overcome the presumption by providing evidence of a non-retaliatory motive. Furthermore, the retaliatory defense is not available if the tenant is in default on rent payments, or if the violation that was the subject of the complaint was caused by the tenant or their guests."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "NV",
+      "state_name": "Nevada",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=NRS 118A.510, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "NRS 118A.510",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has, in good faith: complained to a governmental agency about a violation of NRS Chapter 118A; complained to the landlord about a violation of the lease, statute, or ordinance; or organized or joined a tenants' union or similar organization.",
+          "landlord_knowledge": "Yes, the landlord's knowledge of the tenant's protected activity is an implicit and necessary element for the action to be considered retaliatory.",
+          "adverse_action": "The landlord terminates or refuses to renew a tenancy, increases rent, decreases essential services, or brings or threatens to bring an action for possession.",
+          "causal_connection": "Yes, the tenant must establish that the landlord's adverse action was taken 'in retaliation' for the tenant's protected activity."
+        },
+        "primary_statute": "NRS 118A.510",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Nevada's residential landlord-tenant statute does not create a specific time period during which a landlord's adverse action is presumed to be retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Under NRS 118A.510(3), the landlord may take actions that would otherwise be prohibited if: the violation of law was caused by the tenant; the tenancy is terminated with cause; the dwelling requires substantial alteration that necessitates the tenant vacating; or a rent increase applies to all tenants in a uniform manner. The burden of proof is on the tenant to demonstrate the landlord's retaliatory motive."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "NY",
+      "state_name": "New York",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=N.Y. Real Prop. Law § 223-b, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 223-b(4)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Tenant, in good faith, made a complaint to a governmental authority regarding health or safety violations; took action to secure or enforce rights under the lease or law (e.g., warranty of habitability); or participated in the activities of a tenants' organization.",
+          "landlord_knowledge": "Yes, knowledge is implicitly required as the landlord's action must be in response to the tenant's protected activity to be considered retaliatory.",
+          "adverse_action": "Landlord commenced an eviction proceeding, served a notice to quit, refused to renew a lease, or substantially altered the terms of the tenancy, such as through an unreasonable rent increase or a decrease in services.",
+          "causal_connection": "Yes, a causal connection must be shown. If the landlord's adverse action occurs within six months of the tenant's protected activity, a rebuttable presumption of a retaliatory motive is established, shifting the burden of proof to the landlord."
+        },
+        "primary_statute": "N.Y. Real Prop. Law § 223-b",
+        "primary_statute_subsection": "§ 223-b(4)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The six-month presumption is rebuttable. The landlord can overcome it by providing a credible, non-retaliatory motive for the eviction or other adverse action.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense under N.Y. RPL § 223-b is not available in owner-occupied buildings with fewer than four units. A landlord can still evict for non-payment of rent, even if a protected act occurred, unless the eviction proceeding was commenced after the tenant made a good faith complaint regarding the landlord's duty to make the premises habitable."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "OH",
+      "state_name": "Ohio",
+      "classification": "CONSENSUS-NO-PERIOD",
+      "note": "Both models: no statutory presumption period. GPT basis: none. Gemini basis: none.",
+      "resolved_period": null,
+      "resolved_statute": null,
+      "gpt": {
+        "elements": {
+          "protected_activity": "The tenant complained to an appropriate governmental agency about a building, housing, health, or safety code violation that materially affects health and safety; complained to the landlord about the landlord's violation of Ohio Rev. Code § 5321.04; or joined with other tenants to negotiate or deal collectively with the landlord about rental-agreement terms or conditions.",
+          "landlord_knowledge": "Yes. Although Ohio Rev. Code § 5321.02 does not state a separate knowledge element, the landlord must have known of the protected activity for the tenant to show the landlord acted 'because' of it.",
+          "adverse_action": "The landlord increased rent, decreased services due to the tenant, or brought or threatened to bring an action for possession of the premises.",
+          "causal_connection": "Yes. The tenant must show the adverse action was taken because of the protected activity; retaliation may be asserted as a defense in the landlord's possession action."
+        },
+        "primary_statute": "Ohio Rev. Code § 5321.02",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Ohio Rev. Code § 5321.02 contains no statutory presumption period creating a presumption of retaliation within a defined number of days after protected activity.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Protected activities are listed in Ohio Rev. Code § 5321.02(A)(1)-(3). Remedies and use as an eviction defense are in § 5321.02(B), including use of retaliation as a defense to an action for possession under § 5321.02(B)(1). The statute is expressly 'subject to' Ohio Rev. Code § 5321.03, which governs landlord actions for possession; nonpayment of rent, holdover, tenant violations, or other statutory grounds may limit or defeat the defense depending on the facts."
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant complained to an appropriate governmental agency about a building, housing, health, or safety code violation that materially affects health and safety; or the tenant complained to the landlord about a violation of the landlord's statutory duties; or the tenant joined with other tenants to negotiate or deal collectively with the landlord.",
+          "landlord_knowledge": "Yes, while not explicitly listed as a separate element, proving causation requires demonstrating that the landlord had knowledge of the tenant's protected activity and acted because of it.",
+          "adverse_action": "The landlord increased the tenant's rent, decreased services due to the tenant, or brought or threatened to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must establish that the landlord's adverse action was taken *because of* the tenant's participation in a protected activity."
+        },
+        "primary_statute": "Ohio Rev. Code Ann. § 5321.02",
+        "primary_statute_subsection": "Ohio Rev. Code Ann. § 5321.02(A)",
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Ohio's landlord-tenant statute does not contain a presumption period. The tenant bears the burden of proving the landlord's retaliatory motive without the benefit of a statutory presumption based on timing.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "A landlord may still bring an eviction action, notwithstanding the tenant's protected activity, if the tenant is in default in the payment of rent, the code violation was caused by the tenant, the tenant is holding over their term, or other conditions specified in Ohio Rev. Code Ann. § 5321.03 are met."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "OK",
+      "state_name": "Oklahoma",
+      "classification": "CONSENSUS-NO-PERIOD",
+      "note": "Both models: no statutory presumption period. GPT basis: none. Gemini basis: none.",
+      "resolved_period": null,
+      "resolved_statute": null,
+      "gpt": {
+        "elements": {
+          "protected_activity": "The tenant complained to a governmental agency responsible for enforcing a building or housing code about a violation materially affecting health and safety; complained to the landlord of a violation under the Oklahoma Residential Landlord and Tenant Act; or organized or became a member of a tenant union or similar organization.",
+          "landlord_knowledge": "Yes. Although the statute does not state a separate knowledge element, retaliation requires that the landlord knew or had notice of the tenant's protected activity, especially where the protected activity is a complaint to the landlord or participation in tenant organizing.",
+          "adverse_action": "The landlord increased rent, decreased services, or brought or threatened to bring an action for possession.",
+          "causal_connection": "Yes. The tenant must show the landlord's covered adverse action was retaliatory, i.e., taken because of or in response to the protected activity. Oklahoma does not provide a statutory timing presumption."
+        },
+        "primary_statute": "Okla. Stat. tit. 41, § 115",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Oklahoma's retaliatory-conduct statute does not create a defined presumption period, such as 90 or 180 days, after protected activity. Timing may be relevant evidence of causation, but there is no statutory presumption period.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Okla. Stat. tit. 41, § 115(A) prohibits retaliation by rent increases, service decreases, or bringing/threatening a possession action after specified protected activities. Section 115(B) gives the tenant a defense in an action for possession and remedies under Okla. Stat. tit. 41, § 123. Section 115(C) limits the defense where the condition complained of was primarily caused by the tenant or persons on the premises with the tenant's consent, where the tenant is in default in rent, or where code compliance requires alteration, remodeling, or demolition that would effectively deprive the tenant of use of the dwelling unit."
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has: 1) complained to a governmental agency about a building or housing code violation materially affecting health and safety; 2) complained to the landlord about a violation of the landlord's duty to maintain the premises under Okla. Stat. tit. 41, § 118; or 3) organized or become a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "Yes, knowledge is a required element. The tenant must prove that the landlord's action was taken in response to the tenant's protected activity, which implies the landlord's awareness of it.",
+          "adverse_action": "The landlord increases rent, decreases services, or brings or threatens to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must establish that the landlord's 'dominant purpose' for taking the adverse action was retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Okla. Stat. tit. 41, § 120",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Oklahoma's statute does not establish a specific time period during which an adverse action is presumed to be retaliatory. The burden is on the tenant to prove the landlord's retaliatory motive regardless of timing.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense is not available if: 1) the tenant is in default of rent (unless rent was properly withheld under the Act); 2) the code violation was caused by the tenant or their guest; 3) the landlord seeks possession for their own immediate use as a principal residence; or 4) compliance with the applicable code requires alteration which would effectively deprive the tenant of the use of the dwelling unit. These exceptions are detailed in Okla. Stat. tit. 41, § 120(C)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "OR",
+      "state_name": "Oregon",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Or. Rev. Stat. § 90.385, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Or. Rev. Stat. § 90.385",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant engaged in a legally protected activity.",
+          "landlord_knowledge": "Yes, the tenant must establish that the landlord had knowledge of the tenant's protected activity.",
+          "adverse_action": "The landlord took an adverse action such as increasing rent, decreasing services, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must prove that the landlord's adverse action was motivated by and occurred after the tenant's protected activity."
+        },
+        "primary_statute": "Or. Rev. Stat. § 90.385",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Oregon's statute does not establish a specific time period during which a landlord's adverse action is presumed to be retaliatory. The tenant bears the burden of proving the causal connection.",
+        "protected_activity": [
+          "Complaining in good faith to the landlord about the landlord's noncompliance with the rental agreement or statutory duties (ORS § 90.320).",
+          "Complaining in good faith to a government agency about a building, health, or safety code violation applicable to the premises.",
+          "Organizing or becoming a member of a tenants' union or similar organization.",
+          "Testifying in a proceeding against the landlord.",
+          "Expressing intent in good faith to assert or exercise rights provided under the Oregon Residential Landlord and Tenant Act or the rental agreement.",
+          "Complaining to the landlord about an unlawful entry or a lawful entry in an unreasonable manner (ORS § 90.322).",
+          "Complaining to the landlord that the landlord unlawfully removed or excluded the tenant from the premises (ORS § 90.375)."
+        ],
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Retaliation is an affirmative defense, meaning the tenant has the burden of proving it. Under ORS § 90.385(4), a landlord may still bring an eviction action if it is not for a retaliatory reason, even if it occurs after a protected activity. For example, a landlord can still evict for nonpayment of rent (unless the nonpayment is related to a valid repair-and-deduct remedy) or for a tenant violation that poses a risk of serious harm to others."
+      },
+      "reasoning": null,
+      "recency_watch": true
+    },
+    {
+      "state": "PA",
+      "state_name": "Pennsylvania",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=68 P.S. § 250.512, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "68 P.S. § 250.512",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant's good faith complaint to a governmental authority regarding the landlord's alleged violation of any health or safety law or regulation, or any other effort by the tenant to enforce a right or remedy under the lease or any state or local law.",
+          "landlord_knowledge": "Yes, while not explicitly stated as a separate element, knowledge is a necessary prerequisite for the landlord to form a retaliatory motive. Causation cannot be established without it.",
+          "adverse_action": "Evicting the tenant, increasing the tenant's rent, or decreasing any services to which the tenant is entitled under the lease.",
+          "causal_connection": "Yes, the tenant must establish that the landlord's primary motive for taking the adverse action was a result of the tenant's protected activity."
+        },
+        "primary_statute": "68 P.S. § 250.512",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Pennsylvania's Landlord and Tenant Act does not establish a statutory presumption period. The tenant bears the full burden of proving the landlord's retaliatory motive, regardless of the timing of the eviction relative to the protected activity.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense under 68 P.S. § 250.512 cannot be used if the tenant's complaint to a governmental agency was not made in good faith or if the eviction is for non-payment of rent. The landlord can defeat the defense by proving they had a legitimate, non-retaliatory reason for the adverse action."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "RI",
+      "state_name": "Rhode Island",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=R.I. Gen. Laws § 34-18-46, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 34-18-46(c)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has: (1) complained to a governmental agency about a building or housing code violation materially affecting health and safety; (2) complained to the landlord about the landlord's statutory duty to maintain the premises; (3) organized or become a member of a tenants' union or similar organization; or (4) availed themselves of any other legal right or remedy.",
+          "landlord_knowledge": "Yes, knowledge is an implicit requirement, as the landlord's adverse action must be 'because' of the tenant's protected activity.",
+          "adverse_action": "Increasing rent, decreasing services, or bringing or threatening to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must demonstrate that the landlord's adverse action was taken because of the tenant's protected activity. A statutory presumption of causation aids the tenant if the adverse action occurs within the defined presumption period."
+        },
+        "primary_statute": "R.I. Gen. Laws § 34-18-46",
+        "primary_statute_subsection": "§ 34-18-46(c)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The presumption does not arise if the tenant made the complaint after receiving notice of a proposed rent increase or diminution of services.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense is not absolute. Under R.I. Gen. Laws § 34-18-46(d), a landlord may still bring an eviction action if: (1) the tenant is in default in rent; (2) a violation of the housing code was caused by the tenant's lack of reasonable care; or (3) compliance with the housing code requires alteration or demolition that would effectively deprive the tenant of the use of the dwelling unit."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "SC",
+      "state_name": "South Carolina",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=S.C. Code Ann. § 27-40-910, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "S.C. Code Ann. § 27-40-910",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant complained to a governmental agency about a code violation materially affecting health and safety, complained to the landlord of a violation of the South Carolina Residential Landlord and Tenant Act, or organized or became a member of a tenant's union or similar organization.",
+          "landlord_knowledge": "Yes, the landlord must have knowledge of the tenant's protected activity for a subsequent action to be considered retaliatory.",
+          "adverse_action": "The landlord increased rent above fair-market value, decreased essential services, or brought or threatened to bring an action for possession.",
+          "causal_connection": "Yes, the tenant must show that the landlord's adverse action occurred after the protected activity and was motivated by it."
+        },
+        "primary_statute": "S.C. Code Ann. § 27-40-910",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "South Carolina's statute does not establish a specific time period during which an adverse action is presumed to be retaliatory. The tenant bears the burden of proving a causal connection between the protected act and the landlord's action.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction defense under S.C. Code Ann. § 27-40-910(c) is not available if: (1) the housing code violation was caused by the tenant; (2) the tenant is in default of rent; (3) code compliance requires alteration that would effectively deprive the tenant of use of the dwelling; or (4) the tenant is holding over after the lease term expires. Additionally, a tenant intending to raise this defense must notify the landlord in writing within ten days after being served with a Rule to Vacate or Show Cause."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "SD",
+      "state_name": "South Dakota",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=S.D. Codified Laws § 43-32-27, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "S.D. Codified Laws § 43-32-28",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Complaining in good faith to a governmental agency about a building or housing code violation materially affecting health and safety; complaining to the landlord about the landlord's failure to keep the premises in repair and habitable; or organizing or becoming a member of a tenant's union or similar organization.",
+          "landlord_knowledge": "The landlord must have knowledge of the tenant's protected activity for their subsequent action to be considered retaliatory. For complaints made directly to the landlord, knowledge is inherent.",
+          "adverse_action": "Increasing rent, decreasing services, or bringing or threatening to bring an action for possession (an eviction lawsuit).",
+          "causal_connection": "The tenant must show the landlord's adverse action was a response to the protected activity. A rebuttable presumption of a retaliatory motive is created if the landlord's adverse action occurs within 180 days of the tenant's complaint."
+        },
+        "primary_statute": "S.D. Codified Laws § 43-32-27",
+        "primary_statute_subsection": "S.D. Codified Laws § 43-32-28",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The presumption is established by S.D. Codified Laws § 43-32-28. It is rebuttable. The presumption does not arise if the tenant made the complaint after receiving notice of a proposed rent increase or reduction of services.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The South Dakota retaliatory eviction defense is defined across two key statutes. S.D. Codified Laws § 43-32-27 prohibits the retaliatory conduct itself. S.D. Codified Laws § 43-32-28 establishes the defense for tenants in an eviction action and creates the critical 180-day rebuttable presumption, which shifts the burden to the landlord to prove a non-retaliatory reason for the adverse action."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "TN",
+      "state_name": "Tennessee",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Tenn. Code Ann. § 66-28-514, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Tenn. Code Ann. § 66-28-514",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant engaged in a legally protected activity, such as complaining to a government agency about code violations, complaining to the landlord about a failure to maintain the premises, organizing or joining a tenants' union, or exercising any other legal right or remedy.",
+          "landlord_knowledge": "The landlord must have knowledge of the tenant's protected activity to retaliate 'because of' it, which is an implicit requirement for proving causation.",
+          "adverse_action": "The landlord took an adverse action against the tenant, such as increasing rent, decreasing essential services, or bringing or threatening to bring an eviction action.",
+          "causal_connection": "The tenant must prove that the landlord's primary motive for the adverse action was in retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Tenn. Code Ann. § 66-28-514",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Tennessee's statute does not include a specific time period during which a landlord's adverse action is presumed to be retaliatory. The tenant bears the full burden of proving the causal connection without the aid of a statutory presumption.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The retaliatory eviction statute (Tenn. Code Ann. § 66-28-514) is part of the Uniform Residential Landlord and Tenant Act, which applies only in Tennessee counties having a population of more than 75,000 according to the 2010 federal census or any subsequent federal census (see Tenn. Code Ann. § 66-28-102). The defense is not absolute; a landlord may still evict for legitimate reasons, such as nonpayment of rent or a material breach of the lease, as specified in Tenn. Code Ann. § 66-28-514(c)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "TX",
+      "state_name": "Texas",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Tex. Prop. Code § 92.331, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Tex. Prop. Code § 92.331",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant, in good faith, exercises a right under their lease, a municipal ordinance, or a state or federal statute; gives the landlord a notice to repair or exercises a remedy under the Texas Property Code; complains to a governmental entity about a building or housing code violation; or establishes, attempts to establish, or participates in a tenant organization.",
+          "landlord_knowledge": "Yes, the tenant must prove the landlord took the adverse action *because of* the protected activity, which requires the landlord to have had knowledge of it.",
+          "adverse_action": "The landlord, within six months of the protected activity, files an eviction; deprives the tenant of the use of the premises; decreases services; increases rent or terminates the lease; or engages in a bad faith course of conduct that materially interferes with the tenant's rights.",
+          "causal_connection": "Yes, the tenant must prove that the landlord's primary motive for the adverse action was retaliation for the tenant's protected activity."
+        },
+        "primary_statute": "Tex. Prop. Code § 92.331",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Texas law does not create a statutory presumption period where retaliation is assumed. The tenant bears the full burden of proof to demonstrate the landlord's retaliatory motive.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The prohibition on retaliation applies only if the adverse action is taken within six months after the tenant's protected activity (Tex. Prop. Code § 92.331(a)). However, this is a time limit for the action, not a presumption period. The defense is generally unavailable if the tenant is delinquent in rent at the time of the protected activity or if the eviction is for a valid, non-retaliatory reason, such as a material lease violation. See Tex. Prop. Code § 92.331(b) and § 92.332 for specific limitations."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "UT",
+      "state_name": "Utah",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Utah Code Ann. § 57-22-6, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Utah Code Ann. § 57-22-6",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant, in good faith, exercises a right or remedy provided under the Utah Fit Premises Act (Utah Code Ann. § 57-22-1 et seq.). This primarily includes providing written notice to the landlord to correct a deficient, unsafe, or unsanitary condition, or complaining to a governmental agency about a breach of the landlord's duties.",
+          "landlord_knowledge": "Yes, for the landlord's action to be retaliatory, the landlord must have knowledge of the tenant's preceding protected activity.",
+          "adverse_action": "The landlord takes a 'retaliatory action,' defined as: (1) evicting the tenant; (2) decreasing services to the tenant; or (3) increasing the rent or fees.",
+          "causal_connection": "Yes, the tenant has the initial burden of proof to establish that the landlord's adverse action was taken in retaliation for the tenant's protected activity. If the tenant meets this burden, the burden of proof shifts to the landlord to prove a legitimate, non-retaliatory reason for the action."
+        },
+        "primary_statute": "Utah Code Ann. § 57-22-6",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Utah's statute does not establish a specific time-based presumption period. The tenant has the initial burden of proof to establish retaliation, after which the burden shifts to the landlord to prove a non-retaliatory motive. Proximity in time is strong evidence of causation but does not create a formal legal presumption.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The Utah Fit Premises Act explicitly states that certain actions are not considered retaliatory, including eviction for non-payment of rent, destruction of property, or other material noncompliance with the rental agreement that is not related to the deficient condition complained of. See Utah Code Ann. § 57-22-6(5)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "VA",
+      "state_name": "Virginia",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Va. Code Ann. § 55.1-1258, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Va. Code Ann. § 55.1-1258",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant (1) complained to a government agency about a health or safety violation; (2) complained to or sued the landlord for a violation of the Virginia Residential Landlord and Tenant Act (VRLTA); (3) organized or joined a tenants' organization; (4) testified in a court proceeding against the landlord; or (5) lawfully abated rent under the VRLTA or rental agreement.",
+          "landlord_knowledge": "Yes, the tenant must show the landlord took adverse action *after* having knowledge of the tenant's protected activity.",
+          "adverse_action": "The landlord (1) increased rent; (2) decreased services; or (3) brought, or threatened to bring, an action for possession or termination of the lease.",
+          "causal_connection": "Yes, the tenant must prove by a preponderance of the evidence that the landlord's primary motive for the adverse action was retaliation for the protected activity."
+        },
+        "primary_statute": "Va. Code Ann. § 55.1-1258",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Virginia's statute does not establish a specific time period during which a landlord's adverse action is presumed to be retaliatory. The tenant bears the burden of proving the causal link.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "A significant limitation exists under Va. Code Ann. § 55.1-1258(C)(2). The retaliatory eviction defense is generally not available if the tenant is in default on rent. The landlord can proceed with an eviction for nonpayment of rent even if the tenant has recently engaged in a protected activity."
+      },
+      "reasoning": null,
+      "recency_watch": true
+    },
+    {
+      "state": "VT",
+      "state_name": "Vermont",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=90d, statute=9 V.S.A. § 4465, conf=high.",
+      "resolved_period": 90,
+      "resolved_statute": "§ 4465(d)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant engaged in a legally protected activity, such as complaining about a breach of habitability or organizing a tenants' union.",
+          "landlord_knowledge": "Yes, the landlord's adverse action must have been taken 'because of' the tenant's protected activity, which requires the landlord's knowledge of that activity.",
+          "adverse_action": "The landlord increased the tenant's rent, decreased services, or brought or threatened to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must establish a causal link between the protected activity and the landlord's adverse action. A statutory presumption aids in establishing this link if the timing requirement is met."
+        },
+        "primary_statute": "9 V.S.A. § 4465",
+        "primary_statute_subsection": "§ 4465(d)",
+        "presumption_period_days": 90,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "Evidence of a tenant's complaint within 90 days prior to the landlord's alleged retaliatory act creates a rebuttable presumption that the landlord's conduct was retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Under 9 V.S.A. § 4465(c), a landlord may still bring an eviction action for valid reasons, and retaliation is not a defense if: 1) the tenant is in default of rent, 2) the habitability violation was caused by the tenant or their guest, or 3) compliance with the building code requires vacating the premises. The 90-day presumption specifically applies to a tenant's 'complaint' and may not extend to other protected activities like organizing a union."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "WA",
+      "state_name": "Washington",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=90d, statute=RCW 59.18.240, conf=high.",
+      "resolved_period": 90,
+      "resolved_statute": "RCW 59.18.250",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "A tenant engages in a protected activity by: (1) making a good faith complaint to a governmental agency about a violation of a building, housing, or health code; (2) reporting the landlord's failure to perform duties required by law (under RCW 59.18.060); (3) asserting or enforcing any rights or remedies under the Residential Landlord-Tenant Act (RLTA); (4) participating in or organizing a tenants' union or similar organization; or (5) making a good faith complaint to the landlord or an agency about failure to comply with requirements of certain anti-discrimination and fair housing laws (RCW 49.60).",
+          "landlord_knowledge": "Yes, landlord knowledge of the tenant's protected activity is an implicit requirement, as the landlord's action must be taken *because of* the tenant's conduct.",
+          "adverse_action": "The landlord increases the tenant's rent, reduces services to the tenant, increases the tenant's obligations, or brings or threatens to bring an action for possession (eviction).",
+          "causal_connection": "Yes, a causal link must exist between the protected activity and the adverse action. However, causation is presumed if the landlord's adverse action occurs within 90 days after the tenant's protected activity."
+        },
+        "primary_statute": "RCW 59.18.240",
+        "primary_statute_subsection": "RCW 59.18.250",
+        "presumption_period_days": 90,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The presumption is rebuttable. The landlord can overcome it by showing a legitimate, non-retaliatory reason for the action. The statute provides examples of what may constitute proof of a non-retaliatory purpose.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The anti-retaliation defense is primarily established in two statutes: RCW 59.18.240, which defines the prohibited conduct, and RCW 59.18.250, which establishes the 90-day rebuttable presumption of retaliation. The defense is unavailable if the tenant's protected complaint or action was not made in good faith."
+      },
+      "reasoning": null,
+      "recency_watch": true
+    },
+    {
+      "state": "WI",
+      "state_name": "Wisconsin",
+      "classification": "CONSENSUS-NO-PERIOD",
+      "note": "Both models: no statutory presumption period. GPT basis: none. Gemini basis: none.",
+      "resolved_period": null,
+      "resolved_statute": null,
+      "gpt": {
+        "elements": {
+          "protected_activity": "The tenant engaged in activity protected by Wis. Stat. § 704.45(1)(a)-(d), including good-faith complaints about premises defects, complaints to the landlord about repair-code violations, exercising legal rights relating to residential tenancies, or organizing/joining a tenants' union or similar organization.",
+          "landlord_knowledge": "Required as a practical element of causation, though not stated as a separate statutory element; the tenant must show the landlord knew of the protected activity or otherwise acted because of it.",
+          "adverse_action": "The landlord increased rent, decreased services, brought an action for possession, refused to renew the lease, or threatened any of those actions.",
+          "causal_connection": "Yes. The tenant must prove by a preponderance of the evidence that the landlord's action would not have occurred but for retaliation for the protected activity."
+        },
+        "primary_statute": "Wis. Stat. § 704.45",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Wisconsin's retaliatory-conduct statute does not create a fixed statutory presumption period after protected activity. The statute instead requires proof by a preponderance of the evidence of but-for retaliatory causation.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "Wis. Stat. § 704.45(1)(a)-(d) defines protected activity. The operative causation standard appears in § 704.45(1): the adverse action must be one that would not occur but for the landlord's retaliation. Statutory exceptions and limitations are in Wis. Stat. § 704.45(2). Wisconsin administrative regulations also prohibit retaliatory conduct in residential tenancies, including Wis. Admin. Code ATCP § 134.09(5), but the primary statutory defense is Wis. Stat. § 704.45."
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Tenant has, in good faith, reported a code violation to authorities, made a complaint to the landlord regarding habitability or statutory duties, exercised a legal right or remedy under state law, or is a member of a tenant organization.",
+          "landlord_knowledge": "Yes, landlord knowledge of the tenant's protected activity is an implicit requirement, as the landlord's action must be 'because' of the tenant's activity.",
+          "adverse_action": "Landlord increases rent, decreases services, brings an action for possession, or threatens to bring such an action.",
+          "causal_connection": "Yes, the tenant must prove that the landlord's 'dominant reason' or 'principal motivation' for the adverse action was retaliation for the protected activity. The burden of proof is on the tenant."
+        },
+        "primary_statute": "Wis. Stat. § 704.45",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Wisconsin statutes do not create a presumption period. The tenant bears the full burden of proving the landlord's dominant reason for the eviction was retaliatory, regardless of the timing.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The anti-retaliation statute is found in Wis. Stat. § 704.45, with a similar prohibition in Wis. Admin. Code § ATCP 134.09(5). The defense is not absolute. Under Wis. Stat. § 704.45(2), a landlord may still evict for reasons such as nonpayment of rent or other material breach of the lease, provided that is the actual, non-retaliatory reason for the action."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "WV",
+      "state_name": "West Virginia",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=180d, statute=W. Va. Code § 37-6A-5, conf=high.",
+      "resolved_period": 180,
+      "resolved_statute": "§ 37-6A-5(b)",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "Complaining to a governmental agency about a code violation materially affecting health or safety; complaining to the landlord about a violation of the landlord's duty to maintain a fit premises; or organizing or becoming a member of a tenants' union or similar organization.",
+          "landlord_knowledge": "Yes, the statute prohibits a landlord from retaliating 'after' a tenant has engaged in a protected activity, which implies the landlord must have knowledge of the activity for their action to be retaliatory.",
+          "adverse_action": "Increasing rent, decreasing services, or bringing or threatening to bring an action for possession or other civil action against the tenant.",
+          "causal_connection": "Yes, the tenant must show the landlord's adverse action was taken in retaliation for the protected activity. A statutory presumption assists in establishing this link if the landlord's action occurs within six months of the tenant's complaint."
+        },
+        "primary_statute": "W. Va. Code § 37-6A-5",
+        "primary_statute_subsection": "§ 37-6A-5(b)",
+        "presumption_period_days": 180,
+        "presumption_period_basis": "statute",
+        "presumption_period_note": "The statute establishes a presumption of retaliation if the landlord's adverse action occurs within 'six months' of the tenant's protected complaint. The number of days is an approximation.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The presumption of retaliation is rebuttable. Under W. Va. Code § 37-6A-5(b), the presumption does not arise if the tenant made the complaint after receiving notice of a proposed rent increase or decrease in services. Furthermore, under § 37-6A-5(c), a landlord may still evict a tenant if they establish that the tenant is in default of rent, the tenant or their guest caused property damage or an unreasonable disturbance, or the code violation was caused by the tenant."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    },
+    {
+      "state": "WY",
+      "state_name": "Wyoming",
+      "classification": "SINGLE-MODEL-RESOLVED",
+      "note": "GPT failed (empty response). Gemini (single-model fallback): period=Noned, statute=Wyo. Stat. Ann. § 1-21-1210, conf=high.",
+      "resolved_period": null,
+      "resolved_statute": "Wyo. Stat. Ann. § 1-21-1210",
+      "gpt": {
+        "error": "empty response"
+      },
+      "gem": {
+        "elements": {
+          "protected_activity": "The tenant has engaged in one of the following: (1) Complained to a government agency about a building or housing code violation materially affecting health and safety; (2) Complained to the landlord about the landlord's failure to maintain the premises as required by statute; or (3) Organized or become a member of a tenant's union or similar organization.",
+          "landlord_knowledge": "Yes, landlord knowledge of the tenant's protected activity is an implicit requirement, as the landlord's adverse action must be taken *because of* the tenant's activity.",
+          "adverse_action": "The landlord increases rent, decreases services, or brings or threatens to bring an action for possession (eviction).",
+          "causal_connection": "Yes, the tenant must prove that the landlord's adverse action was motivated by the tenant's protected activity."
+        },
+        "primary_statute": "Wyo. Stat. Ann. § 1-21-1210",
+        "primary_statute_subsection": null,
+        "presumption_period_days": null,
+        "presumption_period_basis": "none",
+        "presumption_period_note": "Wyoming's Residential Rental Property Act does not contain a statutory presumption period during which a landlord's adverse action is presumed to be retaliatory.",
+        "has_anti_retaliation_statute": true,
+        "confidence": "high",
+        "notes": "The burden of proof is on the tenant to establish the retaliatory motive. While the timing of an eviction following a protected activity is strong evidence, there is no statutory provision that automatically shifts the burden of proof to the landlord. The landlord may still evict for legitimate, non-retaliatory reasons, such as nonpayment of rent, as outlined in Wyo. Stat. Ann. § 1-21-1210(b)."
+      },
+      "reasoning": null,
+      "recency_watch": false
+    }
+  ]
+}

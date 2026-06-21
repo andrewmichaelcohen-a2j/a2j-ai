@@ -159,6 +159,150 @@
         "gemini_reasoning": "ARS § 33-1313(B) explicitly lists the permissible methods for delivering required written notices under the Arizona Residential Landlord and Tenant Act. Subsection (B)(1) authorizes personal delivery, (B)(3) authorizes substituted service on a suitable resident, and (B)(2) authorizes service by registered or certified mail.",
         "gemini_confidence": "high",
         "note": "L2 service reasoning pass converged. personal=ARS § 33-1313(B)(1), substituted=ARS § 33-1313(B)(3), mail/posting=ARS § 33-1313(B)(2). Source determined correct: model. GPT confidence=None, Gemini confidence=high. GPT reasoning: . Status: pending-human-confirmation. No auto-edit by runner."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-PROCEDURAL-DEFECTS-CONTENT-PASS-PENDING",
+        "field": "procedural_defects",
+        "disposition": "content-pass-needed",
+        "status": "pending-content-differentiation",
+        "date": "2026-06-20",
+        "defect_count": 4,
+        "note": "Content pass pending (2026-06-20): 4 procedural defect items; 3 use 'et seq.' level citations (insufficient for L2 validation). Per operating protocol, L2 cannot run on undifferentiated boilerplate. Content pass requires jurisdiction-specific primary source retrieval (API needed). 50/51 states share identical 4-item template; only statutes differ. Content differentiation needed before L2 validation is meaningful."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-SCRA-OVERLAY-SINGLE-MODEL-RESOLVED",
+        "field": "overlays.federal.scra",
+        "disposition": "single-model-preliminary",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
+        "gpt_summary": {
+          "primary_citation": null,
+          "rent_threshold": null,
+          "confidence": null,
+          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+        },
+        "gemini_summary": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "rent_threshold": 4954.34,
+          "rent_threshold_year": "2024",
+          "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high",
+          "error": null
+        },
+        "resolved_content": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "current_rent_threshold_dollars": 4954.34,
+          "current_rent_threshold_year": "2024",
+          "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "core_protection": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence, for which the monthly rent is below the statutory threshold, without first obtaining a court order.",
+          "court_order_required": true,
+          "max_stay_days": 90,
+          "affidavit_required": true,
+          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high"
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-OVERLAY-STATE-PROTECTIVE-CITATIONS-VERIFIED",
+        "field": "overlays.state_protective",
+        "disposition": "pending-human-confirmation",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "overlay_results": [
+          {
+            "name": "Implied Warranty of Habitability",
+            "file_citation": "ARS §33-1324",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: Arizona Revised Statutes (A.R.S.) Title 33 (Property), Chapter 10 (Arizona Residential Landlord and Tenant Act), § 33-1324(A) | Gem: A.R.S. § 33-1324",
+            "gpt_citation": "Arizona Revised Statutes (A.R.S.) Title 33 (Property), Chapter 10 (Arizona Residential Landlord and Tenant Act), § 33-1324(A)",
+            "gemini_citation": "A.R.S. § 33-1324"
+          },
+          {
+            "name": "Anti-Retaliation Protection",
+            "file_citation": "ARS §33-1381",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: Arizona Revised Statutes (A.R.S.) Title 33 (Property), Chapter 10 (Arizona Residential Landlord and Tenant Act), § 33-1381(A)-(B) | Gem: A.R.S. § 33-1381",
+            "gpt_citation": "Arizona Revised Statutes (A.R.S.) Title 33 (Property), Chapter 10 (Arizona Residential Landlord and Tenant Act), § 33-1381(A)-(B)",
+            "gemini_citation": "A.R.S. § 33-1381"
+          }
+        ],
+        "needs_queue": false,
+        "note": "All 2 overlay citations verified by L2 — no changes needed."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-HABITABILITY-WARRANTY-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.habitability_warranty.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=5, statute=A.R.S. § 33-1365 (Landlord's noncompliance as defense to action for possession or rent); A.R.S. § 33-1324 (Landlord to maintain fit premises), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-DISCRIMINATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.discrimination.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=42 U.S.C. §§ 3601 et seq. (FHA); A.R.S. §§ 41-1491 et seq. (Arizona Fair Housing Act), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-BREACH-OF-QUIET-ENJOYMENT-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.breach_of_quiet_enjoyment.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=A.R.S. § 33-1329 (Landlord's access); A.R.S. § 33-1364 (Unlawful ouster, exclusion or diminution of services), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-IMPROPER-RENT-CALCULATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.improper_rent_calculation.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=A.R.S. § 33-1368(B), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-ELEMENTS-CONSENSUS-CONFIRMED",
+        "field": "substantive_defenses.retaliation.layer_decomposition.elements",
+        "disposition": "resolved-confirmed",
+        "l2_run_date": "2026-06-21",
+        "classification": "CONSENSUS-CONFIRMED",
+        "note": "Both models: 180d presumption period. GPT: A.R.S. § 33-1381 (conf=high). Gemini: A.R.S. § 33-1381 (conf=high).",
+        "gpt_summary": {
+          "period": 180,
+          "statute": "A.R.S. § 33-1381",
+          "confidence": "high",
+          "error": null
+        },
+        "gemini_summary": {
+          "period": 180,
+          "statute": "A.R.S. § 33-1381",
+          "confidence": "high",
+          "error": null
+        }
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -286,6 +430,20 @@
         "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
         "statute": "15 U.S.C. §9058",
         "status": "conditional"
+      },
+      {
+        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+        "threshold_current_dollars": 4954.34,
+        "threshold_year": "2024",
+        "status": "active",
+        "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+        "l2_run_date": "2026-06-20",
+        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
       }
     ],
     "state_protective": [
@@ -324,7 +482,25 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: ARS §33-1324. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Habitability warranty statute: ARS §33-1324. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "A condition exists that constitutes a material noncompliance by the landlord with their duties under A.R.S. § 33-1324, materially affecting health and safety.",
+            "The tenant gave the landlord written notice specifying the breach.",
+            "The landlord failed to remedy the breach within the time prescribed by statute (e.g., five days for health and safety issues, ten days for others).",
+            "The condition was not caused by a deliberate or negligent act or omission of the tenant or a person on the premises with the tenant's consent.",
+            "The tenant raises the issue as a counterclaim in the eviction action for non-payment of rent, and the court may order the tenant to pay the disputed rent into the court registry."
+          ],
+          "primary_statute": "A.R.S. § 33-1365 (Landlord's noncompliance as defense to action for possession or rent); A.R.S. § 33-1324 (Landlord to maintain fit premises)",
+          "key_case": "Thomas v. Goudreault, 163 Ariz. 159, 786 P.2d 1010 (Ct. App. 1989)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=5, statute=A.R.S. § 33-1365 (Landlord's noncompliance as defense to action for possession or rent); A.R.S. § 33-1324 (Landlord to maintain fit premises), conf=high."
+        }
+      }
     },
     {
       "defense": "retaliation",
@@ -339,7 +515,47 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: ARS §33-1381. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Anti-retaliation statute: ARS §33-1381. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "automation_ceiling": "high",
+          "validation_status": "L2-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "validation_date": null,
+          "state_specific": {
+            "presumption_period_days": 180,
+            "presumption_period_statute": "A.R.S. § 33-1381(B)",
+            "presumption_period_basis": "statute",
+            "status": "L2-confirmed-pending-human-confirmation",
+            "note": "Both models: 180d presumption period. GPT: A.R.S. § 33-1381 (conf=high). Gemini: A.R.S. § 33-1381 (conf=high)."
+          },
+          "l2_run_date": "2026-06-21",
+          "elements_confirmed": {
+            "protected_activity": "Tenant complained to a governmental agency responsible for enforcing a building or housing code about a violation materially affecting health and safety; complained to the landlord about a violation of A.R.S. § 33-1324; or organized or became a member of a tenants' union or similar organization.",
+            "has_anti_retaliation_statute": true,
+            "primary_statute": "A.R.S. § 33-1381(B)",
+            "note": "From L2 consensus; pending human confirmation."
+          }
+        },
+        "holdings": {
+          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+        },
+        "best_practices": {
+          "validation_method": "fidelity-to-authoritative-sources",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Validate fidelity to leading practice guides / clinic materials. Label as fidelity-validation, NOT correctness-validation. API access needed to run."
+        },
+        "application_to_facts": {
+          "validation_method": "human-only",
+          "automation_ceiling": "none",
+          "validation_status": "human-reserved",
+          "reason": "Genuinely interpretive: requires factual determination of landlord's motive, tenant's knowledge and intent, causation between protected activity and adverse action. Meets stopping-rule condition: open-textured judgment that consensus cannot validate."
+        }
+      }
     },
     {
       "defense": "discrimination",
@@ -352,7 +568,24 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The tenant is a member of a protected class under the federal Fair Housing Act (FHA) or the Arizona Fair Housing Act (AFHA).",
+            "The tenant was otherwise qualified to continue the tenancy.",
+            "The landlord initiated an eviction proceeding against the tenant.",
+            "The landlord's decision to evict was motivated by the tenant's membership in the protected class. This can be established through direct evidence or by showing that similarly situated tenants who are not members of the protected class were treated more favorably."
+          ],
+          "primary_statute": "42 U.S.C. §§ 3601 et seq. (FHA); A.R.S. §§ 41-1491 et seq. (Arizona Fair Housing Act)",
+          "key_case": null,
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=42 U.S.C. §§ 3601 et seq. (FHA); A.R.S. §§ 41-1491 et seq. (Arizona Fair Housing Act), conf=high."
+        }
+      }
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -366,7 +599,24 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord, or someone acting with the landlord's authority, substantially interfered with the tenant's use and enjoyment of the premises.",
+            "The interference was of a grave and permanent character, not merely a temporary or trivial annoyance.",
+            "The tenant provided the landlord with notice of the interference and a reasonable opportunity to cure it.",
+            "The landlord failed to remedy the interference."
+          ],
+          "primary_statute": "A.R.S. § 33-1329 (Landlord's access); A.R.S. § 33-1364 (Unlawful ouster, exclusion or diminution of services)",
+          "key_case": "Thompson v. Harris, 9 Ariz. App. 341, 452 P.2d 122 (1969)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=A.R.S. § 33-1329 (Landlord's access); A.R.S. § 33-1364 (Unlawful ouster, exclusion or diminution of services), conf=high."
+        }
+      }
     },
     {
       "defense": "improper_rent_calculation",
@@ -378,7 +628,23 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The eviction action is for non-payment of rent pursuant to A.R.S. § 33-1368.",
+            "The pre-litigation notice to the tenant (e.g., a '5-Day Notice to Pay or Quit') demanded an incorrect amount.",
+            "The incorrect amount included charges other than past-due 'rent,' such as late fees, utility charges, or other penalties not explicitly and clearly defined as 'rent' in the lease agreement."
+          ],
+          "primary_statute": "A.R.S. § 33-1368(B)",
+          "key_case": "Keystone-MacDonald v. Tracey, 208 Ariz. 440, 94 P.3d 639 (Ct. App. 2004)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=A.R.S. § 33-1368(B), conf=high."
+        }
+      }
     }
   ],
   "procedural_defects": [

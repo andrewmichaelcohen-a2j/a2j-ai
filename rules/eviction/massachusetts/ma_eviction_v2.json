@@ -184,6 +184,152 @@
         "gemini_reasoning": "M.G.L. c. 186, § 11 requires a 14-day written notice to quit for non-payment but is silent on the specific method of service. Massachusetts common law, not statute, governs the method of delivery, requiring the landlord to provide sufficient proof that the tenant actually received the notice. None of the provided sources are fully correct, as they either cite incorrect statutes or fail to note that common law dictates the service standard.",
         "gemini_confidence": "high",
         "note": "L2 service reasoning pass converged. personal=M.G.L. c. 186, § 11, substituted=M.G.L. c. 186, § 11, mail/posting=M.G.L. c. 186, § 11. Source determined correct: model. GPT confidence=None, Gemini confidence=high. GPT reasoning: . Status: pending-human-confirmation. No auto-edit by runner."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-PROCEDURAL-DEFECTS-CONTENT-PASS-PENDING",
+        "field": "procedural_defects",
+        "disposition": "content-pass-needed",
+        "status": "pending-content-differentiation",
+        "date": "2026-06-20",
+        "defect_count": 4,
+        "note": "Content pass pending (2026-06-20): 4 procedural defect items; 3 use 'et seq.' level citations (insufficient for L2 validation). Per operating protocol, L2 cannot run on undifferentiated boilerplate. Content pass requires jurisdiction-specific primary source retrieval (API needed). 50/51 states share identical 4-item template; only statutes differ. Content differentiation needed before L2 validation is meaningful."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-SCRA-OVERLAY-SINGLE-MODEL-RESOLVED",
+        "field": "overlays.federal.scra",
+        "disposition": "single-model-preliminary",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
+        "gpt_summary": {
+          "primary_citation": null,
+          "rent_threshold": null,
+          "confidence": null,
+          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+        },
+        "gemini_summary": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "rent_threshold": 4954.34,
+          "rent_threshold_year": "2024",
+          "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high",
+          "error": null
+        },
+        "resolved_content": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "current_rent_threshold_dollars": 4954.34,
+          "current_rent_threshold_year": "2024",
+          "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "core_protection": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence, for which the monthly rent is below the statutory threshold, without first obtaining a court order.",
+          "court_order_required": true,
+          "max_stay_days": 90,
+          "affidavit_required": true,
+          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high"
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-OVERLAY-STATE-PROTECTIVE-CITATIONS-AI-RESOLVED",
+        "field": "overlays.state_protective",
+        "disposition": "open",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "overlay_results": [
+          {
+            "name": "Implied Warranty of Habitability",
+            "file_citation": "M.G.L. c. 111, §127L; Berman & Sons v. Jefferson, 379 Mass. 196 (1979)",
+            "classification": "L2-OVERLAY-STATE-PROTECTIVE-FILE-CITATION-PLAUSIBLY-CORRECT",
+            "note": "Split: one model says case law, other says statute. GPT: 'case law only'. Gemini: 'Mass. Gen. Laws ch. 186, § 14'.",
+            "gpt_citation": "case law only",
+            "gemini_citation": "Mass. Gen. Laws ch. 186, § 14",
+            "ai_resolution_note": "AI resolution: file correctly notes both statutory and case-law basis. GPT's 'case law only' underreads M.G.L. c.111 §127L + Berman & Sons. Gemini confirms ch.186 §14 as relevant statute. File citation is plausibly correct; confirm at attorney review stage.",
+            "ai_resolution_date": "2026-06-20"
+          },
+          {
+            "name": "Anti-Retaliation Protection",
+            "file_citation": "M.G.L. c. 186, §18",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: Massachusetts General Laws, Part II, Title I, Chapter 186, Section 18 | Gem: Mass. Gen. Laws ch. 186, § 18",
+            "gpt_citation": "Massachusetts General Laws, Part II, Title I, Chapter 186, Section 18",
+            "gemini_citation": "Mass. Gen. Laws ch. 186, § 18"
+          }
+        ],
+        "needs_queue": true,
+        "note": "1/2 overlays have citation issues — see overlay_results for detail."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-HABITABILITY-WARRANTY-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.habitability_warranty.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Mass. Gen. Laws ch. 239, § 8A, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-DISCRIMINATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.discrimination.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Mass. Gen. Laws ch. 151B, § 4, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-BREACH-OF-QUIET-ENJOYMENT-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.breach_of_quiet_enjoyment.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Mass. Gen. Laws ch. 186, § 14, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-IMPROPER-RENT-CALCULATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.improper_rent_calculation.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Mass. Gen. Laws ch. 186, § 11, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-ELEMENTS-CONSENSUS-CONFIRMED",
+        "field": "substantive_defenses.retaliation.layer_decomposition.elements",
+        "disposition": "resolved-confirmed",
+        "l2_run_date": "2026-06-21",
+        "classification": "CONSENSUS-CONFIRMED",
+        "note": "Both models: 180d presumption period. GPT: Mass. Gen. Laws ch. 239, § 2A; related anti-retaliation remedy in Mass. Gen. Laws ch. 186, § 18 (conf=high). Gemini: Mass. Gen. Laws ch. 239, § 2A (conf=high).",
+        "gpt_summary": {
+          "period": 180,
+          "statute": "Mass. Gen. Laws ch. 239, § 2A; related anti-retaliation remedy in Mass. Gen. Laws ch. 186, § 18",
+          "confidence": "high",
+          "error": null
+        },
+        "gemini_summary": {
+          "period": 180,
+          "statute": "Mass. Gen. Laws ch. 239, § 2A",
+          "confidence": "high",
+          "error": null
+        }
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -312,6 +458,20 @@
         "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
         "statute": "15 U.S.C. §9058",
         "status": "conditional"
+      },
+      {
+        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+        "threshold_current_dollars": 4954.34,
+        "threshold_year": "2024",
+        "status": "active",
+        "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+        "l2_run_date": "2026-06-20",
+        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
       }
     ],
     "state_protective": [
@@ -350,7 +510,24 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: M.G.L. c. 111, §127L; Berman & Sons v. Jefferson, 379 Mass. 196 (1979). Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Habitability warranty statute: M.G.L. c. 111, §127L; Berman & Sons v. Jefferson, 379 Mass. 196 (1979). Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord had actual or constructive notice of a defective condition affecting the premises.",
+            "The defective condition existed during the time for which rent is claimed by the landlord.",
+            "The condition may endanger or materially impair the health, safety, or well-being of the tenant.",
+            "The tenant did not cause the defective condition."
+          ],
+          "primary_statute": "Mass. Gen. Laws ch. 239, § 8A",
+          "key_case": "Boston Hous. Auth. v. Hemingway, 363 Mass. 184 (1973)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Mass. Gen. Laws ch. 239, § 8A, conf=high."
+        }
+      }
     },
     {
       "defense": "retaliation",
@@ -365,7 +542,47 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: M.G.L. c. 186, §18. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use"
+      "note": "Anti-retaliation statute: M.G.L. c. 186, §18. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "automation_ceiling": "high",
+          "validation_status": "L2-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "validation_date": null,
+          "state_specific": {
+            "presumption_period_days": 180,
+            "presumption_period_statute": "Mass. Gen. Laws ch. 239, § 2A, second paragraph; Mass. Gen. Laws ch. 186, § 18, first paragraph",
+            "presumption_period_basis": "statute",
+            "status": "L2-confirmed-pending-human-confirmation",
+            "note": "Both models: 180d presumption period. GPT: Mass. Gen. Laws ch. 239, § 2A; related anti-retaliation remedy in Mass. Gen. Laws ch. 186, § 18 (conf=high). Gemini: Mass. Gen. Laws ch. 239, § 2A (conf=high)."
+          },
+          "l2_run_date": "2026-06-21",
+          "elements_confirmed": {
+            "protected_activity": "Residential tenant engaged in statutorily protected activity, including reporting or complaining about housing/building/health-code or other residential-regulation violations, bringing or participating in judicial or administrative proceedings to enforce housing rights, organizing or joining a tenants' union or similar organization, making written repair requests, or exercising statutory repair-and-deduct/rent-withholding-type rights.",
+            "has_anti_retaliation_statute": true,
+            "primary_statute": "Mass. Gen. Laws ch. 239, § 2A, second paragraph; Mass. Gen. Laws ch. 186, § 18, first paragraph",
+            "note": "From L2 consensus; pending human confirmation."
+          }
+        },
+        "holdings": {
+          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+        },
+        "best_practices": {
+          "validation_method": "fidelity-to-authoritative-sources",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Validate fidelity to leading practice guides / clinic materials. Label as fidelity-validation, NOT correctness-validation. API access needed to run."
+        },
+        "application_to_facts": {
+          "validation_method": "human-only",
+          "automation_ceiling": "none",
+          "validation_status": "human-reserved",
+          "reason": "Genuinely interpretive: requires factual determination of landlord's motive, tenant's knowledge and intent, causation between protected activity and adverse action. Meets stopping-rule condition: open-textured judgment that consensus cannot validate."
+        }
+      }
     },
     {
       "defense": "discrimination",
@@ -378,7 +595,23 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details."
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The tenant is a member of a legally protected class.",
+            "The landlord took an adverse action against the tenant (i.e., initiated eviction proceedings).",
+            "The tenant's membership in the protected class was a motivating factor in the landlord's decision to evict."
+          ],
+          "primary_statute": "Mass. Gen. Laws ch. 151B, § 4",
+          "key_case": "Attorney Gen. v. Brown, 400 Mass. 826 (1987)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Mass. Gen. Laws ch. 151B, § 4, conf=high."
+        }
+      }
     },
     {
       "defense": "breach_of_quiet_enjoyment",
@@ -392,7 +625,23 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required."
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord committed an intentional or negligent act or omission.",
+            "The act or omission caused a serious interference with the tenant's peaceful enjoyment of the premises.",
+            "The interference was a natural and probable consequence of the landlord's act or omission."
+          ],
+          "primary_statute": "Mass. Gen. Laws ch. 186, § 14",
+          "key_case": "Simon v. Solomon, 385 Mass. 91 (1982)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Mass. Gen. Laws ch. 186, § 14, conf=high."
+        }
+      }
     },
     {
       "defense": "improper_rent_calculation",
@@ -404,7 +653,23 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required."
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord served a Notice to Quit for non-payment of rent.",
+            "The amount of rent demanded in the notice was greater than the amount actually owed.",
+            "The overstatement was due to including non-rent charges (like late fees, utilities, or attorney's fees) not properly defined as 'additional rent' in the lease, or a simple miscalculation."
+          ],
+          "primary_statute": "Mass. Gen. Laws ch. 186, § 11",
+          "key_case": "Associated Estates Realty Corp. v. Pentecost, 2001 Mass. App. Div. 165 (2001)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Mass. Gen. Laws ch. 186, § 11, conf=high."
+        }
+      }
     }
   ],
   "procedural_defects": [

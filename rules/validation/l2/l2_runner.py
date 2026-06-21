@@ -561,6 +561,26 @@ def run_l2(
             "classification": classification,
         })
 
+    # Save raw output file (provenance record per COWORK_DIRECTION_PROVENANCE.md)
+    if not dry_run:
+        OUTPUT_DIR = Path(__file__).parent / "output"
+        OUTPUT_DIR.mkdir(exist_ok=True)
+        ts = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        raw_path = OUTPUT_DIR / f"notice_l2_raw_{ts}.json"
+        raw_record = {
+            "run_date": ts,
+            "module": "notice.notice_types.pay_or_quit",
+            "phase": phase_label,
+            "models": {"gpt": OPENAI_MODEL, "gemini": GEMINI_MODEL},
+            "states_run": len(results),
+            "spend_estimate": round(spend_approx, 4),
+            "counts": dict(Counter(r["classification"] for r in results)),
+            "results": results,
+        }
+        with open(raw_path, "w") as f:
+            json.dump(raw_record, f, indent=2, ensure_ascii=False)
+        print(f"\n  Raw output saved: {raw_path}")
+
     # Write report
     DOCS_DIR.mkdir(exist_ok=True)
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d")

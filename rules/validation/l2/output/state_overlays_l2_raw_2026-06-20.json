@@ -1,0 +1,1646 @@
+{
+  "run_date": "2026-06-20",
+  "module": "state_overlays",
+  "states_run": 51,
+  "confirmed": 37,
+  "needs_review": 14,
+  "estimated_cost": 7.6500000000000075,
+  "results": [
+    {
+      "state": "AK",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "AS 34.03.100",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Alaska Statutes, Title 34, Chapter 03, § 34.03.100(a)(1) | Gem: Alaska Statutes § 34.03.100(a)",
+          "gpt_citation": "Alaska Statutes, Title 34, Chapter 03, § 34.03.100(a)(1)",
+          "gemini_citation": "Alaska Statutes § 34.03.100(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "AS 34.03.310",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Alaska Statutes, Title 34, Chapter 03, § 34.03.310(a) | Gem: Alaska Statutes § 34.03.310",
+          "gpt_citation": "Alaska Statutes, Title 34, Chapter 03, § 34.03.310(a)",
+          "gemini_citation": "Alaska Statutes § 34.03.310",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "AL",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Ala. Code §35-9A-204",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Code of Alabama 1975, Title 35, Chapter 9A, § 35-9A-204(a)(1)-(6) | Gem: Code of Alabama § 35-9A-204(a)",
+          "gpt_citation": "Code of Alabama 1975, Title 35, Chapter 9A, § 35-9A-204(a)(1)-(6)",
+          "gemini_citation": "Code of Alabama § 35-9A-204(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Ala. Code §35-9A-501",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Code of Alabama 1975, Title 35, Chapter 9A, § 35-9A-501(a)-(b) | Gem: Code of Alabama § 35-9A-501",
+          "gpt_citation": "Code of Alabama 1975, Title 35, Chapter 9A, § 35-9A-501(a)-(b)",
+          "gemini_citation": "Code of Alabama § 35-9A-501",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "AR",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Ark. Code Ann. §18-17-601",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Arkansas Code Annotated § 18-17-502",
+          "gpt_citation": null,
+          "gemini_citation": "Arkansas Code Annotated § 18-17-502",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "Act 1010 of 2021 established, for the first time in Arkansas, a statutory duty for landlords to maintain fit and habitable premises. The law took effect in early 2022."
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Ark. Code Ann. §18-17-701",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Arkansas Code Annotated § 18-17-901",
+          "gpt_citation": null,
+          "gemini_citation": "Arkansas Code Annotated § 18-17-901",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "Act 1010 of 2021 amended this statute to explicitly prohibit retaliation against a tenant for complaining to the landlord about a violation of the newly created habitability duties under A.C.A. § 18-17-502."
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "AZ",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "ARS §33-1324",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Arizona Revised Statutes (A.R.S.) Title 33 (Property), Chapter 10 (Arizona Residential Landlord and Tenant Act), § 33-1324(A) | Gem: A.R.S. § 33-1324",
+          "gpt_citation": "Arizona Revised Statutes (A.R.S.) Title 33 (Property), Chapter 10 (Arizona Residential Landlord and Tenant Act), § 33-1324(A)",
+          "gemini_citation": "A.R.S. § 33-1324",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "ARS §33-1381",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Arizona Revised Statutes (A.R.S.) Title 33 (Property), Chapter 10 (Arizona Residential Landlord and Tenant Act), § 33-1381(A)-(B) | Gem: A.R.S. § 33-1381",
+          "gpt_citation": "Arizona Revised Statutes (A.R.S.) Title 33 (Property), Chapter 10 (Arizona Residential Landlord and Tenant Act), § 33-1381(A)-(B)",
+          "gemini_citation": "A.R.S. § 33-1381",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "CA",
+      "overlay_count": 3,
+      "overlay_results": [
+        {
+          "name": "AB 1482 Just Cause (statewide)",
+          "file_citation": "Civ. Code §1946.2",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1946.2(a)-(b) | Gem: California Civil Code § 1946.2",
+          "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1946.2(a)-(b)",
+          "gemini_citation": "California Civil Code § 1946.2",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "The law became effective Jan 1, 2020. Minor amendments since then have clarified exemptions and addressed temporary pandemic-related issues. The law has a sunset date of January 1, 2030."
+        },
+        {
+          "name": "AB 1482 Rent Cap",
+          "file_citation": "Civ. Code §1947.12",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1947.12(a)(1) | Gem: California Civil Code § 1947.12",
+          "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1947.12(a)(1)",
+          "gemini_citation": "California Civil Code § 1947.12",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "The law became effective Jan 1, 2020. The allowable increase percentage, tied to the Consumer Price Index (CPI), is updated annually. The law has a sunset date of January 1, 2030."
+        },
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Civ. Code §1941; Green v. Superior Court (1974)",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, §§ 1941(a), 1941.1 | Gem: California Civil Code § 1941.1",
+          "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, §§ 1941(a), 1941.1",
+          "gemini_citation": "California Civil Code § 1941.1",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "CO",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "CRS §38-12-503",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Colorado Revised Statutes, Title 38, Article 12, Part 5, § 38-12-503(1) | Gem: Colo. Rev. Stat. § 38-12-503",
+          "gpt_citation": "Colorado Revised Statutes, Title 38, Article 12, Part 5, § 38-12-503(1)",
+          "gemini_citation": "Colo. Rev. Stat. § 38-12-503",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "Senate Bill 23-184 (effective 2023, fully applicable Oct. 1, 2024) amended C.R.S. § 38-12-505 to include specific requirements for residential temperature (heating and cooling) as a condition of habitability."
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "CRS §38-12-509",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Colorado Revised Statutes, Title 38, Article 12, Part 5, § 38-12-509 | Gem: Colo. Rev. Stat. § 38-12-509",
+          "gpt_citation": "Colorado Revised Statutes, Title 38, Article 12, Part 5, § 38-12-509",
+          "gemini_citation": "Colo. Rev. Stat. § 38-12-509",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "CT",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Conn. Gen. Stat. §47a-7",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), § 47a-7(a) | Gem: Conn. Gen. Stat. § 47a-7",
+          "gpt_citation": "Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), § 47a-7(a)",
+          "gemini_citation": "Conn. Gen. Stat. § 47a-7",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Conn. Gen. Stat. §47a-33",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), § 47a-20 | Gem: Conn. Gen. Stat. § 47a-20",
+          "gpt_citation": "Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), § 47a-20",
+          "gemini_citation": "Conn. Gen. Stat. § 47a-20",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "DC",
+      "overlay_count": 4,
+      "overlay_results": [
+        {
+          "name": "Rent Control Act",
+          "file_citation": "D.C. Code §42-3501 et seq.",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: D.C. Code § 42-3501.01 et seq. (Rental Housing Act of 1985)",
+          "gpt_citation": null,
+          "gemini_citation": "D.C. Code § 42-3501.01 et seq. (Rental Housing Act of 1985)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "The 'Rent Stabilized Housing Inflation Protection Amendment Act of 2022' and subsequent legislation have placed temporary caps on the maximum allowable annual rent increase, often tying it to inflation but with a firm upper limit (e.g., 6% or 8%) that is lower than what the standard formula might otherwise allow."
+        },
+        {
+          "name": "Tenant Opportunity to Purchase Act (TOPA)",
+          "file_citation": "D.C. Code §42-3404.02",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: D.C. Code § 42-3404.02 et seq.",
+          "gpt_citation": null,
+          "gemini_citation": "D.C. Code § 42-3404.02 et seq.",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Just Cause Eviction",
+          "file_citation": "D.C. Code §42-3505.01",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: D.C. Code § 42-3505.01",
+          "gpt_citation": null,
+          "gemini_citation": "D.C. Code § 42-3505.01",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "During the COVID-19 public health emergency (2020-2022), various moratoria and new procedural requirements were enacted. While most emergency measures have expired, landlords may still be subject to requirements related to rent arrears accrued during that period before filing an eviction for non-payment."
+        },
+        {
+          "name": "30-Day Notice Requirement",
+          "file_citation": "D.C. Code §42-3505.01",
+          "classification": "GEMINI-SUGGESTS-DIFFERENT",
+          "note": "GPT failed. Gemini proposes: D.C. Code § 42-3203 (file: D.C. Code §42-3505.01)",
+          "gpt_citation": null,
+          "gemini_citation": "D.C. Code § 42-3203",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "Notice periods for some causes of action were temporarily extended during the COVID-19 public health emergency, but standard statutory periods are generally back in effect."
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "DE",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "25 Del. C. §5303",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Delaware Code Annotated, title 25, chapter 53, section 5305(a) | Gem: Del. Code Ann. tit. 25, § 5305(a)",
+          "gpt_citation": "Delaware Code Annotated, title 25, chapter 53, section 5305(a)",
+          "gemini_citation": "Del. Code Ann. tit. 25, § 5305(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "25 Del. C. §5516",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Delaware Code Annotated, title 25, chapter 55, section 5516 | Gem: Del. Code Ann. tit. 25, § 5516",
+          "gpt_citation": "Delaware Code Annotated, title 25, chapter 55, section 5516",
+          "gemini_citation": "Del. Code Ann. tit. 25, § 5516",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "FL",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Florida Residential Landlord-Tenant Act",
+          "file_citation": "Fla. Stat. §83.51–83.56",
+          "classification": "CITATION-DIVERGE-FROM-FILE",
+          "note": "Models agree with each other but differ from file. File: Fla. Stat. §83.51–83.56 | GPT: Florida Statutes, Title VI (Civil Practice and Procedure), Chapter 83 (Landlord and Tenant), Part II (Residential Tenancies), § 83.40 | Gem: Florida Statutes, Chapter 83, Part II (§§ 83.40-83.682)",
+          "gpt_citation": "Florida Statutes, Title VI (Civil Practice and Procedure), Chapter 83 (Landlord and Tenant), Part II (Residential Tenancies), § 83.40",
+          "gemini_citation": "Florida Statutes, Chapter 83, Part II (§§ 83.40-83.682)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "Significant changes in 2023 (SB 102, the 'Live Local Act') include statewide preemption of local rent control ordinances and changing the required notice period for termination of month-to-month tenancies back to 30 days (from 60)."
+        },
+        {
+          "name": "Anti-Retaliation",
+          "file_citation": "Fla. Stat. §83.64",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Florida Statutes, Title VI (Civil Practice and Procedure), Chapter 83 (Landlord and Tenant), Part II (Residential Tenancies), § 83.64(1)-(2) | Gem: Florida Statutes § 83.64",
+          "gpt_citation": "Florida Statutes, Title VI (Civil Practice and Procedure), Chapter 83 (Landlord and Tenant), Part II (Residential Tenancies), § 83.64(1)-(2)",
+          "gemini_citation": "Florida Statutes § 83.64",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "GA",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "OCGA §44-7-13",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: O.C.G.A. § 44-7-13",
+          "gpt_citation": null,
+          "gemini_citation": "O.C.G.A. § 44-7-13",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "OCGA §44-7-24",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: O.C.G.A. § 44-7-24",
+          "gpt_citation": null,
+          "gemini_citation": "O.C.G.A. § 44-7-24",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "HI",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "HRS §521-42",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Haw. Rev. Stat. tit. 28, ch. 521, § 521-42(a)(1)-(6) (Residential Landlord-Tenant Code; landlord to supply and maintain fit premises) | Gem: Hawaii Revised Statutes § 521-42(a)",
+          "gpt_citation": "Haw. Rev. Stat. tit. 28, ch. 521, § 521-42(a)(1)-(6) (Residential Landlord-Tenant Code; landlord to supply and maintain fit premises)",
+          "gemini_citation": "Hawaii Revised Statutes § 521-42(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "HRS §521-74",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Haw. Rev. Stat. tit. 28, ch. 521, § 521-74(a) (Residential Landlord-Tenant Code; retaliatory evictions and rent increases prohibited) | Gem: Hawaii Revised Statutes § 521-74",
+          "gpt_citation": "Haw. Rev. Stat. tit. 28, ch. 521, § 521-74(a) (Residential Landlord-Tenant Code; retaliatory evictions and rent increases prohibited)",
+          "gemini_citation": "Hawaii Revised Statutes § 521-74",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "IA",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Iowa Code §562A.15",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Iowa Code, Title XIV (Property), Chapter 562A (Uniform Residential Landlord and Tenant Law), § 562A.15(1)(a)-(f) | Gem: Iowa Code § 562A.15",
+          "gpt_citation": "Iowa Code, Title XIV (Property), Chapter 562A (Uniform Residential Landlord and Tenant Law), § 562A.15(1)(a)-(f)",
+          "gemini_citation": "Iowa Code § 562A.15",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Iowa Code §562A.36",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Iowa Code, Title XIV (Property), Chapter 562A (Uniform Residential Landlord and Tenant Law), § 562A.36(1)(a)-(c) | Gem: Iowa Code § 562A.36",
+          "gpt_citation": "Iowa Code, Title XIV (Property), Chapter 562A (Uniform Residential Landlord and Tenant Law), § 562A.36(1)(a)-(c)",
+          "gemini_citation": "Iowa Code § 562A.36",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "ID",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Idaho Code §6-320; Dennett v. Kuenzli, 130 Idaho 21 (1997)",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Idaho Code § 6-320",
+          "gpt_citation": null,
+          "gemini_citation": "Idaho Code § 6-320",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Idaho Code §6-324",
+          "classification": "GEMINI-SUGGESTS-DIFFERENT",
+          "note": "GPT failed. Gemini proposes: Idaho Code § 6-303(5) (file: Idaho Code §6-324)",
+          "gpt_citation": null,
+          "gemini_citation": "Idaho Code § 6-303(5)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "IL",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "765 ILCS 735/1; Glasoe v. Trinkle, 107 Ill.2d 1 (1985)",
+          "classification": "CASE-LAW-CONFIRMED",
+          "note": "Both models: protection is case-law-only (no statute). File: 765 ILCS 735/1; Glasoe v. Trinkle, 107 Ill.2d 1 (1985)",
+          "gpt_citation": "case law only",
+          "gemini_citation": "case law only",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "765 ILCS 720/1",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Illinois Compiled Statutes, Chapter 765, Property, Act 720, Retaliatory Eviction Act, Section 1 (765 ILCS 720/1) | Gem: 765 ILCS 720/1 (Retaliatory Eviction Act)",
+          "gpt_citation": "Illinois Compiled Statutes, Chapter 765, Property, Act 720, Retaliatory Eviction Act, Section 1 (765 ILCS 720/1)",
+          "gemini_citation": "765 ILCS 720/1 (Retaliatory Eviction Act)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "IN",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Ind. Code §32-31-8-5",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Indiana Code § 32-31-8-5",
+          "gpt_citation": null,
+          "gemini_citation": "Indiana Code § 32-31-8-5",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Ind. Code §32-31-8-6",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Indiana Code § 32-31-8.5-2",
+          "gpt_citation": null,
+          "gemini_citation": "Indiana Code § 32-31-8.5-2",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "KS",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "KSA 58-2553",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Kansas Statutes Annotated, Chapter 58, Article 25, § 58-2553(a) | Gem: Kansas Statutes Annotated § 58-2553(a)",
+          "gpt_citation": "Kansas Statutes Annotated, Chapter 58, Article 25, § 58-2553(a)",
+          "gemini_citation": "Kansas Statutes Annotated § 58-2553(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "KSA 58-2572",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Kansas Statutes Annotated, Chapter 58, Article 25, § 58-2572(a)(1)-(3) | Gem: Kansas Statutes Annotated § 58-2572",
+          "gpt_citation": "Kansas Statutes Annotated, Chapter 58, Article 25, § 58-2572(a)(1)-(3)",
+          "gemini_citation": "Kansas Statutes Annotated § 58-2572",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "KY",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "KRS 383.595",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Kentucky Revised Statutes (KRS), Title XXXII, Chapter 383, § 383.595(1)(a)-(e) | Gem: KRS § 383.595(1)",
+          "gpt_citation": "Kentucky Revised Statutes (KRS), Title XXXII, Chapter 383, § 383.595(1)(a)-(e)",
+          "gemini_citation": "KRS § 383.595(1)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "KRS 383.705",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Kentucky Revised Statutes (KRS), Title XXXII, Chapter 383, § 383.705(1)-(2) | Gem: KRS § 383.705",
+          "gpt_citation": "Kentucky Revised Statutes (KRS), Title XXXII, Chapter 383, § 383.705(1)-(2)",
+          "gemini_citation": "KRS § 383.705",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "LA",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "La. C.C. art. 2696; La. R.S. 9:3221",
+          "classification": "GEMINI-SUGGESTS-DIFFERENT",
+          "note": "GPT failed. Gemini proposes: La. Civ. Code Ann. art. 2682(2) (file: La. C.C. art. 2696; La. R.S. 9:3221)",
+          "gpt_citation": null,
+          "gemini_citation": "La. Civ. Code Ann. art. 2682(2)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "La. R.S. 9:3256.2 (limited — verify scope)",
+          "classification": "GEMINI-SUGGESTS-DIFFERENT",
+          "note": "GPT failed. Gemini proposes: none (file: La. R.S. 9:3256.2 (limited — verify scope))",
+          "gpt_citation": null,
+          "gemini_citation": "none",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "MA",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "M.G.L. c. 111, §127L; Berman & Sons v. Jefferson, 379 Mass. 196 (1979)",
+          "classification": "CASE-LAW-ONE-MODEL",
+          "note": "Split: one model says case law, other says statute. GPT: 'case law only'. Gemini: 'Mass. Gen. Laws ch. 186, § 14'.",
+          "gpt_citation": "case law only",
+          "gemini_citation": "Mass. Gen. Laws ch. 186, § 14",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "M.G.L. c. 186, §18",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Massachusetts General Laws, Part II, Title I, Chapter 186, Section 18 | Gem: Mass. Gen. Laws ch. 186, § 18",
+          "gpt_citation": "Massachusetts General Laws, Part II, Title I, Chapter 186, Section 18",
+          "gemini_citation": "Mass. Gen. Laws ch. 186, § 18",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "MD",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Md. Code, Real Prop. §8-211",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Md. Code Ann., Real Property, Title 8, Subtitle 2, § 8-211(e), (f) | Gem: Md. Code, Real Prop. § 8-211",
+          "gpt_citation": "Md. Code Ann., Real Property, Title 8, Subtitle 2, § 8-211(e), (f)",
+          "gemini_citation": "Md. Code, Real Prop. § 8-211",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "Amended in 2021 (Ch. 657) to include a landlord's failure to provide a tenant with an unredacted copy of a violation notice as a basis for a rent escrow action."
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Md. Code, Real Prop. §8-208.1",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Md. Code Ann., Real Property, Title 8, Subtitle 2, § 8-208.1(b) | Gem: Md. Code, Real Prop. § 8-208.1",
+          "gpt_citation": "Md. Code Ann., Real Property, Title 8, Subtitle 2, § 8-208.1(b)",
+          "gemini_citation": "Md. Code, Real Prop. § 8-208.1",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "Amended in 2021 (Ch. 667) to expand the scope of protected tenant activities and to strengthen the rebuttable presumption of retaliation if a landlord takes adverse action within 6 months of a tenant's protected action."
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "ME",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "14 MRS §6021",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Maine Revised Statutes, Title 14, Chapter 710, § 6021(2) | Gem: M.R.S. tit. 14, § 6021",
+          "gpt_citation": "Maine Revised Statutes, Title 14, Chapter 710, § 6021(2)",
+          "gemini_citation": "M.R.S. tit. 14, § 6021",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "14 MRS §6001-A",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Maine Revised Statutes, Title 14, Chapter 709, § 6001(3) | Gem: M.R.S. tit. 14, § 6001",
+          "gpt_citation": "Maine Revised Statutes, Title 14, Chapter 709, § 6001(3)",
+          "gemini_citation": "M.R.S. tit. 14, § 6001",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "MI",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "MCL 554.139; Rome v. Walker, 38 Mich. App. 458 (1972)",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: MCL 554.139(1)",
+          "gpt_citation": null,
+          "gemini_citation": "MCL 554.139(1)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "MCL 125.530 (housing code); anti-retaliation primarily case law",
+          "classification": "GEMINI-SUGGESTS-DIFFERENT",
+          "note": "GPT failed. Gemini proposes: MCL 600.5720 (file: MCL 125.530 (housing code); anti-retaliation primarily case law)",
+          "gpt_citation": null,
+          "gemini_citation": "MCL 600.5720",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "MN",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Minn. Stat. §504B.161",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Minnesota Statutes, Chapter 504B (Landlord and Tenant), § 504B.161, subd. 1(a)(1)-(5) and subd. 1(b) | Gem: Minnesota Statutes § 504B.161, subd. 1",
+          "gpt_citation": "Minnesota Statutes, Chapter 504B (Landlord and Tenant), § 504B.161, subd. 1(a)(1)-(5) and subd. 1(b)",
+          "gemini_citation": "Minnesota Statutes § 504B.161, subd. 1",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "Amended in 2023 (Laws 2023, c. 52, art. 19, s. 100) to explicitly include the landlord's responsibility to maintain a 'reasonably pest-free environment' as part of the covenants."
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Minn. Stat. §504B.285",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Minnesota Statutes, Chapter 504B (Landlord and Tenant), § 504B.441 | Gem: Minnesota Statutes § 504B.441",
+          "gpt_citation": "Minnesota Statutes, Chapter 504B (Landlord and Tenant), § 504B.441",
+          "gemini_citation": "Minnesota Statutes § 504B.441",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "MO",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Mo. Rev. Stat. §441.570; Detling v. Edelbrock, 671 S.W.2d 265 (Mo. 1984)",
+          "classification": "GEMINI-SUGGESTS-DIFFERENT",
+          "note": "GPT failed. Gemini proposes: case law only (file: Mo. Rev. Stat. §441.570; Detling v. Edelbrock, 671 S.W.2d 265 (Mo. 1984))",
+          "gpt_citation": null,
+          "gemini_citation": "case law only",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Mo. Rev. Stat. §441.570(3)",
+          "classification": "GEMINI-SUGGESTS-DIFFERENT",
+          "note": "GPT failed. Gemini proposes: Mo. Rev. Stat. § 441.620 (file: Mo. Rev. Stat. §441.570(3))",
+          "gpt_citation": null,
+          "gemini_citation": "Mo. Rev. Stat. § 441.620",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "MS",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Miss. Code Ann. §89-8-23",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Miss. Code Ann. § 89-8-23(1)",
+          "gpt_citation": null,
+          "gemini_citation": "Miss. Code Ann. § 89-8-23(1)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Miss. Code Ann. §89-8-17",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Miss. Code Ann. § 89-8-17",
+          "gpt_citation": null,
+          "gemini_citation": "Miss. Code Ann. § 89-8-17",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "MT",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "MCA §70-24-303",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Montana Code Annotated, Title 70, Chapter 24, § 70-24-303(1)(a)-(f) | Gem: Montana Code Annotated § 70-24-303(1)",
+          "gpt_citation": "Montana Code Annotated, Title 70, Chapter 24, § 70-24-303(1)(a)-(f)",
+          "gemini_citation": "Montana Code Annotated § 70-24-303(1)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "Amended by HB 222 in 2023, which specified landlord duties regarding the installation and maintenance of smoke and carbon monoxide detectors."
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "MCA §70-24-431",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Montana Code Annotated, Title 70, Chapter 24, § 70-24-431(1)-(2) | Gem: Montana Code Annotated § 70-24-431",
+          "gpt_citation": "Montana Code Annotated, Title 70, Chapter 24, § 70-24-431(1)-(2)",
+          "gemini_citation": "Montana Code Annotated § 70-24-431",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "NC",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "NCGS §42-42",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: North Carolina General Statutes, Chapter 42 (Landlord and Tenant), Article 5 (Residential Rental Agreements), § 42-42(a)(1)-(4) | Gem: N.C. Gen. Stat. § 42-42(a)",
+          "gpt_citation": "North Carolina General Statutes, Chapter 42 (Landlord and Tenant), Article 5 (Residential Rental Agreements), § 42-42(a)(1)-(4)",
+          "gemini_citation": "N.C. Gen. Stat. § 42-42(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "NCGS §42-37.1",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: North Carolina General Statutes, Chapter 42 (Landlord and Tenant), Article 4A (Retaliatory Eviction), § 42-37.1(a) | Gem: N.C. Gen. Stat. § 42-37.1",
+          "gpt_citation": "North Carolina General Statutes, Chapter 42 (Landlord and Tenant), Article 4A (Retaliatory Eviction), § 42-37.1(a)",
+          "gemini_citation": "N.C. Gen. Stat. § 42-37.1",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "ND",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "NDCC 47-16-13.1",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: North Dakota Century Code, Title 47 (Property), Chapter 47-16 (Leasing of Real Property), § 47-16-13 | Gem: N.D. Cent. Code § 47-16-13.1(1)",
+          "gpt_citation": "North Dakota Century Code, Title 47 (Property), Chapter 47-16 (Leasing of Real Property), § 47-16-13",
+          "gemini_citation": "N.D. Cent. Code § 47-16-13.1(1)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "NDCC 47-16-17.5",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: North Dakota Century Code, Title 47 (Property), Chapter 47-16 (Leasing of Real Property), § 47-16-39.1(1) | Gem: N.D. Cent. Code § 47-16-07.1",
+          "gpt_citation": "North Dakota Century Code, Title 47 (Property), Chapter 47-16 (Leasing of Real Property), § 47-16-39.1(1)",
+          "gemini_citation": "N.D. Cent. Code § 47-16-07.1",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "NE",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Neb. Rev. Stat. §76-1419",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Neb. Rev. Stat. ch. 76, art. 14, § 76-1419(1)(a)-(f) | Gem: Neb. Rev. Stat. § 76-1419(1)(b)",
+          "gpt_citation": "Neb. Rev. Stat. ch. 76, art. 14, § 76-1419(1)(a)-(f)",
+          "gemini_citation": "Neb. Rev. Stat. § 76-1419(1)(b)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Neb. Rev. Stat. §76-1439",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Neb. Rev. Stat. ch. 76, art. 14, § 76-1439(1)(a)-(c) | Gem: Neb. Rev. Stat. § 76-1439(1)",
+          "gpt_citation": "Neb. Rev. Stat. ch. 76, art. 14, § 76-1439(1)(a)-(c)",
+          "gemini_citation": "Neb. Rev. Stat. § 76-1439(1)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "NH",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "RSA 48-A:14 (housing standards); RSA 540-A:2",
+          "classification": "CASE-LAW-ONE-MODEL",
+          "note": "Split: one model says case law, other says statute. GPT: 'case law only'. Gemini: 'N.H. Rev. Stat. Ann. § 48-A:14'.",
+          "gpt_citation": "case law only",
+          "gemini_citation": "N.H. Rev. Stat. Ann. § 48-A:14",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "RSA 540:13-a",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: N.H. Rev. Stat. Ann. tit. LV, ch. 540, § 540:13-a (Retaliatory Eviction) | Gem: N.H. Rev. Stat. Ann. § 540:13-b",
+          "gpt_citation": "N.H. Rev. Stat. Ann. tit. LV, ch. 540, § 540:13-a (Retaliatory Eviction)",
+          "gemini_citation": "N.H. Rev. Stat. Ann. § 540:13-b",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "NJ",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Anti-Eviction Act",
+          "file_citation": "N.J.S.A. 2A:18-61.1",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 2A, Chapter 18, §§ 2A:18-61.1 through 2A:18-61.12, especially § 2A:18-61.1(a)-(p) | Gem: N.J.S.A. 2A:18-61.1",
+          "gpt_citation": "New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 2A, Chapter 18, §§ 2A:18-61.1 through 2A:18-61.12, especially § 2A:18-61.1(a)-(p)",
+          "gemini_citation": "N.J.S.A. 2A:18-61.1",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "P.L. 2023, c. 137, effective August 7, 2023, amended N.J.S.A. 2A:18-61.1 to clarify and add a new 'good cause' for eviction related to repeated late payment of rent after a tenant has received a Notice to Cease."
+        },
+        {
+          "name": "Truth in Renting Act",
+          "file_citation": "N.J.S.A. 46:8-43",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 46, Chapter 8, §§ 46:8-43 through 46:8-50 | Gem: N.J.S.A. 46:8-44",
+          "gpt_citation": "New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 46, Chapter 8, §§ 46:8-43 through 46:8-50",
+          "gemini_citation": "N.J.S.A. 46:8-44",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "P.L. 2023, c. 293, signed February 5, 2024, requires landlords to provide tenants with specific flood risk information. This information is expected to be incorporated into the required Truth in Renting guide published by the Department of Community Affairs (DCA)."
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "NM",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "NMSA 1978 §47-8-20",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-20(A)(1)-(6) | Gem: N.M. Stat. Ann. § 47-8-20(A)",
+          "gpt_citation": "New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-20(A)(1)-(6)",
+          "gemini_citation": "N.M. Stat. Ann. § 47-8-20(A)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "NMSA 1978 §47-8-39",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-39(A)(1)-(3) | Gem: N.M. Stat. Ann. § 47-8-39",
+          "gpt_citation": "New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-39(A)(1)-(3)",
+          "gemini_citation": "N.M. Stat. Ann. § 47-8-39",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "NV",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "NRS 118A.290",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Nevada Revised Statutes, Title 10, Chapter 118A, § 118A.290(1) | Gem: Nevada Revised Statutes § 118A.290",
+          "gpt_citation": "Nevada Revised Statutes, Title 10, Chapter 118A, § 118A.290(1)",
+          "gemini_citation": "Nevada Revised Statutes § 118A.290",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "NRS 118A.510",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Nevada Revised Statutes, Title 10, Chapter 118A, § 118A.510(1) | Gem: Nevada Revised Statutes § 118A.510",
+          "gpt_citation": "Nevada Revised Statutes, Title 10, Chapter 118A, § 118A.510(1)",
+          "gemini_citation": "Nevada Revised Statutes § 118A.510",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "NY",
+      "overlay_count": 4,
+      "overlay_results": [
+        {
+          "name": "Housing Stability and Tenant Protection Act (HSTPA 2019)",
+          "file_citation": "HSTPA of 2019 (Laws of 2019, Ch. 36)",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: 2019 N.Y. Laws ch. 36 (Housing Stability and Tenant Protection Act of 2019) | Gem: N.Y. Laws of 2019, Chapter 36",
+          "gpt_citation": "2019 N.Y. Laws ch. 36 (Housing Stability and Tenant Protection Act of 2019)",
+          "gemini_citation": "N.Y. Laws of 2019, Chapter 36",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "The HSTPA itself was a major change enacted in 2019. No significant legislative amendments to its core provisions since 2020, but ongoing litigation and regulatory interpretation continue to shape its application."
+        },
+        {
+          "name": "Good Cause Eviction Law (2024)",
+          "file_citation": "RPL §226-f (eff. April 2024)",
+          "classification": "MODEL-SPLIT",
+          "note": "Models disagree. File: RPL §226-f (eff. April 2024) | GPT: N.Y. Real Prop. Law ch. 50, art. 6-A, §§ 210-218, added by 2024 N.Y. Laws ch. 56, Part HH | Gem: N.Y. Real Prop. Law § 214",
+          "gpt_citation": "N.Y. Real Prop. Law ch. 50, art. 6-A, §§ 210-218, added by 2024 N.Y. Laws ch. 56, Part HH",
+          "gemini_citation": "N.Y. Real Prop. Law § 214",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "Enacted in April 2024 as part of the state budget (S.8308-C/A.8808-C). This is a brand new law."
+        },
+        {
+          "name": "Rent Stabilization (NYC)",
+          "file_citation": "Rent Stabilization Law; Administrative Code §26-501 et seq.",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: N.Y.C. Admin. Code tit. 26, ch. 4, §§ 26-501 to 26-520, Rent Stabilization Law of 1969 | Gem: N.Y.C. Admin. Code §§ 26-501 et seq. (Rent Stabilization Law of 1969)",
+          "gpt_citation": "N.Y.C. Admin. Code tit. 26, ch. 4, §§ 26-501 to 26-520, Rent Stabilization Law of 1969",
+          "gemini_citation": "N.Y.C. Admin. Code §§ 26-501 et seq. (Rent Stabilization Law of 1969)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "The HSTPA of 2019 significantly amended the Rent Stabilization Law, repealing provisions for vacancy decontrol and high-income deregulation, and limiting rent increases for Major Capital Improvements (MCIs) and Individual Apartment Improvements (IAIs)."
+        },
+        {
+          "name": "Warranty of Habitability",
+          "file_citation": "RPL §235-b",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: N.Y. Real Prop. Law ch. 50, art. 7, § 235-b(1) | Gem: N.Y. Real Prop. Law § 235-b",
+          "gpt_citation": "N.Y. Real Prop. Law ch. 50, art. 7, § 235-b(1)",
+          "gemini_citation": "N.Y. Real Prop. Law § 235-b",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "OH",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "ORC 5321.04",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Ohio Revised Code, Title 53 (Real Property), Chapter 5321 (Landlords and Tenants), § 5321.04(A)(2) | Gem: Ohio Revised Code § 5321.04(A)",
+          "gpt_citation": "Ohio Revised Code, Title 53 (Real Property), Chapter 5321 (Landlords and Tenants), § 5321.04(A)(2)",
+          "gemini_citation": "Ohio Revised Code § 5321.04(A)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "ORC 5321.02",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Ohio Revised Code, Title 53 (Real Property), Chapter 5321 (Landlords and Tenants), § 5321.02(A)(1)-(3) | Gem: Ohio Revised Code § 5321.02(A)",
+          "gpt_citation": "Ohio Revised Code, Title 53 (Real Property), Chapter 5321 (Landlords and Tenants), § 5321.02(A)(1)-(3)",
+          "gemini_citation": "Ohio Revised Code § 5321.02(A)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "OK",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Okla. Stat. tit. 41, §118",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Oklahoma Statutes, Title 41 (Landlord and Tenant), Chapter 10 (Residential Landlord and Tenant Act), § 118(A)(1)-(6) | Gem: Okla. Stat. tit. 41, § 118(A)(2)",
+          "gpt_citation": "Oklahoma Statutes, Title 41 (Landlord and Tenant), Chapter 10 (Residential Landlord and Tenant Act), § 118(A)(1)-(6)",
+          "gemini_citation": "Okla. Stat. tit. 41, § 118(A)(2)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Okla. Stat. tit. 41, §121",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Oklahoma Statutes, Title 41 (Landlord and Tenant), Chapter 10 (Residential Landlord and Tenant Act), § 133(A)(1)-(3) | Gem: Okla. Stat. tit. 41, § 121",
+          "gpt_citation": "Oklahoma Statutes, Title 41 (Landlord and Tenant), Chapter 10 (Residential Landlord and Tenant Act), § 133(A)(1)-(3)",
+          "gemini_citation": "Okla. Stat. tit. 41, § 121",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "OR",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Just Cause Eviction (SB 608, 2019)",
+          "file_citation": "ORS §90.427",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Oregon Revised Statutes § 90.427(3)",
+          "gpt_citation": null,
+          "gemini_citation": "Oregon Revised Statutes § 90.427(3)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Statewide Rent Stabilization (2019)",
+          "file_citation": "ORS §90.323",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Oregon Revised Statutes § 90.323(3)",
+          "gpt_citation": null,
+          "gemini_citation": "Oregon Revised Statutes § 90.323(3)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "PA",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Pugh v. Holmes, 486 Pa. 272 (1979) (implied warranty — case law)",
+          "classification": "CASE-LAW-CONFIRMED",
+          "note": "Both models: protection is case-law-only (no statute). File: Pugh v. Holmes, 486 Pa. 272 (1979) (implied warranty — case law)",
+          "gpt_citation": "case law only",
+          "gemini_citation": "case law only",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Landlord-Tenant Act anti-retaliation — primarily case law; verify statutory basis",
+          "classification": "MODEL-SPLIT",
+          "note": "Models disagree. File: Landlord-Tenant Act anti-retaliation — primarily case law; verify statutory basis | GPT: Unfair Rental Practices Act, Act of Dec. 20, 1990, P.L. 1465, No. 225, § 3, 68 P.S. § 399.13 | Gem: 35 P.S. § 1700-1",
+          "gpt_citation": "Unfair Rental Practices Act, Act of Dec. 20, 1990, P.L. 1465, No. 225, § 3, 68 P.S. § 399.13",
+          "gemini_citation": "35 P.S. § 1700-1",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "RI",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "RIGL §34-18-22",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Rhode Island General Laws, Title 34, Chapter 18 (Residential Landlord and Tenant Act), § 34-18-22(a)(1)-(6) | Gem: R.I. Gen. Laws § 34-18-22",
+          "gpt_citation": "Rhode Island General Laws, Title 34, Chapter 18 (Residential Landlord and Tenant Act), § 34-18-22(a)(1)-(6)",
+          "gemini_citation": "R.I. Gen. Laws § 34-18-22",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "RIGL §34-18-46",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Rhode Island General Laws, Title 34, Chapter 18 (Residential Landlord and Tenant Act), § 34-18-46(a)-(b) | Gem: R.I. Gen. Laws § 34-18-46",
+          "gpt_citation": "Rhode Island General Laws, Title 34, Chapter 18 (Residential Landlord and Tenant Act), § 34-18-46(a)-(b)",
+          "gemini_citation": "R.I. Gen. Laws § 34-18-46",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "SC",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "SC Code §27-40-440",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: S.C. Code Ann. tit. 27, ch. 40, § 27-40-440(a)(1)-(6) | Gem: S.C. Code Ann. § 27-40-440(a)",
+          "gpt_citation": "S.C. Code Ann. tit. 27, ch. 40, § 27-40-440(a)(1)-(6)",
+          "gemini_citation": "S.C. Code Ann. § 27-40-440(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "SC Code §27-40-910",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: S.C. Code Ann. tit. 27, ch. 40, § 27-40-910(A) | Gem: S.C. Code Ann. § 27-40-910",
+          "gpt_citation": "S.C. Code Ann. tit. 27, ch. 40, § 27-40-910(A)",
+          "gemini_citation": "S.C. Code Ann. § 27-40-910",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "SD",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "SDCL 43-32-8 (duty to repair); common law implied warranty",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: South Dakota Codified Laws § 43-32-8",
+          "gpt_citation": null,
+          "gemini_citation": "South Dakota Codified Laws § 43-32-8",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "SDCL 43-32-27",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: South Dakota Codified Laws § 43-32-27",
+          "gpt_citation": null,
+          "gemini_citation": "South Dakota Codified Laws § 43-32-27",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "TN",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "TCA §66-28-304",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Tennessee Uniform Residential Landlord and Tenant Act, Tenn. Code Ann. tit. 66, ch. 28, § 66-28-304(a)(1)-(2) | Gem: Tenn. Code Ann. § 66-28-304(a)(2)",
+          "gpt_citation": "Tennessee Uniform Residential Landlord and Tenant Act, Tenn. Code Ann. tit. 66, ch. 28, § 66-28-304(a)(1)-(2)",
+          "gemini_citation": "Tenn. Code Ann. § 66-28-304(a)(2)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "TCA §66-28-507",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Tennessee Uniform Residential Landlord and Tenant Act, Tenn. Code Ann. tit. 66, ch. 28, § 66-28-514(a)(1)-(3) | Gem: Tenn. Code Ann. § 66-28-514",
+          "gpt_citation": "Tennessee Uniform Residential Landlord and Tenant Act, Tenn. Code Ann. tit. 66, ch. 28, § 66-28-514(a)(1)-(3)",
+          "gemini_citation": "Tenn. Code Ann. § 66-28-514",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "TX",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Tex. Prop. Code §92.056–92.061",
+          "classification": "CITATION-DIVERGE-FROM-FILE",
+          "note": "Models agree with each other but differ from file. File: Tex. Prop. Code §92.056–92.061 | GPT: Texas Property Code, Title 8, Chapter 92, Subchapter B, § 92.052(a)-(b) | Gem: Texas Property Code § 92.052",
+          "gpt_citation": "Texas Property Code, Title 8, Chapter 92, Subchapter B, § 92.052(a)-(b)",
+          "gemini_citation": "Texas Property Code § 92.052",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation",
+          "file_citation": "Tex. Prop. Code §92.331",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Texas Property Code, Title 8, Chapter 92, Subchapter H, § 92.331(a)-(b) | Gem: Texas Property Code § 92.331",
+          "gpt_citation": "Texas Property Code, Title 8, Chapter 92, Subchapter H, § 92.331(a)-(b)",
+          "gemini_citation": "Texas Property Code § 92.331",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "UT",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Utah Code §57-22-4",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Utah Code Ann., Title 57, Chapter 22, Utah Fit Premises Act, § 57-22-4(1)(a) | Gem: Utah Code § 57-22-3",
+          "gpt_citation": "Utah Code Ann., Title 57, Chapter 22, Utah Fit Premises Act, § 57-22-4(1)(a)",
+          "gemini_citation": "Utah Code § 57-22-3",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Utah Code §57-22-6",
+          "classification": "MODEL-SPLIT",
+          "note": "Models disagree. File: Utah Code §57-22-6 | GPT: Utah Code Ann., Title 78B, Chapter 6, Part 8, § 78B-6-814 | Gem: Utah Code § 57-22a-102",
+          "gpt_citation": "Utah Code Ann., Title 78B, Chapter 6, Part 8, § 78B-6-814",
+          "gemini_citation": "Utah Code § 57-22a-102",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "VA",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Va. Code §55.1-1220",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Code of Virginia, Title 55.1 (Property and Conveyances), Chapter 12 (Virginia Residential Landlord and Tenant Act), § 55.1-1220(A)(1)-(7) | Gem: Va. Code Ann. § 55.1-1220",
+          "gpt_citation": "Code of Virginia, Title 55.1 (Property and Conveyances), Chapter 12 (Virginia Residential Landlord and Tenant Act), § 55.1-1220(A)(1)-(7)",
+          "gemini_citation": "Va. Code Ann. § 55.1-1220",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "A 2023 amendment (c. 402) added subsection C, creating specific duties for landlords regarding the remediation of visible evidence of mold and requiring them to provide tenants with information regarding health hazards related to mold."
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Va. Code §55.1-1234",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Code of Virginia, Title 55.1 (Property and Conveyances), Chapter 12 (Virginia Residential Landlord and Tenant Act), § 55.1-1258(A) | Gem: Va. Code Ann. § 55.1-1258",
+          "gpt_citation": "Code of Virginia, Title 55.1 (Property and Conveyances), Chapter 12 (Virginia Residential Landlord and Tenant Act), § 55.1-1258(A)",
+          "gemini_citation": "Va. Code Ann. § 55.1-1258",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "A 2021 amendment (c. 523) expanded the definition of prohibited retaliatory conduct to include not just bringing an action for possession but also 'causing the tenant to vacate the dwelling unit through any other means'."
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "VT",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "9 VSA §4457",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Vt. Stat. Ann. tit. 9, ch. 137, § 4457(a) (Landlord obligations; habitability--Warranty of habitability) | Gem: 9 V.S.A. § 4457(a)",
+          "gpt_citation": "Vt. Stat. Ann. tit. 9, ch. 137, § 4457(a) (Landlord obligations; habitability--Warranty of habitability)",
+          "gemini_citation": "9 V.S.A. § 4457(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "9 VSA §4465",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Vt. Stat. Ann. tit. 9, ch. 137, § 4465(a) (Retaliatory conduct prohibited) | Gem: 9 V.S.A. § 4465(a)",
+          "gpt_citation": "Vt. Stat. Ann. tit. 9, ch. 137, § 4465(a) (Retaliatory conduct prohibited)",
+          "gemini_citation": "9 V.S.A. § 4465(a)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "WA",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Residential Landlord-Tenant Act",
+          "file_citation": "RCW §59.12.030; RCW §59.18 et seq.",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Revised Code of Washington, Title 59, Chapter 59.18, RCW 59.18.010 | Gem: RCW 59.18",
+          "gpt_citation": "Revised Code of Washington, Title 59, Chapter 59.18, RCW 59.18.010",
+          "gemini_citation": "RCW 59.18",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "The RLTA has undergone significant amendments post-2020, including the establishment of statewide just cause eviction requirements (2021), new rules for rent increases, and provisions related to the end of the COVID-19 eviction moratorium."
+        },
+        {
+          "name": "Just Cause Eviction (2021)",
+          "file_citation": "RCW §59.18.650",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Revised Code of Washington, Title 59, Chapter 59.18, RCW 59.18.650(1)(a) and RCW 59.18.650(2) | Gem: RCW 59.18.650",
+          "gpt_citation": "Revised Code of Washington, Title 59, Chapter 59.18, RCW 59.18.650(1)(a) and RCW 59.18.650(2)",
+          "gemini_citation": "RCW 59.18.650",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "This protection was newly established statewide in 2021 by Engrossed Second Substitute Senate Bill 5160, which created this section of the RCW. It replaced the previous ability for landlords to end month-to-month tenancies with a 20-day no-cause notice."
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "WI",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Wis. Stat. §704.07",
+          "classification": "CITATION-CONFIRMED",
+          "note": "Models agree and file citation matches. GPT: Wisconsin Statutes, ch. 704 (Landlord and Tenant), § 704.07(2)(a)1.–4. (Repairs; untenantability—Duty of landlord) | Gem: Wis. Stat. § 704.07(2)",
+          "gpt_citation": "Wisconsin Statutes, ch. 704 (Landlord and Tenant), § 704.07(2)(a)1.–4. (Repairs; untenantability—Duty of landlord)",
+          "gemini_citation": "Wis. Stat. § 704.07(2)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Wis. Stat. §704.45",
+          "classification": "MODEL-SPLIT",
+          "note": "Models disagree. File: Wis. Stat. §704.45 | GPT: Wisconsin Statutes, ch. 704 (Landlord and Tenant), § 704.45(1)(a)–(c) (Retaliatory conduct in residential tenancies prohibited) | Gem: Wis. Admin. Code ATCP § 134.09(5)",
+          "gpt_citation": "Wisconsin Statutes, ch. 704 (Landlord and Tenant), § 704.45(1)(a)–(c) (Retaliatory conduct in residential tenancies prohibited)",
+          "gemini_citation": "Wis. Admin. Code ATCP § 134.09(5)",
+          "gpt_confidence": "high",
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": null,
+      "gemini_error": null
+    },
+    {
+      "state": "WV",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "WV Code §37-6-30",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: W. Va. Code § 37-6-30(a)",
+          "gpt_citation": null,
+          "gemini_citation": "W. Va. Code § 37-6-30(a)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "WV Code §37-6A-1 et seq.",
+          "classification": "GEMINI-SUGGESTS-DIFFERENT",
+          "note": "GPT failed. Gemini proposes: case law only (file: WV Code §37-6A-1 et seq.)",
+          "gpt_citation": null,
+          "gemini_citation": "case law only",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": true,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    },
+    {
+      "state": "WY",
+      "overlay_count": 2,
+      "overlay_results": [
+        {
+          "name": "Implied Warranty of Habitability",
+          "file_citation": "Wyo. Stat. §1-21-1204; common law",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Wyo. Stat. Ann. § 1-21-1202(a)",
+          "gpt_citation": null,
+          "gemini_citation": "Wyo. Stat. Ann. § 1-21-1202(a)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        },
+        {
+          "name": "Anti-Retaliation Protection",
+          "file_citation": "Wyo. Stat. §1-21-1207",
+          "classification": "FILE-CITATION-GEMINI-CONFIRMED",
+          "note": "GPT failed. Gemini confirms file citation. Gem: Wyo. Stat. Ann. § 1-21-1205(c)",
+          "gpt_citation": null,
+          "gemini_citation": "Wyo. Stat. Ann. § 1-21-1205(c)",
+          "gpt_confidence": null,
+          "gemini_confidence": "high",
+          "recent_changes": "none identified"
+        }
+      ],
+      "needs_review": false,
+      "gpt_error": "empty response after retries",
+      "gemini_error": null
+    }
+  ]
+}

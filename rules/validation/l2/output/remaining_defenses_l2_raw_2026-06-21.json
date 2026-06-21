@@ -1,0 +1,121 @@
+{
+  "run_date": "2026-06-21",
+  "module": "Module 6 — Remaining Substantive Defenses Elements Layer",
+  "models": {
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "defenses_covered": [
+    "habitability_warranty",
+    "discrimination",
+    "breach_of_quiet_enjoyment",
+    "improper_rent_calculation"
+  ],
+  "states_run": 1,
+  "spend_estimate": 0.1,
+  "counts_by_defense": {
+    "habitability_warranty": {
+      "CONSENSUS-CONFIRMED": 0,
+      "CONSENSUS-NOT-RECOGNIZED": 0,
+      "SINGLE-MODEL-RESOLVED": 1,
+      "MODEL-SPLIT": 0,
+      "ERROR": 0
+    },
+    "discrimination": {
+      "CONSENSUS-CONFIRMED": 0,
+      "CONSENSUS-NOT-RECOGNIZED": 0,
+      "SINGLE-MODEL-RESOLVED": 1,
+      "MODEL-SPLIT": 0,
+      "ERROR": 0
+    },
+    "breach_of_quiet_enjoyment": {
+      "CONSENSUS-CONFIRMED": 0,
+      "CONSENSUS-NOT-RECOGNIZED": 0,
+      "SINGLE-MODEL-RESOLVED": 1,
+      "MODEL-SPLIT": 0,
+      "ERROR": 0
+    },
+    "improper_rent_calculation": {
+      "CONSENSUS-CONFIRMED": 0,
+      "CONSENSUS-NOT-RECOGNIZED": 0,
+      "SINGLE-MODEL-RESOLVED": 1,
+      "MODEL-SPLIT": 0,
+      "ERROR": 0
+    }
+  },
+  "l7_queue": [],
+  "results": [
+    {
+      "state": "SD",
+      "state_name": "South Dakota",
+      "recency_watch": false,
+      "recency_note": null,
+      "defenses": {
+        "habitability_warranty": {
+          "classification": "SINGLE-MODEL-RESOLVED",
+          "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=SDCL § 43-32-8, conf=high.",
+          "resolved": {
+            "recognized_as_defense": true,
+            "elements": [
+              "A landlord-tenant relationship exists for a residential property.",
+              "The property has defects that render it unsafe, unhealthful, or unfit for human habitation, constituting a material breach of the implied warranty.",
+              "The tenant provided the landlord with notice of the defects.",
+              "The landlord failed to repair the defects within a reasonable time after receiving notice."
+            ],
+            "primary_statute": "SDCL § 43-32-8",
+            "key_case": "Shippy v. Rokasky, 367 N.W.2d 202 (S.D. 1985)",
+            "note": "The South Dakota Supreme Court in Shippy held that the statutory remedies of repair-and-deduct or vacating (SDCL § 43-32-9) are not exclusive. A breach of the implied warranty of habitability can be raised as an affirmative defense or counterclaim in an eviction action for non-payment of rent, potentially resulting in a rent abatement."
+          }
+        },
+        "discrimination": {
+          "classification": "SINGLE-MODEL-RESOLVED",
+          "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=SDCL § 20-13-20; 42 U.S.C. § 3604 (FHA), conf=high.",
+          "resolved": {
+            "recognized_as_defense": true,
+            "elements": [
+              "The tenant is a member of a protected class under federal or state law.",
+              "The tenant was otherwise qualified to continue their tenancy.",
+              "The landlord initiated an eviction proceeding against the tenant.",
+              "The landlord's decision to evict was motivated, at least in part, by the tenant's membership in the protected class."
+            ],
+            "primary_statute": "SDCL § 20-13-20; 42 U.S.C. § 3604 (FHA)",
+            "key_case": null,
+            "note": "South Dakota's Human Relations Act protects against housing discrimination based on race, color, creed, religion, sex, ancestry, disability, national origin, and familial status. An eviction based on these characteristics is illegal and constitutes a defense."
+          }
+        },
+        "breach_of_quiet_enjoyment": {
+          "classification": "SINGLE-MODEL-RESOLVED",
+          "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=SDCL § 43-32-19, conf=high.",
+          "resolved": {
+            "recognized_as_defense": true,
+            "elements": [
+              "The landlord, or someone acting under the landlord's authority, committed an act or omission that substantially interfered with the tenant's use and enjoyment of the leased premises.",
+              "The interference was of a grave and permanent character, not merely a temporary or trivial annoyance.",
+              "The interference deprived the tenant of the beneficial enjoyment of the property.",
+              "The tenant provided notice of the interference to the landlord, and the landlord failed to remedy it."
+            ],
+            "primary_statute": "SDCL § 43-32-19",
+            "key_case": "Collins v. Kares, 522 N.W.2d 224 (S.D. 1994)",
+            "note": "South Dakota codifies the covenant of quiet enjoyment. While breach of this covenant is most commonly associated with a claim of 'constructive eviction' (which requires the tenant to vacate), a severe breach can also be raised as an affirmative defense to an eviction action, arguing the landlord's breach excuses the tenant's non-performance."
+          }
+        },
+        "improper_rent_calculation": {
+          "classification": "SINGLE-MODEL-RESOLVED",
+          "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=SDCL § 21-16-2, conf=high.",
+          "resolved": {
+            "recognized_as_defense": true,
+            "elements": [
+              "The eviction is based on non-payment of rent.",
+              "The landlord's three-day Notice to Quit demanded a specific amount of rent.",
+              "The amount of rent demanded in the notice was incorrect or greater than the amount actually due.",
+              "The inaccuracy was material and resulted from including unauthorized charges (e.g., non-rent fees), miscalculation, or demanding rent not yet owed."
+            ],
+            "primary_statute": "SDCL § 21-16-2",
+            "key_case": "Wandler v. Lewis, 567 N.W.2d 377 (S.D. 1997)",
+            "note": "South Dakota courts require strict compliance with the statutory requirements for a Forcible Entry and Detainer (eviction) action. A Notice to Quit that demands more rent than is legally due is defective. A defective notice deprives the court of jurisdiction and serves as a complete defense to that specific eviction action, forcing the landlord to restart the process with a correct notice."
+          }
+        }
+      }
+    }
+  ]
+}

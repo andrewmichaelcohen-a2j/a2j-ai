@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-06-20",
+  "module": "scra_overlay",
+  "classification": "CITATION-DIVERGE",
+  "note": "CITATION-DIVERGE: GPT says ''; Gemini says '50 U.S.C. § 3951'. Unexpected for uniform federal law — attorney review.",
+  "resolved_content": {},
+  "gpt_response": {
+    "days": null,
+    "notice_required": null,
+    "statute": null,
+    "rationale": "PARSE_ERROR: "
+  },
+  "gemini_response": {
+    "primary_citation": "50 U.S.C. § 3951",
+    "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022)",
+    "current_rent_threshold_dollars": 4954.34,
+    "current_rent_threshold_year": "2024",
+    "threshold_adjustment_method": "Calculated annually based on 130% of the Basic Allowance for Housing (BAH) for a military member in pay grade E-5 with dependents for the military housing area with the highest BAH in the United States.",
+    "core_protection": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence, for which the monthly rent is below the statutory threshold, without first obtaining a court order.",
+    "court_order_required": true,
+    "max_stay_days": 90,
+    "affidavit_required": true,
+    "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+    "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+    "recent_amendments": "The Veterans Auto and Education Improvement Act of 2022 (enacted as part of the FY23 National Defense Authorization Act) significantly amended 50 U.S.C. § 3951(a)(2). It replaced the former fixed-dollar rent threshold (which was adjusted for CPI) with a new formula based on the Basic Allowance for Housing (BAH). This change substantially increased the dollar value of the rent threshold, expanding the number of protected leases.",
+    "confidence": "high",
+    "notes": "The statutory threshold is a *monthly* rent figure, not an annual one. The affidavit requirement under 50 U.S.C. § 3931 applies broadly to civil actions where a servicemember defendant has not made an appearance, requiring the plaintiff to attest to the defendant's military status before a default judgment may be entered. Upon application by the servicemember, a court may stay the eviction proceeding for 90 days or adjust the lease obligations if it finds the servicemember's ability to pay is materially affected by military service."
+  },
+  "preliminary_threshold_for_reference": 4073.16,
+  "preliminary_threshold_year_for_reference": "2024"
+}
