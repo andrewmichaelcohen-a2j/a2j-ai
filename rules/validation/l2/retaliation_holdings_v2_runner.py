@@ -65,6 +65,7 @@ import os
 import sys
 import time
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
@@ -515,8 +516,12 @@ def check_c_holding(opinion_text: str | None, prior_holding: str, case_name: str
         prior_holding=prior_holding,
     )
 
-    g_resp = gpt(prompt, max_tokens=800)
-    gem_resp = gemini(prompt, max_tokens=800)
+    # Run both models in parallel — saves ~10-15s per case vs. sequential.
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        fut_g   = executor.submit(gpt,    prompt, 800)
+        fut_gem = executor.submit(gemini, prompt, 800)
+        g_resp   = fut_g.result()
+        gem_resp = fut_gem.result()
 
     result["gpt_holding"] = g_resp
     result["gem_holding"] = gem_resp
@@ -588,8 +593,12 @@ def check_d_control(opinion_text: str | None, case_name: str) -> dict:
     text_excerpt = opinion_text[:8000]
     prompt = CONTROL_PROMPT.format(opinion_text=text_excerpt)
 
-    g_resp = gpt(prompt, max_tokens=1000)
-    gem_resp = gemini(prompt, max_tokens=1000)
+    # Run both models in parallel — saves ~10-15s per case vs. sequential.
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        fut_g   = executor.submit(gpt,    prompt, 1000)
+        fut_gem = executor.submit(gemini, prompt, 1000)
+        g_resp   = fut_g.result()
+        gem_resp = fut_gem.result()
 
     result["gpt_control"] = g_resp
     result["gem_control"] = gem_resp
