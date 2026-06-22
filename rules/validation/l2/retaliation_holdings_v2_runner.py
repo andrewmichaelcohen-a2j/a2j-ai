@@ -202,19 +202,31 @@ def cl_get_cluster(cluster_id: int) -> dict | None:
 
 
 def cl_get_opinion_id_for_cluster(cluster_id: int) -> int | None:
-    """Get the primary opinion ID for a cluster via the opinions endpoint."""
-    try:
-        r = requests.get(
-            f"{CL_BASE}/opinions/",
-            params={"cluster": cluster_id, "format": "json"},
-            headers=cl_headers(),
-            timeout=15,
-        )
-        r.raise_for_status()
-        results = r.json().get("results", [])
-        return results[0]["id"] if results else None
-    except Exception:
-        return None
+    """Get the primary opinion ID for a cluster via the opinions endpoint.
+    Retries on 429 with exponential backoff — callers must not swallow 429 silently.
+    """
+    for attempt in range(5):
+        try:
+            r = requests.get(
+                f"{CL_BASE}/opinions/",
+                params={"cluster": cluster_id, "format": "json"},
+                headers=cl_headers(),
+                timeout=15,
+            )
+            if r.status_code == 429:
+                wait = 3 * (2 ** attempt)  # 3s, 6s, 12s, 24s, 48s
+                print(f"        [CL rate limit 429 on opinion lookup cluster {cluster_id} — waiting {wait}s]")
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+            results = r.json().get("results", [])
+            return results[0]["id"] if results else None
+        except Exception as e:
+            if attempt < 4:
+                time.sleep(3)
+                continue
+            return None
+    return None
 
 
 def cl_get_opinion_text(opinion_id: int) -> str | None:
@@ -391,8 +403,9 @@ def check_a_existence(case_name: str, citation_gpt: str | None, citation_gem: st
     if not result["cl_opinion_id"]:
         cluster_id = hit.get("cluster_id")
         if cluster_id:
+            time.sleep(1)  # breathing room before secondary API call
             oid = cl_get_opinion_id_for_cluster(cluster_id)
-            if oid and oid != cluster_id:
+            if oid:
                 result["cl_opinion_id"] = oid
     # Store aggregated snippets as fallback text for Checks C and D
     result["cl_snippets"] = " | ".join(snippets) if snippets else None
@@ -626,7 +639,7 @@ def verify_case(case: dict, state: str) -> dict:
     check_a = check_a_existence(case_name, citation_gpt, citation_gem, year)
     cl_cluster_id = check_a.get("cl_cluster_id")
     cl_opinion_id = check_a.get("cl_opinion_id")
-    time.sleep(3)  # rate limiting — CL enforces ~1 req/sec for authenticated users
+    time.sleep(10)  # rate limiting — 10s inter-call sleep to avoid CL session quota exhaustion
 
     # Fetch opinion text once (used for checks C and D).
     # Primary: /opinions/{id}/ structured fields.
@@ -638,7 +651,7 @@ def verify_case(case: dict, state: str) -> dict:
         opinion_text = cl_get_opinion_text(cl_opinion_id)
         if opinion_text:
             opinion_text_source = f"CL opinion/{cl_opinion_id} full text"
-        time.sleep(2)
+        time.sleep(5)
     if not opinion_text:
         snippets = check_a.get("cl_snippets")
         if snippets:
@@ -649,7 +662,7 @@ def verify_case(case: dict, state: str) -> dict:
     # Check B
     print(f"      Check B: currency...")
     check_b = check_b_currency(cl_cluster_id)
-    time.sleep(2)
+    time.sleep(5)
 
     # Check C
     print(f"      Check C: holding accuracy...")

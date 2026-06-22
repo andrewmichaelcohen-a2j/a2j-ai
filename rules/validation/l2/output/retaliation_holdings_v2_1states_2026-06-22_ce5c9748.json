@@ -1,0 +1,549 @@
+{
+  "run_date": "2026-06-22",
+  "run_id": "ce5c9748",
+  "module": "substantive_defenses.retaliation.layer_decomposition.holdings",
+  "runner_version": "v2",
+  "source": "CourtListener REST API",
+  "models": {
+    "gpt": "gpt-4o",
+    "gemini": "gemini-2.5-pro"
+  },
+  "states_run": 1,
+  "state_list": [
+    "CA"
+  ],
+  "total_cases_verified": 6,
+  "total_machine_verified": 4,
+  "total_needs_attorney": 2,
+  "machine_verified_rate": "66.7%",
+  "dry_run": false,
+  "results": [
+    {
+      "state": "CA",
+      "cases_verified": 6,
+      "machine_verified": 4,
+      "needs_attorney": 2,
+      "case_results": [
+        {
+          "case_name": "Schweiger v. Superior Court",
+          "citation_gpt": "3 Cal.3d 507",
+          "citation_gemini": "3 Cal.3d 507",
+          "year": 1970,
+          "prior_holding": "Recognized retaliatory eviction as a defense to unlawful detainer where the landlord seeks possession because the tenant asserted habitability-related rights or complained about housing conditions.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Schweiger v. Superior Court",
+              "date": "1970-11-10",
+              "court": "California Supreme Court",
+              "citation": [
+                "476 P.2d 97",
+                "3 Cal. 3d 507",
+                "90 Cal. Rptr. 729",
+                "1970 Cal. LEXIS 225"
+              ],
+              "cluster_id": 2610738
+            },
+            "cl_cluster_id": 2610738,
+            "cl_opinion_id": 9791864,
+            "cl_url": "https://www.courtlistener.com/opinion/2610738/schweiger-v-superior-court/",
+            "cl_citation": "476 P.2d 97",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['476 P.2d 97', '3 Cal. 3d 507', '90 Cal. Rptr. 729', '1970 Cal. LEXIS 225']; model citations ['3 Cal.3d 507', '3 Cal.3d 507']; match=True",
+            "cl_snippets": "[combined-opinion] \n3 Cal.3d 507 (1970)\n476 P.2d 97\n90 Cal. Rptr. 729\nJOHN SCHWEIGER, Petitioner,\nv.\nTHE SUPERIOR COURT OF ALAMEDA COUNTY, Respondent; JOHN B. BONDS, Real Party in Interest.\nDocket No. S.F. 22754.\nSupreme Court of California. In Bank.\nNovember 10, 1970.\n*509 COUNSEL\nThomas L. Fik | [lead-opinion] \nOpinion\nMOSK, J.\nPetitioner is a tenant in a 19-unit apartment building owned by real party in interest, John Bonds. He has occupied the apartment for *510four years by virtue of a month-to-month oral agreement with Bonds. Initially, the rent paid by petitioner was $60 per month, but by February 1969 it had been gradually increased to $75 per month. | [dissent] \nWRIGHT, C. J.\nI dissent. Prior to today’s decision, a landlord in a month-to-month tenancy could increase the rent or terminate the tenancy for any reason or for no reason at all.1 (See Housing Authority v. Cordova (1955) 130 Cal.App.2d Supp. 883 [279 P.2d 215].) In holding that it shall be a defense to an action for unlawful detainer that the landlord raised the rent or brought the e",
+            "cl_all_citations": [
+              "476 P.2d 97",
+              "3 Cal. 3d 507",
+              "90 Cal. Rptr. 729",
+              "1970 Cal. LEXIS 225"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 20,
+            "basis": "No negative treatment detected in 20 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "corroborated",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that a tenant may use retaliatory eviction as a defense in an unlawful detainer action when the landlord’s actions are in response to the tenant asserting statutory rights to demand repairs under Civil Code sections 1941 and 1942.",
+              "prior_summary_accuracy": "accurate",
+              "accuracy_note": "The prior holding summary accurately captures the essence of the case, recognizing retaliatory eviction as a valid defense when a landlord seeks possession due to a tenant's exercise of habitability-related rights.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The court held that a tenant may defend an unlawful detainer action on the ground that the landlord's action was in retaliation for the tenant exercising their statutory rights to demand repairs under Civil Code sections 1941 and 1942. The court concluded a writ of mandate should issue to compel the superior court to hear this defense.",
+              "prior_summary_accuracy": "accurate",
+              "accuracy_note": "The prior summary accurately reflects the case's holding. The case explicitly considers and allows the defense of retaliatory eviction in an unlawful detainer action when the tenant's exercise of statutory rights regarding repairs (i.e., habitability) prompted the landlord's action.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "Both models assessed holding as 'accurate' (GPT) / 'accurate' (Gemini) vs. retrieved text"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "STATED-single-model",
+            "gpt_control": {
+              "control_type": "STATED",
+              "controlling_quote": "\"We must decide whether such an allegation constitutes a defense to an unlawful detainer action and, if so, whether the superior court abused its discretion in refusing to hear the defense.\"",
+              "quote_context": "The court explicitly states its task to determine if retaliatory eviction is a valid defense in unlawful detainer actions.",
+              "control_note": "The case directly addresses the issue by analyzing whether allegations of retaliatory eviction can serve as a defense, suggesting a controlling rule about the recognition of retaliatory eviction defenses in the context discussed.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case explicitly addresses whether a tenant may raise retaliatory eviction as a defense in an unlawful detainer action, concluding that the defense is valid based on public policy and statutory construction. However, the provided text does not explicitly state the specific legal elements required to prove the defense, nor does it mention any statutory presumption period. The court discusses the facts of the case and favorably cites an out-of-state case (Edwards v. Habib), but it does not articulate a formal, element-by-element test for the defense.",
+              "confidence": "high"
+            },
+            "controlling_quote": "\"We must decide whether such an allegation constitutes a defense to an unlawful detainer action and, if so, whether the superior court abused its discretion in refusing to hear the defense.\"",
+            "quote_agreement": false,
+            "basis": "GPT: STATED with quote. Gemini: INFERRED. Single-model STATED — attorney should verify quote."
+          },
+          "disposition": "machine-verified",
+          "disposition_note": "All 4 checks passed: existence ✓, citation ✓, currency OK-machine ✓, holding corroborated ✓, control STATED ✓. Below attorney line — attorney must confirm before use.",
+          "controlling_quote": "\"We must decide whether such an allegation constitutes a defense to an unlawful detainer action and, if so, whether the superior court abused its discretion in refusing to hear the defense.\""
+        },
+        {
+          "case_name": "S. P. Growers Assn. v. Rodriguez",
+          "citation_gpt": "17 Cal.3d 719",
+          "citation_gemini": null,
+          "year": 1976,
+          "prior_holding": "Held that occupants of employer-provided residential farmworker housing could resist eviction when the eviction was sought in retaliation for protected labor activity, extending retaliatory-eviction principles beyond housing-code complaints.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "S. P. Growers Ass'n v. Rodriguez",
+              "date": "1976-08-10",
+              "court": "California Supreme Court",
+              "citation": [
+                "552 P.2d 721",
+                "17 Cal. 3d 719",
+                "131 Cal. Rptr. 761",
+                "1976 Cal. LEXIS 319"
+              ],
+              "cluster_id": 1251104
+            },
+            "cl_cluster_id": 1251104,
+            "cl_opinion_id": 1251104,
+            "cl_url": "https://www.courtlistener.com/opinion/1251104/s-p-growers-assn-v-rodriguez/",
+            "cl_citation": "552 P.2d 721",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['552 P.2d 721', '17 Cal. 3d 719', '131 Cal. Rptr. 761', '1976 Cal. LEXIS 319']; model citations ['17 Cal.3d 719']; match=True",
+            "cl_snippets": "[combined-opinion] \n17 Cal.3d 719 (1976)\n552 P.2d 721\n131 Cal. Rptr. 761\nS.P. GROWERS ASSOCIATION, Plaintiff and Respondent,\nv.\nRUFINO RODRIGUEZ et al., Defendants and Appellants.\nDocket No. L.A. 30595.\nSupreme Court of California.\nAugust 10, 1976.\n*722 COUNSEL\nStephen A. Harvey and Richard A. W",
+            "cl_all_citations": [
+              "552 P.2d 721",
+              "17 Cal. 3d 719",
+              "131 Cal. Rptr. 761",
+              "1976 Cal. LEXIS 319"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 20,
+            "basis": "No negative treatment detected in 20 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that tenants could raise the defense of retaliatory eviction in an unlawful detainer action if the eviction was in retaliation for filing a federal suit under the Farm Labor Contractor Registration Act, thus balancing the protection of tenant rights against retaliatory actions with the interests of maintaining the summary nature of eviction proceedings.",
+              "prior_summary_accuracy": "partially_accurate",
+              "accuracy_note": "The prior summary accurately states the extension of retaliatory-eviction principles but does not emphasize the specific context of filing a federal suit under the Farm Labor Contractor Registration Act as the basis for the retaliation defense.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "A farmworker tenant may raise the affirmative defense of retaliatory eviction in an unlawful detainer action when the eviction is in retaliation for the tenant filing a lawsuit against the employer-landlord under the federal Farm Labor Contractor Registration Act. However, it is not a defense to an unlawful detainer action that the eviction was sought because the farmworker tenants were on strike.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior summary is inaccurate because the court explicitly held that eviction in retaliation for a strike (a protected labor activity) was permissible. The court's holding extended retaliatory eviction protection only to the act of filing a federal lawsuit, not to all protected labor activities.",
+              "confidence": "high"
+            },
+            "agreement": false,
+            "basis": "One or both models found holding inaccurate: GPT=partially_accurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "STATED-single-model",
+            "gpt_control": {
+              "control_type": "STATED",
+              "controlling_quote": "One such recognized defense is a plea that an unlawful detainer action amounts to a 'retaliatory eviction.' It is settled that a landlord may be precluded from evicting a tenant in retaliation for certain kinds of lawful activities of the tenant.",
+              "quote_context": "This passage appears in the main body of the opinion where the court discusses exceptions to the general rule against allowing affirmative defenses in unlawful detainer actions.",
+              "control_note": "The case explicitly discusses the doctrine of retaliatory eviction and supports the tenant's ability to raise this as a defense in unlawful detainer proceedings, which is directly relevant to the legal question.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case states the general rule that a residential tenant may raise the affirmative defense of retaliatory eviction in an unlawful detainer proceeding. However, the specific holding is about protecting tenants from eviction for filing a lawsuit under the federal Farm Labor Contractor Registration Act, which is not the typical residential context. The case does not state the specific elements of the defense or mention any statutory presumption period. Therefore, while it is highly relevant and establishes the availability of the defense, the complete rule for the user's question must be inferred.",
+              "confidence": "high"
+            },
+            "controlling_quote": "One such recognized defense is a plea that an unlawful detainer action amounts to a 'retaliatory eviction.' It is settled that a landlord may be precluded from evicting a tenant in retaliation for certain kinds of lawful activities of the tenant.",
+            "quote_agreement": false,
+            "basis": "GPT: STATED with quote. Gemini: INFERRED. Single-model STATED — attorney should verify quote."
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate. Attorney review required.",
+          "controlling_quote": "One such recognized defense is a plea that an unlawful detainer action amounts to a 'retaliatory eviction.' It is settled that a landlord may be precluded from evicting a tenant in retaliation for certain kinds of lawful activities of the tenant."
+        },
+        {
+          "case_name": "Barela v. Superior Court",
+          "citation_gpt": "30 Cal.3d 244",
+          "citation_gemini": "30 Cal.3d 244",
+          "year": 1981,
+          "prior_holding": "Confirmed that California's retaliatory-eviction protections are to be applied broadly in unlawful detainer proceedings to protect tenants from possession actions motivated by retaliation for lawful exercise of tenant rights.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Barela v. Superior Court",
+              "date": "1981-11-27",
+              "court": "California Supreme Court",
+              "citation": [
+                "636 P.2d 582",
+                "30 Cal. 3d 244",
+                "178 Cal. Rptr. 618",
+                "1981 Cal. LEXIS 188"
+              ],
+              "cluster_id": 1385709
+            },
+            "cl_cluster_id": 1385709,
+            "cl_opinion_id": 1385709,
+            "cl_url": "https://www.courtlistener.com/opinion/1385709/barela-v-superior-court/",
+            "cl_citation": "636 P.2d 582",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['636 P.2d 582', '30 Cal. 3d 244', '178 Cal. Rptr. 618', '1981 Cal. LEXIS 188']; model citations ['30 Cal.3d 244', '30 Cal.3d 244']; match=True",
+            "cl_snippets": "[combined-opinion] [EDITORS' NOTE: THIS PAGE CONTAINS HEADNOTES. HEADNOTES ARE NOT AN OFFICIAL PRODUCT OF THE COURT, THEREFORE THEY ARE NOT DISPLAYED.] *Page 246 \nOPINION\nIn an unlawful detainer action, may a renter raise as an affirmative defense the claim that a landlord seeks to evict in retaliation for the tenant's complaint to the police that the landlord has committed a crime?\n I.\nOn April 12, 1980, petit",
+            "cl_all_citations": [
+              "636 P.2d 582",
+              "30 Cal. 3d 244",
+              "178 Cal. Rptr. 618",
+              "1981 Cal. LEXIS 188"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 20,
+            "basis": "No negative treatment detected in 20 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "corroborated",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that an affirmative defense of retaliatory eviction is available in unlawful detainer actions when a tenant is being evicted in retaliation for reporting the landlord’s criminal activity to the police, if the public policies furthered by protecting the tenant outweigh the state's interest in ensuring summary proceedings for unlawful detainer actions.",
+              "prior_summary_accuracy": "partially_accurate",
+              "accuracy_note": "The prior holding summary correctly identifies the broad application of retaliatory eviction protections but omits specifics that the case extends protections for tenants reporting criminal activities, which was the central issue.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "A tenant in an unlawful detainer action may raise the affirmative defense that their landlord is evicting them in retaliation for the tenant's complaint to the police that the landlord has committed a crime. Applying the test from S.P. Growers, the public policy of protecting tenants from eviction for reporting a crime outweighs the state's interest in the summary nature of unlawful detainer proceedings.",
+              "prior_summary_accuracy": "accurate",
+              "accuracy_note": "The prior summary correctly identifies that the case supports a broad application of retaliatory eviction protections for tenants exercising lawful rights. The text explicitly extends the common law defense to situations where a tenant reports a landlord's criminal activity to the police, fitting the description of a broad application.",
+              "confidence": "high"
+            },
+            "agreement": false,
+            "basis": "Both models assessed holding as 'partially_accurate' (GPT) / 'accurate' (Gemini) vs. retrieved text"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "STATED",
+            "gpt_control": {
+              "control_type": "STATED",
+              "controlling_quote": "“It is settled that a landlord may be precluded from evicting a tenant in retaliation for certain kinds of lawful activities of the tenant. As a landlord has no right to possession when he seeks it for such an invalid reason, a tenant may raise the defense of retaliatory eviction in an unlawful detainer proceeding. [Citations.]” (S.P. Growers, supra, at p. 724.)",
+              "quote_context": "This passage appears in a section of the opinion where the court is discussing the availability and basis of the affirmative defense of retaliatory eviction within unlawful detainer proceedings.",
+              "control_note": "The opinion explicitly discusses the doctrine of retaliatory eviction and states that it can be used as an affirmative defense in unlawful detainer actions, making it a controlling authority on the question.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "STATED",
+              "controlling_quote": "A valid defense of retaliatory eviction may be advanced if, on balance, the public policies furthered by protecting a tenant from eviction outweigh the state’s interest in ensuring that unlawful detainer proceedings are truly summary.",
+              "quote_context": "The court is describing the test set down in a prior case, S.P. Growers Assn. v. Rodriguez, to define the scope of the common law retaliatory eviction defense.",
+              "control_note": "The case explicitly states the balancing test for the common law defense of retaliatory eviction. It also clarifies that California recognizes two independent sources for this defense: statutory law (Civil Code § 1942.5) and common law (decisional law). However, while the text mentions that the statute was amended to extend the protected time period, it does not specify the length of that statutory presumption period.",
+              "confidence": "high"
+            },
+            "controlling_quote": "“It is settled that a landlord may be precluded from evicting a tenant in retaliation for certain kinds of lawful activities of the tenant. As a landlord has no right to possession when he seeks it for such an invalid reason, a tenant may raise the defense of retaliatory eviction in an unlawful detainer proceeding. [Citations.]” (S.P. Growers, supra, at p. 724.)",
+            "quote_agreement": true,
+            "basis": "Both models classified control as STATED and provided quotes"
+          },
+          "disposition": "machine-verified",
+          "disposition_note": "All 4 checks passed: existence ✓, citation ✓, currency OK-machine ✓, holding corroborated ✓, control STATED ✓. Below attorney line — attorney must confirm before use.",
+          "controlling_quote": "“It is settled that a landlord may be precluded from evicting a tenant in retaliation for certain kinds of lawful activities of the tenant. As a landlord has no right to possession when he seeks it for such an invalid reason, a tenant may raise the defense of retaliatory eviction in an unlawful detainer proceeding. [Citations.]” (S.P. Growers, supra, at p. 724.)"
+        },
+        {
+          "case_name": "Drouet v. Superior Court",
+          "citation_gpt": "31 Cal.4th 583",
+          "citation_gemini": null,
+          "year": 2003,
+          "prior_holding": "Held that retaliatory-eviction defenses may be raised in Ellis Act unlawful detainer cases, but a landlord with a bona fide intent to withdraw the property from the rental market is not barred from eviction merely by evidence of retaliatory motive.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Drouet v. Superior Court",
+              "date": "2003-08-11",
+              "court": "California Supreme Court",
+              "citation": [
+                "73 P.3d 1185",
+                "3 Cal. Rptr. 3d 205",
+                "31 Cal. 4th 583",
+                "2003 Cal. Daily Op. Serv. 7131",
+                "2003 Daily Journal DAR 8914",
+                "2003 Cal. LEXIS 5687"
+              ],
+              "cluster_id": 2585536
+            },
+            "cl_cluster_id": 2585536,
+            "cl_opinion_id": 9786884,
+            "cl_url": "https://www.courtlistener.com/opinion/2585536/drouet-v-superior-court/",
+            "cl_citation": "73 P.3d 1185",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['73 P.3d 1185', '3 Cal. Rptr. 3d 205', '31 Cal. 4th 583', '2003 Cal. Daily Op. Serv. 7131', '2003 Daily Journal DAR 8914', '2003 Cal. LEXIS 5687']; model citations ['31 Cal.4th 583']; match=True",
+            "cl_snippets": "[lead-opinion] \nOpinion\nBAXTER, J.\nThe Ellis Act (Gov. Code, § 7060 et seq.) provides that no statute, ordinance, regulation, or administrative action “shall . . . compel the owner of any residential real property to offer, or to continue to offer, accommodations in the property for rent or lease.” (Gov. Code, § 7060, subd. (a).) A landlord who complies with the Ellis Act may the | [combined-opinion] \n3 Cal.Rptr.3d 205 (2003)\n73 P.3d 1185\n31 Cal.4th 583\nJoel DROUET, Petitioner,\nv.\nThe SUPERIOR COURT of the City and County of San Francisco, Respondent;\nJim Broustis et al., Real Parties in Interest.\nNo. S096161.\nSupreme Court of California.\nAugust 11, 2003.\n*207 Law Offices of  | [concurrence-opinion] \nBROWN, J., Concurring.\nI concur in the judgment and opinion of the court. I write separately in order to express my understanding on three points the superior court will, upon remand, have to consider in ruling upon the landlord’s motion for summary judgment: (1) The landlord’s filing of a notice of intent to withdraw his property from the rental market, as required by the San F | [in-part-opinion] \nMORENO, J., Concurring and Dissenting.\nI agree with the majority that the judgment of the Court of Appeal must be reversed. The Court of Appeal erroneously held that “in unlawful detainer proceedings properly commenced under the Ellis Act, a tenant may not raise an affirmative defense of retaliatory eviction.” The Ellis Act (Gov. Code, § 7060 et seq.)",
+            "cl_all_citations": [
+              "73 P.3d 1185",
+              "3 Cal. Rptr. 3d 205",
+              "31 Cal. 4th 583",
+              "2003 Cal. Daily Op. Serv. 7131",
+              "2003 Daily Journal DAR 8914",
+              "2003 Cal. LEXIS 5687"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 18,
+            "basis": "No negative treatment detected in 18 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "corroborated",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that a landlord's bona fide intent to withdraw rental property from the market under the Ellis Act renders the defense of retaliatory eviction inapplicable, even if there is evidence suggesting a retaliatory motive.",
+              "prior_summary_accuracy": "partially_accurate",
+              "accuracy_note": "The prior holding summary captures the essence that retaliatory-eviction defenses may be raised but is misleading in omitting that if the landlord has a bona fide intent to go out of the rental business, evidence of retaliation does not bar eviction.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The court held that a landlord’s bona fide intent to withdraw a property from the rental market under the Ellis Act will defeat the statutory defense of retaliatory eviction. However, because the trial court failed to consider whether the landlord's intent was bona fide, the matter was remanded for further proceedings under this standard.",
+              "prior_summary_accuracy": "accurate",
+              "accuracy_note": "The prior summary correctly identifies that the defense can be raised but that a landlord's bona fide intent to withdraw the property will defeat it, which is the central holding of the case.",
+              "confidence": "high"
+            },
+            "agreement": false,
+            "basis": "Both models assessed holding as 'partially_accurate' (GPT) / 'accurate' (Gemini) vs. retrieved text"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "STATED",
+            "gpt_control": {
+              "control_type": "STATED",
+              "controlling_quote": "\"In unlawful detainer proceedings properly commenced under the Ellis Act, a tenant may not raise an affirmative defense of retaliatory eviction to prevent displacement.\"",
+              "quote_context": "This statement appears in the discussion section after a detailed analysis of the interplay between the Ellis Act and Civil Code section 1942.5 regarding retaliatory eviction defenses.",
+              "control_note": "The court explicitly addresses whether the defense of retaliatory eviction can be raised in an unlawful detainer proceeding under the Ellis Act. It clearly answers this question by stating that such a defense is unavailable when the landlord has complied with the Ellis Act.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "STATED",
+              "controlling_quote": "The defense of retaliatory eviction, codified at Civil Code section 1942.5 (section 1942.5), is one such defense. This defense bars a landlord from recovering possession of the dwelling in an unlawful detainer action where recovery is “for the purpose of retaliating” against the tenant because of his or her lawful and peaceable exercise of any rights under the law (§ 1942.5, subd. (c)) or “because of’ his or her complaints regarding tenant-ability (id., subd. (a)).",
+              "quote_context": "In the third paragraph of the opinion, where the court introduces the statutory defense of retaliatory eviction.",
+              "control_note": "The court explicitly states the core elements of the retaliatory eviction defense by quoting the purposes prohibited by subdivisions (a) and (c) of Civil Code section 1942.5. However, the case does not mention a statutory presumption period. The primary focus of the case is the conflict between this defense and a landlord's rights under the Ellis Act.",
+              "confidence": "high"
+            },
+            "controlling_quote": "\"In unlawful detainer proceedings properly commenced under the Ellis Act, a tenant may not raise an affirmative defense of retaliatory eviction to prevent displacement.\"",
+            "quote_agreement": true,
+            "basis": "Both models classified control as STATED and provided quotes"
+          },
+          "disposition": "machine-verified",
+          "disposition_note": "All 4 checks passed: existence ✓, citation ✓, currency OK-machine ✓, holding corroborated ✓, control STATED ✓. Below attorney line — attorney must confirm before use.",
+          "controlling_quote": "\"In unlawful detainer proceedings properly commenced under the Ellis Act, a tenant may not raise an affirmative defense of retaliatory eviction to prevent displacement.\""
+        },
+        {
+          "case_name": "Aweeka v. Bonds",
+          "citation_gpt": null,
+          "citation_gemini": "20 Cal.App.3d 278",
+          "year": 1971,
+          "prior_holding": "Established that a tenant can bring an affirmative tort action for damages for a retaliatory eviction, in addition to using it as a defense in an unlawful detainer proceeding.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Aweeka v. Bonds",
+              "date": "1971-09-28",
+              "court": "California Court of Appeal",
+              "citation": [
+                "20 Cal. App. 3d 278",
+                "97 Cal. Rptr. 650",
+                "1971 Cal. App. LEXIS 1172"
+              ],
+              "cluster_id": 2112813
+            },
+            "cl_cluster_id": 2112813,
+            "cl_opinion_id": 9719672,
+            "cl_url": "https://www.courtlistener.com/opinion/2112813/aweeka-v-bonds/",
+            "cl_citation": "20 Cal. App. 3d 278",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['20 Cal. App. 3d 278', '97 Cal. Rptr. 650', '1971 Cal. App. LEXIS 1172']; model citations ['20 Cal.App.3d 278']; match=True",
+            "cl_snippets": "[combined-opinion] \n20 Cal.App.3d 278 (1971)\n97 Cal. Rptr. 650\nANTHONY AWEEKA et al., Plaintiffs and Appellants,\nv.\nJOHN BONDS et al., Defendants and Respondents.\nDocket No. 28025.\nCourt of Appeals of California, First District, Division Two.\nSeptember 28, 1971.\n*280 COUNSEL\nAllan David Heskin, William Petrocelli, Myro | [lead-opinion] \nOpinion\nTAYLOR, J.\nOn this appeal by the tenants from a judgment of dismissal entered after the court sustained without leave to amend the landlords’ demurrer to their amended complaint, the questions are whether causes of action were stated for retaliatory eviction, for intentional infliction of mental distress, and the propriety of the trial court’s denial of the  | [dissent] \nKANE, J.\nI dissent. The majority, in my opinion, has adopted an unwarranted proliferation of Schweiger v. Superior Court, 3 Cal.3d 507 [90 Cal.Rptr. 729, 476 P.2d 97]. The potential results of today’s decision are far-reaching and unfairly place a California landlord in a very precarious position.\nIf the majority opinion stands as the law of this s",
+            "cl_all_citations": [
+              "20 Cal. App. 3d 278",
+              "97 Cal. Rptr. 650",
+              "1971 Cal. App. LEXIS 1172"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 16,
+            "basis": "No negative treatment detected in 16 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that the tenants' complaint was dismissed for failing to state a cause of action for retaliatory eviction.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The case text does not indicate that the court established a new affirmative tort action for damages for retaliatory eviction; instead, it mentions the dismissal of the tenants' complaint.",
+              "confidence": "medium"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The provided text does not state a holding, as it only presents the procedural posture and lists the questions on appeal. The lead opinion's text cuts off after identifying that one of the questions is whether the tenants stated a cause of action for retaliatory eviction.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided text is insufficient to verify the prior holding summary. The text only introduces the issues on appeal, which include whether a cause of action for retaliatory eviction was stated; it does not contain the court's reasoning or conclusion on this matter.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text does not provide specific language addressing the legal question of retaliatory eviction, its elements, or statutory presumption period. The case might discuss related landlord-tenant issues, but it does not explicitly state the rule controlling the defense of retaliatory eviction. Thus, any understanding of this issue from the case would have to be inferred.",
+              "confidence": "medium"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided text explicitly states that one of the questions on appeal is 'whether causes of action were stated for retaliatory eviction'. However, the excerpt does not contain the court's actual analysis or holding on this issue. Therefore, while the case directly addresses the topic, the specific rule (the elements and any statutory presumption) cannot be determined from the text supplied. The controlling rule must be inferred from the existence of the question itself, rather than from a direct statement in the text.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Western Land Office, Inc. v. Cervantes",
+          "citation_gpt": null,
+          "citation_gemini": "175 Cal.App.3d 724",
+          "year": 1985,
+          "prior_holding": "Clarified the burden of proof under the retaliatory eviction statute (Civ. Code § 1942.5), holding that the tenant must first prove a protected act, after which the burden shifts to the landlord to show a legitimate, non-retaliatory reason for the eviction.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Western Land Office, Inc. v. Cervantes",
+              "date": "1985-12-13",
+              "court": "California Court of Appeal",
+              "citation": [
+                "175 Cal. App. 3d 724",
+                "220 Cal. Rptr. 784",
+                "1985 Cal. App. LEXIS 2870"
+              ],
+              "cluster_id": 2109053
+            },
+            "cl_cluster_id": 2109053,
+            "cl_opinion_id": 2109053,
+            "cl_url": "https://www.courtlistener.com/opinion/2109053/western-land-office-inc-v-cervantes/",
+            "cl_citation": "175 Cal. App. 3d 724",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['175 Cal. App. 3d 724', '220 Cal. Rptr. 784', '1985 Cal. App. LEXIS 2870']; model citations ['175 Cal.App.3d 724']; match=True",
+            "cl_snippets": "[combined-opinion] \n175 Cal.App.3d 724 (1985)\n220 Cal. Rptr. 784\nWESTERN LAND OFFICE, INC., Plaintiff and Respondent,\nv.\nTERESA CERVANTES et al., Defendants and Appellants.\nDocket No. H000191.\nCourt of Appeals of California, Sixth District.\nDecember 13, 1985.\n*725 COUNSEL\nLydia Villarreal, Juan Uranga, Robert K. Miller",
+            "cl_all_citations": [
+              "175 Cal. App. 3d 724",
+              "220 Cal. Rptr. 784",
+              "1985 Cal. App. LEXIS 2870"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 15,
+            "basis": "No negative treatment detected in 15 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "corroborated",
+            "gpt_holding": {
+              "your_holding_from_text": "The court held that in an unlawful detainer action, the tenant carries the overall burden of persuasion for a retaliatory eviction defense, but the landlord must provide notice and prove a valid ground for eviction in certain circumstances.",
+              "prior_summary_accuracy": "partially_accurate",
+              "accuracy_note": "The prior summary correctly identifies the shifting burden of proof regarding retaliatory eviction; however, it inaccurately implies a two-step transactional process where the tenant's proof is needed first, while the text indicates the tenant holds the overall burden of persuasion, with the landlord providing proof only in specified circumstances.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+            },
+            "agreement": false,
+            "basis": "Single-model assessment: GPT=partially_accurate, Gemini=None"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "STATED",
+            "gpt_control": {
+              "control_type": "STATED",
+              "controlling_quote": "The principal issue which confronts us is this: In an unlawful detainer action, where the affirmative defense of retaliatory eviction is asserted pursuant to Civil Code section 1942.5, who has the burden of proving what? We hold that under that section, (1) the tenant has the overall burden of persuasion on the issue of retaliatory eviction, but (2) in certain circumstances, hereinafter specified, the landlord has the burden of giving notice of, and of proving, a valid ground for his action.",
+              "quote_context": "This statement appears as a direct address of the legal issue at the beginning of the Court's opinion, where the Court outlines the burden of proof concerning the affirmative defense of retaliatory eviction.",
+              "control_note": "The opinion explicitly states which party bears the burden of proof concerning retaliatory eviction, thus directly controlling the legal question presented.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "STATED",
+              "controlling_quote": "In an unlawful detainer action, where the affirmative defense of retaliatory eviction is asserted pursuant to Civil Code section 1942.5, who has the burden of proving what? We hold that under that section, (1) the tenant has the overall burden of persuasion on the issue of retaliatory eviction, but (2) in certain circumstances, hereinafter specified, the landlord has the burden of giving notice of, and of proving, a valid ground for his action.",
+              "quote_context": "This language appears in the third paragraph of the opinion, where the court frames the principal issue on appeal and states its holding directly.",
+              "control_note": "The case directly addresses the affirmative defense of retaliatory eviction under Civil Code section 1942.5. It explicitly states the central issue is the burden of proof for this defense, which is a core component of its elements. However, the provided text is an excerpt and does not fully detail all the elements or the statutory presumption period mentioned in the legal question. While it controls the burden of proof element, the full rule is likely detailed later in the opinion, which is not included here.",
+              "confidence": "high"
+            },
+            "controlling_quote": "The principal issue which confronts us is this: In an unlawful detainer action, where the affirmative defense of retaliatory eviction is asserted pursuant to Civil Code section 1942.5, who has the burden of proving what? We hold that under that section, (1) the tenant has the overall burden of persuasion on the issue of retaliatory eviction, but (2) in certain circumstances, hereinafter specified, the landlord has the burden of giving notice of, and of proving, a valid ground for his action.",
+            "quote_agreement": true,
+            "basis": "Both models classified control as STATED and provided quotes"
+          },
+          "disposition": "machine-verified",
+          "disposition_note": "All 4 checks passed: existence ✓, citation ✓, currency OK-machine ✓, holding corroborated ✓, control STATED ✓. Below attorney line — attorney must confirm before use.",
+          "controlling_quote": "The principal issue which confronts us is this: In an unlawful detainer action, where the affirmative defense of retaliatory eviction is asserted pursuant to Civil Code section 1942.5, who has the burden of proving what? We hold that under that section, (1) the tenant has the overall burden of persuasion on the issue of retaliatory eviction, but (2) in certain circumstances, hereinafter specified, the landlord has the burden of giving notice of, and of proving, a valid ground for his action."
+        }
+      ]
+    }
+  ]
+}
