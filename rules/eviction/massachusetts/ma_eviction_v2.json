@@ -330,6 +330,16 @@
           "confidence": "high",
           "error": null
         }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 6,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -565,10 +575,174 @@
           }
         },
         "holdings": {
-          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "validation_method": "L2-holdings-4-check-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "validation_status": "L2-HOLDINGS-DRAFT",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "l2_run_date": "2026-06-21",
+          "models": {
+            "openai": "gpt-5.5",
+            "gemini": "gemini-2.5-pro"
+          },
+          "statutory_only": false,
+          "cases_draft_corroborated": [],
+          "cases_needs_attorney": [
+            {
+              "case_name": "McQueen v. Druker",
+              "citation": "317 F. Supp. 1122",
+              "citation_gpt": "317 F. Supp. 1122",
+              "citation_gemini": null,
+              "year": 1970,
+              "court_gpt": "D. Mass.",
+              "holding_gpt": "Recognized retaliatory eviction as an impermissible basis for recovering possession where eviction was sought in response to tenants' protected complaints and organizing activity in housing with sufficient governmental involvement.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Currency verification failed (both models errored)."
+              }
+            },
+            {
+              "case_name": "Scofield v. Berman & Sons, Inc.",
+              "citation": "393 Mass. 95",
+              "citation_gpt": "393 Mass. 95",
+              "citation_gemini": "393 Mass. 95",
+              "year": 1984,
+              "court_gpt": "Massachusetts Supreme Judicial Court",
+              "holding_gpt": "Held that the statutory presumption of retaliation under G.L. c. 186, § 18 shifts the burden of persuasion to the landlord to prove that the eviction or other adverse action was not retaliatory.",
+              "holding_gemini": "The statutory defense against retaliatory eviction (M.G.L. c. 186, § 18) applies even in summary process actions that are otherwise considered 'no-fault,' such as an eviction for condominium conversion.",
+              "inter_coder_match": true,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "pass",
+                "citation_consistency": "pass",
+                "holding_accuracy": "pass",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Both models independently identified this case.",
+                "citation_consistency": "Citation numbers overlap. GPT: 393 Mass. 95; Gemini: 393 Mass. 95.",
+                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Held that the statutory presumption of retaliation under G.L. c. 186, § 18 shift'; Gemini: 'The statutory defense against retaliatory eviction (M.G.L. c. 186, § 18) applies'.",
+                "currency": "Gemini only: status=limited (conf=high)."
+              }
+            },
+            {
+              "case_name": "Al-Ziab v. Mourgis",
+              "citation": "424 Mass. 847",
+              "citation_gpt": "424 Mass. 847",
+              "citation_gemini": null,
+              "year": 1997,
+              "court_gpt": "Massachusetts Supreme Judicial Court",
+              "holding_gpt": "Applied G.L. c. 186, § 18 to landlord reprisals following tenant protected activity and confirmed that rent increases and eviction-related conduct can constitute actionable retaliation when motivated by tenant complaints.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Currency verification failed (both models errored)."
+              }
+            },
+            {
+              "case_name": "Haddad v. Gonzalez",
+              "citation": "410 Mass. 855",
+              "citation_gpt": null,
+              "citation_gemini": "410 Mass. 855",
+              "year": 1991,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "A landlord's retaliatory conduct can constitute an unfair and deceptive practice in violation of the Consumer Protection Act, M.G.L. c. 93A, potentially entitling the tenant to multiple damages and attorney's fees.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only: status=limited (conf=high)."
+              }
+            },
+            {
+              "case_name": "Jablonski v. Clemons",
+              "citation": "60 Mass. App. Ct. 473",
+              "citation_gpt": null,
+              "citation_gemini": "60 Mass. App. Ct. 473",
+              "year": 2004,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "To rebut the statutory presumption of retaliation, a landlord must produce clear and convincing evidence of a legitimate, non-retaliatory reason for the eviction that is credible on its face.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "P.F.J. v. C.C. & F.F.",
+              "citation": "479 Mass. 244",
+              "citation_gpt": null,
+              "citation_gemini": "479 Mass. 244",
+              "year": 2018,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "A tenant's act of seeking a harassment prevention order against another tenant constitutes a protected activity for which a landlord cannot retaliate under M.G.L. c. 186, § 18.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            }
+          ],
+          "draft_corroborated_count": 0,
+          "needs_attorney_count": 6,
+          "total_cases_evaluated": 6,
+          "l2_note": "Phase A: GPT identified 3 cases, Gemini identified 4 cases. Phase B: 6 evaluated; 0 draft-corroborated; 6 needs-attorney. ALL draft-corroborated cases require attorney confirmation before public citation.",
+          "labeling_note": "IMPORTANT: No holdings are auto-confirmed. L2-HOLDINGS-DRAFT status requires attorney review before these cases may be cited in any public document or legal advice. Label: holdings-draft-corroborated = AI drafted + 4-check verified; attorney must confirm case is real, cited correctly, still good law."
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",

@@ -397,6 +397,16 @@
           "confidence": "high",
           "error": null
         }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 2,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -630,10 +640,74 @@
           }
         },
         "holdings": {
-          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "validation_method": "L2-holdings-4-check-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "validation_status": "L2-HOLDINGS-DRAFT",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "l2_run_date": "2026-06-21",
+          "models": {
+            "openai": "gpt-5.5",
+            "gemini": "gemini-2.5-pro"
+          },
+          "statutory_only": false,
+          "cases_draft_corroborated": [],
+          "cases_needs_attorney": [
+            {
+              "case_name": "Davis v. Christian Brotherhood Homes of Jackson, Mississippi, Inc.",
+              "citation": "957 So. 2d 390",
+              "citation_gpt": "957 So. 2d 390",
+              "citation_gemini": null,
+              "year": 2007,
+              "court_gpt": "Mississippi Court of Appeals",
+              "holding_gpt": "The court applied Mississippi Code section 89-8-17 as the governing anti-retaliation rule and upheld rejection of the tenant’s retaliatory-eviction claim because the tenant failed to prove that the landlord’s eviction action was retaliation for protected statutory activity.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Currency verification failed (both models errored)."
+              }
+            },
+            {
+              "case_name": "Imperial Palace of Mississippi, LLC v. Wilson",
+              "citation": "91 So. 3d 596",
+              "citation_gpt": null,
+              "citation_gemini": "91 So. 3d 596",
+              "year": 2012,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "The court established the burden-shifting framework for a retaliatory eviction claim, requiring the tenant to first prove a protected act, after which the landlord may offer a legitimate, nonretaliatory reason for the eviction.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            }
+          ],
+          "draft_corroborated_count": 0,
+          "needs_attorney_count": 2,
+          "total_cases_evaluated": 2,
+          "l2_note": "Phase A: GPT identified 1 cases, Gemini identified 1 cases. Phase B: 2 evaluated; 0 draft-corroborated; 2 needs-attorney. ALL draft-corroborated cases require attorney confirmation before public citation.",
+          "labeling_note": "IMPORTANT: No holdings are auto-confirmed. L2-HOLDINGS-DRAFT status requires attorney review before these cases may be cited in any public document or legal advice. Label: holdings-draft-corroborated = AI drafted + 4-check verified; attorney must confirm case is real, cited correctly, still good law."
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",

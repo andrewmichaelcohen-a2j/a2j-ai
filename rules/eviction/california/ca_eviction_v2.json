@@ -430,6 +430,16 @@
         "draft_corroborated": 0,
         "needs_attorney": 5,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 6,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -771,8 +781,8 @@
               "citation_gemini": "3 Cal.3d 507",
               "year": 1970,
               "court_gpt": "California Supreme Court",
-              "holding_gpt": "Held that a residential tenant may assert retaliatory eviction as a defense in an unlawful detainer action when the landlord seeks possession in retaliation for the tenant’s good-faith complaints or exercise of statutory habitability rights.",
-              "holding_gemini": "Recognized a common law defense of retaliatory eviction, holding that a landlord may not raise rent and then evict a tenant for nonpayment in retaliation for exercising the right to demand repairs.",
+              "holding_gpt": "Recognized retaliatory eviction as a defense to unlawful detainer where the landlord seeks possession because the tenant asserted habitability-related rights or complained about housing conditions.",
+              "holding_gemini": "Judicially established the common law defense of retaliatory eviction, holding that a landlord cannot evict a tenant in retaliation for exercising the statutory 'repair and deduct' right.",
               "inter_coder_match": true,
               "disposition": "holdings-needs-attorney",
               "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
@@ -785,68 +795,18 @@
               "check_notes": {
                 "existence": "Both models independently identified this case.",
                 "citation_consistency": "Citation numbers overlap. GPT: 3 Cal.3d 507; Gemini: 3 Cal.3d 507.",
-                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Held that a residential tenant may assert retaliatory eviction as a defense in a'; Gemini: 'Recognized a common law defense of retaliatory eviction, holding that a landlord'.",
+                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Recognized retaliatory eviction as a defense to unlawful detainer where the land'; Gemini: 'Judicially established the common law defense of retaliatory eviction, holding t'.",
                 "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
               }
             },
             {
-              "case_name": "Aweeka v. Bonds",
-              "citation": "20 Cal.App.3d 278",
-              "citation_gpt": "20 Cal.App.3d 278",
-              "citation_gemini": "20 Cal.App.3d 278",
-              "year": 1971,
-              "court_gpt": "Cal. Ct. App.",
-              "holding_gpt": "Recognized that California’s retaliatory eviction doctrine is grounded in public policy and may protect tenants against eviction or threats of eviction in retaliation for lawful tenant activity, not merely the specific acts enumerated in the statute.",
-              "holding_gemini": "Held that a tenant may bring an affirmative lawsuit for damages and injunctive relief based on retaliatory eviction, not just use it as a defense to an unlawful detainer action.",
-              "inter_coder_match": true,
-              "disposition": "holdings-needs-attorney",
-              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
-              "checks": {
-                "existence": "pass",
-                "citation_consistency": "pass",
-                "holding_accuracy": "pass",
-                "currency": "uncertain"
-              },
-              "check_notes": {
-                "existence": "Both models independently identified this case.",
-                "citation_consistency": "Citation numbers overlap. GPT: 20 Cal.App.3d 278; Gemini: 20 Cal.App.3d 278.",
-                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Recognized that California’s retaliatory eviction doctrine is grounded in public'; Gemini: 'Held that a tenant may bring an affirmative lawsuit for damages and injunctive r'.",
-                "currency": "Currency uncertain. GPT: good_law (conf=high); Gemini: limited (conf=high)."
-              }
-            },
-            {
-              "case_name": "Barela v. Superior Court",
-              "citation": "30 Cal.3d 244",
-              "citation_gpt": "30 Cal.3d 244",
-              "citation_gemini": "30 Cal.3d 244",
-              "year": 1981,
-              "court_gpt": "California Supreme Court",
-              "holding_gpt": "Confirmed that retaliatory eviction is a cognizable defense in unlawful detainer proceedings and that Civil Code section 1942.5 should not be read narrowly to defeat the public policy against retaliatory landlord conduct.",
-              "holding_gemini": "Extended the retaliatory eviction defense to protect tenants evicted in retaliation for reporting a landlord's criminal activity to the police, broadening the scope of protected tenant conduct.",
-              "inter_coder_match": true,
-              "disposition": "holdings-needs-attorney",
-              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
-              "checks": {
-                "existence": "pass",
-                "citation_consistency": "pass",
-                "holding_accuracy": "pass",
-                "currency": "uncertain"
-              },
-              "check_notes": {
-                "existence": "Both models independently identified this case.",
-                "citation_consistency": "Citation numbers overlap. GPT: 30 Cal.3d 244; Gemini: 30 Cal.3d 244.",
-                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Confirmed that retaliatory eviction is a cognizable defense in unlawful detainer'; Gemini: 'Extended the retaliatory eviction defense to protect tenants evicted in retaliat'.",
-                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
-              }
-            },
-            {
-              "case_name": "Drouet v. Superior Court",
-              "citation": "31 Cal.4th 583",
-              "citation_gpt": "31 Cal.4th 583",
+              "case_name": "S. P. Growers Assn. v. Rodriguez",
+              "citation": "17 Cal.3d 719",
+              "citation_gpt": "17 Cal.3d 719",
               "citation_gemini": null,
-              "year": 2003,
+              "year": 1976,
               "court_gpt": "California Supreme Court",
-              "holding_gpt": "Held that a tenant may raise retaliation under Civil Code section 1942.5 in response to an Ellis Act eviction, but the defense fails if the landlord proves a bona fide intent to withdraw the property from the residential rental market.",
+              "holding_gpt": "Held that occupants of employer-provided residential farmworker housing could resist eviction when the eviction was sought in retaliation for protected labor activity, extending retaliatory-eviction principles beyond housing-code complaints.",
               "holding_gemini": null,
               "inter_coder_match": false,
               "disposition": "holdings-needs-attorney",
@@ -865,14 +825,64 @@
               }
             },
             {
-              "case_name": "Western Land Office, Inc. v. Cervantes",
-              "citation": "174 Cal.App.3d 724",
+              "case_name": "Barela v. Superior Court",
+              "citation": "30 Cal.3d 244",
+              "citation_gpt": "30 Cal.3d 244",
+              "citation_gemini": "30 Cal.3d 244",
+              "year": 1981,
+              "court_gpt": "California Supreme Court",
+              "holding_gpt": "Confirmed that California's retaliatory-eviction protections are to be applied broadly in unlawful detainer proceedings to protect tenants from possession actions motivated by retaliation for lawful exercise of tenant rights.",
+              "holding_gemini": "Expanded the retaliatory eviction defense to protect tenants who report potential housing code violations to the authorities, confirming the defense is based on broad public policy.",
+              "inter_coder_match": true,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "pass",
+                "citation_consistency": "pass",
+                "holding_accuracy": "pass",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Both models independently identified this case.",
+                "citation_consistency": "Citation numbers overlap. GPT: 30 Cal.3d 244; Gemini: 30 Cal.3d 244.",
+                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Confirmed that California's retaliatory-eviction protections are to be applied b'; Gemini: 'Expanded the retaliatory eviction defense to protect tenants who report potentia'.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "Drouet v. Superior Court",
+              "citation": "31 Cal.4th 583",
+              "citation_gpt": "31 Cal.4th 583",
+              "citation_gemini": null,
+              "year": 2003,
+              "court_gpt": "California Supreme Court",
+              "holding_gpt": "Held that retaliatory-eviction defenses may be raised in Ellis Act unlawful detainer cases, but a landlord with a bona fide intent to withdraw the property from the rental market is not barred from eviction merely by evidence of retaliatory motive.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "GPT only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "Aweeka v. Bonds",
+              "citation": "20 Cal.App.3d 278",
               "citation_gpt": null,
-              "citation_gemini": "174 Cal.App.3d 724",
-              "year": 1985,
+              "citation_gemini": "20 Cal.App.3d 278",
+              "year": 1971,
               "court_gpt": null,
               "holding_gpt": null,
-              "holding_gemini": "Established the burden-shifting framework for the statutory defense, where once a tenant makes a prima facie showing of retaliation, the burden shifts to the landlord to prove a legitimate, non-retaliatory motive for the eviction.",
+              "holding_gemini": "Established that a tenant can bring an affirmative tort action for damages for a retaliatory eviction, in addition to using it as a defense in an unlawful detainer proceeding.",
               "inter_coder_match": false,
               "disposition": "holdings-needs-attorney",
               "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
@@ -888,12 +898,37 @@
                 "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
                 "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
               }
+            },
+            {
+              "case_name": "Western Land Office, Inc. v. Cervantes",
+              "citation": "175 Cal.App.3d 724",
+              "citation_gpt": null,
+              "citation_gemini": "175 Cal.App.3d 724",
+              "year": 1985,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "Clarified the burden of proof under the retaliatory eviction statute (Civ. Code § 1942.5), holding that the tenant must first prove a protected act, after which the burden shifts to the landlord to show a legitimate, non-retaliatory reason for the eviction.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only: status=limited (conf=high)."
+              }
             }
           ],
           "draft_corroborated_count": 0,
-          "needs_attorney_count": 5,
-          "total_cases_evaluated": 5,
-          "l2_note": "Phase A: GPT identified 4 cases, Gemini identified 4 cases. Phase B: 5 evaluated; 0 draft-corroborated; 5 needs-attorney. ALL draft-corroborated cases require attorney confirmation before public citation.",
+          "needs_attorney_count": 6,
+          "total_cases_evaluated": 6,
+          "l2_note": "Phase A: GPT identified 4 cases, Gemini identified 4 cases. Phase B: 6 evaluated; 0 draft-corroborated; 6 needs-attorney. ALL draft-corroborated cases require attorney confirmation before public citation.",
           "labeling_note": "IMPORTANT: No holdings are auto-confirmed. L2-HOLDINGS-DRAFT status requires attorney review before these cases may be cited in any public document or legal advice. Label: holdings-draft-corroborated = AI drafted + 4-check verified; attorney must confirm case is real, cited correctly, still good law."
         },
         "best_practices": {

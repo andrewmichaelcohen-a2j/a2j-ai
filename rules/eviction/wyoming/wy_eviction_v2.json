@@ -324,6 +324,16 @@
           "confidence": "high",
           "error": null
         }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 0,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -557,10 +567,23 @@
           }
         },
         "holdings": {
-          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "validation_method": "L2-holdings-4-check-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "validation_status": "L2-HOLDINGS-DRAFT",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "l2_run_date": "2026-06-21",
+          "models": {
+            "openai": "gpt-5.5",
+            "gemini": "gemini-2.5-pro"
+          },
+          "statutory_only": true,
+          "statutory_note": "Wyoming appears to have no reported Wyoming Supreme Court decision establishing or significantly interpreting a residential retaliatory-eviction defense; the protection is statutory under Wyoming's Residential Rental Property Act, which prohibits retaliatory landlord action such as seeking possession, increasing rent, or reducing services because a tenant asserted protected rights or made protected complaints.",
+          "cases_draft_corroborated": [],
+          "cases_needs_attorney": [],
+          "draft_corroborated_count": 0,
+          "needs_attorney_count": 0,
+          "l2_note": "Both models indicate Wyoming retaliation defense is primarily statutory with limited significant case law. Wyoming appears to have no reported Wyoming Supreme Court decision establishing or significantly interpreting a residential retaliatory-eviction defense; the protection is statutory under Wyoming's Residential Rental Property Act, which prohibits retaliatory landlord action such as seeking possession, increasing rent, or reducing services because a tenant asserted protected rights or made protected complaints.",
+          "labeling_note": "IMPORTANT: No holdings are auto-confirmed. L2-HOLDINGS-DRAFT status requires attorney review before these cases may be cited in any public document or legal advice. Label: holdings-draft-corroborated = AI drafted + 4-check verified; attorney must confirm case is real, cited correctly, still good law."
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",

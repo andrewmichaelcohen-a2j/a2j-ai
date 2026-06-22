@@ -253,7 +253,7 @@ python3 rules/validation/l2/remaining_defenses_elements_runner.py --states SD
 - **State-protective overlays** — ✅ L2 citation check complete (Module 4, 2026-06-20). 16 items pending human action. See queue.
 - **Substantive defenses / retaliation elements** — ✅ L2 complete (Module 5, 2026-06-20). 1 L7 open (KS). 50 states pending attorney confirmation.
 - **Substantive defenses / remaining 4 defenses elements** — ✅ L2 complete (Module 6, 2026-06-21). 50 states resolved; SD retry pending (transient).
-- **Substantive defenses / retaliation holdings + best-practices** — Elements layer L2 complete (see row above). Holdings (citation verification — cases exist, cited correctly, still good law) and best-practices (fidelity to leading clinic/practitioner sources) not yet run. Design work required before runners are built.
+- **Substantive defenses / retaliation holdings** — ✅ Holdings runner built and first run complete (2026-06-21, Terminal, 34 states, ~$4.51). See holdings section below. Runner design finding: 0% auto-confirmed due to inter-coder case mismatch + GPT currency errors. 11 inter-coder matched cases identified; 108 total candidate cases logged. Runner v2 required before auto-corroboration is possible. See VALIDATION_METRICS_LEDGER holdings section.
 - **Substantive defenses / remaining 4 defenses holdings + best-practices** — Same status as retaliation holdings. Not yet run.
 - **Substantive defenses / retaliation application-to-facts** — Human-reserved by design; open-textured judgment (motive, causation, tenant intent). Meets stopping-rule condition in all 51 states. No L2 to run.
 
@@ -309,6 +309,57 @@ In priority order (retaliation elements gates holdings; notice/service are found
 4. **Service module** (51 states): `python3 rules/validation/l2/l2_service_runner.py`. Updated runner now saves raw output. Cost: ~$4.50.
 5. **SCRA** (1 query, 51 states): re-run when GPT resolved — same runner, tiny cost (~$0.02).
 6. **State-protective overlays, 13 states** (AR, DC, GA, ID, IN, LA, MI, MO, MS, OR, SD, WV, WY): re-run with `--states AR,DC,GA,ID,IN,LA,MI,MO,MS,OR,SD,WV,WY`. Cost: ~$2.
+
+---
+
+#### Module: Substantive Defenses — Retaliation — claim type: holdings layer (case citation verification)
+
+*Run from Andy's Terminal, 2026-06-21. 34 states (consensus elements states only). Raw file: `rules/validation/l2/output/retaliation_holdings_l2_raw_2026-06-21.json`.*
+
+| Run | Date | Models | States | Cases evaluated | DRAFT-CORROBORATED | NEEDS-ATTORNEY | Cost | Status |
+|-----|------|--------|--------|----------------|---------------------|----------------|------|--------|
+| L2 retaliation holdings — 34-state Terminal run | 2026-06-21 | gpt-5.5 + gemini-2.5-pro | 34 | 108 | **0 (0%)** | **108 (100%)** | ~$4.51 | complete; runner design ceiling reached |
+
+**Runner design finding — why 0% auto-confirmed:**
+
+The "DRAFT-CORROBORATED" threshold requires all four checks to pass: (1) existence confirmed via inter-coder match, (2) citation consistent between models, (3) holding accurate per cross-check, (4) currency confirmed by both models. The 0% rate reflects two compounding failures — not a finding that the cases don't exist:
+
+1. **Inter-coder mismatch (primary):** Only 11 of 108 cases (10%) had both models independently name the same case. Models cite different but potentially valid cases. Existence/citation/holding checks all fail when only one model names a case — even if the case is real and correctly cited by that model.
+
+2. **GPT currency check empty (secondary):** GPT returned empty on 34 currency verification queries. Even the 11 inter-coder matched cases failed because GPT couldn't confirm currency. The exception: PA (Pugh v. Holmes) — both models returned currency opinions (both: good_law ✅). Also DC (Edwards v. Habib) — GPT said good_law; Gemini said "superseded by statute" (which means codified, not overruled).
+
+**The 11 inter-coder matched cases (both models independently cited the same case):**
+
+These are the highest-confidence candidate holdings — both models found the same case without prompting. Gemini currency verdicts applied (GPT empty for most):
+
+| State | Case | Citation | Year | Gemini currency | Notes |
+|-------|------|----------|------|----------------|-------|
+| CA | Schweiger v. Superior Court | 3 Cal.3d 507 | 1970 | ✅ good_law | Codified in §1942.5(h) as supplementary |
+| CA | Barela v. Superior Court | 30 Cal.3d 244 | 1981 | ✅ good_law | Defense not limited to §1942.5 enumerated acts |
+| DC | Edwards v. Habib | 397 F.2d 687 | 1968 | ⚠️ "superseded" | Codified by §42-3505.02; foundational, still cited; GPT says good_law |
+| FL | K.D. Lewis Enterprises v. Smith | 445 So. 2d 1032 | 1984 | ✅ good_law | Statutory defense exclusive; rent default bars it |
+| IA | Hillview Assoc. v. Bloomquist | 440 N.W.2d 867 | 1989 | ✅ good_law | Primary motive test; affirmed by Lewis v. Jaeger (2012) |
+| IL | Clore v. Fredman | 59 Ill. 2d 20 | 1974 | ✅ good_law | Codified by 765 ILCS 720/1 (1983); both coexist |
+| MA | Scofield v. Berman & Sons | 393 Mass. 95 | 1984 | ⚠️ limited | Burden-shifting changed by 2004 amendment to §18 |
+| MN | Fritz v. Warthen | 213 N.W.2d 339 | 1973 | ❌ superseded | Common law defense superseded by statute per Central Housing Assoc. v. Olson (2019) |
+| OH | Markese v. Cooper | 70 Ohio App.2d 49 | 1980 | ✅ good_law | Citation mismatch (different reporter); principles adopted by higher courts |
+| PA | Pugh v. Holmes | 405 A.2d 897 | 1979 | ✅ good_law (both) | Both models confirmed currency; citation mismatch (different reporter systems — same case) |
+| WI | Dickhut v. Norton | 45 Wis. 2d 389 | 1970 | ❌ superseded | §704.45 now exclusive per Paulik v. Coombs (Ct. App. 1984) |
+
+**Statutory-only states (no controlling case law):** DE, VA, SD, WY — both models independently confirmed that these states rely purely on statute with no significant case law interpreting the retaliation defense presumption period.
+
+**No cases identified:** DE, AR, VA, SD, WY — neither model found any relevant cases. For AR and VA this likely reflects that the retaliation defense is relatively underlitigated at the appellate level (both are statutory regimes without a common law tradition for this defense).
+
+**Runner v2 design requirements (before next holdings run):**
+
+1. **Single-model currency fallback** — if GPT currency check empty, accept Gemini's verdict (same logic as elements single-model fallback). This alone would have promoted ~8 of 11 inter-coder matched cases to DRAFT-CORROBORATED.
+2. **Lower inter-coder bar** — "corroborated" should require: both models agree the case is relevant when the second model is asked about the case the first identified (not just both independently naming the same case without prompting). Current bar is too strict for case law.
+3. **Citation normalization** — accept different reporter systems for the same case (e.g., 486 Pa. 272 = 405 A.2d 897 for Pugh v. Holmes). Match on case_name + year when citations differ.
+4. **Candidate vs. confirmed tiers** — introduce a "holdings-candidate" tier for single-model cases (attorney starting point) vs. "holdings-corroborated" (inter-coder match + currency confirmed) vs. "holdings-confirmed" (attorney-verified).
+
+**Raw file value:** Despite 0% auto-confirmed, the raw file contains 108 candidate case citations across 34 states with holding summaries. These are valuable research starting points for attorney review — not garbage. The corroboration threshold just wasn't met by the runner's current design.
+
+**Automation ceiling for holdings layer:** Low. Case law identification is inherently less deterministic than statutory citation. The holdings layer is designed for attorney-in-the-loop from the start; the runner's job is to surface candidates and flag likely-superseded cases (MN Fritz, WI Dickhut), not to confirm without human review. Both of those currency flags (Fritz and Dickhut as superseded) are genuinely valuable findings from this run — they would have been errors in the rules files.
 
 ---
 

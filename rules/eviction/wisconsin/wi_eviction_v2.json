@@ -327,6 +327,16 @@
           "confidence": "high",
           "error": null
         }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 5,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -560,10 +570,149 @@
           }
         },
         "holdings": {
-          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "validation_method": "L2-holdings-4-check-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "validation_status": "L2-HOLDINGS-DRAFT",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "l2_run_date": "2026-06-21",
+          "models": {
+            "openai": "gpt-5.5",
+            "gemini": "gemini-2.5-pro"
+          },
+          "statutory_only": false,
+          "cases_draft_corroborated": [],
+          "cases_needs_attorney": [
+            {
+              "case_name": "Dickhut v. Norton",
+              "citation": "45 Wis. 2d 389",
+              "citation_gpt": "45 Wis. 2d 389",
+              "citation_gemini": "45 Wis. 2d 389, 173 N.W.2d 297",
+              "year": 1970,
+              "court_gpt": "Wisconsin Supreme Court",
+              "holding_gpt": "Established that a residential tenant may assert retaliatory eviction as a defense when the landlord seeks possession in retaliation for the tenant’s good-faith report of housing-code violations to public authorities.",
+              "holding_gemini": "The court established for the first time in Wisconsin a common law defense of retaliatory eviction, holding that a landlord may not evict a tenant in retaliation for reporting a housing code violation to authorities.",
+              "inter_coder_match": true,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "pass",
+                "citation_consistency": "pass",
+                "holding_accuracy": "pass",
+                "currency": "fail"
+              },
+              "check_notes": {
+                "existence": "Both models independently identified this case.",
+                "citation_consistency": "Citation numbers overlap. GPT: 45 Wis. 2d 389; Gemini: 45 Wis. 2d 389, 173 N.W.2d 297.",
+                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Established that a residential tenant may assert retaliatory eviction as a defen'; Gemini: 'The court established for the first time in Wisconsin a common law defense of re'.",
+                "currency": "Gemini only: case flagged as no longer good law (superseded)."
+              }
+            },
+            {
+              "case_name": "Woodland Realty, Inc. v. Winzenried",
+              "citation": "82 Wis. 2d 218",
+              "citation_gpt": "82 Wis. 2d 218",
+              "citation_gemini": null,
+              "year": 1978,
+              "court_gpt": "Wisconsin Supreme Court",
+              "holding_gpt": "Interpreted Wisconsin’s retaliatory-eviction law as requiring the tenant to show that the landlord’s eviction or termination action would not have occurred but for retaliation against protected tenant conduct.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Currency verification failed (both models errored)."
+              }
+            },
+            {
+              "case_name": "Shands v. Castrovinci",
+              "citation": "115 Wis. 2d 352",
+              "citation_gpt": "115 Wis. 2d 352",
+              "citation_gemini": null,
+              "year": 1983,
+              "court_gpt": "Wisconsin Supreme Court",
+              "holding_gpt": "Held that retaliatory landlord conduct prohibited by Wisconsin administrative landlord-tenant regulations can support statutory remedies, reinforcing the enforceability of Wisconsin’s anti-retaliation protections for residential tenants.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Currency verification failed (both models errored)."
+              }
+            },
+            {
+              "case_name": "Koble Investments v. Marquardt",
+              "citation": "2003 WI App 217, 267 Wis. 2d 1029",
+              "citation_gpt": "2003 WI App 217, 267 Wis. 2d 1029",
+              "citation_gemini": null,
+              "year": 2003,
+              "court_gpt": "Wisconsin Court of Appeals",
+              "holding_gpt": "Applied Wis. Stat. § 704.45 and held that retaliatory nonrenewal or eviction is prohibited when motivated by the tenant’s good-faith exercise of legal rights relating to the tenancy.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "GPT only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "Paulik v. Coombs",
+              "citation": "120 Wis. 2d 431, 355 N.W.2d 357",
+              "citation_gpt": null,
+              "citation_gemini": "120 Wis. 2d 431, 355 N.W.2d 357",
+              "year": 1984,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "Interpreting Wis. Stat. § 704.45, the court held that the statute codified the public policy of Dickhut and established a burden-shifting framework for proving a retaliatory eviction claim.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            }
+          ],
+          "draft_corroborated_count": 0,
+          "needs_attorney_count": 5,
+          "total_cases_evaluated": 5,
+          "l2_note": "Phase A: GPT identified 4 cases, Gemini identified 2 cases. Phase B: 5 evaluated; 0 draft-corroborated; 5 needs-attorney. ALL draft-corroborated cases require attorney confirmation before public citation.",
+          "labeling_note": "IMPORTANT: No holdings are auto-confirmed. L2-HOLDINGS-DRAFT status requires attorney review before these cases may be cited in any public document or legal advice. Label: holdings-draft-corroborated = AI drafted + 4-check verified; attorney must confirm case is real, cited correctly, still good law."
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",

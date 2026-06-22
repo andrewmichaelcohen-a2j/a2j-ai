@@ -1,0 +1,377 @@
+{
+  "run_date": "2026-06-22",
+  "run_id": "9b6140a4",
+  "module": "substantive_defenses.retaliation.layer_decomposition.holdings",
+  "runner_version": "v2",
+  "source": "CourtListener REST API",
+  "models": {
+    "gpt": "gpt-4.5-preview",
+    "gemini": "gemini-2.5-pro"
+  },
+  "states_run": 1,
+  "state_list": [
+    "CA"
+  ],
+  "total_cases_verified": 6,
+  "total_machine_verified": 0,
+  "total_needs_attorney": 6,
+  "machine_verified_rate": "0.0%",
+  "dry_run": false,
+  "results": [
+    {
+      "state": "CA",
+      "cases_verified": 6,
+      "machine_verified": 0,
+      "needs_attorney": 6,
+      "case_results": [
+        {
+          "case_name": "Schweiger v. Superior Court",
+          "citation_gpt": "3 Cal.3d 507",
+          "citation_gemini": "3 Cal.3d 507",
+          "year": 1970,
+          "prior_holding": "Recognized retaliatory eviction as a defense to unlawful detainer where the landlord seeks possession because the tenant asserted habitability-related rights or complained about housing conditions.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Schweiger v. Superior Court",
+              "date": "1970-11-10",
+              "court": "California Supreme Court",
+              "citation": [
+                "476 P.2d 97",
+                "3 Cal. 3d 507",
+                "90 Cal. Rptr. 729",
+                "1970 Cal. LEXIS 225"
+              ],
+              "cluster_id": 2610738
+            },
+            "cl_cluster_id": 2610738,
+            "cl_opinion_id": 2610738,
+            "cl_url": "https://www.courtlistener.com/opinion/2610738/schweiger-v-superior-court/",
+            "cl_citation": "476 P.2d 97",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CourtListener returned citation '476 P.2d 97'; model citations: ['3 Cal.3d 507', '3 Cal.3d 507']"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 20,
+            "basis": "No negative treatment detected in 20 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "S. P. Growers Assn. v. Rodriguez",
+          "citation_gpt": "17 Cal.3d 719",
+          "citation_gemini": null,
+          "year": 1976,
+          "prior_holding": "Held that occupants of employer-provided residential farmworker housing could resist eviction when the eviction was sought in retaliation for protected labor activity, extending retaliatory-eviction principles beyond housing-code complaints.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Socialist Workers 1974 California Campaign Committee v. Brown",
+              "date": "1975-12-19",
+              "court": "California Court of Appeal",
+              "citation": [
+                "53 Cal. App. 3d 879",
+                "125 Cal. Rptr. 915",
+                "1975 Cal. App. LEXIS 1619"
+              ],
+              "cluster_id": 2157531
+            },
+            "cl_cluster_id": 2157531,
+            "cl_opinion_id": 2157531,
+            "cl_url": "https://www.courtlistener.com/opinion/2157531/socialist-workers-1974-california-campaign-committee-v-brown/",
+            "cl_citation": "53 Cal. App. 3d 879",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CourtListener returned citation '53 Cal. App. 3d 879'; model citations: ['17 Cal.3d 719']"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 11,
+            "basis": "No negative treatment detected in 11 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Barela v. Superior Court",
+          "citation_gpt": "30 Cal.3d 244",
+          "citation_gemini": "30 Cal.3d 244",
+          "year": 1981,
+          "prior_holding": "Confirmed that California's retaliatory-eviction protections are to be applied broadly in unlawful detainer proceedings to protect tenants from possession actions motivated by retaliation for lawful exercise of tenant rights.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Barela v. Superior Court",
+              "date": "1981-11-27",
+              "court": "California Supreme Court",
+              "citation": [
+                "636 P.2d 582",
+                "30 Cal. 3d 244",
+                "178 Cal. Rptr. 618",
+                "1981 Cal. LEXIS 188"
+              ],
+              "cluster_id": 1385709
+            },
+            "cl_cluster_id": 1385709,
+            "cl_opinion_id": 1385709,
+            "cl_url": "https://www.courtlistener.com/opinion/1385709/barela-v-superior-court/",
+            "cl_citation": "636 P.2d 582",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CourtListener returned citation '636 P.2d 582'; model citations: ['30 Cal.3d 244', '30 Cal.3d 244']"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 20,
+            "basis": "No negative treatment detected in 20 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Drouet v. Superior Court",
+          "citation_gpt": "31 Cal.4th 583",
+          "citation_gemini": null,
+          "year": 2003,
+          "prior_holding": "Held that retaliatory-eviction defenses may be raised in Ellis Act unlawful detainer cases, but a landlord with a bona fide intent to withdraw the property from the rental market is not barred from eviction merely by evidence of retaliatory motive.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Drouet v. Superior Court",
+              "date": "2003-08-11",
+              "court": "California Supreme Court",
+              "citation": [
+                "73 P.3d 1185",
+                "3 Cal. Rptr. 3d 205",
+                "31 Cal. 4th 583",
+                "2003 Cal. Daily Op. Serv. 7131",
+                "2003 Daily Journal DAR 8914",
+                "2003 Cal. LEXIS 5687"
+              ],
+              "cluster_id": 2585536
+            },
+            "cl_cluster_id": 2585536,
+            "cl_opinion_id": 9786884,
+            "cl_url": "https://www.courtlistener.com/opinion/2585536/drouet-v-superior-court/",
+            "cl_citation": "73 P.3d 1185",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CourtListener returned citation '73 P.3d 1185'; model citations: ['31 Cal.4th 583']"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 18,
+            "basis": "No negative treatment detected in 18 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Aweeka v. Bonds",
+          "citation_gpt": null,
+          "citation_gemini": "20 Cal.App.3d 278",
+          "year": 1971,
+          "prior_holding": "Established that a tenant can bring an affirmative tort action for damages for a retaliatory eviction, in addition to using it as a defense in an unlawful detainer proceeding.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Aweeka v. Bonds",
+              "date": "1971-09-28",
+              "court": "California Court of Appeal",
+              "citation": [
+                "20 Cal. App. 3d 278",
+                "97 Cal. Rptr. 650",
+                "1971 Cal. App. LEXIS 1172"
+              ],
+              "cluster_id": 2112813
+            },
+            "cl_cluster_id": 2112813,
+            "cl_opinion_id": 2112813,
+            "cl_url": "https://www.courtlistener.com/opinion/2112813/aweeka-v-bonds/",
+            "cl_citation": "20 Cal. App. 3d 278",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CourtListener returned citation '20 Cal. App. 3d 278'; model citations: ['20 Cal.App.3d 278']"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 16,
+            "basis": "No negative treatment detected in 16 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Western Land Office, Inc. v. Cervantes",
+          "citation_gpt": null,
+          "citation_gemini": "175 Cal.App.3d 724",
+          "year": 1985,
+          "prior_holding": "Clarified the burden of proof under the retaliatory eviction statute (Civ. Code § 1942.5), holding that the tenant must first prove a protected act, after which the burden shifts to the landlord to show a legitimate, non-retaliatory reason for the eviction.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Western Land Office, Inc. v. Cervantes",
+              "date": "1985-12-13",
+              "court": "California Court of Appeal",
+              "citation": [
+                "175 Cal. App. 3d 724",
+                "220 Cal. Rptr. 784",
+                "1985 Cal. App. LEXIS 2870"
+              ],
+              "cluster_id": 2109053
+            },
+            "cl_cluster_id": 2109053,
+            "cl_opinion_id": 2109053,
+            "cl_url": "https://www.courtlistener.com/opinion/2109053/western-land-office-inc-v-cervantes/",
+            "cl_citation": "175 Cal. App. 3d 724",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CourtListener returned citation '175 Cal. App. 3d 724'; model citations: ['175 Cal.App.3d 724']"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 15,
+            "basis": "No negative treatment detected in 15 citing opinions via CourtListener as of 2026-06-22. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-22"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    }
+  ]
+}

@@ -366,6 +366,16 @@
           "confidence": "high",
           "error": null
         }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 5,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -606,10 +616,149 @@
           }
         },
         "holdings": {
-          "validation_method": "L2-draft-and-cross-check-with-citation-verification",
+          "validation_method": "L2-holdings-4-check-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "validation_status": "L2-HOLDINGS-DRAFT",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "l2_run_date": "2026-06-21",
+          "models": {
+            "openai": "gpt-5.5",
+            "gemini": "gemini-2.5-pro"
+          },
+          "statutory_only": false,
+          "cases_draft_corroborated": [],
+          "cases_needs_attorney": [
+            {
+              "case_name": "Clore v. Fredman",
+              "citation": "59 Ill. 2d 20",
+              "citation_gpt": "59 Ill. 2d 20",
+              "citation_gemini": "59 Ill. 2d 20",
+              "year": 1974,
+              "court_gpt": "Illinois Supreme Court",
+              "holding_gpt": "Held that retaliatory eviction is a valid defense in an Illinois forcible entry and detainer action when the landlord seeks possession because the tenant complained to governmental authorities about housing-code violations.",
+              "holding_gemini": "First recognized the common-law affirmative defense of retaliatory eviction, holding that a landlord is not free to evict a tenant in retaliation for the tenant's reporting of housing code violations to governmental authorities.",
+              "inter_coder_match": true,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "pass",
+                "citation_consistency": "pass",
+                "holding_accuracy": "pass",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Both models independently identified this case.",
+                "citation_consistency": "Citation numbers overlap. GPT: 59 Ill. 2d 20; Gemini: 59 Ill. 2d 20.",
+                "holding_accuracy": "Both models independently identified this case. GPT summary: 'Held that retaliatory eviction is a valid defense in an Illinois forcible entry '; Gemini: 'First recognized the common-law affirmative defense of retaliatory eviction, hol'.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "Deka v. Peters",
+              "citation": "90 Ill. App. 3d 683",
+              "citation_gpt": "90 Ill. App. 3d 683",
+              "citation_gemini": null,
+              "year": 1980,
+              "court_gpt": "Illinois Appellate Court, First District",
+              "holding_gpt": "Held that retaliatory eviction can support affirmative relief, including damages, where a landlord ousts a residential tenant in retaliation for protected complaints about housing violations.",
+              "holding_gemini": null,
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only GPT cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Currency verification failed (both models errored)."
+              }
+            },
+            {
+              "case_name": "Shelby County Housing Authority v. Thornell",
+              "citation": "144 Ill. App. 3d 71",
+              "citation_gpt": null,
+              "citation_gemini": "144 Ill. App. 3d 71",
+              "year": 1986,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "Held that the common-law defense of retaliatory eviction is available in eviction actions brought by a public housing authority, not just by private landlords.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "Wood v. Wood",
+              "citation": "284 Ill. App. 3d 718",
+              "citation_gpt": null,
+              "citation_gemini": "284 Ill. App. 3d 718",
+              "year": 1996,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "Clarified that the protected activity supporting a retaliatory eviction defense must generally involve reporting violations to a governmental authority, not merely engaging in private disputes with the landlord.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only only: confirms good law, but single-model — attorney confirmation required."
+              }
+            },
+            {
+              "case_name": "Ryonyde v. Brennan",
+              "citation": "291 Ill. App. 3d 378",
+              "citation_gpt": null,
+              "citation_gemini": "291 Ill. App. 3d 378",
+              "year": 1997,
+              "court_gpt": null,
+              "holding_gpt": null,
+              "holding_gemini": "Established the burden-shifting framework for the defense: once the tenant makes a prima facie case of retaliatory motive, the burden shifts to the landlord to articulate a legitimate, non-retaliatory reason for the eviction.",
+              "inter_coder_match": false,
+              "disposition": "holdings-needs-attorney",
+              "disposition_note": "Flagged: existence, citation_consistency, holding_accuracy, currency check(s) did not pass. Attorney review required before including in canonical holdings.",
+              "checks": {
+                "existence": "uncertain",
+                "citation_consistency": "uncertain",
+                "holding_accuracy": "uncertain",
+                "currency": "uncertain"
+              },
+              "check_notes": {
+                "existence": "Only Gemini cited this case — existence cannot be inter-coder confirmed.",
+                "citation_consistency": "Only one model cited this case — citation cannot be cross-checked.",
+                "holding_accuracy": "Only one model cited this case — holding accuracy cannot be cross-checked.",
+                "currency": "Gemini only: status=uncertain (conf=high)."
+              }
+            }
+          ],
+          "draft_corroborated_count": 0,
+          "needs_attorney_count": 5,
+          "total_cases_evaluated": 5,
+          "l2_note": "Phase A: GPT identified 2 cases, Gemini identified 4 cases. Phase B: 5 evaluated; 0 draft-corroborated; 5 needs-attorney. ALL draft-corroborated cases require attorney confirmation before public citation.",
+          "labeling_note": "IMPORTANT: No holdings are auto-confirmed. L2-HOLDINGS-DRAFT status requires attorney review before these cases may be cited in any public document or legal advice. Label: holdings-draft-corroborated = AI drafted + 4-check verified; attorney must confirm case is real, cited correctly, still good law."
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",
