@@ -1,0 +1,9 @@
+{
+  "job_id": "job_20260624_0215_batch1",
+  "protocol": "retaliation_holdings_v3",
+  "states": "AZ,DC,IA,KY,MA,ME,MN,NE,NH,RI,WA,DE,AR,IN,MO,VA",
+  "sleep": 10,
+  "fresh": false,
+  "created": "2026-06-24T00:00:00Z",
+  "note": "Batch 1 — 16 states. Rename to .json to enqueue."
+}

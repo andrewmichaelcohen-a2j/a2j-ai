@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  CJaC Validation Scheduler — launchd Agent
+  ==========================================
+  Fires dispatch.py at 02:15 AM every day (when Mac is plugged in and lid open).
+  Dispatcher picks the next job from rules/validation/queue/ and runs it.
+
+  INSTALL (one-time):
+    cp /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/com.cjac.validation.plist \
+       ~/Library/LaunchAgents/com.cjac.validation.plist
+    launchctl load ~/Library/LaunchAgents/com.cjac.validation.plist
+    launchctl list | grep cjac      # confirm registered
+
+  VERIFY keep-awake:
+    pmset -g | grep " sleep"        # should show 'sleep 0' on AC profile
+
+  TO STOP:
+    launchctl unload ~/Library/LaunchAgents/com.cjac.validation.plist
+
+  LID CAVEAT: On MacBook, closing the lid forces sleep regardless of pmset.
+  For overnight runs, leave the lid OPEN (display sleeping is fine) or use
+  clamshell mode with an external display attached.
+-->
+<plist version="1.0">
+<dict>
+
+    <key>Label</key>
+    <string>com.cjac.validation</string>
+
+    <!-- Fire at 02:15 AM every day -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>   <integer>2</integer>
+        <key>Minute</key> <integer>15</integer>
+    </dict>
+
+    <!-- dispatch.py reads queue/ and launches run_protocol.py -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/dispatch.py</string>
+    </array>
+
+    <!-- Working directory = repo root -->
+    <key>WorkingDirectory</key>
+    <string>/Users/andrewcohen/Documents/GitHub/a2j-ai</string>
+
+    <!-- Log dispatcher output (separate from run_protocol.py's own log) -->
+    <key>StandardOutPath</key>
+    <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/launchd_stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/launchd_stderr.log</string>
+
+    <!-- Inherit environment (reads .env via dotenv in runner) -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/andrewcohen</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+    </dict>
+
+    <!-- Run even if launch time was missed (e.g. machine was off) — fires on next wake -->
+    <key>RunAtLoad</key>
+    <false/>
+
+</dict>
+</plist>
