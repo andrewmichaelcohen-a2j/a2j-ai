@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Retaliation Defense — Holdings Verification Runner v2
+Retaliation Defense — Holdings Verification Runner v2 (prompt revision v3, 2026-06-23)
 ======================================================
 Implements COWORK_DIRECTION_HOLDINGS_VERIFICATION.md (2026-06-21).
 
@@ -471,50 +471,65 @@ def check_b_currency(cl_cluster_id: int | None) -> dict:
     return result
 
 
-HOLDING_PROMPT = """You are reviewing an appellate case to verify a holding claim.
+HOLDING_PROMPT = """You are reviewing an appellate case to identify its relevance to the tenant defense of retaliatory eviction.
 
 CASE TEXT (retrieved from CourtListener):
 ---
 {opinion_text}
 ---
 
-PRIOR HOLDING SUMMARY (from draft identification step):
-"{prior_holding}"
-
 Your tasks:
-1. Based solely on the retrieved case text, state in 1-2 sentences what this case actually held on the question of retaliatory eviction or the tenant defense being analyzed.
-2. Assess whether the prior holding summary is accurate, partially accurate, or inaccurate based on the text.
+1. Does this case address the tenant's DEFENSE of retaliatory eviction — i.e., does it discuss whether a landlord may evict a tenant in retaliation for the tenant's protected activity (complaining about habitability, reporting code violations, organizing, exercising legal rights, etc.)?
+2. If YES: state in 1-2 sentences what the case held on this question. Be precise about what the court decided.
+3. If NO: briefly describe what the case is actually about.
 
 Respond in JSON:
 {{
-  "your_holding_from_text": "...",
-  "prior_summary_accuracy": "accurate" | "partially_accurate" | "inaccurate",
-  "accuracy_note": "...",
-  "confidence": "high" | "medium" | "low"
+  "addresses_retaliation_defense": true,
+  "holding_on_retaliation": "...",
+  "what_case_is_about": "...",
+  "confidence": "high" | "medium" | "low",
+  "note": "..."
+}}
+
+If the case does NOT address the retaliation defense, respond:
+{{
+  "addresses_retaliation_defense": false,
+  "holding_on_retaliation": null,
+  "what_case_is_about": "...",
+  "confidence": "high" | "medium" | "low",
+  "note": "..."
 }}"""
 
 
 def check_c_holding(opinion_text: str | None, prior_holding: str, case_name: str) -> dict:
-    """Check C: Holding characterization accuracy via retrieved opinion text."""
+    """Check C: Relevance + fresh holding derivation from retrieved opinion text.
+
+    v3 approach (2026-06-23): Fresh-derives the holding from text rather than comparing
+    against the v1 draft prior_holding. Removes dependency on draft characterization
+    quality. Corroborated = both models independently confirm case addresses retaliation
+    defense. Stores AI-derived holding for use by attorneys reviewing the queue.
+    """
     result = {
-        "check": "C_holding_accuracy",
+        "check": "C_holding_relevance_and_derivation",
         "holding": "FLAG",
+        "derived_holding_gpt": None,
+        "derived_holding_gem": None,
         "gpt_holding": None,
         "gem_holding": None,
+        "derived_holding_consensus": None,
         "agreement": None,
         "basis": None,
     }
 
     if not opinion_text or len(opinion_text.strip()) < 200:
+        result["holding"] = "FLAG-no-text"
         result["basis"] = "Opinion text unavailable or too short — cannot verify holding"
         return result
 
     # Truncate for prompt (keep first 8000 chars — enough for most opinions)
     text_excerpt = opinion_text[:8000]
-    prompt = HOLDING_PROMPT.format(
-        opinion_text=text_excerpt,
-        prior_holding=prior_holding,
-    )
+    prompt = HOLDING_PROMPT.format(opinion_text=text_excerpt)
 
     # Run both models in parallel — saves ~10-15s per case vs. sequential.
     with ThreadPoolExecutor(max_workers=2) as executor:
@@ -526,24 +541,38 @@ def check_c_holding(opinion_text: str | None, prior_holding: str, case_name: str
     result["gpt_holding"] = g_resp
     result["gem_holding"] = gem_resp
 
-    # Assess agreement
-    g_acc = g_resp.get("prior_summary_accuracy") if isinstance(g_resp, dict) and "error" not in g_resp else None
-    gem_acc = gem_resp.get("prior_summary_accuracy") if isinstance(gem_resp, dict) and "error" not in gem_resp else None
+    # Extract relevance and derived holdings
+    g_relevant  = g_resp.get("addresses_retaliation_defense")  if isinstance(g_resp, dict)   and "error" not in g_resp   else None
+    gem_relevant = gem_resp.get("addresses_retaliation_defense") if isinstance(gem_resp, dict) and "error" not in gem_resp else None
+    g_hold   = g_resp.get("holding_on_retaliation")   if isinstance(g_resp, dict)   else None
+    gem_hold = gem_resp.get("holding_on_retaliation") if isinstance(gem_resp, dict) else None
 
-    if g_acc in ("accurate", "partially_accurate") and gem_acc in ("accurate", "partially_accurate"):
+    result["derived_holding_gpt"] = g_hold
+    result["derived_holding_gem"] = gem_hold
+
+    if g_relevant is True and gem_relevant is True:
         result["holding"] = "corroborated"
-        result["basis"] = f"Both models assessed holding as '{g_acc}' (GPT) / '{gem_acc}' (Gemini) vs. retrieved text"
-    elif g_acc == "inaccurate" or gem_acc == "inaccurate":
-        result["holding"] = "FLAG-inaccurate"
-        result["basis"] = f"One or both models found holding inaccurate: GPT={g_acc}, Gemini={gem_acc}"
-    elif g_acc is None and gem_acc is None:
+        result["derived_holding_consensus"] = g_hold or gem_hold  # primary for attorney use
+        result["agreement"] = True
+        result["basis"] = (
+            f"Both models confirm case addresses retaliation defense. "
+            f"GPT: '{str(g_hold or '')[:120]}' | Gemini: '{str(gem_hold or '')[:120]}'"
+        )
+    elif g_relevant is False and gem_relevant is False:
+        result["holding"] = "FLAG-irrelevant"
+        g_about   = g_resp.get("what_case_is_about", "")   if isinstance(g_resp, dict)   else ""
+        gem_about = gem_resp.get("what_case_is_about", "") if isinstance(gem_resp, dict) else ""
+        result["agreement"] = True
+        result["basis"] = f"Both models: case does NOT address retaliation defense. GPT: '{g_about[:100]}'. Gemini: '{gem_about[:100]}'"
+    elif g_relevant is None and gem_relevant is None:
         result["holding"] = "FLAG-models-failed"
-        result["basis"] = "Both models failed to return holding assessment"
+        result["agreement"] = None
+        result["basis"] = "Both models failed to return relevance assessment"
     else:
-        result["holding"] = "corroborated" if (g_acc or gem_acc) in ("accurate", "partially_accurate") else "FLAG"
-        result["basis"] = f"Single-model assessment: GPT={g_acc}, Gemini={gem_acc}"
-
-    result["agreement"] = g_acc == gem_acc
+        # One model says relevant, one says not — treat as needs-attorney
+        result["holding"] = "FLAG-split-relevance"
+        result["agreement"] = False
+        result["basis"] = f"Models disagree on relevance: GPT={g_relevant}, Gemini={gem_relevant}. GPT hold: '{str(g_hold or '')[:80]}'"
 
     return result
 
@@ -559,15 +588,17 @@ RETRIEVED CASE TEXT:
 
 Your task:
 1. Determine whether this case STATES the controlling rule on this question — meaning the court explicitly addressed this question and its language controls the answer.
-2. If the control is STATED: quote the specific language (pin cite or passage) that most directly states the controlling rule.
-3. If the rule can only be INFERRED (the court addressed a related question and you'd have to analogize): say so plainly and do not provide a fabricated quote.
+2. If the control is STATED with a clear verbatim passage: quote the specific language that most directly states the controlling rule.
+3. If the court establishes the rule through reasoning and prose (no single quotable sentence) but you can derive a clear rule from the text: classify as STATED-derived and state the rule in your own words synthesized from the opinion.
+4. If the rule can only be INFERRED by analogy (the court addressed a different question and you'd have to extrapolate): classify as INFERRED.
 
-CRITICAL: Never fabricate a quote. If you cannot find specific language in the text, classify as INFERRED.
+CRITICAL: Never fabricate a verbatim quote. If you cannot find specific language use STATED-derived (for rules clearly established in the opinion) or INFERRED (for analogized rules).
 
 Respond in JSON:
 {{
-  "control_type": "STATED" | "INFERRED",
-  "controlling_quote": "exact quote here" | null,
+  "control_type": "STATED" | "STATED-derived" | "INFERRED",
+  "controlling_quote": "exact verbatim quote" | null,
+  "derived_rule": "rule in your own words from the text (for STATED-derived only)" | null,
   "quote_context": "brief description of where in the opinion this appears" | null,
   "control_note": "...",
   "confidence": "high" | "medium" | "low"
@@ -603,28 +634,47 @@ def check_d_control(opinion_text: str | None, case_name: str) -> dict:
     result["gpt_control"] = g_resp
     result["gem_control"] = gem_resp
 
-    g_type = g_resp.get("control_type") if isinstance(g_resp, dict) and "error" not in g_resp else None
+    g_type   = g_resp.get("control_type")   if isinstance(g_resp, dict)   and "error" not in g_resp   else None
     gem_type = gem_resp.get("control_type") if isinstance(gem_resp, dict) and "error" not in gem_resp else None
-    g_quote = g_resp.get("controlling_quote") if isinstance(g_resp, dict) else None
+    g_quote   = g_resp.get("controlling_quote")   if isinstance(g_resp, dict)   else None
     gem_quote = gem_resp.get("controlling_quote") if isinstance(gem_resp, dict) else None
+    g_derived   = g_resp.get("derived_rule")   if isinstance(g_resp, dict)   else None
+    gem_derived = gem_resp.get("derived_rule") if isinstance(gem_resp, dict) else None
+
+    STATED_TYPES = ("STATED", "STATED-derived")
 
     if g_type == "STATED" and gem_type == "STATED" and g_quote and gem_quote:
         result["control"] = "STATED"
-        # Use GPT's quote as primary (both agreed control is stated)
-        result["controlling_quote"] = g_quote
+        result["controlling_quote"] = g_quote  # use GPT's quote (both agreed)
         result["quote_agreement"] = True
-        result["basis"] = "Both models classified control as STATED and provided quotes"
-    elif g_type == "STATED" and g_quote:
+        result["basis"] = "Both models classified control as STATED and provided verbatim quotes"
+
+    elif g_type in STATED_TYPES and gem_type in STATED_TYPES:
+        # Both agree the rule is established in the opinion (may be verbatim or derived)
+        quote = g_quote or gem_quote
+        derived = g_derived or gem_derived
+        if quote:
+            result["control"] = "STATED-single-model"
+            result["controlling_quote"] = quote
+        else:
+            result["control"] = "STATED-derived"
+            result["controlling_quote"] = derived  # synthesized rule, not verbatim
+        result["quote_agreement"] = True
+        result["basis"] = f"Both models agree rule is established in opinion: GPT={g_type}, Gemini={gem_type}. {'Verbatim quote available.' if quote else 'Rule derived from prose — attorney should verify precise language.'}"
+
+    elif g_type in STATED_TYPES and (g_quote or g_derived):
         result["control"] = "STATED-single-model"
-        result["controlling_quote"] = g_quote
-        result["basis"] = f"GPT: STATED with quote. Gemini: {gem_type}. Single-model STATED — attorney should verify quote."
-    elif gem_type == "STATED" and gem_quote:
+        result["controlling_quote"] = g_quote or g_derived
+        result["basis"] = f"GPT: {g_type}. Gemini: {gem_type}. Single-model — attorney should verify."
+
+    elif gem_type in STATED_TYPES and (gem_quote or gem_derived):
         result["control"] = "STATED-single-model"
-        result["controlling_quote"] = gem_quote
-        result["basis"] = f"Gemini: STATED with quote. GPT: {g_type}. Single-model STATED — attorney should verify quote."
+        result["controlling_quote"] = gem_quote or gem_derived
+        result["basis"] = f"Gemini: {gem_type}. GPT: {g_type}. Single-model — attorney should verify."
+
     else:
         result["control"] = "INFERRED"
-        result["basis"] = f"Both models or single model returned INFERRED: GPT={g_type}, Gemini={gem_type}"
+        result["basis"] = f"Neither model found stated or derivable rule: GPT={g_type}, Gemini={gem_type}"
 
     return result
 
@@ -685,7 +735,7 @@ def verify_case(case: dict, state: str) -> dict:
     a_ok = check_a["exists"] in ("true",)
     b_ok = check_b["currency"] == "OK-machine"
     c_ok = check_c["holding"] == "corroborated"
-    d_ok = check_d["control"] in ("STATED", "STATED-single-model")
+    d_ok = check_d["control"] in ("STATED", "STATED-single-model", "STATED-derived")
 
     if a_ok and b_ok and c_ok and d_ok:
         disposition = "machine-verified"

@@ -1,0 +1,3348 @@
+{
+  "run_date": "2026-06-23",
+  "run_id": "d5444e58",
+  "module": "substantive_defenses.retaliation.layer_decomposition.holdings",
+  "runner_version": "v2",
+  "source": "CourtListener REST API",
+  "models": {
+    "gpt": "gpt-4o",
+    "gemini": "gemini-2.5-pro"
+  },
+  "states_run": 16,
+  "state_list": [
+    "AZ",
+    "DC",
+    "IA",
+    "KY",
+    "MA",
+    "ME",
+    "MN",
+    "NE",
+    "NH",
+    "RI",
+    "WA",
+    "DE",
+    "AR",
+    "IN",
+    "MO",
+    "VA"
+  ],
+  "total_cases_verified": 51,
+  "total_machine_verified": 0,
+  "total_needs_attorney": 51,
+  "machine_verified_rate": "0.0%",
+  "dry_run": false,
+  "results": [
+    {
+      "state": "AZ",
+      "cases_verified": 3,
+      "machine_verified": 0,
+      "needs_attorney": 3,
+      "case_results": [
+        {
+          "case_name": "Thomas v. Goudreault",
+          "citation_gpt": "163 Ariz. 159",
+          "citation_gemini": null,
+          "year": 1989,
+          "prior_holding": "Applied Arizona's Residential Landlord and Tenant Act to uphold relief for tenants where the landlord retaliated against them for complaints about housing conditions, recognizing retaliatory conduct as actionable under A.R.S. § 33-1381.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Thomas v. Goudreault",
+              "date": "1989-10-10",
+              "court": "Court of Appeals of Arizona",
+              "citation": [
+                "786 P.2d 1010",
+                "163 Ariz. 159",
+                "45 Ariz. Adv. Rep. 13",
+                "1989 Ariz. App. LEXIS 270"
+              ],
+              "cluster_id": 2611112
+            },
+            "cl_cluster_id": 2611112,
+            "cl_opinion_id": 2611112,
+            "cl_url": "https://www.courtlistener.com/opinion/2611112/thomas-v-goudreault/",
+            "cl_citation": "786 P.2d 1010",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['786 P.2d 1010', '163 Ariz. 159', '45 Ariz. Adv. Rep. 13', '1989 Ariz. App. LEXIS 270']; model citations ['163 Ariz. 159']; match=True",
+            "cl_snippets": "[combined-opinion] \n163 Ariz. 159 (1989)\n786 P.2d 1010\nThomas M. THOMAS and Karen L. Thomas, husband and wife, Plaintiffs/Counter-Defendants/Appellees/Cross-Appellants,\nv.\nWilliam R. GOUDREAULT, and Sandra S. Goudreault, husband and wife, individually and as co-trustees of the Goudreault Living Trust, Defendants/Counter-claimants/Appellants/Cross-Appellees.\nNo. 1 CA-CIV 9633.\nCourt of Appeals of Ar",
+            "cl_all_citations": [
+              "786 P.2d 1010",
+              "163 Ariz. 159",
+              "45 Ariz. Adv. Rep. 13",
+              "1989 Ariz. App. LEXIS 270"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 19,
+            "basis": "No negative treatment detected in 19 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "corroborated",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that the jury found in favor of the tenants, the Thomases, on their claim that the Goudreaults had acted in retaliation for the Thomases' complaints regarding the condition of the leased property, and awarded retaliatory damages under A.R.S. §§ 33-1367 and 33-1381.",
+              "prior_summary_accuracy": "accurate",
+              "accuracy_note": "The prior holding summary correctly reflects the case's application of Arizona's Residential Landlord and Tenant Act in recognizing retaliatory conduct as actionable, consistent with the jury's finding and the awarded retaliatory damages.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The appellate court noted that the jury found the landlords had acted in retaliation for the tenants' complaints regarding the condition of the leased property. The trial court awarded retaliatory damages pursuant to A.R.S. §§ 33-1367 and 33-1381, and the provided text does not show the appellate court overturning this part of the judgment.",
+              "prior_summary_accuracy": "partially_accurate",
+              "accuracy_note": "The provided text confirms that the trial court's judgment included damages for the landlord's retaliatory conduct under A.R.S. § 33-1381. However, the text is a fragment that does not contain the appellate court's actual analysis or holding on the retaliation issue, so it's impossible to verify that the appellate court specifically 'upheld' or 'applied' the law in this area; it only states the issue was raised on appeal and what the trial court did.",
+              "confidence": "high"
+            },
+            "agreement": false,
+            "basis": "Both models assessed holding as 'accurate' (GPT) / 'partially_accurate' (Gemini) vs. retrieved text"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case discusses several issues related to a landlord-tenant dispute, including retaliatory conduct. However, it does not provide explicit language detailing the affirmative defense of retaliatory eviction, nor does it specify the elements or statutory presumption period for such a defense. The matter of retaliatory conduct is mentioned among other claims, but without detailed legal standards or statutory references specific to retaliatory eviction.",
+              "confidence": "medium"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided text is a partial court opinion. While it confirms that a claim for retaliatory conduct was a central issue at trial and on appeal, and even mentions the specific statutes governing retaliatory conduct (A.R.S. §§ 33-1367 and 33-1381), the excerpt cuts off before the court provides any analysis on that issue. The available text focuses entirely on the separate issue of damages for mental suffering. Therefore, the case does not state the elements or the statutory presumption period for a retaliatory eviction defense.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "DVM Co. v. Stag Tobacconist, Ltd.",
+          "citation_gpt": "137 Ariz. 466",
+          "citation_gemini": null,
+          "year": 1983,
+          "prior_holding": "Held that Arizona would not extend a retaliatory-eviction defense to commercial tenancies, while distinguishing the statutory retaliatory-eviction protections the legislature provided to residential tenants under the Arizona Residential Landlord and Tenant Act.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "DVM CO. v. Stag Tobacconist, Ltd.",
+              "date": "1983-10-05",
+              "court": "Arizona Supreme Court",
+              "citation": [
+                "671 P.2d 907",
+                "137 Ariz. 465"
+              ],
+              "cluster_id": 2605282
+            },
+            "cl_cluster_id": 2605282,
+            "cl_opinion_id": 2605282,
+            "cl_url": "https://www.courtlistener.com/opinion/2605282/dvm-co-v-stag-tobacconist-ltd/",
+            "cl_citation": "671 P.2d 907",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CL citations ['671 P.2d 907', '137 Ariz. 465']; model citations ['137 Ariz. 466']; match=False",
+            "cl_snippets": "[combined-opinion] \n137 Ariz. 465 (1983)\n671 P.2d 907\nDVM CO., a joint venture, Plaintiff-Appellant/Cross-Appellee,\nv.\nSTAG TOBACCONIST, LTD., an Arizona corporation, Defendant-Appellee/Cross-Appellant.\nNo. 16604-PR.\nSupreme Court of Arizona, In Banc.\nOctober 5, 1983.\nReconsideration Denied November 8, 1983.\n*466",
+            "cl_all_citations": [
+              "671 P.2d 907",
+              "137 Ariz. 465"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 11,
+            "basis": "No negative treatment detected in 11 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that attorney's fees are not recoverable in a forcible entry and detainer action under the special statutory scheme for such actions, despite contractual provisions, and this was not a decision regarding retaliatory eviction defenses.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The retrieved text does not address the concept of retaliatory eviction or any tenant defenses related to it but covers the issue of attorney’s fees in forcible entry and detainer cases.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "Based on the text provided, this case does not address the issue of a retaliatory-eviction defense in either a commercial or residential tenancy. The case is entirely focused on whether attorney's fees can be awarded to the prevailing party within a forcible entry and detainer action.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior holding summary discusses a 'retaliatory-eviction defense' for commercial tenancies. The provided case text does not mention or analyze retaliatory eviction at all; its sole holding is that attorney's fees are not recoverable as part of a forcible entry and detainer action under the statutes in effect at the time, even if the parties' contract allows for them.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case primarily addresses the issue of whether attorney's fees can be awarded in forcible entry and detainer actions. It does not address the affirmative defense of retaliatory eviction, nor does it outline its elements or statutory presumption period.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "This case does not address the affirmative defense of retaliatory eviction at all. The entire opinion is focused on whether attorney's fees can be awarded in a forcible entry and detainer action under the statutes in effect at the time. Furthermore, the case involves a commercial lease, not a residential one, which is a key distinction for the user's legal question.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Visco v. First National Bank of Arizona",
+          "citation_gpt": null,
+          "citation_gemini": "3 Ariz. App. 504, 415 P.2d 902",
+          "year": 1966,
+          "prior_holding": "Held that under pre-statutory common law, a landlord could terminate a month-to-month tenancy for any reason, and the landlord's retaliatory motive for the eviction was irrelevant.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Visco v. First National Bank of Arizona",
+              "date": "1966-06-24",
+              "court": "Court of Appeals of Arizona",
+              "citation": [
+                "415 P.2d 902",
+                "3 Ariz. App. 504",
+                "1966 Ariz. App. LEXIS 658"
+              ],
+              "cluster_id": 1151797
+            },
+            "cl_cluster_id": 1151797,
+            "cl_opinion_id": 1151797,
+            "cl_url": "https://www.courtlistener.com/opinion/1151797/visco-v-first-national-bank-of-arizona/",
+            "cl_citation": "415 P.2d 902",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CL citations ['415 P.2d 902', '3 Ariz. App. 504', '1966 Ariz. App. LEXIS 658']; model citations ['3 Ariz. App. 504, 415 P.2d 902']; match=False",
+            "cl_snippets": "[combined-opinion] \n3 Ariz. App. 504 (1966)\n415 P.2d 902\nJohn VISCO and Arizona Mill Supply, Inc., a corporation, Appellants,\nv.\nFIRST NATIONAL BANK OF ARIZONA, the duly qualified and acting Executor of the Estate of Anthony J. Pasqualetti, Deceased, et al., Appellees.\nNo. 1 CA-CIV 195.\nCourt of Appeals of Arizona.\nJune 24, 1966.\nRehearing Denied August 4, ",
+            "cl_all_citations": [
+              "415 P.2d 902",
+              "3 Ariz. App. 504",
+              "1966 Ariz. App. LEXIS 658"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The retrieved case text does not provide specific details regarding the court's holding on the issue of retaliatory eviction.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The case text provided does not contain enough information to confirm the specific holding regarding retaliatory eviction. Without explicit details, the prior holding summary cannot be verified.",
+              "confidence": "low"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The court was asked to create a new common law rule that a landlord cannot evict a month-to-month tenant for a retaliatory motive, but it declined to do so. The court held that the question of whether to create such a defense against eviction was a matter for the legislature, not the judiciary.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior summary is inaccurate because the court did not affirmatively hold that a retaliatory motive was irrelevant under common law. Instead, the court declined to create a new common law defense of retaliatory eviction, concluding that such a significant policy change was a matter for the legislature to decide.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided case text does not explicitly address the legal question regarding the affirmative defense of retaliatory eviction in a residential landlord-tenant context. The text appears to involve banking matters and estate issues, which are unrelated to the topic of retaliatory eviction. Therefore, any connection would need to be inferred from broader principles, if even possible.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "This case does not address the affirmative defense of retaliatory eviction. The case text provided deals with commercial leases, liens for unpaid rent on equipment, and contractual disputes, not a residential landlord-tenant eviction. The concept of retaliatory eviction in Arizona is primarily statutory under the Arizona Residential Landlord and Tenant Act (A.R.S. § 33-1381), which was enacted in 1973. This case, decided in 1966, predates the relevant statute and does not discuss any common law precursor to the defense.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "DC",
+      "cases_verified": 6,
+      "machine_verified": 0,
+      "needs_attorney": 6,
+      "case_results": [
+        {
+          "case_name": "Edwards v. Habib",
+          "citation_gpt": "397 F.2d 687",
+          "citation_gemini": "397 F.2d 687",
+          "year": 1968,
+          "prior_holding": "Established under District of Columbia law that a residential landlord may not evict a tenant in retaliation for reporting housing-code violations to authorities, and that retaliation is a defense to a possession action.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Edwards v. Habib",
+              "date": "1967-03-20",
+              "court": "District of Columbia Court of Appeals",
+              "citation": [
+                "227 A.2d 388",
+                "1967 D.C. App. LEXIS 135"
+              ],
+              "cluster_id": 2270077
+            },
+            "cl_cluster_id": 2270077,
+            "cl_opinion_id": 2270077,
+            "cl_url": "https://www.courtlistener.com/opinion/2270077/edwards-v-habib/",
+            "cl_citation": "227 A.2d 388",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CL citations ['227 A.2d 388', '1967 D.C. App. LEXIS 135']; model citations ['397 F.2d 687', '397 F.2d 687']; match=False",
+            "cl_snippets": "[combined-opinion] \nThis appeal is by a tenant from a judgment in favor of her landlord for possession of a dwelling house which she had rented under a lease by the month (from month to month)1 in March of 1965. After taking possession the tenant made a number of complaints to the Housing Division of the Department of Licenses and Inspections of the District of Columbia regarding the condition of the premises. The Housing Division had the premises inspec",
+            "cl_all_citations": [
+              "227 A.2d 388",
+              "1967 D.C. App. LEXIS 135"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 4,
+            "basis": "No negative treatment detected in 4 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that under District of Columbia law, a residential landlord is not required to state a reason for eviction, and evidence of a landlord's retaliatory motives is inadmissible in possession actions.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior holding summary incorrectly states that retaliation is a defense to possession, whereas the actual case text indicates that the court found a landlord's motive for eviction irrelevant and inadmissible.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The court held that under the District of Columbia Code, a landlord may terminate a month-to-month tenancy with proper notice without providing a reason, and evidence of the landlord's motive, such as an alleged retaliatory purpose for the tenant reporting housing violations, is inadmissible in an eviction proceeding. The court affirmed the trial court's directed verdict for the landlord.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided summary is the exact opposite of the case's holding. The case explicitly rejected the tenant's defense of retaliatory eviction, holding that a private landlord's motives for eviction were immaterial and evidence of such motive was inadmissible.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case discusses the lack of a retaliatory eviction defense by emphasizing that the landlord's motives are immaterial in terminating a month-to-month tenancy. It does not explicitly state the rule concerning retaliatory eviction and instead references other cases where legislative intervention was involved. The opinion firmly upholds traditional common law rights without addressing specific statutory requirements for retaliatory eviction defenses.",
+              "confidence": "medium"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "This case is the opposite of controlling; it explicitly rejects the tenant's argument for a retaliatory eviction defense. The court holds that under the existing law, a landlord's motive for terminating a month-to-month tenancy is immaterial and evidence of that motive is inadmissible. The court reviews exceptions to this rule (e.g., when the government is the landlord, under emergency rent control acts, or for racial discrimination) but finds none apply here. Therefore, this case does not establish the elements of a retaliatory eviction defense but instead affirms the traditional common law rule that a private landlord can terminate a tenancy for any reason.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Hosey v. Club Van Cortlandt",
+          "citation_gpt": "299 A.2d 778",
+          "citation_gemini": null,
+          "year": 1973,
+          "prior_holding": "Applied and reaffirmed the retaliatory-eviction doctrine in District of Columbia courts, requiring consideration of whether the landlord's effort to recover possession was motivated by the tenant's protected complaints or activities.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Church v. Allen Meadows Apartments",
+              "date": "1972-03-02",
+              "court": "New York Supreme Court",
+              "citation": [
+                "69 Misc. 2d 254",
+                "1972 N.Y. Misc. LEXIS 2147",
+                "329 N.Y.S.2d 148"
+              ],
+              "cluster_id": 6324603
+            },
+            "cl_cluster_id": 6324603,
+            "cl_opinion_id": 6193099,
+            "cl_url": "https://www.courtlistener.com/opinion/6324603/church-v-allen-meadows-apartments/",
+            "cl_citation": "69 Misc. 2d 254",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CL citations ['69 Misc. 2d 254', '1972 N.Y. Misc. LEXIS 2147', '329 N.Y.S.2d 148']; model citations ['299 A.2d 778']; match=False",
+            "cl_snippets": "[lead-opinion] \nJ. Robert Lynch, J.\nThe plaintiffs have brought this action against the defendants, seeking among other relief to enjoin permanently their threatened eviction. They move now for a temporary injunction.\nThe plaintiffs lease an apartment in a complex controlled by the defendants as managing agent. While the lease was for one year, it was in the normal expectancy of the parties that it would be renewed from year t",
+            "cl_all_citations": [
+              "69 Misc. 2d 254",
+              "1972 N.Y. Misc. LEXIS 2147",
+              "329 N.Y.S.2d 148"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that the defense of retaliatory eviction can be raised in a summary holdover proceeding in New York, aligning with the reasoning from the 'Hosey v. Club Van Cortlandt' decision.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior holding summary mistakenly suggests the application and reaffirmation of the retaliatory-eviction doctrine in District of Columbia courts; however, the actual text indicates the case dealt with the applicability of the defense in New York, concurring with previous federal court reasoning.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "This case held that the defense of retaliatory eviction can be raised in a summary holdover proceeding in New York, and because this legal remedy is available to the tenant, a preliminary injunction to stop the eviction is not necessary and must be denied.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior summary is completely inaccurate. It references the 'District of Columbia courts' when the case is from New York. Furthermore, while the case does address the retaliatory-eviction doctrine, its primary holding is to deny a preliminary injunction on the grounds that this defense is available in the summary eviction proceeding itself.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "STATED-single-model",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case does not explicitly state a controlling rule on the tenant's affirmative defense of retaliatory eviction, as it does not clearly delineate the elements or statutory presumption period applicable. While the opinion suggests that retaliatory eviction could be a valid defense in a holdover proceeding, it does not detail the elements required for proving such a defense.",
+              "confidence": "medium"
+            },
+            "gem_control": {
+              "control_type": "STATED",
+              "controlling_quote": "At the most, we feel that the same cases settle the law in New York to permit the defense of retaliatory eviction to be raised in a summary holdover proceeding.",
+              "quote_context": "This statement is part of the court's reasoning in denying a preliminary injunction. The court concludes that an injunction is unnecessary because the tenants can raise the defense of retaliatory eviction in the main eviction proceeding itself.",
+              "control_note": "The case explicitly recognizes the existence of the affirmative defense of retaliatory eviction in New York. However, it does not state the specific elements of the defense, other than to say it arises when an eviction is motivated by a tenant's exercise of free speech rights (like organizing a tenants' association). It does not mention any statutory presumption period.",
+              "confidence": "high"
+            },
+            "controlling_quote": "At the most, we feel that the same cases settle the law in New York to permit the defense of retaliatory eviction to be raised in a summary holdover proceeding.",
+            "quote_agreement": false,
+            "basis": "Gemini: STATED with quote. GPT: INFERRED. Single-model STATED — attorney should verify quote."
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG-inaccurate. Attorney review required.",
+          "controlling_quote": "At the most, we feel that the same cases settle the law in New York to permit the defense of retaliatory eviction to be raised in a summary holdover proceeding."
+        },
+        {
+          "case_name": "Twyman v. Johnson",
+          "citation_gpt": "655 A.2d 850",
+          "citation_gemini": null,
+          "year": 1995,
+          "prior_holding": "Recognized and applied the District of Columbia statutory prohibition on retaliatory action by housing providers, including eviction-related retaliation against tenants for protected activity.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Twyman v. Johnson",
+              "date": "1995-03-13",
+              "court": "District of Columbia Court of Appeals",
+              "citation": [
+                "655 A.2d 850",
+                "1995 D.C. App. LEXIS 47",
+                "1995 WL 106560"
+              ],
+              "cluster_id": 1512354
+            },
+            "cl_cluster_id": 1512354,
+            "cl_opinion_id": 1512354,
+            "cl_url": "https://www.courtlistener.com/opinion/1512354/twyman-v-johnson/",
+            "cl_citation": "655 A.2d 850",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['655 A.2d 850', '1995 D.C. App. LEXIS 47', '1995 WL 106560']; model citations ['655 A.2d 850']; match=True",
+            "cl_snippets": "[combined-opinion] \n655 A.2d 850 (1995)\nMary TWYMAN, Appellant,\nv.\nNaomi JOHNSON, Appellee.\nNaomi JOHNSON, Cross-Appellant,\nv.\nMary TWYMAN, Cross-Appellee.\nNos. 93-CV-1092, 93-CV-1441.\nDistrict of Columbia Court of Appeals.\nArgued December 21, 1994.\nDecided March 13, 1995.\nStephen H. Abraham, with whom J. Gordon Forester and Richard W. Luchs, Washington, ",
+            "cl_all_citations": [
+              "655 A.2d 850",
+              "1995 D.C. App. LEXIS 47",
+              "1995 WL 106560"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that a claim for retaliation can be maintained as a defense and an independent counterclaim under the Rental Housing Act of 1985.",
+              "prior_summary_accuracy": "partially_accurate",
+              "accuracy_note": "The prior holding summary correctly identifies retaliation as a key legal issue, but it does not specifically state that the court allowed the retaliation claim to be maintained both as a defense and as an independent claim, which is a central holding of the court.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The court held that an independent cause of action for retaliation may not be maintained under the Rental Housing Act of 1985. It therefore reversed the trial court's judgment awarding the tenant damages on her retaliation claim.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior summary is the opposite of the court's actual holding. The court explicitly held that an independent cause of action for retaliation could not be maintained under the relevant statute and reversed the jury's award for the tenant on that claim.",
+              "confidence": "high"
+            },
+            "agreement": false,
+            "basis": "One or both models found holding inaccurate: GPT=partially_accurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case discusses a claim for retaliatory eviction in the context of damages awarded to the plaintiff but does not explicitly provide the controlling rule for the affirmative defense of retaliatory eviction, its elements, or the statutory presumption period. Instead, it primarily addresses the procedural aspects of the trial and claims related to negligence, breach of implied warranty of habitability, and retaliation as a form of damages.",
+              "confidence": "medium"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided case text discusses a tenant's claim for retaliation under the Rental Housing Act of 1985, which was brought both as an independent claim and as a defense/counterclaim to a suit for possession. However, the text focuses entirely on a separate negligence claim and does not provide any details about the elements of the retaliatory eviction defense or any applicable statutory presumption period. The court explicitly states it will address the retaliation issue, but the provided excerpt ends before that discussion begins.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Robinson v. Diamond Housing Corp.",
+          "citation_gpt": null,
+          "citation_gemini": "463 F.2d 853",
+          "year": 1972,
+          "prior_holding": "Held that once a tenant makes a prima facie showing of retaliation, the burden of proof shifts to the landlord to prove a legitimate, non-retaliatory reason for the eviction.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Lena Robinson v. Diamond Housing Corporation",
+              "date": "1972-04-03",
+              "court": "Court of Appeals for the D.C. Circuit",
+              "citation": [
+                "463 F.2d 853",
+                "150 U.S. App. D.C. 17",
+                "1972 U.S. App. LEXIS 10344"
+              ],
+              "cluster_id": 304588
+            },
+            "cl_cluster_id": 304588,
+            "cl_opinion_id": 9842907,
+            "cl_url": "https://www.courtlistener.com/opinion/304588/lena-robinson-v-diamond-housing-corporation/",
+            "cl_citation": "463 F.2d 853",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['463 F.2d 853', '150 U.S. App. D.C. 17', '1972 U.S. App. LEXIS 10344']; model citations ['463 F.2d 853']; match=True",
+            "cl_snippets": "[lead-opinion] \nJ. SKELLY WRIGHT, Circuit Judge:\nIn Edwards v. Habib, 130 U.S.App.D.C. 126, 397 F.2d 687 (1968), cert. denied, 393 U.S. 1016, 89 S.Ct. 618, 21 L. Ed.2d 560 (1969), this court held that a tenant may assert the retaliatory motivation of his landlord as a defense to an otherwise proper eviction. In Brown v. Southall Realty Co., D.C.App., 237 A.2d 834 (1968), the District of Columbi | [combined-opinion] 463 F.2d 853\n    150 U.S.App.D.C. 17\n    Lena ROBINSON, Appellantv.DIAMOND HOUSING CORPORATION, Appellee.\n    No. 24508.\n    United States Court of Appeals,\n    District of Columbia Circuit.\n    Argued Dec. 20, 1971.Decided April 3, 1972.\n    \n      Mr. Richard B. Wolf, Washington, D. C., wi",
+            "cl_all_citations": [
+              "463 F.2d 853",
+              "150 U.S. App. D.C. 17",
+              "1972 U.S. App. LEXIS 10344"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 20,
+            "basis": "No negative treatment detected in 20 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that the tenant should have been given the opportunity to prove a retaliatory eviction defense under Edwards v. Habib, and the trial judge erred by prematurely granting summary judgment to the landlord.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The retrieved case text indicates that the appellate court focused on the tenant's opportunity to present a retaliation defense based on Edwards v. Habib, rather than establishing a burden-shifting framework for proof.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The court held that a tenant who successfully defends against an eviction for nonpayment of rent by showing the lease is void due to housing code violations can still raise a retaliatory eviction defense under Edwards v. Habib in a subsequent eviction action based on a 30-day notice to quit. The court reversed the lower court's summary judgment, ruling that the tenant should have been given the opportunity to prove the landlord's retaliatory motive.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided text does not mention burden-shifting or a prima facie showing. The court's holding is about extending the retaliatory eviction defense to a specific factual scenario (post-Southall Realty defense) and reversing a summary judgment to allow the tenant to prove their case, not about establishing the procedural framework for how that proof is presented.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "STATED-single-model",
+            "gpt_control": {
+              "control_type": "STATED",
+              "controlling_quote": "\"In Edwards v. Habib, 130 U.S.App.D.C. 126, 397 F.2d 687 (1968), cert. denied, 393 U.S. 1016, 89 S.Ct. 618, 21 L. Ed.2d 560 (1969), this court held that a tenant may assert the retaliatory motivation of his landlord as a defense to an otherwise proper eviction.\"",
+              "quote_context": "The beginning of the opinion where the court outlines the foundational case of Edwards v. Habib in relation to retaliatory eviction defenses.",
+              "control_note": "The case explicitly states the rule regarding the affirmative defense of retaliatory eviction established in Edwards v. Habib, confirming that it is a binding authority for such a defense.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "This case confirms that a tenant can assert retaliatory motivation as a defense to eviction, citing a prior case, Edwards v. Habib, as the source of the rule. However, it does not explicitly state the elements of the defense or mention any statutory presumption period. The court's holding is focused on rejecting a lower court's attempt to limit the defense to its original facts, thereby expanding its applicability, rather than defining its core components.",
+              "confidence": "high"
+            },
+            "controlling_quote": "\"In Edwards v. Habib, 130 U.S.App.D.C. 126, 397 F.2d 687 (1968), cert. denied, 393 U.S. 1016, 89 S.Ct. 618, 21 L. Ed.2d 560 (1969), this court held that a tenant may assert the retaliatory motivation of his landlord as a defense to an otherwise proper eviction.\"",
+            "quote_agreement": false,
+            "basis": "GPT: STATED with quote. Gemini: INFERRED. Single-model STATED — attorney should verify quote."
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate. Attorney review required.",
+          "controlling_quote": "\"In Edwards v. Habib, 130 U.S.App.D.C. 126, 397 F.2d 687 (1968), cert. denied, 393 U.S. 1016, 89 S.Ct. 618, 21 L. Ed.2d 560 (1969), this court held that a tenant may assert the retaliatory motivation of his landlord as a defense to an otherwise proper eviction.\""
+        },
+        {
+          "case_name": "DeSzunyogh v. William C. Smith & Co., Inc.",
+          "citation_gpt": null,
+          "citation_gemini": "604 A.2d 1",
+          "year": 1992,
+          "prior_holding": "Ruled that a tenant's complaint to a government agency, used as the basis for a retaliatory eviction defense, must be made in good faith and not for the sole purpose of harassment.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Gomez v. Independence Management of Delaware, Inc.",
+              "date": "2009-03-26",
+              "court": "District of Columbia Court of Appeals",
+              "citation": [
+                "967 A.2d 1276",
+                "2009 D.C. App. LEXIS 56",
+                "2009 WL 773500"
+              ],
+              "cluster_id": 1904669
+            },
+            "cl_cluster_id": 1904669,
+            "cl_opinion_id": 1904669,
+            "cl_url": "https://www.courtlistener.com/opinion/1904669/gomez-v-independence-management-of-delaware-inc/",
+            "cl_citation": "967 A.2d 1276",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CL citations ['967 A.2d 1276', '2009 D.C. App. LEXIS 56', '2009 WL 773500']; model citations ['604 A.2d 1']; match=False",
+            "cl_snippets": "[combined-opinion] \n967 A.2d 1276 (2009)\nMaria GOMEZ, et al., Appellants,\nv.\nINDEPENDENCE MANAGEMENT OF DELAWARE, INC., Appellee, and\nThe 933 L Street Tenants' Association, Appellant,\nv.\nIndependence Management Company, Inc., et al., Appellees.\nNos. 05-CV-1487 to 05-CV-1499, 05-CV-1536 to 05-CV-1539, 06-CV-1150 and 06-CV-1387.\nDistrict of Columbia Court of Appeals.\nArgued May 7, 2007.<",
+            "cl_all_citations": [
+              "967 A.2d 1276",
+              "2009 D.C. App. LEXIS 56",
+              "2009 WL 773500"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 15,
+            "basis": "No negative treatment detected in 15 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The Superior Court granted summary judgment to the landlord IMDel, concluding that the tenants had not identified a genuine issue of material fact regarding their defense of retaliatory eviction, but this judgment was vacated and remanded for further proceedings on appeal.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The case text does not establish a requirement that a tenant's complaint must be made in good faith and not solely for harassment to support a retaliatory eviction defense. The judgment regarding the eviction was vacated and the matter was remanded for further proceedings.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The case text details the procedural history of two consolidated appeals, including one where tenants defended against eviction on the grounds of retaliation, but it does not contain the court's legal analysis or holding on that specific issue. The provided text ends before reaching the court's discussion of the retaliation defense, only stating the procedural background that led to the appeal.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided case text does not contain any discussion, analysis, or holding regarding the good faith requirement for a tenant's complaint when used as a basis for a retaliatory eviction defense. The text is limited to the factual background and procedural history of the case.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text primarily deals with issues related to the Sale Act and procedures surrounding notice to vacate, rather than clearly articulating a rule or elements specifically related to a tenant's affirmative defense of retaliatory eviction. The defense is mentioned in the context of tenants opposing eviction, but there is no explicit statement of elements or statutory presumption period for retaliatory eviction as a defense.",
+              "confidence": "medium"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case mentions that the tenants raised retaliatory eviction as a defense and that the appellate court reversed summary judgment for the landlord, allowing the case to proceed. However, the provided text is from the factual and procedural background section of the opinion and does not contain the court's legal analysis or reasoning. It does not state the elements of the defense or discuss any statutory presumption period. A controlling rule for the legal question cannot be found in this excerpt.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Gomez v. Independence Management of Delaware, Inc.",
+          "citation_gpt": null,
+          "citation_gemini": "967 A.2d 1276",
+          "year": 2009,
+          "prior_holding": "Clarified the three-part burden-shifting framework, requiring the tenant to first establish a prima facie case, the landlord to then articulate a legitimate reason, and finally the tenant to prove the landlord's reason is pretextual.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Gomez v. Independence Management of Delaware, Inc.",
+              "date": "2009-03-26",
+              "court": "District of Columbia Court of Appeals",
+              "citation": [
+                "967 A.2d 1276",
+                "2009 D.C. App. LEXIS 56",
+                "2009 WL 773500"
+              ],
+              "cluster_id": 1904669
+            },
+            "cl_cluster_id": 1904669,
+            "cl_opinion_id": 1904669,
+            "cl_url": "https://www.courtlistener.com/opinion/1904669/gomez-v-independence-management-of-delaware-inc/",
+            "cl_citation": "967 A.2d 1276",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['967 A.2d 1276', '2009 D.C. App. LEXIS 56', '2009 WL 773500']; model citations ['967 A.2d 1276']; match=True",
+            "cl_snippets": "[combined-opinion] \n967 A.2d 1276 (2009)\nMaria GOMEZ, et al., Appellants,\nv.\nINDEPENDENCE MANAGEMENT OF DELAWARE, INC., Appellee, and\nThe 933 L Street Tenants' Association, Appellant,\nv.\nIndependence Management Company, Inc., et al., Appellees.\nNos. 05-CV-1487 to 05-CV-1499, 05-CV-1536 to 05-CV-1539, 06-CV-1150 and 06-CV-1387.\nDistrict of Columbia Court of Appeals.\nArgued May 7, 2007.<",
+            "cl_all_citations": [
+              "967 A.2d 1276",
+              "2009 D.C. App. LEXIS 56",
+              "2009 WL 773500"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The retrieved case text does not provide specific details on the court's holding regarding retaliatory eviction or the tenant defense.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The case text available does not contain any details about the court's holding, particularly regarding a three-part burden-shifting framework related to retaliatory eviction.",
+              "confidence": "low"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "This case does not discuss or establish any legal framework for retaliatory eviction claims. The court's holdings are procedural, focusing on whether the trial court erred by denying a motion to consolidate cases and by failing to rule on a motion to certify a class action.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided case text does not contain any discussion, clarification, or analysis of the burden-shifting framework for retaliatory eviction. The holding summary is completely unrelated to the actual legal issues addressed in the opinion, which are procedural matters of case consolidation and class certification.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text does not include specific language that explicitly addresses the legal question about the affirmative defense of retaliatory eviction, its elements, or any statutory presumption period. The opinion may discuss related landlord-tenant issues, but without explicit language, the rule can only be inferred.",
+              "confidence": "low"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided text is only the case caption and does not contain any of the court's reasoning or opinion. Therefore, it is impossible to determine what rule of law the case states or implies regarding the elements of retaliatory eviction.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "IA",
+      "cases_verified": 3,
+      "machine_verified": 0,
+      "needs_attorney": 3,
+      "case_results": [
+        {
+          "case_name": "Hillview Associates v. Bloomquist",
+          "citation_gpt": "440 N.W.2d 867",
+          "citation_gemini": "440 N.W.2d 867",
+          "year": 1989,
+          "prior_holding": "Applied Iowa Code section 562A.36 and recognized retaliatory eviction as a statutory defense to a residential forcible-entry-and-detainer action where the landlord seeks possession in response to protected tenant conduct.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Hillview Associates v. Bloomquist",
+              "date": "1989-05-17",
+              "court": "Supreme Court of Iowa",
+              "citation": [
+                "440 N.W.2d 867",
+                "1989 Iowa Sup. LEXIS 165",
+                "1989 WL 52265"
+              ],
+              "cluster_id": 2052197
+            },
+            "cl_cluster_id": 2052197,
+            "cl_opinion_id": 2052197,
+            "cl_url": "https://www.courtlistener.com/opinion/2052197/hillview-associates-v-bloomquist/",
+            "cl_citation": "440 N.W.2d 867",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['440 N.W.2d 867', '1989 Iowa Sup. LEXIS 165', '1989 WL 52265']; model citations ['440 N.W.2d 867', '440 N.W.2d 867']; match=True",
+            "cl_snippets": "[combined-opinion] \n440 N.W.2d 867 (1989)\nHILLVIEW ASSOCIATES d/b/a Gracious Estates Mobile Home Park, Appellee,\nv.\nTom BLOOMQUIST and Sandra Bloomquist, Appellants.\nHILLVIEW ASSOCIATES d/b/a Gracious Estates Mobile Home Park, Appellee,\nv.\nRichard SWARTZ and Nellie Swartz, Appellants.\nHILLVIEW ASSOCIATES d/b/a Gracious Estates Mobile Home Park, Appellee,\nv.\nKimber DAVENPORT and Reva Davenport, Appellants.\nHILLVIEW ASSOCIATES d/b/a Graciou",
+            "cl_all_citations": [
+              "440 N.W.2d 867",
+              "1989 Iowa Sup. LEXIS 165",
+              "1989 WL 52265"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that the Iowa Mobile Home Act prohibits retaliatory eviction and that a tenant has a defense if the eviction occurred in response to complaints or union activities protected under the act, leading the court to reverse the district court's decision for six tenants while affirming it for two.",
+              "prior_summary_accuracy": "partially_accurate",
+              "accuracy_note": "The prior holding summary accurately identifies retaliatory eviction as a statutory defense in forcible-entry-and-detainer actions but incorrectly references Iowa Code section 562A.36 instead of 562B.27, which is applicable to mobile home parks.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The court analyzed the defense of retaliatory eviction under the Iowa Mobile Home Parks Residential Landlord and Tenant Act, Iowa Code § 562B.3. It recognized that this statute prohibits a landlord from bringing an action for possession in retaliation for a tenant organizing or becoming a member of a tenant's union and provides the tenant with a defense in such an action.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior summary cites the wrong statute. The case text explicitly applies the Iowa Mobile Home Parks Residential Landlord and Tenant Act (Iowa Code § 562B.3), not the Uniform Residential Landlord and Tenant Act (Iowa Code § 562A.36), which governs different types of tenancies.",
+              "confidence": "high"
+            },
+            "agreement": false,
+            "basis": "One or both models found holding inaccurate: GPT=partially_accurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "STATED",
+            "gpt_control": {
+              "control_type": "STATED",
+              "controlling_quote": "If the landlord acts in violation of subsection 1 of this section, the tenant is entitled to the remedies provided in section 562B.24 and has a defense in an action for possession. In an action by or against the tenant, evidence of a complaint within six months prior to the alleged act of retaliation creates a presumption that the landlord’s conduct was in retaliation.",
+              "quote_context": "Appears in paragraph discussing the Iowa Mobile Home Act's prohibition on retaliatory conduct by landlords, specifically addressing retaliatory eviction and the statutory presumption period.",
+              "control_note": "The case states the elements for a retaliatory eviction defense in Iowa, indicating that a tenant has a presumptive retaliatory defense when a complaint is made within six months prior to the alleged retaliatory action.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "STATED",
+              "controlling_quote": "1. Except as provided in this section, a landlord shall not retaliate by increasing rent or decreasing services or by bringing or threatening to bring an action for possession or by failing to renew a rental agreement after any of the following:\n(a) The tenant has complained to a governmental agency charged with responsibility for enforcement of a building or housing code of a violation applicable to the mobile home park materially affecting health and safety. For this subsection to apply, a complaint filed with a governmental body must be in good faith.\n(b) The tenant has complained to the landlord of a violation under section 562B.16.\n(c) The tenant has organized or become a member of a tenant’s union or similar organization.\n(d) For exercising any of the rights and remedies pursuant to this chapter.\n2. If the landlord acts in violation of subsection 1 of this section, the tenant is entitled to the remedies provided in section 562B.24 and has a defense in an action for possession. In an action by or against the tenant, evidence of a complaint within six months prior to the alleged act of retaliation creates a presumption that the landlord’s conduct was in retaliation.",
+              "quote_context": "This language is quoted directly from the Iowa Mobile Home Parks Residential Landlord and Tenant Act, which the court cites as the controlling law on the issue of retaliatory conduct by landlords.",
+              "control_note": "This case directly addresses the elements of retaliatory eviction and the statutory presumption period by quoting the controlling Iowa statute for mobile home tenancies. It establishes that a tenant must show they engaged in a protected activity (such as complaining to the landlord, joining a tenant's union, etc.) and that the landlord subsequently took an adverse action. It also explicitly states the presumption period: evidence of a complaint within six months of the landlord's alleged retaliation creates a presumption that the conduct was retaliatory.",
+              "confidence": "high"
+            },
+            "controlling_quote": "If the landlord acts in violation of subsection 1 of this section, the tenant is entitled to the remedies provided in section 562B.24 and has a defense in an action for possession. In an action by or against the tenant, evidence of a complaint within six months prior to the alleged act of retaliation creates a presumption that the landlord’s conduct was in retaliation.",
+            "quote_agreement": true,
+            "basis": "Both models classified control as STATED and provided quotes"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate. Attorney review required.",
+          "controlling_quote": "If the landlord acts in violation of subsection 1 of this section, the tenant is entitled to the remedies provided in section 562B.24 and has a defense in an action for possession. In an action by or against the tenant, evidence of a complaint within six months prior to the alleged act of retaliation creates a presumption that the landlord’s conduct was in retaliation."
+        },
+        {
+          "case_name": "Symonds v. Green",
+          "citation_gpt": "493 N.W.2d 801",
+          "citation_gemini": null,
+          "year": 1992,
+          "prior_holding": "Interpreted Iowa Code section 562A.36 as limiting the retaliatory-eviction defense where the landlord establishes an independent statutory basis for possession, such as the tenant’s rent default.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Symonds v. Green",
+              "date": "1992-12-23",
+              "court": "Supreme Court of Iowa",
+              "citation": [
+                "493 N.W.2d 801",
+                "1992 Iowa Sup. LEXIS 416",
+                "1992 WL 380585"
+              ],
+              "cluster_id": 1851233
+            },
+            "cl_cluster_id": 1851233,
+            "cl_opinion_id": 1851233,
+            "cl_url": "https://www.courtlistener.com/opinion/1851233/symonds-v-green/",
+            "cl_citation": "493 N.W.2d 801",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['493 N.W.2d 801', '1992 Iowa Sup. LEXIS 416', '1992 WL 380585']; model citations ['493 N.W.2d 801']; match=True",
+            "cl_snippets": "[combined-opinion] \n493 N.W.2d 801 (1992)\nMelissa SYMONDS, Appellee,\nv.\nMindy GREEN, Appellant.\nNo. 92-285.\nSupreme Court of Iowa.\nDecember 23, 1992.\n*802 Michael J. Tulis of Legal Services Corp. of Iowa, Sioux City, for appellant.\nMelissa Symonds, Hawarden, pro se.\nConsidered by HARRIS, P.J., and CARTER, LAVORATO, NEUMAN, and SNELL, J",
+            "cl_all_citations": [
+              "493 N.W.2d 801",
+              "1992 Iowa Sup. LEXIS 416",
+              "1992 WL 380585"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "corroborated",
+            "gpt_holding": {
+              "your_holding_from_text": "The case's holding interprets Iowa Code section 562A.36 as limiting the retaliatory-eviction defense when the landlord has an independent statutory basis for eviction, like the tenant’s rent default.",
+              "prior_summary_accuracy": "accurate",
+              "accuracy_note": "The prior holding summary matches the holding identified in the retrieved case text, accurately reflecting the interpretation of limiting retaliatory-eviction when an independent statutory basis is present.",
+              "confidence": "medium"
+            },
+            "gem_holding": [
+              {
+                "your_holding_from_text": "A landlord may bring an action for possession, notwithstanding the tenant's claim of retaliatory eviction, if the tenant is in default in the payment of rent. Iowa Code section 562A.36(3)(c) provides an independent statutory ground for eviction that overrides the retaliatory eviction defense established in section 562A.36(1).",
+                "prior_summary_accuracy": "accurate",
+                "accuracy_note": "The prior summary correctly identifies that the court interpreted Iowa Code section 562A.36 to limit the retaliatory eviction defense when the landlord has an independent statutory basis for possession, specifically citing the tenant's rent default as such a basis.",
+                "confidence": "high"
+              }
+            ],
+            "agreement": false,
+            "basis": "Single-model assessment: GPT=accurate, Gemini=None"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text does not provide sufficient information to determine whether this appellate case explicitly addressed the legal question of a tenant's affirmative defense of retaliatory eviction, nor the elements or statutory presumption period involved. Without specific language or legal principles evident in the retrived case text, the rule can only be inferred, assuming the case discussed a related topic within landlord-tenant law.",
+              "confidence": "low"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided case text, which consists only of the case caption and attorney information, does not contain any substantive legal analysis. It is impossible to determine if the case addresses the elements or statutory presumption period for the affirmative defense of retaliatory eviction without the body of the opinion.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Lewis v. Jaeger",
+          "citation_gpt": null,
+          "citation_gemini": "818 N.W.2d 165",
+          "year": 2012,
+          "prior_holding": "Reaffirmed the Hillview burden-shifting standard and clarified that the tenant retains the ultimate burden of proving the landlord's primary motivation for the eviction was retaliatory.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Umeka Lewis v. John J. Jaeger, Robert E. Boge, and the City of Dubuque",
+              "date": "2012-07-20",
+              "court": "Supreme Court of Iowa",
+              "citation": [
+                "818 N.W.2d 165",
+                "2012 WL 2945925",
+                "2012 Iowa Sup. LEXIS 82"
+              ],
+              "cluster_id": 4472302
+            },
+            "cl_cluster_id": 4472302,
+            "cl_opinion_id": 4249555,
+            "cl_url": "https://www.courtlistener.com/opinion/4472302/umeka-lewis-v-john-j-jaeger-robert-e-boge-and-the-city-of-dubuque/",
+            "cl_citation": "818 N.W.2d 165",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['818 N.W.2d 165', '2012 WL 2945925', '2012 Iowa Sup. LEXIS 82']; model citations ['818 N.W.2d 165']; match=True",
+            "cl_snippets": "[combined-opinion] \n\n\n  APPEL, Justice.\n \n\n  In this case, a tenant brings claims against her landlord, the City of Dubuque, and a city official, asserting that they unlawfully caused her eviction from her apartment. According to the defendants, the eviction occurred because a city housing official, acting pursuant to a city ordinance designed to protect public health and safety in emergency situations, iss",
+            "cl_all_citations": [
+              "818 N.W.2d 165",
+              "2012 WL 2945925",
+              "2012 Iowa Sup. LEXIS 82"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 1,
+            "basis": "No negative treatment detected in 1 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case discusses a landlord-tenant dispute where the tenant alleges the eviction was unlawful and whether city ordinances could supersede tenant's statutory rights, with no specific holding found on the question of retaliatory eviction in the provided text.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided case text does not mention the Hillview burden-shifting standard or address retaliatory eviction; it focuses instead on issues related to local ordinance enforcement and tenant's statutory rights.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The provided text does not contain any legal analysis or holding on the topic of retaliatory eviction. It only sets forth the factual and procedural background of the case, describing the dispute between the tenant and landlord that led to the tenant being locked out of her apartment.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided text is limited to the factual and procedural background of the case and does not include the court's legal analysis or any holding regarding retaliatory eviction or burden-shifting standards. Therefore, the holding summary cannot be verified or substantiated by the text.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text does not explicitly address whether the tenant has an affirmative defense of retaliatory eviction, the elements of such a defense, or any statutory presumption period related to it. The case discusses a landlord-tenant dispute involving the tenant's eviction, but it focuses on other legal issues such as housing ordinances, tenants' statutory rights under the Iowa Uniform Residential Landlord and Tenant Act, and due process rights, rather than specifically discussing retaliatory eviction.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case does not address the legal question of retaliatory eviction, its elements, or any statutory presumption period. While the facts involve a landlord-tenant dispute and an eviction, the tenant's claims focused on violations of statutory rights under the IURLTA concerning the eviction process, illegal entry, and security deposits, as well as constitutional claims against the city. The opinion does not mention or analyze the affirmative defense of retaliatory eviction.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "KY",
+      "cases_verified": 2,
+      "machine_verified": 0,
+      "needs_attorney": 2,
+      "case_results": [
+        {
+          "case_name": "Wright v. Brady",
+          "citation_gpt": "889 S.W.2d 715",
+          "citation_gemini": null,
+          "year": 1994,
+          "prior_holding": "Recognized retaliatory eviction as actionable in Kentucky, holding that a landlord may not evict or otherwise oust a residential tenant in retaliation for the tenant’s good-faith complaint to public authorities about housing-code or habitability violations.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Wright v. Brady",
+              "date": "1995-02-02",
+              "court": "Idaho Court of Appeals",
+              "citation": [
+                "889 P.2d 105",
+                "126 Idaho 671",
+                "1995 Ida. App. LEXIS 11"
+              ],
+              "cluster_id": 1436434
+            },
+            "cl_cluster_id": 1436434,
+            "cl_opinion_id": 1436434,
+            "cl_url": "https://www.courtlistener.com/opinion/1436434/wright-v-brady/",
+            "cl_citation": "889 P.2d 105",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CL citations ['889 P.2d 105', '126 Idaho 671', '1995 Ida. App. LEXIS 11']; model citations ['889 S.W.2d 715']; match=False",
+            "cl_snippets": "[combined-opinion] \n889 P.2d 105 (1995)\n126 Idaho 671\nDonald WRIGHT and Aloma Wright, husband and wife, Plaintiffs-Respondents,\nv.\nJames BRADY and Rebecca Brady, husband and wife, Defendants-Appellants.\nNo. 21086.\nCourt of Appeals of Idaho.\nFebruary 2, 1995.\nIdaho Legal Aid Services, Inc., Idaho Falls, for appellants.\nAnderson, Nelson & Hall, Idaho Fa",
+            "cl_all_citations": [
+              "889 P.2d 105",
+              "126 Idaho 671",
+              "1995 Ida. App. LEXIS 11"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The provided case text does not contain sufficient information to determine the holding on the issue of retaliatory eviction or any tenant defense.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The case text does not mention any decision relevant to retaliatory eviction or any related defenses, nor does it discuss or reference Kentucky law.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The provided case text contains only the case caption and attorney information; it does not include any facts, legal analysis, or holdings regarding retaliatory eviction or any other issue.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior summary is completely inaccurate. It describes a holding from Kentucky, but the provided case text is from the Court of Appeals of Idaho. Furthermore, the text snippet itself contains no substantive legal holdings at all.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text does not provide enough information to determine if it explicitly addresses the affirmative defense of retaliatory eviction or its elements and statutory presumption period. The decision might relate to landlord-tenant issues, but without more specific language addressing retaliatory eviction, control can only be inferred and not stated.",
+              "confidence": "low"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided text is only the case caption and a list of attorneys. It does not contain any of the court's reasoning, analysis, or holding. Therefore, it is impossible to determine the controlling rule for the elements of retaliatory eviction from the text provided.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Bentley v. B&B Interests, LLC",
+          "citation_gpt": null,
+          "citation_gemini": "497 S.W.3d 759",
+          "year": 2016,
+          "prior_holding": "A landlord may rebut the statutory presumption of retaliation by presenting evidence of a legitimate, non-retaliatory reason for an eviction, such as the tenant's nonpayment of rent.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Gerace v. Bentley",
+              "date": "2016-08-22",
+              "court": "Supreme Court of The Virgin Islands",
+              "citation": [
+                "65 V.I. 289",
+                "2016 V.I. Supreme LEXIS 31"
+              ],
+              "cluster_id": 8676709
+            },
+            "cl_cluster_id": 8676709,
+            "cl_opinion_id": 8659736,
+            "cl_url": "https://www.courtlistener.com/opinion/8676709/gerace-v-bentley/",
+            "cl_citation": "65 V.I. 289",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CL citations ['65 V.I. 289', '2016 V.I. Supreme LEXIS 31']; model citations ['497 S.W.3d 759']; match=False",
+            "cl_snippets": "[lead-opinion] \nOPINION OF THE COURT\n(August 22, 2016)\nHODGE, Chief Justice.\nAppellants Joseph Gerace and Victoria Vooys appeal from the Superior Court’s April 16, 2015 opinion, which dismissed their complaint for failure to post a cost bond under title 5, section 547 of the Virgin Islands Code. For the reasons that follow, we reverse.\nI. BACKGROUND\nOn June 9,",
+            "cl_all_citations": [
+              "65 V.I. 289",
+              "2016 V.I. Supreme LEXIS 31"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that the Superior Court's dismissal of Gerace and Vooys's complaint for failure to post a cost bond was reversed by the appellate court.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior holding summary refers to a landlord's ability to rebut a presumption of retaliatory eviction, which is unrelated to the case text about security cost bonds in the Virgin Islands.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "This case does not address retaliatory eviction, landlord-tenant law, or defenses to eviction. The case concerns the application of a Virgin Islands statute requiring non-resident plaintiffs to post a security bond for costs and the dismissal of a complaint for failure to do so.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided case text does not discuss landlord-tenant law, eviction, or retaliation. The prior holding summary appears to be from a completely different case.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided case text does not address the specific legal question of whether a tenant has an affirmative defense of retaliatory eviction, including its elements or statutory presumption period. The case is primarily about a procedural matter involving the requirement for plaintiffs to post security for costs, unrelated to landlord-tenant disputes or retaliatory eviction issues.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "This case does not address the legal question. The opinion focuses entirely on the procedural issue of whether a plaintiff who moves out of the jurisdiction after filing a lawsuit must post a security bond for costs under 5 V.I.C. § 547. It does not mention landlord-tenant law, eviction, or the affirmative defense of retaliatory eviction.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "MA",
+      "cases_verified": 6,
+      "machine_verified": 0,
+      "needs_attorney": 6,
+      "case_results": [
+        {
+          "case_name": "McQueen v. Druker",
+          "citation_gpt": "317 F. Supp. 1122",
+          "citation_gemini": null,
+          "year": 1970,
+          "prior_holding": "Recognized retaliatory eviction as an impermissible basis for recovering possession where eviction was sought in response to tenants' protected complaints and organizing activity in housing with sufficient governmental involvement.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "McQueen v. Druker",
+              "date": "1970-10-05",
+              "court": "District Court, D. Massachusetts",
+              "citation": [
+                "317 F. Supp. 1122",
+                "1970 U.S. Dist. LEXIS 9984"
+              ],
+              "cluster_id": 1415556
+            },
+            "cl_cluster_id": 1415556,
+            "cl_opinion_id": 1415556,
+            "cl_url": "https://www.courtlistener.com/opinion/1415556/mcqueen-v-druker/",
+            "cl_citation": "317 F. Supp. 1122",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['317 F. Supp. 1122', '1970 U.S. Dist. LEXIS 9984']; model citations ['317 F. Supp. 1122']; match=True",
+            "cl_snippets": "[combined-opinion] \n317 F.Supp. 1122 (1970)\nWilliam McQUEEN and Patricia McQueen\nv.\nBertram DRUKER and Representatives of the late Joseph Gottlieb d/b/a Castle Square Associates.\nCiv. A. No. 70-1082.\nUnited States District Court, D. Massachusetts.\nOctober 5, 1970.\n*1123 *1124 Michael L. Altman, Michael Unger, Bri",
+            "cl_all_citations": [
+              "317 F. Supp. 1122",
+              "1970 U.S. Dist. LEXIS 9984"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case involves tenants alleging that their eviction is retaliatory, violating their First Amendment rights, due to exercising their rights of association and presenting grievances.",
+              "prior_summary_accuracy": "partially_accurate",
+              "accuracy_note": "The retrieved text outlines the claims about retaliatory eviction but does not detail the final holding of the court on those claims. The prior summary accurately captures the nature of the claim but lacks explicit textual confirmation of a holding.",
+              "confidence": "medium"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The provided text does not contain a holding on the issue of retaliatory eviction. It lays out the plaintiffs' allegations, including a claim that the eviction was retaliatory in violation of the First Amendment, but the text ends after reciting the factual findings and before reaching any legal conclusions or decisions on that claim.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided text is an excerpt that only includes the introduction and findings of fact; it does not contain the court's legal analysis or its ultimate holding. Therefore, it is impossible to verify the prior holding summary based on the text given.",
+              "confidence": "high"
+            },
+            "agreement": false,
+            "basis": "One or both models found holding inaccurate: GPT=partially_accurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case discusses eviction proceedings and suggests retaliatory motivations but does not explicitly define the elements of retaliatory eviction or statutory presumption period. The discussion is around procedural issues and motivations connected to evictions, rather than establishing the affirmative defense's legal framework for retaliatory eviction.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case does not state the elements or statutory framework for an affirmative defense of retaliatory eviction under state landlord-tenant law. Instead, it describes a tenant's affirmative claim for an injunction based on a violation of their First Amendment rights, alleging the landlord's eviction attempt was in retaliation for the tenant's associational activities. The text provided is from the introduction and findings of fact section of the opinion and does not proceed to the legal analysis or conclusion. It mentions the tenants' allegation of retaliation but does not define the defense or its elements.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Scofield v. Berman & Sons, Inc.",
+          "citation_gpt": "393 Mass. 95",
+          "citation_gemini": "393 Mass. 95",
+          "year": 1984,
+          "prior_holding": "Held that the statutory presumption of retaliation under G.L. c. 186, § 18 shifts the burden of persuasion to the landlord to prove that the eviction or other adverse action was not retaliatory.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Scofield v. Berman & Sons, Inc.",
+              "date": "1984-10-03",
+              "court": "Massachusetts Supreme Judicial Court",
+              "citation": [
+                "469 N.E.2d 805",
+                "393 Mass. 95"
+              ],
+              "cluster_id": 2163152
+            },
+            "cl_cluster_id": 2163152,
+            "cl_opinion_id": 9728351,
+            "cl_url": "https://www.courtlistener.com/opinion/2163152/scofield-v-berman-sons-inc/",
+            "cl_citation": "469 N.E.2d 805",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['469 N.E.2d 805', '393 Mass. 95']; model citations ['393 Mass. 95', '393 Mass. 95']; match=True",
+            "cl_snippets": "[lead-opinion] \nLiacos, J.\nThe defendants appeal from a judgment entered in the Housing Court of the City of Boston declaring that the defendants violated c. 15, § 9 (a), of the Boston Ordinances of 1975 (c. 15), and Boston Rent Board Regulation 11, § 12(A) (Regulation 11), by unlawfully increasing the rent charged to the plaintiffs, tenants in rent-controlled apartments. The defendants also claim  | [combined-opinion] \n393 Mass. 95 (1984)\n469 N.E.2d 805\nLANA J. SCOFIELD & others[1]\nvs.\nBERMAN & SONS, INC., & others.[2]\nSupreme Judicial Court of Massachusetts, Suffolk.\nApril 6, 1984.\nOctober 3, 1984.\nPresent: HENNESSEY, C.J., WILKINS, LIACOS, LYNCH, & O'CONNOR, JJ.\nHarvey S. Shapiro for the plaintiffs.\n | [dissent] \nLynch, J.\n(dissenting). I dissent only from that part of the opinion that concludes that the defendant landlord’s refusal to *116allow Scofield to remain as a tenant at will following the expiration of her lease constitutes a reprisal under G. L. c. 186, § 18, for her reporting the landlord’s unlawful rent increase to the Rent",
+            "cl_all_citations": [
+              "469 N.E.2d 805",
+              "393 Mass. 95"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that the defendants violated Boston Ordinances by unlawfully increasing rent and that the judge's decision to deny Scofield's claim related to staying as a tenant at will after lease expiration was incorrect.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided case text does not discuss any holding regarding the statutory presumption of retaliation under G.L. c. 186, § 18, nor does it mention shifting the burden of persuasion to the landlord in cases of retaliatory eviction.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The provided text does not contain a holding regarding the statutory presumption of retaliation under G.L. c. 186, § 18. While it mentions that one plaintiff appealed the denial of her individual claims under this statute, the text only details the court's reasoning and holding on the class action claims related to unlawful rent increases.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided text does not discuss the merits or holding of the plaintiff's individual claim under G.L. c. 186, § 18. The analysis focuses entirely on the class action claims concerning the validity of a rent increase under a Boston ordinance and a Rent Board regulation.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text primarily addresses issues related to Boston rent control ordinances and the enforcement of rent adjustments, including class action claims about the legality of imposing rent increases under certain lease provisions. It does not explicitly address the issue of retaliatory eviction or delineate the elements or statutory presumption period for such a defense. Therefore, the case does not state a controlling rule directly addressing the affirmative defense of retaliatory eviction.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The opinion does not address the elements or statutory presumption period for a retaliatory eviction defense. The primary focus of the provided text is on the legality of a rent increase under a specific Boston ordinance and Rent Board regulation. While one plaintiff's individual claim is mentioned in passing (citing G. L. c. 186, § 18, which is the retaliatory eviction statute), the court never discusses the substance, elements, or legal standards of that claim in the provided excerpt.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Al-Ziab v. Mourgis",
+          "citation_gpt": "424 Mass. 847",
+          "citation_gemini": null,
+          "year": 1997,
+          "prior_holding": "Applied G.L. c. 186, § 18 to landlord reprisals following tenant protected activity and confirmed that rent increases and eviction-related conduct can constitute actionable retaliation when motivated by tenant complaints.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Al-Ziab v. Mourgis",
+              "date": "1997-05-08",
+              "court": "Massachusetts Supreme Judicial Court",
+              "citation": [
+                "424 Mass. 847"
+              ],
+              "cluster_id": 6577320
+            },
+            "cl_cluster_id": 6577320,
+            "cl_opinion_id": 6451195,
+            "cl_url": "https://www.courtlistener.com/opinion/6577320/al-ziab-v-mourgis/",
+            "cl_citation": "424 Mass. 847",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['424 Mass. 847']; model citations ['424 Mass. 847']; match=True",
+            "cl_snippets": "[lead-opinion] \nMarshall, J.\nIn this case, we consider whether a violation of the lead paint statute, G. L. c. 111, §§ 190 et seq., without more, constitutes a violation of the statutory covenant of quiet enjoyment, G. L. c. 186, § 14. We conclude that it does not; proof of knowledge of the risk and of negligence on the part of a landlord at the least is a prerequisite to recovery under G. L. c. 186, § 14.\n",
+            "cl_all_citations": [
+              "424 Mass. 847"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that a violation of the lead paint statute alone does not constitute a violation of the statutory covenant of quiet enjoyment; liability under G.L. c. 186, § 14 requires proof of at least negligent conduct by the landlord, including knowledge of or reason to know about the presence of lead paint and failure to act.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The case text centers on the requirement of negligent conduct for a violation of the covenant of quiet enjoyment due to lead poisoning, not on retaliatory eviction or tenant defense involving reprisals, rent increases, or eviction-related conduct.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "This case held that a landlord's violation of the strict liability lead paint statute (G. L. c. 111, §§ 190 et seq.) does not, without more, automatically constitute a violation of the statutory covenant of quiet enjoyment (G. L. c. 186, § 14). To establish a violation of the quiet enjoyment statute, a tenant must show at least negligent conduct by the landlord, which requires demonstrating the landlord had notice of or reason to know of the presence of lead and failed to take corrective action.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior summary describes a holding related to landlord retaliation and reprisals under G.L. c. 186, § 18. The provided case text does not mention this statute or the topic of retaliatory eviction at all; instead, it exclusively analyzes the relationship between the lead paint statute (G.L. c. 111, § 190) and the covenant of quiet enjoyment (G.L. c. 186, § 14).",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case primarily addresses the issue of whether a violation of the lead paint statute constitutes a violation of the statutory covenant of quiet enjoyment under G. L. c. 186, § 14, requiring proof of negligence on the part of the landlord. It does not explicitly address the question of retaliatory eviction or provide the elements or statutory presumption period for such a defense. Therefore, the ruling relevant to retaliatory eviction must be inferred rather than directly stated.",
+              "confidence": "medium"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "This case does not address the legal question of retaliatory eviction. The opinion focuses exclusively on whether a strict liability violation of the lead paint statute constitutes a breach of the covenant of quiet enjoyment under G. L. c. 186, § 14. It makes no mention of retaliatory eviction, its elements, or any statutory presumption period.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Haddad v. Gonzalez",
+          "citation_gpt": null,
+          "citation_gemini": "410 Mass. 855",
+          "year": 1991,
+          "prior_holding": "A landlord's retaliatory conduct can constitute an unfair and deceptive practice in violation of the Consumer Protection Act, M.G.L. c. 93A, potentially entitling the tenant to multiple damages and attorney's fees.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Haddad+v.+Gonzalez&type=o&order_by=score+desc&format=json&filed_after=1990-01-01&filed_before=1992-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Jablonski v. Clemons",
+          "citation_gpt": null,
+          "citation_gemini": "60 Mass. App. Ct. 473",
+          "year": 2004,
+          "prior_holding": "To rebut the statutory presumption of retaliation, a landlord must produce clear and convincing evidence of a legitimate, non-retaliatory reason for the eviction that is credible on its face.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "P.F.J. v. C.C. & F.F.",
+          "citation_gpt": null,
+          "citation_gemini": "479 Mass. 244",
+          "year": 2018,
+          "prior_holding": "A tenant's act of seeking a harassment prevention order against another tenant constitutes a protected activity for which a landlord cannot retaliate under M.G.L. c. 186, § 18.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=P.F.J.+v.+C.C.+%26+F.F.&type=o&order_by=score+desc&format=json&filed_after=2017-01-01&filed_before=2019-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "ME",
+      "cases_verified": 4,
+      "machine_verified": 0,
+      "needs_attorney": 4,
+      "case_results": [
+        {
+          "case_name": "Rubin v. Josephson",
+          "citation_gpt": "478 A.2d 665",
+          "citation_gemini": null,
+          "year": 1984,
+          "prior_holding": "The court recognized and applied Maine's statutory retaliatory-eviction defense, holding that a tenant's protected complaint or assertion of rights can trigger the statutory rebuttable presumption that the landlord's eviction action was retaliatory.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Rubin+v.+Josephson&type=o&order_by=score+desc&format=json&filed_after=1983-01-01&filed_before=1985-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Perreault v. Parker",
+          "citation_gpt": null,
+          "citation_gemini": "490 A.2d 203",
+          "year": 1985,
+          "prior_holding": "Held that once a tenant establishes the statutory presumption of retaliation, the landlord bears the burden of persuasion to prove by a preponderance of the evidence that the eviction was for a legitimate, non-retaliatory reason.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Perreault+v.+Parker&type=o&order_by=score+desc&format=json&filed_after=1984-01-01&filed_before=1986-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Farrell v. Dodge",
+          "citation_gpt": null,
+          "citation_gemini": "2013 ME 30, 64 A.3d 483",
+          "year": 2013,
+          "prior_holding": "Affirmed that a landlord's credible, independent business reason for an eviction, such as a good-faith decision to sell the property, can successfully rebut the statutory presumption of retaliation.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Farrell+v.+Dodge&type=o&order_by=score+desc&format=json&filed_after=2012-01-01&filed_before=2014-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Cole v. D. & D. Properties",
+          "citation_gpt": null,
+          "citation_gemini": "2012 ME 66, 43 A.3d 980",
+          "year": 2012,
+          "prior_holding": "Clarified that a retaliatory eviction defense fails if the landlord's decision to evict was made before the tenant engaged in the protected activity, as the necessary causal link is absent.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Cole+v.+D.+%26+D.+Properties&type=o&order_by=score+desc&format=json&filed_after=2011-01-01&filed_before=2013-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "MN",
+      "cases_verified": 5,
+      "machine_verified": 0,
+      "needs_attorney": 5,
+      "case_results": [
+        {
+          "case_name": "Fritz v. Warthen",
+          "citation_gpt": "213 N.W.2d 339",
+          "citation_gemini": "298 Minn. 54, 213 N.W.2d 339",
+          "year": 1973,
+          "prior_holding": "Recognized that residential landlords may not use eviction or similar adverse action to retaliate against tenants for good-faith efforts to enforce housing rights, such as reporting housing-code violations.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Fritz+v.+Warthen&type=o&order_by=score+desc&format=json&filed_after=1972-01-01&filed_before=1974-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Parkin v. Fitzgerald",
+          "citation_gpt": "240 N.W.2d 828",
+          "citation_gemini": null,
+          "year": 1976,
+          "prior_holding": "Held that retaliatory eviction is a cognizable defense in an unlawful-detainer eviction proceeding where the landlord's termination is allegedly in retaliation for the tenant's protected complaints or enforcement efforts.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Parkin+v.+Fitzgerald&type=o&order_by=score+desc&format=json&filed_after=1975-01-01&filed_before=1977-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Real Estate Equity Strategies, LLC v. Jones",
+          "citation_gpt": "720 N.W.2d 352",
+          "citation_gemini": null,
+          "year": 2006,
+          "prior_holding": "Applied Minnesota's statutory retaliation defense and held that a termination notice served after a tenant's protected good-faith enforcement activity may be barred as retaliatory unless the landlord proves a substantial nonretaliatory reason.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Real+Estate+Equity+Strategies%2C+LLC+v.+Jones&type=o&order_by=score+desc&format=json&filed_after=2005-01-01&filed_before=2007-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Parkin v. Fitzgerald",
+          "citation_gpt": null,
+          "citation_gemini": "286 N.W.2d 828",
+          "year": 1979,
+          "prior_holding": "The court established a burden-shifting framework where the landlord must provide a legitimate, non-retaliatory reason for an eviction after the tenant makes a prima facie showing of retaliation.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Parkin+v.+Fitzgerald&type=o&order_by=score+desc&format=json&filed_after=1978-01-01&filed_before=1980-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Barnes v. Weis Management Co.",
+          "citation_gpt": null,
+          "citation_gemini": "347 N.W.2d 519",
+          "year": 1984,
+          "prior_holding": "Complaining in good faith to a landlord about a breach of a lease covenant constitutes protected activity under the retaliatory eviction statute.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Barnes+v.+Weis+Management+Co.&type=o&order_by=score+desc&format=json&filed_after=1983-01-01&filed_before=1985-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "NE",
+      "cases_verified": 2,
+      "machine_verified": 0,
+      "needs_attorney": 2,
+      "case_results": [
+        {
+          "case_name": "Voyager Reinsurance Co. v. Robison",
+          "citation_gpt": null,
+          "citation_gemini": "29 Neb. App. 726, 960 N.W.2d 245",
+          "year": 2021,
+          "prior_holding": "Adopting a burden-shifting framework, the court held that a landlord's action is presumed retaliatory if taken within one year of a tenant's protected act, shifting the burden to the landlord to prove a legitimate, non-retaliatory reason.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Voyager+Reinsurance+Co.+v.+Robison&type=o&order_by=score+desc&format=json&filed_after=2020-01-01&filed_before=2022-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Kramer v. Miskimins",
+          "citation_gpt": null,
+          "citation_gemini": "193 Neb. 641, 228 N.W.2d 885",
+          "year": 1975,
+          "prior_holding": "A tenant's defense of retaliatory eviction under Neb. Rev. Stat. § 76-1439 is unavailable if the tenant is in default of rent when the landlord gives notice to vacate.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Kramer+v.+Miskimins&type=o&order_by=score+desc&format=json&filed_after=1974-01-01&filed_before=1976-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "NH",
+      "cases_verified": 6,
+      "machine_verified": 0,
+      "needs_attorney": 6,
+      "case_results": [
+        {
+          "case_name": "Lavoie v. Szumiez",
+          "citation_gpt": "115 N.H. 266",
+          "citation_gemini": null,
+          "year": 1975,
+          "prior_holding": "Recognized and applied New Hampshire's retaliatory-eviction protection, holding that a landlord may not use a possessory action to evict a residential tenant in retaliation for the tenant's good-faith complaints about housing-code or similar violations.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Lavoie+v.+Szumiez&type=o&order_by=score+desc&format=json&filed_after=1974-01-01&filed_before=1976-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Miller v. Slania Enterprises, Inc.",
+          "citation_gpt": "150 N.H. 655",
+          "citation_gemini": null,
+          "year": 2004,
+          "prior_holding": "Held that RSA 540:13-a provides statutory protection against retaliatory eviction, but does not create an independent private cause of action for damages separate from the statutory landlord-tenant remedies.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Miller+v.+Slania+Enterprises%2C+Inc.&type=o&order_by=score+desc&format=json&filed_after=2003-01-01&filed_before=2005-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Lensey Corp. v. Leitch",
+          "citation_gpt": null,
+          "citation_gemini": "117 N.H. 813, 378 A.2d 1123",
+          "year": 1977,
+          "prior_holding": "Held that while the retaliatory eviction statute creates a rebuttable presumption, the tenant bears the ultimate burden of proving by a preponderance of the evidence that the landlord's primary motivation for the eviction was retaliatory.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Lensey+Corp.+v.+Leitch&type=o&order_by=score+desc&format=json&filed_after=1976-01-01&filed_before=1978-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Moskos v. Hand",
+          "citation_gpt": null,
+          "citation_gemini": "127 N.H. 7, 497 A.2d 1216",
+          "year": 1985,
+          "prior_holding": "Held that to rebut the statutory presumption of retaliation, a landlord must produce evidence of a legitimate, non-retaliatory business reason for the eviction.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Moskos+v.+Hand&type=o&order_by=score+desc&format=json&filed_after=1984-01-01&filed_before=1986-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Simpson v. Young",
+          "citation_gpt": null,
+          "citation_gemini": "153 N.H. 471, 899 A.2d 216",
+          "year": 2006,
+          "prior_holding": "Held that a tenant's good-faith oral complaint to a landlord about a substantial housing code violation is sufficient to trigger the protections of the retaliatory eviction statute, RSA 540:13-a.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Simpson+v.+Young&type=o&order_by=score+desc&format=json&filed_after=2005-01-01&filed_before=2007-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Dow v. Grasso",
+          "citation_gpt": null,
+          "citation_gemini": "162 N.H. 381, 31 A.3d 170",
+          "year": 2011,
+          "prior_holding": "Held that a tenant who successfully raises the defense of retaliatory eviction is a 'prevailing party' entitled to recover reasonable attorney's fees under RSA 540:14, I.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "RI",
+      "cases_verified": 2,
+      "machine_verified": 0,
+      "needs_attorney": 2,
+      "case_results": [
+        {
+          "case_name": "Bailey v. Huling",
+          "citation_gpt": "119 R.I. 257, 377 A.2d 220",
+          "citation_gemini": null,
+          "year": 1977,
+          "prior_holding": "Recognized retaliatory eviction as a defense to a residential eviction where the landlord seeks possession in retaliation for the tenant's good-faith complaints about housing-code violations.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Picerne Investment Corp. v. Sylvestre",
+          "citation_gpt": "122 R.I. 85, 404 A.2d 476",
+          "citation_gemini": null,
+          "year": 1979,
+          "prior_holding": "Applied and confirmed the Bailey retaliatory-eviction doctrine, treating retaliatory motive as a potentially valid defense in a residential possession action.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Picerne+Investment+Corp.+v.+Sylvestre&type=o&order_by=score+desc&format=json&filed_after=1978-01-01&filed_before=1980-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "WA",
+      "cases_verified": 6,
+      "machine_verified": 0,
+      "needs_attorney": 6,
+      "case_results": [
+        {
+          "case_name": "Miller v. McCamish",
+          "citation_gpt": "78 Wn.2d 821",
+          "citation_gemini": null,
+          "year": 1971,
+          "prior_holding": "Recognized retaliatory eviction as contrary to Washington public policy where a landlord terminates a residential tenancy in retaliation for tenants’ lawful assertion of rights or complaints.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Miller+v.+McCamish&type=o&order_by=score+desc&format=json&filed_after=1970-01-01&filed_before=1972-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "S.P. Growers Association v. Rodriguez",
+          "citation_gpt": "17 Wn. App. 622",
+          "citation_gemini": null,
+          "year": 1977,
+          "prior_holding": "Held that retaliatory eviction may be asserted as a defense in an unlawful detainer action when the landlord seeks possession in retaliation for tenants’ protected complaints or organizing activity.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=S.P.+Growers+Association+v.+Rodriguez&type=o&order_by=score+desc&format=json&filed_after=1976-01-01&filed_before=1978-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Foisy v. Wyman",
+          "citation_gpt": null,
+          "citation_gemini": "83 Wn.2d 22",
+          "year": 1973,
+          "prior_holding": "This foundational case adopted the implied warranty of habitability and established the public policy rationale that tenants must be protected from retaliatory eviction for asserting their rights.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Foisy+v.+Wyman&type=o&order_by=score+desc&format=json&filed_after=1972-01-01&filed_before=1974-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Housing Authority of City of Pasco & Franklin County v. Asuncion",
+          "citation_gpt": null,
+          "citation_gemini": "115 Wn. App. 686",
+          "year": 2003,
+          "prior_holding": "This case clarified the burden-shifting framework of the statutory defense, holding that once a tenant triggers the 90-day presumption of retaliation, the burden shifts to the landlord to prove a legitimate, non-retaliatory reason for the eviction.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Housing+Authority+of+City+of+Pasco+%26+Franklin+County+v.+Asuncion&type=o&order_by=score+desc&format=json&filed_after=2002-01-01&filed_before=2004-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "TMG NW, Inc. v. Kommavongsa",
+          "citation_gpt": null,
+          "citation_gemini": "189 Wn. App. 921",
+          "year": 2015,
+          "prior_holding": "This case held that a tenant can prevail on a retaliation defense even if the landlord presents a legitimate reason for eviction, if the tenant proves the landlord's primary motivation was retaliatory.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: None"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Riehl v. Loveless",
+          "citation_gpt": null,
+          "citation_gemini": "1 Wn. App. 2d 101",
+          "year": 2017,
+          "prior_holding": "This case affirmed that evicting a tenant for reporting an illegal or unpermitted dwelling unit to a government authority is a protected activity and constitutes unlawful retaliation under the RLTA.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Watson v. Mobile O. R. Co.",
+              "date": "1937-02-18",
+              "court": "Supreme Court of Alabama",
+              "citation": [
+                "173 So. 43",
+                "233 Ala. 690",
+                "1937 Ala. LEXIS 104"
+              ],
+              "cluster_id": 3240603
+            },
+            "cl_cluster_id": 3240603,
+            "cl_opinion_id": 3241908,
+            "cl_url": "https://www.courtlistener.com/opinion/3240603/watson-v-mobile-o-r-co/",
+            "cl_citation": "173 So. 43",
+            "citation_match": false,
+            "exists": "FLAG-citation-mismatch",
+            "basis": "CL citations ['173 So. 43', '233 Ala. 690', '1937 Ala. LEXIS 104']; model citations ['1 Wn. App. 2d 101']; match=False",
+            "cl_snippets": "[lead-opinion] This is the second appeal in this case. Mobile  Ohio Railroad Company v. Watson, 221 Ala. 585, 130 So. 199, 201. On the former appeal we held that no reversible error was committed by the trial court *Page 692 \nprior to the verdict, but that the court did commit error to reversal in declining to permit the defendant to cross-examine certain witnesses \"t",
+            "cl_all_citations": [
+              "173 So. 43",
+              "233 Ala. 690",
+              "1937 Ala. LEXIS 104"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "This case addressed the propriety of a trial court's action to grant a new trial on the ground that a jury delivered a quotient verdict, affirming the trial court's decision and discussing procedural issues related to this decision.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The retrieved case text does not discuss retaliatory eviction or tenant-related defenses; it instead focuses on procedural issues involving a jury verdict and a new trial motion.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "This case addresses procedural issues related to a motion for a new trial due to an alleged quotient verdict and the proper forum for raising a defense of res judicata based on a judgment from a federal court. The court affirmed the trial court's order granting a new trial and held that a judgment from a federal court in Alabama is a domestic judgment that cannot be collaterally attacked in a state court proceeding.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The provided case text does not mention landlords, tenants, eviction, or the Residential Landlord and Tenant Act (RLTA). The case revolves around a personal injury claim against a railroad company and procedural matters concerning a quotient verdict and the effect of a parallel federal court judgment.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text does not address the legal question regarding a tenant's affirmative defense of retaliatory eviction in a residential landlord-tenant context. The case instead discusses procedural issues related to the propriety of the trial court's actions on prior motions and jurisdictional matters concerning simultaneous suits in federal and state courts. There is no mention of landlord-tenant law, retaliatory eviction, or relevant statutory periods for such defenses.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text does not control the legal question. The case involves a personal injury lawsuit against a railroad company and discusses procedural issues such as quotient verdicts, motions for a new trial, and res judicata. It does not mention landlord-tenant law, eviction, or the affirmative defense of retaliatory eviction.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG-citation-mismatch, C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "DE",
+      "cases_verified": 0,
+      "machine_verified": 0,
+      "needs_attorney": 0,
+      "case_results": [],
+      "note": "No candidate cases in draft file"
+    },
+    {
+      "state": "AR",
+      "cases_verified": 0,
+      "machine_verified": 0,
+      "needs_attorney": 0,
+      "case_results": [],
+      "note": "No candidate cases in draft file"
+    },
+    {
+      "state": "IN",
+      "cases_verified": 5,
+      "machine_verified": 0,
+      "needs_attorney": 5,
+      "case_results": [
+        {
+          "case_name": "Sigsbee v. Swathwood",
+          "citation_gpt": "419 N.E.2d 789",
+          "citation_gemini": null,
+          "year": 1981,
+          "prior_holding": "Recognized retaliatory eviction as a defense in Indiana where a landlord seeks possession in retaliation for a tenant's good-faith complaint to public authorities about housing-code or habitability violations.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Sigsbee v. Swathwood",
+              "date": "1981-04-27",
+              "court": "Indiana Court of Appeals",
+              "citation": [
+                "419 N.E.2d 789",
+                "1981 Ind. App. LEXIS 1380"
+              ],
+              "cluster_id": 1999128
+            },
+            "cl_cluster_id": 1999128,
+            "cl_opinion_id": 1999128,
+            "cl_url": "https://www.courtlistener.com/opinion/1999128/sigsbee-v-swathwood/",
+            "cl_citation": "419 N.E.2d 789",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['419 N.E.2d 789', '1981 Ind. App. LEXIS 1380']; model citations ['419 N.E.2d 789']; match=True",
+            "cl_snippets": "[combined-opinion] \n419 N.E.2d 789 (1981)\nPaul G. SIGSBEE and Cynthia I. Sigsbee, Appellant[S]-Defendant[S] below,\nv.\nCharles SWATHWOOD, Jr., and Donna Swathwood, d/b/a Osolo Market, Appellee[S]-Plaintiff[S] below.\nNo. 3-380A87.\nCourt of Appeals of Indiana, Third District.\nApril 27, 1981.\n*791 John J. Lorber, May, Oberfell, Helling, Lorber, Campiti ",
+            "cl_all_citations": [
+              "419 N.E.2d 789",
+              "1981 Ind. App. LEXIS 1380"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 20,
+            "basis": "No negative treatment detected in 20 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The retrieved case text does not provide sufficient details about the specific holding regarding retaliatory eviction or tenant defenses.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The case text provided does not contain information about any holdings related to retaliatory eviction or tenant defense, making it impossible to verify or confirm the accuracy of the prior holding summary.",
+              "confidence": "low"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The court held that the defense of retaliatory eviction is available in an action for possession where a landlord's primary motive in evicting the tenant is to retaliate for the tenant having reported a violation of health and safety codes to the appropriate authorities. However, this defense is limited to residential tenancies and requires the tenant's complaint to the authorities to have been made in good faith and with a reasonable basis.",
+              "prior_summary_accuracy": "accurate",
+              "accuracy_note": "The prior holding summary accurately captures the core ruling of the case, which is the recognition of the retaliatory eviction defense in Indiana when a tenant makes good-faith complaints to public authorities about housing violations.",
+              "confidence": "high"
+            },
+            "agreement": false,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=accurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case text provided does not explicitly state the elements or statutory presumption period for the affirmative defense of retaliatory eviction. It is unclear whether the court directly addressed this specific legal question in the retrieved opinion. Therefore, its relevance to the legal question requires inference or further examination of the full case opinion to determine if it discusses related principles that could be analogized.",
+              "confidence": "low"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided text only contains the case caption and citation. It does not include any part of the court's opinion or analysis. Therefore, it is impossible to determine if the case addresses the elements or statutory presumption period for a retaliatory eviction defense.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Dvorak v. Christ",
+          "citation_gpt": "692 N.E.2d 920",
+          "citation_gemini": null,
+          "year": 1998,
+          "prior_holding": "Limited the retaliatory-eviction defense by holding that a landlord may recover possession on an independent, nonretaliatory ground such as the tenant's nonpayment of rent.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "Dvorak v. Christ",
+              "date": "1998-03-16",
+              "court": "Indiana Court of Appeals",
+              "citation": [
+                "692 N.E.2d 920",
+                "1998 Ind. App. LEXIS 329",
+                "1998 WL 111689"
+              ],
+              "cluster_id": 2085486
+            },
+            "cl_cluster_id": 2085486,
+            "cl_opinion_id": 2085486,
+            "cl_url": "https://www.courtlistener.com/opinion/2085486/dvorak-v-christ/",
+            "cl_citation": "692 N.E.2d 920",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['692 N.E.2d 920', '1998 Ind. App. LEXIS 329', '1998 WL 111689']; model citations ['692 N.E.2d 920']; match=True",
+            "cl_snippets": "[combined-opinion] \n692 N.E.2d 920 (1998)\nPeter DVORAK and Gigi Larmour-Goldin, Appellants-Plaintiffs,\nv.\nDale A. CHRIST, Appellee-Defendant.\nNo. 49A02-9705-CV-293.\nCourt of Appeals of Indiana.\nMarch 16, 1998.\nRehearing Denied May 27, 1998.\n*921 Michael L. Carmin, Robert T. Drew, Andrews, Harrell, Mann Chapman & Coyne, P.C., Blo",
+            "cl_all_citations": [
+              "692 N.E.2d 920",
+              "1998 Ind. App. LEXIS 329",
+              "1998 WL 111689"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case held that there were no genuine issues of material fact regarding the summary judgment awarded to Christ, and Dvorak and Larmour-Goldin failed to establish material facts to overcome the summary judgment.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The retrieved text from the appellate opinion is entirely focused on a breach of contract scenario involving real estate transactions, not on any issue concerning retaliatory eviction or tenant defenses.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "This case does not address retaliatory eviction or landlord-tenant law; instead, it concerns a breach of contract claim related to a real estate purchase agreement. The court affirmed summary judgment for the seller because the buyer failed to obtain a financing commitment within the contractually specified timeframe, causing the agreement to terminate by its own terms.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior summary discusses the landlord-tenant defense of retaliatory eviction and nonpayment of rent. The provided case text is about a breach of a real estate purchase contract and does not mention landlords, tenants, eviction, or rent.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The case primarily deals with a breach of contract dispute over a real estate transaction involving financing contingencies and does not address the issue of retaliatory eviction or any landlord-tenant relationship. There is no discussion of the elements of a retaliatory eviction defense or any statutory presumption period in the provided case text.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text does not address the legal question. The case concerns a breach of a real estate purchase agreement between a buyer and a seller, focusing on whether a financing contingency was met. It does not involve a landlord-tenant relationship, eviction, or the affirmative defense of retaliatory eviction. Therefore, it provides no controlling authority on this issue.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Schoettmer v. Wright",
+          "citation_gpt": null,
+          "citation_gemini": "992 N.E.2d 702",
+          "year": 2013,
+          "prior_holding": "The Indiana Supreme Court recognized the retaliatory eviction statute as part of a comprehensive legislative framework that has replaced the common law in governing landlord-tenant relationships.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": {
+              "case_name": "John W. Schoettmer & Karen Schoettmer v. Jolene C. Wright & South Central Community Action Program, Inc.",
+              "date": "2013-08-27",
+              "court": "Indiana Supreme Court",
+              "citation": [
+                "992 N.E.2d 702",
+                "2013 WL 4519807",
+                "2013 Ind. LEXIS 633"
+              ],
+              "cluster_id": 1039895
+            },
+            "cl_cluster_id": 1039895,
+            "cl_opinion_id": 1039895,
+            "cl_url": "https://www.courtlistener.com/opinion/1039895/john-w-schoettmer-karen-schoettmer-v-jolene-c-wright-south-central/",
+            "cl_citation": "992 N.E.2d 702",
+            "citation_match": true,
+            "exists": "true",
+            "basis": "CL citations ['992 N.E.2d 702', '2013 WL 4519807', '2013 Ind. LEXIS 633']; model citations ['992 N.E.2d 702']; match=True",
+            "cl_snippets": "[combined-opinion] \n\n\n  MASSA, Justice.\n \n\n  After he was injured in an automobile accident, John Schoettmer cooperated with the other driver’s insurer in hopes of settling his claim. Nearly a year later, when settlement proved elusive, he hired a lawyer and filed suit. Only then did he learn that the other driver was employed by a political subdivision subject to the Indiana Tort Claims Act. Schoettmer cit",
+            "cl_all_citations": [
+              "992 N.E.2d 702",
+              "2013 WL 4519807",
+              "2013 Ind. LEXIS 633"
+            ]
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "OK-machine",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No negative treatment detected in 0 citing opinions via CourtListener as of 2026-06-23. Note: absence of negative treatment in snippet scan ≠ confirmed good law — attorney should verify.",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG-inaccurate",
+            "gpt_holding": {
+              "your_holding_from_text": "The case excerpt provided does not discuss retaliatory eviction or tenant defenses; instead, it involves a motor vehicle accident and the Indiana Tort Claims Act.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior holding summary is inaccurate as it references a retaliatory eviction statute and landlord-tenant relationships, which are not mentioned or relevant in the case excerpt provided.",
+              "confidence": "high"
+            },
+            "gem_holding": {
+              "your_holding_from_text": "The provided case text does not address retaliatory eviction or any landlord-tenant issues. The text concerns an automobile accident and the applicability of the Indiana Tort Claims Act when the defendant is a political subdivision.",
+              "prior_summary_accuracy": "inaccurate",
+              "accuracy_note": "The prior holding summary discusses landlord-tenant law and retaliatory eviction, subjects that are entirely absent from the provided case text. The case text is about an automobile accident and the Indiana Tort Claims Act.",
+              "confidence": "high"
+            },
+            "agreement": true,
+            "basis": "One or both models found holding inaccurate: GPT=inaccurate, Gemini=inaccurate"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The retrieved case text has no apparent relevance to a residential landlord-tenant context, especially concerning the issue of retaliatory eviction and its elements. The case snippet provided involves an automobile accident and the Indiana Tort Claims Act, which does not address tenant rights or defenses related to retaliatory eviction.",
+              "confidence": "high"
+            },
+            "gem_control": {
+              "control_type": "INFERRED",
+              "controlling_quote": null,
+              "quote_context": null,
+              "control_note": "The provided case text does not address the legal question. The case appears to concern an automobile accident and the Indiana Tort Claims Act, not residential landlord-tenant law or the affirmative defense of retaliatory eviction. Therefore, it has no controlling authority on this issue.",
+              "confidence": "high"
+            },
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Both models or single model returned INFERRED: GPT=INFERRED, Gemini=INFERRED"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Goatley v. Hogg",
+          "citation_gpt": null,
+          "citation_gemini": "942 N.E.2d 140",
+          "year": 2011,
+          "prior_holding": "Under Indiana's retaliatory eviction statute, the tenant bears the burden of proving that the landlord's primary motive for eviction was retaliatory.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        },
+        {
+          "case_name": "Remm v. Landrieu",
+          "citation_gpt": null,
+          "citation_gemini": "418 N.E.2d 1180",
+          "year": 1981,
+          "prior_holding": "The court declined to judicially recognize a common law defense of retaliatory eviction, holding that the creation of such a public policy was a matter for the legislature.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "MO",
+      "cases_verified": 1,
+      "machine_verified": 0,
+      "needs_attorney": 1,
+      "case_results": [
+        {
+          "case_name": "King v. Moore",
+          "citation_gpt": null,
+          "citation_gemini": "98 S.W.3d 603",
+          "year": 2003,
+          "prior_holding": "A tenant asserting the statutory retaliatory eviction defense must prove that the landlord's primary and chief purpose for the eviction was retaliation for the tenant's protected activities.",
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CourtListener search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No CourtListener cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_holding_accuracy",
+            "holding": "FLAG",
+            "gpt_holding": null,
+            "gem_holding": null,
+            "agreement": null,
+            "basis": "Opinion text unavailable or too short — cannot verify holding"
+          },
+          "check_d": {
+            "check": "D_control",
+            "control": "INFERRED",
+            "gpt_control": null,
+            "gem_control": null,
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Opinion text unavailable — cannot determine control type"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED. Attorney review required.",
+          "controlling_quote": null
+        }
+      ]
+    },
+    {
+      "state": "VA",
+      "cases_verified": 0,
+      "machine_verified": 0,
+      "needs_attorney": 0,
+      "case_results": [],
+      "note": "No candidate cases in draft file"
+    }
+  ]
+}
