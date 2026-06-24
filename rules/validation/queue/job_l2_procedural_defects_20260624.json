@@ -1,0 +1,10 @@
+{
+  "job_id": "job_20260625_0215_l2_procedural_defects",
+  "job_type": "l2_module",
+  "runner": "rules/validation/l2/l2_procedural_defects_runner.py",
+  "states": "ALL",
+  "defects": "premature,court,attach,summons",
+  "sleep": 2,
+  "created": "2026-06-24T22:00:00Z",
+  "note": "Full 51-state × 4-defect L2 procedural defects run. 204 units, est. $3. Regression tests pass (30/30). First overnight L2 module run via dispatcher."
+}
