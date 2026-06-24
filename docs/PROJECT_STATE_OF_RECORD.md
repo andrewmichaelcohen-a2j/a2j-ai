@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 18, 2026 (L2 FULLY COMPLETE. Final: 41 CONFIRM · 5 AI-resolved pending confirmation · 5 genuine L7 (MO, ND, MD, VA, GA) · 3 citation-review items. HUMAN_REVIEW_QUEUE.md rebuilt with append-only ownership rule. Ready to commit.) · **Next update:** after L7 attorney reviews + human confirmations
+**Generated:** June 15, 2026 · **Last updated:** June 24, 2026 (Morning report: Batch 3 job [18 states, retaliation_holdings_v3] placed in queue June 24 05:20 AM — launchd fired at 02:15 AM but dispatch.py failed with Operation not permitted [Errno 1]. No overnight run completed. Job still in queue. Fix macOS permissions on dispatch.py before tonight's 02:15 AM run.) · **Next update:** after v3 Batch 3 run completes
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -78,9 +78,13 @@ a2j-ai/
 │       ├── l2/                              ← ✅ NEW (2026-06-18)
 │       │   ├── l2_runner.py                ← L2 multi-model consensus runner (gpt-5.5 + gemini-2.5-pro)
 │       │   ├── l2_reasoning_pass.py        ← L2 period-divergence reasoning pass; writes AI-resolved or L7 flags
-│       │   ├── l2_phase2_runner.py         ← ✅ NEW — Phase 2 full 43-state runner (2026-06-18)
-│       │   ├── l2_phase2_retry.py          ← ✅ NEW — Retry runner for GPT parse-error pseudo-splits (2026-06-18)
-│       │   └── l2_ga_straggler.py          ← ✅ NEW — GA targeted clean retry (conflict-framing artifact fix)
+│       │   ├── l2_phase2_runner.py         ← Phase 2 full 43-state runner (2026-06-18)
+│       │   ├── l2_phase2_retry.py          ← Retry runner for GPT parse-error pseudo-splits (2026-06-18)
+│       │   ├── l2_ga_straggler.py          ← GA targeted clean retry (conflict-framing artifact fix)
+│       │   ├── add_interoperability.py     ← JusticeBench tagging pass (all 51 v2 files)
+│       │   ├── l2_service_runner.py        ← ✅ NEW (2026-06-19) — Service module L2 runner (51 states)
+│       │   ├── l2_service_reasoning.py     ← ✅ NEW (2026-06-19) — Service reasoning/tiebreaker/single-model-fallback
+│       │   └── l2_service_l7_escalate.py   ← ✅ NEW (2026-06-19) — L7 escalation for DC/NM (API failure)
 │       └── reports/
 │           ├── validation_report_20260601_232614.json   ← v1 report (archive)
 │           ├── validation_report_latest.json            ← v1 latest (archive)
@@ -117,7 +121,9 @@ a2j-ai/
     ├── Review_Slides_v0.1.pptx
     ├── Review_Slides_v0.2.pptx
     ├── REVIEWER_CHECKLIST.md
-    ├── SCHEMA_V2_DESIGN_SPEC.md            ← Schema v2 additions (notice_required, exceptions, null days)
+    ├── JUSTICEBENCH_ALIGNMENT_SPEC.md       ← ✅ NEW — JusticeBench alignment spec
+    ├── JUSTICEBENCH_VERIFIED_CODES.md       ← ✅ NEW — confirmed FIPS/LIST/task-taxonomy codes (implement from here only)
+    ├── SCHEMA_V2_DESIGN_SPEC.md            ← ✅ UPDATED (June 18) — Schema v2 additions: notice_required/exceptions/null days + interoperability block
     └── STATUS_LABELS.md                     ← ✅ UPDATED to v2 (module-level + guardrails)
 ```
 
@@ -142,6 +148,8 @@ a2j-ai/
 | Five-module build | **Complete (2026-06-16)** — 789 field updates across 51 files; 0 [VERIFY] remaining |
 | L5 outlier resolution | **Complete (2026-06-16)** — Andrew Cohen attorney review of all 7 DRAFT states; 5 confirmed (DC, MA, TN, VT, WA) advanced to ACP; MN citation corrected + re-validated; NJ substantive correction implemented — all 51 now ACP |
 | Schema v2 additions | `notice_required` (boolean) + `exceptions` array + null `days` support added 2026-06-16 — see `docs/SCHEMA_V2_DESIGN_SPEC.md` |
+| JusticeBench interoperability tags | ✅ COMPLETE 2026-06-18. All 51 v2 files tagged: `fips_jurisdiction` (2-digit FIPS), `language` (["en"]), `task_taxonomy_ids` (TS-03-04/01-07/01-05/05-05/03-02/05-04 — confirmed from justicebench.org/task), `list_codes` (all 8 HO codes — confirmed from taxonomy.legal). Script: `rules/validation/l2/add_interoperability.py`. Tags are additive metadata — do not change decision logic or validation status. |
+| LIST subcodes | ✅ ALL CONFIRMED. Subcodes -01 (Notice/Procedural), -02 (Disability/RA), -03 (Habitability), -04 (Military), -05 (Title) confirmed 2026-06-18 (Andy browser check at taxonomy.legal HO-02-04). No pending items. |
 | L7 triage entries | **264** — all in substantive_defenses; grounding_gap / specialist_required (see `docs/L7_TRIAGE_LIST_2026-06-16.md`) |
 
 **States at AUTOMATED-CHECKS-PASSED (49):**
@@ -216,10 +224,10 @@ a2j-ai/
 | Layer | Name | Status | v2 Result (2026-06-15) |
 |-------|------|--------|------------------------|
 | **L1** | Statutory grounding | ✅ Operational | **51 pass / 0 fail** (Wave 3 complete 2026-06-15 — all 51 states retrieved) |
-| **L2** | Multi-model consensus | ✅ Phase 1 complete (2026-06-18) | **8 machine-assist flag states (notice/pay_or_quit):** ME ✅ CONFIRM · OH ✅ AI-resolved (citation) · WV ✅ AI-resolved (no notice) · MS ✅ AI-resolved (citation) · SD ✅ CONFIRM · IL ✅ CONFIRM · MO 🔴 L7-escalated · ND 🔴 L7-escalated · Phase 2 (all 51 states) not yet run |
+| **L2** | Multi-model consensus | ✅ Notice module COMPLETE (2026-06-18) · ✅ **Service module COMPLETE (2026-06-19/20)** | **Notice/pay_or_quit (51):** 41 CONFIRM · 5 AI-resolved (attorney-confirmed) · 4 L7-open (MO, ND, MD, GA) · 2 attorney-resolved (SD statute-repeal, VA time-versioned). **Service module (51):** 16 round-1 confirm · 32 AI-resolved (reasoning/tiebreaker/single-model) · 2 L7 (DC, NM — API failure, zero model data) · CA L6-RECENCY-WATCH. Runners: `l2_service_runner.py`, `l2_service_reasoning.py`, `l2_service_l7_escalate.py`. |
 | **L3** | Internal consistency | ✅ Operational | 51/51 PASS · 0 errors · 2 warnings (NY, WA) |
 | **L4** | Golden-set tests | ⚠️ not_implemented | — |
-| **L5** | Cross-jurisdiction anomaly | ✅ Operational | **51 ACP / 0 DRAFT** (2026-06-16). L5 outlier resolution complete: 5 confirmed states (DC, MA, TN, VT, WA) advanced; MN re-validated (citation §504B.321 subd. 1a, flag resolved-confirmed); NJ content-corrected (no-notice-period pattern, days=null, notice_required=false, exceptions array). validate.py updated to suppress resolved-* flags and recognize notice_required=false. **L5-LOCAL-XSTATE sub-check**: all 51 states pass clean. ⚠️ NJ advance requires Andy confirmation. |
+| **L5** | Cross-jurisdiction anomaly | ✅ Operational | **51 ACP / 0 DRAFT** (2026-06-16). L5 outlier resolution complete: 5 confirmed states (DC, MA, TN, VT, WA) advanced; MN re-validated (citation §504B.321 subd. 1a, flag resolved-confirmed); NJ content-corrected (no-notice-period pattern, days=null, notice_required=false, exceptions array). validate.py updated to suppress resolved-* flags and recognize notice_required=false. **L5-LOCAL-XSTATE sub-check**: all 51 states pass clean. NJ advance confirmed: Andrew Cohen, 2026-06-16. |
 | **L6** | Temporal freshness | ⚠️ not_implemented | — |
 | **L7** | Attorney review | 🔴 Not started | 0/51 modules attorney-reviewed · **triage list generated 2026-06-16** (264 entries, all substantive_defenses — see `docs/L7_TRIAGE_LIST_2026-06-16.md`) |
 
@@ -336,6 +344,53 @@ Nothing here constitutes legal advice. See docs/DISCLAIMER.md.
 
 | Date | What changed |
 |------|-------------|
+| **2026-06-23** | **Holdings v3 runner built — generate-from-source (per direction doc)** |
+| | **Runner:** `rules/validation/l2/retaliation_holdings_v3_runner.py` — NEW FILE (v2 preserved for CA provenance). |
+| | **Architecture:** Sequential generate-then-verify. Model 1 (Gemini): generates holding characterization + candidate quote from retrieved opinion text only — does NOT see draft holding. Model 2 (GPT, different model): verifies Gemini's characterization against text, checks if quote is verbatim + on-point, reconciles against draft holding. C passes only if GPT confirms characterization as accurate/partially_accurate. D derived from C outputs — no additional LLM call. |
+| | **Two-queue routing:** CONFIRM-INFERENCE (C=corroborated, D=INFERRED — cheap, delegable); RE-CHARACTERIZE (C=FLAG — source-generated holding carried to queue); WRONG-DOC (A=FLAG-citation-mismatch). |
+| | **Independence:** `GENERATE_MODEL = "gemini:gemini-2.5-pro"` / `VERIFY_MODEL = "gpt:gpt-4o"` — different models, recorded per-case in output JSON. |
+| | **Passing standard unchanged:** A=true + B=OK-machine + C=corroborated + D=STATED/STATED-single-model/INFERRED. Nothing promoted across attorney line. |
+| | **Triage (Step 2) — 10 C=FLAG-inaccurate cases from batch 1 (d5444e58):** N=5 (50%), W=3 (30%), I=2 (20%). N-type (CL wrong doc): AZ DVM, AZ Visco, DC Edwards, DC Hosey, DC DeSzunyogh. W-type (wording artifact, recoverable by v3): DC Twyman, DC Robinson, IA Hillview. I-type (genuinely inaccurate draft): DC Gomez, IA Lewis. v3 should recover the W-types. N-types go to WRONG-DOC queue; I-types to RE-CHARACTERIZE with source-generated holding. |
+| | **Ready to run.** See §8 for terminal commands. |
+| **2026-06-22 (late)** | **33-state holdings run — FAILED (quota exhaustion)** |
+| | **Run `a86b3598`:** 33 states, 102 cases, 0/102 machine-verified (0%). All cases returned `A=FLAG, B=UNVERIFIED-no-citator, C=FLAG, D=INFERRED` — CourtListener session quota was exhausted from the earlier CA canonical run. Every Check A search 429'd even with 3/6/12/24/48s retry. Not a runner bug — runner correctly marked all as needs-attorney. **Do not ingest `a86b3598`.** |
+| | **Root cause:** Session quota depleted by morning CA runs. The 10s inter-case sleep prevents in-run exhaustion but does not reset session quota across back-to-back runs. |
+| | **Fix:** Run the 33-state batch first thing tomorrow (fresh session quota). Optionally batch into 3 × ~11 states with 30-min gaps. Consider requesting higher CL rate limits or acquiring a second token for parallel runs. |
+| | **Commit (Task #52) is next** before re-running. See commit list in §8. |
+| **2026-06-21/22** | **Holdings verification layer — retaliation module (Step 2 holdings)** |
+| | **Runner built:** `rules/validation/l2/retaliation_holdings_v2_runner.py` — 4-check authoritative-source verification (Check A: existence+citation via CourtListener search; Check B: currency via citing-opinion scan; Check C: holding characterization accuracy via two-model comparison against retrieved opinion text; Check D: control determination — STATED-with-quote vs. INFERRED). CourtListener REST API (`/api/rest/v4/`) used directly from Terminal with token. |
+| | **Build-check B passed:** Fake cite `Orozco v. Casimiro, 12 Cal.5th 100 (2023)` correctly returned NOT FOUND / NOT VERIFIED — authoritative source fails closed on hallucinated citations. |
+| | **CA test runs (6 retaliation cases):** Multiple runs executed. Best honest runner result: **2/6 machine-verified (33%)** in run `6a1788c6`. True machine-verified rate confirmed at **5/6 (83%)** via MCP supplemental verification (CourtListener MCP used to directly verify the 3 dropped cases). |
+| | **Cases verified (MCP-supplemented):** Schweiger (1970) → needs-attorney (D=INFERRED — foundational case, no element enumeration; architecturally correct); S.P. Growers (1976) → machine-verified (citation fallback, 38 citing); Barela (1981) → machine-verified (55 citing); Drouet (2003) → machine-verified (STATED quote confirmed); Aweeka (1971) → machine-verified (STATED-single-model); Western Land (1985) → machine-verified (STATED, burden-shifting rule stated). |
+| | **Root cause for runner gap:** `cl_get_opinion_id_for_cluster()` had no 429 retry — silently returned None on rate limit, leaving S.P. Growers/Barela/Western Land without opinion IDs → fell back to caption-only snippets → C=FLAG-inaccurate. **Fix applied:** 5-retry exponential backoff (3/6/12/24/48s), removed `oid != cluster_id` guard, added 1s breathing room before call. |
+| | **Rate limiting issue (session-end blocker):** Final run (`96494b27`) got 0/6 — CourtListener quota exhausted from running multiple CA runs in one evening. Fix prepared: increase inter-case sleep from 3s → 10s in `verify_case()`. Re-run needed next session with fresh CL quota. |
+| | **Fixes applied to runner (cumulative):** (1) `GEMINI_API_KEY` → fallback to `GOOGLE_API_KEY`; (2) `thinking_budget=0` → `512` (invalid for gemini-2.5-pro); (3) 5-retry exponential backoff on all CL search calls; (4) Citation-based fallback search strategy in `cl_search_case()` to handle wrong-case name returns (S.P. Growers) and persistent 429s; (5) `cl_get_opinion_id_for_cluster()` 429 retry; (6) Inter-case sleep increased to 3s (needs 10s next run). |
+| | **Output files (do not overwrite — provenance):** Best run: `rules/validation/l2/output/retaliation_holdings_v2_1states_2026-06-22_6a1788c6.json` (2/6 MV, honest runner output). All prior runs preserved with unique UUIDs. |
+| | **Canonical result (run ce5c9748, 2026-06-22):** 4/6 machine-verified (67%). MV: Schweiger (STATED-single-model), Barela (STATED), Drouet (STATED), Western Land (STATED). NA: S.P. Growers (C=FLAG — CL returned caption only, no opinion body), Aweeka (C=FLAG — CL text fetch returned empty this run; MCP confirms verifiable; true rate 5/6). Ingested to `ca_eviction_v2.json` + `VALIDATION_METRICS_LEDGER.md`. |
+| | **Next:** (1) Commit (Task #52); (2) Re-run 33-state holdings fresh tomorrow morning; (3) Build audit sampler. |
+| **2026-06-20** | **LSC baseline cross-check complete** |
+| | **46/51 states (90%) corroborated** against LSC/Temple LawAtlas State Eviction Laws dataset (Jan 2021, inter-coder reliability, congressionally funded). 44 MATCH-PERIOD + 2 MATCH-NO-NOTICE (NJ, WV). |
+| | **3 post-2021 divergences** (MN: 14d added by 2023 Housing Omnibus; SD: §21-16-2 repealed by SB 90 2024; VA: time-versioned 5d current/14d from 2026-07-01). CJaC reflects current law; LSC frozen at 2021. These demonstrate the recency advantage claim. |
+| | **2 L7-corroborations** (GA: LSC="not specified" supports Gemini no-minimum L7 position; MD: LSC="not required" supports Gemini no-notice L7 position). Both corroborations fed to attorney review queue. |
+| | **No unexplained divergences.** Zero cases of a confirmed wrong CJaC value not already flagged by the process. |
+| | **New files:** `docs/LSC_CROSSCHECK_REPORT_2026-06-20.md`, `rules/validation/l2/lsc_crosscheck_runner.py`, `docs/LSC_BASELINE_CROSSCHECK_ASSESSMENT.md`. VALIDATION_METRICS_LEDGER.md updated. |
+| **2026-06-19/20** | **Service module L2 complete — Task B1 complete** |
+| | **51/51 states run** via full tiered protocol: initial 51-state runner → 17-state ERROR retry → reasoning pass (20 review states) → tiebreaker pass (`--retry-l7`, 8 states) → targeted single-state passes (VA, WI, AR, OR, IN via override queries) → L7 escalation (DC, NM). Total spend: ~$4.50. |
+| | **Final distribution:** 16 round-1 consensus-confirmed (CT, FL, IL, KY, MD, ME, MI, MN, MS, NE, NY, OH, OK, RI, VT, WY) · 32 AI-resolved via reasoning/tiebreaker/single-model (AK, AL, AR, AZ, CO, DE, GA, HI, IA, ID, IN, KS, LA, MA, MO, MT, NC, ND, NH, NJ, NV, OR, PA, SC, SD, TN, TX, UT, VA, WA, WI, WV) · 2 L7 (DC, NM — persistent API failure, zero recoverable model data) · CA L6-SERVICE-RECENCY-WATCH. |
+| | **New capabilities built:** (1) Single-model fallback — when one model errors but other is high-confidence, trust high-confidence model and flag as L2-SERVICE-SINGLE-MODEL-RESOLVED. Resolved VA, WI, AR, TN that would otherwise have been false L7s. (2) State-specific override queries — method-by-method subsection questions resolved IN (§32-31-1-9(b)(1)/(2)/(3)) after two failed generic tiebreaker passes. |
+| | **New scripts:** `rules/validation/l2/l2_service_runner.py`, `l2_service_reasoning.py`, `l2_service_l7_escalate.py`. DC and NM written L7-SERVICE-ATTORNEY-REVIEW to rules files; queue updated. |
+| | **VALIDATION_METRICS_LEDGER.md updated** with full service module table including process-quality notes. |
+| **2026-06-19** | **Notice queue resolutions applied — Task B0 complete** |
+| | **9 state files updated** per attorney confirmations (Andy Cohen). WV, OH, MS, DE, IL, ME: attorney-confirmed flags added; dispositions updated to `resolved-attorney-confirmed`. NV: count_method corrected from `calendar_days` to `calendar_days_excluding_weekends_holidays` (judicial days — weekends/holidays excluded per §40.253(1)(a)). SD: NJ-pattern rewrite — notice_required=false, days=null; §21-16-2 was repealed by SB 90 (2024); 3-day ripening period under §21-16-1(4); flag renamed L2-CITATION-AMBIGUOUS-ATTORNEY-RESOLVED. VA: time-versioned — tenancy_all.days=5 current law (§55.1-1245(F)); pending_amendment block added (effective_date=2026-07-01, new_days=14, authority=HB 15/SB 48); flag renamed L2-MODEL-SPLIT-ATTORNEY-RESOLVED. MO, ND, MD, GA: untouched (L7 still pending). |
+| | **Error-confirm outcomes logged to VALIDATION_METRICS_LEDGER.md:** 4 AI-resolved items confirmed correct (100%), 2 CONFIRM items confirmed correct; NV count_method miss caught by attorney; SD statute-repeal catch (§21-16-2 non-operative since 2024); VA temporal split resolved. |
+| | **Validate.py: 51/51 AUTOMATED-CHECKS-PASSED** — no regressions from all 9 file updates. |
+| | **Missing doc:** `docs/STANDARDS_LANDSCAPE_ASSESSMENT.md` referenced in prior sessions but not in repo — needs to be created or Andy confirms not needed. LSC_CASE_STUDY.md and PRIOR_ART_MAP.md are present. |
+| **2026-06-18** | **JusticeBench interoperability tags — all 51 v2 files** |
+| | **Schema updated:** `interoperability` block added to `eviction_schema_v2.0.json` (after `provenance`, before `validation`). Four fields: `fips_jurisdiction` (string), `language` (array), `task_taxonomy_ids` (array), `list_codes` (array), plus `_list_pending_subcodes` note. Additive only. |
+| | **All 51 files populated via `rules/validation/l2/add_interoperability.py`:** FIPS from verified federal table, language=["en"], 6 task taxonomy IDs (TS-03-04/01-07/01-05/05-05/03-02/05-04 — confirmed live from justicebench.org/task June 18), 5 LIST codes (HO-00-00-00-00/HO-02-00-00-00/HO-02-04-00-00/HO-02-04-02-00/HO-02-04-05-00 — confirmed from taxonomy.legal). 51/51 OK. |
+| | **NJ trailing comma fixed** (artefact from prior L5 flag removal — `flags` array item 2 had trailing comma). Corrected before population pass. |
+| | **3 LIST defense subcodes flagged for Andy's browser check:** "Notice and Procedural defenses," "Living conditions (habitability) defenses," "Military service-members' protections" — confirmed labels, unconfirmed exact child codes under HO-02-04. Tagged at parent interim. See `HUMAN_REVIEW_QUEUE.md`. |
+| | **SCHEMA_V2_DESIGN_SPEC.md updated:** Canonical Pattern 3 (interoperability block) documented. Schema version history updated. |
 | **2026-06-18** | **L2 Phase 2 Retry + straggler cleanup + queue rebuild** |
 | | **Retry (9 states, ~$0.44):** DC, IA, KY, LA, MA → CONFIRM (GPT parse errors resolved with 6000-token budget). AR → CONFIRM on first retry pass (Jun 17 11:55 PM write persists). TN → CONFIRM (first retry pass + attorney-confirmed 14d §66-28-505(b)). |
 | | **Genuine L7 from retry (2):** GA (reasoning-pass artifact — straggler script written); VA (GPT 5d vs Gemini 14d, §55.1-1245(F) — genuine interpretive split on tenancy type). |
@@ -446,7 +501,7 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 - [x] **L1 retrieval pass COMPLETE (2026-06-15 — all waves).** 51/51 states statutorily retrieved. 44 states at AUTOMATED-CHECKS-PASSED. Wave 3 resolved previously unresolvable states (AR, IA, IL, PA, SC, SD, UT) using corrected URL structures and FindLaw as alternative source. Machine-assist flags added for ME, OH, WV, MO, MS, ND (Waves 1/2) and IL, SD (Wave 3). L1 retrieval is **closed** — no further retrieval work needed.
 - [x] **Overlays local cleanup complete (2026-06-16).** 472 cross-state contamination entries removed from 47 files. Local layer de-scoped to CA-only for Phase 1. L5-LOCAL-XSTATE check added to validate.py; all 51 states pass clean.
 - [x] **Five-module build complete (2026-06-16).** Service, state_protective overlays, procedural_defects, and substantive_defenses populated across all 51 files. 789 field updates. 0 [VERIFY] remaining. L7 triage list (264 entries) saved to `docs/L7_TRIAGE_LIST_2026-06-16.md`. Validate: 44 ACP / 7 DRAFT — no regressions.
-- [x] **L5 flags — all 7 DRAFT states resolved (2026-06-16).** DC, MA, TN, VT, WA: L5 flags confirmed by attorney (Andrew Cohen), marked `resolved-confirmed`, advanced to ACP. MN: citation corrected to §504B.321 subd. 1a, L5 flag marked `resolved-confirmed`, re-validated → ACP. NJ: substantive correction (no-notice-period pattern) per attorney finding, L5 flag marked `resolved-corrected`, advanced to ACP. ⚠️ NJ advance requires Andy's explicit confirmation.
+- [x] **L5 flags — all 7 DRAFT states resolved (2026-06-16).** DC, MA, TN, VT, WA: L5 flags confirmed by attorney (Andrew Cohen), marked `resolved-confirmed`, advanced to ACP. MN: citation corrected to §504B.321 subd. 1a, L5 flag marked `resolved-confirmed`, re-validated → ACP. NJ: substantive correction (no-notice-period pattern) per attorney finding, L5 flag marked `resolved-corrected`, advanced to ACP. Confirmed: Andrew Cohen, 2026-06-16.
 - [x] **NJ advance confirmed (Andrew Cohen, 2026-06-16).** NJ notice module correction attorney-confirmed: `notice_required: false`, `days: null` (not 0), federally-subsidized exception (14 days), 30-day nonpayment value removed, grounds kept distinct (habitual late payment is a separate ground under §2A:18-61.2(b)). NJ is settled at ACP.
 - [ ] **NJ backlog — §2A:18-56 L1 flag (future item, not urgent).** NJ file carries an L1-URL-NOT-RESOLVED flag on §2A:18-56 (termination statute). Not part of the nonpayment notice correction; flagged for future L7 attorney review or targeted retrieval pass.
 - [x] **L2 (multi-model consensus) — Phase 1 complete (2026-06-18).** 8 machine-assist flag states run on notice/pay_or_quit. Runner: `rules/validation/l2/l2_runner.py`. Reasoning pass: `rules/validation/l2/l2_reasoning_pass.py`. Results: 4 states resolved (OH, MS, WV citations/period AI-corrected; SD confirmed clean); 2 states L7-escalated (MO, ND). See `docs/L2_CONSENSUS_REPORT_2026-06-18.md`.
@@ -466,9 +521,10 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 | Outcome | Count | States |
 |---------|-------|--------|
 | ✅ CONSENSUS-CONFIRM | 41 | ME, IL, SD (P1) + AK,AL,AZ,CA,CO,CT,FL,HI,ID,IN,KS,MI,MN,MT,NC,NE,NH,NJ,NM,NY,OK,OR,PA,RI,SC,TX,UT,VT,WA,WI,WY (P2) + AR,DC,IA,KY,LA,MA,TN (retry — AR and TN confirmed on first retry pass) |
-| 🟡 CITATION-AI-RESOLVED | 3 | OH (§1923.04(A)), MS (§89-8-13(5)(a)), DE (§5502(a)) — pending human confirmation |
-| 🟡 PERIOD-AI-RESOLVED | 2 | WV (no notice, §55-3A-1), NV (5d→7d, §40.253(1)(a)) — pending human confirmation |
-| 🔴 L7-ESCALATED | 5 | MO, ND (P1 genuine) · MD (P2 genuine) · VA, GA (retry/straggler genuine) |
+| ✅ CITATION-AI-RESOLVED → ATTORNEY-CONFIRMED | 3 | OH (§1923.04(A), 3d ✓), MS (§89-8-13(5)(a), 3d ✓), DE (§5502(a), 5d ✓) — confirmed Andy Cohen 2026-06-19 |
+| ✅ PERIOD-AI-RESOLVED → ATTORNEY-CONFIRMED | 2 | WV (no notice, §55-3A-1 ✓), NV (7d ✓ but count_method corrected calendar→judicial days) — confirmed Andy Cohen 2026-06-19 |
+| ✅ ATTORNEY-RESOLVED (substantive) | 2 | SD: §21-16-2 repealed SB 90 (2024) — NJ-pattern applied (notice_required=false, 3d ripening under §21-16-1(4)). VA: time-versioned — 5d current / 14d from 2026-07-01 (HB 15/SB 48), pending_amendment block added. |
+| 🔴 L7-ESCALATED (open) | 4 | MO, ND, MD, GA — attorney review still pending |
 
 **Notes on TN and AR (why they're CONFIRM not L7):**
 - **TN:** First retry pass (11:55 PM Jun 17) wrote `L2_consensus=pass` CONSENSUS-CONFIRM (14d, §66-28-505(b)). File retains that first-pass write. TN also attorney-confirmed (Andrew Cohen, 2026-06-16). Status: CONFIRM.
@@ -480,13 +536,48 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 - **MD** — GPT: 10d notice required (§8-401(b)(2)(i)); Gemini: no notice period (§8-401)
 - **VA** — Same statute (§55.1-1245(F)); GPT: 5d; Gemini: 14d — likely tenancy-type-dependent
 - **GA** — Two clean neutral 8000-token retries (17:12 + 17:44 UTC): both models agree notice_required=True (demand required before filing). Split on days: GPT=3, Gemini=None. Narrowed question: must landlord wait 3 days after demand, or may landlord file immediately after demand is refused?
-- [ ] **L2 expansion:** Extend to other modules (service, substantive_defenses, procedural_defects); add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
+- [x] **L2 expansion — service module complete (2026-06-19/20).** 51/51 states run. 16 round-1 confirmed, 32 AI-resolved, 2 L7 (DC, NM). See `VALIDATION_METRICS_LEDGER.md` for full breakdown.
+- [ ] **DC L7 attorney review (open — service module):** Persistent API failure (both GPT and Gemini, 3+ attempts). Zero model data. Service statute(s) for D.C. pay-or-quit notices require attorney verification.
+- [ ] **NM L7 attorney review (open — service module):** Persistent API failure (both GPT and Gemini, 3+ attempts). Zero model data. Service statute(s) for N.M. pay-or-quit notices require attorney verification.
+- ⚠️ **READY TO RUN — Holdings v3 (generate-from-source). Run from Terminal:**
+
+  ```bash
+  # Batch 1 — states from prior batch 1 run (d5444e58)
+  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  python3 rules/validation/l2/retaliation_holdings_v3_runner.py \
+    --states AZ,DC,IA,KY,MA,ME,MN,NE,NH,RI,WA,DE,AR,IN,MO,VA
+
+  # (wait ~30 min for CL quota recovery, then:)
+
+  # Batch 2 — remaining states
+  python3 rules/validation/l2/retaliation_holdings_v3_runner.py \
+    --states FL,GA,ID,IL,MD,MS,MT,NC,OH,OR,PA,SD,TN,TX,UT,WI,WY
+  ```
+
+  When each batch completes: **STOP — share the output filename with Cowork for ingestion.**
+  Do NOT run the next batch until Cowork confirms the previous output is ingested.
+  Output files will be in `rules/validation/l2/output/retaliation_holdings_v3_*`.
+
+- ⚠️ **Task #52 — Commit pending (do this first, before running v3):**
+  - Modified: `docs/PROJECT_STATE_OF_RECORD.md`, `docs/VALIDATION_METRICS_LEDGER.md`, `rules/eviction/california/ca_eviction_v2.json`, `rules/validation/l2/retaliation_holdings_v2_runner.py`
+  - Deleted: `docs/VALIDATION_PHILOSOPHY_DRAFT.md` (superseded by `VALIDATION_PHILOSOPHY.md`)
+  - New (untracked): `rules/validation/l2/output/retaliation_holdings_v2_1states_2026-06-22_96494b27.json` (quota-exhausted run — provenance), `rules/validation/l2/output/retaliation_holdings_v2_1states_2026-06-22_ce5c9748.json` (canonical CA run), `rules/validation/l2/output/retaliation_holdings_v2_33states_2026-06-22_a86b3598.json` (33-state quota fail — provenance), `rules/validation/l2/output/retaliation_holdings_v2_16states_2026-06-23_d5444e58.json` (batch 1 — 0/51 MV, triage source), `rules/validation/l2/retaliation_holdings_v3_runner.py` (NEW — generate-from-source runner), `docs/COWORK_DIRECTION_HOLDINGS_GENERATE_FROM_SOURCE.md` (direction doc)
+  - **Commit message:** `Holdings v2/v3: CA canonical (4/6 MV), batch 1 triage (d5444e58), generate-from-source runner (v3), direction doc`
+  - **How:** Open GitHub Desktop → confirm all items are staged → paste commit message → Commit to main → Push.
+- ✅ **Holdings verification layer — CA complete (2026-06-22):**
+  - Runner: `rules/validation/l2/retaliation_holdings_v2_runner.py` — stable. Build-check B passed.
+  - Canonical run: `retaliation_holdings_v2_1states_2026-06-22_ce5c9748.json` — **4/6 machine-verified (67%)**.
+  - MV: Schweiger (STATED-single-model), Barela (STATED), Drouet (STATED), Western Land (STATED).
+  - NA: S.P. Growers (C=FLAG — CL returned caption-only for this cluster), Aweeka (C=FLAG — CL opinion text intermittent; MCP confirms verifiable; true rate 5/6 = 83%).
+  - Ingested to `ca_eviction_v2.json` (validation_status: L2-HOLDINGS-V2-RUN-COMPLETE) and `VALIDATION_METRICS_LEDGER.md`.
+  - **Next:** Commit (Task #52); re-run 33-state with fresh CL quota (tomorrow morning); build audit sampler.
+- [ ] **L2 expansion — remaining modules:** substantive_defenses, procedural_defects, overlays — add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
 - [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
 - [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.
 - [ ] **L4 (golden sets):** not_implemented. 0/51 states have golden sets. Need at least CA and TX before outreach. See `test-cases/README.md`.
 - [ ] **L6 (temporal freshness):** not_implemented. Needs legislative feed / CI hook.
 - [ ] **L7 (attorney review):** Not started. CA is priority #1. Need one licensed CA tenant attorney to review CA's 5 modules. See `docs/REVIEWER_CHECKLIST.md`.
-- [x] **MN and NJ corrections complete (2026-06-16).** MN: re-validated, ACP. NJ: no-notice-period pattern implemented, ACP (pending Andy confirmation). Library: 51/51 ACP.
+- [x] **MN and NJ corrections complete (2026-06-16).** MN: re-validated, ACP. NJ: no-notice-period pattern implemented, ACP. Confirmed: Andrew Cohen, 2026-06-16. Library: 51/51 ACP.
 - [ ] **Re-run on L2/L4/L6 expansion:** When new layers come online, all AUTOMATED-CHECKS-PASSED modules must be re-run. Modules that fail revert to DRAFT per STATUS_LABELS v2.
 
 ### Strategic / Project Level
@@ -514,4 +605,4 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 ---
 
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*  
-*State of Record last updated by Claude (Cowork) — June 18, 2026 (L2 fully complete: 41 CONFIRM, 5 AI-resolved pending confirmation, 4 confirmed L7 (MO/ND/MD/VA), GA straggler pending, 3 citation-review items. l2_phase2_runner.py + l2_phase2_retry.py + l2_ga_straggler.py added. HUMAN_REVIEW_QUEUE.md rebuilt with append-only ownership rule. Runner wrote all Phase 1+2 results; queue protection established.) Previous entry: L2 Phase 1+2 runs complete, MO/ND L7-escalated, DE/NV AI-resolved, tiered resolution protocol established. Replace this file at the start of each session after significant work.*
+*State of Record last updated by Claude (Cowork) — June 21–22, 2026 (Holdings verification layer built: retaliation_holdings_v2_runner.py. Build-check B passed. Best runner result 2/6 MV; true rate 5/6 MCP-confirmed. CL rate limiting blocks clean full run — fix: 10s inter-case sleep. Previous: June 20 — LSC cross-check complete 46/51 (90%). Next: fresh-quota CA re-run → 5/6 output file; ingest; audit sampler; commit all work. Replace this file at the start of each session after significant work.)*
