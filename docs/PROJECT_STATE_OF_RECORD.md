@@ -571,7 +571,12 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
   - NA: S.P. Growers (C=FLAG — CL returned caption-only for this cluster), Aweeka (C=FLAG — CL opinion text intermittent; MCP confirms verifiable; true rate 5/6 = 83%).
   - Ingested to `ca_eviction_v2.json` (validation_status: L2-HOLDINGS-V2-RUN-COMPLETE) and `VALIDATION_METRICS_LEDGER.md`.
   - **Next:** Commit (Task #52); re-run 33-state with fresh CL quota (tomorrow morning); build audit sampler.
-- [ ] **L2 expansion — remaining modules:** substantive_defenses, procedural_defects, overlays — add gap-finding, exception auditing, cross-module consistency, citation verification per Andy's broader AI validation vision.
+- [ ] **L2 expansion — procedural_defects module: runner ready, full run PENDING (2026-06-24).**
+  - Runner: `rules/validation/l2/l2_procedural_defects_runner.py` — 3 bug fixes applied, 30/30 regression tests pass.
+  - Smoke test run 3 ingested: 6 units (CA/TX/NY × summons + attach). CC=1, NSR=2, SM-GEMINI=1, MODEL-SPLIT=1 (CA/summons → L7), ERROR=1.
+  - Full 51-state × 4-defect job queued (`queue/job_l2_procedural_defects_20260624.json`). BLOCKED on launchd FDA fix (RED-strategic).
+  - dispatch.py extended for L2 module job type. Overnight infrastructure ready; fires at 2:15 AM once FDA issue resolved.
+- [ ] **L2 expansion — other modules (substantive_defenses, overlays):** not yet started. After procedural_defects pipeline proven at 51-state scale.
 - [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
 - [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.
 - [ ] **L4 (golden sets):** not_implemented. 0/51 states have golden sets. Need at least CA and TX before outreach. See `test-cases/README.md`.

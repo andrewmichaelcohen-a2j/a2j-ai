@@ -2,19 +2,26 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-24 (Direction A bootstrap)
+**Last updated:** 2026-06-24 (morning report cycle)
 
 ---
 
 ## NOW (executing)
 
-**Direction A — Operating Cadence + Autonomy infrastructure**
+**Morning report — 2026-06-24**
+- [x] Scan overnight output / launchd logs
+- [x] Read WORK_QUEUE, DAILY_CHANGELOG, METRICS_LEDGER, HUMAN_REVIEW_QUEUE
+- [x] Produce morning report
+- [x] Ingest smoke test run 3 → METRICS_LEDGER
+- [x] Update all living docs (this file, DAILY_CHANGELOG, STATE_OF_RECORD)
+
+**Direction A — COMPLETE (all items done)**
 - [x] Save A/B/C direction docs to docs/
 - [x] Create WORK_QUEUE.md + DAILY_CHANGELOG.md
-- [ ] Write regression tests for l2_procedural_defects_runner (mock-based, sandbox-runnable)
-- [ ] Extend dispatch.py for L2 module job type
-- [ ] Update morning report scheduled task to Direction A shape (GREEN log / YELLOW / RED / α / anti-default audit)
-- [ ] Queue full 51-state procedural defects job for tonight's 2:15 AM run
+- [x] Write regression tests for l2_procedural_defects_runner (30/30 pass — confirmed 2026-06-24)
+- [x] Extend dispatch.py for L2 module job type
+- [x] Update morning report scheduled task to Direction A shape (GREEN log / YELLOW / RED / α / anti-default audit)
+- [x] Queue full 51-state procedural defects job (`job_l2_procedural_defects_20260624.json`)
 
 ---
 
@@ -22,18 +29,18 @@
 
 1. **Direction B — Golden set survey** *(parallel-early, Direction B Part 1)*
    Survey LSC/Temple eviction dataset, NCSC materials, academic A2J benchmarks, legal-aid clinic fact-pattern banks for adoptable ground truth. Report what exists and what's adoptable before generating candidates from scratch.
-   *Dependency:* none — starts when regression tests are done (can run concurrently with A)
+   *Dependency:* none
 
-2. **Ingest third smoke-test run** (`l2_procedural_defects_20260624_1646.json`)
-   Update STATE_OF_RECORD + METRICS_LEDGER with procedural defects L2 smoke test results.
-   Results: 1 CONSENSUS-CONFIRM (TX/summons → Rule 510.4), 2 NO-SPECIFIC-RULE (TX/NY attach), 1 SM-GEMINI (NY/summons → RPAPL § 735), 1 MODEL-SPLIT (CA/summons: § 1167(a) vs § 415.45), 1 ERROR (CA/attach both empty).
+2. **Full 51-state procedural defects run** — job queued (`job_l2_procedural_defects_20260624.json`)
+   All 51 states × 4 defects = 204 units. Est. ~$3. **BLOCKED on launchd FDA fix (RED-strategic).**
+   When unblocked: fires automatically at next 2:15 AM.
 
-3. **Overnight: full 51-state procedural defects run**
-   Job file to be queued tonight. All 51 states × 4 defects = 204 units. Est. ~$3.
-   *Dependency:* dispatch.py L2 extension complete (from NOW)
-
-4. **Ingest overnight procedural defects results** (morning after run)
+3. **Ingest overnight procedural defects results** (morning after run)
    Auto-scan output dir, ingest all new files, update docs.
+   *Dependency:* item 2 must complete.
+
+4. **Full retaliation holdings v3 Batch 3** — job queued (`job_batch3_20260623.json`)
+   18 remaining states. **BLOCKED on launchd FDA fix (same as #2).**
 
 5. **Direction B — Generate CA/TX notice + service golden set candidates**
    ~15–25 candidate fact patterns per module, with DRAFT correct answers + authority cited.
@@ -46,10 +53,10 @@
 
 | Item | Blocker | What unblocks it |
 |------|---------|-----------------|
+| launchd overnight runner (both queued jobs) | **RED-strategic — macOS TCC Full Disk Access.** Launchd agent cannot read `dispatch.py`. Error: `[Errno 1] Operation not permitted`. | Andy: System Settings → Privacy & Security → Full Disk Access → add python3. Or: approve Cowork writing a shell wrapper script (GREEN fix). |
 | Direction B golden set freeze | **RED — Andy (attorney) must establish answers** | Andy signs off on DRAFT candidates → they become FROZEN |
 | Direction C self-optimization | **Hard gate — Direction B frozen golden sets must exist** | B complete with ≥1 frozen set, scorer working |
-| CA/summons procedural defect | **RED-interpretive — genuine MODEL-SPLIT** | GPT: CCP § 1167(a) vs Gemini: CCP § 415.45. Both plausible. Needs attorney determination which governs UD summons service specifically. Route to HUMAN_REVIEW_QUEUE. |
-| Batch 3 holdings run (18 states) | Runs tonight at 2:15 AM via launchd | Auto-resolved overnight |
+| CA/summons procedural defect | **RED-interpretive — genuine MODEL-SPLIT** | GPT: CCP § 1167(a) vs Gemini: CCP § 415.45. In HUMAN_REVIEW_QUEUE. |
 | CourtListener bulk-data / higher rate limit | External — CL/Free Law Project outreach | Andy's decision on timing |
 
 ---

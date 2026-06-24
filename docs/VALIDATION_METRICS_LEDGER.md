@@ -409,6 +409,49 @@ These are the highest-confidence candidate holdings — both models found the sa
 
 ---
 
+#### Module: Procedural Defects — L2 smoke test run 3 (pipeline validation)
+
+*Run from Terminal session, 2026-06-24. States: CA, TX, NY. Defects: summons + attach (6 units). Runner: `rules/validation/l2/l2_procedural_defects_runner.py` (post-3-bug-fix version). Ingested: 2026-06-24 morning report.*
+
+**Purpose of this run:** Pipeline validation, not statistical estimation. The smoke test was designed to exercise all classification branches (CC, NSR, SM-GEMINI, MODEL-SPLIT, ERROR). The results confirm all branches fire correctly. Numbers should NOT be read as a representative sample of procedural defects law.
+
+| Run | Date | Models | States | Units | CC | NSR | SM | MS | ERR | α_method | α_overall |
+|-----|------|--------|--------|-------|----|----|----|----|-----|----------|-----------|
+| Smoke test run 3 | 2026-06-24 | gpt-4o + gemini-2.5-pro | CA, TX, NY | 6 | 1 | 2 | 1 (SM-GEMINI) | 1 | 1 | **0.333** | **0.0** |
+
+**α computation (per Direction A protocol):**
+
+*Method α* (text-retrievable cases only; SM-GEMINI + ERROR excluded as missing data; n=4):
+- Observed: 3 AGREE (1 CC + 2 NSR), 1 DISAGREE (MODEL-SPLIT)
+- D_o = 1/4 = 0.25; D_e = 2 × (3/4) × (1/4) = 0.375
+- α_method = 1 − (0.25 / 0.375) = **0.333**
+
+*Overall α* (all 6 units; SM-GEMINI + ERROR counted as DISAGREE per protocol):
+- Observed: 3 AGREE, 3 DISAGREE
+- D_o = 0.5; D_e = 2 × 0.5 × 0.5 = 0.5
+- α_overall = 1 − (0.5 / 0.5) = **0.0**
+
+⚠️ **Statistical caveat — n=4 / n=6 render these α values meaningless as standalone estimates.** The smoke test intentionally included edge cases (SM, ERROR) to test classification logic. α=0.0 overall is expected when half the units are pipeline-test cases. Do not compare these values to module-level runs until a full 51-state run is available.
+
+**Per-case results:**
+
+| State/Defect | GPT citation | Gemini citation | Outcome |
+|---|---|---|---|
+| TX / summons | Tex. R. Civ. P. 510.4 | Texas Rule of Civil Procedure 510.4 | CONSENSUS-CONFIRM |
+| TX / attach | (no specific rule) | (no specific rule) | NO-SPECIFIC-RULE |
+| NY / attach | (no specific rule) | (no specific rule) | NO-SPECIFIC-RULE |
+| NY / summons | (empty) | RPAPL § 735 | SM-GEMINI (l2_sm_statute: RPAPL § 735) |
+| CA / summons | CCP § 1167(a) | CCP § 415.45 | MODEL-SPLIT → L7-interpretive |
+| CA / attach | (empty) | (empty) | ERROR |
+
+**CA/summons MODEL-SPLIT detail:** GPT § 1167(a) (UD summons return provision) vs Gemini § 415.45 (service by posting in UD cases). Section-number match correctly declined to merge (1167 ≠ 415). Both are legitimate CA UD summons provisions governing different aspects of the service process. Routed to HUMAN_REVIEW_QUEUE as L7-interpretive with automated-attempt evidence (3 runs, split persisted across all 3).
+
+**NY/summons SM-GEMINI detail:** RPAPL § 735 preserved as `l2_sm_statute`. GPT empty (transient). Flagged for single-model re-run; not routed to attorney (anti-default rule: SM = pipeline item, not attorney item).
+
+**Regression test status:** 30/30 pass (confirmed 2026-06-24 in sandbox). Safe to run full 51-state job.
+
+---
+
 ## Repeatability view (the cross-module trend — the point of the ledger)
 
 As each module/claim-type completes, add its combined row here so the *trend* is visible at a glance. Repeatability is evidenced if consensus, AI-resolved, and escalation rates stay in a comparable band — and if error-confirm outcomes show AI resolution is reliably correct — as scope widens.
@@ -421,6 +464,7 @@ As each module/claim-type completes, add its combined row here so the *trend* is
 | State-protective overlays / citation accuracy (107 items) | 51 states | ~25–30 (runner: 37, minus ~8 classifier FP) | 12 AI-resolved (FILE-CORRECT, DUAL-SOURCE, SINGLE-MODEL); 7 CITATION-SUSPECT flagged | 4 high-priority items requiring research (NY/PA/AR/UT) + 7 single-model pending-confirmation | *pending; errors caught: AR section numbers wrong post-2021 Act; MN §504B.285 likely wrong* | $7.65 | 2026-06-20 (Terminal) |
 | Remaining 4 defenses / elements (habitability, discrimination, BQE, improper-rent) | 204 items (51×4) | 0% (GPT empty all 51; Gemini only) | 200/204 (98%); 4 ERROR = SD transient | 0% — no L7 items; no genuine splits | *pending attorney confirmation; no errors caught at elements layer* | ~$5.10 | 2026-06-21 (Terminal) |
 | Retaliation / holdings v2 (CA, 6 cases) | 6 | 67% (4/6 MV) | n/a (authoritative-source check; no AI-resolution tier) | 33% (2/6 → attorney) | *pending attorney confirmation* | 2026-06-22 (Terminal; run ce5c9748) |
+| Procedural Defects / L2 smoke test run 3 (CA/TX/NY × summons + attach) | 6 | 50% (3/6: 1 CC + 2 NSR) | n/a — pipeline test, not a convergence run | 17% (1/6 MODEL-SPLIT → L7: CA/summons) | *pending; 1 attorney item in HUMAN_REVIEW_QUEUE* | 2026-06-24 (smoke test; α_method=0.333, α_overall=0.0; **n=6 — statistically unreliable**) |
 | *(future modules…)* | | | | | | |
 | *(future DOMAINS — debt, family, benefits…)* | | | | | | |
 
