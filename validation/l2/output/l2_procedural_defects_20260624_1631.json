@@ -1,0 +1,89 @@
+{
+  "runner": "l2_procedural_defects_runner",
+  "run_date": "2026-06-24",
+  "states": [
+    "CA",
+    "TX",
+    "NY"
+  ],
+  "defects": [
+    "failure_to_attach_lease_or_notice_to_complaint",
+    "summons_improperly_issued_or_served"
+  ],
+  "summary": {
+    "total": 6,
+    "consensus_improve": 1,
+    "consensus_confirm": 1,
+    "no_specific_rule": 1,
+    "model_split_l7": 0,
+    "error": 3
+  },
+  "results": [
+    {
+      "state": "CA",
+      "defect": "failure_to_attach_lease_or_notice_to_complaint",
+      "classification": "ERROR",
+      "current_statute": "CCP §1161 et seq. (pleading requirements)",
+      "recommended_statute": null,
+      "gpt_statute": "",
+      "gem_statute": "California Rules of Court, Rule 3.110(d)",
+      "note": "GPT parse failure: None; gem=California Rules of Court, Rule 3.110(d)",
+      "file_modified": true
+    },
+    {
+      "state": "CA",
+      "defect": "summons_improperly_issued_or_served",
+      "classification": "ERROR",
+      "current_statute": "CCP §1161 et seq.; state civil procedure rules (service of process)",
+      "recommended_statute": null,
+      "gpt_statute": "",
+      "gem_statute": "California Code of Civil Procedure § 415.45",
+      "note": "GPT parse failure: None; gem=California Code of Civil Procedure § 415.45",
+      "file_modified": true
+    },
+    {
+      "state": "TX",
+      "defect": "failure_to_attach_lease_or_notice_to_complaint",
+      "classification": "NO-SPECIFIC-RULE",
+      "current_statute": "Tex. Prop. Code §24.001 et seq. (pleading requirements)",
+      "recommended_statute": null,
+      "gpt_statute": "",
+      "gem_statute": "",
+      "note": "Both models confirm no separate attachment statute — general pleading sufficiency applies.",
+      "file_modified": true
+    },
+    {
+      "state": "TX",
+      "defect": "summons_improperly_issued_or_served",
+      "classification": "CONSENSUS-CONFIRM",
+      "current_statute": "Tex. Prop. Code §24.001 et seq.; state civil procedure rules (service of process)",
+      "recommended_statute": "Texas Rules of Civil Procedure 510.4(b)-(c)",
+      "gpt_statute": "Texas Rules of Civil Procedure 510.4(b)-(c)",
+      "gem_statute": "Texas Rule of Civil Procedure 510.4(b)",
+      "note": "Both models confirm. Confidence: GPT=high, Gem=high.",
+      "file_modified": true
+    },
+    {
+      "state": "NY",
+      "defect": "failure_to_attach_lease_or_notice_to_complaint",
+      "classification": "ERROR",
+      "current_statute": "RPAPL §701 et seq. (pleading requirements)",
+      "recommended_statute": null,
+      "gpt_statute": "",
+      "gem_statute": "22 NYCRR § 208.42(g)",
+      "note": "GPT parse failure: None; gem=22 NYCRR § 208.42(g)",
+      "file_modified": true
+    },
+    {
+      "state": "NY",
+      "defect": "summons_improperly_issued_or_served",
+      "classification": "CONSENSUS-IMPROVE",
+      "current_statute": "RPAPL §701 et seq.; state civil procedure rules (service of process)",
+      "recommended_statute": "N.Y. Real Prop. Acts. Law (RPAPL) § 735",
+      "gpt_statute": "N.Y. Real Prop. Acts. Law (RPAPL) § 735",
+      "gem_statute": "N.Y. Real Prop. Acts. Law § 735",
+      "note": "Both models agree on more specific citation. Confidence: GPT=high, Gem=high.",
+      "file_modified": true
+    }
+  ]
+}
