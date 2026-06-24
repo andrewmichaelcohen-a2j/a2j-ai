@@ -204,7 +204,8 @@ def run_unit(unit: dict) -> dict:
             "draft_agreement": None,
             "generate_output": None,
             "verify_output": None,
-            "queue_routing": "WRONG-DOC",
+            "queue_routing": "PR",
+            "pr_reason": "opinion-text-unavailable",
             "basis": "Opinion text unavailable — CL did not return retrievable text.",
         }
         actual_verify_model = "none"
@@ -258,11 +259,11 @@ def run_unit(unit: dict) -> dict:
                              f"Draft agreement: {draft_agree}.")
             elif not verify_actually_answered:
                 c_holding = "FLAG-verify-failed"
-                c_queue   = "RE-CHARACTERIZE"
+                c_queue   = "RC"
                 c_basis   = "All verify attempts (GPT, GPT-trimmed, Claude) failed."
             else:
                 c_holding = "FLAG-verify-disputed"
-                c_queue   = "RE-CHARACTERIZE"
+                c_queue   = "RC"
                 c_basis   = (f"{actual_verify_model} found characterization '{ver_accuracy}'. "
                              f"Note: {str(ver_resp.get('verification_note',''))[:100]}")
 
@@ -301,40 +302,74 @@ def run_unit(unit: dict) -> dict:
                 "draft_agreement": None,
                 "generate_output": gen_resp,
                 "verify_output": None,
-                "queue_routing": "WRONG-DOC" if c_holding == "FLAG-irrelevant" else "RE-CHARACTERIZE",
+                # PR: wrong/unrelated document retrieved. RC: generate API failure (text was present).
+                "queue_routing": "PR" if c_holding == "FLAG-irrelevant" else "RC",
+                "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc" if c_holding == "FLAG-irrelevant" else None,
                 "basis": c_basis,
             }
 
     # ---- Check D: derived from C ----
     check_d = check_d_from_c(check_c)
 
-    # ---- Disposition ----
+    # ---- Disposition + Bucket (v3 reporting direction 2026-06-23) ----
+    # Two rates: method_rate = MV÷(MV+CI+RC), overall_rate = MV÷all.
+    # PR = retrieval failure — NOT a verification failure, never attorney lane.
+    # Buckets: MV, CI, RC, PR, SM (SM set by harness enforce_provenance).
     a_ok = check_a.get("exists") in ("true",)
     b_ok = check_b.get("currency") == "OK-machine"
     c_ok = check_c.get("holding") == "corroborated"
     d_ok = check_d.get("control") in ("STATED", "STATED-single-model", "INFERRED")
 
-    if not a_ok and check_a.get("exists") == "FLAG-citation-mismatch":
-        queue = "WRONG-DOC"
-    elif c_ok and check_d.get("control") == "INFERRED":
-        queue = "CONFIRM-INFERENCE"
-    elif c_ok and d_ok:
-        queue = None
-    else:
-        queue = check_c.get("queue_routing") or "RE-CHARACTERIZE"
+    # PR detection: was opinion text actually retrieved and usable?
+    text_retrieved = bool(opinion_text and len(opinion_text.strip()) >= 200)
+    citation_mismatch = (check_a.get("exists") == "FLAG-citation-mismatch")
+    c_holding_val = check_c.get("holding", "")
+    is_pr = (
+        citation_mismatch
+        or c_holding_val == "FLAG-no-text"
+        or not text_retrieved
+        or c_holding_val == "FLAG-irrelevant"  # CL returned wrong/unrelated document
+    )
 
-    if a_ok and b_ok and c_ok and d_ok:
+    pr_reason: str | None = None
+
+    if is_pr:
+        bucket = "PR"
+        queue  = "PR"
+        if citation_mismatch:
+            pr_reason = "citation-mismatch"
+        elif not text_retrieved or c_holding_val == "FLAG-no-text":
+            pr_reason = "opinion-text-unavailable"
+        else:
+            pr_reason = "case-not-relevant-to-retaliation-likely-wrong-doc"
+        # Inherit pr_reason from check_c if already set there
+        pr_reason = check_c.get("pr_reason") or pr_reason
+        disposition = "pending-retrieval"
+        dispo_note  = f"PR: {pr_reason}. Quarantined for retrieval retry. Not attorney lane."
+    elif a_ok and b_ok and c_ok and check_d.get("control") == "INFERRED":
+        bucket = "CI"
+        queue  = "CI"
+        disposition = "needs-attorney"
+        dispo_note  = (f"CI: text retrieved, two-model corroborated, D=INFERRED "
+                       f"(no controlling quote). Cheap confirm lane.")
+    elif a_ok and b_ok and c_ok and d_ok:
+        bucket = "MV"
+        queue  = None
         disposition = "machine-verified"
-        dispo_note  = (f"A=true B=OK-machine C=corroborated D={check_d['control']}. "
-                       f"Queue: {queue or 'none'}. Below attorney line.")
+        dispo_note  = (f"MV: A=true B=OK-machine C=corroborated D={check_d['control']}. "
+                       f"Below attorney line.")
     else:
+        # Text was retrieved but holding failed verification → genuine defect
+        bucket = "RC"
+        queue  = check_c.get("queue_routing") or "RC"
         failed = []
         if not a_ok: failed.append(f"A={check_a.get('exists')}")
         if not b_ok: failed.append(f"B={check_b.get('currency')}")
         if not c_ok: failed.append(f"C={check_c.get('holding')}")
         if not d_ok: failed.append(f"D={check_d.get('control')}")
         disposition = "needs-attorney"
-        dispo_note  = f"Flagged: {', '.join(failed)}. Queue: {queue}."
+        dispo_note  = (f"RC: text retrieved, holding failed verification. "
+                       f"Flagged: {', '.join(failed)}. Source-generated holding → attorney.")
 
     return {
         "unit_id": unit["unit_id"],
@@ -351,14 +386,17 @@ def run_unit(unit: dict) -> dict:
         "check_d": check_d,
         "disposition": disposition,
         "disposition_note": dispo_note,
+        "bucket": bucket,                   # MV | CI | RC | PR | SM (SM set by harness)
+        "pr_reason": pr_reason,             # set for PR cases; None otherwise
         "controlling_quote": check_d.get("controlling_quote"),
-        "queue_routing": queue,
+        "queue_routing": queue,             # MV→None, CI→"CI", RC→"RC", PR→"PR"
         "provenance": {
             "generate_model": GENERATE_MODEL_NAME,
             "verify_model": check_c.get("verify_model") or "none",
             "verify_actually_answered": verify_actually_answered if "verify_actually_answered" in dir() else False,
             "opinion_text_source": opinion_text_source,
             "draft_agreement": check_c.get("draft_agreement"),
+            "text_retrieved": text_retrieved,
             "harness_version": "v1",
         },
     }

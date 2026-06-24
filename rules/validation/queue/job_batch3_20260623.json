@@ -1,0 +1,9 @@
+{
+  "job_id": "job_20260624_0215_batch3",
+  "protocol": "retaliation_holdings_v3",
+  "states": "AK,AL,CA,CO,CT,HI,KS,LA,MI,ND,NJ,NM,NV,NY,OK,SC,VT,WV",
+  "sleep": 10,
+  "fresh": false,
+  "created": "2026-06-23T22:00:00Z",
+  "note": "Batch 3 — 18 remaining states. Completes all 51 jurisdictions. First run with new MV/CI/RC/PR/SM bucket taxonomy."
+}

@@ -188,6 +188,7 @@ def enforce_provenance(result: dict) -> dict:
 
     if not two_distinct and result.get("disposition") == "machine-verified":
         result["disposition"] = "single-model-preliminary"
+        result["bucket"] = "SM"   # override any bucket the protocol set
         result["disposition_note"] = (
             "[Harness downgrade] machine-verified requires two distinct models with "
             f"parseable output. generate={gen_model or 'none'}, "
@@ -252,20 +253,91 @@ def write_summary(
     log_path: Path,
     elapsed_secs: float,
 ) -> Path:
-    """Write SUMMARY_<protocol>_<timestamp>.md to summary_dir."""
+    """
+    Write SUMMARY_<protocol>_<timestamp>.md to summary_dir.
+    Reports TWO rates per v3 reporting direction (2026-06-23):
+      method_rate  = MV ÷ (MV + CI + RC)   — among text-retrievable cases
+      overall_rate = MV ÷ (all cases incl. PR)
+    Also writes a PR list JSON for retrieval-retry tracking.
+    """
     summary_dir.mkdir(parents=True, exist_ok=True)
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d_%H%M")
     summary_path = summary_dir / f"SUMMARY_{protocol}_{ts}.md"
 
     total = len(results)
-    mv  = sum(1 for r in results if r.get("disposition") == "machine-verified")
-    smp = sum(1 for r in results if r.get("disposition") == "single-model-preliminary")
-    na  = sum(1 for r in results if r.get("disposition") == "needs-attorney")
-    pf  = sum(1 for r in results if r.get("disposition") == "permanent-failure")
-    tf  = sum(1 for r in results if r.get("disposition") == "transient-failure")
-    ci  = sum(1 for r in results if r.get("queue_routing") == "CONFIRM-INFERENCE")
-    rc  = sum(1 for r in results if r.get("queue_routing") == "RE-CHARACTERIZE")
-    wd  = sum(1 for r in results if r.get("queue_routing") == "WRONG-DOC")
+
+    # Bucket counts — prefer explicit bucket field; fall back to disposition/queue for older runs
+    def _bucket(r: dict) -> str:
+        b = r.get("bucket")
+        if b:
+            return b
+        d = r.get("disposition", "")
+        q = r.get("queue_routing", "")
+        if d == "machine-verified":
+            return "MV"
+        if d == "single-model-preliminary":
+            return "SM"
+        if d == "pending-retrieval":
+            return "PR"
+        if q in ("CI", "CONFIRM-INFERENCE"):
+            return "CI"
+        if q in ("RC", "RE-CHARACTERIZE"):
+            return "RC"
+        if q in ("PR", "WRONG-DOC"):
+            return "PR"
+        return "OTHER"
+
+    mv_cases  = [r for r in results if _bucket(r) == "MV"]
+    ci_cases  = [r for r in results if _bucket(r) == "CI"]
+    rc_cases  = [r for r in results if _bucket(r) == "RC"]
+    pr_cases  = [r for r in results if _bucket(r) == "PR"]
+    sm_cases  = [r for r in results if _bucket(r) == "SM"]
+    other_cases = [r for r in results
+                   if _bucket(r) not in ("MV", "CI", "RC", "PR", "SM")]
+
+    mv  = len(mv_cases)
+    ci  = len(ci_cases)
+    rc  = len(rc_cases)
+    pr  = len(pr_cases)
+    sm  = len(sm_cases)
+
+    # Two rates (per reporting direction)
+    text_retrievable = mv + ci + rc   # denominator for method rate
+    method_rate  = mv / text_retrievable if text_retrievable else None
+    overall_rate = mv / total if total else None
+
+    def _pct(n, d) -> str:
+        return f"{n/d:.0%}" if d else "n/a"
+
+    # PR list JSON (written alongside raw output, one file per run)
+    pr_list_path = raw_output_path.parent / f"{protocol}_PR_{run_id}.json"
+    pr_records = []
+    for r in pr_cases:
+        pr_records.append({
+            "state": r.get("state"),
+            "case_name": r.get("case_name"),
+            "citation_gpt": r.get("citation_gpt"),
+            "citation_gemini": r.get("citation_gemini"),
+            "year": r.get("year"),
+            "pr_reason": r.get("pr_reason") or r.get("check_c", {}).get("pr_reason"),
+            "cl_returned": r.get("check_a", {}).get("basis", "")[:200],
+            "run_id": run_id,
+        })
+    try:
+        with open(pr_list_path, "w") as f:
+            json.dump({
+                "protocol": protocol,
+                "run_id": run_id,
+                "pr_count": pr,
+                "note": (
+                    "PR = pending-retrieval. These cases could not be verified because "
+                    "CourtListener did not serve usable opinion text. They are NOT "
+                    "verification failures. Quarantined for retrieval retry."
+                ),
+                "cases": pr_records,
+            }, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        pr_list_path = Path(f"(write failed: {e})")
 
     lines = [
         f"# Validation Summary — {protocol}",
@@ -273,44 +345,69 @@ def write_summary(
         f"**Completed:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}  ",
         f"**Elapsed:** {elapsed_secs/60:.1f} min  ",
         f"**Raw output:** `{raw_output_path}`  ",
+        f"**PR list:** `{pr_list_path}`  ",
         f"**Log:** `{log_path}`  ",
         "",
-        "## Results",
+        "## Rates — TWO rates, never one blended number",
         "",
-        f"| Grade | Count | % |",
-        f"|-------|-------|---|",
-        f"| machine-verified | {mv} | {mv/total:.0%} |" if total else "| (no units) | — | — |",
-        f"| single-model-preliminary | {smp} | {smp/total:.0%} |" if total else "",
-        f"| needs-attorney | {na} | {na/total:.0%} |" if total else "",
-        f"| permanent-failure | {pf} | {pf/total:.0%} |" if total else "",
-        f"| transient-failure (retry exhausted) | {tf} | {tf/total:.0%} |" if total else "",
+        f"**Method rate** (text-retrievable cases only):  "
+        f"MV ÷ (MV+CI+RC) = {mv} ÷ {text_retrievable} = **{_pct(mv, text_retrievable)}**",
+        f"**Overall rate** (all cases, retrieval-gated):  "
+        f"MV ÷ all = {mv} ÷ {total} = **{_pct(mv, total)}**",
         "",
-        "## Attorney Queue Counts",
+        ("*The gap between method rate and overall rate is the CourtListener retrieval "
+         "bottleneck (PR cases), not a limitation of the verification method.*"
+         if pr > 0 else ""),
         "",
-        f"- CONFIRM-INFERENCE: {ci}",
-        f"- RE-CHARACTERIZE:   {rc}",
-        f"- WRONG-DOC:         {wd}",
+        "## Bucket Counts",
+        "",
+        f"| Bucket | Count | % of total | Meaning |",
+        f"|--------|-------|------------|---------|",
+        f"| MV — machine-verified | {mv} | {_pct(mv, total)} | Two-model corroborated; below attorney line |",
+        f"| CI — confirm-inference | {ci} | {_pct(ci, total)} | Corroborated; D=INFERRED; cheap confirm lane |",
+        f"| RC — re-characterize | {rc} | {_pct(rc, total)} | Text retrieved; holding failed → attorney |",
+        f"| PR — pending-retrieval | {pr} | {_pct(pr, total)} | No usable text from CL; retrieval retry only |",
+        f"| SM — single-model-preliminary | {sm} | {_pct(sm, total)} | Only one model answered; not machine-verified |",
+        f"| Other (failure/unknown) | {len(other_cases)} | {_pct(len(other_cases), total)} | See raw output |",
         "",
         "## Provenance",
         "",
         "- machine-verified is BELOW the attorney line. Nothing here is `validated`.",
-        "- Per-case generate_model + verify_model in raw output JSON.",
+        "- Per-case generate_model + verify_model recorded in raw output JSON.",
+        f"- SM count: {sm}. If SM > 0, those cases inflated no rate (harness enforces this).",
         "",
-        "## What Needs a Human",
+        "## Attorney Queues",
+        "",
+        f"- **RC (re-characterize):** {rc} cases — source-generated holding → attorney review",
+        f"- **CI (confirm-inference):** {ci} cases — cheap delegable confirms",
+        f"- **PR (pending-retrieval):** {pr} cases — retrieval retry only, NOT attorney lane",
+        "",
+        "## RC Cases (What Needs Attorney Review)",
         "",
     ]
 
-    needs_human = [r for r in results
-                   if r.get("disposition") in ("needs-attorney", "single-model-preliminary",
-                                                "transient-failure", "permanent-failure")]
-    if needs_human:
-        for r in needs_human[:20]:  # cap at 20 in summary
+    if rc_cases:
+        for r in rc_cases[:20]:
             lines.append(f"- **{r.get('case_name','?')}** ({r.get('state','?')}): "
-                         f"{r.get('disposition','?')} — {str(r.get('disposition_note',''))[:120]}")
-        if len(needs_human) > 20:
-            lines.append(f"- … and {len(needs_human)-20} more. See raw output.")
+                         f"{str(r.get('disposition_note',''))[:140]}")
+        if len(rc_cases) > 20:
+            lines.append(f"- … and {len(rc_cases)-20} more RC cases. See raw output.")
     else:
-        lines.append("- None — all units machine-verified or needs-attorney only.")
+        lines.append("- None.")
+
+    lines += [
+        "",
+        "## SM Cases (Single-Model — Flag for Investigation)",
+        "",
+    ]
+    if sm_cases:
+        for r in sm_cases[:10]:
+            lines.append(f"- **{r.get('case_name','?')}** ({r.get('state','?')}): "
+                         f"{str(r.get('disposition_note',''))[:140]}")
+        if len(sm_cases) > 10:
+            lines.append(f"- … and {len(sm_cases)-10} more SM cases.")
+    else:
+        lines.append("- None.")
 
     summary_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return summary_path
@@ -446,6 +543,25 @@ class ValidationHarness:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         raw_path = self.output_dir / f"{self.protocol_name}_{today}_{self.run_id}.json"
+        # Bucket helpers for raw output header
+        def _b(r):
+            b = r.get("bucket")
+            if b: return b
+            d, q = r.get("disposition",""), r.get("queue_routing","")
+            if d == "machine-verified": return "MV"
+            if d == "single-model-preliminary": return "SM"
+            if d == "pending-retrieval": return "PR"
+            if q in ("CI","CONFIRM-INFERENCE"): return "CI"
+            if q in ("RC","RE-CHARACTERIZE"): return "RC"
+            if q in ("PR","WRONG-DOC"): return "PR"
+            return "OTHER"
+
+        b_mv  = sum(1 for r in all_results if _b(r) == "MV")
+        b_ci  = sum(1 for r in all_results if _b(r) == "CI")
+        b_rc  = sum(1 for r in all_results if _b(r) == "RC")
+        b_pr  = sum(1 for r in all_results if _b(r) == "PR")
+        b_sm  = sum(1 for r in all_results if _b(r) == "SM")
+        b_tr  = b_mv + b_ci + b_rc  # text-retrievable denominator
         with open(raw_path, "w") as f:
             json.dump({
                 "protocol": self.protocol_name,
@@ -453,8 +569,17 @@ class ValidationHarness:
                 "run_date": today,
                 "runner_version": "harness-v1",
                 "total_units": total,
-                "machine_verified": sum(1 for r in all_results if r.get("disposition") == "machine-verified"),
-                "single_model_preliminary": sum(1 for r in all_results if r.get("disposition") == "single-model-preliminary"),
+                # v3 reporting direction: two rates, never one blend
+                "method_rate": round(b_mv / b_tr, 4) if b_tr else None,
+                "overall_rate": round(b_mv / total, 4) if total else None,
+                "bucket_counts": {
+                    "MV": b_mv, "CI": b_ci, "RC": b_rc,
+                    "PR": b_pr, "SM": b_sm,
+                },
+                "text_retrievable_denominator": b_tr,
+                # legacy fields for backward compat
+                "machine_verified": b_mv,
+                "single_model_preliminary": b_sm,
                 "needs_attorney": sum(1 for r in all_results if r.get("disposition") == "needs-attorney"),
                 "elapsed_secs": round(elapsed),
                 "results": all_results,

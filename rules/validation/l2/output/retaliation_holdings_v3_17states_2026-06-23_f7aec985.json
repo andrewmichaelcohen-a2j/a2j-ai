@@ -1,0 +1,3238 @@
+{
+  "run_date": "2026-06-23",
+  "run_id": "f7aec985",
+  "runner_version": "v3-generate-from-source",
+  "direction": "COWORK_DIRECTION_HOLDINGS_GENERATE_FROM_SOURCE.md",
+  "generate_model": "gemini:gemini-2.5-pro",
+  "verify_model": "gpt:gpt-4o",
+  "independence_satisfied": true,
+  "c_pass_condition": "Gemini generates holding from text (no draft visible). GPT (different model) verifies characterization as accurate or partially_accurate against text. Both required. Same threshold as v2 — holding built from source, not draft.",
+  "states_run": 17,
+  "state_list": [
+    "FL",
+    "GA",
+    "ID",
+    "IL",
+    "MD",
+    "MS",
+    "MT",
+    "NC",
+    "OH",
+    "OR",
+    "PA",
+    "SD",
+    "TN",
+    "TX",
+    "UT",
+    "WI",
+    "WY"
+  ],
+  "total_cases_verified": 51,
+  "total_machine_verified": 0,
+  "total_needs_attorney": 51,
+  "machine_verified_rate": "0.0%",
+  "queue_counts": {
+    "CONFIRM-INFERENCE": 0,
+    "RE-CHARACTERIZE": 51,
+    "WRONG-DOC": 0
+  },
+  "dry_run": false,
+  "results": [
+    {
+      "state": "FL",
+      "cases_verified": 3,
+      "machine_verified": 0,
+      "needs_attorney": 3,
+      "confirm_inference": 0,
+      "re_characterize": 3,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "K.D. Lewis Enterprises Corp. v. Smith",
+          "citation_gpt": "445 So. 2d 1032",
+          "citation_gemini": "445 So. 2d 1032",
+          "year": 1984,
+          "prior_holding": "Applied Florida Statutes section 83.64 and recognized retaliatory eviction as a statutory defense to a residential landlord's action for possession.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=K.D.+Lewis+Enterprises+Corp.+v.+Smith&type=o&order_by=score+desc&format=json&filed_after=1983-01-01&filed_before=1985-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Bowles v. Blue Lake Development Corp.",
+          "citation_gpt": null,
+          "citation_gemini": "504 F.2d 1294",
+          "year": 1974,
+          "prior_holding": "Held that the common law defense of retaliatory eviction for a tenant's reporting of housing code violations was available under Florida law.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Wright v. Brainard",
+          "citation_gpt": null,
+          "citation_gemini": "951 So. 2d 923",
+          "year": 2007,
+          "prior_holding": "Clarified that a landlord's refusal to renew a lease can constitute retaliatory conduct prohibited by Fla. Stat. § 83.64.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Wright+v.+Brainard&type=o&order_by=score+desc&format=json&filed_after=2006-01-01&filed_before=2008-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "GA",
+      "cases_verified": 2,
+      "machine_verified": 0,
+      "needs_attorney": 2,
+      "confirm_inference": 0,
+      "re_characterize": 2,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Imperial Square, Ltd. v. Brainard",
+          "citation_gpt": null,
+          "citation_gemini": "181 Ga. App. 655",
+          "year": 1987,
+          "prior_holding": "Held that a tenant's complaint to the landlord's agent does not trigger the statutory retaliatory eviction defense; the complaint must be made to a government agency.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Imperial+Square%2C+Ltd.+v.+Brainard&type=o&order_by=score+desc&format=json&filed_after=1986-01-01&filed_before=1988-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Hill v. Paradise Apartments, Inc.",
+          "citation_gpt": null,
+          "citation_gemini": "182 Ga. App. 838",
+          "year": 1987,
+          "prior_holding": "Held that the statutory retaliatory eviction defense does not apply if the tenant reports a code violation after the landlord has already given notice to vacate.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Hill+v.+Paradise+Apartments%2C+Inc.&type=o&order_by=score+desc&format=json&filed_after=1986-01-01&filed_before=1988-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "ID",
+      "cases_verified": 3,
+      "machine_verified": 0,
+      "needs_attorney": 3,
+      "confirm_inference": 0,
+      "re_characterize": 3,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Blaser v. Cameron",
+          "citation_gpt": "121 Idaho 1012",
+          "citation_gemini": null,
+          "year": 1992,
+          "prior_holding": "The court treated Idaho Code § 6-321 as the governing retaliatory-eviction protection for residential tenants, but affirmed rejection of the defense where the tenant failed to prove that the landlord's possession action was retaliation for protected tenant conduct.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Blaser+v.+Cameron&type=o&order_by=score+desc&format=json&filed_after=1991-01-01&filed_before=1993-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Wright v. Brady",
+          "citation_gpt": null,
+          "citation_gemini": "889 P.2d 105",
+          "year": 1995,
+          "prior_holding": "Held that to establish a retaliatory eviction defense, the tenant has the burden of proving the landlord's stated reason for eviction is pretextual and the landlord's primary motive is retaliation.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Wright+v.+Brady&type=o&order_by=score+desc&format=json&filed_after=1994-01-01&filed_before=1996-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Kunz v. Lobo Lodge, Inc.",
+          "citation_gpt": null,
+          "citation_gemini": "990 P.2d 1219",
+          "year": 1999,
+          "prior_holding": "Affirmed that a landlord's eviction action was retaliatory based on substantial evidence, including the close timing between the tenant's complaint about code violations and the service of the eviction notice.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Kunz+v.+Lobo+Lodge%2C+Inc.&type=o&order_by=score+desc&format=json&filed_after=1998-01-01&filed_before=2000-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "IL",
+      "cases_verified": 5,
+      "machine_verified": 0,
+      "needs_attorney": 5,
+      "confirm_inference": 0,
+      "re_characterize": 5,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Clore v. Fredman",
+          "citation_gpt": "59 Ill. 2d 20",
+          "citation_gemini": "59 Ill. 2d 20",
+          "year": 1974,
+          "prior_holding": "Held that retaliatory eviction is a valid defense in an Illinois forcible entry and detainer action when the landlord seeks possession because the tenant complained to governmental authorities about housing-code violations.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Clore+v.+Fredman&type=o&order_by=score+desc&format=json&filed_after=1973-01-01&filed_before=1975-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Deka v. Peters",
+          "citation_gpt": "90 Ill. App. 3d 683",
+          "citation_gemini": null,
+          "year": 1980,
+          "prior_holding": "Held that retaliatory eviction can support affirmative relief, including damages, where a landlord ousts a residential tenant in retaliation for protected complaints about housing violations.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Deka+v.+Peters&type=o&order_by=score+desc&format=json&filed_after=1979-01-01&filed_before=1981-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Shelby County Housing Authority v. Thornell",
+          "citation_gpt": null,
+          "citation_gemini": "144 Ill. App. 3d 71",
+          "year": 1986,
+          "prior_holding": "Held that the common-law defense of retaliatory eviction is available in eviction actions brought by a public housing authority, not just by private landlords.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Shelby+County+Housing+Authority+v.+Thornell&type=o&order_by=score+desc&format=json&filed_after=1985-01-01&filed_before=1987-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Wood v. Wood",
+          "citation_gpt": null,
+          "citation_gemini": "284 Ill. App. 3d 718",
+          "year": 1996,
+          "prior_holding": "Clarified that the protected activity supporting a retaliatory eviction defense must generally involve reporting violations to a governmental authority, not merely engaging in private disputes with the landlord.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Wood+v.+Wood&type=o&order_by=score+desc&format=json&filed_after=1995-01-01&filed_before=1997-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Ryonyde v. Brennan",
+          "citation_gpt": null,
+          "citation_gemini": "291 Ill. App. 3d 378",
+          "year": 1997,
+          "prior_holding": "Established the burden-shifting framework for the defense: once the tenant makes a prima facie case of retaliatory motive, the burden shifts to the landlord to articulate a legitimate, non-retaliatory reason for the eviction.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Ryonyde+v.+Brennan&type=o&order_by=score+desc&format=json&filed_after=1996-01-01&filed_before=1998-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "MD",
+      "cases_verified": 3,
+      "machine_verified": 0,
+      "needs_attorney": 3,
+      "confirm_inference": 0,
+      "re_characterize": 3,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Barnes v. FSO, Ltd. Partnership",
+          "citation_gpt": null,
+          "citation_gemini": "457 Md. 343, 178 A.3d 1",
+          "year": 2018,
+          "prior_holding": "The tenant bears the ultimate burden of proving retaliatory eviction, even after establishing the statutory presumption, which only shifts the burden of production to the landlord.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Barnes+v.+FSO%2C+Ltd.+Partnership&type=o&order_by=score+desc&format=json&filed_after=2017-01-01&filed_before=2019-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Schuman v. Greenbelt Homes, Inc.",
+          "citation_gpt": null,
+          "citation_gemini": "212 Md. App. 451, 69 A.3d 512",
+          "year": 2013,
+          "prior_holding": "The retaliatory eviction statute, § 8-208.1, does not apply to cooperative housing corporations because the relationship is not one of a residential landlord and tenant.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Schuman+v.+Greenbelt+Homes%2C+Inc.&type=o&order_by=score+desc&format=json&filed_after=2012-01-01&filed_before=2014-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Gokul v. Krawetz",
+          "citation_gpt": null,
+          "citation_gemini": "381 Md. 574, 851 A.2d 529",
+          "year": 2004,
+          "prior_holding": "The statutory defense of retaliatory eviction under § 8-208.1 applies to tenants holding over after the expiration of a written lease.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Gokul+v.+Krawetz&type=o&order_by=score+desc&format=json&filed_after=2003-01-01&filed_before=2005-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "MS",
+      "cases_verified": 2,
+      "machine_verified": 0,
+      "needs_attorney": 2,
+      "confirm_inference": 0,
+      "re_characterize": 2,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Davis v. Christian Brotherhood Homes of Jackson, Mississippi, Inc.",
+          "citation_gpt": "957 So. 2d 390",
+          "citation_gemini": null,
+          "year": 2007,
+          "prior_holding": "The court applied Mississippi Code section 89-8-17 as the governing anti-retaliation rule and upheld rejection of the tenant’s retaliatory-eviction claim because the tenant failed to prove that the landlord’s eviction action was retaliation for protected statutory activity.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Davis+v.+Christian+Brotherhood+Homes+of+Jackson%2C+Mississippi%2C+Inc.&type=o&order_by=score+desc&format=json&filed_after=2006-01-01&filed_before=2008-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Imperial Palace of Mississippi, LLC v. Wilson",
+          "citation_gpt": null,
+          "citation_gemini": "91 So. 3d 596",
+          "year": 2012,
+          "prior_holding": "The court established the burden-shifting framework for a retaliatory eviction claim, requiring the tenant to first prove a protected act, after which the landlord may offer a legitimate, nonretaliatory reason for the eviction.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Imperial+Palace+of+Mississippi%2C+LLC+v.+Wilson&type=o&order_by=score+desc&format=json&filed_after=2011-01-01&filed_before=2013-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "MT",
+      "cases_verified": 3,
+      "machine_verified": 0,
+      "needs_attorney": 3,
+      "confirm_inference": 0,
+      "re_characterize": 3,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Swenson v. Janke",
+          "citation_gpt": null,
+          "citation_gemini": "274 Mont. 354, 908 P.2d 678",
+          "year": 1995,
+          "prior_holding": "Established that once a tenant makes a prima facie showing of retaliation, the burden of proof shifts to the landlord to provide a legitimate, non-retaliatory reason for the eviction.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Whalen v. Taylor",
+          "citation_gpt": null,
+          "citation_gemini": "278 Mont. 293, 925 P.2d 462",
+          "year": 1996,
+          "prior_holding": "Held that a landlord has a valid, non-retaliatory reason for eviction when the tenant is in default of rent, precluding a retaliatory eviction defense.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Whalen+v.+Taylor&type=o&order_by=score+desc&format=json&filed_after=1995-01-01&filed_before=1997-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Hill v. Turley",
+          "citation_gpt": null,
+          "citation_gemini": "360 Mont. 356, 254 P.3d 531",
+          "year": 2011,
+          "prior_holding": "Affirmed that a landlord's credible, evidence-supported desire to sell a property constitutes a legitimate business reason that overcomes a claim of retaliatory eviction.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Hill+v.+Turley&type=o&order_by=score+desc&format=json&filed_after=2010-01-01&filed_before=2012-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "NC",
+      "cases_verified": 4,
+      "machine_verified": 0,
+      "needs_attorney": 4,
+      "confirm_inference": 0,
+      "re_characterize": 4,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Russell v. Coggin",
+          "citation_gpt": null,
+          "citation_gemini": "173 N.C. App. 638, 620 S.E.2d 309",
+          "year": 2005,
+          "prior_holding": "This case established a burden-shifting framework where once a tenant makes a prima facie case of retaliation, the burden shifts to the landlord to produce evidence of a legitimate, non-retaliatory reason for the eviction.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Russell+v.+Coggin&type=o&order_by=score+desc&format=json&filed_after=2004-01-01&filed_before=2006-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Shoffner v. Purity Water Co. of NC, LLC",
+          "citation_gpt": null,
+          "citation_gemini": "179 N.C. App. 641, 634 S.E.2d 631",
+          "year": 2006,
+          "prior_holding": "The court held that an eviction is retaliatory if a retaliatory motive was a significant factor in the landlord's decision, even if it was not the sole or dominant motive.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Shoffner+v.+Purity+Water+Co.+of+NC%2C+LLC&type=o&order_by=score+desc&format=json&filed_after=2005-01-01&filed_before=2007-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Vandervelden v. Pico",
+          "citation_gpt": null,
+          "citation_gemini": "154 N.C. App. 627, 572 S.E.2d 823",
+          "year": 2002,
+          "prior_holding": "The court affirmed that a tenant's good-faith complaint to a governmental agency about a housing code violation constitutes a protected activity sufficient to support a retaliatory eviction defense under N.C.G.S. § 42-37.1.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (read timeout=15)\"}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Building C Associates v. A.D.A.M. Community Housing",
+          "citation_gpt": null,
+          "citation_gemini": "245 N.C. App. 455, 782 S.E.2d 525",
+          "year": 2016,
+          "prior_holding": "A landlord's compliance with federal \"good cause\" eviction requirements for subsidized housing does not preclude a tenant's retaliatory eviction defense under state law if the stated cause is pretextual.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Building+C+Associates+v.+A.D.A.M.+Community+Housing&type=o&order_by=score+desc&format=json&filed_after=2015-01-01&filed_before=2017-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "OH",
+      "cases_verified": 7,
+      "machine_verified": 0,
+      "needs_attorney": 7,
+      "confirm_inference": 0,
+      "re_characterize": 7,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Smith v. Wright",
+          "citation_gpt": "65 Ohio App.2d 101",
+          "citation_gemini": null,
+          "year": 1979,
+          "prior_holding": "Recognized retaliatory eviction under R.C. 5321.02 as a tenant defense to an action for possession where the landlord acts because the tenant engaged in statutorily protected complaint activity.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Smith+v.+Wright&type=o&order_by=score+desc&format=json&filed_after=1978-01-01&filed_before=1980-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Markese v. Cooper",
+          "citation_gpt": "70 Ohio App.2d 49",
+          "citation_gemini": "70 Ohio St. 2d 267, 436 N.E.2d 1353",
+          "year": 1980,
+          "prior_holding": "Interpreted R.C. 5321.02 to limit the retaliation defense where the statutory exceptions apply, including when the tenant is in default in rent.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Markese+v.+Cooper&type=o&order_by=score+desc&format=json&filed_after=1979-01-01&filed_before=1981-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "King v. Dolton",
+          "citation_gpt": "9 Ohio App.3d 29",
+          "citation_gemini": null,
+          "year": 1983,
+          "prior_holding": "Held that a tenant in default for nonpayment of rent could not defeat a possession action by asserting retaliatory eviction where R.C. 5321.02(C) removed the statute’s protection.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=King+v.+Dolton&type=o&order_by=score+desc&format=json&filed_after=1982-01-01&filed_before=1984-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Klein v. Moutz",
+          "citation_gpt": "118 Ohio App.3d 741",
+          "citation_gemini": null,
+          "year": 1997,
+          "prior_holding": "Applied R.C. 5321.02 in a residential eviction context and treated retaliatory motive as a fact-bound defense requiring proof that the landlord’s possession action was caused by the tenant’s protected activity.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Klein+v.+Moutz&type=o&order_by=score+desc&format=json&filed_after=1996-01-01&filed_before=1998-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Howard v. Simon",
+          "citation_gpt": null,
+          "citation_gemini": "18 Ohio App. 3d 14, 480 N.E.2d 99",
+          "year": 1984,
+          "prior_holding": "Clarified that once a tenant presents a prima facie case of retaliation, a rebuttable presumption arises, and the burden of proof shifts to the landlord to show a legitimate, non-retaliatory reason for the eviction.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Howard+v.+Simon&type=o&order_by=score+desc&format=json&filed_after=1983-01-01&filed_before=1985-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Karas v. Floyd",
+          "citation_gpt": null,
+          "citation_gemini": "2 Ohio App. 3d 4, 440 N.E.2d 563",
+          "year": 1981,
+          "prior_holding": "Established that retaliatory action under R.C. 5321.02 is an affirmative defense to a forcible entry and detainer action and can also be asserted as a counterclaim for damages.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Karas+v.+Floyd&type=o&order_by=score+desc&format=json&filed_after=1980-01-01&filed_before=1982-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Meacham v. Miller",
+          "citation_gpt": null,
+          "citation_gemini": "79 Ohio App. 3d 35, 606 N.E.2d 996",
+          "year": 1992,
+          "prior_holding": "Determined that a tenant's oral complaints to the landlord regarding necessary repairs constitute protected conduct sufficient to support a claim of retaliatory eviction under R.C. 5321.02.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Meacham+v.+Miller&type=o&order_by=score+desc&format=json&filed_after=1991-01-01&filed_before=1993-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "OR",
+      "cases_verified": 5,
+      "machine_verified": 0,
+      "needs_attorney": 5,
+      "confirm_inference": 0,
+      "re_characterize": 5,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Parkrose Management Co. v. Cappel",
+          "citation_gpt": "27 Or. App. 257",
+          "citation_gemini": null,
+          "year": 1976,
+          "prior_holding": "Held that Oregon's statutory prohibition on retaliatory landlord conduct could be asserted by a residential tenant as a defense in a forcible entry and detainer eviction action.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Parkrose+Management+Co.+v.+Cappel&type=o&order_by=score+desc&format=json&filed_after=1975-01-01&filed_before=1977-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Napolski v. Champney",
+          "citation_gpt": "295 Or. 408",
+          "citation_gemini": null,
+          "year": 1983,
+          "prior_holding": "Interpreted Oregon's retaliatory-conduct statute, then ORS 91.865 and now ORS 90.385, as governing a tenant's retaliation defense and remedies when a landlord seeks possession or otherwise acts because of protected tenant conduct.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Napolski+v.+Champney&type=o&order_by=score+desc&format=json&filed_after=1982-01-01&filed_before=1984-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Elk Creek Management Co. v. Gilbert",
+          "citation_gpt": null,
+          "citation_gemini": "353 Or. 565",
+          "year": 2013,
+          "prior_holding": "The court adopted the McDonnell Douglas burden-shifting framework for retaliatory eviction claims, requiring the tenant to establish a prima facie case, the landlord to articulate a legitimate non-retaliatory reason, and the tenant to prove that reason is pretextual.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Elk+Creek+Management+Co.+v.+Gilbert&type=o&order_by=score+desc&format=json&filed_after=2012-01-01&filed_before=2014-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "McCool v. Asplund",
+          "citation_gpt": null,
+          "citation_gemini": "218 Or. App. 268",
+          "year": 2008,
+          "prior_holding": "Held that a tenant's informal oral complaints to the landlord about conditions affecting habitability are sufficient to constitute a 'complaint' that triggers the statutory protection against retaliatory eviction.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=McCool+v.+Asplund&type=o&order_by=score+desc&format=json&filed_after=2007-01-01&filed_before=2009-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Timmermann v. Fagan",
+          "citation_gpt": null,
+          "citation_gemini": "210 Or. App. 433",
+          "year": 2007,
+          "prior_holding": "Clarified that the statutory presumption of retaliation arising from an eviction within six months of a tenant's complaint is a 'disputable presumption' that is rebutted once the landlord produces contrary evidence.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Timmermann+v.+Fagan&type=o&order_by=score+desc&format=json&filed_after=2006-01-01&filed_before=2008-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "PA",
+      "cases_verified": 2,
+      "machine_verified": 0,
+      "needs_attorney": 2,
+      "confirm_inference": 0,
+      "re_characterize": 2,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Fair v. Negley",
+          "citation_gpt": "390 A.2d 240",
+          "citation_gemini": null,
+          "year": 1978,
+          "prior_holding": "Recognized retaliatory eviction as a defense in Pennsylvania, holding that a landlord may not evict a residential tenant in retaliation for the tenant's good-faith complaint to authorities about housing-code violations.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Fair+v.+Negley&type=o&order_by=score+desc&format=json&filed_after=1977-01-01&filed_before=1979-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Pugh v. Holmes",
+          "citation_gpt": "405 A.2d 897",
+          "citation_gemini": "486 Pa. 272",
+          "year": 1979,
+          "prior_holding": "While principally establishing the implied warranty of habitability, the Court cited approvingly the rule barring retaliatory eviction and treated it as part of Pennsylvania's modern residential landlord-tenant doctrine.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Pugh+v.+Holmes&type=o&order_by=score+desc&format=json&filed_after=1978-01-01&filed_before=1980-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "SD",
+      "cases_verified": 0,
+      "machine_verified": 0,
+      "needs_attorney": 0,
+      "confirm_inference": 0,
+      "re_characterize": 0,
+      "wrong_doc": 0,
+      "case_results": [],
+      "note": "No candidate cases in draft file"
+    },
+    {
+      "state": "TN",
+      "cases_verified": 1,
+      "machine_verified": 0,
+      "needs_attorney": 1,
+      "confirm_inference": 0,
+      "re_characterize": 1,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Johnson v. Hopkins",
+          "citation_gpt": "432 S.W.3d 840",
+          "citation_gemini": null,
+          "year": 2013,
+          "prior_holding": "Interpreting Tenn. Code Ann. § 66-28-514, the court treated retaliatory eviction as a statutory defense and remedy in a possession action, subject to the statute’s enumerated exceptions such as a tenant’s genuine rent default.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Johnson+v.+Hopkins&type=o&order_by=score+desc&format=json&filed_after=2012-01-01&filed_before=2014-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "TX",
+      "cases_verified": 4,
+      "machine_verified": 0,
+      "needs_attorney": 4,
+      "confirm_inference": 0,
+      "re_characterize": 4,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Hall v. Fowler",
+          "citation_gpt": null,
+          "citation_gemini": "389 S.W.2d 730",
+          "year": 1965,
+          "prior_holding": "Established the Texas common law rule, prior to statutory enactments, that a landlord could terminate a tenancy for any reason or no reason, including a retaliatory one.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Hall+v.+Fowler&type=o&order_by=score+desc&format=json&filed_after=1964-01-01&filed_before=1966-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Sims v. Century Kiest Apartments",
+          "citation_gpt": null,
+          "citation_gemini": "567 S.W.2d 526",
+          "year": 1978,
+          "prior_holding": "Interpreted the original retaliatory eviction statute to create a rebuttable presumption of retaliation if a landlord seeks to evict a tenant within six months after the tenant engages in protected conduct.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Sims+v.+Century+Kiest+Apartments&type=o&order_by=score+desc&format=json&filed_after=1977-01-01&filed_before=1979-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Flynn v. Pan American Management Co.",
+          "citation_gpt": null,
+          "citation_gemini": "772 S.W.2d 194",
+          "year": 1989,
+          "prior_holding": "Clarified that a landlord may rebut the statutory presumption of retaliation by providing evidence of a legitimate, non-retaliatory reason for the eviction, such as non-payment of rent.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Flynn+v.+Pan+American+Management+Co.&type=o&order_by=score+desc&format=json&filed_after=1988-01-01&filed_before=1990-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Aguilar v. Weber",
+          "citation_gpt": null,
+          "citation_gemini": "72 S.W.3d 729",
+          "year": 2002,
+          "prior_holding": "Affirmed that the tenant bears the initial burden of proving that their protected action, such as requesting repairs, was made in good faith to establish a claim for retaliation.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Aguilar+v.+Weber&type=o&order_by=score+desc&format=json&filed_after=2001-01-01&filed_before=2003-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "UT",
+      "cases_verified": 2,
+      "machine_verified": 0,
+      "needs_attorney": 2,
+      "confirm_inference": 0,
+      "re_characterize": 2,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Building Monitoring Systems, Inc. v. Paxton",
+          "citation_gpt": null,
+          "citation_gemini": "905 P.2d 1215",
+          "year": 1995,
+          "prior_holding": "The Court affirmed that retaliatory eviction is not a common law defense and that a tenant's remedy for such conduct is exclusively defined by statute.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Building+Monitoring+Systems%2C+Inc.+v.+Paxton&type=o&order_by=score+desc&format=json&filed_after=1994-01-01&filed_before=1996-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "P.H. Investment v. Smedley",
+          "citation_gpt": null,
+          "citation_gemini": "797 P.2d 1085",
+          "year": 1990,
+          "prior_holding": "The Court held that retaliatory eviction was not a recognized defense to an unlawful detainer action at common law in Utah, a ruling which preceded the legislature's creation of a statutory defense.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=P.H.+Investment+v.+Smedley&type=o&order_by=score+desc&format=json&filed_after=1989-01-01&filed_before=1991-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "WI",
+      "cases_verified": 5,
+      "machine_verified": 0,
+      "needs_attorney": 5,
+      "confirm_inference": 0,
+      "re_characterize": 5,
+      "wrong_doc": 0,
+      "case_results": [
+        {
+          "case_name": "Dickhut v. Norton",
+          "citation_gpt": "45 Wis. 2d 389",
+          "citation_gemini": "45 Wis. 2d 389, 173 N.W.2d 297",
+          "year": 1970,
+          "prior_holding": "Established that a residential tenant may assert retaliatory eviction as a defense when the landlord seeks possession in retaliation for the tenant’s good-faith report of housing-code violations to public authorities.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Dickhut+v.+Norton&type=o&order_by=score+desc&format=json&filed_after=1969-01-01&filed_before=1971-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Woodland Realty, Inc. v. Winzenried",
+          "citation_gpt": "82 Wis. 2d 218",
+          "citation_gemini": null,
+          "year": 1978,
+          "prior_holding": "Interpreted Wisconsin’s retaliatory-eviction law as requiring the tenant to show that the landlord’s eviction or termination action would not have occurred but for retaliation against protected tenant conduct.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Woodland+Realty%2C+Inc.+v.+Winzenried&type=o&order_by=score+desc&format=json&filed_after=1977-01-01&filed_before=1979-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Shands v. Castrovinci",
+          "citation_gpt": "115 Wis. 2d 352",
+          "citation_gemini": null,
+          "year": 1983,
+          "prior_holding": "Held that retaliatory landlord conduct prohibited by Wisconsin administrative landlord-tenant regulations can support statutory remedies, reinforcing the enforceability of Wisconsin’s anti-retaliation protections for residential tenants.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Shands+v.+Castrovinci&type=o&order_by=score+desc&format=json&filed_after=1982-01-01&filed_before=1984-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Koble Investments v. Marquardt",
+          "citation_gpt": "2003 WI App 217, 267 Wis. 2d 1029",
+          "citation_gemini": null,
+          "year": 2003,
+          "prior_holding": "Applied Wis. Stat. § 704.45 and held that retaliatory nonrenewal or eviction is prohibited when motivated by the tenant’s good-faith exercise of legal rights relating to the tenancy.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Koble+Investments+v.+Marquardt&type=o&order_by=score+desc&format=json&filed_after=2002-01-01&filed_before=2004-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        },
+        {
+          "case_name": "Paulik v. Coombs",
+          "citation_gpt": null,
+          "citation_gemini": "120 Wis. 2d 431, 355 N.W.2d 357",
+          "year": 1984,
+          "prior_holding": "Interpreting Wis. Stat. § 704.45, the court held that the statute codified the public policy of Dickhut and established a burden-shifting framework for proving a retaliatory eviction claim.",
+          "source_generated_holding": null,
+          "check_a": {
+            "check": "A_existence_citation",
+            "cl_hit": null,
+            "cl_cluster_id": null,
+            "cl_opinion_id": null,
+            "cl_url": null,
+            "cl_citation": null,
+            "citation_match": null,
+            "exists": "FLAG",
+            "basis": "CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api/rest/v4/search/?q=Paulik+v.+Coombs&type=o&order_by=score+desc&format=json&filed_after=1983-01-01&filed_before=1985-12-31'}"
+          },
+          "check_b": {
+            "check": "B_currency",
+            "currency": "UNVERIFIED-no-citator",
+            "negative_flag": false,
+            "negative_note": null,
+            "citing_count": 0,
+            "basis": "No cluster ID — cannot check currency",
+            "as_of_date": "2026-06-23"
+          },
+          "check_c": {
+            "check": "C_generate_from_source",
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "holding": "FLAG-no-text",
+            "source_generated_holding": null,
+            "controlling_quote": null,
+            "quote_verified_verbatim": null,
+            "draft_agreement": null,
+            "generate_output": null,
+            "verify_output": null,
+            "queue_routing": "WRONG-DOC",
+            "basis": "Opinion text unavailable or too short"
+          },
+          "check_d": {
+            "check": "D_control_derived",
+            "control": "FLAG",
+            "controlling_quote": null,
+            "quote_agreement": false,
+            "basis": "Check C did not corroborate — D not evaluated"
+          },
+          "disposition": "needs-attorney",
+          "disposition_note": "Flagged: A=FLAG, B=UNVERIFIED-no-citator, C=FLAG-no-text, D=FLAG. Queue: RE-CHARACTERIZE.",
+          "controlling_quote": null,
+          "queue_routing": "RE-CHARACTERIZE",
+          "provenance": {
+            "generate_model": "gemini:gemini-2.5-pro",
+            "verify_model": "gpt:gpt-4o",
+            "opinion_text_source": null,
+            "draft_agreement": null
+          }
+        }
+      ]
+    },
+    {
+      "state": "WY",
+      "cases_verified": 0,
+      "machine_verified": 0,
+      "needs_attorney": 0,
+      "confirm_inference": 0,
+      "re_characterize": 0,
+      "wrong_doc": 0,
+      "case_results": [],
+      "note": "No candidate cases in draft file"
+    }
+  ]
+}
