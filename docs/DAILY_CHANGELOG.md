@@ -4,6 +4,135 @@
 
 ---
 
+## 2026-06-26 (session continuation — pipeline prep + Track A runner)
+
+### GREEN — Executed autonomously
+
+**harness.py: `bucket: "PR"` added for transient-failure dispositions**
+- Bug: the `except TransientError` block in `harness.py` wrote `disposition="transient-failure"` results with no `bucket` key, making 82 nc17_fresh_v2 cases invisible to bucket-based reporting.
+- Fix: added `"bucket": "PR"` to the transient-failure result dict with comment: "PR-class: infrastructure failure, not verification failure."
+- Next run will correctly classify transient-failure cases as PR. Historical nc17_fresh_v2 output file unchanged (bucket gap was pre-fix).
+
+**`nj_attach_retry_20260626.py` — NJ failure_to_attach reformulated retry runner built**
+- GPT timeout increased to 120s (prior runs failed at 60s default).
+- Gemini uses consequence-framing query (worked best in probe P3 — all 3 probes got Gemini content).
+- Auto-classifies: CONSENSUS-IMPROVE / CONFIRM / NO-SPECIFIC-RULE / MODEL-SPLIT / SM-GEMINI / SM-GPT / ERROR.
+- If CONSENSUS-IMPROVE: updates `nj_eviction_v2.json` failure_to_attach item; removes stale L2-PROCEDURAL-ERROR flag.
+- Output: `rules/validation/l2/output/nj_attach_retry_20260626.json`
+- **Status: ready for Andy to run from Terminal. Cowork ingests output.**
+
+**`l2_procedural_defects_runner.py`: `--output-suffix` arg added** *(YELLOW — see below)*
+
+**`job_retaliation_pr_retry_20260626.json` — PR retry job queued at `live_verified=false`**
+- Targets 14 states (AL, CO, CT, HI, LA, MI, ND, NJ, NM, NY, OK, SC, VT, WV): 82 PR-class transient-failure cases from nc17_fresh_v2.
+- `live_verified: false` — intentional. BLOCKED on Andy's call on CL timing.
+- sleep=15s (increased from 10s — 429 severity in prior 13.3-hour run).
+
+**`retaliation_holdings_v3_runner.py`: statute-targeted CL search queries**
+- Added `_STATE_RETALIATION_STATUTES` dict (51 states → statute citation).
+- `cl_search_retaliation_by_state()` now uses `"{statute} retaliation tenant landlord residential"` instead of generic `"retaliatory eviction {state_name} tenant"` query.
+- Fixes root cause of 11 wrong-doc PR cases in 20f722c8 run (generic query returned non-residential-retaliation cases).
+
+**NV v2 file — Track A routing added**
+- `nv_eviction_v2.json` retaliation holdings: `validation_status` → `TRACK-A-PENDING`; `track_a_routing` block added.
+- Paullin v. Sutton candidate: `candidate_status` → `UNVERIFIED-NEEDS-CL-VERIFICATION`; note updated (CL searches returned wrong-doc cases; improved query will retry; case not yet CL-verified).
+
+**NY v2 file — Track A routing added**
+- `ny_eviction_v2.json` retaliation holdings: `validation_status` → `TRACK-A-PENDING`; `track_a_routing` block added.
+- Reason: no leading Court of Appeals case found in Track B research; wrong-doc CL cases in 20f722c8 run; RPL §223-b is operative statute.
+
+**`track_a_statute_runner.py` — Track A statute-direct runner built**
+- `rules/validation/l2/track_a_statute_runner.py`
+- Targets KS (KSA 58-2572), NV (NRS 118A.510), NY (RPL §223-b), SC (SC Code §27-40-910).
+- No CL calls. Queries GPT + Gemini: does statute protect against retaliation?
+- Classifies: STATUTE-CONFIRMED, STATUTE-DIVERGENCE, ERROR/SM-ERROR.
+- If leading case found by both models → added to candidates[] for Track B.
+- Automation ceiling: statute-verified is BELOW machine-verified, BELOW attorney line. Not validated.
+- Output: `rules/validation/l2/output/track_a_statute_YYYYMMDD.json`
+- **Status: ready for Andy to run from Terminal. Cowork ingests output.**
+
+**WORK_QUEUE.md + DAILY_CHANGELOG.md updated** — this entry.
+
+### YELLOW — Logged for ratification
+
+**`l2_procedural_defects_runner.py`: `--output-suffix` arg added**
+- Added `--output-suffix TEXT` CLI arg (optional, default "").
+- Suffix appended before `.json` (e.g. `--output-suffix test` → `l2_procedural_defects_YYYYMMDD_HHMM_test.json`).
+- Engineering choice: prevents test-run output files from colliding with live output filenames. No behavioral change to existing runs (default="" means output unchanged unless arg is passed).
+- Flagged for Andy ratification. No attorney/legal impact.
+
+---
+
+## 2026-06-26 (late evening — notice tiebreaker + NJ probe + nc17_fresh_v2 ingested; GA YELLOW file update; living docs updated)
+
+### GREEN — Executed autonomously
+
+**notice_tiebreaker_20260626.py: bug fixed and run completed**
+- Bug: `gem_stat[:60]` and `gpt_stat[:60]` raised `TypeError: 'NoneType' object is not subscriptable` when Gemini returned no statute for SD.
+- Fix: changed to `(gem_stat or '')[:60]` and `(gpt_stat or '')[:60]`.
+- Run completed: 7 states (GA, AR, MN, OR, SD, WY, TN). Output: `rules/validation/l2/output/notice_tiebreaker_20260626.json`.
+- Results ingested (corrected from initial ingestion error — see CORRECTION note below):
+  - GA: TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE → YELLOW file update applied (see below)
+  - AR: TIEBREAKER-CONFIRM-FILE (3d confirmed correct — file was already right) → resolved [NOTICE-L2-01]
+  - MN: TIEBREAKER-CONFIRM-FILE (14d confirmed) → resolved [NOTICE-L2-02]
+  - OR: TIEBREAKER-RESOLVED (days=10 confirmed by both tiebreaker models; file already had days=10; L2 flag closed) [NOTICE-L2-03]
+  - SD: TIEBREAKER-FILE-ALREADY-CORRECT (both confirm notice_required=false) → resolved [NOTICE-L2-04]
+  - WY: TIEBREAKER-CONFIRM-FILE (3d, §1-21-1003 confirmed) → resolved [NOTICE-L2-08]
+  - TN: TIEBREAKER-CONFIRM-FILE (14d confirmed) → resolved [NOTICE-L2-09]
+- Verification: HUMAN_REVIEW_QUEUE updated; 0 new L7-ESCALATED items (AR/OR resolved by tiebreaker); 6 items resolved or closed.
+- **⚠️ CORRECTION (2026-06-26 late evening):** Initial ingestion incorrectly recorded AR and OR as L7-ESCALATED based on misread of prior summary. Actual terminal output (per screenshot): AR = "file confirmed correct — no action needed" (CONFIRM-FILE); OR = "tiebreaker resolved (days=10) — file update needed (YELLOW)" (RESOLVED, not split). Corrections applied to HUMAN_REVIEW_QUEUE, WORK_QUEUE, DAILY_CHANGELOG, CLAUDE_CHAT_BRIEF, and or_eviction_v2.json L2 flag.
+
+**nj_attach_probe_20260626.py: run completed**
+- All 3 probes got content from Gemini — confirms NJ failure_to_attach ERROR was query framing, not NSR or model limitation.
+- GPT timed out on all 3 probes — classified SM-GEMINI (not ERROR, not attorney lane).
+- Contradictory Gemini answers (P1: R. 6:3-1 attach docs; P2: no requirement for nonpayment; P3: must attach notice) indicate NJ attachment rule depends on notice type. Needs reformulated query with GPT retry.
+- Output: `rules/validation/l2/output/nj_attach_probe_20260626.json`.
+
+**nc17_fresh_v2 retaliation holdings run ingested**
+- Run file: `rules/validation/l2/output/retaliation_holdings_v3_2026-06-26_nc17_fresh_v2.json`
+- Total units: 118 (header: 120; 2-unit discrepancy). MV=6, CI=0, RC=3, PR=25, SM=0, transient-failure=84.
+- Method rate: 67% (6/9 text-retrievable). Overall rate: 5% (6/118).
+- RC cases → HUMAN_REVIEW_QUEUE: AK (DeNardo v. Maassen), CO (Sladek v. dePlomb), CT (TOV Realty v. Suarez).
+- 84 transient-failure = CourtListener 429 rate-limit errors throughout 13.3-hour run. All PR-class, quarantined for retry.
+- Harness bug identified: no `bucket` key written for transient-failure disposition. GREEN fix needed.
+- METRICS_LEDGER: nc17_fresh_v2 section added with full run detail.
+- HUMAN_REVIEW_QUEUE: 3 new RC items added [AK-RET-HOLD-RC-01]–[CT-RET-HOLD-RC-01].
+
+**HUMAN_REVIEW_QUEUE.md updated** (corrected from initial ingestion error)
+- NOTICE-L2-01 (AR): status → ✅ TIEBREAKER-CONFIRM-FILE (3d confirmed correct) [CORRECTED: was wrongly L7-ESCALATED in initial ingestion]
+- NOTICE-L2-02 (MN): status → ✅ resolved (TIEBREAKER-CONFIRM-FILE)
+- NOTICE-L2-03 (OR): status → 🟡 TIEBREAKER-RESOLVED (days=10 confirmed; file already correct; L2 flag closed) [CORRECTED: was wrongly L7-ESCALATED in initial ingestion]
+- NOTICE-L2-04 (SD): status → ✅ resolved (file already correct; both models confirm notice_required=false)
+- NOTICE-L2-06 (GA): status → 🟡 YELLOW pending ratification (tiebreaker-resolved differs-from-file; file updated)
+- NOTICE-L2-08 (WY): status → ✅ resolved (TIEBREAKER-CONFIRM-FILE)
+- NOTICE-L2-09 (TN): status → ✅ resolved (TIEBREAKER-CONFIRM-FILE)
+- Added [AK-RET-HOLD-RC-01], [CO-RET-HOLD-RC-01], [CT-RET-HOLD-RC-01] (new RC cases from nc17_fresh_v2)
+- Queue summary counts corrected: L7 count = 43 (not 45); Resolved = 7 (not 5)
+
+**VALIDATION_METRICS_LEDGER.md updated**
+- nc17_fresh_v2 entry added to cross-batch combined table
+- Full nc17_fresh_v2 detail section added (bucket breakdown, rates, harness bug note, RC items)
+
+**WORK_QUEUE.md updated**
+- Completed items added for notice tiebreaker, NJ probe, and nc17_fresh_v2 ingestion
+- NEXT refreshed: harness bug fix (item 1), NJ reformulated retry (item 2), PR retry queue (item 3), Track A / improved CL queries (items 4–5)
+
+### YELLOW — Logged for ratification
+
+**GA notice module file update: notice_required=false, days=null**
+- File: `rules/eviction/georgia/ga_eviction_v2.json`
+- Change: `notice.notice_types.pay_or_quit.tenancy_all.days`: 3 → null; `notice_required: false` added; `statute`: "OCGA §44-7-50" → "O.C.G.A. §§ 44-7-50, 44-7-52"; `demand_required: true` added.
+- L2-PERIOD-DIVERGENCE flag updated: disposition `open` → `tiebreaker-resolved`. Tiebreaker fields added.
+- Basis: TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE — both GPT (gpt-5.5) and Gemini (gemini-2.5-pro) confirmed notice_required=false, days=null in targeted tiebreaker run. Corroborated by LSC 2021 coding ("minimum amount not specified"). Contradicts file's prior days=3 (unsubstantiated initial-gen value, noted in prior L7 writeup).
+- Flagged for Andy ratification. See [NOTICE-L2-06] in HUMAN_REVIEW_QUEUE.
+
+**OR notice tiebreaker — L2 flag closed (YELLOW)**
+- OR ([NOTICE-L2-03]): tiebreaker ran; both models converged on 10 days (ORS §90.394). File tenancy_all.days was already 10. L2-MODEL-SPLIT flag in `or_eviction_v2.json` updated: disposition "open" → "tiebreaker-resolved". Tiebreaker evidence recorded in flag. No notice period content change.
+- **⚠️ CORRECTION:** Initial ingestion wrongly recorded OR as L7-ESCALATED. Corrected per actual runner output ("tiebreaker resolved — file update needed (YELLOW)") which means flag closure only, not L7.
+- AR ([NOTICE-L2-01]): tiebreaker confirmed file correct (3d, no action needed). **⚠️ CORRECTION:** Initial ingestion wrongly recorded AR as L7-ESCALATED. Corrected per actual runner output ("file confirmed correct — no action needed"). No change to AR file needed.
+
+---
+
 ## 2026-06-26 (evening — attach_retry9 done; notice rerun done; Counter fix; Track B research)
 
 ### GREEN — Executed autonomously

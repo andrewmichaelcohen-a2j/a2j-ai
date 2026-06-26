@@ -264,8 +264,8 @@ def main():
 
         classification = classify(gpt, gem, tb["file_val"] if "file_val" in tb else tb["file_value"])
 
-        print(f"  GPT:    notice_required={gpt_req}, days={gpt_days}, statute={gpt_stat[:60]}")
-        print(f"  Gemini: notice_required={gem_req}, days={gem_days}, statute={gem_stat[:60]}")
+        print(f"  GPT:    notice_required={gpt_req}, days={gpt_days}, statute={(gpt_stat or '')[:60]}")
+        print(f"  Gemini: notice_required={gem_req}, days={gem_days}, statute={(gem_stat or '')[:60]}")
         print(f"  File:   notice_required={tb['file_value']['notice_required']}, days={tb['file_value']['days']}")
         print(f"  → {classification}")
 

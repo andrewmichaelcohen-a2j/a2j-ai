@@ -1,0 +1,61 @@
+{
+  "probe": "NJ-failure_to_attach",
+  "results": [
+    {
+      "probe_id": "P1",
+      "label": "Ultra-simple: does NJ require attaching lease/notice to eviction complaint?",
+      "gpt": {
+        "error": "Request timed out.",
+        "days": null,
+        "notice_required": null,
+        "statute": null,
+        "rationale": null,
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "required": true,
+        "statute_or_rule": "N.J. Court Rule 6:3-1",
+        "rationale": "New Jersey Court Rule 6:3-1 requires that a copy of any document upon which the action is based must be attached to the complaint. In summary dispossess actions, the lease agreement and the required statutory notice (like a notice to quit) are the foundational documents for the landlord's claim.",
+        "model": "gemini-2.5-pro"
+      }
+    },
+    {
+      "probe_id": "P2",
+      "label": "Rule-direct: NJ court rules for landlord-tenant complaint contents",
+      "gpt": {
+        "error": "Request timed out.",
+        "days": null,
+        "notice_required": null,
+        "statute": null,
+        "rationale": null,
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "must_attach_lease": false,
+        "must_attach_notice": false,
+        "governing_rule": "no specific rule",
+        "rationale": "New Jersey Court Rules do not specifically require that the lease agreement or the rent demand notice be attached to a complaint filed for nonpayment of rent. While R. 6:3-4(c) requires attaching a 'notice of termination, if any,' a demand for rent in a nonpayment case is not considered a notice of termination that must be annexed to the initial complaint.",
+        "model": "gemini-2.5-pro"
+      }
+    },
+    {
+      "probe_id": "P3",
+      "label": "Consequence-framing: what happens if NJ landlord doesn't attach lease?",
+      "gpt": {
+        "error": "Request timed out.",
+        "days": null,
+        "notice_required": null,
+        "statute": null,
+        "rationale": null,
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "attachment_required_by_rule": true,
+        "valid_defense_if_omitted": true,
+        "governing_authority": "N.J. Court Rule 6:3-4(c)",
+        "rationale": "N.J. Court Rule 6:3-4(c) requires that a copy of all notices upon which the plaintiff's claim is based must be attached to the complaint. The rule explicitly distinguishes between the notice and the lease, as it only mandates attaching the notice, not the lease itself. Failure to attach the required notice is a procedural defect that provides the tenant with a valid defense, which can lead to the dismissal of the landlord's complaint.",
+        "model": "gemini-2.5-pro"
+      }
+    }
+  ]
+}

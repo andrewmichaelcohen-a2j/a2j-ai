@@ -582,7 +582,12 @@
         "holdings": {
           "validation_method": "L2-draft-and-cross-check-with-citation-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
+          "validation_status": "TRACK-A-PENDING",
+          "track_a_routing": {
+            "reason": "__no_cases__ in nc17_fresh_v2 CL fresh search; 20f722c8 run returned wrong-doc cases (pr_reason: case-not-relevant-to-retaliation-likely-wrong-doc); improved statute-targeted CL query (NRS 118A.510 retaliation tenant landlord residential) will be used on next fresh run",
+            "routed_date": "2026-06-26",
+            "next_step": "Run Track A statute-direct verification (track_a_statute_runner.py) to confirm NRS 118A.510 protects against retaliation; retry CL with statute-targeted query on next fresh run"
+          },
           "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
           "candidates": [
             {
@@ -594,10 +599,10 @@
               "cl_court_id": "nev",
               "identified_by": "web_search_justia",
               "identified_date": "2026-06-26",
-              "candidate_status": "UNVERIFIED",
+              "candidate_status": "UNVERIFIED-NEEDS-CL-VERIFICATION",
               "proposed_holding": "NRS 118A.510 prohibits non-renewal of lease for retaliatory purpose; remedy is actual damages only (statute amended 1985 to add damages provision)",
               "track": "B",
-              "note": "Foundational NV retaliation case. Identified via Justia web search during Track B research session 2026-06-26. Not yet verified via CourtListener — holdings v3 runner will verify existence, citation accuracy, holding accuracy, and currency."
+              "note": "Identified via Justia web search; not yet verified via CourtListener. CL searches to date (20f722c8 run) returned wrong-doc cases for NV — not this case specifically. Improved statute-targeted query (NRS 118A.510 retaliation tenant landlord residential) will be used on next CL fresh run to attempt candidate verification."
             }
           ]
         },

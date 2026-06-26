@@ -447,7 +447,8 @@ def update_file(file_path: Path, state: str, defect_name: str,
 
 # ── Main runner ───────────────────────────────────────────────────────────────
 
-def run(states: list[str], defects_to_run: list[str], dry_run: bool, sleep_secs: float):
+def run(states: list[str], defects_to_run: list[str], dry_run: bool, sleep_secs: float,
+        output_suffix: str = ""):
     print("=" * 64)
     print(f"L2 Procedural Defects Runner")
     print(f"States : {len(states)} | Defects: {len(defects_to_run)}")
@@ -566,7 +567,11 @@ def run(states: list[str], defects_to_run: list[str], dry_run: bool, sleep_secs:
     out_dir = Path(RULES_EVICTION_DIR).parent.parent / "validation" / "l2" / "output"
     out_dir.mkdir(parents=True, exist_ok=True)
     ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
-    out_path = out_dir / f"l2_procedural_defects_{ts}.json"
+    # --output-suffix prevents test runs from colliding with live filenames
+    suffix = output_suffix.strip()
+    if suffix and not suffix.startswith("_"):
+        suffix = "_" + suffix
+    out_path = out_dir / f"l2_procedural_defects_{ts}{suffix}.json"
     if not dry_run:
         with open(out_path, "w") as f:
             json.dump({
@@ -607,6 +612,11 @@ def main():
                         help="Query models but don't write to files")
     parser.add_argument("--sleep", type=float, default=2.0,
                         help="Seconds between API calls (default: 2)")
+    parser.add_argument("--output-suffix", type=str, default="",
+                        help="Suffix appended to output filename before .json "
+                             "(e.g. '_test' → l2_procedural_defects_YYYYMMDD_HHMM_test.json). "
+                             "Use to prevent test runs from colliding with live filenames. "
+                             "[YELLOW — added 2026-06-26; log for Andy ratification]")
     args = parser.parse_args()
 
     states = [s.strip().upper() for s in args.states.split(",") if s.strip()]
@@ -624,7 +634,8 @@ def main():
             sys.exit(1)
 
     run(states=states, defects_to_run=defects_to_run,
-        dry_run=args.dry_run, sleep_secs=args.sleep)
+        dry_run=args.dry_run, sleep_secs=args.sleep,
+        output_suffix=args.output_suffix)
 
 
 if __name__ == "__main__":

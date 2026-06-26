@@ -2,7 +2,7 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-26 evening (attach-retry-9 and notice rerun completed via run_now.sh; Counter bug fixed; Track B research done; 8 NOTICE-L2 divergences added to queue; living docs updated)
+**Last updated:** 2026-06-26 session continuation (harness PR fix; NJ retry runner; --output-suffix; PR retry job queued; CL statute-targeted queries; NV/NY Track A routing; Track A runner built)
 
 ---
 
@@ -14,15 +14,30 @@
 
 ## Completed Today
 
+**Track A + pipeline prep (session continuation)** ✅ DONE — 2026-06-26 session.
+- harness.py: `bucket: "PR"` now written for transient-failure dispositions (fixes 82-case bucket gap from nc17_fresh_v2).
+- `nj_attach_retry_20260626.py`: GPT 120s timeout + consequence-framing Gemini query. Ready for Andy to run from Terminal.
+- `l2_procedural_defects_runner.py`: `--output-suffix` arg added (YELLOW). Test runs write `*_suffix.json`, no live collision.
+- `job_retaliation_pr_retry_20260626.json`: queued at `live_verified=false`. 14 states, 82 PR-class cases, sleep=15s. BLOCKED on Andy's call on CL timing.
+- `retaliation_holdings_v3_runner.py`: statute-targeted CL queries added (`_STATE_RETALIATION_STATUTES` dict; 51 states). Next fresh run uses `NRS 118A.510 retaliation tenant landlord residential` style.
+- `nv_eviction_v2.json`: Paullin v. Sutton candidate status updated to UNVERIFIED-NEEDS-CL-VERIFICATION; Track A routing added to holdings section.
+- `ny_eviction_v2.json`: Track A routing added to holdings section (no leading CoA case; RPL §223-b).
+- `track_a_statute_runner.py`: new runner for KS/NV/NY/SC statute-direct verification (no CL). Andy runs from Terminal; Cowork ingests output.
+
 **NV/VT case_law_candidates added** ✅ DONE — 2026-06-26 evening.
 - NV: Paullin v. Sutton (1986) added to `nv_eviction_v2.json` holdings.candidates.
 - VT: Houle v. Quenneville (2001) added to `vt_eviction_v2.json` holdings.candidates. CL cluster_id=2320677.
 - Both UNVERIFIED; ready for holdings v3 runner on next run.
 
-**Notice tiebreaker + NJ probe scripts queued** ✅ DONE — 2026-06-26 evening.
-- `rules/validation/l2/notice_tiebreaker_20260626.py` — syntax-OK, queued, in run_now.sh.
-- `rules/validation/l2/nj_attach_probe_20260626.py` — syntax-OK, queued, in run_now.sh.
-- Completed jobs moved to done/. Queue refreshed.
+**Notice tiebreaker + NJ probe scripts run + ingested** ✅ DONE — 2026-06-26 late evening.
+- `notice_tiebreaker_20260626.py`: GA=TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE (YELLOW file update applied); AR=TIEBREAKER-CONFIRM-FILE (3d confirmed correct); OR=TIEBREAKER-RESOLVED (days=10 confirmed; file already had days=10; L2 flag closed); MN/WY/TN=CONFIRM-FILE; SD=file-already-correct. **CORRECTED 2026-06-26: prior ingestion had AR/OR as L7-ESCALATED in error — actual runner output confirmed neither required L7 escalation.**
+- `nj_attach_probe_20260626.py`: 3 probes all got content from Gemini; GPT timed out all 3. Classification=SM-GEMINI. NJ failure_to_attach not ERROR/NSR — needs reformulated GPT retry.
+- All queue items updated in HUMAN_REVIEW_QUEUE; METRICS_LEDGER updated.
+
+**nc17_fresh_v2 retaliation holdings run ingested** ✅ DONE — 2026-06-26 late evening.
+- MV=6, CI=0, RC=3 (AK/CO/CT), PR=25, SM=0, transient-failure=84 (PR-class, harness bug: no bucket key).
+- Method rate: 67%. Overall rate: 5%. Elapsed: 13.3 hours (CourtListener 429 rate-limiting).
+- 3 RC cases added to HUMAN_REVIEW_QUEUE. METRICS_LEDGER updated with full run detail.
 
 **attach-retry-9 (failure_to_attach × 9 states)** ✅ DONE — run 2026-06-26 ~16:18 UTC, completed ~16:51.
 - NSR=4 (AL, IA, RI, VA), SM=4 (ME/MN/NH=SM-GPT; NV=SM-GEMINI), ERROR=1 (NJ, persistent — 3rd failure).
@@ -83,17 +98,21 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **Notice tiebreaker pass — 6 states** (GREEN-AUTO → may surface YELLOWs) — run tiebreaker queries for [NOTICE-L2-01]–[NOTICE-L2-06]: AR (3d vs 5d), MN (14d vs None — post-2023 query), OR (10d vs 3d), SD (confirm repeal still good law), GA (CRITICAL: 0d vs 3d), WY (citation §1-21-1002 vs §1-21-1003). Queue TN retry (--states TN). If any tiebreaker resolves → GREEN file update. If split persists → escalate to L7.
+1. **Run Track A statute-direct verification** (GREEN — Andy runs Terminal; Cowork ingests) — `track_a_statute_runner.py` is built and ready. Targets KS, NV, NY, SC. Queries GPT + Gemini: does statute protect against retaliation? No CL calls. Output: `rules/validation/l2/output/track_a_statute_YYYYMMDD.json`. Andy runs; Cowork ingests results into v2 files and DAILY_CHANGELOG.
+   ```
+   cd a2j-ai && python3 rules/validation/l2/track_a_statute_runner.py
+   ```
 
-2. **NJ failure_to_attach persistent ERROR investigation** (GREEN pipeline) — 3rd consecutive failure on NJ. Investigate: is it a network timeout? A query issue? Try manual `call_openai` / `call_gemini` for NJ failure_to_attach. If infrastructure → retry. If "no specific rule" → NSR. Anti-default: this stays pipeline until proven otherwise.
+2. **Run NJ failure_to_attach reformulated retry** (GREEN — Andy runs Terminal; Cowork ingests) — `nj_attach_retry_20260626.py` is built and ready. GPT timeout=120s, Gemini consequence-framing query. Will resolve whether NJ is NSR, SM-GEMINI, or CONSENSUS. Output: `rules/validation/l2/output/nj_attach_retry_20260626.json`.
+   ```
+   cd a2j-ai && python3 rules/validation/l2/nj_attach_retry_20260626.py
+   ```
 
-3. **NC states / retaliation holdings Track A** (GREEN — statute-direct) — 12 `__no_cases__` states + SC/NY Track A candidates. All have statutes; verify statute citations directly against primary sources. Skip CL (daily read limit constraints). This is the statute-direct path for states with no appellate case law.
+3. **Ingest overnight Batch 3 + L2 procedural defects runs** (GREEN-AUTO) — tonight's queue: `job_batch3_20260623.json` (18 states, retaliation holdings v3) + `job_l2_procedural_defects_20260624.json` (51 states × 4 defects). Morning report will ingest and update METRICS_LEDGER, HUMAN_REVIEW_QUEUE, WORK_QUEUE, DAILY_CHANGELOG.
 
-4. **NV/NY Track B — add candidate cases to v2 files** (GREEN-AUTO) — Paullin v. Sutton (NV) and Houle v. Quenneville (VT) identified this session. Add as `case_law_candidates` to `nv_eviction_v2.json` and `vt_eviction_v2.json` so the next holdings v3 run has cases to verify. Prep improved CL queries for the 11 PR cases (better search terms for NV, NY, OK retaliation holdings).
+4. **PR retry — Andy's call on CL timing** (BLOCKED — Andy) — `job_retaliation_pr_retry_20260626.json` is queued at `live_verified=false`. 14 states, 82 PR-class cases. Set `live_verified=true` only when CL rate-limit has subsided (or after CourtListener outreach re: rate tier).
 
 5. **Direction B attorney freeze** (RED gate — needs Andy) — 50 DRAFT candidates in `rules/validation/golden_sets/`. Only frozen items become ground truth.
-
-6. **Add `--output-suffix` option to l2_procedural_defects_runner** (YELLOW — prevents future sandbox/live collision) — add optional `--output-suffix TEXT` arg so test runs write to `*_test.json` and don't collide with live output filenames.
 
 ---
 

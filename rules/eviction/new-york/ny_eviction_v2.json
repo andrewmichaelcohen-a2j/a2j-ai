@@ -659,7 +659,12 @@
         "holdings": {
           "validation_method": "L2-draft-and-cross-check-with-citation-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
+          "validation_status": "TRACK-A-PENDING",
+          "track_a_routing": {
+            "reason": "No leading Court of Appeals case found in Track B research; 20f722c8 run returned wrong-doc cases for NY (pr_reason: case-not-relevant-to-retaliation-likely-wrong-doc); RPL §223-b is the operative statute",
+            "routed_date": "2026-06-26",
+            "next_step": "Run Track A statute-direct verification (track_a_statute_runner.py) to confirm RPL §223-b; retry CL with statute-targeted query (223-b retaliation tenant landlord residential) on next fresh run"
+          },
           "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
         },
         "best_practices": {

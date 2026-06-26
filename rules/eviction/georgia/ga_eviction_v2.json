@@ -319,8 +319,8 @@
         "layer": "L2",
         "code": "L2-PERIOD-DIVERGENCE",
         "field": "notice.notice_types.pay_or_quit",
-        "disposition": "open",
-        "note": "L2-PERIOD-DIVERGENCE: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): 0d | O.C.G.A. § 44-7-50(a). Gemini (gemini-2.5-pro): Noned | O.C.G.A. § 44-7-50. Human review required.",
+        "disposition": "tiebreaker-resolved",
+        "note": "L2-PERIOD-DIVERGENCE: pay_or_quit nonpayment notice — divergence detected (run 2026-06-26). GPT (gpt-5.5): 0d | O.C.G.A. § 44-7-50(a). Gemini (gemini-2.5-pro): null | O.C.G.A. § 44-7-50. TIEBREAKER RUN 2026-06-26: Both GPT and Gemini confirmed notice_required=false, days=null, statute=O.C.G.A. §§ 44-7-50, 44-7-52. TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE. File updated (YELLOW 2026-06-26): days 3→null, notice_required=false added, statute updated to §§ 44-7-50, 44-7-52. Flagged for Andy ratification.",
         "gpt_answer": {
           "days": 0,
           "statute": "O.C.G.A. § 44-7-50(a)",
@@ -331,7 +331,12 @@
           "statute": "O.C.G.A. § 44-7-50",
           "rationale": "Georgia law requires a landlord to make a demand for possession from the tenant before filing a dispossessory (eviction) action for nonpayment of rent. The statute does not mandate a specific waiting period after the demand is made, allowing the landlord to file immediately if the tenant fails to comply."
         },
-        "l2_run_date": "2026-06-26"
+        "l2_run_date": "2026-06-26",
+        "tiebreaker_run_date": "2026-06-26",
+        "tiebreaker_result": "TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE",
+        "tiebreaker_gpt": {"notice_required": false, "days": null, "statute": "O.C.G.A. §§ 44-7-50, 44-7-52"},
+        "tiebreaker_gemini": {"notice_required": false, "days": null, "statute": "O.C.G.A. §§ 44-7-50, 44-7-52"},
+        "yellow_action": "File updated 2026-06-26 — days: 3→null, notice_required: false added, statute updated. Pending Andy ratification."
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
@@ -355,16 +360,19 @@
   "notice": {
     "notice_types": {
       "pay_or_quit": {
-        "description": "Nonpayment of rent",
+        "description": "Nonpayment of rent — demand for possession required; no specific notice period before filing",
+        "notice_required": false,
+        "demand_required": true,
+        "demand_note": "O.C.G.A. §44-7-50 requires landlord to demand possession before filing a dispossessory affidavit; tenant must refuse or fail to deliver. No minimum waiting period after demand. [YELLOW tiebreaker-resolved 2026-06-26: GPT and Gemini tiebreaker both confirm notice_required=false, days=null — differs from prior file value days=3. Flagged for Andy ratification per Direction A.]",
         "permitted_amounts": [
           "unpaid_rent_only"
         ],
         "late_fees_permitted": false,
         "utilities_permitted": false,
         "tenancy_all": {
-          "days": 3,
-          "statute": "OCGA §44-7-50",
-          "count_method": "calendar_days"
+          "days": null,
+          "statute": "O.C.G.A. §§ 44-7-50, 44-7-52",
+          "count_method": null
         }
       },
       "cure_or_quit": {

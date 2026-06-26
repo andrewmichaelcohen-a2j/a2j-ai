@@ -1,0 +1,215 @@
+{
+  "run_type": "notice_tiebreaker",
+  "run_date": "2026-06-26 19:30 UTC",
+  "states": [
+    "GA",
+    "AR",
+    "MN",
+    "OR",
+    "SD",
+    "WY",
+    "TN"
+  ],
+  "results": [
+    {
+      "state_code": "GA",
+      "state_name": "Georgia",
+      "notice_l2_id": "NOTICE-L2-06",
+      "priority": "CRITICAL",
+      "dispute": "GPT says no notice required (0d); file says 3d required; Gemini empty",
+      "file_value": {
+        "days": 3,
+        "notice_required": true,
+        "statute": "OCGA \u00a744-7-50"
+      },
+      "gpt": {
+        "days": null,
+        "notice_required": false,
+        "statute": "O.C.G.A. \u00a7\u00a7 44-7-50, 44-7-52",
+        "rationale": "For nonpayment of rent, O.C.G.A. \u00a7 44-7-50 requires the landlord to demand possession and the tenant to refuse or fail to deliver possession before the landlord files a dispossessory affidavit, but it does not require advance written notice or any set number of days before filing. O.C.G.A. \u00a7 44-7-52 governs issuance and service of the dispossessory summons/warrant after filing, not a pre-filing notice requirement; Georgia allows filing without prior written notice.",
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "days": null,
+        "notice_required": false,
+        "statute": "OCGA \u00a7 44-7-50",
+        "rationale": "OCGA \u00a7 44-7-50 requires a landlord to make a 'demand for possession' from the tenant before filing a dispossessory action. However, the statute does not require this demand to be in writing, nor does it mandate a specific waiting period between the demand and the filing. Therefore, no advance written notice period is required, and a landlord may file the action immediately after the tenant fails to comply with the demand.",
+        "model": "gemini-2.5-pro"
+      },
+      "classification": "TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE",
+      "run_date": "2026-06-26 19:30 UTC"
+    },
+    {
+      "state_code": "AR",
+      "state_name": "Arkansas",
+      "notice_l2_id": "NOTICE-L2-01",
+      "priority": "NORMAL",
+      "dispute": "GPT says 3d; Gemini says 5d; both cite same statute",
+      "file_value": {
+        "days": 3,
+        "notice_required": true,
+        "statute": "Ark. Code Ann. \u00a718-17-701"
+      },
+      "gpt": {
+        "days": 3,
+        "notice_required": true,
+        "statute": "Ark. Code Ann. \u00a718-17-701",
+        "rationale": "Under Ark. Code Ann. \u00a718-17-701(b), if rent is unpaid when due and the tenant fails to pay within five (5) days from the due date, the landlord may terminate the rental agreement; that five-day period is the tenant\u2019s cure period. The statute separately provides that the landlord may bring an action for possession only \u201cafter three (3) days\u2019 written notice to quit,\u201d so the written notice period is 3 days.",
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "days": 3,
+        "notice_required": true,
+        "statute": "Ark. Code Ann. \u00a718-17-701",
+        "rationale": "Under Ark. Code Ann. \u00a718-17-701(b), after rent has been unpaid for five days past the due date, the landlord must provide a written notice to the tenant. The statute explicitly states that 'the notice shall state that the tenant has three (3) days from the date the notice is given to vacate the premises.' The landlord may only file for an unlawful detainer action if the tenant fails to vacate within this three-day notice period.",
+        "model": "gemini-2.5-pro"
+      },
+      "classification": "TIEBREAKER-CONFIRM-FILE",
+      "run_date": "2026-06-26 19:30 UTC"
+    },
+    {
+      "state_code": "MN",
+      "state_name": "Minnesota",
+      "notice_l2_id": "NOTICE-L2-02",
+      "priority": "NORMAL",
+      "dispute": "GPT says 14d (post-2023 HF 3019); Gemini says no notice required",
+      "file_value": {
+        "days": 14,
+        "notice_required": true,
+        "statute": "Minn. Stat. \u00a7504B.321"
+      },
+      "gpt": {
+        "days": 14,
+        "notice_required": true,
+        "statute": "Minn. Stat. \u00a7 504B.321, subd. 1a (2024)",
+        "rationale": "HF 3019 (2023) amended Minnesota\u2019s eviction statutes and the current law requires a landlord to give a residential tenant written notice at least 14 days before filing an eviction action for nonpayment of rent or other unpaid financial obligations. Therefore, current Minnesota law does require a 14-day prefiling notice; it is no longer the rule that no advance notice is required for a residential nonpayment eviction.",
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "days": 14,
+        "notice_required": true,
+        "statute": "Minn. Stat. \u00a7 504B.321, Subd. 1a",
+        "rationale": "Effective January 1, 2024, the 2023 legislative amendments (HF 3019) apply. Current Minnesota law requires a landlord to provide a residential tenant with a written notice at least 14 days before filing an eviction action for nonpayment of rent. This notice must state the basis for the eviction and inform the tenant of their right to seek assistance.",
+        "model": "gemini-2.5-pro"
+      },
+      "classification": "TIEBREAKER-CONFIRM-FILE",
+      "run_date": "2026-06-26 19:30 UTC"
+    },
+    {
+      "state_code": "OR",
+      "state_name": "Oregon",
+      "notice_l2_id": "NOTICE-L2-03",
+      "priority": "NORMAL",
+      "dispute": "GPT says 10d; Gemini says 3d (72 hours); file says 3d",
+      "file_value": {
+        "days": 3,
+        "notice_required": true,
+        "statute": "ORS 90.394"
+      },
+      "gpt": {
+        "days": 10,
+        "notice_required": true,
+        "statute": "ORS 90.394",
+        "rationale": "Under ORS 90.394(2), for tenancies other than week-to-week tenancies, the landlord may terminate for nonpayment only by written notice that gives the tenant until a date that is not earlier than 10 days after delivery of the notice to pay. Thus, the standard nonpayment notice under ORS 90.394 is 10 days, not 72 hours (3 days).",
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "days": 10,
+        "notice_required": true,
+        "statute": "ORS 90.394",
+        "rationale": "Under ORS 90.394(2)(c), if a tenant has failed to pay rent on three or more occasions during the previous 12 months, the landlord must provide written notice of not less than 240 hours (10 days). The 72-hour notice period applies only to week-to-week tenancies with a similar history of nonpayment.",
+        "model": "gemini-2.5-pro"
+      },
+      "classification": "TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE",
+      "run_date": "2026-06-26 19:30 UTC"
+    },
+    {
+      "state_code": "SD",
+      "state_name": "South Dakota",
+      "notice_l2_id": "NOTICE-L2-04",
+      "priority": "NORMAL",
+      "dispute": "GPT says no notice required (consistent with 2024 \u00a721-16-2 repeal); Gemini says 3d",
+      "file_value": {
+        "days": null,
+        "notice_required": false,
+        "statute": "SDCL (\u00a721-16-2 repealed)"
+      },
+      "gpt": {
+        "days": null,
+        "notice_required": false,
+        "statute": "SDCL \u00a7 21-16-1",
+        "rationale": "After SB 90 (2024), SDCL \u00a7 21-16-2\u2014the statute that had required a three-day notice to quit before certain forcible-entry-and-detainer filings\u2014was repealed. Current SDCL \u00a7 21-16-1 permits an eviction/detainer action based on a tenant continuing in possession after default in payment of rent, without imposing any advance written notice period; therefore South Dakota is currently a no-advance-notice-required state for nonpayment evictions under state law.",
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "days": null,
+        "notice_required": false,
+        "statute": null,
+        "rationale": "South Dakota SB 90 (2024) repealed SDCL \u00a721-16-2, which was the statute that mandated a three-day written notice for nonpayment of rent. No other statute imposes a pre-filing notice requirement, so a landlord may now file for eviction immediately once the cause of action arises under SDCL \u00a721-16-1(4), which is when a tenant fails to pay rent for three days after it is due.",
+        "model": "gemini-2.5-pro"
+      },
+      "classification": "TIEBREAKER-CONFIRM-FILE",
+      "run_date": "2026-06-26 19:30 UTC"
+    },
+    {
+      "state_code": "WY",
+      "state_name": "Wyoming",
+      "notice_l2_id": "NOTICE-L2-08",
+      "priority": "LOW",
+      "dispute": "Period agrees (3d); GPT cites \u00a71-21-1002, Gemini+file cite \u00a71-21-1003",
+      "file_value": {
+        "days": 3,
+        "notice_required": true,
+        "statute": "Wyo. Stat. \u00a71-21-1003"
+      },
+      "gpt": {
+        "days": 3,
+        "notice_required": true,
+        "statute": "Wyo. Stat. \u00a71-21-1003",
+        "rationale": "Wyo. Stat. \u00a71-21-1003 sets out the written notice requirement by requiring the party seeking eviction to notify the adverse party to leave the premises at least three days before commencing the action. Wyo. Stat. \u00a71-21-1002 identifies when forcible entry and detainer proceedings may be brought, including nonpayment-related grounds, but \u00a71-21-1003 is the section that establishes the three-day notice before filing.",
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "days": 3,
+        "notice_required": true,
+        "statute": "Wyo. Stat. \u00a7 1-21-1003",
+        "rationale": "Wyoming Statute \u00a7 1-21-1003 establishes the notice requirement for all residential eviction actions, including for nonpayment of rent. This section mandates that a landlord must serve a written notice to vacate at least three days before commencing an eviction action.",
+        "model": "gemini-2.5-pro"
+      },
+      "classification": "TIEBREAKER-CONFIRM-FILE",
+      "run_date": "2026-06-26 19:30 UTC"
+    },
+    {
+      "state_code": "TN",
+      "state_name": "Tennessee",
+      "notice_l2_id": "NOTICE-L2-09",
+      "priority": "PIPELINE",
+      "dispute": "Gemini says 14d (agrees with file); GPT timed out in prior run",
+      "file_value": {
+        "days": 14,
+        "notice_required": true,
+        "statute": "TCA \u00a766-28-505"
+      },
+      "gpt": {
+        "days": 14,
+        "notice_required": true,
+        "statute": "Tenn. Code Ann. \u00a7 66-28-505(b)",
+        "rationale": "Under \u00a7 66-28-505(b), if rent is unpaid when due, the landlord must give written notice of nonpayment and intent to terminate, and the tenant has 14 days to pay. If the rent is not paid within that 14-day period, the landlord may terminate the rental agreement and proceed with eviction.",
+        "model": "gpt-5.5"
+      },
+      "gemini": {
+        "days": 14,
+        "notice_required": true,
+        "statute": "T.C.A. \u00a7 66-28-505(b)",
+        "rationale": "In counties subject to the Uniform Residential Landlord and Tenant Act, the landlord may terminate the agreement if the tenant fails to pay rent within fourteen days after receiving written notice of nonpayment.",
+        "model": "gemini-2.5-pro"
+      },
+      "classification": "TIEBREAKER-CONFIRM-FILE",
+      "run_date": "2026-06-26 19:30 UTC"
+    }
+  ],
+  "summary": {
+    "TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE": 2,
+    "TIEBREAKER-CONFIRM-FILE": 5
+  }
+}

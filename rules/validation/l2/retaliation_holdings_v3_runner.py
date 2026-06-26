@@ -717,15 +717,50 @@ _CL_STATE_NAMES: dict[str, str] = {
 }
 
 
+# Retaliation statutes by state — used to build targeted CL queries.
+# When a statute is known, it's included in the CL search for precision.
+# Updated 2026-06-26: prior generic query "retaliatory eviction {state} tenant" returned
+# wrong-doc results (cases not about residential retaliation). Statute-targeted queries
+# dramatically improve precision.
+_STATE_RETALIATION_STATUTES: dict[str, str] = {
+    "AK": "AS 34.03.310", "AL": "35-9A-501", "AR": "18-17-901", "AZ": "33-1381",
+    "CA": "1942.5", "CO": "38-12-509", "CT": "47a-33", "DC": "42-3505.02",
+    "DE": "5516", "FL": "83.64", "GA": "44-7-24", "HI": "521-74",
+    "IA": "562A.36", "ID": "6-324", "IL": "765 ILCS 720", "IN": "32-31-8.5",
+    "KS": "58-2572", "KY": "383.705", "LA": "9:3261", "MA": "186 18",
+    "MD": "8-208.1", "ME": "6001-A", "MI": "125.530", "MN": "504B.285",
+    "MO": "441.233", "MS": "89-8-17", "MT": "70-24-431", "NC": "42-37.1",
+    "ND": "47-16-17.5", "NE": "76-1439", "NH": "540:13-a", "NJ": "2A:42-10.10",
+    "NM": "47-8-39", "NV": "118A.510", "NY": "223-b", "OH": "5321.02",
+    "OK": "41-120", "OR": "90.385", "PA": "landlord tenant retaliation",
+    "RI": "34-18-46", "SC": "27-40-910", "SD": "43-32-27", "TN": "66-28-507",
+    "TX": "92.331", "UT": "57-22-6", "VA": "55.1-1258", "VT": "4467",
+    "WA": "59.18.240", "WI": "704.45", "WV": "37-6A-1", "WY": "1-21-1207",
+}
+
+
 def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> list[dict]:
     """Search CourtListener for retaliatory eviction cases in a state (fresh path).
 
     Returns a list of case dicts in the same format expected by verify_case().
     Used when fresh=True and no v1 draft candidates exist for this state.
+
+    Query strategy (updated 2026-06-26): use statute-targeted queries when the
+    state's retaliation statute is known. Prior generic query returned wrong-doc
+    results (employment retaliation, discrimination cases, etc.). Statute citation
+    in the query dramatically narrows to residential landlord-tenant context.
     """
     state_name = _CL_STATE_NAMES.get(state_abbr, state_abbr)
+    statute = _STATE_RETALIATION_STATUTES.get(state_abbr, "")
+
+    # Build targeted query: statute + "retaliation" + "tenant" wins over generic text
+    if statute:
+        q = f"{statute} retaliation tenant landlord residential"
+    else:
+        q = f"retaliatory eviction {state_name} landlord tenant residential"
+
     params = {
-        "q": f"retaliatory eviction {state_name} tenant",
+        "q": q,
         "type": "o",
         "order_by": "score desc",
         "format": "json",

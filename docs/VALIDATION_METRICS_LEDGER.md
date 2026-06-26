@@ -438,6 +438,7 @@ These are the highest-confidence candidate holdings — both models found the sa
 | Batch 3 (7e6fcf6d) | 2026-06-25 | 18 states | 23 | 4 | 2 | 0 | 0 | 17 | 66.7% |
 | NC-17 fresh attempt (21c5b706) | 2026-06-25 | 17 NC states | 17 | 0 | 0 | 0 | 0 | 17 | n/a — **`fresh=true` was a no-op** |
 | **NC-17 fresh run (20f722c8)** | **2026-06-26** | **17 NC states** | **50** | **0** | **0** | **2** | **11** | **37 perm-fail** | **n/a — see notes** |
+| **nc17_fresh_v2 (fresh v2)** | **2026-06-26** | **Extended NC states + AK/CO/CT candidates** | **118** | **6** | **0** | **3** | **25** | **84 transient-fail (PR-class)** | **67% method / 5% overall** |
 
 **NC-17 fresh run (20f722c8) — detail (2026-06-26):**
 
@@ -478,6 +479,41 @@ These are the highest-confidence candidate holdings — both models found the sa
 **Note on NC (no-candidates) states:** The 17 NC states in Batch 3 need candidate cases generated before they can be verified. Options: (a) `fresh=true` protocol run to generate from CourtListener search; (b) manual identification. CourtListener quota applies to (a). These states are not quarantined as PR — they simply have no cases to verify yet.
 
 **Live-run proof (per Direction A Rev 2 Change 3):** Dispatcher ran cleanly at 2026-06-25 16:21 UTC. Job moved from queue/ to done/. Output file written. Summary written. Exit code 0. Andy launched via Terminal (Python that ran dispatch.py was ≥3.10; my 3.9 fix in dispatch.py ensures the launchd path also works but has not yet been separately live-verified via launchd).
+
+---
+
+#### Module: Substantive Defenses — Retaliation — claim type: holdings v3 (nc17_fresh_v2, 2026-06-26)
+
+*Run from Andy's Terminal, 2026-06-26. Extended NC states + states with fresh CL candidates. Runner: `retaliation_holdings_v3`. Output: `rules/validation/l2/output/retaliation_holdings_v3_2026-06-26_nc17_fresh_v2.json`. Elapsed: 47,812 seconds (~13.3 hours). CourtListener 429 rate-limiting caused extreme duration.*
+
+| Bucket | Count | Notes |
+|--------|-------|-------|
+| MV — machine-verified | 6 | Full 4-check protocol passed |
+| CI — confirm-inference | 0 | |
+| RC — re-characterize | 3 | AK: DeNardo v. Maassen; CO: Sladek v. dePlomb; CT: TOV Realty, LLC v. Suarez |
+| PR — pending-retrieval | 25 | CourtListener retrieval failures (not 429 — wrong doc or empty returns) |
+| SM — single-model-preliminary | 0 | |
+| Transient-failure (PR-class) | **84** | **CourtListener 429 rate-limit errors throughout 13-hour run. Harness bug: no `bucket` key written for these cases. All are PR-class infrastructure failures — quarantined for retry when rate-limit recovers. NOT attorney lane.** |
+| **Total** | **118** | Header reports 120 (2-unit discrepancy — likely 2 units with parsing anomaly) |
+
+**Rates (two-rate reporting):**
+- **Method rate:** MV ÷ (MV+CI+RC) = 6 ÷ 9 = **67%** (9 text-retrievable units)
+- **Overall rate:** MV ÷ all = 6 ÷ 118 = **5%** (heavily diluted by 84 transient-failure + 25 PR)
+- **Krippendorff's α:** not computed — text-retrievable n=9 is too small for reliable α estimation
+
+**RC cases → HUMAN_REVIEW_QUEUE:**
+- [AK-RET-HOLD-RC-01] DeNardo v. Maassen (AK): verify-step flagged RC. Full automated attempt complete.
+- [CO-RET-HOLD-RC-01] Sladek v. dePlomb (CO): verify-step flagged RC. Full automated attempt complete.
+- [CT-RET-HOLD-RC-01] TOV Realty, LLC v. Suarez (CT): verify-step flagged RC. Full automated attempt complete.
+
+**Transient-failure cases (84) — diagnosis:**
+All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring throughout the 13.3-hour run. These are infrastructure failures, not legal ambiguity. Harness bug identified: `dispose()` branch for transient-failure does not write a `bucket` key to the result dict — confirmed via Python script (84 results with missing `bucket` key, all `disposition="transient-failure"`). GREEN fix needed: write `bucket: "PR"` for transient-failure cases. These 84 units are quarantined in PR-class pending CourtListener rate-limit resolution.
+
+**Process-quality note — extreme run duration:** The 13.3-hour runtime reflects systematic CourtListener 429 throttling throughout the run. The retry logic (exponential backoff) is working correctly but CourtListener's rate limits are severe for this query volume. Options: (a) wait longer between CL calls (>10s sleep); (b) arrange higher rate-limit tier with Free Law Project; (c) batch overnight across multiple nights with smaller job sizes. Andy's decision on CourtListener engagement timing.
+
+**PR cases (25):** Distinct from transient-failure — these reached CL retrieval without 429, but the returned document was flagged as not-relevant or empty. Same pattern as prior NC-17 fresh run. Better CL queries or manual candidate identification needed.
+
+**Harness bug (GREEN fix needed):** `harness.py` does not write `bucket` key for `disposition="transient-failure"` cases. Fix: add `"bucket": "PR"` to the transient-failure return path. This is a recordkeeping bug, not a classification error — the cases were correctly quarantined, just not bucket-labeled.
 
 ---
 

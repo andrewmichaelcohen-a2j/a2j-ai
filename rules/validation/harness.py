@@ -503,6 +503,7 @@ class ValidationHarness:
                     "state": unit.get("state"),
                     "case_name": unit.get("case_name"),
                     "disposition": "transient-failure",
+                    "bucket": "PR",   # PR-class: infrastructure failure, not verification failure
                     "disposition_note": str(e),
                     "provenance": {"harness_exhausted_retries": True},
                 }
