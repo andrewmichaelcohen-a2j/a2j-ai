@@ -784,14 +784,24 @@
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
       "statute": "RPAPL §701 et seq.",
       "case_law": [],
-      "note": "Filing before the notice period runs is a bright-line defect in most states"
+      "note": "Filing before the notice period runs is a bright-line defect in most states",
+      "validation_flags": [
+        "L2-PROCEDURAL-SM-GEMINI"
+      ],
+      "l2_sm_statute": "N.Y. Real Prop. Acts. Law § 711(2)",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.Y. Real Prop. Acts. Law § 711(2). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-25"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
       "statute": "RPAPL §401 (Housing Court / civil court) / RPAPL §701",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits",
+      "validation_flags": [
+        "L2-PROCEDURAL-CONFIRMED"
+      ],
+      "l2_run_date": "2026-06-25"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
@@ -801,15 +811,17 @@
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
         "L2-PROCEDURAL-ERROR",
-        "L2-PROCEDURAL-NO-SPECIFIC-RULE"
+        "L2-PROCEDURAL-NO-SPECIFIC-RULE",
+        "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_note": "Both models confirm no separate attachment statute — general pleading sufficiency applies.",
-      "l2_run_date": "2026-06-24"
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.Y. C.P.L.R. § 3014. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-25",
+      "l2_sm_statute": "N.Y. C.P.L.R. § 3014"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
-      "statute": "N.Y. Real Prop. Acts. Law (RPAPL) § 735",
+      "statute": "New York Real Property Actions and Proceedings Law § 735",
       "case_law": [],
       "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements",
       "validation_flags": [
@@ -817,10 +829,10 @@
         "L2-PROCEDURAL-IMPROVED",
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: New York Real Property Actions and Proceedings Law § 735. Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-24",
+      "l2_note": "Both models agree on more specific citation. Confidence: GPT=high, Gem=high.",
+      "l2_run_date": "2026-06-25",
       "l2_sm_statute": "New York Real Property Actions and Proceedings Law § 735"
     }
   ],
-  "last_updated": "2026-06-24"
+  "last_updated": "2026-06-25"
 }

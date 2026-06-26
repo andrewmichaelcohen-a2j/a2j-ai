@@ -133,6 +133,7 @@ def call_openai(query: str, dry_run: bool = False) -> dict:
                 {"role": "user", "content": query},
             ],
             max_completion_tokens=2000,  # reasoning models consume tokens for chain-of-thought before output; 350 caused empty responses
+            timeout=60,  # 60s hard timeout — prevents infinite hang on slow API response
         )
         raw = resp.choices[0].message.content.strip()
         parsed = _parse_json_response(raw)
@@ -155,10 +156,20 @@ def call_gemini(query: str, dry_run: bool = False) -> dict:
         return _error_result("google-genai package not installed. Run: pip install google-genai", GEMINI_MODEL)
 
     try:
+        import concurrent.futures
         client = genai.Client(api_key=GOOGLE_KEY)
-        # Prepend system context to user query (Gemini flash doesn't have system role in basic generate)
         full_prompt = SYSTEM_PROMPT + "\n\n" + query
-        resp = client.models.generate_content(model=GEMINI_MODEL, contents=full_prompt)
+
+        def _do_gemini():
+            return client.models.generate_content(model=GEMINI_MODEL, contents=full_prompt)
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+            fut = pool.submit(_do_gemini)
+            try:
+                resp = fut.result(timeout=60)  # 60s hard timeout — SDK-agnostic
+            except concurrent.futures.TimeoutError:
+                return _error_result("Gemini API timed out after 60s", GEMINI_MODEL)
+
         raw = resp.text.strip()
         parsed = _parse_json_response(raw)
         parsed["model"] = GEMINI_MODEL

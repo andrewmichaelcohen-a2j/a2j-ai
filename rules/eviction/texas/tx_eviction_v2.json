@@ -775,14 +775,24 @@
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
       "statute": "Tex. Prop. Code §24.001 et seq.",
       "case_law": [],
-      "note": "Filing before the notice period runs is a bright-line defect in most states"
+      "note": "Filing before the notice period runs is a bright-line defect in most states",
+      "validation_flags": [
+        "L2-PROCEDURAL-SM-GEMINI"
+      ],
+      "l2_sm_statute": "Texas Property Code § 24.005(a)",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: Texas Property Code § 24.005(a). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-25"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
       "statute": "Tex. Prop. Code §24.004 (justice court)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits",
+      "validation_flags": [
+        "L2-PROCEDURAL-CONFIRMED"
+      ],
+      "l2_run_date": "2026-06-25"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
@@ -795,7 +805,7 @@
         "L2-PROCEDURAL-NO-SPECIFIC-RULE"
       ],
       "l2_note": "Both models confirm no separate attachment statute — general pleading sufficiency applies.",
-      "l2_run_date": "2026-06-24"
+      "l2_run_date": "2026-06-25"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -808,8 +818,8 @@
         "L2-PROCEDURAL-CONFIRMED"
       ],
       "l2_note": "Models disagree. GPT: Tex. R. Civ. P. 510.4(b)-(c). Gem: Texas Rule of Civil Procedure 510.4. L7 required.",
-      "l2_run_date": "2026-06-24"
+      "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-24"
+  "last_updated": "2026-06-25"
 }

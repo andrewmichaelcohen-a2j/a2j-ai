@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 24, 2026 (Morning report: Batch 3 job [18 states, retaliation_holdings_v3] placed in queue June 24 05:20 AM — launchd fired at 02:15 AM but dispatch.py failed with Operation not permitted [Errno 1]. No overnight run completed. Job still in queue. Fix macOS permissions on dispatch.py before tonight's 02:15 AM run.) · **Next update:** after v3 Batch 3 run completes
+**Generated:** June 15, 2026 · **Last updated:** June 25, 2026 — late morning (Second morning report cycle. Both overnight jobs still in queue/. Python 3.9 dispatch.py fix confirmed present [GREEN, prior 08:00 cycle]. macOS TCC FDA grant still needed from Andy [RED-strategic, carried]. Direction B golden set survey pulled into NOW. No new validation data.) · **Next update:** after v3 Batch 3 + L2 procedural defects runs complete
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 

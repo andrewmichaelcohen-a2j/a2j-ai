@@ -1,102 +1,109 @@
-# CJaC Claude Chat Brief
+# CLAUDE_CHAT_BRIEF — CJaC Rolling Handoff
 
-**Generated:** 2026-06-24 (manual first build — subsequent builds auto at 8 AM morning-report cycle)
-**Rolling handoff for Claude Chat — orientation only, canonical docs are authoritative.**
-**OS state:** Direction A live · B survey in progress · C not started
-**Most important right now:** Overnight validation runs BLOCKED — macOS Full Disk Access must be granted to python3 before tonight's 2:15 AM fire.
+**Generated:** 2026-06-25 (morning report cycle — late morning) · Rolling handoff for Claude Chat — orientation only, canonical docs are authoritative.
+**OS state:** Direction A live · Direction B survey NOW (just pulled in) · Direction C not started.
+**Most important right now:** Overnight runs BLOCKED — macOS TCC FDA grant needed from Andy. Both Python fix + dispatch fix are done; FDA is the only remaining blocker.
 
 ---
 
 ## 1. WHERE WE ARE
 
-All 51 state v2 eviction rules files are complete and at AUTOMATED-CHECKS-PASSED (51/51). The validation pipeline has run through five layers: L1 (statutory retrieval — 51/51), L3 (internal consistency — 51/51), L5 (cross-jurisdiction anomaly — 51/51 resolved), and L2 multi-model consensus on three modules: notice/pay_or_quit (complete, 41 consensus-confirm, 5 AI-resolved attorney-confirmed, 4 open L7s), service methods (complete, 48 AI-resolved, 2 L7s), and retaliation elements (complete, 36 auto-resolved, 14 open L7s). The current frontier is procedural defects — a smoke test on CA/TX/NY is complete (30/30 regression tests pass) and a full 51-state × 4-defect overnight run is queued. Retaliation holdings v3 (generate-from-source, Batches 1+2 ingested) has Batch 3 (18 states) queued for tonight. Both overnight jobs are blocked on macOS FDA. Direction B (golden sets) is the next major build — attorney gate is required before any golden set is frozen.
+All 51 v2 rules files exist (50 states + DC), schema v2. Six validation modules have been L2-run:
+
+**Complete:** Notice/pay-or-quit (L2, 51 states), Service/method-rules (L2, 51 states), Retaliation elements (L2, 51 states — 15 L7-open), State-protective overlays (L2, 51 states — 16 items pending human action), Remaining 4 defenses/elements (L2, 51 states — single-model-preliminary), Retaliation holdings v2 CA proof-of-concept (6 cases, 4/6 MV).
+
+**In queue for next 2:15 AM fire (BLOCKED — see RED below):**
+- Batch 3 retaliation holdings v3 — 18 remaining states (AK, AL, CA, CO, CT, HI, KS, LA, MI, ND, NJ, NM, NV, NY, OK, SC, VT, WV)
+- Full 51-state × 4-defect L2 procedural defects run (204 units, est. $3)
+
+**Active NOW:** Direction B — golden set survey (no FDA dependency; can proceed immediately).
+
+**Not started:** Direction B golden set freeze/candidates (blocked on survey + attorney gate), Direction C self-optimization (blocked on B).
 
 ---
 
 ## 2. DECISIONS WAITING ON ANDY
 
-### RED-strategic (process/infrastructure — Andy action needed)
+### RED-strategic
 
-**macOS launchd Full Disk Access — BLOCKING both overnight jobs**
-Both queued jobs (`job_batch3_20260623.json` and `job_l2_procedural_defects_20260624.json`) failed at the 2026-06-25 2:15 AM fire with `[Errno 1] Operation not permitted`. Root cause: macOS TCC blocks launchd agents from reading `~/Documents/GitHub/` without explicit FDA grant.
+**[BLOCKER] macOS TCC Full Disk Access — overnight dispatcher cannot run**
+Both queued jobs remain in `rules/validation/queue/`. Launchd fires at 2:15 AM but gets `[Errno 1] Operation not permitted` trying to open `dispatch.py`. Two bugs are now fixed (GREEN): Python 3.9 type hint incompatibility resolved in 08:00 morning cycle. The only remaining blocker is the FDA grant.
+- **To unblock:** System Settings → Privacy & Security → Full Disk Access → add `/Library/Developer/CommandLineTools/usr/bin/python3`. OR approve Cowork writing a shell wrapper script (GREEN lane).
+- **Once unblocked:** both jobs auto-run at next 2:15 AM fire.
 
-Fix (2 minutes): System Settings → Privacy & Security → Full Disk Access → unlock → click `+` → navigate to python3 binary (run `which python3` in Terminal first to find exact path) → add it → reload launchd (`launchctl unload ~/Library/LaunchAgents/com.cjac.validation.plist && launchctl load ~/Library/LaunchAgents/com.cjac.validation.plist`). Both jobs remain in `rules/validation/queue/` and will auto-run at next 2:15 AM fire.
+### RED-interpretive (attorney review — all in HUMAN_REVIEW_QUEUE)
 
-**Direction B golden set freeze**
-Survey of external ground-truth sources (LSC/Temple, NCSC, academic benchmarks) needs to run first (NEXT queue item #1). After survey, Cowork will generate ~15–25 DRAFT candidate fact-patterns for CA/TX. Andy must then establish authoritative answers → golden sets freeze. Only Andy (as named attorney) can set ground truth.
+**Notice module (4 open L7s):** MO, ND, MD, GA. MD and GA corroborated by LSC in the Gemini direction (no-notice / no-minimum). Each is a read-the-statute task.
 
-### RED-interpretive (legal judgment — attorney reads primary source)
+**Service module (~19 items):** NV-SVC-01, TN-SVC-02 (genuine model splits — different statutes cited). Plus ~17 citation-divergence items where models agree with each other but differ from the file.
 
-**Notice module (4 open L7s)** — all in `docs/HUMAN_REVIEW_QUEUE.md`:
-- MO [MO-L7-01]: Is §535.020 demand a notice requirement (notice_required=true) or a precondition (false)?
-- ND [ND-L7-02]: Is §47-32-02's 3-day period a formal notice-to-quit or a ripening period?
-- MD [MD-L7-03]: Does §8-401 require pre-filing notice? (LSC + Gemini say no; GPT says 10d — likely GPT artifact)
-- GA [GA-L7-05]: Does §44-7-50 require a waiting period after demand, or can landlord file immediately? (LSC says no minimum; GPT: 3d; Gemini: no period)
+**Retaliation elements (15 open L7s):** AK, AL, CT, HI, KS, MI, ND, NJ, NM, NV, NY, SC, VT, WV, OK. Pattern: same or similar statute, genuine split on whether a time-specific rebuttable presumption clause exists. Task: read the cited subsection directly from state legislature site.
 
-**Retaliation elements (14 open L7s)** — all in HUMAN_REVIEW_QUEUE: AK, AL, CT, HI, KS (two statutes disputed), MI, ND, NJ, NM, NV, NY, SC, VT, WV. Dominant pattern: same statute, models split on whether a subsection creates a time-specific rebuttable presumption period. OK also has a pending L7 on period length. For each: read the cited subsection from state legislature site; confirm whether a statutory presumption period exists and if so, how many days.
+**Procedural defects (1 open L7):** CA/summons — GPT: CCP § 1167(a) vs Gemini: CCP § 415.45. Three automated runs, genuine split persisted. Both are real CA UD summons provisions governing different aspects of the process.
 
-**Procedural defects — CA/summons MODEL-SPLIT (1 item)**
-CCP §1167(a) (GPT) vs §415.45 (Gemini) — genuine substantive split on which section governs summons service defects in CA UD cases. In HUMAN_REVIEW_QUEUE; first entry from the procedural defects module.
-
-**Service module (2 L7s)** — DC and NM: persistent API failure (zero model data) on service method statutes. These are infrastructure-failure L7s, not interpretive splits. Once CourtListener access improves, a targeted retry can run; until then, attorney verification is the only path.
-
-**SCRA pending confirmation [SCRA-PC-01]**: Gemini found FY23 NDAA amended §3951(a)(2) from CPI threshold to BAH-based formula (130% of E-5 BAH for highest-cost area = ~$4,954/month current). Updated in all 51 files. Andy needs to confirm the amendment and threshold dollar amount.
+**Pending confirmation (2 items):**
+- [SCRA-PC-01] FY23 NDAA BAH formula amendment to 50 U.S.C. § 3951 — verify $4,954.34/month threshold from DoD BAH charts.
+- [NM-SVC] Service statute §47-8-52 (AI preliminary) vs file's §47-8-33 — verify from primary source.
 
 ---
 
 ## 3. WHAT EXECUTED SINCE LAST BRIEF
 
-- **l2_procedural_defects_runner.py — 3 bugs fixed** (query_model signature; citations_equivalent section-number match; SM-GEMINI/SM-GPT vs ERROR classification). All fixes test-verified.
-- **Regression tests created** — `rules/validation/tests/test_l2_procedural_defects.py` — 30/30 pass. Run before any queue changes.
-- **dispatch.py extended** — L2 module job type added; `job_l2_procedural_defects_20260624.json` queued (204 units, est. $3).
-- **Batch 3 holdings job queued** — `job_batch3_20260623.json` (18 states, retaliation holdings v3).
-- **Direction A infrastructure built** — WORK_QUEUE.md, DAILY_CHANGELOG.md, morning report updated to Direction A shape (GREEN/YELLOW/RED + Krippendorff's α).
-- **CLAUDE.md updated** to June 24 with full OS state, pipeline architecture, bucket taxonomy, API notes.
-- **Smoke test run 3 ingested** to VALIDATION_METRICS_LEDGER — 1CC/2NSR/1SM-GEMINI/1MODEL-SPLIT/1ERROR (n=6, α unreliable at this n).
+**2026-06-25 late-morning cycle (this cycle):**
+- Verified Python 3.9 fix present in dispatch.py (grep confirmed `Optional[Path]`, `Tuple[bool,str]` in place).
+- Confirmed both overnight jobs still in queue/ — no runs since Jun 23.
+- Direction B golden set survey pulled into NOW (WORK_QUEUE updated).
+- Living docs updated: WORK_QUEUE, DAILY_CHANGELOG, STATE_OF_RECORD, CLAUDE_CHAT_BRIEF.
 
-YELLOW awaiting ratification: none this cycle.
+**2026-06-25 08:00 cycle:**
+- dispatch.py Python 3.9 fix applied: `Path|None` → `Optional[Path]`; `tuple[bool,str]` → `Tuple[bool,str]` (7 function signatures). AST parse clean. Second bug blocking overnight runs resolved.
+- Living docs updated; CLAUDE_CHAT_BRIEF first regenerated this cycle.
+
+**2026-06-24 prior cycles:**
+- Smoke test run 3 ingested to METRICS_LEDGER (6 units, CA/TX/NY × summons + attach).
+- 3 bug fixes to l2_procedural_defects_runner.py; 30/30 regression tests pass.
+- Direction A infrastructure complete; both overnight jobs placed in queue.
+- dispatch.py extended for L2 module job type.
+
+YELLOW: None open.
 
 ---
 
 ## 4. METRICS MOVEMENT
 
-**Procedural defects — L2 smoke test run 3 (n=6; CA/TX/NY × attach + summons):**
-- Method α = 0.333 (n=4 method-eligible cases: CC + NSR + MODEL-SPLIT; excludes SM and ERROR)
-- Overall α = 0.0 (n=6 including SM-GEMINI as DISAGREE, ERROR as DISAGREE)
-- **Statistically unreliable at n=6** — these are process-validation numbers, not reliability claims. Full 51-state run (n=204) will yield meaningful α.
+**No new runs this cycle.** Both jobs blocked on macOS FDA.
 
-**Retaliation holdings v3 (most recent full run):** Batch 2 (all 51 states) ingested. Two-rate reporting: see VALIDATION_METRICS_LEDGER for MV/CI/RC/PR/SM breakdown. Batch 3 (18 states) tonight.
+**Most recent data — procedural defects smoke test (2026-06-24, n=6):**
+- Method α = **0.333** (n=4; ⚠️ statistically unreliable — pipeline test, not a sample)
+- Overall α = **0.0** (n=6 including SM-GEMINI + ERROR as DISAGREE; expected — smoke test included edge cases intentionally)
+- Buckets: CC=1, NSR=2, SM-GEMINI=1, MODEL-SPLIT=1 (→ L7, CA/summons), ERROR=1
 
-**Notice/pay_or_quit:** Complete. ~80% consensus-confirm (41/51). 4/4 AI-resolved items attorney-confirmed correct. See ledger for full breakdown.
-
-No golden-set score — L4 not implemented; blocked on Direction B.
+**Prior module metrics unchanged** — see VALIDATION_METRICS_LEDGER for run-by-run detail. Two-rate reporting (method_rate, overall_rate) will apply to holdings once Batch 3 lands.
 
 ---
 
 ## 5. QUEUE SNAPSHOT
 
-**NOW:** Direction A complete. Overnight jobs queued (BLOCKED on FDA fix).
+**NOW:** Direction B — golden set survey (no dependency; active immediately)
+**NEXT (3 items):**
+1. Full procedural defects run (51 × 4 = 204 units) — blocked on FDA; auto-fires after grant
+2. Retaliation holdings v3 Batch 3 (18 states) — blocked on FDA; auto-fires after grant
+3. Direction B — generate CA/TX golden set candidates (blocked on survey + attorney gate)
 
-**NEXT (5 items):**
-1. Direction B golden set survey — LSC/Temple, NCSC, academic benchmarks (no blocker)
-2. Full 51-state procedural defects run — auto-fires when FDA fixed
-3. Ingest procedural defects results (morning after run)
-4. Batch 3 holdings run — auto-fires when FDA fixed
-5. Direction B — generate CA/TX golden set candidates (after survey)
+**BLOCKED:** Overnight runner on macOS FDA (RED-strategic, Andy); B golden set freeze on attorney sign-off; C on B frozen sets.
 
-**BLOCKED:** launchd FDA (both overnight jobs), Direction B freeze (attorney gate), Direction C (hard gate on B).
+**NEXT depth adequate** (3 items). Direction B survey in NOW can proceed without any blocker.
 
 ---
 
 ## 6. POINTERS
 
-For depth on any of the above, open/upload these canonical docs:
-- `docs/PROJECT_STATE_OF_RECORD.md` — full validation status, all layers, all 51 states
-- `docs/VALIDATION_METRICS_LEDGER.md` — run-by-run metrics, error-confirm outcomes, α values
-- `docs/HUMAN_REVIEW_QUEUE.md` — all open RED-interpretive items with full context for each
-- `docs/WORK_QUEUE.md` — full NOW/NEXT/BLOCKED/HORIZON detail
-- `docs/DAILY_CHANGELOG.md` — complete GREEN action log
+For depth, open:
+- `docs/PROJECT_STATE_OF_RECORD.md` — full module-by-module validation status
+- `docs/VALIDATION_METRICS_LEDGER.md` — run-by-run metrics with provenance table and repeatability view
+- `docs/HUMAN_REVIEW_QUEUE.md` — all RED-interpretive items with full L7 detail and automated-attempt evidence
+- `docs/WORK_QUEUE.md` — full NOW/NEXT/BLOCKED/HORIZON
 
 ---
 
-*Copyright 2026 Andrew M Cohen. Apache 2.0. This brief is regenerated each morning-report cycle (8 AM) — always reflects the most recent completed cycle. Canonical docs are authoritative if any conflict.*
+*Copyright 2026 Andrew M Cohen. Apache 2.0. Orientation layer — canonical docs are authoritative.*

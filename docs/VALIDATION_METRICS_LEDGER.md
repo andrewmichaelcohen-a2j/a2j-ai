@@ -409,6 +409,87 @@ These are the highest-confidence candidate holdings — both models found the sa
 
 ---
 
+#### Module: Substantive Defenses — Retaliation — claim type: holdings v3 (generate-from-source, MV/CI/RC/PR/SM taxonomy)
+
+*Batch 3 run 7e6fcf6d — 2026-06-25. States: AK, AL, CA, CO, CT, HI, KS, LA, MI, ND, NJ, NM, NV, NY, OK, SC, VT, WV (18 states). Runner: `retaliation_holdings_v3`. Dispatched via dispatcher (job_batch3_20260623.json moved to done/). Andy manually launched dispatcher from Terminal 16:21 UTC.*
+
+**Bucket counts (Batch 3 only):**
+
+| Bucket | Count | Notes |
+|--------|-------|-------|
+| MV — machine-verified | 4 | CA: S. P. Growers Assn., Barela, Drouet, Aweeka |
+| CI — confirm-inference | 2 | CA: Schweiger, Western Land Office — control=INFERRED; cheap confirm lane |
+| RC — re-characterize | 0 | |
+| PR — pending-retrieval | **0** | **PR file confirmed empty (`pr_count=0`). 429s were transient (CA cases), recovered successfully.** |
+| SM — single-model-preliminary | 0 | |
+| NC — no-candidates | 17 | AK, AL, CO, CT, HI, KS, LA, MI, ND, NJ, NM, NV, NY, OK, SC, VT, WV — `fresh=false` + no candidate cases in v2 files for these states. NOT a retrieval failure. NOT attorney lane. Requires `fresh=true` run or manual candidate generation. |
+
+**Rates:**
+- **Method rate:** MV ÷ (MV+CI+RC) = 4 ÷ 6 = **66.7%** (6 CA text-retrievable cases)
+- **Overall rate:** MV ÷ all = 4 ÷ 23 = **17.4%** (diluted by 17 NC states — denominator includes non-retrievable-but-also-no-candidates units)
+- ⚠️ **Overall rate interpretation note:** The 17 NC states are not retrieval failures — there was no retrieval attempted because no candidates exist in those files. The overall rate as computed conflates "no candidates" with "retrieval-gated." A more precise split: text-retrievable denominator = 6 (CA only); NC states are outside the MV/CI/RC/PR taxonomy entirely for this run.
+
+**Cross-batch combined (all v3 runs to date — CA cases only, since NC states not yet processed):**
+
+| Run | Date | States | Units | MV | CI | RC | PR | NC | Method rate |
+|-----|------|--------|-------|----|----|----|----|-----|------------|
+| Batch 1 (cd0c4680) | 2026-06-23 | 16 states | — | — | — | — | — | — | Prior runner schema — bucket counts not in output |
+| Batch 2 (f7aec985) | 2026-06-23 | 17 states | — | — | — | — | — | — | Prior runner schema — bucket counts not in output |
+| Batch 3 (7e6fcf6d) | 2026-06-25 | 18 states | 23 | 4 | 2 | 0 | 0 | 17 | 66.7% |
+
+**Note on NC (no-candidates) states:** The 17 NC states in Batch 3 need candidate cases generated before they can be verified. Options: (a) `fresh=true` protocol run to generate from CourtListener search; (b) manual identification. CourtListener quota applies to (a). These states are not quarantined as PR — they simply have no cases to verify yet.
+
+**Live-run proof (per Direction A Rev 2 Change 3):** Dispatcher ran cleanly at 2026-06-25 16:21 UTC. Job moved from queue/ to done/. Output file written. Summary written. Exit code 0. Andy launched via Terminal (Python that ran dispatch.py was ≥3.10; my 3.9 fix in dispatch.py ensures the launchd path also works but has not yet been separately live-verified via launchd).
+
+---
+
+#### Module: Procedural Defects — L2 full 51-state × 4-defect run (2026-06-25)
+
+*Run from Andy's Terminal, 2026-06-25. 51 states × 4 defects = 204 units. Runner: `rules/validation/l2/l2_procedural_defects_runner.py --sleep 2`. Output: `validation/l2/output/l2_procedural_defects_20260626_0018.json`. Run ID: 20260625 (runner date: 2026-06-25).*
+
+**Defects covered:** complaint_filed_before_notice_period_expired, wrong_court, failure_to_attach_lease_or_notice_to_complaint, summons_improperly_issued_or_served
+
+| Run | Date | Models | Units | CI | CC | NSR | MODEL-SPLIT | SM | ERROR | α_method | Coverage |
+|-----|------|--------|-------|----|----|-----|-------------|----|-------|----------|---------|
+| Full 51-state × 4-defect | 2026-06-25 | gpt-5.5 + gemini-2.5-pro | 204 | 4 | 31 | 6 | 20 | 120 | 23 | **0.256** | 30% (61/204 dual-model) |
+
+**α computation (method only — SM+ERROR treated as missing data per protocol):**
+- Dual-model cases (both models engaged): 61 (CI+CC+NSR+MODEL-SPLIT)
+- Agree: 41 (CI+CC+NSR), Disagree: 20 (MODEL-SPLIT)
+- D_o = 20/61 = 0.328; D_e = 2 × (41/61) × (20/61) = 0.441
+- **α_method = 1 − (0.328/0.441) = 0.256**
+- α_overall not reported: SM (120) + ERROR (23) dominate denominator; GPT systematic empty responses make α_overall a pipeline metric, not a legal-agreement metric
+
+**Per-defect breakdown:**
+
+| Defect | CI | CC | NSR | MODEL-SPLIT | SM | ERROR | Notes |
+|--------|----|----|-----|-------------|----|-------|-------|
+| complaint_filed_before_notice_period_exp | 0 | 9 | 0 | 8 | 34 | 0 | GPT empty 34/51 states |
+| wrong_court | 0 | 20 | 0 | 11 | 20 | 0 | Best-performing defect |
+| failure_to_attach_lease_or_notice_to_complaint | 0 | 0 | 6 | 0 | 22 | 23 | ⚠️ All 23 ERRORs here — both models empty; likely no separate rule in most states |
+| summons_improperly_issued_or_served | 4 | 2 | 0 | 1 | 44 | 0 | GPT empty 44/51; best for Gemini |
+
+**CONSENSUS-IMPROVE (4) — v2 files updated automatically by runner:**
+
+| State / Defect | Old statute | New statute |
+|----------------|-------------|------------|
+| IA / summons | Iowa Code §648.1 et seq. | Iowa Code § 648.5 |
+| NY / summons | N.Y. Real Prop. Acts. Law (RPAPL) § 735 | New York Real Property Actions and Proceedings Law § 735 |
+| UT / summons | Utah Code §78B-6-801 et seq. | Utah Code Ann. § 78B-6-807 |
+| WY / summons | Wyo. Stat. §1-21-1001 et seq. | Wyo. Stat. Ann. § 1-21-1003 |
+
+**MODEL-SPLIT (20) → HUMAN_REVIEW_QUEUE:** All 20 items added as [PROC-DEF-L7-01] through [PROC-DEF-L7-20]. Both models engaged and disagreed on the governing statute. Attorney review of primary sources required before any file update.
+
+**Process-quality flags (GREEN pipeline issues to investigate):**
+1. **GPT systematic empty responses:** GPT returned empty on ~70% of units (120 SM + 23 ERROR out of 204). Same pattern as prior modules. Dual-model coverage = 30%. The summons_improperly_issued_or_served defect had 44/51 SM-GEMINI — Gemini consistently produced valid statute citations but GPT was silent.
+2. **failure_to_attach ERROR pattern:** All 23 ERRORs came from this defect (both models empty in 23 states). The 6 NSR outcomes for this defect confirm that many states lack a specific rule. Hypothesis: the remaining 23 ERROR states also have no specific rule but the query was too narrow to return "no specific rule" explicitly. Recommend: re-run failure_to_attach with prompt that explicitly asks models to return "none" if no separate rule exists; expect many ERRORs to convert to NSR.
+
+**Automation ceiling for dual-model cases:** 41/61 = 67.2% (models agree when both engage). 32.8% genuine legal splits among dual-model cases — higher than service (4%) or notice (~20%), reflecting that procedural defect rules are more contested/heterogeneous across states.
+
+**Errors caught:** None identified in this run — the 4 CONSENSUS-IMPROVE outcomes are statute improvements (more specific citations), not corrections of wrong law. The 20 MODEL-SPLIT items require attorney determination before any file changes.
+
+---
+
 #### Module: Procedural Defects — L2 smoke test run 3 (pipeline validation)
 
 *Run from Terminal session, 2026-06-24. States: CA, TX, NY. Defects: summons + attach (6 units). Runner: `rules/validation/l2/l2_procedural_defects_runner.py` (post-3-bug-fix version). Ingested: 2026-06-24 morning report.*
@@ -465,6 +546,7 @@ As each module/claim-type completes, add its combined row here so the *trend* is
 | Remaining 4 defenses / elements (habitability, discrimination, BQE, improper-rent) | 204 items (51×4) | 0% (GPT empty all 51; Gemini only) | 200/204 (98%); 4 ERROR = SD transient | 0% — no L7 items; no genuine splits | *pending attorney confirmation; no errors caught at elements layer* | ~$5.10 | 2026-06-21 (Terminal) |
 | Retaliation / holdings v2 (CA, 6 cases) | 6 | 67% (4/6 MV) | n/a (authoritative-source check; no AI-resolution tier) | 33% (2/6 → attorney) | *pending attorney confirmation* | 2026-06-22 (Terminal; run ce5c9748) |
 | Procedural Defects / L2 smoke test run 3 (CA/TX/NY × summons + attach) | 6 | 50% (3/6: 1 CC + 2 NSR) | n/a — pipeline test, not a convergence run | 17% (1/6 MODEL-SPLIT → L7: CA/summons) | *pending; 1 attorney item in HUMAN_REVIEW_QUEUE* | 2026-06-24 (smoke test; α_method=0.333, α_overall=0.0; **n=6 — statistically unreliable**) |
+| **Procedural Defects / L2 full 51-state × 4-defect** | **204** | **20% (41/204); 67% among dual-model (41/61)** | **4 CI auto-updated** | **10% (20/204 MODEL-SPLIT → L7); 67% of dual-model cases where both agree** | *4 CONSENSUS-IMPROVE file updates applied; errors caught: none new; 20 L7s added to queue* | **2026-06-25 (α_method=0.256, n=61 dual-model; 143 SM+ERROR = missing data/pipeline gap)** |
 | *(future modules…)* | | | | | | |
 | *(future DOMAINS — debt, family, benefits…)* | | | | | | |
 

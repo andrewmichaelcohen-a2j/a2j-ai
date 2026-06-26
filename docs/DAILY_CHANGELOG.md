@@ -4,6 +4,138 @@
 
 ---
 
+## 2026-06-25 (evening — procedural defects ingestion + NC-17 launch)
+
+### GREEN — Executed autonomously
+
+**Procedural defects 204-unit L2 run — ingested**
+- Output: `validation/l2/output/l2_procedural_defects_20260626_0018.json` — 204 units, 51 states × 4 defects
+- Bucket counts: CI=4, CC=31, NSR=6, MODEL-SPLIT=20, SM=120, ERROR=23
+- α_method = 0.256 (n=61 dual-model; 143 SM+ERROR = pipeline gap)
+- 4 CONSENSUS-IMPROVE file updates already applied by runner (IA/NY/UT/WY summons citations)
+- 20 MODEL-SPLIT items added to HUMAN_REVIEW_QUEUE [PROC-DEF-L7-01] through [PROC-DEF-L7-20]
+- VALIDATION_METRICS_LEDGER and HUMAN_REVIEW_QUEUE updated
+- Pipeline flag: (1) GPT empty on ~70% of units; (2) failure_to_attach: all 23 ERRORs from this defect — recommend re-run with explicit NSR prompt option
+- NC-17 retaliation run launched by Andy (running): early AK/AL showing `__no_cases__` from CourtListener fresh search — genuine data gap, NOT attorney lane
+
+### YELLOW — None this cycle.
+
+### RED — Carried
+- launchd FDA fix pending; Direction B attorney freeze pending; 20 new procedural defects L7s added to queue
+
+---
+
+## 2026-06-25 (afternoon — Direction A Rev 2 adoption + Direction B survey)
+
+### GREEN — Executed autonomously
+
+**dispatch.py — Direction A Rev 2 complete rewrite**
+- Continuous drain loop (`drain()`) + parallel execution (up to 3 concurrent jobs).
+- Per-resource concurrency limits: `courtlistener:1`, `openai:2`, `gemini:2`.
+- Change 3 live_verified gate: jobs without `live_verified:true` are skipped with warning.
+- Heartbeat: writes `logs/heartbeat.json` each cycle.
+- `main_single()` single-shot mode preserved for launchd safety-net.
+- `--drain` flag selects continuous vs single-shot.
+- Python 3.9 compatibility: all type hints use `Optional[Path]`, `Tuple[bool, str]` (no 3.10+ `|` union syntax).
+- AST verified clean. NOT yet live-verified via launchd (per Change 3 — "change applied, not fixed").
+
+**run_dispatch.sh — new shell wrapper for launchd FDA fix**
+- Resolves Python: prefers `/opt/homebrew/bin/python3`, falls back gracefully.
+- `caffeinate -ims` keeps machine awake during run.
+- Supports `--drain` pass-through.
+- launchd plist should call `/bin/bash run_dispatch.sh` (FDA on /bin/bash, not python3).
+- Written and made executable. NOT yet live-verified (same Change 3 note).
+
+**job_l2_procedural_defects_20260624.json — updated for Rev 2 dispatcher**
+- Added `"uses": ["openai", "gemini"]` resource tag.
+- Added `"live_verified": true` with basis: runner smoke-tested 3 runs 2026-06-24; all 4 classification branches exercised; 30/30 regression tests pass.
+
+**Procedural defects run — command staged for Andy**
+- Run command written to clipboard; Terminal opened.
+- Andy: paste (⌘V) + Return to launch 204-unit run.
+- Command: `cd ~/Documents/GitHub/a2j-ai && python3 rules/validation/l2/l2_procedural_defects_runner.py --sleep 2 2>&1 | tee rules/validation/logs/l2_procedural_defects_$(date +%Y%m%d_%H%M).log`
+
+**Direction B — Golden Set Survey complete**
+- Surveyed: LSC/Temple Eviction Laws Database, LegalBench (NeurIPS 2023), Learned Hands, JusticeBench, Stanford AI+A2J/Gates, Eviction Lab, NCSC data standards.
+- Finding: No existing public dataset provides adoptable annotated fact-pattern/answer pairs for our modules.
+- LSC/Temple LawAtlas: useful for statutory cross-reference, but Jan 2021 snapshot (5 years old).
+- LegalBench IRAC structure: methodology reference for fact-pattern design.
+- Full report: `docs/DIRECTION_B_SURVEY.md`.
+- Next step: generate CA/TX notice + service candidates (RED gate for attorney freeze).
+
+**NC-17 fresh run — queued (Andy authorized 2026-06-25)**
+- Job: `queue/job_nc17_fresh_20260625.json` — 17 states (AK,AL,CO,CT,HI,KS,LA,MI,ND,NJ,NM,NV,NY,OK,SC,VT,WV), `fresh=true`, `sleep=10`, `uses:[courtlistener,openai,gemini]`.
+- Run after procedural defects finishes: `python3 rules/validation/run_protocol.py --protocol retaliation_holdings_v3 --states AK,AL,CO,CT,HI,KS,LA,MI,ND,NJ,NM,NV,NY,OK,SC,VT,WV --sleep 10 --fresh`
+- Will search CourtListener for retaliation case candidates in each state, then validate holdings. PR states go to quarantine; MV/CI/RC/SM as usual.
+
+**Direction B — Golden-set candidates generated (DRAFT/UNFROZEN)**
+- `rules/validation/golden_sets/DRAFT_CA_notice_candidates_v0.1.json` — 20 CA notice fact patterns
+- `rules/validation/golden_sets/DRAFT_CA_service_candidates_v0.1.json` — 15 CA service fact patterns
+- `rules/validation/golden_sets/DRAFT_TX_notice_candidates_v0.1.json` — 15 TX notice fact patterns
+- 50 total candidates. HIGH confidence: 28. UNCERTAIN/LOW: 22 (flagged for attorney).
+- All DRAFT/UNFROZEN. RED gate: Andy must review and freeze each item individually.
+
+**WORK_QUEUE updated** — NOW section reflects procedural defects run + Direction B candidate generation.
+
+### YELLOW — None this cycle.
+
+### RED — Carried
+- **launchd macOS TCC (FDA):** Both dispatch.py fixes applied; shell wrapper written. FDA grant still needed. Andy: System Settings → Privacy & Security → Full Disk Access → add `/bin/bash`.
+- **Direction B attorney freeze gate:** Candidate generation next; attorney establishment of DRAFT answers = RED.
+
+---
+
+## 2026-06-25 (morning report — second cycle, late morning)
+
+### GREEN — Executed autonomously
+
+**Verified dispatch.py Python 3.9 fix is in place**
+- Confirmed `Optional[Path]` and `Tuple[bool, str]` present in dispatch.py (prior 08:00 cycle applied fix; confirmed by grep this cycle).
+- Both overnight jobs still in `queue/` (FDA blocker unchanged — no runs since Jun 23).
+
+**Direction B — Golden Set Survey pulled into NOW**
+- WORK_QUEUE updated: Direction B survey moved from NEXT to NOW. No dependency on FDA fix.
+- NEXT renumbered accordingly.
+
+**Living docs updated — WORK_QUEUE, DAILY_CHANGELOG, CLAUDE_CHAT_BRIEF regenerated.**
+
+### YELLOW — None this cycle.
+
+### RED — Escalated
+**RED-strategic — launchd macOS Full Disk Access (carried; both fixes now applied; FDA grant still needed)**
+
+---
+
+## 2026-06-25 (morning report — automated)
+
+### GREEN — Executed autonomously (morning report cycle)
+
+**dispatch.py — Python 3.9 type hint compatibility fix**
+- **New bug found in stderr log:** `TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'` at line 74 — `def pick_next_job() -> Path | None:`. The `|` union type syntax in annotations requires Python 3.10+. The launchd plist uses `/Library/Developer/CommandLineTools/usr/bin/python3` which is Python 3.9.x.
+- **Fix applied:** Added `from typing import Optional, Tuple` import; replaced all 3.10+ type hints with 3.9-compatible equivalents:
+  - `Path | None` → `Optional[Path]` (pick_next_job, find_latest_summary)
+  - `tuple[bool, str]` → `Tuple[bool, str]` (run_job, run_protocol_job, run_l2_module_job, _run_subprocess)
+- **Verified:** AST parse clean; no remaining `| None` or `tuple[` annotations in file.
+- **Impact:** This bug would have caused dispatch.py to fail even after the FDA permission fix. Both fixes (FDA + Python version) are required for overnight runs to succeed.
+
+**Batch 3 holdings v3 (run 7e6fcf6d) — ingested to VALIDATION_METRICS_LEDGER**
+- 23 units: 4 MV, 2 CI, 0 RC, 0 PR (confirmed), 0 SM, 17 NC (no-candidates)
+- Method rate: 66.7% (4/6 CA text-retrievable). Overall rate: 17.4% (4/23).
+- **PR=0 confirmed.** Andy's expectation that "other:17" = PR from 429s is NOT confirmed. The 429s were transient (CA cases only) and recovered successfully. The 17 "other" are NC (no-candidate) states — `fresh=false` + no pre-existing candidate cases in those state files. NOT quarantined as PR. NOT attorney lane. Require `fresh=true` run or manual candidate identification.
+- NC states: AK, AL, CO, CT, HI, KS, LA, MI, ND, NJ, NM, NV, NY, OK, SC, VT, WV.
+- MV cases (CA): S. P. Growers Assn., Barela, Drouet, Aweeka. CI cases: Schweiger, Western Land Office.
+- Live-run proof: dispatcher ran cleanly at 16:21 UTC today. job_batch3_20260623.json moved to done/. Direction A Rev 2 Change 3 satisfied for this job.
+
+**Living docs updated — WORK_QUEUE, STATE_OF_RECORD, DAILY_CHANGELOG, CLAUDE_CHAT_BRIEF regenerated**
+
+### YELLOW — None this cycle.
+
+### RED — Escalated
+**RED-strategic — launchd macOS Full Disk Access (carried from prior cycle)**
+- Both queued jobs still in queue/. Same blocker as yesterday. Python 3.9 fix now applied (GREEN); FDA permission still needed.
+
+---
+
 ## 2026-06-24 (session — new direction + FDA fix)
 
 ### GREEN — Executed autonomously

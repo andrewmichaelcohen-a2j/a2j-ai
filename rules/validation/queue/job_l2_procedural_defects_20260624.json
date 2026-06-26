@@ -6,5 +6,8 @@
   "defects": "premature,court,attach,summons",
   "sleep": 2,
   "created": "2026-06-24T22:00:00Z",
+  "uses": ["openai", "gemini"],
+  "live_verified": true,
+  "live_verified_basis": "Runner smoke-tested 3 runs (2026-06-24): CA/TX/NY × attach+summons. All 4 classification branches exercised (CONSENSUS-CONFIRM, NO-SPECIFIC-RULE, SM-GEMINI, MODEL-SPLIT). Output written to l2/output/. 30/30 regression tests pass. No courtlistener dependency.",
   "note": "Full 51-state × 4-defect L2 procedural defects run. 204 units, est. $3. Regression tests pass (30/30). First overnight L2 module run via dispatcher."
 }

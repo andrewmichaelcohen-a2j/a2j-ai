@@ -2,7 +2,7 @@
 
 **Module:** Notice / pay_or_quit · **Layer:** L2 Multi-Model Consensus  
 **Runner rule:** Runners append new flagged items only. They never edit or overwrite the Resolution, Authoritative source, Resolved by, Date, or Status fields — those are owned by Andy Cohen.  
-**Last rebuilt:** 2026-06-21 (8-state retaliation retry ingested: OK added as L7-15; AR/IN/MO/VA upgraded to consensus; CO/LA confirmed single-model) · **Confirmed by:** Andy Cohen
+**Last rebuilt:** 2026-06-25 (procedural defects 204-unit run ingested: 20 new L7s [PROC-DEF-L7-01] through [PROC-DEF-L7-20] added) · **Confirmed by:** Cowork (GREEN ingestion)
 
 > **How to use this queue:**  
 > Work top-to-bottom. L7-ESCALATED = you decide from primary sources. PENDING-CONFIRMATION = you verify the AI's proposed answer and sign off (or override).  
@@ -14,7 +14,7 @@
 
 | Status | Count |
 |--------|-------|
-| 🔴 L7-ESCALATED — you decide from primary sources | 21 (6 notice/service + 14 retaliation elements + OK) |
+| 🔴 L7-ESCALATED — you decide from primary sources | 41 (6 notice/service + 14 retaliation elements + OK + 20 procedural defects) |
 | 🟡 PENDING-CONFIRMATION — AI proposed, you verify | 6 |
 | 🟡 CITATION-REVIEW — verify operative section from primary source | 3 |
 | 🟠 OVERLAY-CITE-CHECK — Module 4 runner-flagged + classifier false positives | 22 |
@@ -145,6 +145,218 @@ Note: This straggler was run three times. The reasoning pass (first run) was a f
 **Resolution:** ________________  
 **Authoritative source:** ________________  
 **Resolved by:** ________________  **Date:** ________________
+
+---
+
+## 🔴 L7-ESCALATED — Procedural Defects Module (2026-06-25)
+
+*Source: 204-unit L2 run (`l2_procedural_defects_20260626_0018.json`). 20 MODEL-SPLIT items where both models engaged but disagree on the governing statute. File NOT updated pending your determination. Anti-default rule satisfied: both models ran, genuine split persisted after citation-equivalency check.*
+
+*SM-GEMINI cases (120) and ERROR cases (23) are NOT in this section — they are pipeline items (re-run or failure_to_attach NSR-likely), not attorney items.*
+
+---
+
+### [PROC-DEF-L7-01] AK — complaint_filed_before_notice_period_expired
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Alaska statute governs the timing bar when a complaint is filed before the notice period expires?  
+- GPT: Alaska Stat. § 09.45.100  
+- Gemini: AS 09.45.090(a)(2)(C)  
+**Current file:** AS 09.45.060 et seq.  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-02] AR — complaint_filed_before_notice_period_expired
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Arkansas statute is the specific procedural bar for premature filing?  
+- GPT: Ark. Code Ann. § 18-60-307(a)  
+- Gemini: A.C.A. § 18-60-304(a)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-03] AR — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Arkansas statute governs the court with exclusive eviction jurisdiction (district vs. circuit)?  
+- GPT: Ark. Code Ann. § 16-13-201(a); Ark. Code Ann. § 18-60-307  
+- Gemini: Arkansas Code Annotated § 18-17-912  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-04] AZ — complaint_filed_before_notice_period_expired
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Arizona rule/statute is the specific timing bar for premature filing?  
+- GPT: Arizona Rules of Procedure for Eviction Actions, Rule 5(a)  
+- Gemini: Ariz. R. P. Evic. Act. 5(a)(2)(B)  
+*Note: Both cite the same rule; dispute is about subsection specificity. Consider whether § 5(a) vs. § 5(a)(2)(B) are materially different.*  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-05] CA — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which California provision establishes limited civil court's exclusive jurisdiction over UD actions?  
+- GPT: Cal. Const. art. VI, § 10 (constitutional grant of superior court jurisdiction)  
+- Gemini: California Code of Civil Procedure § 86(a)(4) (limited civil jurisdiction statute)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-06] CT — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Connecticut statute governs Housing Court / Superior Court jurisdiction for summary process?  
+- GPT: Conn. Gen. Stat. § 47a-23a(a)  
+- Gemini: Conn. Gen. Stat. § 47a-70  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-07] ID — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Idaho statute establishes magistrate/district court jurisdiction for eviction actions?  
+- GPT: Idaho Code § 1-2208(1)(b); Idaho Code § 6-310  
+- Gemini: Idaho Code § 6-305  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-08] IL — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Illinois provision is the specific source of circuit court jurisdiction for evictions?  
+- GPT: Ill. Const. art. VI, § 9 (constitutional grant)  
+- Gemini: 735 ILCS 5/9-106 (Forcible Entry and Detainer Act — specific eviction statute)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-09] KS — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Kansas statute is the governing court-jurisdiction provision for eviction actions?  
+- GPT: Kan. Stat. Ann. § 20-301; Kan. Stat. Ann. § 61-3801  
+- Gemini: K.S.A. 61-2902  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-10] KY — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Kentucky statute governs the court with jurisdiction for eviction actions?  
+- GPT: KRS § 24A.120(5) (district court jurisdiction)  
+- Gemini: KRS § 383.210 (URLTA procedural section)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-11] MA — summons_improperly_issued_or_served
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Massachusetts rule/statute governs defects in the summary process summons?  
+- GPT: Mass. Uniform Summary Process Rule 2(b), incorporating Mass. Gen. Laws ch. 239, § 2  
+- Gemini: Uniform Summary Process Rule 3  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-12] MI — complaint_filed_before_notice_period_expired
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Michigan provision bars a complaint filed before the notice period expires?  
+- GPT: Mich. Ct. R. 4.201(B)(2)  
+- Gemini: MCL 600.5714(1)(a)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-13] MT — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Montana statute governs the proper court for eviction actions?  
+- GPT: Mont. Code Ann. § 3-10-301(1)(c) (justice court jurisdiction)  
+- Gemini: Montana Code Annotated § 70-27-103 (unlawful detainer statute itself)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-14] OH — complaint_filed_before_notice_period_expired
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Ohio section is the specific bar against premature filing?  
+- GPT: Ohio Rev. Code § 1923.05  
+- Gemini: Ohio Revised Code § 1923.04(A)  
+*Note: §1923.04 and §1923.05 are adjacent provisions; one may govern notice period and the other the filing bar. Both may be correct in tandem.*  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-15] SC — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which South Carolina provision governs court jurisdiction for eviction actions?  
+- GPT: S.C. Code Ann. §§ 22-3-10(10), 27-37-10  
+- Gemini: S.C. Code Ann. § 27-40-130  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-16] UT — complaint_filed_before_notice_period_expired
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Utah section is the specific timing bar for premature filing?  
+- GPT: Utah Code § 78B-6-807(1)  
+- Gemini: Utah Code § 78B-6-802(1)(c)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-17] UT — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Utah provision establishes the proper court for eviction (district vs. justice)?  
+- GPT: Utah Code Ann. § 78A-5-102(1) (district court jurisdiction)  
+- Gemini: Utah Code Ann. § 78A-7-105(1)(c) (justice court jurisdiction)  
+*Note: Both provisions may be relevant — dispute may reflect UD cases straddling justice/district court thresholds.*  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-18] VT — complaint_filed_before_notice_period_expired
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Vermont provision is the specific bar against premature filing?  
+- GPT: Vt. R. Civ. P. 80.1(b)(1)  
+- Gemini: 9 V.S.A. § 4468(a)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-19] VT — wrong_court
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Vermont provision is the correct court-jurisdiction source for eviction actions?  
+- GPT: 4 V.S.A. § 31(a)(1); 12 V.S.A. § 4851  
+- Gemini: 12 V.S.A. § 4911  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-20] WY — complaint_filed_before_notice_period_expired
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Question:** Which Wyoming section is the specific timing bar against premature filing?  
+- GPT: Wyo. Stat. Ann. § 1-21-1004(a)  
+- Gemini: Wyo. Stat. Ann. § 1-21-1002(a)(i)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
 
 ---
 

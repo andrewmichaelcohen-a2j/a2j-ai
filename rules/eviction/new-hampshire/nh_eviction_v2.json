@@ -841,28 +841,53 @@
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
       "statute": "RSA 540:1 et seq.",
       "case_law": [],
-      "note": "Filing before the notice period runs is a bright-line defect in most states"
+      "note": "Filing before the notice period runs is a bright-line defect in most states",
+      "validation_flags": [
+        "L2-PROCEDURAL-SM-GEMINI"
+      ],
+      "l2_sm_statute": "NH Rev. Stat. Ann. § 540:13, I",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: NH Rev. Stat. Ann. § 540:13, I. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-25"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
       "statute": "RSA 502-A:1 (circuit court-district division)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits"
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits",
+      "validation_flags": [
+        "L2-PROCEDURAL-SM-GEMINI"
+      ],
+      "l2_sm_statute": "N.H. Rev. Stat. Ann. § 540:2",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.H. Rev. Stat. Ann. § 540:2. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-25"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
       "statute": "RSA 540:1 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify"
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
+      "validation_flags": [
+        "L2-PROCEDURAL-SM-GEMINI"
+      ],
+      "l2_sm_statute": "New Hampshire District Court Rule 3.3(A)",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: New Hampshire District Court Rule 3.3(A). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-25"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
       "statute": "RSA 540:1 et seq.; state civil procedure rules (service of process)",
       "case_law": [],
-      "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements"
+      "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements",
+      "validation_flags": [
+        "L2-PROCEDURAL-SM-GEMINI"
+      ],
+      "l2_sm_statute": "NH Rev. Stat. Ann. § 540:5",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: NH Rev. Stat. Ann. § 540:5. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-25"
     }
-  ]
+  ],
+  "last_updated": "2026-06-25"
 }
