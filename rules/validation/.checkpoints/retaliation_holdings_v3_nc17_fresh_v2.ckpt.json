@@ -1276,6 +1276,46 @@
         "text_retrieved": true,
         "harness_version": "v1"
       }
+    },
+    "539739dc6c4c": {
+      "unit_id": "539739dc6c4c",
+      "state": "AL",
+      "case_name": "Helfrich v. Valdez Motel Corp.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for AL / Helfrich v. Valdez Motel Corp.: CL quota/network error on Check A for Helfrich v. Valdez Motel Corp.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "71aff32269c1": {
+      "unit_id": "71aff32269c1",
+      "state": "AL",
+      "case_name": "Belcher v. Grand Reserve MGM, LLC",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for AL / Belcher v. Grand Reserve MGM, LLC: CL quota/network error on Check A for Belcher v. Grand Reserve MGM, LLC: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "a3c9e7579250": {
+      "unit_id": "a3c9e7579250",
+      "state": "CO",
+      "case_name": "Arnal v. Aspen View Condominium Ass'n",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for CO / Arnal v. Aspen View Condominium Ass'n: CL quota/network error on Check A for Arnal v. Aspen View Condominium Ass'n: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "7f96d78a4f53": {
+      "unit_id": "7f96d78a4f53",
+      "state": "CO",
+      "case_name": "Michael Reid v. UDR Texas Properties, LLC UDR Texas Properties, LLC, Successor to UDR Texas Properties, LP UDR the Cliffs, LLC UDR, Inc. And Western Residential, Inc.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for CO / Michael Reid v. UDR Texas Properties, LLC UDR Texas Properties, LLC, Successor to UDR Texas Properties, LP UDR the Cliffs, LLC UDR, Inc. And Western Residential, Inc.: CL quota/network error on Check A for Michael Reid v. UDR Texas Properties, LLC UDR Texas Properties, LLC, Successor to UDR Texas Properties, LP UDR the Cliffs, LLC UDR, Inc. And Western Residential, Inc.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
     }
   },
   "meta": {

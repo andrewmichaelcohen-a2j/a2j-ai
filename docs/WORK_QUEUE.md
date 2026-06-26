@@ -2,7 +2,7 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-25 (night — fresh=True fix + failure_to_attach fix complete; overnight job queued)
+**Last updated:** 2026-06-25 (late night — SM diagnostic complete; launchd wrapper updated; YELLOW fix proposed)
 
 ---
 
@@ -45,20 +45,23 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **NC-17 re-run with fresh=True fix** (GREEN — pipeline fix verified)
-   Fix confirmed: `cl_search_retaliation_by_state()` added; `load_draft_cases(state, fresh=True)` now calls CL live. Command (run in Terminal with `COURTLISTENER_API_TOKEN` set):
+1. **Andy: ratify YELLOW — max_completion_tokens 2000 → 8000** — YELLOW gate
+   SM diagnostic confirmed: GPT-5.5 empty content on 119/120 SM cases = token-budget stall. Fix: raise `max_completion_tokens` to 8000 in `call_openai()` (`l2_runner.py` line 130). Expected: 70–90% SM reduction. Cowork will implement + run live sample (10 states × 1 defect, before/after measurement) once ratified.
+
+3. **NC-17 re-run with fresh=True fix** (GREEN — runs automatically via dispatcher tonight if launchd blocker closed)
+   Job queued: `queue/job_nc17_fresh_20260625.json`. Or run manually:
    ```
-   python3 rules/validation/run_protocol.py --protocol retaliation_holdings_v3 \
+   cd ~/Documents/GitHub/a2j-ai && python3 rules/validation/run_protocol.py \
+     --protocol retaliation_holdings_v3 \
      --states AK,AL,CO,CT,HI,KS,LA,MI,ND,NJ,NM,NV,NY,OK,SC,VT,WV \
      --fresh --run-id nc17_fresh_v2
    ```
-   Est. 17 states × 8 CL hits × verification = ~90 min. Andy runs when ready.
 
-2. **Ingest failure_to_attach overnight re-run** (GREEN — auto when done)
-   Job queued: `queue/job_l2_attach_rerun_20260625.json` — fires tonight at 2:15 AM (pending launchd FDA fix). Alternatively run manually: `python3 rules/validation/l2/l2_procedural_defects_runner.py --defects attach`. Ingest output the next morning.
+4. **Ingest failure_to_attach overnight re-run** (GREEN — auto when done)
+   Job queued: `queue/job_l2_attach_rerun_20260625.json`. Fires via dispatcher when launchd runs. Or manually: `python3 rules/validation/l2/l2_procedural_defects_runner.py --defects attach`.
 
-3. **Direction B attorney freeze** (RED gate — needs Andy)
-   50 DRAFT candidates in `rules/validation/golden_sets/`. Review and freeze each item. Only frozen items become ground truth (immutable). No automation can proceed on B until ≥1 set is frozen.
+5. **Direction B attorney freeze** (RED gate — needs Andy)
+   50 DRAFT candidates in `rules/validation/golden_sets/`. Only frozen items become ground truth.
 
 ---
 
@@ -66,7 +69,7 @@
 
 | Item | Blocker | What unblocks it |
 |------|---------|-----------------|
-| launchd overnight runner (both queued jobs) | **RED-strategic — macOS TCC Full Disk Access.** Launchd agent cannot read `dispatch.py`. Error: `[Errno 1] Operation not permitted`. ✅ Second bug fixed (GREEN 2026-06-25): Python 3.9 type hint incompatibility in dispatch.py also fixed — `Optional[Path]`/`Tuple[bool,str]` replaces 3.10+ `Path\|None`/`tuple[bool,str]` syntax. Both fixes needed before overnight runs will succeed. | Andy: System Settings → Privacy & Security → Full Disk Access → add python3. Or: approve Cowork writing a shell wrapper script (GREEN fix). |
+| ~~launchd overnight runner~~ | ✅ **CLOSED 2026-06-25 22:39 PT.** Live proof: `launchctl start` fired dispatcher → `[dispatch] 🚀 Launching: job_20260625_nc17_fresh` → caffeinate subprocess started → log written at `dispatch_retaliation_holdings_v3_20260626_0539.log`. `/usr/bin/python3` (CLT Python) has FDA; plist updated to call it directly. NC-17 fresh run running now. | — closed — |
 | Direction B golden set freeze | **RED — Andy (attorney) must establish answers** | Andy signs off on DRAFT candidates → they become FROZEN |
 | Direction C self-optimization | **Hard gate — Direction B frozen golden sets must exist** | B complete with ≥1 frozen set, scorer working |
 | CA/summons procedural defect | **RED-interpretive — genuine MODEL-SPLIT** | GPT: CCP § 1167(a) vs Gemini: CCP § 415.45. In HUMAN_REVIEW_QUEUE. |

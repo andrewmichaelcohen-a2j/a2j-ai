@@ -132,7 +132,7 @@ def call_openai(query: str, dry_run: bool = False) -> dict:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": query},
             ],
-            max_completion_tokens=2000,  # reasoning models consume tokens for chain-of-thought before output; 350 caused empty responses
+            max_completion_tokens=8000,  # gpt-5.5 reasoning model: chain-of-thought exhausted 2000 → 119/120 SM units empty. Raised to 8000 (ratified YELLOW 2026-06-25). Validation: attach re-run will measure before/after SM rate.
             timeout=60,  # 60s hard timeout — prevents infinite hang on slow API response
         )
         raw = resp.choices[0].message.content.strip()

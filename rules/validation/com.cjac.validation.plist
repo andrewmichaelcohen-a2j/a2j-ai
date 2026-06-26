@@ -47,11 +47,11 @@
         <key>Minute</key> <integer>15</integer>
     </dict>
 
-    <!-- Shell wrapper holds FDA so dispatch.py can read queue/ and logs -->
+    <!-- /usr/bin/python3 has Full Disk Access granted in System Settings -->
     <key>ProgramArguments</key>
     <array>
-        <string>/bin/bash</string>
-        <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/run_dispatch.sh</string>
+        <string>/usr/bin/python3</string>
+        <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/dispatch.py</string>
     </array>
 
     <!-- Working directory = repo root -->
