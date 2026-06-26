@@ -814,8 +814,8 @@
         "L2-PROCEDURAL-NO-SPECIFIC-RULE",
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.Y. C.P.L.R. § 3014. Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-25",
+      "l2_note": "Both models confirm no separate attachment statute — general pleading sufficiency applies.",
+      "l2_run_date": "2026-06-26",
       "l2_sm_statute": "N.Y. C.P.L.R. § 3014"
     },
     {
@@ -834,5 +834,5 @@
       "l2_sm_statute": "New York Real Property Actions and Proceedings Law § 735"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

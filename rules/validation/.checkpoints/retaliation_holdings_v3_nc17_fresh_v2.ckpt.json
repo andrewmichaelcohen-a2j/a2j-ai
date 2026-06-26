@@ -2303,6 +2303,713 @@
       "provenance": {
         "harness_exhausted_retries": true
       }
+    },
+    "a46f230f5df1": {
+      "unit_id": "a46f230f5df1",
+      "state": "HI",
+      "case_name": "Trustees of the Estate of Bernice Pauahi Bishop v. Au.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for HI / Trustees of the Estate of Bernice Pauahi Bishop v. Au.: CL quota/network error on Check A for Trustees of the Estate of Bernice Pauahi Bishop v. Au.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "41f2b68eb53a": {
+      "unit_id": "41f2b68eb53a",
+      "state": "HI",
+      "case_name": "Rees v. Gordon",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2025,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Rees v. Gordon",
+          "date": "2025-08-19",
+          "court": "Hawaii Intermediate Court of Appeals",
+          "citation": [],
+          "cluster_id": 10656760
+        },
+        "cl_cluster_id": 10656760,
+        "cl_opinion_id": 11123347,
+        "cl_url": "https://www.courtlistener.com/opinion/10656760/rees-v-gordon/",
+        "cl_citation": null,
+        "citation_match": null,
+        "exists": "true",
+        "basis": "Found by name; no CL citation to check",
+        "cl_snippets": "[combined-opinion]   NOT FOR PUBLICATION IN WEST'S HAWAI I REPORTS AND PACIFIC REPORTER\n\n\n\n\n                                                       Electronically Filed\n                                                       Intermediate Court of Appeals\n                                                       CAAP-XX-XXXXXXX\n                                                       19-AUG-2025\n                                                       07:58 AM\n                                                       Dkt. 101 ",
+        "cl_all_citations": []
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The provided text is a non-substantive header from a court filing, containing publication notices and electronic filing details, not the factual or legal substance of the case.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The provided text is a non-substantive header from a court filing, containing publication notices an"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "92919a3f66be": {
+      "unit_id": "92919a3f66be",
+      "state": "HI",
+      "case_name": "Wakefield v. Bardellini",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for HI / Wakefield v. Bardellini: CL quota/network error on Check A for Wakefield v. Bardellini: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "722c6e65be93": {
+      "unit_id": "722c6e65be93",
+      "state": "HI",
+      "case_name": "Cedillos v. Masumoto.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for HI / Cedillos v. Masumoto.: CL quota/network error on Check A for Cedillos v. Masumoto.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "6ad583bcd8b0": {
+      "unit_id": "6ad583bcd8b0",
+      "state": "HI",
+      "case_name": "Ryan v. Herzog.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for HI / Ryan v. Herzog.: CL quota/network error on Check A for Ryan v. Herzog.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "e0bceb408c47": {
+      "unit_id": "e0bceb408c47",
+      "state": "HI",
+      "case_name": "Skydive Myrtle Beach, Inc. v. Horry Cnty.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for HI / Skydive Myrtle Beach, Inc. v. Horry Cnty.: CL quota/network error on Check A for Skydive Myrtle Beach, Inc. v. Horry Cnty.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "KS::__no_cases__": {
+      "unit_id": "KS::__no_cases__",
+      "state": "KS",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "9cd97c7775fa": {
+      "unit_id": "9cd97c7775fa",
+      "state": "LA",
+      "case_name": "Marilyn A. Taylor v. Robyn Joseph",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for LA / Marilyn A. Taylor v. Robyn Joseph: CL quota/network error on Check A for Marilyn A. Taylor v. Robyn Joseph: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "6b65311d4c2f": {
+      "unit_id": "6b65311d4c2f",
+      "state": "LA",
+      "case_name": "St Nick's Alliance, LLC v. Cordero",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for LA / St Nick's Alliance, LLC v. Cordero: CL quota/network error on Check A for St Nick's Alliance, LLC v. Cordero: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "3c7f3a16998b": {
+      "unit_id": "3c7f3a16998b",
+      "state": "LA",
+      "case_name": "Poole v. Housing Authority for the Town of Vinton",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for LA / Poole v. Housing Authority for the Town of Vinton: CL quota/network error on Check A for Poole v. Housing Authority for the Town of Vinton: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "6a0c2e8b47bb": {
+      "unit_id": "6a0c2e8b47bb",
+      "state": "LA",
+      "case_name": "Housing Authority of New Orleans v. Eason",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for LA / Housing Authority of New Orleans v. Eason: CL quota/network error on Check A for Housing Authority of New Orleans v. Eason: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "ad9da34e73a9": {
+      "unit_id": "ad9da34e73a9",
+      "state": "LA",
+      "case_name": "Banuelos v. LA Investment CA2/1",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for LA / Banuelos v. LA Investment CA2/1: CL quota/network error on Check A for Banuelos v. LA Investment CA2/1: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "c15c5b5b651b": {
+      "unit_id": "c15c5b5b651b",
+      "state": "LA",
+      "case_name": "640 Octavia v. Pieper CA1/2",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for LA / 640 Octavia v. Pieper CA1/2: CL quota/network error on Check A for 640 Octavia v. Pieper CA1/2: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "2614253b020f": {
+      "unit_id": "2614253b020f",
+      "state": "LA",
+      "case_name": "Richard Manning, Tammy Manning, and All Occupants of 1036 Sunset, Waco, TX 76704 v. Mae Johnson and Pat Williams",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for LA / Richard Manning, Tammy Manning, and All Occupants of 1036 Sunset, Waco, TX 76704 v. Mae Johnson and Pat Williams: CL quota/network error on Check A for Richard Manning, Tammy Manning, and All Occupants of 1036 Sunset, Waco, TX 76704 v. Mae Johnson and Pat Williams: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "5c180598ff6b": {
+      "unit_id": "5c180598ff6b",
+      "state": "LA",
+      "case_name": "McManus v. East Pointe Apartments",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for LA / McManus v. East Pointe Apartments: CL quota/network error on Check A for McManus v. East Pointe Apartments: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "96b0c087663c": {
+      "unit_id": "96b0c087663c",
+      "state": "MI",
+      "case_name": "Cloverdale Foods of Minnesota, Inc. v. Snacks",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for MI / Cloverdale Foods of Minnesota, Inc. v. Snacks: CL quota/network error on Check A for Cloverdale Foods of Minnesota, Inc. v. Snacks: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "9a8c05782b12": {
+      "unit_id": "9a8c05782b12",
+      "state": "MI",
+      "case_name": "Forrest Perkins v. Memorial Hospital of South Bend",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for MI / Forrest Perkins v. Memorial Hospital of South Bend: CL quota/network error on Check A for Forrest Perkins v. Memorial Hospital of South Bend: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "8848904a7e08": {
+      "unit_id": "8848904a7e08",
+      "state": "MI",
+      "case_name": "Gonzalez v. Recht Family Partnership",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for MI / Gonzalez v. Recht Family Partnership: CL quota/network error on Check A for Gonzalez v. Recht Family Partnership: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "6de49d9d4877": {
+      "unit_id": "6de49d9d4877",
+      "state": "MI",
+      "case_name": "Simmons v. Williams",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for MI / Simmons v. Williams: CL quota/network error on Check A for Simmons v. Williams: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "64bffb0700a3": {
+      "unit_id": "64bffb0700a3",
+      "state": "MI",
+      "case_name": "An-Ti Chai v. Michigan Technological University",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for MI / An-Ti Chai v. Michigan Technological University: CL quota/network error on Check A for An-Ti Chai v. Michigan Technological University: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "cdc9d49515f2": {
+      "unit_id": "cdc9d49515f2",
+      "state": "MI",
+      "case_name": "Perkins v. Mem'l Hosp. of S. Bend",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for MI / Perkins v. Mem'l Hosp. of S. Bend: CL quota/network error on Check A for Perkins v. Mem'l Hosp. of S. Bend: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "6fe7e5637f82": {
+      "unit_id": "6fe7e5637f82",
+      "state": "MI",
+      "case_name": "Star Property Solutions, LLC and Indy Drains, LLC v. Pine Financial, LLC, and T.Tad Bohlsen (mem. dec.)",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for MI / Star Property Solutions, LLC and Indy Drains, LLC v. Pine Financial, LLC, and T.Tad Bohlsen (mem. dec.): CL quota/network error on Check A for Star Property Solutions, LLC and Indy Drains, LLC v. Pine Financial, LLC, and T.Tad Bohlsen (mem. dec.): CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "ae800575def8": {
+      "unit_id": "ae800575def8",
+      "state": "MI",
+      "case_name": "K&D Mgt., L.L.C. v. Masten",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for MI / K&D Mgt., L.L.C. v. Masten: CL quota/network error on Check A for K&D Mgt., L.L.C. v. Masten: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "61564253a417": {
+      "unit_id": "61564253a417",
+      "state": "ND",
+      "case_name": "Rent Daddy’s v. Gamel, et al.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for ND / Rent Daddy’s v. Gamel, et al.: CL quota/network error on Check A for Rent Daddy’s v. Gamel, et al.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "7a53ad97503d": {
+      "unit_id": "7a53ad97503d",
+      "state": "ND",
+      "case_name": "Watford City Lodging LLC v. Miskin",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for ND / Watford City Lodging LLC v. Miskin: CL quota/network error on Check A for Watford City Lodging LLC v. Miskin: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "fd5d0ebd09ba": {
+      "unit_id": "fd5d0ebd09ba",
+      "state": "ND",
+      "case_name": "Nelson v. Johnson",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for ND / Nelson v. Johnson: CL quota/network error on Check A for Nelson v. Johnson: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "baa572c93aed": {
+      "unit_id": "baa572c93aed",
+      "state": "ND",
+      "case_name": "In re Hodge - (",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for ND / In re Hodge - (: CL quota/network error on Check A for In re Hodge - (: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "16f049ace936": {
+      "unit_id": "16f049ace936",
+      "state": "ND",
+      "case_name": "An-Ti Chai v. Michigan Technological University",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for ND / An-Ti Chai v. Michigan Technological University: CL quota/network error on Check A for An-Ti Chai v. Michigan Technological University: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "8c78d13cde02": {
+      "unit_id": "8c78d13cde02",
+      "state": "ND",
+      "case_name": "Western Rim Property Services Inc. v. Paula Bazan-Garcia",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for ND / Western Rim Property Services Inc. v. Paula Bazan-Garcia: CL quota/network error on Check A for Western Rim Property Services Inc. v. Paula Bazan-Garcia: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "2c9a801b5c90": {
+      "unit_id": "2c9a801b5c90",
+      "state": "NJ",
+      "case_name": "1266 Apt. Corp. v. New Horizon Deli",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NJ / 1266 Apt. Corp. v. New Horizon Deli: CL quota/network error on Check A for 1266 Apt. Corp. v. New Horizon Deli: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "29c5c8917fe4": {
+      "unit_id": "29c5c8917fe4",
+      "state": "NJ",
+      "case_name": "Housing Authority v. Mims",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NJ / Housing Authority v. Mims: CL quota/network error on Check A for Housing Authority v. Mims: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "eb6888422259": {
+      "unit_id": "eb6888422259",
+      "state": "NJ",
+      "case_name": "Grand Parkline, LLC H Mart Companies Incorporated H Mart Austin LLC And IYK Texas Corporation v. Mama Fu's Lakeline, LLC",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NJ / Grand Parkline, LLC H Mart Companies Incorporated H Mart Austin LLC And IYK Texas Corporation v. Mama Fu's Lakeline, LLC: CL quota/network error on Check A for Grand Parkline, LLC H Mart Companies Incorporated H Mart Austin LLC And IYK Texas Corporation v. Mama Fu's Lakeline, LLC: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "e5d0511adeb4": {
+      "unit_id": "e5d0511adeb4",
+      "state": "NJ",
+      "case_name": "279 4TH AVE. MANAGEMENT. LLC v. Mollett",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NJ / 279 4TH AVE. MANAGEMENT. LLC v. Mollett: CL quota/network error on Check A for 279 4TH AVE. MANAGEMENT. LLC v. Mollett: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "f4124b2b88b0": {
+      "unit_id": "f4124b2b88b0",
+      "state": "NJ",
+      "case_name": "Maglies v. Estate of Guy",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NJ / Maglies v. Estate of Guy: CL quota/network error on Check A for Maglies v. Estate of Guy: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "12ad24e5aaf7": {
+      "unit_id": "12ad24e5aaf7",
+      "state": "NJ",
+      "case_name": "Geneva Butts v. The City of New York Department of Housing Preservation and Development",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NJ / Geneva Butts v. The City of New York Department of Housing Preservation and Development: CL quota/network error on Check A for Geneva Butts v. The City of New York Department of Housing Preservation and Development: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "f214df5cb28d": {
+      "unit_id": "f214df5cb28d",
+      "state": "NJ",
+      "case_name": "Boston LLC v. Juarez",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NJ / Boston LLC v. Juarez: CL quota/network error on Check A for Boston LLC v. Juarez: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "a710b07ed9ac": {
+      "unit_id": "a710b07ed9ac",
+      "state": "NJ",
+      "case_name": "Lopez v. Medina",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NJ / Lopez v. Medina: CL quota/network error on Check A for Lopez v. Medina: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "0ddb5675364e": {
+      "unit_id": "0ddb5675364e",
+      "state": "NM",
+      "case_name": "Carol Rickert & Associates v. Law",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NM / Carol Rickert & Associates v. Law: CL quota/network error on Check A for Carol Rickert & Associates v. Law: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "38bd8bdcf50e": {
+      "unit_id": "38bd8bdcf50e",
+      "state": "NM",
+      "case_name": "Casa Blanca Mobile Home Park v. Hill",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NM / Casa Blanca Mobile Home Park v. Hill: CL quota/network error on Check A for Casa Blanca Mobile Home Park v. Hill: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "ddd4b12bdb53": {
+      "unit_id": "ddd4b12bdb53",
+      "state": "NM",
+      "case_name": "Drouet v. Superior Court",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NM / Drouet v. Superior Court: CL quota/network error on Check A for Drouet v. Superior Court: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "7ab37eaf4d3e": {
+      "unit_id": "7ab37eaf4d3e",
+      "state": "NM",
+      "case_name": "Spingarn v. Landow & Co.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NM / Spingarn v. Landow & Co.: CL quota/network error on Check A for Spingarn v. Landow & Co.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "7f069cc0a002": {
+      "unit_id": "7f069cc0a002",
+      "state": "NM",
+      "case_name": "Wilkins v. St. Louis Housing Authority",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NM / Wilkins v. St. Louis Housing Authority: CL quota/network error on Check A for Wilkins v. St. Louis Housing Authority: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "6b8fbba959d5": {
+      "unit_id": "6b8fbba959d5",
+      "state": "NM",
+      "case_name": "Elizabeth A. Honce v. Jose A. Vigil, D/B/A Dorado Investments, Inc., A/K/A Villa Chaparral Mobile Home Sub-Division Dorado Investments, Inc.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NM / Elizabeth A. Honce v. Jose A. Vigil, D/B/A Dorado Investments, Inc., A/K/A Villa Chaparral Mobile Home Sub-Division Dorado Investments, Inc.: CL quota/network error on Check A for Elizabeth A. Honce v. Jose A. Vigil, D/B/A Dorado Investments, Inc., A/K/A Villa Chaparral Mobile Home Sub-Division Dorado Investments, Inc.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "9da14778679a": {
+      "unit_id": "9da14778679a",
+      "state": "NM",
+      "case_name": "Horwath v. City of East Palo Alto",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NM / Horwath v. City of East Palo Alto: CL quota/network error on Check A for Horwath v. City of East Palo Alto: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "898b730df262": {
+      "unit_id": "898b730df262",
+      "state": "NM",
+      "case_name": "Dietz v. Round Hill Foods Inc.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NM / Dietz v. Round Hill Foods Inc.: CL quota/network error on Check A for Dietz v. Round Hill Foods Inc.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "NV::__no_cases__": {
+      "unit_id": "NV::__no_cases__",
+      "state": "NV",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "2d5b433d68f7": {
+      "unit_id": "2d5b433d68f7",
+      "state": "NY",
+      "case_name": "Matter of Clifton Park Apartments v. New York State Division of Human Rights",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / Matter of Clifton Park Apartments v. New York State Division of Human Rights: CL quota/network error on Check A for Matter of Clifton Park Apartments v. New York State Division of Human Rights: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "facf1376608c": {
+      "unit_id": "facf1376608c",
+      "state": "NY",
+      "case_name": "Ellis v. Oceanhill Brownsville Tenant Ass'n",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / Ellis v. Oceanhill Brownsville Tenant Ass'n: CL quota/network error on Check A for Ellis v. Oceanhill Brownsville Tenant Ass'n: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "4791f3d35437": {
+      "unit_id": "4791f3d35437",
+      "state": "NY",
+      "case_name": "Robinson v. City of New York",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / Robinson v. City of New York: CL quota/network error on Check A for Robinson v. City of New York: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "f9a57d109e93": {
+      "unit_id": "f9a57d109e93",
+      "state": "NY",
+      "case_name": "Fiondella v. 345 W. 70th Tenants Corp.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / Fiondella v. 345 W. 70th Tenants Corp.: CL quota/network error on Check A for Fiondella v. 345 W. 70th Tenants Corp.: CL search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "401d52f11dd4": {
+      "unit_id": "401d52f11dd4",
+      "state": "NY",
+      "case_name": "Nazor v. Sydney Sol Group, Ltd.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / Nazor v. Sydney Sol Group, Ltd.: CL quota/network error on Check A for Nazor v. Sydney Sol Group, Ltd.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "8778abdf7268": {
+      "unit_id": "8778abdf7268",
+      "state": "NY",
+      "case_name": "New York Infirmary — Beekman Downtown Hospital v. Sarris",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / New York Infirmary — Beekman Downtown Hospital v. Sarris: CL quota/network error on Check A for New York Infirmary — Beekman Downtown Hospital v. Sarris: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "6ca363b539e9": {
+      "unit_id": "6ca363b539e9",
+      "state": "NY",
+      "case_name": "Housing Authority of New Orleans v. Eason",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / Housing Authority of New Orleans v. Eason: CL quota/network error on Check A for Housing Authority of New Orleans v. Eason: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "0b88f577ca11": {
+      "unit_id": "0b88f577ca11",
+      "state": "OK",
+      "case_name": "Frederic Fezard v. United Cerebral Palsy etc.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Frederic Fezard v. United Cerebral Palsy etc.: CL quota/network error on Check A for Frederic Fezard v. United Cerebral Palsy etc.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "524b12e47b45": {
+      "unit_id": "524b12e47b45",
+      "state": "OK",
+      "case_name": "Sladek v. dePlomb",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Sladek v. dePlomb: CL quota/network error on Check A for Sladek v. dePlomb: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "2352aa74b184": {
+      "unit_id": "2352aa74b184",
+      "state": "OK",
+      "case_name": "Strauss v. City of Chi.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Strauss v. City of Chi.: CL quota/network error on Check A for Strauss v. City of Chi.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "946bc75582e1": {
+      "unit_id": "946bc75582e1",
+      "state": "OK",
+      "case_name": "Schuminsky v. Field",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Schuminsky v. Field: CL quota/network error on Check A for Schuminsky v. Field: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "3eff052cea46": {
+      "unit_id": "3eff052cea46",
+      "state": "OK",
+      "case_name": "Sternjohn v. Kreisler",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Sternjohn v. Kreisler: CL quota/network error on Check A for Sternjohn v. Kreisler: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "e96da44a4e22": {
+      "unit_id": "e96da44a4e22",
+      "state": "OK",
+      "case_name": "Ben-Davies & Moore v. Blibaum & Assoc.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Ben-Davies & Moore v. Blibaum & Assoc.: CL quota/network error on Check A for Ben-Davies & Moore v. Blibaum & Assoc.: CL search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "ca787585642f": {
+      "unit_id": "ca787585642f",
+      "state": "OK",
+      "case_name": "Kincaid v. Sturdevant",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Kincaid v. Sturdevant: CL quota/network error on Check A for Kincaid v. Sturdevant: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "499eb36ca2f6": {
+      "unit_id": "499eb36ca2f6",
+      "state": "OK",
+      "case_name": "Reproductive Rights Network v. President of the University of Massachusetts",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Reproductive Rights Network v. President of the University of Massachusetts: CL quota/network error on Check A for Reproductive Rights Network v. President of the University of Massachusetts: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "7d36cbd3ea43": {
+      "unit_id": "7d36cbd3ea43",
+      "state": "SC",
+      "case_name": "Skydive Myrtle Beach, Inc. v. Horry Cnty.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for SC / Skydive Myrtle Beach, Inc. v. Horry Cnty.: CL quota/network error on Check A for Skydive Myrtle Beach, Inc. v. Horry Cnty.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "503a1d1b2ede": {
+      "unit_id": "503a1d1b2ede",
+      "state": "SC",
+      "case_name": "Skydive v. Horry County",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for SC / Skydive v. Horry County: CL quota/network error on Check A for Skydive v. Horry County: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
     }
   },
   "meta": {

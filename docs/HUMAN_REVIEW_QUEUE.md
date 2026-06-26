@@ -2,7 +2,8 @@
 
 **Module:** Notice / pay_or_quit · **Layer:** L2 Multi-Model Consensus  
 **Runner rule:** Runners append new flagged items only. They never edit or overwrite the Resolution, Authoritative source, Resolved by, Date, or Status fields — those are owned by Andy Cohen.  
-**Last rebuilt:** 2026-06-25 (procedural defects 204-unit run ingested: 20 new L7s [PROC-DEF-L7-01] through [PROC-DEF-L7-20] added) · **Confirmed by:** Cowork (GREEN ingestion)
+**Last rebuilt:** 2026-06-26 (NC-17 fresh run ingested: 2 new RC items [NV-RET-HOLD-RC-01]–[NY-RET-HOLD-RC-02] added; failure_to_attach re-run: 2 L7s [PROC-DEF-L7-21]–[PROC-DEF-L7-22]) · **Confirmed by:** Cowork (GREEN ingestion)  
+**Prior rebuild:** 2026-06-25 (procedural defects 204-unit run ingested: 20 new L7s [PROC-DEF-L7-01] through [PROC-DEF-L7-20] added)
 
 > **How to use this queue:**  
 > Work top-to-bottom. L7-ESCALATED = you decide from primary sources. PENDING-CONFIRMATION = you verify the AI's proposed answer and sign off (or override).  
@@ -14,7 +15,8 @@
 
 | Status | Count |
 |--------|-------|
-| 🔴 L7-ESCALATED — you decide from primary sources | 41 (6 notice/service + 14 retaliation elements + OK + 20 procedural defects) |
+| 🔴 L7-ESCALATED — you decide from primary sources | 43 (6 notice/service + 14 retaliation elements + OK + 22 procedural defects) |
+| 🔴 RC — verify/characterize from primary source | 2 (NV Wright v. Brady; NY Ellis v. Oceanhill) |
 | 🟡 PENDING-CONFIRMATION — AI proposed, you verify | 6 |
 | 🟡 CITATION-REVIEW — verify operative section from primary source | 3 |
 | 🟠 OVERLAY-CITE-CHECK — Module 4 runner-flagged + classifier false positives | 22 |
@@ -142,6 +144,46 @@ Note: This straggler was run three times. The reasoning pass (first run) was a f
 **⚠️ Note on current file value:** The `days=3` is an unsubstantiated initial-generation artifact. LSC (2021) coded GA as "no minimum specified"; Gemini says no waiting period. The `3` is supported only by GPT. Attorney determination needed before this value appears in any output.  
 **Your task:** Read §44-7-50; determine whether a formal written demand/notice is required before filing and whether any waiting period applies. Note that LSC's independent coding (2021) found no minimum period — this corroborates the "demand only, no wait" interpretation.
 
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+## 🔴 RC — Retaliation Holdings Needing Characterization (2026-06-26)
+
+*Source: NC-17 fresh run (`retaliation_holdings_v3_2026-06-26_20f722c8.json`). 2 cases where CourtListener text was retrieved, but the generate-from-source + verify cycle could not machine-verify the holding. Automated attempt is complete for both. Attorney must: confirm the case is a valid retaliation defense holding, characterize the controlling rule, or dismiss as a non-holding candidate.*
+
+*Anti-default rule satisfied: both cases completed the full CL-retrieval + generate + verify protocol before routing here. Neither is a pipeline artifact.*
+
+---
+
+### [NV-RET-HOLD-RC-01] Nevada — Wright v. Brady (418 P.3d 619, 2018)
+
+**Classification:** RC (re-characterize) · **Status:** 🔴 pending  
+**Run date:** 2026-06-26 (run 20f722c8)
+
+**What happened:** CourtListener retrieved a document for this case. The generate model produced a holding characterization. The verify model flagged C=FLAG-verify-disputed — it could not corroborate the generated holding from the retrieved text (may be a wrong document, or the case does not state a retaliation holding clearly).
+
+**Your task:** (a) Confirm whether Wright v. Brady (418 P.3d 619, 2018) is a valid Nevada retaliation defense case. (b) If so, state the controlling rule and confirm a source quote. (c) If not, dismiss as a false candidate and identify a better NV retaliation defense case if one exists.
+
+**Current file:** NV has no verified retaliation holding; this was a fresh CL search candidate.  
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [NY-RET-HOLD-RC-02] New York — Ellis v. Oceanhill Brownsville Tenant Ass'n (152 Misc. 2d 1007, 1991)
+
+**Classification:** RC (re-characterize) · **Status:** 🔴 pending  
+**Run date:** 2026-06-26 (run 20f722c8)
+
+**What happened:** CourtListener retrieved a document for this case. The generate model returned C=FLAG-generate-failed — it could not extract a retaliation defense holding from the retrieved text. The case may not actually state a retaliation holding, or the CL document is incomplete.
+
+**Your task:** (a) Confirm whether Ellis v. Oceanhill Brownsville Tenant Ass'n (152 Misc. 2d 1007, 1991) is a valid NY retaliation defense case. (b) If so, state the controlling rule. (c) If not, dismiss and identify a better NY retaliation defense case. Note: NY has a statutory retaliation defense (RPL §223-b); the question is whether there is useful case law interpreting it.
+
+**Current file:** NY has no verified retaliation holding; this was a fresh CL search candidate.  
 **Resolution:** ________________  
 **Authoritative source:** ________________  
 **Resolved by:** ________________  **Date:** ________________
@@ -356,6 +398,32 @@ Note: This straggler was run three times. The reasoning pass (first run) was a f
 **Question:** Which Wyoming section is the specific timing bar against premature filing?  
 - GPT: Wyo. Stat. Ann. § 1-21-1004(a)  
 - Gemini: Wyo. Stat. Ann. § 1-21-1002(a)(i)  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-21] CT — failure_to_attach_lease_or_notice_to_complaint
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Run date:** 2026-06-26 (failure_to_attach re-run, post prompt+token fix)  
+**Question:** Which Connecticut provision governs attachment of the eviction notice/lease to the complaint — is it the general pleading statute or a court rule?  
+- GPT: Conn. Gen. Stat. § 47a-23a(a)  
+- Gemini: Connecticut Practice Book § 10-29  
+
+Both models agree Connecticut requires attachment; they disagree on whether the governing source is the eviction statute (§ 47a-23a(a)) or the general civil pleading rule (Practice Book § 10-29).  
+**Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+### [PROC-DEF-L7-22] FL — failure_to_attach_lease_or_notice_to_complaint
+
+**Classification:** L7-ESCALATED · **Status:** 🔴 pending  
+**Run date:** 2026-06-26 (failure_to_attach re-run, post prompt+token fix)  
+**Question:** Which Florida provision governs attachment of the eviction notice/lease to the complaint — the eviction procedure statute or the general rules of civil procedure?  
+- GPT: Fla. Stat. § 51.011(2)  
+- Gemini: Florida Rules of Civil Procedure 1.130(a)  
+
+Both models agree Florida requires attachment; they disagree on whether the governing source is the summary procedure statute (§ 51.011(2)) or the general pleading rule (FRCP 1.130(a)).  
 **Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
 
 ---

@@ -1,0 +1,118 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "20f722c8",
+  "pr_count": 11,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": [
+    {
+      "state": "NV",
+      "case_name": "Ryan v. Herzog.",
+      "citation_gpt": "418 P.3d 619",
+      "citation_gemini": "418 P.3d 619",
+      "year": 2018,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['418 P.3d 619']; model citations ['418 P.3d 619', '418 P.3d 619']; match=True",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NV",
+      "case_name": "Paullin v. Sutton",
+      "citation_gpt": "724 P.2d 749",
+      "citation_gemini": "724 P.2d 749",
+      "year": 1986,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['724 P.2d 749', '102 Nev. 421', '1986 Nev. LEXIS 1576']; model citations ['724 P.2d 749', '724 P.2d 749']; match=True",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NV",
+      "case_name": "Bigelow v. Bullard",
+      "citation_gpt": "901 P.2d 630",
+      "citation_gemini": "901 P.2d 630",
+      "year": 1995,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['901 P.2d 630', '111 Nev. 1178', '10 I.E.R. Cas. (BNA) 1635', '1995 Nev. LEXIS 120']; model citations ['901 P.2d 630', '901 P.2d 630']; match=True",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NV",
+      "case_name": "Kelly v. Denault",
+      "citation_gpt": "374 F. Supp. 3d 884",
+      "citation_gemini": "374 F. Supp. 3d 884",
+      "year": 2018,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['374 F. Supp. 3d 884']; model citations ['374 F. Supp. 3d 884', '374 F. Supp. 3d 884']; match=True",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NV",
+      "case_name": "Fernandes v. Singh",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2017,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NV",
+      "case_name": "Roces v. Reno Hous. Auth.",
+      "citation_gpt": "300 F. Supp. 3d 1172",
+      "citation_gemini": "300 F. Supp. 3d 1172",
+      "year": 2018,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['300 F. Supp. 3d 1172']; model citations ['300 F. Supp. 3d 1172', '300 F. Supp. 3d 1172']; match=True",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NY",
+      "case_name": "Matter of Clifton Park Apartments v. New York State Division of Human Rights",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NY",
+      "case_name": "Robinson v. City of New York",
+      "citation_gpt": "152 Misc. 2d 1007",
+      "citation_gemini": "152 Misc. 2d 1007",
+      "year": 1991,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['152 Misc. 2d 1007', '579 N.Y.S.2d 817', '1991 N.Y. Misc. LEXIS 761']; model citations ['152 Misc. 2d 1007', '152 Misc. 2d 1007']; match=True",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NY",
+      "case_name": "Fiondella v. 345 W. 70th Tenants Corp.",
+      "citation_gpt": "2023 NY Slip Op 03194",
+      "citation_gemini": "2023 NY Slip Op 03194",
+      "year": 2023,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['2023 NY Slip Op 03194']; model citations ['2023 NY Slip Op 03194', '2023 NY Slip Op 03194']; match=True",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "NY",
+      "case_name": "Nazor v. Sydney Sol Group, Ltd.",
+      "citation_gpt": "2025 NY Slip Op 03295",
+      "citation_gemini": "2025 NY Slip Op 03295",
+      "year": 2025,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['2025 NY Slip Op 03295']; model citations ['2025 NY Slip Op 03295', '2025 NY Slip Op 03295']; match=True",
+      "run_id": "20f722c8"
+    },
+    {
+      "state": "OK",
+      "case_name": "Schuminsky v. Field",
+      "citation_gpt": "606 P.2d 1133",
+      "citation_gemini": "606 P.2d 1133",
+      "year": 1980,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['606 P.2d 1133', '1980 OK 22', '1980 Okla. LEXIS 288']; model citations ['606 P.2d 1133', '606 P.2d 1133']; match=True",
+      "run_id": "20f722c8"
+    }
+  ]
+}

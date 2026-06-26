@@ -898,9 +898,9 @@
       "validation_flags": [
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_sm_statute": "735 ILCS 5/9-106 and 735 ILCS 5/2-606",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: 735 ILCS 5/9-106 and 735 ILCS 5/2-606. Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-25"
+      "l2_sm_statute": "735 ILCS 5/2-606",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: 735 ILCS 5/2-606. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-26"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -916,5 +916,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

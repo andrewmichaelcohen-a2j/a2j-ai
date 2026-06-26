@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** June 25, 2026 — late morning (Second morning report cycle. Both overnight jobs still in queue/. Python 3.9 dispatch.py fix confirmed present [GREEN, prior 08:00 cycle]. macOS TCC FDA grant still needed from Andy [RED-strategic, carried]. Direction B golden set survey pulled into NOW. No new validation data.) · **Next update:** after v3 Batch 3 + L2 procedural defects runs complete
+**Generated:** June 15, 2026 · **Last updated:** 2026-06-26 (Morning report. NC-17 fresh run completed 10:00 UTC — 2 RC, 11 PR, 37 permanent-failure. RC cases added to HUMAN_REVIEW_QUEUE. attach-retry-9 job queued for tonight. NEXT queue shallow — see WORK_QUEUE for proposed refill.) · **Next update:** after attach-retry-9 run completes
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -539,24 +539,13 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 - [x] **L2 expansion — service module complete (2026-06-19/20).** 51/51 states run. 16 round-1 confirmed, 32 AI-resolved, 2 L7 (DC, NM). See `VALIDATION_METRICS_LEDGER.md` for full breakdown.
 - [ ] **DC L7 attorney review (open — service module):** Persistent API failure (both GPT and Gemini, 3+ attempts). Zero model data. Service statute(s) for D.C. pay-or-quit notices require attorney verification.
 - [ ] **NM L7 attorney review (open — service module):** Persistent API failure (both GPT and Gemini, 3+ attempts). Zero model data. Service statute(s) for N.M. pay-or-quit notices require attorney verification.
-- ⚠️ **READY TO RUN — Holdings v3 (generate-from-source). Run from Terminal:**
-
-  ```bash
-  # Batch 1 — states from prior batch 1 run (d5444e58)
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
-  python3 rules/validation/l2/retaliation_holdings_v3_runner.py \
-    --states AZ,DC,IA,KY,MA,ME,MN,NE,NH,RI,WA,DE,AR,IN,MO,VA
-
-  # (wait ~30 min for CL quota recovery, then:)
-
-  # Batch 2 — remaining states
-  python3 rules/validation/l2/retaliation_holdings_v3_runner.py \
-    --states FL,GA,ID,IL,MD,MS,MT,NC,OH,OR,PA,SD,TN,TX,UT,WI,WY
-  ```
-
-  When each batch completes: **STOP — share the output filename with Cowork for ingestion.**
-  Do NOT run the next batch until Cowork confirms the previous output is ingested.
-  Output files will be in `rules/validation/l2/output/retaliation_holdings_v3_*`.
+- ✅ **Holdings v3 runs complete (Batches 1–3 + NC-17 fresh, as of 2026-06-26):**
+  - Batch 3 (7e6fcf6d, 2026-06-25): 18 states, 23 units. MV=4 (CA), CI=2 (CA), RC=0, PR=0, NC=17. Method rate: 4/6=66.7%.
+  - NC-17 fresh run (20f722c8, 2026-06-26): 17 NC states, 50 units. MV=0, CI=0, RC=2, PR=11, perm-fail=37. Method rate: 0/2=0%.
+  - RC cases → HUMAN_REVIEW_QUEUE [NV-RET-HOLD-RC-01], [NY-RET-HOLD-RC-02].
+  - ~15 NC states found zero CL candidates even with fresh=true. Andy's decision on how to proceed (see RED queue).
+  - PR cases (11 NV/NY/OK): CL returned wrong-doc results. Need better search queries. NOT attorney lane.
+  - CA (4 MV): S. P. Growers, Barela, Drouet, Aweeka — machine-verified, ingested to ca_eviction_v2.json.
 
 - ⚠️ **Task #52 — Commit pending (do this first, before running v3):**
   - Modified: `docs/PROJECT_STATE_OF_RECORD.md`, `docs/VALIDATION_METRICS_LEDGER.md`, `rules/eviction/california/ca_eviction_v2.json`, `rules/validation/l2/retaliation_holdings_v2_runner.py`
@@ -571,11 +560,12 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
   - NA: S.P. Growers (C=FLAG — CL returned caption-only for this cluster), Aweeka (C=FLAG — CL opinion text intermittent; MCP confirms verifiable; true rate 5/6 = 83%).
   - Ingested to `ca_eviction_v2.json` (validation_status: L2-HOLDINGS-V2-RUN-COMPLETE) and `VALIDATION_METRICS_LEDGER.md`.
   - **Next:** Commit (Task #52); re-run 33-state with fresh CL quota (tomorrow morning); build audit sampler.
-- [ ] **L2 expansion — procedural_defects module: runner ready, full run PENDING (2026-06-24).**
-  - Runner: `rules/validation/l2/l2_procedural_defects_runner.py` — 3 bug fixes applied, 30/30 regression tests pass.
-  - Smoke test run 3 ingested: 6 units (CA/TX/NY × summons + attach). CC=1, NSR=2, SM-GEMINI=1, MODEL-SPLIT=1 (CA/summons → L7), ERROR=1.
-  - Full 51-state × 4-defect job queued (`queue/job_l2_procedural_defects_20260624.json`). BLOCKED on launchd FDA fix (RED-strategic).
-  - dispatch.py extended for L2 module job type. Overnight infrastructure ready; fires at 2:15 AM once FDA issue resolved.
+- [x] **L2 expansion — procedural_defects module: COMPLETE for first full run (2026-06-25/26).**
+  - Full 51-state × 4-defect run complete (204 units). CI=4, CC=31, NSR=6, MODEL-SPLIT=20, SM=120, ERROR=23. α_method=0.256.
+  - 4 CONSENSUS-IMPROVE file updates applied (IA/NY/UT/WY summons). 20 MODEL-SPLIT → L7 [PROC-DEF-L7-01]–[PROC-DEF-L7-20].
+  - failure_to_attach re-run complete (2026-06-26): NSR 6→28, SM −64%, ERROR −61%, α_method=0.470. CA file updated. 2 new L7s [PROC-DEF-L7-21, L7-22].
+  - 9 network-timeout states (AL/IA/ME/MN/NH/NJ/NV/RI/VA) queued for retry tonight (`job_l2_attach_retry9_20260626.json`).
+  - launchd overnight runs confirmed live via dispatch proof 2026-06-25 22:39 PT. Blocker closed.
 - [ ] **L2 expansion — other modules (substantive_defenses, overlays):** not yet started. After procedural_defects pipeline proven at 51-state scale.
 - [ ] **MO L7 attorney review (open):** Is §535.020 demand-for-rent a notice requirement (notice_required=true) or only a precondition to filing (notice_required=false)? File's 10-day §535.060 claim appears wrong; exact characterization and operative statute need attorney confirmation. L2-PERIOD-DIVERGENCE-L7-ESCALATED flag written.
 - [ ] **ND L7 attorney review (open):** §47-32-02 — is the 3-day period a formal notice-to-quit requirement or a ripening period? GPT and Gemini split on same statute. L2-MODEL-SPLIT-L7 flag written.

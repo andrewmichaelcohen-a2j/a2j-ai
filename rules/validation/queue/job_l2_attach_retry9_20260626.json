@@ -1,0 +1,13 @@
+{
+  "job_id": "job_20260626_0215_l2_attach_retry9",
+  "job_type": "l2_module",
+  "runner": "rules/validation/l2/l2_procedural_defects_runner.py",
+  "states": "AL,IA,ME,MN,NH,NJ,NV,RI,VA",
+  "defects": "attach",
+  "sleep": 2,
+  "created": "2026-06-26T00:00:00Z",
+  "uses": ["openai", "gemini"],
+  "live_verified": true,
+  "live_verified_basis": "failure_to_attach runner live-verified 2026-06-26 (51-unit attach re-run). Prompt fix (explicit null/false instruction) and token fix (max_completion_tokens=8000) both confirmed effective. 9 residual ERRORs were GPT network timeouts, not token stalls. Simple retry expected to resolve most as NSR.",
+  "note": "Retry pass for 9 GPT-network-timeout states from failure_to_attach re-run: AL, IA, ME, MN, NH, NJ, NV, RI, VA. All 9 had GPT timeout errors (not token exhaustion). Same prompt + token fix applied. Expect most to return NSR (matching pattern of the 22 that converted in the 0830 re-run). ~5 min est."
+}

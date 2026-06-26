@@ -774,11 +774,12 @@
       "case_law": [],
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
-        "L2-PROCEDURAL-SM-GEMINI"
+        "L2-PROCEDURAL-SM-GEMINI",
+        "L2-PROCEDURAL-NO-SPECIFIC-RULE"
       ],
       "l2_sm_statute": "Neb. Rev. Stat. § 76-1441",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: Neb. Rev. Stat. § 76-1441. Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-25"
+      "l2_note": "Both models confirm no separate attachment statute — general pleading sufficiency applies.",
+      "l2_run_date": "2026-06-26"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -794,5 +795,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

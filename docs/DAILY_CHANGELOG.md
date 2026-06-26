@@ -4,6 +4,68 @@
 
 ---
 
+## 2026-06-26 (morning report — NC-17 fresh run ingested)
+
+### GREEN — Executed autonomously
+
+**Ingested NC-17 fresh run** (`rules/validation/l2/output/retaliation_holdings_v3_2026-06-26_20f722c8.json`, `SUMMARY_retaliation_holdings_v3_2026-06-26_1000.md`)
+
+Run completed 10:00 UTC via launchd. First attempt (05:17) failed with returncode=1 (sandbox path issue — not an issue on Andy's Mac). Retry succeeded, 241.6 min elapsed.
+
+50 units across 17 NC states (fresh=true CL search). Bucket: MV=0, CI=0, RC=2, PR=11, SM=0, perm-fail=37. Method rate: 0÷2=0%. Overall rate: 0÷50=0%. α_method=n/a (n=2, all RC, D_e=0).
+
+Actions taken:
+- **HUMAN_REVIEW_QUEUE**: [NV-RET-HOLD-RC-01] Wright v. Brady (NV) and [NY-RET-HOLD-RC-02] Ellis v. Oceanhill Brownsville Tenant Ass'n (NY) added. Anti-default rule satisfied for both (full generate+verify protocol with CL retrieval completed before routing).
+- **VALIDATION_METRICS_LEDGER**: NC-17 fresh run entry added to cross-batch table; detailed section added with bucket counts, rates, α, PR diagnosis, and perm-fail interpretation.
+- **PROJECT_STATE_OF_RECORD**: Holdings v3 status updated to reflect all runs complete; NC states status documented.
+- **WORK_QUEUE**: NC-17 ingest moved to Completed; attach-retry-9 promoted to NOW; NEXT queue refill proposed.
+- **attach-retry-9 job queued**: `rules/validation/queue/job_l2_attach_retry9_20260626.json` created for AL/IA/ME/MN/NH/NJ/NV/RI/VA (failure_to_attach defect only). Fires tonight at 2:15 AM.
+- **CLAUDE_CHAT_BRIEF.md**: Regenerated (see Step 3f).
+- **Job moved**: job_nc17_fresh_20260625.json already in done/ (moved by dispatcher).
+
+### YELLOW — None this cycle.
+
+### RED — Escalated (2 new, carried remainder)
+
+**RED-interpretive [NV-RET-HOLD-RC-01]**: Wright v. Brady (NV) — CL text retrieved, verify step disputed the holding. Attorney must confirm, characterize, or dismiss. Full automated attempt complete.
+
+**RED-interpretive [NY-RET-HOLD-RC-02]**: Ellis v. Oceanhill Brownsville Tenant Ass'n (NY) — CL text retrieved, generate step failed to extract a retaliation holding. Attorney must confirm case is a valid holding candidate or dismiss. Full automated attempt complete.
+
+**RED-strategic (carried)**: Direction B golden-set freeze. ~15 NC states with no CL candidates — Andy's decision on path forward.
+
+---
+
+## 2026-06-26 (early morning — failure_to_attach re-run ingested)
+
+### GREEN — Executed autonomously
+
+**Ingested failure_to_attach re-run** (`validation/l2/output/l2_procedural_defects_20260626_0830.json`)
+
+Run completed at 2:34 AM via launchd dispatcher. 51 units (51 states × failure_to_attach). Output ingested:
+
+Results: CI=0, CC=3, NSR=28, MODEL-SPLIT=2, SM=8 (SM-GEMINI=5, SM-GPT=3), ERROR=9. α_method=0.470.
+
+Before/after vs 204-unit run (failure_to_attach subset):
+
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| NSR | 6 | 28 | +22 ← prompt fix |
+| SM | 22 | 8 | −14 (64%) ← token fix |
+| ERROR | 23 | 9 | −14 (61%) ← both fixes |
+| Dual-model coverage | 2% | 65% | +63 pp |
+
+Both fixes validated. 9 residual ERRORs are network timeouts (not token stalls) — distinct issue, queued for retry pass.
+
+Actions taken:
+- **CA v2 file updated**: `failure_to_attach` statute corrected from `CCP §1161 et seq.` → `Cal. Code Civ. Proc. § 1166(d)(1)–(2)` (CONSENSUS-IMPROVE applied by runner)
+- **HUMAN_REVIEW_QUEUE**: [PROC-DEF-L7-21] CT and [PROC-DEF-L7-22] FL added (both MODEL-SPLIT on failure_to_attach — statute vs court rule as governing source)
+- **VALIDATION_METRICS_LEDGER**: New section added with before/after comparison, α computation, SM breakdown, root-cause analysis of 9 residual ERRORs
+- **Job moved**: `queue/job_l2_attach_rerun_20260625.json` → `done/`
+
+### RED — Carried (no change). NC-17 fresh run still executing (~55/120 cases at 2:35 AM, active CL 429 backoff).
+
+---
+
 ## 2026-06-25 (late night — SM diagnostic + launchd wrapper)
 
 ### GREEN — Executed autonomously

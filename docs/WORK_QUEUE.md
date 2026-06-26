@@ -2,17 +2,26 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-25 (late night — SM diagnostic complete; launchd wrapper updated; YELLOW fix proposed)
+**Last updated:** 2026-06-26 morning report (NC-17 fresh run ingested; attach-retry-9 queued for tonight; NEXT queue shallow — Andy review needed)
 
 ---
 
 ## NOW (executing)
 
-*Nothing active — overnight jobs queued for 2:15 AM.*
+**attach-retry-9** — queued for tonight (2026-06-27 at 2:15 AM). Job: `rules/validation/queue/job_l2_attach_retry9_20260626.json`. 9 states (AL/IA/ME/MN/NH/NJ/NV/RI/VA), failure_to_attach defect only. Expects most to return NSR (~5 min).
 
 ---
 
 ## Completed Today
+
+**NC-17 fresh run (20f722c8)** ✅ DONE — ingested 2026-06-26 morning report.
+- 50 units across 17 NC states (fresh=true CL search). MV=0, CI=0, RC=2, PR=11, perm-fail=37.
+- 2 RC cases → HUMAN_REVIEW_QUEUE [NV-RET-HOLD-RC-01, NY-RET-HOLD-RC-02].
+- 11 PR cases (NV/NY/OK): wrong-doc returns from CL. Need better search queries.
+- 37 perm-fail: no CL candidates found for remaining states.
+- First attempt failed 05:17 (sandbox path); retry succeeded 10:00 UTC (241.6 min).
+
+**failure_to_attach re-run** ✅ DONE — ingested 2026-06-26 early morning. NSR 6→28, SM 22→8, ERROR 23→9. Both fixes validated. 2 new L7s (CT, FL). CA file updated.
 
 **NC-17 retaliation holdings v3 (run 21c5b706)** ✅ DONE — ingested 2026-06-25 late evening
 - All 17 NC states → `__no_cases__` → permanent-failure. MV=CI=RC=PR=SM=0.
@@ -45,23 +54,14 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **Andy: ratify YELLOW — max_completion_tokens 2000 → 8000** — YELLOW gate
-   SM diagnostic confirmed: GPT-5.5 empty content on 119/120 SM cases = token-budget stall. Fix: raise `max_completion_tokens` to 8000 in `call_openai()` (`l2_runner.py` line 130). Expected: 70–90% SM reduction. Cowork will implement + run live sample (10 states × 1 defect, before/after measurement) once ratified.
+1. **Ingest attach-retry-9 results** (GREEN — when run completes tonight) — results in `validation/l2/output/`; update METRICS_LEDGER; update DAILY_CHANGELOG. Expect most of 9 states to return NSR.
 
-3. **NC-17 re-run with fresh=True fix** (GREEN — runs automatically via dispatcher tonight if launchd blocker closed)
-   Job queued: `queue/job_nc17_fresh_20260625.json`. Or run manually:
-   ```
-   cd ~/Documents/GitHub/a2j-ai && python3 rules/validation/run_protocol.py \
-     --protocol retaliation_holdings_v3 \
-     --states AK,AL,CO,CT,HI,KS,LA,MI,ND,NJ,NM,NV,NY,OK,SC,VT,WV \
-     --fresh --run-id nc17_fresh_v2
-   ```
+2. **Direction B attorney freeze** (RED gate — needs Andy) — 50 DRAFT candidates in `rules/validation/golden_sets/`. Only frozen items become ground truth.
 
-4. **Ingest failure_to_attach overnight re-run** (GREEN — auto when done)
-   Job queued: `queue/job_l2_attach_rerun_20260625.json`. Fires via dispatcher when launchd runs. Or manually: `python3 rules/validation/l2/l2_procedural_defects_runner.py --defects attach`.
-
-5. **Direction B attorney freeze** (RED gate — needs Andy)
-   50 DRAFT candidates in `rules/validation/golden_sets/`. Only frozen items become ground truth.
+⚠️ **NEXT queue is shallow (2 items, one blocked).** Proposed refill for Andy to approve:
+3. **Queue notice module re-run** (GREEN) — provenance gap; raw file never saved; attorney-confirmed items preserved. ~$1.10. One-liner: `python3 rules/validation/l2/l2_runner.py --states ALL`.
+4. **NV/NY PR-case follow-up** (YELLOW — strategy) — 11 PR cases need better CL queries; identify correct retaliation-defense opinions for NV and NY.
+5. **Attorney queue session** (RED-interpretive) — work 1–2 notice L7s (MO, ND, MD, GA) from HUMAN_REVIEW_QUEUE.
 
 ---
 

@@ -894,11 +894,12 @@
       "case_law": [],
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
-        "L2-PROCEDURAL-SM-GEMINI"
+        "L2-PROCEDURAL-SM-GEMINI",
+        "L2-PROCEDURAL-SM-GPT"
       ],
-      "l2_sm_statute": "ORS § 105.124",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: ORS § 105.124. Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-25"
+      "l2_sm_statute": "Or. Rev. Stat. § 105.124",
+      "l2_note": "Gemini returned no content; GPT single-model: Or. Rev. Stat. § 105.124. Preserved as SM — needs Gemini re-run or human confirm.",
+      "l2_run_date": "2026-06-26"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -914,5 +915,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

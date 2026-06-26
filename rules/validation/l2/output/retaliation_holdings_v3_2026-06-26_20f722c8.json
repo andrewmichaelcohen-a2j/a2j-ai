@@ -1,6 +1,25 @@
 {
-  "completed": {
-    "AK::__no_cases__": {
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "20f722c8",
+  "run_date": "2026-06-26",
+  "runner_version": "harness-v1",
+  "total_units": 52,
+  "method_rate": 0.0,
+  "overall_rate": 0.0,
+  "bucket_counts": {
+    "MV": 0,
+    "CI": 0,
+    "RC": 2,
+    "PR": 11,
+    "SM": 0
+  },
+  "text_retrievable_denominator": 2,
+  "machine_verified": 0,
+  "single_model_preliminary": 0,
+  "needs_attorney": 2,
+  "elapsed_secs": 14495,
+  "results": [
+    {
       "unit_id": "AK::__no_cases__",
       "state": "AK",
       "case_name": "__no_cases__",
@@ -13,7 +32,7 @@
         "verify_actually_answered": false
       }
     },
-    "AL::__no_cases__": {
+    {
       "unit_id": "AL::__no_cases__",
       "state": "AL",
       "case_name": "__no_cases__",
@@ -26,7 +45,7 @@
         "verify_actually_answered": false
       }
     },
-    "CO::__no_cases__": {
+    {
       "unit_id": "CO::__no_cases__",
       "state": "CO",
       "case_name": "__no_cases__",
@@ -39,7 +58,7 @@
         "verify_actually_answered": false
       }
     },
-    "CT::__no_cases__": {
+    {
       "unit_id": "CT::__no_cases__",
       "state": "CT",
       "case_name": "__no_cases__",
@@ -52,7 +71,7 @@
         "verify_actually_answered": false
       }
     },
-    "HI::__no_cases__": {
+    {
       "unit_id": "HI::__no_cases__",
       "state": "HI",
       "case_name": "__no_cases__",
@@ -65,7 +84,7 @@
         "verify_actually_answered": false
       }
     },
-    "KS::__no_cases__": {
+    {
       "unit_id": "KS::__no_cases__",
       "state": "KS",
       "case_name": "__no_cases__",
@@ -78,7 +97,7 @@
         "verify_actually_answered": false
       }
     },
-    "LA::__no_cases__": {
+    {
       "unit_id": "LA::__no_cases__",
       "state": "LA",
       "case_name": "__no_cases__",
@@ -91,7 +110,7 @@
         "verify_actually_answered": false
       }
     },
-    "MI::__no_cases__": {
+    {
       "unit_id": "MI::__no_cases__",
       "state": "MI",
       "case_name": "__no_cases__",
@@ -104,7 +123,7 @@
         "verify_actually_answered": false
       }
     },
-    "ND::__no_cases__": {
+    {
       "unit_id": "ND::__no_cases__",
       "state": "ND",
       "case_name": "__no_cases__",
@@ -117,7 +136,7 @@
         "verify_actually_answered": false
       }
     },
-    "NJ::__no_cases__": {
+    {
       "unit_id": "NJ::__no_cases__",
       "state": "NJ",
       "case_name": "__no_cases__",
@@ -130,7 +149,7 @@
         "verify_actually_answered": false
       }
     },
-    "NM::__no_cases__": {
+    {
       "unit_id": "NM::__no_cases__",
       "state": "NM",
       "case_name": "__no_cases__",
@@ -143,7 +162,7 @@
         "verify_actually_answered": false
       }
     },
-    "e1073d2f5914": {
+    {
       "unit_id": "e1073d2f5914",
       "state": "NV",
       "case_name": "Ryan v. Herzog.",
@@ -228,7 +247,7 @@
         "harness_version": "v1"
       }
     },
-    "9dbe5f9321df": {
+    {
       "unit_id": "9dbe5f9321df",
       "state": "NV",
       "case_name": "Paullin v. Sutton",
@@ -317,7 +336,7 @@
         "harness_version": "v1"
       }
     },
-    "9674afed7a64": {
+    {
       "unit_id": "9674afed7a64",
       "state": "NV",
       "case_name": "Bigelow v. Bullard",
@@ -408,7 +427,7 @@
         "harness_version": "v1"
       }
     },
-    "ee9ca0011924": {
+    {
       "unit_id": "ee9ca0011924",
       "state": "NV",
       "case_name": "Kelly v. Denault",
@@ -493,7 +512,7 @@
         "harness_version": "v1"
       }
     },
-    "be9c02fa255e": {
+    {
       "unit_id": "be9c02fa255e",
       "state": "NV",
       "case_name": "Fernandes v. Singh",
@@ -574,7 +593,7 @@
         "harness_version": "v1"
       }
     },
-    "d0fe17b3b8eb": {
+    {
       "unit_id": "d0fe17b3b8eb",
       "state": "NV",
       "case_name": "Roces v. Reno Hous. Auth.",
@@ -659,7 +678,7 @@
         "harness_version": "v1"
       }
     },
-    "fd0c6f2a451e": {
+    {
       "unit_id": "fd0c6f2a451e",
       "state": "NV",
       "case_name": "Wright v. Brady",
@@ -755,7 +774,7 @@
         "harness_version": "v1"
       }
     },
-    "2d5b433d68f7": {
+    {
       "unit_id": "2d5b433d68f7",
       "state": "NY",
       "case_name": "Matter of Clifton Park Apartments v. New York State Division of Human Rights",
@@ -836,7 +855,7 @@
         "harness_version": "v1"
       }
     },
-    "facf1376608c": {
+    {
       "unit_id": "facf1376608c",
       "state": "NY",
       "case_name": "Ellis v. Oceanhill Brownsville Tenant Ass'n",
@@ -921,7 +940,7 @@
         "harness_version": "v1"
       }
     },
-    "4791f3d35437": {
+    {
       "unit_id": "4791f3d35437",
       "state": "NY",
       "case_name": "Robinson v. City of New York",
@@ -1010,7 +1029,7 @@
         "harness_version": "v1"
       }
     },
-    "f9a57d109e93": {
+    {
       "unit_id": "f9a57d109e93",
       "state": "NY",
       "case_name": "Fiondella v. 345 W. 70th Tenants Corp.",
@@ -1095,7 +1114,7 @@
         "harness_version": "v1"
       }
     },
-    "401d52f11dd4": {
+    {
       "unit_id": "401d52f11dd4",
       "state": "NY",
       "case_name": "Nazor v. Sydney Sol Group, Ltd.",
@@ -1180,7 +1199,7 @@
         "harness_version": "v1"
       }
     },
-    "8778abdf7268": {
+    {
       "unit_id": "8778abdf7268",
       "state": "NY",
       "case_name": "New York Infirmary — Beekman Downtown Hospital v. Sarris",
@@ -1190,7 +1209,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6ca363b539e9": {
+    {
       "unit_id": "6ca363b539e9",
       "state": "NY",
       "case_name": "Housing Authority of New Orleans v. Eason",
@@ -1200,7 +1219,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "0b88f577ca11": {
+    {
       "unit_id": "0b88f577ca11",
       "state": "OK",
       "case_name": "Frederic Fezard v. United Cerebral Palsy etc.",
@@ -1210,7 +1229,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "524b12e47b45": {
+    {
       "unit_id": "524b12e47b45",
       "state": "OK",
       "case_name": "Sladek v. dePlomb",
@@ -1220,7 +1239,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "2352aa74b184": {
+    {
       "unit_id": "2352aa74b184",
       "state": "OK",
       "case_name": "Strauss v. City of Chi.",
@@ -1230,7 +1249,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "946bc75582e1": {
+    {
       "unit_id": "946bc75582e1",
       "state": "OK",
       "case_name": "Schuminsky v. Field",
@@ -1319,7 +1338,7 @@
         "harness_version": "v1"
       }
     },
-    "3eff052cea46": {
+    {
       "unit_id": "3eff052cea46",
       "state": "OK",
       "case_name": "Sternjohn v. Kreisler",
@@ -1329,7 +1348,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "e96da44a4e22": {
+    {
       "unit_id": "e96da44a4e22",
       "state": "OK",
       "case_name": "Ben-Davies & Moore v. Blibaum & Assoc.",
@@ -1339,7 +1358,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "ca787585642f": {
+    {
       "unit_id": "ca787585642f",
       "state": "OK",
       "case_name": "Kincaid v. Sturdevant",
@@ -1349,7 +1368,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "499eb36ca2f6": {
+    {
       "unit_id": "499eb36ca2f6",
       "state": "OK",
       "case_name": "Reproductive Rights Network v. President of the University of Massachusetts",
@@ -1359,7 +1378,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "7d36cbd3ea43": {
+    {
       "unit_id": "7d36cbd3ea43",
       "state": "SC",
       "case_name": "Skydive Myrtle Beach, Inc. v. Horry Cnty.",
@@ -1369,7 +1388,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "503a1d1b2ede": {
+    {
       "unit_id": "503a1d1b2ede",
       "state": "SC",
       "case_name": "Skydive v. Horry County",
@@ -1379,7 +1398,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "88565db1e592": {
+    {
       "unit_id": "88565db1e592",
       "state": "SC",
       "case_name": "Boston LLC v. Juarez",
@@ -1389,7 +1408,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "fe28c37cd0e1": {
+    {
       "unit_id": "fe28c37cd0e1",
       "state": "SC",
       "case_name": "Dockery v. Lampart Table Co.",
@@ -1399,7 +1418,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "09013d1207a0": {
+    {
       "unit_id": "09013d1207a0",
       "state": "SC",
       "case_name": "Cross v. Mokwa",
@@ -1409,7 +1428,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "b7939becb9bc": {
+    {
       "unit_id": "b7939becb9bc",
       "state": "SC",
       "case_name": "Trinity Cross v. Joseph J. Mokwa, etc",
@@ -1419,7 +1438,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "20f986ccf20d": {
+    {
       "unit_id": "20f986ccf20d",
       "state": "SC",
       "case_name": "Henry Knox Sherrill Corp. v. Randall",
@@ -1429,7 +1448,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "e933b2c650e6": {
+    {
       "unit_id": "e933b2c650e6",
       "state": "SC",
       "case_name": "Henry Knox Sherrill Corporation v. Randall",
@@ -1439,7 +1458,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "ede2447821e1": {
+    {
       "unit_id": "ede2447821e1",
       "state": "VT",
       "case_name": "trillium holdings v. buchanon",
@@ -1449,7 +1468,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6af2b0d9694f": {
+    {
       "unit_id": "6af2b0d9694f",
       "state": "VT",
       "case_name": "Stephens v. Gilmour",
@@ -1459,7 +1478,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "cf629da1f51b": {
+    {
       "unit_id": "cf629da1f51b",
       "state": "VT",
       "case_name": "Atwood v. Hill",
@@ -1469,7 +1488,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "2e513768cb20": {
+    {
       "unit_id": "2e513768cb20",
       "state": "VT",
       "case_name": "Trillium Holdings LLC v. Buchanan",
@@ -1479,7 +1498,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "166858513bf0": {
+    {
       "unit_id": "166858513bf0",
       "state": "VT",
       "case_name": "Houle v. Quenneville",
@@ -1489,7 +1508,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "d8238bb3295d": {
+    {
       "unit_id": "d8238bb3295d",
       "state": "VT",
       "case_name": "Lankin v. Stasik",
@@ -1499,7 +1518,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "c786b80299f5": {
+    {
       "unit_id": "c786b80299f5",
       "state": "VT",
       "case_name": "Vladyka v. Marsh",
@@ -1509,7 +1528,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "1265a070ba13": {
+    {
       "unit_id": "1265a070ba13",
       "state": "VT",
       "case_name": "Northgate Hous. Ltd. v. White",
@@ -1519,7 +1538,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "WV::__no_cases__": {
+    {
       "unit_id": "WV::__no_cases__",
       "state": "WV",
       "case_name": "__no_cases__",
@@ -1532,10 +1551,5 @@
         "verify_actually_answered": false
       }
     }
-  },
-  "meta": {
-    "protocol": "retaliation_holdings_v3",
-    "run_id": "20f722c8",
-    "total_units": 52
-  }
+  ]
 }

@@ -437,6 +437,41 @@ These are the highest-confidence candidate holdings — both models found the sa
 | Batch 2 (f7aec985) | 2026-06-23 | 17 states | — | — | — | — | — | — | Prior runner schema — bucket counts not in output |
 | Batch 3 (7e6fcf6d) | 2026-06-25 | 18 states | 23 | 4 | 2 | 0 | 0 | 17 | 66.7% |
 | NC-17 fresh attempt (21c5b706) | 2026-06-25 | 17 NC states | 17 | 0 | 0 | 0 | 0 | 17 | n/a — **`fresh=true` was a no-op** |
+| **NC-17 fresh run (20f722c8)** | **2026-06-26** | **17 NC states** | **50** | **0** | **0** | **2** | **11** | **37 perm-fail** | **n/a — see notes** |
+
+**NC-17 fresh run (20f722c8) — detail (2026-06-26):**
+
+*Run: job_nc17_fresh_20260625, dispatched via launchd 2:15 AM, completed 10:00 UTC. First attempt failed at 05:17 (returncode=1, sandbox path issue — does not occur on Andy's Mac). Successful run: 241.6 min, 50 units across 17 NC states using fresh=true CL search.*
+
+| Bucket | Count | Notes |
+|--------|-------|-------|
+| MV — machine-verified | 0 | |
+| CI — confirm-inference | 0 | |
+| RC — re-characterize | 2 | NV: Wright v. Brady (FLAG-verify-disputed); NY: Ellis v. Oceanhill Brownsville (FLAG-generate-failed) |
+| PR — pending-retrieval | 11 | 6 NV + 4 NY + 1 OK — CL returned docs flagged "not relevant to retaliation/likely wrong doc." Retrieval retry needed with better queries. NOT attorney lane. |
+| SM — single-model | 0 | |
+| Permanent-failure | 37 | States/cases where no candidates found even with CL search. Pipeline gap. NOT attorney lane. |
+
+**Rates:**
+- **Method rate:** MV ÷ (MV+CI+RC) = 0 ÷ 2 = **0%** (2 text-retrievable cases, both failed verification)
+- **Overall rate:** MV ÷ all = 0 ÷ 50 = **0%** (denominator includes 37 permanent-failures and 11 PR)
+- ⚠️ **Interpretation:** The 0% overall rate is dominated by pipeline gaps (permanent-failure/wrong-doc), not a finding that these states lack retaliation case law. Only 2 cases (NV, NY) reached text-retrieval; both failed verification and are now in attorney queue.
+
+**Krippendorff's α:**
+- Method α = **n/a** (n=2 text-retrievable, both RC; D_e=0 when all observations in one category — undefined, not computable)
+- Overall α = **n/a** (permanent-failure cases are pipeline gaps, not valid rating pairs; computing α over these would be misleading)
+
+**RC cases → HUMAN_REVIEW_QUEUE:**
+- [NV-RET-HOLD-RC-01] Wright v. Brady (NV): text retrieved, verify step disputed the holding. Full automated attempt complete.
+- [NY-RET-HOLD-RC-02] Ellis v. Oceanhill Brownsville Tenant Ass'n (NY): text retrieved, generate step failed to extract a retaliation holding. Full automated attempt complete.
+
+**PR cases (11) — pipeline diagnosis:**
+- All have pr_reason="case-not-relevant-to-retaliation-likely-wrong-doc"
+- CL search matched these cases by citation/name, but the returned opinion text did not contain retaliation defense content
+- These are NOT the wrong citations — they are cases where the CL document retrieved doesn't match expected content
+- Fix: better CL search queries targeted at retaliation defense holdings; or manual identification of better candidate cases for NV, NY, OK
+
+**Permanent-failure states (37 slots):** CourtListener search returned no candidates even with fresh=true. These states may lack appellate retaliation case law, or CL search queries need refinement. Andy's decision on how to proceed.
 
 **NC-17 run diagnosis (2026-06-25, run 21c5b706):** `fresh=true` flag in `run_protocol.py` only deletes the checkpoint — it does not change `load_draft_cases()` behavior. That function reads from the v1 draft file (`retaliation_holdings_l2_raw_*.json`), which has no cases for these 17 states. CourtListener search path was never implemented in `load_draft_cases()`. All 17 states returned `__no_cases__` in 0 seconds (no API call made). **GREEN bug:** implement CL search in `load_draft_cases()` when no candidates exist and `fresh=True` is passed. Until fixed, NC states require manual candidate identification.
 
@@ -490,6 +525,55 @@ These are the highest-confidence candidate holdings — both models found the sa
 **Automation ceiling for dual-model cases:** 41/61 = 67.2% (models agree when both engage). 32.8% genuine legal splits among dual-model cases — higher than service (4%) or notice (~20%), reflecting that procedural defect rules are more contested/heterogeneous across states.
 
 **Errors caught:** None identified in this run — the 4 CONSENSUS-IMPROVE outcomes are statute improvements (more specific citations), not corrections of wrong law. The 20 MODEL-SPLIT items require attorney determination before any file changes.
+
+---
+
+#### Module: Procedural Defects — failure_to_attach re-run (prompt fix + token fix validation)
+
+*Run from Andy's Terminal, 2026-06-26 at 2:34 AM. 51 states × 1 defect = 51 units. Runner: `rules/validation/l2/l2_procedural_defects_runner.py --defects attach`. Output: `validation/l2/output/l2_procedural_defects_20260626_0830.json`. Ingested: 2026-06-26 (Cowork GREEN ingestion).*
+
+**Purpose:** Validate two fixes simultaneously: (1) prompt fix — explicit null/false instruction added to failure_to_attach query; (2) token fix — `max_completion_tokens` raised from 2000 → 8000 (YELLOW ratified by Andy 2026-06-25).
+
+| Run | Date | Models | Units | CI | CC | NSR | MODEL-SPLIT | SM | ERROR | α_method |
+|-----|------|--------|-------|----|----|-----|-------------|----|-------|----------|
+| failure_to_attach re-run | 2026-06-26 | gpt-5.5 + gemini-2.5-pro | 51 | 0 | 3 | 28 | 2 | 8 | 9 | **0.470** |
+
+**α computation (method — SM+ERROR = missing data):**
+- Dual-model cases: CC=3 + NSR=28 + MODEL-SPLIT=2 = 33
+- D_o = 2/33 = 0.061; D_e = 2×(31/33)×(2/33) = 0.115
+- **α_method = 1 − (0.061/0.115) = 0.470** (vs 0.256 for full 4-defect run)
+- Higher α reflects: this defect has cleaner agreement — most states have no specific attachment statute, models agree when both engage
+
+**Before / after comparison (failure_to_attach only — 51 units):**
+
+| Metric | Before (204-unit run) | After (this run) | Change |
+|--------|----------------------|-------------------|--------|
+| NSR | 6 | 28 | **+22** ← prompt fix worked |
+| CC | 0 | 3 | +3 |
+| CI | 0 | 0 | — |
+| MODEL-SPLIT | 0 | 2 | +2 (now GPT engages → new genuine splits surfaced) |
+| SM total | 22 (21 SM-GEM + 1 SM-GPT) | 8 (5 SM-GEM + 3 SM-GPT) | **−14 (64%)** ← token fix |
+| ERROR | 23 (both empty) | 9 (all GPT timeout) | **−14 (61%)** ← both fixes |
+| Dual-model coverage | 1/51 = 2% | 33/51 = 65% | **+63 pp** |
+
+**Root cause of remaining 9 ERRORs:** All 9 are GPT network timeouts (`"Request timed out."`) — not token-budget stalls. The 8000-token fix resolved token exhaustion (−14 SM); the residual ERRORs (AL, IA, ME, MN, NH, NJ, NV, RI, VA) are network-layer failures, not a content issue. These 9 states will need a targeted retry pass. Hypothesis: most will return NSR (same pattern as the 22 that converted this run).
+
+**SM breakdown (8 remaining):**
+- SM-GEMINI (5): AR, AZ, DC, IL, IN — GPT timed out; Gemini found specific statute
+- SM-GPT (3): NM, OR, VT — Gemini returned empty; GPT found specific statute
+- All 8 have `l2_sm_statute` set; flagged for re-run to confirm or split
+
+**CONSENSUS-IMPROVE (1 — auto-applied):**
+
+| State / Defect | Old statute | New statute |
+|----------------|-------------|------------|
+| CA / failure_to_attach | CCP §1161 et seq. (pleading requirements) | Cal. Code Civ. Proc. § 1166(d)(1)–(2) |
+
+**MODEL-SPLIT (2) → HUMAN_REVIEW_QUEUE [PROC-DEF-L7-21]–[PROC-DEF-L7-22]:**
+- CT: GPT=Conn. Gen. Stat. § 47a-23a(a) vs Gemini=Connecticut Practice Book § 10-29
+- FL: GPT=Fla. Stat. § 51.011(2) vs Gemini=Florida Rules of Civil Procedure 1.130(a)
+
+**Fix validation summary:** Both fixes confirmed effective. Prompt fix: 23 ERROR → 9 (most converted to NSR, confirming hypothesis that states lack specific attachment rule). Token fix: SM reduced 64%, dual-model coverage jumped from 2% to 65% for this defect. The 9 remaining ERRORs are a distinct infrastructure issue (network timeouts, not token exhaustion) and do not undermine the fix validation.
 
 ---
 
