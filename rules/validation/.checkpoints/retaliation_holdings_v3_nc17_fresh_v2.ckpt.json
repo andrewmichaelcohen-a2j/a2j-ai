@@ -1316,6 +1316,993 @@
       "provenance": {
         "harness_exhausted_retries": true
       }
+    },
+    "f897f995cb52": {
+      "unit_id": "f897f995cb52",
+      "state": "CO",
+      "case_name": "W.W.G. Corp. v. Hughes",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for CO / W.W.G. Corp. v. Hughes: CL quota/network error on Check A for W.W.G. Corp. v. Hughes: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "947e837b62ab": {
+      "unit_id": "947e837b62ab",
+      "state": "CO",
+      "case_name": "Brown v. Hill",
+      "citation_gpt": "174 F. Supp. 3d 66",
+      "citation_gemini": "174 F. Supp. 3d 66",
+      "year": 2016,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Brown v. Hill",
+          "date": "2017-02-16",
+          "court": "Court of Appeals for the D.C. Circuit",
+          "citation": [
+            "686 F. App'x 6"
+          ],
+          "cluster_id": 8699297
+        },
+        "cl_cluster_id": 8699297,
+        "cl_opinion_id": 8682432,
+        "cl_url": "https://www.courtlistener.com/opinion/8699297/brown-v-hill/",
+        "cl_citation": "686 F. App'x 6",
+        "citation_match": false,
+        "exists": "FLAG-citation-mismatch",
+        "basis": "CL citations [\"686 F. App'x 6\"]; model citations ['174 F. Supp. 3d 66', '174 F. Supp. 3d 66']; match=False",
+        "cl_snippets": "[lead-opinion] \nJUDGMENT\nPer Curiam\nThis appeal was considered on the record from the United States District Court for the District of Columbia and on the briefs and appendices filed by the parties. See Fed. R. App. P. 34(a)(2); D.C. Cir. Rule 34(j). Upon consideration of the foregoing and the motion for appointment of counsel, it is\nORDERED that the motion for appointment of counsel be denied. It is</",
+        "cl_all_citations": [
+          "686 F. App'x 6"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-generate-failed",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        },
+        "verify_output": null,
+        "queue_routing": "RC",
+        "pr_reason": null,
+        "basis": "Gemini generate failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: citation-mismatch. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "citation-mismatch",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/8682432 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "60723364cb1d": {
+      "unit_id": "60723364cb1d",
+      "state": "CO",
+      "case_name": "Sladek v. dePlomb",
+      "citation_gpt": "981 F. Supp. 1364",
+      "citation_gemini": "981 F. Supp. 1364",
+      "year": 1997,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Sladek v. dePlomb",
+          "date": "1997-11-07",
+          "court": "District Court, D. Colorado",
+          "citation": [
+            "981 F. Supp. 1364",
+            "1997 WL 726438"
+          ],
+          "cluster_id": 8752428
+        },
+        "cl_cluster_id": 8752428,
+        "cl_opinion_id": 8735699,
+        "cl_url": "https://www.courtlistener.com/opinion/8752428/sladek-v-deplomb/",
+        "cl_citation": "981 F. Supp. 1364",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['981 F. Supp. 1364', '1997 WL 726438']; model citations ['981 F. Supp. 1364', '981 F. Supp. 1364']; match=True",
+        "cl_snippets": "[lead-opinion] \nORDER ON RECOMMENDATION OF MAGISTRATE JUDGE\nMILLER, District Judge.\nThis matter is before me on the Plaintiffs’ objections to the recommendation of United States Magistrate Judge Patricia A. Coan, filed August 29, 1997, that this action be stayed and that Defendants’ Motion to Dismiss and Plaintiffs’ Motion to Amend Complaint be held in abeyance pending entry of a final judgment in El Paso County Distr",
+        "cl_all_citations": [
+          "981 F. Supp. 1364",
+          "1997 WL 726438"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-generate-failed",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        },
+        "verify_output": null,
+        "queue_routing": "RC",
+        "pr_reason": null,
+        "basis": "Gemini generate failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "needs-attorney",
+      "disposition_note": "RC: text retrieved, holding failed verification. Flagged: C=FLAG-generate-failed, D=FLAG. Source-generated holding → attorney.",
+      "bucket": "RC",
+      "pr_reason": null,
+      "controlling_quote": null,
+      "queue_routing": "RC",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/8735699 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "f53ca1e65d5e": {
+      "unit_id": "f53ca1e65d5e",
+      "state": "CO",
+      "case_name": "Lincoln Place Tenants Ass'n v. City of Los Angeles",
+      "citation_gpt": "66 Cal. Rptr. 3d 120",
+      "citation_gemini": "66 Cal. Rptr. 3d 120",
+      "year": 2007,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Lincoln Place Tenants Ass'n v. City of Los Angeles",
+          "date": "2007-10-10",
+          "court": "California Court of Appeal",
+          "citation": [
+            "66 Cal. Rptr. 3d 120",
+            "155 Cal. App. 4th 425"
+          ],
+          "cluster_id": 2294826
+        },
+        "cl_cluster_id": 2294826,
+        "cl_opinion_id": 2294826,
+        "cl_url": "https://www.courtlistener.com/opinion/2294826/lincoln-place-tenants-assn-v-city-of-los-angeles/",
+        "cl_citation": "66 Cal. Rptr. 3d 120",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['66 Cal. Rptr. 3d 120', '155 Cal. App. 4th 425']; model citations ['66 Cal. Rptr. 3d 120', '66 Cal. Rptr. 3d 120']; match=True",
+        "cl_snippets": "[combined-opinion] \n66 Cal.Rptr.3d 120 (2007)\n155 Cal.App.4th 425\nLINCOLN PLACE TENANTS ASSOCIATION et al., Plaintiffs and Appellants,\nv.\nCITY OF LOS ANGELES et al., Defendants and Respondents.\nNo. B193235.\nCourt of Appeal of California, Second District, Division Seven.\nSeptember 19, 2007.\nAs Modified on Denial of Rehearing October 10, 2007.\n",
+        "cl_all_citations": [
+          "66 Cal. Rptr. 3d 120",
+          "155 Cal. App. 4th 425"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 17,
+        "basis": "No negative treatment in 17 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The case concerns a dispute over whether a real estate developer is required to obtain a permit from the California Coastal Commission before demolishing apartment buildings, in addition to the demolition permits already issued by the City of Los Angeles.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The case concerns a dispute over whether a real estate developer is required to obtain a permit from"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "602b2e32278c": {
+      "unit_id": "602b2e32278c",
+      "state": "CO",
+      "case_name": "K&D Mgt., L.L.C. v. Masten",
+      "citation_gpt": "2013 Ohio 2905",
+      "citation_gemini": "2013 Ohio 2905",
+      "year": 2013,
+      "prior_holding": "",
+      "source_generated_holding": "The trial court held that the retaliatory conduct of a landlord may not be raised as a defense in a forcible entry and detainer proceeding when the tenant is holding over their term. The tenant appealed this ruling, arguing that this rule should not apply when the alleged retaliation is for activities protected under federal and state Fair Housing Acts, specifically the nonrenewal of the lease. The appellate court agreed with the tenant and sustained her assignments of error, thereby reversing the trial court's decision.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "K&D Mgt., L.L.C. v. Masten",
+          "date": "2013-07-03",
+          "court": "Ohio Court of Appeals",
+          "citation": [
+            "2013 Ohio 2905"
+          ],
+          "cluster_id": 2702484
+        },
+        "cl_cluster_id": 2702484,
+        "cl_opinion_id": 2702484,
+        "cl_url": "https://www.courtlistener.com/opinion/2702484/kd-mgt-llc-v-masten/",
+        "cl_citation": "2013 Ohio 2905",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['2013 Ohio 2905']; model citations ['2013 Ohio 2905', '2013 Ohio 2905']; match=True",
+        "cl_snippets": "[combined-opinion] [Cite as K&D Mgt., L.L.C. v. Masten, 2013-Ohio-2905.]\n\n\n                Court of Appeals of Ohio\n                              EIGHTH APPELLATE DISTRICT\n                                 COUNTY OF CUYAHOGA\n\n\n                             JOURNAL ENTRY AND OPINION\n                                      No. 98894\n\n\n\n\n                         K&D MANAGEMENT, L.L.C.\n                                                         PLAINTIFF-APPELLEE\n\n                                                   vs.\n\n     ",
+        "cl_all_citations": [
+          "2013 Ohio 2905"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The trial court held that the retaliatory conduct of a landlord may not be raised as a defense in a forcible entry and detainer proceeding when the tenant is holding over their term. The tenant appealed this ruling, arguing that this rule should not apply when the alleged retaliation is for activities protected under federal and state Fair Housing Acts, specifically the nonrenewal of the lease. The appellate court agreed with the tenant and sustained her assignments of error, thereby reversing the trial court's decision.",
+        "controlling_quote": "The Eighth District Court of Appeals has held that retaliatory conduct of the landlord may not be raised as a defense in a forcible entry and detainer proceeding when the tenant is holding over his term.",
+        "quote_verified_verbatim": true,
+        "draft_agreement": "agree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The trial court held that the retaliatory conduct of a landlord may not be raised as a defense in a forcible entry and detainer proceeding when the tenant is holding over their term. The tenant appealed this ruling, arguing that this rule should not apply when the alleged retaliation is for activities protected under federal and state Fair Housing Acts, specifically the nonrenewal of the lease. The appellate court agreed with the tenant and sustained her assignments of error, thereby reversing the trial court's decision.",
+          "candidate_quote": "The Eighth District Court of Appeals has held that retaliatory conduct of the landlord may not be raised as a defense in a forcible entry and detainer proceeding when the tenant is holding over his term.",
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "accurate",
+          "verification_note": "The characterization accurately reflects the case text. The trial court ruled that retaliatory conduct cannot be used as a defense in a forcible entry and detainer proceeding when the tenant is holding over their term. The tenant argued against this application in light of the Fair Housing Acts, and the appellate court agreed, reversing the trial court's decision.",
+          "quote_is_verbatim": true,
+          "quote_is_on_point": true,
+          "alternative_quote": null,
+          "draft_agreement": "agree",
+          "draft_agreement_note": "The characterization and the available text agree that the appellate court reversed the trial court's decision, taking into account the victim's arguments about the Fair Housing Acts."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The trial court held that the retaliatory conduct of a landlord may not be raise'. gpt:gpt-4o verified as 'accurate'. Draft agreement: agree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "STATED",
+        "controlling_quote": "The Eighth District Court of Appeals has held that retaliatory conduct of the landlord may not be raised as a defense in a forcible entry and detainer proceeding when the tenant is holding over his term.",
+        "quote_agreement": true,
+        "basis": "Gemini found verbatim quote; GPT confirmed verbatim and on-point"
+      },
+      "disposition": "machine-verified",
+      "disposition_note": "MV: A=true B=OK-machine C=corroborated D=STATED. Below attorney line.",
+      "bucket": "MV",
+      "pr_reason": null,
+      "controlling_quote": "The Eighth District Court of Appeals has held that retaliatory conduct of the landlord may not be raised as a defense in a forcible entry and detainer proceeding when the tenant is holding over his term.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/2702484 full text",
+        "draft_agreement": "agree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "731cd068e524": {
+      "unit_id": "731cd068e524",
+      "state": "CO",
+      "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
+      "citation_gpt": "522 P.3d 1085",
+      "citation_gemini": "522 P.3d 1085",
+      "year": 2023,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
+          "date": "2023-01-13",
+          "court": "Alaska Supreme Court",
+          "citation": [
+            "522 P.3d 1085"
+          ],
+          "cluster_id": 9367604
+        },
+        "cl_cluster_id": 9367604,
+        "cl_opinion_id": 9363080,
+        "cl_url": "https://www.courtlistener.com/opinion/9367604/tammie-guilford-v-weidner-investment-services-inc-weidner-investment/",
+        "cl_citation": "522 P.3d 1085",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['522 P.3d 1085']; model citations ['522 P.3d 1085', '522 P.3d 1085']; match=True",
+        "cl_snippets": "[combined-opinion]        Notice: This opinion is subject to correction before publication in the PACIFIC REPORTER.\n       Readers are requested to bring errors to the attention of the Clerk of the Appellate Courts,\n       303 K Street, Anchorage, Alaska 99501, phone (907) 264-0608, fax (907) 264-0878, email\n       corrections@akcourts.gov.\n\n\n\n                THE SUPREME COURT OF THE STATE OF ALASKA\n\nTAMMIE GUILFORD,                                     )\n                                                     )   Sup",
+        "cl_all_citations": [
+          "522 P.3d 1085"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The provided text is only the caption and notice for a case from the Supreme Court of the State of Alaska and does not contain any substantive legal discussion.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The provided text is only the caption and notice for a case from the Supreme Court of the State of A"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "030c9a436be9": {
+      "unit_id": "030c9a436be9",
+      "state": "CT",
+      "case_name": "TOV Realty, LLC v. Suarez",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2026,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "TOV Realty, LLC v. Suarez",
+          "date": "2026-06-09",
+          "court": "Supreme Court of Connecticut",
+          "citation": [],
+          "cluster_id": 10870531
+        },
+        "cl_cluster_id": 10870531,
+        "cl_opinion_id": 11337989,
+        "cl_url": "https://www.courtlistener.com/opinion/10870531/tov-realty-llc-v-suarez/",
+        "cl_citation": null,
+        "citation_match": null,
+        "exists": "true",
+        "basis": "Found by name; no CL citation to check",
+        "cl_snippets": "[lead-opinion] ************************************************\n   The “officially released” date that appears near the\nbeginning of an opinion is the date the opinion will be\npublished in the Connecticut Law Journal or the date it\nis released as a slip opinion. The operative date for the\nbeginning of all time periods for the filing of postopinion\nmotions and petitions for certification is the “officially\nreleased” date appearing in the opinion.\n   All opinions are subject to modification and technical\ncorrect",
+        "cl_all_citations": []
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-generate-failed",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        },
+        "verify_output": null,
+        "queue_routing": "RC",
+        "pr_reason": null,
+        "basis": "Gemini generate failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "needs-attorney",
+      "disposition_note": "RC: text retrieved, holding failed verification. Flagged: C=FLAG-generate-failed, D=FLAG. Source-generated holding → attorney.",
+      "bucket": "RC",
+      "pr_reason": null,
+      "controlling_quote": null,
+      "queue_routing": "RC",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "7a80117f7702": {
+      "unit_id": "7a80117f7702",
+      "state": "CT",
+      "case_name": "Black Rock Gardens, LLC v. Berry",
+      "citation_gpt": "224 Conn. App. 379",
+      "citation_gemini": "224 Conn. App. 379",
+      "year": 2024,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Black Rock Gardens, LLC v. Berry",
+          "date": "2024-03-26",
+          "court": "Connecticut Appellate Court",
+          "citation": [
+            "224 Conn. App. 379"
+          ],
+          "cluster_id": 9487360
+        },
+        "cl_cluster_id": 9487360,
+        "cl_opinion_id": 9953973,
+        "cl_url": "https://www.courtlistener.com/opinion/9487360/black-rock-gardens-llc-v-berry/",
+        "cl_citation": "224 Conn. App. 379",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['224 Conn. App. 379']; model citations ['224 Conn. App. 379', '224 Conn. App. 379']; match=True",
+        "cl_snippets": "[combined-opinion] ***********************************************\n    The “officially released” date that appears near the be-\nginning of each opinion is the date the opinion will be pub-\nlished in the Connecticut Law Journal or the date it was\nreleased as a slip opinion. The operative date for the be-\nginning of all time periods for filing postopinion motions\nand petitions for certification is the “officially released”\ndate appearing in the opinion.\n\n   All opinions are subject to modification and technical\ncorr",
+        "cl_all_citations": [
+          "224 Conn. App. 379"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The provided text is a standard notice explaining the meaning of an opinion's \"officially released\" date and its importance for calculating deadlines for postopinion motions and petitions.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The provided text is a standard notice explaining the meaning of an opinion's \"officially released\" "
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "c98aaa688e64": {
+      "unit_id": "c98aaa688e64",
+      "state": "CT",
+      "case_name": "Colchester Estate Ventures, LLC v. Madden",
+      "citation_gpt": "229 Conn. App. 811",
+      "citation_gemini": "229 Conn. App. 811",
+      "year": 2024,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Colchester Estate Ventures, LLC v. Madden",
+          "date": "2024-12-24",
+          "court": "Connecticut Appellate Court",
+          "citation": [
+            "229 Conn. App. 811"
+          ],
+          "cluster_id": 10303097
+        },
+        "cl_cluster_id": 10303097,
+        "cl_opinion_id": 10769685,
+        "cl_url": "https://www.courtlistener.com/opinion/10303097/colchester-estate-ventures-llc-v-madden/",
+        "cl_citation": "229 Conn. App. 811",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['229 Conn. App. 811']; model citations ['229 Conn. App. 811', '229 Conn. App. 811']; match=True",
+        "cl_snippets": "[combined-opinion] ************************************************\n   The “officially released” date that appears near the\nbeginning of an opinion is the date the opinion will be\npublished in the Connecticut Law Journal or the date it\nis released as a slip opinion. The operative date for the\nbeginning of all time periods for the filing of postopin-\nion motions and petitions for certification is the “offi-\ncially released” date appearing in the opinion.\n   All opinions are subject to modification and technical\ncor",
+        "cl_all_citations": [
+          "229 Conn. App. 811"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion explains the significance of the \"officially released\" date on court documents, which determines the start of time periods for filing post-opinion motions and petitions.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion explains the significance of the \"officially released\" date on court documents, which de"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "5dc227c5b325": {
+      "unit_id": "5dc227c5b325",
+      "state": "CT",
+      "case_name": "Holdmeyer v. Thomas",
+      "citation_gpt": "144 A.3d 1052",
+      "citation_gemini": "144 A.3d 1052",
+      "year": 2016,
+      "prior_holding": "",
+      "source_generated_holding": "The case holds that once a tenant establishes a prima facie case of retaliatory eviction under General Statutes § 47a-20, the landlord can only rebut the resulting presumption by proving one of the four exclusive statutory grounds listed in General Statutes § 47a-20a. Other reasons for the eviction, such as being 'discouraged about the tenant’s performance,' are inadequate to rebut the presumption.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Holdmeyer v. Thomas",
+          "date": "2016-08-09",
+          "court": "Connecticut Appellate Court",
+          "citation": [
+            "144 A.3d 1052",
+            "167 Conn. App. 544",
+            "2016 Conn. App. LEXIS 319"
+          ],
+          "cluster_id": 4243414
+        },
+        "cl_cluster_id": 4243414,
+        "cl_opinion_id": 4020675,
+        "cl_url": "https://www.courtlistener.com/opinion/4243414/holdmeyer-v-thomas/",
+        "cl_citation": "144 A.3d 1052",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['144 A.3d 1052', '167 Conn. App. 544', '2016 Conn. App. LEXIS 319']; model citations ['144 A.3d 1052', '144 A.3d 1052']; match=True",
+        "cl_snippets": "[combined-opinion] \n\n\n  BEACH, J.\n \n\n  The defendant tenant, Val Thomas, appeals from the trial court's judgment of possession in favor of the plaintiff landlord, Leroy Holdmeyer, in a summary process action. The defendant claims that the plaintiff did not meet his burden of rebutting the presumption of retaliatory eviction because he did not prove any of the four statutory exceptions enumerated\n   in General Statu",
+        "cl_all_citations": [
+          "144 A.3d 1052",
+          "167 Conn. App. 544",
+          "2016 Conn. App. LEXIS 319"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The case holds that once a tenant establishes a prima facie case of retaliatory eviction under General Statutes § 47a-20, the landlord can only rebut the resulting presumption by proving one of the four exclusive statutory grounds listed in General Statutes § 47a-20a. Other reasons for the eviction, such as being 'discouraged about the tenant’s performance,' are inadequate to rebut the presumption.",
+        "controlling_quote": "Once the defendant establishes a prima facie case under § 47a-20, ‘the plaintiff [is] limited to rebutting the presumption using one of the four enumerated grounds in § 47a-20a.’ Correa v. Ward, 91 Conn. App. 142, 148, 881 A.2d 393 (2005).",
+        "quote_verified_verbatim": true,
+        "draft_agreement": "agree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The case holds that once a tenant establishes a prima facie case of retaliatory eviction under General Statutes § 47a-20, the landlord can only rebut the resulting presumption by proving one of the four exclusive statutory grounds listed in General Statutes § 47a-20a. Other reasons for the eviction, such as being 'discouraged about the tenant’s performance,' are inadequate to rebut the presumption.",
+          "candidate_quote": "Once the defendant establishes a prima facie case under § 47a-20, ‘the plaintiff [is] limited to rebutting the presumption using one of the four enumerated grounds in § 47a-20a.’ Correa v. Ward, 91 Conn. App. 142, 148, 881 A.2d 393 (2005).",
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "accurate",
+          "verification_note": "The case text clearly states that once a prima facie case of retaliatory eviction is established under § 47a-20, the plaintiff (landlord) is limited to rebutting the presumption using one of the four enumerated grounds in § 47a-20a. It also explicitly notes that other reasons for eviction, such as being 'discouraged about the tenant’s performance,' do not suffice.",
+          "quote_is_verbatim": true,
+          "quote_is_on_point": true,
+          "alternative_quote": null,
+          "draft_agreement": "agree",
+          "draft_agreement_note": "The characterization fully aligns with the legal holding of the case regarding the requirement to rebut a presumption of retaliatory eviction using specified statutory grounds."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The case holds that once a tenant establishes a prima facie case of retaliatory '. gpt:gpt-4o verified as 'accurate'. Draft agreement: agree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "STATED",
+        "controlling_quote": "Once the defendant establishes a prima facie case under § 47a-20, ‘the plaintiff [is] limited to rebutting the presumption using one of the four enumerated grounds in § 47a-20a.’ Correa v. Ward, 91 Conn. App. 142, 148, 881 A.2d 393 (2005).",
+        "quote_agreement": true,
+        "basis": "Gemini found verbatim quote; GPT confirmed verbatim and on-point"
+      },
+      "disposition": "machine-verified",
+      "disposition_note": "MV: A=true B=OK-machine C=corroborated D=STATED. Below attorney line.",
+      "bucket": "MV",
+      "pr_reason": null,
+      "controlling_quote": "Once the defendant establishes a prima facie case under § 47a-20, ‘the plaintiff [is] limited to rebutting the presumption using one of the four enumerated grounds in § 47a-20a.’ Correa v. Ward, 91 Conn. App. 142, 148, 881 A.2d 393 (2005).",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/4020675 full text",
+        "draft_agreement": "agree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "8e9a5d87a83c": {
+      "unit_id": "8e9a5d87a83c",
+      "state": "CT",
+      "case_name": "Rahman v. Lewis",
+      "citation_gpt": "2024 NY Slip Op 24211",
+      "citation_gemini": "2024 NY Slip Op 24211",
+      "year": 2024,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Rahman v. Lewis",
+          "date": "2024-07-24",
+          "court": "Civil Court Of The City Of New York, Bronx County",
+          "citation": [
+            "2024 NY Slip Op 24211"
+          ],
+          "cluster_id": 10027846
+        },
+        "cl_cluster_id": 10027846,
+        "cl_opinion_id": 10494447,
+        "cl_url": "https://www.courtlistener.com/opinion/10027846/rahman-v-lewis/",
+        "cl_citation": "2024 NY Slip Op 24211",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['2024 NY Slip Op 24211']; model citations ['2024 NY Slip Op 24211', '2024 NY Slip Op 24211']; match=True",
+        "cl_snippets": "[combined-opinion] \n\nRahman v Lewis (2024 NY Slip Op 24211)\n\n\n\n\n[*1]\n\n\nRahman v Lewis\n\n\n2024 NY Slip Op 24211\n\n\nDecided on July 24, 2024\n\n\nCivil Court Of The City Of New York, Bronx County\n\n\nTovar, J.\n\n\nPublished by New York State Law Reporti",
+        "cl_all_citations": [
+          "2024 NY Slip Op 24211"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The provided text is only the case caption and introductory information, which is insufficient to determine the legal issues or holding of the opinion.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The provided text is only the case caption and introductory information, which is insufficient to de"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "59878532fadf": {
+      "unit_id": "59878532fadf",
+      "state": "CT",
+      "case_name": "Renaissance Management Co. v. Barnes",
+      "citation_gpt": "168 A.3d 530",
+      "citation_gemini": "168 A.3d 530",
+      "year": 2017,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Renaissance Management Co. v. Barnes",
+          "date": "2017-08-22",
+          "court": "Connecticut Appellate Court",
+          "citation": [
+            "168 A.3d 530",
+            "175 Conn. App. 681",
+            "2017 WL 3585190",
+            "2017 Conn. App. LEXIS 341"
+          ],
+          "cluster_id": 4420206
+        },
+        "cl_cluster_id": 4420206,
+        "cl_opinion_id": 4197459,
+        "cl_url": "https://www.courtlistener.com/opinion/4420206/renaissance-management-co-v-barnes/",
+        "cl_citation": "168 A.3d 530",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['168 A.3d 530', '175 Conn. App. 681', '2017 WL 3585190', '2017 Conn. App. LEXIS 341']; model citations ['168 A.3d 530', '168 A.3d 530']; match=True",
+        "cl_snippets": "[combined-opinion] \n\n\n  BEAR, J.\n \n\n  In this summary process action for possession of an apartment in New Haven, the plaintiff, Renaissance Management Co., Inc., appeals from the summary judgment of the trial court rendered in favor of the defendant Andre Barnes.\n  \n   1\n  \n  The court granted the defendant's motion for summary judgment on the grou",
+        "cl_all_citations": [
+          "168 A.3d 530",
+          "175 Conn. App. 681",
+          "2017 WL 3585190",
+          "2017 Conn. App. LEXIS 341"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The case is a summary process action where the plaintiff landlord appeals a summary judgment rendered in favor of the defendant tenant.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The case is a summary process action where the plaintiff landlord appeals a summary judgment rendere"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "70a0d13d6da9": {
+      "unit_id": "70a0d13d6da9",
+      "state": "CT",
+      "case_name": "Connecticut Mobile Home Assn., Inc. v. Jensen's, Inc.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for CT / Connecticut Mobile Home Assn., Inc. v. Jensen's, Inc.: CL quota/network error on Check A for Connecticut Mobile Home Assn., Inc. v. Jensen's, Inc.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "4f5b28596fbc": {
+      "unit_id": "4f5b28596fbc",
+      "state": "CT",
+      "case_name": "Dorsey v. Vernon Village, Inc.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for CT / Dorsey v. Vernon Village, Inc.: CL quota/network error on Check A for Dorsey v. Vernon Village, Inc.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "a29047ffb665": {
+      "unit_id": "a29047ffb665",
+      "state": "HI",
+      "case_name": "Glauberman v. Gonsalves",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for HI / Glauberman v. Gonsalves: CL quota/network error on Check A for Glauberman v. Gonsalves: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
     }
   },
   "meta": {

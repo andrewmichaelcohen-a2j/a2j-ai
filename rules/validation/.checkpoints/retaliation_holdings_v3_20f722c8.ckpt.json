@@ -1,0 +1,1219 @@
+{
+  "completed": {
+    "AK::__no_cases__": {
+      "unit_id": "AK::__no_cases__",
+      "state": "AK",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "AL::__no_cases__": {
+      "unit_id": "AL::__no_cases__",
+      "state": "AL",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "CO::__no_cases__": {
+      "unit_id": "CO::__no_cases__",
+      "state": "CO",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "CT::__no_cases__": {
+      "unit_id": "CT::__no_cases__",
+      "state": "CT",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "HI::__no_cases__": {
+      "unit_id": "HI::__no_cases__",
+      "state": "HI",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "KS::__no_cases__": {
+      "unit_id": "KS::__no_cases__",
+      "state": "KS",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "LA::__no_cases__": {
+      "unit_id": "LA::__no_cases__",
+      "state": "LA",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "MI::__no_cases__": {
+      "unit_id": "MI::__no_cases__",
+      "state": "MI",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "ND::__no_cases__": {
+      "unit_id": "ND::__no_cases__",
+      "state": "ND",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "NJ::__no_cases__": {
+      "unit_id": "NJ::__no_cases__",
+      "state": "NJ",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "NM::__no_cases__": {
+      "unit_id": "NM::__no_cases__",
+      "state": "NM",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "e1073d2f5914": {
+      "unit_id": "e1073d2f5914",
+      "state": "NV",
+      "case_name": "Ryan v. Herzog.",
+      "citation_gpt": "418 P.3d 619",
+      "citation_gemini": "418 P.3d 619",
+      "year": 2018,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Ryan v. Herzog.",
+          "date": "2018-05-09",
+          "court": "Hawaii Supreme Court",
+          "citation": [
+            "418 P.3d 619"
+          ],
+          "cluster_id": 4496627
+        },
+        "cl_cluster_id": 4496627,
+        "cl_opinion_id": 4273880,
+        "cl_url": "https://www.courtlistener.com/opinion/4496627/ryan-v-herzog/",
+        "cl_citation": "418 P.3d 619",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['418 P.3d 619']; model citations ['418 P.3d 619', '418 P.3d 619']; match=True",
+        "cl_snippets": "[combined-opinion] \n\n\n  RECKTENWALD, C.J., NAKAYAMA, McKENNA, POLLACK, AND WILSON, JJ.\n \n\n  OPINION OF THE COURT BY WILSON, J.\n \n\n  This case concerns a long-running landlord-tenant dispute involving the eviction of a tenant from a landlord's condominium. The district court issued a writ of possession to the landlord in 2008, which was then executed against the tenant. Having been evicted, the tenan",
+        "cl_all_citations": [
+          "418 P.3d 619"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The case concerns a landlord-tenant dispute involving the execution of a writ of possession to evict a tenant from a condominium.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The case concerns a landlord-tenant dispute involving the execution of a writ of possession to evict"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "9dbe5f9321df": {
+      "unit_id": "9dbe5f9321df",
+      "state": "NV",
+      "case_name": "Paullin v. Sutton",
+      "citation_gpt": "724 P.2d 749",
+      "citation_gemini": "724 P.2d 749",
+      "year": 1986,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Paullin v. Sutton",
+          "date": "1986-09-10",
+          "court": "Nevada Supreme Court",
+          "citation": [
+            "724 P.2d 749",
+            "102 Nev. 421",
+            "1986 Nev. LEXIS 1576"
+          ],
+          "cluster_id": 1211378
+        },
+        "cl_cluster_id": 1211378,
+        "cl_opinion_id": null,
+        "cl_url": "https://www.courtlistener.com/opinion/1211378/paullin-v-sutton/",
+        "cl_citation": "724 P.2d 749",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['724 P.2d 749', '102 Nev. 421', '1986 Nev. LEXIS 1576']; model citations ['724 P.2d 749', '724 P.2d 749']; match=True",
+        "cl_snippets": "[combined-opinion] \n724 P.2d 749 (1986)\nRobert PAULLIN and S & D Management, Inc., Appellants,\nv.\nBarbara SUTTON, Respondent.\nNo. 16598.\nSupreme Court of Nevada.\nSeptember 10, 1986.\nJ. Bruce Alverson and Bryce A. Dixon, Las Vegas, Hyman, Gurwin, Nachman, Friedman & Winkelman and Richard D. Bisio, Southfield, Mich., for appellants.\nVannah, Roark & Madson, Las Vegas, f",
+        "cl_all_citations": [
+          "724 P.2d 749",
+          "102 Nev. 421",
+          "1986 Nev. LEXIS 1576"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 9,
+        "basis": "No negative treatment in 9 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "This case concerns whether a real estate broker is entitled to a commission when a potential buyer they procured ultimately purchases the property from a successor-in-interest after the original listing agreement has expired.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: This case concerns whether a real estate broker is entitled to a commission when a potential buyer t"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "9674afed7a64": {
+      "unit_id": "9674afed7a64",
+      "state": "NV",
+      "case_name": "Bigelow v. Bullard",
+      "citation_gpt": "901 P.2d 630",
+      "citation_gemini": "901 P.2d 630",
+      "year": 1995,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Bigelow v. Bullard",
+          "date": "1995-08-24",
+          "court": "Nevada Supreme Court",
+          "citation": [
+            "901 P.2d 630",
+            "111 Nev. 1178",
+            "10 I.E.R. Cas. (BNA) 1635",
+            "1995 Nev. LEXIS 120"
+          ],
+          "cluster_id": 1255406
+        },
+        "cl_cluster_id": 1255406,
+        "cl_opinion_id": 9585838,
+        "cl_url": "https://www.courtlistener.com/opinion/1255406/bigelow-v-bullard/",
+        "cl_citation": "901 P.2d 630",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['901 P.2d 630', '111 Nev. 1178', '10 I.E.R. Cas. (BNA) 1635', '1995 Nev. LEXIS 120']; model citations ['901 P.2d 630', '901 P.2d 630']; match=True",
+        "cl_snippets": "[in-part-opinion] \nShearing, J.,\nwith whom Rose, J., agrees,\ndissenting in part and concurring in part:\nI agree with the majority of this court in affirming the amended judgment entered pursuant to jury verdict awarding damages to Susan Vaughn, Michael Anthony Bullard and Ricky Wayne Hammer. However, I disagree that the compensatory and punitive damage awards for tortious | [lead-opinion] \n*1180OPINION\nBy the Court,\nSpringer, J.:\nIn this appeal we are called upon to resolve three separate issues. The first issue is whether respondents Michael Bullard and Ricky Hammer, employees of appellant-defendant Bigelow Holding Company have made out a prima facie case for tortious discharge.1  | [combined-opinion] \n901 P.2d 630 (1995)\nRobert T. BIGELOW; Diane Bigelow; Bigelow Holding Company; Rick Clouse, Jr.; William T. Millhouse; Arden James (A.J.) Dallman; Donna Dallman, Appellants,\nv.\nMichael Anthony BULLARD; Ricky Wayne Hammer; Susan L. Vaughn and Dana Bouchard, Respondents.\nNo. 24024.\nSupreme Court of Nevada.\nAugust 24, 1995.\n*631 Jim",
+        "cl_all_citations": [
+          "901 P.2d 630",
+          "111 Nev. 1178",
+          "10 I.E.R. Cas. (BNA) 1635",
+          "1995 Nev. LEXIS 120"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses whether employees have made a prima facie case for tortious discharge and also concerns damage awards for tortious conduct.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses whether employees have made a prima facie case for tortious discharge and also"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "ee9ca0011924": {
+      "unit_id": "ee9ca0011924",
+      "state": "NV",
+      "case_name": "Kelly v. Denault",
+      "citation_gpt": "374 F. Supp. 3d 884",
+      "citation_gemini": "374 F. Supp. 3d 884",
+      "year": 2018,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Kelly v. Denault",
+          "date": "2018-12-20",
+          "court": "District Court, N.D. California",
+          "citation": [
+            "374 F. Supp. 3d 884"
+          ],
+          "cluster_id": 7335432
+        },
+        "cl_cluster_id": 7335432,
+        "cl_opinion_id": 7253352,
+        "cl_url": "https://www.courtlistener.com/opinion/7335432/kelly-v-denault/",
+        "cl_citation": "374 F. Supp. 3d 884",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['374 F. Supp. 3d 884']; model citations ['374 F. Supp. 3d 884', '374 F. Supp. 3d 884']; match=True",
+        "cl_snippets": "[lead-opinion] \nSUSAN VAN KEULEN, United States Magistrate Judge\nI. INTRODUCTION\nOn May 29, 2018, Plaintiffs Kristi Kelley and Chad Loya (collectively, \"Plaintiffs\"), individually and on behalf of the United States filed a complaint to redress violations of the Federal False Claims Act. ECF 1 (\"Complaint\"). Plaintiffs rented a residential unit from Defendants Roger Denault and the Denault Family Limited Partnershi",
+        "cl_all_citations": [
+          "374 F. Supp. 3d 884"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses a landlord's motion to dismiss tenants' affirmative claims, which include allegations of retaliation, violations of the Federal False Claims Act, and intentional misrepresentation regarding the property's legality and habitability.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses a landlord's motion to dismiss tenants' affirmative claims, which include alle"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/7253352 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "be9c02fa255e": {
+      "unit_id": "be9c02fa255e",
+      "state": "NV",
+      "case_name": "Fernandes v. Singh",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2017,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Fernandes v. Singh",
+          "date": "2017-11-02",
+          "court": "California Court of Appeal",
+          "citation": [],
+          "cluster_id": 4440239
+        },
+        "cl_cluster_id": 4440239,
+        "cl_opinion_id": 4217492,
+        "cl_url": "https://www.courtlistener.com/opinion/4440239/fernandes-v-singh/",
+        "cl_citation": null,
+        "citation_match": null,
+        "exists": "true",
+        "basis": "Found by name; no CL citation to check",
+        "cl_snippets": "[combined-opinion] Filed 10/5/17; Modified and Certified for Pub. 11/2/17 (order attached)\n\n\n\n\n             IN THE COURT OF APPEAL OF THE STATE OF CALIFORNIA\n                                    THIRD APPELLATE DISTRICT\n                                                 (Sacramento)\n                                                        ----\n\n\n\n\nTAMMY FERNANDES,                                                                 C080264\n\n                 Plaintiff and Respondent,                                (Super. C",
+        "cl_all_citations": []
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses an appeal of a judgment where a tenant affirmatively sued her landlord for damages based on claims including wrongful eviction and retaliatory conduct.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses an appeal of a judgment where a tenant affirmatively sued her landlord for dam"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/4217492 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "d0fe17b3b8eb": {
+      "unit_id": "d0fe17b3b8eb",
+      "state": "NV",
+      "case_name": "Roces v. Reno Hous. Auth.",
+      "citation_gpt": "300 F. Supp. 3d 1172",
+      "citation_gemini": "300 F. Supp. 3d 1172",
+      "year": 2018,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Roces v. Reno Hous. Auth.",
+          "date": "2018-03-27",
+          "court": "District Court, D. Nevada",
+          "citation": [
+            "300 F. Supp. 3d 1172"
+          ],
+          "cluster_id": 7329359
+        },
+        "cl_cluster_id": 7329359,
+        "cl_opinion_id": 7247275,
+        "cl_url": "https://www.courtlistener.com/opinion/7329359/roces-v-reno-hous-auth/",
+        "cl_citation": "300 F. Supp. 3d 1172",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['300 F. Supp. 3d 1172']; model citations ['300 F. Supp. 3d 1172', '300 F. Supp. 3d 1172']; match=True",
+        "cl_snippets": "[lead-opinion] \nROBERT C. JONES, United States District Judge\nThis is a consolidated employment action, primarily for the collection of unpaid wages under the Fair Labor Standards Act (\"FLSA\") and Nevada law. Now pending before the Court are competing motions for summary judgment. (Pls.' Mot. Summ. J., ECF No. 81; Def.'s Mot. Summ. J., ECF No. 82.)\nI. FACTS AND PROCEDURAL HISTORY\nDefendant Reno Hou",
+        "cl_all_citations": [
+          "300 F. Supp. 3d 1172"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The case is an employment action concerning the collection of unpaid wages under the Fair Labor Standards Act (\"FLSA\") and Nevada law.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The case is an employment action concerning the collection of unpaid wages under the Fair Labor Stan"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "fd0c6f2a451e": {
+      "unit_id": "fd0c6f2a451e",
+      "state": "NV",
+      "case_name": "Wright v. Brady",
+      "citation_gpt": "889 P.2d 105",
+      "citation_gemini": "889 P.2d 105",
+      "year": 1995,
+      "prior_holding": "",
+      "source_generated_holding": "The court holds that a tenant raising a retaliatory eviction defense must show that the landlord's primary motivation for the eviction was retaliation for the tenant's complaint. The court found substantial evidence to support the lower court's finding that the eviction was not retaliatory, but was instead motivated by the tenants' failure to pay rent and other breaches of the lease.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Wright v. Brady",
+          "date": "1995-02-02",
+          "court": "Idaho Court of Appeals",
+          "citation": [
+            "889 P.2d 105",
+            "126 Idaho 671",
+            "1995 Ida. App. LEXIS 11"
+          ],
+          "cluster_id": 1436434
+        },
+        "cl_cluster_id": 1436434,
+        "cl_opinion_id": 1436434,
+        "cl_url": "https://www.courtlistener.com/opinion/1436434/wright-v-brady/",
+        "cl_citation": "889 P.2d 105",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['889 P.2d 105', '126 Idaho 671', '1995 Ida. App. LEXIS 11']; model citations ['889 P.2d 105', '889 P.2d 105']; match=True",
+        "cl_snippets": "[combined-opinion] \n889 P.2d 105 (1995)\n126 Idaho 671\nDonald WRIGHT and Aloma Wright, husband and wife, Plaintiffs-Respondents,\nv.\nJames BRADY and Rebecca Brady, husband and wife, Defendants-Appellants.\nNo. 21086.\nCourt of Appeals of Idaho.\nFebruary 2, 1995.\nIdaho Legal Aid Services, Inc., Idaho Falls, for appellants.\nAnderson, Nelson & Hall, Idaho Fa",
+        "cl_all_citations": [
+          "889 P.2d 105",
+          "126 Idaho 671",
+          "1995 Ida. App. LEXIS 11"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "FLAG-verify-disputed",
+        "source_generated_holding": "The court holds that a tenant raising a retaliatory eviction defense must show that the landlord's primary motivation for the eviction was retaliation for the tenant's complaint. The court found substantial evidence to support the lower court's finding that the eviction was not retaliatory, but was instead motivated by the tenants' failure to pay rent and other breaches of the lease.",
+        "controlling_quote": null,
+        "quote_verified_verbatim": false,
+        "draft_agreement": "disagree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The court holds that a tenant raising a retaliatory eviction defense must show that the landlord's primary motivation for the eviction was retaliation for the tenant's complaint. The court found substantial evidence to support the lower court's finding that the eviction was not retaliatory, but was instead motivated by the tenants' failure to pay rent and other breaches of the lease.",
+          "candidate_quote": "To prevail on the affirmative defense of retaliatory eviction, the tenant must prove that the landlord's primary motivation in evicting the tenant was retaliation for the tenant's complaints to a governmental authority regarding housing code violations.",
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "inaccurate",
+          "verification_note": "The case text provided does not contain any specific information about a retaliatory eviction defense or evidence regarding the motivations for eviction. The characterization seems based on legal principles not present in the given excerpt.",
+          "quote_is_verbatim": false,
+          "quote_is_on_point": false,
+          "alternative_quote": null,
+          "draft_agreement": "disagree",
+          "draft_agreement_note": "The prior draft holding is unavailable and thus does not provide any legal proposition that can be assessed for agreement with the characterization. Without additional text, it's impossible to establish congruence or conflict with the characterization."
+        },
+        "queue_routing": "RC",
+        "basis": "gpt:gpt-4o found characterization 'inaccurate'. Note: The case text provided does not contain any specific information about a retaliatory eviction defens"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "needs-attorney",
+      "disposition_note": "RC: text retrieved, holding failed verification. Flagged: C=FLAG-verify-disputed, D=FLAG. Source-generated holding → attorney.",
+      "bucket": "RC",
+      "pr_reason": null,
+      "controlling_quote": null,
+      "queue_routing": "RC",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": "disagree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "2d5b433d68f7": {
+      "unit_id": "2d5b433d68f7",
+      "state": "NY",
+      "case_name": "Matter of Clifton Park Apartments v. New York State Division of Human Rights",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Matter of Clifton Park Apartments v. New York State Division of Human Rights",
+          "date": "2024-02-15",
+          "court": "New York Court of Appeals",
+          "citation": [],
+          "cluster_id": 9475203
+        },
+        "cl_cluster_id": 9475203,
+        "cl_opinion_id": 9940734,
+        "cl_url": "https://www.courtlistener.com/opinion/9475203/matter-of-clifton-park-apartments-v-new-york-state-division-of-human/",
+        "cl_citation": null,
+        "citation_match": null,
+        "exists": "true",
+        "basis": "Found by name; no CL citation to check",
+        "cl_snippets": "[combined-opinion] State of New York                                                         OPINION\nCourt of Appeals                                           This opinion is uncorrected and subject to revision\n                                                             before publication in the New York Reports.\n\n\n\n\n No. 2\n In the Matter of Clifton Park\n Apartments, LLC, &c., et al.,\n          Respondents,\n       v.\n New York State Division of Human\n Rights,\n          Appellant,\n et al.,\n          Respondents.\n",
+        "cl_all_citations": []
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 4,
+        "basis": "No negative treatment in 4 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses whether a housing provider's letter threatening litigation against an organization that filed a discrimination complaint can constitute an illegal retaliatory adverse action under the New York State Human Rights Law.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses whether a housing provider's letter threatening litigation against an organiza"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/9940734 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "facf1376608c": {
+      "unit_id": "facf1376608c",
+      "state": "NY",
+      "case_name": "Ellis v. Oceanhill Brownsville Tenant Ass'n",
+      "citation_gpt": "263 A.D.2d 496",
+      "citation_gemini": "263 A.D.2d 496",
+      "year": 1999,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Ellis v. Oceanhill Brownsville Tenant Ass'n",
+          "date": "1999-07-19",
+          "court": "Appellate Division of the Supreme Court of the State of New York",
+          "citation": [
+            "263 A.D.2d 496",
+            "691 N.Y.S.2d 926",
+            "1999 N.Y. App. Div. LEXIS 8120"
+          ],
+          "cluster_id": 6173534
+        },
+        "cl_cluster_id": 6173534,
+        "cl_opinion_id": 6039433,
+        "cl_url": "https://www.courtlistener.com/opinion/6173534/ellis-v-oceanhill-brownsville-tenant-assn/",
+        "cl_citation": "263 A.D.2d 496",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['263 A.D.2d 496', '691 N.Y.S.2d 926', '1999 N.Y. App. Div. LEXIS 8120']; model citations ['263 A.D.2d 496', '263 A.D.2d 496']; match=True",
+        "cl_snippets": "[lead-opinion] \n—In an action, inter alia, to permanently enjoin, the defendants from evicting the plaintiff tenants, the plaintiffs appeal, as limited by their brief, from so much of an order of the Supreme Court, Kings County (Kramer, J.), dated May 8, 1998, as directed them to deposit rent arrears into court.\nOrdered that the order is affirmed insofar as appealed from, with costs.\nContrary to the defendants’ contention, the",
+        "cl_all_citations": [
+          "263 A.D.2d 496",
+          "691 N.Y.S.2d 926",
+          "1999 N.Y. App. Div. LEXIS 8120"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 1,
+        "basis": "No negative treatment in 1 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-generate-failed",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        },
+        "verify_output": null,
+        "queue_routing": "RC",
+        "pr_reason": null,
+        "basis": "Gemini generate failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "needs-attorney",
+      "disposition_note": "RC: text retrieved, holding failed verification. Flagged: C=FLAG-generate-failed, D=FLAG. Source-generated holding → attorney.",
+      "bucket": "RC",
+      "pr_reason": null,
+      "controlling_quote": null,
+      "queue_routing": "RC",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "4791f3d35437": {
+      "unit_id": "4791f3d35437",
+      "state": "NY",
+      "case_name": "Robinson v. City of New York",
+      "citation_gpt": "152 Misc. 2d 1007",
+      "citation_gemini": "152 Misc. 2d 1007",
+      "year": 1991,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Robinson v. City of New York",
+          "date": "1991-09-27",
+          "court": "New York Supreme Court",
+          "citation": [
+            "152 Misc. 2d 1007",
+            "579 N.Y.S.2d 817",
+            "1991 N.Y. Misc. LEXIS 761"
+          ],
+          "cluster_id": 6340767
+        },
+        "cl_cluster_id": 6340767,
+        "cl_opinion_id": 6209370,
+        "cl_url": "https://www.courtlistener.com/opinion/6340767/robinson-v-city-of-new-york/",
+        "cl_citation": "152 Misc. 2d 1007",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['152 Misc. 2d 1007', '579 N.Y.S.2d 817', '1991 N.Y. Misc. LEXIS 761']; model citations ['152 Misc. 2d 1007', '152 Misc. 2d 1007']; match=True",
+        "cl_snippets": "[lead-opinion] \nOPINION OF THE COURT\nAlice Schlesinger, J.\nCynthia Robinson, petitioner, has been a tenant at 10 *1008Waterside Plaza since 1982. Since that time she has occupied a studio apartment on the nineteenth floor. On January 25, 1990, Ms. Robinson became the owner of a tiny Maltese dog. In October of 1990, because of a complaint from a neighbor about ",
+        "cl_all_citations": [
+          "152 Misc. 2d 1007",
+          "579 N.Y.S.2d 817",
+          "1991 N.Y. Misc. LEXIS 761"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion is about a tenant, Cynthia Robinson, who owned a small dog, which led to a complaint from a neighbor.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion is about a tenant, Cynthia Robinson, who owned a small dog, which led to a complaint fro"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "f9a57d109e93": {
+      "unit_id": "f9a57d109e93",
+      "state": "NY",
+      "case_name": "Fiondella v. 345 W. 70th Tenants Corp.",
+      "citation_gpt": "2023 NY Slip Op 03194",
+      "citation_gemini": "2023 NY Slip Op 03194",
+      "year": 2023,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Fiondella v. 345 W. 70th Tenants Corp.",
+          "date": "2023-06-13",
+          "court": "Appellate Division of the Supreme Court of the State of New York",
+          "citation": [
+            "2023 NY Slip Op 03194"
+          ],
+          "cluster_id": 9406797
+        },
+        "cl_cluster_id": 9406797,
+        "cl_opinion_id": 9402273,
+        "cl_url": "https://www.courtlistener.com/opinion/9406797/fiondella-v-345-w-70th-tenants-corp/",
+        "cl_citation": "2023 NY Slip Op 03194",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['2023 NY Slip Op 03194']; model citations ['2023 NY Slip Op 03194', '2023 NY Slip Op 03194']; match=True",
+        "cl_snippets": "[combined-opinion] \n\nFiondella v 345 W. 70th Tenants Corp. (2023 NY Slip Op 03194)\n\n\n\n\n\nFiondella v 345 W. 70th Tenants Corp.\n\n\n2023 NY Slip Op 03194\n\n\nDecided on June 13, 2023\n\n\nAppellate Division, First Department\n\n\n\nPublished by New York State Law Reporting Bureau pursuan",
+        "cl_all_citations": [
+          "2023 NY Slip Op 03194"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The provided text only contains the case caption and publication information and lacks any substantive legal discussion.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The provided text only contains the case caption and publication information and lacks any substanti"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "401d52f11dd4": {
+      "unit_id": "401d52f11dd4",
+      "state": "NY",
+      "case_name": "Nazor v. Sydney Sol Group, Ltd.",
+      "citation_gpt": "2025 NY Slip Op 03295",
+      "citation_gemini": "2025 NY Slip Op 03295",
+      "year": 2025,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Nazor v. Sydney Sol Group, Ltd.",
+          "date": "2025-06-03",
+          "court": "Appellate Division of the Supreme Court of the State of New York",
+          "citation": [
+            "2025 NY Slip Op 03295"
+          ],
+          "cluster_id": 10597508
+        },
+        "cl_cluster_id": 10597508,
+        "cl_opinion_id": 11064096,
+        "cl_url": "https://www.courtlistener.com/opinion/10597508/nazor-v-sydney-sol-group-ltd/",
+        "cl_citation": "2025 NY Slip Op 03295",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['2025 NY Slip Op 03295']; model citations ['2025 NY Slip Op 03295', '2025 NY Slip Op 03295']; match=True",
+        "cl_snippets": "[combined-opinion] \n\nNazor v Sydney Sol Group, Ltd. (2025 NY Slip Op 03295)\n\n\n\n\n\nNazor v Sydney Sol Group, Ltd.\n\n\n2025 NY Slip Op 03295\n\n\nDecided on June 03, 2025\n\n\nAppellate Division, First Department\n\n\n\nPublished by New York State Law Reporting Bureau pursuant to Judiciary",
+        "cl_all_citations": [
+          "2025 NY Slip Op 03295"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-26. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-26"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The provided text is only a case caption and publication notice and does not contain any substantive legal discussion or facts.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The provided text is only a case caption and publication notice and does not contain any substantive"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "8778abdf7268": {
+      "unit_id": "8778abdf7268",
+      "state": "NY",
+      "case_name": "New York Infirmary — Beekman Downtown Hospital v. Sarris",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / New York Infirmary — Beekman Downtown Hospital v. Sarris: CL quota/network error on Check A for New York Infirmary — Beekman Downtown Hospital v. Sarris: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "6ca363b539e9": {
+      "unit_id": "6ca363b539e9",
+      "state": "NY",
+      "case_name": "Housing Authority of New Orleans v. Eason",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for NY / Housing Authority of New Orleans v. Eason: CL quota/network error on Check A for Housing Authority of New Orleans v. Eason: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "0b88f577ca11": {
+      "unit_id": "0b88f577ca11",
+      "state": "OK",
+      "case_name": "Frederic Fezard v. United Cerebral Palsy etc.",
+      "disposition": "transient-failure",
+      "disposition_note": "All 4 attempts failed for OK / Frederic Fezard v. United Cerebral Palsy etc.: CL quota/network error on Check A for Frederic Fezard v. United Cerebral Palsy etc.: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    }
+  },
+  "meta": {
+    "protocol": "retaliation_holdings_v3",
+    "run_id": "20f722c8",
+    "total_units": 52
+  }
+}

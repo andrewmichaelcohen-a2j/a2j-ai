@@ -833,11 +833,12 @@
       "case_law": [],
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
-        "L2-PROCEDURAL-SM-GEMINI"
+        "L2-PROCEDURAL-SM-GEMINI",
+        "L2-PROCEDURAL-SPLIT-L7"
       ],
       "l2_sm_statute": "Fla. R. Civ. P. 1.130(a)",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: Fla. R. Civ. P. 1.130(a). Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-25"
+      "l2_note": "Models disagree. GPT: Fla. Stat. § 51.011(2). Gem: Florida Rules of Civil Procedure 1.130(a). L7 required.",
+      "l2_run_date": "2026-06-26"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -853,5 +854,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

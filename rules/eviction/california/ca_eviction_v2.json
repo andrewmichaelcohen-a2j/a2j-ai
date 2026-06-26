@@ -1040,15 +1040,16 @@
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "CCP §1161 et seq. (pleading requirements)",
+      "statute": "Cal. Code Civ. Proc. § 1166(d)(1)–(2)",
       "case_law": [],
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
         "L2-PROCEDURAL-ERROR",
-        "L2-PROCEDURAL-SM-GEMINI"
+        "L2-PROCEDURAL-SM-GEMINI",
+        "L2-PROCEDURAL-IMPROVED"
       ],
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: California Code of Civil Procedure § 1166(c)(1). Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-25",
+      "l2_note": "Both models agree on more specific citation. Confidence: GPT=high, Gem=high.",
+      "l2_run_date": "2026-06-26",
       "l2_sm_statute": "California Code of Civil Procedure § 1166(c)(1)"
     },
     {
@@ -1074,5 +1075,5 @@
       "note": "AB 2347 extended UD summons response from 5 to 10 business days effective Jan 1, 2025"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

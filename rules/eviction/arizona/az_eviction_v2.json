@@ -782,9 +782,9 @@
       "validation_flags": [
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_sm_statute": "Rules of Procedure for Eviction Actions, Rule 5(b)(5) and Rule 5(b)(6)",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: Rules of Procedure for Eviction Actions, Rule 5(b)(5) and Rule 5(b)(6). Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-25"
+      "l2_sm_statute": "Ariz. R.P.E.A. 5(d)",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: Ariz. R.P.E.A. 5(d). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-26"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -800,5 +800,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

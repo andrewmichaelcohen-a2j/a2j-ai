@@ -738,9 +738,9 @@
         "L2-PROCEDURAL-SM-GEMINI",
         "L2-PROCEDURAL-ERROR"
       ],
-      "l2_sm_statute": "Ark. R. Civ. P. 10(c)",
-      "l2_note": "Both models empty: GPT=None; gem=",
-      "l2_run_date": "2026-06-25"
+      "l2_sm_statute": "A.C.A. § 18-17-902(a)(1)(D)",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: A.C.A. § 18-17-902(a)(1)(D). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-26"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -757,5 +757,5 @@
       "l2_sm_statute": "A.C.A. § 18-60-307"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

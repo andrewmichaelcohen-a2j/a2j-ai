@@ -983,9 +983,9 @@
       "validation_flags": [
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_sm_statute": "D.C. Superior Court Landlord and Tenant Rule 3",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: D.C. Superior Court Landlord and Tenant Rule 3. Preserved as SM — needs GPT re-run or human confirm.",
-      "l2_run_date": "2026-06-25"
+      "l2_sm_statute": "D.C. Superior Court Landlord and Tenant Rule 3-I(b)",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: D.C. Superior Court Landlord and Tenant Rule 3-I(b). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-26"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -1001,5 +1001,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

@@ -687,8 +687,8 @@
         "L2-PROCEDURAL-SPLIT-L7",
         "L2-PROCEDURAL-SM-GPT"
       ],
-      "l2_note": "Gemini returned no content; GPT single-model: Conn. Gen. Stat. § 47a-23a(a). Preserved as SM — needs Gemini re-run or human confirm.",
-      "l2_run_date": "2026-06-25",
+      "l2_note": "Models disagree. GPT: Conn. Gen. Stat. § 47a-23a(a). Gem: Connecticut Practice Book § 10-29. L7 required.",
+      "l2_run_date": "2026-06-26",
       "l2_sm_statute": "Conn. Gen. Stat. § 47a-23a(a)"
     },
     {
@@ -705,5 +705,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }

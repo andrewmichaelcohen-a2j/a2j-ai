@@ -693,8 +693,8 @@
         "L2-PROCEDURAL-NO-SPECIFIC-RULE",
         "L2-PROCEDURAL-ERROR"
       ],
-      "l2_note": "Both models empty: GPT=None; gem=",
-      "l2_run_date": "2026-06-25"
+      "l2_note": "Both models confirm no separate attachment statute — general pleading sufficiency applies.",
+      "l2_run_date": "2026-06-26"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -710,5 +710,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-25"
+  "last_updated": "2026-06-26"
 }
