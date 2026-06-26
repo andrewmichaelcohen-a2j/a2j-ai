@@ -140,19 +140,22 @@ QUERIES = {
         '}}'
     ),
     "failure_to_attach_lease_or_notice_to_complaint": (
-        "In {state_name} ({state_code}), are landlords required by statute or court "
-        "rule to attach the eviction notice (pay-or-quit notice) and/or the lease "
-        "agreement to the unlawful detainer complaint when filing? If yes, what is "
-        "the specific statute or court rule number? If no specific requirement exists "
-        "(i.e., it is only a general pleading sufficiency issue), say so explicitly.\n\n"
-        "Return JSON:\n"
+        "In {state_name} ({state_code}), are landlords required by a specific statute "
+        "or numbered court rule to attach the eviction notice (pay-or-quit notice) "
+        "and/or the lease agreement to the unlawful detainer complaint when filing?\n\n"
+        "IMPORTANT: Most states do NOT have a specific attachment statute — general "
+        "pleading sufficiency governs instead. If that is the case for {state_name}, "
+        "your answer is attachment_required: false with statute: null. This is a "
+        "valid and expected answer. Do NOT leave the response empty — if there is no "
+        "specific rule, say so explicitly with attachment_required: false.\n\n"
+        "Return JSON only (no prose before or after):\n"
         '{{\n'
-        '  "attachment_required": true|false,\n'
-        '  "statute": "specific citation, or null if no specific rule",\n'
+        '  "attachment_required": true,\n'
+        '  "statute": "exact citation if a specific rule exists, otherwise null",\n'
         '  "what_must_be_attached": "notice only | lease only | both | neither",\n'
-        '  "consequence_if_missing": "brief consequence",\n'
+        '  "consequence_if_missing": "brief consequence or null",\n'
         '  "confidence": "high|medium|low",\n'
-        '  "note": "any caveat"\n'
+        '  "note": "any caveat, or null"\n'
         '}}'
     ),
     "summons_improperly_issued_or_served": (

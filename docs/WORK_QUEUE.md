@@ -2,18 +2,22 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-25 (evening — procedural defects ingested; NC-17 run underway)
+**Last updated:** 2026-06-25 (night — fresh=True fix + failure_to_attach fix complete; overnight job queued)
 
 ---
 
 ## NOW (executing)
 
-**NC-17 Retaliation Holdings v3 — fresh CourtListener run** *(launched 2026-06-25 ~5:22 PM)*
-17 NC states: AK, AL, CO, CT, HI, KS, LA, MI, ND, NJ, NM, NV, NY, OK, SC, VT, WV. `fresh=true`, `sleep=10`. Early results: AK/AL → `__no_cases__` — CourtListener returned 0 results for these states even with fresh search. Others still running. Ingest when complete: say "ingest results."
+*Nothing active — overnight jobs queued for 2:15 AM.*
 
 ---
 
 ## Completed Today
+
+**NC-17 retaliation holdings v3 (run 21c5b706)** ✅ DONE — ingested 2026-06-25 late evening
+- All 17 NC states → `__no_cases__` → permanent-failure. MV=CI=RC=PR=SM=0.
+- Root cause: `fresh=true` was a no-op. `load_draft_cases()` doesn't search CL. Bug queued for fix.
+- NC states remain NC pending `load_draft_cases()` fix + re-run.
 
 **Procedural defects 204-unit run** ✅ DONE — ingested 2026-06-25 evening
 - CI=4, CC=31, NSR=6, MODEL-SPLIT=20, SM=120, ERROR=23. α_method=0.256 (n=61 dual-model)
@@ -41,17 +45,20 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **Ingest NC-17 retaliation results** — run in progress (Andy's Terminal)
-   When complete: Cowork auto-ingests, updates METRICS_LEDGER, STATE_OF_RECORD, DAILY_CHANGELOG. Note: early AK/AL showing `__no_cases__` even with fresh=true — expect most NC states to return no CourtListener results. These will classify as NC (fresh-confirmed) in the taxonomy.
+1. **NC-17 re-run with fresh=True fix** (GREEN — pipeline fix verified)
+   Fix confirmed: `cl_search_retaliation_by_state()` added; `load_draft_cases(state, fresh=True)` now calls CL live. Command (run in Terminal with `COURTLISTENER_API_TOKEN` set):
+   ```
+   python3 rules/validation/run_protocol.py --protocol retaliation_holdings_v3 \
+     --states AK,AL,CO,CT,HI,KS,LA,MI,ND,NJ,NM,NV,NY,OK,SC,VT,WV \
+     --fresh --run-id nc17_fresh_v2
+   ```
+   Est. 17 states × 8 CL hits × verification = ~90 min. Andy runs when ready.
 
-2. **failure_to_attach prompt fix + re-run** (GREEN — pipeline improvement)
-   All 23 ERRORs in procedural defects run came from this defect — both models empty. Hypothesis: models can't return "none" unless explicitly permitted. Fix: update l2_procedural_defects_runner.py to add explicit "if no separate rule exists, return NO-SPECIFIC-RULE" instruction. Re-run failure_to_attach only (51 states, ~30 min). Expect ERRORs to convert to NSR. *No dependency.*
+2. **Ingest failure_to_attach overnight re-run** (GREEN — auto when done)
+   Job queued: `queue/job_l2_attach_rerun_20260625.json` — fires tonight at 2:15 AM (pending launchd FDA fix). Alternatively run manually: `python3 rules/validation/l2/l2_procedural_defects_runner.py --defects attach`. Ingest output the next morning.
 
 3. **Direction B attorney freeze** (RED gate — needs Andy)
    50 DRAFT candidates in `rules/validation/golden_sets/`. Review and freeze each item. Only frozen items become ground truth (immutable). No automation can proceed on B until ≥1 set is frozen.
-
-4. **Update job queue for next overnight** (after NC-17 completes)
-   Check what's in queue/ and line up next jobs for 2:15 AM. Likely: failure_to_attach re-run as l2_module job.
 
 ---
 

@@ -699,16 +699,94 @@ def verify_case(case: dict, state: str) -> dict:
 # Per-state runner
 # ---------------------------------------------------------------------------
 
-def load_draft_cases(state: str) -> list[dict]:
+# Full state names for CL fresh-search
+_CL_STATE_NAMES: dict[str, str] = {
+    "AK": "Alaska", "AL": "Alabama", "AR": "Arkansas", "AZ": "Arizona",
+    "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DC": "District of Columbia",
+    "DE": "Delaware", "FL": "Florida", "GA": "Georgia", "HI": "Hawaii",
+    "IA": "Iowa", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana",
+    "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "MA": "Massachusetts",
+    "MD": "Maryland", "ME": "Maine", "MI": "Michigan", "MN": "Minnesota",
+    "MO": "Missouri", "MS": "Mississippi", "MT": "Montana", "NC": "North Carolina",
+    "ND": "North Dakota", "NE": "Nebraska", "NH": "New Hampshire", "NJ": "New Jersey",
+    "NM": "New Mexico", "NV": "Nevada", "NY": "New York", "OH": "Ohio",
+    "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania", "RI": "Rhode Island",
+    "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas",
+    "UT": "Utah", "VA": "Virginia", "VT": "Vermont", "WA": "Washington",
+    "WI": "Wisconsin", "WV": "West Virginia", "WY": "Wyoming",
+}
+
+
+def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> list[dict]:
+    """Search CourtListener for retaliatory eviction cases in a state (fresh path).
+
+    Returns a list of case dicts in the same format expected by verify_case().
+    Used when fresh=True and no v1 draft candidates exist for this state.
+    """
+    state_name = _CL_STATE_NAMES.get(state_abbr, state_abbr)
+    params = {
+        "q": f"retaliatory eviction {state_name} tenant",
+        "type": "o",
+        "order_by": "score desc",
+        "format": "json",
+        "stat_Precedential": "on",
+    }
+    for attempt in range(5):
+        try:
+            r = requests.get(
+                f"{CL_BASE}/search/", params=params, headers=cl_headers(), timeout=15
+            )
+            if r.status_code == 429:
+                wait = 3 * (2 ** attempt)
+                print(f"    [CL 429 — waiting {wait}s]")
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+            results = r.json().get("results", [])
+            cases = []
+            for hit in results[:max_results]:
+                citations = hit.get("citation", [])
+                citation = citations[0] if citations else ""
+                date_filed = hit.get("dateFiled", "")
+                year = int(date_filed[:4]) if date_filed and len(date_filed) >= 4 else None
+                cases.append({
+                    "case_name": hit.get("caseName") or "",
+                    "citation_gpt": citation,
+                    "citation_gemini": citation,
+                    "citation": citation,
+                    "year": year,
+                    "court_gpt": hit.get("court", ""),
+                    "court_gemini": hit.get("court", ""),
+                    "holding_gpt": None,
+                    "holding_gemini": None,
+                    "inter_coder_match": False,
+                    "checks": {},
+                    "_source": "cl_fresh_search",
+                    "_cl_cluster_id": hit.get("cluster_id"),
+                })
+            print(f"    [CL fresh search: {len(cases)} candidates for {state_abbr}]")
+            return cases
+        except Exception as e:
+            print(f"    [CL search error for {state_abbr}: {e}]")
+            return []
+    return []
+
+
+def load_draft_cases(state: str, fresh: bool = False) -> list[dict]:
     output_files = sorted(Path(__file__).parent.glob("output/retaliation_holdings_l2_raw_*.json"), reverse=True)
-    if not output_files:
+    if output_files:
+        with open(output_files[0]) as f:
+            draft = json.load(f)
+        for sr in draft.get("results", []):
+            if sr.get("state") == state:
+                cases = sr.get("case_results", [])
+                if cases:
+                    return cases
+    else:
         print(f"  WARNING: No v1 draft file found")
-        return []
-    with open(output_files[0]) as f:
-        draft = json.load(f)
-    for sr in draft.get("results", []):
-        if sr.get("state") == state:
-            return sr.get("case_results", [])
+    if fresh:
+        print(f"  [fresh=True] No v1 draft candidates for {state} — searching CourtListener...")
+        return cl_search_retaliation_by_state(state)
     return []
 
 

@@ -1,0 +1,13 @@
+{
+  "job_id": "job_20260626_0215_l2_attach_rerun",
+  "job_type": "l2_module",
+  "runner": "rules/validation/l2/l2_procedural_defects_runner.py",
+  "states": "ALL",
+  "defects": "attach",
+  "sleep": 2,
+  "created": "2026-06-25T00:00:00Z",
+  "uses": ["openai", "gemini"],
+  "live_verified": true,
+  "live_verified_basis": "Parent runner live-verified 2026-06-24 (204-unit run). Prompt-only change: failure_to_attach query updated to explicit null/false instruction. Classification logic unchanged. Dispatcher job type l2_module tested in prior run.",
+  "note": "Re-run failure_to_attach defect only (51 states). All 23 ERRORs from prior run came from this defect — both models returned empty. Prompt fix: explicit instruction that attachment_required:false/statute:null is valid and expected. Expect ERRORs to convert to NSR or CC. ~15 min est."
+}

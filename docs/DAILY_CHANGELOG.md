@@ -4,6 +4,48 @@
 
 ---
 
+## 2026-06-25 (night — fresh=True fix + failure_to_attach fix)
+
+### GREEN — Executed autonomously
+
+**Fix #9: `load_draft_cases()` CL search when `fresh=True`**
+- Added `cl_search_retaliation_by_state(state_abbr, max_results=8)` to `rules/validation/l2/retaliation_holdings_v3_runner.py`. Searches CL with query `"retaliatory eviction {state_name} tenant"`, returns up to 8 precedential opinions per state in the `verify_case()`-compatible dict format.
+- Modified `load_draft_cases(state, fresh=False)` — when `fresh=True` and no v1 draft candidates exist for the state, calls CL search instead of returning `[]`.
+- Updated `protocols/retaliation_holdings_v3.py` `get_units(states, fresh=False)` — now accepts and passes `fresh` to `load_draft_cases()`.
+- Updated `rules/validation/run_protocol.py` line 126: `protocol.get_units(states, fresh=args.fresh)` — `--fresh` flag now propagates all the way to CourtListener search.
+- Verified: 4/4 files syntax OK; 30/30 regression tests pass.
+- **NC-17 re-run command:** `python3 rules/validation/run_protocol.py --protocol retaliation_holdings_v3 --states AK,AL,CO,CT,HI,KS,LA,MI,ND,NJ,NM,NV,NY,OK,SC,VT,WV --fresh --run-id nc17_fresh_v2` (requires COURTLISTENER_API_TOKEN env var)
+
+**Fix #10: `failure_to_attach` prompt — explicit NSR instruction**
+- Updated `QUERIES["failure_to_attach_lease_or_notice_to_complaint"]` in `rules/validation/l2/l2_procedural_defects_runner.py`.
+- Key change: added explicit instruction that "most states do NOT have a specific attachment statute" and that `attachment_required: false, statute: null` is "a valid and expected answer — do NOT leave the response empty."
+- Queued overnight job: `rules/validation/queue/job_l2_attach_rerun_20260625.json` — `defects: "attach"`, 51 states, est. ~15 min, $0.50.
+- Verified: syntax OK; 30/30 regression tests pass.
+
+### YELLOW — None this cycle.
+
+### RED — Carried (no change).
+
+---
+
+## 2026-06-25 (late evening — NC-17 results ingested)
+
+### GREEN — Executed autonomously
+
+**NC-17 retaliation holdings v3 (run 21c5b706) — ingested**
+- 17 states, all `__no_cases__` → `permanent-failure`. MV=0, CI=0, RC=0, PR=0, SM=0, NC=17.
+- Method rate: n/a (0 text-retrievable). Overall rate: 0%.
+- **Root cause diagnosed (GREEN pipeline bug):** `fresh=true` was a no-op. `run_protocol.py`'s `--fresh` flag only clears the checkpoint; it does not change `load_draft_cases()` in `retaliation_holdings_v3_runner.py`. That function always reads from the v1 draft file, which has no entries for these 17 states. CourtListener search was never called — confirmed by 0-second per-state processing time.
+- All 17 NC states remain NC. They are NOT PR (no retrieval failure — no retrieval was attempted). Not attorney lane.
+- METRICS_LEDGER updated with NC-17 row + diagnosis note.
+- **Next step:** Implement CL candidate search in `load_draft_cases()` when `fresh=True` and no draft candidates exist. Queued in WORK_QUEUE.
+
+### YELLOW — None this cycle.
+
+### RED — Carried (no change).
+
+---
+
 ## 2026-06-25 (evening — procedural defects ingestion + NC-17 launch)
 
 ### GREEN — Executed autonomously

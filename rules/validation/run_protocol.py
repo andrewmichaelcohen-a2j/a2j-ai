@@ -123,7 +123,7 @@ def main():
     print("A result is only real if this run exits cleanly and writes a raw output file.")
     print()
 
-    units = protocol.get_units(states)
+    units = protocol.get_units(states, fresh=args.fresh)
     print(f"Units to process: {len(units)}")
 
     harness = ValidationHarness(

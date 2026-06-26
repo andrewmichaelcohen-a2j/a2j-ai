@@ -436,6 +436,9 @@ These are the highest-confidence candidate holdings — both models found the sa
 | Batch 1 (cd0c4680) | 2026-06-23 | 16 states | — | — | — | — | — | — | Prior runner schema — bucket counts not in output |
 | Batch 2 (f7aec985) | 2026-06-23 | 17 states | — | — | — | — | — | — | Prior runner schema — bucket counts not in output |
 | Batch 3 (7e6fcf6d) | 2026-06-25 | 18 states | 23 | 4 | 2 | 0 | 0 | 17 | 66.7% |
+| NC-17 fresh attempt (21c5b706) | 2026-06-25 | 17 NC states | 17 | 0 | 0 | 0 | 0 | 17 | n/a — **`fresh=true` was a no-op** |
+
+**NC-17 run diagnosis (2026-06-25, run 21c5b706):** `fresh=true` flag in `run_protocol.py` only deletes the checkpoint — it does not change `load_draft_cases()` behavior. That function reads from the v1 draft file (`retaliation_holdings_l2_raw_*.json`), which has no cases for these 17 states. CourtListener search path was never implemented in `load_draft_cases()`. All 17 states returned `__no_cases__` in 0 seconds (no API call made). **GREEN bug:** implement CL search in `load_draft_cases()` when no candidates exist and `fresh=True` is passed. Until fixed, NC states require manual candidate identification.
 
 **Note on NC (no-candidates) states:** The 17 NC states in Batch 3 need candidate cases generated before they can be verified. Options: (a) `fresh=true` protocol run to generate from CourtListener search; (b) manual identification. CourtListener quota applies to (a). These states are not quarantined as PR — they simply have no cases to verify yet.
 

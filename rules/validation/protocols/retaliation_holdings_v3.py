@@ -56,11 +56,14 @@ PROTOCOL_NAME = "retaliation_holdings_v3"
 # Unit enumeration
 # ---------------------------------------------------------------------------
 
-def get_units(states: list[str]) -> list[dict]:
-    """Return one unit dict per (state, case) pair."""
+def get_units(states: list[str], fresh: bool = False) -> list[dict]:
+    """Return one unit dict per (state, case) pair.
+
+    When fresh=True, states with no v1 draft candidates are searched live via CourtListener.
+    """
     units = []
     for state in states:
-        cases = load_draft_cases(state)
+        cases = load_draft_cases(state, fresh=fresh)
         if not cases:
             # Still create a sentinel unit so the harness logs the skip
             units.append({
