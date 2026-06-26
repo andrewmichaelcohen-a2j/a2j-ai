@@ -7,11 +7,22 @@
   Fires dispatch.py at 02:15 AM every day (when Mac is plugged in and lid open).
   Dispatcher picks the next job from rules/validation/queue/ and runs it.
 
+  FDA SETUP (one-time, required):
+    System Settings → Privacy & Security → Full Disk Access → + → add /bin/bash
+    (Terminal.app having FDA also works — bash inherits it)
+
   INSTALL (one-time):
     cp /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/com.cjac.validation.plist \
        ~/Library/LaunchAgents/com.cjac.validation.plist
     launchctl load ~/Library/LaunchAgents/com.cjac.validation.plist
     launchctl list | grep cjac      # confirm registered
+
+  MANUAL TRIGGER (test / force-run):
+    launchctl start com.cjac.validation
+    tail -f /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/launchd_stdout.log
+
+  SIMULATE WITHOUT LAUNCHD:
+    cd ~/Documents/GitHub/a2j-ai && bash rules/validation/run_dispatch.sh
 
   VERIFY keep-awake:
     pmset -g | grep " sleep"        # should show 'sleep 0' on AC profile
@@ -36,11 +47,11 @@
         <key>Minute</key> <integer>15</integer>
     </dict>
 
-    <!-- dispatch.py reads queue/ and launches run_protocol.py -->
+    <!-- Shell wrapper holds FDA so dispatch.py can read queue/ and logs -->
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/python3</string>
-        <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/dispatch.py</string>
+        <string>/bin/bash</string>
+        <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/run_dispatch.sh</string>
     </array>
 
     <!-- Working directory = repo root -->

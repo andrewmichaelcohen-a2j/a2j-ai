@@ -50,8 +50,16 @@ echo "[run_dispatch.sh] Using Python: $PYTHON ($("$PYTHON" --version 2>&1))"
 echo "[run_dispatch.sh] Dispatch script: $DISPATCH_PY"
 echo "[run_dispatch.sh] Mode: ${1:---single}"
 
-if [ "${1:-}" = "--drain" ]; then
-    exec caffeinate -ims "$PYTHON" "$DISPATCH_PY" --drain
+# Use caffeinate on macOS to prevent sleep during run; fall back gracefully on Linux
+if command -v caffeinate &>/dev/null; then
+    CAF="caffeinate -ims"
 else
-    exec caffeinate -ims "$PYTHON" "$DISPATCH_PY"
+    CAF=""
+    echo "[run_dispatch.sh] caffeinate not available — running without sleep guard"
+fi
+
+if [ "${1:-}" = "--drain" ]; then
+    exec $CAF "$PYTHON" "$DISPATCH_PY" --drain
+else
+    exec $CAF "$PYTHON" "$DISPATCH_PY"
 fi

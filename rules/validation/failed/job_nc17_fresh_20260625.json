@@ -1,0 +1,21 @@
+{
+  "job_id": "job_20260625_nc17_fresh",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "AK,AL,CO,CT,HI,KS,LA,MI,ND,NJ,NM,NV,NY,OK,SC,VT,WV",
+  "sleep": 10,
+  "fresh": true,
+  "uses": [
+    "courtlistener",
+    "openai",
+    "gemini"
+  ],
+  "live_verified": true,
+  "live_verified_basis": "retaliation_holdings_v3 protocol live-verified across Batch 1 (33 states, Jun 22), Batch 2 (51 states, Jun 23), Batch 3 (18 states, Jun 25). fresh=true path live-verified on CA in Batch 3. CourtListener search path confirmed working.",
+  "created": "2026-06-25T00:00:00Z",
+  "note": "17 NC states from Batch 3: returned no-candidates under fresh=false because no pre-existing candidate cases in v2 files. fresh=true will search CourtListener for retaliation holdings. Andy authorized CourtListener quota use 2026-06-25. sleep=10 for CL rate limit.",
+  "failed_at": "2026-06-26T05:17:42.128674+00:00",
+  "result": "failure",
+  "message": "returncode=1. Log: /sessions/intelligent-modest-fermi/mnt/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260626_0517.log",
+  "summary_path": "/sessions/intelligent-modest-fermi/mnt/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-06-26_0024.md"
+}
