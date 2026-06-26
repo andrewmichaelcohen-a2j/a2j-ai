@@ -349,7 +349,23 @@
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-26",
+      "classification": "CONSENSUS-CONFIRM",
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 5,
+        "statute": "25 Del. C. § 5502(a)",
+        "rationale": "For nonpayment of rent, Delaware law permits termination of the rental agreement only if the tenant fails to pay all rent due within 5 days after the landlord gives written notice of nonpayment and intent to terminate. The landlord may then proceed with summary possession based on that termination."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 5,
+        "statute": "Del. Code Ann. tit. 25, § 5502(a)",
+        "rationale": "A landlord must provide written notice to the tenant demanding payment of rent. The notice must state that the rental agreement will be terminated if payment is not made within five days of the notice being given."
+      }
+    }
   },
   "notice": {
     "notice_types": {

@@ -321,19 +321,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 7,
-        "statute": "N.H. Rev. Stat. Ann. § 540:2, II(a)",
-        "rationale": "For nonpayment of rent, New Hampshire law requires the landlord to give the residential tenant a 7-day notice to quit. The eviction action may proceed only after that statutory notice period has been given."
+        "statute": "N.H. Rev. Stat. Ann. § 540:3, II; § 540:2, II(a)",
+        "rationale": "For a residential eviction based on neglect or refusal to pay rent due and in arrears upon demand, New Hampshire requires a 7-day notice to quit. The nonpayment ground is identified in § 540:2, II(a), and the 7-day notice period is established by § 540:3, II."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 7,
-        "statute": "N.H. Rev. Stat. Ann. § 540:3, II",
-        "rationale": "For residential tenancies, the statute specifies that a 7-day written Notice to Quit is sufficient when the reason for eviction is the neglect or refusal to pay rent due and in arrears. This notice must be given after a demand for rent has been made."
+        "statute": "N.H. Rev. Stat. Ann. § 540:3, I",
+        "rationale": "New Hampshire law requires a landlord to provide a 7-day written eviction notice for nonpayment of rent before filing a possessory action. The notice must specify the amount of rent owed and inform the tenant of their right to cure the default by paying the arrearage within the notice period."
       }
     }
   },

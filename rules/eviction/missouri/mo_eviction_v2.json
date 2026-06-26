@@ -129,7 +129,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -323,23 +323,41 @@
         "draft_corroborated": 0,
         "needs_attorney": 1,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-PERIOD-DIVERGENCE",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "note": "L2-PERIOD-DIVERGENCE: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): Noned | Mo. Rev. Stat. § 535.020.1. Gemini (gemini-2.5-pro): Noned | Mo. Rev. Stat. § 535.010. Human review required.",
+        "gpt_answer": {
+          "days": null,
+          "statute": "Mo. Rev. Stat. § 535.020.1",
+          "rationale": "For a rent-and-possession action, Missouri law permits filing when rent is due and payable, payment has been demanded, and payment has not been made. The statute requires a demand for payment but specifies no number of days’ notice or waiting period before filing."
+        },
+        "gemini_answer": {
+          "days": null,
+          "statute": "Mo. Rev. Stat. § 535.010",
+          "rationale": "Missouri law requires a landlord to demand payment of rent before filing a rent and possession action. However, the statute does not mandate any specific waiting period between this demand and when the lawsuit may be filed."
+        },
+        "l2_run_date": "2026-06-26"
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "PERIOD-DIVERGENCE",
       "gpt": {
         "model": "gpt-5.5",
         "days": null,
-        "statute": "Mo. Rev. Stat. § 535.020",
-        "rationale": "For a rent-and-possession action based on nonpayment, the statute requires that rent be due and payable and that payment has been demanded, but it does not impose any number of days’ notice or waiting period before filing. Therefore, no statutory notice period is required before filing."
+        "statute": "Mo. Rev. Stat. § 535.020.1",
+        "rationale": "For a rent-and-possession action, Missouri law permits filing when rent is due and payable, payment has been demanded, and payment has not been made. The statute requires a demand for payment but specifies no number of days’ notice or waiting period before filing."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": null,
         "statute": "Mo. Rev. Stat. § 535.010",
-        "rationale": "Missouri law requires a landlord to make a demand for rent before filing for eviction, but the statute does not mandate a specific waiting period after the demand is made. Upon the tenant's failure to pay after the demand, the landlord may immediately file a rent and possession action."
+        "rationale": "Missouri law requires a landlord to demand payment of rent before filing a rent and possession action. However, the statute does not mandate any specific waiting period between this demand and when the lawsuit may be filed."
       }
     }
   },

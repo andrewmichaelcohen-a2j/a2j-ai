@@ -130,7 +130,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "warning",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -339,20 +339,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "CONSENSUS-CONFIRM",
-      "retry": true,
+      "run_date": "2026-06-26",
+      "classification": "ERROR",
       "gpt": {
         "model": "gpt-5.5",
-        "days": 14,
-        "statute": "Tenn. Code Ann. §§ 66-28-505(b); 66-7-109",
-        "rationale": "For nonpayment of rent, Tennessee residential landlord-tenant statutes require written notice giving the tenant 14 days to pay the rent owed. If the tenant does not pay within that notice period, the landlord may terminate the rental agreement and proceed to recover possession."
+        "days": null,
+        "statute": null,
+        "rationale": null
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 14,
         "statute": "Tenn. Code Ann. § 66-28-505",
-        "rationale": "If rent is unpaid when due, the landlord may terminate the rental agreement after providing the tenant with 14 days' written notice to pay the overdue rent. The landlord may file for possession only if the tenant fails to pay by the termination date specified in the notice."
+        "rationale": "The landlord must give the tenant written notice of nonpayment and state that the rental agreement will terminate if the rent is not paid within 14 days of the tenant's receipt of the notice. If the tenant fails to pay within the 14-day period, the landlord may then commence an action for possession."
       }
     }
   },

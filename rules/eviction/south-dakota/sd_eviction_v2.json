@@ -129,7 +129,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -375,23 +375,41 @@
         "draft_corroborated": 0,
         "needs_attorney": 0,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-MODEL-SPLIT",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "note": "L2-MODEL-SPLIT: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): Noned | S.D. Codified Laws § 21-16-1(4). Gemini (gemini-2.5-pro): 3d | SDCL 21-16-2. Human review required.",
+        "gpt_answer": {
+          "days": null,
+          "statute": "S.D. Codified Laws § 21-16-1(4)",
+          "rationale": "Section 21-16-1(4) makes a forcible entry and detainer action maintainable when a tenant holds possession without the landlord’s permission after defaulting in rent under the lease. The statute does not require a pre-filing notice to pay or quit for nonpayment of rent."
+        },
+        "gemini_answer": {
+          "days": 3,
+          "statute": "SDCL 21-16-2",
+          "rationale": "South Dakota law requires a landlord to provide a three-day written notice to quit before initiating an eviction action. This notice is a prerequisite for maintaining a forcible entry and detainer action when a tenant is in default for nonpayment of rent under SDCL 21-16-1(4)."
+        },
+        "l2_run_date": "2026-06-26"
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "CONSENSUS-CONFIRM",
+      "run_date": "2026-06-26",
+      "classification": "MODEL-SPLIT",
       "gpt": {
         "model": "gpt-5.5",
-        "days": 3,
-        "statute": "S.D. Codified Laws § 21-16-1(2)",
-        "rationale": "For nonpayment of rent, a tenant is guilty of detainer only after default and service of a written three-day notice requiring payment of the rent or possession of the property. Therefore, the landlord must give three days’ notice before filing the eviction action for nonpayment."
+        "days": null,
+        "statute": "S.D. Codified Laws § 21-16-1(4)",
+        "rationale": "Section 21-16-1(4) makes a forcible entry and detainer action maintainable when a tenant holds possession without the landlord’s permission after defaulting in rent under the lease. The statute does not require a pre-filing notice to pay or quit for nonpayment of rent."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "SDCL § 21-16-2",
-        "rationale": "South Dakota law requires a landlord to give a tenant a three-day written notice to quit or pay the rent due before filing an eviction action. This notice can be served after the rent has been due and unpaid for three days, as specified in SDCL § 21-16-1(4)."
+        "statute": "SDCL 21-16-2",
+        "rationale": "South Dakota law requires a landlord to provide a three-day written notice to quit before initiating an eviction action. This notice is a prerequisite for maintaining a forcible entry and detainer action when a tenant is in default for nonpayment of rent under SDCL 21-16-1(4)."
       }
     }
   },

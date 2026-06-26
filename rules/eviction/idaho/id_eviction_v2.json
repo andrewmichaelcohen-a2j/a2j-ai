@@ -314,19 +314,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "Idaho Code § 6-303(2)",
-        "rationale": "For nonpayment of rent, a tenant is guilty of unlawful detainer only if the tenant remains in possession after default and after being served with a written 3-day notice requiring payment of the rent due or possession of the property. This notice must precede filing an eviction action based on nonpayment."
+        "rationale": "For nonpayment of rent, a tenant is guilty of unlawful detainer only after defaulting in rent and being served with a written three-day notice requiring payment of the rent or surrender of possession. Thus, the landlord must give 3 days’ notice before filing the eviction action for nonpayment."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
         "statute": "Idaho Code § 6-303(2)",
-        "rationale": "The statute establishes that a tenant is in unlawful detainer after defaulting on rent and failing to comply with a three-day written notice to pay the amount due or vacate the property. This notice is a mandatory prerequisite for the landlord to file an eviction action for nonpayment of rent."
+        "rationale": "A tenant is guilty of unlawful detainer for nonpayment of rent after they have been served with a written three-day notice demanding payment or possession of the property. The landlord cannot file an eviction action until this notice period has expired without the tenant's compliance."
       }
     }
   },

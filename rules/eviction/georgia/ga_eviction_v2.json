@@ -129,7 +129,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -314,9 +314,43 @@
         "draft_corroborated": 0,
         "needs_attorney": 2,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-PERIOD-DIVERGENCE",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "note": "L2-PERIOD-DIVERGENCE: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): 0d | O.C.G.A. § 44-7-50(a). Gemini (gemini-2.5-pro): Noned | O.C.G.A. § 44-7-50. Human review required.",
+        "gpt_answer": {
+          "days": 0,
+          "statute": "O.C.G.A. § 44-7-50(a)",
+          "rationale": "For nonpayment of rent, Georgia law allows a landlord to file a dispossessory affidavit after rent is due and the landlord has demanded possession and the tenant has refused or failed to deliver possession. The statute requires the demand but does not impose any minimum number of days to wait before filing."
+        },
+        "gemini_answer": {
+          "days": null,
+          "statute": "O.C.G.A. § 44-7-50",
+          "rationale": "Georgia law requires a landlord to make a demand for possession from the tenant before filing a dispossessory (eviction) action for nonpayment of rent. The statute does not mandate a specific waiting period after the demand is made, allowing the landlord to file immediately if the tenant fails to comply."
+        },
+        "l2_run_date": "2026-06-26"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-26",
+      "classification": "PERIOD-DIVERGENCE",
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 0,
+        "statute": "O.C.G.A. § 44-7-50(a)",
+        "rationale": "For nonpayment of rent, Georgia law allows a landlord to file a dispossessory affidavit after rent is due and the landlord has demanded possession and the tenant has refused or failed to deliver possession. The statute requires the demand but does not impose any minimum number of days to wait before filing."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": null,
+        "statute": "O.C.G.A. § 44-7-50",
+        "rationale": "Georgia law requires a landlord to make a demand for possession from the tenant before filing a dispossessory (eviction) action for nonpayment of rent. The statute does not mandate a specific waiting period after the demand is made, allowing the landlord to file immediately if the tenant fails to comply."
+      }
+    }
   },
   "notice": {
     "notice_types": {

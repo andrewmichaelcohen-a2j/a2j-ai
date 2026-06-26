@@ -336,20 +336,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
-      "retry": true,
       "gpt": {
         "model": "gpt-5.5",
         "days": 5,
-        "statute": "La. Code Civ. Proc. art. 4701; La. Code Civ. Proc. art. 4731(A)",
-        "rationale": "For nonpayment of rent, Article 4701 requires a written notice to vacate allowing the tenant at least five days from delivery. Under Article 4731(A), the landlord may file the eviction action after the tenant fails to comply with the required notice to vacate."
+        "statute": "La. Code Civ. Proc. art. 4701",
+        "rationale": "When a lessee’s right of occupancy ceases due to nonpayment of rent, the lessor must give written notice to vacate allowing not less than five days before instituting eviction proceedings. The statute permits a written lease waiver of this notice, but the statutory notice period is five days absent such waiver."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 5,
         "statute": "La. Code Civ. Proc. art. 4701",
-        "rationale": "This statute requires a landlord to deliver a written notice to vacate when a lease terminates for reasons including nonpayment of rent. The notice must grant the tenant a minimum of five days to vacate the property before the landlord can proceed with an eviction action."
+        "rationale": "When a tenant's right to occupy has ceased due to nonpayment of rent, the landlord must deliver a written notice to vacate. This notice must allow the tenant not less than five days from the date of its delivery to vacate the premises before an eviction suit can be filed."
       }
     }
   },

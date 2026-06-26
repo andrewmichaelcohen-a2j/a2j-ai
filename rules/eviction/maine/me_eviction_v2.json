@@ -360,19 +360,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 7,
-        "statute": "14 M.R.S. §§ 6001, 6002(1-A)(D)",
-        "rationale": "Maine law allows a landlord to terminate a tenancy for nonpayment by giving 7 days' written notice when the tenant is 7 days or more in arrears. An eviction action may be maintained only after the tenancy has been terminated by notice to quit or otherwise according to law."
+        "statute": "14 M.R.S. § 6002(1)",
+        "rationale": "Maine law allows a landlord to terminate a tenancy for nonpayment when the tenant is 7 days or more in arrears by giving 7 days' written notice. The landlord must wait until that notice period expires before proceeding with an eviction action."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 7,
-        "statute": "14 M.R.S. § 6002(1)(A)",
-        "rationale": "A landlord may terminate a tenancy by giving a minimum of 7 days' written notice if the tenant is 7 or more days in arrears in the payment of rent. This notice is a prerequisite to commencing an eviction action."
+        "statute": "14 M.R.S.A. § 6002(1)(C)",
+        "rationale": "Maine law allows a landlord to terminate a tenancy for a tenant who is 7 or more days late on rent by providing a minimum of 7 days' written notice to quit. This notice must be given before the landlord can commence an eviction action for nonpayment."
       }
     }
   },
@@ -865,7 +865,7 @@
         "L2-PROCEDURAL-ERROR"
       ],
       "l2_sm_statute": "M.R. Civ. P. 80D(b)",
-      "l2_note": "Both models empty: GPT=Request timed out.; gem=",
+      "l2_note": "Both failed: GPT=openai package not installed; Gem=google-genai package not installed. Run: pip install google-genai",
       "l2_run_date": "2026-06-26"
     },
     {

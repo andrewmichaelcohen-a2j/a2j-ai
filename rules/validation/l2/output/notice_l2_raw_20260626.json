@@ -1,0 +1,378 @@
+{
+  "runner": "l2_runner (notice provenance rerun)",
+  "run_date": "2026-06-26",
+  "run_id": "notice_rerun_20260626_1618",
+  "phase": "Notice provenance rerun — all 51 states 2026-06-26",
+  "note": "Runner crashed at summary step (Counter UnboundLocalError in l2_runner.py line 593). Bug fixed 2026-06-26 (Counter moved to module-level import). write_back() completed for all 51 states before crash — v2 files already updated. Reconstructed from log: rules/validation/logs/notice_rerun_20260626_1618.log",
+  "models": {
+    "gpt": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "states_run": 51,
+  "counts": {
+    "CONSENSUS-CONFIRM": 42,
+    "MODEL-SPLIT": 5,
+    "PERIOD-DIVERGENCE": 2,
+    "ERROR": 1,
+    "CITATION-DIVERGENCE": 1
+  },
+  "results": [
+    {
+      "state": "AK",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 7,
+      "gpt_days": 7,
+      "gem_days": 7
+    },
+    {
+      "state": "AL",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 7,
+      "gpt_days": 7,
+      "gem_days": 7
+    },
+    {
+      "state": "AR",
+      "classification": "MODEL-SPLIT",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 5
+    },
+    {
+      "state": "AZ",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "CA",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "CO",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 10,
+      "gpt_days": 10,
+      "gem_days": 10
+    },
+    {
+      "state": "CT",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "DC",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 30,
+      "gpt_days": 30,
+      "gem_days": 30
+    },
+    {
+      "state": "DE",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "FL",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "GA",
+      "classification": "PERIOD-DIVERGENCE",
+      "file_days": 3,
+      "gpt_days": 0,
+      "gem_days": null
+    },
+    {
+      "state": "HI",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "IA",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "ID",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "IL",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "IN",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 10,
+      "gpt_days": 10,
+      "gem_days": 10
+    },
+    {
+      "state": "KS",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "KY",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 7,
+      "gpt_days": 7,
+      "gem_days": 7
+    },
+    {
+      "state": "LA",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "MA",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 14,
+      "gpt_days": 14,
+      "gem_days": 14
+    },
+    {
+      "state": "MD",
+      "classification": "MODEL-SPLIT",
+      "file_days": 10,
+      "gpt_days": 10,
+      "gem_days": null
+    },
+    {
+      "state": "ME",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 7,
+      "gpt_days": 7,
+      "gem_days": 7
+    },
+    {
+      "state": "MI",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 7,
+      "gpt_days": 7,
+      "gem_days": 7
+    },
+    {
+      "state": "MN",
+      "classification": "MODEL-SPLIT",
+      "file_days": 14,
+      "gpt_days": 14,
+      "gem_days": null
+    },
+    {
+      "state": "MO",
+      "classification": "PERIOD-DIVERGENCE",
+      "file_days": 10,
+      "gpt_days": null,
+      "gem_days": null
+    },
+    {
+      "state": "MS",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "MT",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "NC",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 10,
+      "gpt_days": 10,
+      "gem_days": 10
+    },
+    {
+      "state": "ND",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "NE",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 7,
+      "gpt_days": 7,
+      "gem_days": 7
+    },
+    {
+      "state": "NH",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 7,
+      "gpt_days": 7,
+      "gem_days": 7
+    },
+    {
+      "state": "NJ",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": null,
+      "gpt_days": null,
+      "gem_days": null
+    },
+    {
+      "state": "NM",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "NV",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 7,
+      "gpt_days": 7,
+      "gem_days": 7
+    },
+    {
+      "state": "NY",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 14,
+      "gpt_days": 14,
+      "gem_days": 14
+    },
+    {
+      "state": "OH",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "OK",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "OR",
+      "classification": "MODEL-SPLIT",
+      "file_days": 10,
+      "gpt_days": 10,
+      "gem_days": 3
+    },
+    {
+      "state": "PA",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 10,
+      "gpt_days": 10,
+      "gem_days": 10
+    },
+    {
+      "state": "RI",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "SC",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "SD",
+      "classification": "MODEL-SPLIT",
+      "file_days": null,
+      "gpt_days": null,
+      "gem_days": 3
+    },
+    {
+      "state": "TN",
+      "classification": "ERROR",
+      "file_days": 14,
+      "gpt_days": null,
+      "gem_days": 14
+    },
+    {
+      "state": "TX",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "UT",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    },
+    {
+      "state": "VA",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "VT",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 14,
+      "gpt_days": 14,
+      "gem_days": 14
+    },
+    {
+      "state": "WA",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 14,
+      "gpt_days": 14,
+      "gem_days": 14
+    },
+    {
+      "state": "WI",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": 5,
+      "gpt_days": 5,
+      "gem_days": 5
+    },
+    {
+      "state": "WV",
+      "classification": "CONSENSUS-CONFIRM",
+      "file_days": null,
+      "gpt_days": null,
+      "gem_days": null
+    },
+    {
+      "state": "WY",
+      "classification": "CITATION-DIVERGENCE",
+      "file_days": 3,
+      "gpt_days": 3,
+      "gem_days": 3
+    }
+  ]
+}

@@ -128,7 +128,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "escalated-L7",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -316,19 +316,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "N.M. Stat. Ann. § 47-8-33(D)",
-        "rationale": "For nonpayment of rent, the landlord must give the resident written notice of the nonpayment and the landlord’s intent to terminate the rental agreement if the rent is not paid within three days. If the tenant does not pay within that three-day period, the landlord may terminate the rental agreement and proceed with eviction."
+        "rationale": "For unpaid rent, the landlord must give the resident written notice of nonpayment and the landlord’s intent to terminate the rental agreement if the rent is not paid within three days. If the tenant does not pay within that three-day period, the landlord may terminate the rental agreement and proceed to seek possession."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
         "statute": "NMSA 1978, § 47-8-33(B)",
-        "rationale": "If rent is unpaid when due, the owner must provide the resident with three days' written notice of the nonpayment and of the owner's intention to terminate the rental agreement. The owner may only terminate the agreement and proceed with an eviction action if the resident fails to pay the overdue rent within that three-day period."
+        "rationale": "If rent is unpaid when due, the owner must give the resident a written three-day notice of nonpayment and of the owner's intent to terminate the rental agreement. The resident has three days after notice to pay the rent before the owner may terminate the agreement and file for eviction."
       }
     }
   },

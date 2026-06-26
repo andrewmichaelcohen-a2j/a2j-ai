@@ -302,19 +302,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 7,
         "statute": "Ala. Code § 35-9A-421(b)",
-        "rationale": "For nonpayment of rent, the landlord must give written notice stating the nonpayment and the landlord’s intent to terminate the rental agreement if the rent is not paid within seven business days. The landlord may terminate the rental agreement only if the tenant fails to pay within that statutory notice period."
+        "rationale": "For nonpayment of rent, the landlord must give written notice of nonpayment and intent to terminate, and the tenant has seven business days to pay. If the tenant does not pay within that period, the landlord may terminate the rental agreement and proceed with eviction."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 7,
         "statute": "Ala. Code § 35-9A-421(b)",
-        "rationale": "If rent is unpaid when due, the landlord must give the tenant seven days' written notice of the nonpayment and of the landlord's intention to terminate the rental agreement. The landlord may file an eviction action if the tenant fails to pay the full amount of rent due within that seven-day period."
+        "rationale": "If rent is unpaid, the landlord must give the tenant seven days' written notice of the nonpayment and the landlord's intention to terminate the rental agreement. This provides the tenant an opportunity to cure the default by paying the rent."
       }
     }
   },
@@ -672,9 +672,10 @@
       "case_law": [],
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
-        "L2-PROCEDURAL-ERROR"
+        "L2-PROCEDURAL-ERROR",
+        "L2-PROCEDURAL-NO-SPECIFIC-RULE"
       ],
-      "l2_note": "Both models empty: GPT=Request timed out.; gem=",
+      "l2_note": "Both failed: GPT=openai package not installed; Gem=google-genai package not installed. Run: pip install google-genai",
       "l2_run_date": "2026-06-26"
     },
     {

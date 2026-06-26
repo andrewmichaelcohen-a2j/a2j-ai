@@ -316,19 +316,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "Conn. Gen. Stat. § 47a-23(a)",
-        "rationale": "For residential nonpayment of rent, Connecticut requires the landlord to serve a notice to quit possession before pursuing summary process. Section 47a-23(a) requires the notice to specify a quit date at least three days after service."
+        "rationale": "For nonpayment of rent, Connecticut requires the landlord to serve a notice to quit possession, and § 47a-23(a) requires that notice to be given at least three days before the time specified for the tenant to quit possession. The nonpayment ground applies after the residential rent grace period referenced in Conn. Gen. Stat. § 47a-15a."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "Conn. Gen. Stat. § 47a-23",
-        "rationale": "This statute requires the landlord to give the tenant a notice to quit possession or occupancy at least three days before the time specified in the notice for the tenant to vacate. This notice is a mandatory prerequisite before a landlord can file a summary process (eviction) action for nonpayment of rent."
+        "statute": "Conn. Gen. Stat. § 47a-23(a)",
+        "rationale": "A landlord must provide a tenant with a notice to quit possession at least three days before filing a summary process (eviction) action for nonpayment of rent. This notice informs the tenant they must vacate the premises by a specified date or face a formal eviction lawsuit."
       }
     }
   },

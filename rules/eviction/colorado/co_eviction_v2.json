@@ -336,19 +336,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 10,
         "statute": "Colo. Rev. Stat. § 13-40-104(1)(d)",
-        "rationale": "For a residential tenancy based on nonpayment of rent, the statute requires written notice demanding payment of rent or possession before the tenant is guilty of unlawful detainer. The residential notice period stated in the statute is ten days."
+        "rationale": "For a residential tenancy based on nonpayment of rent, Colorado requires ten days’ written notice demanding payment of rent or possession before the tenant is guilty of unlawful detention. That statutory unlawful-detainer basis is required before filing an eviction action for nonpayment."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 10,
-        "statute": "Colo. Rev. Stat. § 13-40-104(1)(d)",
-        "rationale": "This statute defines unlawful detention for nonpayment of rent as occurring only after a tenant has received a written demand and then fails to pay the rent or vacate the premises within ten days. This ten-day demand is a mandatory prerequisite before a landlord can legally file for eviction."
+        "statute": "C.R.S. § 13-40-104(1)(d)",
+        "rationale": "A tenant is guilty of an unlawful detention for nonpayment of rent only after a ten-day written notice has been served. This notice, often called a 'Demand for Compliance or Right to Possession,' must require the tenant to either pay the rent owed or vacate the premises."
       }
     }
   },

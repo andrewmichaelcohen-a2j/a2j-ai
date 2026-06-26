@@ -317,19 +317,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 5,
         "statute": "A.R.S. § 33-1368(B)",
-        "rationale": "For nonpayment of rent, Arizona law requires the landlord to give written notice stating the nonpayment and the intent to terminate if rent is not paid within five days. If the tenant does not pay within that five-day period, the landlord may terminate the rental agreement by filing a special detainer action."
+        "rationale": "For nonpayment of rent, Arizona law requires the landlord to give written notice of nonpayment and intent to terminate. If the tenant does not pay within five days after receiving that notice, the landlord may terminate the rental agreement by filing a special detainer action."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 5,
         "statute": "A.R.S. § 33-1368(B)",
-        "rationale": "If rent is unpaid when due, the landlord must provide the tenant with five days' written notice of nonpayment and the intent to terminate the rental agreement. The landlord may only file an eviction action if the tenant fails to pay the past-due rent within that five-day period."
+        "rationale": "The statute specifies that if rent is unpaid when due, the landlord must provide a five-day written notice of nonpayment before terminating the rental agreement. Only after this period expires without payment may the landlord file a special detainer (eviction) action."
       }
     }
   },

@@ -322,19 +322,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": null,
-        "statute": "N.J. Stat. Ann. § 2A:18-61.2; N.J. Stat. Ann. § 2A:18-61.1(a)",
-        "rationale": "New Jersey’s notice statute expressly states that the written demand and notice requirements do not apply to eviction actions based on nonpayment of rent under § 2A:18-61.1(a). Therefore, no statutory notice period is required before filing a residential eviction action for nonpayment of rent."
+        "statute": "N.J. Stat. Ann. §§ 2A:18-61.1(a), 2A:18-61.2",
+        "rationale": "Nonpayment of rent is a statutory ground for removal under § 2A:18-61.1(a). Section 2A:18-61.2 expressly states that no notice is required for an eviction based on nonpayment of rent under § 2A:18-61.1(a)."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": null,
         "statute": "N.J.S.A. 2A:18-61.2",
-        "rationale": "New Jersey's Anti-Eviction Act explicitly exempts evictions for nonpayment of rent from the pre-litigation notice requirements that apply to other just causes. Therefore, a landlord is not statutorily required to provide a notice to quit before filing an eviction complaint for unpaid rent."
+        "rationale": "New Jersey's Anti-Eviction Act requires a written Notice to Quit for most causes for eviction. The statute does not list nonpayment of rent as a cause requiring such a notice before the landlord files an eviction complaint."
       }
     }
   },

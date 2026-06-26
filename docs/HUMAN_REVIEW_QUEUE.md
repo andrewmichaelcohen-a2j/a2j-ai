@@ -2,8 +2,8 @@
 
 **Module:** Notice / pay_or_quit · **Layer:** L2 Multi-Model Consensus  
 **Runner rule:** Runners append new flagged items only. They never edit or overwrite the Resolution, Authoritative source, Resolved by, Date, or Status fields — those are owned by Andy Cohen.  
-**Last rebuilt:** 2026-06-26 (NC-17 fresh run ingested: 2 new RC items [NV-RET-HOLD-RC-01]–[NY-RET-HOLD-RC-02] added; failure_to_attach re-run: 2 L7s [PROC-DEF-L7-21]–[PROC-DEF-L7-22]) · **Confirmed by:** Cowork (GREEN ingestion)  
-**Prior rebuild:** 2026-06-25 (procedural defects 204-unit run ingested: 20 new L7s [PROC-DEF-L7-01] through [PROC-DEF-L7-20] added)
+**Last rebuilt:** 2026-06-26 evening (notice provenance rerun: 8 new NOTICE-L2 divergence items [NOTICE-L2-01]–[NOTICE-L2-08] added; MD and MO splits corroborate existing L7s) · **Confirmed by:** Cowork (GREEN ingestion)  
+**Prior rebuild:** 2026-06-26 (NC-17 fresh run ingested: 2 new RC items [NV-RET-HOLD-RC-01]–[NY-RET-HOLD-RC-02] added; failure_to_attach re-run: 2 L7s [PROC-DEF-L7-21]–[PROC-DEF-L7-22])
 
 > **How to use this queue:**  
 > Work top-to-bottom. L7-ESCALATED = you decide from primary sources. PENDING-CONFIRMATION = you verify the AI's proposed answer and sign off (or override).  
@@ -21,6 +21,7 @@
 | 🟡 CITATION-REVIEW — verify operative section from primary source | 3 |
 | 🟠 OVERLAY-CITE-CHECK — Module 4 runner-flagged + classifier false positives | 22 |
 | 🔁 RETRY-NEEDED — transient API failure, not substantive | 1 (SD Mod6) |
+| ⚡ NOTICE-L2-DIVERGENCE — provenance rerun tiebreaker needed | 8 (AR/MN/OR/SD model-split; GA/MO period-divergence; WY citation-divergence; TN sm-pipeline) |
 | ✅ Resolved/Confirmed | 0 |
 
 *Technical resolutions (notice/service — no human review needed): AZ, CA, CO, CT, DC, FL, GA, HI, IA, ID, IL, IN, KY, LA, MA, MD, ME, MI, MN, MS, MT, NC, NE, NH, NJ, NM, NY, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VA, WA, WI, WY — confirmed by two-model consensus or AI-resolved.*
@@ -2032,3 +2033,177 @@ File has §55.1-1234. Both GPT and Gemini independently identified §55.1-1258 (
 **Resolution:** ________________  
 **Authoritative source:** ________________  
 **Resolved by:** ________________  **Date:** ________________
+
+---
+
+## Notice Module — L2 Provenance Rerun Divergences (2026-06-26)
+
+*Run: `run_now.sh` → `l2_runner.py --states ALL --sleep 2`. All 51 states' write_back() completed. Raw file: `rules/validation/l2/output/notice_l2_raw_20260626.json` (reconstructed from log — Counter bug crashed final write step).*
+
+*Results: CC=42 (82%), MODEL-SPLIT=5, PERIOD-DIVERGENCE=2, CITATION-DIVERGENCE=1, ERROR/SM=1. 8 items flagged below — 6 require tiebreaker runs; 2 (MD/MO) corroborate existing L7s.*
+
+---
+
+### [NOTICE-L2-01] Arkansas — ⚡ MODEL-SPLIT (period: 3d vs 5d)
+
+**Classification:** NOTICE-L2-DIVERGENCE · **Status:** ⚡ tiebreaker-needed  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Split:** Both models cite the same statute but disagree on period.
+- **GPT:** 3 days
+- **Gemini:** 5 days
+
+**File:** `notice_required=true, days=3, statute=Ark. Code Ann. §18-17-701`
+
+**Action needed:** Run tiebreaker query targeting AR §18-17-701 period specifically. If tiebreaker resolves → GREEN update. If split persists → escalate to L7.
+
+**Resolution:** ________________  **Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NOTICE-L2-02] Minnesota — ⚡ MODEL-SPLIT (period: 14d vs None)
+
+**Classification:** NOTICE-L2-DIVERGENCE · **Status:** ⚡ tiebreaker-needed  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Split:**
+- **GPT:** 14 days
+- **Gemini:** None (notice_required=false)
+
+**File:** `notice_required=true, days=14`
+
+**Note:** MN had a 2023 HF 3019 statutory change (added 14-day requirement). The split may reflect models with different training cutoffs. Tiebreaker should probe for post-2023 MN law specifically.
+
+**Action needed:** Tiebreaker run with explicit post-2023 query. If GPT is correct on 14d → keep file. If Gemini is correct → escalate to L7.
+
+**Resolution:** ________________  **Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NOTICE-L2-03] Oregon — ⚡ MODEL-SPLIT (period: 10d vs 3d)
+
+**Classification:** NOTICE-L2-DIVERGENCE · **Status:** ⚡ tiebreaker-needed  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Split:**
+- **GPT:** 10 days
+- **Gemini:** 3 days
+
+**File:** `notice_required=true, days=72 hours` (i.e., 3 days — Gemini agrees with file; GPT contradicts)
+
+**Action needed:** Tiebreaker targeting OR notice period under ORS 90.394. If 72-hour/3-day confirmed → GPT wrong, no file change. If 10d confirmed → file update needed.
+
+**Resolution:** ________________  **Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NOTICE-L2-04] South Dakota — ⚡ MODEL-SPLIT (period: None vs 3d)
+
+**Classification:** NOTICE-L2-DIVERGENCE · **Status:** ⚡ tiebreaker-needed  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Split:**
+- **GPT:** None (notice_required=false) — consistent with SD §21-16-2 REPEAL finding (SB 90, 2024)
+- **Gemini:** 3 days
+
+**File:** `notice_required=false` (updated during prior notice L7 resolution — SD repeal confirmed by attorney)
+
+**Note:** GPT appears correct (file was already corrected for the §21-16-2 repeal). Gemini may be using pre-2024 law. This is likely a Gemini training-data staleness issue.
+
+**Action needed:** If file already reflects the SB 90 repeal (notice_required=false), confirm Gemini's 3d answer is stale. No file change needed — add L2-SM-GPT flag noting Gemini disagrees due to repeal. Attorney confirm that notice_required=false is still the correct post-2024 answer.
+
+**Resolution:** ________________  **Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NOTICE-L2-05] Maryland — ⚡ MODEL-SPLIT — CORROBORATES EXISTING [MD-L7-03]
+
+**Classification:** NOTICE-L2-DIVERGENCE · **Status:** ⚡ corroborates existing L7  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Split:**
+- **GPT:** 10 days
+- **Gemini:** None (notice_required=false)
+
+**File:** `notice_required=true, days=10`
+
+**Note:** This is the same split documented in [MD-L7-03]. The provenance rerun confirms the split is persistent across two independent runs (original Phase 2 + this rerun). No new action — strengthens the case that [MD-L7-03] needs attorney resolution. The LSC cross-check also corroborates Gemini's position (LSC coded MD as "no notice required").
+
+**Action needed:** See [MD-L7-03]. Rerun tiebreaker before sending to attorney — the 2 independent model confirmations of each side make this a genuine L7.
+
+**Resolution:** ________________  **See:** [MD-L7-03]  **Date:** ________________
+
+---
+
+### [NOTICE-L2-06] Georgia — ⚡ PERIOD-DIVERGENCE (CRITICAL — file=3d, GPT=0d)
+
+**Classification:** NOTICE-L2-DIVERGENCE · **Status:** ⚡ CRITICAL — tiebreaker-needed  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Divergence:**
+- **File:** `notice_required=true, days=3`
+- **GPT:** 0 days (notice_required=false — "no notice required before filing")
+- **Gemini:** empty / not returned this run
+
+**Prior status:** GA was classified "auto-resolved" in prior notice runs (LSC cross-check found "not specified"). The prior L7 items for GA in the notice/service module may cover this — but GPT's explicit "no notice required" conflicts with the file's 3d value.
+
+**Priority: HIGH.** The file currently asserts 3 days notice but GPT says no notice required. LSC also coded GA as "not specified" (not "3 days"). This value may be wrong in the file.
+
+**Action needed:** Tiebreaker run targeting GA notice requirement under OCGA §44-7-50. If GPT is correct → file needs to be updated to notice_required=false (same pattern as MD/WV). If file is correct → GPT is wrong and a note should be added. Do NOT update file without tiebreaker.
+
+**Resolution:** ________________  **Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NOTICE-L2-07] Missouri — ⚡ PERIOD-DIVERGENCE (both models empty) — CORROBORATES [MO-L7-01]
+
+**Classification:** NOTICE-L2-DIVERGENCE · **Status:** ⚡ corroborates existing L7  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Divergence:**
+- **File:** `notice_required=true, days=10, statute=§535.060`
+- **GPT:** empty (not returned)
+- **Gemini:** empty (not returned)
+
+**Note:** Both models returning empty on MO corroborates [MO-L7-01] which found both models agree §535.060 is wrong and §535.020 is operative — but disagree on the characterization (notice_required=true vs false). The re-run's "both models empty" pattern suggests the query structure may not be returning useful information for MO's unusual demand-for-rent structure.
+
+**Action needed:** See [MO-L7-01]. MO is a known L7 item. The "both empty" pattern in this run is additional evidence the MO notice question requires attorney resolution — the standard L2 query doesn't produce stable output for this state.
+
+**Resolution:** ________________  **See:** [MO-L7-01]  **Date:** ________________
+
+---
+
+### [NOTICE-L2-08] Wyoming — ⚡ CITATION-DIVERGENCE (period=3d all agree; statute differs)
+
+**Classification:** NOTICE-L2-DIVERGENCE · **Status:** ⚡ citation-review-needed  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Divergence:**
+- **File:** `notice_required=true, days=3, statute=Wyo. Stat. §1-21-1003`
+- **GPT:** 3 days, statute=Wyo. Stat. §1-21-1002
+- **Gemini:** 3 days, statute=Wyo. Stat. §1-21-1003 (agrees with file)
+
+**Nature:** Models agree period is 3 days. Gemini agrees with the file statute. GPT cites §1-21-1002 instead. Period is confirmed; only statute subsection is disputed.
+
+**Action needed:** Check WY §1-21-1002 vs §1-21-1003. If Gemini+file are right (§1-21-1003) → log GPT error, no file change. If §1-21-1002 is the correct notice provision → update file statute. LOW priority (period confirmed by consensus).
+
+**Resolution:** ________________  **Confirmed by:** ________________  **Date:** ________________
+
+---
+
+### [NOTICE-L2-09] Tennessee — 🔁 SM-PIPELINE (gem=14d; GPT timeout)
+
+**Classification:** NOTICE-L2-DIVERGENCE → PIPELINE · **Status:** 🔁 retry-needed (not attorney lane)  
+**Module:** notice.pay_or_quit · **Run date:** 2026-06-26
+
+**Result:**
+- **GPT:** network timeout (transient infrastructure failure)
+- **Gemini:** 14 days
+
+**Anti-default rule:** "Model returned empty" = GREEN pipeline fix, never an attorney item. This is NOT a legal split. Gemini's 14d answer should be verified against the file; if it matches, this is CONSENSUS-CONFIRM pending GPT re-run.
+
+**File:** `notice_required=true, days=14` — Gemini agrees with file. This is almost certainly a correct confirmation.
+
+**Action needed:** Queue TN for next notice retry pass (`--states TN`). Expect CONSENSUS-CONFIRM when GPT runs successfully.
+
+**Resolution:** ________________  **Date:** ________________

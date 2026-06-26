@@ -380,19 +380,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 14,
-        "statute": "RCW 59.18.057; RCW 59.12.030(3)",
-        "rationale": "For residential tenancies, Washington requires a 14-day notice to pay rent or vacate when rent is unpaid. A tenant becomes subject to unlawful detainer for nonpayment only after failing to comply with that 14-day notice."
+        "statute": "RCW 59.12.030(3); RCW 59.18.057",
+        "rationale": "For nonpayment of rent, a residential tenant is not in unlawful detainer until the tenant remains in default for 14 days after service of a written notice requiring payment or surrender of the premises. RCW 59.18.057 prescribes the 14-day notice to pay or vacate for residential tenancies."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 14,
         "statute": "RCW 59.12.030(3)",
-        "rationale": "A tenant is in unlawful detainer for nonpayment of rent only after failing to comply with a written 14-day notice to either pay the rent or vacate the premises. This notice is a mandatory prerequisite before a landlord can commence an eviction action."
+        "rationale": "A tenant is guilty of unlawful detainer for default in the payment of rent only after failing to comply with a written 14-day notice requiring payment or surrender of the premises. This notice is a mandatory prerequisite before a landlord can file an eviction action."
       }
     }
   },

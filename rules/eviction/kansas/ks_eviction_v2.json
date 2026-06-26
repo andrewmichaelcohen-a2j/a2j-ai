@@ -331,19 +331,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "K.S.A. 58-2564(b)",
-        "rationale": "For a residential tenancy, if rent is unpaid when due, the landlord may terminate the rental agreement only if the tenant fails to pay within three days after written notice of nonpayment and the landlord’s intent to terminate if payment is not made. That statutory three-day notice must precede termination and filing an eviction action for nonpayment."
+        "statute": "Kan. Stat. Ann. § 58-2564(b)",
+        "rationale": "For a residential tenancy, if rent is unpaid when due, the landlord must give written notice of nonpayment and intent to terminate if the rent is not paid within three days. Only after the tenant fails to pay within that three-day period may the landlord terminate the rental agreement and proceed toward eviction."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "K.S.A. § 61-3803",
-        "rationale": "Before filing a lawsuit to evict a tenant for failure to pay rent, Kansas law requires the landlord to deliver a written notice to vacate to the tenant. This notice must be served at least three days before the lawsuit is filed."
+        "statute": "K.S.A. § 58-2564(b)",
+        "rationale": "The statute requires the landlord to provide a three-day written notice for nonpayment of rent. The landlord may terminate the rental agreement if the tenant fails to pay the owed rent within that three-day period."
       }
     }
   },

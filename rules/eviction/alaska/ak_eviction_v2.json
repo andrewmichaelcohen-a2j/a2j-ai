@@ -306,19 +306,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 7,
         "statute": "Alaska Stat. § 34.03.220(b)",
-        "rationale": "For residential tenancies, if rent is unpaid when due, the landlord may terminate the rental agreement only if the tenant fails to pay within seven days after written notice of nonpayment and the landlord’s intent to terminate. That seven-day notice must precede termination and filing for eviction based on nonpayment."
+        "rationale": "For nonpayment of rent, Alaska law requires the landlord to give written notice stating the nonpayment and the intention to terminate the rental agreement if the rent is not paid within seven days. If the tenant does not pay within that seven-day period, the landlord may terminate the rental agreement and proceed with eviction."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 7,
         "statute": "AS 34.03.220(b)",
-        "rationale": "A landlord must provide a tenant with at least seven days' written notice for failure to pay rent, stating the landlord's intention to terminate the rental agreement if the rent is not paid within that period. This notice period allows the tenant an opportunity to cure the default before the landlord can terminate the tenancy."
+        "rationale": "Alaska law requires a landlord to provide a tenant with at least seven days of written notice for failure to pay rent before terminating the rental agreement. The notice must inform the tenant of the landlord's intent to terminate if the rent is not paid within that period."
       }
     }
   },

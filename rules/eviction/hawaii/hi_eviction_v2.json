@@ -319,19 +319,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 5,
         "statute": "Haw. Rev. Stat. § 521-68(a)",
-        "rationale": "For nonpayment of rent, the landlord must give the tenant written notice allowing not less than five business days after receipt to pay before the rental agreement terminates. If the tenant remains in default after that notice period, the landlord may bring a summary possession action."
+        "rationale": "For nonpayment of rent, the landlord must give the tenant written notice demanding payment and stating that the rental agreement will terminate unless rent is paid within at least five business days after the tenant receives the notice. The landlord may file for summary possession only if the tenant fails to pay within that notice period."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 5,
         "statute": "HRS § 521-68",
-        "rationale": "The statute requires a landlord to provide a written notice demanding payment after rent is due. The notice must state that the rental agreement will be terminated if payment is not made within a period of at least five business days after the tenant receives the notice."
+        "rationale": "A landlord must provide a tenant with written notice giving the tenant at least five business days after receipt to pay the overdue rent. Only after this period expires without payment can the landlord terminate the rental agreement and file for eviction."
       }
     }
   },

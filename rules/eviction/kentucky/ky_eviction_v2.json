@@ -341,20 +341,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
-      "retry": true,
       "gpt": {
         "model": "gpt-5.5",
         "days": 7,
         "statute": "Ky. Rev. Stat. § 383.660(2)",
-        "rationale": "If rent is unpaid when due, the landlord must give written notice of nonpayment and intent to terminate, and the tenant has seven days to pay. If the tenant does not pay within that seven-day period, the landlord may terminate the rental agreement and proceed with eviction."
+        "rationale": "For residential tenancies governed by Kentucky’s Uniform Residential Landlord and Tenant Act, if rent is unpaid when due, the landlord may terminate the rental agreement only if the tenant fails to pay within seven days after written notice of nonpayment and intent to terminate. Termination is the statutory predicate for proceeding with eviction for nonpayment."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 7,
         "statute": "KRS § 383.660(2)",
-        "rationale": "If rent is unpaid when due, the landlord must give the tenant seven days' written notice of the nonpayment and of the landlord's intention to terminate the rental agreement. The landlord may terminate the agreement and file for eviction if the tenant fails to pay the full amount within that seven-day period."
+        "rationale": "If rent is unpaid when due, the landlord must give the tenant seven days' written notice of nonpayment and of the landlord's intention to terminate the rental agreement. The landlord may terminate the agreement and file for eviction only if the tenant fails to pay the rent within that seven-day period."
       }
     }
   },

@@ -128,7 +128,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -334,23 +334,41 @@
         "draft_corroborated": 0,
         "needs_attorney": 0,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-CITATION-DIVERGENCE",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "note": "L2-CITATION-DIVERGENCE: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): 3d | Wyo. Stat. Ann. § 1-21-1003. Gemini (gemini-2.5-pro): 3d | Wyo. Stat. Ann. § 1-21-1003. Human review required.",
+        "gpt_answer": {
+          "days": 3,
+          "statute": "Wyo. Stat. Ann. § 1-21-1003",
+          "rationale": "Wyoming requires the landlord to notify the tenant to leave the premises, and that notice must be served at least three days before commencing the eviction action. Nonpayment of rent is an eviction ground under Wyoming’s forcible entry and detainer statutes, but the pre-filing notice period is established by § 1-21-1003."
+        },
+        "gemini_answer": {
+          "days": 3,
+          "statute": "Wyo. Stat. Ann. § 1-21-1003",
+          "rationale": "Wyoming law requires a landlord to give a tenant three days' written notice to quit the premises before filing an action for forcible entry or detainer. This notice is a prerequisite to commencing eviction proceedings for reasons including nonpayment of rent."
+        },
+        "l2_run_date": "2026-06-26"
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "CONSENSUS-CONFIRM",
+      "run_date": "2026-06-26",
+      "classification": "CITATION-DIVERGENCE",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "Wyo. Stat. Ann. §§ 1-21-1002(a)(iv), 1-21-1003(a)",
-        "rationale": "Wyoming authorizes a forcible entry and detainer action against a tenant who fails to pay rent after notice to quit. The notice to quit must be served at least three days before commencing the action."
+        "statute": "Wyo. Stat. Ann. § 1-21-1003",
+        "rationale": "Wyoming requires the landlord to notify the tenant to leave the premises, and that notice must be served at least three days before commencing the eviction action. Nonpayment of rent is an eviction ground under Wyoming’s forcible entry and detainer statutes, but the pre-filing notice period is established by § 1-21-1003."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "Wyo. Stat. § 1-21-1003",
-        "rationale": "Wyoming law requires a landlord to give a tenant who is in default for payment of rent a written notice to vacate the premises within three days. This notice must be served before the landlord can commence an action for recovery of the property."
+        "statute": "Wyo. Stat. Ann. § 1-21-1003",
+        "rationale": "Wyoming law requires a landlord to give a tenant three days' written notice to quit the premises before filing an action for forcible entry or detainer. This notice is a prerequisite to commencing eviction proceedings for reasons including nonpayment of rent."
       }
     }
   },

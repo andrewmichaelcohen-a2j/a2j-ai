@@ -320,19 +320,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 10,
-        "statute": "68 P.S. § 250.501(b)",
-        "rationale": "For nonpayment of rent, Pennsylvania’s Landlord and Tenant Act requires the notice to quit to state that the tenant must remove within 10 days from service of the notice. The statute separately permits written waiver of notice under 68 P.S. § 250.501(e), but the statutory notice period is 10 days absent such waiver."
+        "statute": "68 P.S. § 250.501(c)",
+        "rationale": "For nonpayment of rent, Pennsylvania's Landlord and Tenant Act requires the notice to quit to specify that the tenant must remove within 10 days from the date of service. That statutory notice period applies before the landlord proceeds to recover possession for rent arrears."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 10,
-        "statute": "68 P.S. § 250.501(b)",
-        "rationale": "Pennsylvania's Landlord and Tenant Act requires a landlord to serve a tenant with a written notice demanding payment of unpaid rent. The tenant has ten days from the date of service to pay the rent or vacate the premises before the landlord can file a complaint for eviction."
+        "statute": "68 Pa. Stat. Ann. § 250.501(b)",
+        "rationale": "Pennsylvania's Landlord and Tenant Act requires a landlord to provide a written notice to quit, giving the tenant ten days to vacate the premises due to nonpayment of rent. This notice is a prerequisite to filing for recovery of possession."
       }
     }
   },

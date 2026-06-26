@@ -344,20 +344,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
-      "retry": true,
       "gpt": {
         "model": "gpt-5.5",
         "days": 14,
         "statute": "Mass. Gen. Laws ch. 186, §§ 11, 12",
-        "rationale": "For nonpayment of rent, Massachusetts statutes provide that a landlord may terminate the lease or tenancy by giving a written 14-day notice to quit. Section 11 covers nonpayment under a lease, and § 12 provides the same 14-day notice rule for a tenancy at will."
+        "rationale": "For nonpayment of rent, Massachusetts statutes require a 14-day notice to quit before the landlord may terminate the tenancy and seek possession. Section 11 applies to tenants under written leases, and section 12 provides the same 14-day nonpayment notice rule for tenants at will."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 14,
-        "statute": "Mass. Gen. Laws ch. 186, §§ 11, 12",
-        "rationale": "For both tenancies under a written lease and tenancies at will, the statute requires a landlord to provide a written 14-day notice to quit for nonpayment of rent. This notice is a prerequisite to terminating the tenancy and subsequently filing an eviction action."
+        "statute": "Mass. Gen. Laws ch. 239, § 1A",
+        "rationale": "This statute requires a landlord to send a tenant a specific written notice form giving the tenant 14 days to pay the overdue rent before the landlord can commence an eviction action. The tenancy is terminated if the tenant does not pay the full amount of rent due within 14 days of receiving the notice."
       }
     }
   },

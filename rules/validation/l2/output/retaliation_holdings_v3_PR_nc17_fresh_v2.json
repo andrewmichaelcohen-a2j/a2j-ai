@@ -1,0 +1,258 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "nc17_fresh_v2",
+  "pr_count": 25,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": [
+    {
+      "state": "AK",
+      "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
+      "citation_gpt": "522 P.3d 1085",
+      "citation_gemini": "522 P.3d 1085",
+      "year": 2023,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['522 P.3d 1085']; model citations ['522 P.3d 1085', '522 P.3d 1085']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "AK",
+      "case_name": "Chilton-Wren v. Olds",
+      "citation_gpt": "1 P.3d 693",
+      "citation_gemini": "1 P.3d 693",
+      "year": 2000,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['1 P.3d 693', '2000 Alas. LEXIS 42', '2000 WL 563978']; model citations ['1 P.3d 693', '1 P.3d 693']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "AK",
+      "case_name": "Sharpe v. Trail",
+      "citation_gpt": "902 P.2d 304",
+      "citation_gemini": "902 P.2d 304",
+      "year": 1995,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['902 P.2d 304', '43 A.L.R. 5th 873', '1995 Alas. LEXIS 87', '1995 WL 495810']; model citations ['902 P.2d 304', '902 P.2d 304']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "AK",
+      "case_name": "DeNardo v. Corneloup",
+      "citation_gpt": "163 P.3d 956",
+      "citation_gemini": "163 P.3d 956",
+      "year": 2007,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['163 P.3d 956', '2007 Alas. LEXIS 78', '2007 WL 2016740']; model citations ['163 P.3d 956', '163 P.3d 956']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "AK",
+      "case_name": "Sullivan v. Subramanian",
+      "citation_gpt": "2 P.3d 66",
+      "citation_gemini": "2 P.3d 66",
+      "year": 2000,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['2 P.3d 66', '2000 Alas. LEXIS 43', '2000 WL 576062']; model citations ['2 P.3d 66', '2 P.3d 66']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "AL",
+      "case_name": "Harris v. Tuscaloosa Housing Authority",
+      "citation_gpt": "64 So. 3d 628",
+      "citation_gemini": "64 So. 3d 628",
+      "year": 2009,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['64 So. 3d 628', '2009 Ala. Civ. App. LEXIS 580', '2009 WL 4506554']; model citations ['64 So. 3d 628', '64 So. 3d 628']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "AL",
+      "case_name": "West v. DJ Mortgage, LLC",
+      "citation_gpt": "164 F. Supp. 3d 1393",
+      "citation_gemini": "164 F. Supp. 3d 1393",
+      "year": 2016,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['271 F. Supp. 3d 1336']; model citations ['164 F. Supp. 3d 1393', '164 F. Supp. 3d 1393']; match=False",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "AL",
+      "case_name": "Weidel v. Ashcroft",
+      "citation_gpt": "234 F. Supp. 2d 5",
+      "citation_gemini": "234 F. Supp. 2d 5",
+      "year": 2002,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['234 F. Supp. 2d 5', '2002 U.S. Dist. LEXIS 24501', '2002 WL 31867797']; model citations ['234 F. Supp. 2d 5', '234 F. Supp. 2d 5']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "AL",
+      "case_name": "Sharpe v. Trail",
+      "citation_gpt": "902 P.2d 304",
+      "citation_gemini": "902 P.2d 304",
+      "year": 1995,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['902 P.2d 304', '43 A.L.R. 5th 873', '1995 Alas. LEXIS 87', '1995 WL 495810']; model citations ['902 P.2d 304', '902 P.2d 304']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "CO",
+      "case_name": "Brown v. Hill",
+      "citation_gpt": "174 F. Supp. 3d 66",
+      "citation_gemini": "174 F. Supp. 3d 66",
+      "year": 2016,
+      "pr_reason": "citation-mismatch",
+      "cl_returned": "CL citations [\"686 F. App'x 6\"]; model citations ['174 F. Supp. 3d 66', '174 F. Supp. 3d 66']; match=False",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "CO",
+      "case_name": "Lincoln Place Tenants Ass'n v. City of Los Angeles",
+      "citation_gpt": "66 Cal. Rptr. 3d 120",
+      "citation_gemini": "66 Cal. Rptr. 3d 120",
+      "year": 2007,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['66 Cal. Rptr. 3d 120', '155 Cal. App. 4th 425']; model citations ['66 Cal. Rptr. 3d 120', '66 Cal. Rptr. 3d 120']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "CO",
+      "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
+      "citation_gpt": "522 P.3d 1085",
+      "citation_gemini": "522 P.3d 1085",
+      "year": 2023,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['522 P.3d 1085']; model citations ['522 P.3d 1085', '522 P.3d 1085']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "CT",
+      "case_name": "Black Rock Gardens, LLC v. Berry",
+      "citation_gpt": "224 Conn. App. 379",
+      "citation_gemini": "224 Conn. App. 379",
+      "year": 2024,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['224 Conn. App. 379']; model citations ['224 Conn. App. 379', '224 Conn. App. 379']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "CT",
+      "case_name": "Colchester Estate Ventures, LLC v. Madden",
+      "citation_gpt": "229 Conn. App. 811",
+      "citation_gemini": "229 Conn. App. 811",
+      "year": 2024,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['229 Conn. App. 811']; model citations ['229 Conn. App. 811', '229 Conn. App. 811']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "CT",
+      "case_name": "Rahman v. Lewis",
+      "citation_gpt": "2024 NY Slip Op 24211",
+      "citation_gemini": "2024 NY Slip Op 24211",
+      "year": 2024,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['2024 NY Slip Op 24211']; model citations ['2024 NY Slip Op 24211', '2024 NY Slip Op 24211']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "CT",
+      "case_name": "Renaissance Management Co. v. Barnes",
+      "citation_gpt": "168 A.3d 530",
+      "citation_gemini": "168 A.3d 530",
+      "year": 2017,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['168 A.3d 530', '175 Conn. App. 681', '2017 WL 3585190', '2017 Conn. App. LEXIS 341']; model citations ['168 A.3d 530', '168 A.3d 530']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "HI",
+      "case_name": "Rees v. Gordon",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2025,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "SC",
+      "case_name": "Cross v. Mokwa",
+      "citation_gpt": "547 F.3d 890",
+      "citation_gemini": "547 F.3d 890",
+      "year": 2008,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['547 F.3d 890', '2008 WL 4889812']; model citations ['547 F.3d 890', '547 F.3d 890']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "SC",
+      "case_name": "Trinity Cross v. Joseph J. Mokwa, etc",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2008,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "SC",
+      "case_name": "Henry Knox Sherrill Corp. v. Randall",
+      "citation_gpt": "33 Conn. Supp. 15",
+      "citation_gemini": "33 Conn. Supp. 15",
+      "year": 1975,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['33 Conn. Supp. 15']; model citations ['33 Conn. Supp. 15', '33 Conn. Supp. 15']; match=True",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "SC",
+      "case_name": "Henry Knox Sherrill Corporation v. Randall",
+      "citation_gpt": "358 A.2d 154",
+      "citation_gemini": "358 A.2d 154",
+      "year": 1975,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['358 A.2d 159', '33 Conn. Super. Ct. 522']; model citations ['358 A.2d 154', '358 A.2d 154']; match=False",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "VT",
+      "case_name": "trillium holdings v. buchanon",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2023,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "VT",
+      "case_name": "Stephens v. Gilmour",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2025,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "VT",
+      "case_name": "Atwood v. Hill",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "nc17_fresh_v2"
+    },
+    {
+      "state": "VT",
+      "case_name": "Trillium Holdings LLC v. Buchanan",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2013,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "nc17_fresh_v2"
+    }
+  ]
+}

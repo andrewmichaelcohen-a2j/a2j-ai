@@ -1,0 +1,12 @@
+{
+  "job_id": "job_20260627_0215_nj_attach_probe",
+  "job_type": "l2_module",
+  "runner": "rules/validation/l2/nj_attach_probe_20260626.py",
+  "states": "NJ",
+  "sleep": 15,
+  "created": "2026-06-26T00:00:00Z",
+  "uses": ["openai", "gemini"],
+  "live_verified": false,
+  "live_verified_basis": "Script syntax-verified (py_compile OK 2026-06-26). Designed as a diagnostic probe, not a full L2 run.",
+  "note": "NJ failure_to_attach persistent ERROR investigation. NJ has returned ERROR (both models empty) on 3 consecutive runs. This probe runs 3 increasingly simple reformulated queries to determine if the issue is query framing vs. genuine model limitation vs. NSR. Output: rules/validation/l2/output/nj_attach_probe_20260626.json. Est. cost: <$0.10 (3 queries × 2 models). Est. time: ~3 min. Result informs whether NJ should be classified NSR-PRESUMED or retried with reformulated prompt."
+}

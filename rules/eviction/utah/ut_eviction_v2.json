@@ -306,19 +306,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "Utah Code § 78B-6-802(1)(c)",
-        "rationale": "For nonpayment of rent, a residential tenant is guilty of unlawful detainer only after a written notice requiring payment of rent or surrender of the premises remains uncomplied with for three business days after service. The landlord must therefore give a 3-day pay-or-vacate notice before filing an eviction action for nonpayment."
+        "statute": "Utah Code Ann. § 78B-6-802(1)(c)",
+        "rationale": "For nonpayment of rent, Utah law requires a written notice demanding either payment of rent or surrender of the premises, and the tenant is in unlawful detainer only if the notice remains uncomplied with for three business days after service. Therefore, the landlord must give a 3-business-day notice before filing an eviction action for nonpayment."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
         "statute": "Utah Code § 78B-6-802(1)(c)",
-        "rationale": "A tenant is guilty of unlawful detainer for nonpayment of rent after receiving a written three-day notice to either pay the overdue rent or surrender the premises. The landlord may file an eviction action only after this three-day period has passed and the tenant has not complied."
+        "rationale": "A tenant is in unlawful detainer after defaulting on rent and failing to comply with a written notice that requires either payment or surrender of the premises. The tenant must be given a period of three days after service of the notice to comply before the landlord can file an action."
       }
     }
   },

@@ -361,19 +361,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 5,
         "statute": "Okla. Stat. tit. 41, § 131(B)",
-        "rationale": "For nonpayment of rent, the landlord must give written notice stating the nonpayment and intent to terminate if rent is not paid. If the tenant does not pay within five days after the notice, the landlord may terminate the rental agreement and proceed with eviction."
+        "rationale": "For residential tenancies, if rent is unpaid when due, the tenant must fail to pay within five days after the landlord gives written notice of nonpayment and intent to terminate before the landlord may terminate the rental agreement and proceed toward eviction."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 5,
-        "statute": "Okla. Stat. tit. 41, § 131",
-        "rationale": "If rent is unpaid when due, the landlord must provide the tenant with five days' written notice of the nonpayment. Only after the tenant fails to pay the rent within that five-day period may the landlord terminate the rental agreement and initiate an eviction."
+        "statute": "Okla. Stat. tit. 41, § 131(B)",
+        "rationale": "If rent is unpaid when due, the landlord must give the tenant five days' written notice of nonpayment and the landlord's intention to terminate the rental agreement. The landlord may only file for eviction if the tenant fails to pay the rent within that five-day period."
       }
     }
   },

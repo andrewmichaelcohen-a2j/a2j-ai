@@ -34,10 +34,12 @@ import os
 import re
 import sys
 import glob
+import time
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Tuple, List
+from collections import Counter
 
 # ── Key handling — load .env FIRST, before anything else ─────────────────────
 
@@ -507,6 +509,7 @@ def run_l2(
     phase_label: str,
     dry_run: bool = False,
     no_writeback: bool = False,
+    sleep_secs: float = 0,
 ) -> list[dict]:
     all_data, all_paths = load_all_v2_files()
 
@@ -571,6 +574,9 @@ def run_l2(
             "gemini": gemini_result,
             "classification": classification,
         })
+
+        if sleep_secs > 0 and code != target_codes[-1]:
+            time.sleep(sleep_secs)
 
     # Save raw output file (provenance record per COWORK_DIRECTION_PROVENANCE.md)
     if not dry_run:
@@ -646,6 +652,12 @@ if __name__ == "__main__":
         action="store_true",
         help="Call APIs and classify, but do not write results back to files.",
     )
+    parser.add_argument(
+        "--sleep",
+        type=float,
+        default=0,
+        help="Seconds to sleep between states (rate-limit guard). Default: 0.",
+    )
     args = parser.parse_args()
 
     print(f"\nCivil Justice as Code — L2 Multi-Model Consensus")
@@ -668,4 +680,5 @@ if __name__ == "__main__":
         phase_label=args.phase,
         dry_run=args.dry_run,
         no_writeback=args.no_writeback,
+        sleep_secs=args.sleep,
     )

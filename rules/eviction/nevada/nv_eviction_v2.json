@@ -348,7 +348,23 @@
         }
       }
     ],
-    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-26",
+      "classification": "CONSENSUS-CONFIRM",
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 7,
+        "statute": "Nev. Rev. Stat. § 40.253(1)(a)",
+        "rationale": "For nonpayment of rent by a residential tenant, Nevada requires the landlord to serve a notice requiring the tenant to pay rent or surrender the premises within 7 judicial days after service. The landlord may proceed with eviction only if the tenant fails to comply within that statutory notice period."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 7,
+        "statute": "NRS 40.2512",
+        "rationale": "Nevada law requires a landlord to serve a tenant with a written notice for nonpayment of rent before filing for a summary eviction. The tenant then has seven judicial days following service of the notice to pay the rent or file an answer with the court."
+      }
+    }
   },
   "notice": {
     "notice_types": {
@@ -567,7 +583,23 @@
           "validation_method": "L2-draft-and-cross-check-with-citation-verification",
           "automation_ceiling": "medium",
           "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "candidates": [
+            {
+              "case_name": "Paullin v. Sutton",
+              "citation": "724 P.2d 749",
+              "reporter": "Nev.",
+              "year": 1986,
+              "court": "Nevada Supreme Court",
+              "cl_court_id": "nev",
+              "identified_by": "web_search_justia",
+              "identified_date": "2026-06-26",
+              "candidate_status": "UNVERIFIED",
+              "proposed_holding": "NRS 118A.510 prohibits non-renewal of lease for retaliatory purpose; remedy is actual damages only (statute amended 1985 to add damages provision)",
+              "track": "B",
+              "note": "Foundational NV retaliation case. Identified via Justia web search during Track B research session 2026-06-26. Not yet verified via CourtListener — holdings v3 runner will verify existence, citation accuracy, holding accuracy, and currency."
+            }
+          ]
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",
@@ -711,7 +743,7 @@
         "L2-PROCEDURAL-ERROR"
       ],
       "l2_sm_statute": "NRS 40.253(1)(b)",
-      "l2_note": "Both models empty: GPT=Request timed out.; gem=",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: NRS 40.253(1)(b). Preserved as SM — needs GPT re-run or human confirm.",
       "l2_run_date": "2026-06-26"
     },
     {

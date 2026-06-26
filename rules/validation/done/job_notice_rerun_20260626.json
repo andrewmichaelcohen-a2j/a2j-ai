@@ -1,0 +1,12 @@
+{
+  "job_id": "job_20260627_0215_notice_rerun",
+  "job_type": "l2_module",
+  "runner": "rules/validation/l2/l2_runner.py",
+  "states": "ALL",
+  "sleep": 2,
+  "created": "2026-06-26T00:00:00Z",
+  "uses": ["openai", "gemini"],
+  "live_verified": true,
+  "live_verified_basis": "l2_runner.py live-verified multiple times (notice module original run + Phase 1/2 flags). Updated 2026-06-26: added --sleep arg for dispatcher compatibility (GREEN, syntax-checked, --dry-run validated). No behavior change at sleep=2.",
+  "note": "Notice module provenance re-run — all 51 states. The original notice L2 runs (Phase 1 + Phase 2) did not save raw output files; provenance gap documented in VALIDATION_METRICS_LEDGER. Updated runner now saves notice_l2_raw_{date}.json. Attorney-confirmed outcomes already in state files will be preserved (write-back respects existing flags). Est. cost: ~$1.10. Est. time: ~20 min."
+}

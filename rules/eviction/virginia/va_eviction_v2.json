@@ -382,7 +382,23 @@
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
       }
     ],
-    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-26",
+      "classification": "CONSENSUS-CONFIRM",
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 5,
+        "statute": "Va. Code Ann. § 55.1-1245(F)",
+        "rationale": "When rent is unpaid, the landlord must serve written notice stating the nonpayment and the intent to terminate unless the tenant pays within five days. If the tenant does not pay within that five-day period, the landlord may terminate the rental agreement and proceed to obtain possession."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 5,
+        "statute": "Va. Code § 55.1-1245(F)",
+        "rationale": "The statute requires a landlord to serve a tenant with a written notice of nonpayment, giving the tenant five days to pay the owed rent. If the tenant fails to pay within this period, the landlord may terminate the rental agreement and file for eviction."
+      }
+    }
   },
   "notice": {
     "notice_types": {
@@ -761,9 +777,10 @@
       "case_law": [],
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
-        "L2-PROCEDURAL-ERROR"
+        "L2-PROCEDURAL-ERROR",
+        "L2-PROCEDURAL-NO-SPECIFIC-RULE"
       ],
-      "l2_note": "Both models empty: GPT=Request timed out.; gem=",
+      "l2_note": "Both models confirm no separate attachment statute — general pleading sufficiency applies.",
       "l2_run_date": "2026-06-26"
     },
     {

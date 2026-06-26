@@ -137,7 +137,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "escalated-L7",
+      "L2_consensus": "pass",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -415,20 +415,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
-      "retry": true,
       "gpt": {
         "model": "gpt-5.5",
         "days": 30,
-        "statute": "D.C. Code § 42-3505.01(c-1)(1)-(2)",
-        "rationale": "Before filing a complaint for possession based on nonpayment of rent, a housing provider must give the tenant a notice of the amount due and owing. The statute prohibits filing the complaint until 30 days after service of that notice."
+        "statute": "D.C. Code § 42-3505.01(b)(1); D.C. Code § 42-3505.01a",
+        "rationale": "For nonpayment of rent, a residential landlord may not file a complaint for possession unless the landlord has first provided the tenant a notice of past due rent. The statutory notice period is 30 days before filing."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 30,
-        "statute": "D.C. Code § 42-3505.01(b)",
-        "rationale": "A landlord may not evict a tenant for non-payment of rent unless the tenant has been served with a written notice and has failed to pay the overdue rent within 30 days of service. This notice and cure period is a mandatory prerequisite to filing an eviction complaint."
+        "statute": "D.C. Code § 42-3505.01(a-1)(1)(A)",
+        "rationale": "A housing provider must serve a tenant with a written notice of intent to file an eviction claim for nonpayment of rent. This notice must provide the tenant with a period of at least 30 days to pay the rent due before a claim for possession can be filed."
       }
     }
   },

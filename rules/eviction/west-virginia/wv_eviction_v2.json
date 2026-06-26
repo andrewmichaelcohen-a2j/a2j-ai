@@ -336,19 +336,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "PERIOD-DIVERGENCE",
+      "run_date": "2026-06-26",
+      "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": null,
-        "statute": "W. Va. Code § 37-6-5; W. Va. Code § 55-3A-1(a)",
-        "rationale": "West Virginia law provides that notice to quit is not necessary when the tenant is in arrears in payment of rent. A landlord may file a summary eviction action when the tenant is in arrears under W. Va. Code § 55-3A-1(a), so no prefiling notice period is statutorily required for nonpayment."
+        "statute": "W. Va. Code § 55-3A-1(a)",
+        "rationale": "West Virginia permits a landlord to file a petition for summary relief when a residential tenant is wrongfully occupying the property because the tenant is in arrears in rent. The statute does not require any pre-filing notice period for nonpayment of rent."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": null,
         "statute": "W. Va. Code § 55-3A-1",
-        "rationale": "West Virginia law does not require a landlord to provide a tenant with a notice to pay rent or quit before filing an eviction lawsuit. The statute permits a landlord to file a petition for summary relief with the court as soon as a tenant is in arrears on rent."
+        "rationale": "West Virginia law does not require a landlord to provide a tenant with a notice period before filing a petition for summary eviction due to nonpayment of rent. The landlord may initiate the legal action by directly filing a petition with the appropriate court."
       }
     }
   },

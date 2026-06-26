@@ -129,7 +129,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -348,23 +348,41 @@
         "draft_corroborated": 0,
         "needs_attorney": 5,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-MODEL-SPLIT",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "note": "L2-MODEL-SPLIT: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): 14d | Minn. Stat. § 504B.321, subd. 1a(a). Gemini (gemini-2.5-pro): Noned | Minn. Stat. § 504B.291, subd. 1(a). Human review required.",
+        "gpt_answer": {
+          "days": 14,
+          "statute": "Minn. Stat. § 504B.321, subd. 1a(a)",
+          "rationale": "Minnesota law requires a landlord to give a residential tenant written notice at least 14 days before filing an eviction action alleging nonpayment of rent or other unpaid financial obligations under the lease."
+        },
+        "gemini_answer": {
+          "days": null,
+          "statute": "Minn. Stat. § 504B.291, subd. 1(a)",
+          "rationale": "Minnesota law allows a landlord to bring an eviction action when a tenant is in default in the payment of rent. The statute does not mandate a notice period or a demand for rent before filing the action with the court."
+        },
+        "l2_run_date": "2026-06-26"
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "CONSENSUS-CONFIRM",
+      "run_date": "2026-06-26",
+      "classification": "MODEL-SPLIT",
       "gpt": {
         "model": "gpt-5.5",
         "days": 14,
-        "statute": "Minn. Stat. § 504B.321, subd. 1a",
-        "rationale": "Minnesota requires a landlord to provide a residential tenant written notice before filing an eviction action alleging nonpayment of rent or another unpaid financial obligation under the lease. The landlord may not file the eviction action until 14 days after giving that notice."
+        "statute": "Minn. Stat. § 504B.321, subd. 1a(a)",
+        "rationale": "Minnesota law requires a landlord to give a residential tenant written notice at least 14 days before filing an eviction action alleging nonpayment of rent or other unpaid financial obligations under the lease."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
-        "days": 14,
-        "statute": "Minn. Stat. § 504B.321, subd. 1a",
-        "rationale": "Before bringing an eviction action for nonpayment of rent, a landlord must provide the residential tenant with a written notice specifying the amount due. The landlord may file the eviction action if the tenant fails to pay the total amount due within 14 days after the notice is served."
+        "days": null,
+        "statute": "Minn. Stat. § 504B.291, subd. 1(a)",
+        "rationale": "Minnesota law allows a landlord to bring an eviction action when a tenant is in default in the payment of rent. The statute does not mandate a notice period or a demand for rent before filing the action with the court."
       }
     }
   },

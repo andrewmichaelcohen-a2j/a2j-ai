@@ -338,19 +338,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 7,
         "statute": "Neb. Rev. Stat. § 76-1431(2)",
-        "rationale": "For nonpayment of rent, the landlord may terminate the rental agreement only if the tenant fails to pay within seven calendar days after written notice of nonpayment and the landlord’s intent to terminate. Because eviction for possession follows termination of the rental agreement, this seven-day notice is required before filing."
+        "rationale": "For residential tenancies, if rent is unpaid when due, the landlord must give written notice of nonpayment and intent to terminate, and the tenant has seven calendar days to pay. If the tenant fails to pay within that seven-day period, the landlord may terminate the rental agreement and proceed with eviction."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 7,
         "statute": "Neb. Rev. Stat. § 76-1431(2)",
-        "rationale": "The statute requires a landlord to deliver a written notice specifying the nonpayment of rent and stating the rental agreement will terminate not less than seven days after the tenant's receipt of the notice if the rent is not paid within that period."
+        "rationale": "The landlord must give the tenant seven days' written notice demanding payment of unpaid rent and stating the intention to terminate the rental agreement. If the tenant fails to pay the rent within that seven-day period, the landlord may terminate the agreement and begin eviction proceedings."
       }
     }
   },

@@ -329,19 +329,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 14,
-        "statute": "9 V.S.A. § 4467(b)(1)",
-        "rationale": "For nonpayment of rent, Vermont law allows a landlord to terminate the tenancy by actual notice stating a termination date not less than 14 days after the tenant receives the notice. The eviction action may be filed only after the tenancy has been terminated under that notice."
+        "statute": "9 V.S.A. § 4467(a)",
+        "rationale": "For nonpayment of rent, a landlord may terminate a residential tenancy by giving the tenant actual notice specifying a termination date at least 14 days after the tenant receives the notice. The tenancy must be terminated by this statutory notice before the landlord may proceed with an eviction action based on nonpayment."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 14,
         "statute": "9 V.S.A. § 4467(a)",
-        "rationale": "A landlord may terminate a tenancy for nonpayment of rent by providing the tenant with actual notice of the termination date. The termination date must be at least 14 days after the date the tenant receives the notice."
+        "rationale": "A landlord may terminate a tenancy for nonpayment of rent only by providing the tenant with actual notice of the termination date. The specified termination date must be at least 14 days after the date the tenant receives the notice."
       }
     }
   },
@@ -567,7 +567,25 @@
           "validation_method": "L2-draft-and-cross-check-with-citation-verification",
           "automation_ceiling": "medium",
           "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "candidates": [
+            {
+              "case_name": "Houle v. Quenneville",
+              "citation": "787 A.2d 1258",
+              "alt_citation": "173 Vt. 80",
+              "reporter": "A.2d",
+              "year": 2001,
+              "court": "Vermont Supreme Court",
+              "cl_court_id": "vt",
+              "cl_cluster_id": "2320677",
+              "identified_by": "web_search_justia",
+              "identified_date": "2026-06-26",
+              "candidate_status": "UNVERIFIED",
+              "proposed_holding": "Objective test for retaliatory eviction applies (Gokey standard); tenant may use circumstantial evidence to establish retaliation; protected activity must temporally precede adverse action",
+              "track": "B",
+              "note": "Vermont Supreme Court. Identified via Justia web search during Track B research session 2026-06-26. CL cluster_id=2320677 identified. Not yet verified via holdings v3 runner."
+            }
+          ]
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",

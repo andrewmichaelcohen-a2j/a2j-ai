@@ -408,19 +408,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "CITATION-DIVERGENCE",
+      "run_date": "2026-06-26",
+      "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "Ohio Rev. Code § 1923.04(A)",
-        "rationale": "Before commencing a forcible entry and detainer eviction action, the landlord must notify the tenant to leave the premises at least three days before filing. This statutory three-day notice applies to eviction actions for nonpayment of rent."
+        "rationale": "Before beginning a forcible entry and detainer eviction action, the landlord must notify the tenant to leave the premises at least three days before filing. This three-day notice requirement applies to residential eviction actions for nonpayment of rent brought under Ohio’s eviction chapter."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "Ohio Rev. Code § 1923.04(A)",
-        "rationale": "This statute requires a landlord to notify the tenant to leave the premises at least three days before filing a forcible entry and detainer action. This notice, often called a 'notice to vacate,' is a mandatory prerequisite for commencing an eviction case for any reason, including nonpayment of rent."
+        "statute": "Ohio Rev. Code Ann. § 1923.04(A)",
+        "rationale": "A landlord must notify the tenant to leave the premises at least three days before beginning a forcible entry and detainer action. This written notice to vacate is a mandatory prerequisite to filing an eviction case for nonpayment of rent."
       }
     }
   },

@@ -343,19 +343,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 5,
         "statute": "R.I. Gen. Laws § 34-18-35(b)",
-        "rationale": "For residential nonpayment of rent, the landlord must give written notice stating that the rent is in arrears and that the tenancy will terminate unless the tenant pays within five days. The landlord may proceed with eviction only if the tenant fails to pay within that statutory five-day notice period."
+        "rationale": "For nonpayment of rent, after rent remains unpaid for 15 days after the due date, the landlord may give written notice stating the intent to terminate if the rent is not paid within 5 days. The tenant’s cure within that 5-day notice period prevents the landlord from proceeding with filing an eviction complaint."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 5,
-        "statute": "R.I. Gen. Laws § 34-18-35(a)",
-        "rationale": "The statute provides that if rent is unpaid when due and the tenant fails to pay rent within five days after written notice is served, the landlord may terminate the rental agreement and file a complaint for eviction."
+        "statute": "R.I. Gen. Laws § 34-18-35",
+        "rationale": "If rent is unpaid when due, the landlord must provide the tenant with five days' written notice of the nonpayment and the landlord's intent to terminate the agreement. The landlord may only file for eviction if the tenant fails to pay the rent within that five-day period."
       }
     }
   },
@@ -778,9 +778,10 @@
       "case_law": [],
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
-        "L2-PROCEDURAL-ERROR"
+        "L2-PROCEDURAL-ERROR",
+        "L2-PROCEDURAL-NO-SPECIFIC-RULE"
       ],
-      "l2_note": "Both models empty: GPT=Request timed out.; gem=",
+      "l2_note": "Both models confirm no separate attachment statute — general pleading sufficiency applies.",
       "l2_run_date": "2026-06-26"
     },
     {

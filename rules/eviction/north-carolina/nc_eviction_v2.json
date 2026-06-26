@@ -318,19 +318,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 10,
-        "statute": "N.C. Gen. Stat. § 42-3",
-        "rationale": "For nonpayment of rent, the tenant must continue in possession for 10 days after the landlord demands all past-due rent before the landlord may proceed with summary ejectment. The statute also permits the lease to provide for reentry for nonpayment without demand."
+        "statute": "N.C. Gen. Stat. §§ 42-3, 42-26(a)(2)",
+        "rationale": "For nonpayment of rent, North Carolina requires the landlord to make a demand for payment and wait 10 days before seeking summary ejectment. The statute allows the demand requirement to be waived if the lease expressly provides for forfeiture without demand."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 10,
         "statute": "N.C. Gen. Stat. § 42-3",
-        "rationale": "The statute implies a forfeiture of the lease term if a tenant fails to pay rent within 10 days after the landlord makes a demand for all past-due rent. This 10-day demand is a prerequisite to filing a summary ejectment action for nonpayment."
+        "rationale": "North Carolina law implies a forfeiture of the lease term if a tenant fails to pay rent within 10 days after the landlord makes a demand for all past-due rent. This 10-day demand is the required notice before a landlord may file for summary ejectment."
       }
     }
   },

@@ -317,19 +317,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "MODEL-SPLIT",
+      "run_date": "2026-06-26",
+      "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "N.D. Cent. Code § 47-32-02",
-        "rationale": "North Dakota requires three days' written notice of intention to evict before eviction proceedings may be instituted. Nonpayment of rent is a statutory basis for eviction, and the pre-filing notice requirement is set by § 47-32-02."
+        "rationale": "North Dakota requires a landlord to serve a written notice of intention to evict at least three days before commencing an eviction action. Nonpayment of rent is a statutory ground for eviction, and the three-day pre-filing notice requirement applies."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
-        "days": null,
-        "statute": "N.D. Cent. Code § 47-32-02",
-        "rationale": "North Dakota law explicitly states that a landlord is not required to give a tenant a notice to quit before beginning an eviction action for failure to pay rent. The right to file for eviction arises three days after the rent is due, but no advance notice must be served on the tenant."
+        "days": 3,
+        "statute": "N.D. Cent. Code § 33-06-02",
+        "rationale": "For nonpayment of rent, North Dakota law requires a landlord to give a tenant at least three days' written notice to quit. This notice must be served before the landlord can institute an eviction proceeding."
       }
     }
   },

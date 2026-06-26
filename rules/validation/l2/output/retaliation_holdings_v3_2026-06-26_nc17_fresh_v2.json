@@ -1,6 +1,25 @@
 {
-  "completed": {
-    "eec118f8a573": {
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "nc17_fresh_v2",
+  "run_date": "2026-06-26",
+  "runner_version": "harness-v1",
+  "total_units": 120,
+  "method_rate": 0.6667,
+  "overall_rate": 0.05,
+  "bucket_counts": {
+    "MV": 6,
+    "CI": 0,
+    "RC": 3,
+    "PR": 25,
+    "SM": 0
+  },
+  "text_retrievable_denominator": 9,
+  "machine_verified": 6,
+  "single_model_preliminary": 0,
+  "needs_attorney": 3,
+  "elapsed_secs": 47812,
+  "results": [
+    {
       "unit_id": "eec118f8a573",
       "state": "AK",
       "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
@@ -85,7 +104,7 @@
         "harness_version": "v1"
       }
     },
-    "d6710832b489": {
+    {
       "unit_id": "d6710832b489",
       "state": "AK",
       "case_name": "Chilton-Wren v. Olds",
@@ -174,7 +193,7 @@
         "harness_version": "v1"
       }
     },
-    "404dde082ebe": {
+    {
       "unit_id": "404dde082ebe",
       "state": "AK",
       "case_name": "Helfrich v. Valdez Motel Corp.",
@@ -270,7 +289,7 @@
         "harness_version": "v1"
       }
     },
-    "0c0bdef178fb": {
+    {
       "unit_id": "0c0bdef178fb",
       "state": "AK",
       "case_name": "DeNardo v. Maassen",
@@ -366,7 +385,7 @@
         "harness_version": "v1"
       }
     },
-    "2b9b50655d76": {
+    {
       "unit_id": "2b9b50655d76",
       "state": "AK",
       "case_name": "Sharpe v. Trail",
@@ -457,7 +476,7 @@
         "harness_version": "v1"
       }
     },
-    "9a7eba587d93": {
+    {
       "unit_id": "9a7eba587d93",
       "state": "AK",
       "case_name": "DeNardo v. Corneloup",
@@ -546,7 +565,7 @@
         "harness_version": "v1"
       }
     },
-    "475f523bd174": {
+    {
       "unit_id": "475f523bd174",
       "state": "AK",
       "case_name": "Sullivan v. Subramanian",
@@ -635,7 +654,7 @@
         "harness_version": "v1"
       }
     },
-    "43d6a413b7e6": {
+    {
       "unit_id": "43d6a413b7e6",
       "state": "AK",
       "case_name": "Vinson v. Hamilton",
@@ -731,7 +750,7 @@
         "harness_version": "v1"
       }
     },
-    "d786bba04c92": {
+    {
       "unit_id": "d786bba04c92",
       "state": "AL",
       "case_name": "Leeth v. J. J. Properties",
@@ -827,7 +846,7 @@
         "harness_version": "v1"
       }
     },
-    "986757f70ee3": {
+    {
       "unit_id": "986757f70ee3",
       "state": "AL",
       "case_name": "Harris v. Tuscaloosa Housing Authority",
@@ -916,7 +935,7 @@
         "harness_version": "v1"
       }
     },
-    "2befffc16b7c": {
+    {
       "unit_id": "2befffc16b7c",
       "state": "AL",
       "case_name": "Tiller v. YW Housing Partners, Ltd.",
@@ -1012,7 +1031,7 @@
         "harness_version": "v1"
       }
     },
-    "a745a39e57e7": {
+    {
       "unit_id": "a745a39e57e7",
       "state": "AL",
       "case_name": "West v. DJ Mortgage, LLC",
@@ -1097,7 +1116,7 @@
         "harness_version": "v1"
       }
     },
-    "b6eca0650b15": {
+    {
       "unit_id": "b6eca0650b15",
       "state": "AL",
       "case_name": "Weidel v. Ashcroft",
@@ -1186,7 +1205,7 @@
         "harness_version": "v1"
       }
     },
-    "7df31b7dbdc6": {
+    {
       "unit_id": "7df31b7dbdc6",
       "state": "AL",
       "case_name": "Sharpe v. Trail",
@@ -1277,7 +1296,7 @@
         "harness_version": "v1"
       }
     },
-    "539739dc6c4c": {
+    {
       "unit_id": "539739dc6c4c",
       "state": "AL",
       "case_name": "Helfrich v. Valdez Motel Corp.",
@@ -1287,7 +1306,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "71aff32269c1": {
+    {
       "unit_id": "71aff32269c1",
       "state": "AL",
       "case_name": "Belcher v. Grand Reserve MGM, LLC",
@@ -1297,7 +1316,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "a3c9e7579250": {
+    {
       "unit_id": "a3c9e7579250",
       "state": "CO",
       "case_name": "Arnal v. Aspen View Condominium Ass'n",
@@ -1307,7 +1326,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "7f96d78a4f53": {
+    {
       "unit_id": "7f96d78a4f53",
       "state": "CO",
       "case_name": "Michael Reid v. UDR Texas Properties, LLC UDR Texas Properties, LLC, Successor to UDR Texas Properties, LP UDR the Cliffs, LLC UDR, Inc. And Western Residential, Inc.",
@@ -1317,7 +1336,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "f897f995cb52": {
+    {
       "unit_id": "f897f995cb52",
       "state": "CO",
       "case_name": "W.W.G. Corp. v. Hughes",
@@ -1327,7 +1346,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "947e837b62ab": {
+    {
       "unit_id": "947e837b62ab",
       "state": "CO",
       "case_name": "Brown v. Hill",
@@ -1408,7 +1427,7 @@
         "harness_version": "v1"
       }
     },
-    "60723364cb1d": {
+    {
       "unit_id": "60723364cb1d",
       "state": "CO",
       "case_name": "Sladek v. dePlomb",
@@ -1491,7 +1510,7 @@
         "harness_version": "v1"
       }
     },
-    "f53ca1e65d5e": {
+    {
       "unit_id": "f53ca1e65d5e",
       "state": "CO",
       "case_name": "Lincoln Place Tenants Ass'n v. City of Los Angeles",
@@ -1578,7 +1597,7 @@
         "harness_version": "v1"
       }
     },
-    "602b2e32278c": {
+    {
       "unit_id": "602b2e32278c",
       "state": "CO",
       "case_name": "K&D Mgt., L.L.C. v. Masten",
@@ -1670,7 +1689,7 @@
         "harness_version": "v1"
       }
     },
-    "731cd068e524": {
+    {
       "unit_id": "731cd068e524",
       "state": "CO",
       "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
@@ -1755,7 +1774,7 @@
         "harness_version": "v1"
       }
     },
-    "030c9a436be9": {
+    {
       "unit_id": "030c9a436be9",
       "state": "CT",
       "case_name": "TOV Realty, LLC v. Suarez",
@@ -1832,7 +1851,7 @@
         "harness_version": "v1"
       }
     },
-    "7a80117f7702": {
+    {
       "unit_id": "7a80117f7702",
       "state": "CT",
       "case_name": "Black Rock Gardens, LLC v. Berry",
@@ -1917,7 +1936,7 @@
         "harness_version": "v1"
       }
     },
-    "c98aaa688e64": {
+    {
       "unit_id": "c98aaa688e64",
       "state": "CT",
       "case_name": "Colchester Estate Ventures, LLC v. Madden",
@@ -2002,7 +2021,7 @@
         "harness_version": "v1"
       }
     },
-    "5dc227c5b325": {
+    {
       "unit_id": "5dc227c5b325",
       "state": "CT",
       "case_name": "Holdmeyer v. Thomas",
@@ -2098,7 +2117,7 @@
         "harness_version": "v1"
       }
     },
-    "8e9a5d87a83c": {
+    {
       "unit_id": "8e9a5d87a83c",
       "state": "CT",
       "case_name": "Rahman v. Lewis",
@@ -2183,7 +2202,7 @@
         "harness_version": "v1"
       }
     },
-    "59878532fadf": {
+    {
       "unit_id": "59878532fadf",
       "state": "CT",
       "case_name": "Renaissance Management Co. v. Barnes",
@@ -2274,7 +2293,7 @@
         "harness_version": "v1"
       }
     },
-    "70a0d13d6da9": {
+    {
       "unit_id": "70a0d13d6da9",
       "state": "CT",
       "case_name": "Connecticut Mobile Home Assn., Inc. v. Jensen's, Inc.",
@@ -2284,7 +2303,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "4f5b28596fbc": {
+    {
       "unit_id": "4f5b28596fbc",
       "state": "CT",
       "case_name": "Dorsey v. Vernon Village, Inc.",
@@ -2294,7 +2313,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "a29047ffb665": {
+    {
       "unit_id": "a29047ffb665",
       "state": "HI",
       "case_name": "Glauberman v. Gonsalves",
@@ -2304,7 +2323,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "a46f230f5df1": {
+    {
       "unit_id": "a46f230f5df1",
       "state": "HI",
       "case_name": "Trustees of the Estate of Bernice Pauahi Bishop v. Au.",
@@ -2314,7 +2333,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "41f2b68eb53a": {
+    {
       "unit_id": "41f2b68eb53a",
       "state": "HI",
       "case_name": "Rees v. Gordon",
@@ -2395,7 +2414,7 @@
         "harness_version": "v1"
       }
     },
-    "92919a3f66be": {
+    {
       "unit_id": "92919a3f66be",
       "state": "HI",
       "case_name": "Wakefield v. Bardellini",
@@ -2405,7 +2424,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "722c6e65be93": {
+    {
       "unit_id": "722c6e65be93",
       "state": "HI",
       "case_name": "Cedillos v. Masumoto.",
@@ -2415,7 +2434,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6ad583bcd8b0": {
+    {
       "unit_id": "6ad583bcd8b0",
       "state": "HI",
       "case_name": "Ryan v. Herzog.",
@@ -2425,7 +2444,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "e0bceb408c47": {
+    {
       "unit_id": "e0bceb408c47",
       "state": "HI",
       "case_name": "Skydive Myrtle Beach, Inc. v. Horry Cnty.",
@@ -2435,7 +2454,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "KS::__no_cases__": {
+    {
       "unit_id": "KS::__no_cases__",
       "state": "KS",
       "case_name": "__no_cases__",
@@ -2448,7 +2467,7 @@
         "verify_actually_answered": false
       }
     },
-    "9cd97c7775fa": {
+    {
       "unit_id": "9cd97c7775fa",
       "state": "LA",
       "case_name": "Marilyn A. Taylor v. Robyn Joseph",
@@ -2458,7 +2477,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6b65311d4c2f": {
+    {
       "unit_id": "6b65311d4c2f",
       "state": "LA",
       "case_name": "St Nick's Alliance, LLC v. Cordero",
@@ -2468,7 +2487,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "3c7f3a16998b": {
+    {
       "unit_id": "3c7f3a16998b",
       "state": "LA",
       "case_name": "Poole v. Housing Authority for the Town of Vinton",
@@ -2478,7 +2497,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6a0c2e8b47bb": {
+    {
       "unit_id": "6a0c2e8b47bb",
       "state": "LA",
       "case_name": "Housing Authority of New Orleans v. Eason",
@@ -2488,7 +2507,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "ad9da34e73a9": {
+    {
       "unit_id": "ad9da34e73a9",
       "state": "LA",
       "case_name": "Banuelos v. LA Investment CA2/1",
@@ -2498,7 +2517,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "c15c5b5b651b": {
+    {
       "unit_id": "c15c5b5b651b",
       "state": "LA",
       "case_name": "640 Octavia v. Pieper CA1/2",
@@ -2508,7 +2527,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "2614253b020f": {
+    {
       "unit_id": "2614253b020f",
       "state": "LA",
       "case_name": "Richard Manning, Tammy Manning, and All Occupants of 1036 Sunset, Waco, TX 76704 v. Mae Johnson and Pat Williams",
@@ -2518,7 +2537,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "5c180598ff6b": {
+    {
       "unit_id": "5c180598ff6b",
       "state": "LA",
       "case_name": "McManus v. East Pointe Apartments",
@@ -2528,7 +2547,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "96b0c087663c": {
+    {
       "unit_id": "96b0c087663c",
       "state": "MI",
       "case_name": "Cloverdale Foods of Minnesota, Inc. v. Snacks",
@@ -2538,7 +2557,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "9a8c05782b12": {
+    {
       "unit_id": "9a8c05782b12",
       "state": "MI",
       "case_name": "Forrest Perkins v. Memorial Hospital of South Bend",
@@ -2548,7 +2567,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "8848904a7e08": {
+    {
       "unit_id": "8848904a7e08",
       "state": "MI",
       "case_name": "Gonzalez v. Recht Family Partnership",
@@ -2558,7 +2577,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6de49d9d4877": {
+    {
       "unit_id": "6de49d9d4877",
       "state": "MI",
       "case_name": "Simmons v. Williams",
@@ -2568,7 +2587,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "64bffb0700a3": {
+    {
       "unit_id": "64bffb0700a3",
       "state": "MI",
       "case_name": "An-Ti Chai v. Michigan Technological University",
@@ -2578,7 +2597,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "cdc9d49515f2": {
+    {
       "unit_id": "cdc9d49515f2",
       "state": "MI",
       "case_name": "Perkins v. Mem'l Hosp. of S. Bend",
@@ -2588,7 +2607,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6fe7e5637f82": {
+    {
       "unit_id": "6fe7e5637f82",
       "state": "MI",
       "case_name": "Star Property Solutions, LLC and Indy Drains, LLC v. Pine Financial, LLC, and T.Tad Bohlsen (mem. dec.)",
@@ -2598,7 +2617,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "ae800575def8": {
+    {
       "unit_id": "ae800575def8",
       "state": "MI",
       "case_name": "K&D Mgt., L.L.C. v. Masten",
@@ -2608,7 +2627,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "61564253a417": {
+    {
       "unit_id": "61564253a417",
       "state": "ND",
       "case_name": "Rent Daddy’s v. Gamel, et al.",
@@ -2618,7 +2637,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "7a53ad97503d": {
+    {
       "unit_id": "7a53ad97503d",
       "state": "ND",
       "case_name": "Watford City Lodging LLC v. Miskin",
@@ -2628,7 +2647,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "fd5d0ebd09ba": {
+    {
       "unit_id": "fd5d0ebd09ba",
       "state": "ND",
       "case_name": "Nelson v. Johnson",
@@ -2638,7 +2657,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "baa572c93aed": {
+    {
       "unit_id": "baa572c93aed",
       "state": "ND",
       "case_name": "In re Hodge - (",
@@ -2648,7 +2667,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "16f049ace936": {
+    {
       "unit_id": "16f049ace936",
       "state": "ND",
       "case_name": "An-Ti Chai v. Michigan Technological University",
@@ -2658,7 +2677,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "8c78d13cde02": {
+    {
       "unit_id": "8c78d13cde02",
       "state": "ND",
       "case_name": "Western Rim Property Services Inc. v. Paula Bazan-Garcia",
@@ -2668,7 +2687,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "2c9a801b5c90": {
+    {
       "unit_id": "2c9a801b5c90",
       "state": "NJ",
       "case_name": "1266 Apt. Corp. v. New Horizon Deli",
@@ -2678,7 +2697,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "29c5c8917fe4": {
+    {
       "unit_id": "29c5c8917fe4",
       "state": "NJ",
       "case_name": "Housing Authority v. Mims",
@@ -2688,7 +2707,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "eb6888422259": {
+    {
       "unit_id": "eb6888422259",
       "state": "NJ",
       "case_name": "Grand Parkline, LLC H Mart Companies Incorporated H Mart Austin LLC And IYK Texas Corporation v. Mama Fu's Lakeline, LLC",
@@ -2698,7 +2717,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "e5d0511adeb4": {
+    {
       "unit_id": "e5d0511adeb4",
       "state": "NJ",
       "case_name": "279 4TH AVE. MANAGEMENT. LLC v. Mollett",
@@ -2708,7 +2727,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "f4124b2b88b0": {
+    {
       "unit_id": "f4124b2b88b0",
       "state": "NJ",
       "case_name": "Maglies v. Estate of Guy",
@@ -2718,7 +2737,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "12ad24e5aaf7": {
+    {
       "unit_id": "12ad24e5aaf7",
       "state": "NJ",
       "case_name": "Geneva Butts v. The City of New York Department of Housing Preservation and Development",
@@ -2728,7 +2747,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "f214df5cb28d": {
+    {
       "unit_id": "f214df5cb28d",
       "state": "NJ",
       "case_name": "Boston LLC v. Juarez",
@@ -2738,7 +2757,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "a710b07ed9ac": {
+    {
       "unit_id": "a710b07ed9ac",
       "state": "NJ",
       "case_name": "Lopez v. Medina",
@@ -2748,7 +2767,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "0ddb5675364e": {
+    {
       "unit_id": "0ddb5675364e",
       "state": "NM",
       "case_name": "Carol Rickert & Associates v. Law",
@@ -2758,7 +2777,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "38bd8bdcf50e": {
+    {
       "unit_id": "38bd8bdcf50e",
       "state": "NM",
       "case_name": "Casa Blanca Mobile Home Park v. Hill",
@@ -2768,7 +2787,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "ddd4b12bdb53": {
+    {
       "unit_id": "ddd4b12bdb53",
       "state": "NM",
       "case_name": "Drouet v. Superior Court",
@@ -2778,7 +2797,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "7ab37eaf4d3e": {
+    {
       "unit_id": "7ab37eaf4d3e",
       "state": "NM",
       "case_name": "Spingarn v. Landow & Co.",
@@ -2788,7 +2807,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "7f069cc0a002": {
+    {
       "unit_id": "7f069cc0a002",
       "state": "NM",
       "case_name": "Wilkins v. St. Louis Housing Authority",
@@ -2798,7 +2817,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6b8fbba959d5": {
+    {
       "unit_id": "6b8fbba959d5",
       "state": "NM",
       "case_name": "Elizabeth A. Honce v. Jose A. Vigil, D/B/A Dorado Investments, Inc., A/K/A Villa Chaparral Mobile Home Sub-Division Dorado Investments, Inc.",
@@ -2808,7 +2827,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "9da14778679a": {
+    {
       "unit_id": "9da14778679a",
       "state": "NM",
       "case_name": "Horwath v. City of East Palo Alto",
@@ -2818,7 +2837,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "898b730df262": {
+    {
       "unit_id": "898b730df262",
       "state": "NM",
       "case_name": "Dietz v. Round Hill Foods Inc.",
@@ -2828,7 +2847,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "NV::__no_cases__": {
+    {
       "unit_id": "NV::__no_cases__",
       "state": "NV",
       "case_name": "__no_cases__",
@@ -2841,7 +2860,7 @@
         "verify_actually_answered": false
       }
     },
-    "2d5b433d68f7": {
+    {
       "unit_id": "2d5b433d68f7",
       "state": "NY",
       "case_name": "Matter of Clifton Park Apartments v. New York State Division of Human Rights",
@@ -2851,7 +2870,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "facf1376608c": {
+    {
       "unit_id": "facf1376608c",
       "state": "NY",
       "case_name": "Ellis v. Oceanhill Brownsville Tenant Ass'n",
@@ -2861,7 +2880,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "4791f3d35437": {
+    {
       "unit_id": "4791f3d35437",
       "state": "NY",
       "case_name": "Robinson v. City of New York",
@@ -2871,7 +2890,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "f9a57d109e93": {
+    {
       "unit_id": "f9a57d109e93",
       "state": "NY",
       "case_name": "Fiondella v. 345 W. 70th Tenants Corp.",
@@ -2881,7 +2900,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "401d52f11dd4": {
+    {
       "unit_id": "401d52f11dd4",
       "state": "NY",
       "case_name": "Nazor v. Sydney Sol Group, Ltd.",
@@ -2891,7 +2910,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "8778abdf7268": {
+    {
       "unit_id": "8778abdf7268",
       "state": "NY",
       "case_name": "New York Infirmary — Beekman Downtown Hospital v. Sarris",
@@ -2901,7 +2920,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6ca363b539e9": {
+    {
       "unit_id": "6ca363b539e9",
       "state": "NY",
       "case_name": "Housing Authority of New Orleans v. Eason",
@@ -2911,7 +2930,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "0b88f577ca11": {
+    {
       "unit_id": "0b88f577ca11",
       "state": "OK",
       "case_name": "Frederic Fezard v. United Cerebral Palsy etc.",
@@ -2921,7 +2940,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "524b12e47b45": {
+    {
       "unit_id": "524b12e47b45",
       "state": "OK",
       "case_name": "Sladek v. dePlomb",
@@ -2931,7 +2950,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "2352aa74b184": {
+    {
       "unit_id": "2352aa74b184",
       "state": "OK",
       "case_name": "Strauss v. City of Chi.",
@@ -2941,7 +2960,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "946bc75582e1": {
+    {
       "unit_id": "946bc75582e1",
       "state": "OK",
       "case_name": "Schuminsky v. Field",
@@ -2951,7 +2970,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "3eff052cea46": {
+    {
       "unit_id": "3eff052cea46",
       "state": "OK",
       "case_name": "Sternjohn v. Kreisler",
@@ -2961,7 +2980,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "e96da44a4e22": {
+    {
       "unit_id": "e96da44a4e22",
       "state": "OK",
       "case_name": "Ben-Davies & Moore v. Blibaum & Assoc.",
@@ -2971,7 +2990,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "ca787585642f": {
+    {
       "unit_id": "ca787585642f",
       "state": "OK",
       "case_name": "Kincaid v. Sturdevant",
@@ -2981,7 +3000,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "499eb36ca2f6": {
+    {
       "unit_id": "499eb36ca2f6",
       "state": "OK",
       "case_name": "Reproductive Rights Network v. President of the University of Massachusetts",
@@ -2991,7 +3010,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "7d36cbd3ea43": {
+    {
       "unit_id": "7d36cbd3ea43",
       "state": "SC",
       "case_name": "Skydive Myrtle Beach, Inc. v. Horry Cnty.",
@@ -3001,7 +3020,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "503a1d1b2ede": {
+    {
       "unit_id": "503a1d1b2ede",
       "state": "SC",
       "case_name": "Skydive v. Horry County",
@@ -3011,7 +3030,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "88565db1e592": {
+    {
       "unit_id": "88565db1e592",
       "state": "SC",
       "case_name": "Boston LLC v. Juarez",
@@ -3021,7 +3040,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "fe28c37cd0e1": {
+    {
       "unit_id": "fe28c37cd0e1",
       "state": "SC",
       "case_name": "Dockery v. Lampart Table Co.",
@@ -3031,7 +3050,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "09013d1207a0": {
+    {
       "unit_id": "09013d1207a0",
       "state": "SC",
       "case_name": "Cross v. Mokwa",
@@ -3118,7 +3137,7 @@
         "harness_version": "v1"
       }
     },
-    "b7939becb9bc": {
+    {
       "unit_id": "b7939becb9bc",
       "state": "SC",
       "case_name": "Trinity Cross v. Joseph J. Mokwa, etc",
@@ -3199,7 +3218,7 @@
         "harness_version": "v1"
       }
     },
-    "20f986ccf20d": {
+    {
       "unit_id": "20f986ccf20d",
       "state": "SC",
       "case_name": "Henry Knox Sherrill Corp. v. Randall",
@@ -3284,7 +3303,7 @@
         "harness_version": "v1"
       }
     },
-    "e933b2c650e6": {
+    {
       "unit_id": "e933b2c650e6",
       "state": "SC",
       "case_name": "Henry Knox Sherrill Corporation v. Randall",
@@ -3371,7 +3390,7 @@
         "harness_version": "v1"
       }
     },
-    "ede2447821e1": {
+    {
       "unit_id": "ede2447821e1",
       "state": "VT",
       "case_name": "trillium holdings v. buchanon",
@@ -3452,7 +3471,7 @@
         "harness_version": "v1"
       }
     },
-    "6af2b0d9694f": {
+    {
       "unit_id": "6af2b0d9694f",
       "state": "VT",
       "case_name": "Stephens v. Gilmour",
@@ -3533,7 +3552,7 @@
         "harness_version": "v1"
       }
     },
-    "cf629da1f51b": {
+    {
       "unit_id": "cf629da1f51b",
       "state": "VT",
       "case_name": "Atwood v. Hill",
@@ -3614,7 +3633,7 @@
         "harness_version": "v1"
       }
     },
-    "2e513768cb20": {
+    {
       "unit_id": "2e513768cb20",
       "state": "VT",
       "case_name": "Trillium Holdings LLC v. Buchanan",
@@ -3695,7 +3714,7 @@
         "harness_version": "v1"
       }
     },
-    "166858513bf0": {
+    {
       "unit_id": "166858513bf0",
       "state": "VT",
       "case_name": "Houle v. Quenneville",
@@ -3705,7 +3724,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "d8238bb3295d": {
+    {
       "unit_id": "d8238bb3295d",
       "state": "VT",
       "case_name": "Lankin v. Stasik",
@@ -3715,7 +3734,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "c786b80299f5": {
+    {
       "unit_id": "c786b80299f5",
       "state": "VT",
       "case_name": "Vladyka v. Marsh",
@@ -3725,7 +3744,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "1265a070ba13": {
+    {
       "unit_id": "1265a070ba13",
       "state": "VT",
       "case_name": "Northgate Hous. Ltd. v. White",
@@ -3735,7 +3754,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "1ebfa68bc553": {
+    {
       "unit_id": "1ebfa68bc553",
       "state": "WV",
       "case_name": "STATE EX REL. BAY v. Marshall",
@@ -3745,7 +3764,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "6464fc75024d": {
+    {
       "unit_id": "6464fc75024d",
       "state": "WV",
       "case_name": "Robin Hammer v. Beverly Manor",
@@ -3755,7 +3774,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "10d3e319f2a9": {
+    {
       "unit_id": "10d3e319f2a9",
       "state": "WV",
       "case_name": "Napier v. Napier",
@@ -3765,7 +3784,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "fc83282f33f1": {
+    {
       "unit_id": "fc83282f33f1",
       "state": "WV",
       "case_name": "Brown v. Hill",
@@ -3775,7 +3794,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "db9d7df74383": {
+    {
       "unit_id": "db9d7df74383",
       "state": "WV",
       "case_name": "Murphy v. Smallridge",
@@ -3785,7 +3804,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "e1f117918397": {
+    {
       "unit_id": "e1f117918397",
       "state": "WV",
       "case_name": "Adams v. Gaylock",
@@ -3795,7 +3814,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "148d30e7efdd": {
+    {
       "unit_id": "148d30e7efdd",
       "state": "WV",
       "case_name": "Boston LLC v. Juarez",
@@ -3805,7 +3824,7 @@
         "harness_exhausted_retries": true
       }
     },
-    "cd2a6168a080": {
+    {
       "unit_id": "cd2a6168a080",
       "state": "WV",
       "case_name": "Imperial Colliery Co. v. Fout",
@@ -3815,10 +3834,5 @@
         "harness_exhausted_retries": true
       }
     }
-  },
-  "meta": {
-    "protocol": "retaliation_holdings_v3",
-    "run_id": "nc17_fresh_v2",
-    "total_units": 120
-  }
+  ]
 }

@@ -315,19 +315,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "Tex. Prop. Code § 24.005(a)",
-        "rationale": "A landlord must give a residential tenant who defaults under the lease at least three days’ written notice to vacate before filing a forcible detainer action. The statute allows a written lease or agreement to provide a shorter or longer notice period."
+        "rationale": "Before filing a forcible detainer eviction action, a landlord must give a tenant at least three days’ written notice to vacate unless the parties have contracted for a different notice period in a written lease or agreement. This notice requirement applies when the tenant is in default, including for nonpayment of rent."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "Tex. Prop. Code § 24.005",
-        "rationale": "A landlord must give a tenant who defaults on rent at least three days' written notice to vacate the premises before the landlord files a forcible detainer suit. This statutory period can be modified if the parties have contracted for a shorter or longer notice period in a written lease."
+        "statute": "Texas Property Code § 24.005",
+        "rationale": "Before filing a forcible detainer (eviction) suit for nonpayment of rent, a landlord must give the tenant at least three days' written notice to vacate the premises. The lease agreement may specify a shorter or longer notice period, which would supersede this statutory minimum."
       }
     }
   },

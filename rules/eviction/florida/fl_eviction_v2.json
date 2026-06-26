@@ -382,19 +382,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "Fla. Stat. § 83.56(3)",
-        "rationale": "For nonpayment of rent, the landlord must give the tenant written notice demanding payment or possession, and the default must continue for 3 days after delivery of the notice before termination may proceed. The 3-day period excludes Saturdays, Sundays, and legal holidays."
+        "rationale": "For nonpayment of rent, the landlord must deliver a written demand requiring the tenant to pay the rent or surrender possession within 3 days, excluding Saturdays, Sundays, and legal holidays. If the tenant does not pay or surrender within that period, the landlord may terminate the rental agreement and proceed with eviction."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
         "statute": "Fla. Stat. § 83.56(3)",
-        "rationale": "A landlord must provide a written demand giving the tenant three days, excluding Saturdays, Sundays, and legal holidays, to either pay the rent or deliver possession of the premises. The landlord may only terminate the rental agreement and file for eviction if the tenant fails to comply within this three-day period."
+        "rationale": "The statute requires a landlord to provide a tenant with a written 3-day notice, excluding Saturdays, Sundays, and legal holidays, to pay the past-due rent or vacate the premises. This notice is a mandatory prerequisite before a landlord can terminate the rental agreement and file for eviction due to nonpayment of rent."
       }
     }
   },

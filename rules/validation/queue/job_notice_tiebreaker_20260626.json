@@ -1,0 +1,12 @@
+{
+  "job_id": "job_20260627_0215_notice_tiebreaker",
+  "job_type": "l2_module",
+  "runner": "rules/validation/l2/notice_tiebreaker_20260626.py",
+  "states": "GA,AR,MN,OR,SD,WY,TN",
+  "sleep": 15,
+  "created": "2026-06-26T00:00:00Z",
+  "uses": ["openai", "gemini"],
+  "live_verified": false,
+  "live_verified_basis": "Script syntax-verified (py_compile OK 2026-06-26). Not yet live-run. GA tiebreaker is CRITICAL priority.",
+  "note": "Notice module tiebreaker for 7 states with NOTICE-L2 divergences from provenance rerun. GA is CRITICAL (file=3d, GPT=0d). Dispatches notice_tiebreaker_20260626.py which runs 7 targeted state-specific queries. Output: rules/validation/l2/output/notice_tiebreaker_20260626.json. Est. cost: ~$0.14 (7 states × ~$0.02). Est. time: ~5 min including sleep delays. If tiebreaker resolves → Cowork applies file updates (GREEN). If split persists → adds to L7 queue. See HUMAN_REVIEW_QUEUE [NOTICE-L2-01]–[NOTICE-L2-09]."
+}

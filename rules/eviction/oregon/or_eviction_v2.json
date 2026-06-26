@@ -144,7 +144,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -357,23 +357,41 @@
         "draft_corroborated": 0,
         "needs_attorney": 5,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-MODEL-SPLIT",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "note": "L2-MODEL-SPLIT: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): 10d | Or. Rev. Stat. § 90.394(3)(b)(A). Gemini (gemini-2.5-pro): 3d | ORS 90.394(2)(a). Human review required.",
+        "gpt_answer": {
+          "days": 10,
+          "statute": "Or. Rev. Stat. § 90.394(3)(b)(A)",
+          "rationale": "For residential tenancies other than week-to-week tenancies, Oregon law requires a written nonpayment notice stating a termination date and time not less than 10 days after delivery. A landlord may proceed with eviction only if the tenant does not pay within the notice period."
+        },
+        "gemini_answer": {
+          "days": 3,
+          "statute": "ORS 90.394(2)(a)",
+          "rationale": "Oregon law allows a landlord to provide a written notice stating the tenancy will terminate if rent is not paid within 72 hours, after the rent has been delinquent for at least eight days. An eviction action cannot be filed until this notice period has expired and the tenant has failed to pay."
+        },
+        "l2_run_date": "2026-06-26"
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "CONSENSUS-CONFIRM",
+      "run_date": "2026-06-26",
+      "classification": "MODEL-SPLIT",
       "gpt": {
         "model": "gpt-5.5",
         "days": 10,
-        "statute": "Or. Rev. Stat. § 90.394(2)(a)–(b)",
-        "rationale": "For residential nonpayment of rent, Oregon requires the landlord to terminate the tenancy by written notice before proceeding with eviction. The statute permits a 10-day notice if rent is unpaid by the eighth day of the rental period, or a 13-day notice if served earlier after the fifth day, so the minimum statutory notice period is 10 days."
+        "statute": "Or. Rev. Stat. § 90.394(3)(b)(A)",
+        "rationale": "For residential tenancies other than week-to-week tenancies, Oregon law requires a written nonpayment notice stating a termination date and time not less than 10 days after delivery. A landlord may proceed with eviction only if the tenant does not pay within the notice period."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
-        "days": 10,
+        "days": 3,
         "statute": "ORS 90.394(2)(a)",
-        "rationale": "For a tenancy other than week-to-week, Oregon law requires a landlord to provide at least 10 days' written notice for nonpayment of rent before the rental agreement can be terminated. This notice must state the amount of rent due and provide the tenant with the opportunity to cure the nonpayment."
+        "rationale": "Oregon law allows a landlord to provide a written notice stating the tenancy will terminate if rent is not paid within 72 hours, after the rent has been delinquent for at least eight days. An eviction action cannot be filed until this notice period has expired and the tenant has failed to pay."
       }
     }
   },

@@ -2,17 +2,46 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-26 morning report (NC-17 fresh run ingested; attach-retry-9 queued for tonight; NEXT queue shallow — Andy review needed)
+**Last updated:** 2026-06-26 evening (attach-retry-9 and notice rerun completed via run_now.sh; Counter bug fixed; Track B research done; 8 NOTICE-L2 divergences added to queue; living docs updated)
 
 ---
 
 ## NOW (executing)
 
-**attach-retry-9** — queued for tonight (2026-06-27 at 2:15 AM). Job: `rules/validation/queue/job_l2_attach_retry9_20260626.json`. 9 states (AL/IA/ME/MN/NH/NJ/NV/RI/VA), failure_to_attach defect only. Expects most to return NSR (~5 min).
+*No overnight jobs queued for 2026-06-27 2:15 AM. Queue items below are for next Cowork session or next night.*
 
 ---
 
 ## Completed Today
+
+**NV/VT case_law_candidates added** ✅ DONE — 2026-06-26 evening.
+- NV: Paullin v. Sutton (1986) added to `nv_eviction_v2.json` holdings.candidates.
+- VT: Houle v. Quenneville (2001) added to `vt_eviction_v2.json` holdings.candidates. CL cluster_id=2320677.
+- Both UNVERIFIED; ready for holdings v3 runner on next run.
+
+**Notice tiebreaker + NJ probe scripts queued** ✅ DONE — 2026-06-26 evening.
+- `rules/validation/l2/notice_tiebreaker_20260626.py` — syntax-OK, queued, in run_now.sh.
+- `rules/validation/l2/nj_attach_probe_20260626.py` — syntax-OK, queued, in run_now.sh.
+- Completed jobs moved to done/. Queue refreshed.
+
+**attach-retry-9 (failure_to_attach × 9 states)** ✅ DONE — run 2026-06-26 ~16:18 UTC, completed ~16:51.
+- NSR=4 (AL, IA, RI, VA), SM=4 (ME/MN/NH=SM-GPT; NV=SM-GEMINI), ERROR=1 (NJ, persistent — 3rd failure).
+- Output reconstructed from log: `validation/l2/output/l2_procedural_defects_attach_retry9_20260626.json`.
+- METRICS_LEDGER updated. NJ ERROR needs pipeline investigation.
+
+**notice provenance rerun (51 states)** ✅ DONE — run 2026-06-26 ~16:18 UTC; write_back completed all 51 states; crashed at summary (Counter bug, now fixed).
+- CC=42, MODEL-SPLIT=5, PERIOD-DIVERGENCE=2, CITATION-DIVERGENCE=1, SM=1.
+- 8 divergences added to HUMAN_REVIEW_QUEUE [NOTICE-L2-01]–[NOTICE-L2-09]. MD/MO corroborate existing L7s.
+- GA CRITICAL: GPT says no notice required (file says 3d). Tiebreaker needed.
+- Output reconstructed from log: `rules/validation/l2/output/notice_l2_raw_20260626.json`.
+- Counter bug fixed: `from collections import Counter` added to l2_runner.py module-level imports.
+
+**Track B case research (NV, NY, OK, SC, VT)** ✅ DONE — 2026-06-26 afternoon.
+- NV: Paullin v. Sutton, 724 P.2d 749 (Nev. 1986) identified via Justia.
+- VT: Houle v. Quenneville, 173 Vt. 80, 787 A.2d 1258 (2001) identified via Justia.
+- OK: §120 confirmed wrong citation; L7-ESCALATED [OK-RET-L7-15] is correct lane.
+- SC: No leading appellate case found; statute-direct (Track A) approach appropriate.
+- NY: RPL §223-b solid; no Court of Appeals leading case found via web search.
 
 **NC-17 fresh run (20f722c8)** ✅ DONE — ingested 2026-06-26 morning report.
 - 50 units across 17 NC states (fresh=true CL search). MV=0, CI=0, RC=2, PR=11, perm-fail=37.
@@ -54,14 +83,17 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **Ingest attach-retry-9 results** (GREEN — when run completes tonight) — results in `validation/l2/output/`; update METRICS_LEDGER; update DAILY_CHANGELOG. Expect most of 9 states to return NSR.
+1. **Notice tiebreaker pass — 6 states** (GREEN-AUTO → may surface YELLOWs) — run tiebreaker queries for [NOTICE-L2-01]–[NOTICE-L2-06]: AR (3d vs 5d), MN (14d vs None — post-2023 query), OR (10d vs 3d), SD (confirm repeal still good law), GA (CRITICAL: 0d vs 3d), WY (citation §1-21-1002 vs §1-21-1003). Queue TN retry (--states TN). If any tiebreaker resolves → GREEN file update. If split persists → escalate to L7.
 
-2. **Direction B attorney freeze** (RED gate — needs Andy) — 50 DRAFT candidates in `rules/validation/golden_sets/`. Only frozen items become ground truth.
+2. **NJ failure_to_attach persistent ERROR investigation** (GREEN pipeline) — 3rd consecutive failure on NJ. Investigate: is it a network timeout? A query issue? Try manual `call_openai` / `call_gemini` for NJ failure_to_attach. If infrastructure → retry. If "no specific rule" → NSR. Anti-default: this stays pipeline until proven otherwise.
 
-⚠️ **NEXT queue is shallow (2 items, one blocked).** Proposed refill for Andy to approve:
-3. **Queue notice module re-run** (GREEN) — provenance gap; raw file never saved; attorney-confirmed items preserved. ~$1.10. One-liner: `python3 rules/validation/l2/l2_runner.py --states ALL`.
-4. **NV/NY PR-case follow-up** (YELLOW — strategy) — 11 PR cases need better CL queries; identify correct retaliation-defense opinions for NV and NY.
-5. **Attorney queue session** (RED-interpretive) — work 1–2 notice L7s (MO, ND, MD, GA) from HUMAN_REVIEW_QUEUE.
+3. **NC states / retaliation holdings Track A** (GREEN — statute-direct) — 12 `__no_cases__` states + SC/NY Track A candidates. All have statutes; verify statute citations directly against primary sources. Skip CL (daily read limit constraints). This is the statute-direct path for states with no appellate case law.
+
+4. **NV/NY Track B — add candidate cases to v2 files** (GREEN-AUTO) — Paullin v. Sutton (NV) and Houle v. Quenneville (VT) identified this session. Add as `case_law_candidates` to `nv_eviction_v2.json` and `vt_eviction_v2.json` so the next holdings v3 run has cases to verify. Prep improved CL queries for the 11 PR cases (better search terms for NV, NY, OK retaliation holdings).
+
+5. **Direction B attorney freeze** (RED gate — needs Andy) — 50 DRAFT candidates in `rules/validation/golden_sets/`. Only frozen items become ground truth.
+
+6. **Add `--output-suffix` option to l2_procedural_defects_runner** (YELLOW — prevents future sandbox/live collision) — add optional `--output-suffix TEXT` arg so test runs write to `*_test.json` and don't collide with live output filenames.
 
 ---
 

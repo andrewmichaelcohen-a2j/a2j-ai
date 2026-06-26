@@ -336,19 +336,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 7,
-        "statute": "Mich. Comp. Laws § 600.5714(1)(a); Mich. Comp. Laws § 600.5716",
-        "rationale": "For nonpayment of rent, Michigan summary eviction proceedings require the landlord to serve a written demand for possession, and the tenant must be given 7 days to pay or surrender possession before the action proceeds. The demand must be served as provided by statute."
+        "statute": "Mich. Comp. Laws §§ 600.5714(1)(a), 600.5716",
+        "rationale": "For nonpayment of rent, a landlord may bring summary proceedings only when the tenant continues in possession after failing to pay rent after a demand for possession. The demand for possession for nonpayment must give the tenant at least 7 days before possession is required."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 7,
         "statute": "MCL 600.5714(1)(a)",
-        "rationale": "A landlord may file a summary proceeding to recover possession if the tenant fails to pay rent within 7 days from the service of a written demand for possession for nonpayment. This notice provides the tenant an opportunity to pay the past-due rent to avoid the initiation of an eviction lawsuit."
+        "rationale": "Michigan law requires a landlord to serve the tenant with a written 7-day demand for possession for nonpayment of rent. The landlord may only file a summary proceeding for eviction if the tenant fails to pay the rent or vacate the premises within that 7-day period."
       }
     }
   },

@@ -130,7 +130,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -340,9 +340,43 @@
         "draft_corroborated": 0,
         "needs_attorney": 3,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-MODEL-SPLIT",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "note": "L2-MODEL-SPLIT: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): 10d | Md. Code Ann., Real Prop. § 8-401(c)(1). Gemini (gemini-2.5-pro): Noned | Md. Code, Real Prop. § 8-401. Human review required.",
+        "gpt_answer": {
+          "days": 10,
+          "statute": "Md. Code Ann., Real Prop. § 8-401(c)(1)",
+          "rationale": "Before filing a failure-to-pay-rent complaint in District Court, a landlord must give the tenant written notice of the landlord’s intent to file if the overdue rent is not paid within 10 days after the notice is provided. This statutory notice requirement applies before filing a summary ejectment action for nonpayment of rent."
+        },
+        "gemini_answer": {
+          "days": null,
+          "statute": "Md. Code, Real Prop. § 8-401",
+          "rationale": "The statute does not require a landlord to provide a tenant with any notice before filing an action for nonpayment of rent. A landlord may file a written complaint with the District Court immediately after a tenant fails to pay rent when it is due."
+        },
+        "l2_run_date": "2026-06-26"
       }
     ],
-    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED."
+    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-26",
+      "classification": "MODEL-SPLIT",
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 10,
+        "statute": "Md. Code Ann., Real Prop. § 8-401(c)(1)",
+        "rationale": "Before filing a failure-to-pay-rent complaint in District Court, a landlord must give the tenant written notice of the landlord’s intent to file if the overdue rent is not paid within 10 days after the notice is provided. This statutory notice requirement applies before filing a summary ejectment action for nonpayment of rent."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": null,
+        "statute": "Md. Code, Real Prop. § 8-401",
+        "rationale": "The statute does not require a landlord to provide a tenant with any notice before filing an action for nonpayment of rent. A landlord may file a written complaint with the District Court immediately after a tenant fails to pay rent when it is due."
+      }
+    }
   },
   "notice": {
     "notice_types": {

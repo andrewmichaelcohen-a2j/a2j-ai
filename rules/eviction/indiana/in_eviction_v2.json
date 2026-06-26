@@ -317,19 +317,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 10,
         "statute": "Ind. Code § 32-31-1-6",
-        "rationale": "For nonpayment of rent, Indiana law allows a landlord to terminate the lease only after giving the tenant not less than ten days’ notice. The statute provides that this notice period is avoided if the parties otherwise agreed or the tenant pays the rent in full before the notice period expires."
+        "rationale": "For nonpayment of rent, a landlord may terminate the lease only after giving the tenant not less than ten days’ notice, unless the parties agreed otherwise or the tenant pays the rent in full before the notice period expires."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 10,
-        "statute": "Indiana Code § 32-31-1-6",
-        "rationale": "If a tenant fails to pay rent when due, the landlord may terminate the lease by providing ten days' notice to the tenant. The tenant can prevent termination by paying the full rent owed before the notice period expires."
+        "statute": "IC § 32-31-1-6",
+        "rationale": "Indiana law requires a landlord to give a tenant ten days' written notice to quit the premises for nonpayment of rent. This notice must be provided before the landlord can file an action for eviction."
       }
     }
   },

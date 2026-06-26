@@ -411,19 +411,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "CITATION-DIVERGENCE",
+      "run_date": "2026-06-26",
+      "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "Miss. Code Ann. § 89-8-13(3)",
-        "rationale": "For residential tenancies, if rent is unpaid when due, the landlord may terminate the rental agreement only if the tenant fails to pay within three days after written notice of nonpayment and the landlord’s intent to terminate. This establishes a three-day notice period for nonpayment before proceeding based on termination."
+        "rationale": "For a residential tenancy, Mississippi law allows the landlord to terminate for unpaid rent only if the tenant fails to pay within three days after written notice of nonpayment and the landlord’s intent to terminate. That three-day written notice is the statutory prerequisite for terminating the rental agreement for nonpayment before pursuing eviction."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
         "statute": "Miss. Code Ann. § 89-8-13(3)",
-        "rationale": "The landlord must give the tenant three days' written notice of nonpayment and the intention to terminate the rental agreement. If the tenant does not pay the rent due within that period, the landlord may then terminate the agreement and begin eviction proceedings."
+        "rationale": "The statute requires a landlord to give a tenant three days' written notice of nonpayment and the intent to terminate the lease if rent is not paid. After this period expires without payment, the landlord may terminate the rental agreement and begin eviction proceedings."
       }
     }
   },

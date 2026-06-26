@@ -128,7 +128,7 @@
     },
     "automated_layers": {
       "L1_grounding": "pass",
-      "L2_consensus": "pass",
+      "L2_consensus": "flagged",
       "L3_consistency": "pass",
       "L4_golden": "not_implemented",
       "L5_crossjuris": "pass",
@@ -348,24 +348,41 @@
         "draft_corroborated": 0,
         "needs_attorney": 0,
         "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-MODEL-SPLIT",
+        "field": "notice.notice_types.pay_or_quit",
+        "disposition": "open",
+        "note": "L2-MODEL-SPLIT: pay_or_quit nonpayment notice — divergence detected. GPT (gpt-5.5): 3d | Ark. Code Ann. § 18-60-304(3). Gemini (gemini-2.5-pro): 5d | Arkansas Code § 18-17-701(b). Human review required.",
+        "gpt_answer": {
+          "days": 3,
+          "statute": "Ark. Code Ann. § 18-60-304(3)",
+          "rationale": "For nonpayment of rent, a tenant is in unlawful detainer only if the tenant fails or refuses to pay rent when due and, after a written three-day notice to quit and demand for possession, refuses to vacate. That three-day written notice is the statutory prefiling notice for an unlawful-detainer eviction based on nonpayment."
+        },
+        "gemini_answer": {
+          "days": 5,
+          "statute": "Arkansas Code § 18-17-701(b)",
+          "rationale": "If rent is unpaid when due, the landlord may terminate the rental agreement if the tenant fails to pay the rent within five days after receiving written notice from the landlord. This termination is a prerequisite to filing an eviction action for nonpayment."
+        },
+        "l2_run_date": "2026-06-26"
       }
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
-      "classification": "CONSENSUS-CONFIRM",
-      "retry": true,
+      "run_date": "2026-06-26",
+      "classification": "MODEL-SPLIT",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "Ark. Code Ann. § 18-60-304(a)(3)",
-        "rationale": "For nonpayment of rent, Arkansas defines unlawful detainer to include a tenant who fails or refuses to pay rent when due and, after three days’ notice to quit and written demand for possession, refuses to vacate. That three-day notice is the statutory prerequisite for filing the nonpayment unlawful-detainer eviction action."
+        "statute": "Ark. Code Ann. § 18-60-304(3)",
+        "rationale": "For nonpayment of rent, a tenant is in unlawful detainer only if the tenant fails or refuses to pay rent when due and, after a written three-day notice to quit and demand for possession, refuses to vacate. That three-day written notice is the statutory prefiling notice for an unlawful-detainer eviction based on nonpayment."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
-        "days": 3,
-        "statute": "A.C.A. § 18-16-101",
-        "rationale": "This statute requires a landlord to provide three days' written notice to vacate to a tenant who has failed to pay rent. A tenant's willful refusal to leave the premises after receiving this notice is a prerequisite for the landlord to file an eviction action."
+        "days": 5,
+        "statute": "Arkansas Code § 18-17-701(b)",
+        "rationale": "If rent is unpaid when due, the landlord may terminate the rental agreement if the tenant fails to pay the rent within five days after receiving written notice from the landlord. This termination is a prerequisite to filing an eviction action for nonpayment."
       }
     }
   },

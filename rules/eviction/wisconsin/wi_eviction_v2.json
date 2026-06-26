@@ -341,19 +341,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 5,
         "statute": "Wis. Stat. § 704.17(1)(a), (2)(a)",
-        "rationale": "For nonpayment of rent, Wisconsin requires a landlord to give a notice requiring the tenant to pay rent or vacate on or before a date at least 5 days after the notice is given before the tenancy is terminated and an eviction may proceed."
+        "rationale": "For nonpayment of rent, Wisconsin requires the landlord to give the tenant notice requiring payment or surrender of the premises on a date at least 5 days after the notice is given. If the tenant does not pay or vacate within that period, the tenancy is terminated and an eviction action may proceed."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 5,
         "statute": "Wis. Stat. § 704.17(2)(a)",
-        "rationale": "For a tenancy of one year or less, the landlord must provide written notice giving the tenant at least 5 days to pay the overdue rent or vacate the premises. The landlord can only file for eviction if the tenant fails to comply within the notice period."
+        "rationale": "For a residential tenancy of one year or less, the statute requires the landlord to provide a written notice giving the tenant at least 5 days to either pay the overdue rent or vacate the premises. The landlord may only file for eviction if the tenant fails to comply with this notice."
       }
     }
   },

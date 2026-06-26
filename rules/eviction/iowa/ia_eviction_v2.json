@@ -331,20 +331,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
-      "retry": true,
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "Iowa Code § 562A.27(2)",
-        "rationale": "For residential tenancies, if rent is unpaid when due, the landlord may terminate the rental agreement only if the tenant fails to pay within three days after written notice of nonpayment and the landlord’s intention to terminate. This statutory three-day notice must precede termination and filing of the eviction action for nonpayment."
+        "statute": "Iowa Code §§ 562A.27(2), 648.3",
+        "rationale": "For residential nonpayment of rent, the landlord must give written notice of nonpayment and intent to terminate if rent is not paid within three days. After that three-day period expires without payment, the landlord may proceed with termination and eviction filing."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
         "statute": "Iowa Code § 562A.27(2)",
-        "rationale": "If rent is unpaid when due, the landlord must give the tenant a written three-day notice of nonpayment and intent to terminate the agreement. If the tenant fails to pay the rent within that three-day period, the landlord may terminate the rental agreement and file for eviction."
+        "rationale": "A landlord must provide a tenant with a written three-day notice of nonpayment and the landlord's intent to terminate the rental agreement. If the tenant does not pay the rent within that period, the landlord may terminate the agreement and begin eviction proceedings."
       }
     }
   },
@@ -797,7 +796,7 @@
         "L2-PROCEDURAL-ERROR"
       ],
       "l2_sm_statute": "Iowa R. Civ. P. 1.421(5)",
-      "l2_note": "Both models empty: GPT=Request timed out.; gem=",
+      "l2_note": "Both failed: GPT=openai package not installed; Gem=google-genai package not installed. Run: pip install google-genai",
       "l2_run_date": "2026-06-26"
     },
     {

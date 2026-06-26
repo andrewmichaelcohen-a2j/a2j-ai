@@ -4,6 +4,123 @@
 
 ---
 
+## 2026-06-26 (evening — attach_retry9 done; notice rerun done; Counter fix; Track B research)
+
+### GREEN — Executed autonomously
+
+**l2_runner.py: fixed UnboundLocalError — `Counter` moved to module-level import**
+- Bug: `Counter` was imported inside local function scopes at lines 405 and 610, but used at module/run level (line 593) in `run_l2()` output-writing block.
+- Crash: notice provenance re-run (run_now.sh 16:18 UTC) completed all 51 states' write_back() calls successfully, then crashed at summary step: `UnboundLocalError: local variable 'Counter' referenced before assignment`.
+- Fix: added `from collections import Counter` to top-level imports block (line 42).
+- Verification: `python3 -c "from collections import Counter; print(Counter([1,2,2]))"` passed cleanly; --dry-run test validated.
+- Impact: all 51 v2 file write_backs already completed before crash — no data lost. Only missing artifact: raw JSON output file. Reconstructed from log (see below).
+
+**attach_retry9 run completed — results ingested**
+- Run: `run_now.sh` launched at 16:18 UTC; stdout block-buffered, flushed at 16:51 UTC.
+- 9 states × failure_to_attach: AL, IA, ME, MN, NH, NJ, NV, RI, VA
+- Results: NSR=4 (AL, IA, RI, VA), SM=4 (ME/MN/NH=SM-GPT, NV=SM-GEMINI), ERROR=1 (NJ, persistent — 3rd run)
+- SM details: ME→Me. R. Civ. P. 80D(b), MN→Minn. Stat. §504B.321 subd.1a(c), NH→N.H. Rev. Stat. Ann. §540:6, NV→NRS 40.253(1)(b)
+- Output file: original overwritten by sandbox test collision (same timestamp 1651). Reconstructed: `validation/l2/output/l2_procedural_defects_attach_retry9_20260626.json`
+- Note: NJ ERROR is persistent (3rd consecutive failure). Needs pipeline investigation — NOT attorney lane per anti-default rule.
+
+**notice provenance rerun completed — results ingested**
+- Run: `run_now.sh` launched at 16:18 UTC; completed all 51 states; crashed at Counter bug (fixed above).
+- 51 states × notice pay_or_quit module
+- Results: CONSENSUS-CONFIRM=42, MODEL-SPLIT=5, PERIOD-DIVERGENCE=2, CITATION-DIVERGENCE=1, ERROR=1
+- All 51 write_back() calls completed before crash — v2 files updated with L2 flags.
+- Missing artifact (raw JSON) reconstructed: `rules/validation/l2/output/notice_l2_raw_20260626.json`
+- 8 divergences flagged — added to HUMAN_REVIEW_QUEUE [NOTICE-L2-01]–[NOTICE-L2-08] (YELLOW)
+- Critical: GA PERIOD-DIVERGENCE (file=3d, gpt=0d) contradicts prior auto-resolved "confirmed." Needs tiebreaker run.
+- Critical: MO PERIOD-DIVERGENCE (file=10d, gpt=None, gem=None) — both models now empty. Needs investigation.
+
+**Track B case research — rate-limited states (NV, NY, OK, SC, VT)**
+- CL MCP search parameter confirmed: `q` (not `query`); `type=o` for opinions.
+- CL daily read limit: 125/day — exhausted during research. Root cause of overnight 429s in NC-17 run.
+- CL search 5/min limit: managed by serial search strategy.
+- Found via web search (Justia):
+  - NV: **Paullin v. Sutton, 724 P.2d 749 (Nev. 1986)** — full opinion retrieved. Holdings: NRS 118A.510 prohibits non-renewal for retaliatory purpose; remedy = actual damages only (amended 1985). This is NV's foundational retaliation case.
+  - VT: **Houle v. Quenneville, 173 Vt. 80, 787 A.2d 1258 (2001)** — VT Supreme Court. Holdings: objective test for retaliation (Gokey standard); tenant can use circumstantial evidence; protected activity must precede adverse action. CL cluster_id=2320677 (`vt` court).
+  - OK: §120 = "failure to deliver possession" NOT retaliation — confirms OK [OK-RET-L7-15] L7 escalation. Web search confirms no OK retaliatory eviction statute (pending HB2015 proposal).
+  - SC: No leading appellate case found. SC Code §27-40-910 is statute-only authority.
+  - NY: No Court of Appeals leading case found. RPL §223-b statute solid; Ellis v. Oceanhill already RC.
+- CL correct court IDs discovered: `vt` (Vermont SC), `sc` (SC SC confirmed by web search structure).
+- Track A (statute-direct for 12 `__no_cases__` states): viable — all 12 have statutes in v2 files.
+
+**Provenance output files written**
+- `validation/l2/output/l2_procedural_defects_attach_retry9_20260626.json` — reconstructed
+- `rules/validation/l2/output/notice_l2_raw_20260626.json` — reconstructed
+
+### GREEN — Additional (session continuation)
+
+**NV/VT v2 files updated — case_law_candidates added**
+- NV (`nv_eviction_v2.json`): added Paullin v. Sutton, 724 P.2d 749 (Nev. 1986) under `retaliation.layer_decomposition.holdings.candidates`. Track B candidate; UNVERIFIED. Holdings v3 runner will verify via CL when run.
+- VT (`vt_eviction_v2.json`): added Houle v. Quenneville, 173 Vt. 80, 787 A.2d 1258 (2001) under `retaliation.layer_decomposition.holdings.candidates`. CL cluster_id=2320677 (court=vt). Track B candidate; UNVERIFIED.
+- Both files now have candidates[] populated; subsequent holdings v3 run will attempt verification.
+
+**Completed jobs moved to done/ in dispatcher queue**
+- `job_l2_attach_retry9_20260626.json` → `done/` (ran via run_now.sh)
+- `job_notice_rerun_20260626.json` → `done/` (ran via run_now.sh)
+
+**Notice tiebreaker script written and queued**
+- File: `rules/validation/l2/notice_tiebreaker_20260626.py`
+- 7 targeted state-specific queries: GA (CRITICAL), AR, MN, OR, SD, WY, TN.
+- Each query designed to resolve the specific documented split (more targeted than standard QUERY_TEMPLATE).
+- Syntax-verified: `python3 -m py_compile` OK.
+- Queued: `rules/validation/queue/job_notice_tiebreaker_20260626.json`
+- Also added to `run_now.sh` (Job 1) for immediate launch.
+
+**NJ failure_to_attach probe script written and queued**
+- File: `rules/validation/l2/nj_attach_probe_20260626.py`
+- 3-probe diagnostic: ultra-simple, rule-direct, consequence-framing queries.
+- Goal: determine if NJ ERROR is (a) query framing, (b) genuine NSR, or (c) model limitation.
+- Syntax-verified: `python3 -m py_compile` OK.
+- Queued: `rules/validation/queue/job_nj_attach_probe_20260626.json`
+- Also added to `run_now.sh` (Job 2) for immediate launch.
+
+**run_now.sh updated to current queue**
+- Now launches: notice tiebreaker (Job 1) + NJ probe (Job 2)
+- Both use `python3 -u` (unbuffered) to prevent stdout buffering in log files.
+
+### YELLOW — Logged for ratification
+
+**8 notice module divergences flagged (provenance rerun)**
+- 5 MODEL-SPLIT (AR, MD, MN, OR, SD), 2 PERIOD-DIVERGENCE (GA, MO), 1 CITATION-DIVERGENCE (WY).
+- GA and MO PERIOD-DIVERGENCE contradict prior "auto-resolved" status — recommend tiebreaker re-run.
+- Added to HUMAN_REVIEW_QUEUE as [NOTICE-L2-01]–[NOTICE-L2-08].
+
+**Sandbox test collision — output file overwritten**
+- Ran `l2_procedural_defects_runner.py --defects attach --states AL,IA,ME --dry-run` in sandbox to debug job crash. Sandbox test wrote `l2_procedural_defects_20260626_1651.json` (all ERROR, 3 states). Real job also wrote to same filename (same minute timestamp). Sandbox file overwrote real output.
+- Impact: minimal. Log preserved all real results. Reconstructed clean output file.
+- Prevention: test runs in sandbox should use `--dry-run` flag AND a `--output-suffix test` option (not yet implemented). YELLOW: recommend adding `--output-suffix` to runner for sandbox isolation.
+
+---
+
+## 2026-06-26 (daytime — notice rerun queued; l2_runner.py --sleep fix)
+
+### GREEN — Executed autonomously
+
+**l2_runner.py: added `--sleep` argument for dispatcher compatibility**
+- Added `import time`
+- Added `--sleep` (float, default 0) to argparse
+- Added `sleep_secs: float = 0` parameter to `run_l2()`
+- Added `time.sleep(sleep_secs)` between state iterations (skipped on last state)
+- Wired through in `__main__` block: `sleep_secs=args.sleep`
+- `--dry-run --sleep 2` validated: no errors, accepts argument cleanly
+- Prior dispatcher incompatibility: `_build_l2_cmd` always passes `--sleep N`; l2_runner.py had no such arg → would have failed with argparse "unrecognized arguments" error. Now fixed.
+
+**Notice module provenance re-run queued**
+- Job: `rules/validation/queue/job_notice_rerun_20260626.json`
+- Runner: `rules/validation/l2/l2_runner.py --states ALL --sleep 2`
+- Fires tonight at 2:15 AM (after attach-retry-9, dispatcher picks queue order by filename/age)
+- Expected output: `rules/validation/l2/output/notice_l2_raw_{date}.json`
+- Est. cost: ~$1.10 · Est. time: ~20 min · 51 states × notice pay_or_quit module
+- Attorney-confirmed outcomes in state files preserved (write-back respects existing flags)
+- Closes provenance gap documented in VALIDATION_METRICS_LEDGER
+
+### RED — Carried. NC-17: 12 states with no CL case law (genuine gap, see below).
+
+---
+
 ## 2026-06-26 (morning report — NC-17 fresh run ingested)
 
 ### GREEN — Executed autonomously

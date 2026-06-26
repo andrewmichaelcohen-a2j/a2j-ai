@@ -308,19 +308,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 5,
         "statute": "S.C. Code Ann. § 27-40-710(B)",
-        "rationale": "If rent is unpaid when due, the landlord may terminate for nonpayment only if the tenant fails to pay within five days of the due date after the required statutory notice. The written notice requirement is satisfied by a proper prior notice or by the statutory bold/underlined lease clause, in which case no additional prefiling notice is required."
+        "rationale": "For nonpayment, the tenant must fail to pay rent within five days from the date it is due before the landlord may terminate the rental agreement based on nonpayment. The statute provides that the written notice requirement is satisfied by a conspicuous lease provision, so no separate pre-filing notice is required if the lease contains that statutory notice language."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 5,
         "statute": "S.C. Code Ann. § 27-40-710(B)",
-        "rationale": "If rent is unpaid when due, the landlord must give the tenant five days' written notice of the intent to terminate the rental agreement. The tenant may prevent termination by paying the full amount due within this five-day period."
+        "rationale": "If rent is unpaid when due, the landlord may terminate the rental agreement provided the landlord has given the tenant written notice of nonpayment and the intent to terminate if the rent is not paid within five days. This notice requirement is considered satisfied if a conspicuous, statutorily prescribed provision is included in the written rental agreement."
       }
     }
   },

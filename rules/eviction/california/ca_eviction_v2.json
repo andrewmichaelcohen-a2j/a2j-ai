@@ -444,19 +444,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "Cal. Code Civ. Proc. § 1161(2)",
-        "rationale": "For nonpayment of rent, a residential tenant is guilty of unlawful detainer only after continuing in possession after default and failing to pay within a 3-day notice period. The statute specifies that the 3 days exclude Saturdays, Sundays, and other judicial holidays."
+        "statute": "Cal. Civ. Proc. Code § 1161(2)",
+        "rationale": "For nonpayment of rent, a residential tenant is guilty of unlawful detainer only after defaulting in rent and failing to pay within three days after service of a written notice requiring payment or possession. The three-day period excludes Saturdays, Sundays, and other judicial holidays."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "Cal. Code Civ. Proc. § 1161(2)",
-        "rationale": "A tenant is guilty of unlawful detainer for nonpayment of rent only after the landlord has served a written three-day notice demanding payment of the amount due or possession of the property. This notice is a prerequisite to filing an eviction lawsuit."
+        "statute": "California Code of Civil Procedure § 1161(2)",
+        "rationale": "A landlord must provide a tenant with a written three-day notice demanding payment of the overdue rent or possession of the property. An eviction action for nonpayment may only be filed after the tenant has failed to comply within this three-day period."
       }
     }
   },

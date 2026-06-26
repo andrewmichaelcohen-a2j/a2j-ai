@@ -317,19 +317,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
         "statute": "Mont. Code Ann. § 70-24-422(2)",
-        "rationale": "For nonpayment of rent, the landlord must give written notice stating that the rental agreement will terminate if the tenant does not pay within 3 days. If the tenant fails to pay within that 3-day period, the landlord may terminate the rental agreement and proceed with an eviction action."
+        "rationale": "For nonpayment of rent, Montana law requires the landlord to give written notice of the nonpayment and the landlord’s intent to terminate the rental agreement if the rent is not paid. The tenant must be given 3 days to pay before the landlord may terminate and proceed with an eviction action."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "MCA § 70-24-422(2)",
-        "rationale": "If rent is unpaid when due, the landlord must give the tenant 3 days' written notice of nonpayment and the landlord's intention to terminate the rental agreement. The landlord may proceed with eviction if the tenant does not pay the rent within that period."
+        "statute": "Mont. Code Ann. § 70-24-422(2)",
+        "rationale": "Montana law requires a landlord to provide a 3-day written notice for failure to pay rent. The notice must inform the tenant that the rental agreement will terminate if the rent is not paid within that period."
       }
     }
   },

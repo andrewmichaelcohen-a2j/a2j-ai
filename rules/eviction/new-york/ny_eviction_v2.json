@@ -397,19 +397,19 @@
     ],
     "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
     "l2_results": {
-      "run_date": "2026-06-18",
+      "run_date": "2026-06-26",
       "classification": "CONSENSUS-CONFIRM",
       "gpt": {
         "model": "gpt-5.5",
         "days": 14,
         "statute": "N.Y. Real Prop. Acts. Law § 711(2)",
-        "rationale": "For a nonpayment proceeding, the tenant must have defaulted in rent and been served with a written rent demand giving at least 14 days' notice to pay the rent or surrender possession before the summary eviction proceeding may be maintained."
+        "rationale": "A nonpayment eviction proceeding may be maintained only after rent has been demanded or the tenant has been served with at least 14 days’ written notice requiring payment of rent or surrender of possession. The statute expressly sets the pre-filing rent demand/notice period at fourteen days."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 14,
         "statute": "N.Y. Real Prop. Acts. Law § 711(2)",
-        "rationale": "Before a landlord can commence a summary proceeding for nonpayment of rent, the landlord must make a written demand providing the tenant with at least fourteen days' notice. This notice gives the tenant the opportunity to pay the rent due or surrender possession of the premises to avoid an eviction filing."
+        "rationale": "This statute mandates that before commencing a summary proceeding for nonpayment of rent, a landlord must first make a written demand giving the tenant at least fourteen days to either pay the rent due or surrender possession of the premises. This written notice is a prerequisite to filing an eviction action."
       }
     }
   },
