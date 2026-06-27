@@ -723,16 +723,15 @@
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "NJSA 2A:18-51 et seq. (pleading requirements)",
+      "statute": "N.J. Ct. R. 6:3-4(c)",
       "case_law": [],
       "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
       "validation_flags": [
-        "L2-PROCEDURAL-SM-GEMINI",
-        "L2-PROCEDURAL-ERROR"
+        "L2-PROCEDURAL-CONFIRMED"
       ],
       "l2_sm_statute": "N.J.S.A. 2A:18-61.2(c) and N.J. Court Rule 6:2-2(a)",
-      "l2_note": "Both models empty: GPT=Request timed out.; gem=",
-      "l2_run_date": "2026-06-26"
+      "l2_note": "[RETRY 2026-06-26] CONSENSUS-IMPROVE: N.J. Ct. R. 6:3-4(c)",
+      "l2_run_date": "2026-06-27"
     },
     {
       "defect": "summons_improperly_issued_or_served",
@@ -748,5 +747,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-26"
+  "last_updated": "2026-06-27"
 }

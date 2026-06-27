@@ -1,0 +1,205 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "pr_retry_20260626",
+  "run_date": "2026-06-27",
+  "runner_version": "harness-v1",
+  "total_units": 14,
+  "method_rate": null,
+  "overall_rate": 0.0,
+  "bucket_counts": {
+    "MV": 0,
+    "CI": 0,
+    "RC": 0,
+    "PR": 0,
+    "SM": 0
+  },
+  "text_retrievable_denominator": 0,
+  "machine_verified": 0,
+  "single_model_preliminary": 0,
+  "needs_attorney": 0,
+  "elapsed_secs": 195,
+  "results": [
+    {
+      "unit_id": "AL::__no_cases__",
+      "state": "AL",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "CO::__no_cases__",
+      "state": "CO",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "CT::__no_cases__",
+      "state": "CT",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "HI::__no_cases__",
+      "state": "HI",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "LA::__no_cases__",
+      "state": "LA",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "MI::__no_cases__",
+      "state": "MI",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "ND::__no_cases__",
+      "state": "ND",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "NJ::__no_cases__",
+      "state": "NJ",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "NM::__no_cases__",
+      "state": "NM",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "NY::__no_cases__",
+      "state": "NY",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "OK::__no_cases__",
+      "state": "OK",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "SC::__no_cases__",
+      "state": "SC",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "VT::__no_cases__",
+      "state": "VT",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    {
+      "unit_id": "WV::__no_cases__",
+      "state": "WV",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    }
+  ]
+}

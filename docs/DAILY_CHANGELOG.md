@@ -4,6 +4,55 @@
 
 ---
 
+## 2026-06-27 (session continuation — Batch 3 ingested; NJ retry resolved; PR retry enabled; Track B queued)
+
+### GREEN — Executed autonomously
+
+**Batch 3 (7e6fcf6d) ingested into VALIDATION_METRICS_LEDGER.md**
+- Run date: 2026-06-25. 18 states (AK, AL, CA, CO, CT, HI, KS, LA, MI, ND, NJ, NM, NV, NY, OK, SC, VT, WV). 23 units.
+- Bucket results: MV=4 (CA: S. P. Growers Assn., Barela, Drouet, Aweeka), CI=2 (CA: Schweiger, Western Land Office), RC=0, PR=0 (429s transient — recovered), NC=17 (non-CA states: `__no_cases__` in v2 files, `fresh=false` → no CL retrieval attempted).
+- Method rate: 66.7% (4/6 text-retrievable CA cases). Overall rate: 17.4% (4/23, diluted by 17 NC states).
+- NC=17 is NOT a retrieval failure — no candidates existed in those files at the time of the run. NOT attorney lane. Addressed by Track A (statute-direct) and Track B (CL fresh run) pipeline.
+- METRICS_LEDGER: detailed section + cross-batch table row added. Repeatability view: no new row added (holdings v3 is cross-batch; detailed cross-batch table is the canonical record).
+
+**NJ failure_to_attach retry — CONSENSUS-IMPROVE; file auto-updated**
+- Run: `nj_attach_retry_20260626.py` (reformulated GPT retry with 120s timeout + consequence-framing query). Run date: 2026-06-27.
+- Output: `rules/validation/l2/output/nj_attach_retry_20260626.json`.
+- Both models returned content: GPT confidence=medium; Gemini confidence=high. Both agreed: N.J. Ct. R. 6:3-4(c).
+- Classified: CONSENSUS-IMPROVE — more specific than stale "NJSA 2A:18-51 et seq. (pleading requirements)".
+- File updated automatically: `rules/eviction/new-jersey/nj_eviction_v2.json` → `statute: "N.J. Ct. R. 6:3-4(c)"`, `validation_flags: ["L2-PROCEDURAL-CONFIRMED"]`, `l2_note: "[RETRY 2026-06-26] CONSENSUS-IMPROVE: N.J. Ct. R. 6:3-4(c)"`.
+- Resolves 4-run persistent ERROR streak. NJ failure_to_attach: CLOSED as L2-PROCEDURAL-CONFIRMED.
+- Anti-default audit: GPT had timed out on 3 prior runs (60s limit). Fix was 120s timeout + reformulated query — a pipeline fix, not attorney escalation. Anti-default rule satisfied.
+
+**Track B CL verification job created for KS/NV/NY/SC**
+- File: `rules/validation/queue/job_track_b_ks_nv_ny_sc_20260627.json`
+- Targets KS, NV, NY, SC with `fresh=true` (CL fresh opinion search + generate-from-source verification).
+- Candidates confirmed in all 4 v2 files:
+  - KS: Stephens v. Ludy, 42 Kan. App. 2d 531, 214 P.3d 718 (2009) [track-a-model-suggested, Gemini; cl_cluster_id=null]
+  - NV: Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (2017 Nev. SC) [track-a-model-suggested, Gemini; cl_cluster_id=null]
+  - NY: Domen Holding Co. v. Aranovich, 1 N.Y.3d 117 (2003 NY CoA) [GPT] + 601 West 160th St. Corp. v. Henry (App. Term 2001) [Gemini]
+  - SC: Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012) [track-a-model-suggested, Gemini; cl_cluster_id=null]
+- sleep=15s (CL rate-limit management). `live_verified: true` (job ready for dispatcher).
+- Note: KS/NV/SC candidates are single-model-suggested (Gemini only). CL retrieval may fail to find these cases if cluster IDs are unknown. Outcome: MV if retrieved + corroborated; PR if CL can't retrieve; SM if only one model returns holding.
+
+**Queue hygiene — nj_attach_probe + notice_tiebreaker copied to done/**
+- Both jobs already had `live_verified: false` (dispatcher skips them — no re-run risk).
+- Copied to `rules/validation/done/` as completed records. Originals remain in `queue/` (deletion requires Terminal — sandbox cannot delete macOS-mounted files).
+- Action for Andy: `rm rules/validation/queue/job_nj_attach_probe_20260626.json rules/validation/queue/job_notice_tiebreaker_20260626.json` from Terminal when convenient. No urgency — dispatcher ignores them.
+
+### YELLOW — Logged for ratification
+
+**PR retry job enabled (live_verified: false → true)**
+- File: `rules/validation/queue/job_retaliation_pr_retry_20260626.json`
+- Change: `live_verified: false` → `live_verified: true`.
+- Basis: Andy authorized with "do 2-6" (item 4 = enable PR retry). YELLOW because this queues a 13+ hour CL run.
+- Job targets 14 states (AL, CO, CT, HI, LA, MI, ND, NJ, NM, NY, OK, SC, VT, WV): 82 transient-failure PR-class cases from nc17_fresh_v2. sleep=15s.
+- Will run tonight at 2:15 AM via launchd dispatcher (or first night dispatcher picks it, after Track B job — check ordering by creation timestamp).
+- Risk: CL rate limits may still produce 429s. Harness now correctly writes `bucket: "PR"` for these. If run fails badly, move job back to queue/ with `live_verified: false` and retry with longer sleep.
+- Dispatcher ordering: sorts queue by mtime ascending (oldest first). PR retry mtime=Jun 26 22:29 UTC; Track B mtime=Jun 27 00:50 UTC. **PR retry runs tonight (2026-06-27 at 2:15 AM); Track B runs the following night.** PR retry est. ~13 hours; Track B (4 states, fresh=true) est. ~2-4 hours.
+
+---
+
 ## 2026-06-26 (session continuation — pipeline prep + Track A runner)
 
 ### GREEN — Executed autonomously
@@ -50,6 +99,20 @@
 - Automation ceiling: statute-verified is BELOW machine-verified, BELOW attorney line. Not validated.
 - Output: `rules/validation/l2/output/track_a_statute_YYYYMMDD.json`
 - **Status: ready for Andy to run from Terminal. Cowork ingests output.**
+
+**Track A statute-direct run completed — results ingested**
+- Output: `rules/validation/l2/output/track_a_statute_20260627.json`
+- 4/4 STATUTE-CONFIRMED. 0 divergence. 0 error. All 4 Track A states confirmed.
+- Results by state:
+  - **KS** — K.S.A. 58-2572(a) confirmed. Leading case (Gemini only): Stephens v. Ludy, 42 Kan. App. 2d 531, 214 P.3d 718 (2009). Added to candidates[].
+  - **NV** — NRS 118A.510(1) confirmed. Leading case (Gemini only): Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (Nev. 2017) — Nevada Supreme Court; supersedes Paullin as priority candidate. Added to candidates[] with Track B flag.
+  - **NY** — RPL §223-b(1)(a)-(c) confirmed. **Key find:** Domen Holding Co. v. Aranovich, 1 N.Y.3d 117, 769 N.Y.S.2d 785 (2003) — NY Court of Appeals (highest court); GPT-identified. Gemini identified different case: 601 West 160th St. Corp. v. Henry (App. Term, 2001). Both added to candidates[] for Track B CL verification.
+  - **SC** — S.C. Code Ann. §27-40-910(A)(1)-(3) confirmed. Leading case (Gemini only): Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (S.C. Ct. App. 2012). Added to candidates[].
+- All 4 v2 files updated with: track_a record, TRACK-A-STATUTE-CONFIRMED flag, recommended_statute, candidates[].
+- ny_eviction_v2.json: 601 West 160th St. Corp. secondary candidate added manually (Gemini diverged from Domen Holding; both warrant Track B verification).
+- nv_eviction_v2.json: Anvui candidate enriched with court/year/track metadata.
+- Automation ceiling: statute-verified is BELOW machine-verified, BELOW attorney line. Not validated.
+- Track B priority for next CL fresh run: NV (Anvui, 2017 Nev. SC), NY (Domen Holding, 2003 CoA).
 
 **WORK_QUEUE.md + DAILY_CHANGELOG.md updated** — this entry.
 

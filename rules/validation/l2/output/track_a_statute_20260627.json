@@ -1,0 +1,174 @@
+{
+  "runner": "track_a_statute_runner",
+  "run_date": "2026-06-27",
+  "states": [
+    "KS",
+    "NV",
+    "NY",
+    "SC"
+  ],
+  "summary": {
+    "total": 4,
+    "statute_confirmed": 4,
+    "statute_divergence": 0,
+    "error": 0
+  },
+  "note": "Track A = statute-direct (no CL opinion text). STATUTE-CONFIRMED = both models agree the statute protects against retaliation. Below machine-verified. Attorney must confirm before citing. STATUTE-CONFIRMED with leading_case_found → case added to candidates for Track B CL verification.",
+  "results": [
+    {
+      "state": "KS",
+      "statute": "K.S.A. § 58-2572",
+      "reason": "__no_cases__ in nc17_fresh_v2 CL fresh search",
+      "classification": "STATUTE-CONFIRMED",
+      "recommended_statute": "K.S.A. 58-2572(a); remedy/defense at K.S.A. 58-2572(b)",
+      "leading_case_found": "Stephens v. Ludy, 42 Kan. App. 2d 531, 214 P.3d 718 (2009)",
+      "note": "Both models confirm K.S.A. 58-2572(a); remedy/defense at K.S.A. 58-2572(b) protects against retaliation. Leading case found: Stephens v. Ludy, 42 Kan. App. 2d 531, 214 P.3d 718 (2009).",
+      "gpt_result": {
+        "statute_confirmed": true,
+        "operative_citation": "K.S.A. 58-2572(a); remedy/defense at K.S.A. 58-2572(b)",
+        "protects_against_retaliation": true,
+        "protected_activities": [
+          "Tenant complaint to a governmental agency responsible for enforcing a building or housing code about a violation applicable to the premises that materially affects health and safety, K.S.A. 58-2572(a)(1)",
+          "Tenant complaint to the landlord about a violation of the landlord's duties under K.S.A. 58-2553, K.S.A. 58-2572(a)(2)",
+          "Tenant organizing or becoming a member of a tenants' union or similar organization, K.S.A. 58-2572(a)(3)"
+        ],
+        "leading_case": null,
+        "confidence": "medium",
+        "note": "K.S.A. 58-2572(a) specifically prohibits retaliation by increasing rent, decreasing services, or bringing or threatening to bring an action for possession. K.S.A. 58-2572(b) makes the violation a defense in a possession action. Statutory exceptions appear in K.S.A. 58-2572(c), including tenant-caused code violations, tenant rent default, and required alteration/remodeling/demolition that would effectively deprive the tenant of use of the dwelling unit. No leading Kansas appellate eviction case interpreting K.S.A. 58-2572 is identified here.",
+        "model": "gpt-5.5"
+      },
+      "gemini_result": {
+        "statute_confirmed": true,
+        "operative_citation": "K.S.A. § 58-2572",
+        "protects_against_retaliation": true,
+        "protected_activities": [
+          "Complaining to a governmental agency about a building or housing code violation materially affecting health and safety.",
+          "Complaining to the landlord about a violation of the landlord's statutory duties to maintain the premises.",
+          "Organizing or becoming a member of a tenants' union or similar organization."
+        ],
+        "leading_case": "Stephens v. Ludy, 42 Kan. App. 2d 531, 214 P.3d 718 (2009)",
+        "confidence": "high",
+        "note": null,
+        "model": "gemini-2.5-pro"
+      }
+    },
+    {
+      "state": "NV",
+      "statute": "Nev. Rev. Stat. § 118A.510",
+      "reason": "__no_cases__ in nc17_fresh_v2; Paullin v. Sutton was wrong-doc",
+      "classification": "STATUTE-CONFIRMED",
+      "recommended_statute": "Nev. Rev. Stat. § 118A.510(1), with remedies/defense in § 118A.510(2)",
+      "leading_case_found": "Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (2017)",
+      "note": "Both models confirm Nev. Rev. Stat. § 118A.510(1), with remedies/defense in § 118A.510(2) protects against retaliation. Leading case found: Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (2017).",
+      "gpt_result": {
+        "statute_confirmed": true,
+        "operative_citation": "Nev. Rev. Stat. § 118A.510(1), with remedies/defense in § 118A.510(2)",
+        "protects_against_retaliation": true,
+        "protected_activities": [
+          "Good-faith complaint to a governmental code-enforcement agency about a building, housing, or health code violation applicable to the premises that materially affects health or safety, § 118A.510(1)(a)",
+          "Good-faith complaint to the landlord or a law enforcement agency about a violation of Nev. Rev. Stat. § 118A.290, § 118A.510(1)(b)",
+          "Organizing or becoming a member of a tenants' union or similar organization, § 118A.510(1)(c)",
+          "Good-faith complaint to the landlord, a governmental agency, an attorney, a fair housing agency, or other appropriate body about a violation of Nev. Rev. Stat. §§ 118.010 to 118.120 or the federal Fair Housing Act, § 118A.510(1)(d)",
+          "Seeking to enforce rights or remedies granted under Chapter 118A, § 118A.510(1)(e)"
+        ],
+        "leading_case": null,
+        "confidence": "high",
+        "note": "Section 118A.510(1) expressly prohibits retaliatory termination, refusal to renew, rent increase, decrease of essential services, and bringing or threatening an action for possession; § 118A.510(2) provides the tenant's remedy/defense.",
+        "model": "gpt-5.5"
+      },
+      "gemini_result": {
+        "statute_confirmed": true,
+        "operative_citation": "NRS 118A.510(1)",
+        "protects_against_retaliation": true,
+        "protected_activities": [
+          "Complaining in good faith to a governmental agency of a violation of a building, housing or health code.",
+          "Complaining in good faith to the landlord of a violation of chapter 118A of NRS.",
+          "Organizing or becoming a member of a tenant's union or similar organization.",
+          "Citing or complaining of a violation of a state or federal law or local ordinance concerning the prohibition of discrimination in housing.",
+          "Being the victim of domestic violence, harassment, sexual assault or stalking.",
+          "Failing or refusing to give the landlord access to the dwelling unit in violation of the rental agreement or statute."
+        ],
+        "leading_case": "Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (2017)",
+        "confidence": "high",
+        "note": null,
+        "model": "gemini-2.5-pro"
+      }
+    },
+    {
+      "state": "NY",
+      "statute": "N.Y. Real Property Law § 223-b",
+      "reason": "Prior Track B research found no leading Court of Appeals case; statute is operative",
+      "classification": "STATUTE-CONFIRMED",
+      "recommended_statute": "N.Y. Real Prop. Law § 223-b(1)(a)-(c)",
+      "leading_case_found": "Domen Holding Co. v. Aranovich, 1 N.Y.3d 117, 769 N.Y.S.2d 785 (2003)",
+      "note": "Both models confirm N.Y. Real Prop. Law § 223-b(1)(a)-(c) protects against retaliation. Leading case found: Domen Holding Co. v. Aranovich, 1 N.Y.3d 117, 769 N.Y.S.2d 785 (2003).",
+      "gpt_result": {
+        "statute_confirmed": true,
+        "operative_citation": "N.Y. Real Prop. Law § 223-b(1)(a)-(c)",
+        "protects_against_retaliation": true,
+        "protected_activities": [
+          "Good-faith complaint by or on behalf of the tenant to the landlord, the landlord's agent, or a governmental authority about the landlord's alleged violation of health or safety laws, regulations, codes, or ordinances, N.Y. Real Prop. Law § 223-b(1)(a)",
+          "Good-faith complaint or assertion concerning violation of the warranty of habitability under N.Y. Real Prop. Law § 235-b, N.Y. Real Prop. Law § 223-b(1)(a)-(b)",
+          "Good-faith actions by or on behalf of the tenant to secure or enforce rights under the lease, rental agreement, warranty of habitability, or other applicable housing-related law, N.Y. Real Prop. Law § 223-b(1)(b)",
+          "Tenant participation in the activities of a tenants' organization, N.Y. Real Prop. Law § 223-b(1)(c)"
+        ],
+        "leading_case": "Domen Holding Co. v. Aranovich, 1 N.Y.3d 117, 769 N.Y.S.2d 785 (2003)",
+        "confidence": "high",
+        "note": "N.Y. Real Prop. Law § 223-b(1) is the operative anti-retaliatory eviction provision; § 223-b(5) creates a rebuttable presumption of retaliation for certain landlord actions taken within one year after protected tenant activity.",
+        "model": "gpt-5.5"
+      },
+      "gemini_result": {
+        "statute_confirmed": true,
+        "operative_citation": "N.Y. Real Prop. Law § 223-b",
+        "protects_against_retaliation": true,
+        "protected_activities": [
+          "Making a good faith complaint to a governmental authority regarding the landlord's violation of any health or safety law, regulation, code, or ordinance.",
+          "Taking actions in good faith to secure or enforce rights under the lease or rental agreement, or under state or federal law regulating dwelling premises.",
+          "Participating in the activities of a tenants' organization."
+        ],
+        "leading_case": "601 West 160th St. Corp. v. Henry, 189 Misc. 2d 688, 736 N.Y.S.2d 212 (App. Term, 1st Dept. 2001)",
+        "confidence": "high",
+        "note": null,
+        "model": "gemini-2.5-pro"
+      }
+    },
+    {
+      "state": "SC",
+      "statute": "S.C. Code Ann. § 27-40-910",
+      "reason": "No candidates found in nc17_fresh_v2 CL fresh search",
+      "classification": "STATUTE-CONFIRMED",
+      "recommended_statute": "S.C. Code Ann. § 27-40-910(A)(1)-(3), with remedy/defense in § 27-40-910(B)",
+      "leading_case_found": "Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012)",
+      "note": "Both models confirm S.C. Code Ann. § 27-40-910(A)(1)-(3), with remedy/defense in § 27-40-910(B) protects against retaliation. Leading case found: Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012).",
+      "gpt_result": {
+        "statute_confirmed": true,
+        "operative_citation": "S.C. Code Ann. § 27-40-910(A)(1)-(3), with remedy/defense in § 27-40-910(B)",
+        "protects_against_retaliation": true,
+        "protected_activities": [
+          "complaining to a governmental agency responsible for enforcing a building or housing code about a violation applicable to the premises that materially affects health and safety",
+          "complaining to the landlord about a violation of the landlord's obligations under S.C. Code Ann. § 27-40-440",
+          "organizing a tenants' union or similar organization",
+          "becoming a member of a tenants' union or similar organization"
+        ],
+        "leading_case": null,
+        "confidence": "high",
+        "note": "S.C. Code Ann. § 27-40-910(A) prohibits a landlord from retaliating by increasing rent, decreasing services, or bringing or threatening to bring an action for possession. Section 27-40-910(B) makes retaliation a tenant remedy and defense in an action for possession, subject to the statutory exceptions in § 27-40-910(C).",
+        "model": "gpt-5.5"
+      },
+      "gemini_result": {
+        "statute_confirmed": true,
+        "operative_citation": "S.C. Code Ann. § 27-40-910(a)",
+        "protects_against_retaliation": true,
+        "protected_activities": [
+          "Complaining to a governmental agency about a building or housing code violation materially affecting health and safety.",
+          "Complaining to the landlord of a violation under the South Carolina Residential Landlord and Tenant Act.",
+          "Organizing or becoming a member of a tenant's union or similar organization."
+        ],
+        "leading_case": "Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012)",
+        "confidence": "high",
+        "note": null,
+        "model": "gemini-2.5-pro"
+      }
+    }
+  ]
+}

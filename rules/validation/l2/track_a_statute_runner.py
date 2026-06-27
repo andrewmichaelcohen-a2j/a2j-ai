@@ -58,7 +58,7 @@ except ImportError:
     print("ERROR: python-dotenv not installed. Run: pip install python-dotenv --break-system-packages")
     sys.exit(1)
 
-_REPO_ROOT = _SCRIPT_DIR.parent.parent.parent.parent
+_REPO_ROOT = _SCRIPT_DIR.parent.parent.parent
 _ENV_PATH = _REPO_ROOT / ".env"
 
 if not _ENV_PATH.exists():

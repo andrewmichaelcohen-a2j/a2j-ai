@@ -2,17 +2,30 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-26 session continuation (harness PR fix; NJ retry runner; --output-suffix; PR retry job queued; CL statute-targeted queries; NV/NY Track A routing; Track A runner built)
+**Last updated:** 2026-06-27 session continuation (Batch 3 + NJ retry ingested; PR retry enabled; Track B job queued; queue hygiene)
 
 ---
 
 ## NOW (executing)
 
-*No overnight jobs queued for 2026-06-27 2:15 AM. Queue items below are for next Cowork session or next night.*
+**Tonight (2026-06-27 at 2:15 AM via launchd):**
+- `job_retaliation_pr_retry_20260626.json` — PR-class retry, 14 states, 82 cases, sleep=15s. Est. ~13 hours. Just enabled (live_verified: true). Morning report ingests result.
+- `job_track_b_ks_nv_ny_sc_20260627.json` — Track B CL verification, KS/NV/NY/SC, fresh=true, sleep=15s. Dispatcher runs the next available night (mtime is newer than PR retry; dispatcher picks oldest first).
+
+**Direction B attorney freeze** (RED gate — Andy's action required):
+- 50 DRAFT golden-set candidates exist in `rules/validation/golden_sets/`. Only frozen items become ground truth. Andy must personally sign off on candidates → they become FROZEN. Cannot be automated.
 
 ---
 
 ## Completed Today
+
+**2026-06-27 session continuation** ✅ DONE
+- Batch 3 (7e6fcf6d): ingested into METRICS_LEDGER (was already written in prior session); DAILY_CHANGELOG updated.
+- NJ failure_to_attach: CONSENSUS-IMPROVE resolved; N.J. Ct. R. 6:3-4(c); nj_eviction_v2.json auto-updated. 4-run ERROR streak closed.
+- PR retry job enabled: `job_retaliation_pr_retry_20260626.json` → `live_verified: true`. Andy authorized.
+- Track B job created: `job_track_b_ks_nv_ny_sc_20260627.json` (KS/NV/NY/SC, fresh=true, candidates confirmed in all 4 v2 files).
+- Queue hygiene: nj_attach_probe + notice_tiebreaker copied to done/ (already had live_verified=false; safe in queue/).
+- Terminal cleanup note for Andy: `rm rules/validation/queue/job_nj_attach_probe_20260626.json rules/validation/queue/job_notice_tiebreaker_20260626.json` (not urgent — dispatcher skips them).
 
 **Track A + pipeline prep (session continuation)** ✅ DONE — 2026-06-26 session.
 - harness.py: `bucket: "PR"` now written for transient-failure dispositions (fixes 82-case bucket gap from nc17_fresh_v2).
@@ -98,21 +111,13 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **Run Track A statute-direct verification** (GREEN — Andy runs Terminal; Cowork ingests) — `track_a_statute_runner.py` is built and ready. Targets KS, NV, NY, SC. Queries GPT + Gemini: does statute protect against retaliation? No CL calls. Output: `rules/validation/l2/output/track_a_statute_YYYYMMDD.json`. Andy runs; Cowork ingests results into v2 files and DAILY_CHANGELOG.
-   ```
-   cd a2j-ai && python3 rules/validation/l2/track_a_statute_runner.py
-   ```
+1. **Ingest PR retry results** (GREEN-AUTO) — morning report after tonight's 2:15 AM run. Update METRICS_LEDGER (cross-batch holdings table), HUMAN_REVIEW_QUEUE (any new RC cases), DAILY_CHANGELOG. Bucket PR → MV/CI/RC depending on CL retrieval success.
 
-2. **Run NJ failure_to_attach reformulated retry** (GREEN — Andy runs Terminal; Cowork ingests) — `nj_attach_retry_20260626.py` is built and ready. GPT timeout=120s, Gemini consequence-framing query. Will resolve whether NJ is NSR, SM-GEMINI, or CONSENSUS. Output: `rules/validation/l2/output/nj_attach_retry_20260626.json`.
-   ```
-   cd a2j-ai && python3 rules/validation/l2/nj_attach_retry_20260626.py
-   ```
+2. **Ingest Track B results** (GREEN-AUTO) — morning report after Track B run completes (next available night after PR retry). 4 states × candidate verification. Successful MV/CI → update KS/NV/NY/SC v2 files. RC → HUMAN_REVIEW_QUEUE. SM → l2_sm_statute preserved.
 
-3. **Ingest overnight Batch 3 + L2 procedural defects runs** (GREEN-AUTO) — tonight's queue: `job_batch3_20260623.json` (18 states, retaliation holdings v3) + `job_l2_procedural_defects_20260624.json` (51 states × 4 defects). Morning report will ingest and update METRICS_LEDGER, HUMAN_REVIEW_QUEUE, WORK_QUEUE, DAILY_CHANGELOG.
+3. **Direction B attorney freeze** (RED gate — Andy's action required) — 50 DRAFT golden-set candidates. Must be frozen by Andy before Direction C can start.
 
-4. **PR retry — Andy's call on CL timing** (BLOCKED — Andy) — `job_retaliation_pr_retry_20260626.json` is queued at `live_verified=false`. 14 states, 82 PR-class cases. Set `live_verified=true` only when CL rate-limit has subsided (or after CourtListener outreach re: rate tier).
-
-5. **Direction B attorney freeze** (RED gate — needs Andy) — 50 DRAFT candidates in `rules/validation/golden_sets/`. Only frozen items become ground truth.
+4. **Terminal cleanup** (optional, low priority) — `rm rules/validation/queue/job_nj_attach_probe_20260626.json rules/validation/queue/job_notice_tiebreaker_20260626.json` from Andy's Terminal. Already in done/; live_verified=false so dispatcher skips. No urgency.
 
 ---
 
@@ -132,9 +137,8 @@
 
 - **Direction B — Scorer build**: end-to-end scoring harness once first golden set is frozen (attorney gate)
 - **Krippendorff's α in harness**: update harness.py to report α instead of raw agreement % across all protocols (YELLOW — changes existing behavior, log for ratification)
-- **Full retaliation holdings run (Batch 3 results)**: ingest + update metrics after tonight's overnight run
 - **L2 overlays + defenses runners**: extend L2 pattern to warranty of habitability, SCRA, discrimination once procedural defects pipeline is proven at full 51-state scale
-- **PR (pending-retrieval) retry pass**: once CourtListener rate-limit situation is known, build bulk-retry job for all PR-quarantined holdings cases
+- **Full holdings coverage expansion**: after Track B + PR retry close KS/NV/NY/SC and 14-state PR class, remaining NC states (no candidates) need manual case research or CL bulk-data strategy
 - **Direction C**: build ONLY after B golden sets exist and scorer is working. Estimated: 1–2 weeks after B gate.
 
 ---

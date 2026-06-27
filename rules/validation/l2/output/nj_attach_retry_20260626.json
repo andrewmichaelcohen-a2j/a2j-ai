@@ -1,0 +1,33 @@
+{
+  "runner": "nj_attach_retry_20260626",
+  "state": "NJ",
+  "defect": "failure_to_attach_lease_or_notice_to_complaint",
+  "run_date": "2026-06-27",
+  "gpt_timeout_secs": 120,
+  "gemini_timeout_secs": 90,
+  "prior_runs": 3,
+  "query_reformulation": "consequence-framing + shorter text to reduce GPT reasoning time",
+  "gpt_result": {
+    "attachment_required": true,
+    "statute": "N.J. Ct. R. 6:3-4(c)",
+    "what_must_be_attached": "notice only",
+    "consequence_if_missing": "The complaint is procedurally defective as filed; the tenant may raise the omission as a procedural defense, typically supporting dismissal without prejudice or adjournment/amendment, especially if the notice was a required prerequisite.",
+    "confidence": "medium",
+    "note": "Rule 6:3-4 is the landlord-tenant summary dispossess court rule; required notices must be attached when the landlord relies on them or they are a prerequisite to filing. If no notice is legally required for the cause of action, there is no notice to attach.",
+    "model": "gpt-5.5"
+  },
+  "gemini_result": {
+    "attachment_required": true,
+    "statute": "N.J. Ct. R. 6:3-4(c)",
+    "what_must_be_attached": "notice only",
+    "consequence_if_missing": "Grounds for dismissal of the complaint for failure to state a claim upon which relief can be granted.",
+    "confidence": "high",
+    "note": "While this rule specifically mandates attaching the notice, the official complaint forms themselves (e.g., Appendix XI-X) require details from the lease, and attaching the lease is a standard and expected practice.",
+    "model": "gemini-2.5-pro"
+  },
+  "classification": "CONSENSUS-IMPROVE",
+  "recommended_statute": "N.J. Ct. R. 6:3-4(c)",
+  "note": "Both models agree: N.J. Ct. R. 6:3-4(c). More specific than current 'NJSA 2A:18-51 et seq. (pleading requirements)'.",
+  "current_file_statute": "NJSA 2A:18-51 et seq. (pleading requirements)",
+  "file_updated": true
+}

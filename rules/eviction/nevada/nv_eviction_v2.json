@@ -603,7 +603,49 @@
               "proposed_holding": "NRS 118A.510 prohibits non-renewal of lease for retaliatory purpose; remedy is actual damages only (statute amended 1985 to add damages provision)",
               "track": "B",
               "note": "Identified via Justia web search; not yet verified via CourtListener. CL searches to date (20f722c8 run) returned wrong-doc cases for NV — not this case specifically. Improved statute-targeted query (NRS 118A.510 retaliation tenant landlord residential) will be used on next CL fresh run to attempt candidate verification."
+            },
+            {
+              "case_name": "Anvui, LLC v. G.L.",
+              "citation": "133 Nev. 711, 405 P.3d 667",
+              "court": "Nevada Supreme Court",
+              "year": 2017,
+              "cl_cluster_id": null,
+              "identified_by": "Gemini (track_a_statute_runner)",
+              "identified_date": "2026-06-27",
+              "candidate_status": "UNVERIFIED",
+              "track": "B",
+              "note": "Suggested by Gemini in Track A run 2026-06-27. Nevada Supreme Court, 2017 — more recent and authoritative than Paullin v. Sutton (1986). Priority Track B CL verification candidate. Not CL-verified."
             }
+          ],
+          "track_a": {
+            "track": "A",
+            "validation_method": "statute-direct (no CL opinion text)",
+            "run_date": "2026-06-27",
+            "runner": "track_a_statute_runner",
+            "gpt_model": "gpt-5.5",
+            "gemini_model": "gemini-2.5-pro",
+            "classification": "STATUTE-CONFIRMED",
+            "recommended_statute": "Nev. Rev. Stat. § 118A.510(1), with remedies/defense in § 118A.510(2)",
+            "leading_case_found": "Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (2017)",
+            "note": "Both models confirm Nev. Rev. Stat. § 118A.510(1), with remedies/defense in § 118A.510(2) protects against retaliation. Leading case found: Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (2017).",
+            "gpt_summary": {
+              "statute_confirmed": true,
+              "operative_citation": "Nev. Rev. Stat. § 118A.510(1), with remedies/defense in § 118A.510(2)",
+              "protects": true,
+              "leading_case": null,
+              "confidence": "high"
+            },
+            "gemini_summary": {
+              "statute_confirmed": true,
+              "operative_citation": "NRS 118A.510(1)",
+              "protects": true,
+              "leading_case": "Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (2017)",
+              "confidence": "high"
+            },
+            "automation_ceiling": "statute-verified is BELOW machine-verified, BELOW the attorney line. Not validated. Attorney must confirm before citing."
+          },
+          "validation_flags": [
+            "TRACK-A-STATUTE-CONFIRMED"
           ]
         },
         "best_practices": {
@@ -765,5 +807,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-26"
+  "last_updated": "2026-06-27"
 }

@@ -665,7 +665,61 @@
             "routed_date": "2026-06-26",
             "next_step": "Run Track A statute-direct verification (track_a_statute_runner.py) to confirm RPL §223-b; retry CL with statute-targeted query (223-b retaliation tenant landlord residential) on next fresh run"
           },
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "track_a": {
+            "track": "A",
+            "validation_method": "statute-direct (no CL opinion text)",
+            "run_date": "2026-06-27",
+            "runner": "track_a_statute_runner",
+            "gpt_model": "gpt-5.5",
+            "gemini_model": "gemini-2.5-pro",
+            "classification": "STATUTE-CONFIRMED",
+            "recommended_statute": "N.Y. Real Prop. Law § 223-b(1)(a)-(c)",
+            "leading_case_found": "Domen Holding Co. v. Aranovich, 1 N.Y.3d 117, 769 N.Y.S.2d 785 (2003)",
+            "note": "Both models confirm N.Y. Real Prop. Law § 223-b(1)(a)-(c) protects against retaliation. Leading case found: Domen Holding Co. v. Aranovich, 1 N.Y.3d 117, 769 N.Y.S.2d 785 (2003).",
+            "gpt_summary": {
+              "statute_confirmed": true,
+              "operative_citation": "N.Y. Real Prop. Law § 223-b(1)(a)-(c)",
+              "protects": true,
+              "leading_case": "Domen Holding Co. v. Aranovich, 1 N.Y.3d 117, 769 N.Y.S.2d 785 (2003)",
+              "confidence": "high"
+            },
+            "gemini_summary": {
+              "statute_confirmed": true,
+              "operative_citation": "N.Y. Real Prop. Law § 223-b",
+              "protects": true,
+              "leading_case": "601 West 160th St. Corp. v. Henry, 189 Misc. 2d 688, 736 N.Y.S.2d 212 (App. Term, 1st Dept. 2001)",
+              "confidence": "high"
+            },
+            "automation_ceiling": "statute-verified is BELOW machine-verified, BELOW the attorney line. Not validated. Attorney must confirm before citing."
+          },
+          "validation_flags": [
+            "TRACK-A-STATUTE-CONFIRMED"
+          ],
+          "candidates": [
+            {
+              "case_name": "Domen Holding Co. v. Aranovich, 1 N.Y.3d 117, 769 N.Y.S.2d 785 (2003)",
+              "citation": "1 N.Y.3d 117",
+              "court": "N.Y. Court of Appeals",
+              "year": 2003,
+              "cl_cluster_id": null,
+              "status": "track-a-model-suggested",
+              "identified_by": "GPT (track_a_statute_runner)",
+              "identified_date": "2026-06-27",
+              "note": "Suggested by GPT in Track A run 2026-06-27 (Gemini suggested different case). NY CoA — highest court. High priority for Track B CL verification. Not CL-verified."
+            },
+            {
+              "case_name": "601 West 160th St. Corp. v. Henry, 189 Misc. 2d 688, 736 N.Y.S.2d 212 (App. Term, 1st Dept. 2001)",
+              "citation": "189 Misc. 2d 688",
+              "court": "N.Y. App. Term, 1st Dept.",
+              "year": 2001,
+              "cl_cluster_id": null,
+              "status": "track-a-model-suggested",
+              "identified_by": "Gemini (track_a_statute_runner)",
+              "identified_date": "2026-06-27",
+              "note": "Suggested by Gemini in Track A run 2026-06-27 (GPT suggested Domen Holding instead). Intermediate court. Secondary Track B candidate. Not CL-verified."
+            }
+          ]
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",
@@ -839,5 +893,5 @@
       "l2_sm_statute": "New York Real Property Actions and Proceedings Law § 735"
     }
   ],
-  "last_updated": "2026-06-26"
+  "last_updated": "2026-06-27"
 }

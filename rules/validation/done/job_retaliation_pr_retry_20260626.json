@@ -1,0 +1,21 @@
+{
+  "job_id": "job_retaliation_pr_retry_20260626",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "AL,CO,CT,HI,LA,MI,ND,NJ,NM,NY,OK,SC,VT,WV",
+  "sleep": 15,
+  "fresh": false,
+  "run_id": "pr_retry_20260626",
+  "uses": [
+    "courtlistener",
+    "openai",
+    "gemini"
+  ],
+  "live_verified": true,
+  "created": "2026-06-26T00:00:00Z",
+  "note": "PR-class retry: 82 transient-failure cases (429 rate-limit) from nc17_fresh_v2 run. 14 states: AL(2), CO(3), CT(2), HI(6), LA(8), MI(8), ND(6), NJ(8), NM(8), NY(7), OK(8), SC(4), VT(4), WV(8). sleep=15s (increased from 10s \u2014 429 severity in prior 13.3-hour run). Harness bug fixed: bucket=PR now written for transient-failure. BLOCKED on Andy's call \u2014 do NOT set live_verified=true until CL rate limiting has subsided or outreach to Free Law Project has clarified rate tier.",
+  "completed_at": "2026-06-27T01:11:16.512392+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260627_0108.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-06-27_0111.md"
+}

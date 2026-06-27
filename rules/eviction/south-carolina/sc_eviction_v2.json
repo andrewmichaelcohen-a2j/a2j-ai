@@ -539,7 +539,46 @@
           "validation_method": "L2-draft-and-cross-check-with-citation-verification",
           "automation_ceiling": "medium",
           "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "track_a": {
+            "track": "A",
+            "validation_method": "statute-direct (no CL opinion text)",
+            "run_date": "2026-06-27",
+            "runner": "track_a_statute_runner",
+            "gpt_model": "gpt-5.5",
+            "gemini_model": "gemini-2.5-pro",
+            "classification": "STATUTE-CONFIRMED",
+            "recommended_statute": "S.C. Code Ann. § 27-40-910(A)(1)-(3), with remedy/defense in § 27-40-910(B)",
+            "leading_case_found": "Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012)",
+            "note": "Both models confirm S.C. Code Ann. § 27-40-910(A)(1)-(3), with remedy/defense in § 27-40-910(B) protects against retaliation. Leading case found: Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012).",
+            "gpt_summary": {
+              "statute_confirmed": true,
+              "operative_citation": "S.C. Code Ann. § 27-40-910(A)(1)-(3), with remedy/defense in § 27-40-910(B)",
+              "protects": true,
+              "leading_case": null,
+              "confidence": "high"
+            },
+            "gemini_summary": {
+              "statute_confirmed": true,
+              "operative_citation": "S.C. Code Ann. § 27-40-910(a)",
+              "protects": true,
+              "leading_case": "Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012)",
+              "confidence": "high"
+            },
+            "automation_ceiling": "statute-verified is BELOW machine-verified, BELOW the attorney line. Not validated. Attorney must confirm before citing."
+          },
+          "validation_flags": [
+            "TRACK-A-STATUTE-CONFIRMED"
+          ],
+          "candidates": [
+            {
+              "case_name": "Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012)",
+              "citation": null,
+              "cl_cluster_id": null,
+              "status": "track-a-model-suggested",
+              "note": "Suggested by both models in Track A run 2026-06-27. Not CL-verified."
+            }
+          ]
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",
@@ -697,5 +736,5 @@
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-26"
+  "last_updated": "2026-06-27"
 }

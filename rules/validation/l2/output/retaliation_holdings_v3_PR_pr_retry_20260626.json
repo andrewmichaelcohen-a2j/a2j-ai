@@ -1,0 +1,7 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "pr_retry_20260626",
+  "pr_count": 0,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": []
+}
