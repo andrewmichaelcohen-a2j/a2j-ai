@@ -4,6 +4,46 @@
 
 ---
 
+## 2026-06-27 (session continuation 3 — Batch 4 NC job queued; golden-set scorer harness built)
+
+### GREEN — Executed autonomously
+
+**Batch 4 NC states job queued for tonight**
+- File: `rules/validation/queue/job_fresh_nc_batch4_20260627.json`
+- States: AL, CT, HI, LA, MI, ND, NJ, NM, OK, VT, WV (11 states — all with zero MV/CI results to date)
+- Excludes: NY (Track B complete), KS/NV/SC (Track B confirmed NC), AK (RC already attorney-routed)
+- fresh=true, statute-targeted CL queries, sleep=15s, live_verified=true
+- Will run tonight 2:15 AM via launchd dispatcher. Est. 8–14 hours.
+
+**Golden-set scorer harness built (Direction B)**
+- `rules/validation/scorer/golden_set_scorer.py` — end-to-end scorer. Runs DRAFT or FROZEN golden-set fact patterns through the pipeline (rules file + GPT-4o + Gemini), compares to correct_answer, scores by difficulty band (bright_line / open_textured — never blended). SHA256 integrity check for frozen candidates. Read-only to ground truth. Writes output to `scorer/output/score_<run_id>.json`.
+- `rules/validation/scorer/freeze.py` — freeze utility for Andy to run interactively. Prompts for FREEZE/EDIT/SKIP per candidate, computes SHA256 content hash, proposes 70/30 train/held-out split, writes to `golden_sets/FROZEN/<module>/`. Seals held-out partition at freeze time.
+- Syntax validated: both files parse clean.
+- Ready to use the moment Andy freezes first CA notice candidates.
+
+**WORK_QUEUE updated** — NOW section now shows Batch 4 NC job; scorer build reflected in NEXT; last_updated timestamp.
+
+### YELLOW — none this cycle
+
+---
+
+## 2026-06-27 (session continuation 2 — Task #96 completed: ny_eviction_v2.json updated with Track B NY cases)
+
+### GREEN — Executed autonomously
+
+**ny_eviction_v2.json updated — Track B NY cases added to candidates[]**
+- Prior session claimed this was done; actual file had not been updated (candidates[] still had only 2 track-a-model-suggested entries). Completed now.
+- Added 7 Track B cases to `holdings.candidates[]` in `rules/eviction/new-york/ny_eviction_v2.json`:
+  - **MV ×5:** Wheeler v. D'Antonio (2025 NY Slip Op 25196), Pena v. Lockenwitz (53 Misc. 3d 428), 339-347 E. 12th St. LLC v. Ling (35 Misc. 3d 30), MH Residential 1 v. Barrett (41 Misc. 3d 24), Graham Court v. Taylor (115 A.D.3d 50, attorney-verify-recommended)
+  - **CI ×1:** Baer v. Huggins (41 Misc. 3d 605) — D=INFERRED, cheap confirm lane [NY-HOLD-CI-01]
+  - **PR ×1:** Graham Court v. Kyle Taylor (24 N.Y.3d 742) — wrong-doc, not attorney lane
+- Each case carries: cl_cluster_id, cl_url, controlling_quote (where available), check_d_control, bucket, run_id, disposition_note.
+- `validation_flags`: TRACK-B-NY-MV-CASES-INGESTED added.
+- Total candidates[]: 9 (2 track-a-model-suggested + 5 MV + 1 CI + 1 PR).
+- Verification: `python3 -c "..."` confirmed 9 unique candidates by cl_cluster_id/case_name, no duplicates.
+
+---
+
 ## 2026-06-27 (session continuation — Batch 3 ingested; NJ retry resolved; PR retry enabled; Track B queued)
 
 ### GREEN — Executed autonomously

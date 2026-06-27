@@ -1,0 +1,13 @@
+{
+  "job_id": "job_fresh_nc_batch4_20260627",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "AL,CT,HI,LA,MI,ND,NJ,NM,OK,VT,WV",
+  "sleep": 15,
+  "fresh": true,
+  "run_id": "fresh_nc_batch4_20260627",
+  "uses": ["courtlistener", "openai", "gemini"],
+  "live_verified": true,
+  "created": "2026-06-27T00:00:00Z",
+  "note": "Batch 4 NC states: fresh=true statute-targeted CL search. 11 states that have had no MV/CI results to date. Excludes: NY (Track B complete), KS/NV/SC (Track B confirmed NC — no CL candidates), AK (RC in nc17_fresh_v2, already attorney-routed), CO/CT had RC results — included to see if improved statute queries find additional cases beyond the RC ones. sleep=15s for CL rate-limit management. Uses statute-targeted query per _STATE_RETALIATION_STATUTES dict."
+}

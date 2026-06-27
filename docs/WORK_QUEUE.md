@@ -2,16 +2,17 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-27 morning report (PR retry + Track B overnight runs ingested; NY 5 MV + 1 CI; PR retry pipeline bug diagnosed; KS/NV/SC CL gap confirmed; queue refreshed)
+**Last updated:** 2026-06-27 session (Batch 4 NC job queued; golden-set scorer harness build started)
 
 ---
 
 ## NOW (executing)
 
-**No overnight jobs queued for tonight (2026-06-28 at 2:15 AM).** Queue is empty — see NEXT for items ready to queue.
+**Overnight job queued for tonight (2026-06-28 at 2:15 AM):**
+- `job_fresh_nc_batch4_20260627.json` — Batch 4: 11 NC states (AL, CT, HI, LA, MI, ND, NJ, NM, OK, VT, WV), `fresh=true`, statute-targeted CL queries, sleep=15s. These states have zero MV/CI results to date. `live_verified: true`. Est. 8–14 hours.
 
 **Direction B attorney freeze** (RED gate — Andy's action required):
-- 50 DRAFT golden-set candidates exist in `rules/validation/golden_sets/`. Only frozen items become ground truth. Andy must personally sign off on candidates → they become FROZEN. Cannot be automated.
+- 50 DRAFT golden-set candidates in `rules/validation/golden_sets/`. Andy must personally sign off → items become FROZEN. Scorer harness being built in parallel (no attorney gate on the harness itself).
 
 ---
 
