@@ -1,0 +1,18 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "track_b_ks_nv_ny_sc_20260627",
+  "pr_count": 1,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": [
+    {
+      "state": "NY",
+      "case_name": "Graham Court Owner's Corp. v. Kyle Taylor",
+      "citation_gpt": "24 N.Y.3d 742",
+      "citation_gemini": "24 N.Y.3d 742",
+      "year": 2015,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['24 N.Y.3d 742', '28 N.E.3d 527', '5 N.Y.S.3d 348']; model citations ['24 N.Y.3d 742', '24 N.Y.3d 742']; match=True",
+      "run_id": "track_b_ks_nv_ny_sc_20260627"
+    }
+  ]
+}

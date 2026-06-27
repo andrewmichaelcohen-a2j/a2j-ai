@@ -53,6 +53,58 @@
 
 ---
 
+## 2026-06-27 (morning report — PR retry + Track B overnight runs ingested)
+
+### GREEN — Executed autonomously
+
+**PR retry run ingested — pipeline failure diagnosed**
+- Run: `pr_retry_20260626` (fired 2026-06-27 ~01:00 UTC via launchd). Output: `rules/validation/l2/output/retaliation_holdings_v3_2026-06-27_pr_retry_20260626.json`.
+- Result: 14 states, ALL perm-fail. MV=CI=RC=PR=SM=0. No CL calls made.
+- Root cause: `fresh=false` + `load_draft_cases()` reads v1 draft file only; 82 transient-failure cases from nc17_fresh_v2 were never persisted to v1 draft file. All 14 states returned `__no_cases__`.
+- Classified: GREEN pipeline bug. 82 cases remain unretried.
+- Anti-default audit: PR retry returned 0 cases. This is an infrastructure failure (bad job config) — not attorney escalation. Fix needed: new runner that reads from nc17_fresh_v2 output JSON, or re-queue with `fresh=true`.
+- METRICS_LEDGER: PR retry entry added (method_rate=n/a, overall_rate=0%, perm-fail=14).
+
+**Track B run (KS/NV/NY/SC) ingested — NY success; KS/NV/SC CL gap confirmed**
+- Run: `track_b_ks_nv_ny_sc_20260627` (fired 2026-06-27 ~09:15 UTC via launchd). Output: `rules/validation/l2/output/retaliation_holdings_v3_2026-06-27_track_b_ks_nv_ny_sc_20260627.json`. Elapsed: 433s (~7.2 min).
+- NY: 8 CL candidates found. MV=5, CI=1, PR=1. Method rate: 83.3% (5/6). NY Track B: COMPLETE.
+- KS, NV, SC: 0 CL candidates. All perm-fail. Track A candidates (Stephens, Anvui, Wadell) not indexed in CL.
+- overall_rate: 45.5% (5/11, diluted by 3 perm-fail + 1 PR).
+- METRICS_LEDGER: Track B entry added with full bucket breakdown.
+
+**ny_eviction_v2.json updated with Track B results**
+- File: `rules/eviction/new-york/ny_eviction_v2.json`. Updated via Python script.
+- Added `holdings.track_b_run` block, `machine_verified_cases` array (5 MV cases), `confirm_inference_cases` array (Baer v. Huggins CI), `pr_cases` array (Graham Court v. Kyle Taylor PR).
+- `validation_status`: TRACK-A-PENDING → TRACK-B-RUN-COMPLETE.
+- `validation_flags`: TRACK-B-RUN-COMPLETE added.
+- `last_updated`: 2026-06-27.
+
+**HUMAN_REVIEW_QUEUE updated — NY-HOLD-CI-01 added**
+- Item: [NY-HOLD-CI-01] Baer v. Huggins, 41 Misc. 3d 605 (N.Y. Civ. Ct. 2013). CI cheap confirm lane.
+- D=INFERRED: both models corroborated holding from retrieved text, but no directly quotable sentence. Attorney to confirm case is substantive, not citation-drop.
+
+**VALIDATION_METRICS_LEDGER updated — two new entries + cross-batch table row**
+- PR retry entry added under holdings v3 section.
+- Track B entry added with full breakdown (KS/NV/SC perm-fail, NY bucket detail, method/overall rates).
+- Cross-batch combined table updated with both new rows.
+
+**Living docs updated (WORK_QUEUE, PROJECT_STATE_OF_RECORD, DAILY_CHANGELOG)**
+- WORK_QUEUE: NOW updated (no jobs queued tonight); NEXT refreshed (PR retry v2, KS/NV/SC path decision, Baer confirm, Direction B); Completed Today updated.
+- PROJECT_STATE_OF_RECORD: holdings v3 section updated with PR retry + Track B results; last_updated updated.
+- DAILY_CHANGELOG: this entry.
+
+**CLAUDE_CHAT_BRIEF.md regenerated (final step)**
+- Updated to reflect 2026-06-27 morning report cycle.
+
+### YELLOW — Logged for ratification
+
+**Graham Court v. Taylor (115 A.D.3d 50) — MV classification with caution flag**
+- Classified MV by runner (both models cited same citation + corroborated holding). But model summary notes court "does not discuss the substantive merits of retaliatory eviction" — outcome-only affirmance, no rule articulated.
+- Logged in ny_eviction_v2.json `validation_flags` and `machine_verified_cases[4].note`.
+- Andy should review when examining NY holdings: this case may not usefully state a controlling holding.
+
+---
+
 ## 2026-06-26 (session continuation — pipeline prep + Track A runner)
 
 ### GREEN — Executed autonomously

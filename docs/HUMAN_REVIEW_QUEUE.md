@@ -2,7 +2,8 @@
 
 **Module:** Notice / pay_or_quit · **Layer:** L2 Multi-Model Consensus  
 **Runner rule:** Runners append new flagged items only. They never edit or overwrite the Resolution, Authoritative source, Resolved by, Date, or Status fields — those are owned by Andy Cohen.  
-**Last rebuilt:** 2026-06-26 late evening (notice tiebreaker + NJ probe + retaliation nc17_fresh_v2 ingested: NOTICE-L2-01/03 tiebreaker-resolved, not L7 — CORRECTED [ingestion error fixed]; NOTICE-L2-02/04/08/09 resolved; NOTICE-L2-06 GA tiebreaker-resolved YELLOW file update applied; 3 RC cases added [AK-RET-HOLD-RC-01]–[CT-RET-HOLD-RC-01]) · **Confirmed by:** Cowork (GREEN ingestion + correction)  
+**Last rebuilt:** 2026-06-27 morning report (Track B KS/NV/NY/SC run ingested: NY-HOLD-CI-01 added [Baer v. Huggins, cheap confirm lane]; queue summary updated) · **Confirmed by:** Cowork (GREEN ingestion)  
+**Prior rebuild:** 2026-06-26 late evening (notice tiebreaker + NJ probe + retaliation nc17_fresh_v2 ingested: NOTICE-L2-01/03 tiebreaker-resolved, not L7 — CORRECTED [ingestion error fixed]; NOTICE-L2-02/04/08/09 resolved; NOTICE-L2-06 GA tiebreaker-resolved YELLOW file update applied; 3 RC cases added [AK-RET-HOLD-RC-01]–[CT-RET-HOLD-RC-01]) · **Confirmed by:** Cowork (GREEN ingestion + correction)  
 **Prior rebuild:** 2026-06-26 evening (notice provenance rerun: 8 new NOTICE-L2 divergence items [NOTICE-L2-01]–[NOTICE-L2-08] added; MD and MO splits corroborate existing L7s) · **Confirmed by:** Cowork (GREEN ingestion)
 
 > **How to use this queue:**  
@@ -17,6 +18,7 @@
 |--------|-------|
 | 🔴 L7-ESCALATED — you decide from primary sources | 43 (6 notice/service + 14 retaliation elements + OK + 22 procedural defects) |
 | 🔴 RC — verify/characterize from primary source | 5 (NV Wright v. Brady; NY Ellis v. Oceanhill; AK DeNardo v. Maassen; CO Sladek v. dePlomb; CT TOV Realty v. Suarez) |
+| 🟡 CI — cheap confirm lane (D=INFERRED; verify holding is controlling) | 1 (NY: Baer v. Huggins [NY-HOLD-CI-01]) |
 | 🟡 PENDING-CONFIRMATION — AI proposed, you verify | 6 |
 | 🟡 CITATION-REVIEW — verify operative section from primary source | 3 |
 | 🟠 OVERLAY-CITE-CHECK — Module 4 runner-flagged + classifier false positives | 22 |
@@ -482,6 +484,28 @@ Both models agree Connecticut requires attachment; they disagree on whether the 
 
 Both models agree Florida requires attachment; they disagree on whether the governing source is the summary procedure statute (§ 51.011(2)) or the general pleading rule (FRCP 1.130(a)).  
 **Resolution:** ________________  **Resolved by:** ________________  **Date:** ________________
+
+---
+
+## 🟡 CI — Cheap Confirm Lane (D=INFERRED; Verify Holding Is Controlling)
+
+These cases were machine-verified on text retrieval and both models corroborated the holding, but Check D returned INFERRED (no direct quotable statement of the rule). They count as CI in reporting. To close: confirm from primary source that the case does articulate the retaliation defense standard, even if not with a single quotable sentence.
+
+---
+
+### [NY-HOLD-CI-01] New York — Baer v. Huggins, 41 Misc. 3d 605 (N.Y. Civ. Ct. 2013)
+
+**Classification:** CI — cheap confirm lane · **Status:** 🟡 pending  
+**Run:** Track B (track_b_ks_nv_ny_sc_20260627) · **Module:** retaliation defense, holdings layer  
+**Citation in ny_eviction_v2.json:** `confirm_inference_cases` array under `retaliation.layer_decomposition.holdings`
+
+**What the runner found:** Both GPT and Gemini retrieved text from 41 Misc. 3d 605 and corroborated that it affirms the retaliation defense under RPL §223-b. However, neither model returned a direct quotable sentence stating the controlling rule (Check D = INFERRED, not STATED). Method rate counts this case as a CI denominator unit.
+
+**Your task:** Pull 41 Misc. 3d 605 from Fastcase, Westlaw, or CourtListener. Confirm that the case substantively discusses the retaliation defense and states (or clearly implies) that a tenant who received a pay-or-quit notice after asserting housing-code complaints can assert §223-b as a defense. If it does, mark CONFIRMED-CI. If the case is merely a citation drop with no holding, mark RC and escalate for re-characterization.
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
 
 ---
 

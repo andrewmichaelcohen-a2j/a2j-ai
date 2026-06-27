@@ -1,22 +1,27 @@
 # CJaC — Claude Chat Rolling Brief
 
-**Generated:** 2026-06-26 late evening · Rolling handoff for Claude Chat — orientation only, canonical docs are authoritative.  
+**Generated:** 2026-06-27 morning report · Rolling handoff for Claude Chat — orientation only, canonical docs are authoritative.  
 **OS state:** Direction A live · Direction B survey in progress (50 DRAFT candidates, unfrozen) · Direction C not started.  
-**Right now:** GA notice YELLOW update applied (notice_required=false, days=null) — needs Andy ratification. OR notice L2 flag closed (tiebreaker confirmed days=10; file already correct). 84 retaliation holdings cases quarantined as PR-class (CourtListener 429 throttling). Harness bug fix queued.
+**Right now:** Two overnight runs completed (2026-06-27). PR retry: pipeline failure — 14 states all perm-fail (fresh=false + no v1 draft candidates). Track B (KS/NV/NY/SC): NY success — 5 MV + 1 CI; KS/NV/SC — 0 CL candidates. ny_eviction_v2.json updated. Pipeline bugs diagnosed; fixes queued.
 
 ---
 
 ## 1. WHERE WE ARE
 
-The 51 v2 eviction rules files (all states + DC) are structurally complete. Overnight dispatcher is live (FDA fixed, launchd firing at 2:15 AM).
+The 51 v2 eviction rules files (all states + DC) are structurally complete. Overnight dispatcher is live (launchd firing at 2:15 AM).
 
-**Notice module:** 51-state provenance rerun complete (82% consensus). Tiebreaker run completed for 7 states: GA resolved (YELLOW file update applied — see RED list), AR/MN/WY/TN confirmed-file (no change), OR tiebreaker-resolved (days=10 confirmed; file already correct; L2 flag closed). All 7 states now closed — no L7 escalations from tiebreaker.
+**Notice module:** 51-state provenance rerun + tiebreaker complete. GA notice updated (YELLOW — notice_required=false, days=null, O.C.G.A. §§ 44-7-50/52 — awaiting Andy ratification). OR tiebreaker resolved (days=10, file already correct, L2 flag closed). All other tiebreaker states confirmed-file.
 
-**Procedural defects:** Full 204-unit + failure_to_attach re-run complete. α_method=0.256 full run; 0.470 attach-only post-fix. 22 L7s in attorney queue. 4 file updates auto-applied.
+**Procedural defects:** Full 204-unit run + failure_to_attach re-run complete. α_method=0.256 full run; 0.470 attach-only post-fix. NJ failure_to_attach resolved (CONSENSUS-IMPROVE → N.J. Ct. R. 6:3-4(c)); 4-run ERROR streak closed. 22 L7s in attorney queue.
 
-**Retaliation holdings v3:** CA has 4 MV, 2 CI (machine-verified, below attorney line). nc17_fresh_v2 run (2026-06-26): 118 units, MV=6, RC=3 (AK/CO/CT), PR=25, **84 transient-failure (CourtListener 429 rate-limiting — 13.3-hour run; PR-class, quarantined for retry)**. Method rate 67%.
+**Retaliation holdings v3 — current state:**
+- **CA:** 10 MV total (Batches 1–3 + nc17_fresh_v2). 2 CI. Ingested to ca_eviction_v2.json. CA holdings: COMPLETE at Track B level.
+- **NY:** 5 MV (Wheeler v. D'Antonio 2025, Pena v. Lockenwitz, 339-347 E. 12th St., MH Residential 1 v. Barrett, Graham Court v. Taylor 115 A.D.3d 50⚠️) + 1 CI (Baer v. Huggins — cheap confirm lane) + 1 PR (Graham Court v. Kyle Taylor 24 N.Y.3d 742 wrong-doc). Method rate: 83.3%. Ingested to ny_eviction_v2.json. NY holdings: TRACK-B-RUN-COMPLETE.
+- **KS, NV, SC:** 0 CL candidates in Track B. CL gap — model-suggested Track A candidates not indexed. Next: Descrybe verify OR fix load_draft_cases() to read v2 candidates[].
+- **82 cases:** transient-failure from nc17_fresh_v2 — unretried. PR retry runner was broken (fresh=false). Fix needed before requeue.
+- **5 RC cases:** AK/CO/CT/NV(Wright v. Brady)/NY(Ellis v. Oceanhill) — in HUMAN_REVIEW_QUEUE, attorney review pending.
 
-**Attorney queue: 48 open items** (43 L7/RC + 5 new from today's runs).
+**Attorney queue: ~82 open items** (43 L7/RC + 1 CI + 6 PENDING-CONFIRM + others).
 
 **Direction B:** 50 DRAFT golden-set candidates in golden_sets/. RED gate — Andy must freeze them. Direction C blocked on B.
 
@@ -26,7 +31,9 @@ The 51 v2 eviction rules files (all states + DC) are structurally complete. Over
 
 **RED-interpretive — YELLOW awaiting ratification:**
 
-- **[NOTICE-L2-06] GA — notice_required=false file update (YELLOW):** Both tiebreaker models (GPT + Gemini) confirmed notice_required=false, days=null for Georgia. File updated: `ga_eviction_v2.json` now has `notice_required: false, days: null, statute: O.C.G.A. §§ 44-7-50, 44-7-52`. Prior value (days=3) was unsubstantiated initial-gen only; corroborated by LSC 2021 ("minimum not specified"). Please ratify or override. See HUMAN_REVIEW_QUEUE [NOTICE-L2-06].
+- **[NOTICE-L2-06] GA — notice_required=false file update (YELLOW):** Both tiebreaker models confirmed notice_required=false, days=null (O.C.G.A. §§ 44-7-50, 44-7-52). Prior value (days=3) was unsubstantiated. File updated. Please ratify or override.
+
+- **[YELLOW] Graham Court v. Taylor (115 A.D.3d 50) — MV with caution:** Runner classified MV (both models corroborated), but model summary notes court didn't engage with merits of retaliatory eviction — outcome-only affirmance. Review when examining NY holdings: may not usefully state a controlling rule.
 
 **RED-interpretive — Retaliation holdings RC (5 open — all need attorney):**
 - [AK-RET-HOLD-RC-01] DeNardo v. Maassen — valid AK retaliation case? Characterize holding.
@@ -43,61 +50,63 @@ The 51 v2 eviction rules files (all states + DC) are structurally complete. Over
 
 **RED-strategic:**
 - **Direction B freeze** — 50 DRAFT candidates need attorney sign-off. Hard gate for Direction C.
-- **CourtListener rate limiting** — 84 cases throttled over 13.3 hours. Options: (a) longer sleep ≥15s between CL calls; (b) outreach to Free Law Project for higher rate tier. Andy's call on timing.
 
 ---
 
 ## 3. WHAT EXECUTED SINCE LAST BRIEF (GREEN DIGEST)
 
-Tonight (2026-06-26 late evening):
-- **notice_tiebreaker_20260626.py:** Bug fixed (None-subscript), run completed. 7 states: GA TIEBREAKER-RESOLVED-DIFFERS-FROM-FILE → YELLOW file update applied; AR/MN/SD/WY/TN confirmed-file (no change); OR tiebreaker-resolved → days=10 confirmed, file already correct, L2-MODEL-SPLIT flag closed. 0 new L7s.
-- **nj_attach_probe_20260626.py:** 3 probes ran. All got Gemini content — NJ ERROR was query framing. GPT timed out all 3. NJ = SM-GEMINI, needs reformulated GPT retry. Not NSR, not attorney.
-- **nc17_fresh_v2 ingested:** 118 units, MV=6, RC=3 (AK/CO/CT), PR=25, transient-failure=84. Method rate 67%. 3 RC cases → HUMAN_REVIEW_QUEUE. Harness bug identified (no `bucket` key for transient-failure) → GREEN fix queued.
-- **All living docs updated:** HUMAN_REVIEW_QUEUE (7 NOTICE-L2 items resolved/updated, 3 new RC), METRICS_LEDGER (nc17_fresh_v2 section added), WORK_QUEUE (refreshed), DAILY_CHANGELOG (appended).
+**2026-06-27 morning report:**
+- **PR retry (overnight):** `job_retaliation_pr_retry_20260626` fired at 2:15 AM. All 14 states perm-fail. Root cause: `fresh=false` + `load_draft_cases()` reads v1 draft file; 82 nc17_fresh_v2 cases were never persisted there. Pipeline bug — not CL rate limiting. 82 cases still unretried.
+- **Track B (overnight):** `job_track_b_ks_nv_ny_sc_20260627` fired 2026-06-27. NY: 8 CL candidates found; 5 MV + 1 CI + 1 PR. KS/NV/SC: 0 CL candidates.
+- **ny_eviction_v2.json updated:** 5 MV cases (Wheeler v. D'Antonio 2025 — confirms 1-year presumption period; Pena v. Lockenwitz; 339-347 E. 12th St. LLC v. Ling; MH Residential 1 LLC v. Barrett; Graham Court v. Taylor 115 A.D.3d 50) + 1 CI (Baer v. Huggins) + 1 PR (Graham Court v. Kyle Taylor 24 N.Y.3d 742).
+- **HUMAN_REVIEW_QUEUE:** NY-HOLD-CI-01 added (Baer v. Huggins, cheap confirm lane).
+- **All living docs updated:** METRICS_LEDGER (2 new entries), WORK_QUEUE (queue refreshed, NEXT populated), PROJECT_STATE_OF_RECORD (holdings v3 status updated), DAILY_CHANGELOG.
 
-**YELLOW awaiting ratification:** GA notice file update (days: 3→null, notice_required: false). OR L2-MODEL-SPLIT flag closed (disposition: open→tiebreaker-resolved; file was already correct at days=10).
+**YELLOW awaiting ratification:** GA notice file update (days: 3→null, notice_required: false). Graham Court v. Taylor MV flag (see RED list).
 
 ---
 
 ## 4. METRICS MOVEMENT
 
-**nc17_fresh_v2 retaliation holdings (2026-06-26):**
-- Method rate: MV÷(MV+CI+RC) = 6÷9 = **67%** | Overall: 6÷118 = **5%**
-- α: n/a (n=9 text-retrievable; too small)
-- ⚠️ 84 transient-failures are infrastructure (CL 429), not legal signal. Method rate (67%) matches prior CA-only Batch 3 — consistent.
+**Track B KS/NV/NY/SC (2026-06-27):**
+- NY method rate: MV÷(MV+CI+RC) = 5÷6 = **83.3%** — best of any Track B run.
+- Overall rate: 5÷11 = **45.5%** (diluted by 3 perm-fail + 1 PR).
+- α: n=6 dual-model cases, all AGREE. Undefined (D_e=0). Statistically unreliable at n=6.
 
-**Notice module tiebreaker (2026-06-26):** 5/7 states confirmed-file; 1 YELLOW update (GA, notice_required=false); 1 flag-closure (OR, days=10 confirmed). 0 new L7s.
+**PR retry (2026-06-27):** 0 cases processed. Not a signal — infrastructure failure.
 
-**Procedural defects α trend:** Smoke (n=4): 0.333 → Full (n=61): 0.256 → Attach re-run (n=33): 0.470. Rising α reflects prompt+token fixes and cleaner NSR pattern for failure_to_attach.
+**Cumulative holdings v3:** 15 MV total (10 CA + 5 NY), 3 CI (2 CA + 1 NY), 5 RC (attorney queue), 82 unretried PR-class.
+
+**Procedural defects α trend:** Smoke (n=4): 0.333 → Full (n=61): 0.256 → Attach re-run (n=33): 0.470. Rising α reflects prompt + token fixes.
 
 ---
 
 ## 5. QUEUE SNAPSHOT
 
-**NOW:** Nothing queued for 2026-06-27 2:15 AM overnight run.
+**NOW:** No jobs queued for tonight (2026-06-28 at 2:15 AM). Queue is empty.
 
-**NEXT (7 items, priority order):**
-1. Fix harness.py: write `bucket: "PR"` for transient-failure cases (GREEN, code-only)
-2. NJ failure_to_attach reformulated retry (GREEN pipeline)
-3. Queue retaliation PR retry for 84 transient-failure cases (GREEN, after harness fix + Andy's call on CL timing)
-4. NC states / retaliation holdings Track A — statute-direct (GREEN)
-5. Improved CL queries for 11 PR cases (NV/NY/OK) (GREEN)
-6. Direction B attorney freeze (RED gate — Andy)
-7. Add `--output-suffix` to l2_procedural_defects_runner (YELLOW)
+**NEXT (6 items, priority order):**
+1. PR retry runner v2 (GREEN pipeline) — new runner reading from nc17_fresh_v2 output JSON OR simple fresh=true requeue of 14 states
+2. KS/NV/SC — Descrybe MCP verify Track A candidates OR fix load_draft_cases() to read v2 candidates[]
+3. [NY-HOLD-CI-01] Baer v. Huggins — attorney cheap confirm (CI lane)
+4. Direction B attorney freeze (RED gate — Andy)
+5. NJ failure_to_attach reformulated retry — SM-GEMINI, needs reformulated GPT query
+6. Terminal cleanup (low priority)
 
-**BLOCKED:** Direction B freeze (Andy); Direction C (B required); CourtListener rate-limit resolution.
+**BLOCKED:** Direction B freeze (Andy); Direction C (B required); CourtListener coverage for KS/NV/SC (Descrybe as alternative path).
 
 ---
 
 ## 6. POINTERS
 
 For depth, open/upload:
-- `docs/HUMAN_REVIEW_QUEUE.md` — all 50 open attorney items with full question detail
+- `docs/HUMAN_REVIEW_QUEUE.md` — all open attorney items with full question detail
 - `docs/VALIDATION_METRICS_LEDGER.md` — run-by-run metrics, α computations
 - `docs/PROJECT_STATE_OF_RECORD.md` — full module-by-module validation status
 - `docs/WORK_QUEUE.md` — full queue
+- `rules/eviction/new-york/ny_eviction_v2.json` — Track B results embedded
 - Stable uploads (in Claude Project): CLAUDE.md, Direction A/B/C docs, COWORK_HANDOFF_ABC.md, reporting direction
 
 ---
 
-*Derived from canonical docs as of 2026-06-26 late evening. Canonical docs win on any conflict. Copyright 2026 Andrew M Cohen. Apache 2.0.*
+*Derived from canonical docs as of 2026-06-27 morning report. Canonical docs win on any conflict. Copyright 2026 Andrew M Cohen. Apache 2.0.*

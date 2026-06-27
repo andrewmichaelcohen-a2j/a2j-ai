@@ -613,6 +613,77 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
+#### Module: Substantive Defenses — Retaliation — claim type: holdings v3 (PR Retry + Track B, 2026-06-27)
+
+*Two overnight runs fired by launchd 2:15 AM 2026-06-27. (1) PR Retry: `job_retaliation_pr_retry_20260626`, completed 01:11 UTC. (2) Track B: `job_track_b_ks_nv_ny_sc_20260627`, completed 09:22 UTC.*
+
+---
+
+**Run 1 — PR Retry (pr_retry_20260626): PIPELINE FAILURE — 0 cases processed**
+
+| Bucket | Count | Notes |
+|--------|-------|-------|
+| MV — machine-verified | 0 | |
+| CI — confirm-inference | 0 | |
+| RC — re-characterize | 0 | |
+| PR — pending-retrieval | 0 | |
+| SM — single-model-preliminary | 0 | |
+| Permanent-failure | 14 | All 14 states (AL/CO/CT/HI/LA/MI/ND/NJ/NM/NY/OK/SC/VT/WV): "No candidate cases in draft file." |
+
+**Rates:** Method rate = n/a (0 text-retrievable). Overall rate = 0/14 = 0%.  
+**Elapsed:** 3.3 min (effectively instantaneous — no CL calls made).
+
+**Root cause diagnosis (GREEN pipeline bug):** Job had `fresh: false`. `load_draft_cases()` reads from the v1 draft file, which has no entries for these 14 states. The 82 transient-failure cases from nc17_fresh_v2 were discovered dynamically during that run's CL fresh search — they were never persisted to the v1 draft file. With `fresh: false`, the runner doesn't re-search CL and finds `__no_cases__` for all states. **The PR retry did not retry any of the 82 transient-failure cases.** This is not a CL rate-limit issue — no CL calls were made at all.
+
+**Fix needed (NEXT queue):** Build dedicated PR retry runner that loads from nc17_fresh_v2's transient-failure entries (read from output JSON, not draft file). Alternatively: re-queue with `fresh: true` (same approach as Track B, which successfully found NY cases). The 82 cases remain unretried.
+
+---
+
+**Run 2 — Track B CL Verification (track_b_ks_nv_ny_sc_20260627): SIGNIFICANT NY PROGRESS**
+
+| Bucket | Count | Notes |
+|--------|-------|-------|
+| MV — machine-verified | 5 | NY: Wheeler v. D'Antonio (2025), Pena v. Lockenwitz, 339-347 E. 12th St. LLC v. Ling, MH Residential 1 LLC v. Barrett, Graham Court v. Taylor (115 A.D.3d 50) |
+| CI — confirm-inference | 1 | NY: Baer v. Huggins (41 Misc. 3d 605) — D=INFERRED; cheap confirm lane |
+| RC — re-characterize | 0 | |
+| PR — pending-retrieval | 1 | NY: Graham Court Owner's Corp. v. Kyle Taylor (24 N.Y.3d 742) — CoA level; wrong doc returned by CL |
+| SM — single-model-preliminary | 0 | |
+| Permanent-failure | 3 | KS, NV, SC: CL fresh search returned 0 candidates |
+| (possible duplicate unit) | 1 | total_units=11; MV+CI+PR+perm-fail=10; 1-unit discrepancy may reflect de-duplicated Graham Court entry |
+
+**Rates:**
+- **Method rate:** MV ÷ (MV+CI+RC) = 5 ÷ 6 = **83.3%** (NY text-retrievable cases only)
+- **Overall rate:** MV ÷ all = 5 ÷ 11 = **45.5%** (diluted by 3 perm-fail + 1 PR)
+
+**Krippendorff's α:**
+- Method α: n=6 dual-model cases, 6/6 AGREE (all citation_gpt == citation_gemini). Formula undefined at perfect agreement (D_e = 0). Report as: perfect agreement, n=6 — **statistically unreliable at this n**.
+- Overall α: same. n too small for meaningful estimate.
+
+**KS/NV/SC — CL coverage gap:** `fresh=true` CL search returned 0 candidates for all three states. Track A candidates (Stephens v. Ludy for KS, Anvui for NV, Wadell for SC) were identified by model memory / web search, not by CL indexing. CL either doesn't have these state court decisions indexed, or the standard retaliation search query doesn't match them. Fix options: (a) Descrybe MCP manual lookup; (b) manually add candidates to v2 files' candidates[] and fix `load_draft_cases()` to read from there; (c) accept that these states may be statute-only (Track A ceiling).
+
+**Planned NY Track B candidates NOT found:** The job was designed to verify Domen Holding Co. v. Aranovich (1 N.Y.3d 117, 2003 NY CoA) and 601 West 160th St. Corp. v. Henry. CL fresh search returned 8 different NY cases instead. Domen Holding (the highest-authority NY case) was not in CL's search results. May not be CL-indexed or query didn't match. For attorney review of NY holdings, Domen Holding should be manually checked.
+
+**YELLOW — Graham Court v. Taylor (115 A.D.3d 50) classified MV but caution warranted:** Model summary notes "the appellate court does not discuss the substantive merits of retaliatory eviction" — court affirmed lower court outcome without articulating a rule. Classified MV by harness (both models cited same citation + corroborated holding). But this case may not usefully state a controlling holding for the retaliation defense. Flagged in ny_eviction_v2.json. Andy should note when reviewing.
+
+**NY MV cases added to ny_eviction_v2.json** under `holdings.machine_verified_cases` (all below attorney line). CI and PR cases documented in `holdings.confirm_inference_cases` and `holdings.pr_cases`.
+
+---
+
+**Cross-batch holdings v3 summary (updated 2026-06-27):**
+
+| Run | Date | States | NY MV | CA MV | Other MV | Total MV | Total CI | Total RC | Method rate |
+|-----|------|--------|-------|-------|----------|----------|----------|----------|-------------|
+| Batch 3 (7e6fcf6d) | 2026-06-25 | 18 states | 0 | 4 | 0 | 4 | 2 | 0 | 66.7% |
+| NC-17 fresh run (20f722c8) | 2026-06-26 | 17 NC states | 0 | 0 | 0 | 0 | 0 | 2 | 0% |
+| nc17_fresh_v2 | 2026-06-26 | extended | 0 | 6 | 0 | 6 | 0 | 3 | 67% |
+| PR Retry | 2026-06-27 | 14 states | 0 | 0 | 0 | 0 | 0 | 0 | n/a |
+| **Track B** | **2026-06-27** | **KS/NV/NY/SC** | **5** | **0** | **0** | **5** | **1** | **0** | **83.3%** |
+| **Cumulative** | | | **5** | **10** | **0** | **15** | **3** | **5** | |
+
+*Cumulative: 15 MV total (10 CA + 5 NY), 3 CI (2 CA + 1 NY), 5 RC (3 in HUMAN_REVIEW_QUEUE), 84 transient-failure PR-class (unretried), 25 wrong-doc PR, KS/NV/SC/~12 other states still no candidates.*
+
+---
+
 #### Module: Procedural Defects — L2 smoke test run 3 (pipeline validation)
 
 *Run from Terminal session, 2026-06-24. States: CA, TX, NY. Defects: summons + attach (6 units). Runner: `rules/validation/l2/l2_procedural_defects_runner.py` (post-3-bug-fix version). Ingested: 2026-06-24 morning report.*

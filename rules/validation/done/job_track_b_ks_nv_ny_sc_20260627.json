@@ -1,0 +1,21 @@
+{
+  "job_id": "job_track_b_ks_nv_ny_sc_20260627",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "KS,NV,NY,SC",
+  "sleep": 15,
+  "fresh": true,
+  "run_id": "track_b_ks_nv_ny_sc_20260627",
+  "uses": [
+    "courtlistener",
+    "openai",
+    "gemini"
+  ],
+  "live_verified": true,
+  "created": "2026-06-27T00:00:00Z",
+  "note": "Track B CL opinion verification for KS/NV/NY/SC. Candidates from Track A statute-direct run (track_a_statute_20260627.json). KS: Stephens v. Ludy, 42 Kan. App. 2d 531, 214 P.3d 718 (2009) [Gemini-only; GPT found no case]. NV: Anvui, LLC v. G.L., 133 Nev. 711, 405 P.3d 667 (2017 Nev. SC) [Gemini-only; GPT found no case]. NY: Domen Holding Co. v. Aranovich, 1 N.Y.3d 117 (2003 NY CoA) [GPT] + 601 West 160th St. Corp. v. Henry, 189 Misc. 2d 688 (App. Term 2001) [Gemini]. SC: Wadell v. U.S. Bank Nat'l Ass'n, 399 S.C. 541, 732 S.E.2d 523 (Ct. App. 2012) [Gemini-only; GPT found no case]. sleep=15s to manage CL rate limits. Candidates already populated in v2 files; runner will attempt CL fresh search + generate-from-source verification.",
+  "completed_at": "2026-06-27T09:22:36.904066+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260627_0915.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-06-27_0922.md"
+}
