@@ -1,0 +1,1276 @@
+{
+  "completed": {
+    "AL::__no_cases__": {
+      "unit_id": "AL::__no_cases__",
+      "state": "AL",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "CT::__no_cases__": {
+      "unit_id": "CT::__no_cases__",
+      "state": "CT",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "HI::__no_cases__": {
+      "unit_id": "HI::__no_cases__",
+      "state": "HI",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "LA::__no_cases__": {
+      "unit_id": "LA::__no_cases__",
+      "state": "LA",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "079bd6fa680a": {
+      "unit_id": "079bd6fa680a",
+      "state": "MI",
+      "case_name": "Kwon v. University of Vermont & State Agricultural College",
+      "citation_gpt": "912 F. Supp. 2d 135",
+      "citation_gemini": "912 F. Supp. 2d 135",
+      "year": 2012,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Kwon v. University of Vermont & State Agricultural College",
+          "date": "2012-12-07",
+          "court": "District Court, D. Vermont",
+          "citation": [
+            "912 F. Supp. 2d 135",
+            "2012 WL 6093799",
+            "2012 U.S. Dist. LEXIS 173657",
+            "116 Fair Empl. Prac. Cas. (BNA) 1331"
+          ],
+          "cluster_id": 8721351
+        },
+        "cl_cluster_id": 8721351,
+        "cl_opinion_id": 8704544,
+        "cl_url": "https://www.courtlistener.com/opinion/8721351/kwon-v-university-of-vermont-state-agricultural-college/",
+        "cl_citation": "912 F. Supp. 2d 135",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['912 F. Supp. 2d 135', '2012 WL 6093799', '2012 U.S. Dist. LEXIS 173657', '116 Fair Empl. Prac. Cas. (BNA) 1331']; model citations ['912 F. Supp. 2d 135', '912 F. Supp. 2d 135']; match=True",
+        "cl_snippets": "[lead-opinion] \nOPINION AND ORDER\nWILLIAM K. SESSIONS III, District Judge.\nPlaintiff, Dr. Mikyung P. Kwon, brings this suit against her former employer, the *138University of Vermont and the State Agricultural College (“UVM” or “the University”). Kwon alleges that UVM discriminated against her on the basis of age, race, national origin, and place of birth",
+        "cl_all_citations": [
+          "912 F. Supp. 2d 135",
+          "2012 WL 6093799",
+          "2012 U.S. Dist. LEXIS 173657",
+          "116 Fair Empl. Prac. Cas. (BNA) 1331"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses a university employee's claims of employment discrimination, hostile work environment, and emotional distress, where a prior landlord-tenant dispute between the employee and students is presented as a factual catalyst for the alleged mistreatment by her superiors.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses a university employee's claims of employment discrimination, hostile work envi"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/8704544 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "f438b5ace311": {
+      "unit_id": "f438b5ace311",
+      "state": "MI",
+      "case_name": "Carl Johnson and Patricia Johnson v. Bearfoot Companies, LLC, and Bearfoot Aquatic Management LLC",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Carl Johnson and Patricia Johnson v. Bearfoot Companies, LLC, and Bearfoot Aquatic Management LLC",
+          "date": "2024-05-16",
+          "court": "Texas Court of Appeals, 2nd District (Fort Worth)",
+          "citation": [],
+          "cluster_id": 9505230
+        },
+        "cl_cluster_id": 9505230,
+        "cl_opinion_id": 9971843,
+        "cl_url": "https://www.courtlistener.com/opinion/9505230/carl-johnson-and-patricia-johnson-v-bearfoot-companies-llc-and-bearfoot/",
+        "cl_citation": null,
+        "citation_match": null,
+        "exists": "true",
+        "basis": "Found by name; no CL citation to check",
+        "cl_snippets": "[combined-opinion]                                   In the\n                             Court of Appeals\n                     Second Appellate District of Texas\n                              at Fort Worth\n                                  No. 02-23-00366-CV\n\nCARL JOHNSON AND PATRICIA                    §   On Appeal from the 431st District Court\nJOHNSON, Appellants\n\n                                             §   of Denton County (23-8778-431)\nV.\n\n\n                                             §   May 16, 2024\nBE",
+        "cl_all_citations": []
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion affirms a lower court's judgment and orders the appellants to pay the costs of the appeal.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion affirms a lower court's judgment and orders the appellants to pay the costs of the appea"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/9971843 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "75c4d815af7a": {
+      "unit_id": "75c4d815af7a",
+      "state": "MI",
+      "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
+      "citation_gpt": "522 P.3d 1085",
+      "citation_gemini": "522 P.3d 1085",
+      "year": 2023,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
+          "date": "2023-01-13",
+          "court": "Alaska Supreme Court",
+          "citation": [
+            "522 P.3d 1085"
+          ],
+          "cluster_id": 9367604
+        },
+        "cl_cluster_id": 9367604,
+        "cl_opinion_id": 9363080,
+        "cl_url": "https://www.courtlistener.com/opinion/9367604/tammie-guilford-v-weidner-investment-services-inc-weidner-investment/",
+        "cl_citation": "522 P.3d 1085",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['522 P.3d 1085']; model citations ['522 P.3d 1085', '522 P.3d 1085']; match=True",
+        "cl_snippets": "[combined-opinion]        Notice: This opinion is subject to correction before publication in the PACIFIC REPORTER.\n       Readers are requested to bring errors to the attention of the Clerk of the Appellate Courts,\n       303 K Street, Anchorage, Alaska 99501, phone (907) 264-0608, fax (907) 264-0878, email\n       corrections@akcourts.gov.\n\n\n\n                THE SUPREME COURT OF THE STATE OF ALASKA\n\nTAMMIE GUILFORD,                                     )\n                                                     )   Sup",
+        "cl_all_citations": [
+          "522 P.3d 1085"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The appellate court's opinion addresses whether a tenant's personal injury claim due to mold required expert testimony to survive summary judgment, the recoverability of emotional distress damages under URLTA for a landlord's failure to maintain fit premises, and the proper calculation of attorney's fees.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The appellate court's opinion addresses whether a tenant's personal injury claim due to mold require"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/9363080 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "661c7ed632dc": {
+      "unit_id": "661c7ed632dc",
+      "state": "MI",
+      "case_name": "Erlach v. Sierra Asset Servicing, LLC",
+      "citation_gpt": "226 Cal. App. 4th 1281",
+      "citation_gemini": "226 Cal. App. 4th 1281",
+      "year": 2014,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Erlach v. Sierra Asset Servicing, LLC",
+          "date": "2014-06-10",
+          "court": "California Court of Appeal",
+          "citation": [
+            "226 Cal. App. 4th 1281",
+            "173 Cal. Rptr. 3d 159",
+            "2014 WL 2580990",
+            "2014 Cal. App. LEXIS 504"
+          ],
+          "cluster_id": 2677838
+        },
+        "cl_cluster_id": 2677838,
+        "cl_opinion_id": 2677838,
+        "cl_url": "https://www.courtlistener.com/opinion/2677838/erlach-v-sierra-asset-servicing-llc/",
+        "cl_citation": "226 Cal. App. 4th 1281",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['226 Cal. App. 4th 1281', '173 Cal. Rptr. 3d 159', '2014 WL 2580990', '2014 Cal. App. LEXIS 504']; model citations ['226 Cal. App. 4th 1281', '226 Cal. App. 4th 1281']; match=True",
+        "cl_snippets": "[combined-opinion] \n\n\n  Opinion\n \n\n  ELIA, J.\n \n\n  Joseph R. Erlach (appellant) appeals from a judgment of dismissal of his complaint against Sierra Asset Servicing, LLC (Sierra), entered after the trial court sustained Sierra’s demurrer without leave to amend. Appellant contends that it was error for the trial court to determine that his residential lease was void and that he was a squatte",
+        "cl_all_citations": [
+          "226 Cal. App. 4th 1281",
+          "173 Cal. Rptr. 3d 159",
+          "2014 WL 2580990",
+          "2014 Cal. App. LEXIS 504"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 3,
+        "basis": "No negative treatment in 3 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses whether a residential tenancy is automatically terminated by a code enforcement 'red tag' notice, and whether a new owner who acquires a red-tagged property at a foreclosure sale can be held liable to the existing tenant under various landlord-tenant causes of action.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses whether a residential tenancy is automatically terminated by a code enforcemen"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/2677838 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "32b23f153159": {
+      "unit_id": "32b23f153159",
+      "state": "MI",
+      "case_name": "Real Estate Bar Association for Massachusetts, Inc. v. National Real Estate Information Services",
+      "citation_gpt": "608 F.3d 110",
+      "citation_gemini": "608 F.3d 110",
+      "year": 2010,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Real Estate Bar Association for Massachusetts, Inc. v. National Real Estate Information Services",
+          "date": "2011-04-25",
+          "court": "Massachusetts Supreme Judicial Court",
+          "citation": [
+            "459 Mass. 512",
+            "946 N.E.2d 665",
+            "2011 Mass. LEXIS 244",
+            "2011 WL 1520142"
+          ],
+          "cluster_id": 2524201
+        },
+        "cl_cluster_id": 2524201,
+        "cl_opinion_id": 2524201,
+        "cl_url": "https://www.courtlistener.com/opinion/2524201/real-estate-bar-association-for-massachusetts-inc-v-national-real-estate/",
+        "cl_citation": "459 Mass. 512",
+        "citation_match": false,
+        "exists": "FLAG-citation-mismatch",
+        "basis": "CL citations ['459 Mass. 512', '946 N.E.2d 665', '2011 Mass. LEXIS 244', '2011 WL 1520142']; model citations ['608 F.3d 110', '608 F.3d 110']; match=False",
+        "cl_snippets": "[combined-opinion] \n459 Mass. 512 (2011)\nTHE REAL ESTATE BAR ASSOCIATION FOR MASSACHUSETTS, INC.\nv.\nNATIONAL REAL ESTATE INFORMATION SERVICES & another.[1]\nNo. SJC-10744\nSupreme Judicial Court of Massachusetts, Suffolk.\nNovember 2, 2010.\nApril 25, 2011.\nPresent: IRELAND, SPINA, COWIN, CORDY, BOTSFORD, & GANTS, JJ.[2]\n",
+        "cl_all_citations": [
+          "459 Mass. 512",
+          "946 N.E.2d 665",
+          "2011 Mass. LEXIS 244",
+          "2011 WL 1520142"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 13,
+        "basis": "No negative treatment in 13 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The case addresses certified questions from a federal court regarding whether certain real estate settlement and conveyancing services provided by a non-attorney vendor management company constitute the unauthorized practice of law in Massachusetts.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The case addresses certified questions from a federal court regarding whether certain real estate se"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/2524201 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "c822d71bb5db": {
+      "unit_id": "c822d71bb5db",
+      "state": "MI",
+      "case_name": "Norton v. Town of Islip",
+      "citation_gpt": "97 F. Supp. 3d 241",
+      "citation_gemini": "97 F. Supp. 3d 241",
+      "year": 2015,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Norton v. Town of Islip",
+          "date": "2015-03-31",
+          "court": "District Court, E.D. New York",
+          "citation": [
+            "97 F. Supp. 3d 241",
+            "2015 U.S. Dist. LEXIS 42928",
+            "2015 WL 1509505"
+          ],
+          "cluster_id": 7312876
+        },
+        "cl_cluster_id": 7312876,
+        "cl_opinion_id": 7230781,
+        "cl_url": "https://www.courtlistener.com/opinion/7312876/norton-v-town-of-islip/",
+        "cl_citation": "97 F. Supp. 3d 241",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['97 F. Supp. 3d 241', '2015 U.S. Dist. LEXIS 42928', '2015 WL 1509505']; model citations ['97 F. Supp. 3d 241', '97 F. Supp. 3d 241']; match=True",
+        "cl_snippets": "[lead-opinion] \nMEMORANDUM OPINION & ORDER\nPAMELA K. CHEN, District Judge.\nPlaintiff Howard J. Norton brings this action against Defendants the Town of Is-lip (“the Town”); the County of Suffolk (“the County”); and Town of Islip attorneys Alicia S. O’Connor, Erin Sidaras, Patricia Waite, and Michael Walsh, and Town of Islip investigators Daniel C. Eckert and Mistretta (collectively, the “Individual Town Defendants”).",
+        "cl_all_citations": [
+          "97 F. Supp. 3d 241",
+          "2015 U.S. Dist. LEXIS 42928",
+          "2015 WL 1509505"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses a property owner's lawsuit against a town and its officials, alleging First Amendment retaliation and malicious prosecution in response to the town's issuance of tickets for violating its rental permit and storage laws.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses a property owner's lawsuit against a town and its officials, alleging First Am"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/7230781 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "c0d5591d3b79": {
+      "unit_id": "c0d5591d3b79",
+      "state": "MI",
+      "case_name": "Hogan ex rel. J.H. v. County of Lewis",
+      "citation_gpt": "929 F. Supp. 2d 130",
+      "citation_gemini": "929 F. Supp. 2d 130",
+      "year": 2013,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Hogan ex rel. J.H. v. County of Lewis",
+          "date": "2013-03-08",
+          "court": "District Court, N.D. New York",
+          "citation": [
+            "929 F. Supp. 2d 130",
+            "2013 WL 936513"
+          ],
+          "cluster_id": 8723388
+        },
+        "cl_cluster_id": 8723388,
+        "cl_opinion_id": 8706584,
+        "cl_url": "https://www.courtlistener.com/opinion/8723388/hogan-ex-rel-jh-v-county-of-lewis/",
+        "cl_citation": "929 F. Supp. 2d 130",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['929 F. Supp. 2d 130', '2013 WL 936513']; model citations ['929 F. Supp. 2d 130', '929 F. Supp. 2d 130']; match=True",
+        "cl_snippets": "[lead-opinion] \n\nMEMORANDUM-DECISION and ORDER\n\nLAWRENCE E. KAHN, District Judge.\nI. INTRODUCTION\nThe instant case involves an ongoing property dispute and ensuing hostility between neighbors on Hiawatha Lake in Lewis County, New York. See generally Dkt. Nos. 1 (“Complaint”), 4 (“Amended Complaint”). Presently before the Court are a pair of Motions for summary judgment brought by two",
+        "cl_all_citations": [
+          "929 F. Supp. 2d 130",
+          "2013 WL 936513"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "This case involves a property dispute and allegations of harassment between neighboring property owners, leading to claims against county officials and other neighbors regarding an arrest for petit larceny and a refusal to accept criminal complaints.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: This case involves a property dispute and allegations of harassment between neighboring property own"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/8706584 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "9d85b4049ed0": {
+      "unit_id": "9d85b4049ed0",
+      "state": "MI",
+      "case_name": "Smith v. Westminster Management",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2023,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Smith v. Westminster Management",
+          "date": "2023-03-03",
+          "court": "Court of Special Appeals of Maryland",
+          "citation": [],
+          "cluster_id": 9381306
+        },
+        "cl_cluster_id": 9381306,
+        "cl_opinion_id": 9376782,
+        "cl_url": "https://www.courtlistener.com/opinion/9381306/smith-v-westminster-management/",
+        "cl_citation": null,
+        "citation_match": null,
+        "exists": "true",
+        "basis": "Found by name; no CL citation to check",
+        "cl_snippets": "[combined-opinion] Tenae Smith et al. v. Westminster Management, LLC, et al., No. 2508, September Term\n2019.\n\nLANDLORD-TENANT LAW—RESIDENTIAL LEASES—MD. CODE, REAL\nPROPERTY ARTICLE § 8-208—MEANING OF “RENT” IN REAL PROP. § 8-\n208(D)(3) AND REAL PROP. § 8-401\n\nMd. Code Real Prop. § 8-208(d)(3) prohibits a residential lease from providing for a\npenalty for the late payment of rent “in excess of 5% of the rent due for the rental period\nfor which the payment was delinquent.” For the purposes of § 8-208, “rent” means “",
+        "cl_all_citations": []
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses the proper meanings of \"rent\" and \"costs\" in Maryland's residential landlord-tenant statutes governing late fees and summary ejectment proceedings, as well as related claims under consumer protection and debt collection laws.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses the proper meanings of \"rent\" and \"costs\" in Maryland's residential landlord-t"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/9376782 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "ND::__no_cases__": {
+      "unit_id": "ND::__no_cases__",
+      "state": "ND",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "2853ea7b0261": {
+      "unit_id": "2853ea7b0261",
+      "state": "NJ",
+      "case_name": "Onderdonk v. Presbyterian Homes of NJ",
+      "citation_gpt": "425 A.2d 1057",
+      "citation_gemini": "425 A.2d 1057",
+      "year": 1981,
+      "prior_holding": "",
+      "source_generated_holding": "The case addresses whether a resident of a \"life-care\" community can claim protection under the Landlord Tenant Anti-Reprisal Act. The trial court found the Act applied and awarded damages to a resident who faced eviction proceedings after organizing other residents. The Appellate Division reversed this decision, and the state's highest court is now reviewing the matter.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Onderdonk v. Presbyterian Homes of NJ",
+          "date": "1981-02-02",
+          "court": "Supreme Court of New Jersey",
+          "citation": [
+            "425 A.2d 1057",
+            "85 N.J. 171",
+            "1981 N.J. LEXIS 2589"
+          ],
+          "cluster_id": 1973177
+        },
+        "cl_cluster_id": 1973177,
+        "cl_opinion_id": 1973177,
+        "cl_url": "https://www.courtlistener.com/opinion/1973177/onderdonk-v-presbyterian-homes-of-nj/",
+        "cl_citation": "425 A.2d 1057",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['425 A.2d 1057', '85 N.J. 171', '1981 N.J. LEXIS 2589']; model citations ['425 A.2d 1057', '425 A.2d 1057']; match=True",
+        "cl_snippets": "[combined-opinion] \n85 N.J. 171 (1981)\n425 A.2d 1057\nPAUL T. ONDERDONK, RALPH S. ALEXANDER, HELEN S. CRITES, BERTHA M. FRICK, FLORENCE HAY AND MARIE H. LUND, INDIVIDUALLY AND AS REPRESENTATIVES AND MEMBERS OF THE EXECUTIVE COMMITTEE OF MEADOW LAKES RESIDENTS FORUM, AN UNINCORPORATED ASSOCIATION, AND AS MEMBERS OF A CLASS CONSISTING OF MEADOW LAKES RESIDENTS, PAST, PRESENT AND FUTURE; WILLIAM LICHTENFELS, LAURA B. SMITH, GERTRUDE P. YOUNG, MARY L. FRE",
+        "cl_all_citations": [
+          "425 A.2d 1057",
+          "85 N.J. 171",
+          "1981 N.J. LEXIS 2589"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 20,
+        "basis": "No negative treatment in 20 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The case addresses whether a resident of a \"life-care\" community can claim protection under the Landlord Tenant Anti-Reprisal Act. The trial court found the Act applied and awarded damages to a resident who faced eviction proceedings after organizing other residents. The Appellate Division reversed this decision, and the state's highest court is now reviewing the matter.",
+        "controlling_quote": "In addition, plaintiff Paul Onderdonk sought to enjoin his eviction from Meadow Lakes and to recover damages under the Landlord Tenant Anti-Reprisal Act, N.J.S.A. 2A:42-10.10 et seq., asserting that Homes attempted to oust him in retaliation for his activities on behalf of a residents’ organization.",
+        "quote_verified_verbatim": true,
+        "draft_agreement": "agree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The case addresses whether a resident of a \"life-care\" community can claim protection under the Landlord Tenant Anti-Reprisal Act. The trial court found the Act applied and awarded damages to a resident who faced eviction proceedings after organizing other residents. The Appellate Division reversed this decision, and the state's highest court is now reviewing the matter.",
+          "candidate_quote": "In addition, plaintiff Paul Onderdonk sought to enjoin his eviction from Meadow Lakes and to recover damages under the Landlord Tenant Anti-Reprisal Act, N.J.S.A. 2A:42-10.10 et seq., asserting that Homes attempted to oust him in retaliation for his activities on behalf of a residents’ organization.",
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "partially_accurate",
+          "verification_note": "The case text does discuss whether the resident was protected under the Landlord Tenant Anti-Reprisal Act and mentions the trial court awarded damages, which were then reversed by the Appellate Division. However, the characterization does not clearly state that the state's highest court is reviewing the matter for a final decision on this point.",
+          "quote_is_verbatim": true,
+          "quote_is_on_point": true,
+          "alternative_quote": null,
+          "draft_agreement": "agree",
+          "draft_agreement_note": "The characterization aligns with the context of the case text. The focus is on whether the Anti-Reprisal Act applied to protect the resident from retaliatory eviction, which matches the legal question addressed by the courts in the passages provided."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The case addresses whether a resident of a \"life-care\" community can claim prote'. gpt:gpt-4o verified as 'partially_accurate'. Draft agreement: agree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "STATED",
+        "controlling_quote": "In addition, plaintiff Paul Onderdonk sought to enjoin his eviction from Meadow Lakes and to recover damages under the Landlord Tenant Anti-Reprisal Act, N.J.S.A. 2A:42-10.10 et seq., asserting that Homes attempted to oust him in retaliation for his activities on behalf of a residents’ organization.",
+        "quote_agreement": true,
+        "basis": "Gemini found verbatim quote; GPT confirmed verbatim and on-point"
+      },
+      "disposition": "machine-verified",
+      "disposition_note": "MV: A=true B=OK-machine C=corroborated D=STATED. Below attorney line.",
+      "bucket": "MV",
+      "pr_reason": null,
+      "controlling_quote": "In addition, plaintiff Paul Onderdonk sought to enjoin his eviction from Meadow Lakes and to recover damages under the Landlord Tenant Anti-Reprisal Act, N.J.S.A. 2A:42-10.10 et seq., asserting that Homes attempted to oust him in retaliation for his activities on behalf of a residents’ organization.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/1973177 full text",
+        "draft_agreement": "agree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "f351f49319cc": {
+      "unit_id": "f351f49319cc",
+      "state": "NJ",
+      "case_name": "Scofield v. Berman & Sons, Inc.",
+      "citation_gpt": "469 N.E.2d 805",
+      "citation_gemini": "469 N.E.2d 805",
+      "year": 1984,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Scofield v. Berman & Sons, Inc.",
+          "date": "1984-10-03",
+          "court": "Massachusetts Supreme Judicial Court",
+          "citation": [
+            "469 N.E.2d 805",
+            "393 Mass. 95"
+          ],
+          "cluster_id": 2163152
+        },
+        "cl_cluster_id": 2163152,
+        "cl_opinion_id": 9728351,
+        "cl_url": "https://www.courtlistener.com/opinion/2163152/scofield-v-berman-sons-inc/",
+        "cl_citation": "469 N.E.2d 805",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['469 N.E.2d 805', '393 Mass. 95']; model citations ['469 N.E.2d 805', '469 N.E.2d 805']; match=True",
+        "cl_snippets": "[lead-opinion] \nLiacos, J.\nThe defendants appeal from a judgment entered in the Housing Court of the City of Boston declaring that the defendants violated c. 15, § 9 (a), of the Boston Ordinances of 1975 (c. 15), and Boston Rent Board Regulation 11, § 12(A) (Regulation 11), by unlawfully increasing the rent charged to the plaintiffs, tenants in rent-controlled apartments. The defendants also claim  | [combined-opinion] \n393 Mass. 95 (1984)\n469 N.E.2d 805\nLANA J. SCOFIELD & others[1]\nvs.\nBERMAN & SONS, INC., & others.[2]\nSupreme Judicial Court of Massachusetts, Suffolk.\nApril 6, 1984.\nOctober 3, 1984.\nPresent: HENNESSEY, C.J., WILKINS, LIACOS, LYNCH, & O'CONNOR, JJ.\nHarvey S. Shapiro for the plaintiffs.\n | [dissent] \nLynch, J.\n(dissenting). I dissent only from that part of the opinion that concludes that the defendant landlord’s refusal to *116allow Scofield to remain as a tenant at will following the expiration of her lease constitutes a reprisal under G. L. c. 186, § 18, for her reporting the landlord’s unlawful rent increase to the Rent",
+        "cl_all_citations": [
+          "469 N.E.2d 805",
+          "393 Mass. 95"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 6,
+        "basis": "No negative treatment in 6 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses the validity of a rent increase implemented by a landlord under a lease clause, in light of a city rent board regulation that delayed such increases until the expiration of existing leases unless the tenant had an option to terminate.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses the validity of a rent increase implemented by a landlord under a lease clause"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/9728351 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "bf3f89272ac5": {
+      "unit_id": "bf3f89272ac5",
+      "state": "NJ",
+      "case_name": "Markese v. Cooper",
+      "citation_gpt": "70 Misc. 2d 478",
+      "citation_gemini": "70 Misc. 2d 478",
+      "year": 1972,
+      "prior_holding": "",
+      "source_generated_holding": "The case addresses whether the defense of retaliatory eviction is available to a tenant in a holdover summary proceeding. The court finds that while the defense was not available at common law, it should be recognized to prevent landlords from circumventing public policy and existing statutes that protect tenants who report housing code violations. Recognizing the defense fills a gap where a landlord could otherwise waive back rent and evict a tenant as a holdover in retaliation for reporting violations.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Markese v. Cooper",
+          "date": "1972-05-19",
+          "court": "New York County Courts",
+          "citation": [
+            "70 Misc. 2d 478",
+            "333 N.Y.S.2d 63",
+            "1972 N.Y. Misc. LEXIS 1881"
+          ],
+          "cluster_id": 6324933
+        },
+        "cl_cluster_id": 6324933,
+        "cl_opinion_id": 6193429,
+        "cl_url": "https://www.courtlistener.com/opinion/6324933/markese-v-cooper/",
+        "cl_citation": "70 Misc. 2d 478",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['70 Misc. 2d 478', '333 N.Y.S.2d 63', '1972 N.Y. Misc. LEXIS 1881']; model citations ['70 Misc. 2d 478', '70 Misc. 2d 478']; match=True",
+        "cl_snippets": "[lead-opinion] \nDavid O. Boehm, J.\nThe tenant appeals from the dismissal of her affirmative defense by the Rochester City Court and the granting of a warrant of eviction and judgment in the landlord’s action to dispossess the tenant as a holdover. The tenant concedes that the required 30-day notice to vacate was duly and properly given and her answer sets forth that she has occupied the premises pursuant to an oral month-to-month tenancy since ",
+        "cl_all_citations": [
+          "70 Misc. 2d 478",
+          "333 N.Y.S.2d 63",
+          "1972 N.Y. Misc. LEXIS 1881"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The case addresses whether the defense of retaliatory eviction is available to a tenant in a holdover summary proceeding. The court finds that while the defense was not available at common law, it should be recognized to prevent landlords from circumventing public policy and existing statutes that protect tenants who report housing code violations. Recognizing the defense fills a gap where a landlord could otherwise waive back rent and evict a tenant as a holdover in retaliation for reporting violations.",
+        "controlling_quote": "It is in the State’s as well as the tenant’s interest to recognize a defense which has the effect of penalizing a landlord for improperly attempting to side-step the law.",
+        "quote_verified_verbatim": true,
+        "draft_agreement": "agree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The case addresses whether the defense of retaliatory eviction is available to a tenant in a holdover summary proceeding. The court finds that while the defense was not available at common law, it should be recognized to prevent landlords from circumventing public policy and existing statutes that protect tenants who report housing code violations. Recognizing the defense fills a gap where a landlord could otherwise waive back rent and evict a tenant as a holdover in retaliation for reporting violations.",
+          "candidate_quote": "It is in the State’s as well as the tenant’s interest to recognize a defense which has the effect of penalizing a landlord for improperly attempting to side-step the law.",
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "accurate",
+          "verification_note": "The characterization correctly identifies the core issue of whether the defense of retaliatory eviction should be available in a holdover summary proceeding and notes the court's inclination to recognize it to prevent landlords from avoiding protections afforded to tenants who report housing code violations.",
+          "quote_is_verbatim": true,
+          "quote_is_on_point": true,
+          "alternative_quote": null,
+          "draft_agreement": "agree",
+          "draft_agreement_note": "The characterization aligns with the textual analysis, indicating that the court addresses the lack of common law recognition of retaliatory eviction as a defense and its importance in the context of public policy and tenant protection against retaliatory actions by landlords."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The case addresses whether the defense of retaliatory eviction is available to a'. gpt:gpt-4o verified as 'accurate'. Draft agreement: agree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "STATED",
+        "controlling_quote": "It is in the State’s as well as the tenant’s interest to recognize a defense which has the effect of penalizing a landlord for improperly attempting to side-step the law.",
+        "quote_agreement": true,
+        "basis": "Gemini found verbatim quote; GPT confirmed verbatim and on-point"
+      },
+      "disposition": "machine-verified",
+      "disposition_note": "MV: A=true B=OK-machine C=corroborated D=STATED. Below attorney line.",
+      "bucket": "MV",
+      "pr_reason": null,
+      "controlling_quote": "It is in the State’s as well as the tenant’s interest to recognize a defense which has the effect of penalizing a landlord for improperly attempting to side-step the law.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/6193429 full text",
+        "draft_agreement": "agree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "fc23ce51235f": {
+      "unit_id": "fc23ce51235f",
+      "state": "NJ",
+      "case_name": "Lena Robinson v. Diamond Housing Corporation",
+      "citation_gpt": "463 F.2d 853",
+      "citation_gemini": "463 F.2d 853",
+      "year": 1972,
+      "prior_holding": "",
+      "source_generated_holding": "The court holds that the retaliatory eviction defense is available to a tenant who is being evicted via a 30-day notice to quit after having previously defeated the landlord's suit for possession by asserting that the lease was void due to substantial housing code violations. A landlord's stated intent to take the property off the market does not automatically defeat the defense; the tenant must be given the opportunity to prove the landlord's retaliatory motive. The court reversed the lower court's summary judgment, which had improperly prevented the tenant from making her case.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Lena Robinson v. Diamond Housing Corporation",
+          "date": "1972-04-03",
+          "court": "Court of Appeals for the D.C. Circuit",
+          "citation": [
+            "463 F.2d 853",
+            "150 U.S. App. D.C. 17",
+            "1972 U.S. App. LEXIS 10344"
+          ],
+          "cluster_id": 304588
+        },
+        "cl_cluster_id": 304588,
+        "cl_opinion_id": 9842907,
+        "cl_url": "https://www.courtlistener.com/opinion/304588/lena-robinson-v-diamond-housing-corporation/",
+        "cl_citation": "463 F.2d 853",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['463 F.2d 853', '150 U.S. App. D.C. 17', '1972 U.S. App. LEXIS 10344']; model citations ['463 F.2d 853', '463 F.2d 853']; match=True",
+        "cl_snippets": "[combined-opinion] 463 F.2d 853\n    150 U.S.App.D.C. 17\n    Lena ROBINSON, Appellantv.DIAMOND HOUSING CORPORATION, Appellee.\n    No. 24508.\n    United States Court of Appeals,\n    District of Columbia Circuit.\n    Argued Dec. 20, 1971.Decided April 3, 1972.\n    \n      Mr. Richard B. Wolf, Washington, D. C., wi | [lead-opinion] \nJ. SKELLY WRIGHT, Circuit Judge:\nIn Edwards v. Habib, 130 U.S.App.D.C. 126, 397 F.2d 687 (1968), cert. denied, 393 U.S. 1016, 89 S.Ct. 618, 21 L. Ed.2d 560 (1969), this court held that a tenant may assert the retaliatory motivation of his landlord as a defense to an otherwise proper eviction. In Brown v. Southall Realty Co., D.C.App., 237 A.2d 834 (1968), the District of Columbi | [dissent] \nROBB, Circuit Judge\n(dissenting):\nThis controversy between a landlord and a tenant is peculiarly a local matter. By the Court Reorganization Act of 1970 (11 D.C.Code 1971, § 11-101 et seq.) Congress has confided to the local courts jurisdiction over such controversies and the problems they engender. This case comes to us only because of the fortuitous circumstance t",
+        "cl_all_citations": [
+          "463 F.2d 853",
+          "150 U.S. App. D.C. 17",
+          "1972 U.S. App. LEXIS 10344"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 20,
+        "basis": "No negative treatment in 20 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The court holds that the retaliatory eviction defense is available to a tenant who is being evicted via a 30-day notice to quit after having previously defeated the landlord's suit for possession by asserting that the lease was void due to substantial housing code violations. A landlord's stated intent to take the property off the market does not automatically defeat the defense; the tenant must be given the opportunity to prove the landlord's retaliatory motive. The court reversed the lower court's summary judgment, which had improperly prevented the tenant from making her case.",
+        "controlling_quote": "We can find nothing about the Edwards principle which necessitates such a drastic limitation on its applicability. Indeed the prohibition against retaliatory evictions generally, without limitation to the facts of Edwards, and in terms applicable to Southall Realty rights, has become part of the housing code of the District of Columbia. We see no reason why the rights protected in Southall Realty and Javins should be rendered nugatory by a restrictive reading of Edwards or by a judicial failure to respect the legislative will.",
+        "quote_verified_verbatim": true,
+        "draft_agreement": "disagree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The court holds that the retaliatory eviction defense is available to a tenant who is being evicted via a 30-day notice to quit after having previously defeated the landlord's suit for possession by asserting that the lease was void due to substantial housing code violations. A landlord's stated intent to take the property off the market does not automatically defeat the defense; the tenant must be given the opportunity to prove the landlord's retaliatory motive. The court reversed the lower court's summary judgment, which had improperly prevented the tenant from making her case.",
+          "candidate_quote": "We can find nothing about the Edwards principle which necessitates such a drastic limitation on its applicability. Indeed the prohibition against retaliatory evictions generally, without limitation to the facts of Edwards, and in terms applicable to Southall Realty rights, has become part of the housing code of the District of Columbia. We see no reason why the rights protected in Southall Realty and Javins should be rendered nugatory by a restrictive reading of Edwards or by a judicial failure to respect the legislative will.",
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "accurate",
+          "verification_note": "The characterization accurately reflects the court's decision. The court did hold that a retaliatory eviction defense is available in a case where a tenant is being evicted via a 30-day notice after having previously defeated a landlord's suit for possession based on substantial housing code violations. The court emphasized that the tenant should have the opportunity to prove the landlord's retaliatory motive, and reversed the lower court’s summary judgment for failing to allow this.",
+          "quote_is_verbatim": true,
+          "quote_is_on_point": true,
+          "alternative_quote": null,
+          "draft_agreement": "disagree",
+          "draft_agreement_note": "No prior draft holding was available, so there's no substantive agreement or disagreement to assess."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The court holds that the retaliatory eviction defense is available to a tenant w'. gpt:gpt-4o verified as 'accurate'. Draft agreement: disagree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "STATED",
+        "controlling_quote": "We can find nothing about the Edwards principle which necessitates such a drastic limitation on its applicability. Indeed the prohibition against retaliatory evictions generally, without limitation to the facts of Edwards, and in terms applicable to Southall Realty rights, has become part of the housing code of the District of Columbia. We see no reason why the rights protected in Southall Realty and Javins should be rendered nugatory by a restrictive reading of Edwards or by a judicial failure to respect the legislative will.",
+        "quote_agreement": true,
+        "basis": "Gemini found verbatim quote; GPT confirmed verbatim and on-point"
+      },
+      "disposition": "machine-verified",
+      "disposition_note": "MV: A=true B=OK-machine C=corroborated D=STATED. Below attorney line.",
+      "bucket": "MV",
+      "pr_reason": null,
+      "controlling_quote": "We can find nothing about the Edwards principle which necessitates such a drastic limitation on its applicability. Indeed the prohibition against retaliatory evictions generally, without limitation to the facts of Edwards, and in terms applicable to Southall Realty rights, has become part of the housing code of the District of Columbia. We see no reason why the rights protected in Southall Realty and Javins should be rendered nugatory by a restrictive reading of Edwards or by a judicial failure to respect the legislative will.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/9842907 full text",
+        "draft_agreement": "disagree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "NM::__no_cases__": {
+      "unit_id": "NM::__no_cases__",
+      "state": "NM",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "OK::__no_cases__": {
+      "unit_id": "OK::__no_cases__",
+      "state": "OK",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    },
+    "cf629da1f51b": {
+      "unit_id": "cf629da1f51b",
+      "state": "VT",
+      "case_name": "Atwood v. Hill",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Atwood v. Hill",
+          "date": "2024-10-17",
+          "court": "Vermont Superior Court",
+          "citation": [],
+          "cluster_id": 10145325
+        },
+        "cl_cluster_id": 10145325,
+        "cl_opinion_id": 10611925,
+        "cl_url": "https://www.courtlistener.com/opinion/10145325/atwood-v-hill/",
+        "cl_citation": null,
+        "citation_match": null,
+        "exists": "true",
+        "basis": "Found by name; no CL citation to check",
+        "cl_snippets": "[combined-opinion]                                                                                                                    Termont Superior Court\n                                                                                                                            Filed 09/05/2\n                                                                                                                               Rutland GAR\n\n\n\n\nVERMONT SUPERIOR COURT                                    Ky                     ",
+        "cl_all_citations": []
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-27. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-27"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion is a one-page filing notice from the Vermont Superior Court in Rutland, indicating a case was filed on September 5, 202x, but contains no substantive legal discussion.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion is a one-page filing notice from the Vermont Superior Court in Rutland, indicating a cas"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "166858513bf0": {
+      "unit_id": "166858513bf0",
+      "state": "VT",
+      "case_name": "Houle v. Quenneville",
+      "disposition": "transient-failure",
+      "bucket": "PR",
+      "disposition_note": "All 4 attempts failed for VT / Houle v. Quenneville: CL quota/network error on Check A for Houle v. Quenneville: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "WV::__no_cases__": {
+      "unit_id": "WV::__no_cases__",
+      "state": "WV",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    }
+  },
+  "meta": {
+    "protocol": "retaliation_holdings_v3",
+    "run_id": "fresh_nc_batch4_20260627",
+    "total_units": 22
+  }
+}

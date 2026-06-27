@@ -1,0 +1,118 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "fresh_nc_batch4_20260627",
+  "pr_count": 11,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": [
+    {
+      "state": "MI",
+      "case_name": "Kwon v. University of Vermont & State Agricultural College",
+      "citation_gpt": "912 F. Supp. 2d 135",
+      "citation_gemini": "912 F. Supp. 2d 135",
+      "year": 2012,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['912 F. Supp. 2d 135', '2012 WL 6093799', '2012 U.S. Dist. LEXIS 173657', '116 Fair Empl. Prac. Cas. (BNA) 1331']; model citations ['912 F. Supp. 2d 135', '912 F. Supp. 2d 135']; match=T",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "MI",
+      "case_name": "Carl Johnson and Patricia Johnson v. Bearfoot Companies, LLC, and Bearfoot Aquatic Management LLC",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "MI",
+      "case_name": "Tammie Guilford v. Weidner Investment Services, Inc., Weidner Investment Services, Inc. v. Tammie Guilford",
+      "citation_gpt": "522 P.3d 1085",
+      "citation_gemini": "522 P.3d 1085",
+      "year": 2023,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['522 P.3d 1085']; model citations ['522 P.3d 1085', '522 P.3d 1085']; match=True",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "MI",
+      "case_name": "Erlach v. Sierra Asset Servicing, LLC",
+      "citation_gpt": "226 Cal. App. 4th 1281",
+      "citation_gemini": "226 Cal. App. 4th 1281",
+      "year": 2014,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['226 Cal. App. 4th 1281', '173 Cal. Rptr. 3d 159', '2014 WL 2580990', '2014 Cal. App. LEXIS 504']; model citations ['226 Cal. App. 4th 1281', '226 Cal. App. 4th 1281']; match=True",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "MI",
+      "case_name": "Real Estate Bar Association for Massachusetts, Inc. v. National Real Estate Information Services",
+      "citation_gpt": "608 F.3d 110",
+      "citation_gemini": "608 F.3d 110",
+      "year": 2010,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['459 Mass. 512', '946 N.E.2d 665', '2011 Mass. LEXIS 244', '2011 WL 1520142']; model citations ['608 F.3d 110', '608 F.3d 110']; match=False",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "MI",
+      "case_name": "Norton v. Town of Islip",
+      "citation_gpt": "97 F. Supp. 3d 241",
+      "citation_gemini": "97 F. Supp. 3d 241",
+      "year": 2015,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['97 F. Supp. 3d 241', '2015 U.S. Dist. LEXIS 42928', '2015 WL 1509505']; model citations ['97 F. Supp. 3d 241', '97 F. Supp. 3d 241']; match=True",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "MI",
+      "case_name": "Hogan ex rel. J.H. v. County of Lewis",
+      "citation_gpt": "929 F. Supp. 2d 130",
+      "citation_gemini": "929 F. Supp. 2d 130",
+      "year": 2013,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['929 F. Supp. 2d 130', '2013 WL 936513']; model citations ['929 F. Supp. 2d 130', '929 F. Supp. 2d 130']; match=True",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "MI",
+      "case_name": "Smith v. Westminster Management",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2023,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "NJ",
+      "case_name": "Scofield v. Berman & Sons, Inc.",
+      "citation_gpt": "469 N.E.2d 805",
+      "citation_gemini": "469 N.E.2d 805",
+      "year": 1984,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['469 N.E.2d 805', '393 Mass. 95']; model citations ['469 N.E.2d 805', '469 N.E.2d 805']; match=True",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "VT",
+      "case_name": "Atwood v. Hill",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "fresh_nc_batch4_20260627"
+    },
+    {
+      "state": "VT",
+      "case_name": "Houle v. Quenneville",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "fresh_nc_batch4_20260627"
+    }
+  ]
+}
