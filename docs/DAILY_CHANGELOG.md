@@ -4,6 +4,23 @@
 
 ---
 
+## 2026-06-30 (session — Task #104 completed; VT job format fix)
+
+### GREEN — Executed autonomously
+
+**VT retry job format fixed — GREEN pipeline correction**
+- `rules/validation/queue/job_vt_retry_fresh_20260630.json` had `states`/`fresh`/`sleep` nested under a `config` key — dispatch.py reads those as top-level keys, so the nested format would have caused the job to run with `states=ALL` defaults.
+- Fixed: moved `states`, `fresh`, `sleep` to top-level; also set `live_verified: true` so dispatcher picks it up tonight.
+- Verified: `python3 -c` check confirms `live_verified=True`, `states='VT'`, `fresh=True`, `job_type='protocol'` — valid per dispatch.py schema.
+- VT Houle retry will fire at 2:15 AM 2026-07-01.
+
+**Task #104 confirmed complete**
+- All 3 run outputs (VT perm-fail, CO/NY/SC PR retry, 10-state broad query) ingested by morning report.
+- 8 state v2 files updated (AL, CT, HI, LA, ND, NM, WV, CO). WV Criss → HUMAN_REVIEW_QUEUE [WV-RET-HOLD-RC-02].
+- METRICS_LEDGER confirmed current: 25 MV cumulative, 3 CI, 6 RC.
+
+---
+
 ## 2026-06-30 (morning report — 3 overnight runs completed; 8 state files updated)
 
 ### GREEN — Executed autonomously
