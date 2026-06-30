@@ -4,6 +4,64 @@
 
 ---
 
+## 2026-06-30 (morning report — 3 overnight runs completed; 8 state files updated)
+
+### GREEN — Executed autonomously
+
+**Overnight runs scanned — 3 jobs completed**
+- `job_vt_houle_retry_20260629.json` → done/. VT: perm-fail. Root cause: `fresh=false` reads v1 draft file; Houle in v2 file → `__no_cases__`. GREEN pipeline bug. Re-queued with `fresh=true` (see below).
+- `job_pr_retry_co_ny_sc_20260629.json` → done/. 14 units (CO×5, NY×8, SC×1 perm-fail). Buckets: MV=3 (CO×1, NY×2), CI=1 (NY), PR=8. Method rate: 75%. Overall rate: 23%. NY MV cases (339-347 E. 12th St. LLC v. Ling, MH Residential 1 LLC v. Barrett) already ingested in ny_eviction_v2.json from Track B — no file conflict.
+- `job_broad_query_10states_20260629.json` → done/. 35 units (AL,CT,HI,KS,LA,ND,NM,NV,OK,WV). Buckets: MV=12, CI=1 (NM Casa Blanca), RC=1 (WV Criss), PR=20, KS perm-fail. Method rate: 85.7% (12/14). Overall rate: 34.3% (12/35). Krippendorff's α_method ≈ 0.470 (n=18 combined text-retrievable, all runs this cycle).
+
+**8 state v2 files updated — retaliation holdings (GREEN file update)**
+- `rules/eviction/alabama/al_eviction_v2.json` — 2 MV (Leeth, Tiller[YELLOW]). 1 YELLOW flag (Tiller: adverse outcome).
+- `rules/eviction/connecticut/ct_eviction_v2.json` — 3 MV (Holdmeyer, Correa, Presidential Village[YELLOW]). 1 YELLOW flag (Presidential Village: quote quality).
+- `rules/eviction/hawaii/hi_eviction_v2.json` — 2 MV (Windward Partners, Cedillos[YELLOW]). 1 YELLOW flag (Cedillos: scope uncertain).
+- `rules/eviction/louisiana/la_eviction_v2.json` — 2 MV (Capone[YELLOW], Taylor v. Joseph[YELLOW]). 2 YELLOW flags (Capone: adverse outcome; Taylor: no reporter + not appealed + local ordinance).
+- `rules/eviction/north-dakota/nd_eviction_v2.json` — 1 MV (Nelson v. Johnson[YELLOW]). 1 YELLOW flag (Nelson: procedural-only, no merits).
+- `rules/eviction/new-mexico/nm_eviction_v2.json` — 1 MV (Rickert[YELLOW]) + 1 CI (Casa Blanca). 1 YELLOW flag (Rickert: adverse outcome + single-model).
+- `rules/eviction/west-virginia/wv_eviction_v2.json` — 1 MV (Murphy v. Smallridge). 1 RC note flag (Criss: RC-pending-attorney, in HUMAN_REVIEW_QUEUE).
+- `rules/eviction/colorado/co_eviction_v2.json` — 1 MV (W.W.G. Corp.[YELLOW]). 1 YELLOW flag (W.W.G.: court declined to decide if doctrine exists in CO).
+- All 8 files: validation_status → L2-HOLDINGS-V3-RUN-COMPLETE; last_run → 2026-06-30. All cases remain below attorney line.
+
+**VT retry re-queued — GREEN pipeline fix**
+- Root cause: `fresh=false` + Houle in v2 file → `load_draft_cases()` returns nothing → perm-fail.
+- Fix: new job `rules/validation/queue/job_vt_retry_fresh_20260630.json` with `fresh=true`. CL broad fallback should retrieve Houle v. Quenneville (cluster_id=2320677).
+- Queued for tonight (2026-07-01 at 2:15 AM).
+
+**HUMAN_REVIEW_QUEUE updated**
+- Added [WV-RET-HOLD-RC-02]: Criss v. Salvation Army Residences (319 S.E.2d 403, WV SC 1984). RC: FLAG-verify-disputed. Anti-default satisfied: full CL-retrieval + generate + verify ran. Murphy v. Smallridge (MV) cites Criss as first WV retaliation case. RC count: 5 → 6.
+
+**All living docs updated (GREEN)**
+- VALIDATION_METRICS_LEDGER.md — 3 new run entries (VT retry, CO/NY/SC retry, broad_query_10states).
+- PROJECT_STATE_OF_RECORD.md — holdings v3 status updated; MV cumulative now 28.
+- HUMAN_REVIEW_QUEUE.md — WV-RET-HOLD-RC-02 added; header/summary updated.
+- WORK_QUEUE.md — NOW cleared (3 done jobs + VT pipeline fix); NEXT updated; VT re-queued.
+- DAILY_CHANGELOG.md — this entry.
+- CLAUDE_CHAT_BRIEF.md — regenerated (Step 3f).
+
+### YELLOW — Flagged for Andy ratification
+
+**CO W.W.G. Corp. v. Hughes (960 P.2d 720, Colo. Ct. App. 1998) — MV classification with significant caveat:**
+Court reversed trial court's retaliation finding WITHOUT deciding whether the doctrine exists in Colorado. Case is adverse precedent AND does not establish the defense. Flag written to co_eviction_v2.json. Andy: should CO remain "doctrine existence uncertain" pending a case that affirmatively establishes it?
+
+**NY CO/NY/SC retry — new MV cases already in file:**
+339-347 E. 12th St. LLC v. Ling and MH Residential 1 LLC v. Barrett were already in ny_eviction_v2.json from Track B run. Baer v. Huggins (CI) also already in file. The CO/NY/SC retry confirmed the Track B ingestion was correct; no file changes needed for NY this cycle.
+
+**KS/SC/NV — CL coverage gap confirmed:**
+Broad fallback also returned 0 for KS. KS, SC, NV have no CL-indexed retaliation defense cases. Next options: (a) Descrybe MCP case lookup (GREEN autonomous if Andy approves); (b) Accept Track A ceiling for these 3 states. **Andy: direction needed.**
+
+**YELLOW items carried from prior cycles (pending Andy ratification):**
+- Cross-jurisdiction rejection (Markese/Robinson) — ratify or redirect.
+- GA notice file change [NOTICE-L2-06] — ratify or override.
+- Graham Court v. Taylor (115 A.D.3d 50) MV-with-caution — noted for NY review.
+
+### RED — None new this cycle
+
+All RED items carried from prior cycles in HUMAN_REVIEW_QUEUE.
+
+---
+
 ## 2026-06-29 (morning report — overnight queue empty; no new runs)
 
 ### GREEN — Executed autonomously

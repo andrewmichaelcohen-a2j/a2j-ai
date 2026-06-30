@@ -14,20 +14,20 @@
     },
     "statutory_sources": [
       {
-        "cite": "CGS §47a-23",
+        "cite": "CGS \u00a747a-23",
         "url": "https://law.justia.com/codes/connecticut/title-47a/chapter-832/section-47a-23/",
         "retrieved": true,
         "retrieved_date": "2026-06-15"
       },
       {
-        "cite": "Conn. Gen. Stat. §47a-7",
+        "cite": "Conn. Gen. Stat. \u00a747a-7",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
         "source": "machine-assisted retrieval (2026-06-16)"
       },
       {
-        "cite": "Conn. Gen. Stat. §47a-33",
+        "cite": "Conn. Gen. Stat. \u00a747a-33",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
@@ -36,29 +36,29 @@
     ],
     "per_module_sources": {
       "notice": [
-        "CGS §47a-23"
+        "CGS \u00a747a-23"
       ],
       "service": [],
       "overlays": [
-        "Conn. Gen. Stat. §47a-7",
-        "Conn. Gen. Stat. §47a-33"
+        "Conn. Gen. Stat. \u00a747a-7",
+        "Conn. Gen. Stat. \u00a747a-33"
       ],
       "substantive_defenses": [
-        "42 U.S.C. §3604 (Fair Housing Act)",
+        "42 U.S.C. \u00a73604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]"
       ],
       "procedural_defects": [
-        "Conn. Gen. Stat. §47a-23 et seq."
+        "Conn. Gen. Stat. \u00a747a-23 et seq."
       ]
     },
     "ai_drafter_notes": [
-      "STATUTORY RETRIEVAL NOT PERFORMED for this file — all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
       "Retrieve full text via LDH: US/CT-Legislation (2026 version available)",
-      "CT has a Notice to Quit requirement — 3 days for nonpayment",
-      "Hartford has some tenant protections — verify local overlays",
+      "CT has a Notice to Quit requirement \u2014 3 days for nonpayment",
+      "Hartford has some tenant protections \u2014 verify local overlays",
       "LDH legislation source available for retrieval verification: US/CT-Legislation",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
     ]
   },
   "interoperability": {
@@ -139,11 +139,11 @@
           "methods": [
             {
               "method": "personal",
-              "statute": "Conn. Gen. Stat. § 47a-23(c)"
+              "statute": "Conn. Gen. Stat. \u00a7 47a-23(c)"
             },
             {
               "method": "substituted",
-              "statute": "Conn. Gen. Stat. § 47a-23(c)"
+              "statute": "Conn. Gen. Stat. \u00a7 47a-23(c)"
             }
           ]
         },
@@ -153,17 +153,17 @@
           "methods": [
             {
               "method": "personal",
-              "statute": "CGS § 47a-23(c)"
+              "statute": "CGS \u00a7 47a-23(c)"
             },
             {
               "method": "substituted",
-              "statute": "CGS § 47a-23(c)"
+              "statute": "CGS \u00a7 47a-23(c)"
             }
           ]
         },
         "code": "L2-SERVICE-SAME-STATUTE-CONFIRMED",
         "disposition": "resolved-confirmed",
-        "note": "L2 service: file uses one statute for all service methods. Both gpt-5.5 and gemini-2.5-pro independently confirmed this is correct — the statute covers all service methods in a single provision (not a section-header error). File claim validated."
+        "note": "L2 service: file uses one statute for all service methods. Both gpt-5.5 and gemini-2.5-pro independently confirmed this is correct \u2014 the statute covers all service methods in a single provision (not a section-header error). File claim validated."
       },
       {
         "layer": "L2",
@@ -183,26 +183,26 @@
         "status": "pending-human-confirmation",
         "l2_run_date": "2026-06-20",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema \u2014 technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended \u00a73951(a)(2) \u2014 threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 \u2014 OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
         "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
         "gpt_summary": {
           "primary_citation": null,
           "rent_threshold": null,
           "confidence": null,
-          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+          "error": "PARSE_ERROR \u2014 returned notice-module schema instead of SCRA schema; technical failure"
         },
         "gemini_summary": {
-          "primary_citation": "50 U.S.C. § 3951",
+          "primary_citation": "50 U.S.C. \u00a7 3951",
           "rent_threshold": 4954.34,
           "rent_threshold_year": "2024",
           "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
-          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, \u00a7 555, Dec. 23, 2022) amended \u00a7 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
           "confidence": "high",
           "error": null
         },
         "resolved_content": {
-          "primary_citation": "50 U.S.C. § 3951",
-          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "primary_citation": "50 U.S.C. \u00a7 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, \u00a7 555 (Dec. 23, 2022) \u2014 FY23 NDAA",
           "current_rent_threshold_dollars": 4954.34,
           "current_rent_threshold_year": "2024",
           "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
@@ -210,9 +210,9 @@
           "court_order_required": true,
           "max_stay_days": 90,
           "affidavit_required": true,
-          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "affidavit_statute": "50 U.S.C. \u00a7 3931(b)(1)",
           "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
-          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, \u00a7 555, Dec. 23, 2022) amended \u00a7 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
           "confidence": "high"
         }
       },
@@ -226,26 +226,26 @@
         "overlay_results": [
           {
             "name": "Implied Warranty of Habitability",
-            "file_citation": "Conn. Gen. Stat. §47a-7",
+            "file_citation": "Conn. Gen. Stat. \u00a747a-7",
             "classification": "CITATION-CONFIRMED",
-            "note": "Models agree and file citation matches. GPT: Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), § 47a-7(a) | Gem: Conn. Gen. Stat. § 47a-7",
-            "gpt_citation": "Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), § 47a-7(a)",
-            "gemini_citation": "Conn. Gen. Stat. § 47a-7"
+            "note": "Models agree and file citation matches. GPT: Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), \u00a7 47a-7(a) | Gem: Conn. Gen. Stat. \u00a7 47a-7",
+            "gpt_citation": "Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), \u00a7 47a-7(a)",
+            "gemini_citation": "Conn. Gen. Stat. \u00a7 47a-7"
           },
           {
             "name": "Anti-Retaliation Protection",
-            "file_citation": "Conn. Gen. Stat. §47a-33",
+            "file_citation": "Conn. Gen. Stat. \u00a747a-33",
             "classification": "CITATION-CONFIRMED",
-            "note": "Models agree and file citation matches. GPT: Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), § 47a-20 | Gem: Conn. Gen. Stat. § 47a-20",
-            "gpt_citation": "Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), § 47a-20",
-            "gemini_citation": "Conn. Gen. Stat. § 47a-20",
+            "note": "Models agree and file citation matches. GPT: Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), \u00a7 47a-20 | Gem: Conn. Gen. Stat. \u00a7 47a-20",
+            "gpt_citation": "Connecticut General Statutes, Title 47a (Landlord and Tenant), Chapter 830 (Rights and Responsibilities of Landlord and Tenant), \u00a7 47a-20",
+            "gemini_citation": "Conn. Gen. Stat. \u00a7 47a-20",
             "citation_suspect": true,
-            "citation_suspect_note": "§47a-33 differs from model consensus §47a-20 (retaliatory eviction prohibition). Classifier false positive (shared '47'). Verify which section is operative.",
+            "citation_suspect_note": "\u00a747a-33 differs from model consensus \u00a747a-20 (retaliatory eviction prohibition). Classifier false positive (shared '47'). Verify which section is operative.",
             "citation_suspect_date": "2026-06-20"
           }
         ],
         "needs_queue": false,
-        "note": "All 2 overlay citations verified by L2 — no changes needed.",
+        "note": "All 2 overlay citations verified by L2 \u2014 no changes needed.",
         "has_citation_suspect": true
       },
       {
@@ -255,7 +255,7 @@
         "disposition": "single-model-preliminary",
         "l2_run_date": "2026-06-21",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=C.G.S. § 47a-7 (Landlord's responsibilities); C.G.S. § 47a-12 (Tenant's remedies for landlord's noncompliance), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=C.G.S. \u00a7 47a-7 (Landlord's responsibilities); C.G.S. \u00a7 47a-12 (Tenant's remedies for landlord's noncompliance), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
         "gpt_confidence": "error",
         "gemini_confidence": "high"
       },
@@ -266,7 +266,7 @@
         "disposition": "single-model-preliminary",
         "l2_run_date": "2026-06-21",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=C.G.S. § 46a-64c (Connecticut Fair Housing Act), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=C.G.S. \u00a7 46a-64c (Connecticut Fair Housing Act), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
         "gpt_confidence": "error",
         "gemini_confidence": "high"
       },
@@ -288,7 +288,7 @@
         "disposition": "single-model-preliminary",
         "l2_run_date": "2026-06-21",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=C.G.S. § 47a-23 (Notice to Quit requirement); C.G.S. § 47a-4 (Prohibited lease terms, including limits on late fees), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=C.G.S. \u00a7 47a-23 (Notice to Quit requirement); C.G.S. \u00a7 47a-4 (Prohibited lease terms, including limits on late fees), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
         "gpt_confidence": "error",
         "gemini_confidence": "high"
       },
@@ -299,16 +299,16 @@
         "disposition": "open",
         "l2_run_date": "2026-06-21",
         "classification": "MODEL-SPLIT",
-        "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: Noned / Conn. Gen. Stat. § 47a-20.",
+        "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: Noned / Conn. Gen. Stat. \u00a7 47a-20.",
         "gpt_summary": {
           "period": 180,
-          "statute": "Conn. Gen. Stat. §§ 47a-20, 47a-20a, 47a-20b",
+          "statute": "Conn. Gen. Stat. \u00a7\u00a7 47a-20, 47a-20a, 47a-20b",
           "confidence": "high",
           "error": null
         },
         "gemini_summary": {
           "period": null,
-          "statute": "Conn. Gen. Stat. § 47a-20",
+          "statute": "Conn. Gen. Stat. \u00a7 47a-20",
           "confidence": "high",
           "error": null
         }
@@ -321,13 +321,13 @@
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "Conn. Gen. Stat. § 47a-23(a)",
-        "rationale": "For nonpayment of rent, Connecticut requires the landlord to serve a notice to quit possession, and § 47a-23(a) requires that notice to be given at least three days before the time specified for the tenant to quit possession. The nonpayment ground applies after the residential rent grace period referenced in Conn. Gen. Stat. § 47a-15a."
+        "statute": "Conn. Gen. Stat. \u00a7 47a-23(a)",
+        "rationale": "For nonpayment of rent, Connecticut requires the landlord to serve a notice to quit possession, and \u00a7 47a-23(a) requires that notice to be given at least three days before the time specified for the tenant to quit possession. The nonpayment ground applies after the residential rent grace period referenced in Conn. Gen. Stat. \u00a7 47a-15a."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "Conn. Gen. Stat. § 47a-23(a)",
+        "statute": "Conn. Gen. Stat. \u00a7 47a-23(a)",
         "rationale": "A landlord must provide a tenant with a notice to quit possession at least three days before filing a summary process (eviction) action for nonpayment of rent. This notice informs the tenant they must vacate the premises by a specified date or face a formal eviction lawsuit."
       }
     }
@@ -343,23 +343,23 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 3,
-          "statute": "CGS §47a-23",
+          "statute": "CGS \u00a747a-23",
           "count_method": "calendar_days"
         }
       },
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 15,
-        "statute": "CGS §47a-23",
+        "statute": "CGS \u00a747a-23",
         "curable": true
       },
       "termination": {
-        "statute": "CGS §47a-23",
+        "statute": "CGS \u00a747a-23",
         "just_cause_required": false,
         "just_cause_statute": null,
         "tenancy_any": {
           "days": 3,
-          "statute": "CGS §47a-23",
+          "statute": "CGS \u00a747a-23",
           "count_method": "calendar_days"
         }
       }
@@ -371,7 +371,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
@@ -379,7 +379,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 3 day(s) — verify calculation method"
+        "note": "Notice must provide minimum 3 day(s) \u2014 verify calculation method"
       }
     ],
     "notice_period_basis": {
@@ -397,21 +397,21 @@
       {
         "method": "personal",
         "requirements": "In-person delivery to tenant",
-        "statute": "Conn. Gen. Stat. §47a-23c",
+        "statute": "Conn. Gen. Stat. \u00a747a-23c",
         "adds_days_for_mail": null,
         "note": "Verify requirements under state law"
       },
       {
         "method": "substituted",
         "requirements": "Delivery to adult household member plus mail copy",
-        "statute": "Conn. Gen. Stat. §47a-23c",
+        "statute": "Conn. Gen. Stat. \u00a747a-23c",
         "adds_days_for_mail": null,
         "note": "Verify availability and requirements under state law"
       },
       {
         "method": "certified_mail",
-        "requirements": "Certified mail to premises; adds days to notice period — verify count method",
-        "statute": "Conn. Gen. Stat. §47a-23c",
+        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
+        "statute": "Conn. Gen. Stat. \u00a747a-23c",
         "adds_days_for_mail": 3,
         "note": "Number of added days and availability require attorney verification"
       }
@@ -420,13 +420,13 @@
       {
         "defect": "improper_service_method",
         "consequence": "notice_void",
-        "statute": "Conn. Gen. Stat. §47a-23c",
+        "statute": "Conn. Gen. Stat. \u00a747a-23c",
         "case_law": []
       },
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": "Conn. Gen. Stat. §47a-23c",
+        "statute": "Conn. Gen. Stat. \u00a747a-23c",
         "case_law": []
       }
     ]
@@ -434,37 +434,37 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act §4024",
+        "name": "CARES Act \u00a74024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
-        "statute": "15 U.S.C. §9058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
+        "statute": "15 U.S.C. \u00a79058",
         "status": "conditional"
       },
       {
-        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "name": "SCRA \u00a7 3951 (Servicemembers Civil Relief Act)",
         "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
-        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
-        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area \u2014 adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. \u00a7 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. \u00a7 3951; as amended by Pub. L. 117-263, Div. E, Title LV, \u00a7 555 (FY23 NDAA, Dec. 23, 2022)",
         "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
         "threshold_current_dollars": 4954.34,
         "threshold_year": "2024",
         "status": "active",
         "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
         "l2_run_date": "2026-06-20",
-        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
-        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
+        "_preliminary_threshold_was": "4073.16 (2024 \u2014 old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law \u2014 applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
       }
     ],
     "state_protective": [
       {
         "name": "Implied Warranty of Habitability",
-        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction — verify state-specific elements and remedy",
-        "statute": "Conn. Gen. Stat. §47a-7"
+        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction \u2014 verify state-specific elements and remedy",
+        "statute": "Conn. Gen. Stat. \u00a747a-7"
       },
       {
         "name": "Anti-Retaliation Protection",
         "effect": "Landlord may not evict in retaliation for tenant's exercise of legal rights (habitability complaints, organizing, etc.); verify state-specific presumption period and elements",
-        "statute": "Conn. Gen. Stat. §47a-33"
+        "statute": "Conn. Gen. Stat. \u00a747a-33"
       }
     ],
     "local": [
@@ -487,11 +487,11 @@
         "Landlord failed to repair",
         "Tenant did not cause or waive the defect"
       ],
-      "statute": "Conn. Gen. Stat. §47a-7",
+      "statute": "Conn. Gen. Stat. \u00a747a-7",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: Conn. Gen. Stat. §47a-7. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "note": "Habitability warranty statute: Conn. Gen. Stat. \u00a747a-7. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -499,14 +499,14 @@
           "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
           "recognized_as_defense": true,
           "elements_confirmed": [
-            "The landlord has failed to comply with their material duties under C.G.S. § 47a-7, rendering the premises unfit or uninhabitable.",
+            "The landlord has failed to comply with their material duties under C.G.S. \u00a7 47a-7, rendering the premises unfit or uninhabitable.",
             "The tenant provided the landlord with written notice of the conditions requiring repair.",
             "The landlord failed to make the necessary repairs within a reasonable time (statutorily, within 15 days for most issues).",
             "The condition was not caused by the willful or negligent act of the tenant or their guests."
           ],
-          "primary_statute": "C.G.S. § 47a-7 (Landlord's responsibilities); C.G.S. § 47a-12 (Tenant's remedies for landlord's noncompliance)",
+          "primary_statute": "C.G.S. \u00a7 47a-7 (Landlord's responsibilities); C.G.S. \u00a7 47a-12 (Tenant's remedies for landlord's noncompliance)",
           "key_case": "Visco v. Cody, 16 Conn. App. 444 (1988)",
-          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=C.G.S. § 47a-7 (Landlord's responsibilities); C.G.S. § 47a-12 (Tenant's remedies for landlord's noncompliance), conf=high."
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=C.G.S. \u00a7 47a-7 (Landlord's responsibilities); C.G.S. \u00a7 47a-12 (Tenant's remedies for landlord's noncompliance), conf=high."
         }
       }
     },
@@ -519,11 +519,11 @@
         "Causal connection between protected activity and adverse action",
         "Action was within state-defined presumption period (varies: 60 days to 12 months)"
       ],
-      "statute": "Conn. Gen. Stat. §47a-33",
+      "statute": "Conn. Gen. Stat. \u00a747a-33",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: Conn. Gen. Stat. §47a-33. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "note": "Anti-retaliation statute: Conn. Gen. Stat. \u00a747a-33. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -532,21 +532,73 @@
           "validation_date": null,
           "state_specific": {
             "status": "L7-attorney-review",
-            "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: Noned / Conn. Gen. Stat. § 47a-20."
+            "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: Noned / Conn. Gen. Stat. \u00a7 47a-20."
           },
           "l2_run_date": "2026-06-21",
           "elements_confirmed": {
             "protected_activity": "The tenant, in good faith, has: (1) complained to a government agency about a housing code violation; (2) organized or joined a tenants' union; (3) testified in a court proceeding concerning the premises; (4) requested that the landlord make repairs as required by statute; or (5) commenced an action based on the landlord's failure to supply essential services.",
             "has_anti_retaliation_statute": true,
-            "primary_statute": "Conn. Gen. Stat. § 47a-20",
+            "primary_statute": "Conn. Gen. Stat. \u00a7 47a-20",
             "note": "From L2 consensus; pending human confirmation."
           }
         },
         "holdings": {
           "validation_method": "L2-draft-and-cross-check-with-citation-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "validation_status": "L2-HOLDINGS-V3-RUN-COMPLETE",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "machine_verified_cases": [
+            {
+              "case_name": "Holdmeyer v. Thomas",
+              "citation": "144 A.3d 1052",
+              "year": 2016,
+              "court": "Connecticut Appellate Court",
+              "validation_status": "MV",
+              "source": "CourtListener broad_query run 2026-06-30",
+              "cl_cluster_id": null,
+              "controlling_quote": "Once the defendant establishes a prima facie case under \u00a7 47a-20, 'the plaintiff [is] limited to rebutting the presumption using one of the four enumerated grounds in \u00a7 47a-20a.'",
+              "source_generated_holding": "Once a tenant establishes a presumption of retaliatory eviction under Conn. Gen. Stat. \u00a747a-20, the landlord is limited to rebutting that presumption by proving one of the four exclusive statutory grounds enumerated in \u00a747a-20a. Any other reason for eviction, even if found non-retaliatory in fact, is legally insufficient to overcome the presumption.",
+              "attorney_line": "below"
+            },
+            {
+              "case_name": "Correa v. Ward",
+              "citation": "881 A.2d 393",
+              "year": 2005,
+              "court": "Connecticut Appellate Court",
+              "validation_status": "MV",
+              "source": "CourtListener broad_query run 2026-06-30",
+              "cl_cluster_id": null,
+              "controlling_quote": "On the basis of that rule of statutory construction, \u00a7 47a-20a clearly delineates only four exceptions enabling a landlord to rebut a presumption of retaliation under \u00a7 47a-20. Any ground not enumerated in \u00a7 47a-20a is therefore inadequate to rebut the presumption.",
+              "source_generated_holding": "Conn. Gen. Stat. \u00a747a-20a exclusively enumerates four exceptions enabling a landlord to rebut a retaliation presumption under \u00a747a-20. Any ground not enumerated is legally insufficient to rebut the presumption.",
+              "attorney_line": "below"
+            },
+            {
+              "case_name": "Presidential Village, LLC v. Phillips",
+              "citation": "158 A.3d 772",
+              "year": 2017,
+              "court": "Supreme Court of Connecticut",
+              "validation_status": "MV",
+              "source": "CourtListener broad_query run 2026-06-30",
+              "cl_cluster_id": null,
+              "controlling_quote": "I have been able to keep the dog that the four children I am raising and myself have become attached to. Once I begin complaining again about the condition of the apartment I was given [fifteen] days to get rid of dog which was unreasonable.",
+              "source_generated_holding": "Case references retaliatory eviction as context; primary focus is equitable defense against forfeiture. The court did not substantively analyze or rule on the retaliatory eviction defense.",
+              "attorney_line": "below",
+              "validation_flag": "YELLOW-quote-quality"
+            }
+          ],
+          "confirm_inference_cases": [],
+          "validation_flags": [
+            {
+              "flag_id": "CT-RET-HOLD-YELLOW-01",
+              "type": "YELLOW-quote-quality",
+              "case": "Presidential Village, LLC v. Phillips (158 A.3d 772, CT SC 2017)",
+              "note": "Controlling quote retrieved is tenant testimony, not a court ruling. Source_generated_holding confirms court did not substantively rule on retaliation defense \u2014 primary focus was equitable defense against forfeiture. MV classification is based on both models corroborating text from CL, but the case may not usefully state a controlling retaliation holding. Flagged for attorney quality review.",
+              "status": "open",
+              "added": "2026-06-30"
+            }
+          ],
+          "last_run": "2026-06-30",
+          "run_ref": "retaliation_holdings_v3_2026-06-30"
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",
@@ -565,15 +617,15 @@
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. §3604 (Fair Housing Act); Conn. Gen. Stat. §46a-64c",
+      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); Conn. Gen. Stat. \u00a746a-64c",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -586,9 +638,9 @@
             "The circumstances of the eviction give rise to an inference of unlawful discrimination.",
             "If the landlord provides a legitimate, non-discriminatory reason for the eviction, the tenant must then prove that the stated reason is a pretext for discrimination."
           ],
-          "primary_statute": "C.G.S. § 46a-64c (Connecticut Fair Housing Act)",
+          "primary_statute": "C.G.S. \u00a7 46a-64c (Connecticut Fair Housing Act)",
           "key_case": "Miko v. Commission on Human Rights & Opportunities, 220 Conn. 192 (1991)",
-          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=C.G.S. § 46a-64c (Connecticut Fair Housing Act), conf=high."
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=C.G.S. \u00a7 46a-64c (Connecticut Fair Housing Act), conf=high."
         }
       }
     },
@@ -604,7 +656,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -628,11 +680,11 @@
         "Amount demanded in notice exceeds lawfully owed rent",
         "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
       ],
-      "statute": "Conn. Gen. Stat. §47a-23 et seq.",
+      "statute": "Conn. Gen. Stat. \u00a747a-23 et seq.",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -644,9 +696,9 @@
             "The amount of 'rent' demanded in the pre-lawsuit Notice to Quit is incorrect.",
             "The error can include demanding rent not yet due, misstating the amount owed, or including non-rent charges such as impermissible late fees, attorney's fees, or other charges."
           ],
-          "primary_statute": "C.G.S. § 47a-23 (Notice to Quit requirement); C.G.S. § 47a-4 (Prohibited lease terms, including limits on late fees)",
+          "primary_statute": "C.G.S. \u00a7 47a-23 (Notice to Quit requirement); C.G.S. \u00a7 47a-4 (Prohibited lease terms, including limits on late fees)",
           "key_case": "Housing Authority of Town of E. Hartford v. Parker, 2000 WL 765279 (Conn. Super. Ct. 2000)",
-          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=C.G.S. § 47a-23 (Notice to Quit requirement); C.G.S. § 47a-4 (Prohibited lease terms, including limits on late fees), conf=high."
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=C.G.S. \u00a7 47a-23 (Notice to Quit requirement); C.G.S. \u00a7 47a-4 (Prohibited lease terms, including limits on late fees), conf=high."
         }
       }
     }
@@ -655,53 +707,53 @@
     {
       "defect": "complaint_filed_before_notice_period_expired",
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
-      "statute": "Conn. Gen. Stat. §47a-23 et seq.",
+      "statute": "Conn. Gen. Stat. \u00a747a-23 et seq.",
       "case_law": [],
       "note": "Filing before the notice period runs is a bright-line defect in most states",
       "validation_flags": [
         "L2-PROCEDURAL-SPLIT-L7",
         "L2-PROCEDURAL-CONFIRMED"
       ],
-      "l2_note": "Models disagree. GPT: Conn. Gen. Stat. § 47a-23a(a). Gem: C.G.S. § 47a-23a(a). L7 required.",
+      "l2_note": "Models disagree. GPT: Conn. Gen. Stat. \u00a7 47a-23a(a). Gem: C.G.S. \u00a7 47a-23a(a). L7 required.",
       "l2_run_date": "2026-06-25"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
-      "statute": "Conn. Gen. Stat. §47a-70 (housing court / superior court)",
+      "statute": "Conn. Gen. Stat. \u00a747a-70 (housing court / superior court)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits",
+      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits",
       "validation_flags": [
         "L2-PROCEDURAL-SPLIT-L7"
       ],
-      "l2_note": "Models disagree. GPT: Conn. Gen. Stat. § 47a-23a(a). Gem: Conn. Gen. Stat. § 47a-70. L7 required.",
+      "l2_note": "Models disagree. GPT: Conn. Gen. Stat. \u00a7 47a-23a(a). Gem: Conn. Gen. Stat. \u00a7 47a-70. L7 required.",
       "l2_run_date": "2026-06-25"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "Conn. Gen. Stat. §47a-23 et seq. (pleading requirements)",
+      "statute": "Conn. Gen. Stat. \u00a747a-23 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify",
       "validation_flags": [
         "L2-PROCEDURAL-SPLIT-L7",
         "L2-PROCEDURAL-SM-GPT"
       ],
-      "l2_note": "Models disagree. GPT: Conn. Gen. Stat. § 47a-23a(a). Gem: Connecticut Practice Book § 10-29. L7 required.",
+      "l2_note": "Models disagree. GPT: Conn. Gen. Stat. \u00a7 47a-23a(a). Gem: Connecticut Practice Book \u00a7 10-29. L7 required.",
       "l2_run_date": "2026-06-26",
-      "l2_sm_statute": "Conn. Gen. Stat. § 47a-23a(a)"
+      "l2_sm_statute": "Conn. Gen. Stat. \u00a7 47a-23a(a)"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
-      "statute": "Conn. Gen. Stat. §47a-23 et seq.; state civil procedure rules (service of process)",
+      "statute": "Conn. Gen. Stat. \u00a747a-23 et seq.; state civil procedure rules (service of process)",
       "case_law": [],
       "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements",
       "validation_flags": [
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_sm_statute": "Conn. Gen. Stat. § 47a-23b",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: Conn. Gen. Stat. § 47a-23b. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_sm_statute": "Conn. Gen. Stat. \u00a7 47a-23b",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: Conn. Gen. Stat. \u00a7 47a-23b. Preserved as SM \u2014 needs GPT re-run or human confirm.",
       "l2_run_date": "2026-06-25"
     }
   ],

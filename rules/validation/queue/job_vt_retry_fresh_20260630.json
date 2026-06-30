@@ -1,0 +1,20 @@
+{
+  "job_id": "job_vt_retry_fresh_20260630",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "created": "2026-06-30",
+  "created_by": "cowork-morning-report",
+  "priority": "high",
+  "description": "VT retry with fresh=true — Houle v. Quenneville (CL cluster_id 2320677). Previous attempt (job_vt_houle_retry_20260629) failed with permanent-failure because fresh=false reads v1 draft file only and Houle candidate is in vt_eviction_v2.json (v2 file). Fix: fresh=true runs CL broad fallback query ('retaliatory eviction Vermont landlord tenant'). Check E (court jurisdiction filter) will accept VT Supreme Court cases. Known candidate: Houle v. Quenneville, cluster_id=2320677.",
+  "config": {
+    "states": ["VT"],
+    "fresh": true,
+    "sleep": 20,
+    "target_cluster_id": 2320677,
+    "target_case": "Houle v. Quenneville"
+  },
+  "root_cause_of_prior_failure": "load_draft_cases() with fresh=false reads v1 draft file only; Houle was written to vt_eviction_v2.json (v2 file). GREEN pipeline bug — same pattern as job_retaliation_pr_retry_20260626.json failure.",
+  "expected_outcome": "CL broad fallback query finds Houle v. Quenneville via text search; Check E confirms VT Supreme Court jurisdiction; runner classifies MV or CI.",
+  "autonomy_level": "GREEN",
+  "queue_note": "Will fire at 2:15 AM next available night via dispatch.py"
+}

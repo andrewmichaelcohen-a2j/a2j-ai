@@ -14,26 +14,26 @@
     },
     "statutory_sources": [
       {
-        "cite": "NMSA §47-8-33",
+        "cite": "NMSA \u00a747-8-33",
         "url": "https://law.justia.com/codes/new-mexico/chapter-47/article-8/section-47-8-33/",
         "retrieved": true,
         "retrieved_date": "2026-06-15"
       },
       {
-        "cite": "NMSA §47-8-37",
+        "cite": "NMSA \u00a747-8-37",
         "url": null,
         "retrieved": false,
         "retrieved_date": null
       },
       {
-        "cite": "NMSA 1978 §47-8-20",
+        "cite": "NMSA 1978 \u00a747-8-20",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
         "source": "machine-assisted retrieval (2026-06-16)"
       },
       {
-        "cite": "NMSA 1978 §47-8-39",
+        "cite": "NMSA 1978 \u00a747-8-39",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
@@ -42,30 +42,30 @@
     ],
     "per_module_sources": {
       "notice": [
-        "NMSA §47-8-33",
-        "NMSA §47-8-37"
+        "NMSA \u00a747-8-33",
+        "NMSA \u00a747-8-37"
       ],
       "service": [],
       "overlays": [
-        "NMSA 1978 §47-8-20",
-        "NMSA 1978 §47-8-39"
+        "NMSA 1978 \u00a747-8-20",
+        "NMSA 1978 \u00a747-8-39"
       ],
       "substantive_defenses": [
-        "42 U.S.C. §3604 (Fair Housing Act)",
+        "42 U.S.C. \u00a73604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]"
       ],
       "procedural_defects": [
-        "NMSA 1978 §47-8-40 et seq."
+        "NMSA 1978 \u00a747-8-40 et seq."
       ]
     },
     "ai_drafter_notes": [
-      "STATUTORY RETRIEVAL NOT PERFORMED for this file — all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
       "Retrieve via LDH: US/NM-Legislation (2026 version)",
-      "New Mexico URLTA — NMSA Ch. 47-8",
+      "New Mexico URLTA \u2014 NMSA Ch. 47-8",
       "3-day notice for nonpayment",
       "LDH legislation source available for retrieval verification: US/NM-Legislation",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
     ]
   },
   "interoperability": {
@@ -139,7 +139,7 @@
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"NMSA §47-8-37\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"NMSA \u00a747-8-37\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
       },
       {
         "layer": "L2",
@@ -159,25 +159,25 @@
         "status": "pending-human-confirmation",
         "l2_run_date": "2026-06-20",
         "resolution_method": "single-model-fallback (Gemini; GPT PARSE_ERROR = technical failure)",
-        "note": "SINGLE-MODEL-RESOLVED (2026-06-20): GPT returned PARSE_ERROR (technical failure — not a genuine legal position). Per operating protocol, single-model fallback applies when one model persistently fails and the other returns a high-confidence, well-supported answer. Gemini (confidence=high): service methods governed by NMSA 1978, §47-8-13(C)(3) — the UORRA general Notice statute. §47-8-13(C)(3) defines how a resident 'receives' a notice: personal delivery, substituted service, or certified mail. NOTE: Preliminary hypothesis (§47-8-52) is OVERRIDDEN by L2 — Gemini says §47-8-13; L2 governs. Current file citation (§47-8-33) is the NOTICE PERIOD statute, not service method — correction needed. Status: PENDING-HUMAN-CONFIRMATION. Attorney should confirm §47-8-13(C)(3) is the operative service provision.",
+        "note": "SINGLE-MODEL-RESOLVED (2026-06-20): GPT returned PARSE_ERROR (technical failure \u2014 not a genuine legal position). Per operating protocol, single-model fallback applies when one model persistently fails and the other returns a high-confidence, well-supported answer. Gemini (confidence=high): service methods governed by NMSA 1978, \u00a747-8-13(C)(3) \u2014 the UORRA general Notice statute. \u00a747-8-13(C)(3) defines how a resident 'receives' a notice: personal delivery, substituted service, or certified mail. NOTE: Preliminary hypothesis (\u00a747-8-52) is OVERRIDDEN by L2 \u2014 Gemini says \u00a747-8-13; L2 governs. Current file citation (\u00a747-8-33) is the NOTICE PERIOD statute, not service method \u2014 correction needed. Status: PENDING-HUMAN-CONFIRMATION. Attorney should confirm \u00a747-8-13(C)(3) is the operative service provision.",
         "resolved_statutes": {
-          "personal": "NMSA 1978, §47-8-13(C)(3)",
-          "substituted": "NMSA 1978, §47-8-13(C)(3)",
-          "mail": "NMSA 1978, §47-8-13(C)(3)"
+          "personal": "NMSA 1978, \u00a747-8-13(C)(3)",
+          "substituted": "NMSA 1978, \u00a747-8-13(C)(3)",
+          "mail": "NMSA 1978, \u00a747-8-13(C)(3)"
         },
         "gemini_full": {
-          "service_method_statute": "NMSA 1978, § 47-8-13",
+          "service_method_statute": "NMSA 1978, \u00a7 47-8-13",
           "service_method_statute_subsections": {
-            "personal": "§ 47-8-13(C)(3) — 'delivered in hand to the resident'",
-            "substituted": "§ 47-8-13(C)(3) — 'left at his usual place of abode'",
-            "mail": "§ 47-8-13(C)(3) — 'mailed by certified mail at the place designated by him as his mailing address'"
+            "personal": "\u00a7 47-8-13(C)(3) \u2014 'delivered in hand to the resident'",
+            "substituted": "\u00a7 47-8-13(C)(3) \u2014 'left at his usual place of abode'",
+            "mail": "\u00a7 47-8-13(C)(3) \u2014 'mailed by certified mail at the place designated by him as his mailing address'"
           },
-          "notice_period_statute": "NMSA 1978, § 47-8-33",
+          "notice_period_statute": "NMSA 1978, \u00a7 47-8-33",
           "confidence": "high",
-          "reasoning": "§ 47-8-33 establishes the 7-day notice period; §47-8-13(C)(3) defines service methods (general UORRA Notice statute)."
+          "reasoning": "\u00a7 47-8-33 establishes the 7-day notice period; \u00a747-8-13(C)(3) defines service methods (general UORRA Notice statute)."
         },
-        "gpt_result": "PARSE_ERROR — technical failure; not a genuine legal position",
-        "preliminary_hypothesis_status": "OVERRIDDEN — preliminary said §47-8-52; L2 says §47-8-13(C)(3); L2 governs"
+        "gpt_result": "PARSE_ERROR \u2014 technical failure; not a genuine legal position",
+        "preliminary_hypothesis_status": "OVERRIDDEN \u2014 preliminary said \u00a747-8-52; L2 says \u00a747-8-13(C)(3); L2 governs"
       },
       {
         "layer": "L2",
@@ -187,26 +187,26 @@
         "status": "pending-human-confirmation",
         "l2_run_date": "2026-06-20",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema \u2014 technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended \u00a73951(a)(2) \u2014 threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 \u2014 OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
         "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
         "gpt_summary": {
           "primary_citation": null,
           "rent_threshold": null,
           "confidence": null,
-          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+          "error": "PARSE_ERROR \u2014 returned notice-module schema instead of SCRA schema; technical failure"
         },
         "gemini_summary": {
-          "primary_citation": "50 U.S.C. § 3951",
+          "primary_citation": "50 U.S.C. \u00a7 3951",
           "rent_threshold": 4954.34,
           "rent_threshold_year": "2024",
           "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
-          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, \u00a7 555, Dec. 23, 2022) amended \u00a7 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
           "confidence": "high",
           "error": null
         },
         "resolved_content": {
-          "primary_citation": "50 U.S.C. § 3951",
-          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "primary_citation": "50 U.S.C. \u00a7 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, \u00a7 555 (Dec. 23, 2022) \u2014 FY23 NDAA",
           "current_rent_threshold_dollars": 4954.34,
           "current_rent_threshold_year": "2024",
           "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
@@ -214,9 +214,9 @@
           "court_order_required": true,
           "max_stay_days": 90,
           "affidavit_required": true,
-          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "affidavit_statute": "50 U.S.C. \u00a7 3931(b)(1)",
           "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
-          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, \u00a7 555, Dec. 23, 2022) amended \u00a7 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
           "confidence": "high"
         }
       },
@@ -230,23 +230,23 @@
         "overlay_results": [
           {
             "name": "Implied Warranty of Habitability",
-            "file_citation": "NMSA 1978 §47-8-20",
+            "file_citation": "NMSA 1978 \u00a747-8-20",
             "classification": "CITATION-CONFIRMED",
-            "note": "Models agree and file citation matches. GPT: New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-20(A)(1)-(6) | Gem: N.M. Stat. Ann. § 47-8-20(A)",
+            "note": "Models agree and file citation matches. GPT: New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-20(A)(1)-(6) | Gem: N.M. Stat. Ann. \u00a7 47-8-20(A)",
             "gpt_citation": "New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-20(A)(1)-(6)",
-            "gemini_citation": "N.M. Stat. Ann. § 47-8-20(A)"
+            "gemini_citation": "N.M. Stat. Ann. \u00a7 47-8-20(A)"
           },
           {
             "name": "Anti-Retaliation Protection",
-            "file_citation": "NMSA 1978 §47-8-39",
+            "file_citation": "NMSA 1978 \u00a747-8-39",
             "classification": "CITATION-CONFIRMED",
-            "note": "Models agree and file citation matches. GPT: New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-39(A)(1)-(3) | Gem: N.M. Stat. Ann. § 47-8-39",
+            "note": "Models agree and file citation matches. GPT: New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-39(A)(1)-(3) | Gem: N.M. Stat. Ann. \u00a7 47-8-39",
             "gpt_citation": "New Mexico Statutes Annotated 1978, Chapter 47, Article 8, Section 47-8-39(A)(1)-(3)",
-            "gemini_citation": "N.M. Stat. Ann. § 47-8-39"
+            "gemini_citation": "N.M. Stat. Ann. \u00a7 47-8-39"
           }
         ],
         "needs_queue": false,
-        "note": "All 2 overlay citations verified by L2 — no changes needed."
+        "note": "All 2 overlay citations verified by L2 \u2014 no changes needed."
       },
       {
         "layer": "L2",
@@ -255,7 +255,7 @@
         "disposition": "single-model-preliminary",
         "l2_run_date": "2026-06-21",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=6, statute=NMSA 1978, § 47-8-27.1; NMSA 1978, § 47-8-20, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=6, statute=NMSA 1978, \u00a7 47-8-27.1; NMSA 1978, \u00a7 47-8-20, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
         "gpt_confidence": "error",
         "gemini_confidence": "high"
       },
@@ -266,7 +266,7 @@
         "disposition": "single-model-preliminary",
         "l2_run_date": "2026-06-21",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=NMSA 1978, § 28-1-7(G); 42 U.S.C. §§ 3601 et seq., conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=NMSA 1978, \u00a7 28-1-7(G); 42 U.S.C. \u00a7\u00a7 3601 et seq., conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
         "gpt_confidence": "error",
         "gemini_confidence": "high"
       },
@@ -288,7 +288,7 @@
         "disposition": "single-model-preliminary",
         "l2_run_date": "2026-06-21",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=NMSA 1978, § 47-8-33(B); NMSA 1978, § 47-8-3(N), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=NMSA 1978, \u00a7 47-8-33(B); NMSA 1978, \u00a7 47-8-3(N), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
         "gpt_confidence": "error",
         "gemini_confidence": "high"
       },
@@ -299,16 +299,16 @@
         "disposition": "open",
         "l2_run_date": "2026-06-21",
         "classification": "MODEL-SPLIT",
-        "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: 180d / NMSA 1978, § 47-8-39(C).",
+        "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: 180d / NMSA 1978, \u00a7 47-8-39(C).",
         "gpt_summary": {
           "period": 180,
-          "statute": "N.M. Stat. Ann. § 47-8-39",
+          "statute": "N.M. Stat. Ann. \u00a7 47-8-39",
           "confidence": "high",
           "error": null
         },
         "gemini_summary": {
           "period": null,
-          "statute": "NMSA 1978, § 47-8-39",
+          "statute": "NMSA 1978, \u00a7 47-8-39",
           "confidence": "high",
           "error": null
         }
@@ -321,13 +321,13 @@
       "gpt": {
         "model": "gpt-5.5",
         "days": 3,
-        "statute": "N.M. Stat. Ann. § 47-8-33(D)",
-        "rationale": "For unpaid rent, the landlord must give the resident written notice of nonpayment and the landlord’s intent to terminate the rental agreement if the rent is not paid within three days. If the tenant does not pay within that three-day period, the landlord may terminate the rental agreement and proceed to seek possession."
+        "statute": "N.M. Stat. Ann. \u00a7 47-8-33(D)",
+        "rationale": "For unpaid rent, the landlord must give the resident written notice of nonpayment and the landlord\u2019s intent to terminate the rental agreement if the rent is not paid within three days. If the tenant does not pay within that three-day period, the landlord may terminate the rental agreement and proceed to seek possession."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
         "days": 3,
-        "statute": "NMSA 1978, § 47-8-33(B)",
+        "statute": "NMSA 1978, \u00a7 47-8-33(B)",
         "rationale": "If rent is unpaid when due, the owner must give the resident a written three-day notice of nonpayment and of the owner's intent to terminate the rental agreement. The resident has three days after notice to pay the rent before the owner may terminate the agreement and file for eviction."
       }
     }
@@ -343,23 +343,23 @@
         "utilities_permitted": false,
         "tenancy_all": {
           "days": 3,
-          "statute": "NMSA §47-8-33",
+          "statute": "NMSA \u00a747-8-33",
           "count_method": "calendar_days"
         }
       },
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 7,
-        "statute": "NMSA §47-8-33",
+        "statute": "NMSA \u00a747-8-33",
         "curable": true
       },
       "termination": {
-        "statute": "NMSA §47-8-37",
+        "statute": "NMSA \u00a747-8-37",
         "just_cause_required": false,
         "just_cause_statute": null,
         "tenancy_any": {
           "days": 30,
-          "statute": "NMSA §47-8-37",
+          "statute": "NMSA \u00a747-8-37",
           "count_method": "calendar_days"
         }
       }
@@ -371,7 +371,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
@@ -379,7 +379,7 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 3 day(s) — verify calculation method"
+        "note": "Notice must provide minimum 3 day(s) \u2014 verify calculation method"
       }
     ],
     "notice_period_basis": {
@@ -397,21 +397,21 @@
       {
         "method": "personal",
         "requirements": "In-person delivery to tenant",
-        "statute": "NMSA 1978 §47-8-33",
+        "statute": "NMSA 1978 \u00a747-8-33",
         "adds_days_for_mail": null,
         "note": "Verify requirements under state law"
       },
       {
         "method": "substituted",
         "requirements": "Delivery to adult household member plus mail copy",
-        "statute": "NMSA 1978 §47-8-33",
+        "statute": "NMSA 1978 \u00a747-8-33",
         "adds_days_for_mail": null,
         "note": "Verify availability and requirements under state law"
       },
       {
         "method": "certified_mail",
-        "requirements": "Certified mail to premises; adds days to notice period — verify count method",
-        "statute": "NMSA 1978 §47-8-33",
+        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
+        "statute": "NMSA 1978 \u00a747-8-33",
         "adds_days_for_mail": 3,
         "note": "Number of added days and availability require attorney verification"
       }
@@ -420,13 +420,13 @@
       {
         "defect": "improper_service_method",
         "consequence": "notice_void",
-        "statute": "NMSA 1978 §47-8-33",
+        "statute": "NMSA 1978 \u00a747-8-33",
         "case_law": []
       },
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": "NMSA 1978 §47-8-33",
+        "statute": "NMSA 1978 \u00a747-8-33",
         "case_law": []
       }
     ]
@@ -434,37 +434,37 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act §4024",
+        "name": "CARES Act \u00a74024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
-        "statute": "15 U.S.C. §9058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
+        "statute": "15 U.S.C. \u00a79058",
         "status": "conditional"
       },
       {
-        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "name": "SCRA \u00a7 3951 (Servicemembers Civil Relief Act)",
         "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
-        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
-        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area \u2014 adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. \u00a7 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. \u00a7 3951; as amended by Pub. L. 117-263, Div. E, Title LV, \u00a7 555 (FY23 NDAA, Dec. 23, 2022)",
         "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
         "threshold_current_dollars": 4954.34,
         "threshold_year": "2024",
         "status": "active",
         "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
         "l2_run_date": "2026-06-20",
-        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
-        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
+        "_preliminary_threshold_was": "4073.16 (2024 \u2014 old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law \u2014 applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
       }
     ],
     "state_protective": [
       {
         "name": "Implied Warranty of Habitability",
-        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction — verify state-specific elements and remedy",
-        "statute": "NMSA 1978 §47-8-20"
+        "effect": "Landlord must maintain premises in habitable condition; breach may be a defense to eviction \u2014 verify state-specific elements and remedy",
+        "statute": "NMSA 1978 \u00a747-8-20"
       },
       {
         "name": "Anti-Retaliation Protection",
         "effect": "Landlord may not evict in retaliation for tenant's exercise of legal rights (habitability complaints, organizing, etc.); verify state-specific presumption period and elements",
-        "statute": "NMSA 1978 §47-8-39"
+        "statute": "NMSA 1978 \u00a747-8-39"
       }
     ],
     "local": [
@@ -487,11 +487,11 @@
         "Landlord failed to repair",
         "Tenant did not cause or waive the defect"
       ],
-      "statute": "NMSA 1978 §47-8-20",
+      "statute": "NMSA 1978 \u00a747-8-20",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: NMSA 1978 §47-8-20. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "note": "Habitability warranty statute: NMSA 1978 \u00a747-8-20. Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -506,9 +506,9 @@
             "The resident was current on rent payments at the time the written notice was given.",
             "The condition was not caused by the deliberate or negligent act of the resident or someone on the premises with their consent."
           ],
-          "primary_statute": "NMSA 1978, § 47-8-27.1; NMSA 1978, § 47-8-20",
+          "primary_statute": "NMSA 1978, \u00a7 47-8-27.1; NMSA 1978, \u00a7 47-8-20",
           "key_case": "Hedicke v. Gunville, 2003-NMCA-032, 133 N.M. 335, 62 P.3d 1217",
-          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=6, statute=NMSA 1978, § 47-8-27.1; NMSA 1978, § 47-8-20, conf=high."
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=6, statute=NMSA 1978, \u00a7 47-8-27.1; NMSA 1978, \u00a7 47-8-20, conf=high."
         }
       }
     },
@@ -521,11 +521,11 @@
         "Causal connection between protected activity and adverse action",
         "Action was within state-defined presumption period (varies: 60 days to 12 months)"
       ],
-      "statute": "NMSA 1978 §47-8-39",
+      "statute": "NMSA 1978 \u00a747-8-39",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: NMSA 1978 §47-8-39. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "note": "Anti-retaliation statute: NMSA 1978 \u00a747-8-39. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -534,21 +534,62 @@
           "validation_date": null,
           "state_specific": {
             "status": "L7-attorney-review",
-            "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: 180d / NMSA 1978, § 47-8-39(C)."
+            "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: 180d / NMSA 1978, \u00a7 47-8-39(C)."
           },
           "l2_run_date": "2026-06-21",
           "elements_confirmed": {
             "protected_activity": "The tenant (1) complained to a government agency about a code violation materially affecting health and safety; (2) complained to the landlord about the landlord's failure to maintain the premises as required by statute; or (3) organized or became a member of a residents' union.",
             "has_anti_retaliation_statute": true,
-            "primary_statute": "§ 47-8-39(B)",
+            "primary_statute": "\u00a7 47-8-39(B)",
             "note": "From L2 consensus; pending human confirmation."
           }
         },
         "holdings": {
           "validation_method": "L2-draft-and-cross-check-with-citation-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run."
+          "validation_status": "L2-HOLDINGS-V3-RUN-COMPLETE",
+          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "machine_verified_cases": [
+            {
+              "case_name": "Carol Rickert & Associates v. Law",
+              "citation": "54 P.3d 91",
+              "year": 2002,
+              "court": "New Mexico Court of Appeals",
+              "validation_status": "MV",
+              "source": "CourtListener broad_query run 2026-06-30 (single-model)",
+              "cl_cluster_id": null,
+              "controlling_quote": "Relying solely on the documentary evidence submitted by the parties, the district court concluded that the lease between the parties expired on March 31, 2000, and that Owner was not required to renew the lease. The court further concluded that the Section 8 housing program is a voluntary government assistance program and participation is not mandatory.",
+              "source_generated_holding": "Case acknowledges tenant's retaliation affirmative defense but holding focuses on voluntariness of lease expiration and non-mandatory nature of Section 8 program. Defense did not prevail. Classified MV by runner on single-model basis (D=STATED-single-model).",
+              "attorney_line": "below",
+              "validation_flag": "YELLOW-adverse-single-model"
+            }
+          ],
+          "confirm_inference_cases": [
+            {
+              "case_name": "Casa Blanca Mobile Home Park v. Hill",
+              "citation": "125 N.M. 465",
+              "year": 1998,
+              "court": "New Mexico Court of Appeals",
+              "validation_status": "CI",
+              "control": "D=INFERRED",
+              "source": "CourtListener broad_query run 2026-06-30",
+              "cl_cluster_id": null,
+              "source_generated_holding": "NM Uniform Owner-Resident Relations Act (UORRA) does not protect a tenant from eviction for complaining about noisy neighbors. Court determined that while Act protects tenants who complain to authorities about habitability/code violations, complaints about fellow tenants' behavior do not qualify as protected activity under UORRA.",
+              "attorney_line": "below"
+            }
+          ],
+          "validation_flags": [
+            {
+              "flag_id": "NM-RET-HOLD-YELLOW-01",
+              "type": "YELLOW-adverse-single-model",
+              "case": "Carol Rickert & Associates v. Law (54 P.3d 91, NM Ct. App. 2002)",
+              "note": "Multiple concerns: (1) MV classification based on single-model (D=STATED-single-model); (2) Defense FAILED on facts \u2014 owner not required to renew lease; (3) Primary holding is about voluntariness/lease expiration, not about the scope of the retaliation defense. Attorney review needed before relying on this case for the defense.",
+              "status": "open",
+              "added": "2026-06-30"
+            }
+          ],
+          "last_run": "2026-06-30",
+          "run_ref": "retaliation_holdings_v3_2026-06-30"
         },
         "best_practices": {
           "validation_method": "fidelity-to-authoritative-sources",
@@ -567,15 +608,15 @@
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. §3604 (Fair Housing Act); NMSA 1978 §28-1-7",
+      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); NMSA 1978 \u00a728-1-7",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -588,9 +629,9 @@
             "The landlord initiated an eviction proceeding against the tenant.",
             "The eviction was motivated by the tenant's membership in a protected class."
           ],
-          "primary_statute": "NMSA 1978, § 28-1-7(G); 42 U.S.C. §§ 3601 et seq.",
+          "primary_statute": "NMSA 1978, \u00a7 28-1-7(G); 42 U.S.C. \u00a7\u00a7 3601 et seq.",
           "key_case": null,
-          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=NMSA 1978, § 28-1-7(G); 42 U.S.C. §§ 3601 et seq., conf=high."
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=NMSA 1978, \u00a7 28-1-7(G); 42 U.S.C. \u00a7\u00a7 3601 et seq., conf=high."
         }
       }
     },
@@ -606,7 +647,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -631,11 +672,11 @@
         "Amount demanded in notice exceeds lawfully owed rent",
         "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
       ],
-      "statute": "NMSA 1978 §47-8-40 et seq.",
+      "statute": "NMSA 1978 \u00a747-8-40 et seq.",
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -647,9 +688,9 @@
             "The notice demanded an amount greater than the 'rent' actually due.",
             "The overstatement was due to the inclusion of charges not defined as rent (e.g., late fees, utilities, damages) or a mathematical error."
           ],
-          "primary_statute": "NMSA 1978, § 47-8-33(B); NMSA 1978, § 47-8-3(N)",
+          "primary_statute": "NMSA 1978, \u00a7 47-8-33(B); NMSA 1978, \u00a7 47-8-3(N)",
           "key_case": null,
-          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=NMSA 1978, § 47-8-33(B); NMSA 1978, § 47-8-3(N), conf=high."
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=NMSA 1978, \u00a7 47-8-33(B); NMSA 1978, \u00a7 47-8-3(N), conf=high."
         }
       }
     }
@@ -658,54 +699,54 @@
     {
       "defect": "complaint_filed_before_notice_period_expired",
       "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
-      "statute": "NMSA 1978 §47-8-40 et seq.",
+      "statute": "NMSA 1978 \u00a747-8-40 et seq.",
       "case_law": [],
       "note": "Filing before the notice period runs is a bright-line defect in most states",
       "validation_flags": [
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_sm_statute": "NMSA 1978, § 47-8-37(A)",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: NMSA 1978, § 47-8-37(A). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_sm_statute": "NMSA 1978, \u00a7 47-8-37(A)",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: NMSA 1978, \u00a7 47-8-37(A). Preserved as SM \u2014 needs GPT re-run or human confirm.",
       "l2_run_date": "2026-06-25"
     },
     {
       "defect": "wrong_court",
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
-      "statute": "NMSA 1978 §35-12-1 (magistrate court)",
+      "statute": "NMSA 1978 \u00a735-12-1 (magistrate court)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits",
+      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits",
       "validation_flags": [
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_sm_statute": "NMSA 1978, § 47-8-42",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: NMSA 1978, § 47-8-42. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_sm_statute": "NMSA 1978, \u00a7 47-8-42",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: NMSA 1978, \u00a7 47-8-42. Preserved as SM \u2014 needs GPT re-run or human confirm.",
       "l2_run_date": "2026-06-25"
     },
     {
       "defect": "failure_to_attach_lease_or_notice_to_complaint",
       "consequence": "Complaint defective; may be dismissed or require amendment",
-      "statute": "NMSA 1978 §47-8-40 et seq. (pleading requirements)",
+      "statute": "NMSA 1978 \u00a747-8-40 et seq. (pleading requirements)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify",
       "validation_flags": [
         "L2-PROCEDURAL-ERROR",
         "L2-PROCEDURAL-SM-GPT"
       ],
-      "l2_note": "Gemini returned no content; GPT single-model: Rule 4-902 NMRA. Preserved as SM — needs Gemini re-run or human confirm.",
+      "l2_note": "Gemini returned no content; GPT single-model: Rule 4-902 NMRA. Preserved as SM \u2014 needs Gemini re-run or human confirm.",
       "l2_run_date": "2026-06-26",
       "l2_sm_statute": "Rule 4-902 NMRA"
     },
     {
       "defect": "summons_improperly_issued_or_served",
       "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
-      "statute": "NMSA 1978 §47-8-40 et seq.; state civil procedure rules (service of process)",
+      "statute": "NMSA 1978 \u00a747-8-40 et seq.; state civil procedure rules (service of process)",
       "case_law": [],
       "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements",
       "validation_flags": [
         "L2-PROCEDURAL-SM-GEMINI"
       ],
-      "l2_sm_statute": "NMSA 1978, § 47-8-46",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: NMSA 1978, § 47-8-46. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_sm_statute": "NMSA 1978, \u00a7 47-8-46",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: NMSA 1978, \u00a7 47-8-46. Preserved as SM \u2014 needs GPT re-run or human confirm.",
       "l2_run_date": "2026-06-25"
     }
   ],

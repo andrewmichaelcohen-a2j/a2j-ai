@@ -2,31 +2,33 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-29 Cowork session
+**Last updated:** 2026-06-30 morning report
 
 ---
 
 ## NOW (executing)
 
-**3 jobs queued — running on successive nights (single-shot dispatcher)**
+**1 job queued — VT Houle retry with fresh=true**
 
 | Night | Job | States | Notes |
 |-------|-----|--------|-------|
-| Tonight (2026-06-30 at 2:15 AM) | `job_pr_retry_co_ny_sc_20260629.json` | CO, NY, SC | 14 CL 429 transient cases; sleep=30; fresh=true |
-| Tomorrow night (2026-07-01) | `job_broad_query_10states_20260629.json` | AL,CT,HI,KS,LA,ND,NM,NV,OK,WV | Broad fallback + Check E; first run with updated runner |
-| Night after (2026-07-02) | `job_vt_houle_retry_20260629.json` | VT | Houle v. Quenneville single-case retry; fresh=false |
+| Tonight (2026-07-01 at 2:15 AM) | `job_vt_retry_fresh_20260630.json` | VT | Houle v. Quenneville; fresh=true; fixes prior fresh=false pipeline failure |
 
-**Runner updated 2026-06-29:** `retaliation_holdings_v3_runner.py` — Check E jurisdiction filter (`_court_matches_state()`) + broad fallback query. Syntax verified; all unit tests pass.
+**VT retry fix:** Prior job `job_vt_houle_retry_20260629.json` ran with `fresh=false` but Houle candidate is in `vt_eviction_v2.json` (v2 file) — `load_draft_cases()` reads v1 draft file only → `__no_cases__` → perm-fail. New job uses `fresh=true`; CL broad fallback should find Houle v. Quenneville (cluster_id=2320677).
 
 **Direction B attorney freeze** (RED gate — Andy's action required):
 - 50 DRAFT golden-set candidates in `rules/validation/golden_sets/`. Andy must personally sign off → items become FROZEN. Scorer harness ready to run immediately after.
 
-**Direction B attorney freeze** (RED gate — Andy's action required):
-- 50 DRAFT golden-set candidates in `rules/validation/golden_sets/`. Andy must personally sign off → items become FROZEN. Scorer harness being built in parallel (no attorney gate on the harness itself).
-
 ---
 
 ## Completed Today
+
+**2026-06-30 morning report** ✅ DONE
+- 3 overnight runs ingested: VT Houle retry (perm-fail/pipeline bug), CO/NY/SC PR retry (MV=3,CI=1,PR=8), broad_query 10 states (MV=12,CI=1,RC=1,PR=20,KS perm-fail).
+- 8 state v2 files updated with new MV/CI cases (AL×2,CT×3,HI×2,LA×2,ND×1,NM×1 MV+1 CI,WV×1,CO×1). 13 new YELLOW validation flags written.
+- WV-RET-HOLD-RC-02 added to HUMAN_REVIEW_QUEUE (Criss v. Salvation Army Residences).
+- VT retry re-queued with fresh=true (`job_vt_retry_fresh_20260630.json`).
+- All living docs updated (METRICS_LEDGER, PROJECT_STATE_OF_RECORD, HUMAN_REVIEW_QUEUE, WORK_QUEUE, DAILY_CHANGELOG, CLAUDE_CHAT_BRIEF).
 
 **2026-06-29 Cowork session 2** ✅ DONE
 - Check E jurisdiction filter + broad CL fallback built in `retaliation_holdings_v3_runner.py`. 10 unit tests pass.
@@ -146,25 +148,29 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **Check E + broad fallback — DONE (2026-06-29)** ✅: `retaliation_holdings_v3_runner.py` updated. `_court_matches_state()` filters every CL search result by state jurisdiction. Broad fallback query fires if statute-targeted returns 0 in-state results. All 3 queued jobs will use updated runner.
+1. **Check E + broad fallback** ✅ DONE (2026-06-29): `retaliation_holdings_v3_runner.py` updated. Proved out in broad_query_10states run — 12 MV from 10 states.
 
-2. **CO/NY/SC PR retry** ✅ QUEUED (2026-06-29): `job_pr_retry_co_ny_sc_20260629.json` — runs tonight.
+2. **CO/NY/SC PR retry** ✅ DONE (overnight 2026-06-30): 3 MV (CO×1, NY×2), 1 CI (NY), 8 PR remaining. NY MV cases already in ny_eviction_v2.json from Track B — no file conflict.
 
-3. **10-state broad-query run** ✅ QUEUED (2026-06-29): `job_broad_query_10states_20260629.json` — runs tomorrow night. First test of broad fallback + Check E for AL/CT/HI/KS/LA/ND/NM/NV/OK/WV.
+3. **10-state broad-query run** ✅ DONE (overnight 2026-06-30): MV=12, CI=1, RC=1 (WV Criss), PR=20. 8 state v2 files updated. KS: perm-fail even with broad fallback — CL coverage gap confirmed.
 
-4. **VT Houle retry** ✅ QUEUED (2026-06-29): `job_vt_houle_retry_20260629.json` — runs night after tomorrow. Andy approved.
+4. **VT Houle retry** ✅ DONE (overnight 2026-06-30, but perm-fail/pipeline bug): `fresh=false` reads v1 draft file only — Houle is in v2 file. Re-queued tonight as `job_vt_retry_fresh_20260630.json` with `fresh=true`.
 
-5. **KS/NV model-suggested cases** (YELLOW — pending 10-state run results): Stephens v. Ludy (KS), Paullin v. Sutton (NV) are in v2 files but not in CL. If broad fallback also returns 0 for KS/NV, Descrybe MCP or Justia lookup needed. Revisit after 10-state run completes.
+5. **KS/SC/NV — alternative strategy needed** (YELLOW — confirmed CL gap):
+   - **KS:** Broad fallback returned 0 in-state results. Stephens v. Ludy not in CL. Next option: Descrybe MCP lookup or Track A (statute §58-2572 already confirmed).
+   - **SC:** Perm-fail in CO/NY/SC retry. Wadell not in CL. SC statute §27-40-910 confirmed Track A.
+   - **NV:** Paullin v. Sutton not in CL. NV statute §118A.510 confirmed Track A. Bigelow v. Bullard also not retrievable.
+   - **YELLOW:** Use Descrybe MCP to look up KS/NV/SC cases before accepting Track A as ceiling for these states. Andy: call or GREEN autonomous?
 
-6. **Baer v. Huggins confirm** (CI cheap confirm lane) — see HUMAN_REVIEW_QUEUE [NY-HOLD-CI-01]. Attorney pull from Fastcase/Westlaw.
+6. **CO W.W.G. Corp. YELLOW review** — Runner classified MV but court expressly declined to decide if retaliation doctrine exists in CO. Flag in co_eviction_v2.json. Andy should review before CO is cited as having MV holdings support.
 
-5. **Baer v. Huggins confirm** (CI cheap confirm lane) — see HUMAN_REVIEW_QUEUE [NY-HOLD-CI-01]. Attorney pull from Fastcase/Westlaw.
+7. **Baer v. Huggins confirm** (CI cheap confirm lane) — HUMAN_REVIEW_QUEUE [NY-HOLD-CI-01]. Attorney pull from Fastcase/Westlaw.
 
-6. **Direction B attorney freeze** (RED gate — Andy's action required) — 50 DRAFT golden-set candidates. Must be frozen by Andy before Direction C can start.
+8. **Direction B attorney freeze** (RED gate — Andy's action required) — 50 DRAFT golden-set candidates. Must be frozen by Andy before Direction C can start.
 
-7. **NJ failure_to_attach reformulated retry** (GREEN pipeline) — SM-GEMINI, needs reformulated GPT query.
+9. **NJ failure_to_attach reformulated retry** (GREEN pipeline) — SM-GEMINI, needs reformulated GPT query.
 
-8. **Terminal cleanup** (optional, low priority) — `rm rules/validation/queue/job_nj_attach_probe_20260626.json rules/validation/queue/job_notice_tiebreaker_20260626.json`. Already in done/; live_verified=false so dispatcher skips. No urgency.
+10. **Terminal cleanup** (optional) — `rm rules/validation/queue/job_nj_attach_probe_20260626.json rules/validation/queue/job_notice_tiebreaker_20260626.json`. Already in done/; dispatcher skips them.
 
 ---
 

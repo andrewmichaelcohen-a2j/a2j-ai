@@ -687,6 +687,122 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
+#### Morning report cycle — 2026-06-30 (3 overnight runs completed)
+
+---
+
+**Run 1 — VT Houle retry (`job_vt_houle_retry_20260629.json`, 2026-06-30 ~01:14 AM)**
+
+*States: VT. 1 unit. `fresh=false`.*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| MV | 0 | |
+| CI | 0 | |
+| RC | 0 | |
+| PR | 0 | |
+| SM | 0 | |
+| Permanent-failure | 1 | `__no_cases__` — no candidates found |
+| Method rate | n/a | 0 text-retrievable cases |
+| Overall rate | 0% | 0 MV / 1 unit |
+| α_method | n/a | |
+| α_overall | n/a | |
+
+**Root cause:** `fresh=false` path reads v1 draft file only. Houle v. Quenneville was written to `vt_eviction_v2.json` (v2 file). `load_draft_cases()` does not read v2 files. Result: 0 candidates → permanent-failure. **GREEN pipeline bug** — same pattern as job_retaliation_pr_retry_20260626.json failure. Fix: re-queue with `fresh=true` (done — `job_vt_retry_fresh_20260630.json` queued for tonight).
+
+---
+
+**Run 2 — CO/NY/SC PR retry (`job_pr_retry_co_ny_sc_20260629.json`, 2026-06-30 ~02:04 AM)**
+
+*States: CO (5 units), NY (8 units), SC (1 perm-fail). Total: 14 units. `fresh=true`, sleep=30s.*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| MV | 3 | CO: W.W.G. Corp. v. Hughes; NY: 339-347 E. 12th St. LLC v. Ling, MH Residential 1 LLC v. Barrett |
+| CI | 1 | NY: Baer v. Huggins (D=INFERRED) |
+| RC | 0 | |
+| PR | 8 | CO×4, NY×4 — 429 transient |
+| SM | 0 | |
+| Permanent-failure | 1 | SC — no CL candidates |
+| Method rate | MV÷(MV+CI+RC) = 3÷4 = **75.0%** | NY text-retrievable only; SC perm-fail excluded |
+| Overall rate | MV÷all = 3÷14 = **21.4%** | Diluted by 8 PR + 1 SC perm-fail |
+| α_method | n=4 dual-model; 3/4 AGREE (MV×3), 1/4 DISAGREE (CI-D=INFERRED treated as partial). D_o=0.25, D_e=2×(3/4)×(1/4)=0.375. **α ≈ 0.333** | Small n; unreliable |
+| α_overall | n=14; D_o≈0.78, D_e≈0.5. **α ≈ −0.56** | Negative driven by high PR; expected |
+
+**⚠️ YELLOW — CO W.W.G. Corp. v. Hughes (960 P.2d 720, Colo. Ct. App. 1998):** Runner classified MV. Court expressly reversed trial court's retaliation finding "without deciding whether the doctrine is available in Colorado in other situations." This case does not establish the defense exists in CO. Flag written to co_eviction_v2.json [CO-RET-HOLD-YELLOW-01]. Retained in MV count for method-rate reporting but flagged for Andy review.
+
+**NY note:** 339-347 E. 12th St. LLC v. Ling and MH Residential 1 LLC v. Barrett were already in ny_eviction_v2.json from Track B run. Baer v. Huggins (CI) also already in file. No file changes needed for NY this cycle — confirms Track B ingestion was correct.
+
+---
+
+**Run 3 — Broad query 10 states (`job_broad_query_10states_20260629.json`, 2026-06-30 ~03:21 AM)**
+
+*States: AL, CT, HI, KS, LA, ND, NM, NV, OK, WV. Total: 35 units. `fresh=true`, sleep=20s. First production run with broad fallback + Check E jurisdiction filter.*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| MV | 12 | AL×2, CT×3, HI×2, LA×2, ND×1, NM×1, WV×1 |
+| CI | 1 | NM: Casa Blanca Mobile Home Park v. Hill (D=INFERRED) |
+| RC | 1 | WV: Criss v. Salvation Army Residences (FLAG-verify-disputed) → HUMAN_REVIEW_QUEUE [WV-RET-HOLD-RC-02] |
+| PR | 20 | Distributed across states |
+| SM | 0 | |
+| Permanent-failure | 1 | KS — 0 in-state results even with broad fallback |
+| Method rate | MV÷(MV+CI+RC) = 12÷14 = **85.7%** | Text-retrievable cases only |
+| Overall rate | MV÷all = 12÷35 = **34.3%** | Diluted by 20 PR |
+| α_method | n=14 text-retrievable (MV×12, CI×1, RC×1): AGREE=13 (MV+CI), DISAGREE=1 (RC). D_o=1/14=0.071, D_e=2×(13/14)×(1/14)=0.133. **α ≈ 0.467** | n=14 — marginal; interpret with caution |
+| α_overall | n=35: D_o≈0.63, D_e≈0.5. **α ≈ −0.26** | Negative driven by PR; expected; not interpretable for quality |
+
+**⚠️ cl_cluster_id gap:** All 14 text-retrievable cases have `cl_cluster_id: None`. Broad fallback query finds and retrieves opinion text but does not populate CL cluster identifiers. Provenance available via citation_gpt/citation_gemini and court info from Check A.
+
+**KS confirmed CL gap:** Stephens v. Ludy genuinely not indexed in CourtListener even with broad fallback. Next: Descrybe MCP or Justia research.
+
+**Individual state YELLOW flags:**
+- AL Tiller (5 So. 3d 623): defense failed on facts; adverse outcome.
+- CT Presidential Village (158 A.3d 772): controlling quote is tenant testimony, not legal holding; court did not rule on retaliation defense.
+- HI Cedillos (136 Haw. 430): holding scope uncertain — only identified as question in introductory section.
+- LA Taylor v. Joseph (2025, no reporter): no reporter; tenant did not appeal retaliation ruling; local ordinance (not state statute).
+- LA Capone v. Kenny (646 So. 2d 510): defense failed on facts.
+- ND Nelson v. Johnson (2010 ND 23): procedural only — retaliation not proper venue in expedited eviction; no merits.
+- NM Rickert (54 P.3d 91): single-model; adverse outcome; primary holding about voluntariness/lease expiration.
+- WV Criss (RC) → HUMAN_REVIEW_QUEUE.
+
+**8 state v2 files updated (GREEN):** al, ct, hi, la, nd, nm, wv, co. validation_status → L2-HOLDINGS-V3-RUN-COMPLETE. All cases below attorney line.
+
+---
+
+**Combined α estimate (3 runs this cycle, text-retrievable cases):**
+
+| Pool | n | MV | CI | RC | D_o | D_e | α |
+|------|---|----|----|----|----|-----|---|
+| Run 2 text-retrievable | 4 | 3 | 1 | 0 | 0.25 | 0.375 | **0.333** |
+| Run 3 text-retrievable | 14 | 12 | 1 | 1 | 0.071 | 0.133 | **0.467** |
+| Combined (runs 2+3) | 18 | 15 | 2 | 1 | 0.111 | 0.198 | **~0.440** |
+
+*n=18 text-retrievable combined. Statistically unreliable — n well below ~30 threshold. Direction: positive α observed, consistent with runs not being random noise. Cannot make strong reliability claims yet.*
+
+---
+
+**Cumulative holdings v3 MV/CI/RC (updated 2026-06-30):**
+
+| State | New MV (this cycle) | Cumulative MV | CI | Notes |
+|-------|-------------------|---------------|----|-------|
+| CA | 0 | 6 | 1 | From Batches 1–3, nc17_fresh_v2 |
+| NY | 0 | 5 | 1 | Track B; CO/NY/SC retry confirmed (no new) |
+| NJ | 0 | 1 | 0 | Onderdonk (Batch 4) |
+| AL | 2 | 2 | 0 | Leeth, Tiller[Y] — NEW this cycle |
+| CT | 3 | 3 | 0 | Holdmeyer, Correa, Presidential Village[Y] — NEW |
+| HI | 2 | 2 | 0 | Windward Partners, Cedillos[Y] — NEW |
+| LA | 2 | 2 | 0 | Capone[Y], Taylor[Y] — NEW |
+| ND | 1 | 1 | 0 | Nelson[Y] — NEW |
+| NM | 1 | 1 | 1 | Rickert[Y]; Casa Blanca (CI) — NEW |
+| WV | 1 | 1 | 0 | Murphy v. Smallridge — NEW; Criss → RC queue |
+| CO | 1 | 1 | 0 | W.W.G. Corp.[Y: doctrine undecided] — NEW |
+| **Total** | **13** | **25** | **3** | [Y] = YELLOW flag; 7 states newly started |
+
+*Cumulative corrected: 25 MV (6 CA + 5 NY + 1 NJ + 13 new this cycle) + 3 CI (1 CA + 1 NY + 1 NM) + 6 RC in HUMAN_REVIEW_QUEUE. 82 unretried transient-failure PR-class cases (from nc17_fresh_v2). VT Houle pending fresh=true retry.*
+
+---
+
 #### Morning report cycle — 2026-06-29 (no overnight run)
 
 *2026-06-29. No job in queue at 2:15 AM. Dispatcher idled. No new runs, no new metrics. State unchanged from Batch 4 Batch cycle (ingested 2026-06-28). No new ledger row added. Carry-forward: cumulative MV=16 (corrected), CI=3, RC=5, 82 unretried transient-failure PR-class cases, VT Houle pending retry approval.*

@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** 2026-06-28 (Morning report. Batch 4 NC states ingested: 1 valid NJ MV [Onderdonk], 2 wrong-jurisdiction rejected [Markese NY, Robinson DC], 8 perm-fail states, MI cross-state contamination. Cross-jurisdiction pipeline bug detected and logged as YELLOW. nj_eviction_v2.json updated. Cumulative MV now 16 [10 CA + 5 NY + 1 NJ].) · **Next update:** after cross-jurisdiction fix + VT Houle retry
+**Generated:** June 15, 2026 · **Last updated:** 2026-06-30 (Morning report. 3 overnight runs ingested: VT retry pipeline-fail [fresh=false bug, re-queued fresh=true]; CO/NY/SC PR retry [MV=3/CI=1/PR=8]; broad_query 10 states [MV=12/CI=1/RC=1]. 8 state v2 files updated: AL×2 MV, CT×3 MV, HI×2 MV, LA×2 MV, ND×1 MV, NM×1 MV+1 CI, WV×1 MV, CO×1 MV. WV Criss → RC queue [WV-RET-HOLD-RC-02]. Cumulative MV now 25 [6 CA + 5 NY + 1 NJ + 13 new states]. VT Houle fresh=true queued tonight.) · **Next update:** after VT retry completes
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -554,10 +554,13 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
     - VT: 2 PR (Atwood=wrong-doc, Houle=CL 429 transient — known candidate, cluster_id=2320677).
     - Pipeline bug: CL statute query does not filter for court jurisdiction. Court-filter fix needed before next run.
     - nj_eviction_v2.json updated: Onderdonk added to machine_verified_cases; Markese/Robinson added to rejected_cross_jurisdiction.
-  - **Cumulative MV (corrected):** 16 total (10 CA + 5 NY + 1 NJ). **Cumulative RC:** 5 (in HUMAN_REVIEW_QUEUE). **Unretried PR:** 82 (from nc17_fresh_v2) + VT Houle (transient-failure, new).
-  - RC cases → [NV-RET-HOLD-RC-01], [NY-RET-HOLD-RC-02], [AK-RET-HOLD-RC-01], [CO-RET-HOLD-RC-01], [CT-RET-HOLD-RC-01].
-  - CI cases (cheap confirm lane): [NY-HOLD-CI-01] Baer v. Huggins (NY Civ. Ct. 2013).
-  - **Cross-jurisdiction pipeline bug:** runner must add court-jurisdiction filter to CL results (YELLOW — see WORK_QUEUE NEXT #1).
+  - **Cumulative MV (updated 2026-06-30):** 25 total (6 CA + 5 NY + 1 NJ + 2 AL + 3 CT + 2 HI + 2 LA + 1 ND + 1 NM + 1 WV + 1 CO). **Cumulative RC:** 6 (in HUMAN_REVIEW_QUEUE). **Unretried PR:** 82 (from nc17_fresh_v2) + CO/NY PR (8, from retry). VT Houle re-queued fresh=true.
+  - RC cases → [NV-RET-HOLD-RC-01], [NY-RET-HOLD-RC-02], [AK-RET-HOLD-RC-01], [CO-RET-HOLD-RC-01], [CT-RET-HOLD-RC-01], [WV-RET-HOLD-RC-02 — Criss v. Salvation Army Residences, 319 S.E.2d 403 (WV SC 1984) — ADDED 2026-06-30].
+  - CI cases (cheap confirm lane): [NY-HOLD-CI-01] Baer v. Huggins; [NM-HOLD-CI-01] Casa Blanca Mobile Home Park v. Hill (125 N.M. 465, ADDED 2026-06-30).
+  - **New MV states (2026-06-30):** AL (Leeth, Tiller[Y]), CT (Holdmeyer, Correa, Presidential Village[Y]), HI (Windward Partners, Cedillos[Y]), LA (Capone[Y], Taylor[Y]), ND (Nelson[Y]), NM (Rickert[Y]), WV (Murphy), CO (W.W.G. Corp.[Y: doctrine undecided]).
+  - **YELLOW flags (13 written this cycle):** See co/al/ct/hi/la/nd/nm/wv_eviction_v2.json validation_flags. Key: CO W.W.G. Corp. — court declined to decide if doctrine exists. LA Taylor — not appealed, local ordinance. ND Nelson — procedural only.
+  - **KS/SC/NV confirmed CL gap:** Even with broad fallback, 0 in-state results. Next: Descrybe MCP or Track A.
+  - **Cross-jurisdiction pipeline bug:** FIXED 2026-06-29 (Check E `_court_matches_state()` filter).
 
 - ⚠️ **Task #52 — Commit pending (do this first, before running v3):**
   - Modified: `docs/PROJECT_STATE_OF_RECORD.md`, `docs/VALIDATION_METRICS_LEDGER.md`, `rules/eviction/california/ca_eviction_v2.json`, `rules/validation/l2/retaliation_holdings_v2_runner.py`

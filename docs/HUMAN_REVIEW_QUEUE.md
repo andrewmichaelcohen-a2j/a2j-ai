@@ -2,7 +2,8 @@
 
 **Module:** Notice / pay_or_quit · **Layer:** L2 Multi-Model Consensus  
 **Runner rule:** Runners append new flagged items only. They never edit or overwrite the Resolution, Authoritative source, Resolved by, Date, or Status fields — those are owned by Andy Cohen.  
-**Last rebuilt:** 2026-06-27 morning report (Track B KS/NV/NY/SC run ingested: NY-HOLD-CI-01 added [Baer v. Huggins, cheap confirm lane]; queue summary updated) · **Confirmed by:** Cowork (GREEN ingestion)  
+**Last rebuilt:** 2026-06-30 morning report (3 overnight runs ingested: VT retry [perm-fail/pipeline bug], CO/NY/SC PR retry [MV=3/CI=1/PR=8], broad_query 10 states [MV=12/CI=1/RC=1/PR=20]; WV-RET-HOLD-RC-02 added [Criss v. Salvation Army Residences]; RC count 5→6; 8 state v2 files updated with MV/CI cases) · **Confirmed by:** Cowork (GREEN ingestion)  
+**Prior rebuild:** 2026-06-27 morning report (Track B KS/NV/NY/SC run ingested: NY-HOLD-CI-01 added [Baer v. Huggins, cheap confirm lane]; queue summary updated) · **Confirmed by:** Cowork (GREEN ingestion)  
 **Prior rebuild:** 2026-06-26 late evening (notice tiebreaker + NJ probe + retaliation nc17_fresh_v2 ingested: NOTICE-L2-01/03 tiebreaker-resolved, not L7 — CORRECTED [ingestion error fixed]; NOTICE-L2-02/04/08/09 resolved; NOTICE-L2-06 GA tiebreaker-resolved YELLOW file update applied; 3 RC cases added [AK-RET-HOLD-RC-01]–[CT-RET-HOLD-RC-01]) · **Confirmed by:** Cowork (GREEN ingestion + correction)  
 **Prior rebuild:** 2026-06-26 evening (notice provenance rerun: 8 new NOTICE-L2 divergence items [NOTICE-L2-01]–[NOTICE-L2-08] added; MD and MO splits corroborate existing L7s) · **Confirmed by:** Cowork (GREEN ingestion)
 
@@ -17,7 +18,7 @@
 | Status | Count |
 |--------|-------|
 | 🔴 L7-ESCALATED — you decide from primary sources | 43 (6 notice/service + 14 retaliation elements + OK + 22 procedural defects) |
-| 🔴 RC — verify/characterize from primary source | 5 (NV Wright v. Brady; NY Ellis v. Oceanhill; AK DeNardo v. Maassen; CO Sladek v. dePlomb; CT TOV Realty v. Suarez) |
+| 🔴 RC — verify/characterize from primary source | 6 (NV Wright v. Brady; NY Ellis v. Oceanhill; AK DeNardo v. Maassen; CO Sladek v. dePlomb; CT TOV Realty v. Suarez; WV Criss v. Salvation Army Residences) |
 | 🟡 CI — cheap confirm lane (D=INFERRED; verify holding is controlling) | 1 (NY: Baer v. Huggins [NY-HOLD-CI-01]) |
 | 🟡 PENDING-CONFIRMATION — AI proposed, you verify | 6 |
 | 🟡 CITATION-REVIEW — verify operative section from primary source | 3 |
@@ -243,6 +244,36 @@ Note: This straggler was run three times. The reasoning pass (first run) was a f
 **Your task:** (a) Confirm whether TOV Realty, LLC v. Suarez is a valid Connecticut retaliation defense case. (b) If so, state the controlling rule. (c) If not, dismiss and identify a better CT retaliation defense case.
 
 **Current file:** CT has no verified retaliation holding; this was a fresh CL search candidate.  
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+## 🔴 RC — Retaliation Holdings Needing Characterization (broad_query run, 2026-06-30)
+
+*Source: broad_query_10states run (`retaliation_holdings_v3_2026-06-30_broad_query_10states_20260629.json`). 1 case where CourtListener text was retrieved, holding was generated, but verify model flagged RC (FLAG-verify-disputed). Anti-default rule satisfied: full CL-retrieval + generate + verify protocol ran before routing here. Murphy v. Smallridge (MV) cites Criss as the first WV retaliation case — making Criss strategically important.*
+
+---
+
+### [WV-RET-HOLD-RC-02] West Virginia — Criss v. Salvation Army Residences
+
+**Classification:** RC (re-characterize) · **Status:** 🔴 pending  
+**Run date:** 2026-06-30 (broad_query_10states run)
+
+**Case:** Criss v. Salvation Army Residences, 173 W.Va. 634, 319 S.E.2d 403 (W.Va. SC App. 1984)  
+**CL check_a confirmed:** West Virginia Supreme Court, date 1984-07-13  
+**Citations (both models):** 319 S.E.2d 403  
+
+**What happened:** CourtListener retrieved text for this case. The generate model produced a holding characterization. The verify model flagged RC (FLAG-verify-disputed) — could not fully corroborate the generated holding. Strategically significant: Murphy v. Smallridge (468 S.E.2d 167, 1996 WV SC, separately classified MV this cycle) explicitly cites Criss as "the first WV case on retaliatory eviction" and states Criss held that W.Va.Code §55-3A-1 et seq. "does not deny tenants an adequate remedy for the defense of retaliatory eviction."
+
+**Source_generated_holding (Gemini):** "The court holds that the summary eviction proceedings established by W.Va.Code 55-3A-1 et seq. do not deny tenants the lawful right to raise the defense of retaliatory eviction. The court explicitly considered and rejected the landlord's argument, finding the statute does not strip tenants of this defense."
+
+**Your task:** (a) Confirm from primary source (Westlaw/Fastcase) that Criss holds the retaliation defense is available in WV summary eviction. (b) Confirm or correct the controlling rule — does Criss affirmatively hold the defense is available, or does it merely hold tenants may *raise* it? (c) If confirmed, WV may be advanced to MV-attorney-confirmed for Criss.
+
+**Murphy connection:** Murphy v. Smallridge (MV-classified this cycle, 468 S.E.2d 167, 1996) already provides solid WV MV support for the defense. Criss is the earlier foundational case. Murphy is sufficient if Criss characterization remains uncertain.
+
+**Current file:** `wv_eviction_v2.json` updated this cycle with Murphy as MV; Criss noted in validation_flags as RC-pending-attorney ([WV-RET-HOLD-RC-NOTE-01]).  
 **Resolution:** ________________  
 **Authoritative source:** ________________  
 **Resolved by:** ________________  **Date:** ________________
