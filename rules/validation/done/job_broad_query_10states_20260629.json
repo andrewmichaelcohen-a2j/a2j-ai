@@ -1,0 +1,37 @@
+{
+  "job_id": "job_broad_query_10states_20260629",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "AL,CT,HI,KS,LA,ND,NM,NV,OK,WV",
+  "sleep": 20,
+  "fresh": true,
+  "run_id": "broad_query_10states_20260629",
+  "description": "10 states with zero CL results under prior statute-targeted queries. Runner now has Check E (jurisdiction filter) + broad fallback query ('retaliatory eviction <state> landlord tenant'). Andy approved broad fallback approach 2026-06-29. Check E prevents wrong-jurisdiction contamination seen in Batch 4 MI/NJ runs. Post-run: any MV results should be reviewed \u2014 broad query has lower precision than statute-targeted, but Check E provides a floor.",
+  "uses": [
+    "courtlistener",
+    "openai",
+    "gemini"
+  ],
+  "live_verified": true,
+  "created": "2026-06-29T00:00:00Z",
+  "notes": {
+    "runner_change": "retaliation_holdings_v3_runner.py updated 2026-06-29: _court_matches_state() + broad fallback in cl_search_retaliation_by_state()",
+    "expected_behavior": "Statute query fires first; if 0 in-state results, broad fallback fires; both filtered by Check E. States with genuinely no CL coverage will still return __no_cases__.",
+    "states_context": {
+      "AL": "35-9A-501 \u2014 statute-targeted returned 0 in-state; broad fallback new",
+      "CT": "47a-33 \u2014 statute-targeted returned 0; broad fallback new",
+      "HI": "521-74 \u2014 statute-targeted returned 0; broad fallback new",
+      "KS": "58-2572 \u2014 statute-targeted returned 0; model-suggested Stephens v. Ludy not in CL",
+      "LA": "9:3261 \u2014 statute-targeted returned 0; broad fallback new",
+      "ND": "47-16-17.5 \u2014 statute-targeted returned 0; broad fallback new",
+      "NM": "47-8-39 \u2014 statute-targeted returned 0; broad fallback new",
+      "NV": "118A.510 \u2014 statute-targeted returned 0; Paullin v. Sutton not in CL free tier",
+      "OK": "41-120 \u2014 statute-targeted returned 0; broad fallback new",
+      "WV": "37-6A-1 \u2014 statute-targeted returned 0; broad fallback new"
+    }
+  },
+  "completed_at": "2026-06-30T03:21:45.536838+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260630_0114.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-06-30_0321.md"
+}

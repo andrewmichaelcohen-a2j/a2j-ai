@@ -1,0 +1,866 @@
+{
+  "completed": {
+    "a3c9e7579250": {
+      "unit_id": "a3c9e7579250",
+      "state": "CO",
+      "case_name": "Arnal v. Aspen View Condominium Ass'n",
+      "citation_gpt": "226 F. Supp. 3d 1177",
+      "citation_gemini": "226 F. Supp. 3d 1177",
+      "year": 2016,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Arnal v. Aspen View Condominium Ass'n",
+          "date": "2017-03-28",
+          "court": "District Court, D. Colorado",
+          "citation": [
+            "245 F. Supp. 3d 1261",
+            "2017 U.S. Dist. LEXIS 53537"
+          ],
+          "cluster_id": 7325077
+        },
+        "cl_cluster_id": 7325077,
+        "cl_opinion_id": 7242989,
+        "cl_url": "https://www.courtlistener.com/opinion/7325077/arnal-v-aspen-view-condominium-assn/",
+        "cl_citation": "245 F. Supp. 3d 1261",
+        "citation_match": false,
+        "exists": "FLAG-citation-mismatch",
+        "basis": "CL citations ['245 F. Supp. 3d 1261', '2017 U.S. Dist. LEXIS 53537']; model citations ['226 F. Supp. 3d 1177', '226 F. Supp. 3d 1177']; match=False",
+        "cl_snippets": "[lead-opinion] \nORDER\nWILEY Y. DANIEL, SENIOR UNITED STATES DISTRICT JUDGE\nI. INTRODUCTION\nTHIS MATTER is before the Court on individual defendants Jack Smith and Heather Vicenzi’s Motion to Dismiss First Amended Complaint (ECF No. 94) and the Motion to Dismiss Claims Against Aspen Snowmass, LLC D.B.A. First Choice Properties & Management, a Foreign Limited .Liability Company (ECF No.",
+        "cl_all_citations": [
+          "245 F. Supp. 3d 1261",
+          "2017 U.S. Dist. LEXIS 53537"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion is a court order addressing motions to dismiss filed by various defendants in the case.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion is a court order addressing motions to dismiss filed by various defendants in the case."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "f897f995cb52": {
+      "unit_id": "f897f995cb52",
+      "state": "CO",
+      "case_name": "W.W.G. Corp. v. Hughes",
+      "citation_gpt": "960 P.2d 720",
+      "citation_gemini": "960 P.2d 720",
+      "year": 1998,
+      "prior_holding": "",
+      "source_generated_holding": "The court reverses the trial court's finding of retaliatory eviction without deciding whether the doctrine is generally available in Colorado. It holds that, even assuming the defense exists, the facts of this case—a landlord's refusal to renew a lease in response to a tenant's complaint about property damage—do not constitute retaliatory eviction as the doctrine is generally understood. The court notes the doctrine is typically invoked when a tenant reports violations of protective housing statutes or engages in tenant organizing activities.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "W.W.G. Corp. v. Hughes",
+          "date": "1998-04-30",
+          "court": "Colorado Court of Appeals",
+          "citation": [
+            "960 P.2d 720",
+            "1998 Colo. J. C.A.R. 2131",
+            "1998 Colo. App. LEXIS 94",
+            "1998 WL 307882"
+          ],
+          "cluster_id": 1198916
+        },
+        "cl_cluster_id": 1198916,
+        "cl_opinion_id": 1198916,
+        "cl_url": "https://www.courtlistener.com/opinion/1198916/wwg-corp-v-hughes/",
+        "cl_citation": "960 P.2d 720",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['960 P.2d 720', '1998 Colo. J. C.A.R. 2131', '1998 Colo. App. LEXIS 94', '1998 WL 307882']; model citations ['960 P.2d 720', '960 P.2d 720']; match=True",
+        "cl_snippets": "[combined-opinion] \n960 P.2d 720 (1998)\nW.W.G. CORPORATION, d/b/a Cedar Run Apartments, Plaintiff-Appellant,\nv.\nBarbara HUGHES, Defendant-Appellee.\nNo. 97CA0663.\nColorado Court of Appeals, Div. IV.\nApril 30, 1998.\nNathan, Bremer, Dumm & Myers, P.C., Christina M. Habas, Andrew J. Fisher, Denver, for Plaintiff-Appellant.\nGeil, Jeffers, Kreutzer & Waitkus, P.C., Julie Kreut",
+        "cl_all_citations": [
+          "960 P.2d 720",
+          "1998 Colo. J. C.A.R. 2131",
+          "1998 Colo. App. LEXIS 94",
+          "1998 WL 307882"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 1,
+        "basis": "No negative treatment in 1 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The court reverses the trial court's finding of retaliatory eviction without deciding whether the doctrine is generally available in Colorado. It holds that, even assuming the defense exists, the facts of this case—a landlord's refusal to renew a lease in response to a tenant's complaint about property damage—do not constitute retaliatory eviction as the doctrine is generally understood. The court notes the doctrine is typically invoked when a tenant reports violations of protective housing statutes or engages in tenant organizing activities.",
+        "controlling_quote": "However, we agree with landlord that the facts as found by the trial court do not constitute retaliatory eviction as that doctrine is generally understood, and thus reverse the judgment without deciding whether the doctrine is available in Colorado in other situations.",
+        "quote_verified_verbatim": true,
+        "draft_agreement": "agree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The court reverses the trial court's finding of retaliatory eviction without deciding whether the doctrine is generally available in Colorado. It holds that, even assuming the defense exists, the facts of this case—a landlord's refusal to renew a lease in response to a tenant's complaint about property damage—do not constitute retaliatory eviction as the doctrine is generally understood. The court notes the doctrine is typically invoked when a tenant reports violations of protective housing statutes or engages in tenant organizing activities.",
+          "candidate_quote": "However, we agree with landlord that the facts as found by the trial court do not constitute retaliatory eviction as that doctrine is generally understood, and thus reverse the judgment without deciding whether the doctrine is available in Colorado in other situations.",
+          "what_opinion_is_about": "The opinion addresses a landlord's appeal of a trial court order that precluded an eviction based on the common-law defense of retaliatory eviction.",
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "accurate",
+          "verification_note": "The characterization accurately reflects the court's decision to reverse the trial court's finding of retaliatory eviction without determining the general applicability of the doctrine in Colorado, and it accurately describes the court's rationale that the facts of the case do not meet the typical criteria for retaliatory eviction, which often involves tenant reports of protective housing statute violations.",
+          "quote_is_verbatim": true,
+          "quote_is_on_point": true,
+          "alternative_quote": null,
+          "draft_agreement": "agree",
+          "draft_agreement_note": "The characterization effectively encapsulates the court's decision on the main legal issue: the scope and applicability of the retaliatory eviction defense. Given that there was no prior draft holding available, agreement pertains to the alignment in addressing the court's decision-making on this legal doctrine."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The court reverses the trial court's finding of retaliatory eviction without dec'. gpt:gpt-4o verified as 'accurate'. Draft agreement: agree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "STATED",
+        "controlling_quote": "However, we agree with landlord that the facts as found by the trial court do not constitute retaliatory eviction as that doctrine is generally understood, and thus reverse the judgment without deciding whether the doctrine is available in Colorado in other situations.",
+        "quote_agreement": true,
+        "basis": "Gemini found verbatim quote; GPT confirmed verbatim and on-point"
+      },
+      "disposition": "machine-verified",
+      "disposition_note": "MV: A=true B=OK-machine C=corroborated D=STATED. Below attorney line.",
+      "bucket": "MV",
+      "pr_reason": null,
+      "controlling_quote": "However, we agree with landlord that the facts as found by the trial court do not constitute retaliatory eviction as that doctrine is generally understood, and thus reverse the judgment without deciding whether the doctrine is available in Colorado in other situations.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/1198916 full text",
+        "draft_agreement": "agree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "60723364cb1d": {
+      "unit_id": "60723364cb1d",
+      "state": "CO",
+      "case_name": "Sladek v. dePlomb",
+      "citation_gpt": "981 F. Supp. 1364",
+      "citation_gemini": "981 F. Supp. 1364",
+      "year": 1997,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Sladek v. dePlomb",
+          "date": "1997-11-07",
+          "court": "District Court, D. Colorado",
+          "citation": [
+            "981 F. Supp. 1364",
+            "1997 WL 726438"
+          ],
+          "cluster_id": 8752428
+        },
+        "cl_cluster_id": 8752428,
+        "cl_opinion_id": 8735699,
+        "cl_url": "https://www.courtlistener.com/opinion/8752428/sladek-v-deplomb/",
+        "cl_citation": "981 F. Supp. 1364",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['981 F. Supp. 1364', '1997 WL 726438']; model citations ['981 F. Supp. 1364', '981 F. Supp. 1364']; match=True",
+        "cl_snippets": "[lead-opinion] \nORDER ON RECOMMENDATION OF MAGISTRATE JUDGE\nMILLER, District Judge.\nThis matter is before me on the Plaintiffs’ objections to the recommendation of United States Magistrate Judge Patricia A. Coan, filed August 29, 1997, that this action be stayed and that Defendants’ Motion to Dismiss and Plaintiffs’ Motion to Amend Complaint be held in abeyance pending entry of a final judgment in El Paso County Distr",
+        "cl_all_citations": [
+          "981 F. Supp. 1364",
+          "1997 WL 726438"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion addresses procedural matters, specifically the plaintiffs' objections to a magistrate judge's recommendation to stay the action and hold motions in abeyance pending a final judgment in a related state court case.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion addresses procedural matters, specifically the plaintiffs' objections to a magistrate ju"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "44898d50299f": {
+      "unit_id": "44898d50299f",
+      "state": "CO",
+      "case_name": "Hurricane v. Kanover, Ltd.",
+      "citation_gpt": "651 P.2d 1218",
+      "citation_gemini": "651 P.2d 1218",
+      "year": 1982,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Hurricane v. Kanover, Ltd.",
+          "date": "1982-10-12",
+          "court": "Supreme Court of Colorado",
+          "citation": [
+            "651 P.2d 1218",
+            "1982 Colo. LEXIS 705"
+          ],
+          "cluster_id": 1165511
+        },
+        "cl_cluster_id": 1165511,
+        "cl_opinion_id": 1165511,
+        "cl_url": "https://www.courtlistener.com/opinion/1165511/hurricane-v-kanover-ltd/",
+        "cl_citation": "651 P.2d 1218",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['651 P.2d 1218', '1982 Colo. LEXIS 705']; model citations ['651 P.2d 1218', '651 P.2d 1218']; match=True",
+        "cl_snippets": "[combined-opinion] \n651 P.2d 1218 (1982)\nJ. \"Al\" HURRICANE, Plaintiff-Appellant,\nv.\nKANOVER, LTD., Defendant-Appellee.\nNo. 81SA298.\nSupreme Court of Colorado, En Banc.\nOctober 12, 1982.\n*1219 Barry D. Roseman, Denver, for plaintiff-appellant.\nGorsuch, Kirgis, Campbell, Walker & Grover, John L. Ferguson, Denver, for defendant-appellee.",
+        "cl_all_citations": [
+          "651 P.2d 1218",
+          "1982 Colo. LEXIS 705"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The provided text contains only the case caption, names of the parties, citation, date, and attorneys, but lacks the actual judicial opinion.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The provided text contains only the case caption, names of the parties, citation, date, and attorney"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "28bbcea9b70a": {
+      "unit_id": "28bbcea9b70a",
+      "state": "CO",
+      "case_name": "Martinez v. Winner",
+      "citation_gpt": "548 F. Supp. 278",
+      "citation_gemini": "548 F. Supp. 278",
+      "year": 1982,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Martinez v. Winner",
+          "date": "1982-07-30",
+          "court": "District Court, D. Colorado",
+          "citation": [
+            "548 F. Supp. 278",
+            "1982 U.S. Dist. LEXIS 17822"
+          ],
+          "cluster_id": 1650940
+        },
+        "cl_cluster_id": 1650940,
+        "cl_opinion_id": 1650940,
+        "cl_url": "https://www.courtlistener.com/opinion/1650940/martinez-v-winner/",
+        "cl_citation": "548 F. Supp. 278",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['548 F. Supp. 278', '1982 U.S. Dist. LEXIS 17822']; model citations ['548 F. Supp. 278', '548 F. Supp. 278']; match=True",
+        "cl_snippets": "[combined-opinion] \n548 F.Supp. 278 (1982)\nFrancisco Eugenio MARTINEZ, Plaintiff,\nv.\nFred M. WINNER, Chief Judge of the United States District Court for the District of Colorado, individually and in his official capacity; Joseph M. Dolan, United States Attorney for the District of Colorado, individually and in his official capacity; Susan Roberts, Assistant United States Attorney, individually and in her official capacity; John R. Barksdale, Assistant United States ",
+        "cl_all_citations": [
+          "548 F. Supp. 278",
+          "1982 U.S. Dist. LEXIS 17822"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "This case involves a civil rights action alleging a conspiracy by a federal judge, prosecutors, and law enforcement officials to wrongfully convict the plaintiff in a criminal case involving explosives.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: This case involves a civil rights action alleging a conspiracy by a federal judge, prosecutors, and "
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/1650940 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "882b1df29454": {
+      "unit_id": "882b1df29454",
+      "state": "NY",
+      "case_name": "339-347 E. 12th St. LLC v. Ling",
+      "citation_gpt": "35 Misc. 3d 30",
+      "citation_gemini": "35 Misc. 3d 30",
+      "year": 2012,
+      "prior_holding": "",
+      "source_generated_holding": "The court holds that a tenant's affirmative defense of retaliatory eviction raises material triable issues of fact regarding the landlord's subjective motives that are generally not suitable for summary dismissal. The tenant bears the burden of proving the landlord's retaliatory state of mind and that the landlord would not have otherwise commenced the proceeding but for the tenant's protected activity. Proving this subjective intent on papers alone is rare, and this case requires a trial to resolve these factual questions.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "339-347 E. 12th St. LLC v. Ling",
+          "date": "2012-03-08",
+          "court": "Appellate Terms of the Supreme Court of New York",
+          "citation": [
+            "35 Misc. 3d 30"
+          ],
+          "cluster_id": 6313080
+        },
+        "cl_cluster_id": 6313080,
+        "cl_opinion_id": 6181484,
+        "cl_url": "https://www.courtlistener.com/opinion/6313080/339-347-e-12th-st-llc-v-ling/",
+        "cl_citation": "35 Misc. 3d 30",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['35 Misc. 3d 30']; model citations ['35 Misc. 3d 30', '35 Misc. 3d 30']; match=True",
+        "cl_snippets": "[lead-opinion] \nOPINION OF THE COURT\nPer Curiam.\nOrder, dated October 22, 2010, reversed, with $10 costs, motion denied, and petition reinstated.\nThis holdover summary proceeding, ostensibly based upon the expiration of the residential tenant’s most recent unregulated lease agreement, is not susceptible to summary dismissal. Even assuming, without deciding, that tenant’s proof was sufficient to give rise to ",
+        "cl_all_citations": [
+          "35 Misc. 3d 30"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The court holds that a tenant's affirmative defense of retaliatory eviction raises material triable issues of fact regarding the landlord's subjective motives that are generally not suitable for summary dismissal. The tenant bears the burden of proving the landlord's retaliatory state of mind and that the landlord would not have otherwise commenced the proceeding but for the tenant's protected activity. Proving this subjective intent on papers alone is rare, and this case requires a trial to resolve these factual questions.",
+        "controlling_quote": "To succeed in this difficult task, the tenant must show the landlord’s state of mind, purposes, and motives, relying almost exclusively on circumstantial evidence",
+        "quote_verified_verbatim": true,
+        "draft_agreement": "agree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The court holds that a tenant's affirmative defense of retaliatory eviction raises material triable issues of fact regarding the landlord's subjective motives that are generally not suitable for summary dismissal. The tenant bears the burden of proving the landlord's retaliatory state of mind and that the landlord would not have otherwise commenced the proceeding but for the tenant's protected activity. Proving this subjective intent on papers alone is rare, and this case requires a trial to resolve these factual questions.",
+          "candidate_quote": "To succeed in this difficult task, the tenant must show the landlord’s state of mind, purposes, and motives, relying almost exclusively on circumstantial evidence",
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "accurate",
+          "verification_note": "The characterization accurately reflects the court's opinion that the tenant's defense involves material triable issues and requires showing the landlord's retaliatory motives, which are difficult to prove on paper alone.",
+          "quote_is_verbatim": true,
+          "quote_is_on_point": true,
+          "alternative_quote": null,
+          "draft_agreement": "agree",
+          "draft_agreement_note": "The prior draft holding was not available, so there was nothing to compare for draft agreement. However, the characterization provided captures the essence of the legal issue regarding the retaliatory eviction defense as discussed in the court opinion."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The court holds that a tenant's affirmative defense of retaliatory eviction rais'. gpt:gpt-4o verified as 'accurate'. Draft agreement: agree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "STATED",
+        "controlling_quote": "To succeed in this difficult task, the tenant must show the landlord’s state of mind, purposes, and motives, relying almost exclusively on circumstantial evidence",
+        "quote_agreement": true,
+        "basis": "Gemini found verbatim quote; GPT confirmed verbatim and on-point"
+      },
+      "disposition": "machine-verified",
+      "disposition_note": "MV: A=true B=OK-machine C=corroborated D=STATED. Below attorney line.",
+      "bucket": "MV",
+      "pr_reason": null,
+      "controlling_quote": "To succeed in this difficult task, the tenant must show the landlord’s state of mind, purposes, and motives, relying almost exclusively on circumstantial evidence",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/6181484 full text",
+        "draft_agreement": "agree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "7435c2914f11": {
+      "unit_id": "7435c2914f11",
+      "state": "NY",
+      "case_name": "MH Residential 1, LLC v. Barrett",
+      "citation_gpt": "41 Misc. 3d 24",
+      "citation_gemini": "41 Misc. 3d 24",
+      "year": 2013,
+      "prior_holding": "",
+      "source_generated_holding": "The court holds that tenants with expired unregulated leases, often considered tenants at sufferance, are not precluded from asserting the statutory defense of retaliatory eviction under Real Property Law § 223-b. This statute prohibits a landlord from refusing to continue a tenancy in retaliation for a tenant's participation in a tenants' organization. The court found that the lower court erred by sua sponte raising and deciding that the tenants lacked standing to use this defense.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "MH Residential 1, LLC v. Barrett",
+          "date": "2013-03-06",
+          "court": "Appellate Terms of the Supreme Court of New York",
+          "citation": [
+            "41 Misc. 3d 24"
+          ],
+          "cluster_id": 6314564
+        },
+        "cl_cluster_id": 6314564,
+        "cl_opinion_id": 6182984,
+        "cl_url": "https://www.courtlistener.com/opinion/6314564/mh-residential-1-llc-v-barrett/",
+        "cl_citation": "41 Misc. 3d 24",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['41 Misc. 3d 24']; model citations ['41 Misc. 3d 24', '41 Misc. 3d 24']; match=True",
+        "cl_snippets": "[lead-opinion] \nOPINION OF THE COURT\nPer Curiam.\nFinal judgments each entered March 13, 2012, reversed, with $30 costs, and matters remanded to Civil Court for further proceedings on the holdover petitions. Appeals from order, entered March 5, 2012, dismissed, without costs, as subsumed in the appeal from the final judgments. The issues raised on the appeal from the order are brought up for review and have been considered o",
+        "cl_all_citations": [
+          "41 Misc. 3d 24"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 1,
+        "basis": "No negative treatment in 1 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The court holds that tenants with expired unregulated leases, often considered tenants at sufferance, are not precluded from asserting the statutory defense of retaliatory eviction under Real Property Law § 223-b. This statute prohibits a landlord from refusing to continue a tenancy in retaliation for a tenant's participation in a tenants' organization. The court found that the lower court erred by sua sponte raising and deciding that the tenants lacked standing to use this defense.",
+        "controlling_quote": "no matter how limited the rights of a tenant at sufferance may be (see 2 Robert F. Dolan, Rasch’s Landlord and Tenant — Summary Proceedings §§ 30:37, 30:39 [4th ed]), we do not construe the Appellate Division holding in this case’s earlier incarnation so broadly as to preclude appellants from invoking the retaliatory eviction statute, which by its terms prohibits a landlord from “refusing] to continue a tenancy of the tenant or, upon expiration of the tenant’s lease, to renew the lease or offer a new lease” (Real Property Law § 223-b [2]) in retaliation for certain species of tenant conduct, including a “tenant’s participation in the activities of a tenant’s organization” (§ 223-b [1] [c]).",
+        "quote_verified_verbatim": true,
+        "draft_agreement": "agree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The court holds that tenants with expired unregulated leases, often considered tenants at sufferance, are not precluded from asserting the statutory defense of retaliatory eviction under Real Property Law § 223-b. This statute prohibits a landlord from refusing to continue a tenancy in retaliation for a tenant's participation in a tenants' organization. The court found that the lower court erred by sua sponte raising and deciding that the tenants lacked standing to use this defense.",
+          "candidate_quote": "no matter how limited the rights of a tenant at sufferance may be (see 2 Robert F. Dolan, Rasch’s Landlord and Tenant — Summary Proceedings §§ 30:37, 30:39 [4th ed]), we do not construe the Appellate Division holding in this case’s earlier incarnation so broadly as to preclude appellants from invoking the retaliatory eviction statute, which by its terms prohibits a landlord from “refusing] to continue a tenancy of the tenant or, upon expiration of the tenant’s lease, to renew the lease or offer a new lease” (Real Property Law § 223-b [2]) in retaliation for certain species of tenant conduct, including a “tenant’s participation in the activities of a tenant’s organization” (§ 223-b [1] [c]).",
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "accurate",
+          "verification_note": "The characterization is supported by the opinion's discussion on the retaliatory eviction defense. The court acknowledged that tenants at sufferance could assert this defense under Real Property Law § 223-b, overruling the lower court's decision that they lacked standing.",
+          "quote_is_verbatim": true,
+          "quote_is_on_point": true,
+          "alternative_quote": null,
+          "draft_agreement": "agree",
+          "draft_agreement_note": "There is no prior draft holding available, so there is nothing to agree or disagree with in terms of the core legal proposition. The current characterization is duly supported by the text."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The court holds that tenants with expired unregulated leases, often considered t'. gpt:gpt-4o verified as 'accurate'. Draft agreement: agree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "STATED",
+        "controlling_quote": "no matter how limited the rights of a tenant at sufferance may be (see 2 Robert F. Dolan, Rasch’s Landlord and Tenant — Summary Proceedings §§ 30:37, 30:39 [4th ed]), we do not construe the Appellate Division holding in this case’s earlier incarnation so broadly as to preclude appellants from invoking the retaliatory eviction statute, which by its terms prohibits a landlord from “refusing] to continue a tenancy of the tenant or, upon expiration of the tenant’s lease, to renew the lease or offer a new lease” (Real Property Law § 223-b [2]) in retaliation for certain species of tenant conduct, including a “tenant’s participation in the activities of a tenant’s organization” (§ 223-b [1] [c]).",
+        "quote_agreement": true,
+        "basis": "Gemini found verbatim quote; GPT confirmed verbatim and on-point"
+      },
+      "disposition": "machine-verified",
+      "disposition_note": "MV: A=true B=OK-machine C=corroborated D=STATED. Below attorney line.",
+      "bucket": "MV",
+      "pr_reason": null,
+      "controlling_quote": "no matter how limited the rights of a tenant at sufferance may be (see 2 Robert F. Dolan, Rasch’s Landlord and Tenant — Summary Proceedings §§ 30:37, 30:39 [4th ed]), we do not construe the Appellate Division holding in this case’s earlier incarnation so broadly as to preclude appellants from invoking the retaliatory eviction statute, which by its terms prohibits a landlord from “refusing] to continue a tenancy of the tenant or, upon expiration of the tenant’s lease, to renew the lease or offer a new lease” (Real Property Law § 223-b [2]) in retaliation for certain species of tenant conduct, including a “tenant’s participation in the activities of a tenant’s organization” (§ 223-b [1] [c]).",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/6182984 full text",
+        "draft_agreement": "agree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "d8fe526da422": {
+      "unit_id": "d8fe526da422",
+      "state": "NY",
+      "case_name": "Baer v. Huggins",
+      "citation_gpt": "41 Misc. 3d 605",
+      "citation_gemini": "41 Misc. 3d 605",
+      "year": 2013,
+      "prior_holding": "",
+      "source_generated_holding": "The case details the tenant's evidence for a retaliatory eviction defense, which was based on the landlord initiating a holdover proceeding after the tenant complained to NYCHA and HPD about leaks and filed a court case to compel repairs. However, the provided text cuts off before the court analyzes this evidence or reaches a conclusion on the defense, focusing instead on whether a new lease was in effect.",
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Baer v. Huggins",
+          "date": "2013-08-08",
+          "court": "Civil Court of the City of New York",
+          "citation": [
+            "41 Misc. 3d 605"
+          ],
+          "cluster_id": 6314692
+        },
+        "cl_cluster_id": 6314692,
+        "cl_opinion_id": 6183112,
+        "cl_url": "https://www.courtlistener.com/opinion/6314692/baer-v-huggins/",
+        "cl_citation": "41 Misc. 3d 605",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['41 Misc. 3d 605']; model citations ['41 Misc. 3d 605', '41 Misc. 3d 605']; match=True",
+        "cl_snippets": "[lead-opinion] \nOPINION OF THE COURT\nAndrew Lehrer, J.\n*607Background\nPetitioner Anthony W. Barr commenced this “no grounds” holdover proceeding against respondent tenant Gary Huggins on October 18, 2012. The petition, which is dated October 2, 2012, alleges, among other things, that the subject apartment is not rent-controlled or rent-stabilized be",
+        "cl_all_citations": [
+          "41 Misc. 3d 605"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "holding": "corroborated",
+        "source_generated_holding": "The case details the tenant's evidence for a retaliatory eviction defense, which was based on the landlord initiating a holdover proceeding after the tenant complained to NYCHA and HPD about leaks and filed a court case to compel repairs. However, the provided text cuts off before the court analyzes this evidence or reaches a conclusion on the defense, focusing instead on whether a new lease was in effect.",
+        "controlling_quote": null,
+        "quote_verified_verbatim": false,
+        "draft_agreement": "agree",
+        "generate_output": {
+          "addresses_retaliation_defense": true,
+          "holding_characterization": "The case details the tenant's evidence for a retaliatory eviction defense, which was based on the landlord initiating a holdover proceeding after the tenant complained to NYCHA and HPD about leaks and filed a court case to compel repairs. However, the provided text cuts off before the court analyzes this evidence or reaches a conclusion on the defense, focusing instead on whether a new lease was in effect.",
+          "candidate_quote": null,
+          "what_opinion_is_about": null,
+          "confidence": "high"
+        },
+        "verify_output": {
+          "text_supports_characterization": "partially_accurate",
+          "verification_note": "The characterization correctly notes that the tenant provided evidence for a retaliatory eviction defense based on complaints to NYCHA and HPD about leaks, and a court case to compel repairs. However, the characterization does not mention whether the court analyzes the evidence or reaches a conclusion on the defense, as the text cuts off before the discussion on the lease concludes.",
+          "quote_is_verbatim": null,
+          "quote_is_on_point": null,
+          "alternative_quote": null,
+          "draft_agreement": "agree",
+          "draft_agreement_note": "As there was no draft holding available, the characterization correctly identifies the issues of tenant's retaliatory eviction defense and the lease dispute without a specific conclusion being provided, which aligns with the lack of an available draft holding."
+        },
+        "queue_routing": null,
+        "basis": "Gemini generated: 'The case details the tenant's evidence for a retaliatory eviction defense, which'. gpt:gpt-4o verified as 'partially_accurate'. Draft agreement: agree."
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "INFERRED",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Holding corroborated from text but no confirmed verbatim controlling quote. Rule established through prose/reasoning. Routes to CONFIRM-INFERENCE."
+      },
+      "disposition": "needs-attorney",
+      "disposition_note": "CI: text retrieved, two-model corroborated, D=INFERRED (no controlling quote). Cheap confirm lane.",
+      "bucket": "CI",
+      "pr_reason": null,
+      "controlling_quote": null,
+      "queue_routing": "CI",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "verify_actually_answered": true,
+        "opinion_text_source": "CL opinion/6183112 full text",
+        "draft_agreement": "agree",
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "76c6ab15e3c0": {
+      "unit_id": "76c6ab15e3c0",
+      "state": "NY",
+      "case_name": "Graham Court Owner's Corp. v. Kyle Taylor",
+      "citation_gpt": "24 N.Y.3d 742",
+      "citation_gemini": "24 N.Y.3d 742",
+      "year": 2015,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Graham Court Owner's Corp. v. Kyle Taylor",
+          "date": "2015-02-19",
+          "court": "New York Court of Appeals",
+          "citation": [
+            "24 N.Y.3d 742",
+            "28 N.E.3d 527",
+            "5 N.Y.S.3d 348"
+          ],
+          "cluster_id": 2780292
+        },
+        "cl_cluster_id": 2780292,
+        "cl_opinion_id": null,
+        "cl_url": "https://www.courtlistener.com/opinion/2780292/graham-court-owners-corp-v-kyle-taylor/",
+        "cl_citation": "24 N.Y.3d 742",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['24 N.Y.3d 742', '28 N.E.3d 527', '5 N.Y.S.3d 348']; model citations ['24 N.Y.3d 742', '24 N.Y.3d 742']; match=True",
+        "cl_snippets": "[combined-opinion] \n\n\n  OPINION OF THE COURT\n \n\n  Rivera, J.\n \n\n  We hold that Real Property Law § 234, which imposes a covenant in favor of a tenant’s right to attorneys’ fees, applies to a lease that authorizes the landlord to cancel the lease upon tenant’s default, repossess the premises and then collect attorneys’ fees incurred in retaking ",
+        "cl_all_citations": [
+          "24 N.Y.3d 742",
+          "28 N.E.3d 527",
+          "5 N.Y.S.3d 348"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-06-30. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-06-30"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-irrelevant",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "addresses_retaliation_defense": false,
+          "holding_characterization": null,
+          "candidate_quote": null,
+          "what_opinion_is_about": "The opinion holds that Real Property Law § 234, which grants tenants the right to attorneys' fees, applies to leases where the landlord can cancel the lease, repossess the property, and collect their own attorneys' fees after a tenant's default.",
+          "confidence": "high"
+        },
+        "verify_output": null,
+        "queue_routing": "PR",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+        "basis": "Gemini: case does not address retaliation. About: The opinion holds that Real Property Law § 234, which grants tenants the right to attorneys' fees, a"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "pending-retrieval",
+      "disposition_note": "PR: case-not-relevant-to-retaliation-likely-wrong-doc. Quarantined for retrieval retry. Not attorney lane.",
+      "bucket": "PR",
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "controlling_quote": null,
+      "queue_routing": "PR",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL search snippet (abbreviated)",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    "33b7c63fa255": {
+      "unit_id": "33b7c63fa255",
+      "state": "NY",
+      "case_name": "Graham Court Owner's Corp. v. Taylor",
+      "disposition": "transient-failure",
+      "bucket": "PR",
+      "disposition_note": "All 4 attempts failed for NY / Graham Court Owner's Corp. v. Taylor: CL quota/network error on Check A for Graham Court Owner's Corp. v. Taylor: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "22e038e7104f": {
+      "unit_id": "22e038e7104f",
+      "state": "NY",
+      "case_name": "East 145 Co. v. Benayoun",
+      "disposition": "transient-failure",
+      "bucket": "PR",
+      "disposition_note": "All 4 attempts failed for NY / East 145 Co. v. Benayoun: CL quota/network error on Check A for East 145 Co. v. Benayoun: CL search error or no results: {'error': \"HTTPSConnectionPool(host='www.courtlistener.com', port=443): Read timed out. (",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "ff08bc92c2b0": {
+      "unit_id": "ff08bc92c2b0",
+      "state": "NY",
+      "case_name": "Mayfair York L. L. C. v. Zimmerman",
+      "disposition": "transient-failure",
+      "bucket": "PR",
+      "disposition_note": "All 4 attempts failed for NY / Mayfair York L. L. C. v. Zimmerman: CL quota/network error on Check A for Mayfair York L. L. C. v. Zimmerman: CL search error or no results: {'error': '429 Client Error: Too Many Requests for url: https://www.courtlistener.com/api",
+      "provenance": {
+        "harness_exhausted_retries": true
+      }
+    },
+    "SC::__no_cases__": {
+      "unit_id": "SC::__no_cases__",
+      "state": "SC",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    }
+  },
+  "meta": {
+    "protocol": "retaliation_holdings_v3",
+    "run_id": "pr_retry_co_ny_sc_20260629",
+    "total_units": 14
+  }
+}

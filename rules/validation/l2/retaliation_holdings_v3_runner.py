@@ -739,72 +739,132 @@ _STATE_RETALIATION_STATUTES: dict[str, str] = {
 }
 
 
+def _court_matches_state(court_name: str, state_abbr: str) -> bool:
+    """Check E — jurisdiction filter.
+
+    Returns True if the CL court name belongs to the target state.
+    Conservative: only accepts if the state's full name appears in the court string.
+    This catches cases like "Alaska Supreme Court" when querying for Alabama (AL),
+    and "Court of Civil Appeals of Alabama" when querying for Alabama (correct).
+
+    Federal circuit courts (e.g. "Court of Appeals for the Third Circuit") do NOT
+    contain the state name and will be rejected. This is the safe default: a circuit
+    court opinion applying state law is possible, but we cannot confirm jurisdiction
+    from the court name alone. Such cases are marked PR for manual review.
+
+    Updated 2026-06-29: Andy ratified jurisdiction filter (YELLOW → executed).
+    """
+    if not court_name:
+        return True  # no court data — don't filter out (conservative)
+    state_name = _CL_STATE_NAMES.get(state_abbr, state_abbr).lower()
+    return state_name in court_name.lower()
+
+
+def _build_case_from_hit(hit: dict) -> dict:
+    """Convert a CL search API result dict into a case dict for verify_case()."""
+    citations = hit.get("citation", [])
+    citation = citations[0] if citations else ""
+    date_filed = hit.get("dateFiled", "")
+    year = int(date_filed[:4]) if date_filed and len(date_filed) >= 4 else None
+    return {
+        "case_name": hit.get("caseName") or "",
+        "citation_gpt": citation,
+        "citation_gemini": citation,
+        "citation": citation,
+        "year": year,
+        "court_gpt": hit.get("court", ""),
+        "court_gemini": hit.get("court", ""),
+        "holding_gpt": None,
+        "holding_gemini": None,
+        "inter_coder_match": False,
+        "checks": {},
+        "_source": "cl_fresh_search",
+        "_cl_cluster_id": hit.get("cluster_id"),
+    }
+
+
 def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> list[dict]:
     """Search CourtListener for retaliatory eviction cases in a state (fresh path).
 
     Returns a list of case dicts in the same format expected by verify_case().
     Used when fresh=True and no v1 draft candidates exist for this state.
 
-    Query strategy (updated 2026-06-26): use statute-targeted queries when the
-    state's retaliation statute is known. Prior generic query returned wrong-doc
-    results (employment retaliation, discrimination cases, etc.). Statute citation
-    in the query dramatically narrows to residential landlord-tenant context.
+    Query strategy (updated 2026-06-29):
+      1. Statute-targeted query (precision): '<statute> retaliation tenant landlord residential'
+         Results are filtered by Check E (court jurisdiction must match target state).
+      2. If statute query returns 0 in-state results, fall back to broad state-name query:
+         'retaliatory eviction <state_name> landlord tenant'
+         Broad query also filtered by Check E. Broad fallback approved by Andy 2026-06-29.
+
+    Prior strategy (2026-06-26): statute-targeted only, no jurisdiction filter.
+    Root cause of Batch 4 MI/NJ wrong-jurisdiction contamination: CL statute queries
+    returned out-of-state cases (same statute number prefix matches other states' codes).
+    Check E prevents those from entering the 4-check verification pipeline.
     """
     state_name = _CL_STATE_NAMES.get(state_abbr, state_abbr)
     statute = _STATE_RETALIATION_STATUTES.get(state_abbr, "")
 
-    # Build targeted query: statute + "retaliation" + "tenant" wins over generic text
-    if statute:
-        q = f"{statute} retaliation tenant landlord residential"
-    else:
-        q = f"retaliatory eviction {state_name} landlord tenant residential"
+    def _run_search(q: str) -> list[dict]:
+        """Execute one CL search and return jurisdiction-filtered case dicts."""
+        params = {
+            "q": q,
+            "type": "o",
+            "order_by": "score desc",
+            "format": "json",
+            "stat_Precedential": "on",
+        }
+        for attempt in range(5):
+            try:
+                r = requests.get(
+                    f"{CL_BASE}/search/", params=params, headers=cl_headers(), timeout=15
+                )
+                if r.status_code == 429:
+                    wait = 3 * (2 ** attempt)
+                    print(f"    [CL 429 — waiting {wait}s]")
+                    time.sleep(wait)
+                    continue
+                r.raise_for_status()
+                hits = r.json().get("results", [])
+                accepted, rejected = [], []
+                for hit in hits[:max_results * 2]:  # oversample before filtering
+                    court = hit.get("court", "")
+                    if _court_matches_state(court, state_abbr):
+                        accepted.append(_build_case_from_hit(hit))
+                        if len(accepted) >= max_results:
+                            break
+                    else:
+                        rejected.append(f"{hit.get('caseName','?')[:40]} ({court})")
+                if rejected:
+                    print(f"    [Check E: rejected {len(rejected)} wrong-jurisdiction hits: "
+                          f"{rejected[:3]}{'...' if len(rejected) > 3 else ''}]")
+                return accepted
+            except Exception as e:
+                print(f"    [CL search error for {state_abbr}: {e}]")
+                return []
+        return []
 
-    params = {
-        "q": q,
-        "type": "o",
-        "order_by": "score desc",
-        "format": "json",
-        "stat_Precedential": "on",
-    }
-    for attempt in range(5):
-        try:
-            r = requests.get(
-                f"{CL_BASE}/search/", params=params, headers=cl_headers(), timeout=15
-            )
-            if r.status_code == 429:
-                wait = 3 * (2 ** attempt)
-                print(f"    [CL 429 — waiting {wait}s]")
-                time.sleep(wait)
-                continue
-            r.raise_for_status()
-            results = r.json().get("results", [])
-            cases = []
-            for hit in results[:max_results]:
-                citations = hit.get("citation", [])
-                citation = citations[0] if citations else ""
-                date_filed = hit.get("dateFiled", "")
-                year = int(date_filed[:4]) if date_filed and len(date_filed) >= 4 else None
-                cases.append({
-                    "case_name": hit.get("caseName") or "",
-                    "citation_gpt": citation,
-                    "citation_gemini": citation,
-                    "citation": citation,
-                    "year": year,
-                    "court_gpt": hit.get("court", ""),
-                    "court_gemini": hit.get("court", ""),
-                    "holding_gpt": None,
-                    "holding_gemini": None,
-                    "inter_coder_match": False,
-                    "checks": {},
-                    "_source": "cl_fresh_search",
-                    "_cl_cluster_id": hit.get("cluster_id"),
-                })
-            print(f"    [CL fresh search: {len(cases)} candidates for {state_abbr}]")
-            return cases
-        except Exception as e:
-            print(f"    [CL search error for {state_abbr}: {e}]")
-            return []
-    return []
+    # Step 1: statute-targeted query (precision)
+    if statute:
+        q_statute = f"{statute} retaliation tenant landlord residential"
+    else:
+        q_statute = f"retaliatory eviction {state_name} landlord tenant residential"
+
+    cases = _run_search(q_statute)
+    print(f"    [CL statute query: {len(cases)} in-state candidates for {state_abbr}]")
+
+    # Step 2: broad fallback if statute query returns 0 in-state results
+    if not cases and statute:
+        q_broad = f"retaliatory eviction {state_name} landlord tenant"
+        print(f"    [CL broad fallback for {state_abbr}: '{q_broad}']")
+        cases = _run_search(q_broad)
+        if cases:
+            for c in cases:
+                c["_source"] = "cl_fresh_search_broad_fallback"
+            print(f"    [CL broad fallback: {len(cases)} in-state candidates for {state_abbr}]")
+        else:
+            print(f"    [CL broad fallback: 0 results for {state_abbr} — genuine no-CL state]")
+
+    return cases
 
 
 def load_draft_cases(state: str, fresh: bool = False) -> list[dict]:

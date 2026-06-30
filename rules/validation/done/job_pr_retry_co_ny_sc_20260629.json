@@ -1,0 +1,35 @@
+{
+  "job_id": "job_pr_retry_co_ny_sc_20260629",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "CO,NY,SC",
+  "sleep": 30,
+  "fresh": true,
+  "run_id": "pr_retry_co_ny_sc_20260629",
+  "description": "PR retry v2: CO/NY/SC transient-failure cases from nc17_fresh_v2 not covered by Batch 4. CO=3 cases, NY=7 cases, SC=4 cases (all CL 429 errors). sleep=30 for rate-limit relief. WARNING: post-run manual review needed for wrong-jurisdiction contamination (same pattern as NJ/MI in Batch 4).",
+  "uses": [
+    "courtlistener",
+    "openai",
+    "gemini"
+  ],
+  "live_verified": true,
+  "created": "2026-06-29T00:00:00Z",
+  "notes": {
+    "prior_runs": [
+      "nc17_fresh_v2 (2026-06-26) \u2014 all 14 cases 429'd",
+      "pr_retry_20260626 \u2014 all 14 states failed",
+      "batch4 (2026-06-27) \u2014 covered 11/14 states"
+    ],
+    "remaining_after_batch4": [
+      "CO (3 cases)",
+      "NY (7 cases)",
+      "SC (4 cases)"
+    ],
+    "wrong_jurisdiction_risk": "HIGH \u2014 fresh CL search may return out-of-state cases that pass 4-check protocol. Post-run: verify court state matches query state before accepting MV classification.",
+    "ny_note": "Track B cases (Wheeler, Pena, 339-347, MH Residential, Graham Court/Taylor) already ingested as MV. Any new MV from this run are from CL-found cases, not the Track B set."
+  },
+  "completed_at": "2026-06-30T02:04:29.002743+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260630_0114.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-06-30_0204.md"
+}

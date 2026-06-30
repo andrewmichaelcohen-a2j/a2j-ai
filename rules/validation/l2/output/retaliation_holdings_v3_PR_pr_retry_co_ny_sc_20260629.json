@@ -1,0 +1,88 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "pr_retry_co_ny_sc_20260629",
+  "pr_count": 8,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": [
+    {
+      "state": "CO",
+      "case_name": "Arnal v. Aspen View Condominium Ass'n",
+      "citation_gpt": "226 F. Supp. 3d 1177",
+      "citation_gemini": "226 F. Supp. 3d 1177",
+      "year": 2016,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['245 F. Supp. 3d 1261', '2017 U.S. Dist. LEXIS 53537']; model citations ['226 F. Supp. 3d 1177', '226 F. Supp. 3d 1177']; match=False",
+      "run_id": "pr_retry_co_ny_sc_20260629"
+    },
+    {
+      "state": "CO",
+      "case_name": "Sladek v. dePlomb",
+      "citation_gpt": "981 F. Supp. 1364",
+      "citation_gemini": "981 F. Supp. 1364",
+      "year": 1997,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['981 F. Supp. 1364', '1997 WL 726438']; model citations ['981 F. Supp. 1364', '981 F. Supp. 1364']; match=True",
+      "run_id": "pr_retry_co_ny_sc_20260629"
+    },
+    {
+      "state": "CO",
+      "case_name": "Hurricane v. Kanover, Ltd.",
+      "citation_gpt": "651 P.2d 1218",
+      "citation_gemini": "651 P.2d 1218",
+      "year": 1982,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['651 P.2d 1218', '1982 Colo. LEXIS 705']; model citations ['651 P.2d 1218', '651 P.2d 1218']; match=True",
+      "run_id": "pr_retry_co_ny_sc_20260629"
+    },
+    {
+      "state": "CO",
+      "case_name": "Martinez v. Winner",
+      "citation_gpt": "548 F. Supp. 278",
+      "citation_gemini": "548 F. Supp. 278",
+      "year": 1982,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['548 F. Supp. 278', '1982 U.S. Dist. LEXIS 17822']; model citations ['548 F. Supp. 278', '548 F. Supp. 278']; match=True",
+      "run_id": "pr_retry_co_ny_sc_20260629"
+    },
+    {
+      "state": "NY",
+      "case_name": "Graham Court Owner's Corp. v. Kyle Taylor",
+      "citation_gpt": "24 N.Y.3d 742",
+      "citation_gemini": "24 N.Y.3d 742",
+      "year": 2015,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['24 N.Y.3d 742', '28 N.E.3d 527', '5 N.Y.S.3d 348']; model citations ['24 N.Y.3d 742', '24 N.Y.3d 742']; match=True",
+      "run_id": "pr_retry_co_ny_sc_20260629"
+    },
+    {
+      "state": "NY",
+      "case_name": "Graham Court Owner's Corp. v. Taylor",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "pr_retry_co_ny_sc_20260629"
+    },
+    {
+      "state": "NY",
+      "case_name": "East 145 Co. v. Benayoun",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "pr_retry_co_ny_sc_20260629"
+    },
+    {
+      "state": "NY",
+      "case_name": "Mayfair York L. L. C. v. Zimmerman",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "pr_retry_co_ny_sc_20260629"
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "broad_query_10states_20260629",
+  "pr_count": 20,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": [
+    {
+      "state": "AL",
+      "case_name": "Harris v. Tuscaloosa Housing Authority",
+      "citation_gpt": "64 So. 3d 628",
+      "citation_gemini": "64 So. 3d 628",
+      "year": 2009,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['64 So. 3d 628', '2009 Ala. Civ. App. LEXIS 580', '2009 WL 4506554']; model citations ['64 So. 3d 628', '64 So. 3d 628']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "AL",
+      "case_name": "Belcher v. Grand Reserve MGM, LLC",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "CT",
+      "case_name": "TOV Realty, LLC v. Suarez",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "CT",
+      "case_name": "Kosel Equity, LLC v. MacGregor",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "CT",
+      "case_name": "Black Rock Gardens, LLC v. Berry",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "CT",
+      "case_name": "Colchester Estate Ventures, LLC v. Madden",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "CT",
+      "case_name": "Renaissance Management Co. v. Barnes",
+      "citation_gpt": "168 A.3d 530",
+      "citation_gemini": "168 A.3d 530",
+      "year": 2017,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['168 A.3d 530', '175 Conn. App. 681', '2017 WL 3585190', '2017 Conn. App. LEXIS 341']; model citations ['168 A.3d 530', '168 A.3d 530']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "HI",
+      "case_name": "Ryan v. Herzog.",
+      "citation_gpt": "418 P.3d 619",
+      "citation_gemini": "418 P.3d 619",
+      "year": 2018,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['418 P.3d 619']; model citations ['418 P.3d 619', '418 P.3d 619']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "LA",
+      "case_name": "Poole v. Housing Authority for the Town of Vinton",
+      "citation_gpt": "202 F. Supp. 3d 617",
+      "citation_gemini": "202 F. Supp. 3d 617",
+      "year": 2016,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['202 F. Supp. 3d 617', '2016 U.S. Dist. LEXIS 108356', '2016 WL 4371513']; model citations ['202 F. Supp. 3d 617', '202 F. Supp. 3d 617']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "LA",
+      "case_name": "Housing Authority of New Orleans v. Eason",
+      "citation_gpt": "9 So. 3d 269",
+      "citation_gemini": "9 So. 3d 269",
+      "year": 2009,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['9 So. 3d 269', '2008 La.App. 4 Cir. 0525', '2009 La. App. LEXIS 342', '2009 WL 553303']; model citations ['9 So. 3d 269', '9 So. 3d 269']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "ND",
+      "case_name": "Watford City Lodging LLC v. Miskin",
+      "citation_gpt": "2019 ND 136",
+      "citation_gemini": "2019 ND 136",
+      "year": 2019,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['2019 ND 136', '927 N.W.2d 860']; model citations ['2019 ND 136', '2019 ND 136']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "NV",
+      "case_name": "Paullin v. Sutton",
+      "citation_gpt": "724 P.2d 749",
+      "citation_gemini": "724 P.2d 749",
+      "year": 1986,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['724 P.2d 749', '102 Nev. 421', '1986 Nev. LEXIS 1576']; model citations ['724 P.2d 749', '724 P.2d 749']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "NV",
+      "case_name": "Bigelow v. Bullard",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "OK",
+      "case_name": "Schuminsky v. Field",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "WV",
+      "case_name": "STATE EX REL. BAY v. Marshall",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "WV",
+      "case_name": "Napier v. Napier",
+      "citation_gpt": null,
+      "citation_gemini": null,
+      "year": null,
+      "pr_reason": null,
+      "cl_returned": "",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "WV",
+      "case_name": "Adams v. Gaylock",
+      "citation_gpt": "180 W. Va. 576",
+      "citation_gemini": "180 W. Va. 576",
+      "year": 1989,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['180 W. Va. 576', '378 S.E.2d 297', '1989 W. Va. LEXIS 12']; model citations ['180 W. Va. 576', '180 W. Va. 576']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "WV",
+      "case_name": "Imperial Colliery Co. v. Fout",
+      "citation_gpt": "373 S.E.2d 489",
+      "citation_gemini": "373 S.E.2d 489",
+      "year": 1988,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['373 S.E.2d 489', '179 W. Va. 776', '1988 W. Va. LEXIS 119']; model citations ['373 S.E.2d 489', '373 S.E.2d 489']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "WV",
+      "case_name": "Teller v. McCoy",
+      "citation_gpt": "162 W. Va. 367",
+      "citation_gemini": "162 W. Va. 367",
+      "year": 1978,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['253 S.E.2d 114']; model citations ['162 W. Va. 367', '162 W. Va. 367']; match=False",
+      "run_id": "broad_query_10states_20260629"
+    },
+    {
+      "state": "WV",
+      "case_name": "Harless v. First National Bank in Fairmont",
+      "citation_gpt": "246 S.E.2d 270",
+      "citation_gemini": "246 S.E.2d 270",
+      "year": 1978,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "CL citations ['246 S.E.2d 270', '162 W. Va. 116', '1978 W. Va. LEXIS 329', '115 L.R.R.M. (BNA) 4380']; model citations ['246 S.E.2d 270', '246 S.E.2d 270']; match=True",
+      "run_id": "broad_query_10states_20260629"
+    }
+  ]
+}

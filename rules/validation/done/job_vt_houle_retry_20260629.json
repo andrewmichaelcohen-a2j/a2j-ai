@@ -1,0 +1,21 @@
+{
+  "job_id": "job_vt_houle_retry_20260629",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "VT",
+  "sleep": 20,
+  "fresh": false,
+  "run_id": "vt_houle_retry_20260629",
+  "description": "Single-case VT retry: Houle v. Quenneville (CL cluster_id=2320677, 173 Vt. 80). Transient-failure (CL 429) from Batch 4. Known valid candidate identified via Justia. fresh=false: candidate is already in vt_eviction_v2.json. Andy approved 2026-06-29.",
+  "uses": [
+    "courtlistener",
+    "openai",
+    "gemini"
+  ],
+  "live_verified": true,
+  "created": "2026-06-29T00:00:00Z",
+  "completed_at": "2026-06-30T01:14:39.580161+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260630_0114.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-06-30_0114.md"
+}

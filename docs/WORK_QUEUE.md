@@ -2,17 +2,24 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-29 morning report
+**Last updated:** 2026-06-29 Cowork session
 
 ---
 
 ## NOW (executing)
 
-**Overnight queue: EMPTY — confirmed empty again tonight (2026-06-29 at 2:15 AM)**
-- Dispatcher log confirms: fired 2026-06-29 09:29 UTC → "Queue is empty or no eligible jobs — nothing to do." (twice).
-- No job file in `rules/validation/queue/`. Dispatcher will idle tonight unless Andy approves the VT Houle retry or another job is queued.
-- **Proposal for Andy to approve:** Queue a VT Houle retry (single-case, known CL cluster_id=2320677, transient-failure from 429 — high-probability recovery). YELLOW — needs Andy approval to queue.
-- Next GREEN pipeline action: PR retry runner v2 (82 unretried transient-failure cases — NEXT #3). Cowork can build and queue without Andy approval once runner is ready.
+**3 jobs queued — running on successive nights (single-shot dispatcher)**
+
+| Night | Job | States | Notes |
+|-------|-----|--------|-------|
+| Tonight (2026-06-30 at 2:15 AM) | `job_pr_retry_co_ny_sc_20260629.json` | CO, NY, SC | 14 CL 429 transient cases; sleep=30; fresh=true |
+| Tomorrow night (2026-07-01) | `job_broad_query_10states_20260629.json` | AL,CT,HI,KS,LA,ND,NM,NV,OK,WV | Broad fallback + Check E; first run with updated runner |
+| Night after (2026-07-02) | `job_vt_houle_retry_20260629.json` | VT | Houle v. Quenneville single-case retry; fresh=false |
+
+**Runner updated 2026-06-29:** `retaliation_holdings_v3_runner.py` — Check E jurisdiction filter (`_court_matches_state()`) + broad fallback query. Syntax verified; all unit tests pass.
+
+**Direction B attorney freeze** (RED gate — Andy's action required):
+- 50 DRAFT golden-set candidates in `rules/validation/golden_sets/`. Andy must personally sign off → items become FROZEN. Scorer harness ready to run immediately after.
 
 **Direction B attorney freeze** (RED gate — Andy's action required):
 - 50 DRAFT golden-set candidates in `rules/validation/golden_sets/`. Andy must personally sign off → items become FROZEN. Scorer harness being built in parallel (no attorney gate on the harness itself).
@@ -20,6 +27,11 @@
 ---
 
 ## Completed Today
+
+**2026-06-29 Cowork session 2** ✅ DONE
+- Check E jurisdiction filter + broad CL fallback built in `retaliation_holdings_v3_runner.py`. 10 unit tests pass.
+- 3 jobs queued: CO/NY/SC (tonight), 10-state broad-query (tomorrow), VT Houle (night after).
+- DAILY_CHANGELOG + WORK_QUEUE updated.
 
 **2026-06-29 morning report** ✅ DONE
 - Overnight scan: queue was empty, dispatcher idled. No new output files.
@@ -134,13 +146,17 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **Cross-jurisdiction contamination fix — runner court-filter** (YELLOW pipeline fix): `retaliation_holdings_v3.py` load_draft_cases() / fresh CL search path does not validate that returned cases are from the target state's court system. Markese v. Cooper (NY County, returned for NJ query) and all 8 MI PR cases (returned from non-MI courts) are the live evidence. Fix: after CL search returns a case, check that `court` field matches the expected jurisdiction before accepting. Needs runner change → YELLOW for Andy's ratification before deploy.
+1. **Check E + broad fallback — DONE (2026-06-29)** ✅: `retaliation_holdings_v3_runner.py` updated. `_court_matches_state()` filters every CL search result by state jurisdiction. Broad fallback query fires if statute-targeted returns 0 in-state results. All 3 queued jobs will use updated runner.
 
-2. **VT Houle retry** (YELLOW — single-case): Houle v. Quenneville (CL cluster_id=2320677) transient-failure from CL 429. Create a single-state VT fresh=true job. Small; high-probability recovery. YELLOW: propose to Andy → queue after approval.
+2. **CO/NY/SC PR retry** ✅ QUEUED (2026-06-29): `job_pr_retry_co_ny_sc_20260629.json` — runs tonight.
 
-3. **PR retry runner v2 — design and build** (GREEN pipeline fix): 82 transient-failure cases from nc17_fresh_v2 still unretried. Build a fresh=true job covering the 14 states (from failed PR retry job). Simpler path — no runner changes needed. Cowork can build and queue.
+3. **10-state broad-query run** ✅ QUEUED (2026-06-29): `job_broad_query_10states_20260629.json` — runs tomorrow night. First test of broad fallback + Check E for AL/CT/HI/KS/LA/ND/NM/NV/OK/WV.
 
-4. **KS/NV/SC — plan next step for zero-CL states** (YELLOW — 3 paths): (a) Use Descrybe MCP to verify model-suggested Track A candidates (Stephens v. Ludy/KS, Anvui/NV, Wadell/SC); (b) Fix `load_draft_cases()` to also read from v2 files' `holdings.candidates[]` array; (c) Accept Track A (statute-only) for these states. Path (b) is cleanest long-term. YELLOW.
+4. **VT Houle retry** ✅ QUEUED (2026-06-29): `job_vt_houle_retry_20260629.json` — runs night after tomorrow. Andy approved.
+
+5. **KS/NV model-suggested cases** (YELLOW — pending 10-state run results): Stephens v. Ludy (KS), Paullin v. Sutton (NV) are in v2 files but not in CL. If broad fallback also returns 0 for KS/NV, Descrybe MCP or Justia lookup needed. Revisit after 10-state run completes.
+
+6. **Baer v. Huggins confirm** (CI cheap confirm lane) — see HUMAN_REVIEW_QUEUE [NY-HOLD-CI-01]. Attorney pull from Fastcase/Westlaw.
 
 5. **Baer v. Huggins confirm** (CI cheap confirm lane) — see HUMAN_REVIEW_QUEUE [NY-HOLD-CI-01]. Attorney pull from Fastcase/Westlaw.
 

@@ -34,6 +34,71 @@ All RED items carried from prior cycles (see HUMAN_REVIEW_QUEUE and the RED list
 
 ---
 
+## 2026-06-29 (session 2 — Check E + broad fallback built; 3 jobs queued)
+
+### GREEN — Executed autonomously
+
+**Check E jurisdiction filter + broad CL fallback — built and verified (Andy ratified 2026-06-29)**
+- File modified: `rules/validation/l2/retaliation_holdings_v3_runner.py`
+- Added `_court_matches_state(court_name, state_abbr)`: checks if CL-returned court name contains the target state's full name. Conservative: federal circuit courts (no state name) are rejected by default.
+- Added `_build_case_from_hit(hit)`: extracted helper to avoid code duplication.
+- Refactored `cl_search_retaliation_by_state()`: now uses `_run_search()` inner function that applies `_court_matches_state()` to every CL hit before accepting it. Logs rejected wrong-jurisdiction hits.
+- Broad fallback: if statute-targeted query returns 0 in-state results, runner automatically tries `retaliatory eviction {state_name} landlord tenant`; same Check E filter applied. Cases from broad fallback tagged `_source: "cl_fresh_search_broad_fallback"`.
+- Syntax check: import OK. Protocol adapter import OK (no API calls required for check).
+- Unit tests (inline): 10 court-matching scenarios, all pass (AK court rejected for AL, CT court accepted for CT, NJ federal district accepted for NJ, D.C. Circuit rejected for NJ, etc.).
+
+**3 batch jobs queued (dispatch order: tonight → tomorrow → night after)**
+- **Tonight (oldest):** `job_pr_retry_co_ny_sc_20260629.json` — CO/NY/SC, sleep=30, fresh=true. Already queued before runner update; will use updated runner (fresh CL search path).
+- **Tomorrow night:** `job_broad_query_10states_20260629.json` — AL/CT/HI/KS/LA/ND/NM/NV/OK/WV, sleep=20, fresh=true. First run with broad fallback + Check E.
+- **Night after:** `job_vt_houle_retry_20260629.json` — VT only, sleep=20, fresh=false. Houle v. Quenneville (cluster_id=2320677); Andy approved.
+
+**DAILY_CHANGELOG and WORK_QUEUE updated** (this entry).
+
+### YELLOW — Ratified this session (now GREEN-executed)
+
+- **Check E jurisdiction filter:** YELLOW from 2026-06-28 → ratified by Andy 2026-06-29 → implemented.
+- **Broad CL fallback query for 10 no-results states:** YELLOW from 2026-06-29 → ratified by Andy 2026-06-29 → implemented.
+- **VT Houle retry:** YELLOW from 2026-06-28 → ratified by Andy 2026-06-29 → job queued.
+
+### RED — None this session
+
+---
+
+## 2026-06-29 (session — PR retry v2 queued; no-candidates diagnosis; WORK_QUEUE updated)
+
+### GREEN — Executed autonomously
+
+**PR retry v2 job built and queued for tonight**
+- File: `rules/validation/queue/job_pr_retry_co_ny_sc_20260629.json`
+- States: CO (3 transient cases), NY (7 transient cases), SC (4 transient cases)
+- All three states had real CL 429 transient failures in nc17_fresh_v2 and were NOT covered by Batch 4 (Batch 4 covered AL, CT, HI, LA, MI, ND, NJ, NM, OK, VT, WV).
+- `sleep=30` (doubled from 15) to reduce 429 rate.
+- Post-run: manual jurisdiction review required (wrong-jurisdiction contamination risk; same pattern as NJ/MI in Batch 4).
+- NY note: Track B cases (Wheeler, Pena, 339-347, MH Residential, Graham Court/Taylor) already ingested as MV this session. Any new MV from tonight's run would be CL-search-found cases, not the Track B set.
+
+**`__no_cases__` root-cause diagnosis — corrected understanding**
+- Prior session characterization: "fresh=true was a no-op / no-candidates bug." Updated: `cl_search_retaliation_by_state()` IS being called via the `fresh=True` path for AL, CT, HI, KS, LA, ND, NM, NV, OK, WV.
+- Root cause: CL free-tier search returns 0 results for those states' statute-targeted queries. Examples: WV `37-6A-1`, OK `41-120`, ND `47-16-17.5` — no indexed precedential opinions found.
+- This is a **data coverage gap** (CL free tier), NOT a code bug. A fallback to a broader state-name query might find cases but would increase wrong-jurisdiction contamination risk.
+- Documented in WORK_QUEUE NEXT #2 (revised). No code change today — this is YELLOW; flagging for Andy's direction on query strategy vs. Track A for these 8 states.
+
+**WORK_QUEUE.md and DAILY_CHANGELOG.md updated** (this entry).
+
+### YELLOW — Flagged for Andy ratification
+
+**Broader CL query fallback (previously mislabeled as code bug):**
+- For AL, CT, HI, LA, ND, NM, OK, WV: statute-targeted CL queries return 0 results. A broader query (state name + "retaliatory eviction" + "landlord tenant") would likely find cases but introduces same wrong-jurisdiction risk as Batch 4 MI (non-state cases passing the 4-check protocol).
+- Options: (a) Add broad fallback query + jurisdiction filter (YELLOW — runner change); (b) Research these states via Justia/Scholar as Track B candidates; (c) Accept Track A for all 8.
+- **Andy: direction on how to handle these 8 states (Track A / Justia research / improved CL query)?**
+
+**Cross-jurisdiction fix (carried from 2026-06-28):** NEXT #1. Runner court-filter still needed. Not implemented today.
+
+**VT Houle retry (carried from 2026-06-28):** Still awaiting Andy's go-ahead.
+
+### RED — None this session
+
+---
+
 ## 2026-06-28 (morning report — Batch 4 NC ingested; cross-jurisdiction bug flagged)
 
 ### GREEN — Executed autonomously
