@@ -4,6 +4,83 @@
 
 ---
 
+## 2026-06-29 (morning report — overnight queue empty; no new runs)
+
+### GREEN — Executed autonomously
+
+**Overnight scan — queue empty, no runs**
+- Dispatcher log (`launchd_stdout.log`, 2026-06-29 09:29) confirms: "Queue is empty or no eligible jobs — nothing to do." (fired twice, both idle).
+- No new l2/output files since 2026-06-27 19:24 UTC. No new SUMMARY files.
+- All output from last cycle (Batch 4 NC) was already ingested in 2026-06-28 morning report.
+
+**Living docs updated (all GREEN — date/state pass)**
+- `docs/WORK_QUEUE.md` — "Last updated" advanced to 2026-06-29; NOW section confirmed empty; NEXT queue unchanged (8 items).
+- `docs/VALIDATION_METRICS_LEDGER.md` — No new run entry (no overnight run). Carry-forward note appended.
+- `docs/PROJECT_STATE_OF_RECORD.md` — No new validation results. State unchanged.
+- `docs/HUMAN_REVIEW_QUEUE.md` — No new items this cycle. Existing queue unchanged.
+- `docs/CLAUDE_CHAT_BRIEF.md` — Regenerated (Step 3f). Timestamp advanced to 2026-06-29.
+
+### YELLOW — None this cycle (carried from prior cycle)
+
+**Carried YELLOWs awaiting Andy ratification (no new ones this cycle):**
+- Cross-jurisdiction rejection (Markese/Robinson) — ratify or redirect
+- VT Houle retry — queue or hold
+- GA notice file change [NOTICE-L2-06] — ratify or override
+- Graham Court v. Taylor (115 A.D.3d 50) MV-with-caution flag — noted for Andy's NY review
+
+### RED — None new this cycle
+
+All RED items carried from prior cycles (see HUMAN_REVIEW_QUEUE and the RED list in CLAUDE_CHAT_BRIEF).
+
+---
+
+## 2026-06-28 (morning report — Batch 4 NC ingested; cross-jurisdiction bug flagged)
+
+### GREEN — Executed autonomously
+
+**Batch 4 NC states (fresh_nc_batch4_20260627) — ingested**
+- Run completed 2026-06-27 19:24 UTC (21.4 min). States: AL, CT, HI, LA, MI, ND, NJ, NM, OK, VT, WV. 22 units.
+- Harness-reported: MV=3, PR=11, perm-fail=8, SM=0. Method rate: 100%. Overall rate: 14%.
+- Corrected MV (after cross-jurisdiction audit): 1 (Onderdonk only). 2 harness-MV rejected.
+- perm-fail (8 states): AL, CT, HI, LA, ND, NM, OK, WV — genuinely no CL candidates under fresh=true statute-targeted search.
+- VT: Atwood v. Hill (wrong-doc PR), Houle v. Quenneville (CL 429 transient-failure, reclassified PR — retry candidate).
+- All source JSON archived at: `rules/validation/l2/output/retaliation_holdings_v3_2026-06-27_fresh_nc_batch4_20260627.json`.
+
+**nj_eviction_v2.json updated (GREEN)**
+- `holdings.machine_verified_cases`: Onderdonk v. Presbyterian Homes of NJ (85 N.J. 171, NJ SC 1981) added.
+- `holdings.rejected_cross_jurisdiction`: Markese v. Cooper (NY County Courts, not NJ) and Lena Robinson v. Diamond Housing Corp. (D.C. Circuit, not NJ) written with rejection reason.
+- `holdings.pr_cases`: Scofield v. Berman & Sons (MA case, wrong-doc).
+- `holdings.validation_status`: BATCH4-MV-PARTIAL.
+
+**VALIDATION_METRICS_LEDGER.md updated**
+- New run entry: Batch 4 NC states (fresh_nc_batch4_20260627), full metric table with YELLOW cross-jurisdiction flag.
+- Cross-batch summary table updated: Batch 4 row added, cumulative MV corrected to 16.
+
+**PROJECT_STATE_OF_RECORD.md updated**
+- Holdings v3 section: Batch 4 results added; cross-jurisdiction pipeline bug noted; cumulative MV updated to 16 (10 CA + 5 NY + 1 NJ).
+- Last-updated header updated.
+
+**WORK_QUEUE.md updated**
+- NOW: Batch 4 moved to Completed; queue empty tonight; VT Houle retry proposed as YELLOW for Andy approval.
+- NEXT: cross-jurisdiction runner fix (#1, YELLOW) + VT Houle retry (#2, YELLOW) added ahead of existing items.
+
+**CLAUDE_CHAT_BRIEF.md regenerated** (Step 3f — see below).
+
+### YELLOW — Flagged for Andy ratification
+
+**Cross-jurisdiction contamination in Batch 4 harness MV bucket:**
+- Runner accepted 2 non-NJ cases as NJ MV (Markese=NY County Courts, Robinson=DC Circuit). Root cause: CL statute-targeted query for NJ Anti-Reprisal Act returned cases from other jurisdictions that discuss the same statutory framework. Same pattern explains all 8 MI PR cases (non-MI cases returned for MI statute query).
+- **Corrective action taken:** Markese and Robinson rejected from nj_eviction_v2.json; written to `rejected_cross_jurisdiction` with reason. No file-level validation status impact (NJ remains BATCH4-MV-PARTIAL).
+- **Fix needed:** Add court-jurisdiction filter to runner's CL results (YELLOW — changes runner behavior). Proposal in WORK_QUEUE NEXT #1.
+- **Andy: ratify the rejection of Markese/Robinson and the proposed jurisdiction filter fix, or redirect.**
+
+**VT Houle retry proposal:**
+- Houle v. Quenneville (cluster_id=2320677) is a known valid candidate; transient-failure from CL 429 in Batch 4. A single-state VT fresh=true job would likely succeed. Proposed — not queued pending Andy's go-ahead (YELLOW).
+
+### RED — None this cycle
+
+---
+
 ## 2026-06-27 (session continuation 3 — Batch 4 NC job queued; golden-set scorer harness built)
 
 ### GREEN — Executed autonomously

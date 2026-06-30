@@ -669,7 +669,7 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
-**Cross-batch holdings v3 summary (updated 2026-06-27):**
+**Cross-batch holdings v3 summary (updated 2026-06-28):**
 
 | Run | Date | States | NY MV | CA MV | Other MV | Total MV | Total CI | Total RC | Method rate |
 |-----|------|--------|-------|-------|----------|----------|----------|----------|-------------|
@@ -678,9 +678,52 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 | nc17_fresh_v2 | 2026-06-26 | extended | 0 | 6 | 0 | 6 | 0 | 3 | 67% |
 | PR Retry | 2026-06-27 | 14 states | 0 | 0 | 0 | 0 | 0 | 0 | n/a |
 | **Track B** | **2026-06-27** | **KS/NV/NY/SC** | **5** | **0** | **0** | **5** | **1** | **0** | **83.3%** |
-| **Cumulative** | | | **5** | **10** | **0** | **15** | **3** | **5** | |
+| **Batch 4 NC** | **2026-06-27** | **AL/CT/HI/LA/MI/ND/NJ/NM/OK/VT/WV** | **0** | **0** | **1 NJ⚠️** | **3†** | **0** | **0** | **100%†** |
+| **Cumulative** | | | **5** | **10** | **1 (NJ)** | **16†** | **3** | **5** | |
+
+†Batch 4 harness reported MV=3 (method rate 100%, overall 14%). YELLOW quality flag: 2 of the 3 "NJ" MV cases are wrong-jurisdiction — Markese v. Cooper (70 Misc. 2d 478, New York County Courts) and Lena Robinson v. Diamond Housing Corp. (463 F.2d 853, D.C. Circuit) — returned by CL's NJ statute query but not NJ precedent. Only Onderdonk v. Presbyterian Homes of NJ (85 N.J. 171, NJ SC 1981) is a valid NJ case. Cumulative NJ MV corrected to 1. True corrected method rate for Batch 4 text-retrievable cases = 1/1 = 100% (n=1, statistically meaningless). Cross-jurisdiction query contamination is a pipeline bug — see DAILY_CHANGELOG 2026-06-28.
 
 *Cumulative: 15 MV total (10 CA + 5 NY), 3 CI (2 CA + 1 NY), 5 RC (3 in HUMAN_REVIEW_QUEUE), 84 transient-failure PR-class (unretried), 25 wrong-doc PR, KS/NV/SC/~12 other states still no candidates.*
+
+---
+
+#### Morning report cycle — 2026-06-29 (no overnight run)
+
+*2026-06-29. No job in queue at 2:15 AM. Dispatcher idled. No new runs, no new metrics. State unchanged from Batch 4 Batch cycle (ingested 2026-06-28). No new ledger row added. Carry-forward: cumulative MV=16 (corrected), CI=3, RC=5, 82 unretried transient-failure PR-class cases, VT Houle pending retry approval.*
+
+---
+
+#### Module: Retaliation Holdings v3 — Batch 4 NC states (fresh_nc_batch4_20260627)
+
+*Run 2026-06-27 12:03–12:24 UTC (21.4 min). States: AL, CT, HI, LA, MI, ND, NJ, NM, OK, VT, WV (11 states). 22 units (statute-targeted CL queries, fresh=true, sleep=15s). Runner: `rules/validation/protocols/retaliation_holdings_v3.py`. Ingested: 2026-06-28 morning report.*
+
+**Purpose:** Fresh CL search for 11 states with zero MV/CI to date. Statute-targeted CL queries using `_STATE_RETALIATION_STATUTES` dict.
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate (as-reported) | MV÷(MV+CI+RC) = 3÷3 = **100%** | ⚠️ Inflated — 2 of 3 MV are wrong-jurisdiction (see YELLOW flag) |
+| Method rate (corrected) | 1÷1 = **100%** | n=1 — statistically meaningless; only Onderdonk is genuine NJ |
+| Overall rate | MV÷all = 3÷22 = **14%** | Bottlenecked by permanent-failure (8) and PR (11) |
+| MV | 3 (harness) / 1 (corrected) | Onderdonk (NJ SC 1981) only; Markese and Robinson are NY/DC cases |
+| CI | 0 | |
+| RC | 0 | |
+| PR | 11 | MI×8 (wrong-state docs), NJ×1 (Scofield — MA case), VT×2 (Atwood wrong-doc, Houle 429 transient) |
+| Permanent-failure | 8 | AL, CT, HI, LA, ND, NM, OK, WV — no CL candidates found |
+| SM | 0 | |
+| α_method | n/a (D_e=0) | All 3 dual-model cases: AGREE. α undefined when no disagreement observed. n=3, statistically meaningless. |
+| α_overall | n/a | Same — all dual-model cases agreed |
+
+**YELLOW quality flag — cross-jurisdiction contamination:** The NJ statute-targeted CL query returned 4 cases; 2 of the 3 MV cases come from non-NJ courts:
+- **Markese v. Cooper** (70 Misc. 2d 478, 1972) — **New York County Courts**, not NJ. CL returned this case in response to the NJ Anti-Reprisal Act query. Runner verified it as retaliation-relevant (it is — NY case discussing NY retaliation law), but assigned it to state=NJ. Invalid.
+- **Lena Robinson v. Diamond Housing Corp.** (463 F.2d 853, 1972) — **D.C. Circuit**, not NJ. Same pattern. Invalid as NJ precedent.
+- **Onderdonk v. Presbyterian Homes of NJ** (85 N.J. 171, 1981) — NJ Supreme Court. ✓ Valid NJ case.
+- **Root cause:** Statute-targeted CL query for NJ Anti-Reprisal Act (N.J.S.A. 2A:42-10.10) is returning cases from other jurisdictions that cite or discuss the same themes. Runner lacks court-jurisdiction filter. Pipeline fix needed.
+
+**MI PR analysis:** All 8 MI cases are cross-state contamination — CL returned cases from VT, WA, CA, MA, NY federal courts in response to MI retaliation statute query. MI has 0 valid CL candidates. Same root cause as NJ contamination.
+
+**VT PR analysis:** Atwood v. Hill — "wrong-doc" classification (not a VT residential tenancy case). Houle v. Quenneville (CL cluster_id=2320677, known valid candidate) — transient-failure from CL 429 after 4 retries. Reclassified to PR-class pending retry.
+
+**File updates applied (GREEN):** `nj_eviction_v2.json` — Onderdonk written to `holdings.machine_verified_cases`. Markese and Robinson NOT written (wrong jurisdiction).
 
 ---
 

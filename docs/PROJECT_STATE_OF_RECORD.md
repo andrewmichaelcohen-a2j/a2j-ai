@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** 2026-06-27 (Morning report. PR retry: 14 states all perm-fail [pipeline bug: fresh=false + no v1 draft candidates]. Track B KS/NV/NY/SC: NY 5 MV + 1 CI [method 83.3%]; KS/NV/SC 0 CL candidates [perm-fail]. ny_eviction_v2.json updated with Track B results. NY-HOLD-CI-01 added to HUMAN_REVIEW_QUEUE. Pipeline fixes needed before next run.) · **Next update:** after PR retry v2 / KS-NV-SC path decision
+**Generated:** June 15, 2026 · **Last updated:** 2026-06-28 (Morning report. Batch 4 NC states ingested: 1 valid NJ MV [Onderdonk], 2 wrong-jurisdiction rejected [Markese NY, Robinson DC], 8 perm-fail states, MI cross-state contamination. Cross-jurisdiction pipeline bug detected and logged as YELLOW. nj_eviction_v2.json updated. Cumulative MV now 16 [10 CA + 5 NY + 1 NJ].) · **Next update:** after cross-jurisdiction fix + VT Houle retry
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
@@ -539,7 +539,7 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
 - [x] **L2 expansion — service module complete (2026-06-19/20).** 51/51 states run. 16 round-1 confirmed, 32 AI-resolved, 2 L7 (DC, NM). See `VALIDATION_METRICS_LEDGER.md` for full breakdown.
 - [ ] **DC L7 attorney review (open — service module):** Persistent API failure (both GPT and Gemini, 3+ attempts). Zero model data. Service statute(s) for D.C. pay-or-quit notices require attorney verification.
 - [ ] **NM L7 attorney review (open — service module):** Persistent API failure (both GPT and Gemini, 3+ attempts). Zero model data. Service statute(s) for N.M. pay-or-quit notices require attorney verification.
-- ✅ **Holdings v3 runs complete (Batches 1–3 + NC-17 fresh + PR retry + Track B, as of 2026-06-27):**
+- ✅ **Holdings v3 runs complete (Batches 1–3 + NC-17 fresh + PR retry + Track B + Batch 4, as of 2026-06-28):**
   - Batch 3 (7e6fcf6d, 2026-06-25): 18 states, 23 units. MV=4 (CA), CI=2 (CA), RC=0, PR=0, NC=17. Method rate: 66.7%.
   - nc17_fresh_v2 (2026-06-26): 118 units, MV=6 (CA), CI=0, RC=3 (AK/CO/CT), PR=25, transient-fail=84. Method rate: 67%.
   - NC-17 fresh run (20f722c8, 2026-06-26): 17 NC states, 50 units. MV=0, CI=0, RC=2, PR=11, perm-fail=37. Method rate: 0%.
@@ -547,9 +547,17 @@ June 15 work (v2 schema, 51 rules files, L1 retrieval, validate.py) committed an
   - **Track B (2026-06-27): NY SUCCESS; KS/NV/SC GAP.**
     - NY: MV=5 (Wheeler v. D'Antonio 2025, Pena v. Lockenwitz, 339-347 E. 12th St. LLC v. Ling, MH Residential 1 v. Barrett, Graham Court v. Taylor 115 A.D.3d 50), CI=1 (Baer v. Huggins), PR=1 (Graham Court v. Kyle Taylor 24 N.Y.3d 742 wrong-doc). Method rate 83.3%. Ingested to ny_eviction_v2.json.
     - KS, NV, SC: CL fresh search returned 0 candidates. Track A candidates not indexed in CL. Next: Descrybe MCP verify OR fix load_draft_cases() to read v2 candidates[].
-  - **Cumulative MV:** 15 total (10 CA + 5 NY). **Cumulative RC:** 5 (in HUMAN_REVIEW_QUEUE). **Unretried PR:** 82.
+  - **Batch 4 NC states (fresh_nc_batch4_20260627, 2026-06-27): PARTIAL — CROSS-JURISDICTION BUG DETECTED.**
+    - 11 states (AL, CT, HI, LA, MI, ND, NJ, NM, OK, VT, WV), 22 units. Harness-reported MV=3, but 2 are wrong-jurisdiction (Markese=NY County Courts, Robinson=DC Circuit — returned by NJ CL query). Valid NJ MV: 1 (Onderdonk v. Presbyterian Homes of NJ, 85 N.J. 171, 1981 NJ SC).
+    - perm-fail=8 (AL, CT, HI, LA, ND, NM, OK, WV — genuinely no CL candidates).
+    - MI: 8 PR — all cross-state contamination (CL returning non-MI cases for MI statute query).
+    - VT: 2 PR (Atwood=wrong-doc, Houle=CL 429 transient — known candidate, cluster_id=2320677).
+    - Pipeline bug: CL statute query does not filter for court jurisdiction. Court-filter fix needed before next run.
+    - nj_eviction_v2.json updated: Onderdonk added to machine_verified_cases; Markese/Robinson added to rejected_cross_jurisdiction.
+  - **Cumulative MV (corrected):** 16 total (10 CA + 5 NY + 1 NJ). **Cumulative RC:** 5 (in HUMAN_REVIEW_QUEUE). **Unretried PR:** 82 (from nc17_fresh_v2) + VT Houle (transient-failure, new).
   - RC cases → [NV-RET-HOLD-RC-01], [NY-RET-HOLD-RC-02], [AK-RET-HOLD-RC-01], [CO-RET-HOLD-RC-01], [CT-RET-HOLD-RC-01].
   - CI cases (cheap confirm lane): [NY-HOLD-CI-01] Baer v. Huggins (NY Civ. Ct. 2013).
+  - **Cross-jurisdiction pipeline bug:** runner must add court-jurisdiction filter to CL results (YELLOW — see WORK_QUEUE NEXT #1).
 
 - ⚠️ **Task #52 — Commit pending (do this first, before running v3):**
   - Modified: `docs/PROJECT_STATE_OF_RECORD.md`, `docs/VALIDATION_METRICS_LEDGER.md`, `rules/eviction/california/ca_eviction_v2.json`, `rules/validation/l2/retaliation_holdings_v2_runner.py`

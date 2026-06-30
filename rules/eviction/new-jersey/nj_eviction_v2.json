@@ -14,13 +14,13 @@
     },
     "statutory_sources": [
       {
-        "cite": "NJ Rev. Stat. §2A:18-56",
+        "cite": "NJ Rev. Stat. \u00a72A:18-56",
         "url": null,
         "retrieved": false,
         "retrieved_date": null
       },
       {
-        "cite": "NJ Rev. Stat. §2A:18-61.1",
+        "cite": "NJ Rev. Stat. \u00a72A:18-61.1",
         "url": "https://law.justia.com/codes/new-jersey/title-2a/section-2a-18-61-1/",
         "retrieved": true,
         "retrieved_date": "2026-06-15"
@@ -38,7 +38,7 @@
         "retrieved_date": null
       },
       {
-        "cite": "N.J.S.A. §2A:18-61.2",
+        "cite": "N.J.S.A. \u00a72A:18-61.2",
         "url": null,
         "retrieved": false,
         "retrieved_date": "2026-06-16",
@@ -47,9 +47,9 @@
     ],
     "per_module_sources": {
       "notice": [
-        "N.J.S.A. §2A:18-56",
-        "N.J.S.A. §2A:18-61.1",
-        "N.J.S.A. §2A:18-61.2"
+        "N.J.S.A. \u00a72A:18-56",
+        "N.J.S.A. \u00a72A:18-61.1",
+        "N.J.S.A. \u00a72A:18-61.2"
       ],
       "service": [],
       "overlays": [
@@ -57,7 +57,7 @@
         "N.J.S.A. 46:8-43"
       ],
       "substantive_defenses": [
-        "42 U.S.C. §3604 (Fair Housing Act)",
+        "42 U.S.C. \u00a73604 (Fair Housing Act)",
         "[state implied warranty of habitability statute]",
         "[state anti-retaliation statute]",
         "[state just cause eviction statute]"
@@ -67,15 +67,15 @@
       ]
     },
     "ai_drafter_notes": [
-      "STATUTORY RETRIEVAL NOT PERFORMED for this file — all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
-      "NO LDH legislation source for New Jersey — retrieve via New Jersey Legislature website during attorney review",
-      "CRITICAL: New Jersey has one of the strongest just cause eviction laws in the US (§2A:18-61.1) — applies statewide to residential tenants",
-      "NJ just cause requires landlord to prove a specific statutory ground — no no-fault terminations for month-to-month",
-      "Notice period for nonpayment: NJ typically requires written demand and then court filing — verify current procedural requirements",
-      "Many NJ cities have rent control — verify each municipality",
-      "NJ Anti-Eviction Act is complex — attorney review is especially important",
-      "No LDH legislation source available for this state — retrieve from official state legislature website",
-      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
+      "STATUTORY RETRIEVAL NOT PERFORMED for this file \u2014 all citation periods and defect rules require verification against current statutory text by a licensed attorney during Layer 7 review",
+      "NO LDH legislation source for New Jersey \u2014 retrieve via New Jersey Legislature website during attorney review",
+      "CRITICAL: New Jersey has one of the strongest just cause eviction laws in the US (\u00a72A:18-61.1) \u2014 applies statewide to residential tenants",
+      "NJ just cause requires landlord to prove a specific statutory ground \u2014 no no-fault terminations for month-to-month",
+      "Notice period for nonpayment: NJ typically requires written demand and then court filing \u2014 verify current procedural requirements",
+      "Many NJ cities have rent control \u2014 verify each municipality",
+      "NJ Anti-Eviction Act is complex \u2014 attorney review is especially important",
+      "No LDH legislation source available for this state \u2014 retrieve from official state legislature website",
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation \u2014 all require attorney verification before any operational use"
     ]
   },
   "interoperability": {
@@ -149,12 +149,12 @@
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"NJ Rev. Stat. §2A:18-56\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"NJ Rev. Stat. \u00a72A:18-56\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
       },
       {
         "layer": "L1",
         "code": "L1-URL-NOT-RESOLVED",
-        "message": "Citation \"N.J.S.A. 46:8-43\" could not be retrieved via Justia (URL returned no content after 1–2 attempts). Statutory text not confirmed. Attorney verification required."
+        "message": "Citation \"N.J.S.A. 46:8-43\" could not be retrieved via Justia (URL returned no content after 1\u20132 attempts). Statutory text not confirmed. Attorney verification required."
       },
       {
         "layer": "L2",
@@ -193,26 +193,26 @@
         "status": "pending-human-confirmation",
         "l2_run_date": "2026-06-20",
         "classification": "SINGLE-MODEL-RESOLVED",
-        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema \u2014 technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended \u00a73951(a)(2) \u2014 threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 \u2014 OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
         "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
         "gpt_summary": {
           "primary_citation": null,
           "rent_threshold": null,
           "confidence": null,
-          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+          "error": "PARSE_ERROR \u2014 returned notice-module schema instead of SCRA schema; technical failure"
         },
         "gemini_summary": {
-          "primary_citation": "50 U.S.C. § 3951",
+          "primary_citation": "50 U.S.C. \u00a7 3951",
           "rent_threshold": 4954.34,
           "rent_threshold_year": "2024",
           "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
-          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, \u00a7 555, Dec. 23, 2022) amended \u00a7 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
           "confidence": "high",
           "error": null
         },
         "resolved_content": {
-          "primary_citation": "50 U.S.C. § 3951",
-          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "primary_citation": "50 U.S.C. \u00a7 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, \u00a7 555 (Dec. 23, 2022) \u2014 FY23 NDAA",
           "current_rent_threshold_dollars": 4954.34,
           "current_rent_threshold_year": "2024",
           "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
@@ -220,9 +220,9 @@
           "court_order_required": true,
           "max_stay_days": 90,
           "affidavit_required": true,
-          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "affidavit_statute": "50 U.S.C. \u00a7 3931(b)(1)",
           "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
-          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, \u00a7 555, Dec. 23, 2022) amended \u00a7 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
           "confidence": "high"
         }
       },
@@ -238,21 +238,21 @@
             "name": "Anti-Eviction Act",
             "file_citation": "N.J.S.A. 2A:18-61.1",
             "classification": "CITATION-CONFIRMED",
-            "note": "Models agree and file citation matches. GPT: New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 2A, Chapter 18, §§ 2A:18-61.1 through 2A:18-61.12, especially § 2A:18-61.1(a)-(p) | Gem: N.J.S.A. 2A:18-61.1",
-            "gpt_citation": "New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 2A, Chapter 18, §§ 2A:18-61.1 through 2A:18-61.12, especially § 2A:18-61.1(a)-(p)",
+            "note": "Models agree and file citation matches. GPT: New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 2A, Chapter 18, \u00a7\u00a7 2A:18-61.1 through 2A:18-61.12, especially \u00a7 2A:18-61.1(a)-(p) | Gem: N.J.S.A. 2A:18-61.1",
+            "gpt_citation": "New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 2A, Chapter 18, \u00a7\u00a7 2A:18-61.1 through 2A:18-61.12, especially \u00a7 2A:18-61.1(a)-(p)",
             "gemini_citation": "N.J.S.A. 2A:18-61.1"
           },
           {
             "name": "Truth in Renting Act",
             "file_citation": "N.J.S.A. 46:8-43",
             "classification": "CITATION-CONFIRMED",
-            "note": "Models agree and file citation matches. GPT: New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 46, Chapter 8, §§ 46:8-43 through 46:8-50 | Gem: N.J.S.A. 46:8-44",
-            "gpt_citation": "New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 46, Chapter 8, §§ 46:8-43 through 46:8-50",
+            "note": "Models agree and file citation matches. GPT: New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 46, Chapter 8, \u00a7\u00a7 46:8-43 through 46:8-50 | Gem: N.J.S.A. 46:8-44",
+            "gpt_citation": "New Jersey Statutes Annotated (N.J. Stat. Ann.) Title 46, Chapter 8, \u00a7\u00a7 46:8-43 through 46:8-50",
             "gemini_citation": "N.J.S.A. 46:8-44"
           }
         ],
         "needs_queue": false,
-        "note": "All 2 overlay citations verified by L2 — no changes needed."
+        "note": "All 2 overlay citations verified by L2 \u2014 no changes needed."
       },
       {
         "layer": "L2",
@@ -308,7 +308,7 @@
         "note": "PERSISTENT-DIVERGENCE after reasoning pass. Reasoning pass did not converge. GPT: Noned / None. Gemini: Noned / N.J.S.A. 2A:42-10.11.",
         "gpt_summary": {
           "period": 90,
-          "statute": "N.J. Stat. Ann. §§ 2A:42-10.10 to 2A:42-10.12",
+          "statute": "N.J. Stat. Ann. \u00a7\u00a7 2A:42-10.10 to 2A:42-10.12",
           "confidence": "high",
           "error": null
         },
@@ -327,8 +327,8 @@
       "gpt": {
         "model": "gpt-5.5",
         "days": null,
-        "statute": "N.J. Stat. Ann. §§ 2A:18-61.1(a), 2A:18-61.2",
-        "rationale": "Nonpayment of rent is a statutory ground for removal under § 2A:18-61.1(a). Section 2A:18-61.2 expressly states that no notice is required for an eviction based on nonpayment of rent under § 2A:18-61.1(a)."
+        "statute": "N.J. Stat. Ann. \u00a7\u00a7 2A:18-61.1(a), 2A:18-61.2",
+        "rationale": "Nonpayment of rent is a statutory ground for removal under \u00a7 2A:18-61.1(a). Section 2A:18-61.2 expressly states that no notice is required for an eviction based on nonpayment of rent under \u00a7 2A:18-61.1(a)."
       },
       "gemini": {
         "model": "gemini-2.5-pro",
@@ -341,7 +341,7 @@
   "notice": {
     "notice_types": {
       "pay_or_quit": {
-        "description": "Nonpayment of rent — NJ has no statutory notice period for nonpayment. N.J.S.A. §2A:18-61.2 expressly carves nonpayment out of the notice-to-quit requirement; a covered landlord may file the summary dispossess action immediately. Exception: federally subsidized housing requires 14 days. Separately, habitual late payment (after a notice to cease) carries a one-month notice under §2A:18-61.2(b) — that is a different ground, not the nonpayment period. Attorney confirmed: Andrew Cohen, 2026-06-16.",
+        "description": "Nonpayment of rent \u2014 NJ has no statutory notice period for nonpayment. N.J.S.A. \u00a72A:18-61.2 expressly carves nonpayment out of the notice-to-quit requirement; a covered landlord may file the summary dispossess action immediately. Exception: federally subsidized housing requires 14 days. Separately, habitual late payment (after a notice to cease) carries a one-month notice under \u00a72A:18-61.2(b) \u2014 that is a different ground, not the nonpayment period. Attorney confirmed: Andrew Cohen, 2026-06-16.",
         "permitted_amounts": [
           "unpaid_rent_only"
         ],
@@ -353,28 +353,28 @@
             "condition": "federally_subsidized_housing",
             "notice_required": true,
             "notice_period_days": 14,
-            "authority": "federal subsidy program rules; cf. N.J.S.A. §2A:18-61.2 carve-out"
+            "authority": "federal subsidy program rules; cf. N.J.S.A. \u00a72A:18-61.2 carve-out"
           }
         ],
         "tenancy_all": {
           "days": null,
-          "statute": "N.J.S.A. §2A:18-61.1 (nonpayment ground); N.J.S.A. §2A:18-61.2 (nonpayment excluded from notice-to-quit requirement — immediate filing permitted for market-rate tenancy)",
+          "statute": "N.J.S.A. \u00a72A:18-61.1 (nonpayment ground); N.J.S.A. \u00a72A:18-61.2 (nonpayment excluded from notice-to-quit requirement \u2014 immediate filing permitted for market-rate tenancy)",
           "count_method": "calendar_days"
         }
       },
       "cure_or_quit": {
         "description": "Curable lease violation",
         "days": 30,
-        "statute": "NJ Rev. Stat. §2A:18-61.1",
+        "statute": "NJ Rev. Stat. \u00a72A:18-61.1",
         "curable": true
       },
       "termination": {
-        "statute": "NJ Rev. Stat. §2A:18-56",
+        "statute": "NJ Rev. Stat. \u00a72A:18-56",
         "just_cause_required": true,
-        "just_cause_statute": "NJ Rev. Stat. §2A:18-61.1",
+        "just_cause_statute": "NJ Rev. Stat. \u00a72A:18-61.1",
         "tenancy_any": {
           "days": 30,
-          "statute": "NJ Rev. Stat. §2A:18-56",
+          "statute": "NJ Rev. Stat. \u00a72A:18-56",
           "count_method": "calendar_days"
         }
       }
@@ -386,23 +386,23 @@
         "statute": null,
         "case_law": [],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
+        "note": "Notice must be served by a legally recognized method \u2014 verify statutory service requirements for this state"
       },
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": "N.J.S.A. §2A:18-61.2",
+        "statute": "N.J.S.A. \u00a72A:18-61.2",
         "case_law": [],
         "severity": "void",
-        "note": "NJ has no statutory notice period for nonpayment of rent — §2A:18-61.2 carves nonpayment out of the notice-to-quit requirement; a covered landlord may file the summary dispossess action immediately. Exception: federally subsidized housing requires 14 days. Separately, habitual late payment (after a notice to cease) carries a one-month notice under §2A:18-61.2(b) — that is a different ground, not the nonpayment period. Attorney confirmed: Andrew Cohen, 2026-06-16. This defect (notice_period_too_short) therefore applies to the federally-subsidized carve-out case only."
+        "note": "NJ has no statutory notice period for nonpayment of rent \u2014 \u00a72A:18-61.2 carves nonpayment out of the notice-to-quit requirement; a covered landlord may file the summary dispossess action immediately. Exception: federally subsidized housing requires 14 days. Separately, habitual late payment (after a notice to cease) carries a one-month notice under \u00a72A:18-61.2(b) \u2014 that is a different ground, not the nonpayment period. Attorney confirmed: Andrew Cohen, 2026-06-16. This defect (notice_period_too_short) therefore applies to the federally-subsidized carve-out case only."
       },
       {
         "defect": "missing_just_cause_reason",
         "consequence": "notice_void",
-        "statute": "NJ Rev. Stat. §2A:18-61.1",
+        "statute": "NJ Rev. Stat. \u00a72A:18-61.1",
         "case_law": [],
         "severity": "void",
-        "note": "Just cause required — notice must state qualifying reason"
+        "note": "Just cause required \u2014 notice must state qualifying reason"
       }
     ],
     "notice_period_basis": {
@@ -433,7 +433,7 @@
       },
       {
         "method": "certified_mail",
-        "requirements": "Certified mail to premises; adds days to notice period — verify count method",
+        "requirements": "Certified mail to premises; adds days to notice period \u2014 verify count method",
         "statute": "NJSA 2A:18-53",
         "adds_days_for_mail": 3,
         "note": "Number of added days and availability require attorney verification"
@@ -457,25 +457,25 @@
   "overlays": {
     "federal": [
       {
-        "name": "CARES Act §4024",
+        "name": "CARES Act \u00a74024",
         "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
-        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
-        "statute": "15 U.S.C. §9058",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs \u2014 verify current applicability.",
+        "statute": "15 U.S.C. \u00a79058",
         "status": "conditional"
       },
       {
-        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "name": "SCRA \u00a7 3951 (Servicemembers Civil Relief Act)",
         "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
-        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
-        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area \u2014 adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. \u00a7 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. \u00a7 3951; as amended by Pub. L. 117-263, Div. E, Title LV, \u00a7 555 (FY23 NDAA, Dec. 23, 2022)",
         "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
         "threshold_current_dollars": 4954.34,
         "threshold_year": "2024",
         "status": "active",
         "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
         "l2_run_date": "2026-06-20",
-        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
-        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
+        "_preliminary_threshold_was": "4073.16 (2024 \u2014 old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law \u2014 applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
       }
     ],
     "state_protective": [
@@ -495,14 +495,14 @@
         "jurisdiction": "Newark",
         "type": "rent_control",
         "effect": "Rent control ordinance; require just cause and compliance with rent limits",
-        "source": "Newark Revised Code §12:1-1 et seq.",
+        "source": "Newark Revised Code \u00a712:1-1 et seq.",
         "digitization_note": null
       },
       {
         "jurisdiction": "Jersey City",
         "type": "rent_control",
         "effect": "Rent control ordinance; just cause required",
-        "source": "Jersey City Code §260-1 et seq.",
+        "source": "Jersey City Code \u00a7260-1 et seq.",
         "digitization_note": null
       }
     ]
@@ -521,7 +521,7 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Habitability warranty statute: NJSA 2A:42-85 et seq.; Marini v. Ireland, 56 N.J. 130 (1970). Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "note": "Habitability warranty statute: NJSA 2A:42-85 et seq.; Marini v. Ireland, 56 N.J. 130 (1970). Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -553,7 +553,7 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Anti-retaliation statute: NJSA 2A:42-10.10 et seq.. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "note": "Anti-retaliation statute: NJSA 2A:42-10.10 et seq.. Presumption period, protected activities, and available remedies vary by state \u2014 attorney verification required. Statute identified via machine-assisted retrieval \u2014 attorney verification required before use",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -595,15 +595,15 @@
     {
       "defense": "discrimination",
       "elements": [
-        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion \u2014 per federal FHA; state law may add classes)",
         "Landlord took adverse housing action",
         "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
       ],
-      "statute": "42 U.S.C. §3604 (Fair Housing Act); NJSA 10:5-12",
+      "statute": "42 U.S.C. \u00a73604 (Fair Housing Act); NJSA 10:5-12",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive \u2014 specialist review required. grounding_gap: state fair housing case law and protected class details.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -633,7 +633,7 @@
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "note": "Breach of covenant of quiet enjoyment \u2014 primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary \u2014 specialist review required.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -661,7 +661,7 @@
       "case_law": [],
       "openness": "fact_dependent",
       "review_weight": "specialist_required",
-      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "note": "Improper rent calculation \u2014 relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice \u2014 specialist review required.",
       "layer_decomposition": {
         "elements": {
           "validation_method": "L2-multi-model-consensus",
@@ -686,11 +686,11 @@
         "Notice does not state required just cause ground",
         "Stated ground is not one of the enumerated grounds"
       ],
-      "statute": "NJSA 2A:18-61.1 (Anti-Eviction Act — just cause required for all residential tenancies)",
+      "statute": "NJSA 2A:18-61.1 (Anti-Eviction Act \u2014 just cause required for all residential tenancies)",
       "case_law": [],
       "openness": "open_textured",
       "review_weight": "specialist_required",
-      "note": "New Jersey Anti-Eviction Act requires one of 18 enumerated grounds for eviction including nonpayment, habitual late payment, lease violation, criminal activity, personal use, rehabilitation. grounding_gap: applicable ground, notice requirements, and relocation assistance details — specialist review required."
+      "note": "New Jersey Anti-Eviction Act requires one of 18 enumerated grounds for eviction including nonpayment, habitual late payment, lease violation, criminal activity, personal use, rehabilitation. grounding_gap: applicable ground, notice requirements, and relocation assistance details \u2014 specialist review required."
     }
   ],
   "procedural_defects": [
@@ -704,7 +704,7 @@
         "L2-PROCEDURAL-SM-GEMINI"
       ],
       "l2_sm_statute": "N.J.S.A. 2A:18-53(b)",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.J.S.A. 2A:18-53(b). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.J.S.A. 2A:18-53(b). Preserved as SM \u2014 needs GPT re-run or human confirm.",
       "l2_run_date": "2026-06-25"
     },
     {
@@ -712,12 +712,12 @@
       "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
       "statute": "NJSA 2A:18-53 (Special Civil Part, Law Division, Superior Court)",
       "case_law": [],
-      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits",
+      "note": "Eviction cases must be filed in the correct court \u2014 verify small claims vs. limited civil vs. general civil jurisdiction limits",
       "validation_flags": [
         "L2-PROCEDURAL-SM-GEMINI"
       ],
       "l2_sm_statute": "N.J.S.A. 2A:18-53",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.J.S.A. 2A:18-53. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.J.S.A. 2A:18-53. Preserved as SM \u2014 needs GPT re-run or human confirm.",
       "l2_run_date": "2026-06-25"
     },
     {
@@ -725,7 +725,7 @@
       "consequence": "Complaint defective; may be dismissed or require amendment",
       "statute": "N.J. Ct. R. 6:3-4(c)",
       "case_law": [],
-      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint \u2014 verify",
       "validation_flags": [
         "L2-PROCEDURAL-CONFIRMED"
       ],
@@ -743,9 +743,66 @@
         "L2-PROCEDURAL-SM-GEMINI"
       ],
       "l2_sm_statute": "N.J. Ct. R. 6:2-3(b)",
-      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.J. Ct. R. 6:2-3(b). Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: N.J. Ct. R. 6:2-3(b). Preserved as SM \u2014 needs GPT re-run or human confirm.",
       "l2_run_date": "2026-06-25"
     }
   ],
-  "last_updated": "2026-06-27"
+  "last_updated": "2026-06-28",
+  "holdings": {
+    "validation_status": "BATCH4-MV-PARTIAL",
+    "validation_note": "Batch 4 fresh_nc_batch4_20260627 run 2026-06-27. 1 valid NJ MV case (Onderdonk). 2 additional harness-MV cases (Markese, Robinson) rejected \u2014 wrong jurisdiction (NY County Courts / D.C. Circuit). Below attorney line.",
+    "machine_verified_cases": [
+      {
+        "case_name": "Onderdonk v. Presbyterian Homes of NJ",
+        "citation_gpt": "425 A.2d 1057",
+        "citation_gemini": "425 A.2d 1057",
+        "normalized_citation": "85 N.J. 171, 425 A.2d 1057 (1981)",
+        "year": 1981,
+        "court": "Supreme Court of New Jersey",
+        "cl_cluster_id": 1973177,
+        "cl_url": "https://www.courtlistener.com/opinion/1973177/onderdonk-v-presbyterian-homes-of-nj/",
+        "source_generated_holding": "The case addresses whether a resident of a 'life-care' community can claim protection under the Landlord Tenant Anti-Reprisal Act. The trial court found the Act applied and awarded damages to a resident who faced eviction proceedings after organizing other residents. The Appellate Division reversed this decision, and the state's highest court reviewed the matter.",
+        "controlling_quote": "In addition, plaintiff Paul Onderdonk sought to enjoin his eviction from Meadow Lakes and to recover damages under the Landlord Tenant Anti-Reprisal Act, N.J.S.A. 2A:42-10.10 et seq., asserting that Homes attempted to oust him in retaliation for his activities on behalf of a residents' organization.",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "gpt:gpt-4o",
+        "control": "STATED",
+        "bucket": "MV",
+        "run_id": "fresh_nc_batch4_20260627",
+        "run_date": "2026-06-27",
+        "as_of_date": "2026-06-27",
+        "b_currency": "OK-machine",
+        "citing_count": 20,
+        "note": "NJ Supreme Court. Affirms applicability of Anti-Reprisal Act (N.J.S.A. 2A:42-10.10 et seq.) to residential tenants. Below attorney line \u2014 machine-verified only."
+      }
+    ],
+    "confirm_inference_cases": [],
+    "pr_cases": [
+      {
+        "case_name": "Scofield v. Berman & Sons, Inc.",
+        "citation": "469 N.E.2d 805",
+        "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc \u2014 CL returned MA case (393 Mass. 95)",
+        "run_id": "fresh_nc_batch4_20260627"
+      }
+    ],
+    "rejected_cross_jurisdiction": [
+      {
+        "case_name": "Markese v. Cooper",
+        "citation": "70 Misc. 2d 478",
+        "year": 1972,
+        "actual_court": "New York County Courts",
+        "harness_bucket": "MV",
+        "rejection_reason": "Wrong jurisdiction \u2014 harness assigned to NJ but case is New York County court. CL statute query for NJ Anti-Reprisal Act returned NY cases. Not NJ precedent.",
+        "run_id": "fresh_nc_batch4_20260627"
+      },
+      {
+        "case_name": "Lena Robinson v. Diamond Housing Corporation",
+        "citation": "463 F.2d 853",
+        "year": 1972,
+        "actual_court": "U.S. Court of Appeals, D.C. Circuit",
+        "harness_bucket": "MV",
+        "rejection_reason": "Wrong jurisdiction \u2014 D.C. Circuit case returned by CL NJ statute query. Not NJ precedent.",
+        "run_id": "fresh_nc_batch4_20260627"
+      }
+    ]
+  }
 }

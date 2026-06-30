@@ -2,14 +2,17 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-06-27 session (Batch 4 NC job queued; golden-set scorer harness build started)
+**Last updated:** 2026-06-29 morning report
 
 ---
 
 ## NOW (executing)
 
-**Overnight job queued for tonight (2026-06-28 at 2:15 AM):**
-- `job_fresh_nc_batch4_20260627.json` — Batch 4: 11 NC states (AL, CT, HI, LA, MI, ND, NJ, NM, OK, VT, WV), `fresh=true`, statute-targeted CL queries, sleep=15s. These states have zero MV/CI results to date. `live_verified: true`. Est. 8–14 hours.
+**Overnight queue: EMPTY — confirmed empty again tonight (2026-06-29 at 2:15 AM)**
+- Dispatcher log confirms: fired 2026-06-29 09:29 UTC → "Queue is empty or no eligible jobs — nothing to do." (twice).
+- No job file in `rules/validation/queue/`. Dispatcher will idle tonight unless Andy approves the VT Houle retry or another job is queued.
+- **Proposal for Andy to approve:** Queue a VT Houle retry (single-case, known CL cluster_id=2320677, transient-failure from 429 — high-probability recovery). YELLOW — needs Andy approval to queue.
+- Next GREEN pipeline action: PR retry runner v2 (82 unretried transient-failure cases — NEXT #3). Cowork can build and queue without Andy approval once runner is ready.
 
 **Direction B attorney freeze** (RED gate — Andy's action required):
 - 50 DRAFT golden-set candidates in `rules/validation/golden_sets/`. Andy must personally sign off → items become FROZEN. Scorer harness being built in parallel (no attorney gate on the harness itself).
@@ -17,6 +20,18 @@
 ---
 
 ## Completed Today
+
+**2026-06-29 morning report** ✅ DONE
+- Overnight scan: queue was empty, dispatcher idled. No new output files.
+- No new runs to ingest — state unchanged from 2026-06-28 cycle.
+- All living docs updated (WORK_QUEUE, DAILY_CHANGELOG, CLAUDE_CHAT_BRIEF regenerated).
+
+**2026-06-28 morning report** ✅ DONE
+- Batch 4 (fresh_nc_batch4_20260627) ingested: 3 harness-MV / 2 rejected cross-jurisdiction (Markese=NY County, Robinson=DC Cir) / 1 valid NJ MV (Onderdonk). 8 states perm-fail. 11 PR (8 MI wrong-state docs, 2 VT, 1 NJ/MA).
+- nj_eviction_v2.json updated: Onderdonk written to machine_verified_cases; Markese/Robinson written to rejected_cross_jurisdiction.
+- YELLOW flag: cross-jurisdiction contamination in harness MV bucket (MI CL query, NJ CL query both returning non-state cases). Pipeline fix needed.
+- VALIDATION_METRICS_LEDGER updated: Batch 4 entry added; cross-batch summary updated.
+- All living docs updated (WORK_QUEUE, DAILY_CHANGELOG, PROJECT_STATE_OF_RECORD, CLAUDE_CHAT_BRIEF regenerated).
 
 **2026-06-27 morning report** ✅ DONE
 - PR retry run ingested: all 14 states perm-fail. Root cause: `fresh=false` + no v1 draft candidates. 82 cases remain unretried. Pipeline bug logged — GREEN fix required.
@@ -119,17 +134,21 @@
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
 
-1. **PR retry runner v2 — design and build** (GREEN pipeline fix): The existing PR retry approach (`fresh=false` + v1 draft file) cannot reach the 82 transient-failure cases from nc17_fresh_v2. Build a dedicated runner that reads from `nc17_fresh_v2`'s output JSON (`rules/validation/l2/output/retaliation_holdings_v3_*.json`) and re-runs only the transient-failure entries with `fresh=true`. Alternative: queue a new 14-state `fresh=true` job (same design as Track B) covering the 14 states from the failed PR retry job. Simpler path — no runner changes needed. Cowork can build and queue tonight.
+1. **Cross-jurisdiction contamination fix — runner court-filter** (YELLOW pipeline fix): `retaliation_holdings_v3.py` load_draft_cases() / fresh CL search path does not validate that returned cases are from the target state's court system. Markese v. Cooper (NY County, returned for NJ query) and all 8 MI PR cases (returned from non-MI courts) are the live evidence. Fix: after CL search returns a case, check that `court` field matches the expected jurisdiction before accepting. Needs runner change → YELLOW for Andy's ratification before deploy.
 
-2. **KS/NV/SC — plan next step for zero-CL states** (YELLOW — 3 paths): (a) Use Descrybe MCP to verify model-suggested Track A candidates (Stephens v. Ludy/KS, Anvui/NV, Wadell/SC) — if verified, add to MV-class; (b) Fix `load_draft_cases()` to also read from v2 files' `holdings.candidates[]` array, so runner finds the candidates already logged there; (c) Accept Track A (statute-only) for these states. Path (b) is cleanest long-term. YELLOW because it changes existing runner behavior.
+2. **VT Houle retry** (YELLOW — single-case): Houle v. Quenneville (CL cluster_id=2320677) transient-failure from CL 429. Create a single-state VT fresh=true job. Small; high-probability recovery. YELLOW: propose to Andy → queue after approval.
 
-3. **Baer v. Huggins confirm** (CI cheap confirm lane) — see HUMAN_REVIEW_QUEUE [NY-HOLD-CI-01]. Attorney pull from Fastcase/Westlaw to confirm D=INFERRED case is substantive.
+3. **PR retry runner v2 — design and build** (GREEN pipeline fix): 82 transient-failure cases from nc17_fresh_v2 still unretried. Build a fresh=true job covering the 14 states (from failed PR retry job). Simpler path — no runner changes needed. Cowork can build and queue.
 
-4. **Direction B attorney freeze** (RED gate — Andy's action required) — 50 DRAFT golden-set candidates. Must be frozen by Andy before Direction C can start.
+4. **KS/NV/SC — plan next step for zero-CL states** (YELLOW — 3 paths): (a) Use Descrybe MCP to verify model-suggested Track A candidates (Stephens v. Ludy/KS, Anvui/NV, Wadell/SC); (b) Fix `load_draft_cases()` to also read from v2 files' `holdings.candidates[]` array; (c) Accept Track A (statute-only) for these states. Path (b) is cleanest long-term. YELLOW.
 
-5. **NJ failure_to_attach reformulated retry** (GREEN pipeline) — see prior entries. SM-GEMINI, needs reformulated GPT query.
+5. **Baer v. Huggins confirm** (CI cheap confirm lane) — see HUMAN_REVIEW_QUEUE [NY-HOLD-CI-01]. Attorney pull from Fastcase/Westlaw.
 
-6. **Terminal cleanup** (optional, low priority) — `rm rules/validation/queue/job_nj_attach_probe_20260626.json rules/validation/queue/job_notice_tiebreaker_20260626.json` from Andy's Terminal. Already in done/; live_verified=false so dispatcher skips. No urgency.
+6. **Direction B attorney freeze** (RED gate — Andy's action required) — 50 DRAFT golden-set candidates. Must be frozen by Andy before Direction C can start.
+
+7. **NJ failure_to_attach reformulated retry** (GREEN pipeline) — SM-GEMINI, needs reformulated GPT query.
+
+8. **Terminal cleanup** (optional, low priority) — `rm rules/validation/queue/job_nj_attach_probe_20260626.json rules/validation/queue/job_notice_tiebreaker_20260626.json`. Already in done/; live_verified=false so dispatcher skips. No urgency.
 
 ---
 
