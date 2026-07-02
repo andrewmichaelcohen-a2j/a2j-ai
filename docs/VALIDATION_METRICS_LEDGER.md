@@ -803,6 +803,36 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
+#### Morning report cycle — 2026-07-01 (VT retry — Gemini API failure)
+
+*Run dispatched 2:15 AM 2026-07-01; completed 09:16 UTC. Job: `job_vt_retry_fresh_20260630`. Protocol: retaliation_holdings_v3. States: VT. 2 units. Run ID: 1c7f0772. Elapsed: 1.2 min. Ingested: 2026-07-01 morning report.*
+
+**Result: Infrastructure failure — Gemini prepayment credits depleted (429 RESOURCE_EXHAUSTED). NOT a validation failure.**
+
+Both VT cases passed Check A (CL found both; text retrieved) and Check B (no negative treatment). Check C (generate from source) failed with Gemini 429 error. The harness classified both as RC because `FLAG-generate-failed` is its fallback for any Check C failure; however, per anti-default rule, billing/API infrastructure failures are not attorney items and these cases are NOT added to HUMAN_REVIEW_QUEUE.
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate | N/A | Both RC are API-failure artifacts, not genuine verification failures |
+| Overall rate | N/A | Same — do not log 0% as a validation rate |
+| MV | 0 | |
+| CI | 0 | |
+| RC (reported by harness) | 2 | ⚠️ Misclassified — root cause is Gemini 429, not legal failure. NOT routed to attorney. |
+| PR | 0 | Text was retrieved successfully for both cases |
+| SM | 0 | |
+| α_method | N/A | No two-model pairs (Gemini returned 429 before producing output; verify_model=none) |
+| α_overall | N/A | Same |
+
+**Cases (both quarantined for re-queue, NOT attorney lane):**
+- Atwood v. Hill (VT Superior Court 2024, CL cluster 10145325) — Check A ✅, Check B ✅, Check C ❌ Gemini 429
+- Houle v. Quenneville (VT SC 2001, 787 A.2d 1258, CL cluster 2320677) — Check A ✅ (citation match), Check B ✅, Check C ❌ Gemini 429
+
+**Anti-default rule applied:** Cases not added to HUMAN_REVIEW_QUEUE. Will be re-queued once Gemini credits restored. Cumulative counters unchanged: MV=25, CI=3, RC=6.
+
+**Blocker logged:** Gemini API prepayment credits depleted. All Gemini-dependent overnight runs blocked until Andy tops up credits at [AI Studio](https://aistudio.google.com/projects). See RED-strategic in morning report.
+
+---
+
 #### Morning report cycle — 2026-06-29 (no overnight run)
 
 *2026-06-29. No job in queue at 2:15 AM. Dispatcher idled. No new runs, no new metrics. State unchanged from Batch 4 Batch cycle (ingested 2026-06-28). No new ledger row added. Carry-forward: cumulative MV=16 (corrected), CI=3, RC=5, 82 unretried transient-failure PR-class cases, VT Houle pending retry approval.*
@@ -886,6 +916,61 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
+---
+
+## Direction B — Outcome-Based Testing (Golden-Set Scorer)
+
+This section records the pilot score results from the attorney-frozen golden set, using the `ca_notice_scorer.py` Excel-native scorer. This is a different type of evidence from the L2 consensus runs above: instead of validating individual rule claims (inputs), it tests whether the encoded rules produce **correct legal outcomes** on realistic fact patterns (outputs). It is the apex of the validation roadmap.
+
+**Reporting scope note (per Architecture Memo 2026-07-01, Section 4):**
+> *"This score measures state-law CA-notice encoding on determinate bright-line items. Local/municipal overlays and the open-textured defense modules (retaliation, habitability) are separate, in-progress layers and are not reflected in this number."*
+
+**Benchguide source note (pending-source-class):** The CA Judicial Council Landlord-Tenant Litigation (Unlawful Detainer) Benchguide has been designated as a third corroborating source for future validation runs (after statute + case law), with authority-hierarchy discipline: benchguide corroborates; statute/case remains primary. Currency check against recent amendments required (e.g., CCP 1161 court-day change Feb 2025; SB 567 2024 changes). To be integrated in CA notice + service module re-validation runs.
+
+### CA-notice module — pilot runs
+
+| Run | Date | Model(s) | Golden set (SHA256) | Held-out score | Non-held-out | Overall | Misses | Notes |
+|-----|------|----------|---------------------|----------------|-------------|---------|--------|-------|
+| Pilot v1 (SM-GPT) | 2026-07-01 | GPT-5.5 only (Gemini 429 depleted) | `goldenset_CA_notice_v0.1_20260701.xlsx` (`b87791ec…`) | **3/5 = 60.0%** ← headline; **held-out set is now burned** | 7/11 = 63.6% | 10/16 = 62.5% | 6 (5 UNCERTAIN + 1 WRONG; all rules-gap) | First real score. Gemini credits depleted — SM-GPT only; re-run with two-model when credits restored. All misses are missing-rule, not model-wrong. Held-out score is the number that counts. |
+| **Stage 2 v1 — encoding validation (SM-GPT PARTIAL-CONSENSUS)** | **2026-07-01** | **GPT-5.5 sole; Gemini 503 UNAVAILABLE capacity (1/11 AGREE)** | `goldenset_CA_notice_v0.1_20260701.xlsx` (`b87791ec…`) | **— (no held-out burn; non-held-out partition only)** | **11/11 = 100.0%** | **—** | **0** | Encoding validation after self-critique pass + 4 RESOLVED items. All 6 pilot gaps closed. PARTIAL-CONSENSUS (1/11 dual-model) — NOT consensus-operative; cannot be cited as consensus-validated. B2: confident-wrong=0. B3: newly_failing=0 vs. prior 7/11. Gemini 503 = capacity issue (not credits); credits confirmed restored (CA-NOT-08 AGREE). |
+
+**B1–B4 measurements — Stage 2 v1 run (2026-07-01):**
+
+| Directive | Metric | Value | Notes |
+|-----------|--------|-------|-------|
+| **B1 Coverage** | Known/Total | 11/11 = **100%** | All 11 non-held-out items classifiable |
+| **B1 Coverage** | Accuracy (known) | 11/11 = **100%** | SM-GPT PARTIAL-CONSENSUS; not consensus-operative |
+| **B1 Coverage** | Overall | 11/11 = **100%** | Same — no unknown items in this partition |
+| **B2 Confident-wrong** | Count | **0** | Zero items with high-confidence wrong prediction. ZERO. |
+| **B3 Regression** | Prior non-held-out | 7/11 = 63.6% (pilot v1) | |
+| **B3 Regression** | Current non-held-out | 11/11 = 100.0% | +4 items newly correct |
+| **B3 Regression** | newly_failing | **0** | No regressions. 7 prior-correct items all still correct. |
+| **B4 Currency** | Status | ✅ Complete | Done in self-critique pass (2026-07-01); Disciplines A/B/C applied; SB 611 (eff. 2/1/2025), SB 567 (eff. 4/1/2024), Stancil (2021) all current |
+
+**4 non-held-out items newly correct vs. pilot v1 (B3 regression check):**
+
+| Item | Pilot v1 | Stage 2 v1 | Rule that closed the gap |
+|------|----------|-----------|--------------------------|
+| CA-NOT-08 | NOTICE_INVALID (confident-wrong) | NOTICE_VALID ✅ (AGREE — dual-model) | SFH AB 1482 exemption (§1946.2(e)(8)) two-prong encoded |
+| CA-NOT-12 | UNCERTAIN | NOTICE_INVALID ✅ | Payee ID mandatory content (CCP §1161(2)) encoded |
+| CA-NOT-14 | UNCERTAIN | NOTICE_INVALID ✅ | Relocation assistance (§1946.2(d); SB 567) encoded |
+| CA-NOT-20 | UNCERTAIN | NOTICE_INVALID ✅ | Unconditional quit (CCP §1161(4)) encoded |
+
+**Miss triage — Pilot v1:**
+
+| Item | Held-out | Correct | Predicted | Miss type | Missing rule | Stage 2 status |
+|------|----------|---------|-----------|-----------|-------------|----------------|
+| CA-NOT-03 | ✅ | NOTICE_INVALID | UNCERTAIN | Rules gap | Civ. Code 1946.1(b) — 60-day notice required for tenancy ≥ 1yr | ✅ Encoded (REVISED-1, self-critique) |
+| CA-NOT-08 | — | NOTICE_VALID | NOTICE_INVALID | Rules gap (confident wrong) | 1946.2(e)(8) — SFH AB 1482 exemption not encoded | ✅ Encoded (RESOLVED-2) — now correct |
+| CA-NOT-12 | — | NOTICE_INVALID | UNCERTAIN | Rules gap | CCP 1161(2) — payee name/address/phone/hours mandatory in pay-or-quit | ✅ Encoded (REVISED-3) — now correct |
+| CA-NOT-14 | — | NOTICE_INVALID | UNCERTAIN | Rules gap | Civ. Code 1946.2(d) — relocation assistance required for no-fault termination | ✅ Encoded (REVISED-4) — now correct |
+| CA-NOT-16 | ✅ | NOTICE_INVALID | UNCERTAIN | Rules gap | Waiver doctrine (EDC Associates v. Gutierrez) + overstatement after partial payment | ✅ Encoded (REVISED-5) — held-out; verify at next held-out run |
+| CA-NOT-20 | — | NOTICE_INVALID | UNCERTAIN | Rules gap | CCP 1161(4) — unconditional quit for incurable conduct (waste) | ✅ Encoded (REVISED-6) — now correct |
+
+**Next run target:** Fresh held-out golden set (v0.2) — genuinely new fact patterns, no v0.1 reuse. Gate: Gemini DUAL-MODEL-CONSENSUS operative (Gemini 503 capacity issue; expect to clear). Andy freezes v0.2 → score held-out. Target ≥ 90%.
+
+---
+
 ## Repeatability view (the cross-module trend — the point of the ledger)
 
 As each module/claim-type completes, add its combined row here so the *trend* is visible at a glance. Repeatability is evidenced if consensus, AI-resolved, and escalation rates stay in a comparable band — and if error-confirm outcomes show AI resolution is reliably correct — as scope widens.
@@ -902,6 +987,8 @@ As each module/claim-type completes, add its combined row here so the *trend* is
 | **Procedural Defects / L2 full 51-state × 4-defect** | **204** | **20% (41/204); 67% among dual-model (41/61)** | **4 CI auto-updated** | **10% (20/204 MODEL-SPLIT → L7); 67% of dual-model cases where both agree** | *4 CONSENSUS-IMPROVE file updates applied; errors caught: none new; 20 L7s added to queue* | **2026-06-25 (α_method=0.256, n=61 dual-model; 143 SM+ERROR = missing data/pipeline gap)** |
 | **Procedural Defects / failure_to_attach attach-retry-9** | **9** | **NSR=4 (44%), SM=4** | **4 NSR auto-confirmed** | **0% (0 L7); ERROR=1 (NJ persistent — pipeline)** | *NSR: AL, IA, RI, VA — no specific rule; SM-GPT: ME (80D(b)), MN (§504B.321), NH (§540:6); SM-GEMINI: NV (NRS 40.253(1)(b)); NJ ERROR ×3 needs investigation* | **2026-06-26 (attach-retry-9; α n/a, n=4 dual-model)** |
 | **Notice / pay_or_quit — provenance rerun (51 states)** | **51** | **CC=42 (82%)** | **42 CC auto-confirmed; 5 MS / 2 PD / 1 CD surfaced** | **5 MS + 2 PD + 1 CD = 8 divergences → NOTICE-L2 queue (YELLOW); MD/MO corroborate existing L7s** | *GA CRITICAL: file=3d but GPT=0d (no notice required) — contradicts auto-resolve; MO: both models now empty (was 10d); WY citation split; AR/MN/OR/SD period splits* | **2026-06-26 (notice rerun; Counter bug caused crash after write_back; reconstructed from log)** |
+| **CA notice — Direction B pilot v1 (golden-set scorer, GPT-only)** | **16 frozen (5 held-out / 11 non-held-out)** | **n/a (outcome test)** | **n/a — 6 rules gaps; 0 model-wrong** | **0% (6/6 gaps = missing rules, not interpretive items)** | *held-out score: 3/5=60%; all misses are rules-gap; 6 encoding items queued* | **2026-07-01 (SM-GPT; Gemini 429)** |
+| **CA notice — Direction B Stage 2 v1 encoding validation (non-held-out, SM-GPT)** | **11 non-held-out** | **n/a (outcome test)** | **n/a** | **0%** | *non-held-out: 11/11=100% (SM-GPT PARTIAL-CONSENSUS 1/11; not consensus-operative); B2: confident-wrong=0; B3: newly_failing=0; all 6 pilot gaps closed; no held-out burn* | **2026-07-01 (SM-GPT; Gemini 503 capacity — credits restored)** |
 | *(future modules…)* | | | | | | |
 | *(future DOMAINS — debt, family, benefits…)* | | | | | | |
 

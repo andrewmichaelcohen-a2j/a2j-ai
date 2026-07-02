@@ -1,6 +1,6 @@
 # A2J AI — Project State of Record
 **Ingest this file at the start of every Cowork session for full project context.**
-**Generated:** June 15, 2026 · **Last updated:** 2026-06-30 (Morning report. 3 overnight runs ingested: VT retry pipeline-fail [fresh=false bug, re-queued fresh=true]; CO/NY/SC PR retry [MV=3/CI=1/PR=8]; broad_query 10 states [MV=12/CI=1/RC=1]. 8 state v2 files updated: AL×2 MV, CT×3 MV, HI×2 MV, LA×2 MV, ND×1 MV, NM×1 MV+1 CI, WV×1 MV, CO×1 MV. WV Criss → RC queue [WV-RET-HOLD-RC-02]. Cumulative MV now 25 [6 CA + 5 NY + 1 NJ + 13 new states]. VT Houle fresh=true queued tonight.) · **Next update:** after VT retry completes
+**Generated:** June 15, 2026 · **Last updated:** 2026-07-01 (Session. CA-notice pilot run complete. First held-out score: **3/5 = 60.0%** [held-out set now burned]. Overall 10/16 = 62.5%. GPT-only [Gemini 429 depleted]. 6 rules gaps identified — all misses are missing-rule, not model-wrong. Architecture memo ingested; Section 5 items actioned. VT retry remains blocked on Gemini credits. Cumulative retaliation MV=25, CI=3, RC=6 unchanged.) · **Next update:** after Gemini credits restored / after 6 CA-notice rules encoded and scorer re-run
 
 > **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 

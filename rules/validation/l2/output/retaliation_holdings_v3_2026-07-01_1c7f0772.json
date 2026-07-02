@@ -1,0 +1,185 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "1c7f0772",
+  "run_date": "2026-07-01",
+  "runner_version": "harness-v1",
+  "total_units": 2,
+  "method_rate": 0.0,
+  "overall_rate": 0.0,
+  "bucket_counts": {
+    "MV": 0,
+    "CI": 0,
+    "RC": 2,
+    "PR": 0,
+    "SM": 0
+  },
+  "text_retrievable_denominator": 2,
+  "machine_verified": 0,
+  "single_model_preliminary": 0,
+  "needs_attorney": 2,
+  "elapsed_secs": 69,
+  "results": [
+    {
+      "unit_id": "cf629da1f51b",
+      "state": "VT",
+      "case_name": "Atwood v. Hill",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Atwood v. Hill",
+          "date": "2024-10-17",
+          "court": "Vermont Superior Court",
+          "citation": [],
+          "cluster_id": 10145325
+        },
+        "cl_cluster_id": 10145325,
+        "cl_opinion_id": 10611925,
+        "cl_url": "https://www.courtlistener.com/opinion/10145325/atwood-v-hill/",
+        "cl_citation": null,
+        "citation_match": null,
+        "exists": "true",
+        "basis": "Found by name; no CL citation to check",
+        "cl_snippets": "[combined-opinion]                                                                                                                    Termont Superior Court\n                                                                                                                            Filed 09/05/2\n                                                                                                                               Rutland GAR\n\n\n\n\nVERMONT SUPERIOR COURT                                    Ky                     ",
+        "cl_all_citations": []
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 0,
+        "basis": "No negative treatment in 0 citing opinions via CL as of 2026-07-01. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-07-01"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-generate-failed",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+        },
+        "verify_output": null,
+        "queue_routing": "RC",
+        "pr_reason": null,
+        "basis": "Gemini generate failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "needs-attorney",
+      "disposition_note": "RC: text retrieved, holding failed verification. Flagged: C=FLAG-generate-failed, D=FLAG. Source-generated holding → attorney.",
+      "bucket": "RC",
+      "pr_reason": null,
+      "controlling_quote": null,
+      "queue_routing": "RC",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/10611925 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    },
+    {
+      "unit_id": "166858513bf0",
+      "state": "VT",
+      "case_name": "Houle v. Quenneville",
+      "citation_gpt": "787 A.2d 1258",
+      "citation_gemini": "787 A.2d 1258",
+      "year": 2001,
+      "prior_holding": "",
+      "source_generated_holding": null,
+      "check_a": {
+        "check": "A_existence_citation",
+        "cl_hit": {
+          "case_name": "Houle v. Quenneville",
+          "date": "2001-11-09",
+          "court": "Supreme Court of Vermont",
+          "citation": [
+            "787 A.2d 1258",
+            "173 Vt. 80",
+            "2001 Vt. LEXIS 367"
+          ],
+          "cluster_id": 2320677
+        },
+        "cl_cluster_id": 2320677,
+        "cl_opinion_id": 9753471,
+        "cl_url": "https://www.courtlistener.com/opinion/2320677/houle-v-quenneville/",
+        "cl_citation": "787 A.2d 1258",
+        "citation_match": true,
+        "exists": "true",
+        "basis": "CL citations ['787 A.2d 1258', '173 Vt. 80', '2001 Vt. LEXIS 367']; model citations ['787 A.2d 1258', '787 A.2d 1258']; match=True",
+        "cl_snippets": "[lead-opinion] \nAmestoy, C.J.\nTenants Kevin Quenneville and Louisa Lewis appeal the order granting landlords Charles and Eileen Houle possession at the expiration of the rental term. Tenants contend: (1) landlords’ notice of nonrenewal of their lease was insufficient because landlords did not provide the Vermont State Housing Authority (VSHA) with a contemporaneous copy of the notice; (2) the court failed to properly allocate the burden o | [combined-opinion] \n787 A.2d 1258 (2001)\nCharles and Eileen HOULE\nv.\nKevin QUENNEVILLE and Louisa Lewis.\nNo. 00-034.\nSupreme Court of Vermont.\nNovember 9, 2001.\n*1259 John F. Nicholls and David H. Gregg of Abare, Nicholls & Associates, P.C., Barre, for Plaintiffs-Appellees.\nJohn J. McCullough III, Vermont Legal Aid, Inc., Montpelier, for  | [in-part-opinion] \nJohnson, J.,\nconcurring and dissenting. I agree with the Court’s holding in every respect except for the last issue, which decides the case against the tenants and upholds their ultimate eviction from Section 8 housing. I agree with the tenants that, on the face of the record and the facts as found by the trial court, the conclusion was inescapable that the landlords sought eviction in retaliation",
+        "cl_all_citations": [
+          "787 A.2d 1258",
+          "173 Vt. 80",
+          "2001 Vt. LEXIS 367"
+        ]
+      },
+      "check_b": {
+        "check": "B_currency",
+        "currency": "OK-machine",
+        "negative_flag": false,
+        "negative_note": null,
+        "citing_count": 3,
+        "basis": "No negative treatment in 3 citing opinions via CL as of 2026-07-01. Absence ≠ confirmed good law.",
+        "as_of_date": "2026-07-01"
+      },
+      "check_c": {
+        "check": "C_generate_from_source",
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "holding": "FLAG-generate-failed",
+        "source_generated_holding": null,
+        "controlling_quote": null,
+        "quote_verified_verbatim": null,
+        "draft_agreement": null,
+        "generate_output": {
+          "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+        },
+        "verify_output": null,
+        "queue_routing": "RC",
+        "pr_reason": null,
+        "basis": "Gemini generate failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}"
+      },
+      "check_d": {
+        "check": "D_control_derived",
+        "control": "FLAG",
+        "controlling_quote": null,
+        "quote_agreement": false,
+        "basis": "Check C did not corroborate — D not evaluated"
+      },
+      "disposition": "needs-attorney",
+      "disposition_note": "RC: text retrieved, holding failed verification. Flagged: C=FLAG-generate-failed, D=FLAG. Source-generated holding → attorney.",
+      "bucket": "RC",
+      "pr_reason": null,
+      "controlling_quote": null,
+      "queue_routing": "RC",
+      "provenance": {
+        "generate_model": "gemini:gemini-2.5-pro",
+        "verify_model": "none",
+        "verify_actually_answered": false,
+        "opinion_text_source": "CL opinion/9753471 full text",
+        "draft_agreement": null,
+        "text_retrieved": true,
+        "harness_version": "v1"
+      }
+    }
+  ]
+}

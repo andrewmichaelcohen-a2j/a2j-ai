@@ -4,6 +4,385 @@
 
 ---
 
+## 2026-07-01 (session 6 — Stage 2 encoding validation; Lawvable explored; VT retry queued)
+
+### GREEN — Executed autonomously
+
+**Stage 2 non-held-out scorer run — 11/11 = 100% (SM-GPT PARTIAL-CONSENSUS) (GREEN — encoding verified)**
+- Andy ran `ca_notice_scorer.py --non-held-out-only` from his terminal after Gemini credits restored.
+- Result: 11/11 = 100.0% on non-held-out partition. All 6 pilot gaps closed by self-critique encoding.
+- Consensus status: PARTIAL-CONSENSUS (1/11 dual-model). Gemini error: 503 UNAVAILABLE (capacity, not credits). CA-NOT-08 confirmed AGREE — credits working, capacity transient.
+- B1 Coverage: 11/11 = 100% known; Accuracy (known): 100%; Overall: 100%.
+- B2 Confident-wrong: 0. ZERO.
+- B3 Regression check: newly_failing = 0. Prior 7/11 → current 11/11. 4 newly correct: CA-NOT-08, CA-NOT-12, CA-NOT-14, CA-NOT-20.
+- B4 Currency: ✅ (self-critique pass this session).
+- Run NOT consensus-operative. No held-out burn. Cannot cite as consensus-validated.
+- Output: `rules/validation/scorer/output/ca_notice_score_2026-07-01_non-held-out.json`
+
+**VT retry job queued for tonight (GREEN — pipeline re-queue, anti-default rule applied)**
+- New job: `rules/validation/queue/job_vt_retry_gemini_restored_20260701.json`
+- Prior run (1c7f0772) showed RC=2 with C=FLAG-generate-failed due to Gemini 429. Anti-default rule applied: NOT routed to attorney. Re-queue with credits restored.
+- Gemini 503 capacity issue (not credits) means overnight timing improves chances. Will confirm Gemini API status for Stage 2 DUAL-MODEL-CONSENSUS gate.
+
+**Lawvable MCP explored — YELLOW-REG-03 RESOLVED (GREEN — confirmed no relevant skills)**
+- Searched `lawvable_search_skills` for "eviction housing tenant landlord notice" + US jurisdiction filter.
+- Result: 0 eviction, housing, tenant-landlord, or residential-tenancy skills in Lawvable marketplace.
+- 189 total skills; 20 categories; no housing-law or residential-tenancy category.
+- US jurisdiction (20 skills): sanctions screening, employment law, customs trade, privacy, CT divorce, trademark. None relevant to CJaC eviction-defense encoding.
+- **Conclusion**: Lawvable is a corporate/compliance-oriented marketplace. CJaC is novel territory — no existing skill infrastructure for eviction defense. YELLOW-REG-03 closed.
+
+**VALIDATION_METRICS_LEDGER.md updated (GREEN)**
+- Stage 2 v1 row added to CA-notice pilot runs table with full B1-B4 breakdown.
+- Miss triage table updated with Stage 2 encoding status for each of the 6 pilot gaps.
+- Repeatability view row added.
+
+**WORK_QUEUE.md updated (GREEN)**
+- Stage 2 gate table updated: gates 3+credits ✅, encoding validation ✅; DUAL-MODEL-CONSENSUS + v0.2 golden set + held-out score still open.
+- Lawvable row → RESOLVED.
+
+### YELLOW — Flagged for Andy
+
+**Gemini 503 UNAVAILABLE (YELLOW — capacity, not credits)**
+- 10/11 items returned Gemini 503 despite credits being restored. One item (CA-NOT-08) got through, confirming credits work.
+- Not a blocker for tonight's VT retry (overnight low-traffic). If persistent after tonight: may need to downgrade from gemini-2.5-pro to gemini-2.5-flash or adjust retry logic in scorer.
+- Stage 2 DUAL-MODEL-CONSENSUS gate remains open until Gemini runs clean.
+
+### RED — None new.
+
+---
+
+## 2026-07-01 (session 5 — Ratification round; 4 FLAGGED → RESOLVED; Stage 2 gate 3 closed)
+
+### GREEN — Executed autonomously
+
+**RESOLVED-1: Stancil any-occupant rule → machine-checkable encoding (GREEN — Andy ratified)**
+- `ca_eviction_v2.json`: `termination.tenancy_1yr_plus` now has `condition: "all_occupants_residency_max_years >= 1"` and `stancil_any_occupant_rule.machine_checkable_input: "max_occupant_residency_years"`.
+- PLAYBOOK_SPEC §9 `notice_period_termination_no_fault`: conditions updated to use `max_occupant_residency_years` per Stancil; `source_anchor` = "Stancil v. Superior Court (2021) 11 Cal.5th 381; Civ. Code §1946.1(b)".
+- Source anchor: Stancil v. Superior Court (2021) 11 Cal.5th 381; Civ. Code §1946.1(b).
+
+**RESOLVED-2: Full AB 1482 exemption matrix — all 8 §1946.2(e) categories encoded (GREEN — Andy ratified)**
+- `ca_eviction_v2.json`: `termination.exemptions` expanded from 1 entry (SFH non-entity) to 5 structured entries covering all 8 §1946.2(e) categories:
+  - `sfh_non_entity_owner` (§1946.2(e)(8)) — two-prong: owner not REIT/corp/LLC + written exemption notice
+  - `sfh_owner_occupied` (§1946.2(e)(5)) — owner occupies ≤2-unit building
+  - `owner_occupied_duplex` (§1946.2(e)(6)) — owner-occupied duplex
+  - `new_construction_15yr` (§1946.2(e)(7)) — COO within 15 years of notice date, rolling basis
+  - `institutional_uses` (§1946.2(e)(1)–(4)) — transient/tourist hotel, institutional, dormitory, shared kitchen/bath with owner
+- PLAYBOOK_SPEC §9: New `ab1482_exemption_matrix` element added encoding all 8 categories as machine-checkable conditions; default = AB1482_COVERED.
+- Source anchor: Civ. Code §1946.2(e)(1)–(8).
+
+**RESOLVED-3: §1161(3)/(4) bright-line gate encoded (GREEN — Andy ratified)**
+- `ca_eviction_v2.json`: `unconditional_quit.bright_line_qualifying_conduct` list defined (physical waste, nuisance per §3482.8/§3485(c)/§3486(c), unlawful use, unauthorized assignment/subletting). `open_textured_conduct` list for ambiguous cases (repeated disturbances, unauthorized smoking, noise complaints).
+- `cure_or_quit.bright_line_qualifying_conduct` list defined (failure to maintain premises, unauthorized pet if curable, unauthorized occupant if curable, etc.).
+- PLAYBOOK_SPEC §9 interactions: `cure_or_quit_vs_unconditional_quit` gate added — determinate routing for bright-line conduct; open-textured path for ambiguous.
+- Source anchor: CCP §1161(3); CCP §1161(4); Civ. Code §§3482.8, 3485(c), 3486(c).
+
+**RESOLVED-4: `missing_just_cause_reason` defect scoped to AB1482-covered units (GREEN — Andy ratified, follow RESOLVED-2)**
+- `ca_eviction_v2.json`: `notice_defects.missing_just_cause_reason` updated with `applies_to: "AB1482_covered_units_only"` and `ab1482_coverage_gate` block listing all 8 §1946.2(e) exemption categories. Defect only fires after machine checks that the unit is NOT exempt.
+- Source anchor: Civ. Code §1946.2(e)(1)–(8); AB 1482 (Stats. 2019, c. 597).
+
+**`docs/CA_NOTICE_SELF_CRITIQUE_REPORT_20260701.md` — FLAGGED items updated to RESOLVED (GREEN)**
+- All 4 FLAGGED items updated to RESOLVED status with Andy ratification date, encoding decisions, and source anchors.
+- Stage 2 gate table updated: Gate 3 ✅ CLOSED.
+
+**`docs/WORK_QUEUE.md` updated (GREEN)**
+- NOW block updated: 4 FLAGGED → 4 RESOLVED items with status table.
+- Stage 2 gate status: Gate 3 ✅ (Andy ratified). Gates 1, 4, 5 remain open (Gemini credits blocker).
+
+### YELLOW — None new this session.
+
+### RED — None new. (Existing RED: Gemini credits. Andy action required to unblock Stage 2 dual-model run.)
+
+---
+
+## 2026-07-01 (session 4 — Self-critique pass + structural addendum; all CA-notice rules revised)
+
+### GREEN — Executed autonomously
+
+**CA-notice self-critique pass complete (GREEN — source-anchored, three disciplines)**
+- Produced `docs/CA_NOTICE_SELF_CRITIQUE_REPORT_20260701.md`: 9 REVISED / 3 CONFIRMED / 4 FLAGGED (attorney residual)
+- Sources: frozen golden set `goldenset_CA_notice_v0.1` (Part 1 anchor) + WebSearch live retrieval (CCP §1161 SB 611 eff. 2/1/2025 confirmed; CCP §1162 confirmed)
+
+**`rules/eviction/california/ca_eviction_v2.json` — notice section updated (GREEN)**
+- REVISED-1: Added `termination.tenancy_1yr_plus` (60d, §1946.1(b)); corrected `tenancy_under_1yr.statute` → §1946.1(c)
+- REVISED-2: Added `termination.exemptions[sfh_non_entity_owner]` with two-prong test (§1946.2(e)(8)(A)+(B)); removed incorrect owner-occupancy encoding
+- REVISED-3: Added `payee_id_missing` defect (CCP §1161(2); Lynch & Freytag + Eshagian)
+- REVISED-4: Added `relocation_assistance_missing` defect (Civ. Code §1946.2(d); SB 567 eff. 4/1/2024)
+- REVISED-5: Added `waiver_rules.partial_payment_waiver` with determinate core + open-textured exception; excluded CCP §1161.1 (commercial only per §1161.1(d))
+- REVISED-6: Added `unconditional_quit` notice type (CCP §1161(4)); added `wrong_instrument_incurable_conduct` defect
+- REVISED-7: Fixed `pay_or_quit.tenancy_under_1yr` and `tenancy_over_1yr` count_method: `calendar_days` → `calendar_days_excluding_weekends_holidays` (CCP §1161 SB 611 eff. 2/1/2025)
+- REVISED-8: Filled `improper_service_method.statute` from null → `CCP §1162`
+- REVISED-9: Filled `notice_period_too_short.statute` from null → `CCP §1161(2),(3),(4); Civ. Code §1946.1(b),(c)`
+- Added `mandatory_content` block to pay_or_quit with payee name/phone/address requirements
+- Updated `module_status.notice.status` → `SELF-CRITIQUE-COMPLETE` with report cross-reference
+- Updated `per_module_sources.notice` with 15 authorities (was 5)
+
+**`docs/PLAYBOOK_SPEC.md` structural updates (GREEN)**
+- §3: Added `source_anchor`, `flagged`, `flagged_reason` fields to element schema
+- §9 `notice_period_termination_no_fault`: fixed subsection citations — §1946.1(c) for <1yr, §1946.1(b) for ≥1yr (was citing (b) for both). Added missing DEFECTIVE condition for <1yr. Added `source_anchor`.
+- §9 `sfh_ab1482_exemption`: replaced `not_owner_occupied = true` with mandatory two-prong (§1946.2(e)(8)(A)+(B)). Added `source_anchor`.
+- §9 `partial_payment_waiver`: restructured from wholly `open_textured` to `determinate` with open-textured exception path. Added `source_anchor`. Tier cap changed A/determinate (core) + B (exception).
+- §10: Added SELF-CRITIQUE as standing step 2 in validation workflow (DRAFT → SELF-CRITIQUE → YELLOW/attorney residual → ratification → auto-checks → golden-set → attorney → VALIDATED). Added L1 gate note for `source_anchor`.
+- §11 (NEW): Four measurement directives (B1 coverage, B2 confident-wrong, B3 regression, B4 currency) as permanent requirements.
+
+**`CLAUDE.md` — standing disciplines added (GREEN)**
+- Added "Self-critique disciplines (STANDING OPERATING RULES)" section: Disciplines A/B/C as permanent session-start rules, not dated directives
+- Added "Measurement standards (STANDING)" section: B1-B4 as permanent requirements
+- Updated "Last updated" stamp to 2026-07-01
+
+**`docs/COWORK_DIRECTION_A_CADENCE_AUTONOMY.md` — Parts 5–6 added (GREEN)**
+- Part 5: Self-critique disciplines (Disciplines A/B/C — permanent)
+- Part 6: Measurement directives (B1-B4 — permanent)
+
+**`docs/WORK_QUEUE.md` updated (GREEN)**
+- Self-critique pass marked COMPLETE with item-level results table
+- 4 FLAGGED items listed for Andy ratification
+- Stage 2 gate status updated post-self-critique
+
+### YELLOW — Flagged for Andy ratification
+
+**FLAGGED-1: Stancil "any occupant" nuance (YELLOW)**
+- `Stancil v. Superior Court (2021) 11 Cal.5th 381`: 60d requirement attaches once ANY occupant has resided ≥1yr, not just named tenant.
+- Question: encode as machine-checkable condition (requiring all occupants' tenancy durations as input) or notes-only treatment?
+- Action needed: Andy/attorney call. No encoding change made pending ratification.
+
+**FLAGGED-2: AB 1482 exemptions beyond SFH (YELLOW — scope)**
+- §1946.2(e) has multiple exemption categories: new construction (<15yr), condos, luxury housing, ADUs — none encoded.
+- Question: does this pass encode SFH-only (current state) or expand to full exemption matrix?
+- Action needed: Andy ratifies scope.
+
+**FLAGGED-3: Cure-or-quit / unconditional-quit interaction gate (YELLOW)**
+- §1161(3) vs. §1161(4) interaction not encoded as an explicit gate. Propose bright-line enumerated conduct list (waste/nuisance → §1161(4); covenant breach → §1161(3)); ambiguous categories to attorney line.
+- Action needed: Andy ratifies approach.
+
+**FLAGGED-4: `missing_just_cause_reason` defect scope (follow-on to FLAGGED-2)**
+- Blanket `just_cause_required: true` partially resolved by SFH exemption but other exemptions (FLAGGED-2) leave gaps.
+- Action needed: Resolve after FLAGGED-2.
+
+### RED — Escalated to Andy
+
+*(No new REDs this session. Existing REDs unchanged: Gemini credits, Direction B freeze, 6 RC, attorney queue.)*
+
+---
+
+## 2026-07-01 (session 3 — Skills decision; consensus-operative gate; JusticeBench alignment)
+
+### GREEN — Executed autonomously
+
+**Reasoning-engine decision documented (GREEN)**
+- ARCHITECTURE.md: Added Section 12 — Claude native legal-reasoning is the CJaC reasoning engine. `legal:*` plugins NOT adopted wholesale (designed for corporate/contract workflows, not eviction-defense encoding). Lawvable MCP to be explored as carry-over task.
+- VALIDATED_RESOURCES_REGISTRY.md: `claude_native_legal` updated to PRIMARY reasoning engine (confirmed). `legal_plugin_skills` updated as NOT integrated (by decision). YELLOW-REG-02 resolved.
+
+**Consensus-operative gate implemented in `ca_notice_scorer.py` v2.1 (GREEN pipeline fix)**
+- Per Andy direction: a run where either model returns empty is NOT consensus-validated and must be flagged loudly.
+- Changes: `consensus_valid: true/false` per item; `_consensus_status()` classifier (DUAL-MODEL-CONSENSUS / SM-GPT / SM-GEMINI / PARTIAL-CONSENSUS / SM-BOTH-ERROR); `⛔` banner in console report when not consensus-operative; `⚠SM` tag on per-item lines; `consensus_status`, `single_model_items`, `consensus_note` in run metadata; `single_model_items` count in summary stats.
+- Syntax check: ✅ passes `python3 -m py_compile`
+- Note: v1 pilot run (2026-07-01) would have shown SM-GPT banner under this protocol; score was 3/5=60% SM-GPT — correctly labeled PRELIMINARY.
+
+**WORK_QUEUE updated — consensus gate (GREEN)**
+- Added hard gate block before Stage 2 scoring: `consensus_status == "DUAL-MODEL-CONSENSUS"` required before any held-out score can be cited. Gate is now explicit and prominent.
+
+**VALIDATED_RESOURCES_REGISTRY.md updated — consensus-operative gate (GREEN)**
+- `multi_model_consensus` entry updated with gate definition, history note (GPT has also gone empty on non-notice modules), and Stage 2 blocker note.
+
+### YELLOW — Flagged for Andy ratification
+
+**JusticeBench actor-calibration alignment (YELLOW — architecture note, no action needed)**
+- Identified while reviewing JUSTICEBENCH_ALIGNMENT_SPEC.md: Hagan's per-step actor calibration framework (senior human / junior human / deterministic rules-code / small model / frontier model) is the academic parallel to CJaC's `determinate`/`open_textured` strategy tagging.
+  - `determinate` ↔ Hagan's "deterministic rules-based code"
+  - `open_textured` (bounded reasoning) ↔ Hagan's "intensive frontier model"
+- This validates the architectural choice independently. Can cite Hagan's framework as external validation of the playbook architecture's design logic.
+- YELLOW because it's an architectural note with potential reporting implications (strengthens the "validated rules layer" thesis for public-facing materials). No immediate action — log in next session context.
+
+### RED — None new this session
+
+---
+
+## 2026-07-01 (session 2 — Playbook Architecture Directive; Stage 1 in progress)
+
+### GREEN — Executed autonomously
+
+**Playbook Architecture Directive saved (GREEN)**
+- `docs/CJaC_Playbook_Architecture_Directive_20260701.md` — Andy's July 1 architectural change directive filed to docs/
+- Covers: thesis anchor; what stays; playbook-as-unit architecture; bounded-reasoning; Validated Resources Registry; staged execution (Stages 0–4); success metric
+
+**`docs/ARCHITECTURE.md` created (GREEN)**
+- Documents one-pipeline playbook architecture: three-tier infrastructure, playbook unit, element decomposition, `determinate`/`open_textured` strategy tags, confidence tiers (A/B/C), known/unknown flag, jurisdiction-resolution, seven-layer validation stack, bucket taxonomy, staged proof sequence, source hierarchy
+- Key files table links to PLAYBOOK_SPEC, VALIDATED_RESOURCES_REGISTRY, and directive
+
+**`docs/PLAYBOOK_SPEC.md` created (GREEN)**
+- Full playbook unit schema: playbook (top-level), element, strategy tag definitions (`determinate`/`open_textured`), known/unknown, confidence tiers, interaction schema, source IDs, partial CA pay-or-quit example (4 elements: notice_period_nonpayment, notice_period_termination_no_fault, sfh_ab1482_exemption, partial_payment_waiver), validation workflow
+- Example encodes 4 of 6 pilot gaps as DRAFT elements
+
+**`docs/VALIDATED_RESOURCES_REGISTRY.md` created (GREEN — seed)**
+- 13 sources catalogued: `ca_civil_code_live`, `ca_ccp_live`, `courtlistener_mcp`, `descrybe_mcp`, `legal_data_hunter_mcp`, `ca_benchguide_ud`, `lsnc_eviction_2026`, `justicebench_stanford`, `lsc_temple_dataset`, `claude_native_legal`, `legal_plugin_skills`, `lawvable_mcp`, `multi_model_consensus`
+- Each source: tier, currency risk, coverage, limitations, status, use-for notes
+- 4 YELLOW flags raised (REG-01 through REG-04)
+- Status summary table included
+
+**WORK_QUEUE updated (GREEN)**
+- NOW: Stage 1 progress table (4 of 6 items ✅; 2 pending research)
+- NEXT: Stage 1 carry-overs (Benchguide research, Lawvable exploration), Stage 2 plan (6 items including element encoding table with revised classification — item 6 is `open_textured`, not purely deterministic)
+
+### YELLOW — Flagged for Andy ratification
+
+**Skills/tools status (YELLOW-REG-02, YELLOW-REG-03)**
+- No skills named "legal-analysis" or "issue-spotting" found in environment
+- `legal:*` plugin skills (brief, risk-assessment, review-contract, triage-nda) available but NOT integrated into CJaC pipeline
+- Lawvable MCP (`lawvable_search_skills`) available but not yet searched for eviction/housing legal skills
+- **Andy: direction needed** — integrate `legal:*` skills into playbook element analysis? Explore Lawvable for legal-analysis skills?
+
+**Strategy tag ratification needed for Stage 2 (RED gate)**
+- PLAYBOOK_SPEC.md defines `determinate`/`open_textured` tags as set by human attorney at encoding time
+- Draft element strategy tags proposed for CA pay-or-quit playbook (4 elements in PLAYBOOK_SPEC example)
+- Andy must ratify strategy tags before Stage 2 encoding proceeds
+
+### RED — None new this session
+
+---
+
+## 2026-07-01 (session — CA-notice pilot run complete; architecture memo ingested)
+
+### GREEN — Executed autonomously
+
+**Fixed dotenv path bug in `ca_notice_scorer.py` (GREEN bug fix)**
+- `parents[4]` → `parents[3]` in dotenv loader — scorer was looking for `.env` at `GitHub/.env` instead of `a2j-ai/.env`; API keys were never loaded; all API calls returned "missing credentials"
+- Fix: single-character change; verified correct path matches `REPO_ROOT` (also `parents[3]`)
+
+**CA-notice pilot live run — first real score (GREEN run; SM-GPT; Gemini 429 depleted)**
+- Output: `rules/validation/scorer/output/ca_notice_score_2026-07-01.json`
+- SHA256 (golden set): `b87791ecda032fa718df027da47a07774c03eb940354321a3c9d0d77ba0fc7e9`
+- SHA256 (rules file): `8cc0b3e51fa57ad211c9976753dd96575401eb47daa54b7759e2bcda1efb4101`
+- **Held-out score: 3/5 = 60.0%** ← headline (held-out set now burned)
+- Non-held-out score: 7/11 = 63.6%
+- Overall (all frozen): 10/16 = 62.5%
+- GPT-only run (Gemini 429 RESOURCE_EXHAUSTED on all 16 items — credits depleted)
+- Zero YELLOWs (schema clean; all outcome enums recognized)
+
+**Triage of 6 misses — all are rules-gap (not model-wrong):**
+- CA-NOT-03 (held-out): 60-day termination notice for tenancies ≥ 1yr not encoded (Civ. Code 1946.1(b))
+- CA-NOT-08 (non-held-out): SFH AB 1482 exemption not encoded (1946.2(e)(8)); GPT correctly returned INVALID given encoded rules (missing rule, not wrong reasoning)
+- CA-NOT-12 (non-held-out): Payee ID requirement not encoded (CCP 1161(2) mandatory content)
+- CA-NOT-14 (non-held-out): Relocation assistance for no-fault termination not encoded (Civ. Code 1946.2(d))
+- CA-NOT-16 (held-out): Partial rent acceptance / waiver doctrine not encoded (EDC Associates v. Gutierrez)
+- CA-NOT-20 (non-held-out): CCP 1161(4) unconditional quit for incurable conduct not encoded
+
+**4 excluded items logged as downstream work (GREEN)**
+- CA-NOT-09 → open-textured queue (utilities-as-"additional-rent" ambiguity)
+- CA-NOT-15 → retaliation module golden set (§1942.5 retaliatory eviction)
+- CA-NOT-17 → service module golden set (§1161 subtenant-service; §415.46)
+- CA-NOT-19 → LA local-overlay golden set (LAMC §151.09 — FMR threshold, bedroom statement, LAHD filing)
+
+**Architecture memo saved to docs/ (GREEN)**
+- `docs/CJaC_Architecture_and_Roadmap_Memo_20260701.md` — canonical architecture direction post-pilot
+- Section 5 items actioned (see below)
+
+**Section 5 Cowork-actionable items executed (GREEN):**
+- Item 1: Jurisdiction-resolution principle added to `docs/Decision_Logic_Briefing_for_Claude.md` (new Section 9)
+- Item 2: Benchguide source lane note added to `docs/VALIDATION_METRICS_LEDGER.md` (pending-source-class note)
+- Item 3: Direction D logged in WORK_QUEUE HORIZON (3 components; ethical signal-source constraint recorded as non-negotiable)
+- Item 4: Reporting scope note added to VALIDATION_METRICS_LEDGER pilot-score section
+- Item 5: LA RSO+JCO overlay golden set logged in WORK_QUEUE HORIZON as first local-overlay build
+
+**Living documents updated (GREEN)**
+- `docs/VALIDATION_METRICS_LEDGER.md` — Direction B pilot-score section added; repeatability row added; reporting scope note per memo Section 4
+- `docs/PROJECT_STATE_OF_RECORD.md` — L4/Direction B status updated to reflect first pilot run
+- `docs/WORK_QUEUE.md` — NOW replaced with post-pilot state; 6 rules-gap items added to NEXT; exclusions logged; Direction D + LA overlay in HORIZON
+- `docs/CLAUDE_CHAT_BRIEF.md` — Regenerated with first held-out score
+- `docs/Decision_Logic_Briefing_for_Claude.md` — Jurisdiction-resolution principle added (Section 9)
+
+### YELLOW — Flagged for Andy ratification
+
+**First held-out score (60.0%) — 6 rules gaps identified (YELLOW)**
+- Held-out set is now burned. Score: 3/5 = 60%.
+- All 6 misses are rules-gap, not model-wrong. Encoding the 6 missing rules is the direct fix.
+- YELLOW: This is an engineering choice (which rules to add first, in what order) with downstream metrics impact. Andy ratify / provide direction before next scorer run.
+- Proposed next step: encode all 6 missing rules in `ca_eviction_v2.json`, re-run scorer with fresh golden set (or non-held-out only for iteration), report new score.
+
+**Gemini credits still depleted (YELLOW-carry)**
+- Live run confirmed Gemini still 429. Re-run with two-model consensus requires credits restoration.
+
+### RED — Decisions needed from Andy
+
+None new this session (scoring direction is YELLOW, not RED — encoding the missing rules is an engineering task, not a legal-interpretive judgment).
+
+---
+
+## 2026-07-01 (morning report — VT retry Gemini 429 blocker; no metrics movement)
+
+### GREEN — Executed autonomously
+
+**Overnight run 1c7f0772 ingested (VT retry, `job_vt_retry_fresh_20260630`)**
+- 2 units: Atwood v. Hill (VT Superior Court 2024, CL cluster 10145325) + Houle v. Quenneville (VT SC 2001, CL cluster 2320677)
+- Check A ✅ both cases (text retrieved from CL), Check B ✅ both (no negative treatment)
+- Check C ❌ both — Gemini 429 RESOURCE_EXHAUSTED (prepayment credits depleted)
+- Harness classified RC; anti-default rule applied — NOT added to HUMAN_REVIEW_QUEUE
+- Both cases quarantined for re-queue once Gemini credits restored
+
+**Anti-default rule enforced — 0 cases routed to attorney lane**
+- Gemini 429 = API billing infrastructure failure. "Model returned empty" rule applies.
+- Cases will be re-queued once credits restored; no attorney review warranted at this time.
+
+**Living documents updated (GREEN)**
+- `docs/VALIDATION_METRICS_LEDGER.md` — 2026-07-01 morning report entry added; Gemini 429 blocker noted; cumulative counters unchanged (MV=25, CI=3, RC=6)
+- `docs/PROJECT_STATE_OF_RECORD.md` — Last updated stamp + VT retry result logged
+- `docs/HUMAN_REVIEW_QUEUE.md` — Header updated (no new items; anti-default rule confirmed)
+- `docs/WORK_QUEUE.md` — Gemini credits blocker added to BLOCKED; VT re-queue note in NEXT; "Completed Today" updated
+- `docs/DAILY_CHANGELOG.md` — This entry
+- `docs/CLAUDE_CHAT_BRIEF.md` — Regenerated (step 3f)
+
+### YELLOW — Flagged for Andy ratification
+
+**None this cycle.**
+
+### RED — Decisions needed from Andy
+
+**Gemini API prepayment credits depleted (RED-strategic)**
+- All overnight runs using Gemini are blocked
+- Andy must top up at [AI Studio](https://aistudio.google.com/projects) → billing
+- Once restored: Cowork will re-queue VT retry same night (fresh=true, both cases have text already retrieved)
+
+---
+
+## 2026-07-01 (session — Direction B scorer harness built; dry-run passed)
+
+### GREEN — Executed autonomously
+
+**`ca_notice_scorer.py` built — Excel-native Direction B scorer (GREEN build)**
+- New file: `rules/validation/scorer/ca_notice_scorer.py` (v2.0-excel-native, ~340 lines)
+- Reads directly from `goldenset.xlsx` (attorney-reviewed Excel); no JSON intermediary
+- Schema validation at load time: checks all 13 expected columns; raises YELLOW on any missing
+- Outcome enum: `NOTICE_VALID | NOTICE_INVALID | UD_DEFECTIVE_PREMATURE | UD_NOT_SUSTAINABLE`
+- Dual-model pipeline: GPT generates, Gemini verifies; agreement/disagreement tracked per item
+- Custom system prompt (scorer-specific — does not reuse l2_runner.py's baked notice-days prompt)
+- No answer leakage: model receives only facts + encoded CA-notice rules JSON; correct outcome never included
+- Held-out isolation: held-out and non-held-out scores computed and reported separately; no auto-tuning wiring
+- Integrity: SHA256 of Excel file + SHA256 of rules file + per-item row hash all logged with every run
+- YELLOW surface: schema mismatch, unknown outcome enum, unmapped model output all raise YELLOW with proposed mapping; never silently guesses
+- Dry-run mode (`--dry-run`): validates schema, computes hashes, previews queries for first 2 items, mocks all predictions — no API calls needed
+- Partitioning flags: `--held-out-only`, `--non-held-out-only`, or run all (default)
+- Output: console report + JSON to `rules/validation/scorer/output/`
+
+**Dry-run passed — 13 frozen items, zero YELLOWs (GREEN)**
+- All 13 FROZEN items loaded correctly: CA-NOT-01 through CA-NOT-14 (CA-NOT-09 EXCLUDED correctly skipped)
+- All DRAFT items (CA-NOT-15-20, CA-SVC-*, TX-NOT-*) silently dropped — correct
+- Outcome enum clean: all 4 values (`NOTICE_VALID`, `NOTICE_INVALID`, `UD_DEFECTIVE_PREMATURE`, `UD_NOT_SUSTAINABLE`) present and in known enum
+- No schema YELLOWs — all 13 expected columns present
+- SHA256 computed: Excel=`3e9550461989c758fb58…`, Rules=`8cc0b3e51fa57ad211c9…`
+- Output: `rules/validation/scorer/output/ca_notice_score_2026-07-01_dryrun.json`
+
+**FROZEN/ directory created — provenance copy**
+- `rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.1_20260630.xlsx` — SHA256: `3e9550461989c758fb58f0d5159547207e5cd6dd02b4b79bb3eccb8c091ea116`
+- This is the reviewed file as of 2026-06-30. Andy will overwrite when final 20-item freeze is complete.
+
+**Note on current frozen set:** All 13 currently frozen items have `Held-out=FALSE`. The held-out score will remain "no held-out items" until Andy sets `Held-out=TRUE` for the selected items in the final 20-item review. The scorer handles this correctly — no code change needed.
+
+### YELLOW — Flagged for Andy ratification
+
+**Scorer `--held-out-only` ready to burn when Andy confirms:**
+Once the full 20-item set is frozen and held-out flags are set, running `--held-out-only` permanently burns the held-out score. Andy should confirm readiness before Cowork runs that flag.
+
+---
+
 ## 2026-06-30 (session — Task #104 completed; VT job format fix)
 
 ### GREEN — Executed autonomously

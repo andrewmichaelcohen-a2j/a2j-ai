@@ -90,4 +90,32 @@ Andy + Claude respond once, batched: ratify YELLOWs, decide REDs, approve queue 
 
 ---
 
-*Cowork Direction A — Operating Cadence + Autonomy Decision-Rule · CJaC · 2026-06-23 · GREEN executes and logs; YELLOW executes and flags; RED stops and escalates. Attorney review is earned by genuine interpretation, never reached by default. Keep the queue days deep.*
+## PART 5 — SELF-CRITIQUE DISCIPLINES (standing — added 2026-07-01)
+
+These three disciplines are permanent operating rules, not a dated directive. They apply to every pre-encoding pass and every rule revision. See `CLAUDE.md` for the full standing text; this section is the authoritative reference within Direction A.
+
+**Discipline A:** Every rule citation checked against LIVE primary source. Retrieval failure → `flagged: true`. Never confirm from training knowledge.
+
+**Discipline B:** Adversarial posture — hunt for wrong subsections, incomplete multi-prong tests, missed residential/commercial distinctions, missing day-count mechanics, wrong notice types, currency misses. The task is "find what is wrong," not "confirm it looks right."
+
+**Discipline C:** Source-anchored changes only. Every REVISED item cites the specific primary source. Ungroundable items are FLAGGED, never guessed. The element schema (`source_anchor` field) enforces this structurally — missing `source_anchor` on a `determinate` element fails L1.
+
+**When these run:** Mandatory before any playbook element advances from DRAFT status. Also triggered whenever a rule revision is proposed (regression check accompanies per B3).
+
+---
+
+## PART 6 — MEASUREMENT DIRECTIVES (standing — added 2026-07-01)
+
+Four permanent measurement requirements. Every score report applies all four.
+
+**B1 — Coverage:** Track known/unknown elements per claim type. Pair every accuracy score with coverage fraction. Format: `Coverage: N_known/N_total; Accuracy (known): C/N_known; Overall: C/N_total`.
+
+**B2 — Confident-wrong severity:** Separate metric from UNCERTAIN. Confident-wrong = high-confidence definitive answer that is factually wrong. More dangerous than no-answer. Target: zero. A change that reduces UNCERTAIN but increases CONFIDENT-WRONG is a regression.
+
+**B3 — Regression check:** After any rule change, re-run non-held-out golden set. Report newly_failing count. If > 0 → YELLOW before committing.
+
+**B4 — Currency:** Every self-critique pass checks each rule's authority for post-encoding amendments. Currency failure → REVISED or FLAGGED.
+
+---
+
+*Cowork Direction A — Operating Cadence + Autonomy Decision-Rule · CJaC · 2026-06-23 (Parts 5–6 added 2026-07-01) · GREEN executes and logs; YELLOW executes and flags; RED stops and escalates. Attorney review is earned by genuine interpretation, never reached by default. Keep the queue days deep.*

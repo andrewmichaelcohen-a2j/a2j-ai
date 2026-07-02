@@ -1,0 +1,19 @@
+{
+  "job_id": "job_vt_retry_gemini_restored_20260701",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "VT",
+  "fresh": true,
+  "sleep": 20,
+  "live_verified": true,
+  "created": "2026-07-01",
+  "created_by": "cowork-session-5",
+  "priority": "high",
+  "description": "VT retry #3 — Gemini credits restored. Prior run (1c7f0772, 2026-07-01) returned RC=2 with C=FLAG-generate-failed due to Gemini 429 RESOURCE_EXHAUSTED. Anti-default rule applied: NOT routed to attorney (infrastructure failure, not genuine holding divergence). Re-running now with credits restored. Same params: fresh=true, sleep=20. Known candidates: Atwood v. Hill, Houle v. Quenneville (cluster_id=2320677). Expect MV or CI once generate step completes.",
+  "target_cluster_id": 2320677,
+  "target_case": "Houle v. Quenneville",
+  "prior_run_id": "1c7f0772",
+  "prior_run_failure_mode": "Gemini 429 RESOURCE_EXHAUSTED — C=FLAG-generate-failed on both VT cases. Infrastructure failure, not genuine RC.",
+  "autonomy_level": "GREEN",
+  "queue_note": "Queued 2026-07-01 by Cowork after Andy restored Gemini prepayment credits at AI Studio. Will fire at 2:15 AM next run."
+}

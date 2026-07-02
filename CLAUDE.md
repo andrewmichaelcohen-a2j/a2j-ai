@@ -2,7 +2,7 @@
 
 This file is read automatically by Cowork at session start. It carries the key context needed to work on this project without re-deriving it each session.
 
-*Last updated: June 24, 2026 · Andrew M Cohen*
+*Last updated: July 1, 2026 · Andrew M Cohen (self-critique disciplines + measurement directives added)*
 
 ---
 
@@ -50,6 +50,43 @@ The project runs under a three-direction operating system established June 24, 2
 
 ### Daily changelog
 `docs/DAILY_CHANGELOG.md` — log every GREEN action taken. Andy audits without having watched.
+
+---
+
+## Self-critique disciplines (STANDING OPERATING RULES — always enforced, not session-by-session)
+
+These three disciplines are permanent and structural. They apply to every pre-encoding pass, every rule revision, and every self-critique cycle. They are NOT a dated directive — they are session-start operating rules.
+
+**Discipline A — Live-source verification, not memory.**
+Every rule's citation and condition must be checked against LIVE primary source text retrieved via the registry (ca_ccp_live, ca_civil_code_live, courtlistener_mcp). Do NOT confirm a rule from training knowledge. If the primary source cannot be retrieved, that rule is FLAGGED (`flagged: true` in element schema) — retrieval failure is not verification.
+
+**Discipline B — Adversarial posture.**
+For each rule, the task is "find what is WRONG with this" — wrong subsection, incomplete test, missing exception, missed jurisdictional distinction, wrong notice type — not "confirm this looks right." Check every rule against these known error classes:
+1. Wrong statutory subsection (e.g. citing (b) for both 30d and 60d notice)
+2. Incomplete multi-prong tests (e.g. SFH exemption encoded as one prong)
+3. Missed residential/commercial distinction (e.g. §1161.1 applied to residential)
+4. Missing day-count mechanics (court days vs. calendar days; day-of-service exclusion)
+5. Wrong notice type / curable-vs-incurable (§1161(3) vs. §1161(4))
+6. Currency misses (recent amendment not reflected — e.g. SB 567 eff. 4/1/2024)
+
+**Discipline C — Source-anchored changes only; flag the ungroundable.**
+Any revision MUST cite the specific primary source (statute subsection or case holding). A change that cannot be grounded in a retrieved primary source is FLAGGED, not made. Every element needs `source_anchor` (or `flagged: true` + reason) — the element schema enforces this structurally. "Revise generally" is never permitted.
+
+**Self-critique report:** Each pass produces a `docs/CA_NOTICE_SELF_CRITIQUE_REPORT_[date].md` classifying every rule/element as REVISED / CONFIRMED / FLAGGED. REVISED items are applied and logged (auditable). FLAGGED items form the attorney-residual queue. See `docs/CJaC_Cowork_Direction_SelfCritique_20260701.md` for full direction.
+
+---
+
+## Measurement standards (STANDING — reported in every score cycle)
+
+These four measurement directives are permanent requirements. Every score report must include all four. They are structural measurements, not new validation layers.
+
+**B1 — Coverage metric (highest priority).** Track `known` vs. `unknown` elements per claim type. Every published accuracy score MUST pair with coverage fraction. Format: `Coverage: N_known/N_total = X%; Accuracy (known): C/N_known = Y%; Overall: C/N_total = Z%`. Unknown elements are never silently omitted.
+
+**B2 — Confident-wrong is higher severity than UNCERTAIN.** Confident-wrong = system returns high-confidence definitive answer that is factually wrong per the golden set. This is more dangerous than "I don't know." Track separately. Target: drive CONFIDENT-WRONG to ZERO. A rule change that reduces UNCERTAIN but increases CONFIDENT-WRONG is a regression, not an improvement.
+
+**B3 — Regression check on every rule change.** After any rule revision: re-run the full non-held-out golden set. Report newly-failing items (items correct before change, incorrect after). If newly_failing > 0 → YELLOW alert before committing change.
+
+**B4 — Currency as standing check within self-critique.** Every self-critique pass includes a currency check: verify each rule's governing authority for post-encoding amendments. Is the statute still in effect as cited? Has it been amended in a material way? Is the case law still good law? Currency failure → REVISED or FLAGGED.
 
 ---
 

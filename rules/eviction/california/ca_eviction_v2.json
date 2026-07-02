@@ -78,9 +78,19 @@
       "notice": [
         "CCP §1161(2)",
         "CCP §1161(3)",
-        "Civ. Code §1946.1",
+        "CCP §1161(4)",
+        "CCP §12",
+        "CCP §1162",
+        "Civ. Code §1946.1(b)",
+        "Civ. Code §1946.1(c)",
+        "Civ. Code §1946.2(d) (SB 567, eff. 4/1/2024)",
+        "Civ. Code §1946.2(e)(8)(A), (B)",
         "Civ. Code §1946.2 (AB 1482)",
-        "Civ. Code §1947.12 (AB 1482)"
+        "Civ. Code §1947.12 (AB 1482)",
+        "EDC Associates v. Gutierrez (1984) 153 Cal.App.3d 167",
+        "Lynch & Freytag v. Cooper (1990) 218 Cal.App.3d 603",
+        "Eshagian v. Cepeda (2025)",
+        "Stancil v. Superior Court (2021) 11 Cal.5th 381"
       ],
       "service": [
         "CCP §1162",
@@ -140,10 +150,13 @@
     "file_status": "AUTOMATED-CHECKS-PASSED",
     "module_status": {
       "notice": {
-        "status": "AUTOMATED-CHECKS-PASSED",
+        "status": "SELF-CRITIQUE-COMPLETE",
+        "self_critique_date": "2026-07-01",
+        "self_critique_report": "docs/CA_NOTICE_SELF_CRITIQUE_REPORT_20260701.md",
+        "self_critique_summary": "9 REVISED (source-anchored), 3 CONFIRMED, 4 FLAGGED (attorney residual). Key additions: 60d termination notice (§1946.1(b)), unconditional_quit type (§1161(4)), payee_id_missing defect, relocation_assistance rule (SB 567), partial_payment_waiver rule (EDC v. Gutierrez), SFH exemption two-prong (§1946.2(e)(8)). Day count methods corrected. Service statute filled.",
         "reviewer": null,
         "reviewed_date": null,
-        "coverage_level": "L1,L3,L5"
+        "coverage_level": "L1,L3,L5,self-critique"
       },
       "service": {
         "status": "AUTOMATED-CHECKS-PASSED",
@@ -463,33 +476,86 @@
   "notice": {
     "notice_types": {
       "pay_or_quit": {
-        "description": "Nonpayment of rent",
+        "description": "Nonpayment of rent — CCP §1161(2). Notice demands only unpaid rent; no late fees, utilities, or other charges permitted.",
         "permitted_amounts": [
           "unpaid_rent_only"
         ],
         "late_fees_permitted": false,
         "utilities_permitted": false,
+        "mandatory_content": {
+          "payee_name_required": true,
+          "payee_phone_required": true,
+          "payee_address_required": true,
+          "statute": "CCP §1161(2)",
+          "note": "REVISED-3 (self-critique 2026-07-01): CCP §1161(2) requires name, telephone number, and address of payee. Strict compliance — omission of any element is fatal to notice. See Lynch & Freytag v. Cooper (1990) 218 Cal.App.3d 603; Eshagian v. Cepeda (2025)."
+        },
         "tenancy_all": {
           "days": 3,
           "statute": "CCP §1161(2)",
-          "count_method": "calendar_days_excluding_weekends_holidays"
+          "count_method": "calendar_days_excluding_weekends_holidays",
+          "day_of_service_excluded": true,
+          "note": "Court days per CCP §1161 operative 2/1/2025 (SB 611). Day of service excluded per CCP §12."
         },
         "tenancy_under_1yr": {
           "days": 3,
           "statute": "CCP §1161(2)",
-          "count_method": "calendar_days"
+          "count_method": "calendar_days_excluding_weekends_holidays",
+          "day_of_service_excluded": true,
+          "note": "REVISED-7 (self-critique 2026-07-01): corrected from calendar_days to calendar_days_excluding_weekends_holidays per CCP §1161 (SB 611, operative 2/1/2025). Court days apply regardless of tenancy length."
         },
         "tenancy_over_1yr": {
           "days": 3,
           "statute": "CCP §1161(2)",
-          "count_method": "calendar_days"
+          "count_method": "calendar_days_excluding_weekends_holidays",
+          "day_of_service_excluded": true,
+          "note": "REVISED-7 (self-critique 2026-07-01): corrected from calendar_days to calendar_days_excluding_weekends_holidays per CCP §1161 (SB 611, operative 2/1/2025). Court days apply regardless of tenancy length."
         }
       },
       "cure_or_quit": {
-        "description": "Curable lease violation",
+        "description": "Curable lease violation — CCP §1161(3). Use only for CURABLE covenant breaches. For incurable conduct (waste, nuisance, unlawful use, unauthorized subletting) use unconditional_quit (CCP §1161(4)).",
         "days": 3,
         "statute": "CCP §1161(3)",
-        "curable": true
+        "curable": true,
+        "count_method": "calendar_days_excluding_weekends_holidays",
+        "day_of_service_excluded": true,
+        "bright_line_qualifying_conduct": [
+          "Failure to maintain premises per lease covenant",
+          "Unauthorized pet (where lease prohibits — if curable by removal)",
+          "Failure to obtain renter's insurance per lease covenant",
+          "Failure to pay utilities required under lease",
+          "Unauthorized occupant (where lease limits occupants — if curable by removal)",
+          "Lease covenant breach capable of being remedied within 3 court days"
+        ],
+        "note": "CCP §1161(3): curable covenant violations only. Tenant has 3 court days to cure or surrender. If conduct 'cannot afterward be performed' per the statute, §1161(3) still permits notice but no cure opportunity — treat as escalating to §1161(4) analysis. See interaction gate: cure_or_quit_vs_unconditional_quit."
+      },
+      "unconditional_quit": {
+        "description": "Incurable conduct (waste, nuisance, unlawful use, unauthorized assignment/subletting contrary to covenants) — CCP §1161(4). No right to cure.",
+        "days": 3,
+        "statute": "CCP §1161(4)",
+        "curable": false,
+        "count_method": "calendar_days_excluding_weekends_holidays",
+        "day_of_service_excluded": true,
+        "bright_line_qualifying_conduct": [
+          "Physical waste (damage to premises contrary to lease conditions/covenants)",
+          "Nuisance (maintaining, committing, or permitting nuisance on demised premises)",
+          "Public nuisance per Civ. Code §3482.8",
+          "Drug activity per Civ. Code §3485(c)",
+          "Criminal street gang activity per Civ. Code §3486(c)",
+          "Using premises for unlawful purpose",
+          "Unauthorized assignment or subletting of premises contrary to lease covenants"
+        ],
+        "open_textured_conduct": [
+          "Repeated disturbances or noise complaints (may rise to nuisance — fact-specific)",
+          "Unauthorized smoking / vaping (may constitute waste or nuisance — context-dependent)",
+          "Repeated lease violations that individually are curable but pattern amounts to incurable breach",
+          "Chronic late payment (may constitute waste of lessor's interest — contested)"
+        ],
+        "nuisance_statute_cross_refs": {
+          "public_nuisance": "Civ. Code §3482.8",
+          "drug_activity": "Civ. Code §3485(c)",
+          "gang_activity": "Civ. Code §3486(c)"
+        },
+        "note": "REVISED-6 (self-critique 2026-07-01) + BRIGHT-LINE ENCODED (Andy ratification 2026-07-01): §1161(4) — waste, nuisance, unlawful use, unauthorized assignment/subletting. No cure right. Ambiguous conduct (see open_textured_conduct) routes to open-textured analysis. Cross-refs: Civ. Code §3482.8, §3485(c), §3486(c) define statutory nuisance categories. Source: CCP §1161(4) (Justia 2025 text confirmed)."
       },
       "termination": {
         "statute": "Civ. Code §1946.1; Civ. Code §1946.2 (AB 1482)",
@@ -497,9 +563,101 @@
         "just_cause_statute": "Civ. Code §1946.2 (AB 1482)",
         "tenancy_under_1yr": {
           "days": 30,
-          "statute": "Civ. Code §1946.1; Civ. Code §1946.2 (AB 1482)",
-          "count_method": "calendar_days"
-        }
+          "statute": "Civ. Code §1946.1(c)",
+          "count_method": "calendar_days",
+          "condition": "all_occupants_residency_max_years < 1",
+          "note": "REVISED-1 + Stancil ratification (2026-07-01): §1946.1(c) = 30-day / <1yr. Per Stancil v. Superior Court (2021) 11 Cal.5th 381: threshold measured by MAX residency among ALL current occupants (named tenant + any subtenants/family members), not just named tenant. Input required: max_occupant_residency_years."
+        },
+        "tenancy_1yr_plus": {
+          "days": 60,
+          "statute": "Civ. Code §1946.1(b)",
+          "count_method": "calendar_days",
+          "condition": "all_occupants_residency_max_years >= 1",
+          "stancil_any_occupant_rule": {
+            "statute": "Civ. Code §1946.1(b)",
+            "case": "Stancil v. Superior Court (2021) 11 Cal.5th 381",
+            "rule": "60-day notice required if ANY occupant (including sublessee, long-term household member) has resided in the unit for 1+ year, not just the named tenant on the lease",
+            "machine_checkable_input": "max_occupant_residency_years",
+            "condition": "max_occupant_residency_years >= 1"
+          },
+          "note": "REVISED-1 (self-critique 2026-07-01) + STANCIL ENCODED (Andy ratification 2026-07-01): §1946.1(b) = 60-day / ≥1yr. Machine-checkable input: max_occupant_residency_years (maximum tenure among all current occupants). Stancil: 60-day attaches when any occupant — not just named tenant — has resided ≥1yr."
+        },
+        "relocation_assistance": {
+          "required_for_no_fault": true,
+          "statute": "Civ. Code §1946.2(d)",
+          "effective_date": "2024-04-01",
+          "legislative_source": "SB 567 (Stats. 2023, eff. 4/1/2024)",
+          "amount": "one_month_rent",
+          "payment_deadline_calendar_days": 15,
+          "payment_deadline_trigger": "service_of_notice",
+          "alternative": "written_waiver_of_final_month_rent",
+          "failure_consequence": "notice_void",
+          "note": "REVISED-4 (self-critique 2026-07-01): ADDED. SB 567 (eff. 4/1/2024) amended Civ. Code §1946.2(d) — strict compliance; failure renders notice void. Landlord must pay 1 month's rent within 15 calendar days of service OR provide written waiver of final month's rent. Per frozen golden-set CA-NOT-14."
+        },
+        "exemptions": [
+          {
+            "exemption_id": "sfh_non_entity_owner",
+            "statute": "Civ. Code §1946.2(e)(8)",
+            "effect": "just_cause_not_required",
+            "applies_to": "residential real property alienable separate from any other dwelling unit (SFH, condo, mobilehome)",
+            "prong_a": {
+              "condition": "owner_entity_type_not_reit_corp_llc_with_corporate_member",
+              "statute": "Civ. Code §1946.2(e)(8)(A)",
+              "note": "Owner must NOT be: real estate investment trust, a corporation, OR a limited liability company in which at least one member is a corporation"
+            },
+            "prong_b": {
+              "condition": "written_exemption_notice_given_to_tenant",
+              "statute": "Civ. Code §1946.2(e)(8)(B)",
+              "timing": "at_tenancy_inception_or_before_termination_notice_for_month_to_month",
+              "note": "Landlord must have given tenant written notice that the unit is exempt from §1946.2. For month-to-month tenancies, timing per subdivision (d)."
+            },
+            "both_prongs_required": true,
+            "note": "REVISED-2 (self-critique 2026-07-01): two-prong test per §1946.2(e)(8)(A)+(B). Owner-occupancy is NOT the test. Distinct from (e)(5) owner-occupied SFH exemption."
+          },
+          {
+            "exemption_id": "sfh_owner_occupied",
+            "statute": "Civ. Code §1946.2(e)(5)",
+            "effect": "just_cause_not_required",
+            "applies_to": "single-family owner-occupied residences where owner-occupant rents no more than two units or bedrooms (including ADU or JADU)",
+            "condition": "owner_is_principal_resident AND rental_units_or_bedrooms_rented <= 2",
+            "note": "ADDED (Andy ratification 2026-07-01 — full exemption matrix): §1946.2(e)(5). Owner must actually occupy the property as their principal residence. Permits renting up to 2 units/bedrooms including ADU/JADU. No written-notice requirement (unlike (e)(8))."
+          },
+          {
+            "exemption_id": "owner_occupied_duplex",
+            "statute": "Civ. Code §1946.2(e)(6)",
+            "effect": "just_cause_not_required",
+            "applies_to": "property containing two separate dwelling units in single structure where owner occupies one unit as principal residence",
+            "conditions": {
+              "owner_occupies_one_unit": true,
+              "owner_occupancy_began_at_tenancy_start": true,
+              "owner_continues_in_occupancy": true,
+              "neither_unit_is_adu_or_jadu": true
+            },
+            "note": "ADDED (Andy ratification 2026-07-01 — full exemption matrix): §1946.2(e)(6). Owner must have occupied one unit as principal residence since beginning of tenancy AND must continue to occupy. ADUs and JADUs excluded — if either unit is an ADU/JADU this exemption does not apply."
+          },
+          {
+            "exemption_id": "new_construction_15yr",
+            "statute": "Civ. Code §1946.2(e)(7)",
+            "effect": "just_cause_not_required",
+            "applies_to": "housing issued certificate of occupancy within previous 15 years (rolling)",
+            "condition": "certificate_of_occupancy_date_within_15_years_of_notice_date",
+            "mobilehome_excluded": true,
+            "rolling_basis": true,
+            "note": "ADDED (Andy ratification 2026-07-01 — full exemption matrix): §1946.2(e)(7). 15-year window is ROLLING — measured from notice date, not from a fixed date. A unit that was exempt may become covered once it ages past 15 years. Mobilehomes expressly excluded (not eligible for this exemption)."
+          },
+          {
+            "exemption_id": "institutional_uses",
+            "statute": "Civ. Code §1946.2(e)(1)–(4)",
+            "effect": "just_cause_not_required",
+            "applies_to": [
+              "(e)(1) Transient/tourist hotel occupancy per §1940(b)",
+              "(e)(2) Nonprofit hospital, religious facility, extended care facility, licensed residential care facility for elderly (§1569.2 H&S), or adult residential facility",
+              "(e)(3) Dormitory owned/operated by higher education institution or K-12 school",
+              "(e)(4) Housing where tenant shares bathroom/kitchen with owner who maintains principal residence there"
+            ],
+            "note": "ADDED (Andy ratification 2026-07-01 — full exemption matrix): §1946.2(e)(1)–(4). Institutional/special-use exemptions. Rarely implicated in standard residential eviction proceedings but included for completeness."
+          }
+        ]
       }
     },
     "notice_defects": [
@@ -519,28 +677,117 @@
       {
         "defect": "improper_service_method",
         "consequence": "notice_void",
-        "statute": null,
-        "case_law": [],
+        "statute": "CCP §1162",
+        "case_law": [
+          {
+            "cite": "Losornio v. Motta (1998) 67 Cal.App.4th 110",
+            "holding": "Nail-and-mail requires prior unsuccessful attempts at personal and substituted service"
+          }
+        ],
         "severity": "void",
-        "note": "Notice must be served by a legally recognized method — verify statutory service requirements for this state"
+        "note": "REVISED-8 (self-critique 2026-07-01): statute filled from null to CCP §1162. Three permitted methods: personal (§1162(a)(1)), substituted (§1162(a)(2)), nail-and-mail as last resort (§1162(a)(3)). CCP §1013 mail-extension does NOT apply to UD notices per Losornio v. Motta."
       },
       {
         "defect": "notice_period_too_short",
         "consequence": "notice_void",
-        "statute": null,
+        "statute": "CCP §1161(2), (3), (4); Civ. Code §1946.1(b), (c)",
         "case_law": [],
         "severity": "void",
-        "note": "Notice must provide minimum 3 day(s) — verify calculation method"
+        "note": "REVISED-9 (self-critique 2026-07-01): statute filled from null. 3-day court days for pay-or-quit/cure-or-quit/unconditional-quit (§1161(2)/(3)/(4)); 30 calendar days for termination <1yr (§1946.1(c)); 60 calendar days for termination ≥1yr (§1946.1(b)). Premature filing before period expires = defective."
       },
       {
         "defect": "missing_just_cause_reason",
         "consequence": "notice_void",
+        "applies_to": "AB_1482_covered_units_only",
         "statute": "Civ. Code §1946.2 (AB 1482)",
         "case_law": [],
         "severity": "void",
-        "note": "Just cause required — notice must state qualifying reason"
+        "ab1482_coverage_gate": {
+          "note": "This defect applies ONLY to units covered by AB 1482 (Civ. Code §1946.2). Units exempt under §1946.2(e) do NOT require just cause. Before applying this defect, check whether one of the following exemptions applies:",
+          "exemptions_that_negate_defect": [
+            "§1946.2(e)(1) — Transient/tourist hotel occupancy",
+            "§1946.2(e)(2) — Institutional (hospital, religious, care facility, dormitory)",
+            "§1946.2(e)(3) — School/university dormitory",
+            "§1946.2(e)(4) — Shared kitchen/bath with owner-resident",
+            "§1946.2(e)(5) — Owner-occupied SFH (≤2 rentable units/bedrooms)",
+            "§1946.2(e)(6) — Owner-occupied duplex (owner in-unit at tenancy start, neither unit ADU/JADU)",
+            "§1946.2(e)(7) — New construction COO within 15 years (rolling; not mobilehome)",
+            "§1946.2(e)(8) — Alienable SFH/condo: owner not REIT/corp/LLC-with-corp-member AND written exemption notice given"
+          ]
+        },
+        "note": "UPDATED (Andy ratification 2026-07-01 — full exemption matrix): just cause required only for covered units. Defect does not apply if any §1946.2(e) exemption is satisfied. See termination.exemptions for complete exemption encodings."
+      },
+      {
+        "defect": "payee_id_missing",
+        "consequence": "notice_void",
+        "statute": "CCP §1161(2)",
+        "case_law": [
+          {
+            "cite": "Lynch & Freytag v. Cooper (1990) 218 Cal.App.3d 603",
+            "holding": "Pay-or-quit notice must identify the person to whom rent is due; strict compliance required"
+          },
+          {
+            "cite": "Eshagian v. Cepeda (2025)",
+            "holding": "Omission of required payee identification elements (name, phone, address) is fatal to the notice"
+          }
+        ],
+        "severity": "void",
+        "note": "REVISED-3 (self-critique 2026-07-01): ADDED. CCP §1161(2) requires name, telephone number, and address of the person to whom rent is due. Strict compliance — omission of any required element renders notice void. Per frozen golden-set CA-NOT-12."
+      },
+      {
+        "defect": "relocation_assistance_missing",
+        "consequence": "notice_void",
+        "applies_to": "no_fault_termination_only",
+        "statute": "Civ. Code §1946.2(d)",
+        "legislative_source": "SB 567 (Stats. 2023, eff. 4/1/2024)",
+        "case_law": [],
+        "severity": "void",
+        "note": "REVISED-4 (self-critique 2026-07-01): ADDED. For no-fault just-cause termination: landlord must pay 1 month's rent within 15 calendar days of service OR provide written waiver of final month's rent. Strict compliance — failure renders notice void. Per frozen golden-set CA-NOT-14."
+      },
+      {
+        "defect": "wrong_instrument_incurable_conduct",
+        "consequence": "notice_defective",
+        "statute": "CCP §1161(3); CCP §1161(4)",
+        "case_law": [],
+        "severity": "defective",
+        "note": "REVISED-6 (self-critique 2026-07-01): ADDED. Serving §1161(3) cure-or-quit notice for §1161(4) incurable conduct (waste, nuisance, unlawful use) is a wrong-instrument defect. Incurable conduct requires unconditional 3-day quit per §1161(4) — tenant has no right to cure. Per frozen golden-set CA-NOT-20."
       }
     ],
+    "waiver_rules": {
+      "partial_payment_waiver": {
+        "doctrine": "waiver_by_conduct",
+        "statute_anchor": "CCP §1161(2)",
+        "case_law": [
+          {
+            "cite": "EDC Associates v. Gutierrez (1984) 153 Cal.App.3d 167",
+            "holding": "Landlord's acceptance of any rent payment after serving a pay-or-quit notice constitutes waiver of that notice by conduct"
+          }
+        ],
+        "residential_only": true,
+        "commercial_statute_excluded": "CCP §1161.1",
+        "commercial_statute_note": "CCP §1161.1 governs commercial partial payment and reaches different result. CCP §1161.1(d) expressly excludes residential dwelling units — do NOT apply to residential facts.",
+        "determinate_core": {
+          "rule": "Landlord acceptance of any rent payment after notice served, without express reservation of rights, waives the notice. New notice required.",
+          "conditions": [
+            "landlord accepted payment after notice was served",
+            "payment was for rent (not late fees or other charges)",
+            "landlord did not expressly reserve rights at time of acceptance"
+          ],
+          "result": "notice_waived_new_notice_required",
+          "confidence_tier": "A"
+        },
+        "open_textured_exception": {
+          "triggers": [
+            "payment characterization ambiguous (rent vs. other charges)",
+            "express reservation of rights given at time of acceptance",
+            "partial payment of 'undisputed' amount with ongoing dispute"
+          ],
+          "confidence_tier": "B",
+          "note": "Exception path requires attorney judgment. Fact-specific equitable analysis."
+        },
+        "note": "REVISED-5 (self-critique 2026-07-01): ADDED. Restructured from wholly open_textured: determinate core (acceptance + no reservation = waiver) with open-textured exception (ambiguous characterization / express reservation edge). CCP §1161.1 (commercial only) explicitly excluded. Per frozen golden-set CA-NOT-16 + ADDENDUM direction."
+      }
+    },
     "notice_period_basis": {
       "tenancy_length_matters": true,
       "breakpoints": [

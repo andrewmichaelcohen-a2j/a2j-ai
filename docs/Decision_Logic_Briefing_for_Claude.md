@@ -92,4 +92,20 @@ The demo is proof of concept for the method. The project is systematic buildout 
 
 ---
 
+## 9. Jurisdiction-resolution architecture (added 2026-07-01 — Architecture Memo Section 1)
+
+**Canonical principle:**
+> *Jurisdiction resolution precedes rule application. The operative rule for any fact pattern is the composition of applicable state/county/city layers, with the more-protective/more-specific layer controlling on conflict. Un-encoded local jurisdictions must be flagged, never silently defaulted to state-only.*
+
+**Why this matters:** Eviction law is a stack — state → county → city → (sometimes) rent-control zone. In high-need urban markets (LA, SF, Oakland), local ordinances layer on top of state law with stricter, often outcome-changing tenant protections. A state-only rule in these jurisdictions can produce a confidently wrong answer that runs against the tenant. Example: under LAMC §151.09(A)(1), a tenant in an LA RSO unit who owes $1,500 on a 1-bedroom has no nonpayment eviction exposure because the amount owed is below one month's HUD Fair Market Rent (~$2,081). A state-only rule says the pay-or-quit is valid. That is a false negative on a defense the tenant actually has — worse than "I don't know."
+
+**Three required components:**
+1. **Jurisdiction-detection gate:** Before applying substantive rules, resolve which local ordinances attach (driven by address/city and property characteristics: build date, unit count, owner type). Withhold a determinate answer for jurisdiction-sensitive questions until jurisdiction is resolved. "Withhold rather than guess" is the safety default.
+2. **Explicit conflict/override semantics in JSON:** Each rule must represent whether a local layer can override it and in which direction. The schema must express "local layer adds elements / narrows availability / changes the notice-validity test" — not merely "different number."
+3. **Known-unknown flag for un-encoded jurisdictions:** When an address is in a jurisdiction with local ordinances not yet encoded, output: "this unit may be subject to local [City] ordinances not yet in this dataset; a state-only answer may be incomplete." Converts a silent gap into a visible, honest limitation.
+
+**Roadmap:** Start with 2-3 highest-need CA cities: LA (RSO + JCO), SF, Oakland. See `docs/CJaC_Architecture_and_Roadmap_Memo_20260701.md` for full spec.
+
+---
+
 *Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.*
