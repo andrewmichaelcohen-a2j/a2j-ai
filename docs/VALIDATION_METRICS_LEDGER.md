@@ -967,7 +967,29 @@ This section records the pilot score results from the attorney-frozen golden set
 | CA-NOT-16 | ✅ | NOTICE_INVALID | UNCERTAIN | Rules gap | Waiver doctrine (EDC Associates v. Gutierrez) + overstatement after partial payment | ✅ Encoded (REVISED-5) — held-out; verify at next held-out run |
 | CA-NOT-20 | — | NOTICE_INVALID | UNCERTAIN | Rules gap | CCP 1161(4) — unconditional quit for incurable conduct (waste) | ✅ Encoded (REVISED-6) — now correct |
 
-**Next run target:** Fresh held-out golden set (v0.2) — genuinely new fact patterns, no v0.1 reuse. Gate: Gemini DUAL-MODEL-CONSENSUS operative (Gemini 503 capacity issue; expect to clear). Andy freezes v0.2 → score held-out. Target ≥ 90%.
+**v0.2 golden set — FROZEN 2026-07-01:**
+
+| Field | Value |
+|-------|-------|
+| File | `goldenset_CA_notice_v0.2_20260701.xlsx` |
+| SHA256 | `f65c4240e3ec3c4f7f370d805de906b024e7d3e4f51df92b76197eed1962fa83` *(openpyxl at-freeze hash — see re-serialization note below)* |
+| Items frozen | 17 (dropped B-04: near-duplicate of v0.1 CA-NOT-03; same rule, only duration changed) |
+| Held-out | 5 — CA-NOT-B-01, CA-NOT-B-03, CA-NOT-B-13, CA-NOT-B-14, CA-NOT-B-18 |
+| Development | 12 — CA-NOT-B-02, B-05, B-06, B-07, B-08, B-09, B-10, B-11, B-12, B-15, B-16, B-17 |
+| Split method | Hybrid: Python `random.sample`, seed=20260701, leakage-aware pool |
+| Leakage-aware pool | 6 items not re-testing any of the 6 self-critique corrections; 5 drawn, 1 left in dev |
+| Leakage guard | PASSED — all 5 held-out items are NOVEL (none re-tests a correction). Held-out set spans NOTICE_VALID (B-13, B-18) and NOTICE_INVALID (B-01, B-03, B-14) |
+| Scorer validation | 0 YELLOW flags — schema clean |
+| Frozen by | Andrew M. Cohen, 2026-07-01 |
+| Status | ✅ LOCKED — held-out never burned yet; awaiting Gemini DUAL-MODEL-CONSENSUS |
+
+**SHA256 re-serialization note:** The recorded hash (`f65c4240…`) is the SHA256 of the file as produced by openpyxl at freeze time. Excel Desktop re-serializes the ZIP container on open/save, producing a different binary hash with identical legal content (IDs, facts, outcomes, held-out flags unchanged). If Andy opens the file in Excel before scoring, the binary hash will differ from the recorded value. This does not indicate tampering. Integrity verification should compare the canonical fields (ID, Correct outcome, Held-out flag), not the binary hash, if the file has been opened and re-saved. The scorer reads these fields directly; it is not hash-gated.
+
+**v0.2 interpretation caveat:** The 12-item development set is correction-heavy (11/12 directly re-test one of the 6 self-critique corrections). Development score measures whether corrections generalize across variant fact patterns. Held-out score (5 items, all novel) measures generalization to genuinely new rules. Report them separately per direction #6.
+
+**Small-sample caveat (held-out n=5):** A held-out set of 5 items carries wide uncertainty. Binomial 95% confidence intervals: 5/5=100% → CI≈[47.8%, 100%]; 4/5=80% → CI≈[28.4%, 99.5%]; 3/5=60% → CI≈[14.7%, 94.7%]. The held-out score is a **directional signal**, not a precision accuracy rate. Do not present it as a stable percentage. The correct framing is: "N of 5 held-out items correct — small-sample result; interpret as directional signal only. Confidence interval is wide (see ledger)." A stable rate requires ≥30 items; the v0.2 held-out set is a proof-of-method pass, not a definitive benchmark.
+
+**Next run target:** Stage 2 dual-model score on v0.2. Gate: Gemini 503 capacity cleared (overnight VT retry will confirm) + DUAL-MODEL-CONSENSUS run. Score held-out (5) and dev (12) separately. Report B1–B4 + per-item match table with controlling authority on any miss. Apply small-sample framing above to held-out result.
 
 ---
 
@@ -989,6 +1011,7 @@ As each module/claim-type completes, add its combined row here so the *trend* is
 | **Notice / pay_or_quit — provenance rerun (51 states)** | **51** | **CC=42 (82%)** | **42 CC auto-confirmed; 5 MS / 2 PD / 1 CD surfaced** | **5 MS + 2 PD + 1 CD = 8 divergences → NOTICE-L2 queue (YELLOW); MD/MO corroborate existing L7s** | *GA CRITICAL: file=3d but GPT=0d (no notice required) — contradicts auto-resolve; MO: both models now empty (was 10d); WY citation split; AR/MN/OR/SD period splits* | **2026-06-26 (notice rerun; Counter bug caused crash after write_back; reconstructed from log)** |
 | **CA notice — Direction B pilot v1 (golden-set scorer, GPT-only)** | **16 frozen (5 held-out / 11 non-held-out)** | **n/a (outcome test)** | **n/a — 6 rules gaps; 0 model-wrong** | **0% (6/6 gaps = missing rules, not interpretive items)** | *held-out score: 3/5=60%; all misses are rules-gap; 6 encoding items queued* | **2026-07-01 (SM-GPT; Gemini 429)** |
 | **CA notice — Direction B Stage 2 v1 encoding validation (non-held-out, SM-GPT)** | **11 non-held-out** | **n/a (outcome test)** | **n/a** | **0%** | *non-held-out: 11/11=100% (SM-GPT PARTIAL-CONSENSUS 1/11; not consensus-operative); B2: confident-wrong=0; B3: newly_failing=0; all 6 pilot gaps closed; no held-out burn* | **2026-07-01 (SM-GPT; Gemini 503 capacity — credits restored)** |
+| **CA notice — v0.2 golden set FROZEN (awaiting dual-model score)** | **17 frozen (5 held-out / 12 dev)** | **n/a — not yet scored** | **n/a** | **n/a** | *SHA256: f65c4240…; seed=20260701; leakage-aware pool; all 5 held-out NOVEL; 0 YELLOW flags; no held-out burn yet — awaiting Gemini DUAL-MODEL-CONSENSUS* | **2026-07-01 (Andy froze; Gemini 503 pending clearance)** |
 | *(future modules…)* | | | | | | |
 | *(future DOMAINS — debt, family, benefits…)* | | | | | | |
 

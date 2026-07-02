@@ -2,7 +2,7 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
-**Last updated:** 2026-07-01 session 6 (Stage 2 encoding validation complete: 11/11=100% non-held-out SM-GPT; Lawvable explored — no eviction skills; VT retry queued)
+**Last updated:** 2026-07-01 session 8 (v0.2 golden set FROZEN: 17 items, B-04 dropped, held-out split locked, SHA256 recorded)
 
 ---
 
@@ -32,9 +32,16 @@
 - ✅ Andy reviewed FLAGGED residual + ratified strategy tags (2026-07-01)
 - ✅ Gemini credits restored (Andy 2026-07-01); 503 UNAVAILABLE = capacity (temporary)
 - ✅ Encoding validation: 11/11=100% non-held-out (SM-GPT PARTIAL-CONSENSUS — not yet consensus-operative)
-- ❌ Dual-model DUAL-MODEL-CONSENSUS operative (Gemini 503 capacity; VT retry tonight confirms status)
-- ❌ Fresh held-out golden set (v0.2) created and frozen by Andy
-- ❌ Held-out scored at DUAL-MODEL-CONSENSUS
+- ✅ Golden set v0.2 FROZEN (2026-07-01): 17 items; B-04 dropped (near-dup CA-NOT-03); held-out split locked (seed=20260701, leakage-aware pool)
+  - File: `rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.2_20260701.xlsx`
+  - SHA256: `f65c4240e3ec3c4f7f370d805de906b024e7d3e4f51df92b76197eed1962fa83`
+  - Held-out (5): CA-NOT-B-01, B-03, B-13, B-14, B-18 — all NOVEL, none re-testing a correction
+  - Dev (12): B-02, B-05, B-06, B-07, B-08, B-09, B-10, B-11, B-12, B-15, B-16, B-17
+  - Leakage guard: PASSED. Scorer validation: 0 YELLOW flags.
+- ❌ Gemini DUAL-MODEL-CONSENSUS operative (Gemini 503 capacity; VT retry tonight confirms; dev-set SM-GPT preliminary run GREEN when Gemini clears)
+- ❌ **Stage 2 dual-model score on v0.2** — run `ca_notice_scorer.py` on `goldenset_CA_notice_v0.2_20260701.xlsx` once DUAL-MODEL-CONSENSUS. Score held-out (5) and dev (12) separately. Report B1–B4 per direction #6. — **NEXT ACTION: Andy runs from terminal once Gemini 503 clears**
+  - *SHA256 note:* if file opened in Excel Desktop before scoring, binary hash will differ from recorded `f65c4240…` (openpyxl re-serializes on save); legal content unchanged; scorer is not hash-gated.
+  - *Small-sample caveat:* held-out n=5 is directional signal only. Report as "N of 5 correct" with wide-CI note (5/5→CI≈[48%,100%]; 4/5→CI≈[28%,100%]). Do not present as a precision accuracy rate.
 
 ---
 

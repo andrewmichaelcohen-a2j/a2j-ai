@@ -4,6 +4,89 @@
 
 ---
 
+## 2026-07-01 (session 8 — v0.2 golden set FROZEN: 17 items, held-out split locked)
+
+### GREEN — Executed autonomously
+
+**Golden set v0.2 FROZEN — Task #23 COMPLETE (GREEN)**
+
+**Drop B-04 (near-duplicate):**
+- CA-NOT-B-04 (30-day to 14-month tenant) dropped per Andy's direction — re-tests the same determinate rule as v0.1 CA-NOT-03 (§1946.1(b): tenancy ≥1yr → 60-day required) with only duration varied. Leaves 17 items.
+
+**Freeze 17 items:**
+- All 17: Status=FROZEN, ATTORNEY VERDICT=CONFIRMED, Correct outcome = Drafted outcome (Andy confirmed all as-drafted), Reviewed by=Andrew M. Cohen, Date=2026-07-01
+- File: `rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.2_20260701.xlsx`
+- SHA256: `f65c4240e3ec3c4f7f370d805de906b024e7d3e4f51df92b76197eed1962fa83`
+- Scorer validation: 0 YELLOW flags (schema exact match; all KNOWN_OUTCOMES; all FROZEN items complete)
+
+**Held-out split — LOCKED:**
+- Method: hybrid — Python `random.sample`, seed=20260701, within leakage-aware pool
+- Leakage-aware pool (6 items NOT re-testing any of the 6 self-critique corrections): CA-NOT-B-01, B-02, B-03, B-13, B-14, B-18
+- The six corrections: §1946.1(b)/(c) tier+Stancil, SFH two-prong, residential/commercial waiver, day-count/SB 611, §1161(3)/(4) gate, SB 567 relocation
+- Draw (5 of 6): CA-NOT-B-01, CA-NOT-B-03, CA-NOT-B-13, CA-NOT-B-14, CA-NOT-B-18 → Held-out=TRUE
+- CA-NOT-B-02 (not drawn from pool) → Development=FALSE
+- All 11 correction-re-testers (B-05, B-06, B-07, B-08, B-09, B-10, B-11, B-12, B-15, B-16, B-17) → Development=FALSE
+- Per protocol rule 4: held-out flags LOCKED — never adjusted after this point
+
+**Leakage guard — CONFIRMED PASSED:**
+1. No held-out item is verbatim/near-verbatim of any v0.1 frozen item ✅
+2. All 5 held-out items are NOVEL (none re-tests one of the 6 corrections) ✅
+3. Held-out set spans outcomes: NOTICE_VALID (B-13, B-18) + NOTICE_INVALID (B-01, B-03, B-14) ✅
+4. Held-out set is NOT composed solely of correction re-testers ✅
+
+**VALIDATION_METRICS_LEDGER.md updated (GREEN)**
+- v0.2 FROZEN block added with full provenance, SHA256, split, guard confirmation
+- Repeatability view row added: v0.2 FROZEN — awaiting dual-model score
+
+**WORK_QUEUE.md updated (GREEN)**
+- v0.2 FROZEN gate row ✅ with SHA256 and held-out IDs
+- Stage 2 dual-model score gate remains open; NEXT ACTION: Andy runs scorer from terminal once Gemini 503 clears
+
+**SHA256 re-serialization note added (GREEN)**
+- Recorded hash `f65c4240…` is the openpyxl at-freeze binary; Excel Desktop re-serializes on open/save → different binary, identical legal content.
+- Integrity check should compare canonical fields (ID, Correct outcome, Held-out flag), not binary hash.
+- Note added to METRICS_LEDGER v0.2 block and WORK_QUEUE next-action item.
+
+**Small-sample caveat added to all reporting surfaces (GREEN)**
+- Held-out n=5: 95% CI is wide (5/5→[47.8%,100%]; 4/5→[28.4%,99.5%]). Result is directional signal, not precision rate.
+- Framing: "N of 5 held-out items correct — small-sample result; interpret as directional signal only."
+- Caveat added to METRICS_LEDGER (v0.2 block + next-run-target) and WORK_QUEUE.
+
+### YELLOW — None new.
+
+### RED — None new.
+
+---
+
+## 2026-07-01 (session 7 — Golden set v0.2 DRAFT created: 18 candidates, independent source)
+
+### GREEN — Executed autonomously
+
+**Golden set v0.2 DRAFT Excel created — Task #21 + #22 COMPLETE (GREEN)**
+- File: `rules/validation/scorer/DRAFT/goldenset_CA_notice_v0.2_DRAFT_20260701.xlsx`
+- 18 DRAFT candidates, two-sheet workbook (Candidates + Notes)
+- Headers: exact match to `EXPECTED_COLUMNS` in `ca_notice_scorer.py`; scorer will correctly skip all DRAFT rows
+- All 18: Status=DRAFT, ATTORNEY VERDICT=blank, Correct outcome=blank, Held-out=blank (Andy fills)
+
+**Independence constraint satisfied:**
+- Group A (7 items): sourced from CJER BG 31 (2015 ed.) embedded hypotheticals — §§31.2(7), 31.16, 31.17, 31.20, 31.26(2). IDs: CA-NOT-B-01, B-02, B-03, B-06, B-07, B-08, B-09.
+- Group B (11 items): sourced from primary statutory text — CCP §1161 (SB 611 court-day counting), Civ. Code §1946.1(b) (30/60-day), §1946.2(d) (SB 567 relocation), §1946.2(e)(6)/(7)/(8) (exemptions), Stancil v. Superior Court (2021). IDs: CA-NOT-B-04, B-05, B-10 through B-18.
+- Zero candidates derived from the rules-writing pass or self-critique pass.
+
+**No v0.1 reuse:** All 18 candidates confirmed distinct from the 16 frozen v0.1 items. CA-NOT-B-04 (30-day to 14-month tenant) tests the same legal rule as CA-NOT-03 but with a different tenancy duration; flagged in the Notes sheet for Andy's review.
+
+**Outcome distribution:** NOTICE_VALID=5 (B-08, B-11, B-13, B-16, B-18), NOTICE_INVALID=12 (B-01 through B-07 excl. B-08, plus B-09, B-12, B-14, B-15, B-17), UD_DEFECTIVE_PREMATURE=1 (B-10).
+
+**WORK_QUEUE.md updated (GREEN)**
+- Stage 2 gate v0.2 DRAFT row marked ✅
+- "Andy reviews + freezes v0.2" marked as NEXT ACTION FOR ANDY
+
+### YELLOW — None new.
+
+### RED — None new.
+
+---
+
 ## 2026-07-01 (session 6 — Stage 2 encoding validation; Lawvable explored; VT retry queued)
 
 ### GREEN — Executed autonomously
