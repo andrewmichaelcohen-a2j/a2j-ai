@@ -803,6 +803,224 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
+#### Morning report cycle — 2026-07-16 (no-run cycle — **DISPATCHER DID NOT FIRE overnight** [queue was empty anyway]; no new output; report fired on time at 8:00 AM)
+
+*No job dispatched — and unlike the prior six nights, the dispatcher itself never fired: `launchd_stdout.log` last write is 2026-07-15 ~2:24 AM, no "Queue is empty" line for 07-16, and no new dispatch log file exists. **First dispatcher-side missed fire since the launchd/FDA fix (2026-06-25).** No substantive loss — the live queue contains only `.gitkeep` + the sample format file (Northgate retry #3 still deliberately held on the Gemini-DNS RED), so a fire would have idled — but this is a NEW anomaly class: all prior cadence anomalies (07-08 double, 07-10 missed, 07-12 ~3 h late, 07-15 ~30 min late) were on the Cowork report side; the launchd dispatcher had fired reliably in the 2:15–2:25 window every night since 06-25. No new files in l2/output/, results/, done/, or failed/ since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only).*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate / Overall rate | N/A | No run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall | N/A | No model calls this cycle |
+| Cumulative | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**Process note (cadence):** report-side: fired 8:00 AM PDT — on time (clean fire after the 07-15 late fire; settings-check note stays open). **Dispatcher-side: MISSED FIRE — first since 06-25.** Possible causes for Andy to check before anything is re-queued: machine off or asleep-without-wake overnight, launchd agent unloaded (`launchctl list | grep com.cjac`), or plist/log-path change. This overlaps the existing power/schedule strand of the Gemini-DNS RED — both point at overnight machine/network environment. Folded into the standing RED-strategic infrastructure item rather than opened as a separate RED. B1–B4: no score run this cycle; standing v0.2 figures unchanged (held-out 5/5, dev 12/12, confident-wrong=0, newly_failing=0).
+
+---
+
+#### Morning report cycle — 2026-07-15 (no-run cycle — sixth consecutive intentionally-empty night; no new output; report fired ~8:30 AM, ~30 min late)
+
+*No job dispatched. Dispatcher fired 2026-07-15 ~2:24 AM and logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log) — sixth consecutive intentionally-idle night (07-10 through 07-15). This remains the expected state: Northgate retry #3 is deliberately held pending Andy's Gemini-endpoint DNS diagnosis (RED-strategic, 07-09 cycle). No new files in l2/output/, results/, done/, or failed/ since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only).*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate / Overall rate | N/A | No run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall | N/A | No model calls this cycle |
+| Cumulative | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**Process note (cadence):** this cycle fired ~8:30 AM PDT — roughly 30 minutes late (mild anomaly, same class as neither the double-fire nor the missed cycle). The two-clean-fire streak (07-13, 07-14) is broken; the standing settings-check note for Andy is RETAINED — it was one clean fire from closing. Dispatcher-side cadence remains normal (2:24 AM is within the observed 2:15–2:25 window). B1–B4: no score run this cycle; standing v0.2 figures unchanged (held-out 5/5, dev 12/12, confident-wrong=0, newly_failing=0).
+
+---
+
+#### Morning report cycle — 2026-07-14 (no-run cycle — fifth consecutive intentionally-empty night; no new output; report fired on time at 8 AM)
+
+*No job dispatched. Dispatcher fired 2026-07-14 ~2:15 AM and logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log) — fifth consecutive intentionally-idle night (07-10 through 07-14). This remains the expected state: Northgate retry #3 is deliberately held pending Andy's Gemini-endpoint DNS diagnosis (RED-strategic, 07-09 cycle). No new files in l2/output/, results/, done/, or failed/ since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only).*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate / Overall rate | N/A | No run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall | N/A | No model calls this cycle |
+| Cumulative | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**Process note (cadence):** this cycle fired at 8:01 AM PDT — on time. Second consecutive clean fire (07-13, 07-14) after the three-anomaly stretch (07-08 double, 07-10 missed, 07-12 late). Standing settings-check note for Andy retained one more cycle; a third consecutive clean fire would justify closing it. B1–B4: no score run this cycle; standing v0.2 figures unchanged (held-out 5/5, dev 12/12, confident-wrong=0, newly_failing=0).
+
+---
+
+#### Morning report cycle — 2026-07-13 (no-run cycle — fourth consecutive intentionally-empty night; no new output; report fired on time at 8 AM)
+
+*No job dispatched. Dispatcher fired 2026-07-13 ~2:15 AM and logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log) — fourth consecutive intentionally-idle night (07-10 through 07-13). This remains the expected state: Northgate retry #3 is deliberately held pending Andy's Gemini-endpoint DNS diagnosis (RED-strategic, 07-09 cycle). No new files in l2/output/, results/, done/, or failed/ since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only).*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate / Overall rate | N/A | No run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall | N/A | No model calls this cycle |
+| Cumulative | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**Process note (cadence):** this cycle fired at 8:00 AM PDT — on time. First on-schedule fire since the three-anomaly stretch (07-08 double, 07-10 missed, 07-12 late); one clean data point does not close the standing settings-check note for Andy, but it is recorded. B1–B4: no score run this cycle; standing v0.2 figures unchanged (held-out 5/5, dev 12/12, confident-wrong=0, newly_failing=0).
+
+---
+
+#### Morning report cycle — 2026-07-12 (no-run cycle — third consecutive intentionally-empty night; no new output; report fired ~11 AM, not 8 AM)
+
+*No job dispatched. Dispatcher fired 2026-07-12 ~2:15 AM and logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log) — third consecutive intentionally-idle night (07-10, 07-11, 07-12). This remains the expected state: Northgate retry #3 is deliberately held pending Andy's Gemini-endpoint DNS diagnosis (RED-strategic, 07-09 cycle). No new files in l2/output/, results/, done/, or failed/ since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only).*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate / Overall rate | N/A | No run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall | N/A | No model calls this cycle |
+| Cumulative | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**Process note (cadence):** this report cycle fired ~11:00 AM PDT rather than 8 AM — third cadence anomaly (07-08 double-fire, 07-10 missed cycle, 07-12 ~3 h late). Logged per honesty discipline; carried as the standing scheduled-task cadence observation for Andy. B1–B4: no score run this cycle; standing v0.2 figures unchanged (held-out 5/5, dev 12/12, confident-wrong=0, newly_failing=0).
+
+---
+
+#### Morning report cycle — 2026-07-11 (no-run cycle — queue intentionally empty pending Gemini-DNS RED; no new output; 07-10 cycle missing)
+
+*No job dispatched. Dispatcher fired 2026-07-10 and 2026-07-11 ~2:15 AM and logged "Queue is empty or no eligible jobs — nothing to do" both nights (launchd_stdout.log). This is the expected state: Northgate retry #3 is deliberately held pending Andy's Gemini-endpoint DNS diagnosis (RED-strategic, 07-09 cycle). No new files in l2/output/, results/, done/, or failed/ since run 9ae49b97 (ingested 07-09).*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate / Overall rate | N/A | No run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall | N/A | No model calls this cycle |
+| Cumulative | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**Process note:** no 2026-07-10 morning-report cycle entry exists in this ledger or DAILY_CHANGELOG — the scheduled report appears not to have fired (or fired without logging) on 07-10. No overnight output existed that day, so nothing was missed substantively, but the gap is logged here per the honesty discipline (same class as the 07-04/07-05 backfill note). B1–B4: no score run this cycle; standing v0.2 figures unchanged (held-out 5/5, dev 12/12, confident-wrong=0, newly_failing=0).
+
+---
+
+#### Morning report cycle — 2026-07-09 (VT Northgate retry #2 — selective Gemini-endpoint DNS failure; all 5 units PR; routing fix + extended search ladder both live-verified)
+
+*Run dispatched 2026-07-09 09:19 UTC. Job: `job_vt_northgate_generate_retry2_20260708`. Protocol: retaliation_holdings_v3. States: VT, fresh=true. 5 units. Run ID: 9ae49b97. Elapsed: 343.4 min. Summary: `SUMMARY_retaliation_holdings_v3_2026-07-09_1538.md`. Raw: `retaliation_holdings_v3_2026-07-09_9ae49b97.json`. PR list: `retaliation_holdings_v3_PR_9ae49b97.json`. Ingested: 2026-07-09 morning report.*
+
+**Result: All 5 VT units → PR (`generate-api-failure-transient`). Checks A (existence) and B (currency) SUCCEEDED for all 5 cases via CourtListener throughout the run; every Check C Gemini generate call failed with DNS getaddrinfo `[Errno 8]` across ~5.7 hours. Fifth DNS-affected night since 07-03 — but the failure is now shown to be SELECTIVE to the Gemini endpoint, not a general outage and not machine sleep. NOT a verification failure; no case reached two-model corroboration.**
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate | N/A (0 ÷ 0) | Zero text-retrievable-bucket cases (MV+CI+RC=0); generate phase never produced a holding to verify |
+| Overall rate | 0 ÷ 5 = 0% | Retrieval/generate-gated (PR), per two-rate rule — the gap is infrastructure, not method |
+| MV / CI / RC / PR / SM | 0 / 0 / 0 / 5 / 0 | All PR, pr_reason=`generate-api-failure-transient` |
+| α_method / α_overall | N/A | No dual-model citation pairs produced (generate failed before any model output) |
+| PR quarantine | 5 | Atwood, Vladyka, Northgate White, Houle, Gokey — quarantined for retry; expected re-encounters, no status change (Gokey stays MV, Houle stays CI, Atwood/Vladyka stay wrong-doc CLOSED, Northgate stays PR) |
+
+**Diagnosis (GREEN):**
+1. **Extended search backoff ladder (07-08 YELLOW) live-verified ✅:** first CL search attempt DNS-failed; the 60s retry succeeded; statute query returned 5 in-state candidates; Check E correctly rejected 2 wrong-jurisdiction hits (Imperial Colliery WV, Espenschied DC).
+2. **FLAG-generate-failed→PR routing fix (07-06 YELLOW) FIRST LIVE EXERCISE — PASSED ✅:** all 5 generate failures routed to PR; zero RC artifacts (contrast run 57cf7b37 pre-fix, which emitted 2 bogus RCs on the same failure mode); nothing routed to attorney.
+3. **Machine-sleep hypothesis WEAKENED; selective-DNS hypothesis now primary:** no wall-clock gap this run (dispatch → harness start 35 min = search retry ladder; continuous per-case progress to completion). CourtListener API calls succeeded at every hour of the night (one transient CL error on case 3 recovered on retry), while the Gemini hostname failed DNS resolution persistently for ~5.7 h on the same machine, same process. Points to a local resolver/filter issue specific to the Google API endpoint at night (router/DNS filtering, VPN/profile schedule, or resolver path used by the google client), not lid-close sleep. Escalated RED-strategic per the job's own instruction ("if DNS again, escalate rather than extend backoff further").
+
+**Actions (this cycle):** No re-queue — Northgate retry #3 is deliberately held pending Andy's DNS/power diagnosis (job instruction; and Northgate is marginal — trial-court opinion; VT module effectively complete at 1 MV + 1 CI). No rule changes; no ladder changes. Cumulative counters unchanged: **MV=26, CI=4, RC=6.**
+
+---
+
+#### Morning report cycle — 2026-07-08 (VT Northgate generate retry — DNS infrastructure failure again; backoff ladder extended)
+
+*Run dispatched 2:16 AM PT 2026-07-07; job completed 2026-07-08 03:11 UTC. Job: `job_vt_northgate_generate_retry_20260706`. Protocol: retaliation_holdings_v3. States: VT, fresh=true. 1 unit. Run ID: e9222548. Summary: `SUMMARY_retaliation_holdings_v3_2026-07-08_0311.md`. Raw: `retaliation_holdings_v3_2026-07-08_e9222548.json`. Ingested: 2026-07-08 morning report. (No 2026-07-07 cycle entry — the job was still in flight during that day; nothing to ingest.)*
+
+**Result: Infrastructure failure — DNS NameResolutionError to www.courtlistener.com on ALL 5 attempts of BOTH queries (4465 statute + broad fallback), exhausting the full 60/120/180/240s backoff ladder (~10 min/query). Fourth DNS-affected night since 2026-07-03. 0 candidates → `VT::__no_cases__` permanent-failure. Northgate's generate was never retried; the 2026-07-06 FLAG-generate-failed→PR routing fix remains live-unexercised. NOT a validation failure; no validation rate is logged.**
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate | N/A | 0 text-retrievable cases — retrieval never occurred; harness 0/1=0% overall is a DNS artifact, not logged as a validation rate |
+| Overall rate | N/A | Single unit is `__no_cases__` infrastructure artifact |
+| MV / CI / RC / PR / SM | 0 / 0 / 0 / 0 / 0 | Nothing reached Check A; queue_routing=None — anti-default upheld, nothing routed to attorney |
+| α_method / α_overall | N/A | No model calls made |
+
+**Diagnosis (GREEN):**
+1. The 2026-07-05 backoff fix worked as designed (retried 5×/query with correct messaging, correctly labeled the failure "PR-class infrastructure failure, NOT a genuine no-CL state") — but the outage outlasted the ~10-min ladder.
+2. **Wall-clock anomaly:** dispatched 2:16 AM PT; harness unit-processing timestamps are 5:11 PM PT (~15 h later), yet total retry sleep is only ~20 min. Strong hypothesis: **the Mac sleeps mid-run despite `caffeinate -ims`** (lid-close sleep overrides caffeinate; network unavailable in dark-wake) — which would also explain the recurring "2:15 AM DNS window" across runs c0a2df2d (07-03), c7bcdcff (07-04), 57cf7b37 (07-06, recovered on first backoff), e9222548 (07-07). Flagged to Andy — power/schedule settings are his machine, his call.
+3. Cosmetic mislabel noted (not fixed this cycle): harness `disposition_note` for the search-network-failure path still reads "No candidate cases in draft file for this state" even though the runner correctly announced PR-class network failure. Routing is unaffected (nothing → attorney); label fix is a candidate GREEN item.
+
+**Actions (this cycle):** Network-retry ladder extended 60/120/180/240s → 60/120/240/600/1200/1800s (~66 min ride-out/query) in `retaliation_holdings_v3_runner.py` `_run_search` (YELLOW — reversible; py_compile clean; 30/30 regression tests pass). Re-queued as `job_vt_northgate_generate_retry2_20260708.json` for 2:15 AM 2026-07-09 (queue was empty). Machine-sleep hypothesis escalated to Andy as a decision item. Cumulative counters unchanged: **MV=26, CI=4, RC=6.**
+
+---
+
+#### Morning report cycle — 2026-07-06 (VT Gokey MV ✅ on third attempt; 2 runs ingested; RC-misroute bug found + fixed)
+
+*Backfill note: the 2026-07-04 and 2026-07-05 report cycles applied fixes and queued jobs but did not update this ledger (process miss, GREEN-fixed this cycle). Both runs since 2026-07-03 are ingested here.*
+
+**Run 1 (backfill) — c7bcdcff, dispatched 2:15 AM 2026-07-04. Job: `job_vt_gokey_retry_20260703`. VT, 1 unit, elapsed 0.0 min.**
+- **Infrastructure failure again:** DNS NameResolutionError to www.courtlistener.com at ~2:25 AM PT on BOTH the (now-corrected 4465) statute query and broad fallback — second consecutive night, establishing a recurring DNS-unavailability window at dispatch time. Retrieval never occurred; the 4465 fix was never exercised.
+- Method rate N/A; overall rate N/A (harness 0/1=0% is a DNS artifact — not logged as a validation rate). MV/CI/RC/PR/SM = 0/0/0/0/0. α N/A (no model calls).
+- **Action (2026-07-05, unlogged then, recorded now):** `_run_search` in `retaliation_holdings_v3_runner.py` given network-error retry with 60/120/180/240s backoff (~10 min ride-out per query); error paths no longer mislabeled "genuine no-CL state" (YELLOW — flagged for ratification). Re-queued as `job_vt_gokey_retry2_20260705`.
+
+**Run 2 — 57cf7b37, dispatched 2:15 AM 2026-07-06. Job: `job_vt_gokey_retry2_20260705`. VT, fresh=true, 5 units, elapsed 162.5 min. Summary: `SUMMARY_retaliation_holdings_v3_2026-07-06_1303.md`.**
+
+- **The DNS-retry fix WORKED:** first statute query hit the same NameResolutionError at 00:20, retried on 60s backoff, succeeded → 5 in-state candidates. Check E rejected 2 wrong-jurisdiction hits (Imperial Colliery [WV], Espenschied [DC]).
+- **🎯 Gokey v. Bessette, 154 Vt. 560, 580 A.2d 488 (Vt. 1990) → MV** — the target of three nights of retries. A=true (cluster 1539041, citation match), B=OK-machine (13 citing opinions, no negative treatment), C=corroborated (Gemini generate → GPT-4o verify, draft_agreement=agree), **D=STATED with verbatim controlling quote** (burden-shifting standard under 9 V.S.A. §4465). Written to `vt_eviction_v2.json` machine_verified_cases. Below attorney line.
+
+| Bucket | Harness-reported | Corrected (ingestion) | Why corrected |
+|--------|------------------|----------------------|---------------|
+| MV | 1 | 1 | Gokey ✅ |
+| CI | 0 | 0 | |
+| RC | 2 | **0** | Houle + Northgate White RC = **DNS artifacts**: `check_c.generate_output.error = [Errno 8] nodename...` — the Gemini generate call itself failed on DNS mid-run. No legal evaluation occurred. PR-class per anti-default rule; NOT attorney items. |
+| PR | 2 | **4** | Atwood (wrong-doc, re-confirmed), Vladyka v. Marsh (wrong-doc, habitability case — CLOSED) + the 2 reclassified above (Northgate = generate retry lane; Houle = disregarded, already CI [VT-HOLD-CI-01]) |
+| SM | 0 | 0 | |
+
+- Method rate (corrected): 1/1 = 100% (n=1 — statistically meaningless; reported for completeness). Overall rate (corrected): 1/5 = 20% (retrieval/relevance-gated). Harness-reported method rate 1/3=33% is contaminated by the 2 misrouted DNS artifacts — do not cite.
+- **α:** only 1 unit reached dual-model evaluation (Gokey; agree). α not computable at n=1 (D_e undefined); raw agreement 1/1. Reported per small-n honesty rule.
+- **Pipeline bug found + fixed (YELLOW):** `protocols/retaliation_holdings_v3.py` routed `FLAG-generate-failed` (generate API/network failure) to RC/needs-attorney — a structural anti-default violation. Fixed: generate failure now routes PR with `pr_reason=generate-api-failure-transient`; added to `is_pr` detection. Compile clean; 30/30 regression tests pass. Reversible.
+- **Cumulative counters: MV=26 (+1 Gokey), CI=4, RC=6 (unchanged — misrouted RCs never entered the attorney queue).** VT holdings module: 1 MV + 1 CI, both VT Supreme Court — module effectively complete pending Northgate generate retry (marginal: trial-court opinion).
+
+---
+
+#### Morning report cycle — 2026-07-03 (VT Gokey run — DNS infrastructure failure)
+
+*Run dispatched 2:15 AM 2026-07-03; completed 09:17 UTC. Job: `job_vt_gokey_20260702`. Protocol: retaliation_holdings_v3. States: VT. 1 unit. Run ID: c0a2df2d. Elapsed: <1 min. Summary: `SUMMARY_retaliation_holdings_v3_2026-07-03_0917.md`. Raw: `retaliation_holdings_v3_2026-07-03_c0a2df2d.json`. Ingested: 2026-07-03 morning report.*
+
+**Result: Infrastructure failure — DNS resolution to www.courtlistener.com failed at dispatch time (NameResolutionError on both the statute query and the broad fallback). Gokey was never fetched. NOT a validation failure; no validation rate is logged for this run.**
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate | N/A | 0 text-retrievable cases — retrieval never occurred; do not log 0% as a validation rate |
+| Overall rate | N/A | Harness recorded 0/1=0% but the single unit is a DNS artifact, not a verified miss |
+| MV / CI / RC / PR / SM | 0 / 0 / 0 / 0 / 0 | Runner recorded `VT::__no_cases__` → permanent-failure ("No candidate cases in draft file") |
+| α_method / α_overall | N/A | No model calls were made (no candidates reached Check A) |
+
+**Root-cause chain (GREEN diagnosis):**
+1. `fresh=true` path: no v1 draft candidates for VT → live CL search fired.
+2. Both CL queries failed with `NameResolutionError` (`Failed to resolve 'www.courtlistener.com'`) — network/DNS unavailable on the machine at 2:17 AM PT. Retrieval failure, PR-class in spirit; harness recorded it as permanent-failure because 0 candidates returned.
+3. Secondary finding: `_STATE_RETALIATION_STATUTES["VT"]` was `"4467"` (9 V.S.A. §4467 = termination-of-tenancy notice), not `"4465"` (retaliation). The 2026-07-02 MCP search that identified Gokey used "4465" and returned exactly Houle + Gokey. Even with working DNS, the statute-targeted query would have been off-statute (broad fallback would likely still have recovered Gokey).
+4. Tertiary note: job fields `target_cluster_id`/`target_case` are not consumed — `dispatch.py` passes only `--states`/`--fresh`, and the runner has no targeted-cluster mode. With the 4465 fix, the statute query should return Gokey directly; a targeted-cluster mode remains a possible future enhancement (proposed, not built).
+
+**Actions (this cycle):** VT statute config fixed 4467→4465 in `retaliation_holdings_v3_runner.py` (YELLOW — reversible one-token config change, flagged for ratification; runner compiles clean). Job re-queued as `job_vt_gokey_retry_20260703.json` for 2:15 AM 2026-07-04. Anti-default rule upheld: nothing routed to attorney; cumulative counters unchanged (MV=25, CI=4, RC=6).
+
+---
+
+#### Morning report cycle — 2026-07-02 (VT retry #3 — Gemini 503 CLEARED)
+
+*Run dispatched 2:15 AM 2026-07-02; completed 02:16 UTC. Job: `job_vt_retry_gemini_restored_20260701`. Protocol: retaliation_holdings_v3. States: VT. 2 units. Run ID: 1153a763. Elapsed: 1.5 min. Summary: `SUMMARY_retaliation_holdings_v3_2026-07-02_0916.md`. Raw: `retaliation_holdings_v3_2026-07-02_1153a763.json`. Ingested: 2026-07-02 morning report.*
+
+**Result: Gemini 503 capacity issue CLEARED. Both VT cases got Gemini 2.5-pro responses. One CI (Houle), one PR (Atwood — wrong document).**
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate | 0/1 = 0% | Houle=CI (text-retrievable, not MV); Atwood=PR (excluded from method denominator) |
+| Overall rate | 0/2 = 0% | No MV produced this run |
+| MV | 0 | Houle corroborated but D=INFERRED → CI not MV |
+| CI | 1 | Houle v. Quenneville — two-model corroborated, D=INFERRED. Added to HUMAN_REVIEW_QUEUE [VT-HOLD-CI-01] |
+| RC | 0 | |
+| PR | 1 | Atwood v. Hill — wrong document (not a retaliation case). GREEN pipeline investigation. |
+| SM | 0 | |
+| α_method | N/A | Only 1 text-retrievable case (n=1; α not computable) |
+
+**Cases:**
+- **Atwood v. Hill** (VT Superior Court 2024, CL cluster 10145325) → PR, reason: `case-not-relevant-to-retaliation-likely-wrong-doc`. Gemini (high confidence): "This is a trial court order resolving a landlord-tenant dispute over damages, back rent, and a security deposit." CL returned the wrong document. GREEN pipeline item — need to search for correct VT retaliation case or confirm CL coverage gap. NOT attorney lane.
+- **Houle v. Quenneville** (VT SC 2001, 787 A.2d 1258, CL cluster 2320677) → CI. Generate: Gemini 2.5-pro. Verify: GPT-4o ("accurate"). D=INFERRED (no verbatim controlling quote, but holding clear from prose). Holding: tenant failed to prove retaliatory eviction; initial eviction may have been retaliatory but subsequent non-renewal was based on lease expiration + completed repairs. Added to HUMAN_REVIEW_QUEUE [VT-HOLD-CI-01].
+
+**Cumulative counters updated:** MV=25 (unchanged), CI=4 (+1 Houle), RC=6 (unchanged). Gemini blocker removed from WORK_QUEUE.
+
+**8 AM audit addendum (2026-07-02 morning report):**
+- Overnight ingestion confirmed complete and consistent across ledger, HUMAN_REVIEW_QUEUE, WORK_QUEUE, STATE_OF_RECORD (all updated in the pre-8AM session).
+- **Atwood GREEN investigation RESOLVED:** CourtListener MCP search (`retaliatory eviction "4465"`, court=vt) returned exactly 2 VT opinions: Houle (already CI) and **Gokey v. Bessette, 154 Vt. 560, 580 A.2d 488 (Vt. 1990)** — the foundational VT retaliatory eviction case (the "Gokey standard" referenced in Houle's proposed holding). Published, cited 17×, CL cluster 1539041. Added to `vt_eviction_v2.json` holdings.candidates (UNVERIFIED). Atwood recorded in `pr_cases` as wrong-doc, closed.
+- **Queue refill:** overnight queue was EMPTY (tonight's 2:15 AM dispatch would have idled). `job_vt_gokey_20260702.json` queued — retaliation_holdings_v3, VT, fresh=true, target Gokey cluster 1539041.
+- α for v0.2 scorer runs computed and added to the v0.2 block (held-out α=0.667 n=5; dev α=0.867 n=12 — small-n caveats apply).
+
+---
+
 #### Morning report cycle — 2026-07-01 (VT retry — Gemini API failure)
 
 *Run dispatched 2:15 AM 2026-07-01; completed 09:16 UTC. Job: `job_vt_retry_fresh_20260630`. Protocol: retaliation_holdings_v3. States: VT. 2 units. Run ID: 1c7f0772. Elapsed: 1.2 min. Ingested: 2026-07-01 morning report.*
@@ -981,7 +1199,46 @@ This section records the pilot score results from the attorney-frozen golden set
 | Leakage guard | PASSED — all 5 held-out items are NOVEL (none re-tests a correction). Held-out set spans NOTICE_VALID (B-13, B-18) and NOTICE_INVALID (B-01, B-03, B-14) |
 | Scorer validation | 0 YELLOW flags — schema clean |
 | Frozen by | Andrew M. Cohen, 2026-07-01 |
-| Status | ✅ LOCKED — held-out never burned yet; awaiting Gemini DUAL-MODEL-CONSENSUS |
+| Status | ✅ **HELD-OUT BURNED — 2026-07-02. Score: 5/5 = 100.0%. DUAL-MODEL-CONSENSUS.** |
+
+**v0.2 held-out score — BURNED 2026-07-02 (run: `ca_notice_score_2026-07-02_held-out.json`):**
+
+| Field | Value |
+|-------|-------|
+| Consensus status | **DUAL-MODEL-CONSENSUS** — both models answered on all 5 items |
+| Held-out score | **5/5 = 100.0%** |
+| Small-sample framing | "5 of 5 held-out items correct — small-sample result (n=5); 95% CI: [47.8%, 100%]. Directional signal only." |
+| Model agreement | agree=4, disagree=1, errors=0 |
+| Confident-wrong (B2) | **0** — zero high-confidence wrong predictions |
+| Excel SHA256 (scorer-recorded) | `f65c4240e3ec3c4f7f370d805de906b024e7d3e4f51df92b76197eed1962fa83` |
+| Rules file SHA256 | `87c822b7235be31db8c673305c6a9271237b6e055df504bedc04f173220a0ab4` |
+| Run date | 2026-07-02 |
+| Scorer version | v2.0-excel-native |
+| Output file | `rules/validation/scorer/output/ca_notice_score_2026-07-02_held-out.json` |
+
+**B1–B4 measurements — v0.2 held-out (2026-07-02):**
+
+| Directive | Metric | Value | Notes |
+|-----------|--------|-------|-------|
+| **B1 Coverage** | Known/Total | 5/5 = **100%** | All 5 held-out items produced a classifiable prediction |
+| **B1 Coverage** | Accuracy (known) | 5/5 = **100%** | DUAL-MODEL-CONSENSUS operative |
+| **B1 Coverage** | Overall | 5/5 = **100%** | No unknown items |
+| **B2 Confident-wrong** | Count | **0** | Zero items with high-confidence wrong prediction. B-18: Gemini returned UNCERTAIN (appropriate; not confident-wrong). GPT correct at HIGH confidence. |
+| **B3 Regression** | Applicability | N/A for held-out | Held-out items are novel; no prior scoring to regress against |
+| **B4 Currency** | Status | ✅ Complete | Self-critique pass 2026-07-01; SB 567 (eff. 4/1/2024), SB 611 (eff. 2/1/2025), Stancil (2021) all current |
+
+**Per-item held-out results:**
+
+| ID | Correct | Predicted | Match | Models Agree | GPT rule | Gemini rule | Notes |
+|----|---------|-----------|-------|-------------|----------|-------------|-------|
+| CA-NOT-B-01 | NOTICE_INVALID | NOTICE_INVALID | ✅ | AGREE | `notice_defects[payee_id_missing]` | `notice_defects[payee_id_missing]` | Website URL ≠ required physical address |
+| CA-NOT-B-03 | NOTICE_INVALID | NOTICE_INVALID | ✅ | AGREE | `notice_defects[includes_late_fees]` | `notice_defects[includes_late_fees]` | $1,207 demanded vs $1,200 owed — overage voids notice |
+| CA-NOT-B-13 | NOTICE_VALID | NOTICE_VALID | ✅ | AGREE | `termination.exemptions[new_construction_15yr]` | `termination.exemptions[new_construction_15yr]` | CofO 11yr ago → within 15yr window → exempt |
+| CA-NOT-B-14 | NOTICE_INVALID | NOTICE_INVALID | ✅ | AGREE | `notice_defects[missing_just_cause_reason]` | `notice_defects[missing_just_cause_reason]` | CofO 16yr ago → exceeds 15yr → AB 1482 applies → no just-cause stated |
+| CA-NOT-B-18 | NOTICE_VALID | NOTICE_VALID | ✅ | **DISAGREE** | `termination.exemptions[owner_occupied_duplex]` | UNCERTAIN | GPT: exemption applies (HIGH). Gemini: facts don't state when owner occupancy began (HIGH UNCERTAIN). Ground truth: NOTICE_VALID (Andy-confirmed). See YELLOW flag below. |
+
+**🟡 YELLOW flag — CA-NOT-B-18 model disagreement:**
+Gemini raised a legitimate condition: §1946.2(e)(7) owner-occupied duplex exemption requires the owner to have occupied their unit at the inception of the tenancy. The scenario facts don't explicitly state this. GPT applied the exemption; Gemini returned UNCERTAIN. The ground truth (Andy-confirmed NOTICE_VALID) resolves this as valid — the scenario is presumed to satisfy the condition. However, the scenario may benefit from explicit statement of this condition to prevent future disagreement. This is a golden-set scenario-quality note, not a rules-encoding error. **No change to score or rules required.**
 
 **SHA256 re-serialization note:** The recorded hash (`f65c4240…`) is the SHA256 of the file as produced by openpyxl at freeze time. Excel Desktop re-serializes the ZIP container on open/save, producing a different binary hash with identical legal content (IDs, facts, outcomes, held-out flags unchanged). If Andy opens the file in Excel before scoring, the binary hash will differ from the recorded value. This does not indicate tampering. Integrity verification should compare the canonical fields (ID, Correct outcome, Held-out flag), not the binary hash, if the file has been opened and re-saved. The scorer reads these fields directly; it is not hash-gated.
 
@@ -989,7 +1246,68 @@ This section records the pilot score results from the attorney-frozen golden set
 
 **Small-sample caveat (held-out n=5):** A held-out set of 5 items carries wide uncertainty. Binomial 95% confidence intervals: 5/5=100% → CI≈[47.8%, 100%]; 4/5=80% → CI≈[28.4%, 99.5%]; 3/5=60% → CI≈[14.7%, 94.7%]. The held-out score is a **directional signal**, not a precision accuracy rate. Do not present it as a stable percentage. The correct framing is: "N of 5 held-out items correct — small-sample result; interpret as directional signal only. Confidence interval is wide (see ledger)." A stable rate requires ≥30 items; the v0.2 held-out set is a proof-of-method pass, not a definitive benchmark.
 
-**Next run target:** Stage 2 dual-model score on v0.2. Gate: Gemini 503 capacity cleared (overnight VT retry will confirm) + DUAL-MODEL-CONSENSUS run. Score held-out (5) and dev (12) separately. Report B1–B4 + per-item match table with controlling authority on any miss. Apply small-sample framing above to held-out result.
+**✅ Held-out BURNED (2026-07-02): 5/5 = 100.0% DUAL-MODEL-CONSENSUS.**
+**✅ Dev set scored (2026-07-02): 10/12 = 83.3% DUAL-MODEL-CONSENSUS.** 2 misses: B-02 (encoding gap) + B-09 (encoding error → B2 confident-wrong). GREEN encoding fixes applied (REVISED-8, REVISED-9).
+**✅ B3 regression check (2026-07-02 post-fix): 12/12 = 100.0% DUAL-MODEL-CONSENSUS.** newly_failing=0. Both encoding fixes confirmed correct. Run 1: B-09 GEMINI-EMPTY (ΔSM-items=1). Run 2 (confirmation): 12/12 AGREE=12 — B-09 full dual-model consensus. Transient Gemini-empty cleared.
+
+**v0.2 dev set score — 2026-07-02 (run: `ca_notice_score_2026-07-02_non-held-out.json`):**
+
+| Field | Value |
+|-------|-------|
+| Consensus status | **DUAL-MODEL-CONSENSUS** — both models answered on all 12 items |
+| Dev score | **10/12 = 83.3%** |
+| Model agreement | agree=11, disagree=1, errors=0 |
+| Confident-wrong (B2) | **2** — B-02 (GPT HIGH wrong; Gemini UNCERTAIN); B-09 (both HIGH wrong — higher severity) |
+| Output file | `rules/validation/scorer/output/ca_notice_score_2026-07-02_non-held-out.json` |
+
+**B1–B4 measurements — v0.2 dev set (2026-07-02):**
+
+| Directive | Metric | Value | Notes |
+|-----------|--------|-------|-------|
+| **B1 Coverage** | Known/Total | 12/12 = **100%** | All 12 items produced a classifiable prediction |
+| **B1 Coverage** | Accuracy (known) | 10/12 = **83.3%** | DUAL-MODEL-CONSENSUS |
+| **B1 Coverage** | Overall | 10/12 = **83.3%** | No unknown/coverage gap items |
+| **B2 Confident-wrong** | Count | **2** | See below — B-09 is the higher-severity case |
+| **B3 Regression** | Applicability | N/A (new items) | Dev set items are new; no prior scoring to compare |
+| **B4 Currency** | Status | ✅ Complete | Self-critique pass 2026-07-01; all rules current |
+
+**Dev set miss triage:**
+
+| Item | Correct | Predicted | Models Agree | B2 severity | Root cause | Encoding fix |
+|------|---------|-----------|-------------|-------------|------------|-------------|
+| CA-NOT-B-02 | NOTICE_INVALID | NOTICE_VALID | DISAGREE (GPT HIGH wrong; Gemini HIGH UNCERTAIN) | 🟡 Medium | Encoding GAP — `days_hours_for_payment` not in mandatory content. CCP §1161(2): when rent payable in person at stated address, notice MUST state "usual days and hours" — omission is fatal. | Add conditional `pay_or_quit.mandatory_content.days_hours_for_in_person_payment` element |
+| CA-NOT-B-09 | NOTICE_INVALID | NOTICE_VALID | AGREE (both HIGH wrong) | 🔴 HIGH (B2) | Encoding ERROR — unauthorized subletting in `unconditional_quit.bright_line_qualifying_conduct`. Per CCP §1161(3), unauthorized subletting is CURABLE; tenant has statutory right to remove subtenant within 3 days. §1161(4) (incurable) applies to nuisance/waste/unlawful use — subletting is NOT in that list. | Move unauthorized subletting from §1161(4) category to §1161(3) curable category. Add `perform_covenant_quit` element for lease covenant breaches. |
+
+**Combined v0.2 result (held-out and dev NEVER blended in any single rate):**
+- Held-out: **5/5 = 100.0%** (n=5; 95% CI: [47.8%, 100%]; directional signal only; burned permanently)
+- Dev pre-fix: **10/12 = 83.3%** (2 encoding gaps: B-02, B-09)
+- Dev post-fix (B3 regression check, 2026-07-02): **12/12 = 100.0% DUAL-MODEL-CONSENSUS** — newly_failing=0; agree=12, disagree=0, errors=0; B-09 full consensus confirmed (run 1 had transient GEMINI-EMPTY; run 2 cleared)
+- Do NOT report a combined/blended rate. These are separate measurements with separate purposes.
+
+**B3 regression check — v0.2 dev set post-encoding-fix (2026-07-02):**
+
+| Field | Value |
+|-------|-------|
+| Trigger | REVISED-8 (B-02: added `days_hours_for_in_person_payment`) + REVISED-9 (B-09: subletting §1161(4)→§1161(3)) |
+| Score | **12/12 = 100.0%** (up from 10/12 = 83.3%) |
+| Consensus status | **DUAL-MODEL-CONSENSUS** — run 2 (confirmation) agree=12, disagree=0, errors=0. Run 1 had B-09 GEMINI-EMPTY (transient); cleared by run 2. |
+| newly_failing | **0** — no regressions. All 10 previously-correct items remain correct. |
+| B-02 result | ✅ NOTICE_INVALID, AGREE — encoding fix confirmed effective |
+| B-09 result | ✅ NOTICE_INVALID, AGREE (DUAL-MODEL-CONSENSUS) — run 1 had transient GEMINI-EMPTY; run 2 confirmed both models agree. Flag cleared. |
+| B2 confident-wrong | **0** (down from 2 pre-fix) |
+| Output file | `rules/validation/scorer/output/ca_notice_score_2026-07-02_non-held-out.json` (overwrites pre-fix run) |
+| Rules SHA256 | `cc0cfab63ae1591e2b88…` (reflects REVISED-8 + REVISED-9 changes to ca_eviction_v2.json) |
+| Run date | 2026-07-02 |
+
+**Krippendorff's α — v0.2 scorer model agreement (added 2026-07-02 morning report; nominal, 2 raters = GPT/Gemini predicted outcomes; no missing data — both models answered all items):**
+
+| Run | n | Agree/Disagree | D_o | D_e | α |
+|-----|---|----------------|-----|-----|---|
+| Held-out | 5 | 4/1 (B-18: Gemini UNCERTAIN) | 0.200 | 0.600 | **0.667** |
+| Dev | 12 | 11/1 (B-02: Gemini UNCERTAIN) | 0.083 | 0.627 | **0.867** |
+| Combined (agreement stat only — scores never blended) | 17 | 15/2 | 0.118 | 0.606 | **0.806** |
+
+*Small-n caveat: α at n=5 and n=12 is statistically unreliable (conventional reliability thresholds assume much larger n). Both disagreements are Gemini-UNCERTAIN cases (appropriate caution), not confident splits. Report α alongside n, always.*
 
 ---
 
@@ -1011,9 +1329,37 @@ As each module/claim-type completes, add its combined row here so the *trend* is
 | **Notice / pay_or_quit — provenance rerun (51 states)** | **51** | **CC=42 (82%)** | **42 CC auto-confirmed; 5 MS / 2 PD / 1 CD surfaced** | **5 MS + 2 PD + 1 CD = 8 divergences → NOTICE-L2 queue (YELLOW); MD/MO corroborate existing L7s** | *GA CRITICAL: file=3d but GPT=0d (no notice required) — contradicts auto-resolve; MO: both models now empty (was 10d); WY citation split; AR/MN/OR/SD period splits* | **2026-06-26 (notice rerun; Counter bug caused crash after write_back; reconstructed from log)** |
 | **CA notice — Direction B pilot v1 (golden-set scorer, GPT-only)** | **16 frozen (5 held-out / 11 non-held-out)** | **n/a (outcome test)** | **n/a — 6 rules gaps; 0 model-wrong** | **0% (6/6 gaps = missing rules, not interpretive items)** | *held-out score: 3/5=60%; all misses are rules-gap; 6 encoding items queued* | **2026-07-01 (SM-GPT; Gemini 429)** |
 | **CA notice — Direction B Stage 2 v1 encoding validation (non-held-out, SM-GPT)** | **11 non-held-out** | **n/a (outcome test)** | **n/a** | **0%** | *non-held-out: 11/11=100% (SM-GPT PARTIAL-CONSENSUS 1/11; not consensus-operative); B2: confident-wrong=0; B3: newly_failing=0; all 6 pilot gaps closed; no held-out burn* | **2026-07-01 (SM-GPT; Gemini 503 capacity — credits restored)** |
-| **CA notice — v0.2 golden set FROZEN (awaiting dual-model score)** | **17 frozen (5 held-out / 12 dev)** | **n/a — not yet scored** | **n/a** | **n/a** | *SHA256: f65c4240…; seed=20260701; leakage-aware pool; all 5 held-out NOVEL; 0 YELLOW flags; no held-out burn yet — awaiting Gemini DUAL-MODEL-CONSENSUS* | **2026-07-01 (Andy froze; Gemini 503 pending clearance)** |
+| **CA notice — Direction B v0.2 held-out BURNED (DUAL-MODEL-CONSENSUS)** | **5 held-out** | **n/a (outcome test)** | **n/a** | **0%** | *5/5=100.0% DUAL-MODEL-CONSENSUS; B2: confident-wrong=0; B-18 YELLOW (Gemini UNCERTAIN on inception condition — appropriate); held-out permanently burned* | **2026-07-02** |
+| **CA notice — Direction B v0.2 dev scored + B3 post-fix (DUAL-MODEL-CONSENSUS)** | **12 dev** | **n/a (outcome test)** | **n/a** | **0%** | *Pre-fix: 10/12=83.3% (B2: confident-wrong=2: B-02 medium, B-09 HIGH). Post-fix: 12/12=100.0% DUAL-MODEL-CONSENSUS; newly_failing=0; agree=12, disagree=0 (B-09 GEMINI-EMPTY on run 1 cleared by run 2)* | **2026-07-02** |
+| **CA notice — v0.2 held-out 🔥 BURNED + dev scored (DUAL-MODEL-CONSENSUS)** | **17 frozen (5 held-out / 12 dev)** | **n/a (outcome test)** | **n/a** | **0% held-out; 2/12 dev (encoding gaps)** | *held-out: **5/5=100.0%** (B2: confident-wrong=0; B-18 YELLOW Gemini UNCERTAIN); dev: **10/12=83.3%** (B2: confident-wrong=2 — B-09 both-HIGH both-wrong [§1161(3)/(4) subletting misclassified]; B-02 GPT-HIGH-wrong Gemini-UNCERTAIN [§1161(2) days/hours gap])* | **2026-07-02 (both runs DUAL-MODEL-CONSENSUS; Gemini 2.5-pro + GPT-5.5)** |
+| **CA notice — Broaden Proof 1 (v0.3 held-out, PENDING ANDY FREEZE)** | **28 draft candidates** | **n/a (outcome test — DRAFT)** | **n/a** | **0% expected** | *Status=DRAFT; Andy reviews + freezes each item; score once after freeze; target: n≈28-30 held-out, dual-model, report with 95% CI* | **2026-07-02 (DRAFT created; rules frozen at vProof1; score pending)** |
 | *(future modules…)* | | | | | | |
 | *(future DOMAINS — debt, family, benefits…)* | | | | | | |
+
+---
+
+### CA-notice rules — vProof1 freeze record (Broaden Proof 1)
+
+| Field | Value |
+|-------|-------|
+| Tag | `ca_notice_rules_vProof1` |
+| File | `rules/eviction/california/ca_eviction_v2.json` |
+| SHA256 | `cc0cfab63ae1591e2b88353c557aeb8027767d99276a3115b5ce9f4115599b93` |
+| Frozen date | 2026-07-02 |
+| State at freeze | Post REVISED-8 (§1161(2) days_hours) + REVISED-9 (subletting §1161(3)→curable); 9 self-critique revisions from 2026-07-01; 12/12=100% dev DUAL-MODEL-CONSENSUS (B3 passed ×3) |
+| Rule-freeze gate | B3 regression check PASSED (newly_failing=0, confirmed three times on 2026-07-02) |
+| Purpose | Integrity anchor for Broaden Proof 1 held-out scoring. The v0.3 held-out set (28 draft items) is scored against THIS frozen version — rules did not see the new items and will not be tuned to pass them. |
+| **NO RULE EDITS PERMITTED** | Until after v0.3 held-out score is complete and logged. Discovered gaps → next development cycle with fresh held-out set. |
+
+**v0.3 draft held-out set:**
+- File: `rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.3_DRAFT_20260702.xlsx`
+- SHA256 (at-creation): `5f2c25c15b34bb7b209a6bd7900e9f4804063340e39fed481779984dc0489e0d`
+- Items: 28 candidates, all Status=DRAFT, all Held-out=TRUE
+- Outcome distribution (DRAFT): NOTICE_VALID=15, NOTICE_INVALID=12, UD_DEFECTIVE_PREMATURE=1
+- Modules covered: pay-or-quit (counts, amounts, content), cure-or-quit (§1161(3)), unconditional quit (§1161(4)), AB 1482/§1946.2, service methods (CCP §1162), multi-defect, edge cases
+- Independence: all 28 are genuinely new fact patterns; v0.2 items NOT reused
+- Sources: CCP §1161/§1162/§1946.2; BG31 (2015, authority cross-checked); SB 611 (eff. 2/1/2025); AB 1482; case law per item
+- **Next step: Andy reviews, corrects, and sets Status=FROZEN for each item → then score once, dual-model**
 
 **Trend observation (5 modules):** Consensus rate varied (80% → 33% → 57% → ~25–30% of 107 overlay items → 0%) and human-escalation rate ranged from 0%–27% depending on content complexity. The retaliation elements re-run (2026-06-21) with the GPT token fix applied produced the first genuinely representative two-model retaliation result: 57% consensus (both models agreed on statute + period) and 27% L7 escalation — reflecting that retaliation presumption-period law is substantively more contested than notice-period law. The 71% automation ceiling for retaliation elements (vs. 80–98% for notice/service/remaining-defenses) reflects a real legal signal: more states have genuine statutory ambiguity about whether a presumption period exists. The GPT token-budget root cause is confirmed and fixed; GPT failures in the 7 remaining single-model states are transient API issues, not systematic. **The repeatability claim holds: the method reliably finds the genuinely hard questions. The variance in escalation rate (0% for remaining-defenses elements, 27% for retaliation elements) is evidence of content discrimination, not method inconsistency — the process escalates more when the law is actually more contested.**
 

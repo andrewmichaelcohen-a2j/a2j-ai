@@ -305,9 +305,14 @@ def run_unit(unit: dict) -> dict:
                 "draft_agreement": None,
                 "generate_output": gen_resp,
                 "verify_output": None,
-                # PR: wrong/unrelated document retrieved. RC: generate API failure (text was present).
-                "queue_routing": "PR" if c_holding == "FLAG-irrelevant" else "RC",
-                "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc" if c_holding == "FLAG-irrelevant" else None,
+                # PR both ways (2026-07-06 fix, anti-default rule): FLAG-irrelevant =
+                # wrong/unrelated document retrieved; FLAG-generate-failed = generate
+                # API/network failure. Both are infrastructure, retry lane — NEVER
+                # attorney lane. (Run 57cf7b37 misrouted 2 DNS-failure cases to RC.)
+                "queue_routing": "PR",
+                "pr_reason": ("case-not-relevant-to-retaliation-likely-wrong-doc"
+                              if c_holding == "FLAG-irrelevant"
+                              else "generate-api-failure-transient"),
                 "basis": c_basis,
             }
 
@@ -332,6 +337,7 @@ def run_unit(unit: dict) -> dict:
         or c_holding_val == "FLAG-no-text"
         or not text_retrieved
         or c_holding_val == "FLAG-irrelevant"  # CL returned wrong/unrelated document
+        or c_holding_val == "FLAG-generate-failed"  # generate API/network failure — infrastructure, retry lane (2026-07-06 fix)
     )
 
     pr_reason: str | None = None

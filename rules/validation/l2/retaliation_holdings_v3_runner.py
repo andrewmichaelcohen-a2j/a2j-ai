@@ -734,7 +734,7 @@ _STATE_RETALIATION_STATUTES: dict[str, str] = {
     "NM": "47-8-39", "NV": "118A.510", "NY": "223-b", "OH": "5321.02",
     "OK": "41-120", "OR": "90.385", "PA": "landlord tenant retaliation",
     "RI": "34-18-46", "SC": "27-40-910", "SD": "43-32-27", "TN": "66-28-507",
-    "TX": "92.331", "UT": "57-22-6", "VA": "55.1-1258", "VT": "4467",
+    "TX": "92.331", "UT": "57-22-6", "VA": "55.1-1258", "VT": "4465",
     "WA": "59.18.240", "WI": "704.45", "WV": "37-6A-1", "WY": "1-21-1207",
 }
 
@@ -804,8 +804,30 @@ def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> lis
     state_name = _CL_STATE_NAMES.get(state_abbr, state_abbr)
     statute = _STATE_RETALIATION_STATUTES.get(state_abbr, "")
 
-    def _run_search(q: str) -> list[dict]:
-        """Execute one CL search and return jurisdiction-filtered case dicts."""
+    def _run_search(q: str) -> tuple[list[dict], bool]:
+        """Execute one CL search and return (jurisdiction-filtered case dicts, network_error).
+
+        network_error=True means the search FAILED for infrastructure reasons
+        (DNS, connection, timeout) after retries — an empty result in that case
+        is NOT evidence that no cases exist (PR-class, not a genuine no-CL state).
+
+        Network errors retry with a long backoff (2026-07-05 fix): two consecutive
+        overnight runs (c0a2df2d 2026-07-03, c7bcdcff 2026-07-04) failed on
+        NameResolutionError at ~2:15-2:25 AM PT — a recurring DNS-unavailability
+        window at dispatch time. The old code bailed on first ConnectionError;
+        this rides out an outage of up to ~10 min per query.
+
+        2026-07-08 extension (YELLOW): run e9222548 (2026-07-07) exhausted the
+        full 60/120/180/240s ladder on BOTH queries — the outage window can
+        exceed 10 min. Ladder extended to 60/120/240/600/1200/1800s
+        (~66 min ride-out per query). Note: wall-clock evidence from e9222548
+        (dispatched 2:16 AM PT, harness unit processing at 5:11 PM PT) suggests
+        the machine may sleep mid-run despite caffeinate -ims; if so, longer
+        backoff only helps when the process is actually running — see
+        DAILY_CHANGELOG 2026-07-08 for the machine-sleep hypothesis flagged
+        to Andy.
+        """
+        net_backoff = (60, 120, 240, 600, 1200, 1800)  # ~66 min total ride-out
         params = {
             "q": q,
             "type": "o",
@@ -813,7 +835,7 @@ def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> lis
             "format": "json",
             "stat_Precedential": "on",
         }
-        for attempt in range(5):
+        for attempt in range(len(net_backoff) + 1):
             try:
                 r = requests.get(
                     f"{CL_BASE}/search/", params=params, headers=cl_headers(), timeout=15
@@ -837,11 +859,21 @@ def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> lis
                 if rejected:
                     print(f"    [Check E: rejected {len(rejected)} wrong-jurisdiction hits: "
                           f"{rejected[:3]}{'...' if len(rejected) > 3 else ''}]")
-                return accepted
+                return accepted, False
+            except (requests.exceptions.ConnectionError,
+                    requests.exceptions.Timeout) as e:
+                print(f"    [CL network error for {state_abbr} "
+                      f"(attempt {attempt + 1}/{len(net_backoff) + 1}): {e}]")
+                if attempt < len(net_backoff):
+                    wait = net_backoff[attempt]  # 60/120/240/600/1200/1800s ≈ 66 min total
+                    print(f"    [DNS/network may be transient — retrying in {wait}s]")
+                    time.sleep(wait)
+                    continue
+                return [], True
             except Exception as e:
                 print(f"    [CL search error for {state_abbr}: {e}]")
-                return []
-        return []
+                return [], True
+        return [], True
 
     # Step 1: statute-targeted query (precision)
     if statute:
@@ -849,20 +881,26 @@ def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> lis
     else:
         q_statute = f"retaliatory eviction {state_name} landlord tenant residential"
 
-    cases = _run_search(q_statute)
+    cases, net_err = _run_search(q_statute)
     print(f"    [CL statute query: {len(cases)} in-state candidates for {state_abbr}]")
 
     # Step 2: broad fallback if statute query returns 0 in-state results
     if not cases and statute:
         q_broad = f"retaliatory eviction {state_name} landlord tenant"
         print(f"    [CL broad fallback for {state_abbr}: '{q_broad}']")
-        cases = _run_search(q_broad)
+        cases, net_err_broad = _run_search(q_broad)
         if cases:
             for c in cases:
                 c["_source"] = "cl_fresh_search_broad_fallback"
             print(f"    [CL broad fallback: {len(cases)} in-state candidates for {state_abbr}]")
+        elif net_err_broad:
+            print(f"    [CL broad fallback: SEARCH FAILED (network) for {state_abbr} — "
+                  f"PR-class infrastructure failure, NOT a genuine no-CL state. Retry the job.]")
         else:
             print(f"    [CL broad fallback: 0 results for {state_abbr} — genuine no-CL state]")
+    elif not cases and net_err:
+        print(f"    [CL search FAILED (network) for {state_abbr} — "
+              f"PR-class infrastructure failure, NOT a genuine no-CL state. Retry the job.]")
 
     return cases
 

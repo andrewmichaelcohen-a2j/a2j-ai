@@ -1,0 +1,58 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "9ae49b97",
+  "pr_count": 5,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": [
+    {
+      "state": "VT",
+      "case_name": "Atwood v. Hill",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "pr_reason": "generate-api-failure-transient",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "9ae49b97"
+    },
+    {
+      "state": "VT",
+      "case_name": "Vladyka v. Marsh",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2010,
+      "pr_reason": "generate-api-failure-transient",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "9ae49b97"
+    },
+    {
+      "state": "VT",
+      "case_name": "Northgate Hous. Ltd. v. White",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2004,
+      "pr_reason": "generate-api-failure-transient",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "9ae49b97"
+    },
+    {
+      "state": "VT",
+      "case_name": "Houle v. Quenneville",
+      "citation_gpt": "787 A.2d 1258",
+      "citation_gemini": "787 A.2d 1258",
+      "year": 2001,
+      "pr_reason": "generate-api-failure-transient",
+      "cl_returned": "CL citations ['787 A.2d 1258', '173 Vt. 80', '2001 Vt. LEXIS 367']; model citations ['787 A.2d 1258', '787 A.2d 1258']; match=True",
+      "run_id": "9ae49b97"
+    },
+    {
+      "state": "VT",
+      "case_name": "Gokey v. Bessette",
+      "citation_gpt": "580 A.2d 488",
+      "citation_gemini": "580 A.2d 488",
+      "year": 1990,
+      "pr_reason": "generate-api-failure-transient",
+      "cl_returned": "CL citations ['580 A.2d 488', '154 Vt. 560', '23 A.L.R. 5th 887', '1990 Vt. LEXIS 160']; model citations ['580 A.2d 488', '580 A.2d 488']; match=True",
+      "run_id": "9ae49b97"
+    }
+  ]
+}

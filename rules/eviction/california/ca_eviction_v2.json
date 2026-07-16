@@ -487,7 +487,15 @@
           "payee_phone_required": true,
           "payee_address_required": true,
           "statute": "CCP §1161(2)",
-          "note": "REVISED-3 (self-critique 2026-07-01): CCP §1161(2) requires name, telephone number, and address of payee. Strict compliance — omission of any element is fatal to notice. See Lynch & Freytag v. Cooper (1990) 218 Cal.App.3d 603; Eshagian v. Cepeda (2025)."
+          "note": "REVISED-3 (self-critique 2026-07-01): CCP §1161(2) requires name, telephone number, and address of payee. Strict compliance — omission of any element is fatal to notice. See Lynch & Freytag v. Cooper (1990) 218 Cal.App.3d 603; Eshagian v. Cepeda (2025). REVISED-8 (encoding fix 2026-07-02): Added days_hours_for_in_person_payment requirement per CCP §1161(2).",
+          "days_hours_for_in_person_payment": {
+            "required_when": "rent_payable_in_person_at_stated_address",
+            "content": "usual days and hours landlord available to receive payment at stated address",
+            "fatal_if_omitted": true,
+            "statute": "CCP §1161(2)",
+            "source_anchor": "CCP §1161(2): 'if the address at which rent may be paid is set forth in the notice, the notice shall also set forth the usual days and hours that the landlord is available at such address to receive payment' — omission is fatal under strict compliance",
+            "note": "REVISED-8 (encoding fix 2026-07-02, B-02 correction): Omission of usual days/hours is fatal under strict compliance. Confirmed by golden-set CA-NOT-B-02 miss analysis."
+          }
         },
         "tenancy_all": {
           "days": 3,
@@ -512,7 +520,7 @@
         }
       },
       "cure_or_quit": {
-        "description": "Curable lease violation — CCP §1161(3). Use only for CURABLE covenant breaches. For incurable conduct (waste, nuisance, unlawful use, unauthorized subletting) use unconditional_quit (CCP §1161(4)).",
+        "description": "Curable lease violation — CCP §1161(3). Use only for CURABLE covenant breaches. Includes unauthorized assignment/subletting (tenant has statutory right to remove subtenant within 3 court days per CCP §1161(3)). For incurable conduct (waste, nuisance, unlawful use) use unconditional_quit (CCP §1161(4)).",
         "days": 3,
         "statute": "CCP §1161(3)",
         "curable": true,
@@ -524,12 +532,13 @@
           "Failure to obtain renter's insurance per lease covenant",
           "Failure to pay utilities required under lease",
           "Unauthorized occupant (where lease limits occupants — if curable by removal)",
-          "Lease covenant breach capable of being remedied within 3 court days"
+          "Lease covenant breach capable of being remedied within 3 court days",
+          "Unauthorized assignment or subletting contrary to lease covenants (CCP §1161(3) — express statutory curable breach; tenant has right to remove subtenant/assignee within 3 court days)"
         ],
-        "note": "CCP §1161(3): curable covenant violations only. Tenant has 3 court days to cure or surrender. If conduct 'cannot afterward be performed' per the statute, §1161(3) still permits notice but no cure opportunity — treat as escalating to §1161(4) analysis. See interaction gate: cure_or_quit_vs_unconditional_quit."
+        "note": "CCP §1161(3): curable covenant violations only. Tenant has 3 court days to cure or surrender. If conduct 'cannot afterward be performed' per the statute, §1161(3) still permits notice but no cure opportunity — treat as escalating to §1161(4) analysis. See interaction gate: cure_or_quit_vs_unconditional_quit. REVISED-9 (encoding fix 2026-07-02, B-09 correction): Added unauthorized assignment/subletting as curable breach per CCP §1161(3), which expressly names 'covenant not to assign or sublet' as performable within 3 days. §1161(4) enumerated categories (nuisance, waste, unlawful use) do NOT include subletting — using unconditional_quit for subletting is a B2 HIGH error."
       },
       "unconditional_quit": {
-        "description": "Incurable conduct (waste, nuisance, unlawful use, unauthorized assignment/subletting contrary to covenants) — CCP §1161(4). No right to cure.",
+        "description": "Incurable conduct (waste, nuisance, unlawful use) — CCP §1161(4). No right to cure. NOTE: unauthorized assignment/subletting is a CURABLE breach under CCP §1161(3), not §1161(4).",
         "days": 3,
         "statute": "CCP §1161(4)",
         "curable": false,
@@ -541,8 +550,7 @@
           "Public nuisance per Civ. Code §3482.8",
           "Drug activity per Civ. Code §3485(c)",
           "Criminal street gang activity per Civ. Code §3486(c)",
-          "Using premises for unlawful purpose",
-          "Unauthorized assignment or subletting of premises contrary to lease covenants"
+          "Using premises for unlawful purpose"
         ],
         "open_textured_conduct": [
           "Repeated disturbances or noise complaints (may rise to nuisance — fact-specific)",
@@ -555,7 +563,7 @@
           "drug_activity": "Civ. Code §3485(c)",
           "gang_activity": "Civ. Code §3486(c)"
         },
-        "note": "REVISED-6 (self-critique 2026-07-01) + BRIGHT-LINE ENCODED (Andy ratification 2026-07-01): §1161(4) — waste, nuisance, unlawful use, unauthorized assignment/subletting. No cure right. Ambiguous conduct (see open_textured_conduct) routes to open-textured analysis. Cross-refs: Civ. Code §3482.8, §3485(c), §3486(c) define statutory nuisance categories. Source: CCP §1161(4) (Justia 2025 text confirmed)."
+        "note": "REVISED-6 (self-critique 2026-07-01) + BRIGHT-LINE ENCODED (Andy ratification 2026-07-01): §1161(4) — waste, nuisance, unlawful use. No cure right. Ambiguous conduct (see open_textured_conduct) routes to open-textured analysis. Cross-refs: Civ. Code §3482.8, §3485(c), §3486(c) define statutory nuisance categories. Source: CCP §1161(4) (Justia 2025 text confirmed). REVISED-9 (encoding fix 2026-07-02, B-09 correction): Removed unauthorized assignment/subletting from this category — per CCP §1161(3) subletting is a curable lease covenant breach; §1161(4) enumerated categories do NOT include subletting. Moved to cure_or_quit.bright_line_qualifying_conduct."
       },
       "termination": {
         "statute": "Civ. Code §1946.1; Civ. Code §1946.2 (AB 1482)",

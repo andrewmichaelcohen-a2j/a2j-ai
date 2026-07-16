@@ -2,7 +2,16 @@
 
 **Module:** Notice / pay_or_quit · **Layer:** L2 Multi-Model Consensus  
 **Runner rule:** Runners append new flagged items only. They never edit or overwrite the Resolution, Authoritative source, Resolved by, Date, or Status fields — those are owned by Andy Cohen.  
-**Last rebuilt:** 2026-07-01 morning report (VT retry [run 1c7f0772] ingested: Gemini 429 on both VT cases [Atwood v. Hill, Houle v. Quenneville]; anti-default rule applied — NOT added to queue [API failure, not legal failure]; no new items added; RC count remains 6) · **Confirmed by:** Cowork (GREEN ingestion, anti-default rule upheld)
+**Last rebuilt:** 2026-07-16 morning report (no-run cycle — dispatcher did NOT fire overnight [first launchd-side miss since 06-25; queue was intentionally empty anyway, so no substantive loss]; no new output ingested; **no new items; nothing routed to attorney; RC count remains 6, CI count remains 2**) · **Confirmed by:** Cowork (GREEN audit, anti-default rule upheld)
+**Prior rebuild:** 2026-07-15 morning report (no-run cycle — sixth consecutive intentionally-empty night pending Gemini-DNS RED; no new output ingested; **no new items; nothing routed to attorney; RC count remains 6, CI count remains 2**) · **Confirmed by:** Cowork (GREEN audit, anti-default rule upheld)
+**Prior rebuild:** 2026-07-14 morning report (no-run cycle — fifth consecutive intentionally-empty night pending Gemini-DNS RED; no new output ingested; **no new items; nothing routed to attorney; RC count remains 6, CI count remains 2**) · **Confirmed by:** Cowork (GREEN audit, anti-default rule upheld)
+**Prior rebuild:** 2026-07-13 morning report (no-run cycle — fourth consecutive intentionally-empty night pending Gemini-DNS RED; no new output ingested; **no new items; nothing routed to attorney; RC count remains 6, CI count remains 2**) · **Confirmed by:** Cowork (GREEN audit, anti-default rule upheld)
+**Prior rebuild:** 2026-07-12 morning report (no-run cycle — third consecutive intentionally-empty night pending Gemini-DNS RED; no new output ingested; **no new items; nothing routed to attorney; RC count remains 6, CI count remains 2**) · **Confirmed by:** Cowork (GREEN audit, anti-default rule upheld)
+**Prior rebuild:** 2026-07-11 morning report (no-run cycle — overnight queue intentionally empty pending Gemini-DNS RED; no new output ingested; **no new items; nothing routed to attorney; RC count remains 6, CI count remains 2**) · **Confirmed by:** Cowork (GREEN audit, anti-default rule upheld)
+**Prior rebuild:** 2026-07-08 morning report (Northgate generate retry [run e9222548] ingested: pure infrastructure failure — DNS to CourtListener exhausted the full backoff ladder on both queries, 0 candidates, no model calls; **no new items this cycle; nothing routed to attorney; RC count remains 6, CI count remains 2**; job re-queued for 2026-07-09 with extended backoff ladder) · **Confirmed by:** Cowork (GREEN ingestion, anti-default rule upheld)
+**Prior rebuild:** 2026-07-06 morning report (VT runs c7bcdcff [2026-07-04, DNS failure — nothing to route] + 57cf7b37 [2026-07-06] ingested: **Gokey v. Bessette → MV** — below attorney line, no queue item; harness emitted 2 RC [Houle, Northgate White] but both were DNS artifacts [Gemini generate call failed Errno 8 — no legal evaluation occurred] → reclassified PR on ingestion, **NOT added to queue** per anti-default rule; routing bug fixed in protocols/retaliation_holdings_v3.py; Houle remains CI [VT-HOLD-CI-01] unchanged; **no new items this cycle; RC count remains 6, CI count remains 2**) · **Confirmed by:** Cowork (GREEN ingestion, anti-default rule enforced against the harness itself)
+**Prior rebuild:** 2026-07-02 morning report (VT retry [run 1153a763] ingested: Gemini 503 CLEARED — both VT cases got Gemini responses; Atwood v. Hill → PR [wrong-doc, not retaliation — GREEN pipeline]; Houle v. Quenneville → CI [two-model corroborated, D=INFERRED]; VT-HOLD-CI-01 added; CI count 1→2) · **Confirmed by:** Cowork (GREEN ingestion, anti-default rule upheld)
+**Prior rebuild:** 2026-07-01 morning report (VT retry [run 1c7f0772] ingested: Gemini 429 on both VT cases [Atwood v. Hill, Houle v. Quenneville]; anti-default rule applied — NOT added to queue [API failure, not legal failure]; no new items added; RC count remains 6) · **Confirmed by:** Cowork (GREEN ingestion, anti-default rule upheld)
 **Prior rebuild:** 2026-06-30 morning report (3 overnight runs ingested: VT retry [perm-fail/pipeline bug], CO/NY/SC PR retry [MV=3/CI=1/PR=8], broad_query 10 states [MV=12/CI=1/RC=1/PR=20]; WV-RET-HOLD-RC-02 added [Criss v. Salvation Army Residences]; RC count 5→6; 8 state v2 files updated with MV/CI cases) · **Confirmed by:** Cowork (GREEN ingestion)  
 **Prior rebuild:** 2026-06-27 morning report (Track B KS/NV/NY/SC run ingested: NY-HOLD-CI-01 added [Baer v. Huggins, cheap confirm lane]; queue summary updated) · **Confirmed by:** Cowork (GREEN ingestion)  
 **Prior rebuild:** 2026-06-26 late evening (notice tiebreaker + NJ probe + retaliation nc17_fresh_v2 ingested: NOTICE-L2-01/03 tiebreaker-resolved, not L7 — CORRECTED [ingestion error fixed]; NOTICE-L2-02/04/08/09 resolved; NOTICE-L2-06 GA tiebreaker-resolved YELLOW file update applied; 3 RC cases added [AK-RET-HOLD-RC-01]–[CT-RET-HOLD-RC-01]) · **Confirmed by:** Cowork (GREEN ingestion + correction)  
@@ -20,7 +29,7 @@
 |--------|-------|
 | 🔴 L7-ESCALATED — you decide from primary sources | 43 (6 notice/service + 14 retaliation elements + OK + 22 procedural defects) |
 | 🔴 RC — verify/characterize from primary source | 6 (NV Wright v. Brady; NY Ellis v. Oceanhill; AK DeNardo v. Maassen; CO Sladek v. dePlomb; CT TOV Realty v. Suarez; WV Criss v. Salvation Army Residences) |
-| 🟡 CI — cheap confirm lane (D=INFERRED; verify holding is controlling) | 1 (NY: Baer v. Huggins [NY-HOLD-CI-01]) |
+| 🟡 CI — cheap confirm lane (D=INFERRED; verify holding is controlling) | 2 (NY: Baer v. Huggins [NY-HOLD-CI-01]; VT: Houle v. Quenneville [VT-HOLD-CI-01]) |
 | 🟡 PENDING-CONFIRMATION — AI proposed, you verify | 6 |
 | 🟡 CITATION-REVIEW — verify operative section from primary source | 3 |
 | 🟠 OVERLAY-CITE-CHECK — Module 4 runner-flagged + classifier false positives | 22 |
@@ -522,6 +531,27 @@ Both models agree Florida requires attachment; they disagree on whether the gove
 ## 🟡 CI — Cheap Confirm Lane (D=INFERRED; Verify Holding Is Controlling)
 
 These cases were machine-verified on text retrieval and both models corroborated the holding, but Check D returned INFERRED (no direct quotable statement of the rule). They count as CI in reporting. To close: confirm from primary source that the case does articulate the retaliation defense standard, even if not with a single quotable sentence.
+
+---
+
+### [VT-HOLD-CI-01] Vermont — Houle v. Quenneville, 787 A.2d 1258 (Vt. 2001)
+
+**Classification:** CI — cheap confirm lane · **Status:** 🟡 pending  
+**Run:** VT retry #3 [run_id=1153a763, 2026-07-02] · **Module:** retaliation defense, holdings layer  
+**CL cluster:** 2320677 · CL URL: https://www.courtlistener.com/opinion/2320677/houle-v-quenneville/  
+**Citation in vt_eviction_v2.json:** to be written to `confirm_inference_cases` array under `retaliation.layer_decomposition.holdings`
+
+**What the runner found:** Both Gemini 2.5-pro (generate) and GPT-4o (verify) retrieved text from 787 A.2d 1258 and corroborated the holding. GPT-4o verified as "accurate." However, neither model returned a verbatim controlling quote (Check D = INFERRED, not STATED — prose reasoning, not a quotable sentence). Two-model agreement: strong.
+
+**Corroborated holding:** "The court affirmed the trial court's finding that the tenants failed to prove their affirmative defense of retaliatory eviction. Although the landlords' initial eviction attempt may have been retaliatory, the court found they did not have a retaliatory motive in their subsequent decision not to renew the lease. The court noted that most repairs had been completed and the landlords sought possession based on the natural expiration of the lease term, not the earlier alleged lease violations."
+
+**Additional context from CL:** Justice Johnson (concurring/dissenting) agreed on the holding in every respect except the final issue regarding Section 8 housing tenants, suggesting the case involved nuanced facts about landlords' successive motives.
+
+**Your task:** Pull 787 A.2d 1258 (or 173 Vt. 80) from Fastcase, Westlaw, or CourtListener. Confirm the court addressed the retaliation defense and that the holding above is accurate. If confirmed, mark CONFIRMED-CI and update vt_eviction_v2.json. If the characterization is wrong, mark RC.
+
+**Resolution:** ________________  
+**Authoritative source:** ________________  
+**Resolved by:** ________________  **Date:** ________________
 
 ---
 

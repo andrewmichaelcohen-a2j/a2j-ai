@@ -1,0 +1,21 @@
+{
+  "job_id": "job_vt_northgate_generate_retry2_20260708",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "VT",
+  "fresh": true,
+  "sleep": 20,
+  "live_verified": true,
+  "created": "2026-07-08",
+  "created_by": "cowork-morning-report-20260708",
+  "priority": "normal",
+  "description": "Second re-queue of the Northgate Hous. Ltd. v. White (VT Superior Court 2004, CL cluster 4490205) generate retry. Prior attempt (run e9222548, dispatched 2026-07-07 2:16 AM PT) never reached any case: BOTH CL search queries (4465 statute + broad fallback) exhausted the full 60/120/180/240s network-retry ladder on DNS NameResolutionError \u2014 0 candidates, VT::__no_cases__ permanent-failure, nothing routed to attorney. This run also (a) live-exercises the 2026-07-06 FLAG-generate-failed\u2192PR routing fix (still unexercised), and (b) first-exercises the 2026-07-08 extended backoff ladder (60/120/240/600/1200/1800s, ~66 min ride-out per query).",
+  "prior_run_id": "e9222548",
+  "prior_run_failure_mode": "CL search-phase DNS failure on all 5 attempts of both queries (~10 min ladder insufficient). Fourth DNS-affected night since 2026-07-03. Wall-clock anomaly (dispatch 2:16 AM PT, harness start 5:11 PM PT) suggests the machine may sleep mid-run despite caffeinate -ims \u2014 machine-sleep hypothesis flagged to Andy in the 2026-07-08 morning report. If this run fails on DNS again, escalate the dispatch-time/power-settings question to Andy rather than extending backoff further.",
+  "autonomy_level": "GREEN",
+  "queue_note": "Queued 2026-07-08 morning report by Cowork (queue was empty). Marginal-value note carried from prior job: Northgate is a trial-court opinion; VT already has Gokey (MV) + Houle (CI), both VT Supreme Court. This is completeness, not necessity. Expected re-encounters, no status change needed: Gokey (MV), Houle (CI, VT-HOLD-CI-01), Atwood + Vladyka (wrong-doc PR, CLOSED). Fires at 2:15 AM 2026-07-09.",
+  "completed_at": "2026-07-09T15:38:15.669506+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260709_0919.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-07-09_1538.md"
+}

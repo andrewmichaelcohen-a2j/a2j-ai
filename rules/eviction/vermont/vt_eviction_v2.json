@@ -566,8 +566,8 @@
         "holdings": {
           "validation_method": "L2-draft-and-cross-check-with-citation-verification",
           "automation_ceiling": "medium",
-          "validation_status": "NOT-RUN",
-          "note": "Requires citation verification: confirm case exists, cited correctly, still good law. Known failure mode: models misstate holdings / cite superseded authority. API access needed to run.",
+          "validation_status": "GOKEY-MV-COMPLETE",
+          "note": "Holdings v3 runs: 1153a763 (2026-07-02): Houle → CI [VT-HOLD-CI-01]; Atwood → PR wrong-doc. 57cf7b37 (2026-07-06): Gokey → MV (verbatim burden-shifting quote, 9 V.S.A. §4465). Northgate White → PR (generate DNS failure, retry). Vladyka → PR wrong-doc CLOSED. VT now has 1 MV (Gokey) + 1 CI (Houle) — strongest-available Supreme Court authority pair.",
           "candidates": [
             {
               "case_name": "Houle v. Quenneville",
@@ -580,10 +580,105 @@
               "cl_cluster_id": "2320677",
               "identified_by": "web_search_justia",
               "identified_date": "2026-06-26",
-              "candidate_status": "UNVERIFIED",
+              "candidate_status": "CI",
               "proposed_holding": "Objective test for retaliatory eviction applies (Gokey standard); tenant may use circumstantial evidence to establish retaliation; protected activity must temporally precede adverse action",
               "track": "B",
-              "note": "Vermont Supreme Court. Identified via Justia web search during Track B research session 2026-06-26. CL cluster_id=2320677 identified. Not yet verified via holdings v3 runner."
+              "note": "Vermont Supreme Court. Verified CI by holdings v3 run 1153a763 (2026-07-02). See confirm_inference_cases."
+            },
+            {
+              "case_name": "Gokey v. Bessette",
+              "citation": "580 A.2d 488",
+              "alt_citation": "154 Vt. 560",
+              "reporter": "A.2d",
+              "year": 1990,
+              "court": "Vermont Supreme Court",
+              "cl_court_id": "vt",
+              "cl_cluster_id": "1539041",
+              "identified_by": "courtlistener_mcp_search",
+              "identified_date": "2026-07-02",
+              "candidate_status": "MV",
+              "proposed_holding": "Foundational VT retaliatory eviction standard (the 'Gokey standard' referenced in Houle); retaliation as defense to eviction under 9 V.S.A. §4465",
+              "track": "B",
+              "note": "Machine-verified by holdings v3 run 57cf7b37 (2026-07-06): A=true (CL cluster 1539041, citation match 580 A.2d 488), B=OK-machine (13 citing opinions, no negative treatment as of 2026-07-06), C=corroborated (Gemini generate, GPT-4o verify), D=STATED (verbatim controlling quote). See machine_verified_cases. Below attorney line."
+            }
+          ],
+          "confirm_inference_cases": [
+            {
+              "case_name": "Houle v. Quenneville",
+              "citation": "787 A.2d 1258",
+              "year": 2001,
+              "bucket": "CI",
+              "holding_summary": "Tenants failed to prove retaliatory eviction; initial eviction attempt may have been retaliatory, but subsequent non-renewal was based on lease expiration and completed repairs, not prior violations.",
+              "check_d": "INFERRED",
+              "run": "vt_retry_gemini_restored_20260701 (run 1153a763)",
+              "queue_routing": "CI — cheap confirm lane. See HUMAN_REVIEW_QUEUE [VT-HOLD-CI-01]",
+              "note": "D=INFERRED — no verbatim controlling quote extracted. Two-model corroborated (Gemini generated, GPT-4o verified). Quote must be confirmed. [2026-07-06: run 57cf7b37 re-processed Houle via fresh statute query and emitted RC — that RC is a DNS artifact (Gemini generate call failed [Errno 8]; no legal evaluation occurred) and is DISREGARDED. CI status and VT-HOLD-CI-01 unchanged.]"
+            }
+          ],
+          "pr_cases": [
+            {
+              "case_name": "Atwood v. Hill",
+              "citation": null,
+              "bucket": "PR",
+              "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+              "run": "vt_retry_gemini_restored_20260701 (run 1153a763)",
+              "note": "CL cluster 10145325 is about damages/back rent/security deposit — not retaliation. Wrong document, not a legal failure. GREEN investigation resolved 2026-07-02: Gokey v. Bessette (cluster 1539041) identified as replacement candidate. NOT attorney lane."
+            },
+            {
+              "case_name": "Vladyka v. Marsh",
+              "citation": null,
+              "year": 2010,
+              "court": "Vermont Superior Court",
+              "cl_cluster_id": "4490004",
+              "bucket": "PR",
+              "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+              "run": "job_vt_gokey_retry2_20260705 (run 57cf7b37, 2026-07-06)",
+              "note": "Trial-court habitability/eviction case surfaced by §4465 statute query; Gemini (high confidence): does not address retaliation. Wrong-doc, CLOSED. NOT attorney lane."
+            },
+            {
+              "case_name": "Northgate Hous. Ltd. v. White",
+              "citation": null,
+              "year": 2004,
+              "court": "Vermont Superior Court",
+              "cl_cluster_id": "4490205",
+              "bucket": "PR",
+              "pr_reason": "generate-api-failure-transient",
+              "run": "job_vt_gokey_retry2_20260705 (run 57cf7b37, 2026-07-06)",
+              "note": "Harness misrouted RC (FLAG-generate-failed) — corrected to PR on ingestion: Gemini generate call failed with DNS NameResolutionError; no legal evaluation ever occurred. Routing bug fixed 2026-07-06 in protocols/retaliation_holdings_v3.py. Queued for generate retry. NOT attorney lane."
+            },
+            {
+              "case_name": "Atwood v. Hill (re-encountered)",
+              "citation": null,
+              "year": 2024,
+              "court": "Vermont Superior Court",
+              "cl_cluster_id": "10145325",
+              "bucket": "PR",
+              "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+              "run": "job_vt_gokey_retry2_20260705 (run 57cf7b37, 2026-07-06)",
+              "note": "Already CLOSED wrong-doc in run 1153a763; re-surfaced by fresh statute query and re-confirmed not-retaliation by Gemini. No status change."
+            }
+          ],
+          "machine_verified_cases": [
+            {
+              "case_name": "Gokey v. Bessette",
+              "citation": "580 A.2d 488",
+              "alt_citation": "154 Vt. 560",
+              "year": 1990,
+              "court": "Vermont Supreme Court",
+              "cl_cluster_id": "1539041",
+              "bucket": "MV",
+              "holding_summary": "In a retaliatory eviction claim the tenant need not prove retaliation was the landlord's sole motivation; tenant must show retaliatory motive was a substantial or motivating factor, whereupon the burden shifts to the landlord to prove the same decision would have been made absent the retaliatory motive.",
+              "controlling_quote": "We hold that the burden of proof in a retaliatory eviction case under 9 V.S.A. § 4465 should be allocated as follows. The tenant has the initial burden of proving that a protected activity was a substantial or motivating factor in the landlord's decision to evict. If the tenant meets this burden, the landlord has the burden of proving by a preponderance of the evidence that he would have made the same decision even if the tenant had not engaged in the protected activity.",
+              "check_d": "STATED",
+              "quote_agreement": true,
+              "citing_count_at_verification": 13,
+              "run": "job_vt_gokey_retry2_20260705 (run 57cf7b37, 2026-07-06)",
+              "provenance": {
+                "generate_model": "gemini:gemini-2.5-pro",
+                "verify_model": "gpt:gpt-4o",
+                "draft_agreement": "agree"
+              },
+              "note": "Verified on third attempt after two DNS-failure nights (runs c0a2df2d, c7bcdcff); network-retry backoff fix (2026-07-05) rode out the 2:15 AM DNS window. Machine-verified is BELOW the attorney line."
             }
           ]
         },

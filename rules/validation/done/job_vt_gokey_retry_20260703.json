@@ -1,0 +1,23 @@
+{
+  "job_id": "job_vt_gokey_retry_20260703",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "VT",
+  "fresh": true,
+  "sleep": 20,
+  "live_verified": true,
+  "created": "2026-07-03",
+  "created_by": "cowork-morning-report-20260703",
+  "priority": "normal",
+  "description": "RETRY of job_vt_gokey_20260702 (run c0a2df2d, 2026-07-03 09:17 UTC). Prior run failed on infrastructure: DNS resolution to www.courtlistener.com failed at dispatch time (NameResolutionError on both statute query and broad fallback) -> 0 CL candidates -> permanent-failure recorded. This was a retrieval failure (PR-class), NOT a verification failure. Two fixes since: (1) YELLOW config fix applied 2026-07-03 - _STATE_RETALIATION_STATUTES['VT'] corrected '4467'->'4465' (9 V.S.A. 4465 is the retaliation statute; 4467 is termination notice; the 2026-07-02 CourtListener MCP search that identified Gokey used '4465' and returned exactly Houle + Gokey); (2) re-queue. Target: verify Gokey v. Bessette, 154 Vt. 560, 580 A.2d 488 (Vt. 1990), CL cluster 1539041, via generate-from-source. Houle already CI (VT-HOLD-CI-01) - do not re-route. Atwood confirmed wrong-doc - do not retry.",
+  "target_cluster_id": 1539041,
+  "target_case": "Gokey v. Bessette",
+  "prior_run_id": "c0a2df2d",
+  "prior_run_failure_mode": "DNS NameResolutionError to www.courtlistener.com at 2:17 AM PT - network/DNS unavailable at dispatch time. Infrastructure failure, retrieval retry only.",
+  "autonomy_level": "GREEN",
+  "queue_note": "Queued 2026-07-03 morning report by Cowork. Note: runner does not consume target_cluster_id (dispatch passes only --states/--fresh); with VT statute query fixed to 4465, the statute-targeted CL query should return Gokey directly (proven by 2026-07-02 MCP search). Fires at 2:15 AM 2026-07-04.",
+  "completed_at": "2026-07-04T09:25:27.353756+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260704_0925.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-07-04_0925.md"
+}

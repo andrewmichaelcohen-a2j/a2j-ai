@@ -1,0 +1,28 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "57cf7b37",
+  "pr_count": 2,
+  "note": "PR = pending-retrieval. These cases could not be verified because CourtListener did not serve usable opinion text. They are NOT verification failures. Quarantined for retrieval retry.",
+  "cases": [
+    {
+      "state": "VT",
+      "case_name": "Atwood v. Hill",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2024,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "57cf7b37"
+    },
+    {
+      "state": "VT",
+      "case_name": "Vladyka v. Marsh",
+      "citation_gpt": "",
+      "citation_gemini": "",
+      "year": 2010,
+      "pr_reason": "case-not-relevant-to-retaliation-likely-wrong-doc",
+      "cl_returned": "Found by name; no CL citation to check",
+      "run_id": "57cf7b37"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "job_id": "job_vt_northgate_generate_retry_20260706",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "VT",
+  "fresh": true,
+  "sleep": 20,
+  "live_verified": true,
+  "created": "2026-07-06",
+  "created_by": "cowork-morning-report-20260706",
+  "priority": "normal",
+  "description": "Generate-retry for Northgate Hous. Ltd. v. White (VT Superior Court 2004, CL cluster 4490205). In run 57cf7b37 (2026-07-06) the case's Gemini generate call failed mid-run with DNS NameResolutionError ([Errno 8]) \u2014 no legal evaluation ever occurred; harness misrouted it RC (bug fixed 2026-07-06 in protocols/retaliation_holdings_v3.py: FLAG-generate-failed now routes PR/generate-api-failure-transient). This run (a) retries Northgate's generate, and (b) live-exercises the routing fix: any repeat network failure must land PR, never RC/attorney. Expected re-encounters, no status change needed: Gokey (already MV, run 57cf7b37), Houle (already CI, VT-HOLD-CI-01 \u2014 its run-57cf7b37 RC was a DNS artifact, disregarded), Atwood + Vladyka (wrong-doc PR, CLOSED).",
+  "prior_run_id": "57cf7b37",
+  "prior_run_failure_mode": "Per-case Gemini generate DNS failure mid-run (Northgate, Houle) despite the search-phase backoff fix working \u2014 the 2026-07-05 backoff covers _run_search only, not model API calls. If Northgate fails on DNS again, consider extending the backoff to generate/verify calls (YELLOW proposal).",
+  "autonomy_level": "GREEN",
+  "queue_note": "Queued 2026-07-06 morning report by Cowork (queue was empty). Marginal-value note: Northgate is a trial-court opinion; VT already has Gokey (MV) + Houle (CI), both VT Supreme Court. This is completeness, not necessity. Fires at 2:15 AM 2026-07-07.",
+  "completed_at": "2026-07-08T03:11:23.487478+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260707_0916.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-07-08_0311.md"
+}

@@ -1,0 +1,22 @@
+{
+  "completed": {
+    "VT::__no_cases__": {
+      "unit_id": "VT::__no_cases__",
+      "state": "VT",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    }
+  },
+  "meta": {
+    "protocol": "retaliation_holdings_v3",
+    "run_id": "e9222548",
+    "total_units": 1
+  }
+}

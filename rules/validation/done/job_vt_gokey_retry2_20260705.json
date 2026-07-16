@@ -1,0 +1,23 @@
+{
+  "job_id": "job_vt_gokey_retry2_20260705",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "VT",
+  "fresh": true,
+  "sleep": 20,
+  "live_verified": true,
+  "created": "2026-07-05",
+  "created_by": "cowork-morning-report-20260705",
+  "priority": "normal",
+  "description": "SECOND RETRY of VT Gokey verification. Run c0a2df2d (2026-07-03) and run c7bcdcff (2026-07-04) BOTH failed on DNS NameResolutionError to www.courtlistener.com at ~2:15-2:25 AM PT \u2014 a recurring DNS-unavailability window at dispatch time. The 2026-07-03 VT statute fix (4467->4465) was never exercised: retrieval never occurred on 2026-07-04. Fix applied 2026-07-05 (YELLOW): _run_search in retaliation_holdings_v3_runner.py now retries network errors (ConnectionError/Timeout) with 60/120/180/240s backoff (~10 min ride-out per query) instead of bailing on first failure; error paths no longer mislabeled 'genuine no-CL state'. Target: verify Gokey v. Bessette, 154 Vt. 560, 580 A.2d 488 (Vt. 1990), CL cluster 1539041, via generate-from-source. Houle already CI (VT-HOLD-CI-01) - do not re-route. Atwood confirmed wrong-doc - do not retry.",
+  "target_cluster_id": 1539041,
+  "target_case": "Gokey v. Bessette",
+  "prior_run_id": "c7bcdcff",
+  "prior_run_failure_mode": "DNS NameResolutionError at 2:25 AM PT 2026-07-04 on both statute query (4465, post-fix) and broad fallback. Second consecutive night. Infrastructure failure, retrieval retry only \u2014 PR-class, never an attorney item.",
+  "autonomy_level": "GREEN",
+  "queue_note": "Queued 2026-07-05 morning report by Cowork. If this third attempt also hits the DNS window despite the new ~10-min retry ride-out, escalate to Andy: either run the job manually during the day (python3 rules/validation/run_protocol.py --protocol retaliation_holdings_v3 --states VT --fresh) or move the launchd fire time in ~/Library/LaunchAgents/com.cjac.validation.plist away from the 2:15 AM window (e.g. 3:30 AM). Fires at 2:15 AM 2026-07-06.",
+  "completed_at": "2026-07-06T13:03:11.259854+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260706_0925.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-07-06_1303.md"
+}

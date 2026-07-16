@@ -4,6 +4,460 @@
 
 ---
 
+## 2026-07-16 (morning report, fired on time at 8:00 AM — no-run cycle with NEW anomaly: dispatcher did NOT fire overnight; queue was intentionally empty anyway; no new output)
+
+### GREEN — Executed autonomously
+
+**Overnight scan — nothing to ingest, but a dispatcher-side anomaly found**
+- **Dispatcher did NOT fire 2026-07-16 ~2:15 AM.** Evidence: `launchd_stdout.log` last write 2026-07-15 ~2:24 AM; no "Queue is empty" line for 07-16; no new dispatch log file (`find rules/validation/logs -newermt 2026-07-15 23:00` → empty). First launchd-side missed fire since the 06-25 FDA fix — all prior cadence anomalies (07-08 double, 07-10 missed, 07-12 late, 07-15 late) were on the Cowork report side; the dispatcher had fired reliably in the 2:15–2:25 window every night.
+- No substantive loss: the live queue contains only `.gitkeep` + the sample format file (Northgate retry #3 still deliberately held on the Gemini-DNS RED), so a fire would have idled (would have been the seventh consecutive intentionally-empty night).
+- No new files in `rules/validation/l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only).
+- State unchanged: cumulative MV=26/CI=4/RC=6; VT 1 MV (Gokey) + 1 CI (Houle); vProof1 rule freeze intact (no rule edits).
+
+**Cadence observation**
+- Report-side: this cycle fired at 8:00 AM PDT — on time (clean fire after the 07-15 ~30-min-late fire). Settings-check note stays open.
+- Dispatcher-side: MISSED FIRE (above). Checks for Andy before anything is re-queued: was the Mac off or asleep-without-wake overnight; `launchctl list | grep com.cjac` (agent still loaded?); pmset wake schedule. This overlaps the power/schedule strand of the Gemini-DNS RED — both point at the overnight machine/network environment — so it is FOLDED into that standing RED-strategic item, not opened as a separate RED.
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR or SM case in the attorney lane; no other failure conditions triggered.
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (2026-07-16 no-run entry + dispatcher-miss note), PROJECT_STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (header rebuilt — no new items), WORK_QUEUE (header + Completed Today), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (step 3f).
+
+### YELLOW — None new this cycle. Carried unratified (5): extended search backoff ladder (07-08) + FLAG-generate-failed→PR routing fix (07-06) — both with live-verification evidence from run 9ae49b97; VT 4467→4465 (07-03); backoff v1 (07-05); run-57cf7b37 RC→PR reclassification (07-06).
+
+### RED — Carried, not new (both block progress; queue stays idle until one resolves)
+1. **Gemini-endpoint DNS diagnosis + overnight machine environment (RED-strategic, 07-09; BROADENED 07-16):** now also covers the 07-16 dispatcher missed fire — check machine power/sleep overnight and `launchctl list | grep com.cjac` alongside the DNS checks (dscacheutil day-vs-night, scutil --dns, router/filter schedules). Unblocks overnight runs + Northgate retry #3.
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7.
+
+---
+
+## 2026-07-15 (morning report, fired ~8:30 AM — ~30 min late — no-run cycle: sixth consecutive intentionally-empty night on the Gemini-DNS RED; no new output)
+
+### GREEN — Executed autonomously
+
+**Overnight scan — nothing to ingest (expected)**
+- Dispatcher fired 2026-07-15 ~2:24 AM; logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log). Sixth consecutive intentionally-idle night (07-10 through 07-15): Northgate retry #3 remains held pending Andy's Gemini-endpoint DNS diagnosis per the 07-09 job's escalation instruction.
+- No new files in `rules/validation/l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only). Live queue contains only `.gitkeep` + sample format file.
+- State unchanged: cumulative MV=26/CI=4/RC=6; VT 1 MV (Gokey) + 1 CI (Houle); vProof1 rule freeze intact (no rule edits).
+
+**Cadence observation (streak broken)**
+- This report cycle fired ~8:30 AM PDT — ~30 minutes late. Breaks the two-clean-fire streak (07-13, 07-14); the standing settings-check note for Andy is RETAINED (it was one clean fire from closing). Mild anomaly — same class as the 07-12 late fire, milder. Dispatcher-side cadence remains normal (2:24 AM within the observed 2:15–2:25 window).
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR or SM case in the attorney lane; no other failure conditions triggered.
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (2026-07-15 no-run entry + cadence note), PROJECT_STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (header rebuilt — no new items), WORK_QUEUE (header + Completed Today), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (step 3f).
+
+### YELLOW — None new this cycle. Carried unratified (5): extended search backoff ladder (07-08) + FLAG-generate-failed→PR routing fix (07-06) — both with live-verification evidence from run 9ae49b97; VT 4467→4465 (07-03); backoff v1 (07-05); run-57cf7b37 RC→PR reclassification (07-06).
+
+### RED — Carried, not new (both block progress; queue stays idle until one resolves)
+1. **Gemini-endpoint DNS diagnosis (RED-strategic, 07-09):** unblocks overnight runs + Northgate retry #3. Suggested checks in 07-09 entry (dscacheutil day-vs-night, scutil --dns, router/filter schedules).
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7.
+
+---
+
+## 2026-07-14 (8 AM morning report, fired on time at 8:01 — no-run cycle: fifth consecutive intentionally-empty night on the Gemini-DNS RED; no new output)
+
+### GREEN — Executed autonomously
+
+**Overnight scan — nothing to ingest (expected)**
+- Dispatcher fired 2026-07-14 ~2:15 AM; logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log). Fifth consecutive intentionally-idle night (07-10 through 07-14): Northgate retry #3 remains held pending Andy's Gemini-endpoint DNS diagnosis per the 07-09 job's escalation instruction.
+- No new files in `rules/validation/l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only). Live queue contains only `.gitkeep` + sample format file.
+- State unchanged: cumulative MV=26/CI=4/RC=6; VT 1 MV (Gokey) + 1 CI (Houle); vProof1 rule freeze intact (no rule edits).
+
+**Cadence observation (second clean fire)**
+- This report cycle fired at 8:01 AM PDT — on schedule. Second consecutive clean fire (07-13, 07-14) after the three-anomaly stretch (07-08 double-fire, 07-10 missed, 07-12 ~3 h late). Standing settings-check note for Andy retained one more cycle; a third consecutive clean fire would justify closing it.
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR or SM case in the attorney lane; no other failure conditions triggered.
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (2026-07-14 no-run entry + cadence note), PROJECT_STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (header rebuilt — no new items), WORK_QUEUE (header + Completed Today), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (step 3f).
+
+### YELLOW — None new this cycle. Carried unratified (5): extended search backoff ladder (07-08) + FLAG-generate-failed→PR routing fix (07-06) — both with live-verification evidence from run 9ae49b97; VT 4467→4465 (07-03); backoff v1 (07-05); run-57cf7b37 RC→PR reclassification (07-06).
+
+### RED — Carried, not new (both block progress; queue stays idle until one resolves)
+1. **Gemini-endpoint DNS diagnosis (RED-strategic, 07-09):** unblocks overnight runs + Northgate retry #3. Suggested checks in 07-09 entry (dscacheutil day-vs-night, scutil --dns, router/filter schedules).
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7.
+
+---
+
+## 2026-07-13 (8 AM morning report, fired on time — no-run cycle: fourth consecutive intentionally-empty night on the Gemini-DNS RED; no new output)
+
+### GREEN — Executed autonomously
+
+**Overnight scan — nothing to ingest (expected)**
+- Dispatcher fired 2026-07-13 ~2:15 AM; logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log). Fourth consecutive intentionally-idle night (07-10 through 07-13): Northgate retry #3 remains held pending Andy's Gemini-endpoint DNS diagnosis per the 07-09 job's escalation instruction.
+- No new files in `rules/validation/l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only). Live queue contains only `.gitkeep` + sample format file.
+- State unchanged: cumulative MV=26/CI=4/RC=6; VT 1 MV (Gokey) + 1 CI (Houle); vProof1 rule freeze intact (no rule edits).
+
+**Cadence observation (first clean fire)**
+- This report cycle fired at 8:00 AM PDT — on schedule. First clean fire since the three-anomaly stretch (07-08 double-fire, 07-10 missed, 07-12 ~3 h late). One data point does not close the standing settings-check note for Andy; retained until a few consecutive on-time fires.
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR or SM case in the attorney lane; no other failure conditions triggered.
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (2026-07-13 no-run entry + cadence note), PROJECT_STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (header rebuilt — no new items), WORK_QUEUE (header + Completed Today), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (step 3f).
+
+### YELLOW — None new this cycle. Carried unratified (5): extended search backoff ladder (07-08) + FLAG-generate-failed→PR routing fix (07-06) — both with live-verification evidence from run 9ae49b97; VT 4467→4465 (07-03); backoff v1 (07-05); run-57cf7b37 RC→PR reclassification (07-06).
+
+### RED — Carried, not new (both block progress; queue stays idle until one resolves)
+1. **Gemini-endpoint DNS diagnosis (RED-strategic, 07-09):** unblocks overnight runs + Northgate retry #3. Suggested checks in 07-09 entry (dscacheutil day-vs-night, scutil --dns, router/filter schedules).
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7.
+
+---
+
+## 2026-07-12 (morning report, fired ~11 AM — no-run cycle: third consecutive intentionally-empty night on the Gemini-DNS RED; no new output)
+
+### GREEN — Executed autonomously
+
+**Overnight scan — nothing to ingest (expected)**
+- Dispatcher fired 2026-07-12 ~2:15 AM; logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log). Third consecutive intentionally-idle night (07-10, 07-11, 07-12): Northgate retry #3 remains held pending Andy's Gemini-endpoint DNS diagnosis per the 07-09 job's escalation instruction.
+- No new files in `rules/validation/l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only). Live queue contains only `.gitkeep` + sample format file.
+- State unchanged: cumulative MV=26/CI=4/RC=6; VT 1 MV (Gokey) + 1 CI (Houle); vProof1 rule freeze intact (no rule edits).
+
+**Cadence observation (third data point)**
+- This report cycle fired ~11:00 AM PDT instead of 8 AM. Combined with the 07-08 double-fire and the 07-10 missed cycle, the scheduled-task cadence is now unstable in three distinct ways (double, missing, late). No substantive loss this time (no overnight output existed), but the standing note to Andy is upgraded: worth checking the Cowork scheduled-task settings before the next live overnight run, so ingestion doesn't lag a real result.
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR or SM case in the attorney lane; no other failure conditions triggered.
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (2026-07-12 no-run entry + cadence note), PROJECT_STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (header rebuilt — no new items), WORK_QUEUE (header + Completed Today), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (step 3f).
+
+### YELLOW — None new this cycle. Carried unratified (5): extended search backoff ladder (07-08) + FLAG-generate-failed→PR routing fix (07-06) — both with live-verification evidence from run 9ae49b97; VT 4467→4465 (07-03); backoff v1 (07-05); run-57cf7b37 RC→PR reclassification (07-06).
+
+### RED — Carried, not new (both block progress; queue stays idle until one resolves)
+1. **Gemini-endpoint DNS diagnosis (RED-strategic, 07-09):** unblocks overnight runs + Northgate retry #3. Suggested checks in 07-09 entry (dscacheutil day-vs-night, scutil --dns, router/filter schedules).
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7.
+
+---
+
+## 2026-07-11 (8 AM morning report — no-run cycle: queue intentionally empty on the Gemini-DNS RED; no new output; 07-10 report cycle missing)
+
+### GREEN — Executed autonomously
+
+**Overnight scan — nothing to ingest (expected)**
+- Dispatcher fired 2026-07-10 and 2026-07-11 ~2:15 AM; both nights logged "Queue is empty or no eligible jobs — nothing to do" (launchd_stdout.log). This is the intended state: Northgate retry #3 is held pending Andy's Gemini-endpoint DNS diagnosis per the 07-09 job's own escalation instruction.
+- No new files in `rules/validation/l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only).
+- State unchanged: cumulative MV=26/CI=4/RC=6; VT 1 MV (Gokey) + 1 CI (Houle); vProof1 rule freeze intact (no rule edits).
+
+**Process gap logged — missing 2026-07-10 cycle**
+- No 07-10 entry exists in this changelog or METRICS_LEDGER — the scheduled morning report appears not to have fired (or fired without logging) on 07-10. Failure condition acknowledged. No substantive loss: no overnight output existed that day. Gap recorded in METRICS_LEDGER per honesty discipline. Note for Andy: combined with the 07-08 duplicate fire, scheduled-task cadence looks unstable in both directions — worth a settings check.
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR or SM case in the attorney lane; no other failure conditions triggered.
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (2026-07-11 no-run entry + missed-cycle note), PROJECT_STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (header rebuilt — no new items), WORK_QUEUE (header + Completed Today), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (step 3f).
+
+### YELLOW — None new this cycle. Carried unratified (5): extended search backoff ladder (07-08) + FLAG-generate-failed→PR routing fix (07-06) — both with live-verification evidence from run 9ae49b97; VT 4467→4465 (07-03); backoff v1 (07-05); run-57cf7b37 RC→PR reclassification (07-06).
+
+### RED — Carried, not new (both block progress; queue stays idle until one resolves)
+1. **Gemini-endpoint DNS diagnosis (RED-strategic, 07-09):** unblocks overnight runs + Northgate retry #3. Suggested checks in 07-09 entry (dscacheutil day-vs-night, scutil --dns, router/filter schedules).
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7.
+
+---
+
+## 2026-07-09 (8 AM morning report — Northgate retry #2: selective Gemini-endpoint DNS failure; all 5 units PR; two YELLOW fixes live-verified; retry #3 held for Andy)
+
+### GREEN — Executed autonomously
+
+**Overnight run 9ae49b97 ingested — VT Northgate generate retry #2**
+- Job `job_vt_northgate_generate_retry2_20260708` → done/ at 2026-07-09 15:38 UTC, returncode=0. 5 units, elapsed 343.4 min. Summary: `SUMMARY_retaliation_holdings_v3_2026-07-09_1538.md`; raw: `retaliation_holdings_v3_2026-07-09_9ae49b97.json`; PR list: `retaliation_holdings_v3_PR_9ae49b97.json`.
+- Result: **all 5 VT units → PR (`generate-api-failure-transient`)**. Checks A (existence) and B (currency) succeeded via CourtListener for all 5 cases across the entire run; every Check C Gemini generate call failed DNS getaddrinfo `[Errno 8]` for ~5.7 h. Method rate n/a (0÷0); overall 0/5 = 0% (retrieval/generate-gated, two-rate rule); α n/a (no dual-model pairs). Cumulative MV=26/CI=4/RC=6 unchanged. VT case statuses unchanged (Gokey MV, Houle CI [VT-HOLD-CI-01], Atwood/Vladyka wrong-doc CLOSED, Northgate PR).
+
+**Live verification of two pending YELLOW fixes (evidence for ratification)**
+- Extended search backoff ladder (07-08 YELLOW): first CL search attempt DNS-failed; 60s retry succeeded; statute query returned 5 in-state candidates; Check E rejected 2 wrong-jurisdiction hits. **Worked as designed.**
+- FLAG-generate-failed→PR routing fix (07-06 YELLOW): **first live exercise — PASSED.** 5/5 generate failures routed PR; zero RC artifacts (contrast pre-fix run 57cf7b37); nothing routed to attorney.
+
+**GREEN diagnosis — DNS failure is selective; machine-sleep hypothesis weakened**
+- No wall-clock anomaly this run (dispatch → harness start 35 min = search retry ladder; continuous per-case progress 23:54→05:38 local). CL API resolved and answered at every hour of the night (one transient CL error on case 3 recovered on retry) while the Gemini hostname failed persistently on the same machine/process. Conclusion: not lid-close sleep, not a CL outage — a local resolver/filter issue specific to the Google API endpoint at night. RED-strategic reframed accordingly (see RED).
+
+**Queue management**
+- Overnight queue intentionally left empty: per the job's own instruction ("if DNS again, escalate rather than extend backoff further"), Northgate retry #3 is held pending Andy's decision. Proposed as WORK_QUEUE NEXT item 14, gated on the RED. NEXT refill proposals 11–13 carried; item 12 (per-call backoff) annotated as complementary-not-sufficient given tonight's 5.7 h persistence.
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (run 9ae49b97 entry, two rates + bucket counts + PR quarantine=5), PROJECT_STATE_OF_RECORD (header + holdings section), HUMAN_REVIEW_QUEUE (audited — no new items; 0 RC, 0 MODEL-SPLIT; PR never enters attorney lane), WORK_QUEUE (header, item 4, Completed Today, NEXT 12/14), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated.
+
+### YELLOW — None new this cycle. Carried unratified: ladder extension (07-08), RC-misroute fix (07-06), VT 4467→4465 (07-03), backoff v1 (07-05), run-57cf7b37 RC→PR reclassification — the first two now carry live-verification evidence (above).
+
+### RED — Escalated, not decided by Cowork
+
+**RED-strategic (reframed) — nightly DNS failure is selective to the Gemini endpoint**
+- Five DNS-affected nights since 07-03; tonight's evidence isolates the failure: CourtListener resolved fine all night, Gemini hostname failed for ~5.7 h, machine demonstrably awake and processing.
+- For Andy (his machine, his call): check router/DNS filtering or profiles that could block/fail `generativelanguage.googleapis.com` at night (Pi-hole/NextDNS schedules, VPN toggles, Screen Time/content filters); compare `dscacheutil -q host -a name generativelanguage.googleapis.com` day vs. ~2–5 AM; check `scutil --dns` resolver config. Power-settings question (07-08) demoted but not closed — the 07-07 wall-clock gap remains unexplained.
+- Northgate retry #3 queued only after this is resolved.
+
+---
+
+## 2026-07-08 (late-day audit cycle — duplicate scheduled fire; no new overnight output; consistency audit PASSED)
+
+### GREEN — Executed autonomously
+
+**Audit cycle (scheduled task fired a second time on 2026-07-08)**
+- Scanned `rules/validation/l2/output/`, `results/`, `queue/`, `done/`, `failed/`, and logs: **no new files since the 8 AM cycle.** The only output in the last 48 h is run e9222548 (already ingested at 8 AM). `failed/` unchanged (job_nc17_fresh_20260625 only).
+- Queue state verified: `job_vt_northgate_generate_retry2_20260708.json` is the sole live job — validated JSON, fires 2026-07-09 2:15 AM (retries Northgate; live-exercises the FLAG-generate-failed→PR routing fix and the extended 60/120/240/600/1200/1800s ladder).
+- Living-doc consistency audit PASSED: METRICS_LEDGER (e9222548 entry present, N/A rates with rationale), PROJECT_STATE_OF_RECORD, HUMAN_REVIEW_QUEUE (header rebuilt 07-08; no new items; RC=6, CI=2), WORK_QUEUE (last-updated 07-08; NEXT refills 11–13 proposed), CLAUDE_CHAT_BRIEF (generated 07-08, derives from current canonicals) — all mutually consistent. No stale-doc process miss this time.
+- Anti-default audit: **0 cases routed RED-attorney this cycle** (and 0 at the 8 AM cycle). No PR or SM case in the attorney lane. No failure conditions triggered.
+- No ingestion, no rule changes, no metrics changes — cumulative MV=26, CI=4, RC=6 unchanged. CLAUDE_CHAT_BRIEF confirmed current (step 3f satisfied by audit; content unchanged, timestamp annotated).
+- Note for Andy: two morning-report fires on the same calendar day — worth checking the Cowork scheduled-task cadence/timezone if this recurs (GREEN observation, no change made).
+
+### YELLOW — None this cycle (audit only; 8 AM YELLOWs carry unratified).
+
+### RED — None new. Carried: overnight-run power/schedule (machine-sleep hypothesis); v0.3 held-out freeze (28 items, Step 4).
+
+---
+
+## 2026-07-08 (8 AM morning report — Northgate retry DNS failure #4; backoff ladder extended; machine-sleep hypothesis flagged)
+
+### GREEN — Executed autonomously
+
+**Overnight run e9222548 ingested — VT Northgate generate retry (GREEN)**
+- Job `job_vt_northgate_generate_retry_20260706` (dispatched 2026-07-07 2:16 AM PT) → done/ at 2026-07-08 03:11 UTC, returncode=0.
+- **Infrastructure failure, fourth DNS-affected night since 07-03:** DNS NameResolutionError to www.courtlistener.com on ALL 5 attempts of BOTH queries (4465 statute + broad fallback) — the 2026-07-05 backoff ladder (60/120/180/240s, ~10 min/query) worked as designed but was outlasted. Runner correctly labeled it "PR-class infrastructure failure, NOT a genuine no-CL state."
+- 0 candidates → `VT::__no_cases__` permanent-failure, queue_routing=None. **Anti-default upheld — nothing routed to attorney.** No validation rate logged (harness 0/1=0% is a DNS artifact; N/A per two-rate honesty rules). No model calls → α N/A.
+- Consequences: Northgate's generate never retried; the 2026-07-06 FLAG-generate-failed→PR routing fix remains live-unexercised. VT status unchanged (1 MV Gokey + 1 CI Houle). Cumulative MV=26/CI=4/RC=6.
+
+**Wall-clock anomaly diagnosed → machine-sleep hypothesis (GREEN diagnosis; decision flagged RED-strategic)**
+- Dispatch 2:16 AM PT; harness unit-processing timestamps 5:11 PM PT — ~15 h gap that ~20 min of retry sleep cannot explain. Hypothesis: the Mac sleeps mid-run despite `caffeinate -ims` (lid-close sleep overrides caffeinate; network down in dark-wake), which would also explain the recurring "2:15 AM DNS window" across c0a2df2d/c7bcdcff/57cf7b37/e9222548. Power/schedule settings are Andy's machine — flagged as RED-strategic decision, not changed autonomously.
+
+**Queue refilled (GREEN)**
+- Queue was EMPTY. `job_vt_northgate_generate_retry2_20260708.json` created (VT, fresh=true; retries Northgate; live-exercises both the routing fix and the new extended ladder). JSON validated. Fires 2026-07-09 2:15 AM.
+
+**GREEN observation (candidate fix, proposed to NEXT, not applied)**
+- Harness `disposition_note` for the search-network-failure path still reads "No candidate cases in draft file for this state" — cosmetic mislabel (routing unaffected). Proposed as WORK_QUEUE NEXT item 11.
+
+**Living docs updated (GREEN)**
+- METRICS_LEDGER: 2026-07-08 cycle entry (N/A rates with rationale, diagnosis chain, actions; note that no 07-07 cycle entry exists — job was in flight). PROJECT_STATE_OF_RECORD: header + VT section. HUMAN_REVIEW_QUEUE: header rebuilt, **no new items**. WORK_QUEUE: header, NEXT item 4 residual note, Completed Today, 3 proposed NEXT refills (items 11–13). CLAUDE_CHAT_BRIEF regenerated (step 3f). This changelog entry.
+
+### YELLOW — For ratification
+1. **Network-retry ladder extension** in `rules/validation/l2/retaliation_holdings_v3_runner.py` `_run_search`: 60/120/180/240s (~10 min/query) → 60/120/240/600/1200/1800s (~66 min/query). Justification: run e9222548 exhausted the old ladder on both queries. Reversible (restore old ladder). py_compile clean; 30/30 regression tests pass. Caveat noted in code: if the machine-sleep hypothesis is right, longer backoff only helps while the process is actually running.
+- *(Carried, unratified: 4467→4465 VT statute config [07-03]; RC-misroute fix [07-06]; search backoff v1 [07-05]; run-57cf7b37 RC→PR ingestion reclassification [07-06].)*
+
+### RED — Decisions needed
+- **RED-strategic (NEW): overnight-run power/schedule.** Evidence suggests the Mac sleeps mid-run and/or has no network at the 2:15 AM window (4 DNS-affected nights; 15-h wall-clock gap in e9222548). Options: (a) keep the machine on AC with lid open / display-off; (b) `sudo pmset repeat wakeorpoweron` a few minutes before dispatch; (c) move the launchd dispatch to a time the machine is reliably awake (e.g., 7:30 AM before the 8 AM report, or overnight only when docked). Cowork cannot change launchd/pmset (outside repo); needs Andy's terminal.
+- Carried, not new: **v0.3 held-out freeze — 28 draft items waiting on Andy** (Broaden Proof 1 Step 4; blocks Steps 5–7).
+
+---
+
+## 2026-07-06 (8 AM morning report — VT Gokey → MV ✅; RC-misroute bug fixed; 07-04/07-05 backfill)
+
+### GREEN — Executed autonomously
+
+**Overnight run 57cf7b37 ingested — VT Gokey retry2, 2026-07-06 13:03 UTC (GREEN)**
+- Job `job_vt_gokey_retry2_20260705` → done/ at 13:03 UTC. 5 VT units, 162.5 min.
+- **The 2026-07-05 DNS-retry backoff fix WORKED:** first statute query hit NameResolutionError at 00:20, retried on 60s backoff, succeeded → 5 in-state candidates (Check E rejected 2 wrong-jurisdiction hits).
+- **🎯 Gokey v. Bessette, 154 Vt. 560, 580 A.2d 488 (Vt. 1990) → MV.** A=true (cluster 1539041, citation match); B=OK-machine (13 citing, no negative treatment); C=corroborated (Gemini generate → GPT-4o verify, agree); D=STATED — verbatim §4465 burden-shifting controlling quote. Below attorney line. Written to `vt_eviction_v2.json` machine_verified_cases; candidate → MV; validation_status → GOKEY-MV-COMPLETE. Cumulative MV=26.
+- Vladyka v. Marsh → PR wrong-doc CLOSED (habitability case, Gemini high-confidence not-retaliation). Atwood re-encountered, re-confirmed wrong-doc, no change.
+
+**Anti-default enforcement AGAINST the harness — 2 RC reclassified PR (GREEN ingestion + YELLOW code fix)**
+- Run 57cf7b37 emitted RC for Houle v. Quenneville and Northgate Hous. v. White. Both `check_c.generate_output.error = "[Errno 8] nodename nor servname provided"` — the per-case Gemini generate call failed on DNS mid-run. **No legal evaluation occurred. These are PR-class infrastructure failures, not attorney items.**
+- Reclassified PR on ingestion (Northgate → generate retry lane; Houle → disregarded, already CI [VT-HOLD-CI-01], CI status unchanged). NOT added to HUMAN_REVIEW_QUEUE. RC count remains 6.
+- Root cause: `protocols/retaliation_holdings_v3.py` routed `FLAG-generate-failed` to RC ("generate API failure" branch) — structural anti-default violation. **Fixed:** FLAG-generate-failed now routes PR with `pr_reason=generate-api-failure-transient`; added to `is_pr` detection. *Verified: py_compile clean; 30/30 regression tests pass.* (YELLOW — see below.)
+- Corrected run buckets: MV=1, CI=0, RC=0, PR=4, SM=0. Corrected method rate 1/1 (n=1, statistically meaningless); overall 1/5. Harness-reported 1/3=33% method rate is contaminated — do not cite.
+
+**Backfill — 07-04/07-05 cycle actions that were never logged (process miss, GREEN-fixed)**
+- Run c7bcdcff (2026-07-04): second consecutive DNS failure at ~2:25 AM PT, both queries; 4465 fix never exercised; no validation rate logged (N/A per two-rate honesty rules). Now in METRICS_LEDGER.
+- 2026-07-05 fix (was unlogged): `_run_search` network-error retry with 60/120/180/240s backoff in `retaliation_holdings_v3_runner.py`; error paths no longer mislabeled "genuine no-CL state" (YELLOW, listed below). `job_vt_gokey_retry2_20260705` queued.
+- **Failure conditions acknowledged for 07-04/07-05 cycles:** GREEN actions with no changelog entry; CLAUDE_CHAT_BRIEF not regenerated (stale since 07-03); METRICS_LEDGER/STATE_OF_RECORD not updated. All backfilled this cycle.
+
+**Queue refilled (GREEN)**
+- Queue was EMPTY. `job_vt_northgate_generate_retry_20260706.json` created (VT, fresh=true; retries Northgate's failed generate; live-exercises the routing fix — any repeat network failure must land PR, never RC). JSON validated. Fires 2026-07-07 2:15 AM.
+
+**Living docs updated (GREEN)**
+- METRICS_LEDGER: 2026-07-06 cycle entry (both runs, corrected buckets, α note, cumulative MV=26). PROJECT_STATE_OF_RECORD: header + VT section + cumulative counters. HUMAN_REVIEW_QUEUE: header rebuilt, **no new items**. WORK_QUEUE: header, NEXT item 4 closed (VT complete), Completed Today. CLAUDE_CHAT_BRIEF regenerated (step 3f). This changelog entry.
+
+### YELLOW — For ratification
+1. **RC-misroute fix** in `rules/validation/protocols/retaliation_holdings_v3.py`: `FLAG-generate-failed` → PR (`generate-api-failure-transient`) instead of RC. Changes bucket routing (affects future method-rate denominators — makes them cleaner). Revert = restore `"RC"` branch. Compile + 30/30 tests pass.
+2. **Network-retry backoff (applied 2026-07-05, logged now):** `_run_search` in `rules/validation/l2/retaliation_holdings_v3_runner.py` retries ConnectionError/Timeout with 60/120/180/240s backoff. Proven live in run 57cf7b37. Revert = remove retry loop.
+3. **Ingestion reclassification of run 57cf7b37's 2 RC → PR** (documented in METRICS_LEDGER; raw output JSON untouched). Reversible by re-reading the raw file.
+- *(Carried, unratified: VT statute config 4467→4465 from 2026-07-03.)*
+
+### RED — None new this cycle
+- Carried, not new: **v0.3 held-out freeze — 28 draft items waiting on Andy** (Broaden Proof 1 Step 4; blocks Steps 5–7).
+- Noted for Andy (not blocking): per-case model API calls have no network backoff (the 07-05 fix covers CL search only) — if Northgate's retry hits DNS again, proposal is to extend backoff to generate/verify calls (would be YELLOW).
+
+---
+
+## 2026-07-03 (8 AM morning report — VT Gokey run failed on DNS; config fix + re-queue)
+
+### GREEN — Executed autonomously
+
+**Overnight VT Gokey run ingested — run_id=c0a2df2d, 2026-07-03 09:17 UTC (GREEN)**
+- Job: `job_vt_gokey_20260702.json` → moved to `done/` at 09:17 UTC; returncode=0 but run produced 0 candidates.
+- **Root cause: infrastructure.** DNS resolution to `www.courtlistener.com` failed (`NameResolutionError`) on both the VT statute query and the broad fallback at 2:17 AM PT — network/DNS unavailable on the machine at dispatch time. Retrieval never occurred; Gokey (CL cluster 1539041) was never fetched. Harness recorded `VT::__no_cases__` → permanent-failure.
+- **No validation rate logged** — the harness's 0/1=0% overall rate is a DNS artifact, not a verified miss. Recorded as N/A in METRICS_LEDGER per two-rate honesty rules.
+- Anti-default rule upheld: nothing routed to attorney. Cumulative counters unchanged (MV=25, CI=4, RC=6).
+
+**Secondary pipeline findings from diagnosis (GREEN diagnosis; one YELLOW fix)**
+- `_STATE_RETALIATION_STATUTES["VT"]` was `"4467"` — 9 V.S.A. §4467 is the termination-of-tenancy notice statute, not retaliation (§4465). The 2026-07-02 CourtListener MCP search that identified Gokey used "4465" and returned exactly the right two cases (Houle + Gokey). **Fixed 4467→4465** in `retaliation_holdings_v3_runner.py` (YELLOW — see below). Runner compiles clean (`py_compile` pass).
+- Job fields `target_cluster_id`/`target_case` are NOT consumed: `dispatch.py` passes only `--states`/`--fresh`; the runner has no targeted-cluster mode. With the 4465 fix, the statute-targeted query should return Gokey directly. Targeted-cluster mode noted as a possible future enhancement — proposed only, not built.
+
+**Re-queue (GREEN)**
+- `rules/validation/queue/job_vt_gokey_retry_20260703.json` created (retaliation_holdings_v3, VT, fresh=true, sleep=20; prior_run_id=c0a2df2d, failure mode documented). JSON validated. Queue was otherwise empty — tonight's 2:15 AM dispatch now has work.
+
+**Living docs updated (GREEN)**
+- METRICS_LEDGER: 2026-07-03 cycle entry added (run c0a2df2d, N/A rates with rationale, root-cause chain, actions).
+- PROJECT_STATE_OF_RECORD: header + VT holdings section updated.
+- WORK_QUEUE: header, NEXT item 4, Completed Today updated.
+- HUMAN_REVIEW_QUEUE: no new items (correct — nothing interpretive this cycle).
+- CLAUDE_CHAT_BRIEF regenerated (step 3f).
+- This changelog entry.
+
+### YELLOW — For ratification
+- **VT statute-query config fix (4467→4465)** in `rules/validation/l2/retaliation_holdings_v3_runner.py` `_STATE_RETALIATION_STATUTES`. One-token, reversible, source-anchored (9 V.S.A. §4465 = retaliation; corroborated by the 2026-07-02 MCP search evidence recorded in WORK_QUEUE/METRICS_LEDGER). Affects only the VT CL search query. Revert = change back to "4467".
+
+### RED — None new this cycle. (Carried, not new: v0.3 held-out freeze — 28 draft items waiting on Andy.)
+
+---
+
+## 2026-07-02 (Broaden Proof 1 direction received — rules frozen, v0.3 draft CREATED)
+
+### GREEN — Executed autonomously
+
+**Broaden Proof 1 direction ingested + executed (GREEN)**
+
+*Direction doc:* `docs/COWORK_DIRECTION_BROADENPROOF1_20260702.md`
+
+**Step 0 — B3 gate: ✅ PASSED (3 confirmations)**
+- 12/12 = 100.0% DUAL-MODEL-CONSENSUS (agree=12, disagree=0, errors=0), confirmed three runs on 2026-07-02.
+
+**Step 1 — CA-notice rules FROZEN as vProof1:**
+- File: `rules/eviction/california/ca_eviction_v2.json`
+- SHA256 (vProof1): `cc0cfab63ae1591e2b88353c557aeb8027767d99276a3115b5ce9f4115599b93`
+- State: post REVISED-8 + REVISED-9; 9 self-critique corrections from 2026-07-01
+- **No rule edits permitted until after v0.3 held-out score is logged.**
+
+**Step 3 — v0.3 held-out DRAFT created (28 candidates):**
+- File: `rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.3_DRAFT_20260702.xlsx`
+- SHA256 (at-creation): `5f2c25c15b34bb7b209a6bd7900e9f4804063340e39fed481779984dc0489e0d`
+- 28 candidates; all Status=DRAFT; all Held-out=TRUE; v0.2 items NOT reused
+- Outcome distribution (DRAFT): NOTICE_VALID=15, NOTICE_INVALID=12, UD_DEFECTIVE_PREMATURE=1
+- Coverage: pay-or-quit (counts, amounts, content), cure-or-quit (§1161(3)), unconditional quit (§1161(4)), AB 1482/§1946.2, service methods (CCP §1162), multi-defect, edge cases
+- Sources: CCP §1161/§1162/§1946.2; BG31 (2015, authority cross-checked against current statute per Discipline A); SB 611 (eff. 2/1/2025); AB 1482; case law per item
+- Independence: all 28 are genuinely new — NOT paraphrases of v0.2 items
+- B4 currency: BG31 is 2015; each item's authority cross-checked against current CA statute; SB 611 and AB 1482 amendments incorporated in relevant items
+
+**Living docs updated (GREEN):**
+- METRICS_LEDGER: vProof1 freeze record added; v0.3 draft row added to repeatability view
+- WORK_QUEUE: Broaden Proof 1 sequence added to NOW
+- Direction doc saved: `docs/COWORK_DIRECTION_BROADENPROOF1_20260702.md`
+
+**BLOCKED — waiting on Andy:** Step 4 (Andy reviews + freezes 28 draft items) must come before Steps 5-6 (score + report). No rule edits in the interim.
+
+### YELLOW — None new.
+
+### RED — None new.
+
+---
+
+## 2026-07-02 (8 AM morning report cycle — audit + Atwood resolution + queue refill)
+
+### GREEN — Executed autonomously
+
+**Overnight-ingestion audit (GREEN)**
+- Verified run 1153a763 (VT retry) fully ingested and consistent across METRICS_LEDGER, HUMAN_REVIEW_QUEUE, PROJECT_STATE_OF_RECORD, WORK_QUEUE (all updated in the pre-8AM session). No un-ingested output files found. failed/ unchanged. No new attorney items required.
+
+**Atwood VT wrong-doc GREEN investigation — RESOLVED (GREEN)**
+- CourtListener MCP search (`retaliatory eviction "4465"`, court=vt, opinions) returned exactly 2 results: Houle v. Quenneville (already CI) and **Gokey v. Bessette, 154 Vt. 560, 580 A.2d 488 (Vt. 1990)** — the foundational VT retaliatory eviction case (the "Gokey standard" referenced in Houle's proposed holding). Published, cited 17×, CL cluster 1539041.
+- `rules/eviction/vermont/vt_eviction_v2.json` updated: Gokey added to holdings.candidates (UNVERIFIED, identified_by=courtlistener_mcp_search); Houle candidate_status → CI with confirm_inference_cases entry (run 1153a763, [VT-HOLD-CI-01]); Atwood recorded in pr_cases as wrong-doc CLOSED; holdings.validation_status → RUN-COMPLETE. JSON validated.
+- Anti-default rule upheld: Atwood never touched the attorney lane; wrong-doc PR resolved by pipeline investigation as designed.
+
+**Overnight queue refilled — tonight's job queued (GREEN)**
+- Queue was EMPTY at 8 AM (tonight's 2:15 AM dispatch would have idled). `rules/validation/queue/job_vt_gokey_20260702.json` created: retaliation_holdings_v3, states=VT, fresh=true, sleep=20, target Gokey cluster 1539041. JSON validated.
+
+**Krippendorff's α added for v0.2 scorer runs (GREEN)**
+- Computed from per-item model predictions in the score JSONs (nominal, 2 raters, no missing data): held-out α=0.667 (n=5, D_o=0.200, D_e=0.600); dev α=0.867 (n=12, D_o=0.083, D_e=0.627); combined agreement stat α=0.806 (n=17; scores themselves never blended). Both disagreements are Gemini-UNCERTAIN (appropriate caution), not confident splits. Added to METRICS_LEDGER v0.2 block with small-n caveat.
+
+**Living docs updated (GREEN)**
+- METRICS_LEDGER: α block + 8 AM audit addendum. PROJECT_STATE_OF_RECORD: VT Gokey resolution. WORK_QUEUE: Atwood item resolved, queue-refill logged, NEXT item 4 closed. CLAUDE_CHAT_BRIEF regenerated (was stale from 2026-07-01 — flagged as process miss, fixed this cycle). This changelog entry.
+
+### YELLOW — None new this cycle.
+
+### RED — None new this cycle. (B3 regression check and CI confirms remain with Andy — carried, not new.)
+
+---
+
+## 2026-07-02 (morning report — VT retry overnight ingested; Gemini 503 CLEARED; scorer unblocked)
+
+### GREEN — Executed autonomously
+
+**VT retry overnight run ingested — run_id=1153a763, 2026-07-02 02:16 UTC (GREEN)**
+- Job: `job_vt_retry_gemini_restored_20260701.json` → moved to `done/` at 02:16 UTC; returncode=0
+- Summary file: `rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-07-02_0916.md`
+- Raw output: `rules/validation/l2/output/retaliation_holdings_v3_2026-07-02_1153a763.json`
+- **GEMINI 503 CLEARED:** Both VT cases received Gemini 2.5-pro responses (no 429/503 errors). Andy's credit top-up worked.
+- **Atwood v. Hill (VT)** → **PR** — reason: `case-not-relevant-to-retaliation-likely-wrong-doc`. Gemini (high confidence): this case is about damages, back rent, security deposit — not retaliation. CL cluster_id=10145325 is the wrong document. GREEN pipeline investigation item (not attorney lane — wrong doc, not legal failure).
+- **Houle v. Quenneville (VT)** → **CI** — two-model corroborated, D=INFERRED. Gemini generated, GPT-4o verified as "accurate". Holding: tenants failed to prove retaliatory eviction; initial eviction attempt may have been retaliatory, but subsequent non-renewal was based on lease expiration + repairs completed (not prior violations). No verbatim controlling quote extracted — routes to cheap confirm lane.
+- Bucket counts: MV=0, CI=1, RC=0, PR=1, SM=0. Method rate: 0/1=0%. Overall rate: 0/2=0%. (Houle CI is below the attorney line — not machine-verified.)
+- Added VT-HOLD-CI-01 (Houle v. Quenneville) to HUMAN_REVIEW_QUEUE (cheap confirm lane)
+
+**Stage 2 scorer UNBLOCKED — Gemini working (GREEN)**
+- BLOCKED item "All Gemini-dependent overnight runs" removed from WORK_QUEUE BLOCKED list (Gemini 503 capacity issue resolved)
+- Stage 2 dual-model scorer run moved to NOW in WORK_QUEUE
+- Atwood VT wrong-doc GREEN investigation added to NEXT
+
+**v0.2 held-out score BURNED — 5/5 = 100.0% DUAL-MODEL-CONSENSUS (GREEN)**
+- Run: `ca_notice_score_2026-07-02_held-out.json`; scorer v2.0-excel-native; run_date=2026-07-02
+- Consensus status: DUAL-MODEL-CONSENSUS (both models answered on all 5 items)
+- Score: **5/5 = 100.0%** (small-sample result, n=5; 95% CI: [47.8%, 100%]; directional signal only)
+- Model agreement: agree=4, disagree=1 (CA-NOT-B-18: Gemini UNCERTAIN on owner-occupied duplex inception condition; GPT correct; ground truth NOTICE_VALID confirmed by Andy)
+- B2 (confident-wrong): 0. No high-confidence wrong predictions.
+- 🟡 YELLOW flag — CA-NOT-B-18: Gemini legitimately flagged that §1946.2(e)(7) requires owner occupancy at inception of tenancy; scenario doesn't state this explicitly. Ground truth resolves as NOTICE_VALID. Scenario-quality note; no rules encoding change required.
+- Held-out set PERMANENTLY BURNED — these 5 items cannot be re-scored against a tuned model
+- METRICS_LEDGER updated with full B1–B4 report + per-item table
+- Dev set (12 items) run pending — awaiting Andy's terminal run of `--non-held-out-only`
+
+**v0.2 dev set scored — 10/12 = 83.3% DUAL-MODEL-CONSENSUS (GREEN)**
+- Run: `ca_notice_score_2026-07-02_non-held-out.json`; 12 items; agree=11, disagree=1
+- Score: **10/12 = 83.3%**; B2: confident-wrong=2 (B-02 and B-09 — both encoding issues)
+- **Miss 1 — CA-NOT-B-02** (NOTICE_INVALID missed as NOTICE_VALID; DISAGREE): Encoding GAP. CCP §1161(2): when rent payable in person, notice MUST state "usual days and hours" when landlord is available; omission is fatal. The encoding has name/phone/address but not days_hours_for_in_person_payment. GPT HIGH confident wrong; Gemini correctly flagged UNCERTAIN. B2 severity: medium (split models).
+- **Miss 2 — CA-NOT-B-09** (NOTICE_INVALID missed as NOTICE_VALID; AGREE): Encoding ERROR. Unauthorized subletting classified as §1161(4) incurable conduct (unconditional quit). WRONG: per CCP §1161(3), subletting is a curable lease covenant breach; tenant has statutory right to remove subtenant within 3 days. §1161(4) covers nuisance/waste/unlawful use — subletting is NOT listed. Both models HIGH confident wrong. B2 severity: HIGH (both-model AGREE, both HIGH confidence, both wrong). GREEN encoding fix required.
+- Encoding fixes queued: (1) Add §1161(2) days_hours_for_in_person_payment to mandatory content; (2) Move unauthorized subletting from §1161(4) to §1161(3) curable category.
+- METRICS_LEDGER updated with full B1–B4 analysis, per-item miss triage, and combined v0.2 summary.
+
+**Living docs updated (GREEN)**
+- HUMAN_REVIEW_QUEUE: VT-HOLD-CI-01 added (Houle v. Quenneville CI)
+- VALIDATION_METRICS_LEDGER: VT run 1153a763 row added; cumulative CI updated (+1 Houle)
+- WORK_QUEUE: Gemini blocker removed; scorer moved to NOW; Atwood investigation added
+- PROJECT_STATE_OF_RECORD: VT status updated (Houle→CI, Atwood→PR wrong-doc)
+- This DAILY_CHANGELOG entry
+
+**GREEN encoding fixes applied to ca_eviction_v2.json — 2026-07-02 (REVISED-8, REVISED-9)**
+
+*Fix 1 — B-02 (REVISED-8): Added `days_hours_for_in_person_payment` to `notice.notice_types.pay_or_quit.mandatory_content`*
+- Source anchor: CCP §1161(2) — "if the address at which rent may be paid is set forth in the notice, the notice shall also set forth the usual days and hours that the landlord is available at such address to receive payment"
+- Encodes: `required_when: rent_payable_in_person_at_stated_address`, `fatal_if_omitted: true`
+- Rationale: Golden-set CA-NOT-B-02 miss confirmed this element was absent from the encoding. GPT HIGH confident wrong; Gemini correctly UNCERTAIN.
+- Discipline C: change grounded in retrieved CCP §1161(2) statutory text; source_anchor included in element.
+
+*Fix 2 — B-09 (REVISED-9): Moved unauthorized subletting from §1161(4) unconditional_quit → §1161(3) cure_or_quit*
+- Removed from `unconditional_quit.bright_line_qualifying_conduct`: "Unauthorized assignment or subletting of premises contrary to lease covenants"
+- Added to `cure_or_quit.bright_line_qualifying_conduct`: "Unauthorized assignment or subletting contrary to lease covenants (CCP §1161(3) — express statutory curable breach; tenant has right to remove subtenant/assignee within 3 court days)"
+- Updated `unconditional_quit.description` and `cure_or_quit.description` to reflect corrected classification
+- Source anchor: CCP §1161(3) expressly names "covenant not to assign or sublet" as performable within 3 days; CCP §1161(4) enumerated categories (nuisance, waste, unlawful use) do NOT include subletting
+- Rationale: B2 HIGH severity — both models AGREE, both HIGH confidence, both wrong. Encoding error, not legal ambiguity.
+- Discipline C: change grounded in CCP §1161(3)/(4) statutory text; source_anchor included in both elements.
+
+**B3 regression check COMPLETE — 12/12 = 100.0% (Andy terminal run 2026-07-02)**
+- Output: `rules/validation/scorer/output/ca_notice_score_2026-07-02_non-held-out.json` (overwrites pre-fix run)
+- **B-02 ✅ FIXED** — NOTICE_INVALID, AGREE. Encoding fix confirmed effective.
+- **B-09 ✅ FIXED** — NOTICE_INVALID correct. Run 1: GEMINI-EMPTY (transient). Run 2 (confirmation, 1:22 PM): **AGREE — DUAL-MODEL-CONSENSUS** (agree=12, disagree=0). B-09 transient flag cleared. Full consensus confirmed.
+- **newly_failing = 0** — no regressions from REVISED-8 or REVISED-9 changes. All 10 previously-correct items remain correct.
+- B2 confident-wrong: 0 (down from 2 pre-fix). B2 HIGH item (B-09 both-wrong) is resolved.
+- Rules SHA256: `cc0cfab63ae1591e2b88…` (reflects REVISED-8 + REVISED-9)
+- METRICS_LEDGER updated: B3 block added; repeatability view updated; combined v0.2 summary updated to reflect post-fix 12/12 DUAL-MODEL-CONSENSUS (B-09 transient flag cleared by run 2).
+
+### YELLOW — None new.
+
+### RED — None new.
+
+---
+
 ## 2026-07-01 (session 8 — v0.2 golden set FROZEN: 17 items, held-out split locked)
 
 ### GREEN — Executed autonomously

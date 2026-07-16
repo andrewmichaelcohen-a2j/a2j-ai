@@ -1,0 +1,23 @@
+{
+  "job_id": "job_vt_gokey_20260702",
+  "job_type": "protocol",
+  "protocol": "retaliation_holdings_v3",
+  "states": "VT",
+  "fresh": true,
+  "sleep": 20,
+  "live_verified": true,
+  "created": "2026-07-02",
+  "created_by": "cowork-morning-report-20260702",
+  "priority": "normal",
+  "description": "VT Gokey v. Bessette verification \u2014 Atwood replacement. Run 1153a763 (2026-07-02) resolved Houle\u2192CI but Atwood v. Hill was wrong-doc PR (CL cluster 10145325 is a damages/security-deposit case, not retaliation). GREEN investigation (2026-07-02 morning report) found Gokey v. Bessette, 154 Vt. 560, 580 A.2d 488 (Vt. 1990) \u2014 the foundational VT retaliatory eviction case (the 'Gokey standard' cited in Houle) \u2014 retrievable in CL as cluster 1539041 (published, cited 17x). Verify Gokey via generate-from-source. Houle already CI (VT-HOLD-CI-01) \u2014 do not re-route. Atwood should NOT be retried (confirmed wrong doc).",
+  "target_cluster_id": 1539041,
+  "target_case": "Gokey v. Bessette",
+  "prior_run_id": "1153a763",
+  "prior_run_failure_mode": "Atwood v. Hill PR: case-not-relevant-to-retaliation-likely-wrong-doc. Replaced with Gokey candidate.",
+  "autonomy_level": "GREEN",
+  "queue_note": "Queued 2026-07-02 morning report by Cowork. Gokey candidate added to vt_eviction_v2.json holdings.candidates. Fires at 2:15 AM 2026-07-03.",
+  "completed_at": "2026-07-03T09:17:41.023578+00:00",
+  "result": "success",
+  "message": "returncode=0. Log: /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/dispatch_retaliation_holdings_v3_20260703_0917.log",
+  "summary_path": "/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/results/SUMMARY_retaliation_holdings_v3_2026-07-03_0917.md"
+}

@@ -1,0 +1,36 @@
+{
+  "protocol": "retaliation_holdings_v3",
+  "run_id": "c7bcdcff",
+  "run_date": "2026-07-04",
+  "runner_version": "harness-v1",
+  "total_units": 1,
+  "method_rate": null,
+  "overall_rate": 0.0,
+  "bucket_counts": {
+    "MV": 0,
+    "CI": 0,
+    "RC": 0,
+    "PR": 0,
+    "SM": 0
+  },
+  "text_retrievable_denominator": 0,
+  "machine_verified": 0,
+  "single_model_preliminary": 0,
+  "needs_attorney": 0,
+  "elapsed_secs": 0,
+  "results": [
+    {
+      "unit_id": "VT::__no_cases__",
+      "state": "VT",
+      "case_name": "__no_cases__",
+      "disposition": "permanent-failure",
+      "disposition_note": "No candidate cases in draft file for this state.",
+      "queue_routing": null,
+      "provenance": {
+        "generate_model": null,
+        "verify_model": null,
+        "verify_actually_answered": false
+      }
+    }
+  ]
+}
