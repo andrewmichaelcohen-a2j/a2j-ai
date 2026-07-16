@@ -247,6 +247,21 @@ On each run, `validate.py` writes results back to each v2 file:
 
 Use `--no-writeback` to run read-only (report only, no file updates).
 
+### Direction D-1 — Dev-Set Monitoring (ACTIVE, added 2026-07-15)
+
+**Status: ACTIVE (built + ratified YELLOW 2026-07-15). Baseline run PENDING (needs live API keys).**
+
+Implements Direction D, Component 1 (Monitoring/Measurement) — the lowest-risk piece of the Direction D playbook-architecture roadmap. Gate met 2026-07-01 (first pilot score published on the v0.2 golden set).
+
+- **Script:** `rules/validation/scorer/dev_set_monitor.py`
+- **Scope:** scores the v0.2 FROZEN golden set (`rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.2_20260701.xlsx`) via `ca_notice_scorer.py --non-held-out-only`. Dev split = 12 items (CA-NOT-B-02, B-05–B-12, B-15–B-17). The 5-item held-out split, and the separate v0.3 held-out DRAFT set, are never scored, loaded, or referenced by this component.
+- **Guardrails:** read-only w.r.t. rules (never edits `ca_eviction_v2.json`, `PLAYBOOK_SPEC`, or any rules artifact — rules remain frozen); tracks legal accuracy against attorney-frozen ground truth only, never litigation outcomes (Direction D ethical constraint).
+- **Cadence:** every 3 days, or immediately after a ratified rule change (trigger wired via `arm_trigger()`, not yet fired — no rule change possible until v0.3 scoring completes).
+- **Timing:** self-enforced daytime/evening window (09:00–23:00 Pacific) to avoid the overnight Gemini-endpoint DNS-failure window (confirmed live/ongoing as of 2026-07-16 — six consecutive intentionally-empty overnight cycles per DAILY_CHANGELOG). This is enforced by the script itself, not just by external scheduler configuration.
+- **Dispatcher:** wired as `job_type: "scorer"` in `rules/validation/dispatch.py`. Queued: `rules/validation/queue/job_dev_set_monitor_20260715.json` (`live_verified: false` — pending a real-key baseline run; see DAILY_CHANGELOG 2026-07-15).
+- **Regression tests:** `rules/validation/tests/test_dev_set_monitor.py`, 23/23 passing (guardrails, cadence/window boundaries, and the `newly_failing` regression-alarm logic all covered without live API calls).
+- **Output:** per-run row appended to VALIDATION_METRICS_LEDGER.md (new "Direction D-1 — Dev-Set Monitoring" section, created on first real run); regression alerts (`newly_failing > 0`) pushed into DAILY_CHANGELOG automatically.
+
 ---
 
 ## 5. README (Current Contents)

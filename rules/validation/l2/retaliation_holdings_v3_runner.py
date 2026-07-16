@@ -783,6 +783,21 @@ def _build_case_from_hit(hit: dict) -> dict:
     }
 
 
+# Item 11 fix (2026-07-15): tracks whether the MOST RECENT cl_search_retaliation_by_state()
+# call for a given state ended because CourtListener was unreachable (the
+# 2026-07-05/07-08 network-retry ladder above exhausted all attempts) vs. a
+# genuine HTTP response with zero matching results. get_units() in
+# protocols/retaliation_holdings_v3.py reads this immediately after calling
+# load_draft_cases() so the harness can emit a distinct disposition_note for
+# search-network-failure instead of conflating it with the genuine "no
+# candidate cases" / no-CL-coverage note (the bug behind runs c0a2df2d
+# 07-03, c7bcdcff 07-04, and e9222548 07-08 all reading "No candidate cases
+# in draft file for this state" despite being DNS outages — see
+# DAILY_CHANGELOG 2026-07-15 backfill note). Cosmetic/forensic only — does
+# not change disposition, bucket, or queue_routing.
+_LAST_SEARCH_NETWORK_FAILURE: dict[str, bool] = {}
+
+
 def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> list[dict]:
     """Search CourtListener for retaliatory eviction cases in a state (fresh path).
 
@@ -883,12 +898,14 @@ def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> lis
 
     cases, net_err = _run_search(q_statute)
     print(f"    [CL statute query: {len(cases)} in-state candidates for {state_abbr}]")
+    final_net_err = net_err
 
     # Step 2: broad fallback if statute query returns 0 in-state results
     if not cases and statute:
         q_broad = f"retaliatory eviction {state_name} landlord tenant"
         print(f"    [CL broad fallback for {state_abbr}: '{q_broad}']")
         cases, net_err_broad = _run_search(q_broad)
+        final_net_err = net_err_broad
         if cases:
             for c in cases:
                 c["_source"] = "cl_fresh_search_broad_fallback"
@@ -901,6 +918,11 @@ def cl_search_retaliation_by_state(state_abbr: str, max_results: int = 8) -> lis
     elif not cases and net_err:
         print(f"    [CL search FAILED (network) for {state_abbr} — "
               f"PR-class infrastructure failure, NOT a genuine no-CL state. Retry the job.]")
+
+    # Item 11 fix (2026-07-15): record the final verdict for get_units() to read.
+    # Only meaningful when cases is empty (that's the only time a sentinel
+    # __no_cases__ unit gets created downstream); otherwise always False.
+    _LAST_SEARCH_NETWORK_FAILURE[state_abbr] = bool(final_net_err) if not cases else False
 
     return cases
 

@@ -44,6 +44,7 @@ from retaliation_holdings_v3_runner import (  # noqa: E402
     check_d_from_c,
     cl_get_opinion_text,
     load_draft_cases,
+    _LAST_SEARCH_NETWORK_FAILURE,
 )
 
 # Harness exception types
@@ -65,12 +66,17 @@ def get_units(states: list[str], fresh: bool = False) -> list[dict]:
     for state in states:
         cases = load_draft_cases(state, fresh=fresh)
         if not cases:
-            # Still create a sentinel unit so the harness logs the skip
+            # Still create a sentinel unit so the harness logs the skip.
+            # Item 11 (2026-07-15): tag whether this is a genuine no-candidates
+            # state or CourtListener was unreachable during the fresh search, so
+            # run_unit() can emit a distinct disposition_note for each. Purely
+            # forensic — does not change disposition/bucket/queue_routing below.
             units.append({
                 "unit_id": f"{state}::__no_cases__",
                 "state": state,
                 "case_name": "__no_cases__",
                 "case_data": None,
+                "search_network_failure": bool(_LAST_SEARCH_NETWORK_FAILURE.get(state)),
             })
             continue
         for case in cases:
@@ -143,12 +149,25 @@ def run_unit(unit: dict) -> dict:
 
     # Sentinel: no cases for this state
     if case_data is None:
+        # Item 11 fix (2026-07-15): a search-network-failure (CourtListener
+        # unreachable after the full backoff ladder) is NOT a coverage
+        # determination and must not share the genuine no-candidates note —
+        # conflating them hid outages inside coverage-gap forensics (e.g. the
+        # KS/NV/SC analysis). Disposition, bucket, and queue_routing are
+        # UNCHANGED below; only disposition_note text differs.
+        if unit.get("search_network_failure"):
+            note = (
+                "search-network-failure: CourtListener unreachable after full "
+                "backoff ladder — not a coverage determination"
+            )
+        else:
+            note = "No candidate cases in draft file for this state."
         return {
             "unit_id": unit["unit_id"],
             "state": state,
             "case_name": case_name,
             "disposition": "permanent-failure",
-            "disposition_note": "No candidate cases in draft file for this state.",
+            "disposition_note": note,
             "queue_routing": None,
             "provenance": {
                 "generate_model": None,

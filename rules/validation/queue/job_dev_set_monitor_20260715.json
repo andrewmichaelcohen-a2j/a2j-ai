@@ -1,0 +1,16 @@
+{
+  "job_id": "job_dev_set_monitor_20260715",
+  "job_type": "scorer",
+  "runner": "rules/validation/scorer/dev_set_monitor.py",
+  "uses": ["openai", "gemini"],
+  "sleep": 5,
+  "force": false,
+  "dry_run": false,
+  "live_verified": false,
+  "created": "2026-07-15",
+  "created_by": "cowork-session",
+  "autonomy_level": "YELLOW",
+  "description": "Item 13 / Direction D-1 (Monitoring). Scheduled scorer re-run of ca_notice_scorer.py against the v0.2 dev split (12 items, non-held-out) only. Self-throttles on a daytime/evening window (09:00-23:00 PT) and a 3-day cadence -- safe to leave in queue/ for repeated dispatcher drain cycles; it will self-defer (no scoring, no writes) outside those bounds rather than relying on precise external cron timing. Held-out split is never scored, loaded, or referenced. Rules remain read-only (frozen as vProof1) -- this job only appends to VALIDATION_METRICS_LEDGER.md and DAILY_CHANGELOG.md (regression alarm only, when newly_failing > 0).",
+  "live_verification_needed": "Per dispatch.py's live_verified gate: this job has NOT been run once from Terminal with real OPENAI_API_KEY/GEMINI_API_KEY -- Cowork's sandbox only has placeholder keys, so only --dry-run was exercised (pipeline mechanics verified end-to-end: guardrails, dev-set membership assertion, ledger/changelog append, regression-flag diff all pass their regression tests). Andy (or a session with live keys): run `python3 rules/validation/scorer/dev_set_monitor.py --force` once from Terminal to establish the real baseline, confirm output looks right, then set live_verified=true here so the dispatcher will pick it up unattended.",
+  "trigger_hook": "rules/validation/scorer/dev_set_monitor.py exposes arm_trigger(reason) -- call it immediately after any ratified rule change to force the next drain cycle to run regardless of the 3-day cadence (still subject to the daytime-window guard). Not wired to an automatic call site yet because no rule change is possible until v0.3 scoring completes; the mechanism is live and ready per the directive's 'wire the trigger now' instruction."
+}

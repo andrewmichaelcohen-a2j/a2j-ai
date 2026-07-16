@@ -22,17 +22,27 @@ CHANGES FROM REV 1:
 JOB SCHEMA (all fields except job_id are optional unless noted):
   {
     "job_id": "unique-id",           # required
-    "job_type": "protocol",          # "protocol" (default) or "l2_module"
+    "job_type": "protocol",          # "protocol" (default), "l2_module", or "scorer"
     "protocol": "...",               # required for protocol jobs
-    "runner": "path/to/runner.py",   # required for l2_module jobs
-    "states": "AK,AL,...",           # required
+    "runner": "path/to/runner.py",   # required for l2_module jobs; naming hint for scorer jobs
+    "states": "AK,AL,...",           # required for protocol/l2_module jobs
     "sleep": 10,
     "fresh": false,
+    "force": false,                  # scorer jobs only: bypass time-window/cadence guards
+    "dry_run": false,                # scorer jobs only: mocked predictions, no API calls
     "uses": ["openai", "gemini"],    # resource tags; omit = default to ["openai","gemini"]
     "live_verified": true,           # Change 3: must be true or job is skipped
     "created": "ISO8601",
     "note": "..."
   }
+
+  scorer jobs (Item 13, Direction D-1, added 2026-07-15):
+    Runs rules/validation/scorer/dev_set_monitor.py, which self-throttles on
+    both a daytime/evening time window (avoids the overnight Gemini-endpoint
+    DNS RED) and a 3-day cadence — safe to queue for frequent dispatcher
+    drain cycles; it defers itself rather than trusting external cron timing.
+    Scores the v0.2 dev split ONLY (non-held-out); never touches the held-out
+    set or any rules file.
 
 Directory layout (all under rules/validation/):
     queue/     ← job files dropped here
@@ -171,6 +181,8 @@ def launch_job(job_path: Path, job: dict) -> subprocess.Popen:
     job_type = job.get("job_type", "protocol")
     if job_type == "l2_module":
         cmd = _build_l2_cmd(job)
+    elif job_type == "scorer":
+        cmd = _build_scorer_cmd(job)
     else:
         cmd = _build_protocol_cmd(job)
 
@@ -241,6 +253,22 @@ def _build_l2_cmd(job: dict) -> List:
     ]
     if job.get("defects"):
         cmd += ["--defects", job["defects"]]
+    return cmd
+
+
+def _build_scorer_cmd(job: dict) -> List:
+    """Item 13 (2026-07-15): Direction D-1 dev-set monitor. No --states — the
+    scorer works off the frozen golden-set file, not a state list. The script
+    itself enforces the daytime-window and 3-day-cadence guardrails, so it is
+    safe for the dispatcher to attempt this job on every drain cycle; it will
+    self-defer (exit 0, no scoring, no writes) when it is not yet due."""
+    script_path = _VAL_ROOT / "scorer" / "dev_set_monitor.py"
+    cmd = ["caffeinate", "-ims", PYTHON, str(script_path)]
+    if job.get("force"):
+        cmd.append("--force")
+    if job.get("dry_run"):
+        cmd.append("--dry-run")
+    cmd += ["--sleep", str(job.get("sleep", 2))]
     return cmd
 
 
