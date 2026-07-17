@@ -6,7 +6,7 @@
   "sleep": 5,
   "force": false,
   "dry_run": false,
-  "live_verified": false,
+  "live_verified": true,
   "created": "2026-07-15",
   "created_by": "cowork-session",
   "autonomy_level": "YELLOW",
