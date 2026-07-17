@@ -1383,3 +1383,13 @@ A safety/honesty practice: distinguish **substantive divergence** (real legal di
 ---
 
 *Validation Metrics & Evidence Ledger · Civil Justice as Code · Copyright 2026 Andrew M. Cohen · Apache 2.0*
+
+---
+
+### Direction D-1 — Dev-Set Monitoring (scheduled, non-held-out)
+
+Scheduled runs of ca_notice_scorer.py against the v0.2 dev split (12 items, non-held-out) only. The held-out split is never scored by this component. Tracks score-over-time and regressions (newly_failing). Cadence: every 3 days, daytime/evening window only (Item 13, ratified YELLOW 2026-07-15) while the Gemini-endpoint DNS RED is open.
+
+| Date | Dev score | Newly failing | α (dev) | Consensus status | Run ID |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| 2026-07-16 | 12/12 (100.0%) | 0 | 0.0 | SM-GPT | ca_notice_score_2026-07-16_non-held-out |
