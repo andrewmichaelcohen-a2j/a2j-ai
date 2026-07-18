@@ -4,7 +4,11 @@
 <!--
   CJaC Validation Scheduler — launchd Agent
   ==========================================
-  Fires dispatch.py at 02:15 AM every day (when Mac is plugged in and lid open).
+  Fires dispatch.py twice a day (when Mac is plugged in and lid open):
+    - 02:15 AM — original overnight safety-net fire.
+    - 12:00 PM — added 2026-07-18 specifically so Item 13's dev-set monitor
+      (self-throttled to a 09:00-23:00 daytime window) has an automatic driver;
+      the overnight fire alone can never land inside that window.
   Dispatcher picks the next job from rules/validation/queue/ and runs it.
 
   FDA SETUP (one-time, required):
@@ -40,12 +44,21 @@
     <key>Label</key>
     <string>com.cjac.validation</string>
 
-    <!-- Fire at 02:15 AM every day -->
+    <!-- Fire at 02:15 AM (overnight safety-net) and 12:00 PM (daytime driver
+         for window-throttled jobs like Item 13's dev-set monitor) every day.
+         StartCalendarInterval accepts an array of dicts — launchd fires once
+         per matching entry. Keep in sync with dispatch.py's SCHEDULED_TIMES. -->
     <key>StartCalendarInterval</key>
-    <dict>
-        <key>Hour</key>   <integer>2</integer>
-        <key>Minute</key> <integer>15</integer>
-    </dict>
+    <array>
+        <dict>
+            <key>Hour</key>   <integer>2</integer>
+            <key>Minute</key> <integer>15</integer>
+        </dict>
+        <dict>
+            <key>Hour</key>   <integer>12</integer>
+            <key>Minute</key> <integer>0</integer>
+        </dict>
+    </array>
 
     <!-- /usr/bin/python3 has Full Disk Access granted in System Settings -->
     <key>ProgramArguments</key>

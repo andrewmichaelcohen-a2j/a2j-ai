@@ -309,12 +309,38 @@ def _build_scorer_cmd(job: dict) -> List:
 
 
 def finalize_job(proc: subprocess.Popen):
-    """Move the job to done/ or failed/ after proc exits."""
+    """Move the job to done/ or failed/ after proc exits -- UNLESS the job is
+    marked `"recurring": true` (added 2026-07-18, alongside the noon
+    dispatcher fire), in which case it stays in queue/ untouched.
+
+    Why: a one-shot job (protocol/l2_module run) genuinely completes and
+    should leave the queue. A recurring job (e.g. Item 13's dev-set monitor,
+    `job_dev_set_monitor_20260715.json`) is a *standing* descriptor whose own
+    script self-throttles on a time-window/cadence and legitimately exits 0
+    on nights/slots it declines to do real work -- that is not "done", it's
+    "checked in and deferred". Before this fix, finalize_job() could not
+    tell the difference: any exit 0, including a silent self-defer, would
+    unlink() the job file from queue/ after its very first dispatcher
+    pickup, permanently breaking the job's cadence (it would never be
+    reconsidered again without a human manually re-dropping the file).
+    Discovered while wiring the second daytime fire, since the dispatcher had
+    never yet successfully picked up the scorer job to expose the bug.
+    """
     job = proc._job
     job_path = proc._job_path
     proc._log_f.close()
 
     success = proc.returncode == 0
+
+    if job.get("recurring", False):
+        icon = "✅" if success else "❌"
+        print(
+            f"[dispatch] {icon} {job.get('job_id','?')} (recurring — staying in queue/, "
+            f"returncode={proc.returncode})",
+            flush=True,
+        )
+        return success
+
     summary_path = _find_latest_summary(job.get("protocol", ""))
     dest_dir = DONE_DIR if success else FAILED_DIR
     dest_dir.mkdir(parents=True, exist_ok=True)
@@ -371,13 +397,17 @@ def write_heartbeat(running: List, completed: int, skipped: int):
 
 HEARTBEAT_LOG = LOG_DIR / "dispatcher_heartbeat.log"
 
-# Mirrors com.cjac.validation.plist's StartCalendarInterval (Hour=2, Minute=15,
-# local time — the plist does not pin a timezone, and the machine's local tz
-# is what launchd actually uses; Pacific matches this repo's other
-# timezone-aware component, dev_set_monitor.py).
+# Mirrors com.cjac.validation.plist's StartCalendarInterval entries (local
+# time — the plist does not pin a timezone, and the machine's local tz is
+# what launchd actually uses; Pacific matches this repo's other
+# timezone-aware component, dev_set_monitor.py). Two fire times as of
+# 2026-07-18: the original 02:15 overnight safety-net fire, plus a 12:00
+# daytime fire added specifically to give Item 13's dev-set monitor (which
+# self-throttles to a 09:00-23:00 window) an automatic driver -- the
+# overnight fire alone can never satisfy that window. Keep this list in sync
+# with the plist's StartCalendarInterval array.
 DISPATCH_TZ_NAME = "America/Los_Angeles"
-SCHEDULED_HOUR = 2
-SCHEDULED_MINUTE = 15
+SCHEDULED_TIMES = [(2, 15), (12, 0)]  # (hour, minute) pairs, 24h local time
 
 # A FIRED delta beyond this is classified "fired-late-on-wake" (launchd
 # coalesced a missed StartCalendarInterval fire onto the next wake) rather
@@ -419,8 +449,16 @@ def _append_heartbeat(event: str, **fields) -> dict:
 
 
 def _scheduled_fire_time_utc(now_utc: datetime) -> Optional[datetime]:
-    """Best-effort reconstruction of the most recent 02:15-Pacific scheduled
-    fire time (per com.cjac.validation.plist), for computing the FIRED delta.
+    """Best-effort reconstruction of the most recent scheduled fire time
+    (per com.cjac.validation.plist's SCHEDULED_TIMES), for computing the
+    FIRED delta -- i.e. whichever of today's (or, before the first slot of
+    the day, yesterday's) scheduled fire times is most recently in the past
+    relative to `now_utc`.
+
+    This matters with two fire times: a naive "always compare against 02:15"
+    would misreport every noon fire as wildly late (~10h delta against a
+    02:15 baseline). Picking the nearest-preceding slot keeps the delta
+    meaningful for both fires independently.
 
     Returns None if zoneinfo is unavailable — the delta is then omitted
     rather than fabricated from a guessed offset.
@@ -429,15 +467,18 @@ def _scheduled_fire_time_utc(now_utc: datetime) -> Optional[datetime]:
         return None
     tz = ZoneInfo(DISPATCH_TZ_NAME)
     now_local = now_utc.astimezone(tz)
-    scheduled_local = now_local.replace(
-        hour=SCHEDULED_HOUR, minute=SCHEDULED_MINUTE, second=0, microsecond=0
-    )
-    if now_local < scheduled_local:
-        # Invoked before today's scheduled time (e.g. a manual daytime
-        # --heartbeat-status check) — the most recent scheduled fire was
-        # yesterday's.
-        scheduled_local = scheduled_local - timedelta(days=1)
-    return scheduled_local.astimezone(timezone.utc)
+
+    candidates = []
+    for day_offset in (0, -1):
+        base = now_local + timedelta(days=day_offset)
+        for hour, minute in SCHEDULED_TIMES:
+            candidate = base.replace(hour=hour, minute=minute, second=0, microsecond=0)
+            if candidate <= now_local:
+                candidates.append(candidate)
+
+    if not candidates:  # pragma: no cover (only if now_local < every slot, incl. yesterday's)
+        return None
+    return max(candidates).astimezone(timezone.utc)
 
 
 def _preflight_dns_probe(timeout: float = 5.0) -> Dict[str, dict]:

@@ -306,6 +306,137 @@ def test_scheduled_fire_time_rolls_back_a_day_when_invoked_before_schedule():
 # Runner
 # ══════════════════════════════════════════════════════════════════════════════
 
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# finalize_job: recurring jobs stay in queue/ (2026-07-18 noon-fire follow-up)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def test_finalize_job_recurring_true_stays_in_queue_on_success():
+    with tempfile.TemporaryDirectory() as tmp:
+        queue_dir = Path(tmp) / "queue"
+        done_dir = Path(tmp) / "done"
+        failed_dir = Path(tmp) / "failed"
+        queue_dir.mkdir()
+        job = {"job_id": "job_recurring", "job_type": "scorer", "recurring": True}
+        job_path = queue_dir / "job_recurring.json"
+        with open(job_path, "w") as f:
+            json.dump(job, f)
+
+        proc = MagicMock()
+        proc.returncode = 0
+        proc._job = job
+        proc._job_path = job_path
+        proc._log_f = MagicMock()
+        proc._log_path = Path(tmp) / "log.txt"
+
+        with patch.object(dispatch, "DONE_DIR", done_dir), \
+             patch.object(dispatch, "FAILED_DIR", failed_dir):
+            success = dispatch.finalize_job(proc)
+
+        test("recurring job returns success as normal", success is True)
+        test("recurring job's file is NOT removed from queue/", job_path.exists())
+        test("recurring job is NOT copied into done/", not (done_dir / "job_recurring.json").exists())
+
+
+def test_finalize_job_recurring_true_stays_in_queue_on_self_defer_or_failure():
+    """A recurring job that exits non-zero (or self-defers, which is still
+    returncode 0 -- covered by the success test above) must ALSO stay in
+    queue/ on failure, so a transient error doesn't permanently drop it
+    either."""
+    with tempfile.TemporaryDirectory() as tmp:
+        queue_dir = Path(tmp) / "queue"
+        done_dir = Path(tmp) / "done"
+        failed_dir = Path(tmp) / "failed"
+        queue_dir.mkdir()
+        job = {"job_id": "job_recurring_fail", "job_type": "scorer", "recurring": True}
+        job_path = queue_dir / "job_recurring_fail.json"
+        with open(job_path, "w") as f:
+            json.dump(job, f)
+
+        proc = MagicMock()
+        proc.returncode = 1
+        proc._job = job
+        proc._job_path = job_path
+        proc._log_f = MagicMock()
+        proc._log_path = Path(tmp) / "log.txt"
+
+        with patch.object(dispatch, "DONE_DIR", done_dir), \
+             patch.object(dispatch, "FAILED_DIR", failed_dir):
+            success = dispatch.finalize_job(proc)
+
+        test("recurring job reports failure correctly", success is False)
+        test("recurring job's file survives a failed run too (not dropped from queue/)",
+             job_path.exists())
+        test("recurring job is NOT copied into failed/", not (failed_dir / "job_recurring_fail.json").exists())
+
+
+def test_finalize_job_non_recurring_still_moves_as_before():
+    """Non-regression: legacy (non-recurring) jobs keep the original
+    move-to-done/failed-and-remove-from-queue behavior."""
+    with tempfile.TemporaryDirectory() as tmp:
+        queue_dir = Path(tmp) / "queue"
+        done_dir = Path(tmp) / "done"
+        failed_dir = Path(tmp) / "failed"
+        queue_dir.mkdir()
+        job = {"job_id": "job_one_shot", "job_type": "protocol", "protocol": "some_protocol"}
+        job_path = queue_dir / "job_one_shot.json"
+        with open(job_path, "w") as f:
+            json.dump(job, f)
+
+        proc = MagicMock()
+        proc.returncode = 0
+        proc._job = job
+        proc._job_path = job_path
+        proc._log_f = MagicMock()
+        proc._log_path = Path(tmp) / "log.txt"
+
+        with patch.object(dispatch, "DONE_DIR", done_dir), \
+             patch.object(dispatch, "FAILED_DIR", failed_dir), \
+             patch.object(dispatch, "RESULTS_DIR", Path(tmp) / "results"):
+            success = dispatch.finalize_job(proc)
+
+        test("non-recurring job still reports success", success is True)
+        test("non-recurring job's file IS removed from queue/ (original behavior preserved)",
+             not job_path.exists())
+        test("non-recurring job IS moved into done/ (original behavior preserved)",
+             (done_dir / "job_one_shot.json").exists())
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# _scheduled_fire_time_utc: multi-slot schedule (02:15 + 12:00)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def test_scheduled_fire_time_matches_noon_slot_for_a_noon_fire():
+    # ~12:01 PM Pacific in summer (PDT, UTC-7) is ~19:01 UTC.
+    now = datetime(2026, 7, 18, 19, 1, tzinfo=timezone.utc)
+    scheduled = dispatch._scheduled_fire_time_utc(now)
+    test("a noon-ish fire resolves against the 12:00 slot, not 02:15",
+         scheduled is not None and (now - scheduled).total_seconds() < 300,
+         (scheduled, now))
+
+
+def test_scheduled_fire_time_matches_early_morning_slot_not_noon():
+    # ~02:16 AM Pacific in summer is ~09:16 UTC -- should match 02:15, not
+    # roll forward to a future 12:00 or backward to yesterday's 12:00.
+    now = datetime(2026, 7, 18, 9, 16, tzinfo=timezone.utc)
+    scheduled = dispatch._scheduled_fire_time_utc(now)
+    test("an early-morning fire resolves against the 02:15 slot, not noon",
+         scheduled is not None and (now - scheduled).total_seconds() < 300,
+         (scheduled, now))
+
+
+def test_scheduled_fire_time_between_slots_uses_most_recent_past_slot():
+    # ~10:00 AM Pacific (~17:00 UTC) is between the 02:15 and 12:00 slots --
+    # the most recent past slot is today's 02:15 (noon hasn't happened yet).
+    now = datetime(2026, 7, 18, 17, 0, tzinfo=timezone.utc)
+    scheduled = dispatch._scheduled_fire_time_utc(now)
+    test("a mid-morning check (before noon) resolves against 02:15, not a future noon",
+         scheduled is not None and scheduled <= now, (scheduled, now))
+    if scheduled is not None:
+        delta_hours = (now - scheduled).total_seconds() / 3600
+        test("that delta is roughly ~7-8h (10am minus 2:15am), not ~2h (which would imply noon)",
+             6.5 < delta_hours < 8.5, delta_hours)
 if __name__ == "__main__":
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     print(f"Running {len(tests)} test functions...\n")
