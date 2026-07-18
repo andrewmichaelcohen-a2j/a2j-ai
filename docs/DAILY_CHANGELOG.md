@@ -4,6 +4,26 @@
 
 ---
 
+## 2026-07-18 (follow-up session — noon daytime dispatcher fire + recurring-job fix)
+
+*Context: Andy asked about adding a second (noon) daytime dispatcher fire so Item 13's dev-set monitor (self-throttled to a 09:00–23:00 window) has an automatic driver — the 02:15 overnight fire alone can never land inside that window (flagged as an open structural gap in the 07-17 and prior entries, and as WORK_QUEUE item 15). While wiring it, found and fixed a real bug that would have silently capped the monitor's cadence at exactly one dispatcher-driven run, ever.*
+
+### GREEN — Executed autonomously
+
+**Noon fire added**
+- `rules/validation/com.cjac.validation.plist`: `StartCalendarInterval` changed from a single dict to an array — now fires at both 02:15 AM (unchanged) and 12:00 PM. `dispatch.py`'s `SCHEDULED_TIMES` list kept in sync for accurate FIRED-delta computation (see below).
+- **Action needed from Andy to activate:** the installed copy at `~/Library/LaunchAgents/com.cjac.validation.plist` is a *copy*, not a symlink — updating the repo file alone doesn't change what launchd runs. After pulling this change: `cp rules/validation/com.cjac.validation.plist ~/Library/LaunchAgents/com.cjac.validation.plist`, then `launchctl unload ~/Library/LaunchAgents/com.cjac.validation.plist && launchctl load ~/Library/LaunchAgents/com.cjac.validation.plist`, then confirm with `launchctl list | grep cjac`.
+
+**Bug found and fixed — recurring jobs were being silently dropped from the queue**
+- `finalize_job()` unconditionally moved every job out of `queue/` (to `done/` or `failed/`) after its subprocess exited, regardless of exit code. For one-shot protocol/l2_module jobs that's correct. For Item 13's scorer job — which is designed to sit in the queue indefinitely and self-defer (exit 0, no work done) on any cycle outside its window/cadence — this meant the **very first** dispatcher pickup, successful or not, would remove the job file from `queue/` for good. The job's own JSON already claimed "safe to leave in queue/ for repeated dispatcher drain cycles," but nothing in `dispatch.py` actually honored that. This had not yet manifested only because the dispatcher had not successfully fired since the job went live (07-16 through 07-18 misses) — it would have surfaced silently the first time either the fixed 02:15 fire or the new noon fire actually landed.
+- **Fix:** added a `"recurring": true` job-schema field. `finalize_job()` now checks it first — a recurring job stays in `queue/` untouched (no move, no unlink) on both success and failure, so a transient error doesn't drop it either. Set `recurring: true` on `rules/validation/queue/job_dev_set_monitor_20260715.json`. Legacy/one-shot jobs are unaffected — verified by regression test (`test_finalize_job_non_recurring_still_moves_as_before`) that the original move-and-remove behavior is byte-for-byte preserved when `recurring` is absent or false.
+- **Related correctness fix:** `_scheduled_fire_time_utc()` (B-1's FIRED-delta baseline) previously assumed a single 02:15 schedule; with two fire times, that would have misreported every noon fire as ~10 hours "late." Replaced with `SCHEDULED_TIMES = [(2, 15), (12, 0)]` and logic that picks whichever slot is most recently in the past relative to the actual fire time — each fire's delta is now computed against its own nearest schedule, not a hardcoded one.
+- Regression tests: `rules/validation/tests/test_dispatcher_heartbeat.py` — 34/34 pass (13 new: 3 for `finalize_job` recurring/non-recurring behavior, incl. the failure-path case; 3 for multi-slot schedule resolution, incl. a mid-morning "before either... no, between 02:15 and noon" boundary case). Full existing suite re-run clean: `test_dev_set_monitor.py` 23/23, `test_l2_procedural_defects.py` 30/30, `test_retaliation_holdings_disposition_note.py` 26/26.
+
+### RED / open items — unchanged
+- Overnight machine environment RED-strategic item: unchanged by this follow-up (that's Part A, already mitigated 07-17). This work only adds a second fire time and fixes an unrelated queue-persistence bug.
+- WORK_QUEUE item 15 (D-1 daytime driver): **resolved by this fire addition**, pending Andy completing the two `launchctl` steps above.
+
 ## 2026-07-18 (session — Cowork Change Directive: Dispatcher Resilience & Overnight-Environment Forensics, Part B)
 
 *Directive: "Cowork Change Directive — Dispatcher Resilience & Overnight-Environment Forensics," approved by Andrew M. Cohen, 2026-07-16. Trigger: the 07-16 dispatcher missed fire (later a ×3 pattern through 07-18), folded into the standing overnight-environment RED. Scope split: Part A (machine-side diagnosis: `launchctl`, `pmset -g sched`/`-g log`, sleep settings) was Andy's, executed 2026-07-17 in a separate session — found an aggressive 1-minute idle-sleep timer plus clamshell (lid-close) sleep; mitigated via `sudo pmset -c sleep 0` + a lid-open-overnight practice. Part B below is Cowork's repo-side resilience work, executed this session — none of it required the RED to be resolved first, and none of it is a diagnosis of *why* past nights failed; it's instrumentation so future nights don't require forensic guesswork.*
