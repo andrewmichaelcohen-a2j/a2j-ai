@@ -19,6 +19,36 @@ CHANGES FROM REV 1:
 - Self-monitoring: if a job crashes, surfaces it immediately rather than silently
   waiting for the next scheduled fire.
 
+CHANGES (2026-07-16 directive — Dispatcher Resilience & Overnight-Environment
+Forensics, Part B, items B-1/B-2/B-3): the launchd single-shot path
+(main_single, the one launchd actually fires nightly) is now self-evidencing.
+Previously a missed launchd fire was distinguishable from a fired-and-idled
+night only by the *absence* of a log line — forensic guesswork. Now every
+invocation of main_single() appends to an append-only
+`logs/dispatcher_heartbeat.log` (JSONL, one event per line):
+  1. LOADED            — proof launchd ran this process at all (first statement).
+  2. FIRED              — scheduled-vs-actual delta (a `FIRED` at 7:04 AM with
+                           delta +4h49m against the 02:15 schedule IS the sleep
+                           diagnosis — launchd coalesces a missed
+                           StartCalendarInterval fire onto the next wake).
+  3. PREFLIGHT_DNS       — B-2: DNS resolution OK/FAIL+errno for the three
+                           endpoints this repo depends on (CourtListener,
+                           Gemini, OpenAI), logged on every fire at zero
+                           marginal cost — turns every night into a DNS data
+                           point for the overnight-environment RED.
+  4. exactly one terminal outcome — IDLED-EMPTY-QUEUE / COMPLETED-RUN /
+     ABORTED. Wrapped in try/except/finally so an uncaught exception still
+     writes ABORTED rather than leaving the cycle silently unresolved.
+classify_last_night() (B-3) reads this log and reports one of exactly four
+states for "last night": no-heartbeat, fired-and-idled, fired-and-ran,
+fired-late-on-wake — see that function's docstring. Invoke via
+`python3 dispatch.py --heartbeat-status` (read-only, prints JSON) for the
+morning report to consume instead of inferring from log absence.
+
+This is separate from write_heartbeat()'s existing `logs/heartbeat.json`
+snapshot (Change 4, below), which is a --drain-mode stall-detection
+mechanism polled every cycle; that mechanism is untouched by this change.
+
 JOB SCHEMA (all fields except job_id are optional unless noted):
   {
     "job_id": "unique-id",           # required
@@ -49,7 +79,7 @@ Directory layout (all under rules/validation/):
     done/      ← completed jobs
     failed/    ← failed jobs
     results/   ← SUMMARY_*.md files
-    logs/      ← dispatch logs + heartbeat.json
+    logs/      ← dispatch logs + heartbeat.json + dispatcher_heartbeat.log
     l2/output/ ← L2 runner output JSON
 
 Copyright 2026 Andrew M Cohen. Apache 2.0.
@@ -58,12 +88,18 @@ Copyright 2026 Andrew M Cohen. Apache 2.0.
 import json
 import os
 import shutil
+import socket
 import subprocess
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
+
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:  # pragma: no cover
+    ZoneInfo = None  # type: ignore
 
 _VAL_ROOT = Path(__file__).parent
 QUEUE_DIR   = _VAL_ROOT / "queue"
@@ -313,7 +349,7 @@ def _find_latest_summary(protocol: str) -> Optional[str]:
 
 
 # ---------------------------------------------------------------------------
-# Heartbeat (Change 4 — monitoring)
+# Heartbeat (Change 4 — monitoring; --drain-mode stall detection)
 # ---------------------------------------------------------------------------
 
 def write_heartbeat(running: List, completed: int, skipped: int):
@@ -327,6 +363,201 @@ def write_heartbeat(running: List, completed: int, skipped: int):
     }
     with open(LOG_DIR / "heartbeat.json", "w") as f:
         json.dump(heartbeat, f, indent=2)
+
+
+# ---------------------------------------------------------------------------
+# Self-evidencing dispatcher forensics (2026-07-16 directive, B-1/B-2/B-3)
+# ---------------------------------------------------------------------------
+
+HEARTBEAT_LOG = LOG_DIR / "dispatcher_heartbeat.log"
+
+# Mirrors com.cjac.validation.plist's StartCalendarInterval (Hour=2, Minute=15,
+# local time — the plist does not pin a timezone, and the machine's local tz
+# is what launchd actually uses; Pacific matches this repo's other
+# timezone-aware component, dev_set_monitor.py).
+DISPATCH_TZ_NAME = "America/Los_Angeles"
+SCHEDULED_HOUR = 2
+SCHEDULED_MINUTE = 15
+
+# A FIRED delta beyond this is classified "fired-late-on-wake" (launchd
+# coalesced a missed StartCalendarInterval fire onto the next wake) rather
+# than ordinary scheduling jitter.
+LATE_THRESHOLD_SECONDS = 30 * 60
+
+# B-2: the three endpoints this repo's overnight jobs depend on.
+PREFLIGHT_ENDPOINTS: Dict[str, str] = {
+    "courtlistener": "www.courtlistener.com",
+    "gemini": "generativelanguage.googleapis.com",
+    "openai": "api.openai.com",
+}
+
+# How far back "last night" counts as, when classify_last_night() looks for
+# the most recent LOADED entry. Generously wide (covers a late-morning
+# heartbeat-status check the day after a very-late-on-wake fire).
+HEARTBEAT_LOOKBACK_HOURS = 30
+
+
+def _append_heartbeat(event: str, **fields) -> dict:
+    """B-1: append one line to the self-evidencing dispatcher heartbeat log.
+
+    Separate from write_heartbeat()'s JSON snapshot above (that one is a
+    --drain-mode stall-detection mechanism, overwritten each cycle). This one
+    is append-only and exists specifically so a missed launchd fire is
+    distinguishable from 'I ran and found nothing to do' or 'I ran and
+    something broke' by direct evidence, not by the absence of a log line.
+    """
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    entry: Dict = {
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "event": event,
+        "pid": os.getpid(),
+    }
+    entry.update(fields)
+    with open(HEARTBEAT_LOG, "a") as f:
+        f.write(json.dumps(entry) + "\n")
+    return entry
+
+
+def _scheduled_fire_time_utc(now_utc: datetime) -> Optional[datetime]:
+    """Best-effort reconstruction of the most recent 02:15-Pacific scheduled
+    fire time (per com.cjac.validation.plist), for computing the FIRED delta.
+
+    Returns None if zoneinfo is unavailable — the delta is then omitted
+    rather than fabricated from a guessed offset.
+    """
+    if ZoneInfo is None:  # pragma: no cover
+        return None
+    tz = ZoneInfo(DISPATCH_TZ_NAME)
+    now_local = now_utc.astimezone(tz)
+    scheduled_local = now_local.replace(
+        hour=SCHEDULED_HOUR, minute=SCHEDULED_MINUTE, second=0, microsecond=0
+    )
+    if now_local < scheduled_local:
+        # Invoked before today's scheduled time (e.g. a manual daytime
+        # --heartbeat-status check) — the most recent scheduled fire was
+        # yesterday's.
+        scheduled_local = scheduled_local - timedelta(days=1)
+    return scheduled_local.astimezone(timezone.utc)
+
+
+def _preflight_dns_probe(timeout: float = 5.0) -> Dict[str, dict]:
+    """B-2: resolve DNS for the three endpoints this dispatcher's jobs depend
+    on. Cheap (resolution only, no payload) and logged on every fire, turning
+    every future night into a DNS data point for the overnight-environment
+    RED at zero marginal cost — replacing the need for run-level forensics
+    like run 9ae49b97's after-the-fact reconstruction.
+    """
+    results: Dict[str, dict] = {}
+    prev_timeout = socket.getdefaulttimeout()
+    socket.setdefaulttimeout(timeout)
+    try:
+        for name, host in PREFLIGHT_ENDPOINTS.items():
+            try:
+                ip = socket.gethostbyname(host)
+                results[name] = {"host": host, "ok": True, "ip": ip}
+            except OSError as e:
+                results[name] = {
+                    "host": host,
+                    "ok": False,
+                    "errno": getattr(e, "errno", None),
+                    "error": str(e),
+                }
+    finally:
+        socket.setdefaulttimeout(prev_timeout)
+    return results
+
+
+def classify_last_night(now_utc: Optional[datetime] = None) -> dict:
+    """B-3: read dispatcher_heartbeat.log and classify the prior overnight
+    window into exactly one of four states — ending the ambiguity where a
+    missed fire, an idled night, and a crashed run all used to look the same
+    (an absent or unremarkable log line) until someone reconstructed events
+    by hand.
+
+      - "no-heartbeat":       no LOADED entry in the lookback window. Means
+                               the machine was off/asleep-without-wake, or
+                               the launchd agent is unloaded — launchd never
+                               ran this process at all.
+      - "fired-late-on-wake": LOADED+FIRED seen, but the FIRED delta exceeds
+                               LATE_THRESHOLD_SECONDS. launchd coalesced a
+                               missed StartCalendarInterval fire onto the
+                               next wake; the delta itself is the sleep
+                               diagnosis (e.g. delta +4h49m means the machine
+                               was asleep from ~02:15 until ~07:04).
+      - "fired-and-idled":    ran on schedule, found an empty/ineligible
+                               queue (IDLED-EMPTY-QUEUE), exited clean.
+      - "fired-and-ran":      ran on schedule and attempted a job
+                               (COMPLETED-RUN or ABORTED) — or LOADED/FIRED
+                               were seen but no terminal outcome has been
+                               recorded yet (still running, or crashed before
+                               any outcome was written); treated
+                               conservatively as this state rather than
+                               silently omitted.
+
+    Pure/read-only — never writes to the heartbeat log. Returns a dict with
+    the classification plus the raw entries a morning report would want to
+    quote (last_heartbeat, fired_entry, outcome_entry, preflight_dns).
+    """
+    if now_utc is None:
+        now_utc = datetime.now(timezone.utc)
+    cutoff = now_utc - timedelta(hours=HEARTBEAT_LOOKBACK_HOURS)
+
+    entries: List[dict] = []
+    if HEARTBEAT_LOG.exists():
+        with open(HEARTBEAT_LOG) as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    entry = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                try:
+                    ts = datetime.fromisoformat(entry["ts"])
+                except (KeyError, ValueError, TypeError):
+                    continue
+                if ts >= cutoff:
+                    entries.append(entry)
+
+    loaded = [e for e in entries if e.get("event") == "LOADED"]
+    if not loaded:
+        return {
+            "state": "no-heartbeat",
+            "last_heartbeat": entries[-1] if entries else None,
+            "fired_entry": None,
+            "outcome_entry": None,
+            "preflight_dns": None,
+        }
+
+    last_loaded = loaded[-1]
+    last_loaded_ts = datetime.fromisoformat(last_loaded["ts"])
+    cycle_entries = [e for e in entries if datetime.fromisoformat(e["ts"]) >= last_loaded_ts]
+
+    fired_entry = next((e for e in cycle_entries if e.get("event") == "FIRED"), None)
+    outcome_entry = next(
+        (e for e in cycle_entries if e.get("event") in ("IDLED-EMPTY-QUEUE", "COMPLETED-RUN", "ABORTED")),
+        None,
+    )
+    preflight_entry = next((e for e in cycle_entries if e.get("event") == "PREFLIGHT_DNS"), None)
+
+    delta = fired_entry.get("delta_seconds") if fired_entry else None
+    if delta is not None and delta > LATE_THRESHOLD_SECONDS:
+        state = "fired-late-on-wake"
+    elif outcome_entry is not None and outcome_entry.get("event") == "IDLED-EMPTY-QUEUE":
+        state = "fired-and-idled"
+    else:
+        # COMPLETED-RUN, ABORTED, or no terminal outcome recorded yet — all
+        # mean "a job was (or would have been) attempted this cycle".
+        state = "fired-and-ran"
+
+    return {
+        "state": state,
+        "last_heartbeat": last_loaded,
+        "fired_entry": fired_entry,
+        "outcome_entry": outcome_entry,
+        "preflight_dns": preflight_entry,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -415,25 +646,74 @@ def drain():
 def main_single():
     """
     Single-shot mode: pick ONE eligible job, run it synchronously, exit.
-    Used as safety-net for launchd scheduled fires.
+    Used as safety-net for launchd scheduled fires — this is the function
+    launchd actually invokes at 02:15 daily via com.cjac.validation.plist.
+
+    Self-evidencing (2026-07-16 directive, B-1/B-2): every invocation
+    appends LOADED, FIRED (with scheduled-vs-actual delta), a PREFLIGHT_DNS
+    probe, and exactly one terminal outcome
+    (IDLED-EMPTY-QUEUE / COMPLETED-RUN / ABORTED) to
+    logs/dispatcher_heartbeat.log — wrapped so an uncaught exception still
+    writes ABORTED via the finally clause, rather than leaving the cycle
+    silently unresolved. See classify_last_night() for how a morning report
+    reads this back.
     """
     QUEUE_DIR.mkdir(parents=True, exist_ok=True)
     DONE_DIR.mkdir(parents=True, exist_ok=True)
     FAILED_DIR.mkdir(parents=True, exist_ok=True)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
 
-    eligible = pick_eligible_jobs(set())
-    if not eligible:
-        print("[dispatch] Queue is empty or no eligible jobs — nothing to do.", flush=True)
-        return
+    _append_heartbeat("LOADED")
 
-    job_path, job = eligible[0]
-    print(f"[dispatch] Single-shot: {job.get('job_id','?')}", flush=True)
-    proc = launch_job(job_path, job)
-    proc.wait()
-    success = finalize_job(proc)
-    if not success:
-        sys.exit(1)
+    now_utc = datetime.now(timezone.utc)
+    scheduled_utc = _scheduled_fire_time_utc(now_utc)
+    delta_seconds = (now_utc - scheduled_utc).total_seconds() if scheduled_utc else None
+    _append_heartbeat(
+        "FIRED",
+        scheduled=scheduled_utc.isoformat() if scheduled_utc else None,
+        delta_seconds=delta_seconds,
+    )
+
+    _append_heartbeat("PREFLIGHT_DNS", probes=_preflight_dns_probe())
+
+    outcome_written = False
+    try:
+        eligible = pick_eligible_jobs(set())
+        if not eligible:
+            _append_heartbeat("IDLED-EMPTY-QUEUE")
+            outcome_written = True
+            print("[dispatch] Queue is empty or no eligible jobs — nothing to do.", flush=True)
+            return
+
+        job_path, job = eligible[0]
+        print(f"[dispatch] Single-shot: {job.get('job_id','?')}", flush=True)
+        proc = launch_job(job_path, job)
+        proc.wait()
+        success = finalize_job(proc)
+        if success:
+            _append_heartbeat("COMPLETED-RUN", run_id=job.get("job_id", "?"))
+        else:
+            _append_heartbeat(
+                "ABORTED",
+                reason=f"job returncode={proc.returncode}",
+                run_id=job.get("job_id", "?"),
+            )
+        outcome_written = True
+        if not success:
+            sys.exit(1)
+    except SystemExit:
+        raise
+    except Exception as e:
+        _append_heartbeat("ABORTED", reason=f"{type(e).__name__}: {e}")
+        outcome_written = True
+        raise
+    finally:
+        if not outcome_written:
+            _append_heartbeat(
+                "ABORTED",
+                reason="dispatcher exited without recording a terminal outcome (uncaught early exit)",
+            )
 
 
 if __name__ == "__main__":
@@ -445,9 +725,22 @@ if __name__ == "__main__":
         default=False,
         help="Drain the full queue (parallel, continuous). Default: single-shot legacy mode.",
     )
+    parser.add_argument(
+        "--heartbeat-status",
+        action="store_true",
+        default=False,
+        help=(
+            "B-3: classify the prior overnight window from "
+            "logs/dispatcher_heartbeat.log (no-heartbeat / fired-and-idled / "
+            "fired-and-ran / fired-late-on-wake) and print as JSON. "
+            "Read-only; for a morning report to consume."
+        ),
+    )
     args = parser.parse_args()
 
-    if args.drain:
+    if args.heartbeat_status:
+        print(json.dumps(classify_last_night(), indent=2))
+    elif args.drain:
         drain()
     else:
         main_single()
