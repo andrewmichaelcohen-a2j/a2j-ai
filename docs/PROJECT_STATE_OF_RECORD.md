@@ -262,6 +262,17 @@ Implements Direction D, Component 1 (Monitoring/Measurement) — the lowest-risk
 - **Regression tests:** `rules/validation/tests/test_dev_set_monitor.py`, 23/23 passing (guardrails, cadence/window boundaries, and the `newly_failing` regression-alarm logic all covered without live API calls).
 - **Output:** per-run row appended to VALIDATION_METRICS_LEDGER.md (new "Direction D-1 — Dev-Set Monitoring" section, created on first real run); regression alerts (`newly_failing > 0`) pushed into DAILY_CHANGELOG automatically.
 
+
+### Dispatcher Heartbeat Protocol (ACTIVE, added 2026-07-18)
+
+Implements Part B (B-1/B-2/B-3) of the "Dispatcher Resilience & Overnight-Environment Forensics" directive (2026-07-16). Makes `dispatch.py`'s launchd-invoked single-shot path self-evidencing, ending the "missed fire vs. idled vs. crashed" ambiguity that previously required reconstructing events from log absence (as happened for the 07-16→07-18 dispatcher misses).
+
+- **Log:** `rules/validation/logs/dispatcher_heartbeat.log` (JSONL, append-only). Written by `main_single()` on every launchd invocation: `LOADED` → `FIRED` (scheduled-vs-actual delta against the 02:15 Pacific schedule) → `PREFLIGHT_DNS` (B-2: resolution-only check of CourtListener/Gemini/OpenAI endpoints) → exactly one terminal outcome (`IDLED-EMPTY-QUEUE` / `COMPLETED-RUN` / `ABORTED`, the last guaranteed even on an uncaught exception via a finally clause).
+- **Reading it:** `python3 rules/validation/dispatch.py --heartbeat-status` (read-only) prints `classify_last_night()`'s JSON classification — one of `no-heartbeat`, `fired-late-on-wake`, `fired-and-idled`, `fired-and-ran`. **Morning-report protocol: run this command and lead the report with a MISSED-FIRE banner whenever the state is `no-heartbeat`**, rather than inferring a miss from an unremarkable log file.
+- **Distinct from:** the existing `write_heartbeat()` / `logs/heartbeat.json` snapshot mechanism, which is `--drain`-mode stall detection (polled every cycle, overwritten each time) — unrelated and unchanged by this work.
+- **Regression tests:** `rules/validation/tests/test_dispatcher_heartbeat.py`, 21/21 passing (mock-based, no live subprocess/network).
+- **Related, not yet applied:** `docs/DISPATCHER_PLIST_PROPOSAL.md` (B-4, YELLOW/propose-only) — launchd plist hardening recommendations for Andy's review; part of the overnight-environment RED's evidence trail.
+
 ---
 
 ## 5. README (Current Contents)

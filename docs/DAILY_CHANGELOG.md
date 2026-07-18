@@ -4,6 +4,33 @@
 
 ---
 
+## 2026-07-18 (session — Cowork Change Directive: Dispatcher Resilience & Overnight-Environment Forensics, Part B)
+
+*Directive: "Cowork Change Directive — Dispatcher Resilience & Overnight-Environment Forensics," approved by Andrew M. Cohen, 2026-07-16. Trigger: the 07-16 dispatcher missed fire (later a ×3 pattern through 07-18), folded into the standing overnight-environment RED. Scope split: Part A (machine-side diagnosis: `launchctl`, `pmset -g sched`/`-g log`, sleep settings) was Andy's, executed 2026-07-17 in a separate session — found an aggressive 1-minute idle-sleep timer plus clamshell (lid-close) sleep; mitigated via `sudo pmset -c sleep 0` + a lid-open-overnight practice. Part B below is Cowork's repo-side resilience work, executed this session — none of it required the RED to be resolved first, and none of it is a diagnosis of *why* past nights failed; it's instrumentation so future nights don't require forensic guesswork.*
+
+### GREEN — Executed autonomously (B-1, B-2, B-3)
+
+**Dispatcher is now self-evidencing — B-1: heartbeat log**
+- `main_single()` — the function launchd actually invokes nightly at 02:15 via `com.cjac.validation.plist` — now appends to a new append-only `rules/validation/logs/dispatcher_heartbeat.log` (JSONL) on every invocation: `LOADED` (proof launchd ran the process at all, written as the first statement, before any network/queue work), `FIRED` (scheduled-vs-actual delta against the 02:15 Pacific schedule — a large delta, e.g. +4h49m, IS the sleep diagnosis, since launchd coalesces a missed `StartCalendarInterval` fire onto the next wake), and exactly one terminal outcome: `IDLED-EMPTY-QUEUE`, `COMPLETED-RUN <run_id>`, or `ABORTED <reason>`. The whole body is wrapped in try/except/finally so an uncaught exception still writes `ABORTED` rather than leaving a cycle silently unresolved. This is a distinct mechanism from the existing `write_heartbeat()`/`logs/heartbeat.json` snapshot (that one is `--drain`-mode stall detection, polled every cycle, unchanged by this work).
+- Ends the previous ambiguity class: a missed launchd fire, a fired-and-idled night, and a fired-and-crashed run used to be distinguishable only by the *absence* of a log line, which forced hand-reconstruction (as happened for the 07-16→07-18 misses). Now each is a distinct, directly-readable event sequence.
+
+**Environment preflight probe — B-2**
+- `_preflight_dns_probe()` resolves DNS (resolution only, no payload) for the three endpoints this repo's overnight jobs depend on — CourtListener, `generativelanguage.googleapis.com`, `api.openai.com` — on every fire, logged into the same heartbeat sequence between `FIRED` and queue evaluation. Turns every future night into a DNS data point for the overnight-environment RED at zero marginal cost, replacing the need for after-the-fact run-level forensics like run 9ae49b97's.
+
+**Missed-fire classification — B-3**
+- `classify_last_night()` reads `dispatcher_heartbeat.log` and classifies the prior overnight window into exactly one of four states: `no-heartbeat` (machine off/asleep-without-wake, or the launchd agent unloaded — launchd never ran at all), `fired-late-on-wake` (ran, but the FIRED delta exceeds a 30-minute threshold — the delta itself is the sleep diagnosis), `fired-and-idled` (ran on schedule, empty/ineligible queue), or `fired-and-ran` (ran on schedule and attempted a job). Exposed read-only via `python3 rules/validation/dispatch.py --heartbeat-status` (prints JSON) — a morning report should lead with this instead of inferring from log absence, and should raise a MISSED-FIRE banner specifically on `no-heartbeat`.
+- Regression tests: `rules/validation/tests/test_dispatcher_heartbeat.py` — 21/21 pass (mock-based, no real subprocess/network). Covers the full LOADED/FIRED/PREFLIGHT_DNS/outcome sequence for idle-queue, completed-run, failed-job, and uncaught-exception paths, all four `classify_last_night()` states, most-recent-cycle-only selection (a stale earlier LOADED doesn't leak into today's classification), and the scheduled-fire-time delta baseline. Full existing suite re-run clean: `test_dev_set_monitor.py` 23/23, `test_l2_procedural_defects.py` 30/30, `test_retaliation_holdings_disposition_note.py` 26/26 — this change is additive to `main_single()`/CLI only; `drain()`, `launch_job()`, `finalize_job()`, `pick_eligible_jobs()` are unchanged.
+
+### YELLOW — Proposed, not applied (B-4)
+
+**launchd plist hardening — `docs/DISPATCHER_PLIST_PROPOSAL.md`**
+- Drafted, NOT installed (installing launch agents / changing power settings are Andy-side actions). Recommends `AbandonProcessGroup: true` (prevents launchd cleanup from masquerading as a job failure in the new `ABORTED` classification); explicitly recommends *against* adding `KeepAlive` (wrong model — this is a scheduled job, not a daemon, and `KeepAlive` would fight `StartCalendarInterval` and the daytime-only guardrails already built into `dev_set_monitor.py`) and against flipping `RunAtLoad` to `true`; documents `sudo pmset repeat wakeorpoweron MTWRFSU 02:10:00` as a reserve option, to apply only if `--heartbeat-status` continues showing `fired-late-on-wake` nights after Part A's sleep-timer fix has had a chance to prove itself.
+- Added to the overnight-environment RED-strategic item's evidence trail (below) — the plist proposal is now part of what's on record for that RED, alongside the DNS/sleep findings.
+
+### RED — Carried, not new; evidence trail updated
+1. **Overnight machine environment (RED-strategic; DNS + dispatcher-miss ×3):** Part A's diagnosis (1-min idle-sleep timer + clamshell sleep) and mitigation (`sudo pmset -c sleep 0` + lid-open) are on record as of 07-17. Evidence trail now also includes `docs/DISPATCHER_PLIST_PROPOSAL.md` (B-4, above). Resolution is no longer guesswork going forward — `python3 rules/validation/dispatch.py --heartbeat-status` gives a direct daily read on whether the fix held; check it over the next several mornings before this RED is called closed. Unblocks overnight runs + Northgate retry #3 (item 14) + automatic D-1 cadence.
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7. In progress (Andy).
+
 ## 2026-07-18 (morning report, fired on time at 8:01 AM — no-run cycle; dispatcher missed fire ×3; D-1 cadence-eligible tomorrow with no driver)
 
 ### GREEN — Executed autonomously
