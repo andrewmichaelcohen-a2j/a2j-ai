@@ -803,6 +803,41 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
+#### Morning report cycle — 2026-07-18 (no-run cycle — **DISPATCHER DID NOT FIRE overnight — THIRD consecutive miss** [07-16, 07-17, 07-18]; no new output; report fired on time at 8:01 AM)
+
+*No job dispatched — and the dispatcher itself did not fire for the third consecutive night: `launchd_stdout.log` last write remains 2026-07-15 ~2:24 AM; no "Queue is empty" line for 07-16/07-17/07-18; no new dispatch log file. The launchd-side miss is now a confirmed sustained pattern (agent-unloaded/machine-asleep hypothesis strengthens further). Substantive loss still nil: the only queued job (`job_dev_set_monitor_20260715.json`, live_verified) self-defers outside its 09:00–23:00 PT window, so a 2:15 AM fire would have deferred anyway. No new files in `l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only). **Timing note for Andy:** the D-1 dev-set monitor becomes cadence-eligible TOMORROW (2026-07-19, 3 days after the 07-16 baseline) — but with the dispatcher dark and no daytime driver (WORK_QUEUE proposal 15 undecided), that run will silently not happen unless Andy runs `dev_set_monitor.py` from Terminal or picks a proposal-15 lane. That run is also the natural convert-to-consensus opportunity for the SM-GPT baseline if Gemini capacity has recovered.*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate / Overall rate | N/A | No run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall | N/A | No model calls this cycle |
+| Cumulative | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**B1 (coverage):** no score run this cycle; standing figures unchanged — v0.2 held-out 5/5 = 100% (dual-model), dev 12/12 = 100% (07-16 D-1 baseline, SM-GPT PRELIMINARY). **B2:** confident-wrong = 0 (standing). **B3:** newly_failing = 0 (no rule changes since vProof1 freeze). **B4:** no rule changes this cycle; currency check not triggered.
+
+**Process note (cadence):** report-side: fired 8:01 AM PDT — on time, **third consecutive clean fire (07-16, 07-17, 07-18)** — per the 07-14 criterion, the report-side settings-check note is now CLOSED (dispatcher-side checks remain open and are the live problem). **Dispatcher-side: MISSED FIRE ×3.** Checks for Andy unchanged (machine power/sleep overnight; `launchctl list | grep com.cjac`; pmset wake schedule) — folded into the standing overnight-environment RED-strategic item.
+
+---
+
+#### Morning report cycle — 2026-07-17 (Direction D-1 BASELINE INGESTED [Andy ran dev_set_monitor live from Terminal 07-16 18:27 PT: dev 12/12 = 100%, SM-GPT — all 12 Gemini calls 503 UNAVAILABLE, newly_failing=0]; **DISPATCHER DID NOT FIRE overnight — SECOND consecutive miss**; report fired on time at 8:03 AM)
+
+*Two developments since the 07-16 report. **(1) Direction D-1 baseline established:** per the 07-15/16 session instruction, Andy ran `dev_set_monitor.py --force` from Terminal at 2026-07-16 18:27 PT and flipped `live_verified: true` on `job_dev_set_monitor_20260715.json` (18:11 PT). Output: `rules/validation/scorer/output/ca_notice_score_2026-07-16_non-held-out.json` + first `dev_set_trend.jsonl` row; the monitor appended its own Direction D-1 ledger row (see the Direction D-1 section at the bottom of this file). Score: 12/12 = 100.0% on the v0.2 dev split (rules_sha256 matches vProof1 `cc0cfab6…` — freeze intact; golden xlsx sha matches the 07-01 FROZEN record). **Consensus status: SM-GPT — every one of the 12 Gemini calls failed with 503 UNAVAILABLE (capacity)**, so per the hard consensus gate this baseline is PRELIMINARY, not consensus-validated; α on this run is not meaningful (0 dual-model pairs). Diagnostic value of the 503s: at 18:27 PT from Terminal, DNS/TCP/TLS to the Gemini endpoint SUCCEEDED (a 503 is a served response) — the daytime network path is fine; this is the same Google-capacity failure class as 07-01/07-02 (which cleared on its own), and is DISTINCT from the overnight Errno-8 DNS failures. Refines the standing RED: the DNS strand is specific to the overnight window/environment. **(2) Dispatcher missed fire #2:** no 07-17 ~2:15 AM fire — `launchd_stdout.log` last write remains 2026-07-15 ~2:24 AM; no new dispatch log. Second consecutive launchd-side miss (07-16, 07-17); now a pattern, strengthening the agent-unloaded/machine-asleep hypothesis. Substantive impact still nil: the only queued job (dev-set monitor) self-defers outside its 09:00–23:00 PT window, so a 2:15 AM fire would not have scored anyway. Structural observation for Andy: the dispatcher's only scheduled fire time (2:15 AM) is always outside the monitor's window — D-1 cadence currently has no automatic daytime driver (see WORK_QUEUE note).*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Dev-set score (D-1 baseline) | 12/12 = 100.0% | PRELIMINARY — SM-GPT (12/12 single-model); not citable as consensus-validated |
+| Method rate / Overall rate (holdings) | N/A | No holdings run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall (dev run) | N/A / 0.0 | 0 dual-model pairs (all Gemini 503) — method α undefined; overall α floor-value only, not informative |
+| Cumulative (holdings) | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**B1 (coverage):** Coverage: 12/12 known = 100%; Accuracy (known): 12/12 = 100%; Overall: 12/12 = 100% — single-model caveat applies to all three. **B2:** confident-wrong = 0 (GPT lane). **B3:** newly_failing = 0 vs. the 07-02 dev run (no rule changes since vProof1 freeze — expected). **B4:** no rule changes this cycle; currency check not triggered.
+
+**Process note (cadence):** report-side: fired 8:03 AM PDT — on time (second consecutive clean fire; settings-check note stays open). **Dispatcher-side: MISSED FIRE ×2 (07-16, 07-17).** Checks for Andy unchanged from 07-16 (machine power/sleep overnight; `launchctl list | grep com.cjac`; pmset wake schedule) — folded into the standing overnight-environment RED-strategic item.
+
+---
+
 #### Morning report cycle — 2026-07-16 (no-run cycle — **DISPATCHER DID NOT FIRE overnight** [queue was empty anyway]; no new output; report fired on time at 8:00 AM)
 
 *No job dispatched — and unlike the prior six nights, the dispatcher itself never fired: `launchd_stdout.log` last write is 2026-07-15 ~2:24 AM, no "Queue is empty" line for 07-16, and no new dispatch log file exists. **First dispatcher-side missed fire since the launchd/FDA fix (2026-06-25).** No substantive loss — the live queue contains only `.gitkeep` + the sample format file (Northgate retry #3 still deliberately held on the Gemini-DNS RED), so a fire would have idled — but this is a NEW anomaly class: all prior cadence anomalies (07-08 double, 07-10 missed, 07-12 ~3 h late, 07-15 ~30 min late) were on the Cowork report side; the launchd dispatcher had fired reliably in the 2:15–2:25 window every night since 06-25. No new files in l2/output/, results/, done/, or failed/ since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only).*

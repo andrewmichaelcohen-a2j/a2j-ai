@@ -4,6 +4,63 @@
 
 ---
 
+## 2026-07-18 (morning report, fired on time at 8:01 AM — no-run cycle; dispatcher missed fire ×3; D-1 cadence-eligible tomorrow with no driver)
+
+### GREEN — Executed autonomously
+
+**Overnight scan — dispatcher missed fire #3**
+- No 07-18 ~2:15 AM fire: `launchd_stdout.log` last write remains 2026-07-15 ~2:24 AM; no new dispatch log file. Third consecutive launchd-side miss (07-16, 07-17, 07-18) — sustained pattern; agent-unloaded/machine-asleep hypothesis further strengthened. Folded into the standing overnight-environment RED (checks unchanged: machine power/sleep; `launchctl list | grep com.cjac`; pmset wake schedule).
+- No substantive loss: the only queued job (`job_dev_set_monitor_20260715.json`, live_verified) self-defers outside 09:00–23:00 PT. No new files in `l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (07-09). Cumulative MV=26/CI=4/RC=6 unchanged.
+
+**Timing flag raised — D-1 cadence eligibility 2026-07-19**
+- The dev-set monitor becomes cadence-eligible tomorrow (3 days after the 07-16 baseline). With the dispatcher dark AND no daytime driver (proposal 15 undecided), the run will silently not happen. Fallback for Andy: run `python3 rules/validation/scorer/dev_set_monitor.py` from Terminal during the 09:00–23:00 PT window. That run is also the convert-to-consensus opportunity for the SM-GPT baseline if Gemini capacity has recovered.
+
+**Report-side cadence note CLOSED**
+- Third consecutive clean 8 AM fire (07-16 8:00, 07-17 8:03, 07-18 8:01) — per the 07-14 criterion ("a third clean fire would justify closing it"), the report-side settings-check note is closed. Dispatcher-side checks remain open and are the live problem.
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR or SM case in the attorney lane; only failure-condition item is the dispatcher miss (infrastructure, logged, folded into RED).
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (2026-07-18 cycle entry with B1–B4), PROJECT_STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (header — no new items), WORK_QUEUE (header + Completed Today), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (step 3f).
+
+### YELLOW — None new this cycle. Carried unratified (5): extended search backoff ladder (07-08) + FLAG-generate-failed→PR routing fix (07-06) — both live-verified 07-09; VT 4467→4465 (07-03); backoff v1 (07-05); run-57cf7b37 RC→PR reclassification (07-06). Carried YELLOW *proposal* awaiting Andy's pick: WORK_QUEUE item 15 (D-1 daytime driver) — now time-sensitive (cadence eligibility 07-19).
+
+### RED — Carried, not new (both block progress)
+1. **Overnight machine environment (RED-strategic; DNS + dispatcher-miss ×3):** dispatcher has not fired since 07-15. Checks: machine power/sleep, `launchctl list | grep com.cjac`, pmset wake schedule; DNS strand (night-window Errno-8) unchanged. Unblocks overnight runs + Northgate retry #3 (item 14) + automatic D-1 cadence.
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7.
+
+---
+
+## 2026-07-17 (morning report, fired on time at 8:03 AM — Direction D-1 baseline ingested; dispatcher missed fire ×2)
+
+### GREEN — Executed autonomously
+
+**Direction D-1 baseline run INGESTED (run executed by Andy, Terminal, 2026-07-16 18:27 PT)**
+- Per the 07-15/16 session instruction, Andy ran `python3 rules/validation/scorer/dev_set_monitor.py --force` with live keys and flipped `live_verified: true` on `job_dev_set_monitor_20260715.json` (18:11 PT). Direction D-1 is now fully ACTIVE end-to-end.
+- Baseline result: **dev 12/12 = 100.0%** (v0.2 dev split; all 12 expected item IDs present), `newly_failing=0`, `n_yellows=0`; `rules_sha256` matches vProof1 (`cc0cfab6…` — freeze intact) and `excel_sha256` matches the 07-01 FROZEN record. Outputs: `ca_notice_score_2026-07-16_non-held-out.json` + first `dev_set_trend.jsonl` row; the monitor self-appended its Direction D-1 ledger row (append path verified live).
+- **Consensus: SM-GPT — all 12 Gemini calls failed 503 UNAVAILABLE (capacity).** Per the hard consensus gate, the baseline is PRELIMINARY, not consensus-validated, and is recorded as such everywhere. Not routed anywhere (anti-default: API failure = re-run lane). Convert-to-consensus path: re-run (or wait for the 07-19+ cadence run) once Gemini capacity recovers — same 503 class as 07-01/07-02, which cleared on its own.
+- **Diagnostic value for the standing RED:** a served 503 at 18:27 PT means DNS/TCP/TLS to the Gemini endpoint SUCCEEDED from Terminal in daytime. The overnight `[Errno 8]` DNS failures are therefore a night-window-specific failure mode, distinct from Google-side capacity. Narrows Andy's diagnosis to the overnight environment (resolver/filter schedule, sleep, power).
+
+**Overnight scan — dispatcher missed fire #2**
+- No 07-17 ~2:15 AM fire: `launchd_stdout.log` last write remains 2026-07-15 ~2:24 AM; no new dispatch log file. Second consecutive launchd-side miss (07-16, 07-17) — now a pattern, strengthening the agent-unloaded/machine-asleep hypothesis. Folded into the standing overnight-environment RED (checks unchanged: machine power/sleep; `launchctl list | grep com.cjac`; pmset wake schedule).
+- No substantive loss: the only queued job (dev-set monitor, now live_verified) self-defers outside 09:00–23:00 PT, so a 2:15 AM fire would have deferred anyway. No new files in `l2/output/`, `results/`, `done/`, or `failed/`.
+- **Structural gap flagged (new):** the dispatcher's only fire time (2:15 AM) is ALWAYS outside the monitor's window → D-1 cadence has no automatic daytime driver. Proposal 15 added to WORK_QUEUE (YELLOW — Andy picks: second daytime launchd fire vs. morning-report drain call).
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR or SM case in the attorney lane (the 12 Gemini-503 SM items stay in the re-run lane); no other failure conditions triggered.
+
+**Living docs updated this cycle**
+- METRICS_LEDGER (2026-07-17 cycle entry with B1–B4; D-1 row was self-appended by the monitor — referenced, not duplicated), PROJECT_STATE_OF_RECORD (header + Direction D-1 section → LIVE), HUMAN_REVIEW_QUEUE (header — no new items), WORK_QUEUE (header, Completed Today, items 11/13 → DONE, proposal 15 added), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (step 3f).
+
+### YELLOW — None new this cycle. Carried unratified (5): extended search backoff ladder (07-08) + FLAG-generate-failed→PR routing fix (07-06) — both live-verified 07-09; VT 4467→4465 (07-03); backoff v1 (07-05); run-57cf7b37 RC→PR reclassification (07-06). New YELLOW *proposal* (not executed): WORK_QUEUE item 15 (D-1 daytime driver).
+
+### RED — Carried, not new (both block progress)
+1. **Overnight machine environment (RED-strategic; DNS + dispatcher-miss ×2):** NARROWED this cycle — daytime path to Gemini confirmed fine (503 = served response); remaining question is the overnight environment only. Checks: dscacheutil day-vs-night, scutil --dns, router/filter schedules, machine power/sleep, `launchctl list | grep com.cjac`, pmset. Unblocks overnight runs + Northgate retry #3 (item 14).
+2. **v0.3 held-out freeze (RED gate, Broaden Proof 1 Step 4):** 28 DRAFT items await Andy's item-by-item review → FROZEN; blocks Steps 5–7.
+
+---
+
 ## 2026-07-15/16 (session — Cowork Change Directive: Items 11 & 13; Items 12/14 HELD)
 
 *Directive: "Cowork Change Directive — Approved Refill Items 11 & 13," approved by Andrew M. Cohen, 2026-07-15. Items 12 (per-call backoff extension) and 14 (Northgate retry #3) remain HELD pending the Gemini-endpoint DNS diagnosis and were NOT actioned under this directive. Session note: this work was done in a sandbox without access to the local repo clone; a separate local push (commit d068e05, "l2 validations") landed the 07-02 through 07-16 history — including the real network-retry-ladder work (2026-07-05 fix, 2026-07-08 extension) and the RC-misroute fix (2026-07-06) — while this session was in progress. Rebased Item 11 on top of that real prior work rather than duplicating it; see below.

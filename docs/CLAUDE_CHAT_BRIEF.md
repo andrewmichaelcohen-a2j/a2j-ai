@@ -1,14 +1,14 @@
 # CJaC — Rolling Handoff for Claude Chat
 
-**Generated:** 2026-07-16 (morning report, fired on time at 8:00 AM) — orientation only; canonical docs are authoritative. If this brief and a canonical doc disagree, the canonical doc wins.
-**OS state:** Direction A live · Direction B: v0.2 complete (held-out burned 5/5, dev 12/12 post-fix); Broaden Proof 1 (v0.3, n=28) waiting on Andy freeze · Direction C not started (gated on B stability + Andy sign-off).
-**Most important thing right now:** New overnight anomaly — **the launchd dispatcher did not fire last night** (first dispatcher-side miss since 06-25; no substantive loss, queue was intentionally empty). The project remains idle on two Andy-gated REDs: (1) the Gemini-DNS / overnight machine-environment diagnosis — now also covering the dispatcher miss — and (2) the v0.3 held-out freeze (28 DRAFT items).
+**Generated:** 2026-07-18 (morning report, fired on time at 8:01 AM) — orientation only; canonical docs are authoritative. If this brief and a canonical doc disagree, the canonical doc wins.
+**OS state:** Direction A live · Direction B: v0.2 complete (held-out burned 5/5, dev 12/12); Broaden Proof 1 (v0.3, n=28) waiting on Andy freeze · Direction C not started · Direction D-1 (dev-set monitor) LIVE — baseline 07-16, PRELIMINARY (SM-GPT).
+**Most important thing right now:** The launchd dispatcher has **missed three consecutive 2:15 AM fires (07-16, 07-17, 07-18)** — sustained pattern, machine power/sleep or agent-unloaded. And **D-1 becomes cadence-eligible TOMORROW (07-19)** with no automatic daytime driver — it will silently not run unless Andy runs `dev_set_monitor.py` from Terminal or picks a proposal-15 lane. That run is also the convert-to-consensus opportunity for the SM-GPT baseline.
 
 ---
 
 ## 1. Where We Are
 
-The queue has been intentionally empty since 07-09 (Northgate retry #3 held pending the DNS diagnosis). Nights 07-10 through 07-15 the dispatcher fired and correctly idled; **last night (07-16 ~2:15 AM) it did not fire at all** — no launchd log entry, no dispatch log. That's a new anomaly class: all prior cadence problems were on the report side, and the dispatcher had been reliable in its 2:15–2:25 window every night since the 06-25 FDA fix. Nothing was lost (a fire would have idled), but the machine's overnight environment now has two open questions — nighttime Gemini-endpoint DNS failure and this missed launchd fire — likely related (power/sleep, agent unload, or filtering). Otherwise unchanged: CA-notice Stage 2 complete, rules frozen as vProof1 (no edits until the v0.3 score is logged); VT holdings at 1 MV (Gokey) + 1 CI (Houle) — module effectively complete; cumulative MV=26 across 12 states, CI=4, RC=6.
+No-run cycle — no new output since run 9ae49b97 (ingested 07-09). Direction D-1 is live end-to-end: Andy's 07-16 Terminal baseline scored **12/12 = 100% on the v0.2 dev split, newly_failing=0, vProof1 freeze sha-verified** — but all 12 Gemini calls hit 503 (capacity), so it is SM-GPT and **not citable as consensus-validated**; it converts on the next dual-model run (cadence-eligible ≥ 07-19, daytime window only). The overnight picture has hardened: the dispatcher has now missed three straight fires (last log write 07-15 ~2:24 AM), on top of the distinct night-window Gemini DNS strand (daytime path confirmed fine 07-16). No substantive loss so far — the only queued job self-defers at 2:15 AM — but nothing overnight can run until Andy diagnoses the environment. Report-side cadence is healthy: third consecutive clean 8 AM fire; that settings-check note is CLOSED. Holdings unchanged: cumulative MV=26 across 12 states, CI=4, RC=6; VT effectively complete (Gokey MV + Houle CI); rules frozen as vProof1.
 
 ## 2. Decisions Waiting on Andy (RED list — complete)
 
@@ -21,38 +21,39 @@ The queue has been intentionally empty since 07-09 (Northgate retry #3 held pend
 6. **CO W.W.G. Corp. YELLOW:** classified MV but court expressly declined to decide whether CO retaliation doctrine exists — review before citing CO.
 
 **RED-strategic / Andy actions:**
-1. **Overnight machine environment (BROADENED 07-16 — blocks overnight runs):** two strands, likely related. (a) Gemini-endpoint DNS failure at night: run 9ae49b97 showed CourtListener resolving all night while `generativelanguage.googleapis.com` DNS-failed (`[Errno 8]`) ~5.7 h — check router/DNS filter schedules, `dscacheutil` day vs. ~2–5 AM, `scutil --dns`. (b) **NEW: launchd dispatcher missed its 07-16 fire entirely** — check whether the Mac was off/asleep-without-wake overnight, `launchctl list | grep com.cjac`, pmset wake schedule. **Northgate retry #3 held until resolved** (marginal — trial court; VT effectively complete).
-2. **Scheduled-task cadence:** report-side anomalies 07-08 double, 07-10 missed, 07-12 ~3 h late, 07-15 ~30 min late; 07-13/07-14/07-16 on time. Settings-check note retained.
+1. **Overnight machine environment (blocks all overnight runs — now includes dispatcher-miss ×3):** dispatcher dark since 07-15. Checks: machine power/sleep overnight, `launchctl list | grep com.cjac`, pmset wake schedule, router/DNS-filter schedules, dscacheutil day vs. ~2–5 AM. The Gemini night-window DNS strand (`[Errno 8]`) stands; daytime path confirmed fine (07-16 served 503). **Northgate retry #3 (item 14) held until resolved** (marginal — trial court; VT effectively complete).
+2. **D-1 daytime driver (proposal 15, YELLOW — now time-sensitive, eligibility 07-19):** the 2:15 AM fire is always outside the monitor's 09:00–23:00 window, so dispatcher-driven runs always self-defer. Options: second daytime launchd fire (e.g. 10:15 AM), or fold a drain call into the morning report (needs window-start move to 08:00, itself YELLOW). Interim fallback: run `python3 rules/validation/scorer/dev_set_monitor.py` from Terminal. Andy pick a lane.
 3. **KS/NV/SC CL coverage gap:** use Descrybe MCP before accepting Track A as ceiling — Andy's call or GREEN autonomous? (Open YELLOW question.)
 4. **CourtListener bulk-data / rate-limit outreach:** timing is Andy's decision.
 5. **Direction C:** still gated — needs stable score trend + Andy's strategic sign-off.
 
-**BLOCKED:** v0.3 scoring (on Step 4 freeze); Direction C (on B); overnight runs (on RED-strategic 1 — queue intentionally empty).
+**BLOCKED:** v0.3 scoring (on Step 4 freeze); Direction C (on B); overnight runs + automatic D-1 cadence (on RED-strategic 1).
 
 ## 3. What Executed Since Last Brief (GREEN digest)
 
-- **Overnight scan (07-16):** dispatcher DID NOT FIRE (evidence: launchd_stdout.log last write 07-15 ~2:24 AM; no new dispatch log). No substantive loss — queue was intentionally empty. Diagnosis checks folded into the standing overnight-environment RED.
-- No new output files; nothing to ingest; state unchanged (MV=26/CI=4/RC=6).
-- **Anti-default audit:** 0 cases routed RED-attorney; no PR/SM in attorney lane.
-- **Living docs updated:** METRICS_LEDGER (no-run entry + dispatcher-miss note), STATE_OF_RECORD, HUMAN_REVIEW_QUEUE (no new items), WORK_QUEUE, DAILY_CHANGELOG, this brief.
-- **YELLOW awaiting ratification (5 carried, 0 new):** extended search backoff ladder + FLAG-generate-failed→PR routing fix (both live-verified in 9ae49b97); VT 4467→4465; backoff v1; run-57cf7b37 RC→PR reclassification.
+- **Overnight scan (07-18):** dispatcher DID NOT FIRE — third consecutive miss; no new output anywhere; folded into the standing RED. No substantive loss (queued monitor self-defers at 2:15 AM).
+- **Timing flag raised:** D-1 cadence eligibility 07-19 with no driver — surfaced prominently for Andy with the Terminal fallback.
+- **Report-side settings-check note CLOSED:** third consecutive clean 8 AM fire (07-16, 07-17, 07-18) per the 07-14 criterion. Dispatcher-side checks remain open.
+- **Anti-default audit:** 0 cases routed RED-attorney; no PR/SM in the attorney lane.
+- **Living docs updated:** METRICS_LEDGER (07-18 cycle entry with B1–B4), STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (no new items), WORK_QUEUE, DAILY_CHANGELOG, this brief.
+- **YELLOW awaiting ratification (5 carried, 0 new executed):** extended search backoff ladder + FLAG-generate-failed→PR routing fix (both live-verified 07-09); VT 4467→4465; backoff v1; run-57cf7b37 RC→PR reclassification.
 
 ## 4. Metrics Movement
 
-- **None this cycle** — no run, no model calls, α n/a. Cumulative MV=26, CI=4, RC=6 unchanged (since 07-06).
-- **Standing (unchanged):** v0.2 held-out **5/5 = 100% DUAL-MODEL-CONSENSUS** (n=5 — directional only); dev post-fix **12/12 = 100%**, newly_failing=0; B2 confident-wrong=0. α: held-out 0.667 (n=5), dev 0.867 (n=12) — small-n, unreliable below n≈30.
+- **This cycle: none** — no run, no model calls; α N/A.
+- **Cumulative holdings:** MV=26, CI=4, RC=6 unchanged (since 07-06). PR quarantine unchanged (5 VT re-encounters from 9ae49b97).
+- **Standing:** v0.2 held-out **5/5 = 100% DUAL-MODEL-CONSENSUS** (n=5 — directional only); D-1 dev baseline 12/12 = 100% **SM-GPT PRELIMINARY** (method α undefined — 0 dual-model pairs); B2 confident-wrong=0; B3 newly_failing=0. α: held-out 0.667 (n=5), dev 0.867 (n=12, 07-02 dual-model run) — small-n, unreliable below n≈30.
 
 ## 5. Queue Snapshot
 
-- **NOW:** idle — both frontier items wait on Andy (v0.3 freeze; overnight-environment diagnosis).
-- **Tonight:** nothing queued — deliberate, pending the RED. Note: even a queued job may not run until the dispatcher miss is diagnosed.
-- **NEXT (autonomous depth shallow):** executable without either RED: CA Benchguide research; NJ failure_to_attach reformulated retry; refill items 11 (disposition_note mislabel fix, GREEN) + 13 (Direction D monitoring, YELLOW) if Andy nods. Items 12 (per-call backoff) and 14 (Northgate retry #3) gated on the RED.
+- **NOW:** D-1 monitoring ACTIVE but driverless (eligible ≥ 07-19, daytime only — proposal 15 pending). Overnight lane idle on the RED; dispatcher itself dark ×3.
+- **NEXT (autonomous depth shallow):** items 11 + 13 DONE; 12 (per-call backoff) + 14 (Northgate retry #3) HELD on the RED. Executable now: CA Benchguide research; NJ failure_to_attach reformulated retry. Proposal 15 awaits Andy.
 - **BLOCKED:** v0.3 scoring (Andy freeze); Direction C; overnight runs (environment diagnosis).
 
 ## 6. Pointers (for depth)
 
-- `PROJECT_STATE_OF_RECORD.md` — full validation status
-- `VALIDATION_METRICS_LEDGER.md` — run-by-run metrics, α, B1–B4 blocks
+- `PROJECT_STATE_OF_RECORD.md` — full validation status (incl. Direction D-1 section)
+- `VALIDATION_METRICS_LEDGER.md` — run-by-run metrics, α, B1–B4 blocks, D-1 trend table
 - `HUMAN_REVIEW_QUEUE.md` — RED-interpretive detail
 - `WORK_QUEUE.md` / `DAILY_CHANGELOG.md` — queue + GREEN log
 - `COWORK_DIRECTION_BROADENPROOF1_20260702.md` — the active direction
