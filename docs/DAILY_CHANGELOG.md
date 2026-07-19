@@ -4,6 +4,46 @@
 
 ---
 
+## 2026-07-19 (afternoon — Broaden Proof 1 Steps 5-7: v0.3 held-out set scored and burned)
+
+*Context: Andy ran the real, one-time held-out score from Terminal (real API keys, daytime window, per the freeze memo's own instructions). This is the last step of Broaden Proof 1 — the held-out set is now permanently burned and this result is not to be repeated.*
+
+### GREEN — Executed autonomously (analysis only; no code or rules touched)
+
+**Held-out score ingested and verified**
+- Pulled `rules/validation/scorer/output/ca_notice_score_2026-07-19_held-out.json` from the commit Andy pushed. Provenance checks pass: `rules_sha256` matches vProof1 (`cc0cfab63ae1591e2b88…`, unchanged since the 07-02 freeze) and `excel_sha256` matches the certified freeze hash (`e6dbb2fc…5df45`) exactly.
+- **Result: 23/26 = 88.5% (95% CI [71.0%, 96.0%], Wilson score interval).** `consensus_status: DUAL-MODEL-CONSENSUS` (both GPT and Gemini answered all 26 items; `single_model_items=0`).
+- **Krippendorff's α = 1.000** (GPT vs. Gemini, nominal, n=26, computed by hand from the run's per-item model outcomes: Do=0.000 observed disagreement, De=0.540 expected disagreement from the pooled label distribution). Perfect model-pair agreement.
+- **B1:** 88.5% coverage. **B2:** confident-wrong=3 (CA-NOT-C-18, C-21, C-22 — all `model_agreement: AGREE`, both models HIGH confidence, both wrong). **B3:** n/a (first live run against this set). **B4:** no rule changes since vProof1; not triggered.
+
+**B2 finding — a real coverage gap, written up for Andy, no rules touched**
+- All three confident-wrong items are AB 1482 exemption fact patterns under Civ. Code §1946.2(e)(7) (new-construction/certificate-of-occupancy exemption) and §1946.2(e)(8) (separately-alienable SFH exemption). Both models correctly applied the *default* just-cause/notice-period requirement and voided the notice for missing it — but the frozen ground truth is NOTICE_VALID because the exemption applies. These are the same three items where Andy's freeze review had to correct the golden-set citations for exactly this (e)(7)/(e)(8) distinction, suggesting the exemption boundary genuinely isn't encoded (or isn't reliably triggered) in `ca_eviction_v2.json` at vProof1.
+- **No rule edits made or attempted** — per the freeze record's standing rule ("NO RULE EDITS PERMITTED... discovered gaps → next development cycle with fresh held-out set"). Full writeup with per-item detail is in `docs/VALIDATION_METRICS_LEDGER.md`'s Broaden Proof 1 section.
+
+**Docs updated**
+- `VALIDATION_METRICS_LEDGER.md`: trend row updated to BURNED/88.5%; freeze record's "Next step" section replaced with the full result writeup (95% CI, α, B1-B4, B2 cluster analysis).
+- `docs/PROJECT_STATE_OF_RECORD.md`: header updated — Broaden Proof 1 now complete end-to-end (Steps 1-7); new RED opened for the §1946.2(e)(7)/(e)(8) coverage gap.
+
+**Follow-up directive received same afternoon: "v0.3 Held-Out Score Ingestion & AB 1482 Rule-Gap Cycle" (Andy, 2026-07-19).** Confirmed Task 1 (ledger/state/changelog writeup) already matched the directive's requirements; added the explicit v0.2→v0.3 comparison line and the "BURNED, dev-set-only, v0.4-gate" language it specified. Executed Task 2 (miss autopsy) below. Task 3 (candidate rule drafting) was gated on Task 2 and did not proceed — see below.
+
+**Miss autopsy executed (Task 2) — result is mixed, not a clean coverage gap**
+- Inspected `rules/eviction/california/ca_eviction_v2.json` (confirmed identical to vProof1, SHA matches) directly for each of the three suspect provisions, and cross-referenced against which defect each miss actually fired on (from the score JSON's `gpt_controlling_rule`/`gemini_controlling_rule` fields).
+- **§1946.2(a) 12-month attachment threshold: genuinely ABSENT.** `just_cause_required` is a flat `true` with no occupancy-duration gate anywhere in the file — confirmed by full-file search. Explains C-18. Missing-rule hypothesis CONFIRMED for this item.
+- **§1946.2(e)(7) and (e)(8): both PRESENT and fully encoded** (rolling 15-year window for (e)(7); two-prong REIT/corp/LLC + written-notice test for (e)(8); both ratified by Andy 2026-07-01). But both models fired `notice_defects[notice_period_too_short]` for C-21/C-22 — a different defect than the one these exemptions are wired to (`missing_just_cause_reason` only). The exemption logic exists, correctly, and simply isn't reachable from the defect that actually fired. Missing-rule hypothesis DISCONFIRMED for these two items.
+- Full writeup, including a proposed new error-taxonomy class ("exemption-scope-limited-to-single-defect," YELLOW, not yet adopted) and an open legal question this autopsy cannot resolve (whether the AB 1482 exemption should also reach the general §1946.1(b)/Stancil notice-period defect): `docs/AUTOPSY_v0_3_MISSES_20260719.md`.
+
+### YELLOW — proposed, not adopted
+- New error-taxonomy class candidate: "exemption-scope-limited-to-single-defect" (see autopsy memo). Andy's call.
+
+### RED — one gate fully closed, two items opened, Task 3 explicitly not executed
+1. **Overnight machine environment:** unchanged, still open (agent-unloaded-leaning; one launchctl action tests+fixes).
+2. **§1946.2(a) 12-month attachment threshold — genuine coverage gap (C-18).** `ca_eviction_v2.json` untouched.
+3. **§1946.2(e)(7)/(e)(8) wiring/scope gap (C-21, C-22) — NOT a coverage gap.** Per the directive's own stop condition ("if the missing-rule hypothesis is DISCONFIRMED... STOP the cycle... queue as RED"), **Task 3 (candidate rule drafting) was not executed.** Two things need Andy's decision before any rule text is drafted: (a) whether the AB 1482 just-cause exemption should also gate the separate, non-AB-1482 §1946.1(b) notice-period defect, and (b) how to encode the (a) attachment threshold. `ca_eviction_v2.json` untouched.
+
+**Broaden Proof 1 v0.3 held-out freeze RED (the original blocking item): now fully CLOSED** — Steps 1-7 complete, held-out set burned, result logged, autopsy delivered.
+
+---
+
 ## 2026-07-19 (morning report — automated)
 
 ### GREEN — Executed autonomously (morning report cycle)
