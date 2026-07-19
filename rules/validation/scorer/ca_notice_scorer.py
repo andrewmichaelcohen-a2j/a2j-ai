@@ -281,8 +281,40 @@ def load_golden_set(xlsx_path: Path) -> tuple[list[dict], list[str]]:
             if not item_id:
                 raise IntegrityError(f"FROZEN row {row_num} has empty ID field.")
 
-            correct_outcome = str(row[col["Correct outcome (if corrected)"]] or "").strip()
-            held_out_raw    = str(row[col["Held-out (TRUE/FALSE)"]] or "").strip().upper()
+            attorney_verdict = str(row[col["ATTORNEY VERDICT"]] or "").strip()
+            correct_outcome_field = str(row[col["Correct outcome (if corrected)"]] or "").strip()
+            drafted_outcome       = str(row[col["Drafted outcome"]] or "").strip()
+            held_out_raw          = str(row[col["Held-out (TRUE/FALSE)"]] or "").strip().upper()
+
+            # 2026-07-18 fix: "Correct outcome (if corrected)" is, by its own
+            # column name, meant to be left blank when the attorney did NOT
+            # correct the drafted outcome -- i.e. when ATTORNEY VERDICT is
+            # CONFIRM. That is not missing data; it's the attorney's own
+            # CONFIRM verdict on this same row saying "Drafted outcome is
+            # correct as-is." Read it, don't discard it. This is reading an
+            # already-complete attorney judgment, not repairing an
+            # incomplete one -- the "never silently repairs frozen items"
+            # rule (see the except-block message below) is about the scorer
+            # never GUESSING a missing correct answer; it does not apply
+            # here, since CONFIRM + Drafted outcome together already fully
+            # specify the answer. Any other ATTORNEY VERDICT value (or a
+            # blank one) with no explicit "Correct outcome" still falls
+            # through to validate_frozen_completeness()'s YELLOW-INCOMPLETE
+            # below, unchanged -- the fallback is scoped narrowly to CONFIRM.
+            if correct_outcome_field:
+                correct_outcome = correct_outcome_field
+                outcome_source = "corrected"
+            elif attorney_verdict.upper() in ("CONFIRM", "CONFIRMED") and drafted_outcome:
+                correct_outcome = drafted_outcome
+                outcome_source = "drafted (ATTORNEY VERDICT=CONFIRM)"
+                print(
+                    f"  ℹ️  {item_id}: 'Correct outcome' blank + verdict CONFIRM — "
+                    f"using Drafted outcome '{drafted_outcome}'.",
+                    flush=True,
+                )
+            else:
+                correct_outcome = ""
+                outcome_source = "missing"
 
             item = {
                 "id":              item_id,
@@ -290,8 +322,10 @@ def load_golden_set(xlsx_path: Path) -> tuple[list[dict], list[str]]:
                 "jurisdiction":    str(row[col["Jurisdiction"]] or "").strip(),
                 "facts":           str(row[col["Facts (scenario)"]] or "").strip(),
                 "controlling_authority": str(row[col["Controlling authority"]] or "").strip(),
-                "attorney_verdict": str(row[col["ATTORNEY VERDICT"]] or "").strip(),
+                "attorney_verdict": attorney_verdict,
+                "drafted_outcome": drafted_outcome,
                 "correct_outcome": correct_outcome,
+                "outcome_source":  outcome_source,
                 "reason_note":     str(row[col["Reason / note (required if corrected)"]] or "").strip(),
                 "status":          status,
                 "held_out":        held_out_raw if held_out_raw in (HELD_OUT_TRUE, HELD_OUT_FALSE, HELD_OUT_NA) else held_out_raw,

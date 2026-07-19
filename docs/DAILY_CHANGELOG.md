@@ -28,9 +28,42 @@
 
 ### RED — Escalated (standing, both waiting on Andy)
 - **Overnight machine environment (updated):** dispatcher miss ×4, now `no-heartbeat`-classified; agent-unloaded-leaning. Single convergent action: `cp rules/validation/com.cjac.validation.plist ~/Library/LaunchAgents/com.cjac.validation.plist && launchctl unload ~/Library/LaunchAgents/com.cjac.validation.plist && launchctl load ~/Library/LaunchAgents/com.cjac.validation.plist && launchctl list | grep cjac`.
-- **v0.3 held-out freeze:** 28 DRAFT items in `goldenset_CA_notice_v0.3_DRAFT_20260702.xlsx` still waiting on attorney review/freeze (Broaden Proof 1 Step 4).
+- ~~**v0.3 held-out freeze:** 28 DRAFT items still waiting on attorney review/freeze~~ — **CLOSED later same day:** Andy delivered the completed freeze; see the entry immediately below (26 FROZEN/2 EXCLUDED, Broaden Proof 1 Step 4 COMPLETE). Steps 5-7 (live score) still pending Andy.
 
 ---
+
+## 2026-07-18 (v0.3 held-out freeze ingested — Broaden Proof 1 Step 4 COMPLETE; Steps 5-7 pending Andy)
+
+*Context: Andy completed his item-by-item attorney review of the 28-item v0.3 DRAFT held-out set (started per the 07-16 directive), delivering `goldenset_CA_notice_v0.3_FROZEN_20260716.xlsx` + a freeze decision memo. This is the RED gate that has blocked Broaden Proof 1 Steps 5-7 since 07-02. This entry logs ingestion and a scorer bug found while verifying the file was actually scoreable — the real held-out score itself has NOT been run (requires Andy, real API keys, daytime window — see below).*
+
+### GREEN — Executed autonomously
+
+**Freeze ingested and verified**
+- Copied `goldenset_CA_notice_v0.3_FROZEN_20260716.xlsx` into `rules/validation/scorer/FROZEN/`. SHA256 verified matching Andy's certified freeze memo both on the raw upload and post-copy: `e6dbb2fcb60de0773f9ff5594e09f74c6a6bac5670c70bd9bb76d70e2645df45`.
+- **26 items FROZEN (scoreable), 2 EXCLUDED (C-05, C-13) — n changes from 28 (draft) to 26.** Distribution: NOTICE_VALID=14, NOTICE_INVALID=11, UD_DEFECTIVE_PREMATURE=1. Full detail, rulings, and the six citation corrections made at freeze are in `docs/VALIDATION_METRICS_LEDGER.md`'s updated "v0.3 FROZEN held-out set" record (Broaden Proof 1 section) — not duplicated here.
+- **Broaden Proof 1 Step 4 (attorney freeze) is now COMPLETE.** Rules remain frozen at vProof1 (`cc0cfab63ae1591e2b88…`) — this memo authorizes no rule edits, and none were made; only golden-set authority-field corrections (citations), which do not touch `ca_eviction_v2.json`.
+
+**Scorer bug found and fixed while verifying the file was actually scoreable**
+- Before handing Andy a "run this once" command for an irreversible held-out burn, dry-ran the pipeline against the real file first (per this project's standing discipline: verify mechanically before a precious one-shot action). Result: `ca_notice_scorer.py` flagged all 26 items as `YELLOW-INCOMPLETE` — it requires "Correct outcome (if corrected)" to be populated for every FROZEN row, but this file leaves that cell blank whenever `ATTORNEY VERDICT=CONFIRM`, which is the natural reading of the column's own name ("if corrected" — Andy didn't correct these, he confirmed them). All 26 FROZEN rows in this file are CONFIRM with a blank "Correct outcome" cell; the two EXCLUDED rows are unaffected (already skipped by status).
+- **Fix:** `load_golden_set()` now falls back to the "Drafted outcome" column, but only when `ATTORNEY VERDICT` is `CONFIRM` or `CONFIRMED` — any other verdict (or a blank one) with an empty "Correct outcome" still fails loud via the existing `YELLOW-INCOMPLETE` path, unchanged. An explicit "Correct outcome" value (the v0.2 file's convention — always populated, even on confirms) always wins and is never overridden by this fallback. No golden-set data file was modified — this is purely a parsing fix; the xlsx's SHA256 is identical before and after, still matching Andy's certified hash.
+- **Verification:** re-ran the dry-run after the fix — clean load, 0 YELLOWs, 26/26 items resolved. Manually cross-checked all 26 resolved outcomes against Andy's freeze memo ruling table (ID-by-ID) — exact match, including the 14/11/1 distribution. Regression tests added: `rules/validation/tests/test_ca_notice_scorer_outcome_fallback.py`, 15/15 pass, covering the fallback itself, the CONFIRM/CONFIRMED verdict variants, the "explicit value always wins" non-regression case (protects the v0.2 file's existing convention), and that genuinely incomplete rows (blank/unrecognized verdict) still fail loud rather than being silently guessed. Full existing suite re-run clean: `test_dev_set_monitor.py`, `test_dispatcher_heartbeat.py` (34/34), `test_l2_procedural_defects.py` (30/30), `test_retaliation_holdings_disposition_note.py` (26/26).
+
+**Docs updated**
+- `VALIDATION_METRICS_LEDGER.md`: Broaden Proof 1 trend row updated to FROZEN/n=26; "v0.3 draft held-out set" record replaced with the full FROZEN record (exclusions, citation corrections, scorer fix, next-step command).
+- `docs/PROJECT_STATE_OF_RECORD.md`: Broaden Proof 1 Step 4 marked COMPLETE.
+
+### RED — one gate closed, one step remains (not yet actioned)
+
+**Broaden Proof 1 Steps 5-7 — the actual held-out score — NOT YET RUN.** This is deliberately not something this session executes: (a) requires real `OPENAI_API_KEY`/`GOOGLE_API_KEY` — this sandbox only has placeholders; (b) per Andy's freeze memo, must run in the **daytime window**, not overnight (the environment RED's overnight lane is still being proven out after last night's sleep-timer fix — no reason to risk this precious one-time run on it); (c) burning the held-out set is irreversible — the mechanical pipeline was verified end-to-end via dry-run first specifically so the real run only needs to happen once.
+
+**For Andy, when ready (daytime, real keys):**
+```
+cd ~/Documents/GitHub/a2j-ai
+python3 rules/validation/scorer/ca_notice_scorer.py --golden rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.3_FROZEN_20260716.xlsx --held-out-only
+```
+No `--dry-run`, no `--force` needed (this script doesn't self-throttle like `dev_set_monitor.py`). Share the output (or the saved `rules/validation/scorer/output/ca_notice_score_*_held-out.json`) back for the 95% CI, Krippendorff's α, and B1-B4 write-up, and to log the burned result in the ledger.
+
+**Also carried:** overnight-environment RED (DNS/sleep fix applied 07-17, `--heartbeat-status` will confirm over the next few nights); C-05/C-13 open-textured queue candidates (not yet scheduled — companion work to the future open-textured module, no urgency).
 
 ## 2026-07-18 (follow-up session — noon daytime dispatcher fire + recurring-job fix)
 
