@@ -803,6 +803,24 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
+#### Morning report cycle — 2026-07-19 (no-run cycle — **DISPATCHER DID NOT FIRE overnight — FOURTH consecutive miss** [07-16→07-19]; first cycle read via the new B-3 heartbeat tool: `no-heartbeat`; report fired on time at ~8:01 AM)
+
+*No job dispatched — fourth consecutive launchd-side miss, and the first cycle diagnosed with the B-3 instrumentation installed 07-18: `python3 rules/validation/dispatch.py --heartbeat-status` → `{"state": "no-heartbeat"}`. `rules/validation/logs/dispatcher_heartbeat.log` does not exist at all — the B-1-instrumented `dispatch.py` (installed to the repo 07-16→07-18) has never been invoked by launchd; `launchd_stdout.log` last write remains 2026-07-15 ~2:24 AM. **Diagnostic significance: this is the first miss AFTER Andy's Part A mitigation** (`sudo pmset -c sleep 0` + lid-open practice, applied 2026-07-17). If the idle-sleep timer were the whole story, 07-18→07-19 should have fired. Evidence now leans toward **launchd agent-unloaded** (or a sleep mode outside `pmset -c` scope, e.g. lid closed on battery). Convergent fix: the plist reinstall steps Andy already needs for the 07-18 noon-fire addition (`cp rules/validation/com.cjac.validation.plist ~/Library/LaunchAgents/com.cjac.validation.plist` → `launchctl unload` → `launchctl load` → `launchctl list | grep cjac`) simultaneously reload the agent (testing/fixing the unloaded hypothesis) and activate the 12:00 PM fire (D-1's daytime driver). Substantive loss still nil: the only queued job (`job_dev_set_monitor_20260715.json`, recurring, live_verified) would have self-deferred at 2:15 AM anyway. No new files in `l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). **Timing: the D-1 dev-set monitor is cadence-eligible TODAY (2026-07-19, 3 days after the 07-16 baseline).** If Andy completes the launchctl steps before noon, today's 12:00 PM fire drains the queue and runs the monitor inside its 09:00–23:00 window automatically; otherwise the Terminal fallback is `python3 rules/validation/scorer/dev_set_monitor.py`. Either path is the convert-to-consensus opportunity for the SM-GPT baseline if Gemini capacity has recovered.*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Method rate / Overall rate | N/A | No run — nothing to ingest |
+| MV / CI / RC / PR / SM | — | No new buckets; PR quarantine unchanged (5 VT re-encounters from 9ae49b97) |
+| α_method / α_overall | N/A | No model calls this cycle |
+| Heartbeat classification (B-3, first use) | `no-heartbeat` | launchd never ran dispatch.py; log file does not exist |
+| Cumulative | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**B1 (coverage):** no score run this cycle; standing figures unchanged — v0.2 held-out 5/5 = 100% (dual-model), dev 12/12 = 100% (07-16 D-1 baseline, SM-GPT PRELIMINARY). **B2:** confident-wrong = 0 (standing). **B3:** newly_failing = 0 (no rule changes since vProof1 freeze). **B4:** no rule changes this cycle; currency check not triggered.
+
+**Process note (cadence):** report-side: fired ~8:01 AM PDT — on time, **fourth consecutive clean fire (07-16, 07-17, 07-18, 07-19)**; report-side settings-check note remains CLOSED. **Dispatcher-side: MISSED FIRE ×4** — now with a definitive instrument (`--heartbeat-status`) and a single convergent Andy action (plist reinstall + launchctl reload). Folded into the standing overnight-environment RED-strategic item.
+
+---
+
 #### Morning report cycle — 2026-07-18 (no-run cycle — **DISPATCHER DID NOT FIRE overnight — THIRD consecutive miss** [07-16, 07-17, 07-18]; no new output; report fired on time at 8:01 AM)
 
 *No job dispatched — and the dispatcher itself did not fire for the third consecutive night: `launchd_stdout.log` last write remains 2026-07-15 ~2:24 AM; no "Queue is empty" line for 07-16/07-17/07-18; no new dispatch log file. The launchd-side miss is now a confirmed sustained pattern (agent-unloaded/machine-asleep hypothesis strengthens further). Substantive loss still nil: the only queued job (`job_dev_set_monitor_20260715.json`, live_verified) self-defers outside its 09:00–23:00 PT window, so a 2:15 AM fire would have deferred anyway. No new files in `l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only). **Timing note for Andy:** the D-1 dev-set monitor becomes cadence-eligible TOMORROW (2026-07-19, 3 days after the 07-16 baseline) — but with the dispatcher dark and no daytime driver (WORK_QUEUE proposal 15 undecided), that run will silently not happen unless Andy runs `dev_set_monitor.py` from Terminal or picks a proposal-15 lane. That run is also the natural convert-to-consensus opportunity for the SM-GPT baseline if Gemini capacity has recovered.*

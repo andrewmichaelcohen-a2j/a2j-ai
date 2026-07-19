@@ -4,6 +4,34 @@
 
 ---
 
+## 2026-07-19 (morning report — automated)
+
+### GREEN — Executed autonomously (morning report cycle)
+
+**Overnight scan — no new output**
+- No new files in `rules/validation/l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (ingested 07-09). `failed/` unchanged (job_nc17_fresh_20260625 only). Queue holds only the recurring D-1 monitor job.
+
+**First live use of the B-3 heartbeat tool — dispatcher miss #4 confirmed definitively**
+- `python3 rules/validation/dispatch.py --heartbeat-status` → `{"state": "no-heartbeat"}`. `logs/dispatcher_heartbeat.log` does not exist — the B-1-instrumented `dispatch.py` has never been invoked by launchd since installation (07-16→07-18). `launchd_stdout.log` last write remains 07-15 ~2:24 AM. Fourth consecutive miss (07-16, 07-17, 07-18, 07-19).
+- **Diagnostic advance (GREEN analysis, no action taken):** this is the first miss AFTER Andy's Part A mitigation (`sudo pmset -c sleep 0` + lid-open, applied 07-17) — the idle-sleep-timer hypothesis alone no longer explains the pattern; evidence shifts toward **launchd agent-unloaded** (or clamshell/battery sleep outside `pmset -c` scope). Testable and fixable by the same launchctl reinstall steps Andy already needs to activate the 07-18 noon fire.
+
+**Timing escalation — D-1 cadence-eligible TODAY (07-19)**
+- Flagged in the morning report with the two concrete paths: (a) plist reinstall before noon → 12:00 PM fire runs the monitor automatically in-window; (b) Terminal fallback `python3 rules/validation/scorer/dev_set_monitor.py` (09:00–23:00 PT). Either is the convert-to-consensus opportunity for the SM-GPT baseline.
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR/SM cases in the attorney lane; the only failure-condition item is the dispatcher miss (infrastructure — logged, folded into the standing RED).
+
+**Living docs updated this cycle**
+- VALIDATION_METRICS_LEDGER (07-19 cycle entry incl. heartbeat classification + B1–B4), PROJECT_STATE_OF_RECORD (header), HUMAN_REVIEW_QUEUE (header — no new items), WORK_QUEUE (header + item 15 status + Completed), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (Step 3f).
+
+### YELLOW — None this cycle.
+
+### RED — Escalated (standing, both waiting on Andy)
+- **Overnight machine environment (updated):** dispatcher miss ×4, now `no-heartbeat`-classified; agent-unloaded-leaning. Single convergent action: `cp rules/validation/com.cjac.validation.plist ~/Library/LaunchAgents/com.cjac.validation.plist && launchctl unload ~/Library/LaunchAgents/com.cjac.validation.plist && launchctl load ~/Library/LaunchAgents/com.cjac.validation.plist && launchctl list | grep cjac`.
+- **v0.3 held-out freeze:** 28 DRAFT items in `goldenset_CA_notice_v0.3_DRAFT_20260702.xlsx` still waiting on attorney review/freeze (Broaden Proof 1 Step 4).
+
+---
+
 ## 2026-07-18 (follow-up session — noon daytime dispatcher fire + recurring-job fix)
 
 *Context: Andy asked about adding a second (noon) daytime dispatcher fire so Item 13's dev-set monitor (self-throttled to a 09:00–23:00 window) has an automatic driver — the 02:15 overnight fire alone can never land inside that window (flagged as an open structural gap in the 07-17 and prior entries, and as WORK_QUEUE item 15). While wiring it, found and fixed a real bug that would have silently capped the monitor's cadence at exactly one dispatcher-driven run, ever.*
