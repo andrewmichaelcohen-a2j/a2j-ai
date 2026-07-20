@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-07-20 (morning report — automated)
+
+### GREEN — Executed autonomously (morning report cycle)
+
+**Overnight scan — no dispatcher output; fifth consecutive missed fire**
+- `--heartbeat-status` → `{"state": "no-heartbeat"}`; `dispatcher_heartbeat.log` still does not exist; `launchd_stdout.log` last write still 07-15 ~2:24 AM. Miss ×5 (07-16→07-20). Classification unchanged (agent-unloaded-leaning); folded into the standing RED. No new files in `l2/output/`, `results/`, `done/`, or `failed/` since run 9ae49b97 (07-09). Queue holds only the recurring D-1 monitor job.
+- D-1 monitor did NOT run despite being cadence-eligible since 07-19 (dispatcher dark; no Terminal run — `dev_set_trend.jsonl` unchanged since the 07-16 baseline). The armed `RULE_CHANGE_TRIGGER.flag` (07-20 07:32 PT) now makes the next run the v3 regression gate.
+
+**Cycle roll-up (no re-logging — pointers only)**
+- The weekend's substantive events (v0.3 held-out burn → errata → autopsy → proposal → ratification → v3 cut) were session-driven and already logged in their own dated entries below and in the ledger's Broaden Proof 1 / v3 sections. This cycle added the ledger's 07-20 cycle entry (dual-reported score 88.5%/96.2%, α=1.000, ground-truth error rate 2/26 = 7.7%, B1–B4 with B3=PENDING-REQUIRED).
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR/SM in the attorney lane. The C-18 gap was resolved through the proposal→ratification lane (correct lane, not attorney-queue default); C-21/C-22 were attorney-side ground-truth errors corrected by signed errata — neither touched HUMAN_REVIEW_QUEUE.
+
+**Living docs updated this cycle**
+- VALIDATION_METRICS_LEDGER (07-20 cycle entry), PROJECT_STATE_OF_RECORD (morning-report annotation), HUMAN_REVIEW_QUEUE (header — no new items), WORK_QUEUE (header; Broaden Proof 1 Steps 4–7 closed out; refill proposals 16–18), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (Step 3f).
+
+### YELLOW — None this cycle (the v3 cut was ratified RED→approved before this report; nothing new awaiting ratification from this cycle itself).
+
+### RED — Decisions/actions on Andy (standing + new)
+1. **Overnight machine environment — miss ×5, `no-heartbeat`:** plist reinstall + launchctl reload (unchanged command); now also auto-runs the armed v3 regression gate at the first noon drain.
+2. **v3 dev-set regression gate:** `python3 rules/validation/scorer/dev_set_monitor.py` (real keys, 09:00–23:00 PT; no --force needed). Required: 12/12, newly_failing=0 — else Cowork reverts ACTIVE_RULES_FILE to vProof1 and reports RED.
+3. **Residuals:** §1946.2(a)(2) variant verification vs. verbatim statute (carried B4 flag); §1946.1(d) backlog drafting timing; v0.4 golden-set go/no-go.
+
+---
+
 ## 2026-07-20 (Task 4: ratified rule applied — new rules version v3 ACTIVE, dev regression pending)
 
 *Context: Andy ratified `docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` ("confirmed - i approve"). Per Task 4 of the errata-cycle directive: cut a new rules version, embed the wiring determination, arm the dev-set regression trigger, and hand off the live-run command.*

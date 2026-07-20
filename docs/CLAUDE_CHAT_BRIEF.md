@@ -1,62 +1,62 @@
 # CJaC — Rolling Handoff for Claude Chat
 
-**Generated:** 2026-07-19 (morning report, fired on time at ~8:01 AM) — orientation only; canonical docs are authoritative. If this brief and a canonical doc disagree, the canonical doc wins.
-**OS state:** Direction A live · Direction B: v0.2 complete (held-out burned 5/5, dev 12/12); Broaden Proof 1 (v0.3, n=28) waiting on Andy freeze · Direction C not started · Direction D-1 (dev-set monitor) LIVE — baseline 07-16, PRELIMINARY (SM-GPT); **cadence-eligible TODAY**.
-**Most important thing right now:** One Andy action resolves two open threads: copy the updated plist to `~/Library/LaunchAgents/` and `launchctl unload`/`load` it. That (a) reloads the launchd agent — the leading hypothesis for **four consecutive missed 2:15 AM fires (07-16→07-19)**, now definitively classified `no-heartbeat` by the new B-3 instrument — and (b) activates the new **12:00 PM fire**, so today's noon drain runs the cadence-eligible D-1 monitor automatically inside its window (the convert-to-consensus opportunity for the SM-GPT baseline). Terminal fallback: `python3 rules/validation/scorer/dev_set_monitor.py` (09:00–23:00 PT).
+**Generated:** 2026-07-20 (morning report, fired on time at ~8:00 AM) — orientation only; canonical docs are authoritative. If this brief and a canonical doc disagree, the canonical doc wins.
+**OS state:** Direction A live · Direction B: **Broaden Proof 1 COMPLETE end-to-end** (v0.3 held-out burned 07-19) · Direction C not started · Direction D-1 live, next run = v3 regression gate (trigger armed).
+**Most important thing right now:** Two Andy actions close the loop. (1) The plist reinstall + launchctl reload (unchanged command) — dispatcher has now missed **five consecutive fires (07-16→07-20)**, still `no-heartbeat`; reinstalling also activates the noon fire, whose first drain **auto-runs the armed v3 dev-set regression gate**. (2) Or run the gate directly: `python3 rules/validation/scorer/dev_set_monitor.py` (real keys, 09:00–23:00 PT, no --force). **v3 is not treated as active until it passes 12/12 with newly_failing=0** — any regression reverts to vProof1.
 
 ---
 
 ## 1. Where We Are
 
-No-run cycle — no new output since run 9ae49b97 (ingested 07-09). Since the last brief, a full dispatcher-resilience build landed (07-18 sessions): the dispatcher is now **self-evidencing** (B-1 heartbeat log, B-2 DNS preflight probe, B-3 `--heartbeat-status` classifier; 34/34 new tests + full suite pass), a **noon fire** was added to the plist alongside 02:15 (giving D-1 its missing daytime driver), and a real bug was fixed that would have silently dropped the recurring monitor job from the queue on its first dispatcher pickup. First live use of B-3 this morning returned **`no-heartbeat`**: launchd has never invoked the instrumented dispatch.py — and this is the first miss *after* Andy's 07-17 Part A mitigation (pmset -c sleep 0 + lid-open), so the evidence now leans **agent-unloaded** rather than sleep-timer. None of the repo-side work is active until Andy reinstalls the plist. Holdings unchanged: cumulative MV=26, CI=4, RC=6; VT effectively complete; rules frozen as vProof1. Report-side cadence: fourth consecutive clean 8 AM fire.
+Broaden Proof 1 finished end-to-end since the last brief. Andy froze the v0.3 held-out set (26 items) on 07-18 and burned the one-shot score on 07-19: **23/26 = 88.5% as-scored** (95% CI [71.0, 96.0]), DUAL-MODEL-CONSENSUS, **α = 1.000** (n=26, perfect model-pair agreement). A signed attorney errata the same day found the frozen ground truth for C-21/C-22 was wrong (§1946.1(b)/*Stancil* governs notice length independently of AB 1482 exemptions — the models were right): **post-errata 25/26 = 96.2%** (CI [81.1, 99.3]), dual-reported, neither number superseded; ground-truth error rate 2/26 = 7.7% logged as its own validation finding. The miss autopsy confirmed exactly one genuine coverage gap (C-18, the §1946.2(a) 12-month just-cause attachment threshold); Andy ratified the rule proposal and **`ca_eviction_v3.json` was cut 07-20** (vProof1 stays byte-frozen as the v0.3 anchor). The regression trigger is armed — the next dev-set run is the gate. Dispatcher-side: still dark (miss ×5). Holdings unchanged: MV=26, CI=4, RC=6.
 
 ## 2. Decisions Waiting on Andy (RED list — complete)
 
-**RED-interpretive (attorney judgment):**
-1. **Broaden Proof 1 Step 4 (top priority):** review + freeze the 28 DRAFT items in `rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.3_DRAFT_20260702.xlsx` — confirm/correct each Drafted outcome, set Status=FROZEN, add Reviewed-by + date. Ground truth is immutable once set.
-2. **HUMAN_REVIEW_QUEUE standing items:** 43 L7-ESCALATED (6 notice/service + 14 retaliation elements + OK + 22 procedural defects), 6 RC holdings re-characterizations (NV Wright, NY Ellis, AK DeNardo, CO Sladek, CT TOV Realty, WV Criss). **No new items this cycle.**
-3. **CI cheap-confirm lane (2):** Baer v. Huggins [NY-HOLD-CI-01]; Houle v. Quenneville [VT-HOLD-CI-01].
-4. **CA/summons procedural defect MODEL-SPLIT:** GPT CCP §1167(a) vs Gemini §415.45 — genuine split, in queue.
-5. **Direction B remaining DRAFT freezes:** CA service ×15, TX notice ×15 still DRAFT.
-6. **CO W.W.G. Corp. YELLOW:** classified MV but court expressly declined to decide whether CO retaliation doctrine exists — review before citing CO.
-
 **RED-strategic / Andy actions:**
-1. **Overnight machine environment — dispatcher miss ×4, now `no-heartbeat`-classified (blocks all overnight runs):** first miss post-Part-A-mitigation → **agent-unloaded-leaning**. Convergent action: `cp rules/validation/com.cjac.validation.plist ~/Library/LaunchAgents/com.cjac.validation.plist` → `launchctl unload` → `launchctl load` → `launchctl list | grep cjac`. This also activates the noon fire (item 2 below). Tonight's heartbeat log then gives the first direct B-1/B-2 data point (incl. the DNS strand). Northgate retry #3 (item 14) held until resolved.
-2. **D-1 daytime driver — repo-side DONE, activation pending:** noon fire + recurring-job fix landed 07-18; needs the same launchctl steps as above. **D-1 is cadence-eligible TODAY (07-19)**; if not activated before noon, run `python3 rules/validation/scorer/dev_set_monitor.py` from Terminal (09:00–23:00 PT).
-3. **B-4 plist hardening proposal** (`docs/DISPATCHER_PLIST_PROPOSAL.md`): apply `AbandonProcessGroup: true` (recommended, low-risk); hold `pmset repeat wakeorpoweron` in reserve pending heartbeat data; do NOT add KeepAlive/RunAtLoad.
-4. **KS/NV/SC CL coverage gap:** use Descrybe MCP before accepting Track A as ceiling — Andy's call or GREEN autonomous?
-5. **CourtListener bulk-data / rate-limit outreach:** timing is Andy's decision.
-6. **Direction C:** still gated — needs stable score trend + Andy's strategic sign-off.
+1. **Overnight machine environment — dispatcher miss ×5, `no-heartbeat` (blocks all overnight runs):** `cp rules/validation/com.cjac.validation.plist ~/Library/LaunchAgents/com.cjac.validation.plist` → `launchctl unload` → `launchctl load` → `launchctl list | grep cjac`. Also activates the noon fire → first drain auto-runs the v3 regression gate. Northgate retry #3 (item 14) held until resolved.
+2. **v3 dev-set regression gate (new, required):** `python3 rules/validation/scorer/dev_set_monitor.py` — real keys, daytime window. Must be 12/12, newly_failing=0; else Cowork reverts `ACTIVE_RULES_FILE` to vProof1 and reports RED. Until it passes, v3 is ratified-but-unverified.
+3. **v0.4 golden-set go/no-go:** next held-out measurement; first batch under the amended freeze protocol (full defect-class sweep per item; no model consultation during ground-truth review). Refill proposal 17.
+4. **B-4 plist hardening proposal** (`docs/DISPATCHER_PLIST_PROPOSAL.md`): AbandonProcessGroup recommended; hold pmset-repeat in reserve.
+5. **KS/NV/SC CL coverage gap:** Descrybe MCP before accepting Track A as ceiling — Andy's call or GREEN autonomous?
+6. **CourtListener bulk-data / rate-limit outreach:** timing is Andy's decision.
+7. **Direction C:** still gated — stable score trend + Andy's strategic sign-off.
 
-**BLOCKED:** v0.3 scoring (on Step 4 freeze); Direction C (on B); overnight runs + automatic D-1 cadence (on RED-strategic 1/2).
+**RED-interpretive (attorney judgment):**
+1. **§1946.2(a)(2) variant verification (carried B4 flag):** ratified from attorney-supplied text, NOT independently verified against verbatim statute text — confirm at next self-critique pass (refill proposal 16).
+2. **§1946.1(d) 30-day sale exception:** sole MISSING_RULES_BACKLOG entry — draft only on Andy's direction with attorney-sourced escrow-condition text.
+3. **HUMAN_REVIEW_QUEUE standing items:** 43 L7-ESCALATED, 6 RC re-characterizations, 2 CI cheap-confirm (Baer, Houle), CA/summons MODEL-SPLIT (§1167(a) vs §415.45). **No new items this cycle.**
+4. **Direction B remaining DRAFT freezes:** CA service ×15, TX notice ×15.
+5. **CO W.W.G. Corp. YELLOW:** review before citing CO as having MV holdings support.
+
+**BLOCKED:** overnight runs + automatic D-1 cadence (RED-strategic 1); v3 active status (RED-strategic 2); Direction C (on B trend).
 
 ## 3. What Executed Since Last Brief (GREEN digest)
 
-- **07-18 session — Dispatcher Resilience Part B (B-1/B-2/B-3):** heartbeat JSONL log (LOADED/FIRED/outcome, exception-safe), DNS preflight probe for CL + Gemini + OpenAI endpoints on every fire, `classify_last_night()` + `--heartbeat-status` CLI. 21/21 new tests; existing suites clean.
-- **07-18 follow-up session:** noon (12:00 PM) fire added to plist + `SCHEDULED_TIMES`; **recurring-job bug found + fixed** (finalize_job would have unlinked the monitor from queue/ on first pickup — `recurring: true` schema field added); multi-slot FIRED-delta logic. 34/34 heartbeat tests; full suite clean. B-4 hardening proposal drafted (not installed).
-- **This cycle (07-19):** overnight scan — no new output; first live `--heartbeat-status` use → `no-heartbeat` (miss #4); diagnostic shift to agent-unloaded logged; D-1 eligibility escalated with both paths; anti-default audit 0/clean; all living docs updated.
-- **YELLOW awaiting ratification:** 5 carried (search backoff ladder + FLAG-generate-failed→PR routing, both live-verified 07-09; VT 4467→4465; backoff v1; RC→PR reclassification). B-4 proposal awaits Andy.
+- **07-19 afternoon:** held-out score ingested + verified (provenance SHAs clean); B2 cluster analysis; miss autopsy (C-18 gap CONFIRMED absent; C-21/C-22 hypothesis DISCONFIRMED — exemptions present, correctly scoped); Task 3 correctly stopped per directive.
+- **07-19 evening:** signed errata ingested; metrics dual-reported everywhere; corrective freeze protocol adopted (v0.4 forward); Direction B doc amended.
+- **07-19 late/night:** rule proposal drafted ratification-ready (attachment threshold, per-tenant inputs, C-19 non-regression check); wiring determination recorded as companion doc; backlog entry created.
+- **07-20 ~07:32:** Andy ratified → v3 cut (SHA `65f1d9a4…947c7d`); scorer `ACTIVE_RULES_FILE` updated; 15/15 tests + dry-run wiring clean; trigger armed.
+- **This cycle (07-20 report):** overnight scan (miss ×5, no-heartbeat); ledger cycle entry; queue closed out Broaden Proof 1; refills 16–18 proposed; anti-default audit clean.
 
 ## 4. Metrics Movement
 
-- **This cycle: none** — no run, no model calls; α N/A.
-- **Cumulative holdings:** MV=26, CI=4, RC=6 unchanged (since 07-06). PR quarantine unchanged (5 VT re-encounters from 9ae49b97).
-- **Standing:** v0.2 held-out **5/5 = 100% DUAL-MODEL-CONSENSUS** (n=5 — directional only); D-1 dev baseline 12/12 = 100% **SM-GPT PRELIMINARY** (method α undefined — 0 dual-model pairs); B2 confident-wrong=0; B3 newly_failing=0. α: held-out 0.667 (n=5), dev 0.867 (n=12, 07-02 dual-model run) — small-n, unreliable below n≈30.
+- **v0.3 held-out (one-shot, BURNED):** 23/26 = **88.5%** as-scored → **96.2%** post-errata (25/26), dual-reported. α = **1.000** (n=26). vs. v0.2 held-out 5/5 = 100% (n=5, directional only) — v0.3 is the first statistically meaningful held-out result.
+- **B2 confident-wrong: 3 → 1** post-errata (C-18 only; v3 encodes the fix, unverified until the gate passes). **B3: PENDING-REQUIRED** (first rule change since vProof1). Ground-truth error rate: 2/26 = 7.7% (new metric).
+- **Holdings:** MV=26/CI=4/RC=6 unchanged since 07-06; no runs (dispatcher dark).
 
 ## 5. Queue Snapshot
 
-- **NOW:** D-1 monitoring ACTIVE and **cadence-eligible today** — driver ready but uninstalled (launchctl steps). Overnight lane dark ×4 pending the same action.
-- **NEXT (autonomous depth shallow):** items 11 + 13 + 15-repo-side DONE; 12 (per-call backoff) + 14 (Northgate retry #3) HELD on the RED. Executable now: CA Benchguide research; NJ failure_to_attach reformulated retry.
-- **BLOCKED:** v0.3 scoring (Andy freeze); Direction C; overnight runs (environment/agent reload).
+- **NOW:** v3 regression gate — armed, waiting on Andy's live run (or plist reinstall → noon auto-run).
+- **NEXT:** proposals 16 (self-critique pass over the new element incl. (a)(2) live-source check), 17 (v0.4 drafting, RED-gated), 18 (backlog grooming); carried: 12 (per-call backoff), 14 (Northgate #3, held).
+- **BLOCKED:** overnight lane (agent reload); Direction C.
 
 ## 6. Pointers (for depth)
 
-- `PROJECT_STATE_OF_RECORD.md` — full validation status (incl. Direction D-1 section)
-- `VALIDATION_METRICS_LEDGER.md` — run-by-run metrics, α, B1–B4 blocks, D-1 trend table
-- `HUMAN_REVIEW_QUEUE.md` — RED-interpretive detail
-- `WORK_QUEUE.md` / `DAILY_CHANGELOG.md` — queue + GREEN log
-- `DISPATCHER_PLIST_PROPOSAL.md` — B-4 hardening options
-- `COWORK_DIRECTION_BROADENPROOF1_20260702.md` — the active direction
+- `VALIDATION_METRICS_LEDGER.md` — v0.3 result writeup, errata annotations, v3 version record, cycle entries
+- `ERRATA_MEMO_v0_3_20260719.docx` (authoritative) / `.md` — the signed correction instrument
+- `AUTOPSY_v0_3_MISSES_20260719.md` — per-item miss analysis + addenda
+- `RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` / `WIRING_DETERMINATION_1946_2e_20260719.md` — the ratified pair
+- `PROJECT_STATE_OF_RECORD.md` · `HUMAN_REVIEW_QUEUE.md` · `WORK_QUEUE.md` · `DAILY_CHANGELOG.md`
 
 ---
 
