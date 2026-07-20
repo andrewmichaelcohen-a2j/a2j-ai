@@ -4,6 +4,20 @@
 
 ---
 
+## 2026-07-20 (dev-set regression gate PASSED — v3 fully active, errata-cycle directive closed)
+
+*Andy ran the real live regression: `python3 rules/validation/scorer/dev_set_monitor.py` — real keys, 10:31 AM PT, trigger-fired.*
+
+### GREEN — Verified and logged
+
+**Result: 12/12 = 100%, `newly_failing: []`, DUAL-MODEL-CONSENSUS (α=1.000), `triggered_by_rule_change: true`.** Pulled and verified the output directly (`rules/validation/scorer/output/ca_notice_score_2026-07-20_non-held-out.json`) rather than transcribing from screenshot — `rules_sha256` confirmed matches v3 exactly (`65f1d9a4…947c7d`). `RULE_CHANGE_TRIGGER.flag` was consumed by the run itself, as designed.
+
+**Docs corrected from PENDING to PASSED** (the same-day automated morning-report commit had logged this cycle's narrative before the live run completed, so a few spots still said "PENDING" after the fact — fixed, not re-litigated): `docs/VALIDATION_METRICS_LEDGER.md` (v3 version record's gate row; the B3 line in the 07-20 morning-report cycle entry), `docs/PROJECT_STATE_OF_RECORD.md` (header), `docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` (status line).
+
+**Errata-cycle directive (2026-07-19/20) is now closed end-to-end:** v0.3 held-out scored and burned → attorney errata corrected C-21/C-22 → miss autopsy → wiring determination (companion doc, `ca_eviction_v2.json` never touched) → rule proposal for C-18 → Andy's ratification → `ca_eviction_v3.json` cut → dev-set regression gate passed. `ca_eviction_v2.json` (vProof1) remains byte-frozen and immutable throughout, confirmed at every step.
+
+---
+
 ## 2026-07-20 (morning report — automated)
 
 ### GREEN — Executed autonomously (morning report cycle)
