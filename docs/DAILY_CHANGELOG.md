@@ -4,6 +4,20 @@
 
 ---
 
+## 2026-07-19 (late evening — Task 3: candidate rule proposal for C-18, YELLOW, ratification-ready)
+
+*Context: Andy corrected a routing misread — Task 3 of the 07-19 directive was already authorized for C-18 (Task 2 confirmed the §1946.2(a) rule genuinely absent), even though it was correctly not warranted for C-21/C-22 (confirmed not a gap, per errata). Proceeding with Task 3 for C-18 only.*
+
+### YELLOW — proposed, not applied (attorney ratification gate)
+
+**`docs/RULE_PROPOSALS_AB1482_20260719.md` delivered** — one candidate rule, PROPOSED-2026-001: closes the §1946.2(a) 12-month just-cause-attachment gap that caused C-18's miss. Operative text drawn verbatim from the frozen golden-set authority field (attorney-verified 2026-07-16) per the directive's canonical-source requirement — no independent statutory text asserted. Proposed encoding reuses the existing `all_occupants_residency_max_years` input (no new fact input); proposed defect-gate update to `missing_just_cause_reason`'s `ab1482_coverage_gate`, checked ahead of the exemption checklist. One open methodology question flagged for Andy (whether the Stancil any-occupant convention applies to §1946.2(a) attachment, same as it does to §1946.1(b)/(c)) rather than assumed.
+- **§1946.2(a)(2)'s 24-month/"additional adult tenants" variant NOT drafted** — no frozen item tests it and no attorney-verified source text specifies the trigger mechanics; flagged for Andy to decide (draft now with source text, defer to this same ratification, or defer to v0.4).
+- `ca_eviction_v2.json` **not touched** — proposal only, in ratification-ready item-by-item form mirroring golden-set freeze discipline.
+
+**Confirmed for the record: nothing else pending in this lane.** Task 1 (ledger/state/changelog writeup) and Task 2 (miss autopsy) were both completed and pushed same day (commits `8e894ae`, `aaaa4a5`). Task 4 (post-ratification: cut new rules version, run 12/12 dev regression) is correctly not started — it's staged behind ratification of the proposal above, per the directive's own sequencing, not an oversight.
+
+---
+
 ## 2026-07-19 (evening — attorney errata: v0.3 held-out score corrected, C-21/C-22 ground truth was wrong)
 
 *Context: Andy delivered a signed Attorney Errata Memorandum (`docs/ERRATA_MEMO_v0_3_20260719.docx`) same day as the held-out score and miss autopsy, resolving the open legal question the autopsy flagged but could not answer itself.*
