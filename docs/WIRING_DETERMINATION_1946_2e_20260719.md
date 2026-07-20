@@ -27,6 +27,6 @@ The autopsy's proposed error-taxonomy class, "exemption-scope-limited-to-single-
 
 This determination is effective now and travels with `ca_eviction_v2.json` going forward:
 - **Immediate:** recorded here as a companion doc (this file), referenced from `docs/PROJECT_STATE_OF_RECORD.md`. `ca_eviction_v2.json` itself is NOT edited — vProof1 remains byte-frozen at `cc0cfab63ae1591e2b88…` permanently, per standing project discipline.
-- **On the next rules version** (when the ratified §1946.2(a) attachment-threshold rule — see `docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` — produces a new file with a new SHA): this determination shall be embedded in that version's internal notes/metadata, so it travels with the rules file itself thereafter rather than living only in a separate doc. Staged; not yet executed — pending that ratification.
+- **✅ Embedded 2026-07-20:** the §1946.2(a) attachment-threshold rule was ratified and applied in `rules/eviction/california/ca_eviction_v3.json` — this determination is now embedded verbatim in that file's `provenance.determinations` array (id `WIRING-DETERMINATION-2026-07-19`), so it travels with the rules file itself going forward, not only in this companion doc.
 
 *Copyright 2026 Andrew M Cohen. Apache 2.0.*

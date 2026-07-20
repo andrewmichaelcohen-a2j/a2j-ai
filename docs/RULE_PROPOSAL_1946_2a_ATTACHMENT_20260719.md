@@ -1,7 +1,7 @@
 # Candidate Rule Proposal — Civ. Code §1946.2(a) Just-Cause Attachment Threshold (incl. (a)(2) variant)
 
 **Date:** 2026-07-19
-**Status:** PROPOSED — YELLOW, not applied. `ca_eviction_v2.json` remains untouched at vProof1 (`cc0cfab63ae1591e2b88…`, byte-frozen permanently).
+**Status:** ✅ RATIFIED 2026-07-20 (Andy: "confirmed - i approve") and APPLIED in `rules/eviction/california/ca_eviction_v3.json` (`ca_notice_rules_v3_20260720`, SHA `65f1d9a46487873163cd9ef5c5e2285c95a68bddb81e876a17e534b3de947c7d`). `ca_eviction_v2.json` remains untouched and immutable at vProof1 (`cc0cfab63ae1591e2b88…`) — v3 is a new file, not an edit. Dev-set regression gate: PENDING (see `docs/VALIDATION_METRICS_LEDGER.md`, v3 record).
 **Directed by:** errata-cycle Cowork Change Directive (Andy, 2026-07-19), Task 3 — narrowed and proceeding now (this task is directed, not routing-gated; distinguish from the disconfirmed (e)(7)/(e)(8) hypothesis, for which no rule is proposed — see `docs/WIRING_DETERMINATION_1946_2e_20260719.md`).
 **Traceability:** v0.3 held-out miss CA-NOT-C-18; `docs/AUTOPSY_v0_3_MISSES_20260719.md` (2026-07-19).
 **Supersedes:** `docs/RULE_PROPOSALS_AB1482_20260719.md` (2026-07-19, earlier same evening — narrower draft, no (a)(2) encoding).

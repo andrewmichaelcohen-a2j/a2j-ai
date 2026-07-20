@@ -351,15 +351,22 @@ def load_golden_set(xlsx_path: Path) -> tuple[list[dict], list[str]]:
 
 # ── Rules loader ──────────────────────────────────────────────────────────────
 
+# Active rules file. Prior versions remain immutable in the repo and are never
+# overwritten (e.g. ca_eviction_v2.json = vProof1, cc0cfab63ae1591e2b88...,
+# permanently the v0.3 held-out scoring anchor — retained for record even
+# though no longer active). Bumping this constant is the only change needed
+# to activate a new ratified version; see each file's version_history block.
+ACTIVE_RULES_FILE = "ca_eviction_v3.json"
+
 def load_ca_notice_rules() -> tuple[dict, str]:
-    """Load CA notice module from v2 rules file. Returns (rules_dict, file_sha256)."""
-    rules_path = RULES_DIR / "california" / "ca_eviction_v2.json"
+    """Load CA notice module from the active rules file. Returns (rules_dict, file_sha256)."""
+    rules_path = RULES_DIR / "california" / ACTIVE_RULES_FILE
     if not rules_path.exists():
         raise FileNotFoundError(f"CA rules file not found: {rules_path}")
     data   = json.loads(rules_path.read_text())
     notice = data.get("notice")
     if notice is None:
-        raise KeyError("'notice' module not found in ca_eviction_v2.json")
+        raise KeyError(f"'notice' module not found in {ACTIVE_RULES_FILE}")
     file_hash = sha256_file(rules_path)
     return notice, file_hash
 

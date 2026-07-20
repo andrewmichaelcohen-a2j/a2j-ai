@@ -1,0 +1,4 @@
+{
+  "armed_at": "2026-07-20T07:32:25.480608-07:00",
+  "reason": "Ratified rule change 2026-07-20: ca_eviction_v3.json activated (just_cause_attachment_threshold, Sec 1946.2(a)/(a)(2); wiring determination embedded). Next dev-set run must be the regression gate for this version."
+}

@@ -1391,6 +1391,22 @@ As each module/claim-type completes, add its combined row here so the *trend* is
 
 ---
 
+### CA-notice rules — v3 (ACTIVE, ratified 2026-07-20) — supersedes vProof1 for live scoring
+
+| Field | Value |
+|-------|-------|
+| Tag | `ca_notice_rules_v3_20260720` |
+| File | `rules/eviction/california/ca_eviction_v3.json` |
+| SHA256 | `65f1d9a46487873163cd9ef5c5e2285c95a68bddb81e876a17e534b3de947c7d` |
+| Ratified | 2026-07-20, Andrew M. Cohen — approved `docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` as delivered |
+| Supersedes | `ca_notice_rules_vProof1` (`ca_eviction_v2.json`, `cc0cfab63ae1591e2b88…`) — **vProof1 remains immutable, byte-frozen, retained permanently as the v0.3 held-out scoring anchor.** It is not deleted or altered; v3 is simply the new active file for the scorer going forward (`ca_notice_scorer.py`'s `ACTIVE_RULES_FILE` constant updated; single point of reference, no other code path hardcoded the filename). |
+| Changes from vProof1 | (1) Added `notice.notice_types.termination.just_cause_attachment_threshold` — Civ. Code §1946.2(a) 12-month general rule + §1946.2(a)(2) additional-adult-tenant variant. Closes the CA-NOT-C-18 coverage gap identified in the v0.3 miss autopsy. (2) `notice_defects[missing_just_cause_reason].ab1482_coverage_gate` note updated to check the attachment threshold ahead of the exemption checklist. (3) `provenance.determinations` now embeds the 2026-07-19 wiring determination (§1946.2(e) exemptions do not reach `notice_period_too_short` — ratified negative determination, not a gap; full record `docs/WIRING_DETERMINATION_1946_2e_20260719.md`). |
+| Non-regression check | `test_ca_notice_scorer_outcome_fallback.py` (15/15) re-run clean against the code change (in-memory workbooks, doesn't touch the rules file directly, but exercises the same scorer module). Battery schema validator (`layer3_notice`) run against v3: 2 errors found — **both pre-existing, inherited unchanged from vProof1** (`notice_defects[6]` — `wrong_instrument_incurable_conduct` — uses `notice_defective`/`defective` instead of the enum's `notice_void`/`defective_curable`/`warning` values; confirmed identical error present in vProof1 itself, unrelated to tonight's change, not introduced by it). Logged as a minor pre-existing item, not fixed here (out of scope for this ratification; not blocking). |
+| **Rule-freeze gate — dev-set regression: PENDING, not yet run.** | Per Task 4 of the errata-cycle directive: this version is not to be treated as fully active/validated until the Direction D-1 dev-set regression (v0.2 dev, 12 items) is run and passes 12/12 with `newly_failing=0`. **Trigger armed** (`rules/validation/scorer/output/RULE_CHANGE_TRIGGER.flag`) — the next `dev_set_monitor.py` invocation will bypass the 3-day cadence guard automatically (the daytime-window guard still applies; run during Andy's normal daytime/evening window). **Command for Andy:** `python3 rules/validation/scorer/dev_set_monitor.py` (no `--force` needed — the trigger already forces the cadence; running it live requires real `OPENAI_API_KEY`/`GOOGLE_API_KEY`, which this sandbox does not have). **Any regression (newly_failing non-empty) → revert to vProof1 as the active file and report RED, per the directive.** |
+| Held-out set | v0.3 held-out remains **permanently burned** — this rule change is explicitly NOT to be verified by re-scoring it. Only the v0.2 dev-set regression gates this version. A future v0.4 held-out set, drafted only on Andy's direction, would be the next held-out measurement. |
+
+---
+
 ### CA-notice rules — vProof1 freeze record (Broaden Proof 1)
 
 | Field | Value |

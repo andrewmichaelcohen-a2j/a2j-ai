@@ -4,6 +4,47 @@
 
 ---
 
+## 2026-07-20 (Task 4: ratified rule applied — new rules version v3 ACTIVE, dev regression pending)
+
+*Context: Andy ratified `docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` ("confirmed - i approve"). Per Task 4 of the errata-cycle directive: cut a new rules version, embed the wiring determination, arm the dev-set regression trigger, and hand off the live-run command.*
+
+### GREEN — Executed autonomously
+
+**New rules version cut — vProof1 untouched**
+- `rules/eviction/california/ca_eviction_v3.json` **(new file)** — copy of vProof1 plus: `notice.notice_types.termination.just_cause_attachment_threshold` (Civ. Code §1946.2(a) 12-month general rule + §1946.2(a)(2) additional-adult-tenant variant, exactly as ratified); `notice_defects[missing_just_cause_reason].ab1482_coverage_gate` note updated to check attachment first; `provenance.determinations` now embeds the 2026-07-19 wiring determination verbatim (id `WIRING-DETERMINATION-2026-07-19`); `version_history` block added recording the change and its supersession of vProof1.
+- **`ca_eviction_v2.json` (vProof1) is untouched** — confirmed byte-identical, SHA still `cc0cfab63ae1591e2b88…`. It is not deleted; retained permanently as the immutable v0.3 held-out scoring anchor.
+- New file SHA256: `65f1d9a46487873163cd9ef5c5e2285c95a68bddb81e876a17e534b3de947c7d`.
+
+**Scorer updated to the new active version (single reference point)**
+- Searched the codebase for every consumer of `just_cause_required`/`ab1482_coverage_gate`/the rules file path before changing anything: only `rules/validation/scorer/ca_notice_scorer.py::load_ca_notice_rules()` hardcoded the filename; no test hardcodes it either. Replaced the hardcoded `"ca_eviction_v2.json"` with a named `ACTIVE_RULES_FILE = "ca_eviction_v3.json"` constant, documented so the next version bump is a one-line change.
+
+**Verification performed (mechanical; no live model calls — this sandbox has placeholder keys only)**
+- JSON validity: v3 parses clean.
+- Battery schema validator (`layer3_notice`) run against v3: 2 errors, both confirmed pre-existing and identical in vProof1 (`notice_defects[6]` consequence/severity values not in the validator's enum) — not introduced by this change, not fixed here (out of scope for this ratification; logged for awareness only).
+- `test_ca_notice_scorer_outcome_fallback.py`: 15/15 pass, unaffected by the `ACTIVE_RULES_FILE` change.
+- `dev_set_monitor.py --force --dry-run`: pipeline runs end-to-end against v3 with no crashes or schema errors (dry-run always shows all-items-failing by design — mocked predictions, not a real accuracy signal; this only confirms the wiring, not correctness). Stray dry-run output file and `dev_set_trend.jsonl` touch reverted before commit — dry runs must not pollute the real trend log.
+
+**Regression trigger armed for the real gate**
+- `arm_trigger()` called — `rules/validation/scorer/output/RULE_CHANGE_TRIGGER.flag` written. The next live `dev_set_monitor.py` run will bypass the 3-day cadence guard automatically (this is exactly the "immediately after any ratified rule change" case the trigger was built for in Item 13). The daytime-window guard still applies — run during Andy's normal window, real keys.
+
+**Docs updated**
+- `docs/VALIDATION_METRICS_LEDGER.md`: new v3 version record (parallel structure to the vProof1 freeze record), rule-freeze gate marked PENDING pending the live regression.
+- `docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` and `docs/WIRING_DETERMINATION_1946_2e_20260719.md`: both updated from PROPOSED/staged to RATIFIED/embedded, pointing at v3.
+- `docs/PROJECT_STATE_OF_RECORD.md`: header updated.
+
+### RED — dev-set regression gate open (not yet run; real keys required)
+
+**For Andy, daytime window, real keys:**
+```
+cd ~/Documents/GitHub/a2j-ai
+python3 rules/validation/scorer/dev_set_monitor.py
+```
+No `--force` needed — the armed trigger already bypasses cadence. **Required result: 12/12 with `newly_failing=0`.** Any regression → Cowork reverts `ACTIVE_RULES_FILE` to `ca_eviction_v2.json` (vProof1) and reports RED; v3 is not treated as active until this gate passes. Share the output back for the ledger.
+
+**Also carried, unrelated, no action:** `notice_defects[6]` non-enum consequence/severity values (pre-existing in vProof1, inherited into v3 unchanged) — minor schema-validator finding, not blocking, not fixed this cycle.
+
+---
+
 ## 2026-07-19 (night — errata-cycle directive Tasks 2 (amended), 3 (narrowed), 4, 5)
 
 *Context: Andy clarified there are two directives in play — the score-cycle directive (Tasks 1-4, executed earlier today) and the errata-cycle directive, which supersedes it in part. Full task text for the outstanding items provided; executed below.*

@@ -1,0 +1,1380 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "eviction-v2",
+  "jurisdiction": {
+    "state": "CA",
+    "state_name": "California",
+    "type": "state"
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-06-15",
+      "model": "claude-sonnet-4-6",
+      "method": "v1-migration+stub-expansion"
+    },
+    "statutory_sources": [
+      {
+        "cite": "CCP §1161(2)",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "CCP §1161(3)",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code §1946.1",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code §1946.2 (AB 1482)",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code §1947.12 (AB 1482)",
+        "url": null,
+        "retrieved": true,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "CCP §1162",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "CCP §1013",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code §1946.2",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code §1947.12",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      },
+      {
+        "cite": "Civ. Code §1941; Green v. Superior Court (1974)",
+        "url": null,
+        "retrieved": false,
+        "retrieved_date": "2026-05-30"
+      }
+    ],
+    "per_module_sources": {
+      "notice": [
+        "CCP §1161(2)",
+        "CCP §1161(3)",
+        "CCP §1161(4)",
+        "CCP §12",
+        "CCP §1162",
+        "Civ. Code §1946.1(b)",
+        "Civ. Code §1946.1(c)",
+        "Civ. Code §1946.2(d) (SB 567, eff. 4/1/2024)",
+        "Civ. Code §1946.2(e)(8)(A), (B)",
+        "Civ. Code §1946.2 (AB 1482)",
+        "Civ. Code §1947.12 (AB 1482)",
+        "EDC Associates v. Gutierrez (1984) 153 Cal.App.3d 167",
+        "Lynch & Freytag v. Cooper (1990) 218 Cal.App.3d 603",
+        "Eshagian v. Cepeda (2025)",
+        "Stancil v. Superior Court (2021) 11 Cal.5th 381"
+      ],
+      "service": [
+        "CCP §1162",
+        "CCP §1013"
+      ],
+      "overlays": [
+        "Civ. Code §1946.2",
+        "Civ. Code §1947.12",
+        "Civ. Code §1941; Green v. Superior Court (1974)"
+      ],
+      "substantive_defenses": [
+        "42 U.S.C. §3604 (Fair Housing Act)",
+        "[state implied warranty of habitability statute]",
+        "[state anti-retaliation statute]",
+        "[state just cause eviction statute]"
+      ],
+      "procedural_defects": [
+        "CCP §1167",
+        "CCP §1170"
+      ]
+    },
+    "ai_drafter_notes": [
+      "Statute verified via live LDH retrieval 2026-05-30 — CCP §1161 operative Feb 1, 2025 (amended by SB 611)",
+      "ATTORNEY VALIDATION REQUIRED: 15-day notice period for tenancies 12+ months is disputed — live CCP §1161 retrieval shows 3-day text; AB 1482 interpretation requires attorney confirmation",
+      "AB 1482 (Civ. Code §1946.2) amended by AB 1529 (Stats. 2025) — REPEALED as of Jan 1, 2030 unless extended",
+      "AB 2347 (eff. Jan 1, 2025) extended UD summons response from 5 to 10 business days",
+      "Late fees in pay-or-quit demand = notice VOID per CCP §1161(2) — high-confidence defect",
+      "LDH legislation source available for retrieval verification: US/CA-Legislation",
+      "v2 migration: notice fields ported from v1; service/overlays/substantive_defenses/procedural_defects modules added 2026-06-15 via AI generation — all require attorney verification before any operational use"
+    ],
+    "determinations": [
+      {
+        "id": "WIRING-DETERMINATION-2026-07-19",
+        "statute": "Civ. Code §1946.2(e)",
+        "determined_by": "Andrew M. Cohen, Attorney of Record, 2026-07-19",
+        "determination": "The ab1482_coverage_gate on notice_defects[missing_just_cause_reason] intentionally does NOT apply to notice_defects[notice_period_too_short]. §1946.2(e) exemptions remove the AB 1482 just-cause obligation only; they do not shorten, displace, or excuse compliance with Civ. Code §1946.1(b)/(c)'s notice-period requirements, which apply independently (Stancil v. Superior Court (2021) 11 Cal.5th 381).",
+        "status": "RATIFIED NEGATIVE DETERMINATION — do not \"fix\".",
+        "full_record": "docs/WIRING_DETERMINATION_1946_2e_20260719.md"
+      }
+    ]
+  },
+  "interoperability": {
+    "fips_jurisdiction": "06",
+    "language": [
+      "en"
+    ],
+    "task_taxonomy_ids": [
+      "TS-03-04",
+      "TS-01-07",
+      "TS-01-05",
+      "TS-05-05",
+      "TS-03-02",
+      "TS-05-04"
+    ],
+    "list_codes": [
+      "HO-00-00-00-00",
+      "HO-02-00-00-00",
+      "HO-02-04-00-00",
+      "HO-02-04-01-00",
+      "HO-02-04-02-00",
+      "HO-02-04-03-00",
+      "HO-02-04-04-00",
+      "HO-02-04-05-00"
+    ]
+  },
+  "validation": {
+    "file_status": "AUTOMATED-CHECKS-PASSED",
+    "module_status": {
+      "notice": {
+        "status": "SELF-CRITIQUE-COMPLETE",
+        "self_critique_date": "2026-07-01",
+        "self_critique_report": "docs/CA_NOTICE_SELF_CRITIQUE_REPORT_20260701.md",
+        "self_critique_summary": "9 REVISED (source-anchored), 3 CONFIRMED, 4 FLAGGED (attorney residual). Key additions: 60d termination notice (§1946.1(b)), unconditional_quit type (§1161(4)), payee_id_missing defect, relocation_assistance rule (SB 567), partial_payment_waiver rule (EDC v. Gutierrez), SFH exemption two-prong (§1946.2(e)(8)). Day count methods corrected. Service statute filled.",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5,self-critique"
+      },
+      "service": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "overlays": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "substantive_defenses": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      },
+      "procedural_defects": {
+        "status": "AUTOMATED-CHECKS-PASSED",
+        "reviewer": null,
+        "reviewed_date": null,
+        "coverage_level": "L1,L3,L5"
+      }
+    },
+    "automated_layers": {
+      "L1_grounding": "pass",
+      "L2_consensus": "pass",
+      "L3_consistency": "pass",
+      "L4_golden": "not_implemented",
+      "L5_crossjuris": "pass",
+      "L6_freshness": "not_implemented"
+    },
+    "coverage_level": "L1,L3,L5",
+    "flags": [
+      {
+        "layer": "L6",
+        "code": "L6-SERVICE-RECENCY-WATCH",
+        "field": "service.method_rules",
+        "disposition": "open",
+        "note": "RECENCY GUARDRAIL: CA service statutes may have changed recently. AB 2347 (2022) changed service and response-time rules; verify CCP §1162 currency L2 consensus ≠ current law. Verify against current statutory text.",
+        "l2_run_date": "2026-06-19"
+      },
+      {
+        "layer": "L6",
+        "code": "L6-SERVICE-RECENCY-WATCH",
+        "field": "service.method_rules",
+        "disposition": "open",
+        "note": "RECENCY GUARDRAIL: CA service statutes may have changed recently. AB 2347 (2022) changed service and response-time rules; verify CCP §1162 currency L2 consensus ≠ current law. Verify against current statutory text.",
+        "l2_run_date": "2026-06-20"
+      },
+      {
+        "layer": "L2",
+        "field": "service.method_rules",
+        "l2_run_date": "2026-06-20",
+        "gpt_summary": {
+          "all_methods_same_statute": true,
+          "confidence": "high",
+          "methods": [
+            {
+              "method": "personal",
+              "statute": "Cal. Code Civ. Proc. § 1162(a)(1)"
+            },
+            {
+              "method": "substituted",
+              "statute": "Cal. Code Civ. Proc. § 1162(a)(2)"
+            },
+            {
+              "method": "posting_and_mailing",
+              "statute": "Cal. Code Civ. Proc. § 1162(a)(3)"
+            }
+          ]
+        },
+        "gemini_summary": {
+          "all_methods_same_statute": true,
+          "confidence": "high",
+          "methods": [
+            {
+              "method": "personal",
+              "statute": "Cal. Code Civ. Proc. § 1162(a)(1)"
+            },
+            {
+              "method": "substituted",
+              "statute": "Cal. Code Civ. Proc. § 1162(a)(2)"
+            },
+            {
+              "method": "posting_and_mailing",
+              "statute": "Cal. Code Civ. Proc. § 1162(a)(3)"
+            }
+          ]
+        },
+        "code": "L2-SERVICE-CONSENSUS-CONFIRM",
+        "disposition": "resolved-confirmed",
+        "note": "L2 service consensus: both gpt-5.5 and gemini-2.5-pro independently confirmed file's service method statutes. No discrepancies detected."
+      },
+      {
+        "layer": "L6",
+        "code": "L6-SERVICE-RECENCY-WATCH",
+        "field": "service.method_rules",
+        "disposition": "open",
+        "note": "RECENCY GUARDRAIL: CA service statutes may have changed recently. AB 2347 (2022) changed service and response-time rules; verify CCP §1162 currency L2 consensus ≠ current law. Verify against current statutory text.",
+        "l2_run_date": "2026-06-20"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-PROCEDURAL-DEFECTS-CONTENT-PASS-PENDING",
+        "field": "procedural_defects",
+        "disposition": "content-pass-needed",
+        "status": "pending-content-differentiation",
+        "date": "2026-06-20",
+        "defect_count": 5,
+        "note": "Content pass pending (2026-06-20): 5 procedural defect items; 3 use 'et seq.' level citations (insufficient for L2 validation). Per operating protocol, L2 cannot run on undifferentiated boilerplate. Content pass requires jurisdiction-specific primary source retrieval (API needed). 50/51 states share identical 4-item template; only statutes differ. Content differentiation needed before L2 validation is meaningful."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-SCRA-OVERLAY-SINGLE-MODEL-RESOLVED",
+        "field": "overlays.federal.scra",
+        "disposition": "single-model-preliminary",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "RECLASSIFIED from CITATION-DIVERGE: GPT returned PARSE_ERROR (wrong schema — technical failure, not a legal position). Gemini single-model, high confidence. KEY FINDING: FY23 NDAA amended §3951(a)(2) — threshold formula changed from CPI-adjusted fixed-dollar to 130% of BAH (E-5 with dependents, highest area). Current threshold: $4,954.34/month (2024). Preliminary had $4,073.16 — OUTDATED (old CPI formula). Attorney should verify current threshold from DoD BAH charts. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned PARSE_ERROR (wrong schema); Gemini-only; not L2-validated until real two-model run completes.]",
+        "stopping_rule_override": "GPT PARSE_ERROR = technical failure per operating protocol; single-model fallback applies",
+        "gpt_summary": {
+          "primary_citation": null,
+          "rent_threshold": null,
+          "confidence": null,
+          "error": "PARSE_ERROR — returned notice-module schema instead of SCRA schema; technical failure"
+        },
+        "gemini_summary": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "rent_threshold": 4954.34,
+          "rent_threshold_year": "2024",
+          "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high",
+          "error": null
+        },
+        "resolved_content": {
+          "primary_citation": "50 U.S.C. § 3951",
+          "public_law_citation": "Pub. L. 117-263, Div. E, Title LV, § 555 (Dec. 23, 2022) — FY23 NDAA",
+          "current_rent_threshold_dollars": 4954.34,
+          "current_rent_threshold_year": "2024",
+          "threshold_adjustment_method": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+          "core_protection": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence, for which the monthly rent is below the statutory threshold, without first obtaining a court order.",
+          "court_order_required": true,
+          "max_stay_days": 90,
+          "affidavit_required": true,
+          "affidavit_statute": "50 U.S.C. § 3931(b)(1)",
+          "covered_persons": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+          "recent_amendments": "FY23 NDAA (Pub. L. 117-263, § 555, Dec. 23, 2022) amended § 3951(a)(2): replaced former CPI-adjusted fixed-dollar threshold with new BAH-based formula (130% of E-5-with-dependents BAH, highest area). This change substantially increased the dollar value of the threshold, expanding the number of protected leases.",
+          "confidence": "high"
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-OVERLAY-STATE-PROTECTIVE-CITATIONS-VERIFIED",
+        "field": "overlays.state_protective",
+        "disposition": "pending-human-confirmation",
+        "status": "pending-human-confirmation",
+        "l2_run_date": "2026-06-20",
+        "overlay_results": [
+          {
+            "name": "AB 1482 Just Cause (statewide)",
+            "file_citation": "Civ. Code §1946.2",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1946.2(a)-(b) | Gem: California Civil Code § 1946.2",
+            "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1946.2(a)-(b)",
+            "gemini_citation": "California Civil Code § 1946.2"
+          },
+          {
+            "name": "AB 1482 Rent Cap",
+            "file_citation": "Civ. Code §1947.12",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1947.12(a)(1) | Gem: California Civil Code § 1947.12",
+            "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, § 1947.12(a)(1)",
+            "gemini_citation": "California Civil Code § 1947.12"
+          },
+          {
+            "name": "Implied Warranty of Habitability",
+            "file_citation": "Civ. Code §1941; Green v. Superior Court (1974)",
+            "classification": "CITATION-CONFIRMED",
+            "note": "Models agree and file citation matches. GPT: California Civil Code, Division 3, Part 4, Title 5, Chapter 2, §§ 1941(a), 1941.1 | Gem: California Civil Code § 1941.1",
+            "gpt_citation": "California Civil Code, Division 3, Part 4, Title 5, Chapter 2, §§ 1941(a), 1941.1",
+            "gemini_citation": "California Civil Code § 1941.1"
+          }
+        ],
+        "needs_queue": false,
+        "note": "All 3 overlay citations verified by L2 — no changes needed."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-HABITABILITY-WARRANTY-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.habitability_warranty.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Cal. Civ. Code §1941.1, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-DISCRIMINATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.discrimination.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Cal. Gov. Code §12955 (Fair Employment and Housing Act - FEHA), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-BREACH-OF-QUIET-ENJOYMENT-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.breach_of_quiet_enjoyment.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Cal. Civ. Code §1927, conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-IMPROPER-RENT-CALCULATION-SINGLE-MODEL-RESOLVED",
+        "field": "substantive_defenses.improper_rent_calculation.layer_decomposition.elements",
+        "disposition": "single-model-preliminary",
+        "l2_run_date": "2026-06-21",
+        "classification": "SINGLE-MODEL-RESOLVED",
+        "note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=2, statute=Cal. Code Civ. Proc. §1161(2), conf=high. [DOWNGRADED 2026-06-20 per COWORK_DIRECTION_PROVENANCE.md: GPT returned empty response in Terminal run; Gemini-only; not L2-validated until real two-model run completes.]",
+        "gpt_confidence": "error",
+        "gemini_confidence": "high"
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-ELEMENTS-CONSENSUS-CONFIRMED",
+        "field": "substantive_defenses.retaliation.layer_decomposition.elements",
+        "disposition": "resolved-confirmed",
+        "l2_run_date": "2026-06-21",
+        "classification": "CONSENSUS-CONFIRMED",
+        "note": "Both models: 180d presumption period. GPT: Cal. Civ. Code § 1942.5 (conf=high). Gemini: Cal. Civ. Code § 1942.5 (conf=high).",
+        "gpt_summary": {
+          "period": 180,
+          "statute": "Cal. Civ. Code § 1942.5",
+          "confidence": "high",
+          "error": null
+        },
+        "gemini_summary": {
+          "period": 180,
+          "statute": "Cal. Civ. Code § 1942.5",
+          "confidence": "high",
+          "error": null
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-ELEMENTS-CONSENSUS-CONFIRMED",
+        "field": "substantive_defenses.retaliation.layer_decomposition.elements",
+        "disposition": "resolved-confirmed",
+        "l2_run_date": "2026-06-21",
+        "classification": "CONSENSUS-CONFIRMED",
+        "note": "Both models: 180d presumption period. GPT: Cal. Civ. Code § 1942.5 (conf=high). Gemini: Cal. Civ. Code § 1942.5 (conf=high).",
+        "gpt_summary": {
+          "period": 180,
+          "statute": "Cal. Civ. Code § 1942.5",
+          "confidence": "high",
+          "error": null
+        },
+        "gemini_summary": {
+          "period": 180,
+          "statute": "Cal. Civ. Code § 1942.5",
+          "confidence": "high",
+          "error": null
+        }
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 5,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      },
+      {
+        "layer": "L2",
+        "code": "L2-RETALIATION-HOLDINGS-DRAFT",
+        "field": "substantive_defenses.retaliation.layer_decomposition.holdings",
+        "disposition": "draft-pending-attorney-confirmation",
+        "l2_run_date": "2026-06-21",
+        "draft_corroborated": 0,
+        "needs_attorney": 6,
+        "note": "Holdings draft complete. All cases require attorney confirmation. Never cite draft-corroborated cases publicly without attorney sign-off."
+      }
+    ],
+    "validation_note": "Automated validation run 2026-06-19. Layers run: L1,L3,L5. file_status=AUTOMATED-CHECKS-PASSED.",
+    "l2_results": {
+      "run_date": "2026-06-26",
+      "classification": "CONSENSUS-CONFIRM",
+      "gpt": {
+        "model": "gpt-5.5",
+        "days": 3,
+        "statute": "Cal. Civ. Proc. Code § 1161(2)",
+        "rationale": "For nonpayment of rent, a residential tenant is guilty of unlawful detainer only after defaulting in rent and failing to pay within three days after service of a written notice requiring payment or possession. The three-day period excludes Saturdays, Sundays, and other judicial holidays."
+      },
+      "gemini": {
+        "model": "gemini-2.5-pro",
+        "days": 3,
+        "statute": "California Code of Civil Procedure § 1161(2)",
+        "rationale": "A landlord must provide a tenant with a written three-day notice demanding payment of the overdue rent or possession of the property. An eviction action for nonpayment may only be filed after the tenant has failed to comply within this three-day period."
+      }
+    }
+  },
+  "notice": {
+    "notice_types": {
+      "pay_or_quit": {
+        "description": "Nonpayment of rent — CCP §1161(2). Notice demands only unpaid rent; no late fees, utilities, or other charges permitted.",
+        "permitted_amounts": [
+          "unpaid_rent_only"
+        ],
+        "late_fees_permitted": false,
+        "utilities_permitted": false,
+        "mandatory_content": {
+          "payee_name_required": true,
+          "payee_phone_required": true,
+          "payee_address_required": true,
+          "statute": "CCP §1161(2)",
+          "note": "REVISED-3 (self-critique 2026-07-01): CCP §1161(2) requires name, telephone number, and address of payee. Strict compliance — omission of any element is fatal to notice. See Lynch & Freytag v. Cooper (1990) 218 Cal.App.3d 603; Eshagian v. Cepeda (2025). REVISED-8 (encoding fix 2026-07-02): Added days_hours_for_in_person_payment requirement per CCP §1161(2).",
+          "days_hours_for_in_person_payment": {
+            "required_when": "rent_payable_in_person_at_stated_address",
+            "content": "usual days and hours landlord available to receive payment at stated address",
+            "fatal_if_omitted": true,
+            "statute": "CCP §1161(2)",
+            "source_anchor": "CCP §1161(2): 'if the address at which rent may be paid is set forth in the notice, the notice shall also set forth the usual days and hours that the landlord is available at such address to receive payment' — omission is fatal under strict compliance",
+            "note": "REVISED-8 (encoding fix 2026-07-02, B-02 correction): Omission of usual days/hours is fatal under strict compliance. Confirmed by golden-set CA-NOT-B-02 miss analysis."
+          }
+        },
+        "tenancy_all": {
+          "days": 3,
+          "statute": "CCP §1161(2)",
+          "count_method": "calendar_days_excluding_weekends_holidays",
+          "day_of_service_excluded": true,
+          "note": "Court days per CCP §1161 operative 2/1/2025 (SB 611). Day of service excluded per CCP §12."
+        },
+        "tenancy_under_1yr": {
+          "days": 3,
+          "statute": "CCP §1161(2)",
+          "count_method": "calendar_days_excluding_weekends_holidays",
+          "day_of_service_excluded": true,
+          "note": "REVISED-7 (self-critique 2026-07-01): corrected from calendar_days to calendar_days_excluding_weekends_holidays per CCP §1161 (SB 611, operative 2/1/2025). Court days apply regardless of tenancy length."
+        },
+        "tenancy_over_1yr": {
+          "days": 3,
+          "statute": "CCP §1161(2)",
+          "count_method": "calendar_days_excluding_weekends_holidays",
+          "day_of_service_excluded": true,
+          "note": "REVISED-7 (self-critique 2026-07-01): corrected from calendar_days to calendar_days_excluding_weekends_holidays per CCP §1161 (SB 611, operative 2/1/2025). Court days apply regardless of tenancy length."
+        }
+      },
+      "cure_or_quit": {
+        "description": "Curable lease violation — CCP §1161(3). Use only for CURABLE covenant breaches. Includes unauthorized assignment/subletting (tenant has statutory right to remove subtenant within 3 court days per CCP §1161(3)). For incurable conduct (waste, nuisance, unlawful use) use unconditional_quit (CCP §1161(4)).",
+        "days": 3,
+        "statute": "CCP §1161(3)",
+        "curable": true,
+        "count_method": "calendar_days_excluding_weekends_holidays",
+        "day_of_service_excluded": true,
+        "bright_line_qualifying_conduct": [
+          "Failure to maintain premises per lease covenant",
+          "Unauthorized pet (where lease prohibits — if curable by removal)",
+          "Failure to obtain renter's insurance per lease covenant",
+          "Failure to pay utilities required under lease",
+          "Unauthorized occupant (where lease limits occupants — if curable by removal)",
+          "Lease covenant breach capable of being remedied within 3 court days",
+          "Unauthorized assignment or subletting contrary to lease covenants (CCP §1161(3) — express statutory curable breach; tenant has right to remove subtenant/assignee within 3 court days)"
+        ],
+        "note": "CCP §1161(3): curable covenant violations only. Tenant has 3 court days to cure or surrender. If conduct 'cannot afterward be performed' per the statute, §1161(3) still permits notice but no cure opportunity — treat as escalating to §1161(4) analysis. See interaction gate: cure_or_quit_vs_unconditional_quit. REVISED-9 (encoding fix 2026-07-02, B-09 correction): Added unauthorized assignment/subletting as curable breach per CCP §1161(3), which expressly names 'covenant not to assign or sublet' as performable within 3 days. §1161(4) enumerated categories (nuisance, waste, unlawful use) do NOT include subletting — using unconditional_quit for subletting is a B2 HIGH error."
+      },
+      "unconditional_quit": {
+        "description": "Incurable conduct (waste, nuisance, unlawful use) — CCP §1161(4). No right to cure. NOTE: unauthorized assignment/subletting is a CURABLE breach under CCP §1161(3), not §1161(4).",
+        "days": 3,
+        "statute": "CCP §1161(4)",
+        "curable": false,
+        "count_method": "calendar_days_excluding_weekends_holidays",
+        "day_of_service_excluded": true,
+        "bright_line_qualifying_conduct": [
+          "Physical waste (damage to premises contrary to lease conditions/covenants)",
+          "Nuisance (maintaining, committing, or permitting nuisance on demised premises)",
+          "Public nuisance per Civ. Code §3482.8",
+          "Drug activity per Civ. Code §3485(c)",
+          "Criminal street gang activity per Civ. Code §3486(c)",
+          "Using premises for unlawful purpose"
+        ],
+        "open_textured_conduct": [
+          "Repeated disturbances or noise complaints (may rise to nuisance — fact-specific)",
+          "Unauthorized smoking / vaping (may constitute waste or nuisance — context-dependent)",
+          "Repeated lease violations that individually are curable but pattern amounts to incurable breach",
+          "Chronic late payment (may constitute waste of lessor's interest — contested)"
+        ],
+        "nuisance_statute_cross_refs": {
+          "public_nuisance": "Civ. Code §3482.8",
+          "drug_activity": "Civ. Code §3485(c)",
+          "gang_activity": "Civ. Code §3486(c)"
+        },
+        "note": "REVISED-6 (self-critique 2026-07-01) + BRIGHT-LINE ENCODED (Andy ratification 2026-07-01): §1161(4) — waste, nuisance, unlawful use. No cure right. Ambiguous conduct (see open_textured_conduct) routes to open-textured analysis. Cross-refs: Civ. Code §3482.8, §3485(c), §3486(c) define statutory nuisance categories. Source: CCP §1161(4) (Justia 2025 text confirmed). REVISED-9 (encoding fix 2026-07-02, B-09 correction): Removed unauthorized assignment/subletting from this category — per CCP §1161(3) subletting is a curable lease covenant breach; §1161(4) enumerated categories do NOT include subletting. Moved to cure_or_quit.bright_line_qualifying_conduct."
+      },
+      "termination": {
+        "statute": "Civ. Code §1946.1; Civ. Code §1946.2 (AB 1482)",
+        "just_cause_required": true,
+        "just_cause_statute": "Civ. Code §1946.2 (AB 1482)",
+        "tenancy_under_1yr": {
+          "days": 30,
+          "statute": "Civ. Code §1946.1(c)",
+          "count_method": "calendar_days",
+          "condition": "all_occupants_residency_max_years < 1",
+          "note": "REVISED-1 + Stancil ratification (2026-07-01): §1946.1(c) = 30-day / <1yr. Per Stancil v. Superior Court (2021) 11 Cal.5th 381: threshold measured by MAX residency among ALL current occupants (named tenant + any subtenants/family members), not just named tenant. Input required: max_occupant_residency_years."
+        },
+        "tenancy_1yr_plus": {
+          "days": 60,
+          "statute": "Civ. Code §1946.1(b)",
+          "count_method": "calendar_days",
+          "condition": "all_occupants_residency_max_years >= 1",
+          "stancil_any_occupant_rule": {
+            "statute": "Civ. Code §1946.1(b)",
+            "case": "Stancil v. Superior Court (2021) 11 Cal.5th 381",
+            "rule": "60-day notice required if ANY occupant (including sublessee, long-term household member) has resided in the unit for 1+ year, not just the named tenant on the lease",
+            "machine_checkable_input": "max_occupant_residency_years",
+            "condition": "max_occupant_residency_years >= 1"
+          },
+          "note": "REVISED-1 (self-critique 2026-07-01) + STANCIL ENCODED (Andy ratification 2026-07-01): §1946.1(b) = 60-day / ≥1yr. Machine-checkable input: max_occupant_residency_years (maximum tenure among all current occupants). Stancil: 60-day attaches when any occupant — not just named tenant — has resided ≥1yr."
+        },
+        "relocation_assistance": {
+          "required_for_no_fault": true,
+          "statute": "Civ. Code §1946.2(d)",
+          "effective_date": "2024-04-01",
+          "legislative_source": "SB 567 (Stats. 2023, eff. 4/1/2024)",
+          "amount": "one_month_rent",
+          "payment_deadline_calendar_days": 15,
+          "payment_deadline_trigger": "service_of_notice",
+          "alternative": "written_waiver_of_final_month_rent",
+          "failure_consequence": "notice_void",
+          "note": "REVISED-4 (self-critique 2026-07-01): ADDED. SB 567 (eff. 4/1/2024) amended Civ. Code §1946.2(d) — strict compliance; failure renders notice void. Landlord must pay 1 month's rent within 15 calendar days of service OR provide written waiver of final month's rent. Per frozen golden-set CA-NOT-14."
+        },
+        "exemptions": [
+          {
+            "exemption_id": "sfh_non_entity_owner",
+            "statute": "Civ. Code §1946.2(e)(8)",
+            "effect": "just_cause_not_required",
+            "applies_to": "residential real property alienable separate from any other dwelling unit (SFH, condo, mobilehome)",
+            "prong_a": {
+              "condition": "owner_entity_type_not_reit_corp_llc_with_corporate_member",
+              "statute": "Civ. Code §1946.2(e)(8)(A)",
+              "note": "Owner must NOT be: real estate investment trust, a corporation, OR a limited liability company in which at least one member is a corporation"
+            },
+            "prong_b": {
+              "condition": "written_exemption_notice_given_to_tenant",
+              "statute": "Civ. Code §1946.2(e)(8)(B)",
+              "timing": "at_tenancy_inception_or_before_termination_notice_for_month_to_month",
+              "note": "Landlord must have given tenant written notice that the unit is exempt from §1946.2. For month-to-month tenancies, timing per subdivision (d)."
+            },
+            "both_prongs_required": true,
+            "note": "REVISED-2 (self-critique 2026-07-01): two-prong test per §1946.2(e)(8)(A)+(B). Owner-occupancy is NOT the test. Distinct from (e)(5) owner-occupied SFH exemption."
+          },
+          {
+            "exemption_id": "sfh_owner_occupied",
+            "statute": "Civ. Code §1946.2(e)(5)",
+            "effect": "just_cause_not_required",
+            "applies_to": "single-family owner-occupied residences where owner-occupant rents no more than two units or bedrooms (including ADU or JADU)",
+            "condition": "owner_is_principal_resident AND rental_units_or_bedrooms_rented <= 2",
+            "note": "ADDED (Andy ratification 2026-07-01 — full exemption matrix): §1946.2(e)(5). Owner must actually occupy the property as their principal residence. Permits renting up to 2 units/bedrooms including ADU/JADU. No written-notice requirement (unlike (e)(8))."
+          },
+          {
+            "exemption_id": "owner_occupied_duplex",
+            "statute": "Civ. Code §1946.2(e)(6)",
+            "effect": "just_cause_not_required",
+            "applies_to": "property containing two separate dwelling units in single structure where owner occupies one unit as principal residence",
+            "conditions": {
+              "owner_occupies_one_unit": true,
+              "owner_occupancy_began_at_tenancy_start": true,
+              "owner_continues_in_occupancy": true,
+              "neither_unit_is_adu_or_jadu": true
+            },
+            "note": "ADDED (Andy ratification 2026-07-01 — full exemption matrix): §1946.2(e)(6). Owner must have occupied one unit as principal residence since beginning of tenancy AND must continue to occupy. ADUs and JADUs excluded — if either unit is an ADU/JADU this exemption does not apply."
+          },
+          {
+            "exemption_id": "new_construction_15yr",
+            "statute": "Civ. Code §1946.2(e)(7)",
+            "effect": "just_cause_not_required",
+            "applies_to": "housing issued certificate of occupancy within previous 15 years (rolling)",
+            "condition": "certificate_of_occupancy_date_within_15_years_of_notice_date",
+            "mobilehome_excluded": true,
+            "rolling_basis": true,
+            "note": "ADDED (Andy ratification 2026-07-01 — full exemption matrix): §1946.2(e)(7). 15-year window is ROLLING — measured from notice date, not from a fixed date. A unit that was exempt may become covered once it ages past 15 years. Mobilehomes expressly excluded (not eligible for this exemption)."
+          },
+          {
+            "exemption_id": "institutional_uses",
+            "statute": "Civ. Code §1946.2(e)(1)–(4)",
+            "effect": "just_cause_not_required",
+            "applies_to": [
+              "(e)(1) Transient/tourist hotel occupancy per §1940(b)",
+              "(e)(2) Nonprofit hospital, religious facility, extended care facility, licensed residential care facility for elderly (§1569.2 H&S), or adult residential facility",
+              "(e)(3) Dormitory owned/operated by higher education institution or K-12 school",
+              "(e)(4) Housing where tenant shares bathroom/kitchen with owner who maintains principal residence there"
+            ],
+            "note": "ADDED (Andy ratification 2026-07-01 — full exemption matrix): §1946.2(e)(1)–(4). Institutional/special-use exemptions. Rarely implicated in standard residential eviction proceedings but included for completeness."
+          }
+        ],
+        "just_cause_attachment_threshold": {
+          "statute": "Civ. Code §1946.2(a)",
+          "ratified": "2026-07-20, Andrew M. Cohen (errata-cycle directive, Task 3; proposal docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md)",
+          "origin": "v0.3 held-out miss CA-NOT-C-18; docs/AUTOPSY_v0_3_MISSES_20260719.md",
+          "inputs": [
+            "per_tenant_continuous_occupancy_years — array, one value per current adult tenant",
+            "additional_adult_tenant_added — boolean, true if any current adult tenant was added to the unit after the tenancy's initial commencement"
+          ],
+          "condition_general": {
+            "applies_when": "additional_adult_tenant_added == false",
+            "condition": "max(per_tenant_continuous_occupancy_years) >= 1",
+            "statute": "Civ. Code §1946.2(a)",
+            "note": "Just-cause protection attaches once any current tenant has resided 12 months continuous and lawful occupancy. Source: frozen golden-set authority field, CA-NOT-C-18 (attorney-verified 2026-07-16), corroborated by CA-NOT-C-19. Uses the Stancil any-occupant convention, consistent with tenancy_under_1yr/tenancy_1yr_plus above."
+          },
+          "condition_variant_a2": {
+            "applies_when": "additional_adult_tenant_added == true",
+            "condition": "all(t >= 1 for t in per_tenant_continuous_occupancy_years) or max(per_tenant_continuous_occupancy_years) >= 2",
+            "statute": "Civ. Code §1946.2(a)(2)",
+            "note": "Where an additional adult tenant has been added, just-cause protection attaches when EITHER all current tenants have resided 12 months, OR at least one tenant has resided 24 months. Source: attorney-directed text, errata-cycle Cowork Change Directive, 2026-07-19 — not independently verified by Cowork against codified statute text; ratified by Andy on this basis 2026-07-20."
+          },
+          "consequence_if_not_attached": "notice_defects[missing_just_cause_reason] does not apply; Civ. Code §1946.1(c) governs instead (30-day notice, occupancy < 1 year)."
+        }
+      }
+    },
+    "notice_defects": [
+      {
+        "defect": "includes_late_fees",
+        "consequence": "notice_void",
+        "statute": "CCP §1161(2); see e.g. Orozco v. Casimiro, 121 Cal. App. 4th Supp. 7 (2004)",
+        "case_law": [
+          {
+            "cite": "Orozco v. Casimiro, 121 Cal. App. 4th Supp. 7 (2004)",
+            "holding": "Any amount other than unpaid rent, including late fees, renders pay-or-quit notice void"
+          }
+        ],
+        "severity": "void",
+        "note": "Any amount other than unpaid rent renders pay-or-quit notice void. Late fees are void as liquidated damages under Civ. Code §1671. Including them in the demanded amount invalidates the notice."
+      },
+      {
+        "defect": "improper_service_method",
+        "consequence": "notice_void",
+        "statute": "CCP §1162",
+        "case_law": [
+          {
+            "cite": "Losornio v. Motta (1998) 67 Cal.App.4th 110",
+            "holding": "Nail-and-mail requires prior unsuccessful attempts at personal and substituted service"
+          }
+        ],
+        "severity": "void",
+        "note": "REVISED-8 (self-critique 2026-07-01): statute filled from null to CCP §1162. Three permitted methods: personal (§1162(a)(1)), substituted (§1162(a)(2)), nail-and-mail as last resort (§1162(a)(3)). CCP §1013 mail-extension does NOT apply to UD notices per Losornio v. Motta."
+      },
+      {
+        "defect": "notice_period_too_short",
+        "consequence": "notice_void",
+        "statute": "CCP §1161(2), (3), (4); Civ. Code §1946.1(b), (c)",
+        "case_law": [],
+        "severity": "void",
+        "note": "REVISED-9 (self-critique 2026-07-01): statute filled from null. 3-day court days for pay-or-quit/cure-or-quit/unconditional-quit (§1161(2)/(3)/(4)); 30 calendar days for termination <1yr (§1946.1(c)); 60 calendar days for termination ≥1yr (§1946.1(b)). Premature filing before period expires = defective."
+      },
+      {
+        "defect": "missing_just_cause_reason",
+        "consequence": "notice_void",
+        "applies_to": "AB_1482_covered_units_only",
+        "statute": "Civ. Code §1946.2 (AB 1482)",
+        "case_law": [],
+        "severity": "void",
+        "ab1482_coverage_gate": {
+          "note": "This defect applies ONLY to units covered by AB 1482 (Civ. Code §1946.2) WHERE just-cause protection has attached (see termination.just_cause_attachment_threshold — ratified 2026-07-20; before that threshold is met, see §1946.1(c) instead). Units exempt under §1946.2(e) do NOT require just cause. Before applying this defect: (1) confirm just_cause_attachment_threshold is met; (2) check whether one of the following exemptions applies:",
+          "exemptions_that_negate_defect": [
+            "§1946.2(e)(1) — Transient/tourist hotel occupancy",
+            "§1946.2(e)(2) — Institutional (hospital, religious, care facility, dormitory)",
+            "§1946.2(e)(3) — School/university dormitory",
+            "§1946.2(e)(4) — Shared kitchen/bath with owner-resident",
+            "§1946.2(e)(5) — Owner-occupied SFH (≤2 rentable units/bedrooms)",
+            "§1946.2(e)(6) — Owner-occupied duplex (owner in-unit at tenancy start, neither unit ADU/JADU)",
+            "§1946.2(e)(7) — New construction COO within 15 years (rolling; not mobilehome)",
+            "§1946.2(e)(8) — Alienable SFH/condo: owner not REIT/corp/LLC-with-corp-member AND written exemption notice given"
+          ]
+        },
+        "note": "UPDATED (Andy ratification 2026-07-01 — full exemption matrix): just cause required only for covered units. Defect does not apply if any §1946.2(e) exemption is satisfied. See termination.exemptions for complete exemption encodings."
+      },
+      {
+        "defect": "payee_id_missing",
+        "consequence": "notice_void",
+        "statute": "CCP §1161(2)",
+        "case_law": [
+          {
+            "cite": "Lynch & Freytag v. Cooper (1990) 218 Cal.App.3d 603",
+            "holding": "Pay-or-quit notice must identify the person to whom rent is due; strict compliance required"
+          },
+          {
+            "cite": "Eshagian v. Cepeda (2025)",
+            "holding": "Omission of required payee identification elements (name, phone, address) is fatal to the notice"
+          }
+        ],
+        "severity": "void",
+        "note": "REVISED-3 (self-critique 2026-07-01): ADDED. CCP §1161(2) requires name, telephone number, and address of the person to whom rent is due. Strict compliance — omission of any required element renders notice void. Per frozen golden-set CA-NOT-12."
+      },
+      {
+        "defect": "relocation_assistance_missing",
+        "consequence": "notice_void",
+        "applies_to": "no_fault_termination_only",
+        "statute": "Civ. Code §1946.2(d)",
+        "legislative_source": "SB 567 (Stats. 2023, eff. 4/1/2024)",
+        "case_law": [],
+        "severity": "void",
+        "note": "REVISED-4 (self-critique 2026-07-01): ADDED. For no-fault just-cause termination: landlord must pay 1 month's rent within 15 calendar days of service OR provide written waiver of final month's rent. Strict compliance — failure renders notice void. Per frozen golden-set CA-NOT-14."
+      },
+      {
+        "defect": "wrong_instrument_incurable_conduct",
+        "consequence": "notice_defective",
+        "statute": "CCP §1161(3); CCP §1161(4)",
+        "case_law": [],
+        "severity": "defective",
+        "note": "REVISED-6 (self-critique 2026-07-01): ADDED. Serving §1161(3) cure-or-quit notice for §1161(4) incurable conduct (waste, nuisance, unlawful use) is a wrong-instrument defect. Incurable conduct requires unconditional 3-day quit per §1161(4) — tenant has no right to cure. Per frozen golden-set CA-NOT-20."
+      }
+    ],
+    "waiver_rules": {
+      "partial_payment_waiver": {
+        "doctrine": "waiver_by_conduct",
+        "statute_anchor": "CCP §1161(2)",
+        "case_law": [
+          {
+            "cite": "EDC Associates v. Gutierrez (1984) 153 Cal.App.3d 167",
+            "holding": "Landlord's acceptance of any rent payment after serving a pay-or-quit notice constitutes waiver of that notice by conduct"
+          }
+        ],
+        "residential_only": true,
+        "commercial_statute_excluded": "CCP §1161.1",
+        "commercial_statute_note": "CCP §1161.1 governs commercial partial payment and reaches different result. CCP §1161.1(d) expressly excludes residential dwelling units — do NOT apply to residential facts.",
+        "determinate_core": {
+          "rule": "Landlord acceptance of any rent payment after notice served, without express reservation of rights, waives the notice. New notice required.",
+          "conditions": [
+            "landlord accepted payment after notice was served",
+            "payment was for rent (not late fees or other charges)",
+            "landlord did not expressly reserve rights at time of acceptance"
+          ],
+          "result": "notice_waived_new_notice_required",
+          "confidence_tier": "A"
+        },
+        "open_textured_exception": {
+          "triggers": [
+            "payment characterization ambiguous (rent vs. other charges)",
+            "express reservation of rights given at time of acceptance",
+            "partial payment of 'undisputed' amount with ongoing dispute"
+          ],
+          "confidence_tier": "B",
+          "note": "Exception path requires attorney judgment. Fact-specific equitable analysis."
+        },
+        "note": "REVISED-5 (self-critique 2026-07-01): ADDED. Restructured from wholly open_textured: determinate core (acceptance + no reservation = waiver) with open-textured exception (ambiguous characterization / express reservation edge). CCP §1161.1 (commercial only) explicitly excluded. Per frozen golden-set CA-NOT-16 + ADDENDUM direction."
+      }
+    },
+    "notice_period_basis": {
+      "tenancy_length_matters": true,
+      "breakpoints": [
+        {
+          "months": 12,
+          "description": "Tenancy length affects notice period in some states"
+        }
+      ]
+    }
+  },
+  "service": {
+    "permitted_methods": [
+      "personal",
+      "substituted",
+      "nail_and_mail"
+    ],
+    "method_rules": [
+      {
+        "method": "personal",
+        "requirements": "Delivery to tenant in person",
+        "statute": "CCP §1162(a)(1)",
+        "adds_days_for_mail": null,
+        "note": null
+      },
+      {
+        "method": "substituted",
+        "requirements": "Delivery to person of suitable age at premises, plus mail copy",
+        "statute": "CCP §1162(a)(2)",
+        "adds_days_for_mail": null,
+        "note": null
+      },
+      {
+        "method": "nail_and_mail",
+        "requirements": "Posting on main entry door plus mail copy; last resort after personal and substituted attempted",
+        "statute": "CCP §1162(a)(3)",
+        "adds_days_for_mail": null,
+        "note": "CCP §1013 mail-extension rule does NOT apply to UD notices per Losornio v. Motta (1998) 67 Cal.App.4th 110"
+      }
+    ],
+    "service_defects": [
+      {
+        "defect": "mail_only_without_prior_attempts",
+        "consequence": "notice_void",
+        "statute": "CCP §1162",
+        "case_law": [
+          {
+            "cite": "Losornio v. Motta (1998) 67 Cal.App.4th 110",
+            "holding": "Nail-and-mail requires prior unsuccessful attempts at personal and substituted service"
+          }
+        ]
+      },
+      {
+        "defect": "no_mailed_copy_with_nail_and_mail",
+        "consequence": "notice_void",
+        "statute": "CCP §1162(a)(3)",
+        "case_law": []
+      }
+    ]
+  },
+  "overlays": {
+    "federal": [
+      {
+        "name": "CARES Act §4024",
+        "applies_when": "Covered dwelling: federally backed mortgage loan (Fannie Mae/Freddie Mac) or covered housing program (HUD assistance, Section 8, LIHTC, rural housing, etc.)",
+        "effect": "During active moratorium periods: 30-day notice required before filing; no fees or penalties for nonpayment during moratorium. Emergency moratorium provisions expired July 2021 but covered-dwelling definition and notice requirements may persist under other federal programs — verify current applicability.",
+        "statute": "15 U.S.C. §9058",
+        "status": "conditional"
+      },
+      {
+        "name": "SCRA § 3951 (Servicemembers Civil Relief Act)",
+        "applies_when": "Servicemembers and their dependents occupying a residence as their primary dwelling, where the servicemember's military service materially affects their ability to pay the rent.",
+        "effect": "During a period of military service, a landlord may not evict a servicemember or their dependents from their primary residence without first obtaining a court order. Court may stay proceedings up to 90 days or adjust the rental obligation. Protection applies when monthly rent does not exceed the annual threshold: $4,954.34/month (2024; formula: 130% of BAH for E-5 with dependents, highest BAH area — adjusted annually by DoD). Landlord must file affidavit of non-military-service before default judgment may enter (50 U.S.C. § 3931(b)(1)). FY23 NDAA amendment: replaced CPI-adjusted fixed-dollar threshold with current BAH formula.",
+        "statute": "50 U.S.C. § 3951; as amended by Pub. L. 117-263, Div. E, Title LV, § 555 (FY23 NDAA, Dec. 23, 2022)",
+        "threshold_formula": "130% of BAH for military member pay grade E-5 with dependents, highest BAH area in the United States (adjusted annually by DoD)",
+        "threshold_current_dollars": 4954.34,
+        "threshold_year": "2024",
+        "status": "active",
+        "l2_validation": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+        "l2_run_date": "2026-06-20",
+        "_preliminary_threshold_was": "4073.16 (2024 — old CPI formula, now superseded by BAH formula per FY23 NDAA)",
+        "_note": "Federal law — applies uniformly in all 50 states + DC. Gemini single-model (GPT parse error / technical failure). Attorney should verify current threshold from DoD BAH charts."
+      }
+    ],
+    "state_protective": [
+      {
+        "name": "AB 1482 Just Cause (statewide)",
+        "effect": "Just cause required for no-fault termination for tenants with 12+ months tenancy in covered units; relocation assistance required for no-fault evictions",
+        "statute": "Civ. Code §1946.2"
+      },
+      {
+        "name": "AB 1482 Rent Cap",
+        "effect": "Annual rent increase cap of 5% + local CPI (max 10%) for covered units",
+        "statute": "Civ. Code §1947.12"
+      },
+      {
+        "name": "Implied Warranty of Habitability",
+        "effect": "Tenant may withhold rent or repair-and-deduct for substantial habitability defects",
+        "statute": "Civ. Code §1941; Green v. Superior Court (1974)"
+      }
+    ],
+    "local": [
+      {
+        "jurisdiction": "Los Angeles",
+        "type": "rent_control",
+        "effect": "RSO covers pre-1978 units; just cause required; relocation fees for no-fault",
+        "source": "LAMC §151.09",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "San Francisco",
+        "type": "rent_control",
+        "effect": "Rent Ordinance covers most pre-1979 units; just cause required; Costa-Hawkins exemptions apply",
+        "source": "SF Admin Code Ch. 37",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "Oakland",
+        "type": "just_cause",
+        "effect": "Just cause required for all non-exempt tenancies; relocation assistance for no-fault",
+        "source": "OMC §8.22",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "Berkeley",
+        "type": "rent_control",
+        "effect": "Rent Stabilization; just cause required; Costa-Hawkins exemptions apply",
+        "source": "Berkeley Rent Stabilization Ordinance",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "Santa Monica",
+        "type": "rent_control",
+        "effect": "Rent Control Charter Amendment; just cause required for covered units",
+        "source": "Santa Monica Rent Control Charter Amendment",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "San Jose",
+        "type": "rent_control",
+        "effect": "Apartment Rent Ordinance; just cause required for covered units",
+        "source": "San Jose Municipal Code Ch. 17.23",
+        "digitization_note": null
+      },
+      {
+        "jurisdiction": "Los Angeles (County unincorporated)",
+        "type": "just_cause",
+        "effect": "Just cause and relocation assistance for tenants in unincorporated LA County",
+        "source": "LA County Code Tit. 8, Ch. 8.52",
+        "digitization_note": null
+      }
+    ]
+  },
+  "substantive_defenses": [
+    {
+      "defense": "habitability_warranty",
+      "elements": [
+        "Landlord knew or had notice of the defect",
+        "Defect substantially impairs habitability (health, safety, or welfare)",
+        "Tenant gave landlord reasonable time to repair",
+        "Landlord failed to repair",
+        "Tenant did not cause or waive the defect"
+      ],
+      "statute": "Civ. Code §1941; Green v. Superior Court (1974)",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "specialist_required",
+      "note": "Habitability warranty statute: Civ. Code §1941; Green v. Superior Court (1974). Elements, available remedies (rent withholding, repair-and-deduct, rent escrow), and applicability as a defense to eviction vary significantly by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The property had substantial defects affecting habitability, violating state or local housing codes, and materially endangering the tenant's health and safety.",
+            "The landlord had actual or constructive knowledge of the defective conditions.",
+            "The landlord was given a reasonable amount of time to make the repairs and failed to do so.",
+            "The tenant did not cause the defective conditions through their own negligence or willful act."
+          ],
+          "primary_statute": "Cal. Civ. Code §1941.1",
+          "key_case": "Green v. Superior Court, 10 Cal. 3d 616 (1974)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=4, statute=Cal. Civ. Code §1941.1, conf=high."
+        }
+      }
+    },
+    {
+      "defense": "retaliation",
+      "elements": [
+        "Tenant engaged in protected activity (habitability complaint, union organizing, exercising legal rights)",
+        "Landlord knew of the protected activity",
+        "Adverse action (eviction, rent increase, service reduction) followed protected activity",
+        "Causal connection between protected activity and adverse action",
+        "Action was within state-defined presumption period (varies: 60 days to 12 months)"
+      ],
+      "statute": "Civ. Code §1942.5",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "specialist_required",
+      "note": "Anti-retaliation statute: Civ. Code §1942.5. Presumption period, protected activities, and available remedies vary by state — attorney verification required. Statute identified via machine-assisted retrieval — attorney verification required before use",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "automation_ceiling": "high",
+          "validation_status": "L2-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "validation_date": null,
+          "state_specific": {
+            "presumption_period_days": 180,
+            "presumption_period_statute": "Cal. Civ. Code § 1942.5(a), including § 1942.5(a)(1)-(5), for the 180-day statutory period; § 1942.5(d) governs broader tenants' association/general lawful-rights retaliation but has no separate fixed presumption period",
+            "presumption_period_basis": "statute",
+            "status": "L2-confirmed-pending-human-confirmation",
+            "note": "Both models: 180d presumption period. GPT: Cal. Civ. Code § 1942.5 (conf=high). Gemini: Cal. Civ. Code § 1942.5 (conf=high)."
+          },
+          "l2_run_date": "2026-06-21",
+          "elements_confirmed": {
+            "protected_activity": "Good-faith tenantability/habitability-related activity listed in Cal. Civ. Code § 1942.5(a)(1)-(5), including giving notice or making an oral complaint to the landlord about tenantability, filing or making a recorded complaint to an appropriate agency, an inspection or citation resulting from the complaint, or commencing or obtaining a determination in a judicial/arbitration proceeding involving tenantability; also organizing or participating in a tenants' association or otherwise lawfully and peaceably exercising rights under law under § 1942.5(d).",
+            "has_anti_retaliation_statute": true,
+            "primary_statute": "Cal. Civ. Code § 1942.5(a), including § 1942.5(a)(1)-(5), for the 180-day statutory period; § 1942.5(d) governs broader tenants' association/general lawful-rights retaliation but has no separate fixed presumption period",
+            "note": "From L2 consensus; pending human confirmation."
+          }
+        },
+        "holdings": {
+          "validation_method": "L2-holdings-v2-4-check-authoritative-source",
+          "runner_version": "v2",
+          "source": "CourtListener REST API",
+          "run_date": "2026-06-22",
+          "run_id": "ce5c9748",
+          "raw_output_file": "rules/validation/l2/output/retaliation_holdings_v2_1states_2026-06-22_ce5c9748.json",
+          "models": {
+            "gpt": "gpt-4o",
+            "gemini": "gemini-2.5-pro"
+          },
+          "automation_ceiling": "machine-verified is BELOW the attorney line — not validated",
+          "labeling_note": "machine-verified = draft grade. Nothing here is validated. Attorney must confirm before any case is cited publicly.",
+          "total_cases_verified": 6,
+          "machine_verified_count": 4,
+          "needs_attorney_count": 2,
+          "machine_verified_rate": "66.7%",
+          "true_rate_mcp_supplemental": "83.3% (5/6) — Aweeka text-contingent: verified in run 6a1788c6, CL opinion text unavailable in ce5c9748 run",
+          "machine_verified_cases": [
+            {
+              "case_name": "Schweiger v. Superior Court",
+              "citation": "3 Cal.3d 507",
+              "year": 1970,
+              "cl_url": "https://www.courtlistener.com/opinion/2610738/schweiger-v-superior-court/",
+              "cl_cluster_id": 2610738,
+              "check_a_exists": "true",
+              "check_b_currency": "OK-machine",
+              "check_b_citing_count": 20,
+              "check_c_holding": "corroborated",
+              "check_d_control": "STATED-single-model",
+              "disposition": "machine-verified",
+              "disposition_note": "All 4 checks passed: existence ✓, citation ✓, currency OK-machine ✓, holding corroborated ✓, control STATED ✓. Below attorney line — attorney must confirm before use.",
+              "controlling_quote": "\"We must decide whether such an allegation constitutes a defense to an unlawful detainer action and, if so, whether the superior court abused its discretion in refusing to hear the defense.\"",
+              "holding_summary": "Recognized retaliatory eviction as a defense to unlawful detainer where the landlord seeks possession because the tenant asserted habitability-related rights or complained about housing conditions."
+            },
+            {
+              "case_name": "Barela v. Superior Court",
+              "citation": "30 Cal.3d 244",
+              "year": 1981,
+              "cl_url": "https://www.courtlistener.com/opinion/1385709/barela-v-superior-court/",
+              "cl_cluster_id": 1385709,
+              "check_a_exists": "true",
+              "check_b_currency": "OK-machine",
+              "check_b_citing_count": 20,
+              "check_c_holding": "corroborated",
+              "check_d_control": "STATED",
+              "disposition": "machine-verified",
+              "disposition_note": "All 4 checks passed: existence ✓, citation ✓, currency OK-machine ✓, holding corroborated ✓, control STATED ✓. Below attorney line — attorney must confirm before use.",
+              "controlling_quote": "“It is settled that a landlord may be precluded from evicting a tenant in retaliation for certain kinds of lawful activities of the tenant. As a landlord has no right to possession when he seeks it for such an invalid reason, a tenant may raise the defense of retaliatory eviction in an unlawful detainer proceeding. [Citations.]” (S.P. Growers, supra, at p. 724.)",
+              "holding_summary": "Confirmed that California's retaliatory-eviction protections are to be applied broadly in unlawful detainer proceedings to protect tenants from possession actions motivated by retaliation for lawful exercise of tenant rights."
+            },
+            {
+              "case_name": "Drouet v. Superior Court",
+              "citation": "31 Cal.4th 583",
+              "year": 2003,
+              "cl_url": "https://www.courtlistener.com/opinion/2585536/drouet-v-superior-court/",
+              "cl_cluster_id": 2585536,
+              "check_a_exists": "true",
+              "check_b_currency": "OK-machine",
+              "check_b_citing_count": 18,
+              "check_c_holding": "corroborated",
+              "check_d_control": "STATED",
+              "disposition": "machine-verified",
+              "disposition_note": "All 4 checks passed: existence ✓, citation ✓, currency OK-machine ✓, holding corroborated ✓, control STATED ✓. Below attorney line — attorney must confirm before use.",
+              "controlling_quote": "\"In unlawful detainer proceedings properly commenced under the Ellis Act, a tenant may not raise an affirmative defense of retaliatory eviction to prevent displacement.\"",
+              "holding_summary": "Held that retaliatory-eviction defenses may be raised in Ellis Act unlawful detainer cases, but a landlord with a bona fide intent to withdraw the property from the rental market is not barred from eviction merely by evidence of retaliatory motive."
+            },
+            {
+              "case_name": "Western Land Office, Inc. v. Cervantes",
+              "citation": "175 Cal.App.3d 724",
+              "year": 1985,
+              "cl_url": "https://www.courtlistener.com/opinion/2109053/western-land-office-inc-v-cervantes/",
+              "cl_cluster_id": 2109053,
+              "check_a_exists": "true",
+              "check_b_currency": "OK-machine",
+              "check_b_citing_count": 15,
+              "check_c_holding": "corroborated",
+              "check_d_control": "STATED",
+              "disposition": "machine-verified",
+              "disposition_note": "All 4 checks passed: existence ✓, citation ✓, currency OK-machine ✓, holding corroborated ✓, control STATED ✓. Below attorney line — attorney must confirm before use.",
+              "controlling_quote": "The principal issue which confronts us is this: In an unlawful detainer action, where the affirmative defense of retaliatory eviction is asserted pursuant to Civil Code section 1942.5, who has the burden of proving what? We hold that under that section, (1) the tenant has the overall burden of persuasion on the issue of retaliatory eviction, but (2) in certain circumstances, hereinafter specified, the landlord has the burden of giving notice of, and of proving, a valid ground for his action.",
+              "holding_summary": "Clarified the burden of proof under the retaliatory eviction statute (Civ. Code § 1942.5), holding that the tenant must first prove a protected act, after which the burden shifts to the landlord to show a legitimate, non-retaliatory reason for the eviction."
+            }
+          ],
+          "needs_attorney_cases": [
+            {
+              "case_name": "S. P. Growers Assn. v. Rodriguez",
+              "citation": "17 Cal.3d 719",
+              "year": 1976,
+              "cl_url": "https://www.courtlistener.com/opinion/1251104/s-p-growers-assn-v-rodriguez/",
+              "cl_cluster_id": 1251104,
+              "check_a_exists": "true",
+              "check_b_currency": "OK-machine",
+              "check_b_citing_count": 20,
+              "check_c_holding": "FLAG-inaccurate",
+              "check_d_control": "STATED-single-model",
+              "disposition": "needs-attorney",
+              "disposition_note": "Flagged: C=FLAG-inaccurate. Attorney review required.",
+              "flag_reason": "Flagged: C=FLAG-inaccurate. Attorney review required."
+            },
+            {
+              "case_name": "Aweeka v. Bonds",
+              "citation": "20 Cal.App.3d 278",
+              "year": 1971,
+              "cl_url": "https://www.courtlistener.com/opinion/2112813/aweeka-v-bonds/",
+              "cl_cluster_id": 2112813,
+              "check_a_exists": "true",
+              "check_b_currency": "OK-machine",
+              "check_b_citing_count": 16,
+              "check_c_holding": "FLAG-inaccurate",
+              "check_d_control": "INFERRED",
+              "disposition": "needs-attorney",
+              "disposition_note": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required.",
+              "flag_reason": "Flagged: C=FLAG-inaccurate, D=INFERRED. Attorney review required."
+            }
+          ],
+          "validation_status": "L2-HOLDINGS-V2-RUN-COMPLETE",
+          "validation_flags": [
+            {
+              "flag": "L2-HOLDINGS-MACHINE-VERIFIED-BELOW-ATTORNEY-LINE",
+              "disposition": "open",
+              "note": "4/6 cases machine-verified. All require attorney confirmation before public citation."
+            },
+            {
+              "flag": "L2-HOLDINGS-SCHWEIGER-INFERRED",
+              "disposition": "open",
+              "note": "Schweiger D=INFERRED is architecturally correct — foundational case establishes defense but does not enumerate elements. Elements come from Civ. Code §1942.5 and subsequent cases."
+            },
+            {
+              "flag": "L2-HOLDINGS-AWEEKA-TEXT-CONTINGENT",
+              "disposition": "open",
+              "note": "Aweeka (20 Cal.App.3d 278) machine-verified in run 6a1788c6 (STATED-single-model); CL opinion text unavailable in ce5c9748 → C=FLAG-inaccurate. MCP supplemental confirms verifiable. Text-availability issue, not a legal defect."
+            }
+          ]
+        },
+        "best_practices": {
+          "validation_method": "fidelity-to-authoritative-sources",
+          "automation_ceiling": "medium",
+          "validation_status": "NOT-RUN",
+          "note": "Validate fidelity to leading practice guides / clinic materials. Label as fidelity-validation, NOT correctness-validation. API access needed to run."
+        },
+        "application_to_facts": {
+          "validation_method": "human-only",
+          "automation_ceiling": "none",
+          "validation_status": "human-reserved",
+          "reason": "Genuinely interpretive: requires factual determination of landlord's motive, tenant's knowledge and intent, causation between protected activity and adverse action. Meets stopping-rule condition: open-textured judgment that consensus cannot validate."
+        }
+      }
+    },
+    {
+      "defense": "discrimination",
+      "elements": [
+        "Tenant is member of a protected class (race, color, national origin, sex, disability, familial status, religion — per federal FHA; state law may add classes)",
+        "Landlord took adverse housing action",
+        "Similarly situated non-protected tenants were treated more favorably, OR discriminatory intent can be shown, OR facially neutral policy has disparate impact"
+      ],
+      "statute": "42 U.S.C. §3604 (Fair Housing Act); Gov. Code §12955",
+      "case_law": [],
+      "openness": "open_textured",
+      "review_weight": "specialist_required",
+      "note": "Federal FHA prohibits discrimination in housing based on protected class. State law may provide additional protected classes and remedies. Discriminatory intent or disparate impact analysis is fact-intensive — specialist review required. grounding_gap: state fair housing case law and protected class details.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The tenant is a member of a protected class under federal or state law.",
+            "The landlord's primary motive for seeking eviction is the tenant's protected status.",
+            "The tenant can show a causal link between their protected status and the landlord's decision to evict."
+          ],
+          "primary_statute": "Cal. Gov. Code §12955 (Fair Employment and Housing Act - FEHA)",
+          "key_case": "Abstract Investment Co. v. Hutchinson, 204 Cal. App. 2d 242 (1962)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Cal. Gov. Code §12955 (Fair Employment and Housing Act - FEHA), conf=high."
+        }
+      }
+    },
+    {
+      "defense": "breach_of_quiet_enjoyment",
+      "elements": [
+        "Tenant had a valid lease or tenancy",
+        "Landlord substantially interfered with tenant's right to peaceful possession",
+        "Interference was intentional or negligent",
+        "Tenant suffered damages"
+      ],
+      "statute": null,
+      "case_law": [],
+      "openness": "open_textured",
+      "review_weight": "specialist_required",
+      "note": "Breach of covenant of quiet enjoyment — primarily common law doctrine in most states; some states codify at RLTA. grounding_gap: whether state recognizes as affirmative defense to eviction, constructive eviction standard, and remedies vary — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The landlord, or their agent, committed an act or omission that substantially interfered with the tenant's use and enjoyment of the property.",
+            "The interference was substantial and not a minor or trivial inconvenience.",
+            "The interference directly impacted the tenant's possession of the premises."
+          ],
+          "primary_statute": "Cal. Civ. Code §1927",
+          "key_case": "Guntert v. City of Stockton, 55 Cal. App. 3d 131 (1976)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=3, statute=Cal. Civ. Code §1927, conf=high."
+        }
+      }
+    },
+    {
+      "defense": "improper_rent_calculation",
+      "elements": [
+        "Amount demanded in notice exceeds lawfully owed rent",
+        "Impermissible charges included (late fees, utilities, damages, other non-rent items)"
+      ],
+      "statute": "CCP §1161 et seq.",
+      "case_law": [],
+      "openness": "fact_dependent",
+      "review_weight": "specialist_required",
+      "note": "Improper rent calculation — relevant where landlord has included improper charges (late fees, fees not authorized by lease) in the rent demand. grounding_gap: state-specific rules on what may be included in rent demand, and whether overcharge voids notice — specialist review required.",
+      "layer_decomposition": {
+        "elements": {
+          "validation_method": "L2-multi-model-consensus",
+          "l2_run_date": "2026-06-21",
+          "validation_status": "L2-SINGLE-MODEL-RESOLVED-PENDING-HUMAN-CONFIRMATION",
+          "recognized_as_defense": true,
+          "elements_confirmed": [
+            "The eviction is based on a notice to pay rent or quit.",
+            "The amount of rent demanded in the notice is greater than the amount of rent actually due at the time the notice was served."
+          ],
+          "primary_statute": "Cal. Code Civ. Proc. §1161(2)",
+          "key_case": "Bevill v. Zoura, 27 Cal. App. 4th 694 (1994)",
+          "l2_note": "GPT failed (empty response). Gemini single-model fallback: recognized=True, elements=2, statute=Cal. Code Civ. Proc. §1161(2), conf=high."
+        }
+      }
+    },
+    {
+      "defense": "other",
+      "elements": [
+        "Landlord lacks just cause ground enumerated in applicable just cause statute",
+        "Notice does not state required just cause ground",
+        "Stated ground is not one of the enumerated grounds"
+      ],
+      "statute": "Civ. Code §1946.2 (AB 1482 — statewide just cause for tenants with 12+ months tenancy in covered units)",
+      "case_law": [],
+      "openness": "open_textured",
+      "review_weight": "specialist_required",
+      "note": "Enumerated just cause grounds include nonpayment, material lease violation, illegal activity, failure to give access. No-fault termination (owner move-in, demolition, substantial remodel) requires relocation assistance. grounding_gap: coverage exemptions (single-family, owner-occupied 2-4 units, etc.) require case-by-case analysis."
+    }
+  ],
+  "procedural_defects": [
+    {
+      "defect": "complaint_filed_before_notice_period_expired",
+      "consequence": "Unlawful detainer action is premature; court lacks jurisdiction; may be dismissed",
+      "statute": "CCP §1161 et seq.",
+      "case_law": [],
+      "note": "Filing before the notice period runs is a bright-line defect in most states",
+      "validation_flags": [
+        "L2-PROCEDURAL-CONFIRMED",
+        "L2-PROCEDURAL-SM-GEMINI"
+      ],
+      "l2_run_date": "2026-06-25",
+      "l2_sm_statute": "California Code of Civil Procedure § 1166(a)(5)(B)",
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: California Code of Civil Procedure § 1166(a)(5)(B). Preserved as SM — needs GPT re-run or human confirm."
+    },
+    {
+      "defect": "wrong_court",
+      "consequence": "Court lacks subject matter jurisdiction; case must be dismissed or transferred",
+      "statute": "CCP §86 (limited civil court); CCP §580(b) (unlawful detainer)",
+      "case_law": [],
+      "note": "Eviction cases must be filed in the correct court — verify small claims vs. limited civil vs. general civil jurisdiction limits",
+      "validation_flags": [
+        "L2-PROCEDURAL-SPLIT-L7"
+      ],
+      "l2_note": "Models disagree. GPT: Cal. Const. art. VI, § 10. Gem: California Code of Civil Procedure § 86(a)(4). L7 required.",
+      "l2_run_date": "2026-06-25"
+    },
+    {
+      "defect": "failure_to_attach_lease_or_notice_to_complaint",
+      "consequence": "Complaint defective; may be dismissed or require amendment",
+      "statute": "Cal. Code Civ. Proc. § 1166(d)(1)–(2)",
+      "case_law": [],
+      "note": "Many states require the original notice (and sometimes lease) to be attached to the unlawful detainer complaint — verify",
+      "validation_flags": [
+        "L2-PROCEDURAL-ERROR",
+        "L2-PROCEDURAL-SM-GEMINI",
+        "L2-PROCEDURAL-IMPROVED"
+      ],
+      "l2_note": "Both models agree on more specific citation. Confidence: GPT=high, Gem=high.",
+      "l2_run_date": "2026-06-26",
+      "l2_sm_statute": "California Code of Civil Procedure § 1166(c)(1)"
+    },
+    {
+      "defect": "summons_improperly_issued_or_served",
+      "consequence": "Court lacks personal jurisdiction over defendant; case may be dismissed",
+      "statute": "CCP §1161 et seq.; state civil procedure rules (service of process)",
+      "case_law": [],
+      "note": "Summons defects are distinct from notice service defects; verify state-specific UD summons requirements",
+      "validation_flags": [
+        "L2-PROCEDURAL-ERROR",
+        "L2-PROCEDURAL-SPLIT-L7",
+        "L2-PROCEDURAL-SM-GEMINI"
+      ],
+      "l2_note": "GPT returned no content (empty response); Gemini single-model: California Code of Civil Procedure § 1167. Preserved as SM — needs GPT re-run or human confirm.",
+      "l2_run_date": "2026-06-25",
+      "l2_sm_statute": "California Code of Civil Procedure § 1167"
+    },
+    {
+      "defect": "complaint_filed_before_10_business_day_response_period",
+      "consequence": "Complaint premature; court may dismiss",
+      "statute": "CCP §1167 (as amended by AB 2347, eff. Jan 1, 2025)",
+      "case_law": [],
+      "note": "AB 2347 extended UD summons response from 5 to 10 business days effective Jan 1, 2025"
+    }
+  ],
+  "last_updated": "2026-06-26",
+  "version_history": [
+    {
+      "tag": "ca_notice_rules_v3_20260720",
+      "file": "rules/eviction/california/ca_eviction_v3.json",
+      "supersedes": "ca_notice_rules_vProof1 (rules/eviction/california/ca_eviction_v2.json, cc0cfab63ae1591e2b88353c557aeb8027767d99276a3115b5ce9f4115599b93 — remains immutable, retained for record and as the permanent v0.3 held-out scoring anchor)",
+      "ratified": "2026-07-20, Andrew M. Cohen",
+      "changes": [
+        "Added termination.just_cause_attachment_threshold (Civ. Code §1946.2(a) 12-month general rule + §1946.2(a)(2) additional-adult-tenant variant). Closes the coverage gap that caused CA-NOT-C-18 to miss in the v0.3 held-out score.",
+        "Updated notice_defects[missing_just_cause_reason].ab1482_coverage_gate note to check just_cause_attachment_threshold ahead of the exemption checklist.",
+        "Embedded the 2026-07-19 wiring determination (provenance.determinations) — ab1482_coverage_gate correctly does not reach notice_defects[notice_period_too_short]; ratified negative determination, not a gap."
+      ],
+      "gate": "Dev-set regression (v0.2 dev, 12 items) required: 12/12, newly_failing=0, before this version is treated as active. See VALIDATION_METRICS_LEDGER for result."
+    }
+  ]
+}
