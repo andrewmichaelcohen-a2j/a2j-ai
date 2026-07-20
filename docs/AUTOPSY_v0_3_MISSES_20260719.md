@@ -45,3 +45,15 @@ Two of the three misses (C-21, C-22) show exactly that pattern — and the open 
 **Recommended next step (Andy's call, not actioned):** a decision on whether `(e)(7)`/`(e)(8)` should gate `notice_period_too_short` (and possibly other defects) the same way they gate `missing_just_cause_reason` — and separately, whether/how to encode the `(a)` 12-month attachment threshold for C-18. Once Andy resolves the legal question, Task 3-style rule drafting can proceed against a correct target rather than a guess.
 
 *Copyright 2026 Andrew M Cohen. Apache 2.0.*
+
+---
+
+## Addendum (2026-07-19, same evening) — open question resolved by attorney errata
+
+The "open substantive question this autopsy cannot resolve" (final paragraph of the Error Taxonomy section above) has been answered: **NO**, an AB 1482 §1946.2(e) just-cause exemption does not also excuse compliance with Civil Code §1946.1(b)'s notice-period requirement. See `docs/ERRATA_MEMO_v0_3_20260719.docx` (signed, authoritative), §1, for the full determination and statutory analysis.
+
+This confirms the engineering half of this autopsy's conclusion: `notice_period_too_short` correctly has no `ab1482_coverage_gate`, because the exemption legitimately doesn't reach that defect. What the autopsy could not know at the time is that this makes the vProof1 encoding **correct as-is** for C-21/C-22 — the wiring "gap" it identified was not a gap at all. The factual premise that C-21 and C-22 were model errors is superseded: both were ground-truth errors in the frozen golden set (ERRATUM-2026-001, ERRATUM-2026-002), now corrected by attorney errata. The dual-model consensus answer (NOTICE_INVALID) was right both times.
+
+**Net effect on this autopsy's findings:** C-18's classification is unchanged and still stands — a genuine, confirmed coverage gap (§1946.2(a) attachment threshold absent from vProof1). C-21/C-22 are reclassified out of "rules gap" entirely; they were never an engineering problem. The proposed "exemption-scope-limited-to-single-defect" error-taxonomy class (above) is withdrawn as applied to this set — it described a gap that turned out not to exist — though the class itself may still be useful for a genuine future instance.
+
+**Task 3 status:** still not executed. For (e)(7)/(e)(8), it is now confirmed *not warranted* — there is nothing to draft. For C-18's §1946.2(a) gap, whether to draft candidate rule text remains Andy's call, unchanged from the original conclusion above.

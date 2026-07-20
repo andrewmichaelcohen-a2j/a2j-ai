@@ -4,6 +4,38 @@
 
 ---
 
+## 2026-07-19 (evening — attorney errata: v0.3 held-out score corrected, C-21/C-22 ground truth was wrong)
+
+*Context: Andy delivered a signed Attorney Errata Memorandum (`docs/ERRATA_MEMO_v0_3_20260719.docx`) same day as the held-out score and miss autopsy, resolving the open legal question the autopsy flagged but could not answer itself.*
+
+### GREEN — Executed autonomously (ingestion + dual-report writeup; no rules or golden-set data touched)
+
+**Errata memo ingested**
+- Committed both `docs/ERRATA_MEMO_v0_3_20260719.docx` (signed `/s/ Andrew M Cohen`, dated 07/19/2026 — the executed, authoritative instrument) and `docs/ERRATA_MEMO_v0_3_20260719.md` (plain-text reference copy, flagged at its top as non-authoritative where the two differ).
+- The golden-set xlsx (`goldenset_CA_notice_v0.3_FROZEN_20260716.xlsx`) is **unchanged** — SHA256 still `e6dbb2fc…5df45`, still BURNED, still not re-scored. The errata is a correction overlay per the memo's own terms, not a data edit.
+
+**Determination**
+- Civil Code §1946.1 (notice-period length) governs independently of §1946.2/AB 1482 (just-cause). An AB 1482 exemption under §1946.2(e)(7)/(e)(8) removes the just-cause obligation only — it does not shorten or excuse §1946.1(b)'s 60-day notice period for a 1+-year tenancy (*Stancil v. Superior Court* (2021) 11 Cal.5th 381). C-21 (18-month tenancy) and C-22 (2-year tenancy), both served 30-day notices, are void under §1946.1(b)/Stancil regardless of their valid AB 1482 exemptions.
+- **ERRATUM-2026-001 (C-21) and ERRATUM-2026-002 (C-22): frozen NOTICE_VALID → corrected NOTICE_INVALID.** The dual-model consensus (which had said NOTICE_INVALID) was legally correct; the frozen ground truth was the error. **C-18 unaffected** — 9-month tenancy, 30-day notice proper under §1946.1(c); frozen VALID stands.
+
+**Metrics dual-reported everywhere the v0.3 score is cited** (per the errata memo's Section 4 requirement)
+- As-scored (2026-07-19 afternoon): 23/26 = 88.5%, CI [71.0%, 96.0%]. Post-errata: **25/26 = 96.2%**, CI [81.1%, 99.3%] (both Wilson). Neither number superseded — both retained in the record.
+- B2 confident-wrong restated: 3 (as-scored) → **1** (post-errata — C-18 only).
+- **New metric: ground-truth error rate = 2/26 = 7.7%**, logged as a validation finding in its own right — the review pipeline caught the encoder's citation errors at freeze; the scoring pipeline caught the attorney-side oversight at measurement. Both directions of the loop functioned.
+- `docs/VALIDATION_METRICS_LEDGER.md` updated: trend row, Result line, B1-B4 line, v0.2 comparison line, and the B2/autopsy analysis paragraphs — all via append-style annotation (original as-scored text retained, errata correction appended after), not silent rewrite, consistent with this project's frozen-record discipline.
+- `docs/PROJECT_STATE_OF_RECORD.md`: new header entry. `docs/AUTOPSY_v0_3_MISSES_20260719.md`: addendum appended noting its flagged open question is now resolved and its engineering conclusion (rules correctly NOT wired to `notice_period_too_short`) is confirmed, while its factual premise (C-21/C-22 as model errors) is superseded.
+
+**Corrective protocol adopted (effective immediately, v0.4 forward)**
+- Root cause: single-lens review at the 2026-07-16 freeze session — C-21/C-22 were reviewed only through the AB 1482 exemption analysis they were drafted to test; no independent §1946.1 duration check was run. Classified as an incomplete-defect-sweep failure.
+- Going forward, every candidate golden-set item must be swept against every encoded defect class in its module, not only the class it was drafted to test. Model outputs may not be consulted during ground-truth review.
+
+### RED — updated
+1. **Overnight machine environment:** unchanged, still open.
+2. **§1946.2(e)(7)/(e)(8) wiring/scope gap (C-21, C-22): RESOLVED, closed.** Confirmed not a rules bug — the exemption legitimately does not reach `notice_period_too_short`; no rule edit warranted.
+3. **§1946.2(a) 12-month attachment threshold (C-18): still open, still RED.** Genuine coverage gap, confirmed absent from vProof1. `ca_eviction_v2.json` untouched. Awaiting Andy's routing decision.
+
+---
+
 ## 2026-07-19 (afternoon — Broaden Proof 1 Steps 5-7: v0.3 held-out set scored and burned)
 
 *Context: Andy ran the real, one-time held-out score from Terminal (real API keys, daytime window, per the freeze memo's own instructions). This is the last step of Broaden Proof 1 — the held-out set is now permanently burned and this result is not to be repeated.*
