@@ -57,3 +57,9 @@ This confirms the engineering half of this autopsy's conclusion: `notice_period_
 **Net effect on this autopsy's findings:** C-18's classification is unchanged and still stands — a genuine, confirmed coverage gap (§1946.2(a) attachment threshold absent from vProof1). C-21/C-22 are reclassified out of "rules gap" entirely; they were never an engineering problem. The proposed "exemption-scope-limited-to-single-defect" error-taxonomy class (above) is withdrawn as applied to this set — it described a gap that turned out not to exist — though the class itself may still be useful for a genuine future instance.
 
 **Task 3 status:** still not executed. For (e)(7)/(e)(8), it is now confirmed *not warranted* — there is nothing to draft. For C-18's §1946.2(a) gap, whether to draft candidate rule text remains Andy's call, unchanged from the original conclusion above.
+
+---
+
+## Taxonomy disposition (2026-07-19, per Andy's ratified determination)
+
+The proposed "exemption-scope-limited-to-single-defect" class (Error Taxonomy section, above) is **NOT ADOPTED for this instance** — see `docs/WIRING_DETERMINATION_1946_2e_20260719.md` for the attorney-ratified negative determination. The limitation this autopsy flagged (the `ab1482_coverage_gate` reaching only `missing_just_cause_reason`, not `notice_period_too_short`) is legally correct, not a gap: §1946.2(e) exemptions remove the just-cause obligation only and do not reach §1946.1(b)/(c)'s independent notice-period requirement. **The class definition itself is retained in taxonomy notes** as a candidate check for future autopsies — the same *pattern* (an exemption or gate reaching only one of several related defects) could, on a different provision, turn out to be a genuine gap rather than a correct limitation. This instance simply wasn't one.

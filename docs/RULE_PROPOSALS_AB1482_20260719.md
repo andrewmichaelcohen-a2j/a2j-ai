@@ -1,3 +1,5 @@
+> **SUPERSEDED (2026-07-19, same evening).** This draft is superseded by `docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md`, delivered per the errata-cycle directive's narrowed Task 3 (adds the §1946.2(a)(2) variant with attorney-directed trigger logic, and per-tenant rather than aggregate occupancy inputs). Retained here for the record, not for ratification — do not act on this version.
+
 # Candidate Rule Proposal — §1946.2(a) Just-Cause Attachment Threshold
 
 **Date:** 2026-07-19

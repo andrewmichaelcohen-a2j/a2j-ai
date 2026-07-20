@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-07-19 (night — errata-cycle directive Tasks 2 (amended), 3 (narrowed), 4, 5)
+
+*Context: Andy clarified there are two directives in play — the score-cycle directive (Tasks 1-4, executed earlier today) and the errata-cycle directive, which supersedes it in part. Full task text for the outstanding items provided; executed below.*
+
+### Task 2 (amended) — wiring determination recorded as companion doc, not a rules-file edit
+
+- `docs/WIRING_DETERMINATION_1946_2e_20260719.md` **(new)**: records the attorney-ratified negative determination that `ab1482_coverage_gate` correctly does NOT reach `notice_period_too_short` — §1946.2(e) exemptions remove the just-cause obligation only; §1946.1(b)/(c) applies independently (Stancil). **Do not "fix."** `ca_eviction_v2.json` is NOT edited — vProof1 stays byte-frozen at `cc0cfab63ae1591e2b88…` permanently, per Andy's explicit instruction. Staged for the future: once the C-18 rule proposal below is ratified and cuts a new rules version, this determination gets embedded in that version's internal notes/metadata so it travels with the file itself.
+- `docs/PROJECT_STATE_OF_RECORD.md`: cross-reference added.
+- `docs/AUTOPSY_v0_3_MISSES_20260719.md`: addendum appended — the proposed "exemption-scope-limited-to-single-defect" taxonomy class is marked NOT ADOPTED for this instance (the limitation was legally correct, not a gap); class definition retained in taxonomy notes as a future autopsy check.
+
+### Task 3 (narrowed) — `just_cause_attachment_threshold` rule proposal, YELLOW, ratification-ready
+
+- `docs/RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` **(new)**, supersedes `docs/RULE_PROPOSALS_AB1482_20260719.md` (marked superseded in place, retained for record). One rule: `just_cause_attachment_threshold`, general 12-month rule (source: frozen CA-NOT-C-18 authority field, corroborated against C-19) plus the §1946.2(a)(2) additional-adult-tenant variant (source: attorney-directed text supplied directly in this directive — flagged, not independently statute-verified by Cowork, recommend confirming against verbatim §1946.2(a)(2) at ratification). Inputs are per-tenant occupancy durations (not the aggregate max used elsewhere), since the (a)(2) variant needs per-tenant granularity. Includes a non-regression check against C-19 (already-correct; this proposal must not change its result). `ca_eviction_v2.json` not touched.
+
+### Task 4 — missing-rules backlog entry, no drafting
+
+- `docs/MISSING_RULES_BACKLOG.md` **(new)** — first entry: Civ. Code §1946.1(d), the narrow 30-day sale exception for 1+-year tenancies. Not implicated by any current item; not drafted (no attorney-sourced statutory text for the escrow/sale conditions yet). Andy's call on when to draft.
+
+### Task 5 — golden-set freeze/drafting protocol amended (v0.4 forward)
+
+- `docs/COWORK_DIRECTION_B_GOLDEN_SETS.md` amended in place (dated inline annotations, original text retained): Part 2 step 2 (drafting) now requires each candidate item to declare every defect class its facts implicate, not only the target defect. Part 2 step 3 (freeze/attorney review) now requires an explicit per-item sweep against every encoded defect class in the module (the rules file's ratified defect list serves as the checklist), and states model outputs may not be consulted during ground-truth review. Root cause cited inline: the 2026-07-16 v0.3 freeze session's single-lens review of C-21/C-22, corrected by the same-day errata.
+
+**Nothing else pending in this lane.** Tasks 1-5 of the errata-cycle directive (as clarified) are now complete; Task 3's proposal and the wiring determination await Andy's ratification pass before any new rules version is cut.
+
+---
+
 ## 2026-07-19 (late evening — Task 3: candidate rule proposal for C-18, YELLOW, ratification-ready)
 
 *Context: Andy corrected a routing misread — Task 3 of the 07-19 directive was already authorized for C-18 (Task 2 confirmed the §1946.2(a) rule genuinely absent), even though it was correctly not warranted for C-21/C-22 (confirmed not a gap, per errata). Proceeding with Task 3 for C-18 only.*
