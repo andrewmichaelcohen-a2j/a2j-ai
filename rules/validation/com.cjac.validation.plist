@@ -26,7 +26,7 @@
     tail -f /Users/andrewcohen/Developer/a2j-ai/rules/validation/logs/launchd_stdout.log
 
   SIMULATE WITHOUT LAUNCHD:
-    cd ~/Documents/GitHub/a2j-ai && bash rules/validation/run_dispatch.sh
+    cd ~/Developer/a2j-ai && bash rules/validation/run_dispatch.sh
 
   VERIFY keep-awake:
     pmset -g | grep " sleep"        # should show 'sleep 0' on AC profile
