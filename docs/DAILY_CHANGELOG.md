@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-07-21 (morning report — automated)
+
+### GREEN — Executed autonomously (morning report cycle)
+
+**Overnight scan — no dispatcher output; SIXTH consecutive missed fire**
+- `dispatcher_heartbeat.log` still does not exist (`no-heartbeat`); `launchd_stdout.log` last write still 07-15 ~2:24 AM. Miss ×6 (07-16→07-21). Classification unchanged (agent-unloaded-leaning); folded into the standing RED. No new files in `l2/output/`, `results/`, `scorer/output/`, `queue/`→`done/`/`failed/` since the 07-20 gate run + same-day ingestion.
+- Queue holds only the recurring D-1 monitor job; next cadence-eligible ≥ 07-23 (3 days after the 07-20 trigger-fired run) — would have self-deferred at 2:15 AM regardless.
+
+**v3 gate-passed state audited consistent**
+- Cross-checked score output (`ca_notice_score_2026-07-20_non-held-out.json`: 12/12, α=1.000, newly_failing=0, rules_sha256 = v3), `dev_set_trend.jsonl` (07-20 row, `triggered_by_rule_change: true`), ledger v3 version record (gate row = PASSED), PSOR header, RULE_PROPOSAL status. All consistent — nothing to correct. Scope note logged in the ledger: the gate verifies dev-set non-regression; direct re-test of the C-18 pattern awaits v0.4.
+
+**Anti-default audit**
+- 0 cases routed RED-attorney this cycle; no PR/SM in the attorney lane; HUMAN_REVIEW_QUEUE unchanged (RC=6, CI=2).
+
+**Living docs updated this cycle**
+- VALIDATION_METRICS_LEDGER (07-21 cycle entry), PROJECT_STATE_OF_RECORD (morning-report annotation), HUMAN_REVIEW_QUEUE (header — no new items), WORK_QUEUE (header; NOW-empty + proposal-16-gate-met flags; git-commit housekeeping suggestion), DAILY_CHANGELOG (this entry), CLAUDE_CHAT_BRIEF regenerated (Step 3f).
+
+### YELLOW — None this cycle.
+
+### RED — Decisions/actions on Andy
+1. **Overnight machine environment — miss ×6, `no-heartbeat` (single top RED):** plist reinstall + launchctl reload (unchanged command). Remaining payoffs: reopens the overnight lane; activates the noon fire (D-1's only automatic daytime driver — next eligible run ≥ 07-23 silently won't happen without it or Terminal).
+2. **Refill proposals 16–18 approve/reject (from 07-20):** 16 = §1946.2(a)(2) live-source self-critique (its gate condition — v3 regression pass — is now met; executable immediately on approval); 17 = v0.4 golden-set go/no-go (RED-gated); 18 = §1946.1(d) backlog grooming (needs attorney-sourced text).
+3. **Housekeeping (non-urgent):** last git commit 2026-06-16 — consider commit/push of the last five weeks of work.
+
+---
+
 ## 2026-07-20 (dev-set regression gate PASSED — v3 fully active, errata-cycle directive closed)
 
 *Andy ran the real live regression: `python3 rules/validation/scorer/dev_set_monitor.py` — real keys, 10:31 AM PT, trigger-fired.*

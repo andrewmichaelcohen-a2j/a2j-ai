@@ -16,14 +16,14 @@
     (Terminal.app having FDA also works — bash inherits it)
 
   INSTALL (one-time):
-    cp /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/com.cjac.validation.plist \
+    cp /Users/andrewcohen/Developer/a2j-ai/rules/validation/com.cjac.validation.plist \
        ~/Library/LaunchAgents/com.cjac.validation.plist
     launchctl load ~/Library/LaunchAgents/com.cjac.validation.plist
     launchctl list | grep cjac      # confirm registered
 
   MANUAL TRIGGER (test / force-run):
     launchctl start com.cjac.validation
-    tail -f /Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/launchd_stdout.log
+    tail -f /Users/andrewcohen/Developer/a2j-ai/rules/validation/logs/launchd_stdout.log
 
   SIMULATE WITHOUT LAUNCHD:
     cd ~/Documents/GitHub/a2j-ai && bash rules/validation/run_dispatch.sh
@@ -64,19 +64,19 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
-        <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/dispatch.py</string>
+        <string>/Users/andrewcohen/Developer/a2j-ai/rules/validation/dispatch.py</string>
     </array>
 
     <!-- Working directory = repo root -->
     <key>WorkingDirectory</key>
-    <string>/Users/andrewcohen/Documents/GitHub/a2j-ai</string>
+    <string>/Users/andrewcohen/Developer/a2j-ai</string>
 
     <!-- Log dispatcher output (separate from run_protocol.py's own log) -->
     <key>StandardOutPath</key>
-    <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/launchd_stdout.log</string>
+    <string>/Users/andrewcohen/Developer/a2j-ai/rules/validation/logs/launchd_stdout.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/logs/launchd_stderr.log</string>
+    <string>/Users/andrewcohen/Developer/a2j-ai/rules/validation/logs/launchd_stderr.log</string>
 
     <!-- Inherit environment (reads .env via dotenv in runner) -->
     <key>EnvironmentVariables</key>
