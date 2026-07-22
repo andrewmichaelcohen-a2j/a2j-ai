@@ -4,6 +4,31 @@
 
 ---
 
+## 2026-07-21 (evening — decision log: dispatcher RED closed, proposals 16/17/18 ratified)
+
+*Andy's decision log, five items.*
+
+### GREEN — Root-caused and fixed this session
+
+**Dispatcher RED closed (miss ×6, 07-16→07-21).** Root cause: `~/Documents` is a TCC-protected folder on macOS, and background-agent (launchd/smd) spawns are silently blocked from touching files there even with Full Disk Access granted to the target binary — a restriction that does not apply to interactively-typed Terminal commands, which is why every manual invocation of the identical command succeeded while every automated fire failed with `EX_CONFIG` (78) and zero heartbeat-log output. Confirmed via a control test: a trivial LaunchAgent pointed at `/tmp` succeeded cleanly (`hello from launchd`, exit 0); the same job pointed at `~/Documents/GitHub/a2j-ai` failed identically every time. Sleep/power and agent-unloaded hypotheses retired. **Fix (07-21):** repo relocated `~/Documents/GitHub/a2j-ai` → `~/Developer/a2j-ai` (not a TCC-protected folder); `com.cjac.validation.plist` paths updated (`ProgramArguments`, `WorkingDirectory`, `StandardOutPath`, `StandardErrorPath`); old registration fully torn down (`launchctl bootout` + plist removal) and re-registered via `launchctl bootstrap` (not the legacy `load`, which had also gotten the job stuck in a remove/resubmit flapping loop against macOS's newer Background Task Management layer). Live `launchctl kickstart` test confirmed `last exit code = 0` with a complete heartbeat chain (LOADED → FIRED → COMPLETED-RUN, PREFLIGHT_DNS all three endpoints reachable). Confirmation checkpoints: tonight's ~2:15 AM fire (expect fired-and-idled), tomorrow's first 12:00 PM fire (drives D-1 automatically — next monitor run cadence-eligible ≥ 07-23), tomorrow's morning report. Overnight lane reopens; Northgate retry #3 (carried item 14) re-queued on normal prioritization. B-2 DNS preflight probes stay in place (the nighttime Gemini DNS strand predates the path break and is a separate open question, unresolved either way); B-4's pmset recommendation stays held unless probe data shows a genuine sleep issue.
+
+**Git housekeeping flag corrected (not a real issue).** The "last commit 2026-06-16" note in `PROJECT_STATE_OF_RECORD.md`'s Repo Identity table was the audit reading a stale repo copy left at the old `~/Documents/GitHub/a2j-ai` path — same root cause as above. GitHub Desktop confirms: working tree clean, zero uncommitted changes, full history present through today's commits, synced with origin. Corrected in PSOR (Local path + Last commit fields) and WORK_QUEUE; audit checks now point at `~/Developer/a2j-ai`.
+
+**Proposal 18 — ratified source text logged.** Andy supplied the attorney-sourced verbatim statutory text for the Civ. Code §1946.1(d) 30-day sale exception (2025 code, per SB 1103) — logged in `docs/MISSING_RULES_BACKLOG.md`. Per explicit instruction: log-only, no drafting until an item needs it.
+
+### YELLOW — Ratified for next-session execution (not executed this session)
+
+**Proposal 16 — APPROVED.** Self-critique pass (Disciplines A/B/C) over `just_cause_attachment_threshold`, executing next session. Andy's independent verification of §1946.2(a)(2) against verbatim statute text (07-20) is logged as corroboration for that pass; citation label correction ("§1946.2(a), second sentence, prongs (1)–(2)") deferred to the next version cut, not a v3 edit. **Scope extended:** also assess SB 1103's amendments to §1946.1 ("qualified commercial tenants," reworded subdivisions (a)–(c)) for any needed flagged update. Full text in `docs/WORK_QUEUE.md`.
+
+**Proposal 17 — APPROVED, v0.4 is a GO.** Under the amended freeze/drafting protocols, with an added design requirement: the v0.4 held-out scoring event runs a second ablation arm (same models/items, no rules file, same frozen ground truth) to measure the rules' accuracy contribution. Build into the scoring-harness plan before candidate drafting begins; reflect in the v0.4 direction doc. Begins after 16 completes. Full text in `docs/WORK_QUEUE.md`.
+
+### RED — None this cycle.
+
+### Scope note
+This entry logs ratification decisions and the dispatcher/housekeeping fixes only. Proposals 16 and 17's substantive execution (the self-critique pass itself; v0.4 candidate drafting and the ablation harness build) is explicitly sequenced for a subsequent session, per Andy's own instruction ("16 executes next session... v0.4 drafting (17) begins after 16 completes") — not performed here.
+
+---
+
 ## 2026-07-21 (morning report — automated)
 
 ### GREEN — Executed autonomously (morning report cycle)

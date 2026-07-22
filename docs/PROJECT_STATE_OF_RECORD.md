@@ -6,9 +6,11 @@
 
 *(Morning-report annotation, 2026-07-21 ~8:00 AM: no-run cycle — **dispatcher missed fire ×6** [07-16→07-21], still `no-heartbeat` [`dispatcher_heartbeat.log` does not exist; `launchd_stdout.log` last write 07-15 ~2:24 AM]. v3 gate-passed state confirmed stable: no new files since the 07-20 10:31 PT gate run and its same-day ingestion; docs audited consistent. D-1 monitor next cadence-eligible ≥ 07-23 — with the dispatcher dark and no daytime driver, that run will silently not happen unless the plist is reinstalled [noon fire] or Andy runs it from Terminal. Cumulative MV=26/CI=4/RC=6 unchanged. Anti-default audit clean: 0 cases routed RED-attorney. Top RED [single]: plist reinstall + launchctl reload — remaining payoffs are the overnight lane + D-1's automatic noon driver. Refill proposals 16–18 await Andy approve/reject; 16's gate condition [v3 regression pass] is now met.)*
 
+*(Evening annotation, 2026-07-21 ~7:30 PM: **Dispatcher RED CLOSED — root-caused and fixed.** Six consecutive no-heartbeat nights [07-16→07-21] traced to `~/Documents` being a TCC-protected folder: macOS silently blocks launchd/smd background-agent spawns from touching files there even with Full Disk Access granted, confirmed by a control test [`/tmp`-based LaunchAgent succeeded; Documents-hosted one failed `EX_CONFIG`/78 on every attempt] and by manual Terminal invocation of the identical command always succeeding. Sleep/power and agent-unloaded hypotheses retired. Fix: repo relocated to `~/Developer/a2j-ai`, plist reinstalled via `launchctl bootout`/`bootstrap`, live kickstart confirmed exit code 0 with a full heartbeat chain. Confirmation pending tonight's 2:15 AM and tomorrow's noon fires. **Housekeeping flag corrected:** the "last commit 2026-06-16" note was the audit reading the same stale `~/Documents/GitHub/a2j-ai` path — working tree is clean and fully synced with origin; see Section 1 below, now corrected. **Proposals 16/17/18 RATIFIED** [full scope in `docs/WORK_QUEUE.md`]: 16 gains an SB 1103 §1946.1 assessment requirement; 17 [v0.4 GO] gains a mandatory ablation arm to measure rules-provided accuracy lift; 18 logged with ratified §1946.1(d) statutory text in `docs/MISSING_RULES_BACKLOG.md`, draft-on-demand only. Sequencing: 16 next session, 17 after 16, 18 log-only.)*
+
 *(Morning-report annotation, 2026-07-20 ~8:00 AM: **dispatcher missed fire ×5** [07-16→07-20] — `--heartbeat-status` still `no-heartbeat`; the plist-reinstall/launchctl reload remains the single convergent Andy action, and now carries a third payoff: the first 12:00 PM drain after reinstall auto-runs the **armed v3 dev-set regression gate** inside the monitor's 09:00–23:00 window (Terminal alternative: `python3 rules/validation/scorer/dev_set_monitor.py`, no --force needed — trigger armed 07-20 07:32 PT). D-1 monitor cadence-eligible since 07-19 but has not run (dispatcher dark; no new trend rows since the 07-16 baseline). No new overnight output; cumulative MV=26/CI=4/RC=6 unchanged. Anti-default audit clean: 0 cases routed RED-attorney this cycle.)*
 
-> **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Documents/GitHub/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
+> **How to use:** At the start of a new Cowork session, say: "Please read `docs/PROJECT_STATE_OF_RECORD.md` from the a2j-ai repo to brief yourself." Connect the `a2j-ai` folder when prompted (`/Users/andrewcohen/Developer/a2j-ai`). This file replaces `docs/PROJECT_STATUS_JUNE2026.md` as the primary session-start brief.
 
 ---
 
@@ -17,11 +19,11 @@
 | Field | Value |
 |-------|-------|
 | GitHub URL | `https://github.com/andrewmichaelcohen-a2j/a2j-ai` |
-| Local path | `/Users/andrewcohen/Documents/GitHub/a2j-ai/` |
+| Local path | `/Users/andrewcohen/Developer/a2j-ai/` (relocated 2026-07-21 — was `/Users/andrewcohen/Documents/GitHub/a2j-ai/`; moved to fix a TCC-related launchd background-agent block, see 2026-07-21 evening annotation above) |
 | Visibility | **Public** (confirmed) |
 | License | Apache 2.0 |
 | Active branch | `main` |
-| Last commit | 2026-06-16 — overlays cleanup, coverage audit, L5 xstate check (pushed via GitHub Desktop); five-module build + L5 outlier resolution + MN/NJ corrections pending commit |
+| Last commit | 2026-07-21 (`813897b`, plist comment path fix) — this field was stale (showed 2026-06-16) because the housekeeping audit read a copy of the repo left at the old `~/Documents/GitHub/a2j-ai` path; the repo has in fact been committed/pushed continuously (v3 cut, errata cycle, dispatcher B-series work, etc.) — corrected 2026-07-21 evening, see annotation above |
 
 ---
 
