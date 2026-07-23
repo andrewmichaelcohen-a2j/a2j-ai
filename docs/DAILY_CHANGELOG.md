@@ -4,6 +4,34 @@
 
 ---
 
+## 2026-07-23 (Direction D Build-Out & Open-Item Closeout — Andy's directive)
+
+*Documentation-level tasks 1-3 executed this session; task 4 (collateral versioning) blocked pending file supply from Andy. Nothing here preempts proposal 16 (next session) or proposal 17/v0.4 drafting (after 16), per the directive's own sequencing note.*
+
+### GREEN — Task 1: Direction D roadmap formalized
+
+Created `docs/DIRECTION_D_ROADMAP.md`, defining components D-2 (disagreement auto-triage), D-3 (statute-and-case watch), D-4 (standing adversarial self-critique), D-5 (CJaC-lift tracking across model generations). All four are labeled ROADMAP-DEFINED, not building. The invariant is stated verbatim in the doc: AI generates candidates and evidence continuously; nothing self-ratifies; every change lands as a proposal for named-attorney ratification; every applied change passes the dev-set regression gate; held-out sets are burned after one use. Build triggers/sequencing as directed: D-2 wires alongside proposal 17's v0.4 drafting, live before the v0.4 scoring event (so the event itself exercises it); D-3 is first-built after v0.4 scoring completes; D-4's cadence proposal is due with its own build plan (not drafted here); D-5's first data point is the v0.4 ablation arm already required by proposal 17.
+
+### GREEN — Task 2: Repository discoverability pass
+
+Created `docs/VALIDATION_README.md` — a plain-English index (audience: law professors and legal-aid staff, not just engineers) linking to `VALIDATION_METRICS_LEDGER.md`, the v0.3 held-out scorer output JSON, `AUTOPSY_v0_3_MISSES_20260719.md`, the signed errata memo (`.docx` marked authoritative, `.md` as reading copy), and the ratified `RULE_PROPOSAL_1946_2a_ATTACHMENT_20260719.md` / `WIRING_DETERMINATION_1946_2e_20260719.md` pair. States the dual-reporting rule (v0.3 = 23/26 as-scored / 25/26 post-errata, always both) and the multi-model-consensus definition (two independent models must agree; tri-model is roadmap) up front. `README.md`'s "Key documents" list updated to point here first, above the existing methodology/status-ladder/disclaimer links.
+
+**First-time-visitor path, as reported to Andy:** `README.md` → `docs/VALIDATION_README.md` → either `VALIDATION_METRICS_LEDGER.md` (numbers) or `AUTOPSY_v0_3_MISSES_20260719.md` → `ERRATA_MEMO_v0_3_20260719.docx` (a specific correction, start to finish, signed instrument one click away). No step requires prior knowledge of repo structure or file-naming conventions.
+
+### GREEN — Task 3: Schweiger cite-check sweep — clean, one informational flag
+
+Searched the full repository (rules files, docs, checkpoints, scorer/L2 output JSON) for every reference to *Schweiger v. Superior Court*. Result: **every single reference in the repository is correctly tied to the retaliatory-eviction defense** (Civil Code §1942.5) — the case Schweiger actually is authority for. None ties Schweiger to `includes_late_fees` / the notice-overstatement defect. The erroneous citation the directive flagged was confined to the retired two-pager draft and the v3 full deck (outreach collateral, not in the repo) — those are outside this sweep's reach since the files aren't in the repository (see Task 4).
+
+Confirmed the *correct* authority is already what the repository actually uses for the late-fees/overstatement defect: the v0.3 golden set (`rules/validation/golden_sets/DRAFT_CA_notice_candidates_v0.1.json`, item CA-N-010) cites **Levitz Furniture Co. v. Wingtip Communications, Inc.** — and the freeze-time citation-correction log (`VALIDATION_METRICS_LEDGER.md`, "Citation corrections made at freeze") already recorded a pincite fix (1411→1035) matching the directive's stated correct citation (86 Cal.App.4th 1035, 1038) exactly.
+
+**One informational flag, not a repo defect:** `docs/CA_UD_BENCHGUIDE_BG31_EXTRACT.md` quotes *Nourafchan v. Miner* (1985) 169 Cal.App.3d 746 at pincite **763**; the directive's citation gives pincite **753**. This is a benchguide-extract quote (a secondary source), not a rule-file citation, and nothing in the repo's actual rules or golden set depends on the pincite — logging for attorney awareness only, no action taken, no file edited. If it matters at the next version cut, it rides alongside the already-queued §1946.2(a) citation-label fix from proposal 16.
+
+**Conclusion:** no rules-file, doc, or repository collateral requires correction. No proposal generated — there was nothing to propose a fix for.
+
+### BLOCKED — Task 4: Collateral versioning
+
+Cannot execute without the three files: `CJaC_Two_Pager_AMC_07_23_26_FINAL.docx`, `CJaC_Pitch_Deck_Speaker_20260723.pptx`, `CJaC_Concise_Deck_20260720.pptx`. None exist in this session's uploads or in the repository — they live only on Andy's machine. **Andy action needed:** supply the three files (chat upload is sufficient); once received they'll be committed to a `collateral/` folder with a DAILY_CHANGELOG version-log entry, per the directive.
+
 ## 2026-07-21 (evening — decision log: dispatcher RED closed, proposals 16/17/18 ratified)
 
 *Andy's decision log, five items.*

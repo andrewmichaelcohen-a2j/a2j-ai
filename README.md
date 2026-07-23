@@ -88,6 +88,7 @@ playbooks/    Legal workflow playbooks
 ```
 
 Key documents:
+- [`docs/VALIDATION_README.md`](docs/VALIDATION_README.md) — **start here for results:** scores, corrections, and where every piece of evidence lives, in plain English
 - [`docs/VALIDATION_PHILOSOPHY.md`](docs/VALIDATION_PHILOSOPHY.md) — the methodology
 - [`docs/STATUS_LABELS.md`](docs/STATUS_LABELS.md) — the status ladder and advancement rules
 - [`docs/DISCLAIMER.md`](docs/DISCLAIMER.md) — legal information, not legal advice
