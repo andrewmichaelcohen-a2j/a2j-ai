@@ -34,7 +34,9 @@ Andy supplied the final two-pager (2026-07-23). Committed to `collateral/CJaC_Tw
 
 **Filename note:** the directive names the file `CJaC_Two_Pager_AMC_07_23_26_FINAL.docx`; the file as delivered is named `CJaC_Two_Pager_AMC_FINAL.docx` (no date stamp). Committed under the delivered filename rather than silently renamed — flagging the discrepancy here rather than guessing which is authoritative. If Andy wants the dated filename, that's a trivial follow-up rename/commit.
 
-**Still blocked:** `CJaC_Pitch_Deck_Speaker_20260723.pptx` and `CJaC_Concise_Deck_20260720.pptx` — Andy has said the deck isn't finalized yet and will supply it later. Will commit on receipt with the same treatment (hash logged here).
+**Update (2026-07-23, later same day):** Andy supplied the final pitch deck. Committed to `collateral/CJaC_Pitch_Deck_FINAL.pptx` — SHA256 `9a7f524fce5ecf3e62be30499147eb23189f7b9ccb18fd82f14d824f24e8ed68`.
+
+**Filename/count note:** the directive named two decks (`CJaC_Pitch_Deck_Speaker_20260723.pptx` and `CJaC_Concise_Deck_20260720.pptx`); the file as delivered is a single `CJaC_Pitch_Deck_FINAL.pptx`. Committed under the delivered filename, not renamed or split. Unclear whether this one file supersedes both decks the directive named, or whether a second (concise) deck is still to come — flagging for Andy to confirm rather than assuming either way. Task 4 stays open pending that confirmation.
 
 ## 2026-07-21 (evening — decision log: dispatcher RED closed, proposals 16/17/18 ratified)
 
