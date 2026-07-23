@@ -28,9 +28,13 @@ Confirmed the *correct* authority is already what the repository actually uses f
 
 **Conclusion:** no rules-file, doc, or repository collateral requires correction. No proposal generated — there was nothing to propose a fix for.
 
-### BLOCKED — Task 4: Collateral versioning
+### GREEN (partial) — Task 4: Collateral versioning — two-pager committed, decks still pending
 
-Cannot execute without the three files: `CJaC_Two_Pager_AMC_07_23_26_FINAL.docx`, `CJaC_Pitch_Deck_Speaker_20260723.pptx`, `CJaC_Concise_Deck_20260720.pptx`. None exist in this session's uploads or in the repository — they live only on Andy's machine. **Andy action needed:** supply the three files (chat upload is sufficient); once received they'll be committed to a `collateral/` folder with a DAILY_CHANGELOG version-log entry, per the directive.
+Andy supplied the final two-pager (2026-07-23). Committed to `collateral/CJaC_Two_Pager_AMC_FINAL.docx` — SHA256 `8019a8beef280951df8f384dd67db63733dc7011b452a1933ef78240a5c2115a`.
+
+**Filename note:** the directive names the file `CJaC_Two_Pager_AMC_07_23_26_FINAL.docx`; the file as delivered is named `CJaC_Two_Pager_AMC_FINAL.docx` (no date stamp). Committed under the delivered filename rather than silently renamed — flagging the discrepancy here rather than guessing which is authoritative. If Andy wants the dated filename, that's a trivial follow-up rename/commit.
+
+**Still blocked:** `CJaC_Pitch_Deck_Speaker_20260723.pptx` and `CJaC_Concise_Deck_20260720.pptx` — Andy has said the deck isn't finalized yet and will supply it later. Will commit on receipt with the same treatment (hash logged here).
 
 ## 2026-07-21 (evening — decision log: dispatcher RED closed, proposals 16/17/18 ratified)
 
