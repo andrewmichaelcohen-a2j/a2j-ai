@@ -4,6 +4,30 @@
 
 ---
 
+## 2026-07-24 (morning report — catch-up cycle covering 07-22→07-24, run midday after the 8 AM degraded fire)
+
+### GREEN — Report-side mount break diagnosed + fixed (process miss, logged)
+
+The 8 AM scheduled report ran DEGRADED on 07-24 (no repo access; posted a degraded-run notice only) and produced no cycles at all on 07-22/07-23. Root cause: the scheduled task's Cowork folder connection broke when the repo relocated `~/Documents/GitHub/a2j-ai` → `~/Developer/a2j-ai` (07-21 evening — the same relocation that fixed the dispatcher TCC block). Automated attempts before declaring failure were recorded (mount scan; Google Drive fallback search — only stale June snapshots found; no writes made to them). Fix: folder reconnected at `/Users/andrewcohen/Developer/a2j-ai` inside the task's session; `docs/` and full `rules/validation/` tree visibility verified. Failure-condition items for the missed cycles: 3f (brief regeneration) did not run on 07-22/07-23/07-24-8AM — all healed by this catch-up cycle. Watch tomorrow's 8 AM fire.
+
+### GREEN — Dispatcher confirmation ingested (outage CLOSED-CONFIRMED)
+
+6/6 scheduled fires landed since the 07-21 reinstall: 07-22/07-23/07-24 at both 02:15 AM and 12:00 PM PT, full LOADED→FIRED→PREFLIGHT_DNS→COMPLETED-RUN heartbeat chains, every defer decision correct (deferred-time-window at 02:15; deferred-cadence at noon when < 3d). The 07-21 evening root-cause fix (TCC/`~/Documents` → `~/Developer` relocation + plist reinstall) has now survived three overnight and three noon fires.
+
+### GREEN — D-1 first fully-automatic run ingested (07-23 12:00 PT)
+
+`job_dev_set_monitor_20260715` ran via the dispatcher noon drain — the first dispatcher-driven D-1 execution (prior runs were Terminal/trigger-driven). Result: **dev 12/12 = 100%, α = 1.000 (n=12), DUAL-MODEL-CONSENSUS, single_model_items=0, newly_failing=0**, rules = v3, elapsed ~7.5 min. Monitor self-appended its trend row (`dev_set_trend.jsonl` + ledger D-1 table); this cycle added the morning-report cycle entry with B1–B4. Third consecutive 12/12; second consecutive dual-model. Next cadence-eligible ≥ 07-26.
+
+### GREEN — Night-DNS evidence logged; Northgate retry #3 re-queue PROPOSED (Andy's call)
+
+B-2 preflight probes resolved Gemini (and CL + OpenAI) cleanly at 2:15 AM PT on 07-22, 07-23, and 07-24 — three consecutive clean night windows. First direct evidence the Errno-8 night-DNS strand was part of the same pre-relocation environment problem now fixed. Held item 14 (Northgate retry #3) proposed for re-queue in WORK_QUEUE; not queued autonomously (the 07-09 job instruction gates it on Andy's decision; marginal-value caveat stands).
+
+### GREEN — Living docs updated (this cycle)
+
+METRICS_LEDGER 07-24 catch-up cycle entry; PSOR morning-report annotation; HUMAN_REVIEW_QUEUE header rebuilt (no new items; nothing routed to attorney; RC=6, CI=2 unchanged); WORK_QUEUE header updated with refill proposal; this changelog entry; CLAUDE_CHAT_BRIEF regenerated (3f). Anti-default audit: 0 cases routed RED-attorney this cycle.
+
+---
+
 ## 2026-07-23 (Direction D Build-Out & Open-Item Closeout — Andy's directive)
 
 *Documentation-level tasks 1-3 executed this session; task 4 (collateral versioning) blocked pending file supply from Andy. Nothing here preempts proposal 16 (next session) or proposal 17/v0.4 drafting (after 16), per the directive's own sequencing note.*

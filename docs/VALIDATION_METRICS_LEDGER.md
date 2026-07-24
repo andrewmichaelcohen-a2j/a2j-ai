@@ -803,6 +803,27 @@ All 84 are CourtListener 429 (Too Many Requests) rate-limit errors occurring thr
 
 ---
 
+#### Morning report cycle — 2026-07-24 (catch-up cycle covering 07-22→07-24 — **DISPATCHER FIX CONFIRMED LIVE: 6/6 scheduled fires**; **D-1 first fully-automatic run 07-23 noon: 12/12, α=1.000, DUAL-MODEL-CONSENSUS**; report-side: 07-22/07-23 cycles MISSED + 07-24 8 AM degraded — mount break from the 07-21 repo relocation, diagnosed + fixed this cycle)
+
+*This is a catch-up cycle. The 8 AM scheduled report ran degraded on 07-24 (and did not produce cycles on 07-22/07-23) because the Cowork scheduled-task session lost its folder connection when the repo relocated `~/Documents/GitHub/a2j-ai` → `~/Developer/a2j-ai` on 07-21 — the same relocation that fixed the dispatcher. Report-side process miss, logged per honesty discipline; GREEN-fixed same day (folder reconnected at the new path in the task's session; verified against `docs/` and `rules/validation/`). Dispatcher-side, the picture is the opposite of the prior six cycles: **every scheduled fire since the 07-21 reinstall landed** — 07-22 02:15 (deferred-time-window, correct), 07-22 12:00 (deferred-cadence, correct), 07-23 02:15 (deferred-time-window, correct), **07-23 12:00 → RAN: the first fully-automatic dispatcher-driven D-1 monitor run** (dev 12/12 = 100%, α = 1.000, DUAL-MODEL-CONSENSUS, single_model_items=0, newly_failing=0, rules = v3; self-appended to the D-1 table below; elapsed ~7.5 min), 07-24 02:15 (deferred-time-window, correct), 07-24 12:00 (deferred-cadence, correct — last run 07-23 < 3d). Full LOADED→FIRED→PREFLIGHT_DNS→COMPLETED-RUN heartbeat chains on all six. **B-2 probe data: DNS preflight OK for CourtListener, Gemini, AND OpenAI on all fires — including the 2:15 AM PT night window on 07-22, 07-23, and 07-24.** Three consecutive clean night-window Gemini resolutions is the first direct evidence the Errno-8 night-DNS strand was part of the same pre-relocation environment problem, not a persistent resolver/filter issue — relevant to the held Northgate retry #3 decision (see WORK_QUEUE refill note).*
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Runs this cycle (07-22→07-24) | 1 | D-1 monitor, 07-23 12:00 PT, dispatcher-driven (first automatic) |
+| Dev set (07-23) | 12/12 = 100%, newly_failing=0 | DUAL-MODEL-CONSENSUS, single_model_items=0; rules = v3 |
+| Method α (dev, 07-23) | 1.000 (n=12) | All 12 items dual-model; no empties → overall α identical. Small-n caveat: n=12 |
+| Overall α (dev, 07-23) | 1.000 (n=12) | No GPT-empty/missing items this run |
+| Method rate / Overall rate (holdings) | N/A | No holdings run this cycle |
+| Heartbeat (B-3) | 6/6 scheduled fires landed | Outage closed with multi-night confirmation; deferred statuses all correct |
+| Standing v0.3 held-out (BURNED) | 88.5% as-scored / 96.2% post-errata | Dual-reported; unchanged |
+| Cumulative (holdings) | MV=26, CI=4, RC=6 | Unchanged since 2026-07-06 |
+
+**B1 (coverage):** no new score surface; standing figures unchanged (v0.3 held-out 26/26 = 100% coverage; dev 12/12 = 100%). **B2:** confident-wrong = 0 on the 07-23 dev run; standing count 1 (C-18 class — v3 encodes the fix; direct re-test awaits v0.4). **B3:** no rule change this cycle; 07-23 run re-confirms v3 non-regression (newly_failing=0, third consecutive 12/12: 07-16 SM-GPT baseline → 07-20 gate → 07-23 automatic). **B4 (currency):** carried flag unchanged — §1946.2(a)(2) live-source pass executes with proposal 16 (next work session).
+
+**Process note (cadence):** dispatcher-side: **CLOSED-CONFIRMED** — the 07-21 root-cause fix has now survived three overnight and three noon fires with correct self-defer logic throughout. Report-side: **two missed cycles (07-22, 07-23) + one degraded (07-24 8 AM)** — mount break, same root cause family as the dispatcher outage (repo relocation side effect), fixed this cycle; watch tomorrow's 8 AM fire for confirmation.
+
+---
+
 #### Morning report cycle — 2026-07-21 (no-run cycle — **DISPATCHER SIXTH consecutive missed fire** [07-16→07-21], still `no-heartbeat`; v3 gate-passed state confirmed stable; report fired on time at ~8:00 AM)
 
 *No job dispatched — sixth consecutive launchd-side miss: `dispatcher_heartbeat.log` still does not exist (the B-1-instrumented dispatch.py has never been invoked by launchd); `launchd_stdout.log` last write remains 2026-07-15 ~2:24 AM. Classification unchanged (`no-heartbeat`, agent-unloaded-leaning); the single convergent fix remains the plist reinstall + launchctl reload. Substantive loss nil: the only queued job (`job_dev_set_monitor_20260715.json`, recurring) is not cadence-eligible again until ≥ 2026-07-23 (3 days after the 07-20 trigger-fired gate run) and would have self-deferred at 2:15 AM anyway. **No new output files** in `l2/output/`, `results/`, `scorer/output/`, `done/`, or `failed/` since the 07-20 gate run (10:31 PT) and its same-day ingestion — the 07-20 late-morning session already verified the gate result against the raw output (rules SHA = v3 `65f1d9a4…947c7d`), corrected the PENDING→PASSED doc spots, and closed the errata-cycle directive; this cycle audited those docs and found them consistent (nothing to correct). Note the gate's scope honestly: the dev-set pass verifies non-regression of v3 on the 12 dev items; the C-18 fix itself is not re-measured against C-18-type facts until v0.4 candidates exist (held-out v0.3 is burned, by design).*
