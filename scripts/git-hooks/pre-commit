@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# CJaC pre-commit hook: block common secret/credential patterns from being committed.
+#
+# This hook is versioned in the repo but git does NOT activate hooks from a
+# tracked directory automatically. Activate once per local clone with:
+#
+#   git config core.hooksPath scripts/git-hooks
+#
+# See docs/SECRET_HYGIENE_SCAN_20260724.md for why this exists and what it
+# does and doesn't catch.
+
+set -euo pipefail
+
+PATTERNS='sk-ant-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{35}|ghp_[A-Za-z0-9]{36}|gho_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----|(mongodb(\+srv)?|postgres(ql)?)://[^ ]*:[^ ]*@'
+
+STAGED=$(git diff --cached --name-only --diff-filter=ACM || true)
+FOUND=0
+
+for f in $STAGED; do
+  # Skip binary files (docx/pptx/xlsx collateral, etc.) - diff -a would be noise, not a real check
+  if git diff --cached -- "$f" | head -5 | grep -q "^Binary files"; then
+    continue
+  fi
+  MATCH=$(git diff --cached -- "$f" | grep -E '^\+' | grep -vE '^\+\+\+' | grep -E "$PATTERNS" || true)
+  if [ -n "$MATCH" ]; then
+    echo "BLOCKED: possible secret pattern staged in $f:"
+    echo "$MATCH" | sed 's/^/  /'
+    FOUND=1
+  fi
+done
+
+if [ "$FOUND" -eq 1 ]; then
+  echo ""
+  echo "Commit blocked by scripts/git-hooks/pre-commit -- a staged line matches a known credential pattern."
+  echo "False positive? Bypass with: git commit --no-verify"
+  echo "Real credential? Do NOT just delete the line -- git history retains it. Rotate the credential first, then commit the removal, then report it."
+  exit 1
+fi
+
+exit 0

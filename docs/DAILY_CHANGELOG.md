@@ -4,6 +4,30 @@
 
 ---
 
+## 2026-07-24 (Engineering Hardening directive, Task 1 — secret hygiene, executed same-day on receipt)
+
+*Per `COWORK_DIRECTION_ENG_HARDENING_20260724.md`: Task 1 executes immediately on receipt, ahead of the docs-final gate on other pending publication work. Tasks 2-4 and 7 are this week alongside proposal 16; Tasks 5-6 gate on v0.4 — none of that is executed here.*
+
+### GREEN — Full-history secret scan: clean
+
+Ran two independent scanners plus a manual pattern sweep across the complete git history (all 131 commits on `main`, not just HEAD — the repo is public and the scorer runs with real API keys):
+
+1. **trufflehog3** (v3.0.10), full history depth, pattern + entropy checks: 247 findings, all `high-entropy`/MEDIUM, zero pattern-rule/HIGH hits. Manually sampled and confirmed every one is a legitimate SHA256 hash this project generates on purpose (rules-file hashes, golden-set hashes, scorer `_row_hash` values) — not a credential.
+2. **Manual regex sweep** of the full `git log -p --all` output for Anthropic/OpenAI/Google/GitHub/Slack/AWS key formats, PEM private-key blocks, and DB connection strings with embedded credentials: **zero matches**.
+3. **File-presence check** for any `.env`/secrets/credentials/private-key file ever added at any commit, even if later deleted: **none found**.
+
+**Result: zero real credentials found anywhere in history.** No rotation needed. Full methodology and results: `docs/SECRET_HYGIENE_SCAN_20260724.md`.
+
+### GREEN — Hardening added
+
+- `scripts/git-hooks/pre-commit` — blocks the same credential patterns from being staged going forward. Requires one-time local activation (`git config core.hooksPath scripts/git-hooks`) — git doesn't run hooks from a tracked directory automatically; noted prominently in the file and in `SECURITY.md`.
+- `SECURITY.md` — states the reporting path, current posture, and the API-key-via-environment-variable-only pattern already used throughout the codebase (confirmed, not just asserted: `harness.py`, `ca_notice_scorer.py`, `gemini_health_check.py` all read from `os.environ`/`os.getenv`, no hardcoded key found).
+- Confirmed `.gitignore` already excludes `.env` (pre-existing, no change needed).
+
+### BLOCKED (Andy action, cannot be done from a commit) — GitHub secret scanning + push protection
+
+These are repo-level GitHub settings, not something a commit can enable. Andy needs to visit `https://github.com/andrewmichaelcohen-a2j/a2j-ai/settings/security_analysis` and click Enable under both "Secret scanning" and "Push protection" — two toggles, a couple of minutes. Once on, this is a platform-level backstop in addition to the local pre-commit hook.
+
 ## 2026-07-24 (morning report — catch-up cycle covering 07-22→07-24, run midday after the 8 AM degraded fire)
 
 ### GREEN — Report-side mount break diagnosed + fixed (process miss, logged)
