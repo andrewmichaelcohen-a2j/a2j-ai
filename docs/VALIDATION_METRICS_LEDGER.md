@@ -1552,3 +1552,4 @@ Scheduled runs of ca_notice_scorer.py against the v0.2 dev split (12 items, non-
 | 2026-07-16 | 12/12 (100.0%) | 0 | 0.0 | SM-GPT | ca_notice_score_2026-07-16_non-held-out |
 | 2026-07-20 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-07-20_non-held-out |
 | 2026-07-23 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-07-23_non-held-out |
+| 2026-07-26 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-07-26_non-held-out |
