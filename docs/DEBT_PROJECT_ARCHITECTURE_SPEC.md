@@ -1,10 +1,10 @@
 # Debt Defense Prototype — Architecture Spec
 
-**Status:** DRAFT-FOR-ANDY. Not ratified, not built. Task class GREEN — documentation only, per `COWORK_DIRECTION_DEBT_ARCHITECTURE_20260824.md`.
-**Prepared:** 2026-08-24.
-**Scope of this document:** a specification for Andy's review and decision. It commits no rules files, builds no code, and modifies nothing in the existing eviction line — see the appendix for that line's current, unmodified state.
+**Status:** DRAFT-FOR-ANDY (v2). Not ratified as a build plan, not built. Task class GREEN — documentation only.
+**Prepared:** 2026-08-24, revised 2026-08-25 per `COWORK_DIRECTION_DEBT_DECISIONS_20260824_v2.md`, which supersedes and incorporates `COWORK_DIRECTION_DEBT_ARCHITECTURE_20260824.md` (v1). The ten-section structure and integration map from v1 stand; this revision bakes in Andy's ratified decisions, replaces the open-items box, and adds the demo-first sequencing and execution-model sections v2 requires.
+**Scope of this document:** a specification for Andy's review and approval. It commits no rules files, builds no code, and modifies nothing in the existing eviction line, which is now on hold (see the appendix). Repository restructuring proposed in the naming section below is **proposed only** — nothing has been physically moved.
 
-> **Read this before the sections below.** Two pieces of this spec cannot be written with confidence because their source documents don't exist in the repository yet: the Band 1/2/3 taxonomy (referenced against `CJAC_ROADMAP.md`, which has not been committed or supplied) and the AMPVR metric and Direction E Tier 2 harness design (referenced against the Direction E directive, also not committed or supplied — both are still sitting behind the "docs are final" gate from the 2026-07-24 publication checklist, which was never triggered). Wherever this spec uses those terms, it uses the plain-language meaning inferable from how Andy has used them in directives to date (Band 1 = validated/high-confidence, Band 2 = extension/lower-confidence, Band 3 = boundary marker between determination and judgment; AMPVR = some accuracy/reliability composite, name and formula unknown) and flags the gap inline. **Do not treat those sections as final** — they need reconciliation against the actual roadmap and Direction E text once those exist. Everything else in this spec is either sourced (cited inline) or explicitly marked as this document's own proposal for Andy's ratification.
+> **Read this before the sections below.** Two pieces of this spec still cannot be written with full confidence because their source documents don't exist in the repository yet: the Band 1/2/3 taxonomy (referenced against `CJAC_ROADMAP.md`) and the AMPVR metric and Direction E Tier 2 harness design (referenced against the Direction E directive). Both are still behind the 2026-07-24 "docs are final" gate, which has never been triggered. Wherever this spec uses those terms it uses the working definitions established in v1 (Band 1 = bright-line/machine-determinable, Band 2 = requires judgment on adequacy/sufficiency, Band 3 = boundary marker where the system stops determining and starts flagging a non-legal choice; AMPVR = an undefined accuracy/reliability composite) and flags the gap inline. This spec does **not** invent content for the Direction E Tier 2 harness's actual mechanics — v2 requires the demo harness be built on that design, which means the harness build is itself blocked on that document existing, a dependency flagged explicitly in §10 and §11 below, not glossed over.
 
 ---
 
@@ -14,7 +14,9 @@ Debt collection lawsuits are the highest-volume, least-defended civil case type 
 
 The scale and asymmetry are documented by Pew's 2020 study of state civil dockets: debt claims went from roughly 1 in 9 civil cases in 1993 to roughly 1 in 4 by 2013, with the trend continuing in states reporting data since. In the cases Pew studied from 2010–2019, fewer than 10% of defendants had counsel, compared with nearly all plaintiffs. Over the preceding decade, more than 70% of debt collection lawsuits in the jurisdictions with available data ended in default judgment — a judgment entered because the defendant didn't show up or respond, not because a court found the debt valid. All 50 states and DC allow pre- and post-judgment interest on top of that default judgment (Pew, *How Debt Collectors Are Transforming the Business of State Courts*, 2020).
 
-That volume-and-default pattern is exactly what CJaC's eviction-line discipline was built to catch — but debt has a structural advantage eviction doesn't: a strong federal spine. The Fair Debt Collection Practices Act (15 U.S.C. § 1692 *et seq.*) and its implementing Regulation F (12 C.F.R. Part 1006) govern collector conduct and required disclosures in every state; the Fair Credit Reporting Act (15 U.S.C. § 1681 *et seq.*) governs the credit-reporting side of the same disputes. One careful encoding of that spine, plus CFPB official interpretations and consumer guidance and FTC materials, amortizes across all 50 states and DC. What's left to vary by state is comparatively narrow and structured: statutes of limitations by claim type, answer deadlines, garnishment exemption amounts, and service/default-judgment procedure — closer to a lookup table than to the open-textured, jurisdiction-by-jurisdiction drafting the eviction line required. That's the case for building this non-incrementally rather than state-by-state.
+That volume-and-default pattern is exactly what CJaC's eviction-line discipline was built to catch — but debt has a structural advantage eviction doesn't: a strong federal spine. The Fair Debt Collection Practices Act (15 U.S.C. § 1692 *et seq.*) and its implementing Regulation F (12 C.F.R. Part 1006) govern collector conduct and required disclosures in every state; the Fair Credit Reporting Act (15 U.S.C. § 1681 *et seq.*) governs the credit-reporting side of the same disputes. One careful encoding of that spine, plus CFPB official interpretations and consumer guidance and FTC materials, amortizes across all 50 states and DC. What's left to vary by state is comparatively narrow and structured: statutes of limitations by claim type, answer deadlines, garnishment and post-judgment exemption amounts, and service/default-judgment procedure — closer to a lookup table than to the open-textured, jurisdiction-by-jurisdiction drafting the eviction line required.
+
+**Scope, ratified (v2, decision 1): BROADER than v1's working assumption.** Collection-suit defense, pre-suit collector interactions (validation rights, disputes, cease-communication), garnishment and post-judgment exemptions, a medical-debt specialization lane leveraging the i4J Medical Debt Policy Scorecard corpus, and a bankruptcy-referral boundary encoded as a Band 3 marker — the system identifies when bankruptcy is the live question; it never advises whether to file. That last piece keeps the broader scope from sliding into advice-giving on the single highest-stakes adjacent decision a debtor faces.
 
 ---
 
@@ -29,87 +31,92 @@ That volume-and-default pattern is exactly what CJaC's eviction-line discipline 
 | Fair Credit Reporting Act | Credit-report dispute process, furnisher obligations, the credit-reporting side of a collection dispute | 15 U.S.C. § 1681 *et seq.* |
 | CFPB official interpretations & consumer guides | Regulation F commentary; plain-language guidance on debt validation, disputing a debt, responding to a lawsuit | consumerfinance.gov |
 | FTC materials | Consumer-facing debt-collection guidance; enforcement precedent (see §9 on the DoNotPay action as an anti-pattern, not a source of law) | ftc.gov |
+| Federal bankruptcy triggers (boundary-marker sourcing only) | Not full bankruptcy-code encoding — just the fact patterns that should trip the Band 3 referral marker (e.g., debt load relative to income at a rough screening level, multiple simultaneous judgments, wage garnishment already in effect) | 11 U.S.C., used only to identify the marker, never to advise chapter selection or filing |
 
 ### State layer (structured lookup-table variation)
 
-Per state: statute of limitations by claim type (credit card, medical, other consumer debt — SOLs vary meaningfully by claim type within a state, not just by state), answer/response deadline after service, wage-garnishment and bank-account exemption amounts, service-of-process rules, and default-judgment entry procedure. This is the part of the corpus that most resembles the eviction line's per-state notice/service tables, and the same schema pattern (§2 below) should extend to it directly.
+Per state: statute of limitations by claim type (credit card, medical, other consumer debt — SOLs vary meaningfully by claim type within a state, not just by state), answer/response deadline after service, wage-garnishment and other post-judgment exemption amounts (homestead, bank-account, vehicle, tools-of-trade where relevant to a debt-defense context), service-of-process rules, and default-judgment entry procedure. Same schema pattern as §2 below, extended directly from the eviction line's per-state notice/service table pattern.
+
+### Medical-debt specialization lane
+
+Broader scope (v2 decision 1) adds this as a first-class lane, not just a reuse source. i4J's Medical Debt Policy Scorecard (Innovation for Justice, University of Arizona James E. Rogers College of Law + University of Utah David Eccles School of Business) already scores all 50 states across four policy goals: reducing debt incurrence, out-of-court resolution ability, court-navigation openness/efficiency/equity for self-represented debtors, and reducing post-judgment consequences. This is a directly reusable, open-source, state-scored dataset — check the license and cite i4J as the source of record, but treat it as a genuine corpus input for this lane, not background reading.
 
 ### Reuse inventory (harvest with license checks, primary law always controls)
 
-- **CFPB/FTC public consumer materials** — plain-language explanations already vetted by the regulator; useful for the elicitation/explanation layer, not as a substitute for citing the underlying rule.
+- **CFPB/FTC public consumer materials** — plain-language explanations already vetted by the regulator; useful for the elicitation/explanation layer, not a substitute for citing the underlying rule.
 - **State AG consumer-protection pages** — per-state color on collection practices and how to complain; secondary, needs a license check per page.
-- **i4J's Medical Debt Policy Scorecard** — Innovation for Justice (University of Arizona James E. Rogers College of Law + University of Utah David Eccles School of Business) publishes an open-source dataset, interactive map, and report scoring all 50 states across four policy goals (reducing debt incurrence, out-of-court resolution ability, court-navigation openness/efficiency/equity for self-represented debtors, reducing post-judgment consequences). This is a directly reusable, already-open-source state-policy dataset for the medical-debt slice specifically — check the license and cite i4J as the source of record.
-- **Statewide legal-help content (Michigan Legal Help, Illinois Legal Aid Online)** — both are established, actively maintained self-help platforms with existing debt-collection-response content (ILAO partners with libraries and courthouses for in-person self-help centers and publishes direct debt-lawsuit-response guidance). Treat as **secondary corroboration only** — useful for cross-checking that our encoding matches what an established legal-help org tells the same user, never as a primary-law source.
+- **Statewide legal-help content (Michigan Legal Help, Illinois Legal Aid Online)** — established, actively maintained self-help platforms with existing debt-collection-response content. **Secondary corroboration only** — cross-checking our encoding against what an established legal-help org tells the same user, never a primary-law source.
 
-Every fact in the corpus carries: **source, pin cite, retrieval date, license.** No exceptions — this is the same discipline `VALIDATED_RESOURCES_REGISTRY.md` already enforces for the eviction line; extend that registry's schema rather than inventing a new one.
+Every fact in the corpus carries: **source, pin cite, retrieval date, license.** No exceptions — extends `VALIDATED_RESOURCES_REGISTRY.md`'s existing discipline rather than inventing a new one.
 
 ---
 
 ## 2. Encoding architecture
 
-Extends the existing rules-JSON format (`SCHEMA_V2_DESIGN_SPEC.md` in the eviction line) rather than replacing it. New elements needed:
+Extends the existing rules-JSON format (`SCHEMA_V2_DESIGN_SPEC.md` in the eviction line) rather than replacing it.
 
-- **Band tags (1/2/3).** *[Gap-flagged — see the notice at the top of this document.]* Working definition pending `CJAC_ROADMAP.md`: Band 1 = bright-line, machine-determinable (e.g., SOL determination: is the claim past the deadline, yes/no, given a claim type and last-payment date); Band 2 = requires judgment on adequacy or sufficiency (e.g., chain-of-title adequacy — does the assignment chain actually establish the current plaintiff owns the debt); Band 3 = boundary marker where the system should stop generating a determination and instead flag that a strategic, non-legal-determination choice is next (e.g., settle-vs-fight is not a fact to be determined, it's a decision the system should surface options for, not make).
-- **Confidence tiers per node.** `VALIDATED` (shipped in an attorney-audited release) / `CORROBORATED` (grounded multi-model consensus, not yet human-audited) / `DRAFT`. Tier travels with the node and must be visible at runtime — every output tells the user which tier produced it, not just the eviction line's file-level status label. This is a meaningful architectural change from the eviction line, where status is a property of the whole rules file; here it needs to be a property of each node, because a debt file will plausibly ship with some nodes VALIDATED (federal spine, attorney-audited) and others still CORROBORATED (a newly-added state's garnishment exemption table) in the same release.
-- **Completeness checklists per node (the elicitation engine).** What facts does this node need before it can answer? This is what drives the guided-interview / voice-demo layer in §5 — the checklist *is* the interview script for that node.
-- **Consequences-and-next-steps fields.** Never a bare classification. Every determination carries "and here is what to file, by when" — mirroring the eviction line's discipline of pairing a defect finding with what it means for the tenant, but making the next-step field structurally required rather than prose.
-- **Jurisdiction resolution as a first-class input.** Every session establishes jurisdiction before any node evaluates — not inferred late. The eviction line resolves this per rules-file-per-state; a national debt product needs jurisdiction resolution to happen once, early, and gate everything downstream.
+- **Band tags (1/2/3).** *[Gap-flagged, see notice above.]* Working examples for this corpus specifically: Band 1 — SOL determination (past the deadline, yes/no, given claim type and last-payment date); Band 2 — chain-of-title adequacy (does the assignment chain actually establish the current plaintiff owns the debt); Band 3 — two boundary markers in this corpus: settle-vs-fight (a decision the system surfaces options for, never makes) and the bankruptcy-referral marker described in §1 (the system flags that bankruptcy may be the live question and refers out, full stop).
+- **Confidence tiers per node.** `VALIDATED` / `CORROBORATED` / `DRAFT`, traveling with each node, visible at runtime. A single release will plausibly ship with federal-spine nodes at VALIDATED and a newly-added state's garnishment table at CORROBORATED simultaneously — tier is a node property, not a file property.
+- **Completeness checklists per node (the elicitation engine).** Drives the guided-interview / voice-demo layer in §5.
+- **Consequences-and-next-steps fields.** Never a bare classification — "and here is what to file, by when," structurally required, not prose.
+- **Jurisdiction resolution as a first-class input.** Resolved once, early, gating everything downstream — a national product can't resolve jurisdiction per-file the way the eviction line does.
 
 ---
 
-## 3. Validation pipeline (the industrialized model)
+## 3. Validation pipeline (the industrialized model) — RATIFIED (v2, decision 4)
 
-This is the central departure from the eviction line's item-by-item ratification model. The eviction line put a named attorney's eyes on every individual rule and every golden-set item before release. That doesn't scale to a whole-topic, all-50-state build. The proposal here is to move the attorney from *item-level* review to *system-level statistical accountability* — auditing whether the pipeline as a whole is trustworthy, not re-deriving every node by hand.
+**The statistical sampling audit + disagreement adjudication + attorney release certification model is the named-attorney standard for this track.** Item-by-item ratification, the eviction line's model, is retired for debt — this is Andy's explicit ruling, not a proposal awaiting sign-off. The pipeline below is what that standard consists of.
 
-**(a) Grounded corroboration.** Three independent frontier models each derive the node's answer from cited authoritative source text — not from priors. A model that answers correctly but can't point to the specific statutory or regulatory text it derived the answer from does not count. Citations are mechanically verified against live source text (not just checked for existing — checked for actually saying what the model claims). Consensus counts only across grounded derivations; an ungrounded agreement between models is not consensus, it's correlated guessing.
+**(a) Grounded corroboration.** Three independent frontier models each derive the node's answer from cited authoritative source text — not from priors. A model that answers correctly but can't point to the specific statutory or regulatory text it derived the answer from does not count. Citations are mechanically verified against live source text. Consensus counts only across grounded derivations.
 
-**(b) Adversarial generation.** Models attack each node with edge cases designed to break it — this is Direction D-4's method (standing adversarial self-critique, defined in `DIRECTION_D_ROADMAP.md` for the eviction line) applied as a first-class pipeline stage here rather than a periodic pass.
+**(b) Adversarial generation.** Models attack each node with edge cases designed to break it — Direction D-4's method (`DIRECTION_D_ROADMAP.md`), applied as a first-class pipeline stage here rather than a periodic pass.
 
-**(c) Mutation testing.** Deliberately corrupted copies of a rule (flip a subsection reference, change a day count, invert a threshold) must be caught by the eval suite, run against dev sets only — never a burned held-out set. This is the same method proposed as Direction D-6/Eng-Hardening Task 6 for the eviction line's own scorer; here it's a pipeline stage from day one rather than a later-added pilot.
+**(c) Mutation testing.** Deliberately corrupted copies of a rule must be caught by the eval suite, run against dev sets only — never a burned held-out set. The same method proposed as Eng-Hardening Task 6 for the eviction line's scorer; a pipeline stage from day one here.
 
-**(d) Disagreement queue.** Every model-vs-model or model-vs-source conflict auto-files with evidence attached (the item, both outputs, the source text, a candidate classification of what kind of conflict it is). This is Direction D-2 for the eviction line, generalized; the debt project should build this component once and let both lines use it rather than building two.
+**(d) Disagreement queue.** Every model-vs-model or model-vs-source conflict auto-files with evidence attached. Direction D-2, generalized — build once, both lines use it.
 
-**(e) Statistical sampling audit.** Per release, a stratified random sample audited *blind* by the attorney (the attorney doesn't see which model/pipeline stage produced an answer before judging it), with results published regardless of outcome — a bad sample result gets published, not quietly re-run. **Stratification variables:** band (1/2/3), tier (VALIDATED/CORROBORATED/DRAFT), jurisdiction, and traffic-weight (sample more heavily from nodes real users actually hit, not uniformly across the corpus). **Sample size:** this spec proposes starting from a target margin of error of ±5% at 95% confidence for each stratum's error-rate estimate, which for a binary correct/incorrect judgment needs roughly n≈385 per stratum at the most conservative (50/50) assumption, scaling down as the true error rate moves away from 50%; for strata too small to hit that (a low-traffic jurisdiction's Band 3 nodes, for instance) the audit should report the achieved confidence interval honestly rather than pretend the same precision was reached — this mirrors the eviction line's insistence on stating what a sample size can and cannot certify (§8). **This is a proposal, not a determination — Andy should treat the specific numbers as a starting point for discussion, not a settled design.**
+**(e) Statistical sampling audit.** Per release, a stratified random sample audited *blind* by the attorney, results published regardless of outcome. **Stratification variables:** band, tier, jurisdiction, traffic-weight. **Sample size:** target ±5% margin of error at 95% confidence per stratum, which needs roughly n≈385 at the conservative 50/50 assumption, less as the true error rate moves away from 50%. Strata too small to hit that report the achieved confidence interval honestly rather than claim precision not actually reached. See §8 for how this interacts with the ratified 99% target specifically.
 
-**(f) Adjudication lane.** Human judgment reserved for what (d) and (e) surface — disagreements and audit failures — not for routine review of clean nodes. This is the mechanism that makes system-level accountability actually possible: the attorney's time goes to the cases that need judgment, not to re-deriving what three grounded models and mechanical citation verification already agree on.
+**(f) Adjudication lane.** Human judgment reserved for what (d) and (e) surface, not routine review of clean nodes.
 
-**(g) Attorney release certification.** A named attorney certifies the release based on (a)–(f)'s aggregate evidence, not a node-by-node signoff. This is the structural change from the eviction line's ratification model that the whole pipeline exists to make defensible.
+**(g) Attorney release certification.** A named attorney certifies the release based on (a)–(f)'s aggregate evidence, not a node-by-node signoff.
 
-**Carried over as law, unconditionally, same as the eviction line:** dual-reporting of any score with a post-correction version (never a solitary corrected number), SHA-frozen artifacts, held-out sets burned after one use, published errata (including errata to the golden set's own ground truth, not just to the rules).
+**Carried over as law, unconditionally, same as the eviction line:** dual-reporting of any score with a post-correction version, SHA-frozen artifacts, held-out sets burned after one use, published errata.
 
-**AMPVR metric.** *[Gap-flagged.]* Referenced in the directive with a "target trajectory" but not defined anywhere available to this session. Placeholder only — needs the actual metric definition from `CJAC_ROADMAP.md` before this section can specify a target.
+**AMPVR metric.** *[Gap-flagged.]* Still undefined anywhere available to this session — placeholder only, needs the actual definition from `CJAC_ROADMAP.md`.
 
 ---
 
 ## 4. Continuous improvement
 
-- **Statute/case watch, auto-generated from the corpus's own pins.** Same design as Direction D-3 for the eviction line (self-generating watchlist from statutory pins, scheduled checks against leginfo/CourtListener-equivalent sources, currency flag → drafted amendment proposal for ratification, never a direct edit). Build once, reuse across both lines where the underlying mechanism is jurisdiction-agnostic.
-- **Usage telemetry → improvement queue.** Collect only what analysis requires: which nodes were hit, which completeness-checklist questions users struggled with or abandoned at, aggregate outcome patterns. **Privacy bound: no user content retention beyond what a given analysis needs, no PII** — this needs to be a hard architectural constraint (e.g., telemetry events reference node IDs and coarse outcome categories, not free-text user answers), not a policy promise layered on top of a system that could retain more.
-- **Tier-promotion rules.** What moves a node DRAFT → CORROBORATED: passing (a)–(d) above with no unresolved disagreement. What moves CORROBORATED → VALIDATED: surviving a statistical sampling audit (e) at the attorney's certification. What demotes a node: a statute/case-watch hit that changes the underlying law, an audit failure, or a mutation-testing miss that reveals the eval suite wasn't sensitive enough to have caught the current encoding if it were wrong — demotion is not a punishment, it's the system being honest that its own confidence needs to be re-earned.
-- **Freshness SLAs per module and a decommissioning rule.** Each module (federal spine, per-state SOL table, per-state garnishment table, etc.) needs a stated maximum staleness before it's pulled from VALIDATED status automatically, and a rule for retiring a module entirely if it's no longer maintained rather than letting it silently rot at a stale VALIDATED label.
+- **Statute/case watch, auto-generated from the corpus's own pins.** Same design as Direction D-3 — build once, both lines use it where jurisdiction-agnostic.
+- **Usage telemetry → improvement queue.** Collect only what analysis requires — node IDs and coarse outcome categories, never free-text user answers or PII. Hard architectural constraint, not a policy layered on top of a system that could retain more.
+- **Tier-promotion rules.** DRAFT → CORROBORATED: passes (a)–(d) with no unresolved disagreement. CORROBORATED → VALIDATED: survives the sampling audit (e) at attorney certification. Demotion triggers: a statute/case-watch hit, an audit failure, or a mutation-testing miss revealing the eval suite wasn't sensitive enough — demotion is the system re-earning its own confidence, not a punishment.
+- **Freshness SLAs per module and a decommissioning rule.** Stated maximum staleness before automatic pull from VALIDATED; a rule for retiring an unmaintained module rather than letting it rot at a stale label.
 
 ---
 
 ## 5. Demo and evaluation harness
 
-Two layers, sharing one machinery:
+Two layers, one machinery — built in parallel with the thin slice, not after it (see §10).
 
-**(a) Frozen randomized question sets.** SHA-anchored, one-shot scored, per the eviction line's golden-set discipline (`VALIDATION_PHILOSOPHY.md`) — held out, burned after one use, dual-reported if corrected.
+**(a) Frozen randomized question sets.** SHA-anchored, one-shot scored, held out, burned after one use, dual-reported if corrected.
 
-**(b) The scenario voice demo.** A non-attorney verbally describes a debt situation; the system elicits facts per the completeness checklists (§2) and answers with tier-labeled, cited output — the tier label is not cosmetic, it's the user-facing expression of the confidence-tier architecture in §2.
+**(b) The scenario voice demo.** A non-attorney verbally describes a debt situation; the system elicits facts per the completeness checklists (§2) and answers with tier-labeled, cited output. **The demo shows the whole tree honestly, tier labels on** — including CORROBORATED/DRAFT nodes outside the VALIDATED thin slice (v2 §2 requirement).
 
-**Both layers should be the same machinery**, built on the Direction E Tier 2 harness design (hidden fact sheets, persona tiers, elicitation-coverage scoring). *[Gap-flagged — the Direction E directive itself hasn't been committed or supplied to this session, so this spec cannot describe that harness's actual mechanics; it can only say the demo and the lower-bound eval should share infrastructure rather than be built twice, which is a design principle independent of the harness's specifics.]*
+**Both layers are the Direction E Tier 2 harness (hidden fact sheets, persona tiers, elicitation-coverage scoring) pointed at debt.** *[Gap-flagged and load-bearing — see §10/§11. This spec cannot describe that harness's mechanics because the Direction E directive hasn't been committed or supplied. Building the harness therefore has a hard external dependency this spec cannot resolve on its own.]* Voice interaction via the skill, in the standard interface.
 
-**All demo correctness claims pre-registered before any external showing** — what the demo will claim to do, and at what tier, committed and dated before anyone outside the project sees it. This is the discipline that makes the demo compatible with §9's governance line rather than a UPL and FTC-substantiation risk in its own right (see DoNotPay, §9).
+**All demo correctness claims pre-registered and SHA-anchored before any external showing.**
 
 ---
 
 ## 6. Runtime and distribution
 
-- **Anthropic skill/plugin environment first.** Fastest path to something a non-attorney can actually interact with, given the existing Cowork/Claude toolchain this whole project already runs on.
-- **Model-agnostic core.** The JSON encoding and eval suite must run anywhere — no runtime lock-in to a single model provider, consistent with the eviction line's dual/tri-model-consensus discipline (a single-vendor validation pipeline can't corroborate itself).
-- **Zero-IT deployment as a stated design requirement.** A legal-aid org or navigator program should be able to use this without their own engineering staff — this constrains §7's integration choices as much as it constrains the runtime itself.
-- **App vs. plugin analysis.** Recommendation (default, pending evidence otherwise): **plugin/skill**, not a standalone app. Rationale: lower deployment friction (zero-IT requirement above), faster iteration (no app-store review cycle gating a correction), and it keeps the core model-agnostic rather than coupling it to one company's app surface. This default should flip only if evidence emerges that the target users (navigators? direct consumers? — see decision-box item 2) can't or won't reach the tool through a plugin/skill surface.
+- **Anthropic skill/plugin environment first.**
+- **Model-agnostic core.** No runtime lock-in to a single model provider — required for the multi-model verification pipeline (§3, §11) to actually corroborate itself.
+- **Zero-IT deployment as a stated design requirement.**
+- **Two presentation modes over one decision-logic core (v2 decision 2, staged).** Navigator mode (agency/worker in the loop) ships first. Consumer mode (direct) ships only behind the elicitation-testing and ethics gates already defined in §5/§9 — this is a deployment gate, not a build-order preference; both modes can be *specified* and even *demoed* together (a demo is not a deployment), but only navigator mode is cleared to actually go live first.
+- **App vs. plugin analysis.** Default: plugin/skill, not a standalone app — lower deployment friction, faster iteration, keeps the core model-agnostic. Flips only if evidence emerges that navigator or consumer users can't reach the tool through a plugin/skill surface.
 
 ---
 
@@ -133,7 +140,7 @@ flowchart LR
     end
 
     subgraph HumanChannel["Mediated human channel"]
-        I4J["i4J Justice Workers (MDLA model)<br/>navigators"]
+        I4J["i4J Justice Workers (MDLA model)<br/>navigators — SHIPS FIRST (sec 6)"]
     end
 
     subgraph RegVenues["Regulatory / governance venues"]
@@ -151,96 +158,199 @@ flowchart LR
     ROUTER --> ENGINE
     ENGINE -->|"defenses, deadlines"| DAL
     DAL --> LITE
-    ENGINE -.->|"worker-in-the-loop mirrors world (c)"| I4J
+    ENGINE -.->|"navigator mode, ships first"| I4J
     I4J -.->|"training curriculum = coverage checklist"| ENGINE
     HARNESS -.-> UPSOLVE
-    UTAH -.->|"regulatory venue, direct-consumer stage"| Core
-    AZ -.->|"regulatory venue, direct-consumer stage"| Core
+    UTAH -.->|"consumer-mode venue, gated"| Core
+    AZ -.->|"consumer-mode venue, gated"| Core
     ENGINE -.->|"metadata conformance"| LHC
     Core -.->|"funding-fit note only"| LSC
 ```
 
 | System | We consume | We provide | Interface format | Dependency status |
 |---|---|---|---|---|
-| **Spot** (Suffolk LIT Lab) | Plain-narrative → legal-issue classification, upstream of our jurisdiction/issue router | Nothing upstream — pure consumer of Spot's output | Spot's issue-spotter API (governed by the Spot Click-Trust; per Spot's own terms, not for building screening/risk scores unrelated to legal services — our use, issue routing into a legal-help tool, is squarely the intended use) | **Contacted-none** — technically compatible and publicly documented (Spot is an established Suffolk LIT Lab tool with a public API and governance structure), but no outreach has happened. Aspirational until Andy or someone on the project actually contacts LIT Lab. |
-| **Document Assembly Line** (docassemble / Court Forms Online) + **LITEfile** | Nothing — we are upstream of this layer | Our decision output (defenses identified, deadlines, next steps) handed to answer-generation interviews and e-filing | Needs a defined handoff schema — **not yet specified**; propose JSON matching our §2 consequences-and-next-steps fields as the natural starting point, to be validated against actual docassemble interview-variable conventions. docassemble itself should be evaluated as a compile target (can our node output generate a docassemble interview directly, rather than just handing off to a human-built one) | **Aspirational.** LITEfile itself is still in development at the LIT Lab (targeted toward a Dec. 1 launch per their public quarterly updates) — even the target system isn't live yet, so no integration can be built against it today. Court Forms Online / the Assembly Line software are live and public; a handoff into an *existing* docassemble interview is technically feasible now, a compile-target integration is future work. |
-| **i4J Justice Workers** (MDLA model) / navigators | Their public MDLA training curriculum as a requirements checklist — what a trained non-lawyer advocate is taught to cover is a strong proxy for what our completeness checklists (§2) need to cover | Our encoded determinations, as a tool a navigator/advocate uses in the worker-in-the-loop deployment (mirroring the runtime option in §6/world (c): human-mediated rather than direct-consumer) | Not yet specified — likely the same output format as the docassemble handoff, consumed by a human rather than another system | **Aspirational-to-contacted.** i4J's MDLA program (Utah, medical-debt-focused) is live, public, and well-documented; no contact has been made. The public curriculum can be reviewed as a requirements source without any partnership — that part can start immediately, independent of outreach. |
-| **Utah sandbox / Arizona ABS** | Nothing directly — these are regulatory venues, not data or API sources | N/A — not an integration in the technical sense | N/A | **None (governance venue, not a technical dependency).** Relevant only if/when the project considers a direct-consumer stage (decision-box item 2) — Utah's sandbox (extended through 2027) and Arizona's ABS program (100th entity approved Sept. 2024) are the two live U.S. venues that permit exactly the kind of non-lawyer-delivered legal help this project could eventually offer directly. **Governance note:** *Upsolve, Inc. v. James* is the sharpest available lesson on how not to scope this. Upsolve trained non-lawyer "Justice Advocates" to help pro se debt defendants complete a state check-the-box answer form and won a 2022 SDNY preliminary injunction against New York's UPL enforcement — but the Second Circuit **reversed that ruling on September 9, 2025**, holding the program did violate New York's UPL statutes and rejecting the First Amendment pre-enforcement challenge. A carefully scoped, narrowly targeted, well-funded, professionally represented program lost at the appellate level. Any direct-consumer or worker-in-the-loop deployment this project considers needs UPL scoping that doesn't depend on winning a case like that one — see §9. |
-| **Legal Help Commons / JusticeBench** | Their Commons Knowledge Standards (jurisdiction, issue, language, provenance, license, citation) as the metadata schema our corpus should already be conformant with, since our `VALIDATED_RESOURCES_REGISTRY.md`-style provenance tracking overlaps heavily with what the Commons standardizes; JusticeBench's LIST taxonomy (1,100+ stable-ID legal issue codes) as a candidate standard vocabulary for issue classification, feeding from and into Spot's issue-spotting output | A JusticeBench listing once the project has something listable (dataset, benchmark, or tool) | Commons Knowledge Standards field set; LIST issue codes | **Contacted-none for Commons/JusticeBench directly, but low-friction** — both are explicitly open, actively soliciting contributions, and publicly documented (JusticeBench is live at justicebench.org). Runs through Andy's channel per the directive. Conforming our metadata schema to the Commons standard can start immediately as an internal design choice, independent of any outreach. |
-| **LSC TIG** | Nothing technical | N/A | N/A | **Funding-fit note only**, per the directive. LSC's Technology Initiative Grant program (established 2000, 900+ grants totaling $90M+ to date) funds *existing LSC grantees'* technology projects — CJaC/the debt project is not itself an LSC grantee, so direct TIG eligibility would require a grantee partner. Worth tracking as a funding model, not a technical integration. |
+| **Spot** (Suffolk LIT Lab) | Plain-narrative → legal-issue classification, upstream of our jurisdiction/issue router | Nothing upstream | Spot's issue-spotter API (Spot Click-Trust-governed; our use — issue routing into a legal-help tool — is the intended use) | **Contacted-none.** Publicly documented, technically compatible; no outreach has happened. |
+| **Document Assembly Line** (docassemble / Court Forms Online) + **LITEfile** | Nothing — we are upstream | Decision output (defenses, deadlines, next steps) to answer-generation interviews and e-filing | Handoff schema **not yet specified**; propose JSON matching §2's consequences-and-next-steps fields as the starting point. docassemble should be evaluated as a compile target. | **Aspirational.** LITEfile is still in development at the LIT Lab (targeted toward a Dec. 1 launch per their public updates) — not live yet. Court Forms Online / Assembly Line software are live; a handoff into an existing interview is feasible now. |
+| **i4J Justice Workers** (MDLA model) / navigators | Public MDLA training curriculum as a requirements checklist for completeness-checklist coverage (§2) | Encoded determinations for the navigator-mode deployment (§6, ships first) | Not yet specified — likely the docassemble-handoff format, consumed by a human | **Aspirational-to-contacted.** Live, public, well-documented; no contact made. Curriculum review as a requirements source can start immediately, independent of outreach. Highest-relevance partner given navigator mode ships first. |
+| **Utah sandbox / Arizona ABS** | Nothing directly — regulatory venues | N/A | N/A | **None (governance venue).** Relevant if/when consumer mode clears its gate (§6). Utah's sandbox (extended through 2027) and Arizona's ABS program (100th entity approved Sept. 2024) are the two live U.S. venues permitting this kind of non-lawyer-delivered help directly. **Governance note:** *Upsolve, Inc. v. James* — Upsolve's non-lawyer "Justice Advocates" helped pro se debt defendants complete a check-the-box answer form and won a 2022 SDNY injunction against NY's UPL enforcement, but the **Second Circuit reversed on September 9, 2025**, holding the program violated NY's UPL statutes and rejecting the First Amendment challenge. A narrow, well-funded, professionally represented program lost at the appellate level — read as evidence that UPL scoping needs to survive a hostile posture, not a sympathetic one. See §9. |
+| **Legal Help Commons / JusticeBench** | Commons Knowledge Standards (jurisdiction, issue, language, provenance, license, citation) as the metadata schema our corpus should conform to; JusticeBench's LIST taxonomy (1,100+ codes) as a candidate issue-classification vocabulary | A JusticeBench listing once something is listable | Commons Knowledge Standards field set; LIST issue codes | **Contacted-none, low-friction.** Both explicitly open and soliciting contributions. Runs through Andy's channel. Metadata-schema conformance can start immediately as an internal design choice. |
+| **LSC TIG** | Nothing technical | N/A | N/A | **Funding-fit note only.** Funds *existing LSC grantees'* tech projects; CJaC/debt isn't itself a grantee, so eligibility needs a grantee partner. |
 
 ---
 
-## 8. Reliability targets and measurement
+## 8. Reliability targets and measurement — RATIFIED target, with the measurement-honesty section v2 requires
 
-- **Per-tier published error-rate reporting.** Every VALIDATED, CORROBORATED, and DRAFT tier gets its own published error rate from the statistical sampling audit (§3(e)), not one blended number for the whole system.
-- **Proposed operational definition of "near-perfect" for VALIDATED Band 1 nodes** *(for Andy's ratification, not a determination this spec makes unilaterally)*: a Band 1 node (bright-line, machine-determinable) at VALIDATED tier should demonstrate a sampling-audit error rate with an upper confidence bound below some small stated threshold (this spec proposes discussing a number in the 1–2% range as a starting point, matching the kind of precision the eviction line's dev-set gates already demonstrate at n=12, but that n is far too small to certify a population-level 1–2% rate with real confidence — see the honest caveat below). **The honest statistical caveat:** with the sample sizes realistically achievable per release (§3(e)'s stratified audit), "near-perfect" can be *demonstrated as not yet falsified* at a given confidence level — it cannot be *proven* in the sense of a guarantee. A published error-rate report should always state the achieved confidence interval, not just a point estimate, and should say plainly when a stratum's sample size is too small to support the headline claim.
-- **Demo claims held to the same standard** — no lower bar for what's shown in a demo than what's published for the system generally, per §5's pre-registration requirement.
+**Ratified target (v2, decision 3): 99% on VALIDATED nodes**, measured per-tier and per-band on adequately-powered samples, dual-reported per house law. **Long-term aspiration: five-nines-class reliability, framed as an engineering-process standard** — achieved and described the way enterprise infrastructure achieves it (defect prevention, redundancy, monitoring, regression discipline), not as a statistically-certified per-node accuracy figure. Those are two different kinds of claim, and this section exists to keep them from being conflated with each other in any published material.
+
+### What sample sizes can and cannot certify
+
+Two different statistical situations apply here, and the spec needs to be precise about which one is in play for any given published number:
+
+**Estimating an error rate (the normal case).** For a stratum where some errors are expected and the audit is measuring the rate, the standard margin-of-error formula applies: n≈385 gets a ±5% margin at 95% confidence on a 50/50 prior, tightening as the observed rate moves toward 0 or 100%. To tighten the margin to ±2% needs roughly n≈2,400 at the same confidence level. This is expensive at debt-corpus scale (many strata × many jurisdictions) and is the reason §3(e) proposes traffic-weighting the sample rather than sampling uniformly.
+
+**Certifying a zero-defect claim (the relevant case for "99%" and beyond).** If an audit sample of size *n* finds **zero** errors, the standard "rule of three" approximation gives a 95%-confidence upper bound on the true error rate of roughly 3/*n*. Concretely:
+
+| Zero-defect sample size | 95%-confidence upper bound on true error rate | What that supports claiming |
+|---|---|---|
+| n = 100 | ≈ 3% | Cannot support a 99% (1% error) claim |
+| n = 300 | ≈ 1% | Just supports "consistent with ≤1% error, 95% confidence" — the ratified 99% target, at the edge |
+| n = 385 (the §3(e) baseline) | ≈ 0.78% | Comfortably supports the 99% target |
+| n = 3,000 | ≈ 0.1% | Supports a "99.9%"-class claim |
+| n ≈ 300,000 | ≈ 0.001% | The scale a genuine five-nines (99.999%) statistical certification would need — not achievable at this project's sampling-audit scale |
+
+**This is the honest basis for treating "five-nines" as a process aspiration rather than a statistical claim.** No realistic per-release sampling audit reaches n in the hundreds of thousands per stratum; five-nines-class reliability, if claimed, has to be claimed the way an enterprise SLA is claimed — as a description of the engineering discipline producing the system (the pipeline in §3, the CI/regression discipline extended from Eng-Hardening, sustained defect-free operation over time and volume) — never as "our sampling audit found this." **Exact claim language permitted at each evidence level:**
+
+- **n < 300, zero defects, or any nonzero defect count at any n:** report the point estimate and confidence interval; no "near-perfect" or percentage-based marketing language. State the interval, state the n, state the stratum.
+- **n ≥ 300–385, zero defects:** "consistent with ≤1% error rate at 95% confidence, n = [n]" — the 99% target, stated with its actual basis, not asserted as a fact about the population.
+- **n ≥ 2,400+, zero defects, sustained across multiple releases:** "consistent with ≤0.1%+ error rate at 95% confidence" language becomes available, still always with n and confidence level stated.
+- **Five-nines-class language:** permitted only as a description of engineering *process* (with the specific practices named — defect prevention, redundancy, monitoring, regression gating), explicitly never presented as a sampling-audit-certified accuracy figure. Any published material using "five-nines" language without this distinction is a compliance error under this spec's own discipline.
+
+**Demo claims held to the same standard** — no lower bar for what's shown in a demo than what's published for the system generally, per §5's pre-registration requirement.
 
 ---
 
 ## 9. Governance and ethics
 
-- **Information-vs-advice line under interactive use.** The eviction line's DISCLAIMER.md discipline (legal information, not legal advice; VALIDATED-only for real-person deployment) extends here, but interactivity raises the stakes: a voice demo that elicits facts and returns a tailored, cited answer sits much closer to the advice line than a static rules file. The line needs to be drawn and defended explicitly in the spec's next revision, not assumed to carry over automatically.
-- **UPL scoping — tight, Upsolve-style boundaries on any output that approaches advice.** *Upsolve, Inc. v. James* is the load-bearing precedent here (see §7 governance note): a narrow, well-resourced, non-lawyer-assistance program lost at the Second Circuit in September 2025. That should be read as evidence that "narrow and well-intentioned" is not sufficient insulation — scoping needs to be tight enough to survive a hostile UPL enforcement posture, not just a sympathetic one.
-- **The DoNotPay enforcement action as the anti-pattern the claims discipline exists to avoid.** The FTC's settlement with DoNotPay (finalized January 2025: $193,000 payment, mandatory notice to 2021–2023 subscribers about the limitations of its law-related features, and a forward-looking bar on claiming to substitute for a professional service without evidence) is a federal-level warning specifically about *overclaiming AI legal capability* — distinct from and additional to the state-level UPL risk in the Upsolve line. This project's tier-labeling discipline (§2) and pre-registration requirement (§5) exist specifically so that no claim made about the system — in the demo, in outreach collateral, anywhere — outruns what the validation pipeline has actually demonstrated. "Corroborated, not validated" (the eviction line's own phrase, from `README.md`) is exactly the right register; DoNotPay's failure was claiming "human lawyer" when the evidence didn't support it.
-- **Named-attorney accountability at the release level**, per §3(g) — the pipeline changes how the attorney's judgment is spent, not whether a named, licensed attorney is accountable for each release.
-- **Open-source licensing** — Apache 2.0, consistent with the eviction line, unless Andy decides otherwise for this track specifically (see decision-box item 6, project naming, which may bear on this).
+- **Information-vs-advice line under interactive use.** The eviction line's DISCLAIMER.md discipline (legal information, not legal advice; VALIDATED-only for real-person deployment) extends here, but interactivity raises the stakes — a voice demo that elicits facts and returns a tailored, cited answer sits closer to the advice line than a static rules file. The staged rollout in §6 (navigator mode first) is this project's primary practical mitigation while that line gets drawn precisely: a human intermediary in the loop for the first deployment stage, direct-consumer exposure deferred until the ethics and elicitation-testing gates clear.
+- **UPL scoping — tight, Upsolve-style boundaries on any output that approaches advice.** *Upsolve, Inc. v. James* is the load-bearing precedent (§7): a narrow, well-resourced, non-lawyer-assistance program lost at the Second Circuit in September 2025. "Narrow and well-intentioned" is not sufficient insulation — scoping needs to survive a hostile UPL enforcement posture.
+- **The DoNotPay enforcement action as the anti-pattern the claims discipline exists to avoid.** FTC settlement, finalized January 2025: $193,000 payment, mandatory notice to 2021–2023 subscribers, forward-looking bar on claiming to substitute for a professional service without evidence. Federal-level warning about *overclaiming AI legal capability*, distinct from and additional to the state-level UPL risk. This project's tier-labeling (§2), pre-registration (§5), and the §8 claim-language table exist specifically so no claim outruns what the pipeline has actually demonstrated.
+- **Named-attorney accountability at the release level**, per §3(g).
+- **Open-source licensing** — Apache 2.0, consistent with the eviction line, under the CJaC umbrella naming resolved below.
 
 ---
 
-## 10. Phasing and resource estimate
+## 10. Sequencing: demo-first thin slice (supersedes v1's corpus-complete-first phasing)
+
+**Do not sequence corpus-complete → then demo.** A thin vertical slice at full depth, then breadth behind it.
+
+### The slice
+
+Highest-traffic path: person served with (or fearing) a collection lawsuit → jurisdiction + claim-type resolution → SOL/time-bar determination → answer deadline + filing mechanics → affirmative defenses screen (limitations, standing/chain-of-title flag as a Band 2 structure, identity) → FDCPA validation/dispute rights where pre-suit → consequences-and-next-steps output.
+
+**The slice ships at VALIDATED tier** (full pipeline §3(a)–(g)); everything else in the tree may exist at CORROBORATED/DRAFT with tiers visible — the demo shows the whole tree honestly (§5).
+
+### Coverage: federal spine + 5 anchor states — proposed, with an honest data gap flagged
+
+Candidates per the directive: **TX, CA, NY, UT, AZ.** This spec's assessment of each, and where the justification is solid versus where it's a reasoned guess rather than data:
+
+- **UT and AZ — solid, non-volume rationale.** Both host live regulatory venues (Utah's sandbox, extended through 2027; Arizona's ABS program, 100th entity approved September 2024) that are directly relevant if/when consumer mode clears its gate, and both host i4J (University of Arizona + University of Utah), the source of the medical-debt specialization corpus (§1) and the MDLA navigator-mode precedent (§7). Including these two is justified independent of raw lawsuit volume.
+- **CA — solid, infrastructure rationale.** The eviction line's existing methodology, tooling, and institutional experience are CA-first; reusing that muscle memory for the debt line's first non-federal state lowers execution risk regardless of CA's exact debt-suit volume ranking.
+- **TX and NY — volume rationale, not yet data-backed.** Both are commonly cited in consumer-law literature as high-volume debt-litigation states, and NY carries specific regulatory-venue relevance as the *Upsolve v. James* jurisdiction (an argument that cuts two ways — familiar terrain, but also the state that just produced the sharpest UPL loss on record). **This spec does not have hard per-state debt-lawsuit volume data in hand** to rank TX and NY against alternatives (e.g., states more heavily represented in the underlying Pew dataset, or high-volume states identified by NCSC's Court Statistics Project). **Recommendation: pull actual per-state filing-volume data before finalizing the fifth state** — this is a cheap, fast research task, not a reason to delay the rest of Phase A, but the spec shouldn't claim a data-driven ranking it doesn't have.
+
+### Harness built in parallel, not after
+
+The demo harness (§5) is a Phase A workstream, concurrent with the slice's encoding — not a Phase B addition. This is contingent on the Direction E Tier 2 harness design existing (gap-flagged, §5) — **if that document isn't available by the time Phase A starts, harness work is blocked on it specifically, and that blockage should be visible in the project's queue health (§11), not quietly absorbed into slower overall progress.**
+
+### Dated critical path — an honest planning estimate, not a promise
+
+This spec produces a range, explicitly distinguishing **active-work time** (assuming the multi-agent lanes in §11 run close to continuously) from **calendar time** (which the eviction line's own history shows can run much longer — real gaps of weeks between active sessions have already occurred on that line). The estimate below is calibrated loosely against that same eviction-line history as the only real velocity data this project has:
+
+| Phase | What | Active-work estimate | Real bottleneck |
+|---|---|---|---|
+| A | Corpus scaffold + federal-spine encoding (parallel lanes b, c per §11) | 2–4 weeks | Verification throughput (§3a–d), not generation speed |
+| B | 5-state layer tables, run in parallel not sequentially | 2–4 weeks (overlapping with A once the pipeline exists) | Same — grounded corroboration + citation-check capacity |
+| C | Demo/eval harness build | 2–3 weeks, parallel with A/B | **Hard-blocked on the Direction E Tier 2 harness document existing** — this is a schedule risk this spec cannot estimate around |
+| D | Statistical sampling audit + blind attorney review + certification | Not AI-cycle-bound — gated on Andy's/the certifying attorney's available review hours | **The single biggest true unknown** — this spec cannot estimate Andy's calendar on his behalf |
+| E | Demo hardening, claims pre-registration | 3–5 days once A–D clear | — |
+
+**Rough total, active-work time, phases A–C+E only: 6–10 weeks**, assuming continuous multi-lane operation and the Direction E harness document arriving early enough not to block Phase C. **Phase D (attorney review) sits outside that estimate entirely** and is realistically the phase most likely to stretch calendar time well beyond the active-work figure — the eviction line's own blind-review and ratification cycles have taken anywhere from same-day to multi-week in practice. **Earliest credible demo date: this spec will not print a calendar date**, because doing so would either bake in an assumption about Andy's own review bandwidth or the Direction E document's arrival — both outside this spec's authority to assume. Once those two variables are known, the active-work estimate above converts to a real date in a single conversation.
+
+---
+
+## 11. Execution model — multi-agent, single-orchestrator
+
+One orchestrator, parallel worker lanes, a multi-model verification pipeline. Not a swarm — every lane's output passes through one integration point before it's real.
+
+### One writer
+
+**Cowork is the single orchestrator and the only repo writer.** All agent outputs land as artifacts with provenance metadata; Cowork integrates them. This is what keeps the provenance/hash system intact — the same discipline that made every patch in this project's history verifiable against a fresh clone before Andy applied it. No exceptions, including under time pressure.
+
+### Parallel worker lanes
+
+Separable work, run concurrently, each producing artifacts to a task queue rather than writing directly:
+
+- **(a) Corpus harvest.** State-layer lanes are embarrassingly parallel — each state's SOL/deadline/exemption table (with per-fact source pins) is independent of every other state's, so this lane scales with however many can be usefully run without outrunning verification capacity (see queue-health note below).
+- **(b) Federal-spine encoding.** One jurisdiction-agnostic lane — FDCPA/Reg F/FCRA nodes, Band-tagged.
+- **(c) Demo/eval harness build.** Blocked on the Direction E Tier 2 harness document per §10 — this lane cannot start meaningfully until that dependency clears.
+- **(d) Adversarial red-team lane.** Attacks encoded nodes as they land from (a)/(b), files findings into the disagreement queue (§3d) — this is §3(b)'s adversarial-generation stage running as a standing lane rather than a discrete pipeline step.
+
+**Sizing rule: size parallelism to what can be integrated and verified, not what can be generated.** This is the project's own standing queue-health discipline (`COWORK_DIRECTION_A_CADENCE_AUTONOMY.md`: NOW / depth of NEXT / what's BLOCKED and on what; if NEXT is shallow, say so and propose refill) applied to lane throughput specifically — generation racing ahead of verification just grows an unverified backlog, which is worse than not generating, because it creates the appearance of progress without the substance.
+
+### Verification pipeline (multi-model by design)
+
+- Drafting by one model family.
+- Grounded derivation by three independent frontier models (§3a) — each must derive from cited source text, mechanical citation checks against live sources, consensus counts only on grounded derivations.
+- **Model-family separation**: between generators and verifiers, and between demo persona actors and the system under test. *[The specific separation rule is stated in the v2 directive as "per the Direction E rule" — this spec cannot reproduce Direction E's actual specification since that document doesn't exist in the repository; the principle (don't let the same model family both generate and verify, or both play the demo persona and answer as the system) is stated here as this spec's best understanding of the requirement, to be corrected against the real Direction E text once available.]*
+
+### No agent ratifies anything
+
+Tier promotion to VALIDATED happens only through the sampling-audit + certification lane (§3e, §3g). Agents propose; the pipeline corroborates; the attorney certifies releases. This is the same principle as the eviction line's "no rule edits without ratification," restated for a multi-agent context where the temptation to let a high-confidence agent output self-promote is structurally higher.
+
+### Task-queue design, budgets, provenance, integration
+
+- **Task queue.** Each lane pulls from and writes to a queue analogous to the eviction line's existing `rules/validation/queue/` job-file pattern — extend that mechanism rather than building a new one, since it already has the dispatcher/heartbeat/logging discipline this project needs.
+- **Per-lane budget/quota controls.** Each lane needs a stated cap (API calls, model-cycles, or wall-clock budget per run) so that a runaway or misconfigured lane can't silently consume disproportionate resources or flood the verification bottleneck. Specific numbers are a Phase A implementation detail, not fixed here.
+- **Artifact provenance schema.** Every lane output carries: lane ID, source model(s), timestamp, input corpus version/SHA, and a status flag (proposed / verified / rejected) — extending `VALIDATED_RESOURCES_REGISTRY.md`'s per-fact provenance fields (§1) to per-artifact provenance at the pipeline-output level.
+- **Integration/reconciliation step.** Before any lane's output is merged, Cowork runs: (1) schema validation against §2's node format, (2) a check that claimed provenance actually resolves (the cited source text exists and says what's claimed), and (3) a merge-conflict check against any other lane's concurrent output touching the same node. Only after all three does an artifact enter the pipeline stages proper (§3).
+
+---
+
+## 12. Naming and repository structure — proposed, not executed
+
+**Ratified (v2, decision 6): CJaC umbrella with subprojects.** Documentation and, as needed, repo layout restructure toward `cjac/eviction/` and `cjac/debt/` (or equivalent), with shared assets — validation methodology, schemas, house rules — at the umbrella level.
+
+**Proposed structure:**
 
 ```
-Spec (this document, Andy's review)
-   |
-Corpus scaffold — registry schema extended for debt; federal-spine source list finalized
-   |
-Federal-spine encoding — FDCPA/Reg F/FCRA nodes, Band-tagged, all 5 pipeline stages (a)-(e) run
-   |
-State-layer tables — SOL/answer-deadline/exemption/service tables, 50 states + DC, same pipeline
-   |
-Validation runs — statistical sampling audit at release scale; attorney certification
-   |
-Demo hardening — voice demo built on the shared harness (sec 5), claims pre-registered
+cjac/
+  eviction/        <- current rules/, docs/ eviction-specific content, playbooks/, demos/ (eviction)
+  debt/             <- new debt corpus, rules, docs, demo harness
+  shared/           <- VALIDATION_PHILOSOPHY.md, SCHEMA_V2_DESIGN_SPEC.md, house-law docs (dual-reporting,
+                       SHA-freezing, held-out discipline), the eviction line's reusable pipeline components
+                       (Direction D-2 disagreement queue, D-3 statute watch) once genuinely shared
 ```
 
-Per-phase AI-cycle and cost estimates are not included in this draft — they depend on decisions in the box below (v1 scope slice, demo user) that materially change the corpus size and pipeline run count. **This spec recommends Andy resolve decision-box items 1–2 before a phase-by-phase cost estimate is attempted**, since estimating before scope is set would produce a number anchored to an assumption rather than a decision.
-
-**Critical path (structural, independent of the open decisions):** corpus assembly and the validation pipeline build must both exist before any state-layer encoding can be VALIDATED-tier, because the pipeline is what promotes a node's tier — there's no path to a credible demo that skips straight from corpus to demo without the pipeline stages in between actually running.
-
-**Earliest credible demo date:** not estimated in this draft, for the same reason as the cost estimates — a credible date requires the v1 scope slice decision first.
+**A flagged conflict on contact with reality, not silently resolved:** v2 states nothing should be "renamed in a way that breaks published hashes or links" — but the eviction line's actual file layout is deeply embedded outside the repo itself: the LaunchAgent plist's absolute paths, the dispatcher and scorer scripts' relative-path assumptions, and dozens of cross-references inside the docs themselves. **This project has direct, recent history with exactly this class of risk** — the July dispatcher outage was caused by a *folder relocation* (`~/Documents/GitHub/a2j-ai` → `~/Developer/a2j-ai`) interacting badly with macOS's background-process permissions, and took a multi-day diagnostic effort to root-cause. A physical repo-layout restructure (moving `rules/`, `docs/`, etc. under `cjac/eviction/`) is the same class of change at a different scope, with the dispatcher plist as a concrete, known failure point. **Recommendation: treat physical restructuring as its own carefully planned, separately scheduled migration task — not something bundled into Phase A build work — while the documentation-level "CJaC umbrella, debt subproject" framing (this section, plus a README update) can happen immediately and cheaply, with zero physical file moves.** Nothing has been moved in this commit; this section is the proposal for Andy's approval before any move happens.
 
 ---
 
-## Andy-decision checklist (open items — not resolved by this spec)
+## Decisions — ratified 2026-08-24/25 (v2), baked into the sections above
 
-1. **v1 scope slice.** Collection-suit defense + pre-suit collector interactions (this spec's working assumption, per the directive's framing) vs. a broader scope including garnishment, medical-debt specialization, or a bankruptcy-referral boundary. Recommended: the narrower slice, on the same logic the eviction line used (CA-notice-first) — but this is Andy's call, not a default this spec should be read as having already made.
-2. **Demo user.** Navigator/agency worker (worker-in-the-loop, mirrors the i4J MDLA model, arguably lower UPL exposure) vs. direct consumer (higher UPL exposure per §7/§9, but closer to the project's stated end goal of "a non-attorney can interact with it directly"). This determines which persona tiers gate the demo in §5.
-3. **The "near-perfect" number and its measurement (§8).** This spec proposes a discussion starting point (1–2% error-rate upper bound for VALIDATED Band 1) but does not set it.
-4. **Ratification of the sampling-audit + adjudication + release-certification model (§3) as satisfying the named-attorney standard.** This is the single biggest structural departure from the eviction line and needs Andy's explicit sign-off, not an assumption that it's equivalent.
-5. **Sequencing vs. the eviction line and the outreach calendar.** See the appendix below for the eviction line's current, fresh-eyes state — this spec does not assume either line has priority.
-6. **Project naming** — same CJaC banner vs. a named sub-project. Bears on §9's licensing note and on how the integration-map partners (§7) would refer to the project if any outreach happens.
+1. **Scope: BROADER** — see "Why debt," §1.
+2. **Users: BOTH, staged** — navigator mode ships first, consumer mode gated — see §6, §9.
+3. **Reliability target: 99% on VALIDATED nodes**, five-nines-class as process aspiration — see §8.
+4. **Human model: RATIFIED** — sampling audit + adjudication + certification is the named-attorney standard — see §3.
+5. **Priority: DEBT IS TOP PRIORITY. Eviction line: HOLD** — logged in the state-of-record with today's date; see the appendix below and the standalone `WORK_QUEUE.md`/`PROJECT_STATE_OF_RECORD.md` entries delivered alongside this spec.
+6. **Naming: CJaC umbrella with subprojects** — structure proposed, not executed — see §12.
+
+### Genuinely unresolved, flagged rather than guessed
+
+- **The fifth anchor state (TX vs. NY vs. an alternative)** lacks hard per-state volume data in this session — §10.
+- **Direction E Tier 2 harness dependency** blocks Phase C (demo harness) and this spec's own §5/§11 content until that document exists — §5, §10, §11.
+- **Physical repo restructuring** is proposed but flagged as its own migration risk, given this project's direct history with folder-relocation failures — §12.
+- **"Keep-warm" assumption about the eviction line's monitoring** (v2 item 5 calls it "cheap, preserves freshness data," implying continuous operation) — see the appendix below for what the actual cadence has looked like; it has not been continuous, independent of today's hold.
 
 ---
 
-## Appendix: Eviction-line state-of-record (as of 2026-08-24, for sequencing context only)
+## Appendix: Eviction-line state-of-record — ON HOLD as of 2026-08-25
 
-*Prepared fresh from the live repository, not from memory of past sessions. This appendix makes no recommendation about sequencing — that's decision-box item 5.*
+*Prepared fresh from the live repository. This is the "same-day" hold logging the v2 directive requires; see also the standalone updates to `WORK_QUEUE.md` and `PROJECT_STATE_OF_RECORD.md`.*
 
-**Active rules version:** `ca_eviction_v3.json` remains the sole active version. No v4 exists. vProof1 (`ca_eviction_v2.json`, SHA `cc0cfab63ae1591e2b88…`) remains byte-frozen and untouched, as it has throughout.
+**Status: HOLD, effective 2026-08-25, per Andy's priority directive (v2, decision 5).** No new eviction drafting, freezes, or v0.4 work until Andy re-opens it. Keep-warm (dispatcher + scheduled monitoring) continues.
 
-**Automated dev-set regression monitor (Direction D-1):** confirmed running on cadence through **2026-07-26** — four consecutive clean runs logged (07-20, 07-23, 07-26, each 12/12 = 100%, DUAL-MODEL-CONSENSUS, α = 1.0, `newly_failing: 0`). **No dev-set run is logged in the repository after 2026-07-26**, and no commit of any kind has landed since **2026-07-27** (`5f499fd`, a routine automated log entry) — a gap of roughly four weeks as of this writing. This spec does not diagnose why; it may be nothing (Andy's machine off, no cadence-eligible trigger, no session run to produce a morning-report log) or it may be a recurrence of the dispatcher issue closed in July. **Flagging as an observation for Andy's fresh-eyes read, not a claim of a new problem.**
+**Active rules version:** `ca_eviction_v3.json` remains the sole active version, unchanged. No v4 exists. vProof1 (`ca_eviction_v2.json`, SHA `cc0cfab63ae1591e2b88…`) remains byte-frozen.
 
-**Proposals 16/17/18 (ratified 2026-07-21 evening):** all three remain ratified but **not yet executed**. Proposal 16 (self-critique pass over `just_cause_attachment_threshold`, scope-extended to an SB 1103 §1946.1 assessment) has no addendum report dated after 2026-07-01 — the pass itself has not run. Proposal 17 (v0.4 golden-set drafting + mandatory ablation arm), sequenced to begin after 16, has therefore also not started — no v0.4 file or freeze memo exists. Proposal 18 (§1946.1(d) sale-exception text) remains log-only in `MISSING_RULES_BACKLOG.md`, per Andy's own instruction to draft nothing until needed — that one is exactly where it was left, by design.
+**Automated dev-set regression monitor — a correction to this spec's own prior appendix.** The 2026-08-24 draft of this spec reported the monitor as apparently dormant since 2026-07-27. That was accurate as of that clone, but is now superseded: two further runs (2026-08-15, 2026-08-19) landed in the repository as of today's clone, both 12/12 = 100%, `newly_failing: 0` — accuracy held. **Consensus quality did dip on both**: 08-15 ran PARTIAL-CONSENSUS (11/12 dual-model, α = 0.917), 08-19 ran PARTIAL-CONSENSUS (10/12 dual-model, α = 0.75) — one and two items respectively fell back to single-model corroboration, most plausibly a transient API issue on the affected items rather than a rules problem (no item newly failed). **The honest picture for the "keep-warm is cheap and continuous" assumption in the v2 directive: the monitor is running, but on a visibly sparse, not-daily cadence** (07-26 → 08-15 → 08-19, then nothing until today) — consistent with a noon-triggered local dispatcher that only fires when the machine happens to be on at that moment, not a guarantee of continuous freshness data. Worth knowing before assuming the keep-warm period will produce a complete monitoring record.
 
-**Direction D roadmap (D-2 through D-5):** all four remain ROADMAP-DEFINED per `docs/DIRECTION_D_ROADMAP.md` — none has started building. D-2 (disagreement auto-triage) was specified to begin alongside proposal 17's v0.4 drafting, which hasn't started, so D-2 hasn't either.
+**Proposals 16/17/18 (ratified 2026-07-21 evening):** still not executed, and now formally on hold rather than merely delayed. Proposal 16's self-critique pass never ran; proposal 17 (sequenced after it) never started; proposal 18 remains correctly log-only by design. **These stay exactly where they are until Andy re-opens the eviction line** — this directive does not resume them.
 
-**Engineering hardening:** Task 1 (secret hygiene) is complete — full-history scan clean, pre-commit hook and `SECURITY.md` committed, GitHub secret scanning/push protection enabled by Andy. Tasks 2–4 and 7 (CI pipeline, formal schema, scorer calibration suite, review packaging) were scoped for "this week alongside proposal 16" as of the 2026-07-24 directive; since proposal 16 hasn't executed, there's no record of Tasks 2–4/7 having started either. Tasks 5–6 remain correctly gated on v0.4, which doesn't exist yet.
+**Direction D roadmap (D-2 through D-5):** remain ROADMAP-DEFINED, none building — also on hold. Note per §3/§4/§11 above: D-2 (disagreement queue) and D-3 (statute watch) are explicitly proposed for *shared* build across both lines in this spec — building them under the debt track's Phase A would, if Andy approves, be the mechanism that finally gets them built, just not under the eviction-specific trigger (proposal 17) that originally gated them. Flagging this as a real path to unblocking two eviction-line roadmap items as a side effect of debt work, not a reason to reopen eviction drafting itself.
 
-**Collateral:** two-pager and pitch deck are committed to `collateral/`; the concise deck was retired by Andy's decision and was never committed. The broader "docs are final" publication checklist (roadmap doc, open-questions doc, Direction E directive, pilot design draft, A2J stack/scope doc) remains gated — none of those five documents has been committed to the repository or supplied in a session, so none of that checklist has executed. This is also the reason this spec's own gaps (Band taxonomy, AMPVR, Direction E harness) exist — they're downstream of the same gate.
+**Engineering hardening:** Task 1 complete. Tasks 2–4/7 have no record of having started (scoped alongside proposal 16, which never ran) and now stay on hold with the rest of the eviction line.
 
-**Net picture for Andy:** the eviction line is in a stable, fully-gated, nothing-broken state — but it has been dormant (no new substantive work, and possibly no automated monitoring either) for roughly a month. Nothing about that dormancy was caused by or affects this debt-track directive.
+**Collateral & publication checklist:** unchanged from the prior appendix — two-pager and pitch deck committed, concise deck retired, the broader "docs are final" checklist (including `CJAC_ROADMAP.md` and the Direction E directive that this very spec is blocked on) remains gated and untriggered.
+
+**Net picture for Andy:** the eviction line is stable and nothing is broken; it is now formally paused rather than informally dormant, with keep-warm monitoring continuing on the sparse cadence described above. This directive did not touch any eviction rules file, golden set, or ratified proposal.
 
 ---
 

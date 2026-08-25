@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-08-25 (Debt Defense Prototype v2 — decisions ratified, eviction line HOLD, spec revised)
+
+*Per `COWORK_DIRECTION_DEBT_DECISIONS_20260824_v2.md`, superseding and incorporating the 2026-08-24 v1 directive (previous entry below). Task class GREEN, documentation only.*
+
+### GREEN — Eviction line placed ON HOLD (same-day, per decision 5)
+
+Logged in `WORK_QUEUE.md` and `PROJECT_STATE_OF_RECORD.md` with today's date: no new eviction drafting, freezes, or v0.4 work until Andy re-opens the line. Keep-warm (dispatcher + scheduled monitoring) continues. No eviction rules file, golden set, or ratified proposal was touched.
+
+**Correction to the prior appendix's dormancy read:** a fresh clone today surfaced two dev-set monitor runs (2026-08-15, 2026-08-19) that weren't visible in yesterday's clone — both 12/12=100%, `newly_failing: 0`, but both PARTIAL-CONSENSUS (α = 0.917 and 0.75) rather than full DUAL-MODEL-CONSENSUS. The monitor is running, just on a sparse, not-daily cadence — corrected in both the WORK_QUEUE/PSOR hold entries and the spec's own appendix, which had reported the line as dormant since 07-27 based on the prior day's clone.
+
+### GREEN — `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` revised (v2)
+
+Open-items box removed; all six of Andy's ratified decisions baked directly into the relevant sections (broader scope in the opening + §1; staged navigator-first/consumer-gated users in §6/§9; the 99% VALIDATED-tier target with five-nines framed explicitly as a process aspiration, not a statistical claim, in §8; the sampling-audit/adjudication/certification model marked RATIFIED rather than proposed in §3; the eviction hold reflected throughout and in the appendix; the CJaC-umbrella/subproject naming proposed in a new §12). Added: §10 rewritten for demo-first thin-slice sequencing (supersedes v1's corpus-complete-first phasing), §11 new (multi-agent execution model — single-writer/orchestrator discipline, four parallel worker lanes, the multi-model verification pipeline, task-queue/budget/provenance/integration design).
+
+**§8's measurement-honesty section is worked out with real numbers, not just a promise to be honest later:** the rule-of-three approximation for zero-defect sampling (95%-confidence upper bound ≈ 3/n) is used to show n≈300–385 supports the ratified 99% target, n≈3,000 supports a 99.9%-class claim, and a genuine five-nines statistical certification would need n≈300,000 per stratum — not achievable at this project's realistic audit scale. This is the basis for treating "five-nines" as engineering-process language only, never a sampling-audit claim, with exact permitted claim language specified per evidence level.
+
+**Four items flagged rather than silently resolved, per the directive's explicit instruction to flag conflicts on contact with reality:**
+1. The fifth anchor state (TX vs. NY vs. an alternative) has no hard per-state debt-lawsuit-volume data behind it in this session — UT/AZ (i4J + regulatory sandboxes) and CA (existing infra) are solidly justified; TX/NY are reasoned volume guesses, flagged as needing real data before finalizing.
+2. The Direction E Tier 2 harness dependency hard-blocks the demo-harness lane (§5, §10 Phase C, §11 lane c) — this spec cannot build around a document that doesn't exist yet, and says so rather than inventing harness mechanics.
+3. Physical repo restructuring toward `cjac/eviction/`/`cjac/debt/` is proposed (§12) but explicitly flagged as its own migration risk, citing this project's own July dispatcher outage (a folder relocation interacting badly with macOS background-process permissions) as directly on-point precedent — recommended as a separately planned migration, not bundled into Phase A.
+4. The v2 directive's "keep-warm is cheap, preserves freshness data" framing assumes continuity the actual monitoring cadence hasn't shown (see the dormancy correction above) — flagged so Andy isn't relying on a monitoring record that may have real gaps in it.
+
+**Dated critical path (§10):** active-work estimate of 6-10 weeks for phases A/B/C/E (corpus scaffold, federal-spine + 5-state encoding, demo harness, demo hardening), explicitly excluding Phase D (statistical audit + blind attorney certification), which is gated on Andy's/the certifying attorney's review bandwidth and is called out as the real unknown this spec cannot estimate on Andy's behalf. No calendar date is printed, per the directive's own instruction not to promise a date the estimates don't support -- once Phase D's bandwidth and the Direction E document's arrival are known, the active-work range converts to a real date.
+
+**No repo changes beyond this spec revision and the two hold-logging entries above.** No rules file touched, no code built, no files physically moved.
+
 ## 2026-08-24 (Debt Defense Prototype directive — architecture spec drafted, DRAFT-FOR-ANDY)
 
 *Per `COWORK_DIRECTION_DEBT_ARCHITECTURE_20260824.md`. Task class GREEN, documentation only — no rules files changed, no code built, nothing in the eviction line modified. Note the roughly one-month gap since the last entry above: no session ran between 2026-07-27 (last automated dev-set commit) and today; this directive is the first work item received in that window.*
