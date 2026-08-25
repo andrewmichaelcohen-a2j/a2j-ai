@@ -25,7 +25,7 @@ GUARDRAILS:
   - $3 budget cap (51 files but single query)
 
 Usage (run from repo root in Andy's Terminal):
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  cd /Users/andrewcohen/Developer/a2j-ai
   python3 rules/validation/l2/scra_overlay_runner.py
 
 Expected cost: ~$0.05 (single two-model query). Expected time: ~30 seconds.

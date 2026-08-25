@@ -1,10 +1,18 @@
 # Debt Defense Prototype — Architecture Spec
 
-**Status:** DRAFT-FOR-ANDY (v3). Not ratified as a build plan, not built. Task class GREEN — documentation only.
-**Prepared:** 2026-08-24, revised 2026-08-25 (v2) per `COWORK_DIRECTION_DEBT_DECISIONS_20260824_v2.md`, revised again 2026-08-25 (v3) per Andy's `files.zip` delivery and cover instructions (item 3, Direction E; item 5, demo-lane critical path + staged demo plan). The ten-section structure and integration map from v1 stand; v2 baked in Andy's ratified decisions; **this v3 revision resolves the two gaps v2 flagged as blocking** — the Band 1/2/3 taxonomy and the AMPVR metric are now defined (via `docs/OPEN_QUESTIONS_AND_LIMITATIONS.md` Q10, `docs/CJAC_ROADMAP.md`, `docs/GLOSSARY.md`, and `docs/directives/COWORK_DIRECTION_DIRECTION_E_20260724.md`), and the Direction E Tier 1/Tier 2 lower-bound testing harness has a real design to build against. Per Andy's 2026-08-25 instruction, Direction E's eviction-specific v0.4 gate is superseded by the eviction hold — **Tier 1/Tier 2 now apply to the debt track**, per debt spec v2 decision 5's reprioritization, with narrative rewrites and personas built on debt fact patterns (not eviction ones) once that lane starts.
-**Scope of this document:** a specification for Andy's review and approval. It commits no rules files, builds no code, and modifies nothing in the existing eviction line, which is now on hold (see the appendix). Repository restructuring proposed in the naming section below is **proposed only** — nothing has been physically moved.
+**Status:** RATIFIED FOR BUILD (v4). Phase A build started 2026-08-25. Task class: GREEN for infrastructure/schema/scaffold; content nodes ship at DRAFT/CORROBORATED tier per §3/§4's pipeline, never self-certified VALIDATED.
+**Prepared:** 2026-08-24, revised 2026-08-25 (v2, decisions ratified), revised again 2026-08-25 (v3, AMPVR/Band-taxonomy gaps resolved, Direction E unblocked), revised again 2026-08-25 (v4, per Andy's build-authorization message): **v3 is ratified as-is** (Andy: "v3 spec is ratified"); the fifth anchor state is decided (**TX**, not a placeholder — see §10); ENG_HARDENING Tasks 2-4/7 hold with the rest of eviction *except* where applicable to debt as best practice, which Andy explicitly asked for — see the new decision record below and §3/§11; and **the validation cadence for Phase A is build-first**: AI does as much of the building and validating as possible, sampling-based (not granular per-rule) review, and **human review does not gate the build-out** — Andy's own words, 2026-08-25. This is not a new pipeline design; it's confirmation to proceed on the one already ratified in §3/§4/v2-decision-4, which was designed for exactly this.
+**Scope of this document:** as of v4, a specification **and a live build log**. §10's thin slice is now under construction; the appendix below tracks what actually exists in the repo as of each revision, same discipline as the eviction-line state-of-record. Repository restructuring: Andy adopted the recommendation below (§12 revised) — new work (`rules/debt/`) scaffolds fresh rather than physically moving the live eviction line, which stays where it is.
 
-> **v3 note, superseding the v2 gap-notice above.** Both gaps v2 flagged are now resolved: the ratified Band 1/2/3 taxonomy is defined in `docs/CJAC_ROADMAP.md` and `docs/OPEN_QUESTIONS_AND_LIMITATIONS.md` Q10 (Band 1 = deterministic/freezable-outcome; Band 2 = structured-subjective — judgment in application, lookup-able structure in elements/burdens/presumptions; Band 3 = genuinely discretionary, boundary-marker only, permanent); AMPVR (attorney-minutes per validated rule) and ratification-queue-health are defined in `docs/directives/COWORK_DIRECTION_DIRECTION_E_20260724.md` Task 3 and restated in `docs/DIRECTION_D_ROADMAP.md`. This spec's working definitions from v1/v2 turn out to have been close approximations of the ratified ones — see the inline notes in §1 and §4 below for the specific reconciliation, not a silent swap.
+> **v4 decision record, 2026-08-25 (Andy, in chat — not a separate directive doc; logged here as the record of record):**
+> 1. **v3 ratified**, no further changes to the sections v3 finalized.
+> 2. **ENG_HARDENING held with the eviction line**, *except*: any of Tasks 2 (CI pipeline), 3 (formal schema), 4 (scorer calibration suite), or 7 (independent-review packaging) that apply to debt as best practice should be applied there, as appropriate, rather than waiting for eviction's reopen. Task 6 (mutation testing) doesn't need separate carryover — it's already a day-one debt pipeline stage per §3(c). Task 5 (coverage matrix) stays naturally deferred, same gating logic as eviction (post-first-frozen-sample).
+> 3. **Fifth anchor state: TX.** §10's "genuinely unresolved" flag on this is closed — decided, not data-driven, and logged as such.
+> 4. **README placement:** `A2J_STACK_AND_CJAC_SCOPE.md` confirmed final by Andy; promoted to README's first doc link per the original checklist instruction.
+> 5. **Repo restructuring:** Andy adopted Cowork's recommendation — scaffold `rules/debt/` fresh, fix the stale pre-relocation absolute path already sitting in `rules/validation/run_protocol.py` and 8 other files (unrelated latent bug, fixed regardless), remove duplicate/stray `validation/l2/`, leave the live `rules/eviction/` tree physically where it is. No big-bang move.
+> 6. **Validation cadence for Phase A: build-first, AI-maximal, sampling-gated, not granular-gated.** Andy: "I want to build and validate with AI as much as possible and get something impressive... I don't want [human review] to gate the build-out." This is exactly what §3's RATIFIED sampling-audit model (v2 decision 4) was designed to do — the instruction here is to actually run it that way starting with Phase A, not to redesign it. The named-attorney certification step (§3g) stays human — that boundary doesn't move — but per-node review does not, and was never designed to.
+
+> **v3 note (carried forward).** Both gaps v2 flagged are resolved: the ratified Band 1/2/3 taxonomy is defined in `docs/CJAC_ROADMAP.md` and `docs/OPEN_QUESTIONS_AND_LIMITATIONS.md` Q10; AMPVR and ratification-queue-health are defined in `docs/directives/COWORK_DIRECTION_DIRECTION_E_20260724.md` Task 3. See §1/§4 for the reconciliation detail.
 
 ---
 
@@ -82,6 +90,14 @@ Extends the existing rules-JSON format (`SCHEMA_V2_DESIGN_SPEC.md` in the evicti
 **(g) Attorney release certification.** A named attorney certifies the release based on (a)–(f)'s aggregate evidence, not a node-by-node signoff.
 
 **Carried over as law, unconditionally, same as the eviction line:** dual-reporting of any score with a post-correction version, SHA-frozen artifacts, held-out sets burned after one use, published errata.
+
+**ENG_HARDENING infrastructure, folded in as Phase A best practice (v4, 2026-08-25).** ENG_HARDENING itself stays on hold with the rest of the eviction line — Andy's instruction was explicit that its literal tasks aren't reactivated. But Andy also asked that anything in it applicable to debt as best practice be applied here rather than waiting. Assessed against the actual task list (`docs/directives/COWORK_DIRECTION_ENG_HARDENING_20260724.md`):
+- **Task 2 (CI pipeline) — applies, build into Phase A.** Schema validation, scorer unit tests, frozen-artifact integrity checks, lint — natural to wire in now while the debt CI surface is still small, cheaper than retrofitting later.
+- **Task 3 (formal rules schema) — applies, and already done.** `rules/schema/debt_schema_v1.0.json`, authored 2026-08-25 alongside this revision, extending the eviction line's schema pattern per §2. See `rules/debt/README.md`.
+- **Task 4 (scorer calibration suite) — applies, arguably more urgent here than it was for eviction.** The sampling-audit scorer (§3e) is a new instrument, not a proven one; known-answer testing that the instrument reports what actually happened matters before it's trusted at volume.
+- **Task 6 (mutation testing) — no separate carryover needed.** Already §3(c), a day-one debt pipeline stage.
+- **Task 5 (coverage matrix) — naturally deferred**, same logic as eviction: needs a first frozen sample to map against.
+- **Task 7 (independent-review packaging) — applies, and worth prioritizing** given Andy's stated interest in eventual third-party validation (v4 decision 6): a `REVIEW_README.md` for the debt scorer/pipeline, written early, makes that ask cheap whenever it comes.
 
 **AMPVR metric — defined (v3).** Attorney-minutes per validated rule: attorney time spent per rule reaching VALIDATED status. Success is a *falling* AMPVR at constant-or-better validation quality — not falling AMPVR alone, which would reward speed over accuracy. Defined in `docs/directives/COWORK_DIRECTION_DIRECTION_E_20260724.md` Task 3; restated in `docs/DIRECTION_D_ROADMAP.md` and `docs/GLOSSARY.md`. For the debt track, this is the metric to track once Phase A ratification volume is high enough to be meaningful (not from day one, when n is too small to be signal) — paired with ratification-queue-health (open-proposal count, age distribution, inflow/outflow) so a falling AMPVR from rubber-stamping doesn't read as progress.
 
@@ -238,11 +254,11 @@ Highest-traffic path: person served with (or fearing) a collection lawsuit → j
 
 ### Coverage: federal spine + 5 anchor states — proposed, with an honest data gap flagged
 
-Candidates per the directive: **TX, CA, NY, UT, AZ.** This spec's assessment of each, and where the justification is solid versus where it's a reasoned guess rather than data:
+**Locked (v4, 2026-08-25, Andy's decision — not data-driven, and logged as such): TX, CA, UT, AZ, NY.** This spec's per-state assessment below stands as the reasoning on file; TX's inclusion is a decision, not a claim that per-state volume data was ultimately pulled.
 
 - **UT and AZ — solid, non-volume rationale.** Both host live regulatory venues (Utah's sandbox, extended through 2027; Arizona's ABS program, 100th entity approved September 2024) that are directly relevant if/when consumer mode clears its gate, and both host i4J (University of Arizona + University of Utah), the source of the medical-debt specialization corpus (§1) and the MDLA navigator-mode precedent (§7). Including these two is justified independent of raw lawsuit volume.
 - **CA — solid, infrastructure rationale.** The eviction line's existing methodology, tooling, and institutional experience are CA-first; reusing that muscle memory for the debt line's first non-federal state lowers execution risk regardless of CA's exact debt-suit volume ranking.
-- **TX and NY — volume rationale, not yet data-backed.** Both are commonly cited in consumer-law literature as high-volume debt-litigation states, and NY carries specific regulatory-venue relevance as the *Upsolve v. James* jurisdiction (an argument that cuts two ways — familiar terrain, but also the state that just produced the sharpest UPL loss on record). **This spec does not have hard per-state debt-lawsuit volume data in hand** to rank TX and NY against alternatives (e.g., states more heavily represented in the underlying Pew dataset, or high-volume states identified by NCSC's Court Statistics Project). **Recommendation: pull actual per-state filing-volume data before finalizing the fifth state** — this is a cheap, fast research task, not a reason to delay the rest of Phase A, but the spec shouldn't claim a data-driven ranking it doesn't have.
+- **TX and NY — volume rationale, decided without hard data (v4).** Both are commonly cited in consumer-law literature as high-volume debt-litigation states, and NY carries specific regulatory-venue relevance as the *Upsolve v. James* jurisdiction (cuts two ways — familiar terrain, but also the state that produced the sharpest UPL loss on record). This spec never obtained hard per-state debt-lawsuit volume data (e.g., NCSC Court Statistics Project) to rank TX against NY or other alternatives — that research task was recommended but not required, and Andy decided TX directly rather than waiting on it. Logged honestly: TX is in because Andy chose it, not because this spec proved it's the highest-volume choice.
 
 ### Harness built in parallel, not after
 
@@ -310,22 +326,17 @@ Tier promotion to VALIDATED happens only through the sampling-audit + certificat
 
 ---
 
-## 12. Naming and repository structure — proposed, not executed
+## 12. Naming and repository structure — DECIDED (v4, 2026-08-25)
 
-**Ratified (v2, decision 6): CJaC umbrella with subprojects.** Documentation and, as needed, repo layout restructure toward `cjac/eviction/` and `cjac/debt/` (or equivalent), with shared assets — validation methodology, schemas, house rules — at the umbrella level.
+**Ratified (v2, decision 6, resolved v4): CJaC umbrella with subprojects — scaffold new work, don't move the live line.** Andy adopted Cowork's recommendation on 2026-08-25 rather than the big-bang physical move originally sketched in v2/v3. What actually happened:
 
-**Proposed structure:**
+- **`rules/debt/` created fresh** (`federal/`, `state/`), scaffolding the domain-subproject pattern for new work from day one — zero migration risk, since nothing existing had to move.
+- **`plugins/eviction-defense/` and `plugins/consumer-debt/` already existed** at the skill-packaging layer before this decision was made — the domain-separated-subproject pattern Andy wants is already true there. Future domains (e.g. domestic violence) extend the same way: `plugins/<domain>/`, `rules/<domain>/`.
+- **`rules/eviction/` stays physically where it is.** Live, working, and every script/plist that touches it already points at the current location — moving it is deferred to its own dedicated, tested migration (dispatcher paused first), not bundled into Phase A.
+- **Latent bug fixed as a byproduct of this review, unrelated to any move:** `rules/validation/run_protocol.py` and 8 other operational scripts/docs still contained the *pre-relocation* absolute path (`~/Documents/GitHub/a2j-ai`, dead since the July outage) in usage comments/docstrings — fixed to the current path. Historical dated records (`docs/DAILY_CHANGELOG.md`, `results/*.md`, etc.) correctly left untouched — those are accurate as of the date they describe.
+- **Cleanup, same pass:** stray duplicate `validation/l2/output/` directory (drift from an old run, distinct from the real `rules/validation/l2/`) removed. Two placeholder-only `.env`-pattern files at repo root removed (contained `PASTE_TOKEN_HERE`, not a real credential — no exposure — but shouldn't have been committed); `.gitignore` hardened (`.env.*`, `.e`) to catch the pattern going forward.
 
-```
-cjac/
-  eviction/        <- current rules/, docs/ eviction-specific content, playbooks/, demos/ (eviction)
-  debt/             <- new debt corpus, rules, docs, demo harness
-  shared/           <- VALIDATION_PHILOSOPHY.md, SCHEMA_V2_DESIGN_SPEC.md, house-law docs (dual-reporting,
-                       SHA-freezing, held-out discipline), the eviction line's reusable pipeline components
-                       (Direction D-2 disagreement queue, D-3 statute watch) once genuinely shared
-```
-
-**A flagged conflict on contact with reality, not silently resolved:** v2 states nothing should be "renamed in a way that breaks published hashes or links" — but the eviction line's actual file layout is deeply embedded outside the repo itself: the LaunchAgent plist's absolute paths, the dispatcher and scorer scripts' relative-path assumptions, and dozens of cross-references inside the docs themselves. **This project has direct, recent history with exactly this class of risk** — the July dispatcher outage was caused by a *folder relocation* (`~/Documents/GitHub/a2j-ai` → `~/Developer/a2j-ai`) interacting badly with macOS's background-process permissions, and took a multi-day diagnostic effort to root-cause. A physical repo-layout restructure (moving `rules/`, `docs/`, etc. under `cjac/eviction/`) is the same class of change at a different scope, with the dispatcher plist as a concrete, known failure point. **Recommendation: treat physical restructuring as its own carefully planned, separately scheduled migration task — not something bundled into Phase A build work — while the documentation-level "CJaC umbrella, debt subproject" framing (this section, plus a README update) can happen immediately and cheaply, with zero physical file moves.** Nothing has been moved in this commit; this section is the proposal for Andy's approval before any move happens.
+**The risk this avoids, stated plainly:** the July dispatcher outage was caused by a folder relocation interacting badly with macOS's background-process permissions, and took a multi-day diagnostic effort to root-cause. The plist's absolute `WorkingDirectory` and the dispatcher's own path assumptions are still there, unchanged, working — this decision keeps them that way rather than risking a repeat for organizational tidiness alone.
 
 ---
 
@@ -336,11 +347,12 @@ cjac/
 3. **Reliability target: 99% on VALIDATED nodes**, five-nines-class as process aspiration — see §8.
 4. **Human model: RATIFIED** — sampling audit + adjudication + certification is the named-attorney standard — see §3.
 5. **Priority: DEBT IS TOP PRIORITY. Eviction line: HOLD** — logged in the state-of-record with today's date; see the appendix below and the standalone `WORK_QUEUE.md`/`PROJECT_STATE_OF_RECORD.md` entries delivered alongside this spec.
-6. **Naming: CJaC umbrella with subprojects** — structure proposed, not executed — see §12.
+6. **Naming: CJaC umbrella with subprojects** — RESOLVED (v4): scaffold new work fresh (`rules/debt/`), leave the live eviction line physically in place — see §12.
+7. **Validation cadence (v4, new): build-first, AI-maximal, sampling-gated, not granular-gated.** Andy's explicit instruction, 2026-08-25 — see the v4 decision record at the top of this document and §3's ENG_HARDENING carryover. Phase A proceeds without waiting on per-node Andy review; the sampling-audit pipeline (§3) and named-attorney release certification (§3g) are the actual gate.
 
 ### Genuinely unresolved, flagged rather than guessed
 
-- **The fifth anchor state (TX vs. NY vs. an alternative)** lacks hard per-state volume data in this session — §10.
+- ~~**The fifth anchor state (TX vs. NY vs. an alternative)** lacks hard per-state volume data in this session — §10.~~ **RESOLVED (v4):** TX, decided by Andy, not data. See §10.
 - ~~**Direction E Tier 2 harness dependency** blocks Phase C (demo harness) and this spec's own §5/§11 content until that document exists — §5, §10, §11.~~ **RESOLVED (v3):** Direction E is in hand; see §5, §10, §11. Remaining work is authoring debt-specific narratives/personas, not a missing design.
 - **Physical repo restructuring** is proposed but flagged as its own migration risk, given this project's direct history with folder-relocation failures — §12.
 - **"Keep-warm" assumption about the eviction line's monitoring** (v2 item 5 calls it "cheap, preserves freshness data," implying continuous operation) — see the appendix below for what the actual cadence has looked like; it has not been continuous, independent of today's hold.
@@ -366,6 +378,23 @@ cjac/
 **Collateral & publication checklist:** the broader "docs are final" checklist executed 2026-08-25 (same delivery as this v3 revision) — see `docs/DAILY_CHANGELOG.md`'s 2026-08-25 entry for the row-by-row record. `CJAC_ROADMAP.md` and the Direction E directive that this spec was blocked on in v2 are both now committed; this spec is no longer blocked on either.
 
 **Net picture for Andy:** the eviction line is stable and nothing is broken; it is now formally paused rather than informally dormant, with keep-warm monitoring continuing on the sparse cadence described above. This directive did not touch any eviction rules file, golden set, or ratified proposal.
+
+---
+
+## Appendix 2: Debt-line build log — Phase A, started 2026-08-25 (v4)
+
+*Live build log, same discipline as the eviction-line state-of-record above. Updated as work lands, not regenerated from scratch each time.*
+
+**Infrastructure:**
+- `rules/schema/debt_schema_v1.0.json` — formal schema (ENG_HARDENING Task 3, folded in per the v4 decision record). Extends the eviction schema pattern. Key departure: tier and band are node properties, not file properties (spec §2/§4) — validated in code (`jsonschema`), not just documented.
+- `rules/debt/` scaffold — `federal/`, `state/`, each with a README explaining the pattern. TX locked as the fifth anchor state alongside CA/UT/AZ/NY.
+
+**Content — one node, DRAFT tier:**
+- `rules/debt/federal/fdcpa_validation_notice_v1.json` — **FDCPA-VALIDATION-NOTICE-1692g**, Band 1 (deterministic). Encodes 15 U.S.C. § 1692g and 12 C.F.R. § 1006.34 (Regulation F) together — Reg F elaborates and partially supersedes the statute's bare five-item list with the fuller Model Form B-1 content regime and clarifies timing/mailbox-rule computation; both are cited verbatim with live-fetched source text (Cornell LII, eCFR, retrieved 2026-08-25), consistent with §3(a)'s grounded-corroboration requirement that a derivation must point to specific source text.
+- **Tier is honestly DRAFT, not CORROBORATED or VALIDATED.** This is a single-model derivation — it has not yet passed the three-independent-frontier-model grounded corroboration (§3a), adversarial generation (§3b), or disagreement queue (§3d) stages, let alone the sampling audit (§3e) and attorney certification (§3g) that VALIDATED requires. Tier-promotion is not automatic and is not claimed here.
+- Completeness checklist and consequences-and-next-steps fields populated per §2's structural requirement (never a bare classification).
+
+**What's not yet started:** the remaining federal-spine nodes (Reg F disclosure requirements beyond validation, FCRA basics), all five state layers (TX/CA/UT/AZ/NY — SOL, deadlines, exemptions, service/default-judgment procedure), the CI pipeline (ENG_HARDENING Task 2), the scorer calibration suite (Task 4), and the actual multi-model verification pipeline (§3a-g) running against this or any future node. One node proves the schema and grounding discipline work end-to-end; it is not Phase A complete. See `docs/WORK_QUEUE.md` for the queued next items.
 
 ---
 

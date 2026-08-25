@@ -24,7 +24,7 @@ Usage:
     --states AZ,DC,... --sleep 10 --fresh
 
 Launch unattended (fire-and-forget, survives terminal close, keeps Mac awake):
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  cd /Users/andrewcohen/Developer/a2j-ai
   caffeinate -ims nohup python3 rules/validation/run_protocol.py \\
     --protocol retaliation_holdings_v3 \\
     --states AZ,DC,IA,KY,MA,ME,MN,NE,NH,RI,WA,DE,AR,IN,MO,VA \\

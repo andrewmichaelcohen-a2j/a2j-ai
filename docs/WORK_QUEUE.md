@@ -2,6 +2,8 @@
 
 *Maintained by Cowork. Updated each morning report cycle. Cowork pulls from NEXT automatically when NOW completes — no prompt to Andy needed unless NEXT is empty or all remaining items are BLOCKED.*
 
+**Last updated:** 2026-08-25, round 2 (**DEBT PHASE A BUILD STARTED** — Andy's build-authorization message, in chat: v3 spec ratified; ENG_HARDENING held with eviction except where applicable to debt as best practice (Tasks 2/3/4/7 folded into Phase A, see NOW below and `DEBT_PROJECT_ARCHITECTURE_SPEC.md` §3); TX locked as 5th anchor state; `A2J_STACK_AND_CJAC_SCOPE.md` confirmed final, promoted to README's first link; repo restructuring resolved (scaffold `rules/debt/` fresh, leave live eviction line in place — see spec §12); **validation cadence for Phase A is build-first, AI-maximal, sampling-gated — human review does not gate the build-out**, Andy's own words. First real build output landed same-day: schema, scaffold, one grounded DRAFT-tier federal node (FDCPA §1692g / Reg F §1006.34). Full record in the spec's new Appendix 2 and `DAILY_CHANGELOG.md`.)
+
 **Last updated:** 2026-08-25 (**EVICTION LINE ON HOLD** — Andy's Debt Defense Prototype v2 directive, decision 5: debt is now top priority; no new eviction drafting, freezes, or v0.4 work until Andy re-opens this line. Keep-warm only: dispatcher/scheduled monitoring continue. Proposals 16/17/18 stay ratified-but-not-executed, exactly as left; Direction D roadmap stays ROADMAP-DEFINED — note two of its items (D-2 disagreement queue, D-3 statute watch) are proposed for shared build under the debt track's Phase A per `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` §11, which if it happens would build them as a side effect of debt work, not as a reopening of eviction drafting. Automated dev-set monitor confirmed still firing on a sparse cadence [08-15, 08-19 runs found, both 12/12 clean but PARTIAL-CONSENSUS rather than full dual-model — logged, not diagnosed]. See the spec's appendix for full detail. **Same-day addendum:** ENG_HARDENING Tasks 5-6 re-gated — v0.4 gate superseded by the hold; per Andy's instruction they now gate on the debt track's first frozen eval set instead (see `docs/DIRECTION_D_ROADMAP.md` Direction E section). **FLAGGED, not assumed:** ENG_HARDENING Tasks 2-4/7's original trigger ("this week alongside proposal 16", set 2026-07-24) has no live driver right now — proposal 16 has not executed and the eviction line is on hold, so "this week" doesn't resolve to a date. Leaving these as NEXT-eligible-but-not-started pending Andy's explicit go/no-go, rather than assuming either "start now" or "hold indefinitely." Full context and further same-day notes (Commons alignment posture, Band-1-only validation-claims scope, publication-checklist execution) logged in `docs/PROJECT_STATE_OF_RECORD.md`'s 2026-08-25 entry.)
 
 **Last updated:** 2026-07-24 (Engineering Hardening directive, Task 1 executed same-day — full-history secret scan clean across two independent tools + manual sweep, zero credentials found, no rotation needed; added `scripts/git-hooks/pre-commit` + `SECURITY.md`. **Andy action still needed:** enable GitHub secret scanning + push protection at Settings > Code security and analysis (repo setting, can't be done from a commit). Tasks 2-4/7 this week alongside proposal 16; Tasks 5-6 gate on v0.4. Full detail: docs/SECRET_HYGIENE_SCAN_20260724.md, DAILY_CHANGELOG 2026-07-24 entry.)
@@ -43,6 +45,18 @@
 ---
 
 ## NOW (executing)
+
+**Debt Defense Prototype — Phase A build, started 2026-08-25 (v4, Andy's build-authorization decision).** Current active line — eviction is on hold (see below). Build-first, AI-maximal, sampling-gated per the v4 decision record in `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md`.
+
+| Item | Status | Notes |
+|------|--------|-------|
+| `rules/schema/debt_schema_v1.0.json` | ✅ DONE | Formal schema, extends eviction pattern; tier/band are node properties per spec §2/§4 |
+| `rules/debt/` scaffold (`federal/`, `state/`) | ✅ DONE | READMEs explain the pattern; TX locked as 5th anchor state |
+| First grounded node: FDCPA-VALIDATION-NOTICE-1692g | ✅ DONE, DRAFT tier | 15 U.S.C. § 1692g + 12 C.F.R. § 1006.34, live-fetched verbatim citations 2026-08-25. Single-model derivation — has NOT passed grounded-corroboration/adversarial/audit stages, tier is honestly DRAFT |
+| Repo hygiene: stale pre-relocation path (9 files), stray `validation/l2/` dir, placeholder `.env` files | ✅ DONE | Byproduct of the restructuring review, unrelated to any physical move — see spec §12 |
+| README: `A2J_STACK_AND_CJAC_SCOPE.md` promoted to first doc link | ✅ DONE | Andy confirmed final 2026-08-25 |
+
+*Below: last live NOW state before the eviction line went on hold (2026-08-25). Retained as historical record, not currently active — see the HOLD entry further down.*
 
 **Self-critique pass + ratification round — COMPLETE ✅**
 
@@ -377,6 +391,17 @@ Directive: `docs/CJaC_Playbook_Architecture_Directive_20260701.md`
 ---
 
 ## NEXT (queued, ready — Cowork pulls when NOW completes)
+
+**[NEW — Debt Phase A continuation, 2026-08-25] Queued so build continues without waiting on granular Andy review, per his 2026-08-25 instruction:**
+
+| Item | What | Notes |
+|------|------|-------|
+| Remaining federal-spine nodes | Reg F disclosure requirements beyond validation (§§1006.6/1006.18 communication rules), FCRA basics relevant to debt disputes | Same grounded-derivation discipline as the first node — live-fetched primary sources, cited verbatim |
+| TX state layer, first pass | SOL by claim type, answer deadline, garnishment/exemption amounts, service/default-judgment procedure | Anchor state #1 per spec §10 |
+| CI pipeline (ENG_HARDENING Task 2, folded into Phase A) | Schema validation, scorer unit tests, frozen-artifact integrity check, lint — wired to `rules/debt/` and `rules/schema/debt_schema_v1.0.json` | Per spec §3's ENG_HARDENING carryover note |
+| Scorer calibration suite (Task 4, folded in) | Known-answer testing for the sampling-audit scorer once it exists | Spec §3 flags this as more urgent for debt than it was for eviction — new instrument, not proven |
+| Independent-review packaging (Task 7, folded in) | `REVIEW_README.md` for the debt pipeline | Andy flagged interest in eventual third-party validation |
+| Multi-model verification pipeline (§3a-d) | Actually run grounded corroboration (3 independent frontier models), adversarial generation, disagreement queue against the first node before claiming CORROBORATED | The node currently in the repo is single-model DRAFT — this is what promotes it |
 
 **[NEW — Stage 1 carry-overs] Research items from Stage 1 that need Andy's machine or external access:**
 

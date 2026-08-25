@@ -11,7 +11,7 @@
 #   2. Update the launchd plist ProgramArguments to call this script instead of
 #      python3 directly:
 #        <string>/bin/bash</string>
-#        <string>/Users/andrewcohen/Documents/GitHub/a2j-ai/rules/validation/run_dispatch.sh</string>
+#        <string>/Users/andrewcohen/Developer/a2j-ai/rules/validation/run_dispatch.sh</string>
 #
 # For --drain mode (continuous, called from a loop):
 #   bash run_dispatch.sh --drain

@@ -31,7 +31,7 @@ GUARDRAILS:
   - $15 budget cap (~51 states × 2 models; expect ~$5-8)
 
 Usage (run from repo root in Andy's Terminal):
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  cd /Users/andrewcohen/Developer/a2j-ai
   python3 rules/validation/l2/state_overlays_runner.py
 
 Expected cost: ~$5-8. Expected time: ~10-15 minutes.

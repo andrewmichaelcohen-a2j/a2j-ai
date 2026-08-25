@@ -46,7 +46,7 @@ GUARDRAILS:
   - $20 budget cap (51 × Phase A + per-case Phase B verification)
 
 Usage (run from repo root in Andy's Terminal):
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  cd /Users/andrewcohen/Developer/a2j-ai
   python3 rules/validation/l2/retaliation_holdings_runner.py
 
 Single state (testing):

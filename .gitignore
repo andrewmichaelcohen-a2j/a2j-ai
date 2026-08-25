@@ -21,4 +21,10 @@ __pycache__/
 
 # Logs
 *.log
+
+# Env / secrets (hardened 2026-08-25 after finding stray placeholder .env-pattern
+# files at repo root committed with a hash suffix, e.g. .env<sha>; contained a
+# placeholder token only, not a real credential, but shouldn't be committed at all)
 .env
+.env.*
+.e

@@ -31,7 +31,7 @@ CRITICAL:
   - $15 budget cap (51 states × ~$0.10/state for 4-defense grouped query)
 
 Usage (run from repo root in Andy's Terminal):
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  cd /Users/andrewcohen/Developer/a2j-ai
   python3 rules/validation/l2/remaining_defenses_elements_runner.py
 
 Single state (testing):

@@ -22,7 +22,7 @@ GUARDRAILS:
   - $1 budget cap (single state)
 
 Usage (run from repo root in Andy's Terminal):
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  cd /Users/andrewcohen/Developer/a2j-ai
   python3 rules/validation/l2/nm_service_runner.py
 
 Expected output: streaming per-model responses, then classification.

@@ -4,6 +4,41 @@
 
 ---
 
+## 2026-08-25, round 2 (Debt Phase A build authorized and started — spec v4, first grounded node)
+
+*Per Andy's build-authorization message (in chat, following his answers to Cowork's four questions on README placement, repo restructuring, validation cadence, and the ENG_HARDENING/TX/5th-anchor decisions). Task class: GREEN for infrastructure/schema/scaffold; the one content node ships DRAFT tier, not self-certified.*
+
+### Decisions logged (Andy, 2026-08-25, chat — not a separate directive doc)
+
+1. v3 spec ratified as-is.
+2. ENG_HARDENING held with the rest of eviction, *except* Tasks 2 (CI), 3 (schema), 4 (calibration suite), 7 (independent review) apply to debt as best practice and are folded into Phase A. Task 6 already covered by spec §3(c); Task 5 stays naturally deferred.
+3. Fifth anchor state: **TX** — a decision, not a data-driven ranking; the "genuinely unresolved" flag on this closes.
+4. `A2J_STACK_AND_CJAC_SCOPE.md` confirmed final by Andy; promoted to README's first doc link (previously linked but not primary, per the flagged ambiguity in the earlier delivery).
+5. Repo restructuring: Andy adopted Cowork's recommendation — scaffold `rules/debt/` fresh rather than physically moving `rules/eviction/`. See below for what that entailed.
+6. **Validation cadence for Phase A: build-first, AI-maximal, sampling-gated, not granular-gated.** Andy: "I want to build and validate with AI as much as possible and get something impressive... I don't want [human review] to gate the build-out." This is the ratified §3 sampling-audit model (v2 decision 4) — the instruction is to actually run it that way, not a redesign. Named-attorney release certification (§3g) stays the human gate; per-node review does not, and was never designed to.
+
+### GREEN — Repo hygiene (byproduct of the restructuring review, unrelated to any physical move)
+
+Fixed a stale pre-relocation absolute path (`~/Documents/GitHub/a2j-ai`, dead since the July dispatcher outage) sitting unfixed in 9 live operational files (`rules/validation/run_protocol.py`, `run_dispatch.sh`, 7 `rules/validation/l2/*_runner.py` docstrings, `demos/eviction/prompts/demo-script.md`) — corrected to the current path. Historical dated records (`DAILY_CHANGELOG.md`, `results/*.md`, etc.) correctly left untouched, since they're accurate as of the dates they describe. Removed a stray duplicate `validation/l2/output/` directory (drift from an old run, distinct from `rules/validation/l2/`). Removed two placeholder-only `.env`-pattern files at repo root (`.e`, `.env<hash>` — contained `PASTE_TOKEN_HERE`, not a real credential; confirmed via diff before deletion, no exposure, but shouldn't have been committed). Hardened `.gitignore` (`.env.*`, `.e`) against recurrence. No rules content touched.
+
+### GREEN — `rules/debt/` scaffold + formal schema
+
+`rules/schema/debt_schema_v1.0.json` — extends the eviction schema pattern (`docs/SCHEMA_V2_DESIGN_SPEC.md`) rather than replacing it, per spec §2. Key departure, deliberate: tier (`DRAFT`/`CORROBORATED`/`VALIDATED`) and band (1/2/3) are **node properties**, not file properties, unlike eviction's `file_status = min(module_status)` — a single release can ship federal-spine nodes at VALIDATED alongside a newly-added state's garnishment table at CORROBORATED. Validated as syntactically correct JSON Schema. `rules/debt/federal/` and `rules/debt/state/` created with READMEs explaining the pattern.
+
+### GREEN — First grounded content node: FDCPA-VALIDATION-NOTICE-1692g
+
+`rules/debt/federal/fdcpa_validation_notice_v1.json` — Band 1 (deterministic). Encodes 15 U.S.C. § 1692g and 12 C.F.R. § 1006.34 (Regulation F) together, since Reg F elaborates and partially supersedes the statute's bare five-item list with the fuller Model Form B-1 content regime and clarifies timing (initial communication / within 5 days / oral) and the mailbox-rule computation for the 30-day dispute window. Both sources fetched live 2026-08-25 (Cornell LII, eCFR) and cited verbatim in the node's `grounded_derivation` block, consistent with spec §3(a)'s requirement that a derivation point to specific source text, not priors. Completeness checklist (8 dispositive facts) and consequences-and-next-steps fields populated per §2's structural requirement. **Validated against `debt_schema_v1.0.json`** (`jsonschema` library) — passes.
+
+**Tier is honestly DRAFT, stated plainly, not inflated for the sake of a good first showing:** this is a single-model derivation. It has not passed grounded corroboration by three independent frontier models (§3a), adversarial generation (§3b), the disagreement queue (§3d), the statistical sampling audit (§3e), or attorney release certification (§3g) — the actual gates that would promote it to CORROBORATED or VALIDATED. One node proves the schema and grounding discipline work end-to-end on real primary-source law; it is not Phase A complete, and the spec's new Appendix 2 says so directly.
+
+### GREEN — Spec revised to v4; living docs updated
+
+`docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md`: status changed from "DRAFT-FOR-ANDY, not ratified as a build plan" to "RATIFIED FOR BUILD." New v4 decision record at the top (items 1-6 above). §10 locks TX, closes the fifth-anchor-state flag. §3 gets the ENG_HARDENING carryover assessment (task-by-task). §12 rewritten from "proposed" to "DECIDED," describing what was actually done rather than a proposal. New "decision 7" (validation cadence) added to the ratified-decisions list. New Appendix 2: live debt-line build log, same discipline as the eviction-line appendix — updated as work lands, not regenerated.
+
+`docs/WORK_QUEUE.md` / `docs/PROJECT_STATE_OF_RECORD.md`: new same-day "round 2" entries logging all six decisions. `WORK_QUEUE.md`'s NOW section updated to reflect debt Phase A as the actual active line (the prior NOW content, dated July 1 eviction self-critique work, retained below as historical record, clearly marked as no longer active). New NEXT items queued for continued autonomous build — remaining federal-spine nodes, TX state layer, the folded-in ENG_HARDENING infrastructure tasks, and actually running the multi-model verification pipeline against the first node — so build continues without waiting on granular sign-off, per Andy's instruction.
+
+---
+
 ## 2026-08-25 (files.zip delivery — publication checklist executed, Direction E logged, debt spec v3, companion docs committed)
 
 *Per Andy's `files.zip` cover instructions (6 items, executed in order). Task class GREEN, documentation only. Authorship note, per amendment (c): the seven companion documents in this delivery (`COWORK_DIRECTION_ENG_HARDENING_20260724.md`, `COWORK_DIRECTION_DIRECTION_D_20260723.md`, `COWORK_DIRECTION_DIRECTION_E_20260724.md`, `COWORK_PUBLICATION_CHECKLIST_20260724.md`, `OPEN_QUESTIONS_AND_LIMITATIONS.md`, `CJAC_ROADMAP.md`, `PILOT_DESIGN_BAYLEGAL_DRAFT.md`, `A2J_STACK_AND_CJAC_SCOPE.md`) were authored 2026-07-24/07-26 and are being published/committed today, 2026-08-25 — the record should be honest about that roughly one-month gap between authorship and publication, not silent about it.*

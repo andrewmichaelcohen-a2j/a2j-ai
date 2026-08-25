@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/andrewmichaelcohen-a2j/a2j-ai/rules/schema/debt_schema_v1.0.json",
+  "title": "Debt Defense Rules — Schema v1.0",
+  "description": "Schema for the Civil Justice as Code debt-defense rules library. Extends the eviction-line format (docs/SCHEMA_V2_DESIGN_SPEC.md) rather than replacing it, per DEBT_PROJECT_ARCHITECTURE_SPEC.md §2. Key structural difference from the eviction schema: tier is a NODE property, not a FILE property — a single release can ship federal-spine nodes at VALIDATED alongside a newly-added state's garnishment table at CORROBORATED. Copyright 2026 Andrew M Cohen. Apache 2.0.",
+  "type": "object",
+  "required": ["_copyright", "schema_version", "scope", "provenance", "nodes"],
+  "properties": {
+    "_copyright": {
+      "type": "string",
+      "description": "Copyright notice. Must be: 'Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.'"
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "debt-v1",
+      "description": "Schema version identifier. Must be exactly 'debt-v1'."
+    },
+    "scope": {
+      "type": "object",
+      "required": ["level", "jurisdiction"],
+      "description": "Jurisdiction resolution as a first-class input (spec §2) — resolved once, early, not per-node the way the eviction line resolves per-file.",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["federal", "state"],
+          "description": "federal = one jurisdiction-agnostic file amortizing across all 50 states + DC (FDCPA/Reg F/FCRA spine); state = per-state layer (SOL, deadlines, exemptions, service/default-judgment procedure)."
+        },
+        "jurisdiction": {
+          "type": "object",
+          "required": ["state", "state_name"],
+          "description": "For level=federal, state/state_name are null (applies everywhere federal law reaches).",
+          "properties": {
+            "state": { "type": ["string", "null"], "description": "Two-letter postal abbreviation (e.g., TX) or DC; null for federal-level files" },
+            "state_name": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["generated", "statutory_sources"],
+      "properties": {
+        "generated": {
+          "type": "object",
+          "required": ["date", "model", "method"],
+          "properties": {
+            "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+            "model": { "type": "string", "description": "AI model used for generation, e.g. claude-sonnet-4-6" },
+            "method": { "type": "string", "description": "Generation method, e.g. grounded-derivation-v1" }
+          }
+        },
+        "statutory_sources": {
+          "type": "array",
+          "description": "All statutes/regulations cited across all nodes in this file",
+          "items": {
+            "type": "object",
+            "required": ["cite"],
+            "properties": {
+              "cite": { "type": "string" },
+              "url": { "type": ["string", "null"] },
+              "retrieved": { "type": "boolean" },
+              "retrieved_date": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "description": "The unit of encoding. Each node carries its own tier, band, sourcing, completeness checklist, and consequences — per spec §2, tier and band are node properties, not file properties.",
+      "items": { "$ref": "#/definitions/node" }
+    }
+  },
+  "definitions": {
+    "node": {
+      "type": "object",
+      "required": ["node_id", "title", "band", "tier", "grounded_derivation", "logic", "completeness_checklist", "consequences_and_next_steps", "provenance"],
+      "properties": {
+        "node_id": {
+          "type": "string",
+          "description": "Stable identifier, e.g. 'FDCPA-VALIDATION-NOTICE-1692g' or 'TX-SOL-CONSUMER-DEBT'."
+        },
+        "title": { "type": "string" },
+        "band": {
+          "type": "integer",
+          "enum": [1, 2, 3],
+          "description": "Per docs/GLOSSARY.md and CJAC_ROADMAP.md, reconciled in spec §2: 1 = deterministic/freezable outcome (e.g., SOL determination); 2 = structured-subjective (e.g., chain-of-title adequacy — lookup-able structure, judgment application); 3 = genuinely discretionary, boundary-marker only, never a target to cross (e.g., settle-vs-fight, bankruptcy-referral)."
+        },
+        "tier": {
+          "type": "string",
+          "enum": ["DRAFT", "CORROBORATED", "VALIDATED"],
+          "description": "Per spec §4 tier-promotion rules. DRAFT -> CORROBORATED: passes grounded-corroboration/adversarial/mutation-testing/disagreement-queue stages (§3a-d) with no unresolved disagreement. CORROBORATED -> VALIDATED: survives the statistical sampling audit (§3e) at attorney certification (§3g). Demotion triggers: statute/case-watch hit, audit failure, or a mutation-testing miss."
+        },
+        "grounded_derivation": {
+          "type": "object",
+          "required": ["derived_from", "citation_verified"],
+          "description": "Per spec §3(a): a model that answers correctly but can't point to the specific statutory/regulatory text it derived the answer from does not count.",
+          "properties": {
+            "derived_from": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["cite", "quoted_text"],
+                "properties": {
+                  "cite": { "type": "string" },
+                  "quoted_text": { "type": "string", "description": "Verbatim source text the derivation rests on." },
+                  "url": { "type": ["string", "null"] }
+                }
+              }
+            },
+            "citation_verified": { "type": "boolean", "description": "Mechanically verified against live source text, per §3(a)." }
+          }
+        },
+        "logic": {
+          "type": "object",
+          "description": "The rule content itself. Deliberately unstructured beyond this point in v1 — first nodes will establish the concrete shape; do not over-specify before real content exists (see CLAUDE.md posture on schema-before-content).",
+          "additionalProperties": true
+        },
+        "completeness_checklist": {
+          "type": "array",
+          "description": "Per spec §2: drives the guided-interview / voice-demo elicitation layer (§5) and is scored directly by the Direction E Tier 2 harness's elicitation-coverage metric.",
+          "items": {
+            "type": "object",
+            "required": ["fact", "dispositive"],
+            "properties": {
+              "fact": { "type": "string", "description": "Plain-language description of the fact needed." },
+              "dispositive": { "type": "boolean", "description": "Whether this fact changes the outcome (vs. merely contextual)." }
+            }
+          }
+        },
+        "consequences_and_next_steps": {
+          "type": "array",
+          "description": "Per spec §2: never a bare classification — structurally required, not prose. What to file, by when.",
+          "items": {
+            "type": "object",
+            "required": ["action", "deadline_type"],
+            "properties": {
+              "action": { "type": "string" },
+              "deadline_type": { "type": "string", "enum": ["fixed_date", "relative_days", "no_deadline", "discretionary"] },
+              "deadline_detail": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "required": ["ratification"],
+          "properties": {
+            "ratification": {
+              "type": "object",
+              "description": "Per spec §3(g): a named attorney certifies the RELEASE based on aggregate pipeline evidence, not a node-by-node signoff. This block records which release certification this node last cleared under, not a per-node attorney signature.",
+              "properties": {
+                "certified_in_release": { "type": ["string", "null"] },
+                "certifying_attorney": { "type": ["string", "null"] },
+                "certification_date": { "type": ["string", "null"] }
+              }
+            },
+            "disagreement_flags": {
+              "type": "array",
+              "description": "Per spec §3(d): model-vs-model or model-vs-source conflicts, auto-filed with evidence attached.",
+              "items": { "type": "object" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

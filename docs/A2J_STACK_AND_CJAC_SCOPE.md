@@ -2,7 +2,7 @@
 
 *Every serious project owes its readers a scope statement: not just what it does, but what it deliberately does not do, and the reasoning behind the line. This document places Civil Justice as Code in the context of the full American access-to-justice problem — which is far larger than any single project — and defines precisely which layers of that problem CJaC addresses, which it is expanding into by designed experiment, and which it will never claim. Companion documents: `OPEN_QUESTIONS_AND_LIMITATIONS.md` (what remains unproven) and `CJAC_ROADMAP.md` (the sequencing).*
 
-**Status:** working draft for iteration · 2026-07-24
+**Status:** final · authored 2026-07-24, adopted as the README's front-door document 2026-08-25 (Andy confirmed final upon review)
 
 ---
 

@@ -34,7 +34,7 @@ GUARDRAILS:
   - $10 budget cap (51 states × ~$0.05 est.)
 
 Usage (run from repo root in Andy's Terminal):
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  cd /Users/andrewcohen/Developer/a2j-ai
   python3 rules/validation/l2/retaliation_elements_runner.py
 
 For a single state (testing):

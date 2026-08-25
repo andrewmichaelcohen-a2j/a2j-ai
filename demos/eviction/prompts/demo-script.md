@@ -10,7 +10,7 @@
 | Tab / Window | What it is |
 |-------------|-----------|
 | **Cowork** | Active session, blank chat ready |
-| **Browser Tab A** | Widget: `file:///Users/andrewcohen/Documents/GitHub/a2j-ai/demos/eviction/widget/RulesComparisonWidget.html` — pre-load on **CA** |
+| **Browser Tab A** | Widget: `file:///Users/andrewcohen/Developer/a2j-ai/demos/eviction/widget/RulesComparisonWidget.html` — pre-load on **CA** |
 | **Browser Tab B** | GitHub: `rules/eviction/california/ca_eviction_v1.json` — open to `notice_defects` section |
 | **File ready to attach** | `ca_eviction_rules_v0.1.json` — have it ready in Finder to drag into Cowork for Scene 4 |
 

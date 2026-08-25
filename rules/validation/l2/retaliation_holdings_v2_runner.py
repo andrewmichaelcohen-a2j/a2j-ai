@@ -50,7 +50,7 @@ UNIQUE OUTPUT FILE:
   Never overwrites a prior run (state-count + date + run ID).
 
 Usage:
-  cd /Users/andrewcohen/Documents/GitHub/a2j-ai
+  cd /Users/andrewcohen/Developer/a2j-ai
   python3 rules/validation/l2/retaliation_holdings_v2_runner.py --states CA
   python3 rules/validation/l2/retaliation_holdings_v2_runner.py --states AZ,CA,DC,IA
 
