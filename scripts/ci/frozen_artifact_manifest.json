@@ -1,0 +1,17 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "_purpose": "ENG_HARDENING Task 2 (frozen-artifact integrity check), folded into Phase A per DEBT_PROJECT_ARCHITECTURE_SPEC.md v4 section 3. Any drift in a listed file's SHA256 fails CI. This manifest currently covers the eviction line's permanently-frozen artifacts (built here as protective value for the whole repo, not just debt) plus this file itself lists no debt artifacts yet, because nothing in rules/debt/ is frozen -- everything there is DRAFT tier and expected to change.",
+  "_manifest_updated": "2026-08-25",
+  "frozen_files": [
+    {
+      "path": "rules/eviction/california/ca_eviction_v2.json",
+      "label": "vProof1 -- permanently byte-frozen v0.3 held-out anchor. Standing discipline: never write to this file, never re-score v0.3 held-out.",
+      "sha256": "cc0cfab63ae1591e2b88353c557aeb8027767d99276a3115b5ce9f4115599b93"
+    },
+    {
+      "path": "rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.3_FROZEN_20260716.xlsx",
+      "label": "v0.3 held-out golden set, frozen 2026-07-16. Burned after one use per house discipline.",
+      "sha256": "e6dbb2fcb60de0773f9ff5594e09f74c6a6bac5670c70bd9bb76d70e2645df45"
+    }
+  ]
+}

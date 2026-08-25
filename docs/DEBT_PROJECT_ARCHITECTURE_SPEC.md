@@ -394,7 +394,26 @@ Tier promotion to VALIDATED happens only through the sampling-audit + certificat
 - **Tier is honestly DRAFT, not CORROBORATED or VALIDATED.** This is a single-model derivation — it has not yet passed the three-independent-frontier-model grounded corroboration (§3a), adversarial generation (§3b), or disagreement queue (§3d) stages, let alone the sampling audit (§3e) and attorney certification (§3g) that VALIDATED requires. Tier-promotion is not automatic and is not claimed here.
 - Completeness checklist and consequences-and-next-steps fields populated per §2's structural requirement (never a bare classification).
 
-**What's not yet started:** the remaining federal-spine nodes (Reg F disclosure requirements beyond validation, FCRA basics), all five state layers (TX/CA/UT/AZ/NY — SOL, deadlines, exemptions, service/default-judgment procedure), the CI pipeline (ENG_HARDENING Task 2), the scorer calibration suite (Task 4), and the actual multi-model verification pipeline (§3a-g) running against this or any future node. One node proves the schema and grounding discipline work end-to-end; it is not Phase A complete. See `docs/WORK_QUEUE.md` for the queued next items.
+**Round 2 (same day, 2026-08-25) — per Andy's "proceed with as much as possible" instruction:**
+
+**Federal spine, 3 more nodes (4 total now):**
+- `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json` — three nodes: **FDCPA-REGF-CALL-FREQUENCY-1006.14b** (the "7-in-7" call-frequency presumption, Band 1), **FDCPA-FALSE-DECEPTIVE-CATALOG-1692e** (16-item false/deceptive/misleading catalog, Band 1, both statute and Reg F §1006.18 cited for the mini-Miranda disclosure sub-item), **FDCPA-UNFAIR-PRACTICES-CATALOG-1692f** (8-item unfair-practices catalog, Band 1, one item flagged inline as having more legal-judgment dependency than the rest). All grounded in verbatim-fetched Cornell LII / eCFR text, retrieved 2026-08-25.
+- `rules/debt/federal/fcra_furnisher_dispute_v1.json` — **FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b**, Band 1. Encodes the furnisher's duty to investigate and correct credit-report information after a CRA-forwarded dispute. Honestly flags one gap: the node references the § 1681i(a)(1) reinvestigation deadline but does not itself state that deadline's length, since that provision wasn't independently pulled and verified this session.
+
+**State layer, TX first pass (5 nodes) — `rules/debt/state/texas/tx_debt_state_layer_v1.json`:**
+- **TX-SOL-CONSUMER-DEBT** (4-year limitations period, Tex. Civ. Prac. & Rem. Code § 16.004, Band 1)
+- **TX-WAGE-GARNISHMENT-PROHIBITION** (Tex. Const. art. XVI § 28 — wages can't be garnished for ordinary debt, a real and notable state-constitutional protection stronger than federal law, Band 1)
+- **TX-HOMESTEAD-EXEMPTION** (Tex. Prop. Code §§ 41.001-.002, no dollar cap, acreage-limited, Band 1)
+- **TX-EXEMPT-PERSONAL-PROPERTY** (Tex. Prop. Code §§ 42.001-.002, $100k family / $50k single-adult aggregate cap, Band 1)
+- **TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE** (14-day answer deadline, $20,000 jurisdictional ceiling) — **the one node in this delivery with `citation_verified: false`**, honestly flagged: sourced from a reputable attorney-reviewed legal-aid guide (TexasLawHelp/TLSC), not yet independently verified against the primary Tex. R. Civ. P. 502.5 text itself. Lower-confidence than the other TX nodes until that primary-source pull happens.
+
+**CI pipeline (ENG_HARDENING Task 2, folded in) — built and passing locally:**
+- `rules/schema/debt_schema_v1.0.json` validation via `scripts/ci/validate_debt_schema.py` (also enforces: every node has a valid tier; any node claiming VALIDATED must show a `certifying_attorney` in provenance, or the check fails — a structural version of §3(g)'s no-self-certification rule).
+- `scripts/ci/check_frozen_artifacts.py` + `scripts/ci/frozen_artifact_manifest.json` — recomputes SHA256 of vProof1 and the frozen v0.3 held-out golden set against committed hashes; drift fails the build. Built for the whole repo's protection, not debt-only, since these files must never change regardless of which line is active.
+- `.github/workflows/ci.yml` wires both scripts plus repo-wide JSON well-formedness and a Python syntax check into GitHub Actions, running on every push/PR to `main`.
+- **Not included:** a scorer unit-test suite or calibration suite (ENG_HARDENING Tasks 2's test-suite component and Task 4) — no debt scorer exists yet to test against. Queued, not silently dropped.
+
+**Still not started:** CA/UT/AZ/NY state layers, the actual multi-model verification pipeline (§3a-d) running against any node (requires live API-key model runs, which per standing discipline happen only in Andy's environment, not this sandbox), the scorer calibration suite, independent-review packaging (Task 7). See `docs/WORK_QUEUE.md` for the queue.
 
 ---
 

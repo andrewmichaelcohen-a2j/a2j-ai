@@ -1,0 +1,198 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "debt-v1",
+  "scope": {
+    "level": "state",
+    "jurisdiction": { "state": "TX", "state_name": "Texas" }
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-08-25",
+      "model": "claude-sonnet-5",
+      "method": "single-model-grounded-derivation-v1"
+    },
+    "statutory_sources": [
+      { "cite": "Tex. Civ. Prac. & Rem. Code § 16.004", "url": "https://law.justia.com/codes/texas/civil-practice-and-remedies-code/title-2/subtitle-b/chapter-16/subchapter-a/section-16-004/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "Tex. Const. art. XVI, § 28", "url": "https://law.justia.com/constitution/texas/sections/cn001600-002800.html", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "Tex. Prop. Code § 41.001", "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "Tex. Prop. Code § 41.002", "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "Tex. Prop. Code § 42.001", "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-001/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "Tex. Prop. Code § 42.002", "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-002/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "Tex. R. Civ. P. 502.5", "url": "https://texaslawhelp.org/guide/how-to-answer-a-debt-collection-case-in-justice-court", "retrieved": true, "retrieved_date": "2026-08-25" }
+    ]
+  },
+  "nodes": [
+    {
+      "node_id": "TX-SOL-CONSUMER-DEBT",
+      "title": "Statute of limitations on a Texas consumer-debt collection lawsuit",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Tex. Civ. Prac. & Rem. Code § 16.004(a)",
+            "quoted_text": "A person must bring suit on the following actions not later than four years after the day the cause of action accrues: ... (3) debt; ...",
+            "url": "https://law.justia.com/codes/texas/civil-practice-and-remedies-code/title-2/subtitle-b/chapter-16/subchapter-a/section-16-004/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "limitations_period_years": 4,
+        "applies_to": "actions on debt (written or oral contract), consistent with credit-card and other consumer-debt collection suits",
+        "accrual": "day the cause of action accrues — generally the date of default/breach or last payment, a fact question this node does not itself resolve",
+        "note_re_tolling": "Discovery-rule and fraudulent-concealment tolling, plus minority/unsound-mind/military-service/absence-from-Texas tolling, are recognized under Texas law but NOT encoded here — this node determines the baseline 4-year period only; tolling analysis is a separate, not-yet-built node.",
+        "determination": "expired_if today > (accrual_date + 4 years), subject to any tolling not yet encoded"
+      },
+      "completeness_checklist": [
+        { "fact": "Date of last payment on the debt, or date of default/breach if no payments were made", "dispositive": true },
+        { "fact": "Whether the debt arose from a written or oral contract (both get the 4-year period under § 16.004, but confirms which subsection applies)", "dispositive": false },
+        { "fact": "Any facts suggesting tolling (fraudulent concealment, debtor's absence from Texas, debtor's minority or unsound mind, military service) — flagged for the not-yet-built tolling node, not resolved here", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If the 4-year period has run and no tolling applies, statute of limitations is a complete defense — raise it as an affirmative defense in the Answer.", "deadline_type": "no_deadline", "deadline_detail": null },
+        { "action": "If close to the 4-year line, confirm the exact accrual date and check for any tolling facts before relying on this defense.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "TX-WAGE-GARNISHMENT-PROHIBITION",
+      "title": "Texas constitutionally prohibits wage garnishment for ordinary consumer debt",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Tex. Const. art. XVI, § 28",
+            "quoted_text": "No current wages for personal service shall ever be subject to garnishment, except for the enforcement of court-ordered: (1) child support payments; or (2) spousal maintenance.",
+            "url": "https://law.justia.com/constitution/texas/sections/cn001600-002800.html"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "current_wages_garnishable_for_consumer_debt": false,
+        "exceptions": ["court-ordered child support", "court-ordered spousal maintenance"],
+        "note": "This is a state constitutional protection stronger than federal law (which permits limited wage garnishment for ordinary debts, subject to CCPA caps) — Texas debtors facing a post-judgment collection effort should know their WAGES specifically cannot be garnished for an ordinary debt judgment, though bank account funds CAN be frozen/seized (a separate mechanism, garnishment of a bank account rather than of wages — not the same protection). Do not conflate the two.",
+        "determination": "if the creditor is attempting to garnish CURRENT WAGES for an ordinary debt judgment (not child support/spousal maintenance), that garnishment is unconstitutional under Texas law"
+      },
+      "completeness_checklist": [
+        { "fact": "Whether what's being targeted is wages specifically (garnishable-none, ordinary debt) vs. a bank account (garnishable, separate mechanism) vs. child support/spousal maintenance (garnishable)", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a creditor is attempting or threatening wage garnishment for an ordinary debt, object/respond citing Tex. Const. art. XVI, § 28 — this is a complete bar, not a negotiable point.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "TX-HOMESTEAD-EXEMPTION",
+      "title": "Texas homestead exemption from creditor seizure",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Tex. Prop. Code § 41.001(a)",
+            "quoted_text": "A homestead and one or more lots used for a place of burial of the dead are exempt from seizure for the claims of creditors except for encumbrances properly fixed on homestead property.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm"
+          },
+          {
+            "cite": "Tex. Prop. Code § 41.002(a)-(b)",
+            "quoted_text": "(a) If used for the purposes of an urban home... the homestead of a family or a single, adult person... shall consist of not more than 10 acres of land which may be in one or more contiguous lots, together with any improvements thereon. (b) If used for the purposes of a rural home, the homestead shall consist of: (1) for a family, not more than 200 acres...; or (2) for a single, adult person... not more than 100 acres...",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "homestead_exempt_from_ordinary_debt_seizure": true,
+        "no_dollar_value_cap": "Texas's homestead exemption, unlike its personal-property exemption, has NO dollar-value cap — acreage-limited only.",
+        "acreage_limits": { "urban": "10 acres (family or single adult)", "rural_family": "200 acres", "rural_single_adult": "100 acres" },
+        "exceptions_where_homestead_CAN_be_seized": ["purchase-money liens", "property tax liens", "home-improvement liens contracted in writing", "certain divorce-related owelty of partition", "home-equity loans meeting Tex. Const. art. XVI § 50(a)(6)", "reverse mortgages meeting § 50(k)-(p)"],
+        "proceeds_protection": "sale proceeds of a homestead are protected from creditor seizure for 6 months after the sale date (§ 41.001(c))"
+      },
+      "completeness_checklist": [
+        { "fact": "Whether the property is the debtor's actual residence and qualifies as urban or rural under § 41.002's definitions", "dispositive": true },
+        { "fact": "Acreage of the property, if rural", "dispositive": true },
+        { "fact": "Whether the creditor's claim is one of the enumerated exceptions (purchase-money, tax, contracted-in-writing improvement lien, etc.) rather than an ordinary unsecured debt", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a judgment creditor attempts to seize the debtor's homestead for an ordinary (non-exempted) debt, assert the homestead exemption — list the property in any post-judgment exemption filing.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "TX-EXEMPT-PERSONAL-PROPERTY",
+      "title": "Texas personal-property exemption from creditor seizure",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Tex. Prop. Code § 42.001(a)",
+            "quoted_text": "Personal property, as described in Section 42.002, is exempt from garnishment, attachment, execution, or other seizure if: (1) the property is provided for a family and has an aggregate fair market value of not more than $100,000...; or (2) the property is owned by a single adult, who is not a member of a family, and has an aggregate fair market value of not more than $50,000...",
+            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-001/"
+          },
+          {
+            "cite": "Tex. Prop. Code § 42.001(b)",
+            "quoted_text": "The following personal property is exempt from seizure and is not included in the aggregate limitations prescribed by Subsection (a): (1) current wages for personal services, except for the enforcement of court-ordered child support payments; (2) professionally prescribed health aids...; (3) alimony, support, or separate maintenance...; and (4) a religious bible or other book containing sacred writings of a religion...",
+            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-001/"
+          },
+          {
+            "cite": "Tex. Prop. Code § 42.002(a)",
+            "quoted_text": "The following personal property is exempt under Section 42.001(a): (1) home furnishings...; (2) provisions for consumption; (3) farming or ranching vehicles and implements; (4) tools, equipment, books, and apparatus...used in a trade or profession; (5) wearing apparel; (6) jewelry not to exceed 25 percent...; (7) two firearms; (8) athletic and sporting equipment...; (9) a two-wheeled, three-wheeled, or four-wheeled motor vehicle for each member of a family or single adult who holds a driver's license...; (10) [specified numbers of horses/mules/donkeys, cattle, other livestock, and fowl]; and (11) household pets.",
+            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-002/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "aggregate_cap": { "family": 100000, "single_adult_not_in_family": 50000 },
+        "cap_measured": "aggregate fair market value, exclusive of liens/security interests/other encumbrances, of the § 42.002(a) items combined",
+        "unlimited_categories_outside_the_cap": ["current wages (except child-support enforcement)", "professionally prescribed health aids", "alimony/support/separate maintenance", "a religious bible or sacred text (with a landlord-lien carve-out)"],
+        "note_re_secured_property": "a security interest or lien validly fixed on otherwise-exempt property (e.g., a car loan lien on an exempt vehicle) is NOT defeated by the exemption — § 42.001(c)/§42.002(b)."
+      },
+      "completeness_checklist": [
+        { "fact": "Family or single-adult-not-in-family status of the debtor (sets the $100,000 vs $50,000 cap)", "dispositive": true },
+        { "fact": "Aggregate fair market value of the debtor's § 42.002(a)-listed personal property, net of liens", "dispositive": true },
+        { "fact": "Whether any specific item the creditor is targeting is subject to its own valid lien/security interest (e.g., a financed vehicle) — exemption does not defeat that lien", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "List exempt personal property (and its estimated value) in the Answer and again in any post-judgment exemption filing, per the standard Texas justice-court practice.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE",
+      "title": "Deadline to answer a Texas debt-collection lawsuit in justice court",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Tex. R. Civ. P. 502.5",
+            "quoted_text": "[Secondary-source corroboration, not independently pulled from the primary TRCP text this session — see note below.] Per TexasLawHelp.org (Texas Legal Services Center, a 501(c)(3) legal-aid nonprofit; guide last legally reviewed 2024-03-18, last edited 2026-08-05): \"Your Answer is due 14 days after the date served. If the 14th day falls on a weekend or court holiday, you have until the next business day to submit it... Texas Justice Courts decide debt lawsuits worth up to $20,000.\"",
+            "url": "https://texaslawhelp.org/guide/how-to-answer-a-debt-collection-case-in-justice-court"
+          }
+        ],
+        "citation_verified": false
+      },
+      "logic": {
+        "answer_deadline_days": 14,
+        "deadline_computed_from": "date of service (delivery by constable or process server)",
+        "weekend_holiday_rule": "extends to the next business day if the 14th day falls on a weekend or court holiday",
+        "jurisdictional_ceiling": 20000,
+        "note_re_sourcing": "This node's fact figures (14 days, $20,000 ceiling) are corroborated by a reputable attorney-reviewed legal-aid source (TexasLawHelp/TLSC), NOT yet independently verified against the primary Texas Rules of Civil Procedure text itself. Per spec §3(a), grounded corroboration requires derivation from primary source text; this node does not yet meet that bar and should be treated as lower-confidence than the other TX nodes in this file until the primary TRCP 502.5 text is independently pulled and cited verbatim."
+      },
+      "completeness_checklist": [
+        { "fact": "Date of service (date the constable or process server delivered the citation and petition)", "dispositive": true },
+        { "fact": "Amount claimed in the suit (confirms justice-court jurisdiction applies, i.e., $20,000 or less)", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "File a written Answer with the justice court by the deadline (14 days from service, extended to the next business day if it falls on a weekend/holiday) — filing an Answer is free.", "deadline_type": "relative_days", "deadline_detail": "14 days from date of service, extended for weekends/court holidays" },
+        { "action": "If not filed, the plaintiff can seek a default judgment.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    }
+  ]
+}

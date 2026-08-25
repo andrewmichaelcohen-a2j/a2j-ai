@@ -1,0 +1,64 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "debt-v1",
+  "scope": {
+    "level": "federal",
+    "jurisdiction": { "state": null, "state_name": null }
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-08-25",
+      "model": "claude-sonnet-5",
+      "method": "single-model-grounded-derivation-v1"
+    },
+    "statutory_sources": [
+      { "cite": "15 U.S.C. § 1681s-2(b)", "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2", "retrieved": true, "retrieved_date": "2026-08-25" }
+    ]
+  },
+  "nodes": [
+    {
+      "node_id": "FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b",
+      "title": "A debt furnisher's duties after a consumer disputes credit-report information through a credit bureau",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "15 U.S.C. § 1681s-2(b)(1)",
+            "quoted_text": "After receiving notice pursuant to section 1681i(a)(2) of this title of a dispute with regard to the completeness or accuracy of any information provided by a person to a consumer reporting agency, the person shall— (A) conduct an investigation with respect to the disputed information; (B) review all relevant information provided by the consumer reporting agency pursuant to section 1681i(a)(2) of this title; (C) report the results of the investigation to the consumer reporting agency; (D) if the investigation finds that the information is incomplete or inaccurate, report those results to all other consumer reporting agencies to which the person furnished the information and that compile and maintain files on consumers on a nationwide basis; and (E) if an item of information disputed by a consumer is found to be inaccurate or incomplete or cannot be verified after any reinvestigation under paragraph (1), for purposes of reporting to a consumer reporting agency only, as appropriate, based on the results of the reinvestigation promptly— (i) modify that item of information; (ii) delete that item of information; or (iii) permanently block the reporting of that item of information.",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2"
+          },
+          {
+            "cite": "15 U.S.C. § 1681s-2(b)(2)",
+            "quoted_text": "A person shall complete all investigations, reviews, and reports required under paragraph (1) regarding information provided by the person to a consumer reporting agency, before the expiration of the period under section 1681i(a)(1) of this title within which the consumer reporting agency is required to complete actions required by that section regarding that information.",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "trigger": "furnisher receives notice of a consumer dispute FORWARDED BY a consumer reporting agency (CRA) under § 1681i(a)(2) — this is distinct from a dispute sent directly to the furnisher (a separate duty under § 1681s-2(a)(8), not encoded in this node)",
+        "furnisher_duties_on_receiving_a_CRA-forwarded_dispute": [
+          "investigate the disputed information",
+          "review all relevant information the CRA provided",
+          "report investigation results back to the CRA",
+          "if inaccurate/incomplete: report that finding to every other nationwide CRA the furnisher furnished the information to",
+          "if inaccurate, incomplete, or unverifiable after reinvestigation: modify, delete, or permanently block that item for CRA-reporting purposes"
+        ],
+        "deadline": "tied to the CRA's own § 1681i(a)(1) reinvestigation period — this node does not itself state that period's length (commonly cited as 30 days, extendable to 45 in some circumstances, but NOT independently verified against primary text this session; flagged rather than asserted)",
+        "relationship_to_debt_collection": "relevant when a debt collector or the original creditor is also furnishing information to credit bureaus about the disputed debt — a consumer disputing a debt's validity with the COLLECTOR under FDCPA §1692g (see FDCPA-VALIDATION-NOTICE-1692g) is a related but legally separate track from disputing the same debt's appearance on a CREDIT REPORT under FCRA (this node) — both may need to happen."
+      },
+      "completeness_checklist": [
+        { "fact": "Whether the consumer disputed the item directly with a credit bureau (CRA) — triggers this node — versus disputing directly with the furnisher/collector (a different provision, not encoded here)", "dispositive": true },
+        { "fact": "Date the CRA notified the furnisher of the dispute", "dispositive": true },
+        { "fact": "Whether the furnisher reported back to the CRA within the applicable reinvestigation window (window length not encoded in this node — flagged gap)", "dispositive": true },
+        { "fact": "What the furnisher's investigation concluded, and whether it modified/deleted/blocked the item accordingly if inaccurate/incomplete/unverifiable", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If disputing a debt's appearance on a credit report, dispute directly with the credit bureau (CRA), not just the collector — this triggers the CRA-forwarded-dispute duty encoded here, which the collector-only validation-dispute route (FDCPA §1692g) does not.", "deadline_type": "no_deadline", "deadline_detail": null },
+        { "action": "If the furnisher fails to investigate, fails to report back, or continues reporting inaccurate information after a reinvestigation should have caught it, that is a potential independent FCRA violation.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    }
+  ]
+}

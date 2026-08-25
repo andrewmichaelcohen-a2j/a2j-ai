@@ -4,6 +4,39 @@
 
 ---
 
+## 2026-08-25, round 3 (Debt Phase A build continues — autonomous, per Andy's "proceed without gating" instruction)
+
+*Andy, in chat: "all set - committed. please proceed. our work approach should be that you should proceed with as much as possible and only stop if there is something explicit that you need me to review, and then please let me know that. i am going to be traveling but want to get the project back into execution mode." Task class: GREEN for infrastructure/CI; all new content nodes ship DRAFT tier, honestly labeled single-model derivations that have not yet passed the multi-model verification pipeline (spec §3a-d).*
+
+**Federal spine — 3 more nodes, `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`:**
+- `FDCPA-REGF-CALL-FREQUENCY-1006.14b` (Band 1) — the Reg F "7-in-7" rebuttable-presumption rule (no more than 7 calls in 7 consecutive days per debt, and no call within 7 days of a prior conversation about that debt). Cites 12 C.F.R. § 1006.14(b)(2)(i)-(ii) and (b)(4) verbatim, fetched live from eCFR 2026-08-25.
+- `FDCPA-FALSE-DECEPTIVE-CATALOG-1692e` (Band 1) — full 16-item false/deceptive/misleading-representation catalog. Cites 15 U.S.C. § 1692e verbatim in full (Cornell LII), plus 12 C.F.R. § 1006.18(e) verbatim for the mini-Miranda disclosure sub-item.
+- `FDCPA-UNFAIR-PRACTICES-CATALOG-1692f` (Band 1) — full 8-item unfair-practices catalog. Cites 15 U.S.C. § 1692f verbatim in full (Cornell LII). Item (6) (nonjudicial repossession without an enforceable security interest/present right) flagged inline as carrying more legal-judgment dependency than the other 7 items — still Band 1 structurally, but the completeness checklist notes the fact-finding is less mechanical.
+
+**Federal spine — FCRA furnisher duty, `rules/debt/federal/fcra_furnisher_dispute_v1.json`:**
+- `FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b` (Band 1) — a furnisher's duty to investigate and correct/delete/modify reported information after a CRA forwards a consumer dispute. Cites 15 U.S.C. § 1681s-2(b)(1)-(2) verbatim. Source page (Cornell LII) exceeded the fetch tool's output limit; recovered by reading the saved local copy with paginated offset/limit to isolate subsection (b). **Honestly flagged:** the node references the § 1681i(a)(1) reinvestigation deadline but does not itself state that deadline's length — that provision was not independently pulled and verified this session, so the length claim should not be treated as sourced yet.
+
+**State layer — TX first pass, 5 nodes, `rules/debt/state/texas/tx_debt_state_layer_v1.json`:**
+- `TX-SOL-CONSUMER-DEBT` (Band 1) — 4-year statute of limitations. Tex. Civ. Prac. & Rem. Code § 16.004(a)(3), verbatim.
+- `TX-WAGE-GARNISHMENT-PROHIBITION` (Band 1) — Texas's state-constitutional bar on wage garnishment for ordinary debt (stronger than federal law's partial-protection approach), limited exceptions for child support/spousal maintenance. Tex. Const. art. XVI § 28, verbatim.
+- `TX-HOMESTEAD-EXEMPTION` (Band 1) — homestead protection from most creditor claims, no dollar cap, acreage-limited (10 urban / 200 rural family / 100 rural single adult). Tex. Prop. Code §§ 41.001(a), 41.002(a)-(b), verbatim.
+- `TX-EXEMPT-PERSONAL-PROPERTY` (Band 1) — personal-property exemption, $100,000 family / $50,000 single-adult aggregate fair-market-value cap. Tex. Prop. Code §§ 42.001(a)-(b), 42.002(a), verbatim.
+- `TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE` (Band 1, tier DRAFT) — 14-day answer deadline in justice court, $20,000 jurisdictional ceiling. **`citation_verified: false`** — sourced from TexasLawHelp.org (attorney-reviewed legal-aid content), not yet independently verified against primary Tex. R. Civ. P. 502.5 text. Flagged as the weakest-sourced node in this delivery; not blocking, since DRAFT tier already signals not-yet-corroborated, but called out because the gap here is sourcing depth, not just pipeline stage.
+
+Both source pages for `TX-HOMESTEAD-EXEMPTION`/`TX-EXEMPT-PERSONAL-PROPERTY` initially failed via `statutes.capitol.texas.gov` (client-rendered shell, no static content) — recovered via `codes.findlaw.com`, which serves static HTML with full verbatim text.
+
+**CI pipeline — ENG_HARDENING Task 2, folded into debt Phase A per Andy's "as applicable" instruction:**
+- `rules/schema/debt_schema_v1.0.json` validated by new `scripts/ci/validate_debt_schema.py` against all `rules/debt/**/*.json` (10 nodes across 4 files) via the `jsonschema` library. Also enforces: valid tier enum on every node; any node claiming `VALIDATED` must carry a `certifying_attorney` in its provenance block, or the check fails — a machine-checked version of spec §3(g)'s no-self-certification rule.
+- `scripts/ci/check_frozen_artifacts.py` + `scripts/ci/frozen_artifact_manifest.json` — SHA256 manifest covering `rules/eviction/california/ca_eviction_v2.json` (vProof1) and the frozen v0.3 held-out golden set; drift or a missing file fails the check. This machine-enforces the "never touch vProof1 / never re-score v0.3 held-out" standing discipline for the whole repo, not just the debt line.
+- `.github/workflows/ci.yml` — four jobs (json-well-formedness, debt-schema-validation, frozen-artifact-integrity, lint via `py_compile`), all self-contained and requiring no live model API keys, consistent with the standing discipline that live API-key runs happen only in Andy's environment. Runs on push/PR to `main`.
+- **Not built:** a scorer unit-test suite or calibration suite (the rest of Task 2/all of Task 4) — no debt scorer exists yet to test against. Queued in `WORK_QUEUE.md`, not silently dropped.
+
+**Docs updated (this entry's own delivery):** `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` Appendix 2 (round 2 build log added, stale "what's not yet started" list corrected), `docs/WORK_QUEUE.md` (NOW table + new dated header), this changelog entry.
+
+**Verification:** all 4 debt JSON files pass `validate_debt_schema.py` (10/10 nodes); `check_frozen_artifacts.py` passes (no drift on vProof1 or the frozen v0.3 set); all repo `.py` files pass `py_compile`; commit verified via `git am --3way` on a fresh clone before handoff.
+
+---
+
 ## 2026-08-25, round 2 (Debt Phase A build authorized and started — spec v4, first grounded node)
 
 *Per Andy's build-authorization message (in chat, following his answers to Cowork's four questions on README placement, repo restructuring, validation cadence, and the ENG_HARDENING/TX/5th-anchor decisions). Task class: GREEN for infrastructure/schema/scaffold; the one content node ships DRAFT tier, not self-certified.*

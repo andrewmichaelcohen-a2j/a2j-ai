@@ -1,0 +1,156 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "debt-v1",
+  "scope": {
+    "level": "federal",
+    "jurisdiction": { "state": null, "state_name": null }
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-08-25",
+      "model": "claude-sonnet-5",
+      "method": "single-model-grounded-derivation-v1"
+    },
+    "statutory_sources": [
+      { "cite": "15 U.S.C. § 1692e", "url": "https://www.law.cornell.edu/uscode/text/15/1692e", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "15 U.S.C. § 1692f", "url": "https://www.law.cornell.edu/uscode/text/15/1692f", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "12 C.F.R. § 1006.14 (Regulation F)", "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "12 C.F.R. § 1006.18 (Regulation F)", "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18", "retrieved": true, "retrieved_date": "2026-08-25" }
+    ]
+  },
+  "nodes": [
+    {
+      "node_id": "FDCPA-REGF-CALL-FREQUENCY-1006.14b",
+      "title": "Presumptively unlawful call frequency (the '7-in-7' rule)",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "12 C.F.R. § 1006.14(b)(2)(i)-(ii)",
+            "quoted_text": "(i) ...a debt collector is presumed to comply with paragraph (b)(1) of this section and FDCPA section 806(5) (15 U.S.C. 1692d(5)) if the debt collector places a telephone call to a particular person in connection with the collection of a particular debt neither: (A) More than seven times within seven consecutive days; nor (B) Within a period of seven consecutive days after having had a telephone conversation with the person in connection with the collection of such debt... (ii) ...a debt collector is presumed to violate paragraph (b)(1) of this section and FDCPA section 806(5) if the debt collector places a telephone call to a particular person in connection with the collection of a particular debt in excess of either of the telephone call frequencies described in paragraph (b)(2)(i) of this section.",
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14"
+          },
+          {
+            "cite": "12 C.F.R. § 1006.14(b)(4)",
+            "quoted_text": "For purposes of this paragraph (b), particular debt means each of a consumer's debts in collection. However, in the case of student loan debts, the term particular debt means all student loan debts that a consumer owes or allegedly owes that were serviced under a single account number at the time the debts were obtained by a debt collector.",
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "presumption_type": "rebuttable — a presumption of compliance or violation, not an absolute rule; a collector could rebut a violation-presumption, or a consumer could show harassment despite staying under the count in an unusual case",
+        "safe_harbor_count": "no more than 7 calls within any 7 consecutive days, per particular debt",
+        "cooldown_rule": "no call within 7 consecutive days after an actual telephone CONVERSATION about that debt (the conversation date is day 1 of that 7-day window) — distinct from the raw count limit and can be more restrictive",
+        "unit_of_count": "per 'particular debt' — each separate debt in collection is counted separately (special aggregation rule for student loans serviced under one account number)",
+        "exclusions_from_count": ["calls made with the person's prior consent, within 7 days of that consent", "calls not connected to the dialed number", "calls to certain third parties under §1006.6(d)(1)(ii)-(vi), not encoded in this node"],
+        "determination": "presumptively_unlawful if call_count_in_trailing_7_days > 7 for the same debt, OR a call is placed within 7 days after a conversation about that same debt"
+      },
+      "completeness_checklist": [
+        { "fact": "Dates/times of all calls from this collector regarding this specific debt over the relevant period", "dispositive": true },
+        { "fact": "Whether any of those contacts were actual conversations (not just calls/voicemails) about the debt, and their dates", "dispositive": true },
+        { "fact": "Whether the consumer gave prior consent to more frequent contact, and when", "dispositive": true },
+        { "fact": "Whether this is one debt or multiple debts (each counted separately, except aggregated student loans under one account number)", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If the call pattern exceeds the presumptive limits, document dates/times (call logs, voicemail timestamps) — this supports an FDCPA §1692d(5)/Reg F §1006.14(b) claim or defense-adjacent leverage.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "FDCPA-FALSE-DECEPTIVE-CATALOG-1692e",
+      "title": "Catalog: false, deceptive, or misleading representations prohibited in debt collection",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "15 U.S.C. § 1692e",
+            "quoted_text": "A debt collector may not use any false, deceptive, or misleading representation or means in connection with the collection of any debt. Without limiting the general application of the foregoing, the following conduct is a violation of this section: (1) The false representation or implication that the debt collector is vouched for, bonded by, or affiliated with the United States or any State... (2) The false representation of— (A) the character, amount, or legal status of any debt; or (B) any services rendered or compensation which may be lawfully received... (3) The false representation or implication that any individual is an attorney or that any communication is from an attorney. (4) The representation or implication that nonpayment of any debt will result in the arrest or imprisonment of any person or the seizure, garnishment, attachment, or sale of any property or wages of any person unless such action is lawful and the debt collector or creditor intends to take such action. (5) The threat to take any action that cannot legally be taken or that is not intended to be taken. ... (8) Communicating or threatening to communicate to any person credit information which is known or which should be known to be false, including the failure to communicate that a disputed debt is disputed. (9) The use or distribution of any written communication which simulates or is falsely represented to be a document authorized, issued, or approved by any court, official, or agency... (10) The use of any false representation or deceptive means to collect or attempt to collect any debt or to obtain information concerning a consumer. (11) The failure to disclose in the initial written communication...and, if oral, in that initial oral communication...that the debt collector is attempting to collect a debt and that any information obtained will be used for that purpose, and the failure to disclose in subsequent communications that the communication is from a debt collector... (12) The false representation or implication that accounts have been turned over to innocent purchasers for value. (13) The false representation or implication that documents are legal process. (14) The use of any business, company, or organization name other than the true name... (15) The false representation or implication that documents are not legal process forms or do not require action by the consumer. (16) The false representation or implication that a debt collector operates or is employed by a consumer reporting agency...",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692e"
+          },
+          {
+            "cite": "12 C.F.R. § 1006.18(e) (the 'mini-Miranda' disclosure — Reg F's current operative version of §1692e(11))",
+            "quoted_text": "(1) Initial communications. A debt collector must disclose in its initial communication with a consumer that the debt collector is attempting to collect a debt and that any information obtained will be used for that purpose. If the debt collector's initial communication with the consumer is oral, the debt collector must make the disclosure required by this paragraph again in its initial written communication with the consumer. (2) Subsequent communications. In each communication with the consumer subsequent to the communications described in paragraph (e)(1) of this section, the debt collector must disclose that the communication is from a debt collector. (3) Exception. Disclosures under paragraphs (e)(1) and (2) of this section are not required in a formal pleading made in connection with a legal action.",
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "note_re_scope": "16 statutory items encoded as a checklist-style catalog; item (11)'s 'mini-Miranda' disclosure duty is elaborated by Reg F §1006.18(e), included alongside the statute per the same both-sources discipline as the validation-notice node.",
+        "catalog_items": [
+          "(1) falsely claiming government affiliation/vouching",
+          "(2)(A) falsely representing the character, amount, or legal status of the debt",
+          "(2)(B) falsely representing services rendered or lawful compensation",
+          "(3) falsely claiming to be, or to communicate from, an attorney",
+          "(4) threatening arrest/imprisonment or unlawful/unintended property seizure for nonpayment",
+          "(5) threatening any action that cannot legally be taken or isn't intended",
+          "(8) communicating known-or-should-be-known-false credit information, including failing to note a debt is disputed",
+          "(9) using or distributing simulated/falsely-represented court or official documents",
+          "(10) any other false representation or deceptive means to collect or obtain consumer information",
+          "(11) failing the mini-Miranda disclosure (see Reg F §1006.18(e) above)",
+          "(12) falsely claiming accounts were sold to an innocent purchaser for value",
+          "(13) falsely representing documents as legal process",
+          "(14) using a business name other than the collector's true name",
+          "(15) falsely representing that documents are not legal process / require no action",
+          "(16) falsely claiming to operate or be employed by a consumer reporting agency"
+        ],
+        "determination": "any single catalog item, if the facts match, is an independent §1692e violation — items are not cumulative requirements, each stands alone"
+      },
+      "completeness_checklist": [
+        { "fact": "Exact wording of any written communication (letters, texts, emails) from the collector", "dispositive": true },
+        { "fact": "Content of any phone conversations with the collector — what was said, by whom, when (recordings, notes, or memory)", "dispositive": true },
+        { "fact": "Whether the collector disclosed (in the initial communication, and again if the initial contact was oral) that it was attempting to collect a debt and that info would be used for that purpose", "dispositive": true },
+        { "fact": "Whether the collector disclosed in EACH subsequent communication that it was a debt collector", "dispositive": true },
+        { "fact": "Any threats made (legal action, arrest, wage/property seizure) and whether the collector actually intended or was legally able to carry them out", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "Document the specific false/deceptive statement or omission (date, medium, exact wording if available) — each matched catalog item is an independent violation worth raising.", "deadline_type": "no_deadline", "deadline_detail": null },
+        { "action": "Cross-reference FDCPA civil-liability provisions (15 U.S.C. § 1692k) for damages exposure — not itself encoded in this node.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "FDCPA-UNFAIR-PRACTICES-CATALOG-1692f",
+      "title": "Catalog: unfair or unconscionable debt-collection practices",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "15 U.S.C. § 1692f",
+            "quoted_text": "A debt collector may not use unfair or unconscionable means to collect or attempt to collect any debt. Without limiting the general application of the foregoing, the following conduct is a violation of this section: (1) The collection of any amount (including any interest, fee, charge, or expense incidental to the principal obligation) unless such amount is expressly authorized by the agreement creating the debt or permitted by law. (2) The acceptance by a debt collector from any person of a check or other payment instrument postdated by more than five days unless such person is notified in writing of the debt collector's intent to deposit such check or instrument not more than ten nor less than three business days prior to such deposit. (3) The solicitation by a debt collector of any postdated check or other postdated payment instrument for the purpose of threatening or instituting criminal prosecution. (4) Depositing or threatening to deposit any postdated check or other postdated payment instrument prior to the date on such check or instrument. (5) Causing charges to be made to any person for communications by concealment of the true purpose of the communication... (6) Taking or threatening to take any nonjudicial action to effect dispossession or disablement of property if— (A) there is no present right to possession of the property claimed as collateral through an enforceable security interest; (B) there is no present intention to take possession of the property; or (C) the property is exempt by law from such dispossession or disablement. (7) Communicating with a consumer regarding a debt by post card. (8) Using any language or symbol, other than the debt collector's address, on any envelope when communicating with a consumer by use of the mails or by telegram, except that a debt collector may use his business name if such name does not indicate that he is in the debt collection business.",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692f"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "note_re_item_6": "Item (6)'s sub-elements (whether an 'enforceable security interest' exists giving a 'present right to possession') can require legal judgment on the underlying security agreement — flagged as the one catalog item here with more fact/legal-judgment dependency than the others, though the ultimate determination (was nonjudicial repossession threatened/taken without the right to do so) remains a yes/no outcome once that judgment is made.",
+        "catalog_items": [
+          "(1) collecting any amount not expressly authorized by the debt agreement or permitted by law (e.g., unauthorized fees/interest)",
+          "(2) depositing a check postdated >5 days without the required 3-10 business day advance written notice",
+          "(3) soliciting a postdated check/instrument to threaten or institute criminal prosecution",
+          "(4) depositing or threatening to deposit a postdated check/instrument before its date",
+          "(5) causing communication charges via concealment of the communication's true purpose (e.g., collect calls, telegram fees)",
+          "(6) threatening/taking nonjudicial repossession without a present enforceable right, without present intent, or where the property is legally exempt",
+          "(7) communicating about the debt by postcard",
+          "(8) using any envelope language/symbol (other than the collector's address or a non-revealing business name) indicating debt collection"
+        ],
+        "determination": "any single catalog item, if the facts match, is an independent §1692f violation"
+      },
+      "completeness_checklist": [
+        { "fact": "Whether any collected amount (fees, interest, charges) beyond principal was authorized by the original debt agreement or by law", "dispositive": true },
+        { "fact": "Whether a postdated check/payment was deposited early, or without proper advance written notice", "dispositive": true },
+        { "fact": "Any threats or actions regarding repossession of property, and whether the collector had a present legal right and intent to repossess (or whether the property is exempt — cross-reference the relevant state exemption node)", "dispositive": true },
+        { "fact": "Whether any communication was sent by postcard, or an envelope revealed debt-collection purpose", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "Document any unauthorized charges, improper postdated-check handling, improper repossession threats, or postcard/envelope disclosures — each is an independent §1692f violation worth raising.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    }
+  ]
+}

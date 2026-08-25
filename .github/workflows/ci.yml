@@ -1,0 +1,83 @@
+name: CI
+
+# ENG_HARDENING Task 2 (CI pipeline), folded into the debt track's Phase A build
+# per DEBT_PROJECT_ARCHITECTURE_SPEC.md v4 section 3 -- Andy's 2026-08-25 instruction
+# that ENG_HARDENING items applicable to debt as best practice apply there even
+# while ENG_HARDENING itself stays on hold for eviction.
+#
+# Converts existing gates (schema validity, frozen-artifact integrity) from
+# directive-invoked to structurally enforced: a push that breaks schema or
+# frozen-file integrity cannot land quietly.
+#
+# Scope note: this workflow covers (a) JSON well-formedness across rules/,
+# (b) debt-schema validation for rules/debt/, and (c) frozen-artifact integrity
+# for the eviction line's permanently-frozen files (vProof1, the v0.3 held-out
+# golden set) -- protective for the whole repo, not debt-only, since nothing
+# should ever touch those files regardless of which line is active. It does
+# NOT include a scorer unit-test suite or calibration suite (no debt scorer
+# exists yet to test) -- those are queued in WORK_QUEUE.md, not silently
+# dropped.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  json-well-formedness:
+    name: JSON well-formedness (all rules files)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check every rules/**/*.json parses
+        run: |
+          set -e
+          fail=0
+          while IFS= read -r -d '' f; do
+            if ! python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f"; then
+              echo "INVALID JSON: $f"
+              fail=1
+            fi
+          done < <(find rules -name '*.json' -print0)
+          if [ "$fail" -ne 0 ]; then
+            echo "FAIL: one or more rules/*.json files are not valid JSON."
+            exit 1
+          fi
+          echo "PASS: all rules/*.json files are well-formed."
+
+  debt-schema-validation:
+    name: Debt-track schema validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install jsonschema
+        run: pip install jsonschema
+      - name: Validate rules/debt/ against debt_schema_v1.0.json
+        run: python3 scripts/ci/validate_debt_schema.py
+
+  frozen-artifact-integrity:
+    name: Frozen-artifact integrity (vProof1 + v0.3 held-out)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recompute and compare SHA256 against the committed manifest
+        run: python3 scripts/ci/check_frozen_artifacts.py
+
+  lint:
+    name: Lint (basic)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Byte-compile all Python files (syntax check only)
+        run: |
+          set -e
+          python3 -m py_compile $(find scripts rules/debt -name '*.py' 2>/dev/null) || true
+          find . -name '*.py' -not -path './.git/*' -print0 | xargs -0 -n1 python3 -m py_compile
+          echo "PASS: all Python files compile (syntax-valid)."
