@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-08-24 (Debt Defense Prototype directive — architecture spec drafted, DRAFT-FOR-ANDY)
+
+*Per `COWORK_DIRECTION_DEBT_ARCHITECTURE_20260824.md`. Task class GREEN, documentation only — no rules files changed, no code built, nothing in the eviction line modified. Note the roughly one-month gap since the last entry above: no session ran between 2026-07-27 (last automated dev-set commit) and today; this directive is the first work item received in that window.*
+
+### GREEN — `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` drafted
+
+All ten required sections plus the Andy-decision checklist and the eviction-line state-of-record appendix. Grounded with external research (cited inline in the spec): Pew's 2020 debt-lawsuit study (default-judgment rate, counsel-rate disparity, case-volume growth), FDCPA/Regulation F/FCRA citations, and the integration-map partners — Spot (Suffolk LIT Lab), the Document Assembly Line / docassemble / Court Forms Online / LITEfile, i4J's Medical Debt Policy Scorecard and MDLA navigator model, the Utah sandbox and Arizona ABS program, Legal Help Commons / JusticeBench, and LSC TIG.
+
+**One finding worth flagging directly: *Upsolve, Inc. v. James* has changed since this project's context on it was last current.** The 2022 SDNY preliminary injunction in Upsolve's favor was **reversed by the Second Circuit on 2025-09-09** — the appellate court held Upsolve's non-lawyer "Justice Advocate" program did violate New York's UPL statutes and rejected the First Amendment pre-enforcement challenge. This is now the sharpest available cautionary precedent for any direct-consumer or worker-in-the-loop UPL scoping this project considers (spec §7/§9) — a narrow, well-funded, professionally represented program still lost at the appellate level.
+
+**Two structural gaps flagged prominently in the spec itself, not silently filled in:** the Band 1/2/3 taxonomy (referenced against `CJAC_ROADMAP.md`) and the AMPVR metric plus Direction E Tier 2 harness design (referenced against the Direction E directive) — neither source document has been committed to the repository or supplied in any session; both are still behind the 2026-07-24 "docs are final" publication gate, which was never triggered. The spec uses plain-language working definitions where it must reference these and flags every instance rather than presenting an invented definition as settled.
+
+**Eviction-line appendix, prepared fresh from the live repo rather than from memory:** v3 remains the sole active rules version; the D-1 dev-set monitor ran clean through 2026-07-26 (four consecutive 12/12 DUAL-MODEL-CONSENSUS runs) but has no logged activity since, and no commit of any kind has landed since 2026-07-27 — roughly a month of dormancy, cause undiagnosed, flagged as an observation only. Proposals 16/17/18 remain ratified but not executed (16's self-critique pass never ran, so 17 — sequenced after it — hasn't started either; 18 is correctly still log-only by design). Direction D-2 through D-5 remain ROADMAP-DEFINED, none building. Eng-Hardening Task 1 is complete; Tasks 2-4/7 have no record of having started (they were scoped alongside proposal 16, which hasn't run).
+
+**No repo changes beyond adding this one DRAFT spec file.** No rules file touched, no other doc edited.
+
 ## 2026-07-24 (Engineering Hardening directive, Task 1 — secret hygiene, executed same-day on receipt)
 
 *Per `COWORK_DIRECTION_ENG_HARDENING_20260724.md`: Task 1 executes immediately on receipt, ahead of the docs-final gate on other pending publication work. Tasks 2-4 and 7 are this week alongside proposal 16; Tasks 5-6 gate on v0.4 — none of that is executed here.*
