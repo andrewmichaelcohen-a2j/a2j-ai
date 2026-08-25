@@ -66,6 +66,7 @@ The queue is the cure for start/stop. The decision-rule is what lets Cowork drai
 
 One report per cycle. Decision-oriented, skimmable, and it is where Andy + Claude spend their attention. Shape:
 
+0. **Where we are (added 2026-08-25, per publication checklist):** one line stating the project's current roadmap phase — see `docs/CJAC_ROADMAP.md` — e.g. "Current: Phase 2." Opens every report so the brief always states where the project sits on the two-axis map before anything else.
 1. **Executed since last report (GREEN log):** terse changelog — what ran, what fixed, tests passing. Andy skims; no action needed.
 2. **For ratification (YELLOW):** changes made that Andy can reverse — each one line + where to look.
 3. **Decisions needed (RED):** the *only* items requiring Andy. Split clearly into **RED-interpretive** (real legal judgment — bring to Claude) vs. **strategic**. Each with the specific question and the options.

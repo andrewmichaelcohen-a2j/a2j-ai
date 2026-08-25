@@ -40,6 +40,12 @@ DRAFT → AUTOMATED-CHECKS-PASSED → UNDER REVIEW → VALIDATED → CERTIFIED
 
 ---
 
+## Results, open questions, and roadmap — the whole record, in order
+
+Start with [`docs/VALIDATION_README.md`](docs/VALIDATION_README.md) for the validation record itself: scores (always dual-reported if corrected — see below), the signed errata, and the raw scorer output, each one or two clicks from here. Then read [`docs/OPEN_QUESTIONS_AND_LIMITATIONS.md`](docs/OPEN_QUESTIONS_AND_LIMITATIONS.md) — the eleven things we haven't proven yet, published deliberately, each with its planned test. Then [`docs/CJAC_ROADMAP.md`](docs/CJAC_ROADMAP.md) for where the project is headed on both axes that matter (more jurisdictions and practice areas; deeper into judgment-dependent law) and what has to be true before each step. Outreach collateral (two-pager, pitch deck) lives in [`collateral/`](collateral/), versioned like everything else. That's the whole record — validation record, open questions, roadmap, collateral — in the order a skeptical reader should walk it.
+
+---
+
 ## How it's validated
 
 CJaC's method is **automation for coverage and triage; human expertise, surgically, for judgment.** Full detail in [`docs/VALIDATION_PHILOSOPHY.md`](docs/VALIDATION_PHILOSOPHY.md).
@@ -51,7 +57,7 @@ CJaC's method is **automation for coverage and triage; human expertise, surgical
 
 The labeling discipline is fixed throughout: **automation improves content and raises confidence; it never crosses the validation line.**
 
-CJaC measures itself against recognized standards — the NIST AI Risk Management Framework, enterprise software testing discipline, and certified-performance-under-defined-conditions standards from safety-critical software.
+CJaC's validation program is designed to align with recognized standards — the NIST AI Risk Management Framework, enterprise software testing discipline, and certified-performance-under-defined-conditions standards from safety-critical software — without claiming formal certification against any of them.
 
 ---
 
@@ -89,9 +95,13 @@ playbooks/    Legal workflow playbooks
 
 Key documents:
 - [`docs/VALIDATION_README.md`](docs/VALIDATION_README.md) — **start here for results:** scores, corrections, and where every piece of evidence lives, in plain English
+- [`docs/OPEN_QUESTIONS_AND_LIMITATIONS.md`](docs/OPEN_QUESTIONS_AND_LIMITATIONS.md) — the eleven things we haven't proven, published on purpose
+- [`docs/CJAC_ROADMAP.md`](docs/CJAC_ROADMAP.md) — the strategic map: jurisdictions/practice areas × depth of judgment, phases, gates
+- [`docs/GLOSSARY.md`](docs/GLOSSARY.md) — shared vocabulary (the Band 1/2/3 taxonomy and other recurring terms)
 - [`docs/VALIDATION_PHILOSOPHY.md`](docs/VALIDATION_PHILOSOPHY.md) — the methodology
 - [`docs/STATUS_LABELS.md`](docs/STATUS_LABELS.md) — the status ladder and advancement rules
 - [`docs/DISCLAIMER.md`](docs/DISCLAIMER.md) — legal information, not legal advice
+- [`docs/A2J_STACK_AND_CJAC_SCOPE.md`](docs/A2J_STACK_AND_CJAC_SCOPE.md) — *(working draft, still under Andy's review as of this commit — see note in DAILY_CHANGELOG)* where CJaC sits in the larger access-to-justice problem, and what it deliberately doesn't do
 
 ---
 

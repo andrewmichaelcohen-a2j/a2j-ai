@@ -4,6 +4,51 @@
 
 ---
 
+## 2026-08-25 (files.zip delivery — publication checklist executed, Direction E logged, debt spec v3, companion docs committed)
+
+*Per Andy's `files.zip` cover instructions (6 items, executed in order). Task class GREEN, documentation only. Authorship note, per amendment (c): the seven companion documents in this delivery (`COWORK_DIRECTION_ENG_HARDENING_20260724.md`, `COWORK_DIRECTION_DIRECTION_D_20260723.md`, `COWORK_DIRECTION_DIRECTION_E_20260724.md`, `COWORK_PUBLICATION_CHECKLIST_20260724.md`, `OPEN_QUESTIONS_AND_LIMITATIONS.md`, `CJAC_ROADMAP.md`, `PILOT_DESIGN_BAYLEGAL_DRAFT.md`, `A2J_STACK_AND_CJAC_SCOPE.md`) were authored 2026-07-24/07-26 and are being published/committed today, 2026-08-25 — the record should be honest about that roughly one-month gap between authorship and publication, not silent about it.*
+
+### Item 1 — ENG_HARDENING and Direction D: confirmed previously sent, not re-executed
+
+Both files in `files.zip` checked against prior delivery: `COWORK_DIRECTION_ENG_HARDENING_20260724.md` is byte-identical (md5 match) to the copy already committed 2026-07-24 (`d7e40c3`) — Task 1 (secret hygiene) already executed and reported that day; Tasks 2-4/7 and 5-6 status addressed below under item 2. `COWORK_DIRECTION_DIRECTION_D_20260723.md` is substantively identical to the 2026-07-23 directive already fully executed (`docs/DIRECTION_D_ROADMAP.md`). Neither re-executed. Both archived verbatim to the new `docs/directives/` folder for discoverability (see item 3 below — the folder didn't exist before this session; only Direction D's *roadmap*, not its original directive text, had been committed previously).
+
+### Item 2 — Publication checklist (`COWORK_PUBLICATION_CHECKLIST_20260724.md`) executed in full
+
+All rows and consistency-pass items executed, with the three amendments Andy specified:
+
+- **Row 7 (`A2J_STACK_AND_CJAC_SCOPE.md`) — FLAGGED, not guessed.** Andy's own instruction text left both conditional branches of this row unresolved as a literal bracketed template ("[if you're done reviewing: ... / if not: ...]") rather than picking one. Resolution taken: the file is committed to `docs/` and linked from `README.md`'s Key Documents list, but explicitly *not* as the README's first/primary document link, with an inline note flagging it as still under Andy's review. This is a judgment call under genuine ambiguity in Andy's own text — flagged here for correction if it guessed wrong.
+- **v0.4-sequencing references superseded by the hold.** Every place the checklist or its source documents referenced v0.4 sequencing has been published as historical/current record without reactivating eviction work — see the ENG_HARDENING Tasks 5-6 re-gate note in `WORK_QUEUE.md`/`PROJECT_STATE_OF_RECORD.md` today's entries.
+- **Authorship-vs-publication gap noted** — see the header note above.
+
+**Consistency-pass items completed:**
+- NIST framing fixed in `README.md`: "CJaC measures itself against recognized standards" → "CJaC's validation program is designed to align with recognized standards ... without claiming formal certification against any of them."
+- Band 1/2/3 taxonomy given shared vocabulary: `docs/GLOSSARY.md` created (Band 1/2/3, AMPVR, ratification-queue-health, Tier 1/Tier 2 — one line each, sourced from `OPEN_QUESTIONS_AND_LIMITATIONS.md` Q10 and the Direction E directive).
+- `README.md`'s "Results, open questions, and roadmap" section added, walking a skeptical reader through `VALIDATION_README.md` → `OPEN_QUESTIONS_AND_LIMITATIONS.md` → `CJAC_ROADMAP.md` → `collateral/`, in order. Key Documents list updated with explicit links to `OPEN_QUESTIONS_AND_LIMITATIONS.md`, `CJAC_ROADMAP.md`, `GLOSSARY.md`, and the flagged `A2J_STACK_AND_CJAC_SCOPE.md` entry.
+- Concise-deck retirement: confirmed via `find . -iname "*concise*"` that no such file exists anywhere in the repo — nothing to retire. Logged here as the confirmation record.
+- Notes-free collateral PDF: `collateral/CJaC_Pitch_Deck_FINAL.pdf` generated via `soffice --headless --convert-to pdf` from the already-committed `.pptx` (LibreOffice's default Impress export strips speaker notes — verified this matches the "notes-free" requirement) and committed alongside the existing `.pptx`/`.docx`.
+- `docs/COWORK_DIRECTION_A_CADENCE_AUTONOMY.md` amended: morning-report template gets a new opening line ("0. Where we are") stating the current roadmap phase, added as a dated standing amendment consistent with the file's existing Part 5/Part 6 precedent for dated additions rather than silent rewrites.
+- Standing-discipline sweep run across all seven new/companion docs: no solitary post-errata score citations, no dual-model/tri-model phrasing drift, no Schweiger/Levitz mix-ups, NIST framing clean elsewhere. Nothing needed fixing beyond the README instance above.
+
+### Item 3 — Direction E logged; demo-harness lane unblocked
+
+`docs/directives/COWORK_DIRECTION_DIRECTION_E_20260724.md` committed. `docs/DIRECTION_D_ROADMAP.md` amended with a new "Direction E — Lower-bound testing" section (Tier 1 narrative-perturbation and Tier 2 interactive-elicitation methodology, full descriptions, build gates) and a new "Automation-leverage principles" section (AMPVR definition, ratification-queue-health metric, triage-automation purpose statement — Task 3 of the directive). Per Andy's instruction, Direction E's eviction-specific v0.4 gate is superseded by the hold: **Tier 1/Tier 2 now apply to the debt track**, with narrative rewrites and personas to be built on debt fact patterns (not ported from eviction) once that lane starts. Task 3 executed as written (roadmap doc updated).
+
+### Item 4 — `DEBT_PROJECT_ARCHITECTURE_SPEC.md` revised to v3
+
+Both gaps v2 explicitly flagged as blocking are now resolved with real content, not placeholders: the Band 1/2/3 taxonomy (§1's corpus band-tags reconciled against the ratified `CJAC_ROADMAP.md` definitions — no changes needed, the v1/v2 working examples held up) and AMPVR (§4, now defined per Direction E Task 3). The demo-harness lane (§5, §10 Phase C, §11 lane c) is unblocked: Direction E's actual Tier 1/Tier 2 mechanics replace the prior "hard-blocked, cannot describe" language, and the model-family-separation rule in §11 is now confirmed against Direction E's real text ("actor and subject from different model families; actor prompts and fact sheets never exposed to the subject") rather than stated as a guess. §10's critical-path table updated: Phase C's bottleneck changes from "hard-blocked on Direction E" to "authoring debt-specific narratives/personas" — real work, no longer undefined work. A new "Staged demo plan: Stage 1 (machinery) / Stage 2 (outreach-grade)" subsection added to §10 per Andy's request.
+
+**Flagged, not silently guessed:** Andy's request for the staged demo plan referenced "per my prior message" — a message this session has no record of. The Stage 1/Stage 2 plan added is a best-effort construction from the spec's own existing §5/§10 sequencing (Stage 1 = thin slice through the scenario voice demo, both lower-bound tiers run once, Andy/counsel-only audience; Stage 2 = adds Phase D certification + Phase E hardening, outreach-ready). If Andy's original message specified different stage content or format, this section is a draft to correct against it, not a confirmed match.
+
+### Item 5 — Companion docs and living-record updates
+
+`docs/OPEN_QUESTIONS_AND_LIMITATIONS.md`, `docs/CJAC_ROADMAP.md`, `docs/PILOT_DESIGN_BAYLEGAL_DRAFT.md`, `docs/A2J_STACK_AND_CJAC_SCOPE.md` committed to `docs/` verbatim. `WORK_QUEUE.md` and `PROJECT_STATE_OF_RECORD.md` amended (same-day addenda to the existing 2026-08-25 HOLD entries, append-only): Commons alignment posture logged (citing `A2J_STACK_AND_CJAC_SCOPE.md`'s Legal Help Commons/JusticeBench alignment language), Band-1-only validation-claims scope now a standing caveat (per `OPEN_QUESTIONS_AND_LIMITATIONS.md` Q10), multilingual/Spanish-first access logged to `CJAC_ROADMAP.md` Phase 4 HORIZON (no design work, listed so it isn't lost), ENG_HARDENING Tasks 5-6 re-gated onto the debt track's first frozen eval set, and ENG_HARDENING Tasks 2-4/7 flagged as having no live "this week" trigger now that proposal 16 hasn't executed and eviction is on hold (left as not-started pending Andy's explicit go/no-go, rather than assumed either way).
+
+### Item 6 — This entry is the report
+
+Per Andy's instruction, one consolidated report message follows this delivery covering: secret-scan status (already reported 07-24, re-confirmed unchanged today), checklist execution complete with the details above, Direction E logged and the demo lane's unblocked status, and the full list of conflicts/ambiguities flagged rather than silently resolved (A2J_STACK_AND_CJAC_SCOPE.md's unresolved README-first-link conditional; the Stage 1/Stage 2 "prior message" this session doesn't have; ENG_HARDENING Tasks 2-4/7's stale trigger; the fifth-anchor-state data gap carried over from the debt spec v2; this session's own v2 patch's uncertain push status, resolved via local `git am --3way` regardless — see the handoff message).
+
+---
+
 ## 2026-08-25 (Debt Defense Prototype v2 — decisions ratified, eviction line HOLD, spec revised)
 
 *Per `COWORK_DIRECTION_DEBT_DECISIONS_20260824_v2.md`, superseding and incorporating the 2026-08-24 v1 directive (previous entry below). Task class GREEN, documentation only.*
