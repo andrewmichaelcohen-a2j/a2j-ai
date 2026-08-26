@@ -1,0 +1,2180 @@
+{
+  "run_id": "run_20260826T171949Z",
+  "mode": "live",
+  "started": "2026-08-26T17:19:49Z",
+  "ended": "2026-08-26T17:21:21Z",
+  "models": {
+    "anthropic": "claude-opus-5",
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "demo_corpus_only": false,
+  "budget_cap_usd": 15.0,
+  "approx_cost_per_node_usd_estimate": 0.35,
+  "n_queued": 37,
+  "n_completed": 37,
+  "n_clean_pass": 0,
+  "n_flagged": 37,
+  "demo_gate_metrics": {
+    "grounded_agreement_rate": {
+      "value_percent": 0.0,
+      "n_demo_corpus_nodes_this_run": 18,
+      "n_passing": 0,
+      "basis": "CLEAN-PASS = 3-model numeric/citation fingerprint agreement AND all citations live-verified AND no adversarial gap found"
+    },
+    "scenario_pass_rate": {
+      "value_percent": 0.0,
+      "n_scenarios": 5,
+      "n_passing": 0,
+      "scenarios": [
+        {
+          "scenario_id": "tx-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ]
+        },
+        {
+          "scenario_id": "ca-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ]
+        },
+        {
+          "scenario_id": "pre-suit-validation-rights",
+          "passed": false,
+          "depends_on_node_ids": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ]
+        },
+        {
+          "scenario_id": "garnishment-scenario",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ]
+        },
+        {
+          "scenario_id": "band3-refusal-boundary",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ]
+        }
+      ],
+      "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run"
+    },
+    "internal_gate_met": false,
+    "gate_threshold_percent": 90.0,
+    "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an internal readiness gate computed by this script, not itself a claim to publish -- see spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing."
+  },
+  "node_results": [
+    {
+      "node_id": "FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b",
+      "file": "rules/debt/federal/fcra_furnisher_dispute_v1.json",
+      "started": "2026-08-26T17:19:49Z",
+      "ended": "2026-08-26T17:19:55Z",
+      "input_sha256": "fd0cb411711bc35d75f98f9ea9c08936fc049ec6e62ba7869087ae421bef1fcd",
+      "node_sha256": "d713abc152e578aed52e05ef76ef7818111d58210e5c7b1d8dfde7129db44428",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk4CTenGBnAvjqJabAv'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk4e2o9ZNA717f19u8x'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "FDCPA-REGF-CALL-FREQUENCY-1006.14b",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-08-26T17:19:55Z",
+      "ended": "2026-08-26T17:20:04Z",
+      "input_sha256": "78ff1c1146022ba94099d006c95fe9378afdd0f577ef96904ca46c871aa67481",
+      "node_sha256": "df2bbf23d069917a2d74d35e823b6dca53f198442a33fa17e90c3afa5fda1821",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk4ex74VfG1bauTjJVy'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk5HfiWj7sG99opD3X4'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "FDCPA-FALSE-DECEPTIVE-CATALOG-1692e",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-08-26T17:20:04Z",
+      "ended": "2026-08-26T17:20:06Z",
+      "input_sha256": "78ff1c1146022ba94099d006c95fe9378afdd0f577ef96904ca46c871aa67481",
+      "node_sha256": "1a9201b5f071c07f6e474c022d2411f7583974a72608255e69bf5f3812f03499",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk5JcGSu6BBLSqfWZZv'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692e",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk5SVHWTQNgiz9BLWtS'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "FDCPA-UNFAIR-PRACTICES-CATALOG-1692f",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-08-26T17:20:06Z",
+      "ended": "2026-08-26T17:20:08Z",
+      "input_sha256": "78ff1c1146022ba94099d006c95fe9378afdd0f577ef96904ca46c871aa67481",
+      "node_sha256": "215f90a3894cba596071d00ee4f159f9fce770f315632a16647eb08079f74526",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk5TRqojX2XZGMDFN6A'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692f",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk5XiK5JdYu7TSUxRsE'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "FDCPA-VALIDATION-NOTICE-1692g",
+      "file": "rules/debt/federal/fdcpa_validation_notice_v1.json",
+      "started": "2026-08-26T17:20:08Z",
+      "ended": "2026-08-26T17:20:12Z",
+      "input_sha256": "192ca3b4936061f7353e4a64a8a1f15705f1a09d61adbf360a1cbedbb1384364",
+      "node_sha256": "3fe942294dfdd48ec97815c12f92e60ff23835ade2b8c980a6b9578d354827da",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk5YvzEhZSeUASVC1ga'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692g",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692g",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk5pvR3uJJo5QAbRLhy'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "AZ-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/arizona/az_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:12Z",
+      "ended": "2026-08-26T17:20:16Z",
+      "input_sha256": "750f416ec386982d1f7f95d95e95f59a5a41f364474f0f5ecd959e7aaa721194",
+      "node_sha256": "3d42acd015f5ccfa4692299e2bad3f80d3e4a659bc5aef70e40879bd4e4b776d",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk5qsTfdYKucEBrvH6L'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/az/title-12-courts-and-civil-proceedings/az-rev-st-sect-12-548/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/az/title-12-courts-and-civil-proceedings/az-rev-st-sect-12-548/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6AMTcsbbYwrXAEDS8'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "AZ-SOL-ORAL-CONTRACT-DEBT",
+      "file": "rules/debt/state/arizona/az_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:16Z",
+      "ended": "2026-08-26T17:20:17Z",
+      "input_sha256": "750f416ec386982d1f7f95d95e95f59a5a41f364474f0f5ecd959e7aaa721194",
+      "node_sha256": "c82b2d9df5c8a340e501ad105db3f53a0f9e8cf8f6ca0beafaa18c36607e99c1",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6BH2Ci1xCo2woc4wk'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/az/title-12-courts-and-civil-proceedings/az-rev-st-sect-12-543/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6EZxfxKaBb8z9zb4y'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "AZ-WAGE-GARNISHMENT-LIMIT",
+      "file": "rules/debt/state/arizona/az_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:17Z",
+      "ended": "2026-08-26T17:20:18Z",
+      "input_sha256": "750f416ec386982d1f7f95d95e95f59a5a41f364474f0f5ecd959e7aaa721194",
+      "node_sha256": "f7147854a7544248402c572c98177613a2433bfaaad19863a82e81800b8e4b56",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6FYFaz32UGkBbST9e'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1131/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1131/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6KmViFXrXwMnEktKp'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "AZ-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/arizona/az_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:18Z",
+      "ended": "2026-08-26T17:20:20Z",
+      "input_sha256": "750f416ec386982d1f7f95d95e95f59a5a41f364474f0f5ecd959e7aaa721194",
+      "node_sha256": "71654086ffc0a0c8040f9caa9a4cb8b0709a878474be148a9d7c9860981356f4",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6Lp19QhPfRLQbF5eS'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1101/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1101/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6R5jDT5GfBNA1X85a'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "AZ-VEHICLE-EXEMPTION",
+      "file": "rules/debt/state/arizona/az_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:20Z",
+      "ended": "2026-08-26T17:20:21Z",
+      "input_sha256": "750f416ec386982d1f7f95d95e95f59a5a41f364474f0f5ecd959e7aaa721194",
+      "node_sha256": "0f73412a297c73e60abedea5b5c93e8f0da095f0b95847b0ea09a2fc68f21c6f",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6S3HJdKz4jMgQvJE9'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1125/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6VJEbY4jKpXUSXN5n'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "AZ-TOOLS-OF-TRADE-EXEMPTION",
+      "file": "rules/debt/state/arizona/az_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:21Z",
+      "ended": "2026-08-26T17:20:22Z",
+      "input_sha256": "750f416ec386982d1f7f95d95e95f59a5a41f364474f0f5ecd959e7aaa721194",
+      "node_sha256": "db56a89614c61cc0256ae1e2c144b370a486cbc7f8fa15e287a9665214baeec3",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6WGmtiWQsrsRNLW8w'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1130/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6ZksSAdiCTNbmM53S'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "AZ-CIVIL-ANSWER-DEADLINE",
+      "file": "rules/debt/state/arizona/az_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:22Z",
+      "ended": "2026-08-26T17:20:26Z",
+      "input_sha256": "750f416ec386982d1f7f95d95e95f59a5a41f364474f0f5ecd959e7aaa721194",
+      "node_sha256": "9c0f13ded7dc5262c7292072e78ebd005d55d9aeb8e25197865f3e92811d8dd6",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6aifedHqUVqZDnfw3'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.courtrules.net/arizona/arizona-civil-procedure/rule-12",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6uKrfr6ycopF5561d'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:26Z",
+      "ended": "2026-08-26T17:20:28Z",
+      "input_sha256": "6f6f578034f9629b55042e2d2f618233b763df1a575c5b66a0f3c99e27b1fbbc",
+      "node_sha256": "7e7db5842e5818178998ce53b1b29702b220abcce5c3a3fedd0b0219912b3113",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk6vLczjP3d5mgKpyhm'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk71m41yagcnxmsmJj8'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-SOL-ORAL-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:28Z",
+      "ended": "2026-08-26T17:20:29Z",
+      "input_sha256": "6f6f578034f9629b55042e2d2f618233b763df1a575c5b66a0f3c99e27b1fbbc",
+      "node_sha256": "952577347234f1dc877f4e754263090140aac3be8c2dfd8b8e9d84205639f60c",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk72uGZWfWTbrK9N89s'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-339/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk76T5t48vdkTQuqz7t'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-WAGE-GARNISHMENT-LIMIT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:29Z",
+      "ended": "2026-08-26T17:20:30Z",
+      "input_sha256": "6f6f578034f9629b55042e2d2f618233b763df1a575c5b66a0f3c99e27b1fbbc",
+      "node_sha256": "37c95c9f58f3b56546a21676c42e68eb11a52e91eb8340a73fc8be902bf269bd",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk77bHwQ2ZXUCd4RLoU'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-706-050/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-706-050/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7BRyStx1JetRH9sr7'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:30Z",
+      "ended": "2026-08-26T17:20:31Z",
+      "input_sha256": "6f6f578034f9629b55042e2d2f618233b763df1a575c5b66a0f3c99e27b1fbbc",
+      "node_sha256": "3a3ac0d55ae85841c03ff0e79ed227af54a9e5f3a34263c3d2c0d51023b1d0e7",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7CR1Yj3Gnc68tmFQB'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-730/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7Ft7fGh7ire9v9KkU'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-VEHICLE-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:31Z",
+      "ended": "2026-08-26T17:20:32Z",
+      "input_sha256": "6f6f578034f9629b55042e2d2f618233b763df1a575c5b66a0f3c99e27b1fbbc",
+      "node_sha256": "891dd15660deaf187a72773099e77eecf774869295977d9e78007cbe94206f05",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7GtPmRZujWaexWESj'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-010/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7L87J7qdYoq4MrsHt'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-BANK-ACCOUNT-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:32Z",
+      "ended": "2026-08-26T17:20:33Z",
+      "input_sha256": "6f6f578034f9629b55042e2d2f618233b763df1a575c5b66a0f3c99e27b1fbbc",
+      "node_sha256": "ff39a50ec134bd96f003d3099981564492d5bafee73ffff549a95d744a93b49c",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7MRzDhK5jspYBuD8D'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-220/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-220/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7RKQFyAh2X8YYNBaQ'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-CIVIL-ANSWER-DEADLINE",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:33Z",
+      "ended": "2026-08-26T17:20:34Z",
+      "input_sha256": "6f6f578034f9629b55042e2d2f618233b763df1a575c5b66a0f3c99e27b1fbbc",
+      "node_sha256": "feffa9821ef517977a8f71ae864a54de9280079358f9fbf93bb2fb8856af7716",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7SLugh2b3rdDbQcY9'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-412-20/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-412-20/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7W97kmPoB88uEjpjo'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "NY-SOL-CONTRACT-DEBT",
+      "file": "rules/debt/state/new_york/ny_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:34Z",
+      "ended": "2026-08-26T17:20:35Z",
+      "input_sha256": "3e24a2e58a0af19c6c55c77d6ed4326e560f7a6e2b75fb061467fd923e4a2d8b",
+      "node_sha256": "fd94f4541660a49c0f6168944afcf19a1421d303a7b00542adafd1143f88494d",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7X5RLvGgyMb29YsfZ'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/new-york/cvp/article-2/213/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7aQbEFMrcHzJyzjaE'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "NY-INCOME-EXECUTION-LIMIT",
+      "file": "rules/debt/state/new_york/ny_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:35Z",
+      "ended": "2026-08-26T17:20:37Z",
+      "input_sha256": "3e24a2e58a0af19c6c55c77d6ed4326e560f7a6e2b75fb061467fd923e4a2d8b",
+      "node_sha256": "677531552880a0371d0411ebe71607f6c25c78589f1bf1df5fea2f7c649ab5b2",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7bNt7sjiZhyoqaMHC'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/new-york/cvp/article-52/5231/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7fGnqqjqP44EpRVM7'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "NY-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/new_york/ny_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:37Z",
+      "ended": "2026-08-26T17:20:41Z",
+      "input_sha256": "3e24a2e58a0af19c6c55c77d6ed4326e560f7a6e2b75fb061467fd923e4a2d8b",
+      "node_sha256": "a1a93345ffdbaf53fbdbc2fac4853ad7f3413b0dd9a834930f56c329fc840945",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk7gUxwAoodN4sM8PMj'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/new-york/cvp/article-52/5206/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.dfs.ny.gov/industry_guidance/exemption_from_judgments",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk81QWAczDQro6TBhqk'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "NY-VEHICLE-EXEMPTION",
+      "file": "rules/debt/state/new_york/ny_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:41Z",
+      "ended": "2026-08-26T17:20:42Z",
+      "input_sha256": "3e24a2e58a0af19c6c55c77d6ed4326e560f7a6e2b75fb061467fd923e4a2d8b",
+      "node_sha256": "ea0f3480e346918ccfcd75d0fc3802e79812b903221b3d1bfd6dc7e12cc0d0ed",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk82MZ2fbh2HAqQ9bo5'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/new-york/cvp/article-52/5205/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.dfs.ny.gov/industry_guidance/exemption_from_judgments",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk86LuyzGDiqC4tcu74'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "NY-PERSONAL-PROPERTY-EXEMPTION",
+      "file": "rules/debt/state/new_york/ny_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:42Z",
+      "ended": "2026-08-26T17:20:43Z",
+      "input_sha256": "3e24a2e58a0af19c6c55c77d6ed4326e560f7a6e2b75fb061467fd923e4a2d8b",
+      "node_sha256": "20aa18ab5b3aacfd277801ea3c7189d8aa58fc859f8f5370e5872c02c4ae8252",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk87KSyg98yQybDyaXH'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/new-york/cvp/article-52/5205/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://www.dfs.ny.gov/industry_guidance/exemption_from_judgments",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk8BMHz1Y7pisTqivEA'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "NY-CIVIL-ANSWER-DEADLINE",
+      "file": "rules/debt/state/new_york/ny_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:43Z",
+      "ended": "2026-08-26T17:20:44Z",
+      "input_sha256": "3e24a2e58a0af19c6c55c77d6ed4326e560f7a6e2b75fb061467fd923e4a2d8b",
+      "node_sha256": "18850f7af75ebaa0e9fb17502ab496902e79811e7f1190410ff653a42614e514",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk8CL5VYquCCyEyuthQ'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ny/civil-practice-law-and-rules/cvpny-cplr-rule-320/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk8FTMHHpWJnxr9fk3e'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY",
+      "file": "rules/debt/state/texas/tx_debt_band3_discretionary_v1.json",
+      "started": "2026-08-26T17:20:44Z",
+      "ended": "2026-08-26T17:20:56Z",
+      "input_sha256": "94428f569d7c13501728e6e13486daff8bc6bc7074e3d8a2cb943ec4ef0aed4e",
+      "node_sha256": "d347227edeb7765c33590a289c82e64b7c1f1f5375bc6cd109fd300eefb7f8e8",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk8GU7rEAg85fSzxYkS'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.lawpipe.com/Texas/Craddock_v_Sunshine_Bus_Lines_Inc.html",
+            "verified": true,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+            "verified": true,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+            "verified": true,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": true
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk98JGCsvsQ1R7SDntC'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "TX-SOL-CONSUMER-DEBT",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:56Z",
+      "ended": "2026-08-26T17:20:58Z",
+      "input_sha256": "0a65cbee456bd73418fe88869a0b333f16e0032ea4899fd327dda98d25e6e676",
+      "node_sha256": "3a337fbec58d9c3956ce7ffbdcb42e0a951826000319c6627d7b3dd9c368017e",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk99GJqgERwbb8xzdWU'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/texas/civil-practice-and-remedies-code/title-2/subtitle-b/chapter-16/subchapter-a/section-16-004/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk9ENPLNRR6h4FdSRU6'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "TX-WAGE-GARNISHMENT-PROHIBITION",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:58Z",
+      "ended": "2026-08-26T17:20:59Z",
+      "input_sha256": "0a65cbee456bd73418fe88869a0b333f16e0032ea4899fd327dda98d25e6e676",
+      "node_sha256": "69197898ced0c5d102fdf6f736a10d425abbe893962677b09ef24231a141b4cf",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk9FRPdtWP9EWmtmL7x'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/constitution/texas/sections/cn001600-002800.html",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk9JiqBiAVYsNbX7QSw'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "TX-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:20:59Z",
+      "ended": "2026-08-26T17:21:04Z",
+      "input_sha256": "0a65cbee456bd73418fe88869a0b333f16e0032ea4899fd327dda98d25e6e676",
+      "node_sha256": "06d5b97db58296ce2294139abc420f6d15958e775c5e784a0ba059878fcbd981",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk9Ke9PfamVkQie2hwL'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk9fh9G8AEiLHY3V8UT'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "TX-EXEMPT-PERSONAL-PROPERTY",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:21:04Z",
+      "ended": "2026-08-26T17:21:05Z",
+      "input_sha256": "0a65cbee456bd73418fe88869a0b333f16e0032ea4899fd327dda98d25e6e676",
+      "node_sha256": "e4c34872cd82270419e94f8fade1c75e3cc21f2b83b6e230ae8571199bdd96bc",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk9ggRZ7FB19s2QRUXi'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-001/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-001/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-002/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk9mDXRujhVTZL1NV9T'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:21:05Z",
+      "ended": "2026-08-26T17:21:09Z",
+      "input_sha256": "0a65cbee456bd73418fe88869a0b333f16e0032ea4899fd327dda98d25e6e676",
+      "node_sha256": "43a0869711d7e89b77f7acc4c09a50f9fbc13df71f6ea584e94d9363119ced11",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRk9nA5toKpZ1mq3TbFC'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://texaslawhelp.org/guide/how-to-answer-a-debt-collection-case-in-justice-court",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkA6YNthjaHUSeiq4jE'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "UT-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/utah/ut_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:21:09Z",
+      "ended": "2026-08-26T17:21:11Z",
+      "input_sha256": "077695d01ab55666d402e09244f5306be5e9b8b4b4ad38b767156a974073dfd6",
+      "node_sha256": "051b33680b00486ea03c944baf024dea05d392955ca7b455a96d041fcce793b5",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkA7Vg6R3Pcj9zFxgXN'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-309/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-309/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkABRoyxH6fohNKVxbA'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "UT-SOL-ORAL-CONTRACT-DEBT",
+      "file": "rules/debt/state/utah/ut_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:21:11Z",
+      "ended": "2026-08-26T17:21:12Z",
+      "input_sha256": "077695d01ab55666d402e09244f5306be5e9b8b4b4ad38b767156a974073dfd6",
+      "node_sha256": "2a1200b12e5152b5ddbf42dfbce08885019836edf50dd96998d2d414a9001245",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkACSLFrhyxp38MhAJU'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-307/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkAFyuM8NMeWqL2XYcw'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "UT-WAGE-GARNISHMENT-LIMIT",
+      "file": "rules/debt/state/utah/ut_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:21:12Z",
+      "ended": "2026-08-26T17:21:13Z",
+      "input_sha256": "077695d01ab55666d402e09244f5306be5e9b8b4b4ad38b767156a974073dfd6",
+      "node_sha256": "ca8006c51f584ec340a1581c48041bfe135cd0db44cbee9f692a63d48f504623",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkAHF4M7TP6Wfz9SoSt'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ut/title-70c-utah-consumer-credit-code/ut-code-sect-70c-7-103/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/ut/title-70c-utah-consumer-credit-code/ut-code-sect-70c-7-103/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkAMBCJZFfDNA8g69aY'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "UT-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/utah/ut_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:21:13Z",
+      "ended": "2026-08-26T17:21:14Z",
+      "input_sha256": "077695d01ab55666d402e09244f5306be5e9b8b4b4ad38b767156a974073dfd6",
+      "node_sha256": "7c4151e3e4fbd6e0bc5b127c7938bf4ac42723a684f04a0d61b5ff30c26f1e93",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkANAUQHibcqVG7JjRt'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-503/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-503/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkAS9LkZ7saa3LSS1gC'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "UT-PERSONAL-PROPERTY-EXEMPTION",
+      "file": "rules/debt/state/utah/ut_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:21:14Z",
+      "ended": "2026-08-26T17:21:15Z",
+      "input_sha256": "077695d01ab55666d402e09244f5306be5e9b8b4b4ad38b767156a974073dfd6",
+      "node_sha256": "971c44d4edbf276335f16fc8a7b5930bf3bef94c8f40e58fac3bc66851712b39",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkATC6MEZmifUgMq2fX'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-506/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          },
+          {
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-506/",
+            "verified": false,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkAXGAhN4E9nmERzNFK'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "UT-CIVIL-ANSWER-DEADLINE",
+      "file": "rules/debt/state/utah/ut_debt_state_layer_v1.json",
+      "started": "2026-08-26T17:21:15Z",
+      "ended": "2026-08-26T17:21:21Z",
+      "input_sha256": "077695d01ab55666d402e09244f5306be5e9b8b4b4ad38b767156a974073dfd6",
+      "node_sha256": "dfe431985bb405374fe62bc48353e20d79a704bd37416923e6be0583e73f10d4",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkAYFwfkDxSnsxp2HQA'}",
+            "model": "claude-opus-5"
+          },
+          {
+            "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: (sk-proj**********************************************************************************************************************************************************EEA). You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+            "model": "gpt-5.5"
+          },
+          {
+            "error": "400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "fingerprints": [
+          [],
+          [],
+          []
+        ],
+        "all_grounded": false,
+        "fingerprint_agreement": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://legacy.utcourts.gov/rules/view.php?type=urcp&rule=12",
+            "verified": true,
+            "method": "live",
+            "error": null
+          }
+        ],
+        "all_verified": true
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "error": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CeRkAuzefAuo8L3S2U9mF'}",
+          "model": "claude-opus-5"
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    }
+  ]
+}
