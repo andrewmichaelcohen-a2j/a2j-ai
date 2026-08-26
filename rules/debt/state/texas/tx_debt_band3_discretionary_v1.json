@@ -1,0 +1,116 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "debt-v1",
+  "scope": {
+    "level": "state",
+    "jurisdiction": {
+      "state": "TX",
+      "state_name": "Texas"
+    }
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-08-26",
+      "model": "claude-sonnet-5",
+      "method": "single-model-grounded-derivation-v1"
+    },
+    "statutory_sources": [
+      {
+        "cite": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939)",
+        "url": "https://www.lawpipe.com/Texas/Craddock_v_Sunshine_Bus_Lines_Inc.html",
+        "retrieved": true,
+        "retrieved_date": "2026-08-26"
+      },
+      {
+        "cite": "Tex. R. Civ. P. 329b(a), (c)",
+        "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+        "retrieved": true,
+        "retrieved_date": "2026-08-26"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "node_id": "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY",
+      "title": "Whether a Texas default judgment will be set aside on a motion for new trial — a genuinely discretionary, multi-factor judicial determination",
+      "band": 3,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939)",
+            "quoted_text": "A default judgment should be set aside and a new trial ordered in any case in which the failure of the defendant to answer before judgment was not intentional, or the result of conscious indifference on his part, but was due to a mistake or an accident; provided the motion for a new trial sets up a meritorious defense and is filed at a time when the granting thereof will occasion no delay or otherwise work an injury to the plaintiff.",
+            "url": "https://www.lawpipe.com/Texas/Craddock_v_Sunshine_Bus_Lines_Inc.html"
+          },
+          {
+            "cite": "Tex. R. Civ. P. 329b(a)",
+            "quoted_text": "A motion for new trial, if filed, shall be filed prior to or within thirty days after the judgment or other order complained of is signed.",
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/"
+          },
+          {
+            "cite": "Tex. R. Civ. P. 329b(c)",
+            "quoted_text": "In the event an original or amended motion for new trial or a motion to modify, correct or reform a judgment is not determined by written order signed within seventy-five days after the judgment was signed, it shall be considered overruled by operation of law on expiration of that period.",
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/"
+          }
+        ],
+        "citation_verified": true,
+        "citation_verification_note": "TRCP 329b text is a direct live fetch of a page stating it reproduces the official Texas Judicial Branch rule text verbatim (rulesofcivilprocedure.com, citing txcourts.gov as the official source) -- primary-source-adjacent, not the txcourts.gov PDF itself. The Craddock quote is from a case-brief aggregator (lawpipe.com) that reproduces the operative sentence with a pin cite (133 S.W.2d at 126); direct fetches of CourtListener's opinion page and Google Scholar's case page both returned empty content this session and could not be used to independently confirm the exact wording against the original 1939 opinion. Treated as citation_verified per the same secondary-source standard already applied elsewhere in this corpus (e.g. Justia/Cornell statutory reproductions), but flagged here because case-law aggregators paraphrase more often than statute aggregators do -- this is a strong candidate for the corroboration runner's mechanical citation check to re-verify against a primary opinion source once one is reachable."
+      },
+      "logic": {
+        "concept": "BAND 3 -- GENUINELY DISCRETIONARY. This node's only honest output is the boundary marker itself: flagging that a default judgment may be set aside, naming the three factors a Texas court weighs, and stating who bears the burden -- never predicting whether a specific court will actually grant the motion. Predicting the outcome of a discretionary judicial determination is out of scope for this system by design (see spec Band taxonomy, docs/GLOSSARY.md) -- this is a permanent boundary, not a gap to close with more data.",
+        "trigger": "A default judgment (or a judgment following an answer with a subsequent failure to appear, per Ivy v. Carrell, 407 S.W.2d 212 (Tex. 1966), extending Craddock) has already been entered against the person, and the person wants to know whether it can be reopened.",
+        "craddock_factors_named_not_applied": [
+          "(1) the failure to answer was not intentional or the result of conscious indifference, but the result of an accident or mistake",
+          "(2) the motion for new trial sets up a meritorious defense",
+          "(3) granting the motion will occasion no undue delay or otherwise injure the plaintiff"
+        ],
+        "procedural_deadline_component_this_IS_deterministic": "The motion for new trial must be filed within 30 days after the judgment is signed (TRCP 329b(a)) -- Band 1 within an otherwise Band 3 node. If it is not decided by written signed order within 75 days of judgment, it is overruled by operation of law (TRCP 329b(c)). Missing the 30-day window forecloses this path entirely regardless of how strong the three Craddock factors are -- this deterministic gate should be surfaced to the user with urgency distinct from the discretionary merits question.",
+        "what_the_system_may_say": "Name the three-factor test, explain each factor in plain language, flag the 30-day filing deadline as hard and case-critical, and tell the person a licensed attorney's judgment is needed to assess factors (1) and (2) against their specific facts.",
+        "what_the_system_may_NOT_say": "Any prediction of whether a specific court will grant or deny the motion; any characterization of the person's facts as clearly meeting or failing a factor; any percentage or likelihood language."
+      },
+      "completeness_checklist": [
+        {
+          "fact": "Has a default judgment (or dismissal-for-failure-to-appear judgment) actually been entered, and on what date was it signed?",
+          "dispositive": true
+        },
+        {
+          "fact": "Is the person still within 30 days of the judgment being signed? (Deterministic gate -- if no, this path is foreclosed regardless of the merits.)",
+          "dispositive": true
+        },
+        {
+          "fact": "Why did the person fail to answer or appear -- their own account of what happened (raw input for factor 1; the system does not characterize it)",
+          "dispositive": false
+        },
+        {
+          "fact": "Does the person have a defense to the underlying claim, and what is it (raw input for factor 2; the system does not characterize it)",
+          "dispositive": false
+        }
+      ],
+      "consequences_and_next_steps": [
+        {
+          "action": "If within 30 days of the judgment being signed, file (or get help filing) a motion for new trial immediately -- this deadline is hard and does not extend for weighing the merits first.",
+          "deadline_type": "relative_days",
+          "deadline_detail": "30 days from the date the judgment was signed, per Tex. R. Civ. P. 329b(a)"
+        },
+        {
+          "action": "Consult a licensed Texas attorney to assess whether the three Craddock factors are met on the specific facts -- this is a discretionary judicial determination this system does not and will not predict.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        },
+        {
+          "action": "If more than 30 days but less than 75 days have passed and no written order has issued, the motion (if filed in time) will be overruled by operation of law at the 75-day mark -- flag this to the person as a status check, not a new filing deadline.",
+          "deadline_type": "relative_days",
+          "deadline_detail": "75 days from the date the judgment was signed, per Tex. R. Civ. P. 329b(c)"
+        }
+      ],
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
+    }
+  ]
+}

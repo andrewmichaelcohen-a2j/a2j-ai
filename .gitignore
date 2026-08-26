@@ -27,4 +27,7 @@ __pycache__/
 # placeholder token only, not a real credential, but shouldn't be committed at all)
 .env
 .env.*
+# Exception: .env.example is a template with no real keys, needed so Andy can
+# `cp .env.example .env` per the corroboration runner's setup instructions.
+!.env.example
 .e

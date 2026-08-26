@@ -1,0 +1,36 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "_note": "Concept-demo scenario definitions (2026-08-26 Concept Demo First directive S1/S4). Each scenario declares the node_ids it depends on for its answer -- used by run_corroboration.py to compute the scenario_pass_rate demo-gate metric. These are scenario SHAPES for the demo skill, not frozen golden-set items (no ground-truth answer key here -- that's the eviction-line/Direction-E pattern, out of scope for this milestone per the directive's 'demo harness = the skill itself' framing).",
+  "scenarios": [
+    {
+      "id": "tx-collection-suit-sol-answer",
+      "title": "TX collection-suit answer/SOL scenario",
+      "description": "Person served with a Texas debt-collection lawsuit in justice court; needs to know whether the debt is time-barred and what their answer deadline is.",
+      "depends_on_node_ids": ["TX-SOL-CONSUMER-DEBT", "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"]
+    },
+    {
+      "id": "ca-collection-suit-sol-answer",
+      "title": "CA scenario -- collection-suit SOL/answer",
+      "description": "Person served with a California debt-collection lawsuit; needs SOL posture and answer deadline.",
+      "depends_on_node_ids": ["CA-SOL-WRITTEN-CONTRACT-DEBT", "CA-CIVIL-ANSWER-DEADLINE"]
+    },
+    {
+      "id": "pre-suit-validation-rights",
+      "title": "Pre-suit FDCPA validation-notice / dispute-rights scenario",
+      "description": "Person getting pre-suit collector calls/letters, no lawsuit yet; needs to know their debt-validation and dispute rights under FDCPA S1692g.",
+      "depends_on_node_ids": ["FDCPA-VALIDATION-NOTICE-1692g"]
+    },
+    {
+      "id": "garnishment-scenario",
+      "title": "Wage-garnishment scenario (TX + CA)",
+      "description": "Person facing or already subject to wage garnishment on a consumer debt; needs to know what's protected in their state. Deliberately spans both demo states since TX (near-total prohibition) and CA (formula-based limit) illustrate materially different outcomes from the same underlying question.",
+      "depends_on_node_ids": ["TX-WAGE-GARNISHMENT-PROHIBITION", "CA-WAGE-GARNISHMENT-LIMIT"]
+    },
+    {
+      "id": "band3-refusal-boundary",
+      "title": "Band 3 boundary-marker scenario -- default judgment set-aside",
+      "description": "Person already has a default judgment against them and asks whether it can be undone. Deliberately hits a genuinely discretionary judicial determination (Craddock factors) so the demo shows the system correctly refusing to predict an outcome, naming the deterministic 30-day filing deadline, and pointing to attorney review for the discretionary merits.",
+      "depends_on_node_ids": ["TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"]
+    }
+  ]
+}
