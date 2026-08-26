@@ -3,7 +3,10 @@
   "schema_version": "debt-v1",
   "scope": {
     "level": "federal",
-    "jurisdiction": { "state": null, "state_name": null }
+    "jurisdiction": {
+      "state": null,
+      "state_name": null
+    }
   },
   "provenance": {
     "generated": {
@@ -12,10 +15,30 @@
       "method": "single-model-grounded-derivation-v1"
     },
     "statutory_sources": [
-      { "cite": "15 U.S.C. § 1692e", "url": "https://www.law.cornell.edu/uscode/text/15/1692e", "retrieved": true, "retrieved_date": "2026-08-25" },
-      { "cite": "15 U.S.C. § 1692f", "url": "https://www.law.cornell.edu/uscode/text/15/1692f", "retrieved": true, "retrieved_date": "2026-08-25" },
-      { "cite": "12 C.F.R. § 1006.14 (Regulation F)", "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14", "retrieved": true, "retrieved_date": "2026-08-25" },
-      { "cite": "12 C.F.R. § 1006.18 (Regulation F)", "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18", "retrieved": true, "retrieved_date": "2026-08-25" }
+      {
+        "cite": "15 U.S.C. § 1692e",
+        "url": "https://www.law.cornell.edu/uscode/text/15/1692e",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "15 U.S.C. § 1692f",
+        "url": "https://www.law.cornell.edu/uscode/text/15/1692f",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "12 C.F.R. § 1006.14 (Regulation F)",
+        "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "12 C.F.R. § 1006.18 (Regulation F)",
+        "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      }
     ]
   },
   "nodes": [
@@ -29,12 +52,14 @@
           {
             "cite": "12 C.F.R. § 1006.14(b)(2)(i)-(ii)",
             "quoted_text": "(i) ...a debt collector is presumed to comply with paragraph (b)(1) of this section and FDCPA section 806(5) (15 U.S.C. 1692d(5)) if the debt collector places a telephone call to a particular person in connection with the collection of a particular debt neither: (A) More than seven times within seven consecutive days; nor (B) Within a period of seven consecutive days after having had a telephone conversation with the person in connection with the collection of such debt... (ii) ...a debt collector is presumed to violate paragraph (b)(1) of this section and FDCPA section 806(5) if the debt collector places a telephone call to a particular person in connection with the collection of a particular debt in excess of either of the telephone call frequencies described in paragraph (b)(2)(i) of this section.",
-            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14"
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "source_tier": "A"
           },
           {
             "cite": "12 C.F.R. § 1006.14(b)(4)",
             "quoted_text": "For purposes of this paragraph (b), particular debt means each of a consumer's debts in collection. However, in the case of student loan debts, the term particular debt means all student loan debts that a consumer owes or allegedly owes that were serviced under a single account number at the time the debts were obtained by a debt collector.",
-            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14"
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "source_tier": "A"
           }
         ],
         "citation_verified": true
@@ -44,19 +69,46 @@
         "safe_harbor_count": "no more than 7 calls within any 7 consecutive days, per particular debt",
         "cooldown_rule": "no call within 7 consecutive days after an actual telephone CONVERSATION about that debt (the conversation date is day 1 of that 7-day window) — distinct from the raw count limit and can be more restrictive",
         "unit_of_count": "per 'particular debt' — each separate debt in collection is counted separately (special aggregation rule for student loans serviced under one account number)",
-        "exclusions_from_count": ["calls made with the person's prior consent, within 7 days of that consent", "calls not connected to the dialed number", "calls to certain third parties under §1006.6(d)(1)(ii)-(vi), not encoded in this node"],
+        "exclusions_from_count": [
+          "calls made with the person's prior consent, within 7 days of that consent",
+          "calls not connected to the dialed number",
+          "calls to certain third parties under §1006.6(d)(1)(ii)-(vi), not encoded in this node"
+        ],
         "determination": "presumptively_unlawful if call_count_in_trailing_7_days > 7 for the same debt, OR a call is placed within 7 days after a conversation about that same debt"
       },
       "completeness_checklist": [
-        { "fact": "Dates/times of all calls from this collector regarding this specific debt over the relevant period", "dispositive": true },
-        { "fact": "Whether any of those contacts were actual conversations (not just calls/voicemails) about the debt, and their dates", "dispositive": true },
-        { "fact": "Whether the consumer gave prior consent to more frequent contact, and when", "dispositive": true },
-        { "fact": "Whether this is one debt or multiple debts (each counted separately, except aggregated student loans under one account number)", "dispositive": true }
+        {
+          "fact": "Dates/times of all calls from this collector regarding this specific debt over the relevant period",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether any of those contacts were actual conversations (not just calls/voicemails) about the debt, and their dates",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the consumer gave prior consent to more frequent contact, and when",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether this is one debt or multiple debts (each counted separately, except aggregated student loans under one account number)",
+          "dispositive": true
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "If the call pattern exceeds the presumptive limits, document dates/times (call logs, voicemail timestamps) — this supports an FDCPA §1692d(5)/Reg F §1006.14(b) claim or defense-adjacent leverage.", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "If the call pattern exceeds the presumptive limits, document dates/times (call logs, voicemail timestamps) — this supports an FDCPA §1692d(5)/Reg F §1006.14(b) claim or defense-adjacent leverage.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     },
     {
       "node_id": "FDCPA-FALSE-DECEPTIVE-CATALOG-1692e",
@@ -68,12 +120,15 @@
           {
             "cite": "15 U.S.C. § 1692e",
             "quoted_text": "A debt collector may not use any false, deceptive, or misleading representation or means in connection with the collection of any debt. Without limiting the general application of the foregoing, the following conduct is a violation of this section: (1) The false representation or implication that the debt collector is vouched for, bonded by, or affiliated with the United States or any State... (2) The false representation of— (A) the character, amount, or legal status of any debt; or (B) any services rendered or compensation which may be lawfully received... (3) The false representation or implication that any individual is an attorney or that any communication is from an attorney. (4) The representation or implication that nonpayment of any debt will result in the arrest or imprisonment of any person or the seizure, garnishment, attachment, or sale of any property or wages of any person unless such action is lawful and the debt collector or creditor intends to take such action. (5) The threat to take any action that cannot legally be taken or that is not intended to be taken. ... (8) Communicating or threatening to communicate to any person credit information which is known or which should be known to be false, including the failure to communicate that a disputed debt is disputed. (9) The use or distribution of any written communication which simulates or is falsely represented to be a document authorized, issued, or approved by any court, official, or agency... (10) The use of any false representation or deceptive means to collect or attempt to collect any debt or to obtain information concerning a consumer. (11) The failure to disclose in the initial written communication...and, if oral, in that initial oral communication...that the debt collector is attempting to collect a debt and that any information obtained will be used for that purpose, and the failure to disclose in subsequent communications that the communication is from a debt collector... (12) The false representation or implication that accounts have been turned over to innocent purchasers for value. (13) The false representation or implication that documents are legal process. (14) The use of any business, company, or organization name other than the true name... (15) The false representation or implication that documents are not legal process forms or do not require action by the consumer. (16) The false representation or implication that a debt collector operates or is employed by a consumer reporting agency...",
-            "url": "https://www.law.cornell.edu/uscode/text/15/1692e"
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692e",
+            "source_tier": "B",
+            "tier_rationale": "Official federal source (Cornell LII reproduces U.S. Code); used where the anchor predates this session's tier discipline -- retained as B (recognized noncommercial republisher) rather than immediately re-pinned to the GPO/govinfo.gov text, since Cornell LII is the field-standard noncommercial republisher for federal code and no machine-hostility issue was found this session; flagged as a HORIZON candidate to re-verify against govinfo.gov directly."
           },
           {
             "cite": "12 C.F.R. § 1006.18(e) (the 'mini-Miranda' disclosure — Reg F's current operative version of §1692e(11))",
             "quoted_text": "(1) Initial communications. A debt collector must disclose in its initial communication with a consumer that the debt collector is attempting to collect a debt and that any information obtained will be used for that purpose. If the debt collector's initial communication with the consumer is oral, the debt collector must make the disclosure required by this paragraph again in its initial written communication with the consumer. (2) Subsequent communications. In each communication with the consumer subsequent to the communications described in paragraph (e)(1) of this section, the debt collector must disclose that the communication is from a debt collector. (3) Exception. Disclosures under paragraphs (e)(1) and (2) of this section are not required in a formal pleading made in connection with a legal action.",
-            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18"
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18",
+            "source_tier": "A"
           }
         ],
         "citation_verified": true
@@ -100,17 +155,47 @@
         "determination": "any single catalog item, if the facts match, is an independent §1692e violation — items are not cumulative requirements, each stands alone"
       },
       "completeness_checklist": [
-        { "fact": "Exact wording of any written communication (letters, texts, emails) from the collector", "dispositive": true },
-        { "fact": "Content of any phone conversations with the collector — what was said, by whom, when (recordings, notes, or memory)", "dispositive": true },
-        { "fact": "Whether the collector disclosed (in the initial communication, and again if the initial contact was oral) that it was attempting to collect a debt and that info would be used for that purpose", "dispositive": true },
-        { "fact": "Whether the collector disclosed in EACH subsequent communication that it was a debt collector", "dispositive": true },
-        { "fact": "Any threats made (legal action, arrest, wage/property seizure) and whether the collector actually intended or was legally able to carry them out", "dispositive": true }
+        {
+          "fact": "Exact wording of any written communication (letters, texts, emails) from the collector",
+          "dispositive": true
+        },
+        {
+          "fact": "Content of any phone conversations with the collector — what was said, by whom, when (recordings, notes, or memory)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the collector disclosed (in the initial communication, and again if the initial contact was oral) that it was attempting to collect a debt and that info would be used for that purpose",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the collector disclosed in EACH subsequent communication that it was a debt collector",
+          "dispositive": true
+        },
+        {
+          "fact": "Any threats made (legal action, arrest, wage/property seizure) and whether the collector actually intended or was legally able to carry them out",
+          "dispositive": true
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "Document the specific false/deceptive statement or omission (date, medium, exact wording if available) — each matched catalog item is an independent violation worth raising.", "deadline_type": "no_deadline", "deadline_detail": null },
-        { "action": "Cross-reference FDCPA civil-liability provisions (15 U.S.C. § 1692k) for damages exposure — not itself encoded in this node.", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "Document the specific false/deceptive statement or omission (date, medium, exact wording if available) — each matched catalog item is an independent violation worth raising.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        },
+        {
+          "action": "Cross-reference FDCPA civil-liability provisions (15 U.S.C. § 1692k) for damages exposure — not itself encoded in this node.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     },
     {
       "node_id": "FDCPA-UNFAIR-PRACTICES-CATALOG-1692f",
@@ -122,7 +207,9 @@
           {
             "cite": "15 U.S.C. § 1692f",
             "quoted_text": "A debt collector may not use unfair or unconscionable means to collect or attempt to collect any debt. Without limiting the general application of the foregoing, the following conduct is a violation of this section: (1) The collection of any amount (including any interest, fee, charge, or expense incidental to the principal obligation) unless such amount is expressly authorized by the agreement creating the debt or permitted by law. (2) The acceptance by a debt collector from any person of a check or other payment instrument postdated by more than five days unless such person is notified in writing of the debt collector's intent to deposit such check or instrument not more than ten nor less than three business days prior to such deposit. (3) The solicitation by a debt collector of any postdated check or other postdated payment instrument for the purpose of threatening or instituting criminal prosecution. (4) Depositing or threatening to deposit any postdated check or other postdated payment instrument prior to the date on such check or instrument. (5) Causing charges to be made to any person for communications by concealment of the true purpose of the communication... (6) Taking or threatening to take any nonjudicial action to effect dispossession or disablement of property if— (A) there is no present right to possession of the property claimed as collateral through an enforceable security interest; (B) there is no present intention to take possession of the property; or (C) the property is exempt by law from such dispossession or disablement. (7) Communicating with a consumer regarding a debt by post card. (8) Using any language or symbol, other than the debt collector's address, on any envelope when communicating with a consumer by use of the mails or by telegram, except that a debt collector may use his business name if such name does not indicate that he is in the debt collection business.",
-            "url": "https://www.law.cornell.edu/uscode/text/15/1692f"
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692f",
+            "source_tier": "B",
+            "tier_rationale": "Official federal source (Cornell LII reproduces U.S. Code); used where the anchor predates this session's tier discipline -- retained as B (recognized noncommercial republisher) rather than immediately re-pinned to the GPO/govinfo.gov text, since Cornell LII is the field-standard noncommercial republisher for federal code and no machine-hostility issue was found this session; flagged as a HORIZON candidate to re-verify against govinfo.gov directly."
           }
         ],
         "citation_verified": true
@@ -142,15 +229,38 @@
         "determination": "any single catalog item, if the facts match, is an independent §1692f violation"
       },
       "completeness_checklist": [
-        { "fact": "Whether any collected amount (fees, interest, charges) beyond principal was authorized by the original debt agreement or by law", "dispositive": true },
-        { "fact": "Whether a postdated check/payment was deposited early, or without proper advance written notice", "dispositive": true },
-        { "fact": "Any threats or actions regarding repossession of property, and whether the collector had a present legal right and intent to repossess (or whether the property is exempt — cross-reference the relevant state exemption node)", "dispositive": true },
-        { "fact": "Whether any communication was sent by postcard, or an envelope revealed debt-collection purpose", "dispositive": true }
+        {
+          "fact": "Whether any collected amount (fees, interest, charges) beyond principal was authorized by the original debt agreement or by law",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether a postdated check/payment was deposited early, or without proper advance written notice",
+          "dispositive": true
+        },
+        {
+          "fact": "Any threats or actions regarding repossession of property, and whether the collector had a present legal right and intent to repossess (or whether the property is exempt — cross-reference the relevant state exemption node)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether any communication was sent by postcard, or an envelope revealed debt-collection purpose",
+          "dispositive": true
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "Document any unauthorized charges, improper postdated-check handling, improper repossession threats, or postcard/envelope disclosures — each is an independent §1692f violation worth raising.", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "Document any unauthorized charges, improper postdated-check handling, improper repossession threats, or postcard/envelope disclosures — each is an independent §1692f violation worth raising.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     }
   ]
 }

@@ -38,7 +38,19 @@ def main() -> int:
         print(f"WARNING: {DEBT_DIR} does not exist -- nothing to validate.")
         return 0
 
-    rule_files = sorted(DEBT_DIR.rglob("*.json"))
+    # rules/debt/validation/ holds PIPELINE OUTPUT (corroboration-runner run
+    # summaries under validation/runs/, etc.) -- artifacts produced BY the
+    # pipeline, not rules content to validate AGAINST the rules schema. Bug
+    # found 2026-08-26: once Andy started committing real run output there,
+    # this validator started failing CI on files it was never meant to check.
+    # Excluded explicitly rather than silently -- if a genuine rules file
+    # ever needs to live under validation/ in the future, this exclusion
+    # will need a narrower path check instead of the whole subtree.
+    VALIDATION_OUTPUT_DIR = DEBT_DIR / "validation"
+    rule_files = sorted(
+        p for p in DEBT_DIR.rglob("*.json")
+        if VALIDATION_OUTPUT_DIR not in p.parents
+    )
     if not rule_files:
         print(f"WARNING: no .json files found under {DEBT_DIR} -- nothing to validate.")
         return 0

@@ -40,17 +40,22 @@
           {
             "cite": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939)",
             "quoted_text": "A default judgment should be set aside and a new trial ordered in any case in which the failure of the defendant to answer before judgment was not intentional, or the result of conscious indifference on his part, but was due to a mistake or an accident; provided the motion for a new trial sets up a meritorious defense and is filed at a time when the granting thereof will occasion no delay or otherwise work an injury to the plaintiff.",
-            "url": "https://www.lawpipe.com/Texas/Craddock_v_Sunshine_Bus_Lines_Inc.html"
+            "url": "https://www.lawpipe.com/Texas/Craddock_v_Sunshine_Bus_Lines_Inc.html",
+            "source_tier": "D"
           },
           {
             "cite": "Tex. R. Civ. P. 329b(a)",
             "quoted_text": "A motion for new trial, if filed, shall be filed prior to or within thirty days after the judgment or other order complained of is signed.",
-            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/"
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+            "source_tier": "C",
+            "tier_rationale": "Third-party rule-reproduction site, no official/institutional affiliation identified -- classified C (commercial-style aggregator) as the conservative default; not A (not a .gov/official source) and not B (no recognized noncommercial institutional standing like Cornell LII or CourtListener). Flagged for Andy's confirmation or a Tier A re-pin to the official Texas Judicial Branch rules site."
           },
           {
             "cite": "Tex. R. Civ. P. 329b(c)",
             "quoted_text": "In the event an original or amended motion for new trial or a motion to modify, correct or reform a judgment is not determined by written order signed within seventy-five days after the judgment was signed, it shall be considered overruled by operation of law on expiration of that period.",
-            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/"
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+            "source_tier": "C",
+            "tier_rationale": "Third-party rule-reproduction site, no official/institutional affiliation identified -- classified C (commercial-style aggregator) as the conservative default; not A (not a .gov/official source) and not B (no recognized noncommercial institutional standing like Cornell LII or CourtListener). Flagged for Andy's confirmation or a Tier A re-pin to the official Texas Judicial Branch rules site."
           }
         ],
         "citation_verified": true,

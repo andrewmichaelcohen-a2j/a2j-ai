@@ -3,7 +3,10 @@
   "schema_version": "debt-v1",
   "scope": {
     "level": "state",
-    "jurisdiction": { "state": "UT", "state_name": "Utah" }
+    "jurisdiction": {
+      "state": "UT",
+      "state_name": "Utah"
+    }
   },
   "provenance": {
     "generated": {
@@ -12,12 +15,42 @@
       "method": "single-model-grounded-derivation-v1"
     },
     "statutory_sources": [
-      { "cite": "Utah Code § 78B-2-309", "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-309/", "retrieved": true, "retrieved_date": "2026-08-25" },
-      { "cite": "Utah Code § 78B-2-307", "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-307/", "retrieved": true, "retrieved_date": "2026-08-25" },
-      { "cite": "Utah Code § 70C-7-103", "url": "https://codes.findlaw.com/ut/title-70c-utah-consumer-credit-code/ut-code-sect-70c-7-103/", "retrieved": true, "retrieved_date": "2026-08-25" },
-      { "cite": "Utah Code § 78B-5-503", "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-503/", "retrieved": true, "retrieved_date": "2026-08-25" },
-      { "cite": "Utah Code § 78B-5-506", "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-506/", "retrieved": true, "retrieved_date": "2026-08-25" },
-      { "cite": "Utah R. Civ. P. 12(a)(1)", "url": "https://legacy.utcourts.gov/rules/view.php?type=urcp&rule=12", "retrieved": true, "retrieved_date": "2026-08-25" }
+      {
+        "cite": "Utah Code § 78B-2-309",
+        "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-309/",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "Utah Code § 78B-2-307",
+        "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-307/",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "Utah Code § 70C-7-103",
+        "url": "https://codes.findlaw.com/ut/title-70c-utah-consumer-credit-code/ut-code-sect-70c-7-103/",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "Utah Code § 78B-5-503",
+        "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-503/",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "Utah Code § 78B-5-506",
+        "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-506/",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "Utah R. Civ. P. 12(a)(1)",
+        "url": "https://legacy.utcourts.gov/rules/view.php?type=urcp&rule=12",
+        "retrieved": true,
+        "retrieved_date": "2026-08-25"
+      }
     ]
   },
   "nodes": [
@@ -31,12 +64,14 @@
           {
             "cite": "Utah Code § 78B-2-309(1)(b)",
             "quoted_text": "An action may be brought within six years: ... (b) subject to Subsection (2), upon any contract, obligation, or liability founded upon an instrument in writing, except those mentioned in Section 78B-2-311; or ...",
-            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-309/"
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-309/",
+            "source_tier": "C"
           },
           {
             "cite": "Utah Code § 78B-2-309(2)",
             "quoted_text": "For a credit agreement, as defined in Section 25-5-4, the six-year period described in Subsection (1) begins the later of the day on which: (a) the debt arose; (b) the debtor makes a written acknowledgment of the debt or a promise to pay the debt; or (c) the debtor or a third party makes a payment on the debt.",
-            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-309/"
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-309/",
+            "source_tier": "C"
           }
         ],
         "citation_verified": true
@@ -49,16 +84,43 @@
         "determination": "expired_if today > (latest_of[debt_arose_date, last_written_acknowledgment_date, last_payment_date] + 6 years), subject to any tolling not yet encoded"
       },
       "completeness_checklist": [
-        { "fact": "Date the debt arose", "dispositive": true },
-        { "fact": "Any written acknowledgment or written promise to pay by the debtor, and its date", "dispositive": true },
-        { "fact": "Any payment made by the debtor or a third party on the debt, and its date", "dispositive": true },
-        { "fact": "Whether the obligation is a 'credit agreement' under Section 25-5-4 (this node's accrual rule) vs. some other written contract (accrual would be the general contract-breach date instead, not separately encoded here)", "dispositive": false }
+        {
+          "fact": "Date the debt arose",
+          "dispositive": true
+        },
+        {
+          "fact": "Any written acknowledgment or written promise to pay by the debtor, and its date",
+          "dispositive": true
+        },
+        {
+          "fact": "Any payment made by the debtor or a third party on the debt, and its date",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the obligation is a 'credit agreement' under Section 25-5-4 (this node's accrual rule) vs. some other written contract (accrual would be the general contract-breach date instead, not separately encoded here)",
+          "dispositive": false
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "If 6 years have run from the latest of the three accrual triggers and no tolling applies, raise statute of limitations as an affirmative defense in the Answer.", "deadline_type": "no_deadline", "deadline_detail": null },
-        { "action": "Before assuming the SOL has run, confirm there is no later written acknowledgment or payment (including a third-party payment) that would restart the 6-year period under subsection (2).", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "If 6 years have run from the latest of the three accrual triggers and no tolling applies, raise statute of limitations as an affirmative defense in the Answer.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        },
+        {
+          "action": "Before assuming the SOL has run, confirm there is no later written acknowledgment or payment (including a third-party payment) that would restart the 6-year period under subsection (2).",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     },
     {
       "node_id": "UT-SOL-ORAL-CONTRACT-DEBT",
@@ -70,7 +132,8 @@
           {
             "cite": "Utah Code § 78B-2-307(1)",
             "quoted_text": "An action may be brought within four years: (1) after the last charge is made or the last payment is received: (a) upon a contract, obligation, or liability not founded upon an instrument in writing; (b) on an open store account for any goods, wares, or merchandise; or (c) on an open account for work, labor or services rendered, or materials furnished; ...",
-            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-307/"
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-2-307/",
+            "source_tier": "C"
           }
         ],
         "citation_verified": true
@@ -82,13 +145,30 @@
         "determination": "expired_if today > (last_charge_or_payment_date + 4 years), subject to any tolling not yet encoded"
       },
       "completeness_checklist": [
-        { "fact": "Date of the last charge made or last payment received on the account", "dispositive": true },
-        { "fact": "Confirmation the obligation is genuinely not founded on a written instrument, or is an open store/services account (vs. UT-SOL-WRITTEN-CONTRACT-DEBT)", "dispositive": true }
+        {
+          "fact": "Date of the last charge made or last payment received on the account",
+          "dispositive": true
+        },
+        {
+          "fact": "Confirmation the obligation is genuinely not founded on a written instrument, or is an open store/services account (vs. UT-SOL-WRITTEN-CONTRACT-DEBT)",
+          "dispositive": true
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "If 4 years have run from the last charge or payment and no tolling applies, raise statute of limitations as an affirmative defense in the Answer.", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "If 4 years have run from the last charge or payment and no tolling applies, raise statute of limitations as an affirmative defense in the Answer.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     },
     {
       "node_id": "UT-WAGE-GARNISHMENT-LIMIT",
@@ -100,12 +180,14 @@
           {
             "cite": "Utah Code § 70C-7-103(2)",
             "quoted_text": "The maximum part of the aggregate disposable earnings of an individual for any pay period that is subjected to garnishment to enforce payment of a judgment arising from a consumer credit agreement may not exceed the lesser of: (a) 25% of the individual's disposable earnings for that pay period; (b) the amount by which the individual's disposable earnings for that pay period exceed 30 hours per week multiplied by the federal minimum hourly wage prescribed by Section 6(a)(1) of the Fair Labor Standards Act of 1938, 29 U.S.C. Sec. 206(a)(1), in effect at the time the earnings are payable; or (c) 15% of the individual's disposable earnings for that pay period if the judgment relates to an education loan.",
-            "url": "https://codes.findlaw.com/ut/title-70c-utah-consumer-credit-code/ut-code-sect-70c-7-103/"
+            "url": "https://codes.findlaw.com/ut/title-70c-utah-consumer-credit-code/ut-code-sect-70c-7-103/",
+            "source_tier": "C"
           },
           {
             "cite": "Utah Code § 70C-7-103(3)",
             "quoted_text": "A court may not make, execute, or enforce an order or process in violation of this section.",
-            "url": "https://codes.findlaw.com/ut/title-70c-utah-consumer-credit-code/ut-code-sect-70c-7-103/"
+            "url": "https://codes.findlaw.com/ut/title-70c-utah-consumer-credit-code/ut-code-sect-70c-7-103/",
+            "source_tier": "C"
           }
         ],
         "citation_verified": true
@@ -118,14 +200,34 @@
         "determination": "max_garnishment_per_pay_period = the applicable lesser-of formula above; a court order exceeding it is unenforceable per subsection (3)"
       },
       "completeness_checklist": [
-        { "fact": "Debtor's disposable earnings for the relevant pay period", "dispositive": true },
-        { "fact": "Whether the underlying judgment is an ordinary consumer-credit-agreement debt (25%/30x formula) vs. an education loan (15% flat)", "dispositive": true },
-        { "fact": "Current federal minimum hourly wage in effect when the earnings are payable", "dispositive": true }
+        {
+          "fact": "Debtor's disposable earnings for the relevant pay period",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the underlying judgment is an ordinary consumer-credit-agreement debt (25%/30x formula) vs. an education loan (15% flat)",
+          "dispositive": true
+        },
+        {
+          "fact": "Current federal minimum hourly wage in effect when the earnings are payable",
+          "dispositive": true
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "If a garnishment order exceeds the applicable lesser-of formula, object citing Utah Code § 70C-7-103 -- subsection (3) makes an excess order unenforceable, not just voidable.", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "If a garnishment order exceeds the applicable lesser-of formula, object citing Utah Code § 70C-7-103 -- subsection (3) makes an excess order unenforceable, not just voidable.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     },
     {
       "node_id": "UT-HOMESTEAD-EXEMPTION",
@@ -137,12 +239,14 @@
           {
             "cite": "Utah Code § 78B-5-503(2)(a)-(b)",
             "quoted_text": "(a) An individual is entitled to a homestead exemption consisting of property in this state in an amount not exceeding: (i) $5,000 in value if the property consists in whole or in part of property that is not the primary personal residence of the individual; or (ii) $42,000 in value if the property claimed is the primary personal residence of the individual. (b) If the property claimed as exempt is jointly owned, each joint owner is entitled to a homestead exemption, except that: (i) for property exempt under Subsection (2)(a)(i), the maximum exemption may not exceed $10,000 per household; or (ii) for property exempt under Subsection (2)(a)(ii), the maximum exemption may not exceed $84,000 per household.",
-            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-503/"
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-503/",
+            "source_tier": "C"
           },
           {
             "cite": "Utah Code § 78B-5-503(3)",
             "quoted_text": "A homestead is exempt from judicial lien and from levy, execution, or forced sale except for: (a) statutory liens for property taxes and assessments on the property; (b) security interests in the property and judicial liens for debts created for the purchase price of the property; (c) judicial liens obtained on debts created by failure to provide support or maintenance for dependent children; and (d) consensual liens obtained on debts created by mutual contract.",
-            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-503/"
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-503/",
+            "source_tier": "C"
           }
         ],
         "citation_verified": true
@@ -153,19 +257,47 @@
         "exemption_amount_non_primary_usd": 5000,
         "exemption_amount_non_primary_joint_household_cap_usd": 10000,
         "inflation_adjustment": "these dollar figures are the May 14, 2019 base amounts and are adjusted annually starting calendar year 2020 by a CPI-based formula in subsection (2)(e), published by the Utah State Auditor by January 1 of each year -- this node does NOT contain the current inflation-adjusted figure, only the base and the formula reference.",
-        "carveouts_not_protected": ["property tax/assessment liens", "purchase-money security interests/judicial liens for the property's own purchase price", "child-support judicial liens", "consensual liens by mutual contract"],
+        "carveouts_not_protected": [
+          "property tax/assessment liens",
+          "purchase-money security interests/judicial liens for the property's own purchase price",
+          "child-support judicial liens",
+          "consensual liens by mutual contract"
+        ],
         "determination": "up to the applicable (and current, inflation-adjusted) exemption amount in home equity is protected from an ordinary judgment creditor's levy/execution/forced sale, subject to the four carveouts above"
       },
       "completeness_checklist": [
-        { "fact": "Whether the property is the debtor's primary personal residence (higher exemption) or not (lower exemption)", "dispositive": true },
-        { "fact": "Whether the property is jointly owned (affects the household cap)", "dispositive": true },
-        { "fact": "Current CPI-adjusted dollar figures for the current calendar year (not the 2019 base amounts)", "dispositive": true },
-        { "fact": "Whether the underlying debt/lien falls into one of the four carveout categories (not protected even if otherwise a homestead)", "dispositive": true }
+        {
+          "fact": "Whether the property is the debtor's primary personal residence (higher exemption) or not (lower exemption)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the property is jointly owned (affects the household cap)",
+          "dispositive": true
+        },
+        {
+          "fact": "Current CPI-adjusted dollar figures for the current calendar year (not the 2019 base amounts)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the underlying debt/lien falls into one of the four carveout categories (not protected even if otherwise a homestead)",
+          "dispositive": true
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "If a creditor is attempting to force the sale of the debtor's home for an ordinary debt judgment (not one of the four carveout categories), claim the homestead exemption citing Utah Code § 78B-5-503.", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "If a creditor is attempting to force the sale of the debtor's home for an ordinary debt judgment (not one of the four carveout categories), claim the homestead exemption citing Utah Code § 78B-5-503.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     },
     {
       "node_id": "UT-PERSONAL-PROPERTY-EXEMPTION",
@@ -177,19 +309,26 @@
           {
             "cite": "Utah Code § 78B-5-506(1)-(2)",
             "quoted_text": "(1) An individual is entitled to exemption of the following property up to an aggregate value of items in each subsection of $1,000: (a) sofas, chairs, and related furnishings reasonably necessary for one household; (b) dining and kitchen tables and chairs reasonably necessary for one household; (c) animals, books, and musical instruments, if reasonably held for the personal use of the individual or the individual's dependents; and (d) heirlooms or other items of particular sentimental value to the individual. (2) An individual is entitled to an exemption, not exceeding $5,000 in aggregate value, of implements, professional books, or tools of the individual's trade, including motor vehicles to which no other exemption has been applied, and that are actually used by the individual in the individual's principal business, trade, or profession.",
-            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-506/"
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-506/",
+            "source_tier": "C"
           },
           {
             "cite": "Utah Code § 78B-5-506(3)(b)",
             "quoted_text": "An individual is entitled to an exemption, not exceeding $3,000 in value, of one motor vehicle.",
-            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-506/"
+            "url": "https://codes.findlaw.com/ut/title-78b-judicial-code/ut-code-sect-78b-5-506/",
+            "source_tier": "C"
           }
         ],
         "citation_verified": true
       },
       "logic": {
         "household_goods_exemption_usd_per_category": 1000,
-        "household_goods_categories": ["sofas/chairs/related furnishings", "dining/kitchen tables and chairs", "animals/books/musical instruments for personal use", "heirlooms/sentimental items"],
+        "household_goods_categories": [
+          "sofas/chairs/related furnishings",
+          "dining/kitchen tables and chairs",
+          "animals/books/musical instruments for personal use",
+          "heirlooms/sentimental items"
+        ],
         "tools_of_trade_exemption_usd": 5000,
         "tools_of_trade_note": "can include a motor vehicle used in the debtor's principal business/trade/profession, but only 'to which no other exemption has been applied' -- i.e., cannot double-dip with the separate general vehicle exemption below",
         "general_motor_vehicle_exemption_usd": 3000,
@@ -197,14 +336,34 @@
         "determination": "each category above is exempt up to its stated cap; a debtor cannot claim both the tools-of-trade vehicle exemption AND the general vehicle exemption for the same vehicle"
       },
       "completeness_checklist": [
-        { "fact": "Value and category of household items at issue (which $1,000 sub-cap applies)", "dispositive": true },
-        { "fact": "Whether a vehicle is claimed as a tool of the trade ($5,000 aggregate cap, business-use vehicles) vs. the general vehicle exemption ($3,000 cap) -- cannot claim both for the same vehicle", "dispositive": true },
-        { "fact": "Whether a vehicle is primarily recreational (excluded from the general vehicle exemption, subject to the motorcycle/van daily-use carveout)", "dispositive": false }
+        {
+          "fact": "Value and category of household items at issue (which $1,000 sub-cap applies)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether a vehicle is claimed as a tool of the trade ($5,000 aggregate cap, business-use vehicles) vs. the general vehicle exemption ($3,000 cap) -- cannot claim both for the same vehicle",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether a vehicle is primarily recreational (excluded from the general vehicle exemption, subject to the motorcycle/van daily-use carveout)",
+          "dispositive": false
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "If a creditor levies on household goods, trade tools, or a vehicle, claim the applicable exemption(s) citing Utah Code § 78B-5-506, being careful not to double-claim a single vehicle under both the tools-of-trade and general vehicle exemptions.", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "If a creditor levies on household goods, trade tools, or a vehicle, claim the applicable exemption(s) citing Utah Code § 78B-5-506, being careful not to double-claim a single vehicle under both the tools-of-trade and general vehicle exemptions.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     },
     {
       "node_id": "UT-CIVIL-ANSWER-DEADLINE",
@@ -216,7 +375,8 @@
           {
             "cite": "Utah R. Civ. P. 12(a)(1)",
             "quoted_text": "Unless otherwise provided by statute or order of the court, a defendant must file and serve an answer within 21 days after the service of the summons and complaint within the state and within 30 days after service of the summons and complaint outside the state.",
-            "url": "https://legacy.utcourts.gov/rules/view.php?type=urcp&rule=12"
+            "url": "https://legacy.utcourts.gov/rules/view.php?type=urcp&rule=12",
+            "source_tier": "A"
           }
         ],
         "citation_verified": true
@@ -229,15 +389,39 @@
         "determination": "answer_due_date = date_of_service + (21 days if served within Utah, else 30 days if served outside Utah)"
       },
       "completeness_checklist": [
-        { "fact": "Date the summons and complaint were actually served on the defendant", "dispositive": true },
-        { "fact": "Whether service occurred within Utah (21 days) or outside Utah (30 days)", "dispositive": true },
-        { "fact": "Whether the case is general district-court civil (this node) vs. small claims (different, not-yet-built procedure)", "dispositive": true }
+        {
+          "fact": "Date the summons and complaint were actually served on the defendant",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether service occurred within Utah (21 days) or outside Utah (30 days)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the case is general district-court civil (this node) vs. small claims (different, not-yet-built procedure)",
+          "dispositive": true
+        }
       ],
       "consequences_and_next_steps": [
-        { "action": "File and serve a written Answer within 21 days of in-state service (30 days if served outside Utah) to avoid default.", "deadline_type": "relative_days", "deadline_detail": "21 days from in-state service of summons and complaint, or 30 days if served outside Utah" },
-        { "action": "If already past the deadline and no default has been entered yet, respond immediately -- courts often still accept a late answer before default is entered.", "deadline_type": "no_deadline", "deadline_detail": null }
+        {
+          "action": "File and serve a written Answer within 21 days of in-state service (30 days if served outside Utah) to avoid default.",
+          "deadline_type": "relative_days",
+          "deadline_detail": "21 days from in-state service of summons and complaint, or 30 days if served outside Utah"
+        },
+        {
+          "action": "If already past the deadline and no default has been entered yet, respond immediately -- courts often still accept a late answer before default is entered.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
       ],
-      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
     }
   ]
 }

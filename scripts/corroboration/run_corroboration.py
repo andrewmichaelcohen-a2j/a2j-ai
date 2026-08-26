@@ -167,6 +167,75 @@ SYSTEM_PROMPT_ADVERSARIAL = (
 
 NUMBER_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?%?")
 
+# -- Fingerprint bug fix (2026-08-26, Andy's run 3 diagnosis) ------------------
+# Root cause found by inspecting real run output: the fingerprint was comparing
+# raw digit-only regex matches across models. Two independent problems, not a
+# provider-specific parsing/auth/environment issue:
+#   1. Models routinely spell small numbers as WORDS in prose ("three years")
+#      rather than digits ("3 years") -- OpenAI and Gemini did this far more
+#      often than Anthropic in the real run, so their fingerprints came back
+#      empty even when their prose *agreed* with Anthropic's on the substance.
+#   2. Citation references embedded in a model's own prose (e.g. "A.R.S.
+#      S 12-543", "12 C.F.R. S 1006.34") contain digits that got swept into the
+#      fingerprint as if they were part of the legal ANSWER -- so even
+#      Anthropic's "successful" fingerprints were sometimes matching a statute
+#      section number, not the actual day-count/dollar/year figure. This
+#      produced spurious mismatches (or, worse, spurious matches) unrelated to
+#      whether the models actually agreed on the law.
+# Fix: (a) strip citation-shaped substrings before extracting numbers, (b)
+# convert spelled-out number words to digits first. This is a runner-side fix
+# only -- confirmed against real run output that this is a fingerprint-
+# extraction bug, not a Python/OpenSSL/LibreSSL/environment issue on Andy's
+# machine (his three keys returned real 200-level API responses; the models'
+# raw derivation_summary text was correct prose in both the run-3 evidence and
+# this fix's own test cases -- the bug was entirely in how that prose got
+# reduced to a comparable fingerprint afterward).
+
+# NOTE: an earlier draft of this regex used a literal ASCII "S" as a stand-in
+# for the section-sign character and under re.IGNORECASE it matched the "s" in
+# ordinary words like "six" or "considers", silently eating real answer text
+# (caught in this session's own test run before shipping -- see
+# scripts/corroboration/README.md changelog). Uses the actual section sign
+# (\u00a7) and requires a digit before consuming a "Section"/"Rule"/abbreviation
+# match, so it cannot fire on prose that merely contains those words.
+_CITATION_STRIP_RE = re.compile(
+    r"("
+    r"\d+\s*U\.?\s*S\.?\s*C\.?\s*(?:\u00a7+|Section|Sec\.)?\s*[\w.\-()]*"   # 15 U.S.C. S1692g(a)
+    r"|\d+\s*C\.?\s*F\.?\s*R\.?\s*(?:\u00a7+|Section|Sec\.)?\s*[\w.\-()]*"  # 12 C.F.R. S1006.34
+    r"|\u00a7+\s*[\w.\-()]*"                                                 # bare S 12-543
+    r"|\b(?:Section|Sec\.|Rule|Art\.|Article)\s+[\w.\-()]*\d[\w.\-()]*"       # Section 5, Rule 12(a)(1) -- must be followed by a digit-bearing token
+    r"|\b(?:[A-Z]\.){2,}\s*\u00a7+\s*[\w.\-()]*"                              # A.R.S. S 12-548(A)
+    r"|\b[A-Z]{2,}\s*\u00a7+\s*[\w.\-()]*"                                    # CCP S 337, CPLR S 213
+    r")",
+    re.IGNORECASE,
+)
+
+_NUMBER_WORDS = {
+    "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+    "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12,
+    "thirteen": 13, "fourteen": 14, "fifteen": 15, "sixteen": 16,
+    "seventeen": 17, "eighteen": 18, "nineteen": 19, "twenty": 20,
+    "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70,
+    "eighty": 80, "ninety": 90, "hundred": 100,
+}
+_NUMBER_WORD_RE = re.compile(
+    r"\b(" + "|".join(sorted(_NUMBER_WORDS, key=len, reverse=True)) + r")"
+    r"(?:[\s-](" + "|".join(sorted(_NUMBER_WORDS, key=len, reverse=True)) + r"))?\b",
+    re.IGNORECASE,
+)
+
+
+def _words_to_digits(text: str) -> str:
+    """Replace spelled-out numbers (e.g. 'thirty', 'twenty-five', 'three') with
+    their digit form so they compare equal to a model that wrote the digit."""
+    def _sub(m):
+        first = _NUMBER_WORDS.get(m.group(1).lower(), 0)
+        second = _NUMBER_WORDS.get(m.group(2).lower(), 0) if m.group(2) else 0
+        # "twenty-five" -> 20 + 5; "hundred" alone (rare, no tens word) -> 100
+        total = first + second if second else first
+        return str(total)
+    return _NUMBER_WORD_RE.sub(_sub, text or "")
+
 
 def now_iso():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -182,9 +251,19 @@ def sha256_of_file(path: Path) -> str:
 
 
 def normalize_numbers(text: str):
-    """Extract a set of normalized numeric tokens from free text (drops commas,
-    keeps $ and % markers since they change meaning)."""
-    found = NUMBER_RE.findall(text or "")
+    """Extract a set of normalized numeric tokens from free text -- the
+    fingerprint used for the (a) grounded-derivation agreement check.
+
+    Pipeline (fixed 2026-08-26, see block comment above): strip citation-shaped
+    substrings first (so a statute section number doesn't get compared as if
+    it were part of the legal answer), then convert spelled-out numbers to
+    digits (so 'three years' and '3 years' produce the same token), then
+    extract digit runs. Drops commas, keeps $ and % markers since those change
+    meaning ('30' vs '30%' vs '$30' are different facts).
+    """
+    cleaned = _CITATION_STRIP_RE.sub(" ", text or "")
+    cleaned = _words_to_digits(cleaned)
+    found = NUMBER_RE.findall(cleaned)
     normed = set()
     for tok in found:
         core = tok.replace(",", "")
@@ -345,27 +424,102 @@ def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
 
 # -- Citation verification -----------------------------------------------------
 
-def _normalize_for_match(text: str) -> str:
-    return re.sub(r"\s+", " ", (text or "")).strip().lower()
+import html as _html_module
+
+_SCRIPT_STYLE_RE = re.compile(r"<(script|style)[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
+_TAG_RE = re.compile(r"<[^>]+>")
+
+
+def _strip_html(raw_html: str) -> str:
+    """Reduce raw HTML to visible text. Real root cause found this session
+    (2026-08-26, Andy's run-3 diagnosis): the checker was matching against
+    RAW, un-stripped HTML -- and both eCFR and Cornell LII (genuinely
+    reachable, 200-status, content-correct pages, confirmed by manual fetch)
+    wrap individual legal terms in inline <a> tags with NO surrounding
+    whitespace in the source markup (e.g. '...initial<a href="...">
+    communication</a>with a<a...>consumer</a>...'). A naive
+    whitespace-normalize-only pass over the raw markup can concatenate
+    adjacent words across a tag boundary ('debtcollector') and will never
+    match a clean quoted sentence. Tags are replaced with a SPACE (not
+    deleted) specifically so adjacent inline-linked words don't merge. This
+    is a regex-based strip (no HTML parser dependency); documented
+    limitation: malformed HTML or deeply nested comment/CDATA edge cases
+    could still slip through -- acceptable for a mechanical sanity check that
+    routes uncertain cases to a human either way."""
+    t = _SCRIPT_STYLE_RE.sub(" ", raw_html or "")
+    t = _TAG_RE.sub(" ", t)
+    return t
+
+
+def _normalize_for_match(raw_html_or_text: str, is_html: bool = True) -> str:
+    t = _strip_html(raw_html_or_text) if is_html else (raw_html_or_text or "")
+    t = _html_module.unescape(t)
+    # Smart quotes/dashes that survive as literal unicode
+    t = (t.replace("\u2018", "'").replace("\u2019", "'")
+           .replace("\u201c", '"').replace("\u201d", '"')
+           .replace("\u2013", "-").replace("\u2014", "-"))
+    return re.sub(r"\s+", " ", t).strip().lower()
+
+
+def _word_overlap_ratio(needle: str, haystack: str) -> float:
+    """Diagnostic-only fuzzy score: fraction of needle's words found anywhere
+    in haystack. Never used to set `verified` -- verified stays gated on the
+    strict substring check; this is purely to help a human tell 'source
+    unreachable' apart from 'source reachable, wording just doesn't match
+    exactly' when verified=False."""
+    needle_words = [w for w in re.findall(r"[a-z0-9]+", needle) if len(w) > 2]
+    if not needle_words:
+        return 0.0
+    haystack_words = set(re.findall(r"[a-z0-9]+", haystack))
+    hits = sum(1 for w in needle_words if w in haystack_words)
+    return round(hits / len(needle_words), 3)
 
 
 def verify_citation(url: str, quoted_text: str, dry_run: bool) -> dict:
+    """Mechanically verify a cited source. Always returns a `diagnostics` block
+    -- HTTP status, content length, content type, and a fuzzy word-overlap
+    score -- even on success, so a `verified: False` result is self-explaining
+    instead of a bare `error: None` (fixed 2026-08-26 per Andy's run-3 report:
+    several failures here were reachable, legitimate primary/near-primary
+    sources -- e.g. eCFR, Cornell LII -- returning normal 200 responses that
+    simply didn't contain an exact substring match, which looked identical to
+    an unreachable source before this fix)."""
     if dry_run:
-        return {"url": url, "verified": True, "method": "dry-run-synthetic", "error": None}
+        return {
+            "url": url, "verified": True, "method": "dry-run-synthetic", "error": None,
+            "diagnostics": {"http_status": None, "content_length": None,
+                             "content_type": None, "word_overlap_ratio": None},
+        }
     try:
         import requests
     except ImportError:
-        return {"url": url, "verified": False, "method": "live", "error": "requests package not installed"}
+        return {
+            "url": url, "verified": False, "method": "live",
+            "error": "requests package not installed",
+            "diagnostics": {"http_status": None, "content_length": None,
+                             "content_type": None, "word_overlap_ratio": None},
+        }
     try:
         resp = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0 (CJaC corroboration runner)"})
-        page = _normalize_for_match(resp.text)
+        page = _normalize_for_match(resp.text, is_html=True)
         # Use a shortened window of the quoted text (first ~120 chars) to
         # tolerate minor HTML-entity/whitespace differences in the fetched page.
-        needle = _normalize_for_match(quoted_text)[:120]
+        needle = _normalize_for_match(quoted_text, is_html=False)[:120]
         verified = needle in page if needle else False
-        return {"url": url, "verified": verified, "method": "live", "error": None}
+        diagnostics = {
+            "http_status": resp.status_code,
+            "content_length": len(resp.content),
+            "content_type": resp.headers.get("Content-Type"),
+            "word_overlap_ratio": _word_overlap_ratio(needle, page),
+        }
+        return {"url": url, "verified": verified, "method": "live", "error": None,
+                "diagnostics": diagnostics}
     except Exception as exc:
-        return {"url": url, "verified": False, "method": "live", "error": str(exc)}
+        return {
+            "url": url, "verified": False, "method": "live", "error": str(exc),
+            "diagnostics": {"http_status": None, "content_length": None,
+                             "content_type": None, "word_overlap_ratio": None},
+        }
 
 
 # -- Node discovery ---------------------------------------------------------------

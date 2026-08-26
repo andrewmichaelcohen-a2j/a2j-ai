@@ -3,7 +3,10 @@
   "schema_version": "debt-v1",
   "scope": {
     "level": "federal",
-    "jurisdiction": { "state": null, "state_name": null }
+    "jurisdiction": {
+      "state": null,
+      "state_name": null
+    }
   },
   "provenance": {
     "generated": {
@@ -37,27 +40,34 @@
           {
             "cite": "15 U.S.C. § 1692g(a)",
             "quoted_text": "Within five days after the initial communication with a consumer in connection with the collection of any debt, a debt collector shall, unless the following information is contained in the initial communication or the consumer has paid the debt, send the consumer a written notice containing— (1) the amount of the debt; (2) the name of the creditor to whom the debt is owed; (3) a statement that unless the consumer, within thirty days after receipt of the notice, disputes the validity of the debt, or any portion thereof, the debt will be assumed to be valid by the debt collector; (4) a statement that if the consumer notifies the debt collector in writing within the thirty-day period that the debt, or any portion thereof, is disputed, the debt collector will obtain verification of the debt or a copy of a judgment against the consumer and a copy of such verification or judgment will be mailed to the consumer by the debt collector; and (5) a statement that, upon the consumer's written request within the thirty-day period, the debt collector will provide the consumer with the name and address of the original creditor, if different from the current creditor.",
-            "url": "https://www.law.cornell.edu/uscode/text/15/1692g"
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692g",
+            "source_tier": "B",
+            "tier_rationale": "Official federal source (Cornell LII reproduces U.S. Code); used where the anchor predates this session's tier discipline -- retained as B (recognized noncommercial republisher) rather than immediately re-pinned to the GPO/govinfo.gov text, since Cornell LII is the field-standard noncommercial republisher for federal code and no machine-hostility issue was found this session; flagged as a HORIZON candidate to re-verify against govinfo.gov directly."
           },
           {
             "cite": "15 U.S.C. § 1692g(b)",
             "quoted_text": "If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that the debt, or any portion thereof, is disputed, or that the consumer requests the name and address of the original creditor, the debt collector shall cease collection of the debt, or any disputed portion thereof, until the debt collector obtains verification of the debt or a copy of a judgment, or the name and address of the original creditor, and a copy of such verification or judgment, or name and address of the original creditor, is mailed to the consumer by the debt collector. Collection activities and communications that do not otherwise violate this subchapter may continue during the 30-day period referred to in subsection (a) unless the consumer has notified the debt collector in writing that the debt, or any portion of the debt, is disputed...",
-            "url": "https://www.law.cornell.edu/uscode/text/15/1692g"
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692g",
+            "source_tier": "B",
+            "tier_rationale": "Official federal source (Cornell LII reproduces U.S. Code); used where the anchor predates this session's tier discipline -- retained as B (recognized noncommercial republisher) rather than immediately re-pinned to the GPO/govinfo.gov text, since Cornell LII is the field-standard noncommercial republisher for federal code and no machine-hostility issue was found this session; flagged as a HORIZON candidate to re-verify against govinfo.gov directly."
           },
           {
             "cite": "12 C.F.R. § 1006.34(a)(1)",
             "quoted_text": "Except as provided in paragraph (a)(2) of this section, a debt collector must provide a consumer with the validation information required by paragraph (c) of this section either: (i) By sending the consumer a validation notice in the manner required by § 1006.42: (A) In the initial communication...or (B) Within five days of that initial communication; or (ii) By providing the validation information orally in the initial communication.",
-            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34"
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "source_tier": "A"
           },
           {
             "cite": "12 C.F.R. § 1006.34(b)(5)",
             "quoted_text": "Validation period means the period starting on the date that a debt collector provides the validation information required by paragraph (c) of this section and ending 30 days after the consumer receives or is assumed to receive the validation information. For purposes of determining the end of the validation period, the debt collector may assume that a consumer receives the validation information on any date that is at least five days (excluding legal public holidays..., Saturdays, and Sundays) after the debt collector provides it.",
-            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34"
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "source_tier": "A"
           },
           {
             "cite": "12 C.F.R. § 1006.34(c)",
             "quoted_text": "Pursuant to paragraph (a)(1) of this section, a debt collector must provide the following validation information: (1) debt collector communication disclosure; (2) information about the debt (collector name/address, consumer name/address, current creditor, itemization date, amount at itemization date, itemization since that date, current amount); (3) information about consumer protections (dispute-window end date and consequences, original-creditor-request right, assumption-of-validity statement, CFPB website statement); (4) consumer-response information (dispute prompts, original-creditor prompt, mailing addresses).",
-            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34"
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "source_tier": "A"
           }
         ],
         "citation_verified": true
@@ -78,7 +88,11 @@
           "length_days": 30,
           "starts": "date_consumer_receives_or_is_assumed_to_receive_validation_information",
           "mailbox_rule_assumption_days": 5,
-          "mailbox_rule_excludes": ["Saturdays", "Sundays", "federal_legal_holidays"],
+          "mailbox_rule_excludes": [
+            "Saturdays",
+            "Sundays",
+            "federal_legal_holidays"
+          ],
           "determination": "dispute_window_open_if today <= (validation_info_provided_date + mailbox_rule_assumption_days + 30_days), computed per the exclusions above"
         },
         "consequence_if_disputed_in_writing_within_window": {
@@ -90,14 +104,38 @@
         }
       },
       "completeness_checklist": [
-        { "fact": "Date of the debt collector's initial communication with the consumer about this debt", "dispositive": true },
-        { "fact": "Whether a validation notice (written or electronic) was included in that initial communication, or sent within 5 days after it, or the validation information was given orally during that initial communication", "dispositive": true },
-        { "fact": "Whether the consumer had already paid the debt before any 5-day notice deadline would have run", "dispositive": true },
-        { "fact": "Whether the notice included: collector name/address for disputes; consumer name/address; current creditor name; itemization date; amount of debt at itemization date; itemization of current amount; current amount of debt", "dispositive": true },
-        { "fact": "Whether the notice stated the dispute-window end date and the consequences of disputing vs. not disputing (assumption-of-validity, cease-collection-until-verification, original-creditor-request right)", "dispositive": true },
-        { "fact": "Date the consumer received (or is deemed to have received) the validation notice", "dispositive": true },
-        { "fact": "Whether, and when, the consumer notified the collector IN WRITING that the debt (or a portion) is disputed", "dispositive": true },
-        { "fact": "Whether collection activity continued after a written dispute was sent, before verification was provided", "dispositive": true }
+        {
+          "fact": "Date of the debt collector's initial communication with the consumer about this debt",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether a validation notice (written or electronic) was included in that initial communication, or sent within 5 days after it, or the validation information was given orally during that initial communication",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the consumer had already paid the debt before any 5-day notice deadline would have run",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the notice included: collector name/address for disputes; consumer name/address; current creditor name; itemization date; amount of debt at itemization date; itemization of current amount; current amount of debt",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the notice stated the dispute-window end date and the consequences of disputing vs. not disputing (assumption-of-validity, cease-collection-until-verification, original-creditor-request right)",
+          "dispositive": true
+        },
+        {
+          "fact": "Date the consumer received (or is deemed to have received) the validation notice",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether, and when, the consumer notified the collector IN WRITING that the debt (or a portion) is disputed",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether collection activity continued after a written dispute was sent, before verification was provided",
+          "dispositive": true
+        }
       ],
       "consequences_and_next_steps": [
         {
