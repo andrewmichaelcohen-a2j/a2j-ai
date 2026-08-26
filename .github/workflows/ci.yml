@@ -29,7 +29,7 @@ jobs:
     name: JSON well-formedness (all rules files)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Check every rules/**/*.json parses
         run: |
           set -e
@@ -50,7 +50,7 @@ jobs:
     name: Debt-track schema validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -63,7 +63,7 @@ jobs:
     name: Frozen-artifact integrity (vProof1 + v0.3 held-out)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Recompute and compare SHA256 against the committed manifest
         run: python3 scripts/ci/check_frozen_artifacts.py
 
@@ -71,7 +71,7 @@ jobs:
     name: Lint (basic)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
