@@ -14,6 +14,74 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 
 ## Open
 
+### [FDCPA-VALIDATION-NOTICE-1692g] CITATION-CHECK-FAILED -- run run_20260826T174558Z, 2026-08-26T17:50:32Z
+
+**File:** `rules/debt/federal/fdcpa_validation_notice_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 5 of 5 cited source(s) could not be mechanically verified live: [{'url': 'https://www.law.cornell.edu/uscode/text/15/1692g', 'verified': False, 'method': 'live', 'error': None}, {'url': 'https://www.law.cornell.edu/uscode/text/15/1692g', 'verified': False, 'method': 'live', 'error': None}, {'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34', 'verified': False, 'method': 'live', 'error': None}, {'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34', 'verified': False, 'method': 'live', 'error': None}, {'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34', 'verified': False, 'method': 'live', 'error': None}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 15 U.S.C. § 1692g(a) and 12 C.F.R. § 1006.34(a)(1), a notice is compliant only if the collector conveyed the validation information in the initial communication (in writing, or orally under the regulation) or sent a written validation notice within five days of that initial communication, and the notice contained the required content: the debt amount, the creditor's name, the 30-day assumption-of-validity statement, the written-dispute/verification statement, and the original-creditor-request statement (§ 1692g(a)(1)-(5)), plus Reg F's items in § 1006.34(c) (collector communication disclosure, itemization and current amount, dispute-window end date, original-creditor right, CFPB website statement, and response prompts/addresses). The dispute window runs from the date the validation information was provided and ends 30 days after the consumer receives or is assumed to receive it; the collector may assume receipt on any date at least five days (excluding Saturdays, Sundays, and legal public holidays) after it provides the information (12 C.F.R. § 1006.34(b)(5)). If a written dispute or original-creditor request is made within that 30-day period, § 1692g(b) requires the collector to cease collection of the disputed portion until verification, a judgment copy, or the original creditor's name and address is mailed; other collection may continue during the 30 days absent a written dispute. The excerpt supplies only this framework — applying it to a particular consumer requires the specific dates and notice contents, which are not in the text."
+  - gpt-5.5: grounded=False, error=None, summary='The text states that a debt collector must provide validation information in the initial communication or within five days after it, and the notice must include debt details, creditor information, dispute rights, verification/original-creditor rights, and related consumer-response information. The dispute/validation period runs for 30 days after the consumer receives or is assumed to receive the validation information, with assumed receipt permitted at least five business days after it is provided. However, the provided text does not include facts about what notice was sent, when it was provided, or when the consumer received it, so it is not possible to determine whether a compliant notice was actually provided or whether the consumer is still within the dispute window.'
+  - gemini-2.5-pro: grounded=False, error=None, summary='The provided texts describe the required contents of a debt validation notice and the rules for calculating the 30-day dispute window. However, the texts do not contain any facts about a specific notice that was sent or received. Without knowing the contents of a notice and the date it was provided to the consumer, it is impossible to determine if it was compliant or if the dispute window is still open.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-VALIDATION-NOTICE-1692g] MODEL-DISAGREEMENT -- run run_20260826T174558Z, 2026-08-26T17:50:32Z
+
+**File:** `rules/debt/federal/fdcpa_validation_notice_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** Numeric/citation fingerprints did not match across all three models (or one/more model reported ungrounded). Anthropic=['1', '1006.34', '12', '15', '1692', '30', '5'], OpenAI=['30'], Gemini=['30'].
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 15 U.S.C. § 1692g(a) and 12 C.F.R. § 1006.34(a)(1), a notice is compliant only if the collector conveyed the validation information in the initial communication (in writing, or orally under the regulation) or sent a written validation notice within five days of that initial communication, and the notice contained the required content: the debt amount, the creditor's name, the 30-day assumption-of-validity statement, the written-dispute/verification statement, and the original-creditor-request statement (§ 1692g(a)(1)-(5)), plus Reg F's items in § 1006.34(c) (collector communication disclosure, itemization and current amount, dispute-window end date, original-creditor right, CFPB website statement, and response prompts/addresses). The dispute window runs from the date the validation information was provided and ends 30 days after the consumer receives or is assumed to receive it; the collector may assume receipt on any date at least five days (excluding Saturdays, Sundays, and legal public holidays) after it provides the information (12 C.F.R. § 1006.34(b)(5)). If a written dispute or original-creditor request is made within that 30-day period, § 1692g(b) requires the collector to cease collection of the disputed portion until verification, a judgment copy, or the original creditor's name and address is mailed; other collection may continue during the 30 days absent a written dispute. The excerpt supplies only this framework — applying it to a particular consumer requires the specific dates and notice contents, which are not in the text."
+  - gpt-5.5: grounded=False, error=None, summary='The text states that a debt collector must provide validation information in the initial communication or within five days after it, and the notice must include debt details, creditor information, dispute rights, verification/original-creditor rights, and related consumer-response information. The dispute/validation period runs for 30 days after the consumer receives or is assumed to receive the validation information, with assumed receipt permitted at least five business days after it is provided. However, the provided text does not include facts about what notice was sent, when it was provided, or when the consumer received it, so it is not possible to determine whether a compliant notice was actually provided or whether the consumer is still within the dispute window.'
+  - gemini-2.5-pro: grounded=False, error=None, summary='The provided texts describe the required contents of a debt validation notice and the rules for calculating the 30-day dispute window. However, the texts do not contain any facts about a specific notice that was sent or received. Without knowing the contents of a notice and the date it was provided to the consumer, it is impossible to determine if it was compliant or if the dispute window is still open.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-UNFAIR-PRACTICES-CATALOG-1692f] CITATION-CHECK-FAILED -- run run_20260826T174558Z, 2026-08-26T17:49:32Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 1 cited source(s) could not be mechanically verified live: [{'url': 'https://www.law.cornell.edu/uscode/text/15/1692f', 'verified': False, 'method': 'live', 'error': None}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Section 1692f imposes a general ban on a debt collector using any unfair or unconscionable means to collect or attempt to collect a debt, then lists specific non-exhaustive examples of violations. These include: collecting amounts (interest, fees, charges, expenses) not expressly authorized by the debt agreement or permitted by law; accepting a check postdated more than five days without written notice of intent to deposit sent 3-10 business days beforehand; soliciting postdated instruments to threaten or institute criminal prosecution; depositing or threatening to deposit a postdated instrument early; causing a person to incur communication charges by concealing the communication's true purpose; taking or threatening nonjudicial dispossession or disablement of property where there is no present enforceable right or intent to take possession, or the property is exempt; communicating with a consumer about a debt by post card; and using any language or symbol other than the collector's address on mail envelopes or telegrams (a business name may be used only if it does not indicate the debt collection business). Because the list is expressly stated 'without limiting the general application of the foregoing,' conduct beyond these eight items can still violate the section."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use unfair or unconscionable means to collect or attempt to collect a debt. The statute lists violations including collecting unauthorized amounts, certain improper handling or solicitation of postdated payment instruments, causing communication charges by concealing the communication’s true purpose, improper nonjudicial repossession or disablement actions, communicating about a debt by postcard, and using prohibited language or symbols on mailed envelopes or telegrams.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Unfair or unconscionable debt collection practices include collecting any amount, such as interest or fees, not expressly authorized by the agreement or law. The statute also prohibits various misuses of postdated checks, such as depositing them early or soliciting them to threaten criminal prosecution. Additionally, debt collectors cannot threaten to take property if they have no right or intent to do so, communicate about a debt via postcard, or use revealing language on an envelope.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-UNFAIR-PRACTICES-CATALOG-1692f] MODEL-DISAGREEMENT -- run run_20260826T174558Z, 2026-08-26T17:49:32Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** Numeric/citation fingerprints did not match across all three models (or one/more model reported ungrounded). Anthropic=['10', '1692', '3'], OpenAI=[], Gemini=[].
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Section 1692f imposes a general ban on a debt collector using any unfair or unconscionable means to collect or attempt to collect a debt, then lists specific non-exhaustive examples of violations. These include: collecting amounts (interest, fees, charges, expenses) not expressly authorized by the debt agreement or permitted by law; accepting a check postdated more than five days without written notice of intent to deposit sent 3-10 business days beforehand; soliciting postdated instruments to threaten or institute criminal prosecution; depositing or threatening to deposit a postdated instrument early; causing a person to incur communication charges by concealing the communication's true purpose; taking or threatening nonjudicial dispossession or disablement of property where there is no present enforceable right or intent to take possession, or the property is exempt; communicating with a consumer about a debt by post card; and using any language or symbol other than the collector's address on mail envelopes or telegrams (a business name may be used only if it does not indicate the debt collection business). Because the list is expressly stated 'without limiting the general application of the foregoing,' conduct beyond these eight items can still violate the section."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use unfair or unconscionable means to collect or attempt to collect a debt. The statute lists violations including collecting unauthorized amounts, certain improper handling or solicitation of postdated payment instruments, causing communication charges by concealing the communication’s true purpose, improper nonjudicial repossession or disablement actions, communicating about a debt by postcard, and using prohibited language or symbols on mailed envelopes or telegrams.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Unfair or unconscionable debt collection practices include collecting any amount, such as interest or fees, not expressly authorized by the agreement or law. The statute also prohibits various misuses of postdated checks, such as depositing them early or soliciting them to threaten criminal prosecution. Additionally, debt collectors cannot threaten to take property if they have no right or intent to do so, communicate about a debt via postcard, or use revealing language on an envelope.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [FDCPA-FALSE-DECEPTIVE-CATALOG-1692e] CITATION-CHECK-FAILED -- run run_20260826T174558Z, 2026-08-26T17:48:46Z
 
 **File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
