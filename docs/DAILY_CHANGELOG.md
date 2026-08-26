@@ -4,6 +4,26 @@
 
 ---
 
+## 2026-08-25, round 5 (Debt Phase A build — UT state layer, third anchor state)
+
+*Continuing autonomously per Andy's standing "proceed with as much as possible, only stop for genuine RED" instruction, confirmed after round 4's patch was applied and pushed. Task class: GREEN. Content nodes DRAFT tier, single-model grounded derivations.*
+
+**State layer — UT, 6 nodes, `rules/debt/state/utah/ut_debt_state_layer_v1.json`:**
+- `UT-SOL-WRITTEN-CONTRACT-DEBT` (Band 1) — 6-year SOL, Utah Code § 78B-2-309(1)(b), verbatim (FindLaw). Notable Utah-specific mechanic encoded explicitly: for a "credit agreement," the 6-year clock runs from the LATEST of when the debt arose, a written acknowledgment, or any payment (debtor's or a third party's) — meaning a stray payment can restart the limitations clock. Flagged in the node's `logic.restart_risk_note` so it isn't missed by anyone using this data.
+- `UT-SOL-ORAL-CONTRACT-DEBT` (Band 1) — 4-year SOL for unwritten obligations and open store/services accounts, Utah Code § 78B-2-307(1), verbatim. Accrues from the last charge or payment, not the original debt date.
+- `UT-WAGE-GARNISHMENT-LIMIT` (Band 1) — lesser of 25% of disposable earnings or the amount exceeding 30x the federal minimum wage (15% flat for education loans), Utah Code § 70C-7-103(2), verbatim. Comparative note added: this is Utah's conforming adoption of the federal CCPA floor — notably less debtor-protective than CA's 20%/48x formula and nowhere near TX's constitutional bar. Useful cross-state contrast now that three anchor states have wage-garnishment nodes.
+- `UT-HOMESTEAD-EXEMPTION` (Band 1) — $42,000 primary residence / $84,000 joint household, or $5,000/$10,000 non-primary, Utah Code § 78B-5-503(2), verbatim, plus the four carveout categories from subsection (3) where the exemption doesn't apply (tax liens, purchase-money liens, child-support liens, consensual liens).
+- `UT-PERSONAL-PROPERTY-EXEMPTION` (Band 1) — household goods ($1,000 per category, 4 categories), tools of the trade ($5,000 aggregate, can include a business-use vehicle), and a general motor-vehicle exemption ($3,000), Utah Code § 78B-5-506, verbatim. Node explicitly flags the no-double-dip rule: a debtor cannot claim the same vehicle under both the trade-tools exemption and the general vehicle exemption.
+- `UT-CIVIL-ANSWER-DEADLINE` (Band 1) — 21 days if served within Utah, 30 days if served outside Utah, Utah R. Civ. P. 12(a)(1), verbatim.
+
+**Sourcing note:** all 6 UT nodes are `citation_verified: true`. Utah's main court-rules site (`utcourts.gov`) timed out on three consecutive live-fetch attempts; recovered via the state's own `legacy.utcourts.gov` rules mirror, which served static HTML with the verbatim rule text (page footer confirms "printed on August 25, 2026," rule effective 5/1/2024) — still a primary, official Utah Courts source, just reached through a different URL path than the primary site.
+
+**Docs updated:** `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` Appendix 2 (round 4 build log added), `docs/WORK_QUEUE.md` (NOW table + new dated header), this changelog entry.
+
+**Verification:** all 6 debt JSON files (23 nodes total: 1 + 3 + 1 + 5 + 7 + 6) pass `validate_debt_schema.py`; `check_frozen_artifacts.py` passes (no drift); all repo `.py` files pass `py_compile`; commit verified via `git am --3way` on a fresh clone before handoff.
+
+---
+
 ## 2026-08-25, round 4 (Debt Phase A build — CA state layer, second anchor state)
 
 *Continuing autonomously per Andy's "proceed with as much as possible, only stop for genuine RED" instruction, confirmed after round 3's patch was applied and pushed. Task class: GREEN. Content nodes DRAFT tier, single-model grounded derivations.*
