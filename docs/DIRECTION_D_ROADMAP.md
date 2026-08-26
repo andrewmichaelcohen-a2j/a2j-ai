@@ -8,6 +8,18 @@
 
 **Eviction-line status note (added 2026-08-25):** the eviction line is ON HOLD per Andy's Debt Defense Prototype priority directive (see `WORK_QUEUE.md`, `PROJECT_STATE_OF_RECORD.md`). Proposal 16/17 and the v0.4 cycle — the triggers D-2 and D-3 below were originally written against — are paused along with the rest of eviction work. D-2 (disagreement auto-triage) and D-3 (statute-and-case watch) are both proposed for shared build under the debt track's Phase A instead (see `DEBT_PROJECT_ARCHITECTURE_SPEC.md` §11) — if that happens, it builds these two components via a different trigger, not a reopening of eviction drafting. The sequencing diagram below is left as originally written (it's still correct *if and when* eviction resumes); treat it as suspended, not superseded.
 
+**Build-trigger update (2026-08-26, "Phase A Unblock" directive item 6 — APPROVED, no longer just proposed):**
+D-2 is **built** as of this date, as part of the debt track's grounded-corroboration runner
+(`scripts/corroboration/run_corroboration.py`) — every model-vs-model disagreement, failed
+citation check, or adversarial-generation finding auto-files to `docs/DEBT_DISAGREEMENT_QUEUE.md`
+with evidence, same append-only pattern as this line's `HUMAN_REVIEW_QUEUE.md`. D-2's build
+trigger is now confirmed as the debt track, not the eviction v0.4 cycle — eviction reopening is
+**not required** for D-2 to exist or operate. D-3 (statute-and-case watch) remains proposed-not-
+built, now explicitly slotted as a Phase A/B debt-track lane once the corpus has enough
+statutory/case pins to make a watchlist worth generating automatically (see spec §4) — logged
+here as HORIZON (`docs/WORK_QUEUE.md`), trigger = post-concept-demo, same discipline as the rest
+of that round's deferrals.
+
 ## The invariant
 
 > AI generates candidates and evidence continuously; nothing self-ratifies; every change lands as a proposal for named-attorney ratification; every applied change passes the dev-set regression gate; held-out sets are burned after one use.
