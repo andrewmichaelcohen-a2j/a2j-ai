@@ -8,19 +8,25 @@ When a consumer is sued by a debt buyer or original creditor, several common def
 
 | Skill | Status | Purpose |
 |-------|--------|---------|
-| `consumer-debt-validation` | v0.1.0 — draft | Screen a consumer debt collection matter for common defenses and produce a plain-language analysis with citations. |
+| `consumer-debt-validation` | v0.2.0 — CONCEPT-DEMO | Screen a consumer debt collection matter for common defenses and produce a plain-language analysis with citations, tier labels visible throughout. |
 
 ## Jurisdictions
 
-Jurisdiction-specific data (statutes of limitations, citations, court forms) lives in [`jurisdictions/`](jurisdictions/). Initial target jurisdiction: **Los Angeles County, California**. Additional jurisdictions may be added once the first is validated.
+**Superseded 2026-08-26** by the schema-validated node corpus in `../../rules/debt/` (federal
+spine + TX/CA for demo reliance; UT/AZ/NY exist as visible DRAFT content, not yet relied on). The
+original plan to hand-author jurisdiction data as plain markdown in [`jurisdictions/`](jurisdictions/)
+was never executed and is now inactive — see the skill's own "Reconciliation note." The folder is
+left in place rather than deleted.
 
 ## Scope and limits
 
-This plugin **assists** with screening and analysis. It does not provide legal advice or practice law. Output is intended for review by a supervising attorney before being relied upon. See the skill's own scope and out-of-scope statements.
+This plugin **assists** with screening and analysis. It does not provide legal advice or practice law. Output is intended for review by a supervising attorney before being relied upon. See the skill's own scope, claims-discipline, and out-of-scope statements.
 
 ## Status
 
-Draft (v0.1.0). Not yet validated. Do not rely on output until the skill has been attorney-reviewed and the version reaches v1.0 for your jurisdiction.
+CONCEPT-DEMO (v0.2.0), per the 2026-08-26 "Concept Demo First" directive. Every underlying node is
+DRAFT tier pending `scripts/corroboration/run_corroboration.py`; none is CORROBORATED or VALIDATED.
+Do not rely on output, and see the skill's claims-discipline section before any live showing.
 
 
 ---

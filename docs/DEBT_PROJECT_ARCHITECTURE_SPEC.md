@@ -1,7 +1,7 @@
 # Debt Defense Prototype — Architecture Spec
 
-**Status:** RATIFIED FOR BUILD (v4). Phase A build started 2026-08-25. Task class: GREEN for infrastructure/schema/scaffold; content nodes ship at DRAFT/CORROBORATED tier per §3/§4's pipeline, never self-certified VALIDATED.
-**Prepared:** 2026-08-24, revised 2026-08-25 (v2, decisions ratified), revised again 2026-08-25 (v3, AMPVR/Band-taxonomy gaps resolved, Direction E unblocked), revised again 2026-08-25 (v4, per Andy's build-authorization message): **v3 is ratified as-is** (Andy: "v3 spec is ratified"); the fifth anchor state is decided (**TX**, not a placeholder — see §10); ENG_HARDENING Tasks 2-4/7 hold with the rest of eviction *except* where applicable to debt as best practice, which Andy explicitly asked for — see the new decision record below and §3/§11; and **the validation cadence for Phase A is build-first**: AI does as much of the building and validating as possible, sampling-based (not granular per-rule) review, and **human review does not gate the build-out** — Andy's own words, 2026-08-25. This is not a new pipeline design; it's confirmation to proceed on the one already ratified in §3/§4/v2-decision-4, which was designed for exactly this.
+**Status:** RATIFIED FOR BUILD (v5). Phase A anchor-state build complete (2026-08-25/26); corroboration runner delivered and concept-demo re-scope ratified (2026-08-26, "Phase A Unblock" + "Concept Demo First" directives). Task class: GREEN for infrastructure/schema/scaffold/runner; content nodes ship at DRAFT/CORROBORATED tier per §3/§4's pipeline, never self-certified VALIDATED. **Near-term target: concept demo (§10), CORROBORATED tier, federal+TX+CA corpus, 2-3 weeks from 2026-08-26 — supersedes the Stage 1/1.5/2 ladder as the immediate goal without deleting it.**
+**Prepared:** 2026-08-24, revised 2026-08-25 (v2, decisions ratified), revised again 2026-08-25 (v3, AMPVR/Band-taxonomy gaps resolved, Direction E unblocked), revised again 2026-08-25 (v4, per Andy's build-authorization message), revised again 2026-08-26 (v5, per Andy's "Phase A Unblock" and "Concept Demo First" directives: corroboration runner package delivered, §8 gains a census-audit subsection and a CONCEPT-DEMO claim-language row, §10 gains the concept-demo near-term target ahead of the Stage 1/1.5/2 ladder and the Stage 1.5 tier is added to that ladder, one new Band 3 node authored [`TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY`]): **v3 is ratified as-is** (Andy: "v3 spec is ratified"); the fifth anchor state is decided (**TX**, not a placeholder — see §10); ENG_HARDENING Tasks 2-4/7 hold with the rest of eviction *except* where applicable to debt as best practice, which Andy explicitly asked for — see the new decision record below and §3/§11; and **the validation cadence for Phase A is build-first**: AI does as much of the building and validating as possible, sampling-based (not granular per-rule) review, and **human review does not gate the build-out** — Andy's own words, 2026-08-25. This is not a new pipeline design; it's confirmation to proceed on the one already ratified in §3/§4/v2-decision-4, which was designed for exactly this.
 **Scope of this document:** as of v4, a specification **and a live build log**. §10's thin slice is now under construction; the appendix below tracks what actually exists in the repo as of each revision, same discipline as the eviction-line state-of-record. Repository restructuring: Andy adopted the recommendation below (§12 revised) — new work (`rules/debt/`) scaffolds fresh rather than physically moving the live eviction line, which stays where it is.
 
 > **v4 decision record, 2026-08-25 (Andy, in chat — not a separate directive doc; logged here as the record of record):**
@@ -232,6 +232,74 @@ Two different statistical situations apply here, and the spec needs to be precis
 
 ---
 
+### The debt-slice release: census audit replaces sampling (added 2026-08-26, Phase-A-Unblock item 4)
+
+§3(e)'s n≈385 stratified-sampling machinery assumes a population large enough that sampling is
+necessary. **The debt thin slice is not that population.** For the slice's own release, audit
+**every** VALIDATED-candidate node — a census, not a sample. A census yields a strictly *stronger*
+claim than any sampling result at the same or greater cost-per-node: "100% of VALIDATED-tier
+nodes in this release were attorney-audited, N = [N], [X] defects found" carries no
+confidence-interval hedge, because there is no sampling error to hedge — every unit was checked.
+
+**§3(e)'s sampling-audit machinery is not retired.** It stays fully specced and becomes the
+operative instrument once the corpus reaches corpus scale (hundreds-plus of nodes per release),
+where auditing every node stops being the cheaper option. The debt track's *own* first release is
+small enough that census is both stronger and cheaper — this is a scale-dependent choice, not a
+change to the standard.
+
+**Numbers, so Stage 2 converts to a real date the moment Andy books review time:**
+
+- **Current corpus size (2026-08-26): 37 DRAFT-tier nodes** — 5 federal + 6 Texas (incl. the Band
+  3 discretionary node) + 7 California + 6 Utah + 7 Arizona + 6 New York. This is the *candidate*
+  count for census audit once nodes clear grounded corroboration (§3a-d) — not every DRAFT node
+  will necessarily reach CORROBORATED, so the audited count could be smaller; it will not be
+  larger unless new nodes are authored (a live possibility if the corroboration or adversarial
+  passes surface gaps needing a new node, same as the Band 3 node this round).
+- **Estimated attorney-hours for a full census at this corpus size: 5-15 minutes per node,
+  applied to 37 nodes → roughly 3.1-9.25 hours total.** For just the concept-demo corpus (federal
+  + TX + CA, 18 nodes) → roughly 1.5-4.5 hours. This is a planning estimate, not a promise about
+  any specific node's actual review time — some nodes (e.g., the Band 3 discretionary node, or
+  any node with a flagged citation gap) will likely take longer than a clean Band-1 SOL lookup.
+- **What this buys:** once Andy books a review session of roughly this length, Phase D's date for
+  the debt slice stops being "not printable" (§10) and becomes a real calendar date — the same
+  discipline already applied to Stage 1/Stage 2 dating elsewhere in this section.
+
+**§8 claim-language table — census case added:**
+
+| Evidence basis | Permitted claim language |
+|---|---|
+| Zero-defect census, N nodes, 100% audited | "Every node audited, N = [N], zero defects found" — no confidence-interval hedge; this is a population statement, not a sample estimate. |
+| Nonzero-defect census, N nodes, D defects | "Every node audited, N = [N], [D] defect(s) found and corrected/flagged" — report plainly, same as any nonzero-defect sampling result. |
+| Census at corpus scale becomes impractical (hundreds+ nodes) | Reverts to §3(e)'s sampling-audit table above — the standard n≈300-385 zero-defect / n≈2,400+ language, not the census language. |
+
+---
+
+### CONCEPT-DEMO claim language (added 2026-08-26, "Concept Demo First" directive §3)
+
+A third row-set for a context distinct from both the VALIDATED-tier table above and the
+Stage-1/Stage-2 machinery-demo framing in §10: the **near-term concept demo**, run on
+CORROBORATED-tier content (spec §3a-d evidence only — no sampling audit, no attorney
+certification). This is not a relaxation of the claim discipline above; it is a claim-language
+table for a genuinely different, weaker evidence basis, so the concept demo cannot accidentally
+borrow language earned only by VALIDATED-tier or census-audited content.
+
+**Every concept-demo showing opens with this framing sentence, verbatim:** *"This is a
+demonstration system. Its content is machine-corroborated against cited law — three independent
+AI models, citations verified against live sources — and not yet attorney-validated. The
+attorney-validation layer is designed and is what this project is building toward."* Tier labels
+visible throughout, no exceptions.
+
+| Evidence basis | Permitted claim language | Prohibited |
+|---|---|---|
+| CONCEPT-DEMO (grounded-agreement rate + scenario pass rate, both machine-measured, §3a/b/d evidence only) | "X% three-model grounded agreement across the demo corpus" and "Y of Z scenarios passing against corroborated rules" — always both numbers with their basis in the same breath | Any bare "X% accurate"; any claim implying attorney validation; any population-accuracy claim; any "validated," "near-perfect," five-nines, or 99%-target language — that language activates only when Phase D actually runs, which is deferred for the concept demo. |
+
+**Audience discipline:** concept-demo showings are for Andy-selected audiences only (friendlies,
+partners, funders, labs) — not press, not consumers, not a public link. This is a narrower
+audience rule than Stage 1.5's "named friendlies" framing in §10, not a looser one — Andy
+approves each showing.
+
+---
+
 ## 9. Governance and ethics
 
 - **Information-vs-advice line under interactive use.** The eviction line's DISCLAIMER.md discipline (legal information, not legal advice; VALIDATED-only for real-person deployment) extends here, but interactivity raises the stakes — a voice demo that elicits facts and returns a tailored, cited answer sits closer to the advice line than a static rules file. The staged rollout in §6 (navigator mode first) is this project's primary practical mitigation while that line gets drawn precisely: a human intermediary in the loop for the first deployment stage, direct-consumer exposure deferred until the ethics and elicitation-testing gates clear.
@@ -278,11 +346,85 @@ This spec produces a range, explicitly distinguishing **active-work time** (assu
 
 **Rough total, active-work time, phases A–C+E only: 6–10 weeks**, assuming continuous multi-lane operation. (v3 update: the Direction E arrival condition in the prior version of this sentence is now moot — the document is in hand.) **Phase D (attorney review) sits outside that estimate entirely** and is realistically the phase most likely to stretch calendar time well beyond the active-work figure — the eviction line's own blind-review and ratification cycles have taken anywhere from same-day to multi-week in practice. **Earliest credible demo date: this spec will not print a calendar date**, because doing so would bake in an assumption about Andy's own review bandwidth and about when Phase A actually starts — both outside this spec's authority to assume. Once those two variables are known, the active-work estimate above converts to a real date in a single conversation.
 
-### Staged demo plan: Stage 1 (machinery) / Stage 2 (outreach-grade) — v3, per Andy's request
+### Concept demo — near-term target (added 2026-08-26, "Concept Demo First" directive; supersedes the Stage 1/1.5/2 ladder below as the immediate goal, does not delete it)
 
-**Flagged, not silently guessed:** Andy's files.zip cover instruction (item 5) asked for this staged plan "per my prior message" — a message this session has no record of. What follows is a best-effort construction from this spec's own existing sequencing (§10 phases, §5 harness layers), not a reproduction of whatever format or content Andy originally specified elsewhere. If Andy's prior message specified different stage boundaries, dates, or audiences, this section should be treated as a draft to correct against it, not as confirmed.
+Andy's framing, verbatim intent: *we are not publishing working validated code; we are proving
+that codification + multi-model grounded validation + live-source lookup + continuous iteration
+is worth investing in — and the human-review investment comes after the concept earns it, not
+before.* This section is the near-term milestone; the Stage 1/1.5/2 ladder immediately below it
+remains the next milestone after the concept demo succeeds and Phase D work resumes — it is
+reordered, not retired.
+
+**Demo corpus:** federal spine (5 nodes) + **TX and CA state layers only** (6 + 7 nodes = 18
+demo-corpus nodes total). UT/AZ/NY are deferred to post-demo — already fully DRAFT-built as of
+2026-08-26 (ahead of the directive's "visible stub" minimum), visible in the tree with honest
+tier labels, not relied on by any demo scenario.
+
+**Demo tier standard: CORROBORATED.** Every node a demo scenario relies on must pass §3(a)
+grounded corroboration (three independent models, citations mechanically verified) with no
+unresolved disagreement-queue entry — see `scripts/corroboration/run_corroboration.py`. DRAFT
+content may be visible in the tree during the demo (honestly labeled); no scenario may *rely* on
+a DRAFT node for its answer.
+
+**Demo harness = the skill itself.** No formal Tier 1/Tier 2 harness for this milestone (that
+remains a post-demo deliverable, §5). The corpus and its completeness checklists are packaged
+directly as the Claude skill (`plugins/consumer-debt/skills/consumer-debt-validation/`), voice
+mode, with 5 prepared scenarios (TX collection-suit SOL/answer, CA collection-suit SOL/answer,
+pre-suit FDCPA validation-rights, wage-garnishment [TX+CA], and a Band 3 boundary-marker scenario
+— `TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY`, so the refusal behavior on a genuinely
+discretionary judgment call is part of the show) plus support for a live unscripted ask against
+any corpus node. Scenario definitions: `scripts/corroboration/scenarios.json`.
+
+**Demo gate — two machine-measured numbers, no attorney hours required:**
+1. **Grounded-agreement rate** — % of demo-corpus nodes where all three models independently
+   derived the same answer from cited source text with citations verified.
+2. **Scenario pass rate** — % of the 5 prepared scenarios (plus generated variants, once
+   authored) where every dependency node clears the bar above.
+
+Both computed by `scripts/corroboration/run_corroboration.py` and printed with the run summary.
+**Internal gate: both ≥ 90% before the demo is shown to anyone, including Stage-1.5-style
+friendlies.** Nodes or scenarios failing route through `docs/DEBT_DISAGREEMENT_QUEUE.md` and get
+fixed or cut from the demo corpus — a smaller honest corpus beats a bigger shaky one.
+
+**Claims discipline:** see §8's CONCEPT-DEMO claim-language row — the framing sentence, the
+two-number-with-basis rule, and the audience restriction (Andy-selected only) apply to every
+showing without exception.
+
+**Revised critical path (2-3 week target from 2026-08-26):**
+
+| Step | Owner | Time | Notes |
+|---|---|---|---|
+| 1. Corroboration runner package delivered | Cowork | days | Delivered 2026-08-26 — `scripts/corroboration/`, dry-run verified end-to-end in this session |
+| 2. Demo-corpus completion: federal + TX gaps, CA layer, Band 3 node, UT/AZ/NY stubs | Cowork (parallel with 1) | days | Delivered 2026-08-26 — CA/UT/AZ/NY already built in prior rounds; Band 3 node (`TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY`) authored this round; all DRAFT until step 3 |
+| 3. Andy runs dry-run, then live corroboration over the demo corpus | **Andy** | ~1-2 days machine time, minutes of attention | **The one Andy-dependency on the path — schedule it the day the package lands.** See `scripts/corroboration/README.md`. |
+| 4. Disagreement-queue resolution pass; re-run failures; tier promotions land | Cowork + reruns on Andy's machine | days | Fix-or-cut per the demo gate above |
+| 5. Skill packaging + scenario prep + voice run-throughs | Cowork | days, parallel | Scenario defs delivered 2026-08-26 (`scenarios.json`, `SKILL.md`); final wiring waits on step 4's tier promotions |
+| 6. Gate check (both metrics ≥90%) + Andy's private run-through | both | 1 session | Then Andy decides who sees it |
+
+**What this does NOT change:** one-writer discipline; provenance/SHA on everything; no
+self-certification; dual-reporting; the DoNotPay/UPL posture (§9); the full spec's Phase D design,
+which remains the post-demo investment story (see §8's census-audit numbers above for what that
+investment buys once booked).
+
+**Deferred to post-concept-demo (not cancelled) — logged as HORIZON in `docs/WORK_QUEUE.md` and
+`docs/DIRECTION_D_ROADMAP.md`, trigger = post-concept-demo:** UT/AZ/NY full-layer reliance;
+formal Tier 1 perturbation sets and Tier 2 persona harness (§5); the standing adversarial
+red-team lane (§11d); mutation-suite build-out (§3c); D-3 statute-watch build; Phase D census
+audit (§8).
+
+### Staged demo plan: Stage 1 (machinery) / Stage 2 (outreach-grade) — v3, ratified; now the milestone AFTER the concept demo above, not the immediate near-term target
+
+**Andy's ratification (2026-08-26):** this staged plan is adopted as originally reconstructed, with the concept-demo milestone above inserted ahead of it — Stage 1/1.5/2 dating and content are otherwise unchanged from what follows.
 
 **Stage 1 — machinery demo.** The thin slice (above) running end-to-end through the scenario voice demo (§5b), tiers visible and honest (VALIDATED where the slice reaches it, CORROBORATED/DRAFT elsewhere), with both Tier 1 and Tier 2 lower-bound tests (§5) run at least once against the debt-specific corpus. Proves the pipeline works and the tiering is truthful. **Audience: Andy and counsel only — not client-facing, not outreach-ready.** No claims pre-registered yet; this stage exists to validate the machinery, not to be shown externally. **Date:** corresponds to the end of Phases A–C in the table above — roughly 6–10 weeks of active work from whenever Phase A actually starts, with the same caveat the table already states (calendar time can run longer; this spec will not convert that to a fixed date without knowing the start date).
+
+**Stage 1.5 — optional, Andy's discretion.** The same machinery shown to a small set of named
+friendlies (e.g., Margaret Hagan, BayLegal staff) as explicit work-in-progress — tier labels on,
+zero accuracy claims, no pre-registration required because no claims are made. Exists so outreach
+momentum doesn't wait on Phase D; it never substitutes for Stage 2. Per §2's demo gate, this
+stage is also gated on the concept-demo's ≥90%/≥90% internal readiness check above, even though
+it makes no claims — the gate is about the machinery being honest and non-embarrassing to show,
+not about claim language.
 
 **Stage 2 — outreach-grade.** Adds Phase D (statistical sampling audit + blind attorney review + certification) and Phase E (hardening, claims pre-registration) on top of Stage 1. This is the version safe to show external audiences (BayLegal, funders, i4J, prospective pilot partners) — validated-tier claims defensible under scrutiny, pre-registered before any external showing (§5). **Date: honestly, not printable here** — Phase D is explicitly outside the active-work estimate and gated on Andy's/the certifying attorney's available review hours (table above), which is the single biggest true unknown in this whole schedule. Stage 2's date is Stage 1's date plus however long Phase D actually takes once it starts — this spec will convert that to a real date the moment Andy's review bandwidth for Phase D is known, same discipline as the rest of §10.
 
@@ -464,3 +606,15 @@ All 6 NY nodes `citation_verified: true`.
 ---
 
 *Copyright 2026 Andrew M Cohen. Apache 2.0.*
+
+**Round 8 (2026-08-26) — Phase A Unblock + Concept Demo First: corroboration runner, one new Band 3 node, spec v5.**
+
+- **Corroboration runner package delivered:** `scripts/corroboration/run_corroboration.py` (+ `requirements.txt`, `README.md`, `scenarios.json`) implementing spec §3(a)/(b)/(d) — three-model grounded derivation with a mechanical numeric/citation-fingerprint agreement check, live citation verification, one adversarial-generation pass per node, auto-filing to the new `docs/DEBT_DISAGREEMENT_QUEUE.md`. Dry-run verified end-to-end this session (37 nodes, all clean-pass, demo-gate metrics computed correctly, CLI validation confirmed for `--dry-run`/`--live` mutual exclusion and the budget-cap stop condition). Never writes to any rules file; tier promotion is a recommendation flag only. Explicitly flagged in its own docstring and README: it does not cover (c) mutation testing, so its promotion recommendation is (a)/(b)/(d)-evidenced, not the full (a)-(d) §4 requires.
+- **One new node authored:** `TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY` (Band 3, `rules/debt/state/texas/tx_debt_band3_discretionary_v1.json`) — the corpus's first Band 3 node, grounded in Craddock v. Sunshine Bus Lines, 133 S.W.2d 124 (Tex. 1939) and Tex. R. Civ. P. 329b. Sourcing note: the TRCP 329b text is a live-fetched, explicitly-verbatim reproduction (rulesofcivilprocedure.com, citing txcourts.gov); the Craddock quote is from a case-brief aggregator (lawpipe.com) with a pin cite, since direct fetches of CourtListener's and Google Scholar's opinion pages both returned empty content this session — flagged as a stronger candidate than usual for the corroboration runner's citation check to revisit once a primary opinion source is reachable.
+- **Corpus total now 37 DRAFT nodes** (was 35 before this round's one addition, corrected from the directive's undercounted "9 (4 federal + 5 TX)" for the round-3 pipeline target — federal spine has always been 5 nodes, not 4; TX now 6 with the Band 3 addition).
+- **Demo-gate metrics wired into the runner** per the Concept Demo First directive §2: grounded-agreement rate and scenario pass rate, both computed and printed with basis, ≥90%/≥90% internal gate.
+- **`plugins/consumer-debt/skills/consumer-debt-validation/SKILL.md` reconciled and updated to v0.2.0-concept-demo:** discovered this session to be a pre-existing skeleton (predating the current `rules/debt/` JSON architecture) that had never been wired to it — flagged rather than silently left stale. Now points at the real corpus, the 5 concept-demo scenarios, and carries the CONCEPT-DEMO claims-discipline framing sentence. `jurisdictions/` and `test-cases/` left in place, not deleted, noted as currently-inactive/future-use.
+- **Spec bumped to v5:** §8 gains a census-audit subsection (node count 37, attorney-hours estimate 3.1-9.25 hrs full corpus / 1.5-4.5 hrs demo corpus at 5-15 min/node) and a CONCEPT-DEMO claim-language row; §10 gains the concept-demo near-term-target section (corpus scope, demo gate, 6-step critical path table) ahead of the Stage 1/1.5/2 ladder, which is ratified and retained as the next milestone after the concept demo, with the previously-missing Stage 1.5 tier now written in and the "reconstructed without Andy's original message" caveat removed per Andy's explicit ratification.
+- **UT/AZ/NY status:** confirmed already fully DRAFT-built (not mere stubs) from rounds 5-7, exceeding the Concept Demo First directive's "visible stub" minimum — no build action needed; explicitly logged as out-of-demo-reliance scope with honest tier labels, not silently repurposed.
+- **ENG_HARDENING Task 1 closed** (repo security settings) — see `docs/PROJECT_STATE_OF_RECORD.md`'s 2026-08-26 entry for the verification detail and the Dependabot-PR handling note.
+- **HORIZON deferrals logged** (post-concept-demo trigger) in `docs/WORK_QUEUE.md` and `docs/DIRECTION_D_ROADMAP.md`: UT/AZ/NY full-layer reliance, Tier 1/2 harness, red-team lane, mutation-suite build-out, D-3 statute-watch, Phase D census audit.
