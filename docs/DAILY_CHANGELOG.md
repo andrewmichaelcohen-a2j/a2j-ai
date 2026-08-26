@@ -4,6 +4,37 @@
 
 ---
 
+## 2026-08-25, round 6 (Debt Phase A build — AZ and NY, final two anchor states: build complete)
+
+*Per Andy's explicit instruction to batch remaining builds and hand off one combined patch rather than repeated apply/push cycles ("are you able to do all the builds and then i do one simple push?"). Task class: GREEN. Content nodes DRAFT tier, single-model grounded derivations. This entry covers rounds 6 (AZ) and 7 (NY) together since they were built back-to-back before any intermediate handoff.*
+
+**State layer — AZ, 7 nodes, `rules/debt/state/arizona/az_debt_state_layer_v1.json`:**
+- `AZ-SOL-WRITTEN-CONTRACT-DEBT` (Band 1) — 6-year SOL, A.R.S. § 12-548(A), verbatim. Includes the statute's own choice-of-law rule (subsection B): Arizona's 6-year period controls even if a conflicting shorter out-of-state period would otherwise apply.
+- `AZ-SOL-ORAL-CONTRACT-DEBT` (Band 1) — 3-year SOL, A.R.S. § 12-543, verbatim. Open-account rolling rule: no item on a stated/open account is barred as long as any item was incurred within the last 3 years.
+- `AZ-WAGE-GARNISHMENT-LIMIT` (Band 1) — lesser of 10% of disposable earnings or the amount exceeding 60x the applicable minimum wage, A.R.S. § 33-1131(B), verbatim; 50% for support orders under subsection (C). Comparative note added: more debtor-protective than the federal CCPA floor and than UT's conforming approach.
+- `AZ-HOMESTEAD-EXEMPTION` (Band 1) — $400,000 base (post-2022 Proposition 209), A.R.S. § 33-1101(A), verbatim, CPI-adjusted annually from 2024. Highest flat base figure among the five anchor states.
+- `AZ-VEHICLE-EXEMPTION` (Band 1) — $15,000 standard / $25,000 if debtor or dependent has a physical disability, A.R.S. § 33-1125(8), verbatim.
+- `AZ-TOOLS-OF-TRADE-EXEMPTION` (Band 1) — $5,000 aggregate, A.R.S. § 33-1130(1), verbatim. Flagged as notably broad: explicitly covers intangible business assets (phone numbers, client contact information, marketing tools like websites/domain names), not just physical tools.
+- `AZ-CIVIL-ANSWER-DEADLINE` (Band 1) — 20 days standard (60/90 days if service is waived), Ariz. R. Civ. P. 12(a)(1)(A), verbatim (courtrules.net, official-source-sourced rule text).
+
+**State layer — NY, 6 nodes, `rules/debt/state/new_york/ny_debt_state_layer_v1.json`:**
+- `NY-SOL-CONTRACT-DEBT` (Band 1) — 6-year SOL, NY CPLR § 213(2), verbatim. Genuinely distinctive: unlike TX/CA/UT/AZ, New York does not split written vs. oral contract debt into different limitations periods — both get the same 6-year period.
+- `NY-INCOME-EXECUTION-LIMIT` (Band 1) — a three-way lesser-of formula (10% of gross income / 25% of disposable earnings / amount over 30x minimum wage), NY CPLR § 5231(b), verbatim. Notable carve-out: medical debt from a hospital or licensed health care professional is barred from income execution entirely — a debtor protection not seen in the other four states' wage-garnishment nodes.
+- `NY-HOMESTEAD-EXEMPTION` (Band 1) — county-tiered exemption, NY CPLR § 5206(a). **This node required a second sourcing layer, worth calling out specifically:** the bare statutory text on Justia shows flat 2019-base dollar figures ($75,000/$125,000/$150,000 across three county tiers) with no escalator clause visible in the section itself. Cross-referencing NY's Department of Financial Services (the official regulator responsible for publishing the triennial CPI adjustment required by CPLR §5205(l)(3), which also governs §5206) turned up the real currently-effective figures: $102,400/$170,700/$204,825, effective 2024-04-01, next adjustment 2027-04-01. This node quotes and cites BOTH the statutory base and the DFS table verbatim. Relying on the bare statute alone would have understated real homestead protection by roughly 35-40% — the most rigorous single sourcing exercise across all five state layers.
+- `NY-VEHICLE-EXEMPTION` (Band 1) — same DFS-adjustment pattern: $5,500 standard / $13,625 disability-equipped (current), adjusted from a $4,000/$10,000 statutory base, NY CPLR § 5205(a)(8) + DFS table. Carved out entirely for child/spousal support, alimony, equitable distribution, or NY State/municipal creditor judgments.
+- `NY-PERSONAL-PROPERTY-EXEMPTION` (Band 1) — itemized (not dollar-capped) household-goods list, a $4,075 tools-of-trade exemption (adjusted from $3,000), and a $1,325 wildcard exemption (adjusted from $1,000) available only if the debtor is not also claiming a homestead exemption. Node includes an explicit honesty flag documenting how the DFS table's somewhat ambiguous row labels were cross-checked against the statute's own dollar figures to build a correct mapping, rather than assumed.
+- `NY-CIVIL-ANSWER-DEADLINE` (Band 1) — 20 days standard, 30 days for specific service methods (state-official delivery, or CPLR §308/313/314/315 service), NY CPLR Rule 320(a), verbatim.
+
+**Phase A anchor-state build status: COMPLETE.** All five locked anchor states (TX 5 nodes, CA 7, UT 6, AZ 7, NY 6 = 31 state-layer nodes) plus the federal spine (4 nodes) = **35 total DRAFT-tier grounded nodes** across 8 rules files. All schema-validated (`validate_debt_schema.py`) and CI-passing (`check_frozen_artifacts.py`, `py_compile`). This is the completion of the "thin vertical slice" described in spec §10 — the natural next phase (Phase B) is running these nodes through the actual multi-model grounded-corroboration pipeline, which requires live API-key model access available only in Andy's environment per standing discipline.
+
+**Docs updated:** `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` Appendix 2 (rounds 5-7 build log added, Phase A marked complete), `docs/WORK_QUEUE.md` (NOW table + new dated header), this changelog entry.
+
+**Handoff note:** per Andy's request, rounds 5 (UT), 6 (AZ), and 7 (NY) plus this documentation commit are being delivered as ONE combined patch file rather than three separate round-by-round handoffs, to reduce apply/push friction.
+
+**Verification:** all 8 debt JSON files (35 nodes total: 1+3+1+5+7+6+7+6) pass `validate_debt_schema.py`; `check_frozen_artifacts.py` passes (no drift); all repo `.py` files pass `py_compile`; the combined patch verified via `git am --3way` on a fresh clone before handoff.
+
+---
+
 ## 2026-08-25, round 5 (Debt Phase A build — UT state layer, third anchor state)
 
 *Continuing autonomously per Andy's standing "proceed with as much as possible, only stop for genuine RED" instruction, confirmed after round 4's patch was applied and pushed. Task class: GREEN. Content nodes DRAFT tier, single-model grounded derivations.*

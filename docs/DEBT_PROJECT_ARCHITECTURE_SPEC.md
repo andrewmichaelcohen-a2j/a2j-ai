@@ -434,7 +434,32 @@ All 7 CA nodes are `citation_verified: true` (unlike TX's one weaker-sourced nod
 
 All 6 UT nodes are `citation_verified: true`. Sourcing note: Utah's official court-rules site (utcourts.gov) timed out repeatedly on live fetch; recovered via the state's own `legacy.utcourts.gov` rules mirror, which served static HTML with the verbatim rule text, dated "printed on August 25, 2026" and confirming Rule 12 effective 5/1/2024 -- still a primary, official source, just a different URL path than the main site.
 
-**Still not started:** AZ/NY state layers, the actual multi-model verification pipeline (§3a-d) running against any node (requires live API-key model runs, which per standing discipline happen only in Andy's environment, not this sandbox), the scorer calibration suite, independent-review packaging (Task 7). See `docs/WORK_QUEUE.md` for the queue.
+**Rounds 5-7 (same day, 2026-08-25) — AZ and NY state layers complete: all five locked anchor states (TX/CA/UT/AZ/NY) now built.**
+
+**AZ, 7 nodes, `rules/debt/state/arizona/az_debt_state_layer_v1.json`:**
+- **AZ-SOL-WRITTEN-CONTRACT-DEBT** (6-year, A.R.S. § 12-548, Band 1) — includes AZ's choice-of-law rule: Arizona's 6-year period applies even against a conflicting shorter out-of-state period.
+- **AZ-SOL-ORAL-CONTRACT-DEBT** (3-year, A.R.S. § 12-543, Band 1) — open-account rolling rule: no item barred so long as any item was incurred within the last 3 years.
+- **AZ-WAGE-GARNISHMENT-LIMIT** (A.R.S. § 33-1131, Band 1) — lesser of 10% of disposable earnings or the amount exceeding 60x minimum wage; notably more protective than the federal CCPA floor and more protective than UT's conforming approach.
+- **AZ-HOMESTEAD-EXEMPTION** ($400,000 post-2022-Prop-209, A.R.S. § 33-1101, Band 1) — highest flat base figure among the five anchor states' homestead nodes.
+- **AZ-VEHICLE-EXEMPTION** ($15,000 standard / $25,000 disability, A.R.S. § 33-1125(8), Band 1).
+- **AZ-TOOLS-OF-TRADE-EXEMPTION** ($5,000, A.R.S. § 33-1130, Band 1) — notably broad scope, explicitly covering intangible business assets (client contact lists, domain names, marketing tools).
+- **AZ-CIVIL-ANSWER-DEADLINE** (20 days, Ariz. R. Civ. P. 12(a)(1)(A)(i), Band 1).
+
+All 7 AZ nodes `citation_verified: true`.
+
+**NY, 6 nodes, `rules/debt/state/new_york/ny_debt_state_layer_v1.json`:**
+- **NY-SOL-CONTRACT-DEBT** (6-year, NY CPLR § 213(2), Band 1) — genuinely distinctive among the five states: NY does NOT split written vs. oral contract debt into different limitations periods the way TX/CA/UT/AZ do; both get the same 6-year rule.
+- **NY-INCOME-EXECUTION-LIMIT** (NY CPLR § 5231, Band 1) — a three-way lesser-of formula (10% of gross income / 25% of disposable earnings / amount over 30x minimum wage), plus a notable carve-out: medical debt from a hospital or licensed health care professional cannot use income execution at all.
+- **NY-HOMESTEAD-EXEMPTION** (NY CPLR § 5206, Band 1) — county-tiered exemption. **Sourcing note worth flagging:** the bare statutory text shows flat 2019-base dollar figures ($75k/$125k/$150k across three tiers) with no visible escalator clause in the section itself. The real currently-effective figures ($102,400/$170,700/$204,825, effective 2024-04-01) come from a separate NY Dept. of Financial Services triennial CPI-adjustment table required by a cross-reference in CPLR §5205(l)(3). This node cites and quotes BOTH the statutory base and the DFS-published current table verbatim — using the bare statute alone would have understated real protection by roughly 35-40%. This is arguably the most rigorous single sourcing exercise across all five state layers so far.
+- **NY-VEHICLE-EXEMPTION** (NY CPLR § 5205(a)(8) + DFS table, Band 1) — $5,500 standard / $13,625 disability-equipped (current, adjusted from $4,000/$10,000 base); carved out entirely for child/spousal support, alimony, equitable distribution, or state/municipal creditor judgments.
+- **NY-PERSONAL-PROPERTY-EXEMPTION** (NY CPLR § 5205(a)(5)/(7)/(9) + DFS table, Band 1) — itemized (not dollar-capped) household goods list, $4,075 tools of trade (adjusted from $3,000), and a $1,325 wildcard (adjusted from $1,000) available only if no homestead exemption is also claimed. Node includes an explicit honesty flag about how the DFS table's row labels were cross-checked against the statute's own dollar figures to build the mapping, rather than assumed from an ambiguous table label.
+- **NY-CIVIL-ANSWER-DEADLINE** (20/30 days depending on service method, NY CPLR Rule 320(a), Band 1).
+
+All 6 NY nodes `citation_verified: true`.
+
+**Phase A anchor-state build status: COMPLETE.** All five locked states (TX 5 nodes, CA 7, UT 6, AZ 7, NY 6 = 31 state-layer nodes) plus the federal spine (4 nodes: FDCPA §1692g, Reg F 7-in-7, FDCPA §1692e/f, FCRA §1681s-2(b)) = **35 total DRAFT-tier grounded nodes** across 8 rules files, all schema-validated and CI-passing.
+
+**Still not started:** the actual multi-model verification pipeline (§3a-d) running against any node (requires live API-key model runs, which per standing discipline happen only in Andy's environment, not this sandbox), the scorer calibration suite, independent-review packaging (Task 7). This is now the natural next phase — Phase A's "thin vertical slice" (federal spine + 5 anchor states, DRAFT tier) is built; Phase B is running these 35 nodes through actual multi-model grounded corroboration to advance any of them beyond DRAFT. See `docs/WORK_QUEUE.md` for the queue.
 
 ---
 
