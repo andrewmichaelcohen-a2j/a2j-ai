@@ -4,6 +4,29 @@
 
 ---
 
+## 2026-08-25, round 4 (Debt Phase A build — CA state layer, second anchor state)
+
+*Continuing autonomously per Andy's "proceed with as much as possible, only stop for genuine RED" instruction, confirmed after round 3's patch was applied and pushed. Task class: GREEN. Content nodes DRAFT tier, single-model grounded derivations.*
+
+**State layer — CA, 7 nodes, `rules/debt/state/california/ca_debt_state_layer_v1.json`:**
+- `CA-SOL-WRITTEN-CONTRACT-DEBT` (Band 1) — 4-year SOL, Cal. Code Civ. Proc. § 337(a), verbatim (Justia). Also encodes § 337(d)'s California-specific quirk: once the period runs, a creditor is statutorily barred from even *initiating* suit or arbitration to collect, not merely exposed to an affirmative defense the debtor must raise.
+- `CA-SOL-ORAL-CONTRACT-DEBT` (Band 1) — 2-year SOL for obligations not founded on a written instrument, Cal. Code Civ. Proc. § 339(1), verbatim.
+- `CA-WAGE-GARNISHMENT-LIMIT` (Band 1) — the post-SB 1477 formula (lesser of 20% of weekly disposable earnings, or 40% of the amount by which earnings exceed 48x the applicable state-or-local minimum hourly wage), Cal. Code Civ. Proc. § 706.050, verbatim (FindLaw), operative 2023-09-01.
+- `CA-HOMESTEAD-EXEMPTION` (Band 1) — greater of countywide median single-family home price (capped $600,000) or $300,000, inflation-adjusted annually from a 2022 base, Cal. Code Civ. Proc. § 704.730, verbatim.
+- `CA-VEHICLE-EXEMPTION` (Band 1) — $7,500 aggregate motor-vehicle equity exemption, including the automatic (no-claim-needed) rule when a debtor's single vehicle is sold at execution, Cal. Code Civ. Proc. § 704.010, verbatim.
+- `CA-BANK-ACCOUNT-EXEMPTION` (Band 1) — automatic bank-deposit exemption tied to a Welfare & Institutions Code §11452/§11453 cross-reference, plus the wages/child-support/spousal-support carve-out, Cal. Code Civ. Proc. § 704.220, verbatim.
+- `CA-CIVIL-ANSWER-DEADLINE` (Band 1) — 30-day answer deadline from service, including the statute's own required boldface consumer-facing notice language, Cal. Code Civ. Proc. § 412.20, verbatim.
+
+**Sourcing note, worth flagging honestly:** all 7 CA nodes are `citation_verified: true` — stronger sourcing posture than the TX round, where one node (`TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE`) relied on a secondary source only. That said, two CA nodes (`CA-WAGE-GARNISHMENT-LIMIT`, `CA-HOMESTEAD-EXEMPTION`) encode a *formula* whose current dollar inputs (the minimum wage figure; the countywide median home price and inflation-adjusted floor/cap) live in other, periodically-updated sources not independently pulled this session. The node text says so explicitly (`note_needs_current_figure` field) rather than hardcoding what could become a stale number. This is a different and more precise kind of gap than TX's "didn't check primary source" flag — here the primary CCP text itself is verified verbatim; what's missing is a separately-tracked adjustable figure.
+
+**Also flagged:** `CA-BANK-ACCOUNT-EXEMPTION`'s underlying dollar figure (via W&IC §§11452/11453) was not independently pulled this session — same "formula not current figure" caveat as above.
+
+**Docs updated:** `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` Appendix 2 (round 3 build log added), `docs/WORK_QUEUE.md` (NOW table + new dated header), this changelog entry.
+
+**Verification:** all 5 debt JSON files (17 nodes total: 1 + 3 + 1 + 5 + 7) pass `validate_debt_schema.py`; `check_frozen_artifacts.py` passes (no drift); all repo `.py` files pass `py_compile`; commit verified via `git am --3way` on a fresh clone before handoff.
+
+---
+
 ## 2026-08-25, round 3 (Debt Phase A build continues — autonomous, per Andy's "proceed without gating" instruction)
 
 *Andy, in chat: "all set - committed. please proceed. our work approach should be that you should proceed with as much as possible and only stop if there is something explicit that you need me to review, and then please let me know that. i am going to be traveling but want to get the project back into execution mode." Task class: GREEN for infrastructure/CI; all new content nodes ship DRAFT tier, honestly labeled single-model derivations that have not yet passed the multi-model verification pipeline (spec §3a-d).*

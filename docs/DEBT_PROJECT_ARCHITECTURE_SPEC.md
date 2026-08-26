@@ -413,7 +413,18 @@ Tier promotion to VALIDATED happens only through the sampling-audit + certificat
 - `.github/workflows/ci.yml` wires both scripts plus repo-wide JSON well-formedness and a Python syntax check into GitHub Actions, running on every push/PR to `main`.
 - **Not included:** a scorer unit-test suite or calibration suite (ENG_HARDENING Tasks 2's test-suite component and Task 4) — no debt scorer exists yet to test against. Queued, not silently dropped.
 
-**Still not started:** CA/UT/AZ/NY state layers, the actual multi-model verification pipeline (§3a-d) running against any node (requires live API-key model runs, which per standing discipline happen only in Andy's environment, not this sandbox), the scorer calibration suite, independent-review packaging (Task 7). See `docs/WORK_QUEUE.md` for the queue.
+**Round 3 (same day, 2026-08-25) — CA state layer, 7 nodes, `rules/debt/state/california/ca_debt_state_layer_v1.json`:**
+- **CA-SOL-WRITTEN-CONTRACT-DEBT** (4-year SOL, Cal. CCP § 337(a), Band 1) — includes the (d) subdivision's California-specific note that once the period runs, a creditor is statutorily barred from even initiating suit/arbitration, not merely subject to an affirmative defense.
+- **CA-SOL-ORAL-CONTRACT-DEBT** (2-year SOL, Cal. CCP § 339(1), Band 1).
+- **CA-WAGE-GARNISHMENT-LIMIT** (Cal. CCP § 706.050, Band 1) — the post-SB 1477 formula (lesser of 20% of disposable earnings, or 40% of the amount over 48x the applicable minimum hourly wage), effective 2023-09-01. Honestly flagged: encodes the formula verbatim but not the current minimum-wage dollar figure needed to compute an answer, since that changes on its own schedule.
+- **CA-HOMESTEAD-EXEMPTION** (Cal. CCP § 704.730, Band 1) — greater of countywide median home price (capped $600k) or $300k, inflation-adjusted annually from a 2022 base. Same "formula not current figure" flag as the wage node.
+- **CA-VEHICLE-EXEMPTION** (Cal. CCP § 704.010, Band 1) — $7,500 aggregate vehicle-equity exemption, with the automatic no-claim-needed rule for a debtor's single vehicle sold at execution.
+- **CA-BANK-ACCOUNT-EXEMPTION** (Cal. CCP § 704.220, Band 1) — automatic exemption tied to a Welfare & Institutions Code §11452/§11453 cross-reference figure not independently pulled this session; flagged rather than assumed. Also encodes the wages/child-support/spousal-support carve-out.
+- **CA-CIVIL-ANSWER-DEADLINE** (Cal. CCP § 412.20, Band 1) — 30-day answer deadline from service, including the statute's own boldface consumer-notice language. Notes small claims uses a different, not-yet-built procedure.
+
+All 7 CA nodes are `citation_verified: true` (unlike TX's one weaker-sourced node) — every citation in this file was fetched and quoted verbatim this session (Justia for CCP §§ 337/339, FindLaw for CCP §§ 706.050/704.730/704.010/704.220/412.20). Two nodes (wage garnishment, homestead) are honestly marked as encoding a *formula* whose current dollar inputs live in other, periodically-updated sources not pulled this session — a distinct and more honest flag than TX's "secondary source only" flag, since here the primary CCP text itself was verified, just not the linked adjustable figures.
+
+**Still not started:** UT/AZ/NY state layers, the actual multi-model verification pipeline (§3a-d) running against any node (requires live API-key model runs, which per standing discipline happen only in Andy's environment, not this sandbox), the scorer calibration suite, independent-review packaging (Task 7). See `docs/WORK_QUEUE.md` for the queue.
 
 ---
 
