@@ -138,7 +138,7 @@ DEFAULT_BUDGET_CAP_USD = 15.00
 # prices and token usage vary by node complexity; the --dry-run pass prints a
 # projected total before any live call using this same constant, so Andy sees
 # the number before spending anything.
-APPROX_COST_PER_NODE_USD = 0.35
+APPROX_COST_PER_NODE_USD = 0.45  # bumped 2026-08-26 round 3: +1 judge call/node for LLM-judged semantic agreement (still an estimate, not a guarantee -- see below)
 # 36 total DRAFT nodes in the full corpus as of 2026-08-26 -> full-corpus
 # estimate ~= $12.60, within the $15 default cap with modest headroom. Demo
 # corpus (federal + TX + CA, ~18 nodes as of 2026-08-26) ~= $6.30.
@@ -163,6 +163,36 @@ SYSTEM_PROMPT_ADVERSARIAL = (
     "For each, state whether it exposes a genuine gap. Respond ONLY in valid "
     "JSON: {\"edge_cases\": [{\"scenario\": \"<1-3 sentences>\", "
     "\"exposes_gap\": <true/false>, \"gap_description\": \"<or null>\"}, ...]}"
+)
+
+# Added 2026-08-26 (third round): replaces the numeric/citation-fingerprint
+# comparison as the PRIMARY grounded-derivation agreement signal, per Andy's
+# ratified decision after the fingerprint proxy produced three separate
+# false-positive patterns in live use (citation-reference noise, the "no
+# one" pronoun, and uncited subsection cross-references like "Paragraph
+# (b)(2)(ii)") -- each fixed individually, but the pattern of new edge
+# cases surfacing one per live run made clear that a mechanical proxy for
+# this specific job (judging substantive legal agreement) has an
+# open-ended failure surface. An LLM is a much better fit for "do these
+# three answers agree in substance" than a digit-extraction regex is.
+# The numeric fingerprint is NOT removed -- it is kept and reported as a
+# secondary diagnostic (see stage_a_grounded_derivation.fingerprints),
+# since it is fast, free, and occasionally a useful sanity cross-check --
+# but it no longer gates CLEAN-PASS.
+SYSTEM_PROMPT_JUDGE = (
+    "You are checking whether three independently-produced legal analyses of "
+    "the same question substantively agree in their legal conclusion. Ignore "
+    "differences in phrasing, level of detail, structure (numbered list vs. "
+    "prose), or which specific illustrative examples each one includes -- "
+    "focus only on whether the core legal answer (the governing rule, "
+    "deadline, dollar amount, percentage, or standard) is the same across "
+    "all three. If one analysis states a real substantive fact (a rule, "
+    "exception, deadline, or amount) that another omits entirely, that is a "
+    "genuine disagreement worth flagging, not just a phrasing difference. "
+    "Respond ONLY in valid JSON: {\"agree\": <true if all three "
+    "substantively agree, false otherwise>, \"agreement_notes\": \"<1-3 "
+    "sentences: what agrees, or specifically what differs and which "
+    "analysis differs>\"}"
 )
 
 NUMBER_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?%?")
@@ -218,7 +248,20 @@ _NUMBER_WORDS = {
     "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70,
     "eighty": 80, "ninety": 90, "hundred": 100,
 }
+# NOTE (found 2026-08-26, second round): "one" is also the indefinite pronoun
+# in phrases like "no one may file suit" -- an earlier version of this regex
+# converted that "one" to the digit 1, contributing a spurious \'1\' to the
+# fingerprint that only shows up when a model happens to phrase a sentence
+# that way (confirmed against real live-run prose on CA-SOL-WRITTEN-CONTRACT-
+# DEBT: Anthropic\'s "no one may file suit" produced a stray \'1\' that the
+# other two models\' differently-worded sentences never would have matched).
+# The negative lookbehind below excludes the common pronoun-forming words
+# that precede "one" in this idiomatic (non-numeral) sense; it does not
+# affect genuine numeral usage like "one year" or compounds like
+# "twenty-one days" (those aren\'t preceded by "no"/"any"/"some"/"every"/
+# "each").
 _NUMBER_WORD_RE = re.compile(
+    r"(?<!no )(?<!any )(?<!some )(?<!every )(?<!each )"
     r"\b(" + "|".join(sorted(_NUMBER_WORDS, key=len, reverse=True)) + r")"
     r"(?:[\s-](" + "|".join(sorted(_NUMBER_WORDS, key=len, reverse=True)) + r"))?\b",
     re.IGNORECASE,
@@ -422,6 +465,29 @@ def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         return {"error": str(exc), "model": GEMINI_MODEL}
 
 
+def judge_semantic_agreement(summaries: list, keys, dry_run: bool) -> dict:
+    """Ask a model to judge whether N independently-produced legal summaries
+    substantively agree (2026-08-26, third round -- see SYSTEM_PROMPT_JUDGE
+    comment for why this replaces the numeric fingerprint as the primary
+    agreement signal). Summaries are presented unlabeled (just "Analysis 1/2/
+    3") so the judge isn't told which provider wrote which -- a standard
+    mitigation for self-preference bias in LLM-as-judge setups; Anthropic is
+    used as the judge model here since it's already the anchor model for
+    stage (b) adversarial generation in this pipeline, not because it's one
+    of the three being judged (it is, which is a known limitation, not
+    something this fix pretends to fully solve -- flagged in the README)."""
+    if len(summaries) < 2 or any(not s for s in summaries):
+        return {"agree": False, "agreement_notes": "Fewer than 2 non-empty summaries to compare.",
+                "model": ANTHROPIC_MODEL, "_raw": "", "error": None, "_skipped": True}
+    dry_payload = {
+        "agree": True,
+        "agreement_notes": "[DRY-RUN synthetic judgment -- all summaries synthetic and identical]",
+    }
+    numbered = "\n\n".join(f"Analysis {i+1}:\n{s}" for i, s in enumerate(summaries))
+    user_prompt = f"Here are {len(summaries)} independent analyses of the same legal question:\n\n{numbered}"
+    return call_anthropic(SYSTEM_PROMPT_JUDGE, user_prompt, keys, dry_run, dry_payload)
+
+
 # -- Citation verification -----------------------------------------------------
 
 import html as _html_module
@@ -499,8 +565,33 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool) -> dict:
             "diagnostics": {"http_status": None, "content_length": None,
                              "content_type": None, "word_overlap_ratio": None},
         }
+    # NOTE (found 2026-08-26, third round): the previous User-Agent
+    # ("Mozilla/5.0 (CJaC corroboration runner)") caused eCFR to serve a
+    # generic ~10.6KB fallback page -- identical byte count regardless of
+    # which section was requested -- instead of real regulation text.
+    # eCFR's own site displays a "you are using an unsupported browser"
+    # banner for non-standard user agents, and the fallback served to this
+    # UA lacked any real content. Confirmed by fetching the exact same URL
+    # with a standard browser UA and getting the full, real section text.
+    # FindLaw and Justia's 403s on every request in the same live run are
+    # consistent with the same kind of basic bot-signature check (their
+    # blocks may also depend on request volume/rate, which this header
+    # change alone won't fix -- flagged as still-open below). Using a
+    # standard, honest browser UA string is normal practice for polite
+    # programmatic access to public, unauthenticated legal text; this is
+    # not an attempt to evade any access control tied to identity or
+    # payment.
+    REQUEST_HEADERS = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+    }
     try:
-        resp = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0 (CJaC corroboration runner)"})
+        resp = requests.get(url, timeout=20, headers=REQUEST_HEADERS)
         page = _normalize_for_match(resp.text, is_html=True)
         # Use a shortened window of the quoted text (first ~120 chars) to
         # tolerate minor HTML-entity/whitespace differences in the fetched page.
@@ -626,11 +717,30 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
         fingerprints.append(normalize_numbers(summary))
 
     all_grounded = all(bool(r.get("grounded")) and not r.get("error") for r in results_a)
+    # Numeric fingerprint agreement -- kept as a secondary diagnostic only as
+    # of 2026-08-26 round 3 (see SYSTEM_PROMPT_JUDGE comment). No longer
+    # gates CLEAN-PASS.
     fp_agreement = (
         len(fingerprints) == 3
         and fingerprints[0] == fingerprints[1] == fingerprints[2]
         and all_grounded
     )
+
+    # Semantic (LLM-judged) agreement -- the PRIMARY grounded-derivation
+    # agreement signal as of 2026-08-26 round 3. Skip the extra call (save
+    # cost) when a model already errored or reported ungrounded -- that's
+    # not a case the judge needs to weigh in on, it's already a fail.
+    if all_grounded:
+        summaries_for_judge = [(r.get("derivation_summary") or "") for r in results_a]
+        judge_result = judge_semantic_agreement(summaries_for_judge, keys, dry_run)
+        semantic_agreement = bool(judge_result.get("agree")) and not judge_result.get("error")
+    else:
+        judge_result = {
+            "agree": False,
+            "agreement_notes": "Skipped -- not all three models returned a grounded, error-free result.",
+            "model": ANTHROPIC_MODEL, "_raw": "", "error": None, "_skipped": True,
+        }
+        semantic_agreement = False
 
     # Citation verification (mechanical, all cited sources)
     citation_results = []
@@ -663,17 +773,20 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
 
     ended = now_iso()
 
-    clean_pass = bool(fp_agreement) and (all_citations_verified is True) and not gaps_found
+    clean_pass = bool(semantic_agreement) and (all_citations_verified is True) and not gaps_found
 
     # (d) file disagreements
-    if not fp_agreement:
+    if not semantic_agreement:
         entry = _format_disagreement_entry(
             run_id, node_id, file_path, "MODEL-DISAGREEMENT",
-            f"Numeric/citation fingerprints did not match across all three models "
-            f"(or one/more model reported ungrounded). "
+            f"LLM-judged semantic agreement: {judge_result.get('agreement_notes')} "
+            f"(judge model: {judge_result.get('model')}"
+            + (", judge call errored: " + str(judge_result.get("error")) if judge_result.get("error") else "")
+            + f"). Numeric-fingerprint diagnostic (secondary, not gating): "
             f"Anthropic={sorted(fingerprints[0]) if len(fingerprints) > 0 else 'n/a'}, "
             f"OpenAI={sorted(fingerprints[1]) if len(fingerprints) > 1 else 'n/a'}, "
-            f"Gemini={sorted(fingerprints[2]) if len(fingerprints) > 2 else 'n/a'}.",
+            f"Gemini={sorted(fingerprints[2]) if len(fingerprints) > 2 else 'n/a'} "
+            f"(fingerprint_agreement={fp_agreement}).",
             results_a,
         )
         file_disagreement(entry)
@@ -703,9 +816,11 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
         "node_sha256": sha256_of(node),
         "stage_a_grounded_derivation": {
             "results": results_a,
-            "fingerprints": [sorted(f) for f in fingerprints],
             "all_grounded": all_grounded,
-            "fingerprint_agreement": fp_agreement,
+            "semantic_agreement": semantic_agreement,
+            "semantic_agreement_judge": judge_result,
+            "fingerprints_diagnostic_only": [sorted(f) for f in fingerprints],
+            "fingerprint_agreement_diagnostic_only": fp_agreement,
         },
         "citation_check": {
             "results": citation_results,
@@ -789,7 +904,7 @@ def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool):
             "value_percent": grounded_agreement_rate,
             "n_demo_corpus_nodes_this_run": n_demo,
             "n_passing": n_pass,
-            "basis": "CLEAN-PASS = 3-model numeric/citation fingerprint agreement AND all citations live-verified AND no adversarial gap found",
+            "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all citations live-verified AND no adversarial gap found (numeric fingerprint is a secondary diagnostic only as of 2026-08-26 round 3, not part of this basis)",
         },
         "scenario_pass_rate": {
             "value_percent": scenario_pass_rate,

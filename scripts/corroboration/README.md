@@ -8,13 +8,27 @@ CORROBORATED-tier evidence — it needs live API keys, so **it runs on your mach
 
 For every DRAFT-tier rule in `rules/debt/`, it asks three different AI companies' models
 (Anthropic, OpenAI, Google) to independently work out the answer *using only the actual law
-text already cited in that rule* — not from what they already "know." If all three land on the
-same numbers (same day counts, same dollar amounts, same percentages), and a live fetch of the
-cited web page confirms the quoted text is really there, and a fourth pass trying to find edge
-cases that break the rule doesn't find one — the rule passes cleanly. Anything that doesn't
-clear all three checks gets written up automatically in `docs/DEBT_DISAGREEMENT_QUEUE.md` for
-you to look at, with the evidence attached. **It never edits any rule file itself and never
-changes a tier — it only produces evidence for you to act on.**
+text already cited in that rule* — not from what they already "know." A fourth AI call then
+judges whether those three answers substantively agree (same rule, same deadline, same dollar
+amount — ignoring differences in phrasing or which examples each one picked). If they agree,
+and a live fetch of the cited web page confirms the quoted text is really there, and a fifth
+pass trying to find edge cases that break the rule doesn't find one — the rule passes cleanly.
+Anything that doesn't clear all three checks gets written up automatically in
+`docs/DEBT_DISAGREEMENT_QUEUE.md` for you to look at, with the evidence attached. **It never
+edits any rule file itself and never changes a tier — it only produces evidence for you to act
+on.**
+
+*(Methodology note, 2026-08-26: earlier versions of this runner used a mechanical
+numeric/citation-fingerprint comparison instead of an LLM judgment call for this agreement
+check. That was replaced after it produced three separate false-positive patterns in live use
+— citation-reference noise leaking into the fingerprint, the word "one" as in "no one" being
+misread as the numeral 1, and subsection cross-references like "Paragraph (b)(2)(ii)" not being
+recognized as citation-shaped. The numeric fingerprint is still computed and recorded in the run
+output as a secondary diagnostic, but no longer gates pass/fail. Known limitation: the judge
+call uses the same Anthropic model that's also one of the three being judged — anonymized
+[the judge is never told which analysis came from which provider] as a standard mitigation, but
+not a full fix for self-preference bias. Worth watching for in the disagreement queue over
+time.)*
 
 It also reports two numbers used to decide when the concept demo is ready to show anyone (per
 the 2026-08-26 directive): what fraction of the demo-corpus rules passed cleanly, and what
@@ -62,12 +76,13 @@ This is the one on the critical path for the 2-3 week concept-demo target — th
 runs, the sooner the schedule's one Andy-dependency clears. Takes a few minutes; prints progress
 per node as it goes.
 
-**Estimated cost: about $6 for the 18-node demo corpus** (federal spine + TX + CA), at roughly
-$0.35/node — three model calls plus one adversarial-generation call per node. This is an
-estimate based on typical token counts for this kind of prompt, not a guarantee; actual API
-pricing and your specific usage may vary. The script has a hard `--budget-cap` (default $15) and
-will refuse to start a node that would push projected spend over it — it stops cleanly rather
-than silently overspending.
+**Estimated cost: about $8 for the 18-node demo corpus** (federal spine + TX + CA), at roughly
+$0.45/node — three grounded-derivation model calls, one agreement-judgment call, plus one
+adversarial-generation call per node (bumped from $0.35 on 2026-08-26 to reflect the added judge
+call). This is an estimate based on typical token counts for this kind of prompt, not a
+guarantee; actual API pricing and your specific usage may vary. The script has a hard
+`--budget-cap` (default $15) and will refuse to start a node that would push projected spend
+over it — it stops cleanly rather than silently overspending.
 
 ## Step 3 — everything else (optional, once the demo corpus is corroborated)
 
@@ -75,7 +90,7 @@ than silently overspending.
 python3 scripts/corroboration/run_corroboration.py --live
 ```
 
-Runs all 37 DRAFT nodes (adds UT/AZ/NY). Estimated cost: about $13.
+Runs all 37 DRAFT nodes (adds UT/AZ/NY). Estimated cost: about $17.
 
 ## Other useful flags
 
