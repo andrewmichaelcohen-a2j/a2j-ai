@@ -14,6 +14,108 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 
 ## Open
 
+### [FDCPA-FALSE-DECEPTIVE-CATALOG-1692e] CITATION-CHECK-FAILED -- run run_20260826T174558Z, 2026-08-26T17:48:46Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 2 cited source(s) could not be mechanically verified live: [{'url': 'https://www.law.cornell.edu/uscode/text/15/1692e', 'verified': False, 'method': 'live', 'error': None}, {'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18', 'verified': False, 'method': 'live', 'error': None}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Section 1692e broadly bars a debt collector from using any false, deceptive, or misleading representation or means in connection with collecting a debt, and then lists specific violations without limiting that general rule. These include falsely implying government affiliation or that the collector is a consumer reporting agency; misrepresenting the character, amount, or legal status of a debt or the services/compensation involved; falsely implying a person is an attorney or a communication is from one; threatening arrest, imprisonment, seizure, garnishment, attachment, or sale unless lawful and actually intended; threatening any action that cannot legally be taken or is not intended; communicating known-false credit information (including failing to note a debt is disputed); simulating court or agency documents; falsely claiming documents are or are not legal process; claiming accounts went to innocent purchasers for value; using a name other than the collector's true name; and using any false representation or deceptive means to collect a debt or obtain consumer information. Paragraph (11) requires the 'mini-Miranda' disclosure, whose current operative form is 12 C.F.R. § 1006.18(e): the initial communication must state the collector is attempting to collect a debt and that information obtained will be used for that purpose (repeated in the initial written communication if the first contact was oral), each subsequent communication must disclose that it is from a debt collector, and neither disclosure is required in a formal pleading made in connection with a legal action."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use false, deceptive, or misleading representations or means in connection with collecting a debt. The statute lists prohibited conduct including misrepresenting government affiliation, the character/amount/legal status of a debt, attorney involvement, legal consequences of nonpayment, threats of unlawful or unintended action, false credit reporting, fake court/agency documents, false or deceptive collection means, use of a name other than the true name, and false implications about legal process or consumer reporting agency status. The regulation also requires debt collectors to make the initial and subsequent debt-collector disclosures, with an exception for formal pleadings in legal actions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='A debt collector is broadly prohibited from using any false, deceptive, or misleading representation when collecting a debt. This includes falsely representing the character, amount, or legal status of a debt, or falsely implying an affiliation with the government or that an individual is an attorney. It is also a violation to threaten any action that cannot legally be taken or is not intended to be taken, or to fail to disclose in communications that the communication is from a debt collector attempting to collect a debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-FALSE-DECEPTIVE-CATALOG-1692e] MODEL-DISAGREEMENT -- run run_20260826T174558Z, 2026-08-26T17:48:46Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** Numeric/citation fingerprints did not match across all three models (or one/more model reported ungrounded). Anthropic=['1006.18', '11', '12', '1692'], OpenAI=[], Gemini=[].
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Section 1692e broadly bars a debt collector from using any false, deceptive, or misleading representation or means in connection with collecting a debt, and then lists specific violations without limiting that general rule. These include falsely implying government affiliation or that the collector is a consumer reporting agency; misrepresenting the character, amount, or legal status of a debt or the services/compensation involved; falsely implying a person is an attorney or a communication is from one; threatening arrest, imprisonment, seizure, garnishment, attachment, or sale unless lawful and actually intended; threatening any action that cannot legally be taken or is not intended; communicating known-false credit information (including failing to note a debt is disputed); simulating court or agency documents; falsely claiming documents are or are not legal process; claiming accounts went to innocent purchasers for value; using a name other than the collector's true name; and using any false representation or deceptive means to collect a debt or obtain consumer information. Paragraph (11) requires the 'mini-Miranda' disclosure, whose current operative form is 12 C.F.R. § 1006.18(e): the initial communication must state the collector is attempting to collect a debt and that information obtained will be used for that purpose (repeated in the initial written communication if the first contact was oral), each subsequent communication must disclose that it is from a debt collector, and neither disclosure is required in a formal pleading made in connection with a legal action."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use false, deceptive, or misleading representations or means in connection with collecting a debt. The statute lists prohibited conduct including misrepresenting government affiliation, the character/amount/legal status of a debt, attorney involvement, legal consequences of nonpayment, threats of unlawful or unintended action, false credit reporting, fake court/agency documents, false or deceptive collection means, use of a name other than the true name, and false implications about legal process or consumer reporting agency status. The regulation also requires debt collectors to make the initial and subsequent debt-collector disclosures, with an exception for formal pleadings in legal actions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='A debt collector is broadly prohibited from using any false, deceptive, or misleading representation when collecting a debt. This includes falsely representing the character, amount, or legal status of a debt, or falsely implying an affiliation with the government or that an individual is an attorney. It is also a violation to threaten any action that cannot legally be taken or is not intended to be taken, or to fail to disclose in communications that the communication is from a debt collector attempting to collect a debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] CITATION-CHECK-FAILED -- run run_20260826T174558Z, 2026-08-26T17:47:52Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 2 cited source(s) could not be mechanically verified live: [{'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14', 'verified': False, 'method': 'live', 'error': None}, {'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14', 'verified': False, 'method': 'live', 'error': None}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 12 C.F.R. § 1006.14(b)(2)(i), a debt collector is presumed to comply with the prohibition on repeated/continuous calls (and FDCPA § 806(5)) if, as to a particular person and a particular debt, it places no more than seven calls within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt. Conversely, under (b)(2)(ii), exceeding either of those frequencies creates a presumption that the collector violated the rule and FDCPA § 806(5). The limits are applied per 'particular debt,' which § 1006.14(b)(4) defines as each of a consumer's debts in collection, except that all student loan debts serviced under a single account number when obtained by the collector count as one particular debt."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector is presumed to comply if, for a particular person and a particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about that debt. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For these purposes, a “particular debt” generally means each debt in collection, except that certain student loan debts serviced under one account number are treated together as one particular debt.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt collector is presumed to have violated the law if they call a person about a particular debt more than seven times within seven consecutive days. It is also a presumed violation for a debt collector to place a call within seven consecutive days after having had a telephone conversation with that person about the debt. These frequency limits apply to each of a consumer's individual debts, although multiple student loans serviced under a single account number are treated as one debt."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] MODEL-DISAGREEMENT -- run run_20260826T174558Z, 2026-08-26T17:47:52Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** Numeric/citation fingerprints did not match across all three models (or one/more model reported ungrounded). Anthropic=['1006.14', '12', '2', '4', '5', '806'], OpenAI=[], Gemini=[].
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 12 C.F.R. § 1006.14(b)(2)(i), a debt collector is presumed to comply with the prohibition on repeated/continuous calls (and FDCPA § 806(5)) if, as to a particular person and a particular debt, it places no more than seven calls within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt. Conversely, under (b)(2)(ii), exceeding either of those frequencies creates a presumption that the collector violated the rule and FDCPA § 806(5). The limits are applied per 'particular debt,' which § 1006.14(b)(4) defines as each of a consumer's debts in collection, except that all student loan debts serviced under a single account number when obtained by the collector count as one particular debt."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector is presumed to comply if, for a particular person and a particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about that debt. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For these purposes, a “particular debt” generally means each debt in collection, except that certain student loan debts serviced under one account number are treated together as one particular debt.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt collector is presumed to have violated the law if they call a person about a particular debt more than seven times within seven consecutive days. It is also a presumed violation for a debt collector to place a call within seven consecutive days after having had a telephone conversation with that person about the debt. These frequency limits apply to each of a consumer's individual debts, although multiple student loans serviced under a single account number are treated as one debt."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b] CITATION-CHECK-FAILED -- run run_20260826T174558Z, 2026-08-26T17:47:02Z
+
+**File:** `rules/debt/federal/fcra_furnisher_dispute_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 2 cited source(s) could not be mechanically verified live: [{'url': 'https://www.law.cornell.edu/uscode/text/15/1681s-2', 'verified': False, 'method': 'live', 'error': None}, {'url': 'https://www.law.cornell.edu/uscode/text/15/1681s-2', 'verified': False, 'method': 'live', 'error': None}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 15 U.S.C. § 1681s-2(b)(1), a furnisher's duties are triggered only once it receives notice of the dispute from the consumer reporting agency under § 1681i(a)(2) (not from the consumer directly). Upon that notice, the furnisher must investigate the disputed information, review all relevant information the CRA supplied, and report the investigation's results back to the CRA; if the information is found incomplete or inaccurate, it must also report those results to all other nationwide CRAs to which it furnished the information. If the disputed item is found inaccurate or incomplete, or cannot be verified, the furnisher must promptly modify, delete, or permanently block reporting of that item. Under § 1681s-2(b)(2), all of these investigations, reviews, and reports must be completed within the same time period the CRA has to complete its reinvestigation under § 1681i(a)(1)."
+  - gpt-5.5: grounded=True, error=None, summary='After receiving notice from a consumer reporting agency of a dispute about the completeness or accuracy of information the person furnished, the furnisher must investigate the disputed information, review all relevant information provided by the agency, and report the investigation results back to the agency. If the information is found incomplete, inaccurate, or cannot be verified, the furnisher must, as appropriate, promptly modify, delete, or permanently block reporting of the item, and must report certain incomplete or inaccurate results to other nationwide consumer reporting agencies to which it furnished the information. The furnisher must complete the required investigations, reviews, and reports before the deadline by which the consumer reporting agency must complete its related actions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="After receiving notice of a dispute from a consumer reporting agency, the furnisher of the information must conduct an investigation and report the results back to that agency. If the investigation finds the information is incomplete or inaccurate, the furnisher must also report those results to all other nationwide consumer reporting agencies. The furnisher must then promptly modify, delete, or permanently block the reporting of any information found to be inaccurate, incomplete, or unverifiable. These actions must all be completed before the credit bureau's own deadline to complete its investigation expires."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b] MODEL-DISAGREEMENT -- run run_20260826T174558Z, 2026-08-26T17:47:02Z
+
+**File:** `rules/debt/federal/fcra_furnisher_dispute_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** Numeric/citation fingerprints did not match across all three models (or one/more model reported ungrounded). Anthropic=['1', '15', '1681', '2'], OpenAI=[], Gemini=[].
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 15 U.S.C. § 1681s-2(b)(1), a furnisher's duties are triggered only once it receives notice of the dispute from the consumer reporting agency under § 1681i(a)(2) (not from the consumer directly). Upon that notice, the furnisher must investigate the disputed information, review all relevant information the CRA supplied, and report the investigation's results back to the CRA; if the information is found incomplete or inaccurate, it must also report those results to all other nationwide CRAs to which it furnished the information. If the disputed item is found inaccurate or incomplete, or cannot be verified, the furnisher must promptly modify, delete, or permanently block reporting of that item. Under § 1681s-2(b)(2), all of these investigations, reviews, and reports must be completed within the same time period the CRA has to complete its reinvestigation under § 1681i(a)(1)."
+  - gpt-5.5: grounded=True, error=None, summary='After receiving notice from a consumer reporting agency of a dispute about the completeness or accuracy of information the person furnished, the furnisher must investigate the disputed information, review all relevant information provided by the agency, and report the investigation results back to the agency. If the information is found incomplete, inaccurate, or cannot be verified, the furnisher must, as appropriate, promptly modify, delete, or permanently block reporting of the item, and must report certain incomplete or inaccurate results to other nationwide consumer reporting agencies to which it furnished the information. The furnisher must complete the required investigations, reviews, and reports before the deadline by which the consumer reporting agency must complete its related actions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="After receiving notice of a dispute from a consumer reporting agency, the furnisher of the information must conduct an investigation and report the results back to that agency. If the investigation finds the information is incomplete or inaccurate, the furnisher must also report those results to all other nationwide consumer reporting agencies. The furnisher must then promptly modify, delete, or permanently block the reporting of any information found to be inaccurate, incomplete, or unverifiable. These actions must all be completed before the credit bureau's own deadline to complete its investigation expires."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [UT-CIVIL-ANSWER-DEADLINE] MODEL-DISAGREEMENT -- run run_20260826T171949Z, 2026-08-26T17:21:21Z
 
 **File:** `rules/debt/state/utah/ut_debt_state_layer_v1.json`
