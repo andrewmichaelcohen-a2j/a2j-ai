@@ -1,0 +1,265 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "debt-v1",
+  "scope": {
+    "level": "state",
+    "jurisdiction": { "state": "AZ", "state_name": "Arizona" }
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-08-25",
+      "model": "claude-sonnet-5",
+      "method": "single-model-grounded-derivation-v1"
+    },
+    "statutory_sources": [
+      { "cite": "A.R.S. § 12-548", "url": "https://codes.findlaw.com/az/title-12-courts-and-civil-proceedings/az-rev-st-sect-12-548/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "A.R.S. § 12-543", "url": "https://codes.findlaw.com/az/title-12-courts-and-civil-proceedings/az-rev-st-sect-12-543/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "A.R.S. § 33-1101", "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1101/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "A.R.S. § 33-1131", "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1131/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "A.R.S. § 33-1125", "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1125/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "A.R.S. § 33-1130", "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1130/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "Ariz. R. Civ. P. 12(a)(1)(A)", "url": "https://www.courtrules.net/arizona/arizona-civil-procedure/rule-12", "retrieved": true, "retrieved_date": "2026-08-25" }
+    ]
+  },
+  "nodes": [
+    {
+      "node_id": "AZ-SOL-WRITTEN-CONTRACT-DEBT",
+      "title": "Arizona statute of limitations on a written-contract or credit-card consumer-debt lawsuit",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "A.R.S. § 12-548(A)",
+            "quoted_text": "An action for debt shall be commenced and prosecuted within six years after the cause of action accrues, and not afterward, if the indebtedness is evidenced by or founded on either of the following: 1. A contract in writing that is executed in this state. 2. A credit card as defined in § 13-2101, paragraph 3, subdivision (a).",
+            "url": "https://codes.findlaw.com/az/title-12-courts-and-civil-proceedings/az-rev-st-sect-12-548/"
+          },
+          {
+            "cite": "A.R.S. § 12-548(B)",
+            "quoted_text": "If there is a conflict between another jurisdiction and this state relating to the statute of limitations for a debt action as described in subsection A of this section, this section applies.",
+            "url": "https://codes.findlaw.com/az/title-12-courts-and-civil-proceedings/az-rev-st-sect-12-548/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "limitations_period_years": 6,
+        "applies_to": "a written contract executed in Arizona, or a credit card debt as statutorily defined",
+        "accrual": "generally the date of default/breach, a fact question this node does not itself resolve",
+        "choice_of_law_note": "subsection (B) is notable and Arizona-specific: Arizona's 6-year period applies even if another state's shorter limitations period might otherwise govern under conflict-of-laws principles -- a debtor should not assume a shorter out-of-state period protects them if Arizona law applies to the debt.",
+        "determination": "expired_if today > (accrual_date + 6 years), subject to any tolling not yet encoded"
+      },
+      "completeness_checklist": [
+        { "fact": "Date of default/breach or accrual of the cause of action", "dispositive": true },
+        { "fact": "Whether the debt is founded on a written contract executed in Arizona, or is a statutorily-defined credit card debt (this node) vs. an unwritten/oral debt (see AZ-SOL-ORAL-CONTRACT-DEBT)", "dispositive": true },
+        { "fact": "Whether another jurisdiction's shorter limitations period might otherwise apply -- subsection (B) resolves this in favor of Arizona's 6-year period", "dispositive": false }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If 6 years have run from accrual and no tolling applies, raise statute of limitations as an affirmative defense in the Answer.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "AZ-SOL-ORAL-CONTRACT-DEBT",
+      "title": "Arizona statute of limitations on an oral-debt or open-account consumer-debt lawsuit",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "A.R.S. § 12-543",
+            "quoted_text": "There shall be commenced and prosecuted within three years after the cause of action accrues, and not afterward, the following actions: 1. For debt where the indebtedness is not evidenced by a contract in writing. 2. Upon stated or open accounts other than such mutual and current accounts as concern the trade of merchandise between merchant and merchant, their factors or agents, but no item of a stated or open account shall be barred so long as any item thereof has been incurred within three years immediately prior to the bringing of an action thereon. 3. For relief on the ground of fraud or mistake, which cause of action shall not be deemed to have accrued until the discovery by the aggrieved party of the facts constituting the fraud or mistake.",
+            "url": "https://codes.findlaw.com/az/title-12-courts-and-civil-proceedings/az-rev-st-sect-12-543/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "limitations_period_years": 3,
+        "applies_to": "debt not evidenced by a written contract, and stated/open accounts (except merchant-to-merchant trade accounts)",
+        "open_account_rolling_note": "for a stated/open account, no item is barred so long as ANY item in the account was incurred within the last 3 years -- meaning a recent charge on an otherwise-old open account can keep the whole account's limitations period alive for that item, though older individual items may still be time-barred separately.",
+        "determination": "expired_if today > (accrual_date + 3 years) for a given item, subject to the open-account rolling rule above and any tolling not yet encoded"
+      },
+      "completeness_checklist": [
+        { "fact": "Date of accrual for the debt or each item on an open/stated account", "dispositive": true },
+        { "fact": "Whether the account is a genuine open/stated account with a recent item (affects which items remain live) vs. a single lump-sum oral debt", "dispositive": false }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If 3 years have run from accrual (or from the last item on an open account) and no tolling applies, raise statute of limitations as an affirmative defense in the Answer.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "AZ-WAGE-GARNISHMENT-LIMIT",
+      "title": "Arizona cap on wage garnishment for a consumer-debt judgment",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "A.R.S. § 33-1131(B)",
+            "quoted_text": "Except as provided in subsection C, the maximum part of the disposable earnings of a debtor for any workweek that is subject to process may not exceed ten percent of disposable earnings for that week or the amount by which disposable earnings for that week exceed sixty times the applicable minimum hourly wage in effect at the time the earnings are payable, whichever is less. The applicable minimum hourly wage is the minimum wage required by federal, state or local law, whichever is highest.",
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1131/"
+          },
+          {
+            "cite": "A.R.S. § 33-1131(C)",
+            "quoted_text": "The exemptions provided in subsection B do not apply in the case of any order for the support of any person. In such case, one-half of the disposable earnings of a debtor for any pay period is exempt from process.",
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1131/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "formula_ordinary_debt": "min(10% of weekly disposable earnings, (disposable earnings - (60 x applicable minimum hourly wage)))",
+        "applicable_minimum_wage": "the highest of federal, state, or local minimum wage in effect when earnings are payable",
+        "formula_support_order": "50% of disposable earnings exempt (i.e., up to 50% may be garnished) for support (alimony/child support) orders -- a materially different and less protective rule than the ordinary-debt formula",
+        "comparative_note": "AZ's 10%/60x-minimum-wage formula is markedly MORE debtor-protective than the federal CCPA floor (25%/30x) and more protective than UT's federal-conforming approach -- among the four anchor states with a wage-garnishment node so far, AZ's ordinary-debt cap is the most protective except for TX's outright bar.",
+        "note_needs_current_figure": "this node encodes the FORMULA verbatim; the current applicable minimum wage figure needed to compute a dollar result must be pulled current at time of use, not hardcoded here.",
+        "determination": "max_weekly_garnishment_ordinary_debt = the lesser of the two prongs above; support-order garnishment instead follows the separate 50% rule"
+      },
+      "completeness_checklist": [
+        { "fact": "Debtor's weekly disposable earnings", "dispositive": true },
+        { "fact": "Current applicable (federal/state/local, highest) minimum hourly wage in effect when earnings are payable", "dispositive": true },
+        { "fact": "Whether the underlying judgment is an ordinary consumer debt (10%/60x formula) vs. a support order (50% rule instead)", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a garnishment order for an ordinary debt exceeds the lesser-of formula above, object/move to modify citing A.R.S. § 33-1131.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "AZ-HOMESTEAD-EXEMPTION",
+      "title": "Arizona homestead exemption from creditor execution",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "A.R.S. § 33-1101(A)",
+            "quoted_text": "Any person the age of eighteen or over, married or single, who resides within the state may hold as a homestead exempt from attachment, execution and forced sale, not exceeding $400,000 in value, any one of the following: 1. The person's interest in real property in one compact body upon which exists a dwelling house in which the person resides. 2. The person's interest in one condominium or cooperative in which the person resides. 3. A mobile home in which the person resides. 4. A mobile home in which the person resides plus the land upon which that mobile home is located.",
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1101/"
+          },
+          {
+            "cite": "A.R.S. § 33-1101(C)",
+            "quoted_text": "The homestead exemption, not exceeding the value provided for in subsection A, as adjusted by subsection D of this section, automatically attaches to the person's interest in identifiable cash proceeds from the voluntary or involuntary sale of the property. The homestead exemption in identifiable cash proceeds continues for eighteen months after the date of the sale of the property or until the person establishes a new homestead with the proceeds, whichever period is shorter.",
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1101/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "exemption_amount_usd_base": 400000,
+        "post_prop_209_note": "this $400,000 figure reflects the amendment by 2022 Proposition 209 (a substantial voter-approved increase from the prior $150,000-$250,000 range) -- notably the highest flat base figure among the anchor states with a homestead node so far, though CA's formula can exceed it in high-cost counties.",
+        "inflation_adjustment": "adjusted annually beginning January 1, 2024 by CPI increase, rounded up to the nearest $100 -- this node does NOT contain the current inflation-adjusted figure, only the base and the formula reference.",
+        "proceeds_protection": "sale proceeds remain exempt for 18 months after sale, or until reinvested in a new homestead, whichever is shorter -- automatic, no separate claim needed",
+        "determination": "up to the current (inflation-adjusted) exemption amount in home equity, or identifiable sale proceeds within the 18-month/reinvestment window, is protected from an ordinary judgment creditor's attachment/execution/forced sale"
+      },
+      "completeness_checklist": [
+        { "fact": "Whether the property is a qualifying homestead (dwelling, condo/co-op, or mobile home the person resides in)", "dispositive": true },
+        { "fact": "Current CPI-adjusted dollar figure for the current calendar year (not the $400,000 2024 base)", "dispositive": true },
+        { "fact": "If the exemption is being claimed in sale proceeds rather than the property itself, whether the 18-month/reinvestment window has passed", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a creditor is attempting to force the sale of the debtor's home (or reach sale proceeds within the protection window) for an ordinary debt judgment, claim the homestead exemption citing A.R.S. § 33-1101.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "AZ-VEHICLE-EXEMPTION",
+      "title": "Arizona motor-vehicle equity exemption from creditor process",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "A.R.S. § 33-1125(8)",
+            "quoted_text": "Equity in one motor vehicle of not more than $15,000. If the debtor or debtor's dependent has a physical disability, the equity in the motor vehicle shall not exceed $25,000. The exemption prescribed in this paragraph shall be adjusted annually beginning on January 1, 2024 and thereafter on January 1 of each successive year by the increase in the cost of living. ...",
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1125/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "exemption_amount_usd_standard": 15000,
+        "exemption_amount_usd_disability": 25000,
+        "disability_trigger": "the debtor OR a dependent of the debtor has a physical disability -- not limited to the vehicle being specially adapted",
+        "note_needs_current_figure": "this node encodes the base 2024 figures; both are CPI-adjusted annually starting January 1, 2024 -- the current-year adjusted figure is not itself contained in this node.",
+        "comparative_note": "AZ's $15,000 standard vehicle exemption is notably higher than CA's $7,500 or UT's $3,000 general vehicle exemption -- one of the more generous vehicle exemptions among the anchor states so far.",
+        "determination": "up to $15,000 (or $25,000 if the disability trigger applies), inflation-adjusted for the current year, of equity in one motor vehicle is protected from creditor process"
+      },
+      "completeness_checklist": [
+        { "fact": "Debtor's equity in the vehicle (fair market value minus amount owed)", "dispositive": true },
+        { "fact": "Whether the debtor or a dependent has a physical disability (triggers the higher $25,000 cap)", "dispositive": true },
+        { "fact": "Current CPI-adjusted dollar figures for the current calendar year", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a creditor levies on a vehicle, claim the exemption (standard or disability-enhanced) citing A.R.S. § 33-1125(8).", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "AZ-TOOLS-OF-TRADE-EXEMPTION",
+      "title": "Arizona exemption for tools, equipment, and instruments used in a trade or business",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "A.R.S. § 33-1130(1)",
+            "quoted_text": "The tools, equipment, instruments and books, including telephone numbers, client or customer contact information, or marketing tools, such as websites, domain names or any other intangible work product, in the possession of a debtor or the spouse of a debtor primarily used in, and necessary to carry on or develop, the commercial activity, trade, business or profession of the debtor or the debtor's spouse, not in excess of an aggregate fair market value of five thousand dollars. For the purpose of this paragraph, tools do not include a motor vehicle primarily used by a debtor for personal, family or household purposes such as transportation to and from the debtor's place of employment.",
+            "url": "https://codes.findlaw.com/az/title-33-property/az-rev-st-sect-33-1130/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "exemption_amount_usd": 5000,
+        "notably_broad_scope": "unusually explicit inclusion of INTANGIBLE business assets -- telephone numbers, client/customer contact information, and marketing tools like websites and domain names -- alongside physical tools/equipment/books/instruments. Worth flagging: this is broader than a typical 'tools of the trade' exemption in other states and may protect a debtor's small-business digital assets specifically.",
+        "vehicle_exclusion": "explicitly does NOT include a personal-use commuting vehicle -- that is covered separately by AZ-VEHICLE-EXEMPTION, not this node",
+        "determination": "up to $5,000 aggregate fair market value of qualifying tools/equipment/instruments/books/intangible business assets used in the debtor's or spouse's trade/business/profession is protected from creditor process"
+      },
+      "completeness_checklist": [
+        { "fact": "Fair market value of the tools/equipment/intangible assets claimed, in aggregate", "dispositive": true },
+        { "fact": "Whether the items are primarily used in, and necessary to, the debtor's (or spouse's) trade/business/profession", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a creditor levies on business tools, equipment, or intangible business assets (client lists, domain names, etc.), claim the exemption up to $5,000 aggregate citing A.R.S. § 33-1130.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "AZ-CIVIL-ANSWER-DEADLINE",
+      "title": "Arizona deadline to respond to a debt-collection lawsuit summons and complaint",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Ariz. R. Civ. P. 12(a)(1)(A)(i)",
+            "quoted_text": "A defendant or third-party defendant must file and serve an answer or other responsive pleading: (i) within 20 days after being served with the summons and complaint, except as otherwise provided in Rules 4.2(d)(3) and (m); or (ii) if it has timely waived service under Rule 4(f), within 60 days after the request for a waiver was sent, or within 90 days after it was sent to the defendant or third-party defendant outside any judicial district of the United States.",
+            "url": "https://www.courtrules.net/arizona/arizona-civil-procedure/rule-12"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "answer_deadline_days_standard": 20,
+        "answer_deadline_days_waived_service_domestic": 60,
+        "answer_deadline_days_waived_service_international": 90,
+        "trigger": "date served with the summons and complaint (or date the waiver request was sent, if service was waived)",
+        "applies_to": "general Arizona superior-court civil actions; justice court (Arizona's small-claims-adjacent limited-jurisdiction court for smaller debt cases) may use different rules, a separate not-yet-built node",
+        "determination": "answer_due_date = date_of_service + 20 days (standard), or the waived-service variants above if applicable"
+      },
+      "completeness_checklist": [
+        { "fact": "Date the summons and complaint were served (or waiver request sent)", "dispositive": true },
+        { "fact": "Whether service was waived under Rule 4(f) (changes the deadline to 60/90 days instead of 20)", "dispositive": true },
+        { "fact": "Whether the case is in superior court (this node) vs. justice court (different, not-yet-built procedure)", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "File and serve a written Answer or other responsive pleading within 20 days of service (or the applicable waived-service deadline) to avoid default.", "deadline_type": "relative_days", "deadline_detail": "20 days from service of summons and complaint (60/90 days if service was validly waived)" },
+        { "action": "If already past the deadline and no default has been entered yet, respond immediately -- courts often still accept a late answer before default is entered.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    }
+  ]
+}
