@@ -17,43 +17,43 @@
     "statutory_sources": [
       {
         "cite": "Cal. Code Civ. Proc. § 337",
-        "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
       {
         "cite": "Cal. Code Civ. Proc. § 339",
-        "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-339/",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=339.",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
       {
         "cite": "Cal. Code Civ. Proc. § 706.050",
-        "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-706-050/",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=706.050.",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
       {
         "cite": "Cal. Code Civ. Proc. § 704.730",
-        "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-730/",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.730.",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
       {
         "cite": "Cal. Code Civ. Proc. § 704.010",
-        "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-010/",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.010.",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
       {
         "cite": "Cal. Code Civ. Proc. § 704.220",
-        "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-220/",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.220.",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
       {
         "cite": "Cal. Code Civ. Proc. § 412.20",
-        "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-412-20/",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=412.20.",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       }
@@ -70,14 +70,16 @@
           {
             "cite": "Cal. Code Civ. Proc. § 337(a)",
             "quoted_text": "Within four years: (a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a; provided, that the time within which any action for a money judgment for the balance due upon an obligation for the payment of which a deed of trust or mortgage with power of sale upon real property or any interest therein was given as security, following the exercise of the power of sale in such deed of trust or mortgage, may be brought shall not extend beyond three months after the time of sale under such deed of trust or mortgage.",
-            "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           },
           {
             "cite": "Cal. Code Civ. Proc. § 337(d)",
             "quoted_text": "When the period in which an action must be commenced under this section has run, a person shall not bring suit or initiate an arbitration or other legal proceeding to collect the debt. The period in which an action may be commenced under this section shall only be extended pursuant to Section 360.",
-            "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           }
         ],
         "citation_verified": true
@@ -134,8 +136,9 @@
           {
             "cite": "Cal. Code Civ. Proc. § 339(1)",
             "quoted_text": "Within two years: 1. An action upon a contract, obligation or liability not founded upon an instrument of writing, except as provided in Section 2725 of the Commercial Code or subdivision 2 of Section 337 of this code; or an action founded upon a contract, obligation or liability, evidenced by a certificate, or abstract or guaranty of title of real property, or by a policy of title insurance; provided, that the cause of action upon a contract, obligation or liability evidenced by a certificate, or abstract or guaranty of title of real property or policy of title insurance shall not be deemed to have accrued until the discovery of the loss or damage suffered by the aggrieved party thereunder.",
-            "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-339/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=339.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           }
         ],
         "citation_verified": true
@@ -183,14 +186,16 @@
           {
             "cite": "Cal. Code Civ. Proc. § 706.050(a)",
             "quoted_text": "Except as otherwise provided in this chapter, the maximum amount of disposable earnings of an individual judgment debtor for any workweek that is subject to levy under an earnings withholding order shall not exceed the lesser of the following: (1) Twenty percent of the individual's disposable earnings for that week. (2) Forty percent of the amount by which the individual's disposable earnings for that week exceed 48 times the state minimum hourly wage in effect at the time the earnings are payable. If a judgment debtor works in a location where the local minimum hourly wage is greater than the state minimum hourly wage, the local minimum hourly wage in effect at the time the earnings are payable shall be used for the calculation made pursuant to this paragraph.",
-            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-706-050/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=706.050.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           },
           {
             "cite": "Cal. Code Civ. Proc. § 706.050(c)",
             "quoted_text": "This section shall become operative on September 1, 2023.",
-            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-706-050/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=706.050.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           }
         ],
         "citation_verified": true
@@ -242,8 +247,9 @@
           {
             "cite": "Cal. Code Civ. Proc. § 704.730(a)-(b)",
             "quoted_text": "(a) The amount of the homestead exemption is the greater of the following: (1) The countywide median sale price for a single-family home in the calendar year prior to the calendar year in which the judgment debtor claims the exemption, not to exceed six hundred thousand dollars ($600,000). (2) Three hundred thousand dollars ($300,000). (b) The amounts specified in this section shall adjust annually for inflation, beginning on January 1, 2022, based on the change in the annual California Consumer Price Index for All Urban Consumers, published by the Department of Industrial Relations, for the most recent one-year period ending on December 31 preceding the adjustment, with each adjusted amount rounded to the nearest twenty-five dollars ($25).",
-            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-730/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.730.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           }
         ],
         "citation_verified": true
@@ -293,8 +299,9 @@
           {
             "cite": "Cal. Code Civ. Proc. § 704.010(a), (d)",
             "quoted_text": "(a) Any combination of the following is exempt in the amount of seven thousand five hundred dollars ($7,500): (1) The aggregate equity in motor vehicles. (2) The proceeds of an execution sale of a motor vehicle. (3) The proceeds of insurance or other indemnification for the loss, damage, or destruction of a motor vehicle. ... (d) If the judgment debtor has only one motor vehicle and it is sold at an execution sale, the proceeds of the execution sale are exempt in the amount of seven thousand five hundred dollars ($7,500) without making a claim. The levying officer shall consult and may rely upon the records of the Department of Motor Vehicles in determining whether the judgment debtor has only one motor vehicle. In the case covered by this subdivision, the exemption provided by subdivision (a) is not available.",
-            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-010/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.010.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           }
         ],
         "citation_verified": true
@@ -345,14 +352,16 @@
           {
             "cite": "Cal. Code Civ. Proc. § 704.220(a)",
             "quoted_text": "Money in the judgment debtor's deposit account in an amount equal to or less than the minimum basic standard of adequate care for a family of four for Region 1, established by Section 11452 of the Welfare and Institutions Code and as annually adjusted by the State Department of Social Services pursuant to Section 11453 of the Welfare and Institutions Code, is exempt without making a claim.",
-            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-220/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.220.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           },
           {
             "cite": "Cal. Code Civ. Proc. § 704.220(c)(1)",
             "quoted_text": "Subdivision (a) does not apply to money levied upon to satisfy any of the following: (1) A levy to satisfy a judgment for wages owed, child support, or spousal support. For purposes of this paragraph, \"wages owed\" includes damages and penalties.",
-            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-220/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.220.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           }
         ],
         "citation_verified": true
@@ -404,14 +413,16 @@
           {
             "cite": "Cal. Code Civ. Proc. § 412.20(a)(3)-(4)",
             "quoted_text": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant. (4) A notice that, unless the defendant so responds, their default will be entered upon application by the plaintiff, and the plaintiff may apply to the court for the relief demanded in the complaint, which could result in garnishment of wages, taking of money or property, or other relief.",
-            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-412-20/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=412.20.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           },
           {
             "cite": "Cal. Code Civ. Proc. § 412.20(a)(6)",
             "quoted_text": "\"Notice! You have been sued. The court may decide against you without your being heard unless you respond within 30 days. Read information below.\"",
-            "url": "https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-412-20/",
-            "source_tier": "C"
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=412.20.",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
           }
         ],
         "citation_verified": true

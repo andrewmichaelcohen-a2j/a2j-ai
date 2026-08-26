@@ -31,7 +31,7 @@ Per Andy's ratified four-tier source hierarchy (replaces the earlier binary prim
 | State | Nodes | Violations (C/D-only) |
 |---|---|---|
 | Arizona | 7 | **7 of 7** |
-| California | 7 | **7 of 7** |
+| California | 7 | **0 of 7** (re-pinned round 12, see addendum below) |
 | Utah | 6 | **5 of 6** (answer-deadline node is clean — legacy.utcourts.gov, A) |
 | Texas | 6 | **4 of 6** (homestead is clean via statutes.capitol.texas.gov, A) |
 | New York | 6 | **3 of 6** (homestead/vehicle/personal-property are clean via NY DFS, A) |
@@ -56,3 +56,31 @@ CA (7 violations), UT (5), NY (3), and TX's remaining (4) — the domain audit a
 *No rules file content, tier, or citation was silently altered — every `source_tier` value added this round is a domain classification of an existing, already-cited URL; no citation was removed, and the AZ investigation above is reported as attempted-and-blocked, not claimed as done.*
 
 *Copyright 2026 Andrew M Cohen. Apache 2.0.*
+
+## Round 12 addendum: CA re-pinned to leginfo.legislature.ca.gov
+
+All 7 California nodes' Justia/FindLaw (Tier C) citations re-pinned to California's official
+Legislative Information site (`leginfo.legislature.ca.gov`, Tier A), per Andy's ratification.
+URL format (`codes_displaySection.xhtml?lawCode=CCP&sectionNum=<N>.` -- note the required
+trailing period) confirmed correct via independent web-search evidence, not a guess.
+
+**Honest caveat, not silently assumed clean:** `leginfo.legislature.ca.gov` is unreachable
+from this session's sandbox -- blocked at the network-egress layer (`403 blocked-by-allowlist`
+on a direct curl), and the earlier AZ investigation found this class of state-legislature site
+is sometimes JS-rendered on top of that, same pattern as azleg.gov. This session could not
+independently confirm the re-pinned pages' actual live content matches each node's existing
+`quoted_text` (left unchanged from the Justia/FindLaw-sourced original -- same underlying
+statute, same words, different mirror). Andy's next live run against these URLs will
+mechanically confirm or refute the match via the citation checker's real diagnostics, exactly
+as it did for the eCFR User-Agent fix. Flagged as open pending that confirmation, not marked
+CORROBORATED.
+
+Also fixed this round: `FDCPA-REGF-CALL-FREQUENCY-1006.14b`'s first eCFR citation had an
+authored ellipsis (`"(i) ...a debt collector is presumed..."`) in place of the actual
+regulation text -- found via the live-run diagnostics added in round 9/11 (word_overlap_ratio
+1.0 but verified:false, on a source now confirmed genuinely reachable post-User-Agent-fix).
+Replaced with the verbatim eCFR text, fetched and confirmed directly this round. The node's
+second citation (§1006.14(b)(4)) also showed `verified: false` in the same live run despite
+appearing to already be an exact quote when tested against a clean approximation of the page;
+root cause not fully pinned down (raw-HTML fetch of eCFR is also blocked from this sandbox) --
+left as an open item for Andy's next live run's diagnostics to clarify, rather than guessed at.
