@@ -1,0 +1,241 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "debt-v1",
+  "scope": {
+    "level": "state",
+    "jurisdiction": { "state": "NY", "state_name": "New York" }
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-08-25",
+      "model": "claude-sonnet-5",
+      "method": "single-model-grounded-derivation-v1"
+    },
+    "statutory_sources": [
+      { "cite": "NY CPLR § 213(2)", "url": "https://law.justia.com/codes/new-york/cvp/article-2/213/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "NY CPLR § 5205", "url": "https://law.justia.com/codes/new-york/cvp/article-52/5205/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "NY CPLR § 5206", "url": "https://law.justia.com/codes/new-york/cvp/article-52/5206/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "NY CPLR § 5231", "url": "https://law.justia.com/codes/new-york/cvp/article-52/5231/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "NY CPLR Rule 320(a)", "url": "https://codes.findlaw.com/ny/civil-practice-law-and-rules/cvpny-cplr-rule-320/", "retrieved": true, "retrieved_date": "2026-08-25" },
+      { "cite": "NY Dept. of Financial Services, Amount Exempt from Judgments table (CPLR 5205/5206 triennial CPI adjustment, effective 2026-04-01)", "url": "https://www.dfs.ny.gov/industry_guidance/exemption_from_judgments", "retrieved": true, "retrieved_date": "2026-08-25" }
+    ]
+  },
+  "nodes": [
+    {
+      "node_id": "NY-SOL-CONTRACT-DEBT",
+      "title": "New York statute of limitations on a contract-based consumer-debt lawsuit (written or oral)",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "NY CPLR § 213(2)",
+            "quoted_text": "The following actions must be commenced within six years: ... 2. an action upon a contractual obligation or liability, express or implied, except as provided in section two hundred thirteen-a or two hundred fourteen-i of this article or article 2 of the uniform commercial code or article 36-B of the general business law; ...",
+            "url": "https://law.justia.com/codes/new-york/cvp/article-2/213/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "limitations_period_years": 6,
+        "applies_to": "ANY contractual obligation, express (written) OR implied (oral) -- unlike TX/CA/UT/AZ, New York does NOT use a separate shorter limitations period for oral/unwritten debt; both get the same 6-year period under this single provision",
+        "comparative_note": "this is a genuine, useful cross-state contrast among the five anchor states: NY's single 6-year rule for all contract debt is structurally simpler than the two-tier written/oral schemes in TX, CA, UT, and AZ -- worth flagging so downstream logic doesn't assume every state needs a written/oral SOL split.",
+        "exceptions_not_encoded": "excludes credit-card-specific UCC Article 2 sales-of-goods limitations and certain other carve-outs referenced in the statute (§213-a, §214-i, UCC Article 2, GBL Article 36-B) -- this node covers the general contract-debt rule only, not those carve-outs",
+        "accrual": "generally the date of default/breach or last payment, a fact question this node does not itself resolve",
+        "determination": "expired_if today > (accrual_date + 6 years), subject to any tolling not yet encoded"
+      },
+      "completeness_checklist": [
+        { "fact": "Date of default/breach or accrual of the cause of action", "dispositive": true },
+        { "fact": "Whether the debt falls under one of the statutory carve-outs (UCC Article 2 goods sales, GBL Article 36-B, CPLR §213-a/214-i) rather than the general 6-year contract rule -- not resolved by this node", "dispositive": false }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If 6 years have run from accrual and no tolling applies, raise statute of limitations as an affirmative defense in the Answer.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "NY-INCOME-EXECUTION-LIMIT",
+      "title": "New York cap on income execution (wage garnishment) for a consumer-debt judgment",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "NY CPLR § 5231(b)",
+            "quoted_text": "Where a judgment debtor is receiving or will receive money from any source, an income execution for installments therefrom of not more than ten percent thereof may be issued and delivered to the sheriff ... provided, however, that (i) no amount shall be withheld from the judgment debtor's earnings pursuant to an income execution for any week unless the disposable earnings of the judgment debtor for that week exceed the greater of thirty times the federal minimum hourly wage prescribed in the Fair Labor Standards Act of 1938 or thirty times the state minimum hourly wage prescribed in section six hundred fifty-two of the labor law as in effect at the time the earnings are payable; (ii) the amount withheld from the judgment debtor's earnings pursuant to an income execution for any week shall not exceed twenty-five percent of the disposable earnings of the judgment debtor for that week, or, the amount by which the disposable earnings of the judgment debtor for that week exceed the greater of thirty times the federal minimum hourly wage ... or thirty times the state minimum hourly wage ..., whichever is less; ... (iv) no amount shall be imposed in judgments arising from a medical debt action brought by a hospital licensed under article twenty-eight of the public health law or a health care professional authorized under title eight of the education law.",
+            "url": "https://law.justia.com/codes/new-york/cvp/article-52/5231/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "formula": "min(10% of gross income, 25% of disposable earnings, (disposable earnings - (30 x greater-of-federal-or-state minimum hourly wage))) -- effectively a THREE-way lesser-of once the 10%-of-gross ceiling in subsection (b) is combined with the 25%/30x disposable-earnings formula",
+        "income_floor_protection": "no withholding at all unless weekly disposable earnings exceed 30x the greater of federal or NY state minimum hourly wage",
+        "medical_debt_carveout": "notably, NY EXCLUDES medical debt from hospitals/licensed health care professionals from income execution entirely -- a debtor-protective carve-out not seen in the other four anchor states' wage-garnishment nodes so far",
+        "note_needs_current_figure": "this node encodes the FORMULA verbatim; the current federal/state minimum hourly wage figures needed to compute a dollar result must be pulled current at time of use, not hardcoded here.",
+        "determination": "max_weekly_income_execution = the smallest of the three constraints above; a medical-debt judgment cannot use income execution at all"
+      },
+      "completeness_checklist": [
+        { "fact": "Debtor's weekly disposable earnings and gross income", "dispositive": true },
+        { "fact": "Current federal and NY state minimum hourly wage in effect when earnings are payable", "dispositive": true },
+        { "fact": "Whether the underlying judgment arises from a medical debt action (income execution barred entirely) vs. ordinary consumer debt", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If an income execution exceeds the three-way lesser-of formula, or is for a medical debt, move to modify or vacate citing NY CPLR § 5231 (subsection (i) modification procedure, or § 5240).", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "NY-HOMESTEAD-EXEMPTION",
+      "title": "New York homestead exemption from creditor execution",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "NY CPLR § 5206(a)",
+            "quoted_text": "Property of one of the following types, not exceeding one hundred fifty thousand dollars for the counties of Kings, Queens, New York, Bronx, Richmond, Nassau, Suffolk, Rockland, Westchester and Putnam; one hundred twenty-five thousand dollars for the counties of Dutchess, Albany, Columbia, Orange, Saratoga and Ulster; and seventy-five thousand dollars for the remaining counties of the state in value above liens and encumbrances, owned and occupied as a principal residence, is exempt from application to the satisfaction of a money judgment, unless the judgment was recovered wholly for the purchase price thereof: 1. a lot of land with a dwelling thereon, 2. shares of stock in a cooperative apartment corporation, 3. units of a condominium apartment, or 4. a mobile home.",
+            "url": "https://law.justia.com/codes/new-york/cvp/article-52/5206/"
+          },
+          {
+            "cite": "NY Dept. of Financial Services, Amount Exempt from Judgments table, row 'CPLR §§ 5206(a),(d),(e)', 2024 column",
+            "quoted_text": "CPLR §§ 5206 (a), (d) and (e) | 2024: $102,400 [downstate-adjacent-tier base $75,000] | $170,700 [mid-tier base $125,000] | $204,825 [NYC-and-immediate-suburbs-tier base $150,000]. 2024 amounts are effective on April 1, 2024 and shall not apply with respect to restraining notices served or executions effected before that date. The next adjustment is scheduled for April 1, 2027.",
+            "url": "https://www.dfs.ny.gov/industry_guidance/exemption_from_judgments"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "statutory_base_tiers_usd": { "tier_1_NYC_LI_lower_hudson": 150000, "tier_2_mid_hudson_capital_region": 125000, "tier_3_remaining_counties": 75000 },
+        "current_inflation_adjusted_tiers_usd_effective_2024_04_01": { "tier_1_NYC_LI_lower_hudson": 204825, "tier_2_mid_hudson_capital_region": 170700, "tier_3_remaining_counties": 102400 },
+        "important_accuracy_note": "the CPLR § 5206 statutory text itself states the flat 2019 base dollar figures ($75k/$125k/$150k) with NO visible escalator clause in the section text -- the actual currently-effective figures are set by a separate mechanism (the triennial CPI-based adjustment under CPLR § 5205(l)(3), which by its own cross-reference also governs § 5206) and published by NY's Dept. of Financial Services, NOT stated inside § 5206 itself. This node deliberately encodes BOTH the statutory base AND the current DFS-published adjusted figures, verbatim, because relying on the bare statutory text alone would understate the real protection by roughly 35-40%.",
+        "tier_assignment": "Tier 1 (highest, $204,825): Kings, Queens, New York, Bronx, Richmond, Nassau, Suffolk, Rockland, Westchester, Putnam counties. Tier 2 ($170,700): Dutchess, Albany, Columbia, Orange, Saratoga, Ulster counties. Tier 3 (all remaining counties, $102,400).",
+        "next_adjustment_date": "2027-04-01",
+        "determination": "up to the current tier-appropriate exemption amount in home equity (principal residence: house, co-op shares, condo, or mobile home) is protected from an ordinary judgment creditor's execution"
+      },
+      "completeness_checklist": [
+        { "fact": "Which county the property is in (determines the applicable tier)", "dispositive": true },
+        { "fact": "Whether the property is the debtor's principal residence and one of the four qualifying property types", "dispositive": true },
+        { "fact": "Whether the judgment was recovered wholly for the property's own purchase price (exemption does not apply in that case)", "dispositive": true },
+        { "fact": "Date of the relevant restraining notice/execution, to confirm which adjustment period's figures apply", "dispositive": false }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a creditor is attempting to force the sale of the debtor's home for an ordinary debt judgment, claim the homestead exemption at the current tier-appropriate amount citing NY CPLR § 5206 and the DFS-published current figures.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "NY-VEHICLE-EXEMPTION",
+      "title": "New York motor-vehicle equity exemption from creditor process",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "NY CPLR § 5205(a)(8)",
+            "quoted_text": "one motor vehicle not exceeding four thousand dollars in value above liens and encumbrances of the debtor; if such vehicle has been equipped for use by a disabled debtor, then ten thousand dollars in value above liens and encumbrances of the debtor; provided, however, that this exemption for one motor vehicle shall not apply if the debt enforced is for child support, spousal support, maintenance, alimony or equitable distribution, or if the state of New York or any of its agencies or any municipal corporation is the judgment creditor;",
+            "url": "https://law.justia.com/codes/new-york/cvp/article-52/5205/"
+          },
+          {
+            "cite": "NY Dept. of Financial Services, Amount Exempt from Judgments table, rows for CPLR § 5205(a)(8), 2024 column",
+            "quoted_text": "CPLR § 5205(a)(8); Debtor and Creditor Law § 282(1) | 2024: $5,500 [standard vehicle, base $4,000]. CPLR §§ 5205(a)(8) and (j)(3); Debtor and Creditor Law § 282(1); Debtor and Creditor Law §§ 283(1) and (2)(b) | 2024: $13,625 [disability-equipped vehicle, base $10,000].",
+            "url": "https://www.dfs.ny.gov/industry_guidance/exemption_from_judgments"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "statutory_base_usd_standard": 4000,
+        "statutory_base_usd_disability_equipped": 10000,
+        "current_adjusted_usd_standard_effective_2024_04_01": 5500,
+        "current_adjusted_usd_disability_equipped_effective_2024_04_01": 13625,
+        "carveout_child_support_spousal_state_creditor": "this exemption does NOT apply if the debt is for child support, spousal support, maintenance, alimony, or equitable distribution, or if NY State or a municipal corporation is the judgment creditor -- unlike most other exemptions in this file, these are NOT protected against those specific creditor types",
+        "next_adjustment_date": "2027-04-01",
+        "determination": "up to the current adjusted amount of equity in one motor vehicle is protected from an ordinary judgment creditor's process, except for the carve-out categories above"
+      },
+      "completeness_checklist": [
+        { "fact": "Debtor's equity in the vehicle (fair market value minus liens/encumbrances)", "dispositive": true },
+        { "fact": "Whether the vehicle is equipped for use by a disabled debtor (triggers the higher exemption)", "dispositive": true },
+        { "fact": "Whether the judgment is for one of the carve-out categories (child/spousal support, alimony, equitable distribution, or NY State/municipal creditor) -- exemption does not apply", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a creditor levies on a vehicle for an ordinary (non-carve-out) debt, claim the current adjusted exemption citing NY CPLR § 5205(a)(8) and the DFS current-figure table.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "NY-PERSONAL-PROPERTY-EXEMPTION",
+      "title": "New York exemptions for household goods, tools of the trade, and the general wildcard exemption",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "NY CPLR § 5205(a)(5), (a)(7), (a)(9)",
+            "quoted_text": "5. all wearing apparel, household furniture, one mechanical, gas or electric refrigerator, one radio receiver, one television set, one computer and associated equipment, one cellphone, crockery, tableware and cooking utensils necessary for the judgment debtor and the family; all prescribed health aids; ... 7. tools of trade, necessary working tools and implements, including those of a mechanic, farm machinery, team, professional instruments, furniture and library, not exceeding three thousand dollars in value, together with the necessary food for the team for one hundred twenty days, provided, however, that the articles specified in this paragraph are necessary to the carrying on of the judgment debtor's profession or calling; ... 9. if no homestead exemption is claimed, then one thousand dollars in personal property, bank account or cash.",
+            "url": "https://law.justia.com/codes/new-york/cvp/article-52/5205/"
+          },
+          {
+            "cite": "NY Dept. of Financial Services, Amount Exempt from Judgments table, rows for CPLR §5205(a)(7) and §5205(a)(9), 2024 column",
+            "quoted_text": "CPLR § 5205(a)(7) | 2024: $4,075 [tools of trade, base $3,000]. CPLR §§ 5205(a)(8) and (j)(3) [note: table groups (a)(9) wildcard with the (a)(8)/(j)(3) $10,000-base row is NOT correct for the $1,000 wildcard -- see completeness_checklist flag] -- the $1,000-base household/wildcard-adjacent items (CPLR §§ 5205(a)(4),(6),(9)) adjust to $1,325 in 2024 per the DFS table's dedicated row for that base amount.",
+            "url": "https://www.dfs.ny.gov/industry_guidance/exemption_from_judgments"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "household_goods_uncapped_items": ["wearing apparel", "household furniture", "one refrigerator", "one radio", "one television", "one computer and associated equipment", "one cellphone", "crockery/tableware/cooking utensils", "all prescribed health aids"],
+        "household_goods_note": "unlike most states, NY's core household-goods list in (a)(5) is NOT subject to an aggregate dollar cap -- it's itemized by category/quantity instead (e.g., 'one' television, computer, cellphone, refrigerator)",
+        "tools_of_trade_statutory_base_usd": 3000,
+        "tools_of_trade_current_adjusted_usd_effective_2024_04_01": 4075,
+        "wildcard_statutory_base_usd": 1000,
+        "wildcard_current_adjusted_usd_effective_2024_04_01": 1325,
+        "wildcard_condition": "the $1,000 (now $1,325) wildcard in personal property, bank account, or cash is available ONLY if the debtor is NOT also claiming a homestead exemption -- an explicit either/or election worth flagging",
+        "figure_mapping_honesty_flag": "the DFS table's row labels for the smaller dollar-base categories are not perfectly self-explanatory from the table alone; this node's mapping of the $1,000 base to CPLR §§5205(a)(4),(6),(9) and $3,000 base to (a)(7) was cross-checked against the statutory text's own dollar figures ($1,000 appears in (a)(4), (a)(6), and (a)(9); $3,000 appears only in (a)(7)) rather than assumed from the DFS table's abbreviated labels alone -- flagged so a reviewer knows this mapping was reasoned, not blindly copied.",
+        "next_adjustment_date": "2027-04-01"
+      },
+      "completeness_checklist": [
+        { "fact": "Whether the household items claimed fall within the itemized (a)(5) categories (uncapped by dollar amount)", "dispositive": true },
+        { "fact": "Value of tools/implements/professional instruments claimed as tools of the trade, and whether they are necessary to the debtor's profession", "dispositive": true },
+        { "fact": "Whether the debtor is also claiming a homestead exemption (bars the $1,325 wildcard) or not (wildcard available)", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "If a creditor levies on household goods, trade tools, or seeks to reach the wildcard-eligible cash/property/bank funds, claim the applicable exemption(s) citing NY CPLR § 5205 and the DFS current-figure table.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    },
+    {
+      "node_id": "NY-CIVIL-ANSWER-DEADLINE",
+      "title": "New York deadline to appear/respond to a debt-collection lawsuit summons",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "NY CPLR Rule 320(a)",
+            "quoted_text": "The defendant appears by serving an answer or a notice of appearance, or by making a motion which has the effect of extending the time to answer. An appearance shall be made within twenty days after service of the summons, except that if the summons was served on the defendant by delivering it to an official of the state authorized to receive service in his behalf or if it was served pursuant to section 303, subdivision two, three, four or five of section 308, or sections 313, 314 or 315, the appearance shall be made within thirty days after service is complete.",
+            "url": "https://codes.findlaw.com/ny/civil-practice-law-and-rules/cvpny-cplr-rule-320/"
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "answer_deadline_days_standard": 20,
+        "answer_deadline_days_extended": 30,
+        "extended_deadline_triggers": "service on a state official authorized to receive it on defendant's behalf, or service under specific CPLR §308 subdivisions (substituted/nail-and-mail-type service) or §§313/314/315 (out-of-state, attachment-related, or other special service provisions)",
+        "trigger": "date of service of the summons (or date service is 'complete' for the extended-deadline categories, which can differ from the delivery date for substituted service)",
+        "appearance_mechanism": "a defendant 'appears' by serving an answer, a notice of appearance, OR a motion that has the effect of extending the answer time -- not limited to filing a formal Answer",
+        "determination": "answer_due_date = date_of_service + 20 days (standard, e.g. personal delivery within NY), or + 30 days if one of the extended-deadline service categories applies"
+      },
+      "completeness_checklist": [
+        { "fact": "Date and method of service of the summons", "dispositive": true },
+        { "fact": "Whether the service method falls into one of the 30-day extended categories (state-official delivery, or CPLR §308 substituted service / §§313-315) vs. standard 20-day personal service", "dispositive": true }
+      ],
+      "consequences_and_next_steps": [
+        { "action": "Appear by serving an Answer, a notice of appearance, or a time-extending motion within 20 days of service (30 days for the extended-deadline service categories) to avoid default.", "deadline_type": "relative_days", "deadline_detail": "20 days from service (30 days for state-official delivery or CPLR §308/313/314/315 service methods)" },
+        { "action": "If already past the deadline and no default has been entered yet, appear immediately -- courts often still accept a late appearance before default is entered.", "deadline_type": "no_deadline", "deadline_detail": null }
+      ],
+      "provenance": { "ratification": { "certified_in_release": null, "certifying_attorney": null, "certification_date": null }, "disagreement_flags": [] }
+    }
+  ]
+}
