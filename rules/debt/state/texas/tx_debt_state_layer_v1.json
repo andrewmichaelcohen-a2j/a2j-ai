@@ -17,13 +17,13 @@
     "statutory_sources": [
       {
         "cite": "Tex. Civ. Prac. & Rem. Code § 16.004",
-        "url": "https://law.justia.com/codes/texas/civil-practice-and-remedies-code/title-2/subtitle-b/chapter-16/subchapter-a/section-16-004/",
+        "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.16.htm",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
       {
         "cite": "Tex. Const. art. XVI, § 28",
-        "url": "https://law.justia.com/constitution/texas/sections/cn001600-002800.html",
+        "url": "https://statutes.capitol.texas.gov/Docs/CN/htm/CN.16.htm",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
@@ -41,13 +41,13 @@
       },
       {
         "cite": "Tex. Prop. Code § 42.001",
-        "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-001/",
+        "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
       {
         "cite": "Tex. Prop. Code § 42.002",
-        "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-002/",
+        "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
       },
@@ -69,9 +69,10 @@
         "derived_from": [
           {
             "cite": "Tex. Civ. Prac. & Rem. Code § 16.004(a)",
-            "quoted_text": "A person must bring suit on the following actions not later than four years after the day the cause of action accrues: ... (3) debt; ...",
-            "url": "https://law.justia.com/codes/texas/civil-practice-and-remedies-code/title-2/subtitle-b/chapter-16/subchapter-a/section-16-004/",
-            "source_tier": "C"
+            "quoted_text": "A person must bring suit on the following actions not later than four years after the day the cause of action accrues: (1) specific performance of a contract for the conveyance of real property; (2) penalty or damages on the penal clause of a bond to convey real property; (3) debt; (4) fraud; or (5) breach of fiduciary duty.",
+            "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.16.htm",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 13 from Justia/FindLaw (Tier C) to Texas's official statutes.capitol.texas.gov (Tier A), per Andy's ratification. Confirmed directly this round (not guessed): the real chapter text IS reachable via plain HTTP fetch, no browser JS required -- but the site is intermittently flaky, alternating between real content and a bare navigation shell across successive identical requests, most likely edge-cache or render-timeout related. verify_citation() now retries once on a non-matching 200 before giving up, which resolved this in direct testing. Andy's next live run will confirm this holds under real conditions."
           }
         ],
         "citation_verified": true
@@ -128,8 +129,9 @@
           {
             "cite": "Tex. Const. art. XVI, § 28",
             "quoted_text": "No current wages for personal service shall ever be subject to garnishment, except for the enforcement of court-ordered: (1) child support payments; or (2) spousal maintenance.",
-            "url": "https://law.justia.com/constitution/texas/sections/cn001600-002800.html",
-            "source_tier": "C"
+            "url": "https://statutes.capitol.texas.gov/Docs/CN/htm/CN.16.htm",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 13 from Justia/FindLaw (Tier C) to Texas's official statutes.capitol.texas.gov (Tier A), per Andy's ratification. Confirmed directly this round (not guessed): the real chapter text IS reachable via plain HTTP fetch, no browser JS required -- but the site is intermittently flaky, alternating between real content and a bare navigation shell across successive identical requests, most likely edge-cache or render-timeout related. verify_citation() now retries once on a non-matching 200 before giving up, which resolved this in direct testing. Andy's next live run will confirm this holds under real conditions."
           }
         ],
         "citation_verified": true
@@ -244,21 +246,24 @@
         "derived_from": [
           {
             "cite": "Tex. Prop. Code § 42.001(a)",
-            "quoted_text": "Personal property, as described in Section 42.002, is exempt from garnishment, attachment, execution, or other seizure if: (1) the property is provided for a family and has an aggregate fair market value of not more than $100,000...; or (2) the property is owned by a single adult, who is not a member of a family, and has an aggregate fair market value of not more than $50,000...",
-            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-001/",
-            "source_tier": "C"
+            "quoted_text": "Personal property, as described in Section 42.002, is exempt from garnishment, attachment, execution, or other seizure if: (1) the property is provided for a family and has an aggregate fair market value of not more than $100,000, exclusive of the amount of any liens, security interests, or other charges encumbering the property; or (2) the property is owned by a single adult, who is not a member of a family, and has an aggregate fair market value of not more than $50,000, exclusive of the amount of any liens, security interests, or other charges encumbering the property.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 13 from Justia/FindLaw (Tier C) to Texas's official statutes.capitol.texas.gov (Tier A), per Andy's ratification. Confirmed directly this round (not guessed): the real chapter text IS reachable via plain HTTP fetch, no browser JS required -- but the site is intermittently flaky, alternating between real content and a bare navigation shell across successive identical requests, most likely edge-cache or render-timeout related. verify_citation() now retries once on a non-matching 200 before giving up, which resolved this in direct testing. Andy's next live run will confirm this holds under real conditions."
           },
           {
             "cite": "Tex. Prop. Code § 42.001(b)",
-            "quoted_text": "The following personal property is exempt from seizure and is not included in the aggregate limitations prescribed by Subsection (a): (1) current wages for personal services, except for the enforcement of court-ordered child support payments; (2) professionally prescribed health aids...; (3) alimony, support, or separate maintenance...; and (4) a religious bible or other book containing sacred writings of a religion...",
-            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-001/",
-            "source_tier": "C"
+            "quoted_text": "The following personal property is exempt from seizure and is not included in the aggregate limitations prescribed by Subsection (a): (1) current wages for personal services, except for the enforcement of court-ordered child support payments; (2) professionally prescribed health aids of a debtor or a dependent of a debtor; (3) alimony, support, or separate maintenance received or to be received by the debtor for the support of the debtor or a dependent of the debtor; and (4) a religious bible or other book containing sacred writings of a religion that is seized by a creditor other than a lessor of real property who is exercising the lessor's contractual or statutory right to seize personal property after a tenant breaches a lease agreement for or abandons the real property.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 13 from Justia/FindLaw (Tier C) to Texas's official statutes.capitol.texas.gov (Tier A), per Andy's ratification. Confirmed directly this round (not guessed): the real chapter text IS reachable via plain HTTP fetch, no browser JS required -- but the site is intermittently flaky, alternating between real content and a bare navigation shell across successive identical requests, most likely edge-cache or render-timeout related. verify_citation() now retries once on a non-matching 200 before giving up, which resolved this in direct testing. Andy's next live run will confirm this holds under real conditions."
           },
           {
             "cite": "Tex. Prop. Code § 42.002(a)",
-            "quoted_text": "The following personal property is exempt under Section 42.001(a): (1) home furnishings...; (2) provisions for consumption; (3) farming or ranching vehicles and implements; (4) tools, equipment, books, and apparatus...used in a trade or profession; (5) wearing apparel; (6) jewelry not to exceed 25 percent...; (7) two firearms; (8) athletic and sporting equipment...; (9) a two-wheeled, three-wheeled, or four-wheeled motor vehicle for each member of a family or single adult who holds a driver's license...; (10) [specified numbers of horses/mules/donkeys, cattle, other livestock, and fowl]; and (11) household pets.",
-            "url": "https://codes.findlaw.com/tx/property-code/prop-sect-42-002/",
-            "source_tier": "C"
+            "quoted_text": "The following personal property is exempt under Section 42.001(a): (1) home furnishings, including family heirlooms; (2) provisions for consumption; (3) farming or ranching vehicles and implements; (4) tools, equipment, books, and apparatus, including boats and motor vehicles used in a trade or profession; (5) wearing apparel; (6) jewelry not to exceed 25 percent of the aggregate limitations prescribed by Section 42.001(a); (7) two firearms; (8) athletic and sporting equipment, including bicycles; (9) a two-wheeled, three-wheeled, or four-wheeled motor vehicle for each member of a family or single adult who holds a driver's license or who does not hold a driver's license but who relies on another person to operate the vehicle for the benefit of the nonlicensed person; (10) the following animals and forage on hand for their consumption: (A) two horses, mules, or donkeys and a saddle, blanket, and bridle for each; (B) 12 head of cattle; (C) 60 head of other types of livestock; and (D) 120 fowl; and (11) household pets.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 13 from Justia/FindLaw (Tier C) to Texas's official statutes.capitol.texas.gov (Tier A), per Andy's ratification. Confirmed directly this round (not guessed): the real chapter text IS reachable via plain HTTP fetch, no browser JS required -- but the site is intermittently flaky, alternating between real content and a bare navigation shell across successive identical requests, most likely edge-cache or render-timeout related. verify_citation() now retries once on a non-matching 200 before giving up, which resolved this in direct testing. Andy's next live run will confirm this holds under real conditions."
           }
         ],
         "citation_verified": true

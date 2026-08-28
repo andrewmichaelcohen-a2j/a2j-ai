@@ -590,27 +590,52 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool) -> dict:
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9",
     }
-    try:
-        resp = requests.get(url, timeout=20, headers=REQUEST_HEADERS)
-        page = _normalize_for_match(resp.text, is_html=True)
-        # Use a shortened window of the quoted text (first ~120 chars) to
-        # tolerate minor HTML-entity/whitespace differences in the fetched page.
-        needle = _normalize_for_match(quoted_text, is_html=False)[:120]
-        verified = needle in page if needle else False
-        diagnostics = {
-            "http_status": resp.status_code,
-            "content_length": len(resp.content),
-            "content_type": resp.headers.get("Content-Type"),
-            "word_overlap_ratio": _word_overlap_ratio(needle, page),
-        }
-        return {"url": url, "verified": verified, "method": "live", "error": None,
-                "diagnostics": diagnostics}
-    except Exception as exc:
-        return {
-            "url": url, "verified": False, "method": "live", "error": str(exc),
-            "diagnostics": {"http_status": None, "content_length": None,
-                             "content_type": None, "word_overlap_ratio": None},
-        }
+    # NOTE (found 2026-08-26, round 13, investigating the TX re-pin):
+    # statutes.capitol.texas.gov is intermittently flaky in a way distinct
+    # from eCFR's old UA block or Justia/FindLaw's 403s -- the SAME exact
+    # URL, fetched with no change in headers, alternated between the real
+    # statute text and the site's bare navigation shell across successive
+    # requests during this session (confirmed directly: PR.42.htm returned
+    # the nav shell on attempt 1, then full real text on attempt 2; a large
+    # constitution-article page timed out/returned empty twice before
+    # succeeding on a 3rd attempt). This looks like edge-cache or
+    # server-render-timeout flakiness, not a hard block -- a short retry
+    # resolves it. Retry once (2 attempts total, brief pause between) only
+    # when the first attempt got a real HTTP response but didn't verify;
+    # a citation that's genuinely wrong will still fail on the retry, so
+    # this doesn't mask real mismatches, only transient serving flakiness.
+    last_result = None
+    for attempt in range(2):
+        try:
+            resp = requests.get(url, timeout=20, headers=REQUEST_HEADERS)
+            page = _normalize_for_match(resp.text, is_html=True)
+            # Use a shortened window of the quoted text (first ~120 chars) to
+            # tolerate minor HTML-entity/whitespace differences in the fetched page.
+            needle = _normalize_for_match(quoted_text, is_html=False)[:120]
+            verified = needle in page if needle else False
+            diagnostics = {
+                "http_status": resp.status_code,
+                "content_length": len(resp.content),
+                "content_type": resp.headers.get("Content-Type"),
+                "word_overlap_ratio": _word_overlap_ratio(needle, page),
+                "retry_attempt": attempt + 1,
+            }
+            last_result = {"url": url, "verified": verified, "method": "live", "error": None,
+                            "diagnostics": diagnostics}
+            if verified:
+                return last_result
+            if attempt == 0:
+                time.sleep(2)
+        except Exception as exc:
+            last_result = {
+                "url": url, "verified": False, "method": "live", "error": str(exc),
+                "diagnostics": {"http_status": None, "content_length": None,
+                                 "content_type": None, "word_overlap_ratio": None,
+                                 "retry_attempt": attempt + 1},
+            }
+            if attempt == 0:
+                time.sleep(2)
+    return last_result
 
 
 # -- Node discovery ---------------------------------------------------------------

@@ -17,7 +17,7 @@
     "statutory_sources": [
       {
         "cite": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939)",
-        "url": "https://www.lawpipe.com/Texas/Craddock_v_Sunshine_Bus_Lines_Inc.html",
+        "url": "https://www.courtlistener.com/opinion/4172687/craddock-v-sunshine-bus-lines-inc/",
         "retrieved": true,
         "retrieved_date": "2026-08-26"
       },
@@ -40,8 +40,9 @@
           {
             "cite": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939)",
             "quoted_text": "A default judgment should be set aside and a new trial ordered in any case in which the failure of the defendant to answer before judgment was not intentional, or the result of conscious indifference on his part, but was due to a mistake or an accident; provided the motion for a new trial sets up a meritorious defense and is filed at a time when the granting thereof will occasion no delay or otherwise work an injury to the plaintiff.",
-            "url": "https://www.lawpipe.com/Texas/Craddock_v_Sunshine_Bus_Lines_Inc.html",
-            "source_tier": "D"
+            "url": "https://www.courtlistener.com/opinion/4172687/craddock-v-sunshine-bus-lines-inc/",
+            "source_tier": "A",
+            "tier_rationale": "Re-pinned 2026-08-26 round 13 from lawpipe.com (Tier D, commercial case-brief summary site) to CourtListener (Free Law Project, nonprofit; Tier A/B for case law -- same recognized-noncommercial-republisher standard already applied to Cornell LII for federal statutes). Verified directly via the CourtListener API this round: quoted_text matches the opinion's actual holding language verbatim (searched and confirmed against opinion_id 3940166 / cluster_id 4172687), and the page is reachable by plain HTTP fetch, no bot-block encountered."
           },
           {
             "cite": "Tex. R. Civ. P. 329b(a)",

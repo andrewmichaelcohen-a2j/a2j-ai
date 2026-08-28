@@ -33,7 +33,7 @@ Per Andy's ratified four-tier source hierarchy (replaces the earlier binary prim
 | Arizona | 7 | **7 of 7** |
 | California | 7 | **0 of 7** (re-pinned round 12, see addendum below) |
 | Utah | 6 | **5 of 6** (answer-deadline node is clean — legacy.utcourts.gov, A) |
-| Texas | 6 | **4 of 6** (homestead is clean via statutes.capitol.texas.gov, A) |
+| Texas | 6 | **1 of 6 remaining** (see round-13 addendum -- Rule 329b/502.5 citations only) |
 | New York | 6 | **3 of 6** (homestead/vehicle/personal-property are clean via NY DFS, A) |
 
 ## AZ re-pin attempt — result: blocked, not silently downgraded
@@ -84,3 +84,39 @@ second citation (§1006.14(b)(4)) also showed `verified: false` in the same live
 appearing to already be an exact quote when tested against a clean approximation of the page;
 root cause not fully pinned down (raw-HTML fetch of eCFR is also blocked from this sandbox) --
 left as an open item for Andy's next live run's diagnostics to clarify, rather than guessed at.
+
+## Round 13 addendum: TX re-pinned (statutes + Craddock case), Rule 329b/502.5 stay open
+
+Per Andy's directive, re-pinned TX's remaining statute and case-law citations:
+
+- **Tex. Civ. Prac. & Rem. Code § 16.004(a)** (SOL) and **Tex. Const. art. XVI, § 28** (wage
+  garnishment prohibition) and **Tex. Prop. Code §§ 42.001(a), 42.001(b), 42.002(a)** (exempt
+  personal property): re-pinned from Justia/FindLaw (Tier C) to `statutes.capitol.texas.gov`
+  (Tier A). Confirmed directly, not guessed: the real statute text IS reachable by plain HTTP
+  fetch (no browser JS needed, unlike AZ). However the site is **intermittently flaky** --
+  the exact same URL alternated between real content and a bare navigation shell across
+  successive fetches during this session, and one large page (the Constitution Article XVI
+  page, ~109KB) needed 3 attempts before returning real content. This looks like edge-cache or
+  server-render-timeout behavior, not a hard block. Added a retry-once mechanism to
+  `verify_citation()` to absorb this (see `DAILY_CHANGELOG.md` round 13 for the code detail).
+  Also found and fixed three more citations in this file with the same authored-ellipsis
+  problem as round 12's eCFR fix (`§16.004(a)`, `§42.001(a)`, `§42.001(b)`, `§42.002(a)` --
+  replaced with verbatim fetched text).
+- **Craddock v. Sunshine Bus Lines, Inc.** (the controlling case for TX's default-judgment
+  set-aside standard): re-pinned from lawpipe.com (Tier D, commercial case-brief site) to
+  CourtListener (Free Law Project, nonprofit -- Tier A/B for case law, same standard already
+  applied to Cornell LII for statutes). Verified directly via the CourtListener API: the
+  existing `quoted_text` matches the opinion's actual holding language verbatim.
+
+**Genuine, unresolved gap -- flagged, not forced through:** the two **Tex. R. Civ. P. 329b**
+citations (also on the default-judgment-set-aside node) and **Tex. R. Civ. P. 502.5** (justice
+court answer deadline) remain Tier C/D. Researched this round: the only official (Tier A)
+source for the current Texas Rules of Civil Procedure is a PDF on txcourts.gov -- there is no
+current, official HTML version. This session's fetch tooling (and the runner's
+`verify_citation()`, which reads `resp.text` as HTML) can't extract meaningful text from a PDF,
+so pinning to the PDF would silently break citation verification rather than fix it. This is a
+tooling-capability gap, not a sourcing-effort gap. Two honest paths forward, not decided here:
+(a) add PDF text-extraction to the runner (real code work), or (b) Andy manually confirms the
+PDF text once and we treat these two rules as a documented exception to the tier hierarchy.
+Since `TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY` is the Band 3 refusal-scenario node, this
+gap is demo-relevant and called out explicitly, not buried.
