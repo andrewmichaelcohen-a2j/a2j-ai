@@ -23,7 +23,7 @@ description: "Screen a consumer debt collection matter for common defenses and p
 
 ## Skill metadata
 
-- **Version:** 0.2.0-concept-demo (supersedes 0.1.0 draft skeleton)
+- **Version:** 0.3.0-concept-demo (adds HOW_TO_RUN.md and CLAIM_LANGUAGE_CARD.md, round 14)
 - **Corpus:** `rules/debt/federal/` (5 nodes) + `rules/debt/state/texas/` (6 nodes, including the
   Band 3 discretionary node) + `rules/debt/state/california/` (7 nodes) = 18 nodes in the
   concept-demo corpus. `rules/debt/state/{utah,arizona,new_york}/` exist as fully-drafted DRAFT
@@ -112,6 +112,10 @@ grounded agreement across the demo corpus," never a bare "X% accurate"). No "val
 "near-perfect," or reliability-target language. Audience: Andy-selected only — not press, not
 consumers, not a public link.
 
+**One-page reference:** `CLAIM_LANGUAGE_CARD.md` in this folder — what Andy may and may not say,
+with each number's basis, formatted to keep beside him during a live showing rather than
+re-deriving from this spec section each time.
+
 ## 6. Escalation triggers
 
 Any Band 2/3 judgment call; any node below CORROBORATED tier being relied on for a real (not
@@ -126,6 +130,10 @@ SOL/answer, pre-suit validation rights, garnishment, Band 3 refusal-boundary) an
 dependencies — the same file the corroboration runner uses to compute `scenario_pass_rate`. This
 skill also supports a live unscripted ask against any corpus node, tier labels shown honestly
 regardless of which path (prepared or unscripted) the conversation takes.
+
+**Running a live showing:** see `HOW_TO_RUN.md` in this folder — a three-step, voice-mode-ready
+note for Andy (not written for the AI's own operational logic, which is what the rest of this
+file is for).
 
 ## 8. Jurisdiction data references
 

@@ -4,6 +4,19 @@
 
 ---
 
+## 2026-08-28, round 15 (Direction item 5: claim-language card + demo quickstart for the consumer-debt-validation skill)
+
+**Context:** Andy's directive item 5 asked for skill packaging and scenario readiness as a parallel GREEN lane. Surveying the repo first (not duplicating existing work): the `consumer-debt-validation` skill, the 5 concept-demo scenarios (`scripts/corroboration/scenarios.json`), tier-label surfacing, and the mandatory framing sentence were all already built (2026-08-26, tasks in that day's session). What was missing, specifically: a standalone one-page claim-language reference and a short "how Andy runs this live" note -- both explicitly requested by name in the directive.
+
+**What changed:**
+1. **`plugins/consumer-debt/skills/consumer-debt-validation/CLAIM_LANGUAGE_CARD.md`** (new) -- one page: the exact opening framing sentence, permitted claim language with each number's basis (grounded-agreement rate + scenario pass rate, always together), prohibited language, the Band 3 refusal-boundary talking point, and a ready answer for "how do you know it's right." Sourced directly from spec §8's CONCEPT-DEMO row, not paraphrased.
+2. **`plugins/consumer-debt/skills/consumer-debt-validation/HOW_TO_RUN.md`** (new) -- three steps, written to be usable without reading from a screen mid-conversation (voice-mode-ready per the directive): open with the framing sentence, describe the person's situation naturally (skill handles intake), close with both demo-gate numbers from the actual last live run. Includes a note on what to do if something hits a below-CORROBORATED node or a genuine judgment call.
+3. **`SKILL.md`** updated (version bump to 0.3.0-concept-demo) with cross-references to both new files from the relevant sections (§5 Claims discipline, §7 Prepared demo scenarios) rather than duplicating their content inline.
+
+**Not done, and why:** did not rebuild the skill's core intake/decision logic, the 5 scenarios, or the tier-labeling behavior -- all already correct and already wired to the live `rules/debt/` corpus per the 2026-08-26 reconciliation note in `SKILL.md`. Re-doing that would have been redundant work, not requested.
+
+**Verification:** `scenarios.json` still valid JSON (untouched, cross-referenced only). No code changed this round -- markdown-only, reviewed for accuracy against spec §8's exact wording (framing sentence copied verbatim, not retyped from memory in a way that could drift).
+
 ## 2026-08-28, round 14 (Direction item 2: FDCPA (b)(4) diagnostic pinpoint, hypothesis pre-registered)
 
 **Context:** Andy's directive item 2 asked for the unresolved FDCPA-REGF-CALL-FREQUENCY-1006.14b second-citation anomaly (12 C.F.R. 1006.14(b)(4)) to be staged so it's resolvable immediately from the next live run's diagnostics, not another round of guessing -- and asked for a pre-registered hypothesis in the queue entry.
