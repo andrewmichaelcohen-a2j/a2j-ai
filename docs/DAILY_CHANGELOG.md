@@ -4,6 +4,17 @@
 
 ---
 
+## 2026-08-28, round 14 (Direction item 2: FDCPA (b)(4) diagnostic pinpoint, hypothesis pre-registered)
+
+**Context:** Andy's directive item 2 asked for the unresolved FDCPA-REGF-CALL-FREQUENCY-1006.14b second-citation anomaly (12 C.F.R. 1006.14(b)(4)) to be staged so it's resolvable immediately from the next live run's diagnostics, not another round of guessing -- and asked for a pre-registered hypothesis in the queue entry.
+
+**What changed:**
+1. **Added `_longest_matching_prefix_len()` and wired it into `verify_citation()`'s diagnostics.** When `word_overlap_ratio` is high (all words present) but `verified` is False -- exactly the (b)(4) node's symptom on the last live run -- the diagnostics block now includes `longest_matching_prefix_chars` (how many leading characters of the citation matched the live page contiguously before breaking) and `text_at_break_point` (the next ~40 characters that were expected but not found there). This turns "somehow didn't match" into an exact, actionable break point on the very next run.
+2. **Pre-registered hypothesis** (also in the new function's docstring, so it travels with the code): word_overlap_ratio was already 1.0 on the last run (every word of the quote is genuinely on the page), and a clean markdown approximation of the same eCFR page matched this exact quoted_text with zero changes needed when tested this round -- so the live mismatch most likely comes from something in eCFR's *raw* HTML that a plain-text approximation doesn't reproduce: an internal cross-reference link inserted mid-sentence (eCFR auto-links defined terms and paragraph references), adding or removing a character of whitespace at a tag boundary that `_strip_html`'s space-substitution doesn't fully absorb, or a smart-quote/entity variant not covered by `_normalize_for_match`. **Did not guess further or force a fix** -- this needed real HTML the sandbox can't fetch; the diagnostic above will confirm or refute it directly.
+3. This node's own `CITATION-CHECK-FAILED` entry will auto-file into `docs/DEBT_DISAGREEMENT_QUEUE.md` on the next live run per the runner's existing append-only behavior (per the queue file's own header: the runner appends, never hand-edits) -- no placeholder entry was hand-written here, to avoid it going stale or conflicting with the real one.
+
+**Verification:** `py_compile` clean, schema validation (9/9 pass), frozen-artifact SHA unchanged, `--dry-run --demo-corpus-only` still 18/18 clean-pass (this change only adds diagnostic fields, doesn't alter `verified` logic). Sanity-tested the new pinpoint function against a synthetic near-miss (an inserted space) and confirmed it correctly located the break point.
+
 ## 2026-08-28, round 13 (Direction: TX re-pin -- statutes + Craddock case, Rule 329b/502.5 flagged as genuine open gap)
 
 **Context:** Andy issued a sequenced directive ("Demo Critical Path") after the round-12 CA re-pin was confirmed live. Item 1: TX is the last demo-gating sourcing work (federal + CA are clean). This round covers item 1 only.

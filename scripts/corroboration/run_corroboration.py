@@ -541,6 +541,39 @@ def _word_overlap_ratio(needle: str, haystack: str) -> float:
     return round(hits / len(needle_words), 3)
 
 
+def _longest_matching_prefix_len(needle: str, haystack: str) -> int:
+    """Diagnostic-only: binary-search for the longest prefix of `needle` that
+    appears verbatim (contiguously) in `haystack`. Added 2026-08-28 (round 14)
+    per Andy's directive item 2 -- when word_overlap_ratio is high but
+    verified is False, this pinpoints exactly where the contiguous match
+    breaks down (e.g. an inserted link, an entity that didn't normalize, a
+    stray heading), instead of leaving a human to re-fetch and manually diff.
+    Pre-registered hypothesis for FDCPA-REGF-CALL-FREQUENCY-1006.14b's
+    second citation (12 C.F.R. 1006.14(b)(4)): word_overlap_ratio was 1.0
+    (every word present) but verified was False on the last live run, and a
+    clean markdown approximation of the same page matched this quoted_text
+    with no changes needed -- so the most likely cause is something in
+    eCFR's raw HTML that a plain-text approximation doesn't reproduce (an
+    internal cross-reference link inserted mid-sentence, e.g. around
+    'paragraph (b)' or a definition term, adding or removing whitespace at
+    a tag boundary; or a smart-quote/entity variant not covered by
+    _normalize_for_match). This diagnostic will show the exact break point
+    on the next live run instead of requiring another guess.
+    """
+    if not needle:
+        return 0
+    lo, hi = 0, len(needle)
+    best = 0
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if needle[:mid] in haystack:
+            best = mid
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return best
+
+
 def verify_citation(url: str, quoted_text: str, dry_run: bool) -> dict:
     """Mechanically verify a cited source. Always returns a `diagnostics` block
     -- HTTP status, content length, content type, and a fuzzy word-overlap
@@ -613,12 +646,20 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool) -> dict:
             # tolerate minor HTML-entity/whitespace differences in the fetched page.
             needle = _normalize_for_match(quoted_text, is_html=False)[:120]
             verified = needle in page if needle else False
+            prefix_len = _longest_matching_prefix_len(needle, page) if needle else 0
             diagnostics = {
                 "http_status": resp.status_code,
                 "content_length": len(resp.content),
                 "content_type": resp.headers.get("Content-Type"),
                 "word_overlap_ratio": _word_overlap_ratio(needle, page),
                 "retry_attempt": attempt + 1,
+                # Diagnostic pinpoint (round 14): how many leading characters of
+                # `needle` matched contiguously before the match broke, and the
+                # exact text that was expected next but wasn't found there.
+                # Only meaningful when verified is False -- when True this
+                # equals len(needle) and text_at_break_point is None.
+                "longest_matching_prefix_chars": prefix_len,
+                "text_at_break_point": needle[prefix_len:prefix_len + 40] if not verified else None,
             }
             last_result = {"url": url, "verified": verified, "method": "live", "error": None,
                             "diagnostics": diagnostics}
