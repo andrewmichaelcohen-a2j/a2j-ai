@@ -14,6 +14,74 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 
 ## Open
 
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] CITATION-CHECK-FAILED -- run run_20260826T202441Z, 2026-08-26T20:25:47Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 2 cited source(s) could not be mechanically verified live: [{'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 75544, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 1.0}}, {'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 75544, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 1.0}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 12 C.F.R. § 1006.14(b)(2)(i), a debt collector is presumed to comply with the prohibition on repeated/continuous calls (and FDCPA § 806(5)) if, as to a particular person and a particular debt, it places no more than seven calls within seven consecutive days and places no call within the seven consecutive days following a telephone conversation with that person about that debt (the conversation date counts as day one). Under § 1006.14(b)(2)(ii), exceeding either of those frequencies creates a presumption that the collector violated the rule and FDCPA § 806(5). Both presumptions are subject to the exclusions in paragraph (b)(3). Per § 1006.14(b)(4), the counts run separately for each debt in collection, except that student loan debts serviced under a single account number when obtained by the collector are treated as one 'particular debt.'"
+  - gpt-5.5: grounded=True, error=None, summary='Subject to listed exclusions not provided here, a debt collector is presumed to comply if, for a particular person and a particular debt, it does not call more than seven times within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of that seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits; “particular debt” generally means each debt in collection, with a special grouping rule for certain student loan debts serviced under one account number.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt collector is presumed to violate the law if, in connection with a particular debt, they call a person more than seven times within seven consecutive days. A violation is also presumed if a collector calls within seven consecutive days after having a telephone conversation with that person about the debt. This frequency limit applies to each of a consumer's debts individually, except for student loans, where all loans under a single account number are treated as one debt."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-WRITTEN-CONTRACT-DEBT] CITATION-CHECK-FAILED -- run run_20260826T201346Z, 2026-08-26T20:15:36Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 2 cited source(s) could not be mechanically verified live: [{'url': 'https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 403, 'content_length': 5999, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 0.0}}, {'url': 'https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 403, 'content_length': 5999, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 0.0}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Cal. Code Civ. Proc. § 337(a), an action upon any contract, obligation, or liability founded upon a written instrument must be brought within four years (subject to the exception in Section 336a, and a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale sale). Subsection (d) adds that once that four-year period has run, a person may not file suit or start an arbitration or other legal proceeding to collect the debt. The only way the period may be extended is pursuant to Section 360."
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring a lawsuit, arbitration, or other legal proceeding to collect the debt, and the period may be extended only under Section 360.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='In California, the statute of limitations for an action upon a contract founded upon a written instrument is four years. There is a specific exception for actions for a money judgment after a power of sale on real property, which must be brought within three months. Once the applicable time period has run, a person is barred from bringing a suit or other legal proceeding to collect the debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-WRITTEN-CONTRACT-DEBT] MODEL-DISAGREEMENT -- run run_20260826T201346Z, 2026-08-26T20:15:36Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: All three agree on the core rule: a four-year limitations period for actions on a written contract, with suit/arbitration barred once it runs. However, Analysis 2 omits the three-month exception for money judgments after a power-of-sale foreclosure (stated by Analyses 1 and 3), and Analysis 3 omits that the period may be extended only under Section 360 (stated by Analyses 1 and 2). (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=['3', '4'], OpenAI=['4'], Gemini=['3', '4'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Cal. Code Civ. Proc. § 337(a), an action upon any contract, obligation, or liability founded upon a written instrument must be brought within four years (subject to the exception in Section 336a, and a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale sale). Subsection (d) adds that once that four-year period has run, a person may not file suit or start an arbitration or other legal proceeding to collect the debt. The only way the period may be extended is pursuant to Section 360."
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring a lawsuit, arbitration, or other legal proceeding to collect the debt, and the period may be extended only under Section 360.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='In California, the statute of limitations for an action upon a contract founded upon a written instrument is four years. There is a specific exception for actions for a money judgment after a power of sale on real property, which must be brought within three months. Once the applicable time period has run, a person is barred from bringing a suit or other legal proceeding to collect the debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] CITATION-CHECK-FAILED -- run run_20260826T201346Z, 2026-08-26T20:14:43Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 2 cited source(s) could not be mechanically verified live: [{'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 75544, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 1.0}}, {'url': 'https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 75544, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 1.0}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 12 C.F.R. § 1006.14(b)(2)(i), a debt collector is presumed to comply with the harassment prohibition in § 1006.14(b)(1) and FDCPA § 806(5) if it places calls to a particular person about a particular debt neither more than seven times in seven consecutive days, nor within seven consecutive days after having had a telephone conversation with that person about that debt. Conversely, under (b)(2)(ii), exceeding either of those frequencies creates a presumption of violation. The counts are applied per 'particular debt,' meaning each individual debt in collection, except that for student loans all debts serviced under a single account number when obtained by the collector count as one debt (§ 1006.14(b)(4))."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector is presumed to comply if, for a particular person and a particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For this purpose, a “particular debt” generally means each debt in collection, with a special rule grouping certain student loan debts serviced under a single account number.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt collector is presumed to have violated the law if, in connection with a particular debt, they call a person more than seven times within seven consecutive days. A violation is also presumed if a collector calls within seven consecutive days after having a telephone conversation with that person about the debt. This rule applies to each of a consumer's individual debts, except for student loans, where all loans under a single account number are treated as one debt."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE] CITATION-CHECK-FAILED -- run run_20260826T190724Z, 2026-08-26T19:24:12Z
 
 **File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`

@@ -1,0 +1,308 @@
+{
+  "run_id": "run_20260826T201346Z",
+  "mode": "live",
+  "started": "2026-08-26T20:13:46Z",
+  "ended": "2026-08-26T20:15:36Z",
+  "models": {
+    "anthropic": "claude-opus-5",
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "demo_corpus_only": false,
+  "budget_cap_usd": 15.0,
+  "approx_cost_per_node_usd_estimate": 0.45,
+  "n_queued": 2,
+  "n_completed": 2,
+  "n_clean_pass": 0,
+  "n_flagged": 2,
+  "demo_gate_metrics": {
+    "grounded_agreement_rate": {
+      "value_percent": 0.0,
+      "n_demo_corpus_nodes_this_run": 2,
+      "n_passing": 0,
+      "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all citations live-verified AND no adversarial gap found (numeric fingerprint is a secondary diagnostic only as of 2026-08-26 round 3, not part of this basis)"
+    },
+    "scenario_pass_rate": {
+      "value_percent": 0.0,
+      "n_scenarios": 5,
+      "n_passing": 0,
+      "scenarios": [
+        {
+          "scenario_id": "tx-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "ca-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "failing_deps": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT"
+          ]
+        },
+        {
+          "scenario_id": "pre-suit-validation-rights",
+          "passed": false,
+          "depends_on_node_ids": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "missing_from_this_run": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "garnishment-scenario",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "missing_from_this_run": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "band3-refusal-boundary",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "missing_from_this_run": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "failing_deps": []
+        }
+      ],
+      "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run"
+    },
+    "internal_gate_met": false,
+    "gate_threshold_percent": 90.0,
+    "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an internal readiness gate computed by this script, not itself a claim to publish -- see spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing."
+  },
+  "node_results": [
+    {
+      "node_id": "FDCPA-REGF-CALL-FREQUENCY-1006.14b",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-08-26T20:13:46Z",
+      "ended": "2026-08-26T20:14:43Z",
+      "input_sha256": "e5c5e181853932f4a0d43614a5a447d2ee68e2a9ab07584e40bb3aa3c2578e3b",
+      "node_sha256": "1c70646451a133caea96b8b5dadf989a7009d2a155da779541079a9c855ba70b",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under 12 C.F.R. \u00a7 1006.14(b)(2)(i), a debt collector is presumed to comply with the harassment prohibition in \u00a7 1006.14(b)(1) and FDCPA \u00a7 806(5) if it places calls to a particular person about a particular debt neither more than seven times in seven consecutive days, nor within seven consecutive days after having had a telephone conversation with that person about that debt. Conversely, under (b)(2)(ii), exceeding either of those frequencies creates a presumption of violation. The counts are applied per 'particular debt,' meaning each individual debt in collection, except that for student loans all debts serviced under a single account number when obtained by the collector count as one debt (\u00a7 1006.14(b)(4)).",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under 12 C.F.R. \u00a7 1006.14(b)(2)(i), a debt collector is presumed to comply with the harassment prohibition in \u00a7 1006.14(b)(1) and FDCPA \u00a7 806(5) if it places calls to a particular person about a particular debt neither more than seven times in seven consecutive days, nor within seven consecutive days after having had a telephone conversation with that person about that debt. Conversely, under (b)(2)(ii), exceeding either of those frequencies creates a presumption of violation. The counts are applied per 'particular debt,' meaning each individual debt in collection, except that for student loans all debts serviced under a single account number when obtained by the collector count as one debt (\u00a7 1006.14(b)(4)).\", \"grounded\": true, \"citation_used\": \"12 C.F.R. \\u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \\u00a7 1006.14(b)(4)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector is presumed to comply if, for a particular person and a particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For this purpose, a \u201cparticular debt\u201d generally means each debt in collection, with a special rule grouping certain student loan debts serviced under a single account number.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii), (b)(4)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A debt collector is presumed to comply if, for a particular person and a particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For this purpose, a \u201cparticular debt\u201d generally means each debt in collection, with a special rule grouping certain student loan debts serviced under a single account number.\",\"grounded\":true,\"citation_used\":\"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii), (b)(4)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector is presumed to have violated the law if, in connection with a particular debt, they call a person more than seven times within seven consecutive days. A violation is also presumed if a collector calls within seven consecutive days after having a telephone conversation with that person about the debt. This rule applies to each of a consumer's individual debts, except for student loans, where all loans under a single account number are treated as one debt.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7\u00a7 1006.14(b)(2)(ii), (b)(4)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A debt collector is presumed to have violated the law if, in connection with a particular debt, they call a person more than seven times within seven consecutive days. A violation is also presumed if a collector calls within seven consecutive days after having a telephone conversation with that person about the debt. This rule applies to each of a consumer's individual debts, except for student loans, where all loans under a single account number are treated as one debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"12 C.F.R. \u00a7\u00a7 1006.14(b)(2)(ii), (b)(4)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three identify the same 7-calls-in-7-days threshold and the 7-day post-conversation call restriction, applied per particular debt, with the student loan single-account-number grouping exception. Analysis 3 frames only the presumption of violation while 1 and 2 also state the mirror-image presumption of compliance, but this is the same rule stated from opposite sides rather than a substantive difference.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three identify the same 7-calls-in-7-days threshold and the 7-day post-conversation call restriction, applied per particular debt, with the student loan single-account-number grouping exception. Analysis 3 frames only the presumption of violation while 1 and 2 also state the mirror-image presumption of compliance, but this is the same rule stated from opposite sides rather than a substantive difference.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "2",
+            "7"
+          ],
+          [
+            "7"
+          ],
+          [
+            "1",
+            "7"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 75544,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0
+            }
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 75544,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-26T20:14:43Z",
+      "ended": "2026-08-26T20:15:36Z",
+      "input_sha256": "dd52474df3686eebbd33e8b29b0acce6a39b64ef11f3fab86bf465afce36e6dd",
+      "node_sha256": "a1cc9cf2b0ceada947cc8947cd4afa6474354f8339eb10ae66695371af098b29",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 337(a), an action upon any contract, obligation, or liability founded upon a written instrument must be brought within four years (subject to the exception in Section 336a, and a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale sale). Subsection (d) adds that once that four-year period has run, a person may not file suit or start an arbitration or other legal proceeding to collect the debt. The only way the period may be extended is pursuant to Section 360.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 337(a), an action upon any contract, obligation, or liability founded upon a written instrument must be brought within four years (subject to the exception in Section 336a, and a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale sale). Subsection (d) adds that once that four-year period has run, a person may not file suit or start an arbitration or other legal proceeding to collect the debt. The only way the period may be extended is pursuant to Section 360.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring a lawsuit, arbitration, or other legal proceeding to collect the debt, and the period may be extended only under Section 360.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring a lawsuit, arbitration, or other legal proceeding to collect the debt, and the period may be extended only under Section 360.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 337(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "In California, the statute of limitations for an action upon a contract founded upon a written instrument is four years. There is a specific exception for actions for a money judgment after a power of sale on real property, which must be brought within three months. Once the applicable time period has run, a person is barred from bringing a suit or other legal proceeding to collect the debt.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"In California, the statute of limitations for an action upon a contract founded upon a written instrument is four years. There is a specific exception for actions for a money judgment after a power of sale on real property, which must be brought within three months. Once the applicable time period has run, a person is barred from bringing a suit or other legal proceeding to collect the debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a), (d)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "All three agree on the core rule: a four-year limitations period for actions on a written contract, with suit/arbitration barred once it runs. However, Analysis 2 omits the three-month exception for money judgments after a power-of-sale foreclosure (stated by Analyses 1 and 3), and Analysis 3 omits that the period may be extended only under Section 360 (stated by Analyses 1 and 2).",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": false, \"agreement_notes\": \"All three agree on the core rule: a four-year limitations period for actions on a written contract, with suit/arbitration barred once it runs. However, Analysis 2 omits the three-month exception for money judgments after a power-of-sale foreclosure (stated by Analyses 1 and 3), and Analysis 3 omits that the period may be extended only under Section 360 (stated by Analyses 1 and 2).\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "3",
+            "4"
+          ],
+          [
+            "4"
+          ],
+          [
+            "3",
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 403,
+              "content_length": 5999,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.0
+            }
+          },
+          {
+            "url": "https://law.justia.com/codes/california/code-ccp/part-2/title-2/chapter-3/section-337/",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 403,
+              "content_length": 5999,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.0
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    }
+  ]
+}
