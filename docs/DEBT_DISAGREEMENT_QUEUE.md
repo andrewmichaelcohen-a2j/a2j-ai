@@ -11,8 +11,38 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 > not and cannot decide which side is legally correct. Fill in Resolution and Resolved-by, then move to Resolved.
 
 ---
-
 ## Open
+
+*(No open entries below this line — see "Archived" section. New entries from the next live run land here.)*
+
+---
+
+## Archived -- Pre-Fix Diagnostic Runs (archived 2026-08-28)
+
+**Why archived, not resolved:** every entry below comes from live corroboration runs (`run_20260826T171949Z` through
+`run_20260826T202441Z`, all 2026-08-26 evening) that predate this project's Round 12-15 citation and tooling fixes:
+the User-Agent fix and eCFR/FindLaw/Justia normalization work (Round 11), the CA re-pin to leginfo.legislature.ca.gov
+and eCFR ellipsis fix (Round 12), the TX re-pin to statutes.capitol.texas.gov + Craddock re-pin to CourtListener plus
+retry-on-flake logic (Round 13), and the FDCPA (b)(4) diagnostic pinpoint (Round 14). Nearly every CITATION-CHECK-FAILED
+entry below traces to a since-fixed cause: a 403 from a bot-blocking secondary aggregator (FindLaw/Justia -- now re-pinned
+to primary/Tier-A sources for CA and TX; AZ/UT/NY re-pins are still open work), a stale User-Agent, or an eCFR
+normalization edge case. Nearly every MODEL-DISAGREEMENT entry below rests solely on the numeric/citation-fingerprint
+heuristic, which Round 11 demoted to a secondary, non-gating diagnostic in favor of LLM-judged semantic agreement --
+so a fingerprint mismatch alone, on its own, is no longer this project's disagreement signal.
+
+None of this is an attorney-level resolution and none of these entries are being asserted correct -- they are being
+moved out of the Open lane because the pipeline conditions that produced them no longer reflect the current rule
+files or runner. Per the append-only discipline, nothing is deleted: every entry, its per-model derivations, and its
+blank Resolution/Resolved-by/Date fields are preserved verbatim below. If the upcoming full-corpus live run reproduces
+any of the same MODEL-DISAGREEMENT findings under the current LLM-judge, or a genuine (non-pipeline) CITATION-CHECK-FAILED
+persists after the AZ/UT/NY re-pins land, it will re-file as a fresh entry in the Open section above, on its own
+merits, under current tooling.
+
+**Archived by:** Claude (Cowork) -- **Date:** 2026-08-28 -- per Andy's 2026-08-26 evening directive item 3
+("confirmation that the disagreement queue is clean of runs 1-2 artifacts so the new flags land in an empty lane").
+
+---
+
 
 ### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] CITATION-CHECK-FAILED -- run run_20260826T202441Z, 2026-08-26T20:25:47Z
 

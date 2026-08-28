@@ -4,6 +4,20 @@
 
 ---
 
+## 2026-08-28, round 16 (Direction item 3 prep: archive stale disagreement-queue entries before the full 18-node live run)
+
+**Context:** Andy's directive item 3 required confirming the disagreement queue is "clean of runs 1-2 artifacts so the new flags land in an empty lane" before delivering the full-run command. Rather than assume this, Andy copied his actual current `docs/DEBT_DISAGREEMENT_QUEUE.md` out for inspection. It was not clean: 68 open entries across every node in the demo corpus, all filed during live runs on 2026-08-26 evening (`run_20260826T174558Z` through `run_20260826T202441Z`), all with blank Resolution fields.
+
+**Finding:** every one of those 68 entries predates this session's Round 12-15 fixes. The CITATION-CHECK-FAILED entries trace almost entirely to causes already fixed: a stale User-Agent (Round 11), FindLaw/Justia bot-blocking now bypassed by the CA re-pin to leginfo.legislature.ca.gov and the TX re-pin to statutes.capitol.texas.gov + CourtListener (Rounds 12-13), and the eCFR ellipsis mismatch (Round 12). Nearly every MODEL-DISAGREEMENT entry rests solely on the numeric/citation-fingerprint heuristic, which Round 11 demoted to a secondary, non-gating diagnostic in favor of LLM-judged semantic agreement -- so a bare fingerprint mismatch is no longer this project's disagreement signal at all. None of these are genuine attorney-level legal disagreements; they are stale pipeline artifacts from before the fixes that generated them were even known.
+
+**What changed:** `docs/DEBT_DISAGREEMENT_QUEUE.md` restructured -- all 68 entries plus the existing Round-9 purge note moved from "## Open" into a new "## Archived -- Pre-Fix Diagnostic Runs (archived 2026-08-28)" section, with a head-note explaining why each category is stale and what would have to be true for an entry to legitimately re-file. Per the append-only discipline, nothing was deleted or edited: every entry, its three per-model derivations, and its blank Resolution/Resolved-by/Date fields are preserved byte-for-byte under the archive heading. The "## Open" section itself is now empty and ready for the upcoming full-corpus run's fresh flags.
+
+**Note on delivery:** this patch assumes Andy has already committed his local live-run backlog (the queue entries the runner appended locally but never committed) as its own commit first -- see the apply instructions delivered with this patch. Building the patch this way (against the post-backlog-commit state) avoids a merge conflict that a naive patch-from-round-15 would hit.
+
+**Not done, and why:** did not resolve, adjudicate, or characterize any entry as correct/incorrect -- that determination belongs to Andy or certifying counsel. Did not touch AZ/UT/NY citations (still pinned to FindLaw/secondary sources per the round-9 tier audit; a live run will still likely re-flag those CITATION-CHECK-FAILED for real, unfixed reasons, and that is expected and correct).
+
+**Verification:** diffed the archived file against Andy's pre-archive copy -- confirmed the only lines added are the archive section header and explanatory note; every one of the 68 entries and the purge note reproduce character-for-character. Verified end-to-end by reproducing Andy's exact local sequence (fresh clone + Round 10-15 chain + a backlog commit matching his committed queue file byte-for-byte) and confirming this patch applies clean on top with no conflict.
+
 ## 2026-08-28, round 15 (Direction item 5: claim-language card + demo quickstart for the consumer-debt-validation skill)
 
 **Context:** Andy's directive item 5 asked for skill packaging and scenario readiness as a parallel GREEN lane. Surveying the repo first (not duplicating existing work): the `consumer-debt-validation` skill, the 5 concept-demo scenarios (`scripts/corroboration/scenarios.json`), tier-label surfacing, and the mandatory framing sentence were all already built (2026-08-26, tasks in that day's session). What was missing, specifically: a standalone one-page claim-language reference and a short "how Andy runs this live" note -- both explicitly requested by name in the directive.
