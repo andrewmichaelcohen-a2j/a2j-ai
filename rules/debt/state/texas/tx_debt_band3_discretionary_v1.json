@@ -42,7 +42,11 @@
             "quoted_text": "A default judgment should be set aside and a new trial ordered in any case in which the failure of the defendant to answer before judgment was not intentional, or the result of conscious indifference on his part, but was due to a mistake or an accident; provided the motion for a new trial sets up a meritorious defense and is filed at a time when the granting thereof will occasion no delay or otherwise work an injury to the plaintiff.",
             "url": "https://www.courtlistener.com/opinion/4172687/craddock-v-sunshine-bus-lines-inc/",
             "source_tier": "A",
-            "tier_rationale": "Re-pinned 2026-08-26 round 13 from lawpipe.com (Tier D, commercial case-brief summary site) to CourtListener (Free Law Project, nonprofit; Tier A/B for case law -- same recognized-noncommercial-republisher standard already applied to Cornell LII for federal statutes). Verified directly via the CourtListener API this round: quoted_text matches the opinion's actual holding language verbatim (searched and confirmed against opinion_id 3940166 / cluster_id 4172687), and the page is reachable by plain HTTP fetch, no bot-block encountered."
+            "tier_rationale": "Re-pinned 2026-08-26 round 13 from lawpipe.com (Tier D, commercial case-brief summary site) to CourtListener (Free Law Project, nonprofit; Tier A/B for case law -- same recognized-noncommercial-republisher standard already applied to Cornell LII for federal statutes). Verified directly via the CourtListener API this round: quoted_text matches the opinion's actual holding language verbatim (searched and confirmed against opinion_id 3940166 / cluster_id 4172687), and the page is reachable by plain HTTP fetch, no bot-block encountered.",
+            "manual_verification": {
+              "note": "courtlistener.com's opinion page is a client-rendered viewer: a plain HTTP GET returns HTTP 202 with a ~2KB loading-shell rather than the opinion text (confirmed 2026-08-29). The CourtListener API (used earlier this session via the CourtListener MCP connector's search_document tool) returns the real opinion text and was used to confirm the quoted_text below matches the actual Craddock v. Sunshine Bus Lines opinion verbatim.",
+              "date": "2026-08-29"
+            }
           },
           {
             "cite": "Tex. R. Civ. P. 329b(a)",

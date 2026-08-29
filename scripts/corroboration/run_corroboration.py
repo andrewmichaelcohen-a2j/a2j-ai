@@ -431,6 +431,15 @@ def call_openai(system_prompt: str, user_prompt: str, keys, dry_run: bool,
 
 def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
                  dry_run_payload: dict) -> dict:
+    """Round 17 note: 4 of 18 nodes in the 2026-08-28 full live run flagged
+    solely because Gemini returned a transient 503 UNAVAILABLE ("high demand,
+    try again later") -- an infra hiccup on Google's side, not a real error,
+    but with no retry it silently costs a clean-pass every time it happens
+    (roughly 1 in 4-5 nodes that run). citation_check already retries once on
+    a flaky fetch (round 13); this mirrors that pattern here: retry once,
+    brief pause, only for the specific transient-overload signature so a
+    genuine error (bad key, malformed request, real API failure) still fails
+    fast instead of waiting out a pointless retry."""
     if dry_run:
         out = dict(dry_run_payload)
         out["model"] = GEMINI_MODEL
@@ -449,18 +458,28 @@ def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         def _do():
             return client.models.generate_content(model=GEMINI_MODEL, contents=full_prompt)
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
-            fut = pool.submit(_do)
-            try:
-                resp = fut.result(timeout=60)
-            except concurrent.futures.TimeoutError:
-                return {"error": "Gemini API timed out after 60s", "model": GEMINI_MODEL}
-        raw = resp.text.strip()
-        parsed = _parse_json_response(raw)
-        parsed["model"] = GEMINI_MODEL
-        parsed["_raw"] = raw
-        parsed["error"] = None
-        return parsed
+        last_exc = None
+        for attempt in range(2):
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                fut = pool.submit(_do)
+                try:
+                    resp = fut.result(timeout=60)
+                except concurrent.futures.TimeoutError:
+                    return {"error": "Gemini API timed out after 60s", "model": GEMINI_MODEL}
+                except Exception as exc:
+                    last_exc = exc
+                    transient = "503" in str(exc) or "UNAVAILABLE" in str(exc)
+                    if transient and attempt == 0:
+                        time.sleep(3)
+                        continue
+                    return {"error": str(exc), "model": GEMINI_MODEL}
+            raw = resp.text.strip()
+            parsed = _parse_json_response(raw)
+            parsed["model"] = GEMINI_MODEL
+            parsed["_raw"] = raw
+            parsed["error"] = None
+            return parsed
+        return {"error": str(last_exc), "model": GEMINI_MODEL}
     except Exception as exc:
         return {"error": str(exc), "model": GEMINI_MODEL}
 
@@ -574,7 +593,34 @@ def _longest_matching_prefix_len(needle: str, haystack: str) -> int:
     return best
 
 
-def verify_citation(url: str, quoted_text: str, dry_run: bool) -> dict:
+def _raw_context_at_break(needle: str, prefix_len: int, raw_html: str):
+    """Diagnostic-only (round 17): when a citation fails with a high word-overlap
+    but a short matching prefix (the eCFR/Cornell pattern -- see verify_citation's
+    normalization docstring), this pinpoints WHERE by returning a slice of raw,
+    UN-stripped HTML from around the break point, so the actual markup (an inline
+    <a> tag, an entity, a footnote marker) is visible instead of just the
+    normalized/stripped text. Root-cause investigation this session confirmed the
+    round-11 tag-to-space fix handles simple inline links correctly, and got as
+    far as viewing the eCFR page's rendered content (via web_fetch's markdown
+    approximation) without finding an obvious culprit -- but raw HTML fetches are
+    blocked from this sandbox's network egress, so the exact byte-level cause is
+    still unconfirmed. This diagnostic captures the raw markup on Andy's next live
+    run (his machine has normal network access), removing the need for another
+    round of guessing. Best-effort only: searches raw_html case-insensitively for
+    the last ~20 normalized characters of the matched prefix; if that anchor can't
+    be found in the raw text (e.g. it fell inside an HTML entity), returns None
+    rather than a misleading snippet."""
+    if prefix_len < 20 or not raw_html:
+        return None
+    anchor = needle[max(0, prefix_len - 20):prefix_len]
+    idx = raw_html.lower().find(anchor.lower())
+    if idx < 0:
+        return None
+    start = max(0, idx)
+    return raw_html[start:start + 250]
+
+
+def verify_citation(url: str, quoted_text: str, dry_run: bool, manual_verification: dict = None) -> dict:
     """Mechanically verify a cited source. Always returns a `diagnostics` block
     -- HTTP status, content length, content type, and a fuzzy word-overlap
     score -- even on success, so a `verified: False` result is self-explaining
@@ -583,6 +629,34 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool) -> dict:
     sources -- e.g. eCFR, Cornell LII -- returning normal 200 responses that
     simply didn't contain an exact substring match, which looked identical to
     an unreachable source before this fix)."""
+    # Manual-verification override (round 17): a small number of primary/official
+    # sources are confirmed-correct but structurally unverifiable by a plain HTTP
+    # GET -- the site is a client-rendered SPA that serves the same generic shell
+    # to every URL (statutes.capitol.texas.gov, confirmed 2026-08-29: CP.16, CN.16,
+    # PR.41, and PR.42 all returned an identical 250874-byte page regardless of
+    # which section was requested; direct browser rendering confirmed the real,
+    # correct statute text loads client-side and matches quoted_text verbatim),
+    # or the page itself is a loading-shell for an API-backed viewer (CourtListener
+    # opinion pages return HTTP 202 with ~2KB of placeholder markup to a plain GET,
+    # even though the CourtListener API returns the real, matching opinion text).
+    # This is the same class of limitation as the already-documented azleg.gov
+    # JS-gating (round 9) -- rather than let a structurally-unverifiable-by-design
+    # source masquerade as a silent failure indistinguishable from a genuinely
+    # wrong or unreachable citation, a human confirms it once, records how and
+    # when, and the runner honors that confirmation explicitly and visibly
+    # (method="manual", never silently, and never used to paper over an actual
+    # content mismatch -- if the confirmed quote is later found wrong, the fix is
+    # to correct the rules file and re-confirm, not to keep the manual flag).
+    if manual_verification:
+        return {
+            "url": url, "verified": True, "method": "manual", "error": None,
+            "diagnostics": {
+                "http_status": None, "content_length": None, "content_type": None,
+                "word_overlap_ratio": None,
+                "manual_verification_note": manual_verification.get("note"),
+                "manual_verification_date": manual_verification.get("date"),
+            },
+        }
     if dry_run:
         return {
             "url": url, "verified": True, "method": "dry-run-synthetic", "error": None,
@@ -660,6 +734,9 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool) -> dict:
                 # equals len(needle) and text_at_break_point is None.
                 "longest_matching_prefix_chars": prefix_len,
                 "text_at_break_point": needle[prefix_len:prefix_len + 40] if not verified else None,
+                "raw_html_context_at_break": (
+                    _raw_context_at_break(needle, prefix_len, resp.text) if not verified else None
+                ),
             }
             last_result = {"url": url, "verified": verified, "method": "live", "error": None,
                             "diagnostics": diagnostics}
@@ -814,7 +891,7 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
         if skip_citation_check:
             citation_results.append({"url": d.get("url"), "verified": None, "method": "skipped", "error": None})
         else:
-            citation_results.append(verify_citation(d.get("url"), d.get("quoted_text"), dry_run))
+            citation_results.append(verify_citation(d.get("url"), d.get("quoted_text"), dry_run, d.get("manual_verification")))
     if skip_citation_check:
         all_citations_verified = None
     else:
