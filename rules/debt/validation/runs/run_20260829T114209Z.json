@@ -1,0 +1,413 @@
+{
+  "run_id": "run_20260829T114209Z",
+  "mode": "live",
+  "started": "2026-08-29T11:42:09Z",
+  "ended": "2026-08-29T11:45:10Z",
+  "models": {
+    "anthropic": "claude-opus-5",
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "demo_corpus_only": false,
+  "budget_cap_usd": 15.0,
+  "approx_cost_per_node_usd_estimate": 0.45,
+  "n_queued": 3,
+  "n_completed": 3,
+  "n_clean_pass": 1,
+  "n_flagged": 2,
+  "demo_gate_metrics": {
+    "grounded_agreement_rate": {
+      "value_percent": 33.33333333333333,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 1,
+      "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all citations live-verified AND no adversarial gap found (numeric fingerprint is a secondary diagnostic only as of 2026-08-26 round 3, not part of this basis)"
+    },
+    "scenario_pass_rate": {
+      "value_percent": 0.0,
+      "n_scenarios": 5,
+      "n_passing": 0,
+      "scenarios": [
+        {
+          "scenario_id": "tx-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "failing_deps": [
+            "TX-SOL-CONSUMER-DEBT"
+          ]
+        },
+        {
+          "scenario_id": "ca-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "pre-suit-validation-rights",
+          "passed": false,
+          "depends_on_node_ids": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "missing_from_this_run": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "garnishment-scenario",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "missing_from_this_run": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "band3-refusal-boundary",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ]
+        }
+      ],
+      "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run"
+    },
+    "internal_gate_met": false,
+    "gate_threshold_percent": 90.0,
+    "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an internal readiness gate computed by this script, not itself a claim to publish -- see spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing."
+  },
+  "node_results": [
+    {
+      "node_id": "CA-VEHICLE-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-29T11:42:09Z",
+      "ended": "2026-08-29T11:43:05Z",
+      "input_sha256": "b21c85e9fd2075a7912a12509fffdfe70f3c5f815d4d9d8b4b79467fab81d569",
+      "node_sha256": "f2a2416931fd2c13eebcec8895f7f92d571b16504c777c89414b920aca5c4351",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 704.010(a), a judgment debtor may exempt $7,500 in any combination of aggregate equity in motor vehicles, proceeds of an execution sale of a motor vehicle, and proceeds of insurance or other indemnification for a vehicle's loss, damage, or destruction. Subdivision (d) adds that if the debtor owns only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is automatically exempt without the debtor having to file a claim, with the levying officer permitted to rely on Department of Motor Vehicles records to verify single-vehicle ownership. In that single-vehicle situation, the subdivision (a) exemption is not additionally available.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.010(a), (d)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 704.010(a), a judgment debtor may exempt $7,500 in any combination of aggregate equity in motor vehicles, proceeds of an execution sale of a motor vehicle, and proceeds of insurance or other indemnification for a vehicle's loss, damage, or destruction. Subdivision (d) adds that if the debtor owns only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is automatically exempt without the debtor having to file a claim, with the levying officer permitted to rely on Department of Motor Vehicles records to verify single-vehicle ownership. In that single-vehicle situation, the subdivision (a) exemption is not additionally available.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \\u00a7 704.010(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "California exempts up to $7,500 in any combination of aggregate equity in motor vehicles, proceeds from an execution sale of a motor vehicle, and insurance or indemnification proceeds for loss, damage, or destruction of a motor vehicle. If the judgment debtor has only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is exempt without making a claim, and the general subdivision (a) exemption is not available in that situation.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.010(a), (d)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"California exempts up to $7,500 in any combination of aggregate equity in motor vehicles, proceeds from an execution sale of a motor vehicle, and insurance or indemnification proceeds for loss, damage, or destruction of a motor vehicle. If the judgment debtor has only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is exempt without making a claim, and the general subdivision (a) exemption is not available in that situation.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 704.010(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Under California law, a person's aggregate equity in motor vehicles is exempt from creditor levy in the amount of seven thousand five hundred dollars ($7,500). This exemption also applies to the proceeds of an execution sale or insurance payments for the vehicle. If a debtor has only one motor vehicle and it is sold at an execution sale, the proceeds are automatically exempt up to $7,500, but the general exemption is not available in that specific case.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.010(a), (d)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"Under California law, a person's aggregate equity in motor vehicles is exempt from creditor levy in the amount of seven thousand five hundred dollars ($7,500). This exemption also applies to the proceeds of an execution sale or insurance payments for the vehicle. If a debtor has only one motor vehicle and it is sold at an execution sale, the proceeds are automatically exempt up to $7,500, but the general exemption is not available in that specific case.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 704.010(a), (d)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same $7,500 California motor vehicle exemption covering aggregate equity, execution sale proceeds, and insurance/indemnification proceeds, and all three note that when the debtor owns only one vehicle sold at execution sale, $7,500 of proceeds is automatically exempt without a claim while the general subdivision (a) exemption is unavailable. Analysis 1 adds a minor detail (levying officer may rely on DMV records) omitted by the others, which does not change the core rule.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same $7,500 California motor vehicle exemption covering aggregate equity, execution sale proceeds, and insurance/indemnification proceeds, and all three note that when the debtor owns only one vehicle sold at execution sale, $7,500 of proceeds is automatically exempt without a claim while the general subdivision (a) exemption is unavailable. Analysis 1 adds a minor detail (levying officer may rely on DMV records) omitted by the others, which does not change the core rule.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "$7500",
+            "1"
+          ],
+          [
+            "$7500",
+            "1"
+          ],
+          [
+            "$7500",
+            "1",
+            "105",
+            "7"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.010.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 163610,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null
+            }
+          }
+        ],
+        "all_verified": true
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"The debtor's only car is totaled in a collision and the insurer pays $9,000 in indemnification proceeds, which the debtor deposits and leaves in a bank account. Six months later a judgment creditor levies on the account, and the debtor claims $7,500 of the deposit as ex",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"The debtor's only car is totaled in a collision and the insurer pays $9,000 in indemnification proceeds, which the debtor deposits and leaves in a bank account. Six months later a judgment creditor levies on the account, and the debtor claims $7,500 of the deposit as exempt vehicle proceeds.\", \"exposes_gap\": true, \"gap_description\": \"The rule and checklist ignore the temporal limit on proceeds: CCP \\u00a7 704.010(b) exempts execution-sale and insurance/indemnification proceeds only for",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY",
+      "file": "rules/debt/state/texas/tx_debt_band3_discretionary_v1.json",
+      "started": "2026-08-29T11:43:05Z",
+      "ended": "2026-08-29T11:44:18Z",
+      "input_sha256": "eb0d0d9f4d6ad48c9f5665eec73dd78bd16d58d5afa5071b6bd2e105aa72078e",
+      "node_sha256": "3514a25598846477480c3a25f6543c5d276a80dc4f5b693139289f180d720ccc",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Craddock, a default judgment should be set aside and a new trial granted when three things are shown: (1) the defendant's failure to answer before judgment was not intentional or the result of conscious indifference, but was due to mistake or accident; (2) the motion for new trial sets up a meritorious defense; and (3) it is filed at a time when granting it will cause no delay or other injury to the plaintiff. The rules add hard timing constraints: the motion must be filed before or within thirty days after the judgment is signed, and if it is not decided by written order within seventy-five days after the judgment was signed, it is overruled by operation of law. So the outcome turns on a fact-bound, multi-factor weighing of the defendant's excuse, the strength of the defense, and prejudice to the plaintiff, but only if the deadlines are met.",
+            "grounded": true,
+            "citation_used": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939); Tex. R. Civ. P. 329b(a), (c)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Craddock, a default judgment should be set aside and a new trial granted when three things are shown: (1) the defendant's failure to answer before judgment was not intentional or the result of conscious indifference, but was due to mistake or accident; (2) the motion for new trial sets up a meritorious defense; and (3) it is filed at a time when granting it will cause no delay or other injury to the plaintiff. The rules add hard timing constraints: the motion must be filed before or within thirty days after the judgment is signed, and if it is not decided by written order within seventy-five days after the judgment was signed, it is overruled by operation of law. So the outcome turns on a fact-bound, multi-factor weighing of the defendant's excuse, the strength of the defense, and prejudice to the plaintiff, but only if the deadlines are met.\", \"grounded\": true, \"citation_used\": \"Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939); Tex. R. Civ. P. 329b(a), (c)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Under the quoted rule, a Texas default judgment should be set aside and a new trial ordered when the defendant\u2019s failure to answer was not intentional or due to conscious indifference, but resulted from mistake or accident; the motion sets up a meritorious defense; and granting it will not delay or otherwise injure the plaintiff. The motion for new trial must be filed before or within 30 days after the judgment is signed, and if it is not determined by signed written order within 75 days after judgment, it is overruled by operation of law.",
+            "grounded": true,
+            "citation_used": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939); Tex. R. Civ. P. 329b(a), (c)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"Under the quoted rule, a Texas default judgment should be set aside and a new trial ordered when the defendant\u2019s failure to answer was not intentional or due to conscious indifference, but resulted from mistake or accident; the motion sets up a meritorious defense; and granting it will not delay or otherwise injure the plaintiff. The motion for new trial must be filed before or within 30 days after the judgment is signed, and if it is not determined by signed written order within 75 days after judgment, it is overruled by operation of law.\",\"grounded\":true,\"citation_used\":\"Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939); Tex. R. Civ. P. 329b(a), (c)\"}",
+            "error": null
+          },
+          {
+            "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "all_grounded": false,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "Skipped -- not all three models returned a grounded, error-free result.",
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null,
+          "_skipped": true
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "2",
+            "3",
+            "30",
+            "75"
+          ],
+          [
+            "30",
+            "75"
+          ],
+          []
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.courtlistener.com/opinion/4172687/craddock-v-sunshine-bus-lines-inc/",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 202,
+              "content_length": 2006,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.176,
+              "retry_attempt": 2,
+              "longest_matching_prefix_chars": 2,
+              "text_at_break_point": "default judgment should be set aside and"
+            }
+          },
+          {
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 44080,
+              "content_type": "text/html",
+              "word_overlap_ratio": 0.941,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null
+            }
+          },
+          {
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 44080,
+              "content_type": "text/html",
+              "word_overlap_ratio": 0.933,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "TX-SOL-CONSUMER-DEBT",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-29T11:44:18Z",
+      "ended": "2026-08-29T11:45:10Z",
+      "input_sha256": "51692b29353e593680f3fa9017e7428fc5a04a27417d8a4041c12b3f5f4bb80e",
+      "node_sha256": "b4a6df534693574523fe97db99d14c8e140cee910bf61d85fa9a0848068973ce",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)(3), a suit on a 'debt' must be filed no later than four years after the day the cause of action accrues. So a collection lawsuit on a consumer debt is subject to a four-year limitations period running from accrual. The provision sets the same four-year deadline for specific performance of real-property conveyance contracts, penal-clause bond claims, fraud, and breach of fiduciary duty, but it does not itself define when a debt claim accrues.",
+            "grounded": true,
+            "citation_used": "Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Tex. Civ. Prac. & Rem. Code \\u00a7 16.004(a)(3), a suit on a 'debt' must be filed no later than four years after the day the cause of action accrues. So a collection lawsuit on a consumer debt is subject to a four-year limitations period running from accrual. The provision sets the same four-year deadline for specific performance of real-property conveyance contracts, penal-clause bond claims, fraud, and breach of fiduciary duty, but it does not itself define when a debt claim accrues.\", \"grounded\": true, \"citation_used\": \"Tex. Civ. Prac. & Rem. Code \\u00a7 16.004(a)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A lawsuit for debt must be brought no later than four years after the day the cause of action accrues. The provided text does not separately define consumer debt, but it expressly covers actions for \u201cdebt.\u201d",
+            "grounded": true,
+            "citation_used": "Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A lawsuit for debt must be brought no later than four years after the day the cause of action accrues. The provided text does not separately define consumer debt, but it expressly covers actions for \u201cdebt.\u201d\",\"grounded\":true,\"citation_used\":\"Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Under the provided Texas statute, a lawsuit must be brought on a debt no later than four years after the day the cause of action accrues. The text explicitly lists \"debt\" as one of the actions subject to this four-year limitations period. This four-year timeframe would therefore apply to a lawsuit for debt collection.",
+            "grounded": true,
+            "citation_used": "Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"Under the provided Texas statute, a lawsuit must be brought on a debt no later than four years after the day the cause of action accrues. The text explicitly lists \\\"debt\\\" as one of the actions subject to this four-year limitations period. This four-year timeframe would therefore apply to a lawsuit for debt collection.\",\n  \"grounded\": true,\n  \"citation_used\": \"Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three conclude that a suit on a debt (including consumer debt collection) must be brought within four years of accrual under Tex. Civ. Prac. & Rem. Code \u00a7 16.004. Differences are only in detail\u2014Analysis 1 adds the statutory citation, the other covered causes of action, and notes the statute doesn't define accrual\u2014but no substantive rule conflicts.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three conclude that a suit on a debt (including consumer debt collection) must be brought within four years of accrual under Tex. Civ. Prac. & Rem. Code \\u00a7 16.004. Differences are only in detail\\u2014Analysis 1 adds the statutory citation, the other covered causes of action, and notes the statute doesn't define accrual\\u2014but no substantive rule conflicts.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "4"
+          ],
+          [
+            "4"
+          ],
+          [
+            "1",
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.16.htm",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 250874,
+              "content_type": "text/html",
+              "word_overlap_ratio": 0.053,
+              "retry_attempt": 2,
+              "longest_matching_prefix_chars": 1,
+              "text_at_break_point": " person must bring suit on the following"
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    }
+  ]
+}

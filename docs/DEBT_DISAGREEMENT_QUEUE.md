@@ -13,6 +13,57 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 ---
 ## Open
 
+### [TX-SOL-CONSUMER-DEBT] CITATION-CHECK-FAILED -- run run_20260829T114209Z, 2026-08-29T11:45:10Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 1 cited source(s) could not be mechanically verified live: [{'url': 'https://statutes.capitol.texas.gov/Docs/CP/htm/CP.16.htm', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 250874, 'content_type': 'text/html', 'word_overlap_ratio': 0.053, 'retry_attempt': 2, 'longest_matching_prefix_chars': 1, 'text_at_break_point': ' person must bring suit on the following'}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Tex. Civ. Prac. & Rem. Code § 16.004(a)(3), a suit on a 'debt' must be filed no later than four years after the day the cause of action accrues. So a collection lawsuit on a consumer debt is subject to a four-year limitations period running from accrual. The provision sets the same four-year deadline for specific performance of real-property conveyance contracts, penal-clause bond claims, fraud, and breach of fiduciary duty, but it does not itself define when a debt claim accrues."
+  - gpt-5.5: grounded=True, error=None, summary='A lawsuit for debt must be brought no later than four years after the day the cause of action accrues. The provided text does not separately define consumer debt, but it expressly covers actions for “debt.”'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Under the provided Texas statute, a lawsuit must be brought on a debt no later than four years after the day the cause of action accrues. The text explicitly lists "debt" as one of the actions subject to this four-year limitations period. This four-year timeframe would therefore apply to a lawsuit for debt collection.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY] CITATION-CHECK-FAILED -- run run_20260829T114209Z, 2026-08-29T11:44:18Z
+
+**File:** `rules/debt/state/texas/tx_debt_band3_discretionary_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 3 cited source(s) could not be mechanically verified live: [{'url': 'https://www.courtlistener.com/opinion/4172687/craddock-v-sunshine-bus-lines-inc/', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 202, 'content_length': 2006, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 0.176, 'retry_attempt': 2, 'longest_matching_prefix_chars': 2, 'text_at_break_point': 'default judgment should be set aside and'}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Craddock, a default judgment should be set aside and a new trial granted when three things are shown: (1) the defendant's failure to answer before judgment was not intentional or the result of conscious indifference, but was due to mistake or accident; (2) the motion for new trial sets up a meritorious defense; and (3) it is filed at a time when granting it will cause no delay or other injury to the plaintiff. The rules add hard timing constraints: the motion must be filed before or within thirty days after the judgment is signed, and if it is not decided by written order within seventy-five days after the judgment was signed, it is overruled by operation of law. So the outcome turns on a fact-bound, multi-factor weighing of the defendant's excuse, the strength of the defense, and prejudice to the plaintiff, but only if the deadlines are met."
+  - gpt-5.5: grounded=True, error=None, summary='Under the quoted rule, a Texas default judgment should be set aside and a new trial ordered when the defendant’s failure to answer was not intentional or due to conscious indifference, but resulted from mistake or accident; the motion sets up a meritorious defense; and granting it will not delay or otherwise injure the plaintiff. The motion for new trial must be filed before or within 30 days after the judgment is signed, and if it is not determined by signed written order within 75 days after judgment, it is overruled by operation of law.'
+  - gemini-2.5-pro: grounded=None, error=503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}, summary=None
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY] MODEL-DISAGREEMENT -- run run_20260829T114209Z, 2026-08-29T11:44:18Z
+
+**File:** `rules/debt/state/texas/tx_debt_band3_discretionary_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=['1', '2', '3', '30', '75'], OpenAI=['30', '75'], Gemini=[] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Craddock, a default judgment should be set aside and a new trial granted when three things are shown: (1) the defendant's failure to answer before judgment was not intentional or the result of conscious indifference, but was due to mistake or accident; (2) the motion for new trial sets up a meritorious defense; and (3) it is filed at a time when granting it will cause no delay or other injury to the plaintiff. The rules add hard timing constraints: the motion must be filed before or within thirty days after the judgment is signed, and if it is not decided by written order within seventy-five days after the judgment was signed, it is overruled by operation of law. So the outcome turns on a fact-bound, multi-factor weighing of the defendant's excuse, the strength of the defense, and prejudice to the plaintiff, but only if the deadlines are met."
+  - gpt-5.5: grounded=True, error=None, summary='Under the quoted rule, a Texas default judgment should be set aside and a new trial ordered when the defendant’s failure to answer was not intentional or due to conscious indifference, but resulted from mistake or accident; the motion sets up a meritorious defense; and granting it will not delay or otherwise injure the plaintiff. The motion for new trial must be filed before or within 30 days after the judgment is signed, and if it is not determined by signed written order within 75 days after judgment, it is overruled by operation of law.'
+  - gemini-2.5-pro: grounded=None, error=503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}, summary=None
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE] CITATION-CHECK-FAILED -- run run_20260828T220708Z, 2026-08-28T22:26:12Z
 
 **File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
