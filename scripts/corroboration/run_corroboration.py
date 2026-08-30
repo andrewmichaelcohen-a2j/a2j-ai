@@ -916,7 +916,16 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
 
     ended = now_iso()
 
-    clean_pass = bool(semantic_agreement) and (all_citations_verified is True) and not gaps_found
+    # Round 18 (2026-08-29): per Andy's explicit directive ("proceed without a live
+    # citation verification -- that can be done later ... validating the legal rule and
+    # not focus on the byte for byte match"), a SKIPPED citation check (all_citations_verified
+    # is None) no longer blocks CLEAN-PASS -- only an actively FAILED check (False) does.
+    # This intentionally decouples "is the legal rule correctly derived and complete"
+    # (grounded derivation + semantic agreement + adversarial check -- the actual point of
+    # this pipeline) from "is a website reachable via plain HTTP GET right now" (citation
+    # liveness -- an infrastructure concern, re-triaged 2026-08-29 as the dominant source of
+    # noise across rounds 9-17: 11 of the last 13 flags traced to this, zero to legal error).
+    clean_pass = bool(semantic_agreement) and (all_citations_verified is not False) and not gaps_found
 
     # (d) file disagreements
     if not semantic_agreement:
@@ -979,6 +988,14 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
             "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. "
             "This flag is a recommendation for Andy's review, not an automatic tier change; "
             "this script never edits any rules file."
+            + (
+                " CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 "
+                "directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, "
+                "semantic-agreement, and adversarial-check evidence only, NOT citation liveness. "
+                "Citation verification is deferred, not waived; re-run without the flag (or use "
+                "manual_verification) before treating a citation as confirmed."
+                if skip_citation_check else ""
+            )
         ),
     }
 
@@ -1009,7 +1026,7 @@ def _format_disagreement_entry(run_id, node_id, file_path, kind, evidence, model
 
 # -- Scenario/demo-gate metrics ------------------------------------------------
 
-def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool):
+def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool, citation_check_skipped: bool = False):
     if not SCENARIOS_PATH.exists():
         return None
 
@@ -1047,7 +1064,18 @@ def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool):
             "value_percent": grounded_agreement_rate,
             "n_demo_corpus_nodes_this_run": n_demo,
             "n_passing": n_pass,
-            "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all citations live-verified AND no adversarial gap found (numeric fingerprint is a secondary diagnostic only as of 2026-08-26 round 3, not part of this basis)",
+            "basis": (
+                "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND no "
+                "adversarial gap found. Citation verification was SKIPPED this run (--skip-citation-check, "
+                "round 18 directive 2026-08-29 -- Andy: \"proceed without a live citation verification ... "
+                "validating the legal rule and not focus on the byte for byte match\") and is explicitly NOT "
+                "part of this basis while skipped. Numeric fingerprint remains a secondary diagnostic only "
+                "(round 3), not part of this basis either."
+                if citation_check_skipped else
+                "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all "
+                "citations live-verified AND no adversarial gap found (numeric fingerprint is a secondary "
+                "diagnostic only as of 2026-08-26 round 3, not part of this basis)"
+            ),
         },
         "scenario_pass_rate": {
             "value_percent": scenario_pass_rate,
@@ -1103,6 +1131,10 @@ def main():
     print(f"[{run_id}] {len(targets)} DRAFT node(s) queued. "
           f"Projected cost @ ${APPROX_COST_PER_NODE_USD:.2f}/node estimate: ${projected_total:.2f} "
           f"(ESTIMATE, not a guarantee -- see script header).")
+    if args.skip_citation_check:
+        print(f"[{run_id}] NOTE: citation verification SKIPPED this run (--skip-citation-check, round 18 "
+              f"directive 2026-08-29). CLEAN-PASS reflects grounded-derivation + semantic-agreement + "
+              f"adversarial-check evidence only -- NOT citation liveness. Deferred, not waived.")
     if not dry_run and projected_total > args.budget_cap:
         print(f"[{run_id}] STOPPING: projected cost ${projected_total:.2f} exceeds --budget-cap ${args.budget_cap:.2f}. "
               f"Re-run with a higher cap, --demo-corpus-only, or --nodes to scope down.")
@@ -1124,7 +1156,7 @@ def main():
         spent_estimate += APPROX_COST_PER_NODE_USD
         print(result["status"])
 
-    demo_gate = compute_demo_gate_metrics(node_results, args.demo_corpus_only)
+    demo_gate = compute_demo_gate_metrics(node_results, args.demo_corpus_only, args.skip_citation_check)
 
     summary = {
         "run_id": run_id,
@@ -1133,6 +1165,7 @@ def main():
         "ended": now_iso(),
         "models": {"anthropic": ANTHROPIC_MODEL, "openai": OPENAI_MODEL, "gemini": GEMINI_MODEL},
         "demo_corpus_only": args.demo_corpus_only,
+        "citation_check_skipped": args.skip_citation_check,
         "budget_cap_usd": args.budget_cap,
         "approx_cost_per_node_usd_estimate": APPROX_COST_PER_NODE_USD,
         "n_queued": len(targets),
@@ -1146,7 +1179,8 @@ def main():
     out_path = RUNS_DIR / f"{run_id}.json"
     out_path.write_text(json.dumps(summary, indent=2))
     print(f"\n[{run_id}] Done. {summary['n_clean_pass']}/{summary['n_completed']} clean-pass, "
-          f"{summary['n_flagged']} flagged to docs/DEBT_DISAGREEMENT_QUEUE.md.")
+          f"{summary['n_flagged']} flagged to docs/DEBT_DISAGREEMENT_QUEUE.md."
+          + (" [citation verification SKIPPED this run]" if args.skip_citation_check else ""))
     print(f"[{run_id}] Full output: {out_path.relative_to(REPO_ROOT)}")
     if demo_gate:
         gar = demo_gate["grounded_agreement_rate"]["value_percent"]

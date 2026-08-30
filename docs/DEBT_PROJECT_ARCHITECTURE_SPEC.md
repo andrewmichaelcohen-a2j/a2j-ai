@@ -300,6 +300,29 @@ approves each showing.
 
 ---
 
+**Citation-verification-deferred mode (added 2026-08-29/30, round 18 directive):** Andy directed
+the runner to decouple CLEAN-PASS from live citation verification — "proceed without a live
+citation verification - that can be done later ... validating the legal rule and not focus on
+the byte for byte match." When a run uses `--skip-citation-check`, CLEAN-PASS reflects only
+grounded derivation (3 independent models) + LLM-judged semantic agreement + adversarial
+gap-testing — it does **not** mean any citation was confirmed reachable or accurate that run.
+This is a real change to what can honestly be claimed, not just an implementation detail, so the
+framing sentence above is not valid as written for a showing built on citation-check-skipped
+results (it says "citations verified against live sources," which would be false in this mode).
+
+**Alternate framing sentence for citation-check-skipped showings, verbatim:** *"This is a
+demonstration system. Its content is machine-corroborated against cited law by three independent
+AI models judged for semantic agreement, plus adversarial gap-testing — citation-source liveness
+verification is deferred in this mode (a separate, planned check, not a waived one) — and not yet
+attorney-validated. The attorney-validation layer is designed and is what this project is building
+toward."* This sentence, not the citation-verified one above, is what may be used until citation
+verification is reinstated (as a live check or as one-time human verification cached per source —
+see `docs/DAILY_CHANGELOG.md`'s round 18 entry for the runner-level mechanics). Run JSON marks this
+mode explicitly (`citation_check_skipped: true`); any showing should confirm this field before
+choosing which framing sentence applies.
+
+---
+
 ## 9. Governance and ethics
 
 - **Information-vs-advice line under interactive use.** The eviction line's DISCLAIMER.md discipline (legal information, not legal advice; VALIDATED-only for real-person deployment) extends here, but interactivity raises the stakes — a voice demo that elicits facts and returns a tailored, cited answer sits closer to the advice line than a static rules file. The staged rollout in §6 (navigator mode first) is this project's primary practical mitigation while that line gets drawn precisely: a human intermediary in the loop for the first deployment stage, direct-consumer exposure deferred until the ethics and elicitation-testing gates clear.

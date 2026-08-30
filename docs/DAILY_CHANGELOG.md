@@ -4,6 +4,60 @@
 
 ---
 
+## 2026-08-29/30, round 18 (decouple CLEAN-PASS from citation liveness, per Andy's explicit directive)
+
+**Context:** After round 17 landed and was spot-checked, Andy authorized the full 18-node re-run
+(`--live --demo-corpus-only`, item 1 of two options offered). Early results (5 of the first 6 nodes
+flagged, a cluster of FDCPA nodes untouched by round 17) prompted Andy to ask directly whether this
+approach is productive after ~20 rounds of largely administrative/tooling failures. Reviewing the
+data honestly: of the last full run's 13 flags, 11 traced to pipeline/infrastructure noise (bot-blocking,
+stale User-Agent, JS-rendered pages, transient model 503s, a self-inflicted formatting bug) and only 2
+were genuine legal-completeness gaps -- zero were "the law is wrong." Citation-liveness checking (can a
+plain HTTP GET fetch a byte-matching page from a third-party website *right now*) has been the dominant
+source of that noise across rounds 9-17, and answers a different question than "is the legal rule
+correctly derived and complete" -- the actual point of this pipeline.
+
+**Andy's directive (verbatim):** *"we should proceed without a live citation verification - that can be
+done later. for now please proceed with the approach that we are validating the legal rule and not focus
+on the byte for byte match."*
+
+**What changed:** `scripts/corroboration/run_corroboration.py` already had a `--skip-citation-check` flag,
+but it was built for cost-free dev iteration, not for this purpose -- `clean_pass` required
+`all_citations_verified is True` unconditionally, so a *skipped* check (`all_citations_verified is None`)
+still failed every node, which is the opposite of useful here. Fixed the gating formula to
+`(all_citations_verified is not False)` -- a skipped check no longer blocks CLEAN-PASS; only an actively
+FAILED live check still does. This decouples the two questions the pipeline was conflating: legal-rule
+quality (grounded derivation + semantic agreement + adversarial check) now determines CLEAN-PASS on its
+own; citation liveness becomes a separate, deferred concern, to be reinstated later per Andy's own framing
+("that can be done later"), not abandoned.
+
+**Honesty of claims, not just code:** a skipped citation check is not the same as a verified one, so this
+round also updated every place the run output or the spec could imply otherwise: the `tier_promotion_note`
+and `demo_gate_metrics.basis` text now explicitly say citation verification was skipped when it was: the run
+prints a NOTE banner at both start and end when `--skip-citation-check` is used; the run JSON records
+`citation_check_skipped: true` at the top level; and `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` §8's
+CONCEPT-DEMO claim-language section gets a new subsection (below) giving the exact alternate framing
+sentence to use for any showing run in this mode -- the existing framing sentence claims "citations
+verified against live sources," which would be false while this mode is active.
+
+**Not done, and why:** did not delete or disable citation verification -- `verify_citation()`, the
+`manual_verification` mechanism (round 17), and the `--skip-citation-check`-free code path are all
+untouched and fully functional; this is an opt-in flag, off by default. Did not re-run the earlier
+in-progress live run under the old gating (that run, `run_20260829T18....Z`, already spent real API cost
+under the old rules and its output stands as-is as a data point). Did not change anything about how
+disagreements get filed to the queue -- a FAILED (not skipped) citation check still files a
+CITATION-CHECK-FAILED entry exactly as before.
+
+**Verification:** `python3 -m py_compile` clean. Dry-run comparison, same node, with and without the new
+flag: without `--skip-citation-check`, unchanged behavior (CLEAN-PASS, citation method `dry-run-synthetic`).
+With it, `citation_check.results[0]` shows `verified: null, method: "skipped"`, `all_verified: null`, and
+the node still resolves to `status: CLEAN-PASS` -- proving the fix (under the old formula this would have
+been FLAGGED). `tier_promotion_note` and `demo_gate_metrics.basis` both confirmed to carry the skipped-mode
+caveat text in the resulting run JSON. Frozen eviction artifact SHA unchanged; JSON schema untouched (no
+rules-file changes this round).
+
+---
+
 ## 2026-08-29, round 17 (post-run triage: 4 pipeline-bug fixes from the first full 18-node live run)
 
 **Context:** Andy ran the full 18-node live corroboration check (`run_20260828T220708Z`): 5/18 clean-pass, 13 flagged, demo-gate not met. Triaged every flag before proposing any fix -- confirmed zero of the 13 were genuine "the law is wrong" disagreements; two were minor, legitimate completeness gaps (exactly what corroboration is supposed to catch, left as-is for attorney review); the other eleven were pipeline/tooling bugs, several newly discovered. Andy approved fixing the four pipeline categories.
