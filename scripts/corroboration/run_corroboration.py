@@ -179,20 +179,42 @@ SYSTEM_PROMPT_ADVERSARIAL = (
 # secondary diagnostic (see stage_a_grounded_derivation.fingerprints),
 # since it is fast, free, and occasionally a useful sanity cross-check --
 # but it no longer gates CLEAN-PASS.
+# Round 19 (2026-08-30), recalibrated per Andy's explicit directive: after round 18
+# removed citation-liveness from the CLEAN-PASS gate, a live 18-node run still showed
+# only 66.7% grounded-agreement. Full node-by-node read of every flag found ZERO actual
+# legal conflicts -- 4 of 6 flags were the SAME pattern: all three models stated the
+# identical governing rule with no contradiction, but one (usually Gemini) omitted a
+# secondary, non-dispositive detail (an exception clause, a procedural deadline) that
+# the other two included. The ORIGINAL judge prompt (round 3, 2026-08-26) explicitly
+# instructed the judge to treat any such omission as "genuine disagreement" -- a
+# deliberate design choice at the time, but one that, on this evidence, was gating
+# CLEAN-PASS on completeness-of-summary rather than correctness-of-law. Andy's call:
+# "if an omission but not a conflict then we should not flag; we should only flag
+# actual conflicts." This prompt is rewritten accordingly. Omissions are NOT deleted
+# from view -- the judge still surfaces them in agreement_notes for visibility -- they
+# just no longer make agree=false on their own. Only an actual conflict (two analyses
+# that cannot both be true of the same governing rule -- different amounts, different
+# deadlines, different standards, or one asserting a rule applies while another
+# asserts it does not) makes agree=false now.
 SYSTEM_PROMPT_JUDGE = (
-    "You are checking whether three independently-produced legal analyses of "
-    "the same question substantively agree in their legal conclusion. Ignore "
-    "differences in phrasing, level of detail, structure (numbered list vs. "
-    "prose), or which specific illustrative examples each one includes -- "
-    "focus only on whether the core legal answer (the governing rule, "
-    "deadline, dollar amount, percentage, or standard) is the same across "
-    "all three. If one analysis states a real substantive fact (a rule, "
-    "exception, deadline, or amount) that another omits entirely, that is a "
-    "genuine disagreement worth flagging, not just a phrasing difference. "
-    "Respond ONLY in valid JSON: {\"agree\": <true if all three "
-    "substantively agree, false otherwise>, \"agreement_notes\": \"<1-3 "
-    "sentences: what agrees, or specifically what differs and which "
-    "analysis differs>\"}"
+    "You are checking whether three independently-produced legal analyses of the same "
+    "question actually CONFLICT in their legal conclusion, as opposed to merely "
+    "differing in what each one chose to mention. Ignore differences in phrasing, "
+    "level of detail, structure, illustrative examples, and -- importantly -- cases "
+    "where one analysis includes a real detail (a rule, exception, deadline, or "
+    "amount) that another simply omits without contradicting it. An omission by "
+    "itself is NOT a disagreement. Respond \"agree\": false ONLY if two or more "
+    "analyses state something that cannot both be true of the same governing rule -- "
+    "e.g. different dollar amounts, different deadlines, different standards, or one "
+    "asserting a rule/exception applies while another asserts it does not. If all "
+    "three are consistent with each other -- even if some are less complete than "
+    "others -- respond \"agree\": true, and use agreement_notes to note any real "
+    "completeness differences worth a human's attention (this is informational, not "
+    "a reason for agree=false). Respond ONLY in valid JSON: {\"agree\": <true if no "
+    "analysis actually conflicts with another, false only on a real conflict>, "
+    "\"agreement_notes\": \"<1-3 sentences: confirm the shared conclusion, and separately "
+    "note any completeness differences (non-gating) or, if agree=false, the specific "
+    "conflict and which analyses differ>\"}"
 )
 
 NUMBER_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?%?")
@@ -367,7 +389,15 @@ def _parse_json_response(raw: str) -> dict:
 
 
 def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
-                    dry_run_payload: dict) -> dict:
+                    dry_run_payload: dict, max_tokens: int = 1500) -> dict:
+    """Round 19 note: max_tokens is now a parameter, not a hardcoded 1500 shared by
+    every call site. Root cause found by reading raw run output: the adversarial
+    stage (3 edge cases, each with a scenario + gap_description) routinely produced
+    JSON that got cut off mid-string at 1500 tokens, causing _parse_json_response to
+    fail and silently discard real, correctly-identified gap findings (visible in the
+    truncated _raw text even though the parsed result came back empty). Derivation
+    and judge calls are shorter and were not observed truncating -- they keep the
+    1500 default; the adversarial call site now passes a larger budget."""
     if dry_run:
         out = dict(dry_run_payload)
         out["model"] = ANTHROPIC_MODEL
@@ -382,7 +412,7 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         client = anthropic.Anthropic(api_key=keys["ANTHROPIC_API_KEY"])
         resp = client.messages.create(
             model=ANTHROPIC_MODEL,
-            max_tokens=1500,
+            max_tokens=max_tokens,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
         )
@@ -439,7 +469,14 @@ def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
     a flaky fetch (round 13); this mirrors that pattern here: retry once,
     brief pause, only for the specific transient-overload signature so a
     genuine error (bad key, malformed request, real API failure) still fails
-    fast instead of waiting out a pointless retry."""
+    fast instead of waiting out a pointless retry.
+
+    Round 19 fix: the original round-17 code retried on a transient 503, but a
+    60s TimeoutError took a DIFFERENT branch (`except concurrent.futures.TimeoutError`)
+    that returned immediately, bypassing the retry loop entirely -- so a plain
+    timeout (observed live, 2026-08-30: FDCPA-UNFAIR-PRACTICES-CATALOG-1692f)
+    still cost a clean-pass with zero retry, the exact failure mode round 17 was
+    supposed to fix. Timeouts now retry once too, same budget as a 503."""
     if dry_run:
         out = dict(dry_run_payload)
         out["model"] = GEMINI_MODEL
@@ -458,28 +495,32 @@ def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         def _do():
             return client.models.generate_content(model=GEMINI_MODEL, contents=full_prompt)
 
-        last_exc = None
+        last_error = None
         for attempt in range(2):
             with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
                 fut = pool.submit(_do)
                 try:
                     resp = fut.result(timeout=60)
                 except concurrent.futures.TimeoutError:
-                    return {"error": "Gemini API timed out after 60s", "model": GEMINI_MODEL}
+                    last_error = "Gemini API timed out after 60s"
+                    if attempt == 0:
+                        continue
+                    return {"error": last_error, "model": GEMINI_MODEL}
                 except Exception as exc:
-                    last_exc = exc
-                    transient = "503" in str(exc) or "UNAVAILABLE" in str(exc)
+                    last_error = str(exc)
+                    transient = "503" in last_error or "UNAVAILABLE" in last_error
                     if transient and attempt == 0:
                         time.sleep(3)
                         continue
-                    return {"error": str(exc), "model": GEMINI_MODEL}
-            raw = resp.text.strip()
-            parsed = _parse_json_response(raw)
-            parsed["model"] = GEMINI_MODEL
-            parsed["_raw"] = raw
-            parsed["error"] = None
-            return parsed
-        return {"error": str(last_exc), "model": GEMINI_MODEL}
+                    return {"error": last_error, "model": GEMINI_MODEL}
+                else:
+                    raw = resp.text.strip()
+                    parsed = _parse_json_response(raw)
+                    parsed["model"] = GEMINI_MODEL
+                    parsed["_raw"] = raw
+                    parsed["error"] = None
+                    return parsed
+        return {"error": last_error, "model": GEMINI_MODEL}
     except Exception as exc:
         return {"error": str(exc), "model": GEMINI_MODEL}
 
@@ -910,7 +951,8 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
             {"scenario": "[DRY-RUN synthetic edge case 3]", "exposes_gap": False, "gap_description": None},
         ]
     }
-    result_b = call_anthropic(SYSTEM_PROMPT_ADVERSARIAL, user_prompt_adversarial, keys, dry_run, dry_adversarial_payload)
+    result_b = call_anthropic(SYSTEM_PROMPT_ADVERSARIAL, user_prompt_adversarial, keys, dry_run,
+                               dry_adversarial_payload, max_tokens=3000)
     edge_cases = result_b.get("edge_cases", []) if not result_b.get("error") else []
     gaps_found = [e for e in edge_cases if e.get("exposes_gap")]
 

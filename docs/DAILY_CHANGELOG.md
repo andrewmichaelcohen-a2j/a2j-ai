@@ -4,6 +4,93 @@
 
 ---
 
+## 2026-08-30, round 19 (recalibrate the semantic-agreement judge to only flag real conflicts, plus two real infra bugs found by reading the actual data)
+
+**Context:** After round 18 shipped, Andy ran the full 18-node live corroboration under the new
+rules (citation check skipped, `run_20260830T094127Z`): 12/18 clean-pass, 6 flagged, 66.7%
+grounded-agreement -- still short of the 90% gate. Andy: "still not working well - thoughts?"
+Rather than guess again, read all 6 flagged nodes in full before proposing anything.
+
+**Finding, with evidence, not assumption:** citation-liveness noise is genuinely gone (confirmed
+-- zero of the 6 flags trace to it). The 6 broke into three real, distinct categories:
+
+1. **Four of six** (FDCPA-FALSE-DECEPTIVE-CATALOG-1692e, CA-SOL-WRITTEN-CONTRACT-DEBT,
+   CA-VEHICLE-EXEMPTION, TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY) shared one exact pattern:
+   all three models stated the identical governing rule with zero contradiction, but one model
+   (usually Gemini) omitted a secondary, non-dispositive detail (an exception clause, a procedural
+   deadline) that the other two included. This was not a bug -- the round-3 (2026-08-26) judge
+   prompt explicitly instructed exactly this: "if one analysis states a real substantive fact that
+   another omits entirely, that is a genuine disagreement worth flagging." A deliberate design
+   choice at the time, but on this evidence it was gating CLEAN-PASS on completeness-of-summary,
+   not correctness-of-law -- every single instance found was an omission, never an actual conflict
+   (nobody said "X" while another said "not-X").
+2. **One of six** (FDCPA-UNFAIR-PRACTICES-CATALOG-1692f): a plain Gemini 60-second timeout. Round
+   17's retry-on-503 didn't cover this -- a `TimeoutError` takes a different code path that
+   returned immediately, bypassing the retry loop entirely. The exact failure class round 17 was
+   supposed to fix, just a different exception type.
+3. **One of six** (FDCPA-VALIDATION-NOTICE-1692g): a genuine prompt-design ambiguity. The rule text
+   states legal criteria with no specific fact pattern to apply them to; Claude answered
+   `grounded: true` anyway, GPT-5.5 and Gemini both answered `grounded: false` ("can't determine
+   compliance without case facts"). Models are interpreting what "grounded" means differently for
+   rule-statement nodes vs. fact-dependent-application nodes. Not fixed this round (needs a
+   considered prompt change, not a quick patch) -- logged as open work, not silently dropped.
+
+**Separately found while reading (not the cause of any of today's flags, but real):** the
+adversarial-gap-finding stage's JSON response was getting truncated on several nodes -- visible in
+the raw truncated text, which showed a real, correctly-identified gap, that then got silently
+discarded because the cut-off JSON failed to parse. Root cause: `call_anthropic()` hardcoded
+`max_tokens=1500` for every call site, including the adversarial stage's 3-edge-cases-with-
+descriptions request, which routinely needs more than that.
+
+**Andy's directive on the four omission-pattern flags:** *"if an omission but not a conflict then
+we should not flag; we should only flag actual conflicts."* Implemented exactly that.
+
+**What changed:**
+- `SYSTEM_PROMPT_JUDGE` rewritten: an omission by itself is now explicitly instructed to NOT count
+  as disagreement. `agree: false` is reserved for an actual conflict -- two analyses stating
+  something that cannot both be true (different amounts, different deadlines, different standards,
+  or one asserting a rule/exception applies while another asserts it does not). Completeness
+  differences are still surfaced in `agreement_notes` for visibility -- informational, not gating.
+- `call_gemini()`: a `TimeoutError` now falls through to the same retry-once-then-fail pattern as a
+  transient 503, instead of returning immediately on the first timeout.
+- `call_anthropic()` gained a `max_tokens` parameter (default 1500, unchanged for derivation and
+  judge calls); the adversarial call site now requests 3000, enough headroom for 3 edge cases with
+  descriptions without truncating.
+
+**Learning from this, per Andy's ask -- not just fixing today's flags but the pattern:** across
+every round this project has run (now 19), zero flags have ever traced to the derived law actually
+being substantively wrong. Every flag, across every round, has been either (a) a citation-liveness
+/ infrastructure problem (rounds 9-17's dominant category, now decoupled from the gate per round 18)
+or (b) a judge-calibration artifact treating incomplete-but-correct as equivalent to wrong (today's
+dominant category, now fixed). That is itself useful signal: the 3-independent-model-derivation
+mechanism is doing its actual job reliably -- getting three frontier models to independently derive
+the same governing rule from the same cited text and converge on it. The bottleneck to date has not
+been legal-accuracy risk; it has been pipeline calibration noise sitting on top of a mechanism that
+already works. Concretely, going forward: (1) triage every flag to its real category (infra /
+judge-calibration / genuine legal gap) with actual evidence before proposing any fix -- this
+session's method, now proven twice, not a one-off; (2) treat "does this actually conflict" as the
+bar for model disagreement, not "did every model mention every detail"; (3) build retry robustness
+for a known transient-failure class proactively across all its variants (503 AND timeout, not just
+the one observed first); (4) with today's fixes, the corroboration harness itself should mostly stop
+being the thing that needs debugging -- the more valuable use of build time from here is likely
+authoring and corroborating NEW nodes/coverage, not continuing to re-litigate the harness.
+
+**Not done, and why:** did not fix the FDCPA-VALIDATION-NOTICE "grounded" ambiguity (category 3
+above) -- it needs a considered prompt clarification (what does "grounded" mean when the source
+text states criteria but no fact pattern), not a quick patch alongside two unrelated fixes; logged
+as open work for a future round. Did not re-run the earlier flagged run's disagreement-queue
+entries retroactively -- round 19's fixes apply going forward, per the same append-only,
+non-retroactive discipline as every prior round.
+
+**Verification:** `python3 -m py_compile` clean. `--dry-run --demo-corpus-only --skip-citation-check`:
+18/18 clean-pass, unchanged (dry-run doesn't exercise live model-call code paths, so this confirms
+no syntax/control-flow regression, not the live behavior itself -- that needs a live re-run).
+`call_gemini`'s retry structure verified by direct source inspection: a `TimeoutError` on attempt 0
+now falls into the same `continue`-then-retry path as a transient 503, only returning the error
+after a second attempt also fails. Frozen eviction artifact SHA unchanged.
+
+---
+
 ## 2026-08-29/30, round 18 (decouple CLEAN-PASS from citation liveness, per Andy's explicit directive)
 
 **Context:** After round 17 landed and was spot-checked, Andy authorized the full 18-node re-run

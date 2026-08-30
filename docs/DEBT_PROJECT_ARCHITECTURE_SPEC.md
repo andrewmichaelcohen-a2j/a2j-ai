@@ -110,6 +110,34 @@ Extends the existing rules-JSON format (`SCHEMA_V2_DESIGN_SPEC.md` in the evicti
 - **Tier-promotion rules.** DRAFT → CORROBORATED: passes (a)–(d) with no unresolved disagreement. CORROBORATED → VALIDATED: survives the sampling audit (e) at attorney certification. Demotion triggers: a statute/case-watch hit, an audit failure, or a mutation-testing miss revealing the eval suite wasn't sensitive enough — demotion is the system re-earning its own confidence, not a punishment.
 - **Freshness SLAs per module and a decommissioning rule.** Stated maximum staleness before automatic pull from VALIDATED; a rule for retiring an unmaintained module rather than letting it rot at a stale label.
 
+- **Corroboration-pipeline calibration principles (added 2026-08-30, rounds 18-19).** Two live
+  full-corpus runs in one week both stalled well short of the 90% demo gate for reasons that,
+  read carefully, had nothing to do with the derived law being wrong: round 18 found citation-
+  liveness checks (can a plain HTTP GET fetch a byte-matching third-party page *right now*)
+  dominating the flag count; round 19 found the semantic-agreement judge treating any one model's
+  omission of a non-dispositive detail as "disagreement," even with zero actual conflict across
+  all three models. Across every round this project has run to date, **zero** flags have ever
+  traced to the derived law being substantively wrong — every one has been infrastructure noise or
+  judge-calibration noise sitting on top of a 3-model-derivation mechanism that, on the evidence so
+  far, is doing its actual job. That reframes where build effort should go from here. Operating
+  principles going forward:
+  - **Decouple "is the law correct" from "is a third-party source live right now."** Citation
+    liveness is a real, separate concern (round 18) — verify it, but on its own cadence, not as a
+    blocking condition on every single corroboration run.
+  - **The agreement bar is conflict, not completeness.** Three independent models converging on the
+    same governing rule, with one adding detail another omits, is not disagreement (round 19) —
+    reserve "flag this" for an actual conflict two analyses can't both satisfy.
+  - **Triage every flag to its real category with evidence before proposing a fix.** Infra bug /
+    judge-calibration artifact / genuine legal gap are different problems with different fixes;
+    guessing which one a flag is, rather than reading the run JSON, has cost real rounds of rework
+    this project's history (see `docs/DAILY_CHANGELOG.md`, rounds 16-19).
+  - **Fix a transient-failure class across all its variants, not just the one first observed** — a
+    503 and a timeout are the same underlying "the API had a bad moment" problem; retry logic
+    should cover the class, not the specific exception first seen in one run's output.
+  - **With the harness itself increasingly de-noised, the higher-leverage use of build time is
+    authoring and corroborating new nodes/coverage** — not continuing to re-litigate a pipeline
+    that has, so far, reliably gotten three frontier models to the same correct answer.
+
 ---
 
 ## 5. Demo and evaluation harness
