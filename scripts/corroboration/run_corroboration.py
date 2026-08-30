@@ -430,7 +430,8 @@ def _parse_json_response(raw: str) -> dict:
 
 
 def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
-                    dry_run_payload: dict, max_tokens: int = 1500) -> dict:
+                    dry_run_payload: dict, max_tokens: int = 1500,
+                    retry_on_empty_or_truncated: bool = False) -> dict:
     """Round 19 note: max_tokens is now a parameter, not a hardcoded 1500 shared by
     every call site. Root cause found by reading raw run output: the adversarial
     stage (3 edge cases, each with a scenario + gap_description) routinely produced
@@ -438,7 +439,19 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
     fail and silently discard real, correctly-identified gap findings (visible in the
     truncated _raw text even though the parsed result came back empty). Derivation
     and judge calls are shorter and were not observed truncating -- they keep the
-    1500 default; the adversarial call site now passes a larger budget."""
+    1500 default; the adversarial call site now passes a larger budget.
+
+    Round 23 note (2026-08-30): round 19's fix reduced but did not eliminate
+    truncation -- a live run still showed several adversarial calls cut off
+    mid-string even at 3000 tokens, plus a separate failure mode (an empty
+    completion, _raw: "", error: None, with no retry) neither round 19 nor any
+    prior round addressed. Both were silently indistinguishable from "no gaps
+    found" in the run JSON. `_stop_reason` now surfaces the API's own
+    stop_reason so truncation is visible going forward. `retry_on_empty_or_truncated`
+    (used only by the adversarial call site, not derivation/judge, which have
+    never shown this) adds up to one retry: same budget for an empty
+    completion (empirically transient), 1.5x budget for a max_tokens
+    truncation (to actually fix it rather than just retry into the same wall)."""
     if dry_run:
         out = dict(dry_run_payload)
         out["model"] = ANTHROPIC_MODEL
@@ -449,11 +462,12 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         import anthropic
     except ImportError:
         return {"error": "anthropic package not installed", "model": ANTHROPIC_MODEL}
-    try:
+
+    def _one_call(tokens: int) -> dict:
         client = anthropic.Anthropic(api_key=keys["ANTHROPIC_API_KEY"])
         resp = client.messages.create(
             model=ANTHROPIC_MODEL,
-            max_tokens=max_tokens,
+            max_tokens=tokens,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
         )
@@ -462,6 +476,19 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         parsed["model"] = ANTHROPIC_MODEL
         parsed["_raw"] = raw
         parsed["error"] = None
+        parsed["_stop_reason"] = getattr(resp, "stop_reason", None)
+        return parsed
+
+    try:
+        parsed = _one_call(max_tokens)
+        if retry_on_empty_or_truncated:
+            empty = not parsed.get("_raw")
+            truncated = parsed.get("_stop_reason") == "max_tokens" or bool(parsed.get("_parse_error"))
+            if empty or truncated:
+                retry_tokens = max_tokens if empty else int(max_tokens * 1.5)
+                retry_parsed = _one_call(retry_tokens)
+                retry_parsed["_retried_after"] = "empty_completion" if empty else "max_tokens_truncation"
+                return retry_parsed
         return parsed
     except Exception as exc:
         return {"error": str(exc), "model": ANTHROPIC_MODEL}
@@ -625,7 +652,25 @@ def _normalize_for_match(raw_html_or_text: str, is_html: bool = True) -> str:
     t = (t.replace("\u2018", "'").replace("\u2019", "'")
            .replace("\u201c", '"').replace("\u201d", '"')
            .replace("\u2013", "-").replace("\u2014", "-"))
-    return re.sub(r"\s+", " ", t).strip().lower()
+    t = re.sub(r"\s+", " ", t).strip().lower()
+    # Fixed 2026-08-30 (round 23): collapse whitespace immediately inside
+    # parentheses. Root-caused via raw_html_context_at_break, captured for
+    # the first time on a live run this round: eCFR (and similarly-marked-up
+    # sources) wrap each character of a paragraph-hierarchy marker like "(1)"
+    # in its own nested <span> -- e.g. <span class="paragraph-hierarchy">
+    # <span class="paren">(</span>1<span class="paren">)</span></span> --
+    # and _strip_html's blanket tag-to-space replacement (needed elsewhere to
+    # avoid concatenating adjacent inline-linked WORDS) turns "(1)" into
+    # "( 1 )" on the page side only. No quoted_text field in this corpus (and
+    # no normal legal prose) ever has a space touching an opening or closing
+    # parenthesis, so this is a safe, one-directional fix: it repairs the
+    # page-side HTML-stripping artifact and is a no-op on the needle side.
+    # Confirmed against this run's diagnostics: FDCPA-VALIDATION-NOTICE-1692g's
+    # 12 C.F.R. 1006.34 citation broke exactly at "(1)", with
+    # raw_html_context_at_break showing the nested-span markup verbatim.
+    t = re.sub(r"\(\s+", "(", t)
+    t = re.sub(r"\s+\)", ")", t)
+    return t
 
 
 def _word_overlap_ratio(needle: str, haystack: str) -> float:
@@ -992,8 +1037,12 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
             {"scenario": "[DRY-RUN synthetic edge case 3]", "exposes_gap": False, "gap_description": None},
         ]
     }
+    # Round 23: budget bumped 3000 -> 4000 (still truncating some verbose
+    # 3-scenario responses at 3000), and retry_on_empty_or_truncated enabled
+    # -- see call_anthropic's round-23 docstring note.
     result_b = call_anthropic(SYSTEM_PROMPT_ADVERSARIAL, user_prompt_adversarial, keys, dry_run,
-                               dry_adversarial_payload, max_tokens=3000)
+                               dry_adversarial_payload, max_tokens=4000,
+                               retry_on_empty_or_truncated=True)
     edge_cases = result_b.get("edge_cases", []) if not result_b.get("error") else []
     gaps_found = [e for e in edge_cases if e.get("exposes_gap")]
 

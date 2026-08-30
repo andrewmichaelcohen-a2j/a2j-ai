@@ -64,6 +64,20 @@
             "url": null,
             "source_tier": "D",
             "tier_rationale": "Added 2026-08-30 (round 22) -- this is case-law commentary, not a primary statutory or regulatory source, so tagged D per this schema's source-tier rule (corroboration only, not a sole anchor) rather than misrepresented as text of the statute itself. Confirmed via WebSearch of multiple law-firm and legal-publisher summaries this session (NCLC, Troutman Pepper, ABA Litigation Section); no single case is asserted as universally controlling since the specific standard (least-sophisticated/reasonable-consumer-style framing vs. the newer 'objectively and readily verifiable' test) varies by circuit and is actively evolving -- flagged as such in logic below rather than presented as settled uniform law."
+          },
+          {
+            "cite": "15 U.S.C. § 1681n(a); § 1681o(a); § 1681p",
+            "quoted_text": "Any person who willfully fails to comply with any requirement imposed under this subchapter with respect to any consumer is liable to that consumer for actual damages sustained (or statutory damages of not less than $100 and not more than $1,000) plus punitive damages as the court may allow, and costs and reasonable attorney's fees (§ 1681n). Any person who is negligent in failing to comply with any such requirement is liable for actual damages sustained plus costs and reasonable attorney's fees (§ 1681o). An action to enforce liability under this subchapter may be brought not later than the earlier of 2 years after the date of discovery by the plaintiff of the violation, or 5 years after the date on which the violation occurs (§ 1681p).",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681n",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-08-30 (round 23) to encode the remedies/timing gap the corroboration pipeline's adversarial check found: this node's practical_enforcement_note already established that subsection (b) carries a private right of action, but the node encoded nothing about what a consumer actually recovers or by when they must sue. As encoded, a consumer with no actual damages would be told she has a viable claim (she does not, absent a willful violation, without proof of actual damages under the negligence standard), and a consumer outside the 2-year-discovery/5-year-violation window would be told nothing about the time bar. Cornell LII primary source."
+          },
+          {
+            "cite": "15 U.S.C. § 1681i(a)(3)",
+            "quoted_text": "If the completeness or accuracy of any item of information contained in a consumer's file at a consumer reporting agency is disputed by the consumer... the agency may terminate a reinvestigation of information disputed by a consumer under this subsection if the agency reasonably determines that the dispute by the consumer is frivolous or irrelevant, including by reason of a failure by a consumer to provide sufficient information... Upon making any such determination, the consumer reporting agency shall notify the consumer of such determination.",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681i",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-08-30 (round 23) to encode the trigger-precision gap the adversarial check found: this node's checklist previously asked only whether the consumer 'disputed the item directly with a credit bureau,' but the actual § 1681s-2(b) trigger requires the CRA to have forwarded that dispute to the furnisher under § 1681i(a)(2). Where the CRA deems the dispute frivolous under § 1681i(a)(3) (common with template/duplicate credit-repair disputes) and never forwards it, no furnisher duty arises at all -- the prior checklist wording would find a breached duty where the trigger never fired. Cornell LII primary source."
           }
         ],
         "citation_verified": true
@@ -88,12 +102,21 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260830T171724Z.json, FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
             "summary": "Added the enforcement-exclusivity caveat for the (a)(8) direct-dispute route (not privately enforceable), the reasonable-investigation judicial gloss (rejects mere records-parroting), and the legal-vs-factual dispute distinction (flagged as genuinely unsettled/circuit-dependent rather than asserted as a clean rule); added 2 checklist items."
+          },
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T181129Z.json, FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true) -- this node's Stage A/citation-check pipeline ran cleanly this round (no infra-bug interference), so all 3 findings were captured intact in gaps_found.",
+            "summary": "Added § 1681n/1681o/1681p remedies-and-limitations derived_from entry and § 1681i(a)(3) frivolous-dispute-termination derived_from entry; added accuracy_element_note, remedies_and_limitations_note, and cra_forwarding_trigger_note; tightened checklist item 1's CRA-forwarding trigger wording and added 2 new checklist items."
           }
-        ]
+        ],
+        "accuracy_element_note": "A § 1681s-2(b) claim requires more than a poor-quality investigation -- the consumer must also show the furnished information was actually inaccurate or materially misleading. If the reported balance, dates, and status are accurate and the consumer's real objection is that the debt 'shouldn't be there' for equitable reasons (hardship, a dispute about whether it should have been charged at all), the claim fails at the accuracy element regardless of how cursory the furnisher's investigation was. This is one of the most common ways furnisher-dispute claims are dismissed, and this node's dispositive investigation-quality checklist item should not be read to mean a shoddy investigation alone establishes a violation.",
+        "remedies_and_limitations_note": "Even where a § 1681s-2(b) violation is established, what the consumer recovers depends on the violation's culpability: negligent violations (§ 1681o) require proof of actual damages (economic or emotional-distress); only WILLFUL violations (§ 1681n) open the door to statutory damages ($100-$1,000) without proof of actual loss, plus possible punitive damages. Suit must be brought within 2 years of the consumer discovering the violation, or 5 years of the violation occurring, whichever is earlier (§ 1681p) -- this is an outside limit regardless of when discovered. A consumer with no quantifiable damages and a negligence-only theory, or one outside this window, should not be told she has a straightforwardly viable claim.",
+        "cra_forwarding_trigger_note": "The dispositive trigger for this node is not merely that the consumer disputed an item with a CRA -- it is that the CRA forwarded that dispute to the furnisher as required by § 1681i(a)(2). A CRA may instead terminate a reinvestigation and never forward the dispute if it reasonably determines the dispute is frivolous or irrelevant under § 1681i(a)(3) (notifying the consumer of that determination) -- common with template or duplicate disputes, including those generated by credit-repair services. Where that happened, no § 1681s-2(b) furnisher duty ever arose, and this node should not be applied as though it did."
       },
       "completeness_checklist": [
         {
-          "fact": "Whether the consumer disputed the item directly with a credit bureau (CRA) — triggers this node — versus disputing directly with the furnisher/collector (a different provision, not encoded here)",
+          "fact": "Whether the consumer disputed the item with a credit bureau (CRA) AND the CRA actually forwarded that dispute to the furnisher under § 1681i(a)(2) (as opposed to terminating the dispute as frivolous under § 1681i(a)(3) and never forwarding it) -- versus disputing directly with the furnisher/collector (a different provision, not encoded here)",
           "dispositive": true
         },
         {
@@ -114,6 +137,14 @@
         },
         {
           "fact": "Whether the consumer's dispute is a factual claim (wrong amount, wrong dates, mistaken identity) or a legal claim about the debt's validity/ownership/enforceability (e.g., statute of limitations, chain of title) -- courts differ, by circuit, on whether the latter triggers a furnisher duty at all",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the information the furnisher reported was actually inaccurate, incomplete, or materially misleading -- as opposed to accurate reporting the consumer objects to for other (e.g. equitable or hardship) reasons, which does not support a § 1681s-2(b) claim regardless of investigation quality",
+          "dispositive": true
+        },
+        {
+          "fact": "What damages (if any) the consumer actually suffered, and whether the violation was willful (opening statutory/punitive damages under § 1681n) or merely negligent (requiring proof of actual damages under § 1681o); and whether suit is being brought within 2 years of discovery / 5 years of the violation (§ 1681p)",
           "dispositive": true
         }
       ],

@@ -399,6 +399,20 @@
             "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
             "source_tier": "B",
             "tier_rationale": "Added 2026-08-30 (round 21) to encode the child-support-lien and fraudulent-transfer exceptions the corroboration pipeline's adversarial check found missing (the node previously encoded only voluntary liens/security interests as an override). Federal tax liens/levies (26 U.S.C. §§ 6321, 6334) similarly override this state exemption under the Supremacy Clause, same basis as the parallel note added to TX-HOMESTEAD-EXEMPTION this round. Same sourcing/caveat as the § 42.0021 entry above."
+          },
+          {
+            "cite": "Tex. Ins. Code § 1108.051",
+            "quoted_text": "Except as otherwise provided by this subchapter, insurance and annuity benefits described by Section 1108.051... are fully exempt from execution, attachment, garnishment, or other seizure ... including the cash value and proceeds of a life insurance policy, annuity contract, or benefit plan.",
+            "url": "https://texas.public.law/statutes/tex._insurance_code_section_1108.051",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 23) to encode the life-insurance/529-plan gap the corroboration pipeline's adversarial check found: this node's unlimited-categories list previously covered retirement accounts but omitted life insurance cash value/proceeds (Tex. Ins. Code ch. 1108, separate from Tex. Prop. Code ch. 42) and 529 college savings plans (Tex. Prop. Code § 42.0022). Because these are not in the § 42.002(a) list this node encodes, the node as written would treat them as unprotected non-exempt property (or wrongly count them against the $100,000/$50,000 cap), materially understating a debtor's actual protection. Flagged for live re-verification -- sourced via WebSearch cross-reference this session, not independently fetched from the official Texas statutes site given this session's confirmed statutes.capitol.texas.gov client-rendering limitation."
+          },
+          {
+            "cite": "Tex. Prop. Code § 42.0022",
+            "quoted_text": "Savings plans established under the Texas Tomorrow Fund... and under Section 529, Internal Revenue Code of 1986... are exempt from attachment, execution, and seizure for the satisfaction of debts, in addition to the exemption prescribed under Section 42.001 of this code.",
+            "url": "https://texas.public.law/statutes/tex._property_code_section_42.0022",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 23), companion citation to the life-insurance entry above -- same session sourcing caveat applies (WebSearch cross-reference, flagged for live re-verification against the official Texas statutes site)."
           }
         ],
         "citation_verified": true
@@ -414,7 +428,9 @@
           "professionally prescribed health aids",
           "alimony/support/separate maintenance",
           "a religious bible or sacred text (with a landlord-lien carve-out)",
-          "qualified retirement plans, pensions, IRAs, and similar tax-qualified savings accounts (Tex. Prop. Code § 42.0021) -- essentially unlimited in amount for qualifying plans; distributed amounts remain exempt for 60 days after distribution, longer if rolled over"
+          "qualified retirement plans, pensions, IRAs, and similar tax-qualified savings accounts (Tex. Prop. Code § 42.0021) -- essentially unlimited in amount for qualifying plans; distributed amounts remain exempt for 60 days after distribution, longer if rolled over",
+          "life insurance cash value and proceeds, and annuity contract/benefit plan proceeds (Tex. Ins. Code § 1108.051) -- fully exempt, outside the § 42.001 aggregate cap, separate from the Property Code chapter this node otherwise draws from",
+          "Texas Tomorrow Fund and Section 529 college savings plan accounts (Tex. Prop. Code § 42.0022) -- exempt in addition to, not counted against, the § 42.001 aggregate cap"
         ],
         "note_re_secured_property": "a security interest or lien validly fixed on otherwise-exempt property (e.g., a car loan lien on an exempt vehicle) is NOT defeated by the exemption — § 42.001(c)/§42.002(b).",
         "item_level_sub_caps_note": "The § 42.001 aggregate dollar cap is necessary but NOT sufficient -- § 42.002(a) also imposes separate item-level sub-limits within the aggregate, most notably: jewelry is capped at 25% of the aggregate limit; motor vehicles are limited to one per family member or single adult who holds a driver's license (or who relies on another licensed household member to drive); firearms are limited to two. A debtor whose TOTAL value is under the aggregate cap can still have non-exempt property if a specific category exceeds its own sub-limit -- this node does not itself apply those sub-limits.",
@@ -425,12 +441,20 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260830T111412Z.json, TX-EXEMPT-PERSONAL-PROPERTY, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
             "summary": "Added Tex. Prop. Code § 42.0021 retirement-account exemption (unlimited, outside the aggregate cap) and § 42.004/§ 42.005 fraudulent-transfer/child-support-lien override derived_from entries; added item_level_sub_caps_note (jewelry 25%, vehicles-per-licensed-driver, two firearms) and override_exceptions_note (federal tax lien, child support, fraudulent transfer); added 3 checklist items."
+          },
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T181129Z.json, TX-EXEMPT-PERSONAL-PROPERTY, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true) -- this node's Stage A pipeline ran cleanly this round (citation check was affected by the statutes.capitol.texas.gov client-rendering pattern already documented elsewhere in this corpus, not a new issue), so all 3 adversarial findings were captured intact in gaps_found.",
+            "summary": "Added Tex. Ins. Code § 1108.051 (life insurance/annuity) and Tex. Prop. Code § 42.0022 (529/Texas Tomorrow Fund) as exempt-outside-the-cap categories; added current_wages_deposit_note and family_definition_note; tightened checklist item 1's family-status wording and added 2 new checklist items."
           }
-        ]
+        ],
+        "current_wages_deposit_note": "The unlimited 'current wages' exemption above protects wages only while they remain unpaid, owed compensation for personal service. Once wages are actually paid and deposited into a bank account, Texas case law treats them as losing their 'current wages' character upon deposit and commingling with other funds (subject to limited tracing arguments for a debtor who can show the specific funds are traceable wages, e.g. a single recent, unmingled direct deposit). Bank-account garnishment -- not wage garnishment itself, which Texas separately prohibits outright for ordinary debts -- is the single most common real-world Texas debt-collection scenario, and this node's flat 'current wages are exempt in unlimited amount' framing should not be read to mean a bank account holding a recently-deposited paycheck is automatically fully protected.",
+        "family_definition_note": "The 'family or single-adult-not-in-family' checklist distinction that sets the $100,000 vs. $50,000 cap is not simply about marital status. Under Texas case law, a 'family' for homestead/exemption purposes includes a head of household who lives with and has a legal or moral obligation to support dependents -- e.g., an unmarried or divorced parent supporting minor children in the home -- even without a spouse. Taking a debtor's self-description as 'single' at face value, without asking about dependents living with and supported by them, can wrongly apply the lower $50,000 cap to someone actually entitled to the $100,000 family cap."
       },
       "completeness_checklist": [
         {
-          "fact": "Family or single-adult-not-in-family status of the debtor (sets the $100,000 vs $50,000 cap)",
+          "fact": "Family or single-adult-not-in-family status of the debtor (sets the $100,000 vs $50,000 cap) -- 'family' includes an unmarried head of household supporting dependents living with them, not only a debtor with a spouse; do not infer 'single adult' status merely from the debtor's own unprompted self-description",
           "dispositive": true
         },
         {
@@ -451,6 +475,14 @@
         },
         {
           "fact": "Whether the creditor is a federal tax authority (IRS) or a child-support obligee/agency (both can reach otherwise-exempt property; voluntary liens/security interests are already covered elsewhere in this node)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the debtor holds life insurance cash value/proceeds or annuity benefits (Tex. Ins. Code § 1108.051) or 529/Texas Tomorrow Fund college savings accounts (Tex. Prop. Code § 42.0022) -- both exempt in addition to, not counted against, the aggregate cap",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the property being targeted is unpaid wages still owed (fully exempt) versus wages already paid and deposited/commingled in a bank account (which may lose the unlimited 'current wages' characterization, subject to tracing)",
           "dispositive": true
         }
       ],

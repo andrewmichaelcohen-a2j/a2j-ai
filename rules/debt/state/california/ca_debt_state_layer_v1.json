@@ -172,6 +172,13 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=360.",
             "source_tier": "B",
             "tier_rationale": "Added 2026-08-30 (round 21) to encode the revival-timing rule the corroboration pipeline's adversarial check found missing: a payment made BEFORE the limitations period runs restarts the clock, but a payment made AFTER the debt is already time-barred does NOT revive it -- only a signed written acknowledgment or new promise can. Same sourcing basis/caveat as the § 361 entry above."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 683.020",
+            "quoted_text": "Except as otherwise provided by statute, upon the expiration of 10 years after the date of entry of a money judgment... the judgment may not be enforced... The judgment creditor may renew the judgment... within 10 years after the date of entry of the judgment (or, if renewed, within 10 years of the date of the most recent renewal).",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=683.020.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 23) to encode the accrual-date/filing-date gap the corroboration pipeline's adversarial check found: this node's 'determination' field was keyed to comparing TODAY against accrual-plus-4-years, but consumers most often ask about a suit already filed, or about an old judgment being enforced -- neither of which this determination correctly handles. Where a complaint was already filed, the relevant comparison is accrual-plus-4-years against the FILING date, not today; where a judgment already exists, the relevant period is this 10-year enforcement/renewal period, not the original 4-year contract SOL at all. Flagged for live re-verification per this session's standing leginfo.legislature.ca.gov web_fetch timeout pattern -- not independently re-fetched this round."
           }
         ],
         "citation_verified": true
@@ -181,7 +188,7 @@
         "applies_to": "actions on a contract/obligation founded on a written instrument -- most credit-card cardmember agreements and signed loan/retail-installment contracts",
         "accrual": "Generally the date of default/breach or last payment, a fact question this node does not itself resolve. CAUTION: for a deficiency claim after repossession/foreclosure sale of secured collateral, accrual is frequently measured from the disposition/deficiency date, not the last payment date -- applying a flat 'last payment' accrual rule to a secured installment contract can understate the time remaining and produce a false 'time-barred' conclusion. Flagged as a fact-sensitive distinction this node does not fully resolve; a dedicated secured-transactions SOL node is HORIZON work.",
         "affirmative_bar_note": "subdivision (d) is notable and California-specific: once the period has run, a creditor is statutorily barred from even INITIATING suit or arbitration to collect -- this is stronger than a mere affirmative defense the debtor must raise, though the debtor should still plead it.",
-        "determination": "expired_if today > (accrual_date + 4 years), subject to any tolling not yet encoded (tolling nodes not yet built for CA)",
+        "determination": "expired_if [complaint-filing date, or today if no complaint has yet been filed] > (accrual_date + 4 years), subject to any tolling not yet encoded (tolling nodes not yet built for CA). CRITICAL: this determination is NOT the right question at all once a lawsuit has already been filed or a judgment already exists -- see filing_date_vs_today_note and judgment_enforcement_note.",
         "choice_of_law_note": "If the underlying contract designates the law of another state and the cause of action arose there (e.g., a credit-card agreement issued from the creditor's home state), CCP § 361 (California's borrowing statute) can require applying that state's shorter limitations period instead of this 4-year period. This node does not itself resolve the choice-of-law or where-the-claim-arose analysis -- flagged as a threshold fact question.",
         "revival_note": "A payment made BEFORE the 4-year period expires restarts the clock (CCP § 360). A payment made AFTER the period has already expired does NOT revive the claim -- only a signed written acknowledgment or new promise does. Whether a given payment came before or after the bar is itself a fact question this node does not resolve without the specific dates.",
         "drafting_revisions": [
@@ -190,8 +197,17 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260830T111412Z.json, CA-SOL-WRITTEN-CONTRACT-DEBT, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true). Note: this node's flag also involved a transient Gemini 503 error in the same run, but the 3 adversarial gaps found are independent of that and would have flagged regardless.",
             "summary": "Added CCP § 361 borrowing-statute and § 360 revival-timing derived_from entries; added choice_of_law_note, revised accrual note to flag the secured-deficiency-judgment exception, added revival_note; added 3 corresponding checklist items."
+          },
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T181129Z.json, CA-SOL-WRITTEN-CONTRACT-DEBT, both adversarial-check findings (both realistic_and_common=true, would_cause_wrong_answer=true) -- this node's Stage A/citation-check pipeline ran cleanly this round, so both findings were captured intact in gaps_found.",
+            "summary": "Fixed 'determination' to key off the complaint's filing date (not today) once a suit has been filed, and flagged that an existing judgment is governed by CCP 683.020's 10-year enforcement/renewal period rather than the original 4-year SOL at all; added filing_date_vs_today_note, judgment_enforcement_note, and installment_separate_accrual_note; added 2 checklist items."
           }
-        ]
+        ],
+        "filing_date_vs_today_note": "If a complaint has already been filed (or a default judgment already entered), the relevant comparison for whether the SUIT was timely is accrual-plus-4-years against the date the COMPLAINT WAS FILED, not against today's date. A consumer sued in 2022 on a 2019 default, who asks in 2026 whether the case is time-barred, should NOT be told the suit is expired merely because today is more than 4 years past accrual -- the suit was timely when filed in 2022, and the SOL question is now moot as to that filing (whatever other defenses may exist). Applying today's-date logic to an already-filed or already-judgment case produces a materially wrong answer.",
+        "judgment_enforcement_note": "Once a judgment has actually been entered (including a default judgment), the ORIGINAL 4-year contract statute of limitations no longer governs anything -- the judgment itself is enforceable for 10 years from entry, renewable for additional 10-year periods without limit, under CCP § 683.020. A consumer with an old judgment against them should not be told the judgment is 'expired' or unenforceable based on the 4-year contract SOL; the judgment-enforcement clock is separate and starts over at entry (and again at each renewal).",
+        "installment_separate_accrual_note": "This node's single-accrual-date framing assumes the debt is due in full as of one date. For an INSTALLMENT obligation (e.g., a written personal loan or payment plan with scheduled periodic payments) where the creditor has NOT invoked an acceleration clause, California law runs the 4-year period separately on EACH missed installment as it comes due -- not from a single default or last-payment date. A creditor suing in 2026 on an installment loan where payments stopped in 2019 may still timely sue for installments that came due within the last 4 years, even though installments from 2019-2021 are barred. This node's single-accrual-date determination, applied to an unaccelerated installment obligation, would incorrectly declare the entire claim either wholly barred or wholly live rather than partially barred."
       },
       "completeness_checklist": [
         {
@@ -216,6 +232,14 @@
         },
         {
           "fact": "If any payment was made after the last default, whether it was made before or after the 4-year period had already run (only a payment made before the bar restarts the clock; one made after does not revive it without a signed written acknowledgment)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether a complaint has already been filed (compare filing date, not today, to accrual + 4 years) or a judgment already entered (the governing period becomes the 10-year CCP § 683.020 enforcement/renewal period, not the original 4-year contract SOL)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the obligation is an installment contract that was never accelerated -- if so, the 4-year period runs separately on each missed installment, not from a single accrual/last-payment date",
           "dispositive": true
         }
       ],

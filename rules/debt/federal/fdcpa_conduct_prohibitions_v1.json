@@ -310,6 +310,20 @@
             "url": "https://www.law.cornell.edu/uscode/text/15/1692f",
             "source_tier": "B",
             "tier_rationale": "Official federal source (Cornell LII reproduces U.S. Code); used where the anchor predates this session's tier discipline -- retained as B (recognized noncommercial republisher) rather than immediately re-pinned to the GPO/govinfo.gov text, since Cornell LII is the field-standard noncommercial republisher for federal code and no machine-hostility issue was found this session; flagged as a HORIZON candidate to re-verify against govinfo.gov directly."
+          },
+          {
+            "cite": "15 U.S.C. § 1692f (introductory clause)",
+            "quoted_text": "A debt collector may not use unfair or unconscionable means to collect or attempt to collect any debt. Without limiting the general application of the foregoing, the following conduct is a violation of this section...",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692f",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-08-30 (round 23) to encode the general-clause gap the corroboration pipeline's adversarial check found: this node previously encoded only the 8 enumerated catalog items and a determination rule keyed to matching one of them, but the statute's own introductory clause makes the list expressly illustrative ('without limiting the general application of the foregoing'), not exhaustive. As encoded, the node would return a false negative for the large class of unfair-practice claims (collecting discharged or time-barred debts, seizing exempt funds, claim-splitting, abusive litigation conduct) that courts routinely adjudicate under the general 'unfair or unconscionable means' clause without needing a catalog-item match. Cornell LII primary source, same section already cited elsewhere in this node."
+          },
+          {
+            "cite": "15 U.S.C. § 1692a(6)",
+            "quoted_text": "The term 'debt collector' means any person who uses any instrumentality of interstate commerce or the mails in any business the principal purpose of which is the collection of any debts, or who regularly collects or attempts to collect, directly or indirectly, debts owed or due or asserted to be owed or due another... [the term does not include] any person collecting or attempting to collect any debt owed or due or asserted to be owed or due another to the extent such activity... concerns a debt which was originated by such person; ... concerns a debt which was not in default at the time it was obtained by such person; or... concerns a debt obtained by such person as a secured party in a commercial credit transaction involving the creditor.",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-08-30 (round 23) to encode the debt-collector-threshold gap the adversarial check found: § 1692f (like the rest of the FDCPA) applies only to a 'debt collector' as narrowly defined by § 1692a(6) -- an original creditor, a servicer who acquired the loan before default, and an in-house collection unit collecting its own debts are all excluded. This node's checklist had no threshold question on this at all, so unauthorized-fee facts alone would yield a § 1692f violation finding even against an excluded original creditor or pre-default servicer -- a very common real fact pattern (e.g., a mortgage servicer's disputed fee). Cornell LII primary source."
           }
         ],
         "citation_verified": true
@@ -324,11 +338,25 @@
           "(5) causing communication charges via concealment of the communication's true purpose (e.g., collect calls, telegram fees)",
           "(6) threatening/taking nonjudicial repossession without a present enforceable right, without present intent, or where the property is legally exempt",
           "(7) communicating about the debt by postcard",
-          "(8) using any envelope language/symbol (other than the collector's address or a non-revealing business name) indicating debt collection"
+          "(8) using any language or symbol on an envelope or in the address on any envelope (other than the collector's address, and a business name that does not indicate the business is in debt collection) -- NOT limited to symbols that expressly 'indicate debt collection': visible account numbers, scannable barcodes/QR codes, and other identifying marks through a windowed envelope are themselves catalog-item (8) violations even if nothing on the envelope literally says 'debt' or 'collection' (Douglass v. Convergent Outsourcing; Daubert v. NRA Group -- among the most heavily litigated § 1692f fact patterns)"
         ],
-        "determination": "any single catalog item, if the facts match, is an independent §1692f violation"
+        "determination": "any single catalog item, if the facts match, is an independent §1692f violation",
+        "general_clause_note": "The catalog above is expressly ILLUSTRATIVE, not exhaustive -- § 1692f's own text states the enumerated items apply 'without limiting the general application' of the broader ban on 'unfair or unconscionable means.' A fact pattern that matches none of the 8 catalog items can still violate § 1692f under the general clause -- common examples include continuing to collect a debt known to be discharged in bankruptcy or time-barred, garnishing or freezing funds known to be exempt, splitting a single claim into multiple suits to increase fees, or other abusive collection-litigation conduct. This node's 'determination' should not be read as a closed list requiring an item-by-item match -- absence of a catalog-item match does NOT by itself mean no § 1692f violation occurred.",
+        "debt_collector_threshold_note": "This entire node applies only if the entity is a 'debt collector' under § 1692a(6) collecting a consumer 'debt.' It does NOT apply to: an original creditor collecting its own debt; a servicer who acquired the loan before it went into default; an in-house collection unit collecting for its own company; or a business/commercial obligation rather than a consumer debt. A very common real fact pattern -- a mortgage servicer or credit-card issuer itself (not a third-party collector) adding an unauthorized fee -- falls outside this node's scope entirely, regardless of how clearly the fee matches catalog item (1); this threshold question should be resolved before applying any catalog item.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T181129Z.json, FDCPA-UNFAIR-PRACTICES-CATALOG-1692f, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true) -- this node's Stage A/citation-check pipeline ran cleanly this round, so all 3 findings were captured intact in gaps_found.",
+            "summary": "Added § 1692f introductory-clause (illustrative-not-exhaustive) and § 1692a(6) debt-collector-definition derived_from entries; added general_clause_note and debt_collector_threshold_note; broadened catalog item (8)'s envelope-symbol scope beyond 'indicating debt collection' per Douglass/Daubert; added a threshold checklist item at front and a general-clause checklist item at end."
+          }
+        ]
       },
       "completeness_checklist": [
+        {
+          "fact": "Whether the entity is a 'debt collector' under § 1692a(6) (excludes original creditors, pre-default-acquiring servicers, and in-house collection units) and the obligation is a consumer 'debt' rather than a business/commercial one -- this node does not apply if either threshold fails",
+          "dispositive": true
+        },
         {
           "fact": "Whether any collected amount (fees, interest, charges) beyond principal was authorized by the original debt agreement or by law",
           "dispositive": true
@@ -343,6 +371,10 @@
         },
         {
           "fact": "Whether any communication was sent by postcard, or an envelope revealed debt-collection purpose",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the facts, even if they match no catalog item, otherwise amount to an unfair or unconscionable collection practice under § 1692f's general clause (e.g., collecting a known-discharged or known-time-barred debt, seizing known-exempt funds, claim-splitting) -- the catalog is illustrative, not exhaustive",
           "dispositive": true
         }
       ],

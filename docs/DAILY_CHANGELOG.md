@@ -4,6 +4,101 @@
 
 ---
 
+## 2026-08-30, round 23 (two pipeline bugs root-caused and fixed; 4 genuine content gaps incorporated)
+
+**Context:** Re-ran the corpus after round 22's patch: `run_20260830T181129Z` -- 5/18
+clean-pass (27.8%), 13 flagged, a steep drop from round 21's 66.7%. Read all 18 nodes
+in full before drafting anything, per standing discipline, rather than treating a
+sharp swing as either "the law got worse" or noise to wave away.
+
+**Finding: this was almost entirely a pipeline problem, not a legal-content
+regression.** Every node where Stage A actually completed showed all three models
+grounded and in full semantic agreement -- including confirming round 22's new
+content (CA-CIVIL-ANSWER-DEADLINE's service-completion rules, TX-DEFAULT-JUDGMENT's
+TRCP 505.3/306a/*Peralta* additions, TX-WAGE-GARNISHMENT's federal-override clause)
+landed and was independently re-derived correctly by all three models. Zero actual
+cross-model legal conflicts anywhere in this run. Two separate infrastructure bugs
+account for nearly all 13 flags:
+
+1. **Citation-checker false negatives.** Root-caused via `raw_html_context_at_break`
+   (a round-14/17 diagnostic that finally captured real evidence on a live run for
+   the first time this round): eCFR wraps each character of a paragraph-hierarchy
+   marker like "(1)" in its own nested `<span>`
+   (`<span class="paragraph-hierarchy"><span class="paren">(</span>1<span
+   class="paren">)</span></span>`). `_strip_html`'s blanket tag-to-space replacement
+   (needed elsewhere, to avoid concatenating adjacent inline-linked WORDS) turns
+   "(1)" into "( 1 )" on the page side only, breaking the exact-match check at that
+   exact point even when word-overlap was a perfect 1.0. Confirmed against the
+   actual markup this run captured. **Fixed**: `_normalize_for_match` now collapses
+   whitespace immediately inside parentheses -- a safe, one-directional fix (no
+   quoted_text field in this corpus, and no normal legal prose, ever has a space
+   touching an opening or closing parenthesis, so this only repairs the page-side
+   artifact and is a no-op on the needle side).
+
+2. **Stage-B adversarial call reliability.** Two distinct silent failure modes: (a)
+   empty completions (`_raw: ""`, `error: None`) with no retry -- hit
+   FDCPA-REGF-CALL-FREQUENCY, FDCPA-VALIDATION-NOTICE-1692g, CA-CIVIL-ANSWER-DEADLINE,
+   TX-DEFAULT-JUDGMENT; (b) truncated/unparseable JSON, even at round 19's bumped
+   3000-token budget on verbose 3-scenario responses -- hit
+   FDCPA-FALSE-DECEPTIVE-CATALOG-1692e, CA-SOL-ORAL-CONTRACT-DEBT, CA-VEHICLE-EXEMPTION,
+   CA-BANK-ACCOUNT-EXEMPTION, TX-HOMESTEAD-EXEMPTION -- silently discarding real
+   findings visible in the raw text (e.g. an EDD/unemployment-benefits gap on CA bank
+   accounts, a recent-interstate-move homestead-cap issue) even though they never made
+   it into `gaps_found`. **Fixed**: `call_anthropic` now captures the API's own
+   `stop_reason` (so truncation is visible in the run JSON going forward, not silently
+   indistinguishable from "no gaps found"), and the adversarial call site's budget is
+   bumped 3000 -> 4000 tokens with one retry enabled (same budget for an empty
+   completion, 1.5x budget for a max_tokens truncation).
+
+Both fixes verified: a syntax check, a targeted unit test reproducing the exact eCFR
+nested-span markup this run captured (confirms "( 1 )" -> "(1)" without breaking
+normal text), and a `--dry-run` execution of the full runner end-to-end.
+
+**Of the 13 flagged nodes, only 4 had genuinely real, cleanly-captured new findings**
+(the other 9 were the infra bugs above, now fixed, and should re-run clean or closer
+to clean next round):
+
+- `FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b`: added § 1681n/1681o/1681p
+  (remedies-and-limitations: willful vs. negligent damages standard, 2-year-discovery/
+  5-year-violation suit deadline) and § 1681i(a)(3) (a CRA may terminate a
+  reinvestigation as frivolous and never forward it to the furnisher, meaning no
+  furnisher duty ever arises); tightened the CRA-forwarding trigger wording; added an
+  accuracy-element note (a claim fails at the threshold if the reported info was
+  actually accurate, regardless of investigation quality).
+- `FDCPA-UNFAIR-PRACTICES-CATALOG-1692f`: added the statute's own introductory clause
+  (the 8-item catalog is illustrative, not exhaustive -- a fact pattern matching no
+  catalog item can still violate the general "unfair or unconscionable means" clause)
+  and the § 1692a(6) debt-collector threshold (excludes original creditors,
+  pre-default-acquiring servicers, in-house collection); broadened catalog item (8)'s
+  envelope-symbol scope beyond "indicating debt collection" to match the statute's
+  actual text (visible account numbers/QR codes are themselves violations per
+  *Douglass v. Convergent*/*Daubert v. NRA Group*).
+- `CA-SOL-WRITTEN-CONTRACT-DEBT`: fixed the `determination` field, which was keyed to
+  comparing *today's date* against accrual-plus-4-years -- now correctly keys off the
+  complaint's filing date once a suit has been filed, and flags that an existing
+  judgment is governed by CCP § 683.020's 10-year enforcement/renewal period, not the
+  original 4-year contract SOL at all; added a note that unaccelerated installment
+  obligations accrue separately per missed installment, not from one single date.
+- `TX-EXEMPT-PERSONAL-PROPERTY`: added life insurance cash value/proceeds (Tex. Ins.
+  Code § 1108.051) and 529/Texas Tomorrow Fund college savings accounts (Tex. Prop.
+  Code § 42.0022) as exempt outside the aggregate cap; added a note that the
+  unlimited "current wages" exemption stops applying once wages are paid and
+  deposited/commingled in a bank account (bank-account garnishment, not wage
+  garnishment, is the common real-world Texas scenario); clarified that "family"
+  status for the higher cap includes an unmarried head of household supporting
+  dependents, not only a debtor with a spouse.
+
+**Not done this round:** tier promotion for any of these 4 nodes -- all remain
+`DRAFT`. `ca_eviction_v2.json` and the v0.3 held-out set untouched (frozen-artifact
+check confirms).
+
+**Verification:** `python3 scripts/ci/validate_debt_schema.py` -- all 9 debt-track
+rules files pass. `python3 scripts/ci/check_frozen_artifacts.py` -- both frozen
+artifacts match committed hash. `scripts/corroboration/run_corroboration.py
+--dry-run` -- runs end-to-end with both runner fixes in place, no errors.
+
+---
+
 ## 2026-08-30, round 22 (second DRAFT-tier iteration pass; adversarial-check sampling variance)
 
 **Context:** Re-ran the corpus after round 21's patch was applied. Result:
