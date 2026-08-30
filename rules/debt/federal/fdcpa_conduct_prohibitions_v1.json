@@ -50,6 +50,12 @@
         "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
         "retrieved": true,
         "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "15 U.S.C. § 1692a(6)(F)",
+        "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
       }
     ]
   },
@@ -155,6 +161,27 @@
             "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
             "source_tier": "B",
             "tier_rationale": "Added 2026-08-30 (round 21), same basis as the 1692a(5) entry above: encodes the threshold predicate that an original creditor collecting its own debt in its own name is generally NOT a 'debt collector' under the FDCPA (with the false-name exception noted in the bracketed clause). Excerpted/paraphrased at the '...' for the full multi-exclusion list in the statute (process servers, government employees, bona fide fiduciaries, etc.) which is not otherwise relevant to this node's checklist -- flagged as a HORIZON candidate for a dedicated FDCPA-THRESHOLD-DEBT-COLLECTOR node if those other exclusions become relevant to future nodes."
+          },
+          {
+            "cite": "15 U.S.C. § 1692a(6)(F)(iii)",
+            "quoted_text": "[The term 'debt collector' does not include] any person collecting or attempting to collect any debt owed or due or asserted to be owed or due another to the extent such activity ... concerns a debt which was not in default at the time it was obtained by such person.",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the servicer/assignee exclusion the corroboration pipeline's adversarial check found missing from the round-21 threshold predicates: the round-21 fix added the general 'original creditor collecting its own debt in its own name' exclusion (§ 1692a(6) first sentence) but not this separate, narrower exclusion for a servicer/assignee that acquired an account BEFORE it went into default -- a mortgage or student-loan servicer is neither the 'original creditor' nor a classic third-party debt buyer as previously encoded, and would be wrongly swept in as covered without this clause. Confirmed via WebSearch cross-referencing Cornell LII and case commentary (Severson & Werson, 6th Cir. servicer-exemption coverage) this session; same web_fetch-timeout caveat as other Cornell entries this corpus."
+          },
+          {
+            "cite": "Materiality requirement (judicial gloss on § 1692e)",
+            "quoted_text": "Courts across circuits require a false or misleading statement under § 1692e to be MATERIAL -- capable of influencing a consumer's decision or action regarding the debt -- to be actionable; a technically-false but inconsequential statement is not a violation. Circuits differ on the exact standard used to judge materiality (the traditional 'least sophisticated consumer' standard vs. a 'reasonable consumer' standard adopted more recently by some circuits), but the materiality requirement itself is now widely recognized.",
+            "url": null,
+            "source_tier": "D",
+            "tier_rationale": "Added 2026-08-30 (round 22) -- case-law commentary, not primary statutory text, tagged D per this schema's source-tier rule. Confirmed via WebSearch of multiple circuit-court summaries this session (2d, 4th, 10th Cir. materiality/least-sophisticated-consumer case law); the specific circuit standard is not asserted uniformly, only that a materiality floor exists -- this catalog's 'any single catalog item, if the facts match, is an independent violation' determination did not previously reflect that floor at all."
+          },
+          {
+            "cite": "Time-barred/stale-debt collection theory (judicial gloss on § 1692e(2)(A), (5), (10))",
+            "quoted_text": "Multiple circuits hold that a debt collector who threatens or files suit on a debt it knows (or should know) is time-barred violates § 1692e(2)(A) (misrepresenting the debt's 'legal status') and/or § 1692e(5) (threatening action that cannot legally be taken). Some circuits (e.g., the Fifth Circuit in Daugherty v. Convergent Outsourcing) have extended this to dunning letters that could mislead an unsophisticated consumer into believing a time-barred debt remains legally enforceable, even without an explicit threat of suit.",
+            "url": null,
+            "source_tier": "D",
+            "tier_rationale": "Added 2026-08-30 (round 22) -- case-law commentary, tagged D. Confirmed via WebSearch of multiple circuit-court summaries this session. This is a widely litigated, high-volume real-world FDCPA theory the prior catalog-item checklist gave no path to at all (the checklist asked about exact wording and threats but never the debt's age or the applicable limitations period)."
           }
         ],
         "citation_verified": true
@@ -183,7 +210,8 @@
         "determination": "any single catalog item, if the facts match, is an independent §1692e violation — items are not cumulative requirements, each stands alone",
         "threshold_predicates": [
           "The contacting entity must be a 'debt collector' under 15 U.S.C. § 1692a(6) -- an original creditor collecting its own debt in its own name is generally excluded (see derived_from above); this catalog does not apply to that entity at all.",
-          "The obligation must be a 'debt' under 15 U.S.C. § 1692a(5) -- incurred primarily for personal, family, or household purposes, not a business/commercial obligation."
+          "The obligation must be a 'debt' under 15 U.S.C. § 1692a(5) -- incurred primarily for personal, family, or household purposes, not a business/commercial obligation.",
+          "Even a third-party servicer or assignee is NOT a 'debt collector' under § 1692a(6)(F)(iii) if it obtained the debt BEFORE it went into default (e.g., a mortgage servicer that began servicing while the loan was current). This is a separate, narrower exclusion from the general original-creditor exclusion above -- a servicer/assignee is neither 'original creditor' nor a covered third-party collector in that scenario."
         ],
         "drafting_revisions": [
           {
@@ -191,8 +219,16 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260830T111412Z.json, FDCPA-FALSE-DECEPTIVE-CATALOG-1692e, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
             "summary": "Added missing catalog items (6) [debt-sale/transfer loss-of-defense misrepresentation] and (7) [false crime/disgrace accusation]; added the 1692a(5)/(6) debt-collector and consumer-debt threshold predicates; noted the formal-pleading exception to item (11). Also corrected the derived_from quoted_text, which previously skipped (6)/(7) via an unflagged ellipsis."
+          },
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T171724Z.json, FDCPA-FALSE-DECEPTIVE-CATALOG-1692e, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Second pass: added § 1692a(6)(F)(iii) servicer/not-in-default exclusion, the materiality requirement, and the time-barred/stale-debt collection theory; added 3 corresponding checklist items. First pass (round 21) already fixed the (6)/(7) catalog omission and the general 1692a(5)/(6) threshold predicates -- confirmed still present and working in this run's own derivations."
           }
-        ]
+        ],
+        "materiality_note": "This catalog's determination ('any single catalog item, if the facts match, is an independent violation') omits the materiality floor courts read into § 1692e: a technically-false statement that could not plausibly influence a consumer's response to the debt (e.g., a trivial date or one-cent amount error unrelated to what the consumer would actually decide or do) is generally not actionable. This node does not itself apply a materiality filter to a catalog-item match.",
+        "stale_debt_note": "Filing or threatening suit on a debt outside the applicable statute of limitations (see the state-layer SOL nodes, e.g. CA-SOL-WRITTEN-CONTRACT-DEBT / TX-SOL-CONSUMER-DEBT) is a core, high-volume § 1692e theory under (2)(A) and (5) -- and, in some circuits, even a dunning letter alone without a litigation threat can violate § 1692e if it could mislead a consumer about a time-barred debt's enforceability. Neither the catalog gloss nor the prior checklist asked about the debt's age or the applicable limitations period."
       },
       "completeness_checklist": [
         {
@@ -225,6 +261,18 @@
         },
         {
           "fact": "Whether the communication at issue is a formal pleading filed in a legal action (the item (11) mini-Miranda duty doesn't apply to those)",
+          "dispositive": true
+        },
+        {
+          "fact": "If the entity is a servicer or assignee rather than the original creditor, whether it obtained the debt before or after it went into default (obtained-before-default generally exempts it entirely under § 1692a(6)(F)(iii))",
+          "dispositive": true
+        },
+        {
+          "fact": "The age of the debt and date of last payment/default, and whether the applicable state statute of limitations has run (relevant to whether threatening or filing suit, or even dunning without a threat, violates § 1692e(2)(A)/(5)/(10))",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the specific false/deceptive statement or omission found is material -- i.e., could plausibly influence how a consumer responds to the debt -- as opposed to a trivial, inconsequential inaccuracy",
           "dispositive": true
         }
       ],

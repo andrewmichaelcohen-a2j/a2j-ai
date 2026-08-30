@@ -20,6 +20,12 @@
         "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "15 U.S.C. § 1681s-2(c)-(d)",
+        "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
       }
     ]
   },
@@ -44,6 +50,20 @@
             "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2",
             "source_tier": "B",
             "tier_rationale": "Official federal source (Cornell LII reproduces U.S. Code); used where the anchor predates this session's tier discipline -- retained as B (recognized noncommercial republisher) rather than immediately re-pinned to the GPO/govinfo.gov text, since Cornell LII is the field-standard noncommercial republisher for federal code and no machine-hostility issue was found this session; flagged as a HORIZON candidate to re-verify against govinfo.gov directly."
+          },
+          {
+            "cite": "15 U.S.C. § 1681s-2(c), (d)",
+            "quoted_text": "Sections 1681n and 1681o of this title do not apply to any failure to comply with subsection (a) of this section, except as provided in section 1681s(c)(1)(B) of this title. Subsection (a) shall be enforced exclusively ... by the Federal agencies and officials and the State officials identified in section 1681s of this title.",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the enforcement-exclusivity gap the corroboration pipeline's adversarial check found: subsection (a) duties (including the direct-to-furnisher dispute route this node already flagged as 'a separate duty under § 1681s-2(a)(8), not encoded') are enforceable ONLY by government regulators, not by a private consumer lawsuit -- unlike subsection (b), which does carry a private right of action. A consumer routed to '(a)(8) is a separate duty' without this caveat could wrongly believe a direct dispute to the furnisher preserved a private remedy. Confirmed via WebSearch cross-referencing Cornell LII and case commentary this session; direct web_fetch of this specific subsection was not independently re-verified against a live fetch this session -- flagged for the next live citation-check run rather than silently assumed."
+          },
+          {
+            "cite": "Reasonable-investigation standard (judicial gloss on § 1681s-2(b)(1)(A))",
+            "quoted_text": "Though the word 'reasonable' does not appear in the statutory text of § 1681s-2(b), courts across circuits have read a reasonableness requirement into the furnisher's investigation duty. Courts have specifically rejected 'data conformity' review -- where a furnisher merely checks that its own internal database matches what it already reported, without examining supporting documents the consumer submitted -- as satisfying the duty. Some circuits (following the Fourth Circuit) now frame this as an 'objectively and readily verifiable' standard rather than a pure legal/factual distinction (see the legal_vs_factual_dispute_note below).",
+            "url": null,
+            "source_tier": "D",
+            "tier_rationale": "Added 2026-08-30 (round 22) -- this is case-law commentary, not a primary statutory or regulatory source, so tagged D per this schema's source-tier rule (corroboration only, not a sole anchor) rather than misrepresented as text of the statute itself. Confirmed via WebSearch of multiple law-firm and legal-publisher summaries this session (NCLC, Troutman Pepper, ABA Litigation Section); no single case is asserted as universally controlling since the specific standard (least-sophisticated/reasonable-consumer-style framing vs. the newer 'objectively and readily verifiable' test) varies by circuit and is actively evolving -- flagged as such in logic below rather than presented as settled uniform law."
           }
         ],
         "citation_verified": true
@@ -58,7 +78,18 @@
           "if inaccurate, incomplete, or unverifiable after reinvestigation: modify, delete, or permanently block that item for CRA-reporting purposes"
         ],
         "deadline": "tied to the CRA's own § 1681i(a)(1) reinvestigation period — this node does not itself state that period's length (commonly cited as 30 days, extendable to 45 in some circumstances, but NOT independently verified against primary text this session; flagged rather than asserted)",
-        "relationship_to_debt_collection": "relevant when a debt collector or the original creditor is also furnishing information to credit bureaus about the disputed debt — a consumer disputing a debt's validity with the COLLECTOR under FDCPA §1692g (see FDCPA-VALIDATION-NOTICE-1692g) is a related but legally separate track from disputing the same debt's appearance on a CREDIT REPORT under FCRA (this node) — both may need to happen."
+        "relationship_to_debt_collection": "relevant when a debt collector or the original creditor is also furnishing information to credit bureaus about the disputed debt — a consumer disputing a debt's validity with the COLLECTOR under FDCPA §1692g (see FDCPA-VALIDATION-NOTICE-1692g) is a related but legally separate track from disputing the same debt's appearance on a CREDIT REPORT under FCRA (this node) — both may need to happen.",
+        "reasonableness_standard_note": "The statute's bare text ('investigate,' 'review all relevant information') does not itself say the investigation must be 'reasonable,' but courts have consistently read that requirement in. A furnisher that only re-checks its own internal records without examining supporting documents the consumer submitted (a 'data conformity' review) is generally NOT treated as having satisfied § 1681s-2(b) even though it technically 'investigated' and 'reported back' on time. This node's bare trigger/duties list, applied literally, would find such a furnisher compliant -- flagged here so that determination is not made without considering whether the investigation was substantive.",
+        "practical_enforcement_note": "The direct-dispute route flagged elsewhere in this node ('a separate duty under § 1681s-2(a)(8), not encoded in this node') is NOT privately enforceable -- § 1681s-2(c)-(d) commits subsection (a) enforcement exclusively to federal/state regulators, unlike subsection (b), which does carry a private right of action. Practically, a consumer who wants a private FCRA remedy against a furnisher needs to dispute through a CRA (triggering subsection (b)), not directly with the furnisher alone.",
+        "legal_vs_factual_dispute_note": "Some circuits have held a furnisher has no § 1681s-2(b) duty to resolve purely LEGAL disputes (e.g., whether a debt buyer legally owns the debt, or whether it is time-barred) as opposed to FACTUAL inaccuracies (e.g., wrong balance, wrong dates) -- only a court can finally resolve legal validity questions. Other, more recent circuit decisions have moved away from that legal/factual line toward an 'objectively and readily verifiable' test, under which even some legal-sounding disputes can trigger a duty if they are readily checkable. This is a genuinely unsettled, circuit-dependent question this node does not resolve -- flagged rather than asserted either way.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T171724Z.json, FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Added the enforcement-exclusivity caveat for the (a)(8) direct-dispute route (not privately enforceable), the reasonable-investigation judicial gloss (rejects mere records-parroting), and the legal-vs-factual dispute distinction (flagged as genuinely unsettled/circuit-dependent rather than asserted as a clean rule); added 2 checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -75,6 +106,14 @@
         },
         {
           "fact": "What the furnisher's investigation concluded, and whether it modified/deleted/blocked the item accordingly if inaccurate/incomplete/unverifiable",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the furnisher's investigation went beyond checking its own internal records to actually reviewing supporting documents the consumer submitted with the CRA dispute (a bare records-check is widely treated as an unreasonable/inadequate investigation)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the consumer's dispute is a factual claim (wrong amount, wrong dates, mistaken identity) or a legal claim about the debt's validity/ownership/enforceability (e.g., statute of limitations, chain of title) -- courts differ, by circuit, on whether the latter triggers a furnisher duty at all",
           "dispositive": true
         }
       ],

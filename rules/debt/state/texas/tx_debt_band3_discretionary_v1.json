@@ -61,6 +61,27 @@
             "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
             "source_tier": "C",
             "tier_rationale": "Third-party rule-reproduction site, no official/institutional affiliation identified -- classified C (commercial-style aggregator) as the conservative default; not A (not a .gov/official source) and not B (no recognized noncommercial institutional standing like Cornell LII or CourtListener). Flagged for Andy's confirmation or a Tier A re-pin to the official Texas Judicial Branch rules site."
+          },
+          {
+            "cite": "Tex. R. Civ. P. 505.3",
+            "quoted_text": "(a) Motion to Reinstate. ... no later than 14 days after the order of dismissal is signed ... (b) Motion to Set Aside Default Judgment. ... no later than 14 days after the default judgment is signed ... (c) Motion for New Trial. ... no later than 14 days after the judgment is signed ... (d) Ruling. If the judge does not rule on the motion by written order, the motion is denied by operation of law at 5:00 p.m. on the 21st day after the date the judgment or order of dismissal was signed.",
+            "url": "https://www.stcl.edu/lib/TexasRulesProject/TRCP474-522/rule505-32013.html",
+            "source_tier": "C",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the JUSTICE COURT variant of the set-aside deadline the corroboration pipeline's adversarial check found missing -- this node previously hard-coded the TRCP 329b(a)/(c) district/county court deadlines (30 days to file, 75 days to overrule-by-operation-of-law) as if they applied universally, but justice-court (small-claims-tier) default judgments -- among the most common in Texas consumer debt collection -- are governed by the much shorter TRCP 505.3 (14 days to file, denied by operation of law at day 21 if not ruled on). A justice-court defendant told she has 30 days would be told she is timely when her actual window has already closed. Source is a law school's rules-history repository (not an official state site) because the official Texas courts rules PDF was not independently re-fetched this session -- tagged C (secondary aggregator, corroborating only) rather than B, and flagged for live verification against txcourts.gov before relying on the exact deadline language."
+          },
+          {
+            "cite": "Tex. R. Civ. P. 306a(4)-(5)",
+            "quoted_text": "(4) ... if within twenty days after the judgment or other appealable order is signed, a party adversely affected by it or his attorney has neither received the notice required by paragraph (3) of this rule nor acquired actual knowledge of the order, then with respect to that party all the periods mentioned in paragraph (1) shall begin on the date that such party or his attorney received such notice or acquired actual knowledge of the signing, whichever occurred first, but in no event shall such periods begin more than ninety days after the original judgment or other appealable order was signed. (5) In order to establish the application of paragraph (4) ... the party adversely affected is required to prove in the trial court, on sworn motion and notice, the date on which the party or his attorney first either received a notice of the judgment or acquired actual knowledge of the signing.",
+            "url": "https://www.stcl.edu/lib/TexasRulesProject/TRCP300-314/rule306a2024.html",
+            "source_tier": "C",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the notice-restart mechanism the corroboration pipeline's adversarial check found missing -- this node's checklist previously treated 'more than 30 days since signing' as an absolute, unconditional bar, but TRCP 306a(4)-(5) restarts the deadline from actual notice/knowledge (up to 90 days after signing) on a sworn motion, for a defendant who genuinely didn't learn of the judgment in time -- a common fact pattern when notice went to a stale address and the debtor first learns of the judgment via a garnishment or credit report hit. Same C-tier/verification caveat as the § 505.3 entry above."
+          },
+          {
+            "cite": "Peralta v. Heights Medical Center, Inc., 485 U.S. 80 (1988); Tex. R. App. P. 30; bill of review (4-year limit)",
+            "quoted_text": "Peralta held that a default judgment entered without proper service violates due process regardless of whether the defendant had a meritorious defense -- a defendant who was never validly served is not required to show the Craddock meritorious-defense element to attack the judgment. In Texas, a defendant who missed the 30-day/505.3 window (and any 306a notice-restart) because of defective or absent service may still pursue a restricted appeal within 6 months of judgment (Tex. R. App. P. 26.1(c), 30 -- available to a party who did not participate at trial, where the error is apparent on the face of the record) or a bill of review within 4 years of judgment (an equitable proceeding to set aside a judgment no longer subject to appeal or new-trial motion).",
+            "url": null,
+            "source_tier": "D",
+            "tier_rationale": "Added 2026-08-30 (round 22) -- Peralta is a controlling U.S. Supreme Court due-process holding (confirmed via WebSearch of multiple case-law summaries and the restricted-appeal/bill-of-review deadline sources this session), but the surrounding Texas procedural mechanics (restricted appeal, bill of review) are commentary/secondary-source-confirmed rather than independently fetched from a primary Texas court rules site this session -- tagged D, corroboration only, flagged for live verification rather than treated as fully primary-sourced. This is squarely a BAND 3 addition: it does not predict any outcome, it only names an additional remedy path and its own deterministic filing deadlines, consistent with this node's existing 'what_the_system_may_say' discipline."
           }
         ],
         "citation_verified": true,
@@ -75,8 +96,19 @@
           "(3) granting the motion will occasion no undue delay or otherwise injure the plaintiff"
         ],
         "procedural_deadline_component_this_IS_deterministic": "The motion for new trial must be filed within 30 days after the judgment is signed (TRCP 329b(a)) -- Band 1 within an otherwise Band 3 node. If it is not decided by written signed order within 75 days of judgment, it is overruled by operation of law (TRCP 329b(c)). Missing the 30-day window forecloses this path entirely regardless of how strong the three Craddock factors are -- this deterministic gate should be surfaced to the user with urgency distinct from the discretionary merits question.",
-        "what_the_system_may_say": "Name the three-factor test, explain each factor in plain language, flag the 30-day filing deadline as hard and case-critical, and tell the person a licensed attorney's judgment is needed to assess factors (1) and (2) against their specific facts.",
-        "what_the_system_may_NOT_say": "Any prediction of whether a specific court will grant or deny the motion; any characterization of the person's facts as clearly meeting or failing a factor; any percentage or likelihood language."
+        "what_the_system_may_say": "Name the three-factor test, explain each factor in plain language, flag the 30-day filing deadline as hard and case-critical, and tell the person a licensed attorney's judgment is needed to assess factors (1) and (2) against their specific facts. Also: identify which court entered the judgment (district/county vs. justice court) since the filing deadline differs; flag whether the TRCP 306a notice-restart may apply if the person says they only recently learned of the judgment; and flag whether service is disputed at all, since that changes which remedy (Craddock motion vs. restricted appeal vs. bill of review) is even the right one to pursue -- these are the same kind of deterministic, non-discretionary gates as the existing 30-day filing deadline, not predictions of a discretionary outcome.",
+        "what_the_system_may_NOT_say": "Any prediction of whether a specific court will grant or deny the motion; any characterization of the person's facts as clearly meeting or failing a factor; any percentage or likelihood language.",
+        "justice_court_variant_note": "The 30-day/75-day TRCP 329b deadlines above apply in DISTRICT OR COUNTY COURT. If the default judgment was entered in JUSTICE COURT (small-claims-tier, common for consumer debt-buyer suits), the governing deadline is instead TRCP 505.3: 14 days to file a motion to set aside/for new trial, denied by operation of law at 5:00 p.m. on the 21st day if not ruled on. Which court entered the judgment is a threshold, deterministic fact this node must ask before applying either deadline -- like the 30-day TRCP 329b deadline itself, this is Band 1 within an otherwise Band 3 node, not a matter of discretion.",
+        "notice_restart_note": "The filing deadline (30 days under 329b, or 14 days under 505.3) is NOT an absolute bar if the party did not receive notice of the judgment or acquire actual knowledge of it within 20 days after signing. TRCP 306a(4)-(5) restarts the deadline from the date of actual notice/knowledge (up to 90 days after the original signing), on a sworn motion proving that later notice date. A defendant who first learns of a default judgment via a bank garnishment, wage withholding, or credit-report hit weeks after signing may still have a live path -- this deterministic gate should be checked before concluding the window has closed.",
+        "defective_service_note": "If service was defective or never happened at all, the Craddock three-factor test (and the meritorious-defense showing it requires) does NOT govern -- Peralta v. Heights Medical Center holds a defendant who was never properly served need not show a meritorious defense at all, because entering judgment without valid service violates due process independent of the merits. Such a defendant, even outside the 329b/505.3/306a windows, may still have a restricted appeal (within 6 months of judgment) or a bill of review (within 4 years) available -- this node should not tell a defendant with a live service defect that no remedy remains just because the ordinary motion-for-new-trial windows have closed.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T171724Z.json, TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Added TRCP 505.3 justice-court variant, TRCP 306a(4)-(5) notice-restart rule, and the Peralta defective-service exception (with the restricted-appeal/bill-of-review alternative remedies); added 3 checklist items and extended what_the_system_may_say to cover these as additional deterministic gates -- consistent with this node's existing Band 3 discipline (name factors/deadlines, never predict a discretionary outcome)."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -94,6 +126,18 @@
         {
           "fact": "Does the person have a defense to the underlying claim, and what is it (raw input for factor 2; the system does not characterize it)",
           "dispositive": false
+        },
+        {
+          "fact": "Which court entered the default judgment -- district/county court (TRCP 329b: 30/75 days) or justice court (TRCP 505.3: 14/21 days)",
+          "dispositive": true
+        },
+        {
+          "fact": "When the person actually learned of the judgment (received notice or otherwise gained actual knowledge) -- if more than 20 days after signing, TRCP 306a(4)-(5) may restart the filing deadline from that later date, up to 90 days after signing, on a sworn motion",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the person disputes that they were validly served at all (defective/no service) -- if so, Craddock's meritorious-defense element does not apply, and a restricted appeal (6 months) or bill of review (4 years) may be available even after the ordinary motion window has closed",
+          "dispositive": true
         }
       ],
       "consequences_and_next_steps": [

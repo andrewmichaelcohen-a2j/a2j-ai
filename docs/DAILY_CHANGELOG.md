@@ -4,6 +4,94 @@
 
 ---
 
+## 2026-08-30, round 22 (second DRAFT-tier iteration pass; adversarial-check sampling variance)
+
+**Context:** Re-ran the corpus after round 21's patch was applied. Result:
+`run_20260830T171724Z` -- 12/18 clean-pass (66.7%), 6 flagged (down from 8/18 flagged in round
+20). Diagnosed all 6 flags before drafting anything, per standing discipline. Split cleanly into
+two kinds:
+
+1. **5 of the 6 nodes clean-pass on the SAME content that was flagged in round 20** --
+   `FDCPA-VALIDATION-NOTICE-1692g` retitle fix confirmed working (models now derive cleanly instead
+   of correctly refusing to guess); 4 of round 21's 7 content edits (the CA SOL nodes, the vehicle
+   exemption, the TX exemption nodes) also confirmed clean. Of the 2 nodes that were edited in
+   round 21 but flagged AGAIN this round (`FDCPA-FALSE-DECEPTIVE-CATALOG-1692e`,
+   `CA-BANK-ACCOUNT-EXEMPTION`), the new findings are on genuinely different sub-issues than what
+   round 21 fixed -- not a regression, a second layer of gaps the same node still has.
+2. **4 nodes flagged for the first time this round**, with NO round-21 content change --
+   `FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b`, `CA-CIVIL-ANSWER-DEADLINE`,
+   `TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY`, `TX-WAGE-GARNISHMENT-PROHIBITION`.
+
+**Methodological insight, this round:** the adversarial-check stage samples only 3 fresh edge
+cases per node per run -- it is not exhaustive. A node clean-passing in one run is not proof it is
+bulletproof; a later run can surface genuinely new, real findings purely from different sampling,
+with zero change to the node's content in between. This is what happened to all 4 first-time-flag
+nodes above. Practical implication for how Andy should read run-to-run deltas going forward: a
+declining COUNT of flagged nodes across rounds is the real convergence signal (20 -> 18 -> ... );
+a single run's flag list should be read as "here is what this round's sample turned up," not as
+"here is the complete list of everything wrong with this node."
+
+**Self-correction discipline applied this round** (documented since it changed what got encoded):
+the adversarial check's own claims were independently re-verified, not taken at face value, and
+were found inaccurate on one point -- its scenario for `TX-WAGE-GARNISHMENT-PROHIBITION` asserted
+that 1099/independent-contractor compensation is categorically unprotected as "current wages for
+personal service." Research this round found the actual Texas test turns on whether the payment is
+compensation currently owed for personal service, not on 1099-vs-W-2 form alone -- a more
+fact-specific, less settled question. Encoded as a hedged checklist/note item reflecting that,
+NOT as the check's categorical claim. (Same discipline applied in round 21 to the check's guessed
+CCP §704.080 dollar figures, which were also wrong and were corrected against the actual statute
+rather than encoded as guessed.)
+
+**What changed, this round -- 6 nodes edited, all still DRAFT tier:**
+
+- `FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b`: added 15 U.S.C. §1681s-2(c)-(d) (no private right of
+  action for the initial-notification duty; the actionable duty runs from a dispute notice via a
+  CRA), added a D-tier judicial-gloss entry on the "reasonable investigation" standard, added
+  `reasonableness_standard_note`, `practical_enforcement_note`, and an explicitly-hedged
+  `legal_vs_factual_dispute_note` (the legal-dispute/factual-dispute line is circuit-dependent and
+  unsettled -- flagged, not resolved, per *Denan*/*Chuluunbat* vs. the newer 4th Cir.
+  "objectively and readily verifiable" test).
+- `FDCPA-FALSE-DECEPTIVE-CATALOG-1692e` (2nd pass): added §1692a(6)(F)(iii) (loan-servicer/
+  not-in-default exclusion from "debt collector"), added D-tier judicial-gloss entries for the
+  materiality requirement and the time-barred/stale-debt-collection theory, added
+  `materiality_note` and `stale_debt_note`.
+- `CA-BANK-ACCOUNT-EXEMPTION` (2nd pass): added CCP §704.070 (75-100% recent-wage-deposit
+  exemption) and §704.225 (need-based exemption above the statutory minimum), added
+  `recent_wages_note`, `support_need_note`, and `joint_account_note` (citing CCP §720.110 et
+  seq. -- corrected mid-drafting from an initially-misremembered §703.030 citation, verified
+  before writing).
+- `CA-CIVIL-ANSWER-DEADLINE`: added CCP §§415.20/415.40/415.50 (how the service-completion date
+  itself is calculated for substitute/mail/publication service) and CCP §418.10 (motion to quash
+  and the general-appearance waiver trap), added `service_method_note` and
+  `defective_service_alternative_note`. Only 2 of the run's 3 findings warranted a change -- the
+  3rd (weekend/holiday deadline rollover) was correctly self-assessed by the adversarial check
+  itself as `exposes_gap: false`, so nothing was added for it.
+- `TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY` (Band 3): added TRCP 505.3 (justice-court
+  variant -- 14-day filing deadline, 21-day automatic denial, distinct from the
+  district/county-court TRCP 329b 30/75-day rule this node already had), TRCP 306a(4)-(5)
+  (notice-restart, up to 90 days after signing, on sworn motion), and the *Peralta v. Heights
+  Medical Center* defective-service exception (no meritorious-defense showing required; restricted
+  appeal within 6 months, or bill of review within 4 years). All 3 additions preserve this node's
+  existing Band 3 discipline -- they name additional deterministic gates and deadlines, they do
+  not predict any discretionary outcome.
+- `TX-WAGE-GARNISHMENT-PROHIBITION`: added Tex. Civ. Prac. & Rem. Code §63.004's federal-law
+  override clause (IRS levies, Dept. of Education administrative wage garnishment, federal
+  restitution reach current Texas wages notwithstanding the state constitutional protection),
+  added a hedged independent-contractor/personal-service classification note (see
+  self-correction discipline above), added a hedged out-of-state-employer conflicts-of-law
+  caveat (unresolved, flagged rather than asserted).
+
+**Not done this round:** tier promotion for any of these 6 nodes -- all remain `DRAFT`.
+`ca_eviction_v2.json` and the v0.3 held-out set untouched (frozen-artifact check confirms).
+
+**Verification:** `python3 scripts/ci/validate_debt_schema.py` -- all 9 debt-track rules files,
+including all 5 files touched this round (6 node edits span 5 files: `ca_debt_state_layer_v1.json`
+carries both the `CA-BANK-ACCOUNT-EXEMPTION` 2nd-pass and `CA-CIVIL-ANSWER-DEADLINE` edits), pass
+schema validation. `python3 scripts/ci/check_frozen_artifacts.py` -- both frozen artifacts match
+committed hash, untouched.
+
+---
+
 ## 2026-08-30, round 21 (Claude may now edit DRAFT-tier rule content directly; reframe from "3-model validation" to "3-model iteration")
 
 **Context:** Read the full round-20 run (`run_20260830T111412Z`): 10/18 clean-pass (55.6%),

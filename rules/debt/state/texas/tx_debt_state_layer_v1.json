@@ -80,6 +80,12 @@
         "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
         "retrieved": true,
         "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Tex. Civ. Prac. & Rem. Code § 63.004",
+        "url": "https://texas.public.law/statutes/tex._civ._practice_and_remedies_code_section_63.004",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
       }
     ]
   },
@@ -164,6 +170,13 @@
               "note": "statutes.capitol.texas.gov is a client-rendered SPA: a plain HTTP GET to any specific section URL now consistently returns an identical generic shell (confirmed 2026-08-29 -- CP.16, CN.16, PR.41, and PR.42 all returned the same 250874-byte page regardless of which section was requested). Content confirmed correct via direct browser rendering (JS executed), which loads the real statute text client-side; the quoted_text below was checked against that rendered text and matches verbatim. Same class of limitation as azleg.gov's documented JS-gating.",
               "date": "2026-08-29"
             }
+          },
+          {
+            "cite": "Tex. Civ. Prac. & Rem. Code § 63.004",
+            "quoted_text": "Except as otherwise provided by state or federal law, current wages for personal service are not subject to garnishment. The garnishee shall be discharged from the garnishment as to any debt to the defendant for current wages.",
+            "url": "https://texas.public.law/statutes/tex._civ._practice_and_remedies_code_section_63.004",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the federal-law override the corroboration pipeline's adversarial check found missing -- this statute is a companion to the Tex. Const. art. XVI § 28 protection already encoded, and its own text contains the exception clause: 'except as otherwise provided by ... federal law.' This gives a clean textual hook (not just a general Supremacy Clause argument) for federal wage garnishments/levies -- IRS levies (26 U.S.C. § 6331 et seq.), Department of Education administrative wage garnishment on defaulted federal student loans (20 U.S.C. § 1095a), federal criminal restitution, and federal-court judgments -- overriding the state-law wage protection. Confirmed via WebSearch cross-referencing texas.public.law/Justia/FindLaw mirrors this session; the official Texas statutes site was not independently re-fetched this session, flagged for live verification."
           }
         ],
         "citation_verified": true
@@ -175,11 +188,34 @@
           "court-ordered spousal maintenance"
         ],
         "note": "This is a state constitutional protection stronger than federal law (which permits limited wage garnishment for ordinary debts, subject to CCPA caps) — Texas debtors facing a post-judgment collection effort should know their WAGES specifically cannot be garnished for an ordinary debt judgment, though bank account funds CAN be frozen/seized (a separate mechanism, garnishment of a bank account rather than of wages — not the same protection). Do not conflate the two.",
-        "determination": "if the creditor is attempting to garnish CURRENT WAGES for an ordinary debt judgment (not child support/spousal maintenance), that garnishment is unconstitutional under Texas law"
+        "determination": "if the creditor is attempting to garnish CURRENT WAGES for an ordinary debt judgment (not child support/spousal maintenance), that garnishment is unconstitutional under Texas law",
+        "federal_override_note": "Tex. Civ. Prac. & Rem. Code § 63.004 -- the statutory companion to the constitutional protection above -- expressly carves out 'except as otherwise provided by ... federal law.' Federal-law wage garnishments DO reach current Texas wages notwithstanding this state protection, including: IRS tax levies (26 U.S.C. § 6331 et seq.), Department of Education administrative wage garnishment on defaulted federal student loans (20 U.S.C. § 1095a), federal criminal restitution orders, and garnishment to satisfy certain federal-court judgments. A Texas debtor facing one of these should NOT be told the garnishment is unconstitutional -- it is not, and treating it as such could cause the debtor to miss the actual hearing/appeal deadlines that federal administrative-garnishment procedures provide as the real remedy.",
+        "personal_service_classification_note": "This node's protection is expressly for 'current wages for PERSONAL SERVICE.' Whether a specific payment counts is NOT simply a matter of W-2-employee vs. 1099-independent-contractor classification -- courts look at whether the amount is compensation currently owed for personal service, and there is a real (if genuinely unsettled and fact-specific) argument for protecting some contractor-type compensation too, particularly amounts not yet reduced to a simple account receivable. This node does NOT resolve that classification question one way or the other -- flagged as a threshold fact question rather than assumed, in either direction, to avoid both overclaiming protection for ordinary business receivables and wrongly denying protection to a genuine personal-service earner simply because they were paid on a 1099.",
+        "out_of_state_employer_caveat": "This node assumes Texas exemption law governs whenever the debtor is a Texas resident. Where a Texas judgment is domesticated in another state and garnishment is served on an out-of-state employer there, which state's garnishment/exemption law actually controls is a genuinely unsettled, fact- and forum-specific conflicts-of-law question -- this node does NOT resolve it and should not be read to guarantee the Texas protection follows the debtor's wages to an out-of-state garnishee. Flagged, not resolved, consistent with how this corpus treats other genuinely contested cross-jurisdictional questions (see, e.g., TX-HOMESTEAD-EXEMPTION's HOA-lien caveat).",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T171724Z.json, TX-WAGE-GARNISHMENT-PROHIBITION, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true) -- note the independent-contractor finding's specific categorical claim was NOT adopted as-is; research found the actual test is more fact-specific than the check's framing implied, so the checklist item and note were written to reflect that, not to repeat the check's exact scenario.",
+            "summary": "Added Tex. Civ. Prac. & Rem. Code § 63.004's federal-law override clause (IRS/Dept. of Ed/restitution garnishments reach current Texas wages notwithstanding the state protection); added a hedged independent-contractor classification note (flagged as genuinely unsettled/fact-specific rather than repeating the adversarial check's categorical framing, which this round's research found overstated); added a hedged out-of-state-employer conflicts-of-law caveat; added 3 checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
           "fact": "Whether what's being targeted is wages specifically (garnishable-none, ordinary debt) vs. a bank account (garnishable, separate mechanism) vs. child support/spousal maintenance (garnishable)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the garnishing party is a federal agency/program (IRS, Dept. of Education, federal criminal restitution) rather than an ordinary private judgment creditor -- federal garnishments override this state-law protection",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the payment being garnished is genuinely 'current wages for personal service' as opposed to a business receivable, draw, or other compensation not currently owed for personal service -- this is a fact-specific question not resolved by W-2 vs. 1099 status alone",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the garnishment is being served on an out-of-state employer in another state's courts (which state's law controls is an unresolved, forum-specific question this node does not answer)",
           "dispositive": true
         }
       ],

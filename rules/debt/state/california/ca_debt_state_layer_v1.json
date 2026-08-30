@@ -104,6 +104,36 @@
         "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=703.020.",
         "retrieved": true,
         "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 704.070",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.070.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 704.225",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.225.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 720.110",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=720.110.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. §§ 415.20, 415.40, 415.50",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=415.20.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 418.10",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=418.10.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
       }
     ]
   },
@@ -540,6 +570,20 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=703.020.",
             "source_tier": "B",
             "tier_rationale": "Added 2026-08-30 (round 21) to encode the natural-person-only threshold the corroboration pipeline's adversarial check found missing -- an LLC, corporation, or other entity judgment debtor gets NO protection under this node (or any CCP § 704 exemption) at all. Same sourcing basis/caveat as other leginfo entries this round."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 704.070",
+            "quoted_text": "'Paid earnings' means earnings, as defined in Section 706.011, that were paid to the employee during the 30-day period ending on the date of the levy ... (b) All of the paid earnings ... are exempt if, prior to payment to the employee, they were subject to an earnings withholding order or an earnings assignment order for support. (c) Seventy-five percent of the paid earnings ... are exempt if, prior to payment to the employee, they were not subject to an earnings withholding order or an earnings assignment order for support.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.070.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the paycheck-tracing exemption the corroboration pipeline's adversarial check found missing -- CCP § 704.070 exempts 75% (or 100%, if already subject to a withholding/support order) of wages actually paid to the debtor within the 30 days before levy and traceable into the account. This is the single most common California bank-levy fact pattern (a recent paycheck sitting in a checking account) and this node previously encoded only the much smaller § 704.220 automatic minimum for it. Confirmed via WebSearch cross-referencing leginfo/Justia/FindLaw mirrors this session; same leginfo web_fetch-timeout caveat as other entries this corpus."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 704.225",
+            "quoted_text": "Notwithstanding any other provision of this chapter, money in a deposit account of the judgment debtor that is not otherwise exempt under this chapter is exempt to the extent necessary for the support of the judgment debtor and the spouse and dependents of the judgment debtor.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.225.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the need-based follow-on exemption the corroboration pipeline's adversarial check found missing -- effective January 1, 2020, this exempts deposit-account money ABOVE the § 704.220 automatic minimum (and not otherwise exempt) to the extent the debtor shows it is necessary for support, ON A FILED CLAIM (not automatic like § 704.220/§ 704.080). No fixed dollar figure -- a fact-specific showing. Same sourcing/caveat as the § 704.070 entry above."
           }
         ],
         "citation_verified": true
@@ -559,8 +603,17 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260830T111412Z.json, CA-BANK-ACCOUNT-EXEMPTION, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
             "summary": "Added CCP § 704.080 public-benefits/Social-Security-deposit exemption (much larger than the general minimum this node previously encoded alone) and § 703.020 natural-person-only threshold as derived_from entries; added aggregation_note clarifying the minimum is a single amount across all accounts, not per-account; added 3 corresponding checklist items."
+          },
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T171724Z.json, CA-BANK-ACCOUNT-EXEMPTION, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Second pass: added CCP § 704.070 (75-100% recent-wage-deposit exemption), § 704.225 (need-based exemption above the automatic minimum), and a joint-account/third-party-claim note (CCP § 720.110); added 3 corresponding checklist items. First pass (round 21) already added § 704.080/§ 703.020 and the aggregation clarification -- confirmed still present and working in this run's own derivations."
           }
-        ]
+        ],
+        "recent_wages_note": "If the levied funds are traceable to wages actually PAID to the debtor within the 30 days before levy, CCP § 704.070 separately exempts 75% of those paid earnings (100% if they were already subject to a wage withholding or support-assignment order before payment) -- this is typically far more protection than the § 704.220 automatic minimum alone, and is the most common real-world bank-levy scenario (a recent paycheck). This exemption requires a timely-filed claim, unlike the automatic § 704.220/§ 704.080 minimums.",
+        "support_need_note": "On a filed claim, CCP § 704.225 exempts deposit-account money ABOVE the automatic minimum to the extent necessary for the support of the debtor and their spouse/dependents -- no fixed dollar cap, fact-specific. This is the routine follow-on claim once the automatic minimum is exhausted; this node should not be read to imply everything above the automatic minimum is unprotected.",
+        "joint_account_note": "This node treats the levied account as simply 'the debtor's deposit account.' If the account is jointly held with a non-debtor (a spouse, family member, or other co-owner) and some or all of the funds are traceable to the co-owner's deposits, the co-owner may assert a third-party claim of ownership under CCP §§ 720.110 et seq. to recover funds that are not the debtor's -- separately, community-property rules can affect a non-debtor spouse's share differently. This node does not itself perform an ownership/tracing analysis."
       },
       "completeness_checklist": [
         {
@@ -585,6 +638,18 @@
         },
         {
           "fact": "Whether the judgment debtor is a natural person (this exemption does not protect an LLC, corporation, or other entity debtor's account at all)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the levied funds are traceable to wages actually paid to the debtor within the 30 days before levy (CCP § 704.070 separately exempts 75-100% of those, on a timely claim -- likely the largest protection available for a typical wage earner)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the debtor needs the amount above the automatic minimum for their own or their dependents' support (a fact-specific CCP § 704.225 claim, not automatic)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the levied account is jointly held with a non-debtor whose funds are commingled in it (a co-owner may have an independent third-party ownership claim to part of the balance)",
           "dispositive": true
         }
       ],
@@ -624,6 +689,20 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=412.20.",
             "source_tier": "A",
             "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. §§ 415.20, 415.40, 415.50",
+            "quoted_text": "§ 415.20 (substituted service): service ... is deemed complete on the 10th day after the mailing. § 415.40 (service outside California by mail): service of a summons by this form of mail is deemed complete on the 10th day after such mailing. § 415.50 (service by publication): the notice shall be published ... at least once a week for four successive weeks; ... service is deemed complete on the 28th day after the first day of publication.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=415.20.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the service-method-dependent completion dates the corroboration pipeline's adversarial check found missing -- this node previously keyed the 30-day answer period to a bare 'date served' without accounting for the fact that substituted, out-of-state-mail, and publication service are all deemed complete LATER than the physical service/mailing date (10 or 28 days later). Applying the deadline from physical service alone understates the true response window by up to 4 weeks for these very common service methods. Confirmed via WebSearch cross-referencing leginfo/FindLaw/process-server-practice sources this session; same leginfo web_fetch-timeout caveat as other entries this corpus."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 418.10",
+            "quoted_text": "A defendant, on or before the last day of his or her time to plead or within any further time that the court may for good cause allow, may serve and file a notice of motion ... to quash service of summons on the ground of lack of jurisdiction of the court over him or her ... no act by a party who makes a motion under this section, including filing an answer, demurrer, or motion to strike constitutes an appearance, unless the court denies the motion made under this section.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=418.10.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 22) to encode the motion-to-quash alternative the corroboration pipeline's adversarial check found missing -- this node previously framed 'file an answer' as the only response, but a defendant contesting defective service or personal jurisdiction (e.g., sewer service) must instead move to quash under § 418.10; FILING AN ANSWER INSTEAD IS A GENERAL APPEARANCE THAT WAIVES the service/jurisdiction objection entirely. Defective/sewer service is a well-documented problem in consumer debt collection litigation. Same sourcing/caveat as the § 415.20 entry above."
           }
         ],
         "citation_verified": true
@@ -633,7 +712,17 @@
         "trigger": "date the summons is served on the defendant",
         "consequence_of_missing": "plaintiff may apply for entry of default and then seek the relief demanded, which can include wage garnishment or other collection remedies",
         "applies_to": "the general unlimited/limited civil summons form; California small claims court does not use this summons/answer mechanism (no written answer -- the defendant simply appears on the hearing date) -- that is a separate, not-yet-built node.",
-        "determination": "answer_due_date = date_of_service + 30 days"
+        "determination": "answer_due_date = date_of_service + 30 days",
+        "service_method_note": "The 30-day answer period runs from when service is DEEMED COMPLETE, which depends on the method: personal service is complete on the date of delivery, but substituted service (CCP § 415.20 -- leaving papers with a competent household member/co-worker plus a follow-up mailing) and out-of-state mail service (§ 415.40) are deemed complete 10 days AFTER the mailing, and service by publication (§ 415.50) is deemed complete on the 28th day after first publication. Using the raw date papers were handed over (rather than the deemed-complete date) for substituted/mail/publication service UNDERSTATES the true deadline.",
+        "defective_service_alternative_note": "'File an answer' is not the only possible response, and is the WRONG one if the defendant disputes that service or personal jurisdiction were proper (e.g., papers left with someone at an address the defendant doesn't live at, or served on the wrong person). Such a defendant should instead move to quash service under CCP § 418.10 -- a special appearance that preserves the objection. Filing an answer first is a general appearance that WAIVES the service/jurisdiction defense entirely, even if the underlying service really was defective.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T171724Z.json, CA-CIVIL-ANSWER-DEADLINE, 2 of 3 adversarial-check findings (both realistic_and_common=true, would_cause_wrong_answer=true; the 3rd -- weekend/holiday deadline rollover -- was correctly assessed by the check itself as NOT exposing a gap, so no change made for it).",
+            "summary": "Added CCP §§ 415.20/415.40/415.50 service-completion-date rules and § 418.10 motion-to-quash alternative (with the general-appearance waiver risk of answering first); added 2 checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -642,6 +731,14 @@
         },
         {
           "fact": "Whether the case is general civil (this node applies) vs. small claims (different procedure, not this node)",
+          "dispositive": true
+        },
+        {
+          "fact": "The method of service used (personal, substituted, mail, or publication) -- the 30-day period runs from the date service is DEEMED COMPLETE under that method, which can be 10-28 days after the physical service/mailing date for anything other than personal service",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the defendant disputes that service was properly made or that the court has personal jurisdiction over them -- if so, the correct response is a motion to quash (CCP § 418.10), not an answer, since answering first waives the objection",
           "dispositive": true
         }
       ],
