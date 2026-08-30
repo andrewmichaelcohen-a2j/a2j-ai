@@ -13,6 +13,108 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 ---
 ## Open
 
+### [TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY] MODEL-DISAGREEMENT -- run run_20260830T094127Z, 2026-08-30T09:58:17Z
+
+**File:** `rules/debt/state/texas/tx_debt_band3_discretionary_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: All three state the same three-part Craddock test (no intentional/consciously indifferent failure to answer, meritorious defense set up, and no delay or injury to plaintiff). However, Analyses 1 and 2 also state the procedural deadlines (motion for new trial filed within 30 days of judgment; overruled by operation of law if no signed order within 75 days), which Analysis 3 omits entirely. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=['1', '2', '3', '30', '75'], OpenAI=['30', '75'], Gemini=['3'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Craddock, a default judgment should be set aside and a new trial ordered whenever three things concur: (1) the defendant's failure to answer before judgment was not intentional or the result of conscious indifference, but was due to mistake or accident; (2) the motion for new trial sets up a meritorious defense; and (3) the motion is filed at a time when granting it will cause no delay or other injury to the plaintiff. Notably, the text phrases this as a standard the court 'should' apply 'in any case' where the elements are met, so it operates as a structured test rather than an open-ended discretionary weighing. Timing matters: the motion must be filed before or within thirty days after the judgment is signed (Rule 329b(a)), and if no written order is signed within seventy-five days of the judgment, the motion is overruled by operation of law (Rule 329b(c))."
+  - gpt-5.5: grounded=True, error=None, summary='Under the provided text, a Texas default judgment should be set aside and a new trial ordered if the defendant’s failure to answer was not intentional or due to conscious indifference, but was caused by mistake or accident. The motion must set up a meritorious defense and be filed when granting it will not delay or injure the plaintiff; a motion for new trial must be filed within 30 days after judgment, and if not decided by signed written order within 75 days, it is overruled by operation of law.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A default judgment should be set aside and a new trial ordered when three conditions are met. First, the defendant's failure to answer was not intentional or the result of conscious indifference, but was due to a mistake or accident. Second, the motion for a new trial must set up a meritorious defense. Finally, the motion must be filed at a time when granting it will not cause delay or otherwise harm the plaintiff."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-VEHICLE-EXEMPTION] MODEL-DISAGREEMENT -- run run_20260830T094127Z, 2026-08-30T09:55:20Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: All three agree on the core rule: a $7,500 California motor-vehicle exemption covering aggregate equity, execution-sale proceeds, and insurance/indemnification proceeds, with the $7,500 in sale proceeds automatically exempt (no claim required) when the debtor owns only one vehicle. Analysis 3 differs by omitting the substantive limitation stated in Analyses 1 and 2 that the subdivision (a) exemption is not also available in that single-vehicle execution-sale situation; Analysis 1 additionally notes the levying officer may rely on DMV records, a minor procedural detail. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=['$7500', '1'], OpenAI=['$7500', '1'], Gemini=['$7500', '1', '105', '7'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Cal. Code Civ. Proc. § 704.010(a), a judgment debtor may exempt up to $7,500 in any combination of the aggregate equity in motor vehicles, the proceeds of an execution sale of a motor vehicle, and proceeds of insurance or other indemnification for a vehicle's loss, damage, or destruction. Subdivision (d) provides that if the debtor owns only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is automatically exempt without the debtor having to make a claim, and the levying officer may consult and rely on Department of Motor Vehicles records to determine whether the debtor has only one vehicle. In that situation, the subdivision (a) exemption is not also available."
+  - gpt-5.5: grounded=True, error=None, summary='California exempts up to $7,500 in any combination of aggregate equity in motor vehicles, proceeds from an execution sale of a motor vehicle, and insurance or indemnification proceeds for loss, damage, or destruction of a motor vehicle. If the judgment debtor has only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is exempt without making a claim, and the subdivision (a) exemption is not also available in that situation.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Under California law, a debtor is entitled to an exemption of seven thousand five hundred dollars ($7,500) for motor vehicles. This exemption can apply to the aggregate equity in the vehicle(s), the proceeds from an execution sale of a vehicle, or insurance proceeds for a lost or damaged vehicle. If a debtor has only one motor vehicle sold at an execution sale, the $7,500 exemption for the proceeds is automatic and does not require a claim.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-WRITTEN-CONTRACT-DEBT] MODEL-DISAGREEMENT -- run run_20260830T094127Z, 2026-08-30T09:49:19Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: All three agree on the core rule: a four-year limitations period under CCP § 337 for actions on a written contract, obligation, or liability, and a bar on suits, arbitration, or other proceedings to collect after that period. However, Analysis 1 alone adds substantive qualifications — the § 336a exception and the special three-month deadline for deficiency-type money judgments after a trustee's/power-of-sale sale — and Analysis 3 alone omits the § 360 extension mentioned by Analyses 1 and 2. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=['3', '4'], OpenAI=['4'], Gemini=['4'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Cal. Code Civ. Proc. § 337(a), an action on any contract, obligation, or liability founded on a written instrument must be brought within four years (subject to the exception in Section 336a, and a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale sale). Section 337(d) adds that once that four-year period has run, a person may not bring suit or initiate arbitration or any other legal proceeding to collect the debt. The limitations period can be extended only as provided in Section 360."
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that period has run, a person may not bring a lawsuit, arbitration, or other legal proceeding to collect the debt, and the period may be extended only under Section 360.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='In California, the statute of limitations for an action on a written contract is four years. This time limit applies to any lawsuit on a "contract, obligation or liability founded upon an instrument in writing." Once this period has run, a person is prohibited from bringing a suit or other legal proceeding to collect the debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-VALIDATION-NOTICE-1692g] MODEL-DISAGREEMENT -- run run_20260830T094127Z, 2026-08-30T09:48:16Z
+
+**File:** `rules/debt/federal/fdcpa_validation_notice_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=['30', '5'], OpenAI=['30', '5'], Gemini=['30', '5'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under 15 U.S.C. § 1692g(a) and 12 C.F.R. § 1006.34(a)(1), a notice is compliant only if the debt collector conveyed the required validation information — the amount of the debt, the creditor's name, the assumption-of-validity statement, the written-dispute/verification statement, and the original-creditor-request statement, plus the fuller itemization, consumer-protection, and response information listed in § 1006.34(c) — either in the initial communication or in a writing sent within five days of it. The dispute window runs 30 days from the consumer's receipt (or assumed receipt) of that information; under § 1006.34(b)(5) the collector may assume receipt on any date at least five business days (excluding Saturdays, Sundays, and legal public holidays) after it provides the notice. So the consumer is still within the window if fewer than 30 days have passed since actual or assumed receipt, and a timely written dispute or original-creditor request triggers the § 1692g(b) duty to cease collection until verification is mailed. The supplied text gives the compliance and timing test but contains no facts about the particular notice or dates, so the actual answer turns on applying these elements to the notice's contents and delivery/receipt dates."
+  - gpt-5.5: grounded=False, error=None, summary='A compliant validation notice must provide the required validation information in the initial communication, within five days after the initial communication, or orally in the initial communication under the regulation; the statutory notice includes the debt amount, creditor name, and required statements about disputing the debt, verification, and original-creditor information. The dispute/validation period starts when the validation information is provided and ends 30 days after the consumer receives or is assumed to receive it; receipt may be assumed at least five business days after it is provided. The provided text does not include the actual notice contents, the date of initial communication, the date validation information was provided, or the date of receipt, so it is not possible to determine whether a compliant notice was actually provided or whether the consumer is still within the dispute window.'
+  - gemini-2.5-pro: grounded=False, error=None, summary='The provided texts lay out the legal rules for what a compliant debt validation notice must contain and when it must be sent. Specifically, a debt collector must provide a notice with certain disclosures within five days of the initial communication. The texts also establish that a consumer has a 30-day period after receiving the notice to dispute the debt. However, the provided text contains no facts about a specific notice, so it is impossible to determine whether a compliant notice was actually provided or if a consumer is still within their dispute window.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-UNFAIR-PRACTICES-CATALOG-1692f] MODEL-DISAGREEMENT -- run run_20260830T094127Z, 2026-08-30T09:47:20Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=['1', '10', '2', '3', '4', '5', '6', '7', '8'], OpenAI=[], Gemini=[] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Section 1692f imposes a general ban on debt collectors using unfair or unconscionable means to collect a debt, and then lists specific violations without limiting that general rule. The enumerated practices are: (1) collecting amounts (including interest, fees, charges, or incidental expenses) not expressly authorized by the debt agreement or permitted by law; (2) accepting a check or payment instrument postdated more than five days without written notice of intent to deposit given 3-10 business days beforehand; (3) soliciting postdated instruments to threaten or institute criminal prosecution; (4) depositing or threatening to deposit a postdated instrument early; (5) causing a person to be charged for communications by concealing the communication's true purpose; (6) taking or threatening nonjudicial dispossession or disablement of property where there is no present right to possession under an enforceable security interest, no present intention to take possession, or the property is legally exempt; (7) communicating with a consumer about a debt by post card; and (8) using any language or symbol other than the collector's address on mail/telegram envelopes, though a business name may be used if it does not indicate the debt collection business."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use unfair or unconscionable means to collect or attempt to collect a debt. The statute lists violations including collecting unauthorized amounts; mishandling postdated checks; causing communication charges by concealing the communication’s purpose; improper nonjudicial repossession or disablement actions; communicating by postcard; and using improper language or symbols on envelopes.'
+  - gemini-2.5-pro: grounded=None, error=Gemini API timed out after 60s, summary=None
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-FALSE-DECEPTIVE-CATALOG-1692e] MODEL-DISAGREEMENT -- run run_20260830T094127Z, 2026-08-30T09:45:21Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: All three agree on the core rule of § 1692e — a blanket ban on false, deceptive, or misleading representations, illustrated by a non-exhaustive list (government affiliation, character/amount/legal status of the debt, attorney implications, unlawful or unintended threats, false credit information, simulated legal process, false names, CRA affiliation) — and on the § 1692e(11) disclosure duties for initial and subsequent communications. Analyses 1 and 2 both state the express exception for formal pleadings made in connection with a legal action, which Analysis 3 omits entirely; Analysis 1 alone adds the Regulation F citation (12 C.F.R. § 1006.18(e)) and the requirement to repeat the disclosure in the initial written communication when the first contact was oral. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=[], Gemini=[] (fingerprint_agreement=True).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Section 1692e broadly bars a debt collector from using any false, deceptive, or misleading representation or means to collect a debt, and then lists specific violations without limiting that general ban: falsely claiming government affiliation or bonding; misrepresenting the character, amount, or legal status of a debt or services/compensation; posing as an attorney or sending attorney-sourced communications; threatening arrest, imprisonment, seizure, garnishment, attachment, or sale of property or wages that is unlawful or not actually intended; threatening any action that cannot legally be taken or is not intended; communicating credit information known to be false, including failing to report that a debt is disputed; using documents simulating court or agency process; using false representations or deceptive means to collect or to obtain consumer information; failing to give the required debt-collector disclosures; falsely implying accounts were sold to innocent purchasers for value; falsely calling documents legal process (or denying that they are); using a name other than the collector's true name; and falsely implying the collector is or works for a consumer reporting agency. On the disclosure point, Regulation F at 12 C.F.R. § 1006.18(e) implements § 1692e(11): the collector must state in the initial communication that it is attempting to collect a debt and that information obtained will be used for that purpose, repeat that disclosure in the initial written communication if the first contact was oral, and disclose in every later communication that it is from a debt collector. The only stated exception is that these disclosures are not required in a formal pleading made in connection with a legal action."
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use any false, deceptive, or misleading representation or means in connection with collecting a debt. The text lists violations including falsely claiming government affiliation, misrepresenting the debt’s character, amount, or legal status, implying an attorney involvement, threatening unlawful or unintended action, communicating false credit information, using documents that falsely appear official or legal, using a false business name, and falsely implying affiliation with a consumer reporting agency. Debt collectors also must give the required disclosure that they are attempting to collect a debt and that information obtained will be used for that purpose in initial communications, and must identify subsequent communications as from a debt collector, with an exception for formal pleadings in legal actions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='A debt collector is broadly prohibited from using any false, deceptive, or misleading representations to collect a debt. Prohibited conduct includes, but is not limited to, misrepresenting the amount or legal status of the debt, falsely implying an affiliation with the government, or threatening to take any action that cannot legally be taken or is not intended to be taken. Collectors must also disclose in their initial communication that they are attempting to collect a debt and must identify themselves as a debt collector in subsequent communications.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [TX-EXEMPT-PERSONAL-PROPERTY] MODEL-DISAGREEMENT -- run run_20260829T180029Z, 2026-08-29T18:19:41Z
 
 **File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`

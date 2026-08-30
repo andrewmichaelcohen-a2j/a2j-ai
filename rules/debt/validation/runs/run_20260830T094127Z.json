@@ -1,0 +1,1735 @@
+{
+  "run_id": "run_20260830T094127Z",
+  "mode": "live",
+  "started": "2026-08-30T09:41:27Z",
+  "ended": "2026-08-30T10:03:15Z",
+  "models": {
+    "anthropic": "claude-opus-5",
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "demo_corpus_only": true,
+  "citation_check_skipped": true,
+  "budget_cap_usd": 15.0,
+  "approx_cost_per_node_usd_estimate": 0.45,
+  "n_queued": 18,
+  "n_completed": 18,
+  "n_clean_pass": 12,
+  "n_flagged": 6,
+  "demo_gate_metrics": {
+    "grounded_agreement_rate": {
+      "value_percent": 66.66666666666666,
+      "n_demo_corpus_nodes_this_run": 18,
+      "n_passing": 12,
+      "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND no adversarial gap found. Citation verification was SKIPPED this run (--skip-citation-check, round 18 directive 2026-08-29 -- Andy: \"proceed without a live citation verification ... validating the legal rule and not focus on the byte for byte match\") and is explicitly NOT part of this basis while skipped. Numeric fingerprint remains a secondary diagnostic only (round 3), not part of this basis either."
+    },
+    "scenario_pass_rate": {
+      "value_percent": 40.0,
+      "n_scenarios": 5,
+      "n_passing": 2,
+      "scenarios": [
+        {
+          "scenario_id": "tx-collection-suit-sol-answer",
+          "passed": true,
+          "depends_on_node_ids": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "ca-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT"
+          ]
+        },
+        {
+          "scenario_id": "pre-suit-validation-rights",
+          "passed": false,
+          "depends_on_node_ids": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ]
+        },
+        {
+          "scenario_id": "garnishment-scenario",
+          "passed": true,
+          "depends_on_node_ids": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "band3-refusal-boundary",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ]
+        }
+      ],
+      "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run"
+    },
+    "internal_gate_met": false,
+    "gate_threshold_percent": 90.0,
+    "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an internal readiness gate computed by this script, not itself a claim to publish -- see spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing."
+  },
+  "node_results": [
+    {
+      "node_id": "FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b",
+      "file": "rules/debt/federal/fcra_furnisher_dispute_v1.json",
+      "started": "2026-08-30T09:41:27Z",
+      "ended": "2026-08-30T09:42:24Z",
+      "input_sha256": "33220ced1dd9d673fd20489feb8bc862ffbcc202c8246fbbc035f4f0535e93ec",
+      "node_sha256": "e531da01835d7d6bdc8f06d57e30367d7470802f0cae2c844c845df2d76f5571",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Once a furnisher receives notice from a credit reporting agency under \u00a7 1681i(a)(2) that a consumer disputes the completeness or accuracy of information it supplied, it must investigate the disputed information, review all relevant information the agency forwarded, and report the investigation's results back to that agency. If the investigation shows the information is incomplete or inaccurate, the furnisher must also report those results to every other nationwide consumer reporting agency it supplied the information to, and must promptly modify, delete, or permanently block reporting of any item found inaccurate, incomplete, or unverifiable. All of these investigations, reviews, and reports must be completed before the deadline that \u00a7 1681i(a)(1) gives the consumer reporting agency to finish its own reinvestigation.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1681s-2(b)(1)-(2)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Once a furnisher receives notice from a credit reporting agency under \u00a7 1681i(a)(2) that a consumer disputes the completeness or accuracy of information it supplied, it must investigate the disputed information, review all relevant information the agency forwarded, and report the investigation's results back to that agency. If the investigation shows the information is incomplete or inaccurate, the furnisher must also report those results to every other nationwide consumer reporting agency it supplied the information to, and must promptly modify, delete, or permanently block reporting of any item found inaccurate, incomplete, or unverifiable. All of these investigations, reviews, and reports must be completed before the deadline that \u00a7 1681i(a)(1) gives the consumer reporting agency to finish its own reinvestigation.\", \"grounded\": true, \"citation_used\": \"15 U.S.C. \\u00a7 1681s-2(b)(1)-(2)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "After receiving notice from a consumer reporting agency of a dispute about the completeness or accuracy of information it provided, the furnisher must investigate the disputed information, review all relevant information from the agency, and report the investigation results back to the agency. If the information is incomplete, inaccurate, or cannot be verified, the furnisher must take appropriate action such as modifying, deleting, or permanently blocking reporting of the item, and must report certain results to other nationwide consumer reporting agencies to which it furnished the information. The furnisher must complete the required investigations, reviews, and reports before the deadline applicable to the consumer reporting agency under section 1681i(a)(1).",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1681s-2(b)(1)-(2)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"After receiving notice from a consumer reporting agency of a dispute about the completeness or accuracy of information it provided, the furnisher must investigate the disputed information, review all relevant information from the agency, and report the investigation results back to the agency. If the information is incomplete, inaccurate, or cannot be verified, the furnisher must take appropriate action such as modifying, deleting, or permanently blocking reporting of the item, and must report certain results to other nationwide consumer reporting agencies to which it furnished the information. The furnisher must complete the required investigations, reviews, and reports before the deadline applicable to the consumer reporting agency under section 1681i(a)(1).\",\"grounded\":true,\"citation_used\":\"15 U.S.C. \u00a7 1681s-2(b)(1)-(2)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "After a furnisher receives notice of a dispute from a consumer reporting agency, it must conduct an investigation, review the relevant information, and report its findings back to the agency. If the information is found to be inaccurate, incomplete, or cannot be verified, the furnisher must report those results to other nationwide consumer reporting agencies as well. The furnisher must also promptly modify, delete, or block the reporting of the incorrect or unverified item. These actions must be completed within the time period the consumer reporting agency has to finish its own investigation.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1681s-2(b)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"After a furnisher receives notice of a dispute from a consumer reporting agency, it must conduct an investigation, review the relevant information, and report its findings back to the agency. If the information is found to be inaccurate, incomplete, or cannot be verified, the furnisher must report those results to other nationwide consumer reporting agencies as well. The furnisher must also promptly modify, delete, or block the reporting of the incorrect or unverified item. These actions must be completed within the time period the consumer reporting agency has to finish its own investigation.\",\n  \"grounded\": true,\n  \"citation_used\": \"15 U.S.C. \u00a7 1681s-2(b)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same \u00a7 1681s-2(b) duties: upon CRA notice of dispute, the furnisher must investigate, review the information forwarded, report results to the CRA, report to other nationwide CRAs, and modify/delete/permanently block inaccurate, incomplete, or unverifiable items, all within the CRA's \u00a7 1681i(a)(1) reinvestigation deadline. The only minor variance is that Analysis 3 describes the trigger for notifying other nationwide CRAs as including unverifiable information (the statute ties that duty to incomplete or inaccurate findings), which is a slight imprecision rather than a substantive disagreement.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same \u00a7 1681s-2(b) duties: upon CRA notice of dispute, the furnisher must investigate, review the information forwarded, report results to the CRA, report to other nationwide CRAs, and modify/delete/permanently block inaccurate, incomplete, or unverifiable items, all within the CRA's \u00a7 1681i(a)(1) reinvestigation deadline. The only minor variance is that Analysis 3 describes the trigger for notifying other nationwide CRAs as including unverifiable information (the statute ties that duty to incomplete or inaccurate findings), which is a slight imprecision rather than a substantive disagreement.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [],
+          [],
+          []
+        ],
+        "fingerprint_agreement_diagnostic_only": true
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1681s-2",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "FDCPA-REGF-CALL-FREQUENCY-1006.14b",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-08-30T09:42:24Z",
+      "ended": "2026-08-30T09:43:30Z",
+      "input_sha256": "1a4dda06968aa97eb6529d1d52603d7a36d4cdebc3ab99ebcae5a21cee249995",
+      "node_sha256": "986a6e2497c8af1743aca50245fd6e940882122b0d3f275b734c9ec9309fb835",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under 12 C.F.R. \u00a7 1006.14(b)(2), a debt collector is presumed to comply with the harassment prohibition (and FDCPA \u00a7 806(5)) if, as to a particular person and a particular debt, it places no more than seven calls within seven consecutive days and places no call within seven consecutive days after having had a telephone conversation with that person about that debt (the conversation date counts as day one). Exceeding either limit creates a presumption of violation. These counts apply per 'particular debt,' meaning each debt in collection separately, except that student loan debts serviced under a single account number when obtained by the collector count as one debt. Both presumptions are subject to the exclusions in paragraph (b)(3).",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under 12 C.F.R. \u00a7 1006.14(b)(2), a debt collector is presumed to comply with the harassment prohibition (and FDCPA \u00a7 806(5)) if, as to a particular person and a particular debt, it places no more than seven calls within seven consecutive days and places no call within seven consecutive days after having had a telephone conversation with that person about that debt (the conversation date counts as day one). Exceeding either limit creates a presumption of violation. These counts apply per 'particular debt,' meaning each debt in collection separately, except that student loan debts serviced under a single account number when obtained by the collector count as one debt. Both presumptions are subject to the exclusions in paragraph (b)(3).\", \"grounded\": true, \"citation_used\": \"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector is presumed to comply if, for a particular person and a particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about the debt. The date of the telephone conversation counts as the first day of that seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For this purpose, a \u201cparticular debt\u201d generally means each debt in collection, except that certain student loan debts serviced under a single account number are treated together as one particular debt.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii), (b)(4)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A debt collector is presumed to comply if, for a particular person and a particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about the debt. The date of the telephone conversation counts as the first day of that seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For this purpose, a \u201cparticular debt\u201d generally means each debt in collection, except that certain student loan debts serviced under a single account number are treated together as one particular debt.\",\"grounded\":true,\"citation_used\":\"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii), (b)(4)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector is presumed to violate the law if they call a person about a particular debt more than seven times within seven consecutive days. A violation is also presumed if a debt collector calls a person within seven consecutive days after having had a telephone conversation with them about the collection of that debt. For the purposes of this rule, each of a consumer's debts is considered a 'particular debt,' though student loans serviced under a single account number are grouped together as one.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(ii)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A debt collector is presumed to violate the law if they call a person about a particular debt more than seven times within seven consecutive days. A violation is also presumed if a debt collector calls a person within seven consecutive days after having had a telephone conversation with them about the collection of that debt. For the purposes of this rule, each of a consumer's debts is considered a 'particular debt,' though student loans serviced under a single account number are grouped together as one.\",\n  \"grounded\": true,\n  \"citation_used\": \"12 C.F.R. \u00a7 1006.14(b)(2)(ii)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same core rule: presumed compliance/violation turns on placing no more than seven calls to a person about a particular debt within seven consecutive days and no call within seven consecutive days after a telephone conversation about that debt, with each debt counted separately except student loans serviced under a single account number. Analyses 1 and 2 add that the conversation date counts as day one, and Analysis 1 alone notes the calls excluded under \u00a7 1006.14(b)(3); these are supplemental details rather than conflicting conclusions.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same core rule: presumed compliance/violation turns on placing no more than seven calls to a person about a particular debt within seven consecutive days and no call within seven consecutive days after a telephone conversation about that debt, with each debt counted separately except student loans serviced under a single account number. Analyses 1 and 2 add that the conversation date counts as day one, and Analysis 1 alone notes the calls excluded under \u00a7 1006.14(b)(3); these are supplemental details rather than conflicting conclusions.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "3",
+            "7"
+          ],
+          [
+            "1",
+            "7"
+          ],
+          [
+            "1",
+            "7"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "FDCPA-FALSE-DECEPTIVE-CATALOG-1692e",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-08-30T09:43:30Z",
+      "ended": "2026-08-30T09:45:21Z",
+      "input_sha256": "1a4dda06968aa97eb6529d1d52603d7a36d4cdebc3ab99ebcae5a21cee249995",
+      "node_sha256": "3aecca04f6096044812148b4aaa5561c842832b42f0d9da4e26a36e0a3ba6f83",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Section 1692e broadly bars a debt collector from using any false, deceptive, or misleading representation or means to collect a debt, and then lists specific violations without limiting that general ban: falsely claiming government affiliation or bonding; misrepresenting the character, amount, or legal status of a debt or services/compensation; posing as an attorney or sending attorney-sourced communications; threatening arrest, imprisonment, seizure, garnishment, attachment, or sale of property or wages that is unlawful or not actually intended; threatening any action that cannot legally be taken or is not intended; communicating credit information known to be false, including failing to report that a debt is disputed; using documents simulating court or agency process; using false representations or deceptive means to collect or to obtain consumer information; failing to give the required debt-collector disclosures; falsely implying accounts were sold to innocent purchasers for value; falsely calling documents legal process (or denying that they are); using a name other than the collector's true name; and falsely implying the collector is or works for a consumer reporting agency. On the disclosure point, Regulation F at 12 C.F.R. \u00a7 1006.18(e) implements \u00a7 1692e(11): the collector must state in the initial communication that it is attempting to collect a debt and that information obtained will be used for that purpose, repeat that disclosure in the initial written communication if the first contact was oral, and disclose in every later communication that it is from a debt collector. The only stated exception is that these disclosures are not required in a formal pleading made in connection with a legal action.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692e; 12 C.F.R. \u00a7 1006.18(e)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Section 1692e broadly bars a debt collector from using any false, deceptive, or misleading representation or means to collect a debt, and then lists specific violations without limiting that general ban: falsely claiming government affiliation or bonding; misrepresenting the character, amount, or legal status of a debt or services/compensation; posing as an attorney or sending attorney-sourced communications; threatening arrest, imprisonment, seizure, garnishment, attachment, or sale of property or wages that is unlawful or not actually intended; threatening any action that cannot legally be taken or is not intended; communicating credit information known to be false, including failing to report that a debt is disputed; using documents simulating court or agency process; using false representations or deceptive means to collect or to obtain consumer information; failing to give the required debt-collector disclosures; falsely implying accounts were sold to innocent purchasers for value; falsely calling documents legal process (or denying that they are); using a name other than the collector's true name; and falsely implying the collector is or works for a consumer reporting agency. On the disclosure point, Regulation F at 12 C.F.R. \\u00a7 1006.18(e) implements \\u00a7 1692e(11): the collector must state in the initial communication that it is attempting to collect a debt and that information obtained will be used for that purpose, repeat that disclosure in the initial written communication if the first contact was oral, and disclose in every later communication that it is from a debt collector. The only stated exception is that these disclosures are not required in a formal pleading made in connection with a legal action.\", \"grounded\": true, \"citation_used\": \"15 U.S.C. \\u00a7 1692e; 12 C.F.R. \\u00a7 1006.18(e)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector may not use any false, deceptive, or misleading representation or means in connection with collecting a debt. The text lists violations including falsely claiming government affiliation, misrepresenting the debt\u2019s character, amount, or legal status, implying an attorney involvement, threatening unlawful or unintended action, communicating false credit information, using documents that falsely appear official or legal, using a false business name, and falsely implying affiliation with a consumer reporting agency. Debt collectors also must give the required disclosure that they are attempting to collect a debt and that information obtained will be used for that purpose in initial communications, and must identify subsequent communications as from a debt collector, with an exception for formal pleadings in legal actions.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692e; 12 C.F.R. \u00a7 1006.18(e)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A debt collector may not use any false, deceptive, or misleading representation or means in connection with collecting a debt. The text lists violations including falsely claiming government affiliation, misrepresenting the debt\u2019s character, amount, or legal status, implying an attorney involvement, threatening unlawful or unintended action, communicating false credit information, using documents that falsely appear official or legal, using a false business name, and falsely implying affiliation with a consumer reporting agency. Debt collectors also must give the required disclosure that they are attempting to collect a debt and that information obtained will be used for that purpose in initial communications, and must identify subsequent communications as from a debt collector, with an exception for formal pleadings in legal actions.\",\"grounded\":true,\"citation_used\":\"15 U.S.C. \u00a7 1692e; 12 C.F.R. \u00a7 1006.18(e)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector is broadly prohibited from using any false, deceptive, or misleading representations to collect a debt. Prohibited conduct includes, but is not limited to, misrepresenting the amount or legal status of the debt, falsely implying an affiliation with the government, or threatening to take any action that cannot legally be taken or is not intended to be taken. Collectors must also disclose in their initial communication that they are attempting to collect a debt and must identify themselves as a debt collector in subsequent communications.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692e",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A debt collector is broadly prohibited from using any false, deceptive, or misleading representations to collect a debt. Prohibited conduct includes, but is not limited to, misrepresenting the amount or legal status of the debt, falsely implying an affiliation with the government, or threatening to take any action that cannot legally be taken or is not intended to be taken. Collectors must also disclose in their initial communication that they are attempting to collect a debt and must identify themselves as a debt collector in subsequent communications.\",\n  \"grounded\": true,\n  \"citation_used\": \"15 U.S.C. \u00a7 1692e\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "All three agree on the core rule of \u00a7 1692e \u2014 a blanket ban on false, deceptive, or misleading representations, illustrated by a non-exhaustive list (government affiliation, character/amount/legal status of the debt, attorney implications, unlawful or unintended threats, false credit information, simulated legal process, false names, CRA affiliation) \u2014 and on the \u00a7 1692e(11) disclosure duties for initial and subsequent communications. Analyses 1 and 2 both state the express exception for formal pleadings made in connection with a legal action, which Analysis 3 omits entirely; Analysis 1 alone adds the Regulation F citation (12 C.F.R. \u00a7 1006.18(e)) and the requirement to repeat the disclosure in the initial written communication when the first contact was oral.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": false, \"agreement_notes\": \"All three agree on the core rule of \u00a7 1692e \u2014 a blanket ban on false, deceptive, or misleading representations, illustrated by a non-exhaustive list (government affiliation, character/amount/legal status of the debt, attorney implications, unlawful or unintended threats, false credit information, simulated legal process, false names, CRA affiliation) \u2014 and on the \u00a7 1692e(11) disclosure duties for initial and subsequent communications. Analyses 1 and 2 both state the express exception for formal pleadings made in connection with a legal action, which Analysis 3 omits entirely; Analysis 1 alone adds the Regulation F citation (12 C.F.R. \u00a7 1006.18(e)) and the requirement to repeat the disclosure in the initial written communication when the first contact was oral.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [],
+          [],
+          []
+        ],
+        "fingerprint_agreement_diagnostic_only": true
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692e",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A collection law firm files a state-court complaint against the consumer and serves a summons; neither the pleading nor the summons contains any statement that the firm is a debt collector attempting to collect a debt. The consumer sues under item (11).\", \"exposes_gap\":",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A collection law firm files a state-court complaint against the consumer and serves a summons; neither the pleading nor the summons contains any statement that the firm is a debt collector attempting to collect a debt. The consumer sues under item (11).\", \"exposes_gap\": true, \"gap_description\": \"Both the catalog entry for item (11) and the checklist item asking whether 'EACH subsequent communication' disclosed debt-collector status omit the express statutory/regulatory carve-out for formal pleadings in a legal action (\\u00a71692e(11) proviso; Reg F \\u00a71006.18(e)(3)). Applied literally, the node would find a violation where the statute expressly excludes one. The checklist also never asks whether the communication was a formal pleading,",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "FDCPA-UNFAIR-PRACTICES-CATALOG-1692f",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-08-30T09:45:21Z",
+      "ended": "2026-08-30T09:47:20Z",
+      "input_sha256": "1a4dda06968aa97eb6529d1d52603d7a36d4cdebc3ab99ebcae5a21cee249995",
+      "node_sha256": "63fc10783b847100d3aee5a9ccfa3c1ffcc4b4b1cedf2a9a2c916deb2d1595ad",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Section 1692f imposes a general ban on debt collectors using unfair or unconscionable means to collect a debt, and then lists specific violations without limiting that general rule. The enumerated practices are: (1) collecting amounts (including interest, fees, charges, or incidental expenses) not expressly authorized by the debt agreement or permitted by law; (2) accepting a check or payment instrument postdated more than five days without written notice of intent to deposit given 3-10 business days beforehand; (3) soliciting postdated instruments to threaten or institute criminal prosecution; (4) depositing or threatening to deposit a postdated instrument early; (5) causing a person to be charged for communications by concealing the communication's true purpose; (6) taking or threatening nonjudicial dispossession or disablement of property where there is no present right to possession under an enforceable security interest, no present intention to take possession, or the property is legally exempt; (7) communicating with a consumer about a debt by post card; and (8) using any language or symbol other than the collector's address on mail/telegram envelopes, though a business name may be used if it does not indicate the debt collection business.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692f",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Section 1692f imposes a general ban on debt collectors using unfair or unconscionable means to collect a debt, and then lists specific violations without limiting that general rule. The enumerated practices are: (1) collecting amounts (including interest, fees, charges, or incidental expenses) not expressly authorized by the debt agreement or permitted by law; (2) accepting a check or payment instrument postdated more than five days without written notice of intent to deposit given 3-10 business days beforehand; (3) soliciting postdated instruments to threaten or institute criminal prosecution; (4) depositing or threatening to deposit a postdated instrument early; (5) causing a person to be charged for communications by concealing the communication's true purpose; (6) taking or threatening nonjudicial dispossession or disablement of property where there is no present right to possession under an enforceable security interest, no present intention to take possession, or the property is legally exempt; (7) communicating with a consumer about a debt by post card; and (8) using any language or symbol other than the collector's address on mail/telegram envelopes, though a business name may be used if it does not indicate the debt collection business.\", \"grounded\": true, \"citation_used\": \"15 U.S.C. \\u00a7 1692f\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector may not use unfair or unconscionable means to collect or attempt to collect a debt. The statute lists violations including collecting unauthorized amounts; mishandling postdated checks; causing communication charges by concealing the communication\u2019s purpose; improper nonjudicial repossession or disablement actions; communicating by postcard; and using improper language or symbols on envelopes.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692f",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A debt collector may not use unfair or unconscionable means to collect or attempt to collect a debt. The statute lists violations including collecting unauthorized amounts; mishandling postdated checks; causing communication charges by concealing the communication\u2019s purpose; improper nonjudicial repossession or disablement actions; communicating by postcard; and using improper language or symbols on envelopes.\",\"grounded\":true,\"citation_used\":\"15 U.S.C. \u00a7 1692f\"}",
+            "error": null
+          },
+          {
+            "error": "Gemini API timed out after 60s",
+            "model": "gemini-2.5-pro"
+          }
+        ],
+        "all_grounded": false,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "Skipped -- not all three models returned a grounded, error-free result.",
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null,
+          "_skipped": true
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "10",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          [],
+          []
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692f",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A collector, seeking to reach a debtor who screens calls, places person-to-person collect calls and sends a telegram identifying itself only as \\\"J. Smith, personal matter,\\\" causing the debtor to incur charges; separately it asks the debtor to write a postdated check a",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A collector, seeking to reach a debtor who screens calls, places person-to-person collect calls and sends a telegram identifying itself only as \\\"J. Smith, personal matter,\\\" causing the debtor to incur charges; separately it asks the debtor to write a postdated check and hints that a bounced check could 'become a criminal matter.'\", \"exposes_gap\": true, \"gap_description\": \"The completeness checklist has four fact questions covering catalog items (1), (2)/(4), (",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "FDCPA-VALIDATION-NOTICE-1692g",
+      "file": "rules/debt/federal/fdcpa_validation_notice_v1.json",
+      "started": "2026-08-30T09:47:20Z",
+      "ended": "2026-08-30T09:48:16Z",
+      "input_sha256": "a42c5965470c2b1d4a40cf887cdc120b7edb14149f8ed1ede6e7bc4fcb58b45c",
+      "node_sha256": "e26ab7d5e615e2eb3a92682dc9cda32ed079e1b31d7e2db9e3f174872a4b8abb",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under 15 U.S.C. \u00a7 1692g(a) and 12 C.F.R. \u00a7 1006.34(a)(1), a notice is compliant only if the debt collector conveyed the required validation information \u2014 the amount of the debt, the creditor's name, the assumption-of-validity statement, the written-dispute/verification statement, and the original-creditor-request statement, plus the fuller itemization, consumer-protection, and response information listed in \u00a7 1006.34(c) \u2014 either in the initial communication or in a writing sent within five days of it. The dispute window runs 30 days from the consumer's receipt (or assumed receipt) of that information; under \u00a7 1006.34(b)(5) the collector may assume receipt on any date at least five business days (excluding Saturdays, Sundays, and legal public holidays) after it provides the notice. So the consumer is still within the window if fewer than 30 days have passed since actual or assumed receipt, and a timely written dispute or original-creditor request triggers the \u00a7 1692g(b) duty to cease collection until verification is mailed. The supplied text gives the compliance and timing test but contains no facts about the particular notice or dates, so the actual answer turns on applying these elements to the notice's contents and delivery/receipt dates.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692g(a)-(b); 12 C.F.R. \u00a7 1006.34(a)(1), (b)(5), (c)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under 15 U.S.C. \\u00a7 1692g(a) and 12 C.F.R. \\u00a7 1006.34(a)(1), a notice is compliant only if the debt collector conveyed the required validation information \\u2014 the amount of the debt, the creditor's name, the assumption-of-validity statement, the written-dispute/verification statement, and the original-creditor-request statement, plus the fuller itemization, consumer-protection, and response information listed in \\u00a7 1006.34(c) \\u2014 either in the initial communication or in a writing sent within five days of it. The dispute window runs 30 days from the consumer's receipt (or assumed receipt) of that information; under \\u00a7 1006.34(b)(5) the collector may assume receipt on any date at least five business days (excluding Saturdays, Sundays, and legal public holidays) after it provides the notice. So the consumer is still within the window if fewer than 30 days have passed since actual or assumed receipt, and a timely written dispute or original-creditor request triggers the \\u00a7 1692g(b) duty to cease collection until verification is mailed. The supplied text gives the compliance and timing test but contains no facts about the particular notice or dates, so the actual answer turns on applying these elements to the notice's contents and delivery/receipt dates.\", \"grounded\": true, \"citation_used\": \"15 U.S.C. \\u00a7 1692g(a)-(b); 12 C.F.R. \\u00a7 1006.34(a)(1), (b)(5), (c)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A compliant validation notice must provide the required validation information in the initial communication, within five days after the initial communication, or orally in the initial communication under the regulation; the statutory notice includes the debt amount, creditor name, and required statements about disputing the debt, verification, and original-creditor information. The dispute/validation period starts when the validation information is provided and ends 30 days after the consumer receives or is assumed to receive it; receipt may be assumed at least five business days after it is provided. The provided text does not include the actual notice contents, the date of initial communication, the date validation information was provided, or the date of receipt, so it is not possible to determine whether a compliant notice was actually provided or whether the consumer is still within the dispute window.",
+            "grounded": false,
+            "citation_used": "15 U.S.C. \u00a7 1692g(a); 15 U.S.C. \u00a7 1692g(b); 12 C.F.R. \u00a7 1006.34(a)(1); 12 C.F.R. \u00a7 1006.34(b)(5); 12 C.F.R. \u00a7 1006.34(c)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A compliant validation notice must provide the required validation information in the initial communication, within five days after the initial communication, or orally in the initial communication under the regulation; the statutory notice includes the debt amount, creditor name, and required statements about disputing the debt, verification, and original-creditor information. The dispute/validation period starts when the validation information is provided and ends 30 days after the consumer receives or is assumed to receive it; receipt may be assumed at least five business days after it is provided. The provided text does not include the actual notice contents, the date of initial communication, the date validation information was provided, or the date of receipt, so it is not possible to determine whether a compliant notice was actually provided or whether the consumer is still within the dispute window.\",\"grounded\":false,\"citation_used\":\"15 U.S.C. \u00a7 1692g(a); 15 U.S.C. \u00a7 1692g(b); 12 C.F.R. \u00a7 1006.34(a)(1); 12 C.F.R. \u00a7 1006.34(b)(5); 12 C.F.R. \u00a7 1006.34(c)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The provided texts lay out the legal rules for what a compliant debt validation notice must contain and when it must be sent. Specifically, a debt collector must provide a notice with certain disclosures within five days of the initial communication. The texts also establish that a consumer has a 30-day period after receiving the notice to dispute the debt. However, the provided text contains no facts about a specific notice, so it is impossible to determine whether a compliant notice was actually provided or if a consumer is still within their dispute window.",
+            "grounded": false,
+            "citation_used": null,
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"The provided texts lay out the legal rules for what a compliant debt validation notice must contain and when it must be sent. Specifically, a debt collector must provide a notice with certain disclosures within five days of the initial communication. The texts also establish that a consumer has a 30-day period after receiving the notice to dispute the debt. However, the provided text contains no facts about a specific notice, so it is impossible to determine whether a compliant notice was actually provided or if a consumer is still within their dispute window.\",\n  \"grounded\": false,\n  \"citation_used\": null\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": false,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "Skipped -- not all three models returned a grounded, error-free result.",
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null,
+          "_skipped": true
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "30",
+            "5"
+          ],
+          [
+            "30",
+            "5"
+          ],
+          [
+            "30",
+            "5"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692g",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692g",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "CA-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:48:16Z",
+      "ended": "2026-08-30T09:49:19Z",
+      "input_sha256": "b21c85e9fd2075a7912a12509fffdfe70f3c5f815d4d9d8b4b79467fab81d569",
+      "node_sha256": "df61ee5932df14d17164fa25d303913baefdccca427c59d246866d88b3419e47",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 337(a), an action on any contract, obligation, or liability founded on a written instrument must be brought within four years (subject to the exception in Section 336a, and a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale sale). Section 337(d) adds that once that four-year period has run, a person may not bring suit or initiate arbitration or any other legal proceeding to collect the debt. The limitations period can be extended only as provided in Section 360.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 337(a), an action on any contract, obligation, or liability founded on a written instrument must be brought within four years (subject to the exception in Section 336a, and a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale sale). Section 337(d) adds that once that four-year period has run, a person may not bring suit or initiate arbitration or any other legal proceeding to collect the debt. The limitations period can be extended only as provided in Section 360.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \\u00a7 337(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that period has run, a person may not bring a lawsuit, arbitration, or other legal proceeding to collect the debt, and the period may be extended only under Section 360.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that period has run, a person may not bring a lawsuit, arbitration, or other legal proceeding to collect the debt, and the period may be extended only under Section 360.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 337(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "In California, the statute of limitations for an action on a written contract is four years. This time limit applies to any lawsuit on a \"contract, obligation or liability founded upon an instrument in writing.\" Once this period has run, a person is prohibited from bringing a suit or other legal proceeding to collect the debt.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"In California, the statute of limitations for an action on a written contract is four years. This time limit applies to any lawsuit on a \\\"contract, obligation or liability founded upon an instrument in writing.\\\" Once this period has run, a person is prohibited from bringing a suit or other legal proceeding to collect the debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "All three agree on the core rule: a four-year limitations period under CCP \u00a7 337 for actions on a written contract, obligation, or liability, and a bar on suits, arbitration, or other proceedings to collect after that period. However, Analysis 1 alone adds substantive qualifications \u2014 the \u00a7 336a exception and the special three-month deadline for deficiency-type money judgments after a trustee's/power-of-sale sale \u2014 and Analysis 3 alone omits the \u00a7 360 extension mentioned by Analyses 1 and 2.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": false, \"agreement_notes\": \"All three agree on the core rule: a four-year limitations period under CCP \\u00a7 337 for actions on a written contract, obligation, or liability, and a bar on suits, arbitration, or other proceedings to collect after that period. However, Analysis 1 alone adds substantive qualifications \\u2014 the \\u00a7 336a exception and the special three-month deadline for deficiency-type money judgments after a trustee's/power-of-sale sale \\u2014 and Analysis 3 alone omits the \\u00a7 360 extension mentioned by Analyses 1 and 2.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "3",
+            "4"
+          ],
+          [
+            "4"
+          ],
+          [
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A national bank's cardmember agreement contains a Delaware choice-of-law clause (Delaware has a 3-year limitations period), the account was opened and defaulted while the debtor lived",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A national bank's cardmember agreement contains a Delaware choice-of-law clause (Delaware has a 3-year limitations period), the account was opened and defaulted while the debtor lived",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "CA-SOL-ORAL-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:49:19Z",
+      "ended": "2026-08-30T09:50:33Z",
+      "input_sha256": "b21c85e9fd2075a7912a12509fffdfe70f3c5f815d4d9d8b4b79467fab81d569",
+      "node_sha256": "fa38fdf6a02d50671b4264d0eb4a8e8c9811d48edc4e95393f631056fa241b74",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 339(1), an action on a contract, obligation, or liability that is NOT founded on a written instrument must be brought within two years. So a consumer-debt suit based on an oral or otherwise unwritten agreement carries a two-year limitations period, running from accrual of the cause of action. The statute carves out exceptions governed instead by Commercial Code section 2725 and Code of Civil Procedure section 337(2), and it also covers claims evidenced by a certificate, abstract or guaranty of title, or title insurance policy, for which the claim does not accrue until the aggrieved party discovers the loss or damage.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 339(1)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \\u00a7 339(1), an action on a contract, obligation, or liability that is NOT founded on a written instrument must be brought within two years. So a consumer-debt suit based on an oral or otherwise unwritten agreement carries a two-year limitations period, running from accrual of the cause of action. The statute carves out exceptions governed instead by Commercial Code section 2725 and Code of Civil Procedure section 337(2), and it also covers claims evidenced by a certificate, abstract or guaranty of title, or title insurance policy, for which the claim does not accrue until the aggrieved party discovers the loss or damage.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \\u00a7 339(1)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "An action upon a contract, obligation, or liability that is not founded upon a written instrument must be brought within two years. The provided text does not separately address consumer debt, but it does state the limitations period for unwritten contract-based actions.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 339(1)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"An action upon a contract, obligation, or liability that is not founded upon a written instrument must be brought within two years. The provided text does not separately address consumer debt, but it does state the limitations period for unwritten contract-based actions.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 339(1)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "An action upon a contract, obligation, or liability that is not based on a written document must be brought within two years. The text establishes this general time limit for unwritten agreements, with certain exceptions that are cited but not detailed in the provided excerpt.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 339(1)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"An action upon a contract, obligation, or liability that is not based on a written document must be brought within two years. The text establishes this general time limit for unwritten agreements, with certain exceptions that are cited but not detailed in the provided excerpt.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 339(1)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three identify the same core rule: a two-year limitations period for actions on a contract, obligation, or liability not founded on a written instrument (Cal. Code Civ. Proc. \u00a7 339(1)). Analysis 1 adds detail on the statutory exceptions (Com. Code \u00a7 2725, CCP \u00a7 337(2)) and the discovery-based accrual for title-related claims, which Analyses 2 and 3 omit or merely allude to, but this is supplemental detail rather than a conflicting conclusion.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three identify the same core rule: a two-year limitations period for actions on a contract, obligation, or liability not founded on a written instrument (Cal. Code Civ. Proc. \\u00a7 339(1)). Analysis 1 adds detail on the statutory exceptions (Com. Code \\u00a7 2725, CCP \\u00a7 337(2)) and the discovery-based accrual for title-related claims, which Analyses 2 and 3 omit or merely allude to, but this is supplemental detail rather than a conflicting conclusion.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "2"
+          ],
+          [
+            "2"
+          ],
+          [
+            "2"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": true
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=339.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A consumer opened a store charge account with no signed agreement; the retailer kept a running ledger of purchases, credits, and payments over three years, and sues 3.5 years after the last transaction. There is no written instrument, so the checklist's second dispositi",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A consumer opened a store charge account with no signed agreement; the retailer kept a running ledger of purchases, credits, and payments over three years, and sues 3.5 years after the last transaction. There is no written instrument, so the checklist's second dispositive fact is satisfied and the node returns 'expired.'\", \"exposes_gap\": true, \"gap_description\": \"The checklist presents a false bin",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "CA-WAGE-GARNISHMENT-LIMIT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:50:33Z",
+      "ended": "2026-08-30T09:51:26Z",
+      "input_sha256": "b21c85e9fd2075a7912a12509fffdfe70f3c5f815d4d9d8b4b79467fab81d569",
+      "node_sha256": "240a9749980ae3ec01bbfb22bc28792042d1e74eced16f747a864ea210de6f9b",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 706.050(a), unless another provision of the chapter says otherwise, the amount of a judgment debtor's weekly disposable earnings that can be taken under an earnings withholding order is capped at the lesser of two figures: (1) 20% of that week's disposable earnings, or (2) 40% of the amount by which that week's disposable earnings exceed 48 times the applicable minimum hourly wage. If the debtor works where a local minimum wage exceeds the state minimum wage, the higher local wage is used in the second calculation. This version of the section became operative on September 1, 2023. Note that the excerpt states a general garnishment cap and does not contain any separate rule expressly limited to consumer debts.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 706.050(a), (c)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \\u00a7 706.050(a), unless another provision of the chapter says otherwise, the amount of a judgment debtor's weekly disposable earnings that can be taken under an earnings withholding order is capped at the lesser of two figures: (1) 20% of that week's disposable earnings, or (2) 40% of the amount by which that week's disposable earnings exceed 48 times the applicable minimum hourly wage. If the debtor works where a local minimum wage exceeds the state minimum wage, the higher local wage is used in the second calculation. This version of the section became operative on September 1, 2023. Note that the excerpt states a general garnishment cap and does not contain any separate rule expressly limited to consumer debts.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \\u00a7 706.050(a), (c)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "For an individual judgment debtor, the weekly amount of disposable earnings subject to an earnings withholding order is capped at the lesser of: 20% of disposable earnings for that week, or 40% of the amount by which weekly disposable earnings exceed 48 times the applicable minimum hourly wage. If the debtor works where the local minimum wage is higher than the state minimum wage, the local minimum wage is used. This rule became operative on September 1, 2023.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 706.050(a), (c)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"For an individual judgment debtor, the weekly amount of disposable earnings subject to an earnings withholding order is capped at the lesser of: 20% of disposable earnings for that week, or 40% of the amount by which weekly disposable earnings exceed 48 times the applicable minimum hourly wage. If the debtor works where the local minimum wage is higher than the state minimum wage, the local minimum wage is used. This rule became operative on September 1, 2023.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 706.050(a), (c)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Effective September 1, 2023, the maximum amount of an individual's disposable earnings that can be garnished in a workweek is the lesser of two calculations. The first option is 20% of the individual's disposable earnings for that week. The second option is 40% of the amount by which their disposable earnings exceed 48 times the applicable state or local minimum hourly wage, whichever is greater.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 706.050(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"Effective September 1, 2023, the maximum amount of an individual's disposable earnings that can be garnished in a workweek is the lesser of two calculations. The first option is 20% of the individual's disposable earnings for that week. The second option is 40% of the amount by which their disposable earnings exceed 48 times the applicable state or local minimum hourly wage, whichever is greater.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 706.050(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same rule: the garnishable amount is the lesser of 20% of weekly disposable earnings or 40% of the excess over 48 times the applicable minimum hourly wage, using the higher local minimum wage where applicable, operative September 1, 2023. Analysis 1 adds only the statutory 'unless otherwise provided' caveat and a note about consumer debts, which is supplemental rather than contradictory.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same rule: the garnishable amount is the lesser of 20% of weekly disposable earnings or 40% of the excess over 48 times the applicable minimum hourly wage, using the higher local minimum wage where applicable, operative September 1, 2023. Analysis 1 adds only the statutory 'unless otherwise provided' caveat and a note about consumer debts, which is supplemental rather than contradictory.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "2",
+            "20%",
+            "2023",
+            "40%",
+            "48"
+          ],
+          [
+            "1",
+            "20%",
+            "2023",
+            "40%",
+            "48"
+          ],
+          [
+            "1",
+            "2",
+            "20%",
+            "2023",
+            "40%",
+            "48"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=706.050.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=706.050.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "CA-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:51:26Z",
+      "ended": "2026-08-30T09:52:16Z",
+      "input_sha256": "b21c85e9fd2075a7912a12509fffdfe70f3c5f815d4d9d8b4b79467fab81d569",
+      "node_sha256": "5380fcbafcd5dddef5c66521e9c34d072fe8d818342a481a916a05534c35c221",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 704.730(a), a judgment debtor's homestead exemption equals the greater of (1) the countywide median sale price for a single-family home in the calendar year before the year the exemption is claimed, capped at $600,000, or (2) a floor of $300,000. So the protected amount always falls between $300,000 and $600,000 depending on local median home prices. Subdivision (b) provides that these figures adjust annually for inflation starting January 1, 2022, using the change in the annual California Consumer Price Index for All Urban Consumers published by the Department of Industrial Relations for the most recent one-year period ending December 31 before the adjustment, rounded to the nearest $25. The text sets only the exemption amounts; it does not itself describe the forced-sale procedure.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.730(a)-(b)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 704.730(a), a judgment debtor's homestead exemption equals the greater of (1) the countywide median sale price for a single-family home in the calendar year before the year the exemption is claimed, capped at $600,000, or (2) a floor of $300,000. So the protected amount always falls between $300,000 and $600,000 depending on local median home prices. Subdivision (b) provides that these figures adjust annually for inflation starting January 1, 2022, using the change in the annual California Consumer Price Index for All Urban Consumers published by the Department of Industrial Relations for the most recent one-year period ending December 31 before the adjustment, rounded to the nearest $25. The text sets only the exemption amounts; it does not itself describe the forced-sale procedure.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \\u00a7 704.730(a)-(b)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The California homestead exemption amount is the greater of either the prior calendar year\u2019s countywide median sale price for a single-family home, capped at $600,000, or $300,000. These amounts are adjusted annually for inflation beginning January 1, 2022, using the California CPI for All Urban Consumers and rounded to the nearest $25.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.730(a)-(b)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"The California homestead exemption amount is the greater of either the prior calendar year\u2019s countywide median sale price for a single-family home, capped at $600,000, or $300,000. These amounts are adjusted annually for inflation beginning January 1, 2022, using the California CPI for All Urban Consumers and rounded to the nearest $25.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 704.730(a)-(b)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The California homestead exemption is the greater of two amounts: either $300,000, or the countywide median sale price for a single-family home from the prior year. The median sale price figure used for this calculation cannot exceed $600,000. The dollar amounts specified in the statute are adjusted annually for inflation.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.730(a)-(b)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"The California homestead exemption is the greater of two amounts: either $300,000, or the countywide median sale price for a single-family home from the prior year. The median sale price figure used for this calculation cannot exceed $600,000. The dollar amounts specified in the statute are adjusted annually for inflation.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 704.730(a)-(b)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same core rule: the exemption equals the greater of $300,000 or the prior year's countywide median sale price for a single-family home, capped at $600,000, with annual inflation adjustments. Analyses 1 and 2 add the mechanics of the adjustment (California CPI-U, effective January 1, 2022, rounded to the nearest $25), which Analysis 3 omits, but this is added detail rather than a conflicting conclusion.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same core rule: the exemption equals the greater of $300,000 or the prior year's countywide median sale price for a single-family home, capped at $600,000, with annual inflation adjustments. Analyses 1 and 2 add the mechanics of the adjustment (California CPI-U, effective January 1, 2022, rounded to the nearest $25), which Analysis 3 omits, but this is added detail rather than a conflicting conclusion.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "$25",
+            "$300000",
+            "$600000",
+            "1",
+            "2",
+            "2022",
+            "31"
+          ],
+          [
+            "$25",
+            "$300000",
+            "$600000",
+            "1",
+            "2022"
+          ],
+          [
+            "$300000",
+            "$600000",
+            "2"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.730.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A judgment creditor holding a domestic support arrearage judgment for unpaid child support seeks to force the sale of the debtor's occupied residence; in a parallel case, the lienholder is the bank holding the purchase-money deed of trust the debtor signed. Both are 'ju",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A judgment creditor holding a domestic support arrearage judgment for unpaid child support seeks to force the sale of the debtor's occupied residence; in a parallel case, the lienholder is the bank holding the purchase-money deed of trust the debtor signed. Both are 'judgments'/'liens' against the homestead, but the homestead exemption does not shield the property from either in the same way it shields it from an ordinary unsecured judgment creditor.\", \"exposes_gap\": true, \"gap_description\": \"The checklist never asks for the nature of the claim or lien. CCP \\u00a7 704.710 et seq. and \\u00a7 703.010 carve out consensual liens (mortgages/deeds of trust), mechanic's liens, tax liens, and support obligations (see \\u00a7 703.070 allowing enforcement of support judgments against exempt proceeds/property). The node's determination is silently limited by the phrase 'ordinary money judgment' but supplies no fact to test whether the creditor's claim is one, making the rule over-inclusive when applied mechanically.\"}, {\"scenario\": \"A debtor moves from Texas to Los Angeles County, buys a $2M home eight months later with cash from the Texas sale, and files Chapter 7 fourteen months after arriving; the trustee seeks to sell the home.",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "CA-VEHICLE-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:52:16Z",
+      "ended": "2026-08-30T09:55:20Z",
+      "input_sha256": "b21c85e9fd2075a7912a12509fffdfe70f3c5f815d4d9d8b4b79467fab81d569",
+      "node_sha256": "f2a2416931fd2c13eebcec8895f7f92d571b16504c777c89414b920aca5c4351",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 704.010(a), a judgment debtor may exempt up to $7,500 in any combination of the aggregate equity in motor vehicles, the proceeds of an execution sale of a motor vehicle, and proceeds of insurance or other indemnification for a vehicle's loss, damage, or destruction. Subdivision (d) provides that if the debtor owns only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is automatically exempt without the debtor having to make a claim, and the levying officer may consult and rely on Department of Motor Vehicles records to determine whether the debtor has only one vehicle. In that situation, the subdivision (a) exemption is not also available.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.010(a), (d)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \\u00a7 704.010(a), a judgment debtor may exempt up to $7,500 in any combination of the aggregate equity in motor vehicles, the proceeds of an execution sale of a motor vehicle, and proceeds of insurance or other indemnification for a vehicle's loss, damage, or destruction. Subdivision (d) provides that if the debtor owns only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is automatically exempt without the debtor having to make a claim, and the levying officer may consult and rely on Department of Motor Vehicles records to determine whether the debtor has only one vehicle. In that situation, the subdivision (a) exemption is not also available.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \\u00a7 704.010(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "California exempts up to $7,500 in any combination of aggregate equity in motor vehicles, proceeds from an execution sale of a motor vehicle, and insurance or indemnification proceeds for loss, damage, or destruction of a motor vehicle. If the judgment debtor has only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is exempt without making a claim, and the subdivision (a) exemption is not also available in that situation.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.010(a), (d)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"California exempts up to $7,500 in any combination of aggregate equity in motor vehicles, proceeds from an execution sale of a motor vehicle, and insurance or indemnification proceeds for loss, damage, or destruction of a motor vehicle. If the judgment debtor has only one motor vehicle and it is sold at an execution sale, $7,500 of the sale proceeds is exempt without making a claim, and the subdivision (a) exemption is not also available in that situation.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 704.010(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Under California law, a debtor is entitled to an exemption of seven thousand five hundred dollars ($7,500) for motor vehicles. This exemption can apply to the aggregate equity in the vehicle(s), the proceeds from an execution sale of a vehicle, or insurance proceeds for a lost or damaged vehicle. If a debtor has only one motor vehicle sold at an execution sale, the $7,500 exemption for the proceeds is automatic and does not require a claim.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.010(a), (d)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"Under California law, a debtor is entitled to an exemption of seven thousand five hundred dollars ($7,500) for motor vehicles. This exemption can apply to the aggregate equity in the vehicle(s), the proceeds from an execution sale of a vehicle, or insurance proceeds for a lost or damaged vehicle. If a debtor has only one motor vehicle sold at an execution sale, the $7,500 exemption for the proceeds is automatic and does not require a claim.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 704.010(a), (d)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "All three agree on the core rule: a $7,500 California motor-vehicle exemption covering aggregate equity, execution-sale proceeds, and insurance/indemnification proceeds, with the $7,500 in sale proceeds automatically exempt (no claim required) when the debtor owns only one vehicle. Analysis 3 differs by omitting the substantive limitation stated in Analyses 1 and 2 that the subdivision (a) exemption is not also available in that single-vehicle execution-sale situation; Analysis 1 additionally notes the levying officer may rely on DMV records, a minor procedural detail.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": false, \"agreement_notes\": \"All three agree on the core rule: a $7,500 California motor-vehicle exemption covering aggregate equity, execution-sale proceeds, and insurance/indemnification proceeds, with the $7,500 in sale proceeds automatically exempt (no claim required) when the debtor owns only one vehicle. Analysis 3 differs by omitting the substantive limitation stated in Analyses 1 and 2 that the subdivision (a) exemption is not also available in that single-vehicle execution-sale situation; Analysis 1 additionally notes the levying officer may rely on DMV records, a minor procedural detail.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "$7500",
+            "1"
+          ],
+          [
+            "$7500",
+            "1"
+          ],
+          [
+            "$7500",
+            "1",
+            "105",
+            "7"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.010.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "CA-BANK-ACCOUNT-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:55:20Z",
+      "ended": "2026-08-30T09:56:11Z",
+      "input_sha256": "b21c85e9fd2075a7912a12509fffdfe70f3c5f815d4d9d8b4b79467fab81d569",
+      "node_sha256": "1fdf1ab216901416fb020a0f27cab5519b04e75d1100e8cecd407a5424dde6e3",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 704.220(a), money in a judgment debtor's deposit account is automatically exempt \u2014 with no claim required \u2014 up to an amount equal to the minimum basic standard of adequate care for a family of four for Region 1, as set by Welfare and Institutions Code section 11452 and annually adjusted by the State Department of Social Services under section 11453. The statute ties the exempt minimum to that adjusted figure rather than stating a fixed dollar amount in the text provided. However, \u00a7 704.220(c)(1) provides that this automatic exemption does not apply when the money is levied upon to satisfy a judgment for wages owed (including damages and penalties), child support, or spousal support.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.220(a), (c)(1)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 704.220(a), money in a judgment debtor's deposit account is automatically exempt \u2014 with no claim required \u2014 up to an amount equal to the minimum basic standard of adequate care for a family of four for Region 1, as set by Welfare and Institutions Code section 11452 and annually adjusted by the State Department of Social Services under section 11453. The statute ties the exempt minimum to that adjusted figure rather than stating a fixed dollar amount in the text provided. However, \u00a7 704.220(c)(1) provides that this automatic exemption does not apply when the money is levied upon to satisfy a judgment for wages owed (including damages and penalties), child support, or spousal support.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 704.220(a), (c)(1)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Money in a judgment debtor\u2019s deposit account is automatically exempt, without the debtor making a claim, up to an amount equal to the minimum basic standard of adequate care for a family of four for Region 1, as established and annually adjusted under the cited Welfare and Institutions Code provisions. This automatic exemption does not apply when the levy is to satisfy a judgment for wages owed, child support, or spousal support; \u201cwages owed\u201d includes damages and penalties.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.220(a), (c)(1)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"Money in a judgment debtor\u2019s deposit account is automatically exempt, without the debtor making a claim, up to an amount equal to the minimum basic standard of adequate care for a family of four for Region 1, as established and annually adjusted under the cited Welfare and Institutions Code provisions. This automatic exemption does not apply when the levy is to satisfy a judgment for wages owed, child support, or spousal support; \u201cwages owed\u201d includes damages and penalties.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 704.220(a), (c)(1)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "An amount of money in a judgment debtor's deposit account is automatically exempt from collection without the debtor needing to make a claim. The exempt amount is equal to or less than the minimum basic standard of adequate care for a family of four for Region 1, as adjusted annually. However, this automatic exemption does not apply to levies to satisfy a judgment for wages owed, child support, or spousal support.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 704.220(a), (c)(1)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"An amount of money in a judgment debtor's deposit account is automatically exempt from collection without the debtor needing to make a claim. The exempt amount is equal to or less than the minimum basic standard of adequate care for a family of four for Region 1, as adjusted annually. However, this automatic exemption does not apply to levies to satisfy a judgment for wages owed, child support, or spousal support.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 704.220(a), (c)(1)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state that money in a deposit account is automatically exempt without a claim, up to the minimum basic standard of adequate care for a family of four for Region 1 (annually adjusted), and all three identify the same exceptions: levies for wages owed, child support, or spousal support. Analyses 1 and 2 add that 'wages owed' includes damages and penalties, and Analysis 1 cites the specific code sections, but these are elaborations rather than conflicting rules.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state that money in a deposit account is automatically exempt without a claim, up to the minimum basic standard of adequate care for a family of four for Region 1 (annually adjusted), and all three identify the same exceptions: levies for wages owed, child support, or spousal support. Analyses 1 and 2 add that 'wages owed' includes damages and penalties, and Analysis 1 cites the specific code sections, but these are elaborations rather than conflicting rules.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "4"
+          ],
+          [
+            "1",
+            "4"
+          ],
+          [
+            "1",
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": true
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.220.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.220.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A judgment creditor levies on a checking account held jointly by the debtor and her non-debtor adult son, containing $3,000 of which the son deposited $2,500 from his own paycheck. The bank freezes the whole balance and the sheriff asks how much is automatically exempt.",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A judgment creditor levies on a checking account held jointly by the debtor and her non-debtor adult son, containing $3,000 of which the son deposited $2,500 from his own paycheck. The bank freezes the whole balance and the sheriff asks how much is automatically exempt.\", \"exposes_gap\": true, \"gap_description\": \"The checklist covers only whether the DEBTOR holds multiple accounts, not co-ownership with non-debtors. It omits (a) whose automatic exemption attaches to a joint account, (b) whether one automatic exemption is available per account, per debtor, or per depositor, (c) CCP",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "CA-CIVIL-ANSWER-DEADLINE",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:56:11Z",
+      "ended": "2026-08-30T09:57:03Z",
+      "input_sha256": "b21c85e9fd2075a7912a12509fffdfe70f3c5f815d4d9d8b4b79467fab81d569",
+      "node_sha256": "6f81582c5235672e5de9afcfc43afd5ddaf02e173cbab305165439f43101def0",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 412.20(a)(3), the summons must direct the defendant to file a written pleading in response to the complaint within 30 days after the summons is served, and \u00a7 412.20(a)(6) requires the summons to warn in the same terms that the court may decide against the defendant without being heard unless they respond within 30 days. If the defendant does not respond, \u00a7 412.20(a)(4) provides that a default may be entered on the plaintiff's application and the plaintiff may obtain the relief demanded, which could include garnishment of wages or the taking of money or property. The excerpt states this general summons requirement and does not set out any separate or special deadline unique to debt-collection suits, nor does it address extensions or different service methods.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 412.20(a)(3)-(4), (a)(6)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 412.20(a)(3), the summons must direct the defendant to file a written pleading in response to the complaint within 30 days after the summons is served, and \u00a7 412.20(a)(6) requires the summons to warn in the same terms that the court may decide against the defendant without being heard unless they respond within 30 days. If the defendant does not respond, \u00a7 412.20(a)(4) provides that a default may be entered on the plaintiff's application and the plaintiff may obtain the relief demanded, which could include garnishment of wages or the taking of money or property. The excerpt states this general summons requirement and does not set out any separate or special deadline unique to debt-collection suits, nor does it address extensions or different service methods.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 412.20(a)(3)-(4), (a)(6)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A defendant must file a written pleading with the court in response to the complaint within 30 days after the summons is served. If the defendant does not respond within 30 days, default may be entered and the plaintiff may seek the relief demanded in the complaint, including possible wage garnishment or taking of money or property.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 412.20(a)(3)-(4), (6)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A defendant must file a written pleading with the court in response to the complaint within 30 days after the summons is served. If the defendant does not respond within 30 days, default may be entered and the plaintiff may seek the relief demanded in the complaint, including possible wage garnishment or taking of money or property.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 412.20(a)(3)-(4), (6)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A defendant must file a written pleading in response to a complaint within 30 days after the summons is served on them. A summons must also contain a notice explicitly stating that the court may decide against the defendant unless they respond within 30 days.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 412.20(a)(3), (a)(6)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A defendant must file a written pleading in response to a complaint within 30 days after the summons is served on them. A summons must also contain a notice explicitly stating that the court may decide against the defendant unless they respond within 30 days.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 412.20(a)(3), (a)(6)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same core rule: a defendant must file a written responsive pleading within 30 days after service of the summons. Analyses 1 and 2 additionally note the default consequence (entry of default, relief including wage garnishment), which Analysis 3 omits, but this is supplemental detail rather than a conflicting legal conclusion.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same core rule: a defendant must file a written responsive pleading within 30 days after service of the summons. Analyses 1 and 2 additionally note the default consequence (entry of default, relief including wage garnishment), which Analysis 3 omits, but this is supplemental detail rather than a conflicting legal conclusion.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "30"
+          ],
+          [
+            "30"
+          ],
+          [
+            "30"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": true
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=412.20.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=412.20.",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A debt buyer serves the defendant by substituted service under CCP 415.20 \\u2014 papers left with a co-resident on March 1 and mailed March 3. The defendant counts 30 days from March 1 and files on March 31, but the collector's counsel argues a different clock; alternat",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A debt buyer serves the defendant by substituted service under CCP 415.20 \\u2014 papers left with a co-resident on March 1 and mailed March 3. The defendant counts 30 days from March 1 and files on March 31, but the collector's counsel argues a different clock; alternatively, a defendant served by publication counts from the first publication date.\", \"exposes_gap\": true, \"gap_description\": \"The rule keys the deadline to the 'date the summons is served,' but California treats service as complete on a deemed date, not the date of physical delivery: substituted service is complete on the 10th day after mailing (CCP 415.20), notice-and-acknowledgment service on the date the acknowledgment is signed/returned (CCP 415.30), and publication on the 28th day after first publication (CCP 415.50). The checklist asks only for the date of actual service and never asks about the method of service, so it will produce a deadline that is too early (and cause a defendant to think they are late) or, in reverse, mislead on when default may be taken.\"}, {\"scenario\": \"A defendant is personally served on Friday, November 29",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY",
+      "file": "rules/debt/state/texas/tx_debt_band3_discretionary_v1.json",
+      "started": "2026-08-30T09:57:03Z",
+      "ended": "2026-08-30T09:58:17Z",
+      "input_sha256": "d3c46031d31fbc3f1d1f966a3b4b55b3c888b78828b397b464c4dbfe25e1db55",
+      "node_sha256": "1fad052a187bc2682d1f75ac8d7ee1bba6b9e57686b7dbecd2681abfdd5c42f7",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Craddock, a default judgment should be set aside and a new trial ordered whenever three things concur: (1) the defendant's failure to answer before judgment was not intentional or the result of conscious indifference, but was due to mistake or accident; (2) the motion for new trial sets up a meritorious defense; and (3) the motion is filed at a time when granting it will cause no delay or other injury to the plaintiff. Notably, the text phrases this as a standard the court 'should' apply 'in any case' where the elements are met, so it operates as a structured test rather than an open-ended discretionary weighing. Timing matters: the motion must be filed before or within thirty days after the judgment is signed (Rule 329b(a)), and if no written order is signed within seventy-five days of the judgment, the motion is overruled by operation of law (Rule 329b(c)).",
+            "grounded": true,
+            "citation_used": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939); Tex. R. Civ. P. 329b(a), (c)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Craddock, a default judgment should be set aside and a new trial ordered whenever three things concur: (1) the defendant's failure to answer before judgment was not intentional or the result of conscious indifference, but was due to mistake or accident; (2) the motion for new trial sets up a meritorious defense; and (3) the motion is filed at a time when granting it will cause no delay or other injury to the plaintiff. Notably, the text phrases this as a standard the court 'should' apply 'in any case' where the elements are met, so it operates as a structured test rather than an open-ended discretionary weighing. Timing matters: the motion must be filed before or within thirty days after the judgment is signed (Rule 329b(a)), and if no written order is signed within seventy-five days of the judgment, the motion is overruled by operation of law (Rule 329b(c)).\", \"grounded\": true, \"citation_used\": \"Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939); Tex. R. Civ. P. 329b(a), (c)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Under the provided text, a Texas default judgment should be set aside and a new trial ordered if the defendant\u2019s failure to answer was not intentional or due to conscious indifference, but was caused by mistake or accident. The motion must set up a meritorious defense and be filed when granting it will not delay or injure the plaintiff; a motion for new trial must be filed within 30 days after judgment, and if not decided by signed written order within 75 days, it is overruled by operation of law.",
+            "grounded": true,
+            "citation_used": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939); Tex. R. Civ. P. 329b(a), (c)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"Under the provided text, a Texas default judgment should be set aside and a new trial ordered if the defendant\u2019s failure to answer was not intentional or due to conscious indifference, but was caused by mistake or accident. The motion must set up a meritorious defense and be filed when granting it will not delay or injure the plaintiff; a motion for new trial must be filed within 30 days after judgment, and if not decided by signed written order within 75 days, it is overruled by operation of law.\",\"grounded\":true,\"citation_used\":\"Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939); Tex. R. Civ. P. 329b(a), (c)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A default judgment should be set aside and a new trial ordered when three conditions are met. First, the defendant's failure to answer was not intentional or the result of conscious indifference, but was due to a mistake or accident. Second, the motion for a new trial must set up a meritorious defense. Finally, the motion must be filed at a time when granting it will not cause delay or otherwise harm the plaintiff.",
+            "grounded": true,
+            "citation_used": "Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A default judgment should be set aside and a new trial ordered when three conditions are met. First, the defendant's failure to answer was not intentional or the result of conscious indifference, but was due to a mistake or accident. Second, the motion for a new trial must set up a meritorious defense. Finally, the motion must be filed at a time when granting it will not cause delay or otherwise harm the plaintiff.\",\n  \"grounded\": true,\n  \"citation_used\": \"Craddock v. Sunshine Bus Lines, Inc., 133 S.W.2d 124, 126 (Tex. 1939)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "All three state the same three-part Craddock test (no intentional/consciously indifferent failure to answer, meritorious defense set up, and no delay or injury to plaintiff). However, Analyses 1 and 2 also state the procedural deadlines (motion for new trial filed within 30 days of judgment; overruled by operation of law if no signed order within 75 days), which Analysis 3 omits entirely.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": false, \"agreement_notes\": \"All three state the same three-part Craddock test (no intentional/consciously indifferent failure to answer, meritorious defense set up, and no delay or injury to plaintiff). However, Analyses 1 and 2 also state the procedural deadlines (motion for new trial filed within 30 days of judgment; overruled by operation of law if no signed order within 75 days), which Analysis 3 omits entirely.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "2",
+            "3",
+            "30",
+            "75"
+          ],
+          [
+            "30",
+            "75"
+          ],
+          [
+            "3"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.courtlistener.com/opinion/4172687/craddock-v-sunshine-bus-lines-inc/",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://rulesofcivilprocedure.com/tx/rule-329b/",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A defendant learns of a default judgment 47 days after it was signed because the clerk mailed the Rule 306a(3) notice to a stale address and the defendant had neither actual knowledge nor notice within 20 days of signing. She files a sworn 306a(4)/(5) motion establishin",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A defendant learns of a default judgment 47 days after it was signed because the clerk mailed the Rule 306a(3) notice to a stale address and the defendant had neither actual knowledge nor notice within 20 days of signing. She files a sworn 306a(4)/(5) motion establishing the date of actual knowledge and then a motion for new trial.\", \"exposes_gap\": true, \"gap_description\": \"The checklist treats 'within 30 days of signing' as a hard, dispositive, deterministic gate. TRCP 306a(4)-(5) restarts the 30-day clock from the date of actual knowledge or notice (capped at 90 days after signing), on a sworn motion with a",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "TX-SOL-CONSUMER-DEBT",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:58:17Z",
+      "ended": "2026-08-30T09:59:05Z",
+      "input_sha256": "e20b9e501779a3a1d062bce7533cc7513c3141c604b5db1f771fb5179e866ed8",
+      "node_sha256": "a26004cb6b66e4429d6f2a73a2cd5d6d201ac613395b29a4494343f9471242e6",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)(3), an action on a 'debt' must be brought no later than four years after the day the cause of action accrues. A suit to collect a consumer debt is an action on debt, so the limitations period is four years measured from accrual. The excerpt does not define when a debt cause of action accrues, so that starting point must be determined from other authority.",
+            "grounded": true,
+            "citation_used": "Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)(3), an action on a 'debt' must be brought no later than four years after the day the cause of action accrues. A suit to collect a consumer debt is an action on debt, so the limitations period is four years measured from accrual. The excerpt does not define when a debt cause of action accrues, so that starting point must be determined from other authority.\", \"grounded\": true, \"citation_used\": \"Tex. Civ. Prac. & Rem. Code \\u00a7 16.004(a)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A suit on an action for debt must be brought no later than four years after the day the cause of action accrues. The text lists \u201cdebt\u201d among the actions subject to this four-year limitations period.",
+            "grounded": true,
+            "citation_used": "Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A suit on an action for debt must be brought no later than four years after the day the cause of action accrues. The text lists \u201cdebt\u201d among the actions subject to this four-year limitations period.\",\"grounded\":true,\"citation_used\":\"Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "According to the provided text, a person must bring a lawsuit for debt no later than four years after the day the cause of action accrues. The statute lists \"debt\" as one of the actions subject to this four-year time limit.",
+            "grounded": true,
+            "citation_used": "Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n    \"derivation_summary\": \"According to the provided text, a person must bring a lawsuit for debt no later than four years after the day the cause of action accrues. The statute lists \\\"debt\\\" as one of the actions subject to this four-year time limit.\",\n    \"grounded\": true,\n    \"citation_used\": \"Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same rule: an action on debt must be brought within four years of accrual under the cited Texas statute. Analysis 1 adds a citation (Tex. Civ. Prac. & Rem. Code \u00a7 16.004(a)(3)) and a caveat that accrual is not defined in the excerpt, but this is supplemental detail rather than a substantive difference.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same rule: an action on debt must be brought within four years of accrual under the cited Texas statute. Analysis 1 adds a citation (Tex. Civ. Prac. & Rem. Code \\u00a7 16.004(a)(3)) and a caveat that accrual is not defined in the excerpt, but this is supplemental detail rather than a substantive difference.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "4"
+          ],
+          [
+            "4"
+          ],
+          [
+            "1",
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.16.htm",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A consumer defaulted on a credit card in March 2018 and made no payments until October 2023, when a collector persuaded her to make a $25 'good faith' payment; the collector sues in 2024 arguing limitations restarted from the 2023 payment. The checklist asks only for 'd",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A consumer defaulted on a credit card in March 2018 and made no payments until October 2023, when a collector persuaded her to make a $25 'good faith' payment; the collector sues in 2024 arguing limitations restarted from the 2023 payment. The checklist asks only for 'date of last payment,' so the node would treat October 2023 as accrual and find the claim timely.\", \"exposes_gap\": true, \"gap_description\": \"The rule conflates 'last payment' with accrual without distinguishing a payment made before expiration from one made after. Texas law addresses revival separately: \u00a7 16.065 requires a signed written acknowledgment to revive a barred debt (a bare payment is insufficient), and Tex. Fin. Code \u00a7 392.307 provides that for consumer debt a payment or acknowledgment after expiration does not revive limitations. Revival/renewal is neither encoded nor flagged (it is not tolling), so the node can produce the opposite of the correct answer.\"}, {\"scenario\": \"The creditor filed suit in Texas state court on the third anniversary of the default; the case is still pending three years later and the debtor now raises limitations. The node's determination compares 'today' to accrual + 4 years and would label the timely-filed suit 'expired.'\", \"exposes_gap\": true, \"gap_description\": \"The operative date for a limitations defense is the date suit was filed (plus service with due diligence), not the date of the analysis. The logic hard-codes 'today' and the checklist never collects the filing/service",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "TX-WAGE-GARNISHMENT-PROHIBITION",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-30T09:59:05Z",
+      "ended": "2026-08-30T10:00:38Z",
+      "input_sha256": "e20b9e501779a3a1d062bce7533cc7513c3141c604b5db1f771fb5179e866ed8",
+      "node_sha256": "0552786e9552828e0f16cdd08a1f030235561b58ce64d3cdf87ecb14e0b58553",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Texas's constitution, current wages earned for personal service can never be garnished, with only two express exceptions: court-ordered child support and court-ordered spousal maintenance. Because ordinary consumer debts (such as credit card or medical bills) fall outside those two exceptions, a creditor holding such a debt cannot reach a debtor's current wages through garnishment. The prohibition is stated absolutely ('shall ever be'), so it applies regardless of the size or type of the consumer obligation.",
+            "grounded": true,
+            "citation_used": "Tex. Const. art. XVI, \u00a7 28",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Texas's constitution, current wages earned for personal service can never be garnished, with only two express exceptions: court-ordered child support and court-ordered spousal maintenance. Because ordinary consumer debts (such as credit card or medical bills) fall outside those two exceptions, a creditor holding such a debt cannot reach a debtor's current wages through garnishment. The prohibition is stated absolutely ('shall ever be'), so it applies regardless of the size or type of the consumer obligation.\", \"grounded\": true, \"citation_used\": \"Tex. Const. art. XVI, \\u00a7 28\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Texas law provides that current wages for personal service are not subject to garnishment. The only stated exceptions are enforcement of court-ordered child support payments or spousal maintenance, so ordinary consumer debt is not within the listed exceptions.",
+            "grounded": true,
+            "citation_used": "Tex. Const. art. XVI, \u00a7 28",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"Texas law provides that current wages for personal service are not subject to garnishment. The only stated exceptions are enforcement of court-ordered child support payments or spousal maintenance, so ordinary consumer debt is not within the listed exceptions.\",\"grounded\":true,\"citation_used\":\"Tex. Const. art. XVI, \u00a7 28\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The Texas Constitution states that no current wages for personal service can ever be subject to garnishment. The only exceptions provided are for court-ordered child support payments and spousal maintenance. Since ordinary consumer debt is not one of the listed exceptions, the general prohibition against wage garnishment applies.",
+            "grounded": true,
+            "citation_used": "Tex. Const. art. XVI, \u00a7 28",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"The Texas Constitution states that no current wages for personal service can ever be subject to garnishment. The only exceptions provided are for court-ordered child support payments and spousal maintenance. Since ordinary consumer debt is not one of the listed exceptions, the general prohibition against wage garnishment applies.\",\n  \"grounded\": true,\n  \"citation_used\": \"Tex. Const. art. XVI, \u00a7 28\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same rule: Texas exempts current wages for personal service from garnishment, with the only exceptions being court-ordered child support and spousal maintenance, so ordinary consumer debt cannot be garnished. Differences are only in detail (e.g., Analysis 1's note that the prohibition is absolute regardless of debt size), not substance.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same rule: Texas exempts current wages for personal service from garnishment, with the only exceptions being court-ordered child support and spousal maintenance, so ordinary consumer debt cannot be garnished. Differences are only in detail (e.g., Analysis 1's note that the prohibition is absolute regardless of debt size), not substance.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "2"
+          ],
+          [],
+          [
+            "1"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/CN/htm/CN.16.htm",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A Texas resident defaults on a federal student loan; the U.S. Department of Education issues an administrative wage garnishment order to her employer, and separately the IRS levies 15% of her paycheck for unpaid income tax. Both are 'ordinary debts' in the sense that ne",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A Texas resident defaults on a federal student loan; the U.S. Department of Education issues an administrative wage garnishment order to her employer, and separately the IRS levies 15% of her paycheck for unpaid income tax. Both are 'ordinary debts' in the sense that neither is child support nor spousal maintenance.\", \"exposes_gap\": true, \"gap_description\": \"The rule treats the exception list as closed (child support, spousal maintenance) and frames the Texas constitutional protection as absolute for all other debts. It omits federally created garnishment powers \\u2014 IRS levies, federal student loan AWG, federal criminal restitution/MVRA, federal court judgments, and defaulted federal guaranteed debt \\u2014 which preempt the state constitutional exemption. The checklist's single dispositive fact (wages vs. bank account vs. support) never asks whether the creditor is a federal actor or acting under federal law.\"}, {\"scenario\": \"A judgment debtor living in Dallas works remotely for a Colorado corporation with no Texas presence; the creditor domesticates its judgment in Colorado and garnishes the paycheck there before the funds ever reach Texas. Alternatively, the debtor is paid as a 1099 independent contractor and the creditor garnishes the accounts receivable owed to him by his clients.\", \"exposes_gap\": true, \"gap_description\": \"Two uncovered issues. (1) Choice of law/situs: the Texas protection binds Texas courts and garnishment actions, but a sister state with jurisdiction over the employer may apply its own law; the checklist asks nothing about employer location or forum. (2) Characterization of the income: 'current wages for personal services' excludes independent-contractor receivables, corporate distributions to an owner-employee, and arguably commissions, bonuses, severance, or draws \\u2014 the checklist assumes the wage/bank-account binary and never asks whether the payment stream legally qualifies as wages.\"}, {\"scenario\": \"A creditor obtains a Texas turnover order directing the debtor to hand over each paycheck as soon as it is received, and also serves a writ on the debtor's bank the day after direct deposit, when the account contains only two days of traceable wages.\", \"exposes_gap\": true, \"gap_description\": \"The rule flags the wage/bank-account distinction but not the temporal boundary between them or the turnover-order workaround. Texas law protects 'current wages' up to the point of payment; once paid, the exemption is lost or, under some authority, contested if funds remain traceable and unpaid-current. The checklist also ignores that turnover relief under CPRC \\u00a7 31.002 cannot be used to re",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "TX-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-30T10:00:38Z",
+      "ended": "2026-08-30T10:01:28Z",
+      "input_sha256": "e20b9e501779a3a1d062bce7533cc7513c3141c604b5db1f771fb5179e866ed8",
+      "node_sha256": "c5e38c7aee200e1d79b8301a27b7cf6b2893a9dca5886e62e8c68c71774ddf82",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Tex. Prop. Code \u00a7 41.001(a), a homestead \u2014 and one or more lots used as a burial place \u2014 is exempt from seizure to satisfy creditors' claims, with the only stated exception being encumbrances properly fixed on the homestead property. Section 41.002 caps the size of the protected homestead: an urban homestead (for a family or a single adult) may be no more than 10 acres, which may consist of one or more contiguous lots plus improvements. A rural homestead may be up to 200 acres for a family, or up to 100 acres for a single adult person. The text does not address other limits, such as value caps or additional exceptions beyond properly fixed encumbrances.",
+            "grounded": true,
+            "citation_used": "Tex. Prop. Code \u00a7 41.001(a); Tex. Prop. Code \u00a7 41.002(a)-(b)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Tex. Prop. Code \u00a7 41.001(a), a homestead \u2014 and one or more lots used as a burial place \u2014 is exempt from seizure to satisfy creditors' claims, with the only stated exception being encumbrances properly fixed on the homestead property. Section 41.002 caps the size of the protected homestead: an urban homestead (for a family or a single adult) may be no more than 10 acres, which may consist of one or more contiguous lots plus improvements. A rural homestead may be up to 200 acres for a family, or up to 100 acres for a single adult person. The text does not address other limits, such as value caps or additional exceptions beyond properly fixed encumbrances.\", \"grounded\": true, \"citation_used\": \"Tex. Prop. Code \u00a7 41.001(a); Tex. Prop. Code \u00a7 41.002(a)-(b)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A Texas homestead is exempt from seizure for creditor claims, except for encumbrances properly fixed on the homestead property. The protected homestead size is up to 10 acres for an urban home, up to 200 acres for a rural family homestead, and up to 100 acres for a rural homestead of a single adult person.",
+            "grounded": true,
+            "citation_used": "Tex. Prop. Code \u00a7\u00a7 41.001(a), 41.002(a)-(b)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A Texas homestead is exempt from seizure for creditor claims, except for encumbrances properly fixed on the homestead property. The protected homestead size is up to 10 acres for an urban home, up to 200 acres for a rural family homestead, and up to 100 acres for a rural homestead of a single adult person.\",\"grounded\":true,\"citation_used\":\"Tex. Prop. Code \u00a7\u00a7 41.001(a), 41.002(a)-(b)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "In Texas, a homestead and burial lots are exempt from creditor seizure, except for encumbrances properly fixed on the homestead property. An urban homestead for a family or single adult can be up to 10 acres on contiguous lots. A rural homestead can be up to 200 acres for a family or 100 acres for a single adult person.",
+            "grounded": true,
+            "citation_used": "Tex. Prop. Code \u00a7 41.001(a); Tex. Prop. Code \u00a7 41.002(a)-(b)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"In Texas, a homestead and burial lots are exempt from creditor seizure, except for encumbrances properly fixed on the homestead property. An urban homestead for a family or single adult can be up to 10 acres on contiguous lots. A rural homestead can be up to 200 acres for a family or 100 acres for a single adult person.\",\n  \"grounded\": true,\n  \"citation_used\": \"Tex. Prop. Code \u00a7 41.001(a); Tex. Prop. Code \u00a7 41.002(a)-(b)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same core rule: the Texas homestead is exempt from creditor seizure except for encumbrances properly fixed on the property, with acreage caps of 10 acres urban, 200 acres rural family, and 100 acres rural single adult. Analysis 2 omits the burial-lot exemption and the contiguity detail mentioned by the others, but this is a minor omission rather than a conflicting legal conclusion.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same core rule: the Texas homestead is exempt from creditor seizure except for encumbrances properly fixed on the property, with acreage caps of 10 acres urban, 200 acres rural family, and 100 acres rural single adult. Analysis 2 omits the burial-lot exemption and the contiguity detail mentioned by the others, but this is a minor omission rather than a conflicting legal conclusion.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "10",
+            "100",
+            "200"
+          ],
+          [
+            "10",
+            "100",
+            "200"
+          ],
+          [
+            "10",
+            "100",
+            "200"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "TX-EXEMPT-PERSONAL-PROPERTY",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-30T10:01:28Z",
+      "ended": "2026-08-30T10:02:26Z",
+      "input_sha256": "e20b9e501779a3a1d062bce7533cc7513c3141c604b5db1f771fb5179e866ed8",
+      "node_sha256": "5d28bd57d800bf5ab18545add7c46cce9e2382be1a6f11b3051a6caf62ba4c75",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Tex. Prop. Code \u00a7 42.001(a), the personal property listed in \u00a7 42.002 is exempt from garnishment, attachment, execution, or other seizure up to an aggregate fair market value of $100,000 for property provided for a family, or $50,000 for a single adult who is not a family member, in each case excluding liens, security interests, or other encumbrances. Section 42.002(a) lists the qualifying items, including home furnishings and heirlooms, food provisions, farm/ranch vehicles and implements, tools and equipment (including boats and motor vehicles) used in a trade or profession, clothing, jewelry (capped at 25% of the aggregate limit), two firearms, athletic and sporting equipment, one motor vehicle per licensed family member or single adult (or a non-licensed person who relies on another driver), specified numbers of livestock and fowl with their forage, and household pets. Separately, \u00a7 42.001(b) exempts certain property entirely outside the dollar caps: current wages for personal services (except for court-ordered child support enforcement), professionally prescribed health aids, alimony/support/separate maintenance, and a religious bible or sacred text (except when seized by a landlord exercising rights after a lease breach or abandonment).",
+            "grounded": true,
+            "citation_used": "Tex. Prop. Code \u00a7 42.001(a), (b); \u00a7 42.002(a)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Tex. Prop. Code \u00a7 42.001(a), the personal property listed in \u00a7 42.002 is exempt from garnishment, attachment, execution, or other seizure up to an aggregate fair market value of $100,000 for property provided for a family, or $50,000 for a single adult who is not a family member, in each case excluding liens, security interests, or other encumbrances. Section 42.002(a) lists the qualifying items, including home furnishings and heirlooms, food provisions, farm/ranch vehicles and implements, tools and equipment (including boats and motor vehicles) used in a trade or profession, clothing, jewelry (capped at 25% of the aggregate limit), two firearms, athletic and sporting equipment, one motor vehicle per licensed family member or single adult (or a non-licensed person who relies on another driver), specified numbers of livestock and fowl with their forage, and household pets. Separately, \u00a7 42.001(b) exempts certain property entirely outside the dollar caps: current wages for personal services (except for court-ordered child support enforcement), professionally prescribed health aids, alimony/support/separate maintenance, and a religious bible or sacred text (except when seized by a landlord exercising rights after a lease breach or abandonment).\", \"grounded\": true, \"citation_used\": \"Tex. Prop. Code \u00a7 42.001(a), (b); \u00a7 42.002(a)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Texas exempts from garnishment, attachment, execution, or other seizure the personal property described in Section 42.002 if its aggregate fair market value is not more than $100,000 for a family or $50,000 for a single adult who is not a member of a family, excluding liens and other encumbrances. Certain items are exempt and do not count toward those aggregate limits, including current wages for personal services, prescribed health aids, certain support payments, and certain sacred religious books. The exempt property categories include items such as home furnishings, provisions, trade tools and vehicles, clothing, limited jewelry, two firearms, sporting equipment, certain motor vehicles, specified animals, and household pets.",
+            "grounded": true,
+            "citation_used": "Tex. Prop. Code \u00a7\u00a7 42.001(a), 42.001(b), 42.002(a)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"Texas exempts from garnishment, attachment, execution, or other seizure the personal property described in Section 42.002 if its aggregate fair market value is not more than $100,000 for a family or $50,000 for a single adult who is not a member of a family, excluding liens and other encumbrances. Certain items are exempt and do not count toward those aggregate limits, including current wages for personal services, prescribed health aids, certain support payments, and certain sacred religious books. The exempt property categories include items such as home furnishings, provisions, trade tools and vehicles, clothing, limited jewelry, two firearms, sporting equipment, certain motor vehicles, specified animals, and household pets.\",\"grounded\":true,\"citation_used\":\"Tex. Prop. Code \u00a7\u00a7 42.001(a), 42.001(b), 42.002(a)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "Texas law exempts certain personal property from seizure by creditors up to an aggregate value of $100,000 for a family or $50,000 for a single adult, excluding any liens or security interests. The types of property subject to this limit are specified and include items like home furnishings, tools of a trade, vehicles, and certain livestock. Additionally, some property, such as current wages and professionally prescribed health aids, is exempt from seizure regardless of these value caps.",
+            "grounded": true,
+            "citation_used": "Tex. Prop. Code \u00a7\u00a7 42.001(a), 42.001(b), 42.002(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"Texas law exempts certain personal property from seizure by creditors up to an aggregate value of $100,000 for a family or $50,000 for a single adult, excluding any liens or security interests. The types of property subject to this limit are specified and include items like home furnishings, tools of a trade, vehicles, and certain livestock. Additionally, some property, such as current wages and professionally prescribed health aids, is exempt from seizure regardless of these value caps.\",\n  \"grounded\": true,\n  \"citation_used\": \"Tex. Prop. Code \u00a7\u00a7 42.001(a), 42.001(b), 42.002(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same governing rule under Tex. Prop. Code \u00a7\u00a7 42.001\u2013.002: personal property is exempt from garnishment/attachment/execution up to an aggregate fair market value of $100,000 for a family or $50,000 for a single adult, excluding liens/encumbrances, with an additional category (current wages, prescribed health aids, support payments, sacred texts) exempt without regard to the caps. Differences are only in granularity \u2014 Analysis 1 adds specifics like the 25% jewelry sub-cap, two-firearm limit, and the child-support and landlord exceptions, which the others omit but do not contradict.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same governing rule under Tex. Prop. Code \u00a7\u00a7 42.001\u2013.002: personal property is exempt from garnishment/attachment/execution up to an aggregate fair market value of $100,000 for a family or $50,000 for a single adult, excluding liens/encumbrances, with an additional category (current wages, prescribed health aids, support payments, sacred texts) exempt without regard to the caps. Differences are only in granularity \u2014 Analysis 1 adds specifics like the 25% jewelry sub-cap, two-firearm limit, and the child-support and landlord exceptions, which the others omit but do not contradict.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "$100000",
+            "$50000",
+            "1",
+            "2",
+            "25%"
+          ],
+          [
+            "$100000",
+            "$50000",
+            "2"
+          ],
+          [
+            "$100000",
+            "$50000"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          },
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    },
+    {
+      "node_id": "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "started": "2026-08-30T10:02:26Z",
+      "ended": "2026-08-30T10:03:15Z",
+      "input_sha256": "e20b9e501779a3a1d062bce7533cc7513c3141c604b5db1f771fb5179e866ed8",
+      "node_sha256": "72020a94a0a46706b4af3a192302e941fe78340609b15cb312704dc7262af2fc",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under the cited rule, a defendant's answer in a Texas justice court case must be filed 14 days after the date of service. If that 14th day lands on a weekend or a court holiday, the deadline rolls to the next business day. The text also notes that Texas justice courts hear debt lawsuits valued up to $20,000.",
+            "grounded": true,
+            "citation_used": "Tex. R. Civ. P. 502.5",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under the cited rule, a defendant's answer in a Texas justice court case must be filed 14 days after the date of service. If that 14th day lands on a weekend or a court holiday, the deadline rolls to the next business day. The text also notes that Texas justice courts hear debt lawsuits valued up to $20,000.\", \"grounded\": true, \"citation_used\": \"Tex. R. Civ. P. 502.5\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "In a Texas justice court debt-collection lawsuit, the answer is due 14 days after the date the defendant is served. If the 14th day falls on a weekend or court holiday, the deadline extends to the next business day.",
+            "grounded": true,
+            "citation_used": "Tex. R. Civ. P. 502.5",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"In a Texas justice court debt-collection lawsuit, the answer is due 14 days after the date the defendant is served. If the 14th day falls on a weekend or court holiday, the deadline extends to the next business day.\",\"grounded\":true,\"citation_used\":\"Tex. R. Civ. P. 502.5\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The answer to a lawsuit in a Texas Justice Court is due 14 days after the date you are served. If the 14th day falls on a weekend or a court holiday, the deadline is extended to the next business day.",
+            "grounded": true,
+            "citation_used": "Tex. R. Civ. P. 502.5",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"The answer to a lawsuit in a Texas Justice Court is due 14 days after the date you are served. If the 14th day falls on a weekend or a court holiday, the deadline is extended to the next business day.\",\n  \"grounded\": true,\n  \"citation_used\": \"Tex. R. Civ. P. 502.5\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same core rule: a defendant's answer in Texas justice court is due 14 days after service, with the deadline rolling to the next business day if the 14th day falls on a weekend or court holiday. Analysis 1 adds a contextual detail (the $20,000 justice court jurisdictional limit) not mentioned by the others, but this does not conflict with or alter the deadline rule.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same core rule: a defendant's answer in Texas justice court is due 14 days after service, with the deadline rolling to the next business day if the 14th day falls on a weekend or court holiday. Analysis 1 adds a contextual detail (the $20,000 justice court jurisdictional limit) not mentioned by the others, but this does not conflict with or alter the deadline rule.\"}",
+          "error": null
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "$20000",
+            "14"
+          ],
+          [
+            "14"
+          ],
+          [
+            "14"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://texaslawhelp.org/guide/how-to-answer-a-debt-collection-case-in-justice-court",
+            "verified": null,
+            "method": "skipped",
+            "error": null
+          }
+        ],
+        "all_verified": null
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null
+        },
+        "gaps_found": []
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file. CITATION VERIFICATION WAS SKIPPED THIS RUN (--skip-citation-check, round 18 directive 2026-08-29) -- this CLEAN-PASS reflects grounded-derivation, semantic-agreement, and adversarial-check evidence only, NOT citation liveness. Citation verification is deferred, not waived; re-run without the flag (or use manual_verification) before treating a citation as confirmed."
+    }
+  ]
+}
