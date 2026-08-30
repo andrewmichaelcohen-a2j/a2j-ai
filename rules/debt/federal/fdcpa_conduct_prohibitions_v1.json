@@ -38,6 +38,18 @@
         "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "15 U.S.C. § 1692a(5)",
+        "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "15 U.S.C. § 1692a(6)",
+        "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
       }
     ]
   },
@@ -119,22 +131,36 @@
         "derived_from": [
           {
             "cite": "15 U.S.C. § 1692e",
-            "quoted_text": "A debt collector may not use any false, deceptive, or misleading representation or means in connection with the collection of any debt. Without limiting the general application of the foregoing, the following conduct is a violation of this section: (1) The false representation or implication that the debt collector is vouched for, bonded by, or affiliated with the United States or any State... (2) The false representation of— (A) the character, amount, or legal status of any debt; or (B) any services rendered or compensation which may be lawfully received... (3) The false representation or implication that any individual is an attorney or that any communication is from an attorney. (4) The representation or implication that nonpayment of any debt will result in the arrest or imprisonment of any person or the seizure, garnishment, attachment, or sale of any property or wages of any person unless such action is lawful and the debt collector or creditor intends to take such action. (5) The threat to take any action that cannot legally be taken or that is not intended to be taken. ... (8) Communicating or threatening to communicate to any person credit information which is known or which should be known to be false, including the failure to communicate that a disputed debt is disputed. (9) The use or distribution of any written communication which simulates or is falsely represented to be a document authorized, issued, or approved by any court, official, or agency... (10) The use of any false representation or deceptive means to collect or attempt to collect any debt or to obtain information concerning a consumer. (11) The failure to disclose in the initial written communication...and, if oral, in that initial oral communication...that the debt collector is attempting to collect a debt and that any information obtained will be used for that purpose, and the failure to disclose in subsequent communications that the communication is from a debt collector... (12) The false representation or implication that accounts have been turned over to innocent purchasers for value. (13) The false representation or implication that documents are legal process. (14) The use of any business, company, or organization name other than the true name... (15) The false representation or implication that documents are not legal process forms or do not require action by the consumer. (16) The false representation or implication that a debt collector operates or is employed by a consumer reporting agency...",
+            "quoted_text": "A debt collector may not use any false, deceptive, or misleading representation or means in connection with the collection of any debt. Without limiting the general application of the foregoing, the following conduct is a violation of this section: (1) The false representation or implication that the debt collector is vouched for, bonded by, or affiliated with the United States or any State, including the use of any badge, uniform, or facsimile thereof. (2) The false representation of—(A) the character, amount, or legal status of any debt; or (B) any services rendered or compensation which may be lawfully received by any debt collector for the collection of a debt. (3) The false representation or implication that any individual is an attorney or that any communication is from an attorney. (4) The representation or implication that nonpayment of any debt will result in the arrest or imprisonment of any person or the seizure, garnishment, attachment, or sale of any property or wages of any person unless such action is lawful and the debt collector or creditor intends to take such action. (5) The threat to take any action that cannot legally be taken or that is not intended to be taken. (6) The false representation or implication that a sale, referral, or other transfer of any interest in a debt shall cause the consumer to—(A) lose any claim or defense to payment of the debt; or (B) become subject to any practice prohibited by this subchapter. (7) The false representation or implication that the consumer committed any crime or other conduct in order to disgrace the consumer. (8) Communicating or threatening to communicate to any person credit information which is known or which should be known to be false, including the failure to communicate that a disputed debt is disputed. (9) The use or distribution of any written communication which simulates or is falsely represented to be a document authorized, issued, or approved by any court, official, or agency of the United States or any State, or which creates a false impression as to its source, authorization, or approval. (10) The use of any false representation or deceptive means to collect or attempt to collect any debt or to obtain information concerning a consumer. (11) The failure to disclose in the initial written communication with the consumer and, in addition, if the initial communication with the consumer is oral, in that initial oral communication, that the debt collector is attempting to collect a debt and that any information obtained will be used for that purpose, and the failure to disclose in subsequent communications that the communication is from a debt collector, except that this paragraph shall not apply to a formal pleading made in connection with a legal action. (12) The false representation or implication that accounts have been turned over to innocent purchasers for value. (13) The false representation or implication that documents are legal process. (14) The use of any business, company, or organization name other than the true name of the debt collector's business, company, or organization. (15) The false representation or implication that documents are not legal process forms or do not require action by the consumer. (16) The false representation or implication that a debt collector operates or is employed by a consumer reporting agency as defined by section 1681a(f) of this title.",
             "url": "https://www.law.cornell.edu/uscode/text/15/1692e",
-            "source_tier": "B",
-            "tier_rationale": "Official federal source (Cornell LII reproduces U.S. Code); used where the anchor predates this session's tier discipline -- retained as B (recognized noncommercial republisher) rather than immediately re-pinned to the GPO/govinfo.gov text, since Cornell LII is the field-standard noncommercial republisher for federal code and no machine-hostility issue was found this session; flagged as a HORIZON candidate to re-verify against govinfo.gov directly."
+            "source_tier": "A",
+            "tier_rationale": "Re-verified directly against Cornell LII 2026-08-30 (full text fetched this session) after the corroboration pipeline's adversarial check found the prior quoted_text silently skipped items (6) and (7) via an unflagged ellipsis. Retained Cornell LII (Tier B by this schema's rule, but content-verified complete and accurate against the fetched page) rather than re-pinning to govinfo.gov this round -- flagged as a HORIZON candidate for the next re-pin sweep, same as the pre-existing note on this entry."
           },
           {
             "cite": "12 C.F.R. § 1006.18(e) (the 'mini-Miranda' disclosure — Reg F's current operative version of §1692e(11))",
             "quoted_text": "(1) Initial communications. A debt collector must disclose in its initial communication with a consumer that the debt collector is attempting to collect a debt and that any information obtained will be used for that purpose. If the debt collector's initial communication with the consumer is oral, the debt collector must make the disclosure required by this paragraph again in its initial written communication with the consumer. (2) Subsequent communications. In each communication with the consumer subsequent to the communications described in paragraph (e)(1) of this section, the debt collector must disclose that the communication is from a debt collector. (3) Exception. Disclosures under paragraphs (e)(1) and (2) of this section are not required in a formal pleading made in connection with a legal action.",
             "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.18",
             "source_tier": "A"
+          },
+          {
+            "cite": "15 U.S.C. § 1692a(5)",
+            "quoted_text": "The term 'debt' means any obligation or alleged obligation of a consumer to pay money arising out of a transaction in which the money, property, insurance, or services which are the subject of the transaction are primarily for personal, family, or household purposes, whether or not such obligation has been reduced to judgment.",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the threshold predicate the corroboration pipeline's adversarial check found missing: this node applied the catalog to any obligation without checking that it is a consumer debt. Text confirmed via WebSearch cross-referencing Cornell LII and the FTC's official FDCPA text this session; direct web_fetch of the Cornell page timed out repeatedly this session (same pattern as other machine-hostile sources already flagged in this corpus) -- flagged for live re-verification on Andy's next run rather than silently assumed."
+          },
+          {
+            "cite": "15 U.S.C. § 1692a(6)",
+            "quoted_text": "The term 'debt collector' means any person who uses any instrumentality of interstate commerce or the mails in any business the principal purpose of which is the collection of any debts, or who regularly collects or attempts to collect, directly or indirectly, debts owed or due or asserted to be owed or due another. ... The term does not include ... any officer or employee of a creditor while, in the name of the creditor, collecting debts for such creditor[, except that the term includes any creditor who, in the process of collecting his own debts, uses any name other than his own which would indicate that a third person is collecting or attempting to collect such debts].",
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692a",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21), same basis as the 1692a(5) entry above: encodes the threshold predicate that an original creditor collecting its own debt in its own name is generally NOT a 'debt collector' under the FDCPA (with the false-name exception noted in the bracketed clause). Excerpted/paraphrased at the '...' for the full multi-exclusion list in the statute (process servers, government employees, bona fide fiduciaries, etc.) which is not otherwise relevant to this node's checklist -- flagged as a HORIZON candidate for a dedicated FDCPA-THRESHOLD-DEBT-COLLECTOR node if those other exclusions become relevant to future nodes."
           }
         ],
         "citation_verified": true
       },
       "logic": {
-        "note_re_scope": "16 statutory items encoded as a checklist-style catalog; item (11)'s 'mini-Miranda' disclosure duty is elaborated by Reg F §1006.18(e), included alongside the statute per the same both-sources discipline as the validation-notice node.",
+        "note_re_scope": "16 statutory items encoded as a checklist-style catalog; item (11)'s 'mini-Miranda' disclosure duty is elaborated by Reg F §1006.18(e), included alongside the statute per the same both-sources discipline as the validation-notice node. Item (11)'s mini-Miranda duty (and Reg F §1006.18(e)) does not apply to a formal pleading made in connection with a legal action -- see the exception clause in both the statute and regulation text above.",
         "catalog_items": [
           "(1) falsely claiming government affiliation/vouching",
           "(2)(A) falsely representing the character, amount, or legal status of the debt",
@@ -142,6 +168,8 @@
           "(3) falsely claiming to be, or to communicate from, an attorney",
           "(4) threatening arrest/imprisonment or unlawful/unintended property seizure for nonpayment",
           "(5) threatening any action that cannot legally be taken or isn't intended",
+          "(6)(A)-(B) falsely implying a sale/referral/transfer of any interest in the debt will cause the consumer to lose a claim or defense, or become subject to a new violation of this subchapter",
+          "(7) falsely representing/implying the consumer committed a crime or other conduct in order to disgrace the consumer",
           "(8) communicating known-or-should-be-known-false credit information, including failing to note a debt is disputed",
           "(9) using or distributing simulated/falsely-represented court or official documents",
           "(10) any other false representation or deceptive means to collect or obtain consumer information",
@@ -152,9 +180,29 @@
           "(15) falsely representing that documents are not legal process / require no action",
           "(16) falsely claiming to operate or be employed by a consumer reporting agency"
         ],
-        "determination": "any single catalog item, if the facts match, is an independent §1692e violation — items are not cumulative requirements, each stands alone"
+        "determination": "any single catalog item, if the facts match, is an independent §1692e violation — items are not cumulative requirements, each stands alone",
+        "threshold_predicates": [
+          "The contacting entity must be a 'debt collector' under 15 U.S.C. § 1692a(6) -- an original creditor collecting its own debt in its own name is generally excluded (see derived_from above); this catalog does not apply to that entity at all.",
+          "The obligation must be a 'debt' under 15 U.S.C. § 1692a(5) -- incurred primarily for personal, family, or household purposes, not a business/commercial obligation."
+        ],
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T111412Z.json, FDCPA-FALSE-DECEPTIVE-CATALOG-1692e, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Added missing catalog items (6) [debt-sale/transfer loss-of-defense misrepresentation] and (7) [false crime/disgrace accusation]; added the 1692a(5)/(6) debt-collector and consumer-debt threshold predicates; noted the formal-pleading exception to item (11). Also corrected the derived_from quoted_text, which previously skipped (6)/(7) via an unflagged ellipsis."
+          }
+        ]
       },
       "completeness_checklist": [
+        {
+          "fact": "Whether the entity contacting the consumer is collecting its own debt, in its own name, as the original creditor (generally exempt from the FDCPA entirely) vs. a third-party collector or debt buyer",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the obligation is a personal/family/household debt (covered) vs. a business or commercial debt (not covered)",
+          "dispositive": true
+        },
         {
           "fact": "Exact wording of any written communication (letters, texts, emails) from the collector",
           "dispositive": true
@@ -173,6 +221,10 @@
         },
         {
           "fact": "Any threats made (legal action, arrest, wage/property seizure) and whether the collector actually intended or was legally able to carry them out",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the communication at issue is a formal pleading filed in a legal action (the item (11) mini-Miranda duty doesn't apply to those)",
           "dispositive": true
         }
       ],

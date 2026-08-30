@@ -56,6 +56,54 @@
         "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=412.20.",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 361",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=361.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 360",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=360.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 351",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=351.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 350",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=350.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 704.060",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.060.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 703.140",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=703.140.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 704.080",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.080.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Cal. Code Civ. Proc. § 703.020",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=703.020.",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
       }
     ]
   },
@@ -80,6 +128,20 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
             "source_tier": "A",
             "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 361",
+            "quoted_text": "When a cause of action has arisen in another State, or in a foreign country, and by the laws thereof an action thereon cannot there be maintained against a person by reason of the lapse of time, an action thereon shall not be maintained against him in this State, except in favor of one who has been a citizen of this State, and who has held the cause of action from the time it accrued.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=361.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the 'borrowing statute' the corroboration pipeline's adversarial check found missing: many credit card/cardmember agreements designate another state's law, and CA courts will apply the shorter foreign limitations period to a claim that arose there. Text confirmed via WebSearch cross-referencing Justia/FindLaw/public.law mirrors of the official leginfo.legislature.ca.gov text this session; direct web_fetch of leginfo.legislature.ca.gov timed out repeatedly this session, consistent with the machine-hostility already flagged for this domain elsewhere in this corpus -- flagged for live re-verification on Andy's next run rather than silently assumed."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 360",
+            "quoted_text": "No acknowledgment or promise is sufficient evidence of a new or continuing contract, by which to take the case out of the operation of this title, unless the same is contained in some writing, signed by the party to be charged thereby; but any payment of any principal or interest due on any promissory note ... shall be deemed a sufficient acknowledgment or promise of a continuing contract to stop, from time to time as any such payment is made, the running of the time within which an action may be commenced upon such note ... provided, however, that no payment of itself shall revive a cause of action once barred.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=360.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the revival-timing rule the corroboration pipeline's adversarial check found missing: a payment made BEFORE the limitations period runs restarts the clock, but a payment made AFTER the debt is already time-barred does NOT revive it -- only a signed written acknowledgment or new promise can. Same sourcing basis/caveat as the § 361 entry above."
           }
         ],
         "citation_verified": true
@@ -87,9 +149,19 @@
       "logic": {
         "limitations_period_years": 4,
         "applies_to": "actions on a contract/obligation founded on a written instrument -- most credit-card cardmember agreements and signed loan/retail-installment contracts",
-        "accrual": "generally the date of default/breach or last payment, a fact question this node does not itself resolve",
+        "accrual": "Generally the date of default/breach or last payment, a fact question this node does not itself resolve. CAUTION: for a deficiency claim after repossession/foreclosure sale of secured collateral, accrual is frequently measured from the disposition/deficiency date, not the last payment date -- applying a flat 'last payment' accrual rule to a secured installment contract can understate the time remaining and produce a false 'time-barred' conclusion. Flagged as a fact-sensitive distinction this node does not fully resolve; a dedicated secured-transactions SOL node is HORIZON work.",
         "affirmative_bar_note": "subdivision (d) is notable and California-specific: once the period has run, a creditor is statutorily barred from even INITIATING suit or arbitration to collect -- this is stronger than a mere affirmative defense the debtor must raise, though the debtor should still plead it.",
-        "determination": "expired_if today > (accrual_date + 4 years), subject to any tolling not yet encoded (tolling nodes not yet built for CA)"
+        "determination": "expired_if today > (accrual_date + 4 years), subject to any tolling not yet encoded (tolling nodes not yet built for CA)",
+        "choice_of_law_note": "If the underlying contract designates the law of another state and the cause of action arose there (e.g., a credit-card agreement issued from the creditor's home state), CCP § 361 (California's borrowing statute) can require applying that state's shorter limitations period instead of this 4-year period. This node does not itself resolve the choice-of-law or where-the-claim-arose analysis -- flagged as a threshold fact question.",
+        "revival_note": "A payment made BEFORE the 4-year period expires restarts the clock (CCP § 360). A payment made AFTER the period has already expired does NOT revive the claim -- only a signed written acknowledgment or new promise does. Whether a given payment came before or after the bar is itself a fact question this node does not resolve without the specific dates.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T111412Z.json, CA-SOL-WRITTEN-CONTRACT-DEBT, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true). Note: this node's flag also involved a transient Gemini 503 error in the same run, but the 3 adversarial gaps found are independent of that and would have flagged regardless.",
+            "summary": "Added CCP § 361 borrowing-statute and § 360 revival-timing derived_from entries; added choice_of_law_note, revised accrual note to flag the secured-deficiency-judgment exception, added revival_note; added 3 corresponding checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -102,6 +174,18 @@
         },
         {
           "fact": "Any facts suggesting tolling (e.g., debtor's absence from the state under CCP § 351, other statutory tolling) -- flagged, not resolved by this node",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the underlying contract designates another state's law, and whether the claim arose in that state (CCP § 361 borrowing statute may apply a shorter foreign limitations period)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether this is a deficiency claim following repossession or foreclosure sale of secured collateral (accrual may run from the disposition/deficiency date, not last payment)",
+          "dispositive": true
+        },
+        {
+          "fact": "If any payment was made after the last default, whether it was made before or after the 4-year period had already run (only a payment made before the bar restarts the clock; one made after does not revive it without a signed written acknowledgment)",
           "dispositive": true
         }
       ],
@@ -139,6 +223,20 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=339.",
             "source_tier": "A",
             "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 351",
+            "quoted_text": "If, when the cause of action accrues against a person, he is out of the State, the action may be commenced within the term herein limited, after his return to the State, and if, after the cause of action accrues, he departs from the State, the time of his absence is not part of the time limited for the commencement of the action.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=351.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the out-of-state tolling rule the corroboration pipeline's adversarial check found missing. IMPORTANT CAVEAT preserved in logic below: federal courts (9th Cir., Abramson v. Brownstein) have held § 351 unconstitutional as applied to defendants engaged in interstate commerce, and it does not apply to corporations, limited partnerships, or nonresident motorists -- this is NOT a clean, broadly-applicable tolling rule and is encoded with that limitation explicit rather than as a simple add-the-days rule. Same sourcing basis/caveat as other leginfo entries this round."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 350",
+            "quoted_text": "An action is commenced, within the meaning of this Title, when the complaint is filed.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=350.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to fix the accrual-comparison logic bug the corroboration pipeline's adversarial check found: 'expired' should be measured against the complaint's FILING date, not 'today's date' -- a suit that was timely filed can be wrongly reported as time-barred if the comparison instead uses the date the consumer is asking the question (which is often after filing, at or after service). Same sourcing basis/caveat as other leginfo entries this round."
           }
         ],
         "citation_verified": true
@@ -148,7 +246,17 @@
         "applies_to": "actions on a contract/obligation NOT founded on a written instrument",
         "accrual": "generally the date of default/breach or last payment, a fact question this node does not itself resolve",
         "note": "much shorter than the 4-year written-contract period (CA-SOL-WRITTEN-CONTRACT-DEBT) -- whether a specific debt (e.g., an open-book retail account, a verbal loan between individuals) counts as written or oral is itself a threshold fact question with real consequences and is not resolved by this node.",
-        "determination": "expired_if today > (accrual_date + 2 years), subject to any tolling not yet encoded"
+        "determination": "expired_if (complaint filing date, per CCP § 350 -- NOT today's date) > (accrual_date + 2 years), subject to any tolling not yet encoded beyond the § 351 caveat above",
+        "classification_note": "Credit card and other revolving retail accounts are the single most common CA consumer-debt scenario, and the mere absence of a document the consumer can locate does NOT make the debt 'oral' for SOL purposes -- such accounts are usually governed by the 4-year period under CCP § 337 (written contract, or an open book account/account stated) rather than this node's 2-year period. A consumer who cannot find a signed agreement should NOT be assumed to be under this node without confirming there is genuinely no written cardmember agreement, account terms, or running book-account record -- see CA-SOL-WRITTEN-CONTRACT-DEBT. This node is for genuinely unwritten obligations (e.g., a purely verbal personal loan).",
+        "tolling_note": "CCP § 351 tolls the 2-year period while the debtor is absent from California, but courts have held it unconstitutional as applied to out-of-state defendants engaged in interstate commerce, and it does not apply to corporations, limited partnerships, or nonresident motorists (Abramson v. Brownstein, 897 F.2d 389 (9th Cir. 1990)). Do NOT apply a flat day-for-day tolling add-on without confirming the debtor's absence falls within § 351's actual, constitutionally-valid scope. Bankruptcy automatic-stay tolling (11 U.S.C. § 362/108) and emergency court-order tolling are separate mechanisms, also not yet encoded here.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T111412Z.json, CA-SOL-ORAL-CONTRACT-DEBT, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Added CCP § 351 tolling and § 350 commencement-date derived_from entries (with the § 351 constitutional-limitation caveat preserved, not presented as a clean rule); added classification_note warning against defaulting credit-card/revolving debt into this 2-year node; fixed the determination formula to compare against filing date, not today's date; added 3 corresponding checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -157,6 +265,18 @@
         },
         {
           "fact": "Confirmation the underlying obligation is genuinely NOT founded on a written instrument (vs. CA-SOL-WRITTEN-CONTRACT-DEBT)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether there is genuinely no written cardmember agreement, account terms, or book-account record for this debt (vs. simply not being able to locate one) -- credit card/revolving accounts are usually 4-year written-contract debts, not 2-year oral debts",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the debtor was absent from California after the debt accrued, AND whether that absence falls within CCP § 351's actual scope (it does not apply to interstate-commerce defendants, corporations, LPs, or nonresident motorists)",
+          "dispositive": true
+        },
+        {
+          "fact": "The date the collection complaint was actually FILED (not today's date, and not the service date, which often lags filing)",
           "dispositive": true
         }
       ],
@@ -302,6 +422,27 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.010.",
             "source_tier": "A",
             "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 704.060(a), (c)",
+            "quoted_text": "Tools, implements, instruments, materials, uniforms, furnishings, books, equipment, one commercial motor vehicle, one vessel, and other personal property are exempt to the extent that the aggregate equity therein does not exceed eight thousand seven hundred twenty-five dollars ($8,725) if reasonably necessary to and actually used by the judgment debtor in the exercise of the trade, business, or profession by which the judgment debtor earns a livelihood ... The amount of the exemption for a commercial motor vehicle under this section is limited to four thousand eight hundred fifty dollars ($4,850) ... A motor vehicle is not exempt under this section if there is a motor vehicle exempt under Section 704.010 which is reasonably adequate for use in the trade, business, or profession for which the exemption is claimed under this section.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.060.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the tools-of-trade alternative the corroboration pipeline's adversarial check found missing: a vehicle actually used in the debtor's trade can be claimed under this higher-cap section instead of (or, per the last sentence, sometimes only after exhausting) the general § 704.010 vehicle exemption. Dollar figures confirmed via WebSearch of current-code mirrors this session; these figures adjust periodically under CCP § 704.070/Judicial Council notice, and direct web_fetch of leginfo.legislature.ca.gov timed out repeatedly this session -- flagged for live re-verification on Andy's next run, same caveat as other leginfo entries this round."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 703.140(b)(1), (2), (5)",
+            "quoted_text": "(b) ... the exemptions set forth in this subdivision ... (1) The debtor's aggregate interest, not to exceed [$36,750], in real or personal property that the debtor or a dependent of the debtor uses as a residence ... (2) The debtor's interest, not to exceed [$8,625] in value, in one motor vehicle ... (5) The debtor's aggregate interest, not to exceed [$1,950] plus up to [$36,750] of any unused amount of the exemption provided under paragraph (1), in any property.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=703.140.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the bankruptcy-only 'System 2' alternative exemption set the corroboration pipeline's adversarial check found missing: available ONLY to a debtor filing bankruptcy (not in a non-bankruptcy state-court levy), and only as a full-package election in place of the § 704 series, not combined with it. A renter with no homestead claim can stack the entire unused homestead amount onto the wildcard exemption, protecting far more vehicle/personal-property equity than § 704.010 alone. Figures bracketed above reflect the most recent adjustment found via WebSearch this session (current as of 2026 per multiple bankruptcy-practice sources); these adjust biennially and were not independently fetched from leginfo this session -- flagged for live re-verification, same caveat as above."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 704.010(b)",
+            "quoted_text": "Proceeds exempt pursuant to subdivision (a) are exempt for a period of 90 days after the time the proceeds are actually received by the judgment debtor.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.010.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the 90-day time limit on the insurance/execution-sale-proceeds branch of this exemption, which the existing derived_from entry (citing only (a) and (d)) omitted -- the corroboration pipeline's adversarial check found the node stating this branch as if it had no time limit. Same sourcing basis/caveat as other leginfo entries this round."
           }
         ],
         "citation_verified": true
@@ -310,7 +451,18 @@
         "exemption_amount_usd": 7500,
         "applies_to": "aggregate equity across a debtor's motor vehicles, or execution-sale proceeds, or insurance/indemnification proceeds for a vehicle -- combined, not stacked separately",
         "automatic_single_vehicle_case": "if the debtor has only one vehicle and it is sold at execution sale, the $7,500 exemption on the proceeds applies automatically without the debtor filing a claim",
-        "determination": "up to $7,500 of vehicle equity/proceeds is protected from levy; equity above that amount remains reachable"
+        "determination": "up to $7,500 of vehicle equity/proceeds is protected from levy; equity above that amount remains reachable",
+        "tools_of_trade_note": "If the vehicle is reasonably necessary to and actually used in the debtor's trade, business, or profession, CCP § 704.060 provides a separate tools-of-trade exemption (aggregate ~$8,725, with the motor vehicle portion capped lower, ~$4,850) that can apply INSTEAD of, or alongside, this node's general § 704.010 vehicle exemption for a separate personal vehicle -- but § 704.060 itself says a trade vehicle is not separately exempt under it if an adequate § 704.010 vehicle is already available. This node alone, applied to a work vehicle without checking § 704.060, can materially understate the debtor's protection.",
+        "bankruptcy_alternative_note": "This $7,500 figure is the non-bankruptcy (CCP § 704 series) exemption. A debtor filing Chapter 7 bankruptcy may instead elect California's 'System 2' exemptions under CCP § 703.140(b), which includes a separate ~$8,625 vehicle exemption PLUS a wildcard (up to ~$1,950, plus any entirely-unused portion of the ~$36,750 homestead exemption -- e.g. a renter with no homestead claim) that can be stacked onto vehicle equity. System 2 is an all-or-nothing election in place of § 704, not a add-on to it. This node does not itself determine which system is more favorable for a given debtor.",
+        "proceeds_time_limit_note": "The execution-sale/insurance-proceeds branch of this exemption (CCP § 704.010(b)) is exempt only for 90 days after the debtor actually receives the proceeds -- after that, the money loses this specific protection (though it may still be protected as exempt personal property or under another exemption depending on how it was used or where it is held).",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T111412Z.json, CA-VEHICLE-EXEMPTION, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Added CCP § 704.060 tools-of-trade, § 703.140(b) bankruptcy-System-2, and § 704.010(b) 90-day proceeds-limit derived_from entries; added 3 corresponding logic notes and 3 checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -324,6 +476,18 @@
         {
           "fact": "Whether the debtor has only one vehicle (triggers the automatic no-claim-needed exemption under subdivision (d))",
           "dispositive": false
+        },
+        {
+          "fact": "Whether the vehicle is reasonably necessary to and actually used in the debtor's trade, business, or profession (may qualify for the separate, differently-capped CCP § 704.060 tools-of-trade exemption)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the debtor is filing (or could file) Chapter 7 bankruptcy and would benefit from electing the CCP § 703.140(b) 'System 2' vehicle + wildcard exemptions instead of the § 704 series",
+          "dispositive": true
+        },
+        {
+          "fact": "If the claimed exemption is for insurance or execution-sale proceeds rather than the vehicle itself, the date those proceeds were actually received (the exemption only lasts 90 days from receipt)",
+          "dispositive": true
         }
       ],
       "consequences_and_next_steps": [
@@ -362,6 +526,20 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.220.",
             "source_tier": "A",
             "tier_rationale": "Re-pinned 2026-08-26 round 12 from Justia/FindLaw (Tier C) to California's official Legislative Information site (leginfo.legislature.ca.gov), per Andy's ratification. Caveat: leginfo.legislature.ca.gov is unreachable from this session's sandbox (blocked at the network-egress layer, and the page may also be JS-rendered like azleg.gov was) -- the URL format above is confirmed correct via independent web-search evidence, but the live citation-checker has not yet mechanically verified this page's actual content against quoted_text from this session. quoted_text itself was left unchanged (originally sourced from Justia/FindLaw's mirror of the same statute). Andy's next live run against this URL will confirm or refute the match -- flagged, not silently assumed."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 704.080",
+            "quoted_text": "(a) For the purposes of this section: (1) 'Deposit account' means a deposit account in which payments of public benefits or social security benefits are directly deposited by the government or its agent ... (b) Subject to the conditions specified in this section, the minimum amount specified in one of the following, whichever is applicable, that is on deposit in an account described in subdivision (a) is exempt without making a claim: (1) One thousand seven hundred fifty dollars ($1,750) where the account is a deposit account described in paragraph (2) of subdivision (a) [public benefits], and there is only one depositor ... (2) Two thousand six hundred dollars ($2,600) ... two or more depositors ... (3) Three thousand five hundred dollars ($3,500) where the account is a deposit account described in paragraph (3) of subdivision (a) [social security benefits], and there is only one depositor ... (4) Five thousand two hundred fifty dollars ($5,250) ... two or more depositors.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.080.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the much larger, separate automatic exemption for accounts receiving directly-deposited public benefits or Social Security payments, which the corroboration pipeline's adversarial check found missing (the node previously only encoded the smaller general § 704.220 minimum-balance exemption, leaving public-benefits/SSA recipients -- a very common fact pattern -- materially understated). Figures paraphrased/condensed at the '...' for brevity; confirmed via WebSearch cross-referencing current leginfo/FindLaw/Justia mirrors this session. Direct web_fetch of leginfo.legislature.ca.gov timed out repeatedly this session -- flagged for live re-verification, same caveat as other leginfo entries this round. Federal law (31 C.F.R. Part 212, the Treasury 'Garnishment of Accounts Containing Federal Benefit Payments' rule) separately and automatically protects roughly two months' worth of certain federal benefit payments received by direct deposit within a look-back period, regardless of state law -- flagged as a related but not-yet-independently-encoded federal protection, not asserted as verified statutory text in this round."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 703.020(a)",
+            "quoted_text": "The exemptions provided by this chapter apply only to property of a natural person.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=703.020.",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the natural-person-only threshold the corroboration pipeline's adversarial check found missing -- an LLC, corporation, or other entity judgment debtor gets NO protection under this node (or any CCP § 704 exemption) at all. Same sourcing basis/caveat as other leginfo entries this round."
           }
         ],
         "citation_verified": true
@@ -371,7 +549,18 @@
         "note_needs_current_figure": "this node encodes the FORMULA and cross-reference verbatim; the actual current dollar figure lives in Welfare & Institutions Code §11452/§11453, which this session did NOT independently pull -- must be looked up current at time of use, not assumed or hardcoded.",
         "automatic": "applies without the debtor filing a claim",
         "exceptions": "does not apply to a levy to satisfy a judgment for wages owed, child support, or spousal support",
-        "determination": "money in the debtor's deposit account up to the current W&IC §11452/§11453 figure is automatically protected from an ordinary judgment-creditor levy (not from the carved-out wages/support judgment categories)"
+        "determination": "money in the debtor's deposit account up to the current W&IC §11452/§11453 figure is automatically protected from an ordinary judgment-creditor levy (not from the carved-out wages/support judgment categories)",
+        "public_benefits_note": "If the levied account receives DIRECTLY DEPOSITED public benefits or Social Security payments, CCP § 704.080 provides a SEPARATE, larger automatic exemption specific to those funds (roughly $1,750-$2,600 for public benefits, $3,500-$5,250 for Social Security, depending on number of depositors, as most recently adjusted) -- this is in addition to, not instead of, the general § 704.220 minimum this node otherwise encodes. Federal law (31 C.F.R. Part 212) separately requires banks to automatically protect roughly two months' worth of certain federal benefit payments received by direct deposit, independent of any state exemption claim -- flagged as a related federal protection not yet independently encoded here.",
+        "aggregation_note": "The § 704.220 automatic minimum exemption is a SINGLE aggregate amount across all of the judgment debtor's deposit accounts subject to levy, not a separate exemption per account. A debtor with multiple accounts levied at once (or in sequence) does not get the minimum multiplied by the number of accounts.",
+        "natural_person_note": "This exemption -- and the CCP § 704 series generally -- is available only to a natural person (CCP § 703.020(a)). An LLC, corporation, partnership, or other entity judgment debtor has no automatic minimum-balance protection under this node.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T111412Z.json, CA-BANK-ACCOUNT-EXEMPTION, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Added CCP § 704.080 public-benefits/Social-Security-deposit exemption (much larger than the general minimum this node previously encoded alone) and § 703.020 natural-person-only threshold as derived_from entries; added aggregation_note clarifying the minimum is a single amount across all accounts, not per-account; added 3 corresponding checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -385,6 +574,18 @@
         {
           "fact": "Whether the debtor holds multiple accounts at one or more institutions (CCP § 704.220(e) has aggregation/allocation rules not separately encoded here)",
           "dispositive": false
+        },
+        {
+          "fact": "Whether the levied account receives directly-deposited public benefits or Social Security payments (a separate, typically larger exemption under CCP § 704.080 applies in addition to the general minimum, and federal law may independently protect ~2 months of certain federal benefit deposits)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the debtor holds more than one deposit account subject to levy (the automatic minimum is a single aggregate amount across all accounts, not per account)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the judgment debtor is a natural person (this exemption does not protect an LLC, corporation, or other entity debtor's account at all)",
+          "dispositive": true
         }
       ],
       "consequences_and_next_steps": [

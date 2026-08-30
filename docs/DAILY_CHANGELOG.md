@@ -4,6 +4,117 @@
 
 ---
 
+## 2026-08-30, round 21 (Claude may now edit DRAFT-tier rule content directly; reframe from "3-model validation" to "3-model iteration")
+
+**Context:** Read the full round-20 run (`run_20260830T111412Z`): 10/18 clean-pass (55.6%),
+8 flagged. Read all 8 flagged nodes' JSON before responding, per Andy's direct question
+("are you able to do this project successfully?"). Finding, reported to Andy in full: 7 of the
+8 flags trace to genuine, well-reasoned, citation-backed adversarial-check findings -- every
+single judge check that ran this round returned `agree: true` (zero cross-model legal
+conflicts), and every flagged `gaps_found` entry was independently assessed
+`realistic_and_common: true` AND `would_cause_wrong_answer: true`. The 1 remaining flag
+(FDCPA-VALIDATION-NOTICE-1692g) was a different kind of issue -- not a legal gap, not a model
+disagreement, but a title-phrasing bug in the node itself (see item 2 below).
+
+**Andy's directive (verbatim, two messages):**
+1. *"what if we changed our approach so that you could edit the rules files - this is still
+   going to need a final review by me or other attorneys and it is still going to need further
+   testing and validation - i'm trying to get us to move this forward much faster and not get
+   bogged down in unnecessary 'approvals' that are too granular"*
+2. Following my proposal below, confirmed: *"yes proceed"*
+
+**Proposed mechanism (confirmed by Andy):** every rule node already carries a `tier` field
+(`DRAFT` / `CORROBORATED` / `VALIDATED`) per the schema. Rather than requiring pre-approval
+before Claude touches a rules file, the boundary moves to: Claude may edit rule content freely
+**within DRAFT tier**, but may never promote a node out of DRAFT. Tier promotion -- the point at
+which content is treated as ratified/relied-upon -- remains exclusively Andy's or named
+counsel's call, unchanged from the standing discipline. Delivery mechanism is unchanged: every
+edit still ships as a `git am --3way`-verified patch (no direct push access), now containing the
+content fix itself rather than a memo describing it. Unaffected either way: `ca_eviction_v2.json`
+(vProof1, byte-frozen) and the v0.3 held-out set -- separate, harder freezes tied to earlier
+directives, not the DRAFT-editing discipline.
+
+**Reframe (Andy's proposal, confirmed):** *"perhaps we can change the frame from - '3-model
+validation' - to '3-model iteration' - and then separately we can deal with rigorous testing
+later (but well before we ever release this code for use by anyone)."* This matches what round
+20's data actually showed: the adversarial check's flags are draft-improvement findings (missing
+statutory subsections, missing threshold questions, missing exceptions), not validation
+failures. A 55.6% clean-pass rate under a "validation" frame reads as "45% broken." Under an
+"iteration" frame the same run reads as "7 concrete, well-sourced improvements identified, 0
+actual cross-model legal disagreements" -- which is what the models actually found. "Rigorous
+testing before release" is explicitly deferred as a separate, later phase (live citation
+verification, the mutation testing already flagged as "not yet built" in every node's
+`tier_promotion_note`, and named-attorney ratification) -- not eliminated, just correctly
+sequenced after iteration/drafting rather than conflated with it.
+
+**What changed, this round:**
+
+1. **7 nodes edited directly with the round-20 findings, in DRAFT tier**, each with a
+   `logic.drafting_revisions` entry recording what changed and why (so review is "does this diff
+   look right," not starting from an unannotated diff), each new statutory citation
+   primary-source-researched this session (Cornell LII fetch for 15 U.S.C. § 1692e directly;
+   WebSearch cross-referencing current-code mirrors for the CA/TX statutes and 11 U.S.C. 522(p),
+   since direct `web_fetch` of leginfo.legislature.ca.gov and statutes.capitol.texas.gov timed
+   out repeatedly this session -- same machine-hostility pattern already flagged for those two
+   domains elsewhere in this corpus, so every new CA/TX citation is tagged source_tier B with an
+   explicit "flagged for live re-verification, not silently assumed" caveat rather than presented
+   as independently fetched):
+   - `FDCPA-FALSE-DECEPTIVE-CATALOG-1692e`: added the missing §1692e(6)/(7) catalog items (also
+     fixed the underlying `quoted_text`, which had silently skipped them via an unflagged
+     ellipsis), added the §1692a(5)/(6) debt-collector and consumer-debt threshold predicates,
+     added the formal-pleading exception to item (11).
+   - `CA-SOL-WRITTEN-CONTRACT-DEBT`: added CCP §361 (borrowing statute / choice-of-law), flagged
+     the secured-deficiency-judgment accrual exception, added CCP §360's revival-timing rule
+     (payment before vs. after the bar).
+   - `CA-SOL-ORAL-CONTRACT-DEBT`: added a classification warning against defaulting credit-card/
+     revolving debt into the 2-year oral-contract bucket, added CCP §351 tolling (with its
+     constitutional-limitation caveat preserved, not presented as a clean rule), fixed the
+     expiration comparison to use the complaint's filing date (CCP §350) instead of today's date.
+   - `CA-VEHICLE-EXEMPTION`: added CCP §704.060 (tools-of-trade alternative), CCP §703.140(b)
+     (bankruptcy-only System 2 stacking), and the 90-day limit on insurance/execution-sale
+     proceeds (CCP §704.010(b)).
+   - `CA-BANK-ACCOUNT-EXEMPTION`: added CCP §704.080 (the separate, larger public-benefits/Social
+     Security direct-deposit exemption -- corrected the run's own adversarial-check dollar figures
+     against the actual statute, which are lower than what that check had guessed), clarified the
+     minimum exemption is a single aggregate across all accounts, added CCP §703.020
+     (natural-person-only).
+   - `TX-HOMESTEAD-EXEMPTION`: qualified the "no dollar cap" statement with the 11 U.S.C.
+     §522(p)/(o) bankruptcy cap (currently $214,000 for equity acquired in the 1,215 days before
+     filing), added the federal-tax-lien override (26 U.S.C. §6321; *United States v. Rodgers*),
+     added an explicitly-hedged HOA-lien caveat (genuinely unsettled/fact-specific under Texas
+     law -- not asserted as a clean exception either way).
+   - `TX-EXEMPT-PERSONAL-PROPERTY`: added Tex. Prop. Code §42.0021 (retirement accounts/IRAs,
+     unlimited, outside the aggregate cap), added the item-level sub-caps §42.001 alone doesn't
+     capture (jewelry 25% of the aggregate, one vehicle per licensed driver, two firearms), added
+     the §42.004/§42.005 fraudulent-transfer and child-support-lien overrides.
+
+2. **`FDCPA-VALIDATION-NOTICE-1692g` retitled**, not content-edited. Root cause, confirmed by
+   reading `run_corroboration.py`'s `run_node()` directly: the Stage A derivation prompt is built
+   as `f"Title: {node['title']}\n\nSource text...\n\nDerive the answer strictly from this text."`
+   This node's title was phrased as a case-specific determination ("was a compliant notice
+   provided, and is the consumer still within the dispute window?"), but the source text only
+   states the general legal standard -- there's no actual notice/receipt date to apply it to.
+   Per `SYSTEM_PROMPT_DERIVATION`'s own instruction not to guess, 2 of 3 models correctly
+   returned `grounded: false`; the judge then correctly skipped rather than compare a grounded
+   result to two non-grounded ones. This had been carried as an open "grounding-ambiguity" item
+   since round 19 without a confirmed root cause -- it is a title-phrasing bug, not a legal
+   disagreement and not a rules-content gap. Retitled to a rule-statement framing matching every
+   other node's pattern ("required content, and how the 30-day dispute window is calculated").
+   No change to the derived_from text, checklist, or consequences, which were already correct.
+
+**Not done this round:** tier promotion for any of these 7 nodes -- all remain `DRAFT`, per the
+mechanism above. A dedicated FDCPA-THRESHOLD-DEBT-COLLECTOR node (the 1692a(6) exclusion list
+beyond the single-clause excerpt used here) is flagged as HORIZON work if a future node needs it.
+The HOA-lien question on TX-HOMESTEAD-EXEMPTION is deliberately left unresolved/hedged rather
+than guessed at.
+
+**Verification:** `python3 scripts/ci/validate_debt_schema.py` -- all 9 debt-track rules files,
+including all 4 edited this round, pass schema validation. All 4 edited files independently
+re-parse as valid JSON. Corroboration-runner changes (none needed this round -- the fix was a
+data change to the node's own `title` field, not to `run_corroboration.py`).
+
+---
+
 ## 2026-08-30, round 20 (add a materiality bar -- the point is corroborating Claude's primary work, not litigating every technical difference)
 
 **Context:** Andy ran the full corpus under round 19's fix (`run_20260830T103213Z`): 2/18

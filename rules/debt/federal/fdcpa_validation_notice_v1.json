@@ -32,7 +32,7 @@
   "nodes": [
     {
       "node_id": "FDCPA-VALIDATION-NOTICE-1692g",
-      "title": "Debt validation notice — was a compliant notice provided, and is the consumer still within the dispute window?",
+      "title": "Debt validation notice — required content, and how the 30-day dispute window is calculated",
       "band": 1,
       "tier": "DRAFT",
       "grounded_derivation": {
@@ -101,7 +101,15 @@
         },
         "consequence_if_no_compliant_notice_sent": {
           "flag": "potential_1692g_violation — cross-reference to a separate FDCPA-enforcement node (statutory damages under 15 U.S.C. § 1692k) not yet encoded; this node determines the validation-notice fact pattern only, does not itself compute damages exposure."
-        }
+        },
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T111412Z.json, FDCPA-VALIDATION-NOTICE-1692g: all_grounded=false (gpt-5.5 and gemini-2.5-pro both explicitly said the source text lacks specific notice/receipt facts), semantic_agreement_judge skipped ('not all three models returned a grounded, error-free result') -- confirmed by reading run_corroboration.py's run_node() prompt construction directly rather than assumed.",
+            "summary": "Retitled from an outcome-determination framing ('Debt validation notice — was a compliant notice provided, and is the consumer still within the dispute window?') to a rule-statement framing, matching every other node's pattern. Root cause: the corroboration runner's Stage A prompt uses the node title verbatim as the question posed to each model (see run_corroboration.py run_node()); an outcome-question title asks models to determine case-specific facts (an actual notice date) that the source text never contains, which two of three models correctly flagged as ungrounded per their own instructions not to guess. This was misdiagnosed as a legal disagreement in earlier rounds -- it is a title-phrasing bug. No change to the legal content itself (the derived_from text, checklist, and consequences were all already correct)."
+          }
+        ]
       },
       "completeness_checklist": [
         {

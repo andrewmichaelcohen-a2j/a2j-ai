@@ -56,6 +56,30 @@
         "url": "https://texaslawhelp.org/guide/how-to-answer-a-debt-collection-case-in-justice-court",
         "retrieved": true,
         "retrieved_date": "2026-08-25"
+      },
+      {
+        "cite": "11 U.S.C. § 522",
+        "url": "https://www.law.cornell.edu/uscode/text/11/522",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "26 U.S.C. § 6321",
+        "url": "https://www.law.cornell.edu/uscode/text/26/6321",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Tex. Prop. Code § 42.0021",
+        "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
+      },
+      {
+        "cite": "Tex. Prop. Code § 42.004; § 42.005",
+        "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+        "retrieved": true,
+        "retrieved_date": "2026-08-30"
       }
     ]
   },
@@ -201,13 +225,27 @@
               "note": "statutes.capitol.texas.gov is a client-rendered SPA: a plain HTTP GET to any specific section URL now consistently returns an identical generic shell (confirmed 2026-08-29 -- CP.16, CN.16, PR.41, and PR.42 all returned the same 250874-byte page regardless of which section was requested). Content confirmed correct via direct browser rendering (JS executed), which loads the real statute text client-side; the quoted_text below was checked against that rendered text and matches verbatim. Same class of limitation as azleg.gov's documented JS-gating.",
               "date": "2026-08-29"
             }
+          },
+          {
+            "cite": "11 U.S.C. § 522(p), (o)",
+            "quoted_text": "(p)(1) ... a debtor may not exempt any amount of interest [in a homestead] that was acquired by the debtor during the 1,215-day period preceding the date of the filing of the petition that exceeds in the aggregate $250,000 [statutory base figure; periodically adjusted -- currently $214,000 for cases filed April 1, 2025 through March 31, 2028] in value ... (o) ... the value of an interest in [homestead property] shall be reduced to the extent that such value is attributable to any portion of any property that the debtor disposed of in the 10-year period ending on the date of the filing of the petition with the intent to hinder, delay, or defraud a creditor and that the debtor could not exempt ... if on such date the debtor had held the property so disposed of.",
+            "url": "https://www.law.cornell.edu/uscode/text/11/522",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the federal-bankruptcy value cap the corroboration pipeline's adversarial check found missing -- this node's 'no dollar-value cap' statement is correct for TEXAS STATE-COURT collection but not for a Chapter 7/13 filing, where equity acquired in the 1,215 days before filing is capped (currently $214,000 per the April 2025 inflation adjustment cycle) and equity from a fraudulent pre-bankruptcy transfer is separately reduced. Statutory base figure and current adjusted figure both included and distinguished; confirmed via WebSearch this session (adjustment cycle is well-documented and not itself Texas-specific)."
+          },
+          {
+            "cite": "26 U.S.C. § 6321; United States v. Rodgers, 461 U.S. 677 (1983)",
+            "quoted_text": "26 U.S.C. § 6321: 'If any person liable to pay any tax neglects or refuses to pay the same after demand, the amount ... shall be a lien in favor of the United States upon all property and rights to property, whether real or personal, belonging to such person.' Rodgers held that a federal tax lien attaches to homestead property notwithstanding a state homestead exemption, under the Constitution's Supremacy Clause, and that a federal court may order judicial sale of such property to satisfy the lien.",
+            "url": "https://www.law.cornell.edu/uscode/text/26/6321",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the federal-tax-lien override the corroboration pipeline's adversarial check found missing -- this node's exceptions list previously said only 'property tax liens,' which a reasonable reading limits to state/local ad valorem property tax, not federal income tax debt. Federal law is confirmed via well-established Supreme Court precedent (Rodgers) and the statute's plain text; flagged as case-law-dependent (not a bright-line statute alone) and appropriately hedged in the logic note below rather than stated as an automatic seizure right."
           }
         ],
         "citation_verified": true
       },
       "logic": {
         "homestead_exempt_from_ordinary_debt_seizure": true,
-        "no_dollar_value_cap": "Texas's homestead exemption, unlike its personal-property exemption, has NO dollar-value cap — acreage-limited only.",
+        "no_dollar_value_cap": "Texas's homestead exemption, unlike its personal-property exemption, has NO dollar-value cap under STATE law -- acreage-limited only. CAUTION: this is true for ordinary state-court judgment collection, but NOT for a federal bankruptcy filing -- see bankruptcy_value_cap_note below, which is a materially different rule for a debtor in or considering bankruptcy.",
         "acreage_limits": {
           "urban": "10 acres (family or single adult)",
           "rural_family": "200 acres",
@@ -219,9 +257,20 @@
           "home-improvement liens contracted in writing",
           "certain divorce-related owelty of partition",
           "home-equity loans meeting Tex. Const. art. XVI § 50(a)(6)",
-          "reverse mortgages meeting § 50(k)-(p)"
+          "reverse mortgages meeting § 50(k)-(p)",
+          "federal tax liens (26 U.S.C. § 6321) and, similarly, federal criminal restitution or forfeiture judgments -- these override the Texas homestead exemption under the U.S. Constitution's Supremacy Clause (United States v. Rodgers, 461 U.S. 677 (1983)); Texas's 'property tax liens' exception in its own exemption statute does not itself reach federal tax debt, but federal supremacy independently does"
         ],
-        "proceeds_protection": "sale proceeds of a homestead are protected from creditor seizure for 6 months after the sale date (§ 41.001(c))"
+        "proceeds_protection": "sale proceeds of a homestead are protected from creditor seizure for 6 months after the sale date (§ 41.001(c))",
+        "bankruptcy_value_cap_note": "In a Chapter 7 or 13 bankruptcy filing, 11 U.S.C. § 522(p) caps the protected homestead equity ACQUIRED IN THE 1,215 DAYS (~40 months) before filing at a periodically-adjusted federal ceiling (currently $214,000, effective for cases filed April 1, 2025 through March 31, 2028) regardless of Texas's uncapped state-law exemption. This particularly affects debtors who recently relocated to Texas or recently purchased a home with equity from a prior residence. § 522(o) separately reduces protected equity traceable to a fraudulent pre-bankruptcy asset transfer. This node's 'no cap' statement applies only outside bankruptcy.",
+        "hoa_lien_caveat": "Homeowners'-association assessment liens are NOT among the clean statutory exceptions in Tex. Prop. Code § 41.001(b) (which lists only purchase-money, tax, contracted-in-writing improvement, owelty, refinance, home-equity-loan, and reverse-mortgage liens). Texas case law (e.g., Inwood North Homeowners' Ass'n v. Harris, 736 S.W.2d 632 (Tex. 1987)) has allowed HOA assessment-lien enforcement against a homestead in some circumstances, generally tied to whether the restrictive-covenant lien predates the homestead claim or fits within the constitutional exceptions. This is a genuinely unsettled, fact-specific area this node does NOT resolve -- flagged rather than asserted either way; a debtor facing HOA foreclosure should not be told the homestead exemption categorically protects the property without case-specific review.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T111412Z.json, TX-HOMESTEAD-EXEMPTION, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Added 11 U.S.C. § 522(p)/(o) bankruptcy value-cap and 26 U.S.C. § 6321/Rodgers federal-tax-lien-override derived_from entries; qualified the 'no dollar cap' statement with a bankruptcy caveat; added the federal tax lien exception to the exceptions list; added an explicitly-hedged HOA-lien caveat (not asserted as a clean rule, since it is genuinely unsettled/fact-specific); added 2 checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -234,6 +283,14 @@
         },
         {
           "fact": "Whether the creditor's claim is one of the enumerated exceptions (purchase-money, tax, contracted-in-writing improvement lien, etc.) rather than an ordinary unsecured debt",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the homeowner is filing (or considering) bankruptcy, and if so, when the current homestead equity was acquired relative to the 1,215-day/~40-month lookback window (11 U.S.C. § 522(p) caps equity acquired in that window even though Texas state law has no cap)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the creditor is the IRS/federal government (federal tax liens and restitution/forfeiture judgments override the Texas homestead exemption) or a homeowners' association pursuing an assessment lien (case-specific, not a clean statutory exception)",
           "dispositive": true
         }
       ],
@@ -292,6 +349,20 @@
               "note": "statutes.capitol.texas.gov is a client-rendered SPA: a plain HTTP GET to any specific section URL now consistently returns an identical generic shell (confirmed 2026-08-29 -- CP.16, CN.16, PR.41, and PR.42 all returned the same 250874-byte page regardless of which section was requested). Content confirmed correct via direct browser rendering (JS executed), which loads the real statute text client-side; the quoted_text below was checked against that rendered text and matches verbatim. Same class of limitation as azleg.gov's documented JS-gating.",
               "date": "2026-08-29"
             }
+          },
+          {
+            "cite": "Tex. Prop. Code § 42.0021",
+            "quoted_text": "(a) In addition to the exemption prescribed by Section 42.001(a) [the general $100,000/$50,000 aggregate cap], a person's right to the assets held in or to receive payments, whether vested or not, under any stock bonus, pension, profit-sharing, annuity, deferred compensation, health, education, or other retirement or savings plan or account is exempt from attachment, execution, and seizure for the satisfaction of debts to the extent the plan or account is exempt from federal income tax, or to the extent federal income tax on the person's interest is deferred until actual payment of benefits ... (b) Amounts distributed from a plan or account described by Subsection (a) are exempt ... for 60 days after the date the amounts are distributed, if the amounts qualify as a nontaxable rollover, the amounts continue to be exempt thereafter.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the retirement-account exemption the corroboration pipeline's adversarial check found missing -- this is IN ADDITION TO (not counted against) the § 42.001 aggregate cap this node otherwise encodes, and is essentially unlimited in amount for qualifying plans. Retirement accounts are among the largest assets many judgment debtors hold, so omitting this made the node materially understate protection. Text confirmed via WebSearch cross-referencing current statutes.capitol.texas.gov/Justia/public.law mirrors this session; direct web_fetch of statutes.capitol.texas.gov timed out repeatedly this session, consistent with the wrong-page/machine-hostility issue already flagged for this domain elsewhere in this corpus -- flagged for live re-verification, not silently assumed."
+          },
+          {
+            "cite": "Tex. Prop. Code § 42.005; § 42.004",
+            "quoted_text": "§ 42.005: Sections 42.001, 42.002, and 42.0021 do not apply to a child support lien established under Subchapter G, Chapter 157, Family Code. § 42.004: If a person uses property not exempt under this chapter to acquire, obtain an interest in, make improvement to, or pay an indebtedness on personal property which would be exempt under this chapter with the intent to defraud, delay, or hinder an interested person from obtaining that to which the interested person is or may be entitled, the property, interest, or improvement acquired is not exempt ... A creditor may not assert a claim under this section after the second anniversary of the date the property was acquired.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-08-30 (round 21) to encode the child-support-lien and fraudulent-transfer exceptions the corroboration pipeline's adversarial check found missing (the node previously encoded only voluntary liens/security interests as an override). Federal tax liens/levies (26 U.S.C. §§ 6321, 6334) similarly override this state exemption under the Supremacy Clause, same basis as the parallel note added to TX-HOMESTEAD-EXEMPTION this round. Same sourcing/caveat as the § 42.0021 entry above."
           }
         ],
         "citation_verified": true
@@ -306,9 +377,20 @@
           "current wages (except child-support enforcement)",
           "professionally prescribed health aids",
           "alimony/support/separate maintenance",
-          "a religious bible or sacred text (with a landlord-lien carve-out)"
+          "a religious bible or sacred text (with a landlord-lien carve-out)",
+          "qualified retirement plans, pensions, IRAs, and similar tax-qualified savings accounts (Tex. Prop. Code § 42.0021) -- essentially unlimited in amount for qualifying plans; distributed amounts remain exempt for 60 days after distribution, longer if rolled over"
         ],
-        "note_re_secured_property": "a security interest or lien validly fixed on otherwise-exempt property (e.g., a car loan lien on an exempt vehicle) is NOT defeated by the exemption — § 42.001(c)/§42.002(b)."
+        "note_re_secured_property": "a security interest or lien validly fixed on otherwise-exempt property (e.g., a car loan lien on an exempt vehicle) is NOT defeated by the exemption — § 42.001(c)/§42.002(b).",
+        "item_level_sub_caps_note": "The § 42.001 aggregate dollar cap is necessary but NOT sufficient -- § 42.002(a) also imposes separate item-level sub-limits within the aggregate, most notably: jewelry is capped at 25% of the aggregate limit; motor vehicles are limited to one per family member or single adult who holds a driver's license (or who relies on another licensed household member to drive); firearms are limited to two. A debtor whose TOTAL value is under the aggregate cap can still have non-exempt property if a specific category exceeds its own sub-limit -- this node does not itself apply those sub-limits.",
+        "override_exceptions_note": "This exemption does not defeat: (1) a validly-fixed lien or security interest on the specific property (already noted in note_re_secured_property); (2) a child-support lien under Tex. Fam. Code ch. 157, subch. G (§ 42.005); (3) property acquired via a fraudulent transfer intended to defraud, delay, or hinder creditors, within 2 years of the transfer (§ 42.004); or (4) a federal tax lien or levy (26 U.S.C. §§ 6321, 6334), which overrides state exemptions under the Supremacy Clause.",
+        "drafting_revisions": [
+          {
+            "date": "2026-08-30",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260830T111412Z.json, TX-EXEMPT-PERSONAL-PROPERTY, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
+            "summary": "Added Tex. Prop. Code § 42.0021 retirement-account exemption (unlimited, outside the aggregate cap) and § 42.004/§ 42.005 fraudulent-transfer/child-support-lien override derived_from entries; added item_level_sub_caps_note (jewelry 25%, vehicles-per-licensed-driver, two firearms) and override_exceptions_note (federal tax lien, child support, fraudulent transfer); added 3 checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -321,6 +403,18 @@
         },
         {
           "fact": "Whether any specific item the creditor is targeting is subject to its own valid lien/security interest (e.g., a financed vehicle) — exemption does not defeat that lien",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the debtor holds retirement accounts, pensions, or IRAs (exempt in essentially unlimited amount, IN ADDITION TO the aggregate cap, under Tex. Prop. Code § 42.0021 -- not counted against the $100,000/$50,000 limit)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether any single item category (jewelry, vehicles, firearms) exceeds its own item-level sub-limit within § 42.002(a), even if the aggregate total is under the § 42.001 cap",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the creditor is a federal tax authority (IRS) or a child-support obligee/agency (both can reach otherwise-exempt property; voluntary liens/security interests are already covered elsewhere in this node)",
           "dispositive": true
         }
       ],
