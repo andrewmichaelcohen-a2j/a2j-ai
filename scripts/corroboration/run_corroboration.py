@@ -155,14 +155,43 @@ SYSTEM_PROMPT_DERIVATION = (
     '"citation_used": "<the cite you relied on>"}'
 )
 
+# Round 20 (2026-08-30), materiality bar added per Andy's explicit directive. Round
+# 19 fixed a truncation bug that had silently disabled this stage for the project's
+# entire history; once fixed, it found SOMETHING to flag on nearly every node -- some
+# genuinely important (FDCPA-FALSE-DECEPTIVE-CATALOG's encoded list skips straight
+# from subsection (5) to (8), missing (6) and (7) entirely -- a real gap), some
+# trivially immaterial (a $0.03 interest-amount discrepancy, a corporate-suffix
+# variant). Treating every one identically as gate-blocking defeats the purpose of
+# the whole project: Andy's framing, verbatim -- "if we are looking for any
+# difference between the 3 models, we'll find one every time and default to having
+# a human attorney review every difference... the project would essentially fail."
+# The model is now asked to reason explicitly about two separate questions before
+# calling something a gap: is the fact pattern realistic and reasonably common (not
+# a contrived corner case), and would the rule actually give a WRONG or materially
+# misleading answer as a result (not just an incomplete-but-harmless one). Both
+# sub-answers are recorded in the output for auditability -- nothing is hidden, an
+# immaterial finding is just not gate-blocking. All edge cases (material or not)
+# are still preserved in the run JSON for future use in improving the underlying
+# rule encoding, per Andy's "at some point we should use these runs to make the
+# underlying code more accurate" -- that is future work, not lost data.
 SYSTEM_PROMPT_ADVERSARIAL = (
-    "You are adversarially testing a legal rule encoding. You will be given a "
-    "rule's logic and its completeness checklist (the facts it says are needed "
-    "to apply it). Propose exactly 3 edge-case fact patterns designed to break "
-    "the rule or expose something the completeness checklist does not cover. "
-    "For each, state whether it exposes a genuine gap. Respond ONLY in valid "
-    "JSON: {\"edge_cases\": [{\"scenario\": \"<1-3 sentences>\", "
-    "\"exposes_gap\": <true/false>, \"gap_description\": \"<or null>\"}, ...]}"
+    "You are adversarially testing a legal rule encoding, looking only for MATERIAL "
+    "gaps -- not any conceivable difference. You will be given a rule's logic and "
+    "its completeness checklist (the facts it says are needed to apply it). Propose "
+    "exactly 3 edge-case fact patterns designed to probe the rule or its checklist "
+    "for gaps. For each, assess two separate questions: (1) is this fact pattern "
+    "realistic and reasonably common -- something an actual person in this legal "
+    "situation might plausibly present, not a contrived or rare corner case; and "
+    "(2) would the rule, applied as encoded, actually produce a WRONG or materially "
+    "misleading answer for that person -- not just an incomplete-but-harmless one. "
+    "Only mark exposes_gap true if BOTH are true. A technically-real but trivial "
+    "distinction -- a one-cent computational discrepancy, a corporate name variant, "
+    "a hypertechnical subsection omission unlikely to be what an actual dispute "
+    "turns on -- is NOT a material gap even if you can construct a scenario "
+    "involving it. Respond ONLY in valid JSON: {\"edge_cases\": [{\"scenario\": "
+    "\"<1-3 sentences>\", \"realistic_and_common\": <true/false>, "
+    "\"would_cause_wrong_answer\": <true/false>, \"exposes_gap\": <true only if "
+    "both above are true>, \"gap_description\": \"<or null>\"}, ...]}"
 )
 
 # Added 2026-08-26 (third round): replaces the numeric/citation-fingerprint
@@ -196,25 +225,37 @@ SYSTEM_PROMPT_ADVERSARIAL = (
 # that cannot both be true of the same governing rule -- different amounts, different
 # deadlines, different standards, or one asserting a rule applies while another
 # asserts it does not) makes agree=false now.
+# Round 20 (2026-08-30): materiality qualifier added to round 19's conflict-only
+# fix, per the same directive as SYSTEM_PROMPT_ADVERSARIAL above -- Andy's framing:
+# Claude is the primary author; the other two models corroborate, they are not three
+# equal votes where any technical split forces human review. A genuine conflict
+# (different dollar amount, different deadline) is materially different almost by
+# definition, so this qualifier is mostly a backstop against a hypertechnical
+# contradiction that wouldn't actually change the answer a real person gets --
+# but it closes that door explicitly rather than leaving it open.
 SYSTEM_PROMPT_JUDGE = (
     "You are checking whether three independently-produced legal analyses of the same "
-    "question actually CONFLICT in their legal conclusion, as opposed to merely "
-    "differing in what each one chose to mention. Ignore differences in phrasing, "
-    "level of detail, structure, illustrative examples, and -- importantly -- cases "
-    "where one analysis includes a real detail (a rule, exception, deadline, or "
-    "amount) that another simply omits without contradicting it. An omission by "
-    "itself is NOT a disagreement. Respond \"agree\": false ONLY if two or more "
-    "analyses state something that cannot both be true of the same governing rule -- "
-    "e.g. different dollar amounts, different deadlines, different standards, or one "
-    "asserting a rule/exception applies while another asserts it does not. If all "
-    "three are consistent with each other -- even if some are less complete than "
-    "others -- respond \"agree\": true, and use agreement_notes to note any real "
-    "completeness differences worth a human's attention (this is informational, not "
-    "a reason for agree=false). Respond ONLY in valid JSON: {\"agree\": <true if no "
-    "analysis actually conflicts with another, false only on a real conflict>, "
+    "question actually CONFLICT in their legal conclusion in a way that would change "
+    "the practical answer a real person gets, as opposed to merely differing in what "
+    "each one chose to mention or in some hypertechnical way that doesn't affect the "
+    "outcome. Ignore differences in phrasing, level of detail, structure, "
+    "illustrative examples, and -- importantly -- cases where one analysis includes a "
+    "real detail (a rule, exception, deadline, or amount) that another simply omits "
+    "without contradicting it. An omission by itself is NOT a disagreement. Respond "
+    "\"agree\": false ONLY if two or more analyses state something that cannot both be "
+    "true of the same governing rule AND that difference is material -- meaning it "
+    "would change the practical answer or advice given to a typical person in a "
+    "common scenario. Materially different dollar amounts, deadlines, or standards "
+    "count; a technically-real but inconsequential wording distinction does not. If "
+    "all three are consistent with each other on the material question -- even if "
+    "some are less complete than others -- respond \"agree\": true, and use "
+    "agreement_notes to note any real completeness differences worth a human's "
+    "attention (this is informational, not a reason for agree=false). Respond ONLY "
+    "in valid JSON: {\"agree\": <true if no analysis actually and materially "
+    "conflicts with another, false only on a real, material conflict>, "
     "\"agreement_notes\": \"<1-3 sentences: confirm the shared conclusion, and separately "
     "note any completeness differences (non-gating) or, if agree=false, the specific "
-    "conflict and which analyses differ>\"}"
+    "material conflict and which analyses differ>\"}"
 )
 
 NUMBER_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?%?")

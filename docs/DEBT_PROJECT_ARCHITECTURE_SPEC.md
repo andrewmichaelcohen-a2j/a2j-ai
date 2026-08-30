@@ -127,6 +127,15 @@ Extends the existing rules-JSON format (`SCHEMA_V2_DESIGN_SPEC.md` in the evicti
   - **The agreement bar is conflict, not completeness.** Three independent models converging on the
     same governing rule, with one adding detail another omits, is not disagreement (round 19) —
     reserve "flag this" for an actual conflict two analyses can't both satisfy.
+  - **The bar is materiality, not any difference at all (round 20).** Claude (Cowork) is the
+    primary author of the rule encoding; the other two models corroborate that work, they are not
+    three co-equal votes where any technical split forces human review. Andy's framing, verbatim:
+    "if we are looking for any difference between the 3 models, we'll find one every time and
+    default to having a human attorney review every difference... the project would essentially
+    fail." Only a difference — a real conflict or an adversarial-check finding — that would
+    actually change the practical answer a real person gets warrants a flag. Immaterial findings
+    are still recorded in full (nothing hidden), just not gate-blocking — they're future input for
+    improving the underlying encoding, not today's review queue.
   - **Triage every flag to its real category with evidence before proposing a fix.** Infra bug /
     judge-calibration artifact / genuine legal gap are different problems with different fixes;
     guessing which one a flag is, rather than reading the run JSON, has cost real rounds of rework

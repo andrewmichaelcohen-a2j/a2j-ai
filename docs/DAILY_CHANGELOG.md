@@ -4,6 +4,68 @@
 
 ---
 
+## 2026-08-30, round 20 (add a materiality bar -- the point is corroborating Claude's primary work, not litigating every technical difference)
+
+**Context:** Andy ran the full corpus under round 19's fix (`run_20260830T103213Z`): 2/18
+clean-pass, 16 flagged -- worse than before round 19, and Andy said so directly. Read the run
+JSON node by node before responding. Both round 19 fixes were confirmed working exactly as
+intended -- every judge note read explicitly recognized "completeness differences only... without
+contradicting" and returned `agree: true`. What actually happened: round 19 also fixed the
+adversarial-stage truncation bug that had been silently disabling that check for this project's
+entire history (every prior run's `gaps_found` was effectively always empty, parse failures
+discarded real findings). With that bug fixed, the adversarial pass ran at full strength for the
+first time and found *something* to flag on nearly every node -- some genuinely important
+(FDCPA-FALSE-DECEPTIVE-CATALOG's encoded catalog skips from subsection (5) straight to (8),
+missing (6) and (7) entirely -- a real gap in what's encoded), some trivial (a $0.03 interest
+discrepancy, a corporate-suffix variant). Every one, material or not, was gate-blocking identically.
+
+**Andy's directive, verbatim:** *"we need a materiality bar - the concept here is that you -
+claude cowork - should be able to code at something approaching 90% accuracy - then we run it
+through 2 more models to validate what your findings are - unless there is a material disagreement
+there should not be a flag... if we are looking for any difference between the 3 models, we'll
+find one every time and default to having a human attorney review every difference - the problem
+with that is that it would defeat this entire cjac project - why code if at the end of the day the
+human attorneys need to do a granular check of the equivalent of every line of code - the project
+would essentially fail."*
+
+**The corrected mental model:** Claude (Cowork) is the primary author of the rule encoding. The
+other two models corroborate that work -- they are not three co-equal votes where any split
+between them forces human review. Only a difference that would actually change the practical
+answer a real person gets warrants a flag; a technical or rare-edge distinction, however real,
+does not.
+
+**What changed -- a materiality bar added to both checks that can flag a node:**
+- `SYSTEM_PROMPT_JUDGE`: round 19 already excluded a mere omission from counting as disagreement.
+  Round 20 adds an explicit materiality qualifier on top -- a real conflict only makes `agree: false`
+  if it "would change the practical answer or advice given to a typical person in a common
+  scenario." A materially different dollar amount, deadline, or standard still counts; a
+  technically-real but inconsequential wording distinction does not.
+- `SYSTEM_PROMPT_ADVERSARIAL`: rewritten to require two separate, explicit assessments before an
+  edge case counts as a gap -- `realistic_and_common` (is this a fact pattern an actual person
+  might plausibly present, not a contrived corner case) and `would_cause_wrong_answer` (would the
+  rule, as encoded, actually give a wrong or materially misleading answer, not just an
+  incomplete-but-harmless one). `exposes_gap` is true only when both are true. Nothing is hidden --
+  every edge case the model proposes, material or not, is still preserved in full in the run JSON;
+  only whether it blocks CLEAN-PASS changes. This directly serves the "use these runs to make the
+  underlying code more accurate" goal Andy named -- the immaterial findings are still there as
+  future improvement input, they're just not gate-blocking today.
+
+**Not done, and why:** did not touch the FDCPA-VALIDATION-NOTICE "grounded" ambiguity (round 19's
+open item) -- unrelated to materiality, still needs its own considered fix. Did not fix the missing
+§1692e(6)/(7) subsections found by tonight's (correctly-working) adversarial check -- that is a
+genuine rules-content gap, not a pipeline issue, and belongs in its own round once flagged by a
+live run under the new materiality bar, not folded into an infrastructure patch.
+
+**Verification:** `python3 -m py_compile` clean. `--dry-run --demo-corpus-only --skip-citation-check`:
+18/18 clean-pass, unchanged (dry-run doesn't exercise live model-call paths, so this confirms no
+syntax/control-flow regression -- the actual materiality behavior needs a live re-run to confirm,
+same limitation as every prompt-only change this project has shipped). Both rewritten prompts
+read back correctly via direct module import -- no string-escaping errors, learned from actively
+checking this after round 19's prompt edit was suspected (correctly ruled out) as a possible bug
+source. Frozen eviction artifact SHA unchanged.
+
+---
+
 ## 2026-08-30, round 19 (recalibrate the semantic-agreement judge to only flag real conflicts, plus two real infra bugs found by reading the actual data)
 
 **Context:** After round 18 shipped, Andy ran the full 18-node live corroboration under the new
