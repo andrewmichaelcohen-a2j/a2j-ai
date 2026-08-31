@@ -2,6 +2,87 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-08-31, round 26 (calibration + replay harness built and wired into CI; Stage-B-silent-clean-pass bug fixed -- freeze items 2/3)
+
+**What changed since round 25:** `scripts/corroboration/run_corroboration.py` (a
+runner change -- replay-mode dependency injection, the metric rename/split, and
+the Stage-B fix), 8 new checked-in fixture files plus a metrics manifest under
+`scripts/corroboration/calibration_fixtures/`, a new `scripts/ci/check_corroboration_calibration.py`
+CI gate, and `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` (canonical metric
+definitions + harness documentation). No `rules/` content touched -- consistent
+with the one-variable rule adopted round 25.
+
+**Built (freeze item 2): the calibration + replay harness.** A `--replay` CLI
+mode exercises the entire pipeline offline (no keys, no network, no cost)
+against 8 frozen, checked-in fixtures under `scripts/corroboration/calibration_fixtures/`,
+through the SAME parsing/retry/matching code the live path uses -- not a
+reimplementation -- via a purely-additive `replay_*` parameter on each of
+`call_anthropic`/`call_openai`/`call_gemini`/`judge_semantic_agreement`/
+`verify_citation`, checked before the existing `dry_run`/live branches (which
+are unmodified). Mirrors the discipline at Open Question #11 in
+`docs/OPEN_QUESTIONS_AND_LIMITATIONS.md` and its concrete pattern in
+`rules/validation/tests/test_ca_notice_scorer_outcome_fallback.py`.
+
+The 8 fixtures: a clean-pass baseline; a genuine Stage-A disagreement (proves
+the judge isn't a rubber stamp); regression guards reproducing the exact
+round-23 (eCFR nested-span) and round-24 (editorial ellipsis) bugs against
+their real fixes; a Stage-B-truncation-then-retry-recovers case; a genuine
+adversarial-gap case; a genuine-citation-mismatch-still-caught case (proves the
+round-23/24 permissiveness fixes didn't loosen the checker into a rubber
+stamp); and `CAL-06`, the designed-to-fail case for the bug fixed this round
+(below) -- confirmed by temporarily reverting that fix and re-running
+`--replay`, which correctly turned it red before the fix was restored.
+
+Per Andy's addition to freeze item 2, `_expected_metrics.json` gives
+known-answer expected values for the aggregate metrics themselves (not just
+per-fixture pass/fail), so `compute_demo_gate_metrics()`'s own arithmetic is
+regression-tested. All 8 fixtures and all metric assertions currently PASS.
+
+**Found and fixed while building the harness: a Stage B parse failure could
+silently compute as CLEAN-PASS.** `_parse_json_response`'s failure-fallback
+dict has no `edge_cases` key at all, so `result_b.get("edge_cases", [])` was
+returning `[]` on a genuine unrecovered parse failure -- indistinguishable from
+a real "no gaps found." This is the exact bug behind
+`TX-WAGE-GARNISHMENT-PROHIBITION` showing CLEAN-PASS in
+`run_20260831T082700Z` despite an unrecovered `_parse_error` (flagged in round
+25's stage-level attribution report). Fixed: `clean_pass` now additionally
+requires `stage_b_parsed_ok` (`"edge_cases" in result_b and not result_b.get("error")`);
+a new `STAGE-B-PARSE-FAILURE` disagreement-queue entry type files this case
+explicitly rather than leaving it invisible.
+
+**Metric reconciliation (freeze item 1's finding, now implemented; see round 25
+for the finding itself).** `compute_demo_gate_metrics()` now reports four
+stage-level rates separately -- `stage_a_grounded_agreement_rate`,
+`citation_verification_rate`, `stage_b_parse_success_rate`,
+`full_pipeline_clean_pass_rate` -- each with an explicit stage/numerator/
+denominator, documented canonically in
+`docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` S4a. `grounded_agreement_rate` (the
+old, mislabeled name) is kept as a deprecated alias equal to
+`full_pipeline_clean_pass_rate` so nothing that reads it breaks. The
+`--dry-run`/`--live` summary print was updated to show all four rates instead
+of one blended number.
+
+**Built (freeze item 3): CI gate.** `scripts/ci/check_corroboration_calibration.py`
+runs `--replay` and fails loudly on any miss, mirroring
+`validate_debt_schema.py`/`check_frozen_artifacts.py`'s pattern. Standing
+discipline from here forward: no runner-touching patch ships, and no live run
+is requested from Andy, unless this passes.
+
+**Verification:** `python3 scripts/ci/validate_debt_schema.py` -- PASS (no
+rules content changed this round). `python3 scripts/ci/check_frozen_artifacts.py`
+-- PASS. `python3 scripts/ci/check_corroboration_calibration.py` -- PASS (8/8
+fixtures, all metric assertions). `python3 scripts/corroboration/run_corroboration.py
+--dry-run --demo-corpus-only --nodes FDCPA-VALIDATION-NOTICE-1692g` -- spot-checked
+the existing dry-run/live code paths are byte-for-byte unmodified and still
+work (only new early-return branches were added ahead of them).
+
+**Not done this round:** the ~15 nodes' worth of genuine adversarial findings
+surfaced by run 24 remain deferred, per the one-variable rule -- this round is
+runner-only. Live-run freeze remains in effect; the next live run should be
+the `--nodes 3` smoke test (freeze item 5), not the full corpus.
+
+---
+
 ## 2026-08-31, round 25 (live-run freeze steps 1-2: stage-level attribution, regression hunt, one-variable rule + smoke protocol adopted -- documentation only, no runner or content code changed)
 
 **What changed since round 24:** nothing in `run_corroboration.py` or any `rules/` file.

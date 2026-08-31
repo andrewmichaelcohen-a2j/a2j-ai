@@ -1,0 +1,72 @@
+{
+  "id": "CAL-08-genuine-citation-mismatch-still-caught",
+  "description": "The fetched page genuinely does not contain the quoted text (a real drafting error, not an HTML-markup or ellipsis artifact) -- proves the round-23/24 permissiveness fixes didn't loosen the checker into a rubber stamp; a real mismatch still fails verification.",
+  "nodes": [
+    {
+      "node_id": "CAL-08-GENUINE-MISMATCH",
+      "tier": "DRAFT",
+      "title": "Calibration fixture node CAL-08-GENUINE-MISMATCH",
+      "logic": {
+        "note": "synthetic calibration fixture, not real law"
+      },
+      "completeness_checklist": [
+        "synthetic checklist item"
+      ],
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Cal. Test Code 1",
+            "url": "https://example-statute.test/section-1",
+            "quoted_text": "A debtor has 30 days to respond to the notice.",
+            "source_tier": "A",
+            "manual_verification": null
+          }
+        ]
+      }
+    }
+  ],
+  "_replay": {
+    "stage_a": {
+      "anthropic": [
+        {
+          "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+          "stop_reason": "end_turn",
+          "error": null
+        }
+      ],
+      "openai": {
+        "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+        "stop_reason": null,
+        "error": null
+      },
+      "gemini": {
+        "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+        "stop_reason": null,
+        "error": null
+      }
+    },
+    "judge": {
+      "raw": "{\"agree\": true, \"agreement_notes\": \"All three agree.\"}",
+      "stop_reason": "end_turn",
+      "error": null
+    },
+    "citation": {
+      "https://example-statute.test/section-1": "<html><body><p>This page discusses an entirely unrelated topic with no matching text at all.</p></body></html>"
+    },
+    "adversarial": [
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"n/a\", \"exposes_gap\": false, \"gap_description\": null}]}",
+        "stop_reason": "end_turn",
+        "error": null
+      }
+    ]
+  },
+  "_expected": {
+    "status": "FLAGGED",
+    "all_grounded": true,
+    "semantic_agreement": true,
+    "all_citations_verified": false,
+    "gaps_found_count": 0,
+    "stage_b_parsed_successfully": true
+  }
+}

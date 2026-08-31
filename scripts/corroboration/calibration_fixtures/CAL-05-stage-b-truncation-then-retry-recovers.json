@@ -1,0 +1,77 @@
+{
+  "id": "CAL-05-stage-b-truncation-then-retry-recovers",
+  "description": "First adversarial call is cut off mid-JSON (stop_reason=max_tokens, unparseable) -- the retry-on-truncation logic (round 23/24) should fire and the retry's clean response should be used. Proves the retry path itself, not just that truncation happened.",
+  "nodes": [
+    {
+      "node_id": "CAL-05-RETRY-RECOVERS",
+      "tier": "DRAFT",
+      "title": "Calibration fixture node CAL-05-RETRY-RECOVERS",
+      "logic": {
+        "note": "synthetic calibration fixture, not real law"
+      },
+      "completeness_checklist": [
+        "synthetic checklist item"
+      ],
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Cal. Test Code 1",
+            "url": "https://example-statute.test/section-1",
+            "quoted_text": "A debtor has 30 days to respond to the notice.",
+            "source_tier": "A",
+            "manual_verification": null
+          }
+        ]
+      }
+    }
+  ],
+  "_replay": {
+    "stage_a": {
+      "anthropic": [
+        {
+          "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+          "stop_reason": "end_turn",
+          "error": null
+        }
+      ],
+      "openai": {
+        "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+        "stop_reason": null,
+        "error": null
+      },
+      "gemini": {
+        "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+        "stop_reason": null,
+        "error": null
+      }
+    },
+    "judge": {
+      "raw": "{\"agree\": true, \"agreement_notes\": \"All three agree.\"}",
+      "stop_reason": "end_turn",
+      "error": null
+    },
+    "citation": {
+      "https://example-statute.test/section-1": "<html><body><p>A debtor has 30 days to respond to the notice.</p></body></html>"
+    },
+    "adversarial": [
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"Debtor responds late\", \"exposes_g",
+        "stop_reason": "max_tokens",
+        "error": null
+      },
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"Debtor responds late\", \"exposes_gap\": false, \"gap_description\": null}, {\"scenario\": \"Notice sent to wrong address\", \"exposes_gap\": false, \"gap_description\": null}, {\"scenario\": \"Debtor is a minor\", \"exposes_gap\": false, \"gap_description\": null}]}",
+        "stop_reason": "end_turn",
+        "error": null
+      }
+    ]
+  },
+  "_expected": {
+    "status": "CLEAN-PASS",
+    "all_grounded": true,
+    "semantic_agreement": true,
+    "all_citations_verified": true,
+    "gaps_found_count": 0,
+    "stage_b_parsed_successfully": true
+  }
+}

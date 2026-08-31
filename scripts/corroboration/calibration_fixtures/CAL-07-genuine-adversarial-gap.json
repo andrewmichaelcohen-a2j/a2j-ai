@@ -1,0 +1,72 @@
+{
+  "id": "CAL-07-genuine-adversarial-gap",
+  "description": "Stage B parses cleanly (no infra problem) but one of its 3 scenarios is both realistic-and-common and would-cause-a-wrong-answer -- a real, well-formed drafting finding. Proves the gap-detection path itself (exposes_gap propagating to gaps_found and blocking CLEAN-PASS), not just infra health.",
+  "nodes": [
+    {
+      "node_id": "CAL-07-GENUINE-GAP",
+      "tier": "DRAFT",
+      "title": "Calibration fixture node CAL-07-GENUINE-GAP",
+      "logic": {
+        "note": "synthetic calibration fixture, not real law"
+      },
+      "completeness_checklist": [
+        "synthetic checklist item"
+      ],
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Cal. Test Code 1",
+            "url": "https://example-statute.test/section-1",
+            "quoted_text": "A debtor has 30 days to respond to the notice.",
+            "source_tier": "A",
+            "manual_verification": null
+          }
+        ]
+      }
+    }
+  ],
+  "_replay": {
+    "stage_a": {
+      "anthropic": [
+        {
+          "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+          "stop_reason": "end_turn",
+          "error": null
+        }
+      ],
+      "openai": {
+        "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+        "stop_reason": null,
+        "error": null
+      },
+      "gemini": {
+        "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+        "stop_reason": null,
+        "error": null
+      }
+    },
+    "judge": {
+      "raw": "{\"agree\": true, \"agreement_notes\": \"All three agree.\"}",
+      "stop_reason": "end_turn",
+      "error": null
+    },
+    "citation": {
+      "https://example-statute.test/section-1": "<html><body><p>A debtor has 30 days to respond to the notice.</p></body></html>"
+    },
+    "adversarial": [
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"Debtor is incarcerated and never receives mail.\", \"exposes_gap\": true, \"gap_description\": \"The rule as encoded doesn't address service on an incarcerated debtor.\"}, {\"scenario\": \"Debtor responds on day 30.\", \"exposes_gap\": false, \"gap_description\": null}, {\"scenario\": \"Debtor responds on day 29.\", \"exposes_gap\": false, \"gap_description\": null}]}",
+        "stop_reason": "end_turn",
+        "error": null
+      }
+    ]
+  },
+  "_expected": {
+    "status": "FLAGGED",
+    "all_grounded": true,
+    "semantic_agreement": true,
+    "all_citations_verified": true,
+    "gaps_found_count": 1,
+    "stage_b_parsed_successfully": true
+  }
+}

@@ -159,6 +159,94 @@ Extends the existing rules-JSON format (`SCHEMA_V2_DESIGN_SPEC.md` in the evicti
   - **Smoke protocol (round 24, Andy's directive, live-run freeze item 5).** Every future live session starts with a small subset run (`--nodes 3`) before the full corpus, and only proceeds to the full run once that smoke result looks sane. This is a habit/process change, not a code change -- no runner modification implements it, it's an instruction Claude gives Andy at the start of every live session from here forward.
   - **No runner change ships and no live run is requested without calibration+replay passing first (round 24, Andy's directive, live-run freeze item 3).** A frozen offline calibration set with known-answer expected values (including for the metrics themselves, not just per-fixture pass/fail) plus a `--replay` mode exercising the full pipeline with no keys, no network, no cost is the gate going forward -- see the calibration-harness section being added to this document as that build lands.
 
+### 4a. Corroboration-runner metrics: canonical definitions (round 26, 2026-08-31)
+
+Per Andy's live-run-freeze directive ("define every reported metric precisely in the
+spec -- what stage, what numerator, what denominator"), every metric
+`compute_demo_gate_metrics()` reports, exactly as computed in
+`scripts/corroboration/run_corroboration.py`:
+
+| Metric | Stage | Numerator | Denominator |
+|---|---|---|---|
+| `stage_a_grounded_agreement_rate` | Stage A only | nodes where all 3 models returned `grounded==true` AND the LLM judge found semantic agreement | all demo-corpus nodes attempted this run |
+| `citation_verification_rate` | citation-check only | nodes where every cited source's `quoted_text` verified as a substring of the fetched page | all demo-corpus nodes attempted this run (`null` if `--skip-citation-check`) |
+| `stage_b_parse_success_rate` | Stage B only | nodes where the adversarial call returned parseable `edge_cases` (not truncated, not empty, no error) -- even after the round-23/24 retry | all demo-corpus nodes attempted this run |
+| `full_pipeline_clean_pass_rate` | all three stages combined | nodes with `status == CLEAN-PASS` | all demo-corpus nodes attempted this run |
+| `scenario_pass_rate` | scenario level | concept-demo scenarios where every `node_id` they depend on is `CLEAN-PASS` this run | all concept-demo scenarios defined in the scenarios file |
+
+`full_pipeline_clean_pass_rate` is the renamed former `grounded_agreement_rate` --
+found during the round-25/26 regression hunt to be mislabeled relative to its own
+definition (its name promised a Stage-A-only reading; its actual basis was full
+CLEAN-PASS, compounding all three stages). The old key is kept as a deprecated
+alias pointing at the same value so nothing that reads it breaks, but new code
+should read `full_pipeline_clean_pass_rate` or `stage_a_grounded_agreement_rate`
+by name. `CLEAN-PASS` itself (`clean_pass` in `run_node()`) also picked up a
+round-26 fix: it now additionally requires `stage_b_parsed_ok` -- a Stage B parse
+failure no longer silently computes identically to "no gaps found" (see the
+calibration-harness entry below for the real run this was found on).
+
+### 4b. Calibration + replay harness (round 26, 2026-08-31 -- freeze items 2/3)
+
+Mirrors Open Question #11's discipline (`docs/OPEN_QUESTIONS_AND_LIMITATIONS.md`:
+"a known-answer calibration suite proving the scorer reports correctly in every
+branch, including forced-disagreement and malformed-output cases"), and its
+concrete implementation pattern in
+`rules/validation/tests/test_ca_notice_scorer_outcome_fallback.py`: real,
+individually-reviewable fixture files, in-memory/no-network, one assertion per
+branch with a descriptive pass/fail line, exit non-zero on any failure.
+
+**`--replay` mode.** A third CLI mode alongside `--dry-run`/`--live`
+(`python3 scripts/corroboration/run_corroboration.py --replay`). Runs the entire
+pipeline -- all three Stage A models, the judge, citation verification, and Stage
+B -- against a small, frozen, checked-in set of recorded-response fixtures under
+`scripts/corroboration/calibration_fixtures/`, through the exact same parsing,
+retry, and matching code the live path uses (not a reimplementation): each of
+`call_anthropic`/`call_openai`/`call_gemini`/`judge_semantic_agreement`/
+`verify_citation` gained a purely-additive `replay_*` parameter, checked before
+the existing `dry_run`/live branches, that consumes canned responses instead of
+making a real call. No keys, no network, no cost.
+
+**The frozen calibration set (8 fixtures as of round 26).** Each fixture is a
+real file (`rules`-shaped node + `_replay` recorded responses + `_expected`
+known-answer outcome), reviewable individually:
+
+- `CAL-01-clean-pass-baseline` -- everything succeeds; the control case.
+- `CAL-02-stage-a-forced-disagreement` -- a genuine cross-model conflict still
+  blocks CLEAN-PASS (proves the judge isn't a rubber stamp).
+- `CAL-03-ecfr-nested-span-paren-pattern` -- regression guard for the round-23
+  fix (reproduces the exact eCFR markup that broke matching before it).
+- `CAL-04-editorial-ellipsis-in-quoted-text` -- regression guard for the round-24
+  fix (reproduces the exact CCP 683.020 break it addressed).
+- `CAL-05-stage-b-truncation-then-retry-recovers` -- the round-23/24 retry logic
+  actually recovers a truncated Stage B call.
+- `CAL-06-stage-b-persistent-failure-must-not-clean-pass` -- **the round-26 bug
+  fix's own designed-to-fail case**: reproduces the real
+  `TX-WAGE-GARNISHMENT-PROHIBITION` failure from `run_20260831T082700Z`, where
+  both Stage B attempts stayed unparseable. Before round 26 this fixture would
+  have shown CLEAN-PASS (an empty `edge_cases` default read identically to "no
+  gaps found"); confirmed by temporarily reverting the fix and re-running
+  `--replay`, which correctly turned this fixture red -- proof the fixture
+  catches the exact regression it exists to catch, not just that it currently
+  passes.
+- `CAL-07-genuine-adversarial-gap` -- Stage B parses cleanly but exposes a real
+  gap; proves gap-detection itself, not just infra health.
+- `CAL-08-genuine-citation-mismatch-still-caught` -- a real mismatch (unrelated
+  page content) still fails verification; proves the round-23/24 permissiveness
+  fixes didn't loosen the checker into a rubber stamp.
+
+**Metric-value assertions (Andy's addition to freeze item 2).** Beyond
+per-fixture outcomes, `scripts/corroboration/calibration_fixtures/_expected_metrics.json`
+gives known-answer expected values for the aggregate metrics themselves (e.g.
+`full_pipeline_clean_pass_rate.value_percent: 50.0` for this 8-fixture set,
+4/8 CLEAN-PASS) -- so `compute_demo_gate_metrics()`'s own arithmetic is
+regression-tested, not just the pipeline stages feeding it.
+
+**CI gate (freeze item 3).** `scripts/ci/check_corroboration_calibration.py`
+runs `--replay` and fails loudly on any assertion miss, mirroring
+`validate_debt_schema.py`/`check_frozen_artifacts.py`'s pattern. Standing
+discipline going forward: no runner-touching patch ships, and no live run is
+requested from Andy, unless this passes.
+
 ---
 
 ## 5. Demo and evaluation harness

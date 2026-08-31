@@ -431,7 +431,8 @@ def _parse_json_response(raw: str) -> dict:
 
 def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
                     dry_run_payload: dict, max_tokens: int = 1500,
-                    retry_on_empty_or_truncated: bool = False) -> dict:
+                    retry_on_empty_or_truncated: bool = False,
+                    replay_responses: list = None) -> dict:
     """Round 19 note: max_tokens is now a parameter, not a hardcoded 1500 shared by
     every call site. Root cause found by reading raw run output: the adversarial
     stage (3 edge cases, each with a scenario + gap_description) routinely produced
@@ -452,6 +453,38 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
     never shown this) adds up to one retry: same budget for an empty
     completion (empirically transient), 1.5x budget for a max_tokens
     truncation (to actually fix it rather than just retry into the same wall)."""
+    if replay_responses is not None:
+        # Round 26 (freeze item 2): deterministic offline replay -- consumes
+        # canned {"raw", "stop_reason", "error"} dicts in the same order the
+        # live retry loop below would produce them, through the SAME
+        # _parse_json_response + retry-decision logic (not a reimplementation),
+        # so a calibration fixture genuinely exercises the parsing/retry code,
+        # not a bypass of it. No keys, no network, no cost.
+        _queue = list(replay_responses)
+
+        def _one_call_replay(tokens: int) -> dict:
+            item = _queue.pop(0) if _queue else {"raw": "", "stop_reason": None, "error": None}
+            raw = item.get("raw") or ""
+            parsed = _parse_json_response(raw)
+            parsed["model"] = ANTHROPIC_MODEL
+            parsed["_raw"] = raw
+            parsed["error"] = item.get("error")
+            parsed["_stop_reason"] = item.get("stop_reason")
+            return parsed
+
+        try:
+            parsed = _one_call_replay(max_tokens)
+            if retry_on_empty_or_truncated:
+                empty = not parsed.get("_raw")
+                truncated = parsed.get("_stop_reason") == "max_tokens" or bool(parsed.get("_parse_error"))
+                if empty or truncated:
+                    retry_tokens = max_tokens if empty else int(max_tokens * 2.5)
+                    retry_parsed = _one_call_replay(retry_tokens)
+                    retry_parsed["_retried_after"] = "empty_completion" if empty else "max_tokens_truncation"
+                    return retry_parsed
+            return parsed
+        except Exception as exc:
+            return {"error": str(exc), "model": ANTHROPIC_MODEL}
     if dry_run:
         out = dict(dry_run_payload)
         out["model"] = ANTHROPIC_MODEL
@@ -498,7 +531,14 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
 
 
 def call_openai(system_prompt: str, user_prompt: str, keys, dry_run: bool,
-                 dry_run_payload: dict) -> dict:
+                 dry_run_payload: dict, replay_response: dict = None) -> dict:
+    if replay_response is not None:
+        raw = replay_response.get("raw") or ""
+        parsed = _parse_json_response(raw)
+        parsed["model"] = OPENAI_MODEL
+        parsed["_raw"] = raw
+        parsed["error"] = replay_response.get("error")
+        return parsed
     if dry_run:
         out = dict(dry_run_payload)
         out["model"] = OPENAI_MODEL
@@ -531,7 +571,7 @@ def call_openai(system_prompt: str, user_prompt: str, keys, dry_run: bool,
 
 
 def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
-                 dry_run_payload: dict) -> dict:
+                 dry_run_payload: dict, replay_response: dict = None) -> dict:
     """Round 17 note: 4 of 18 nodes in the 2026-08-28 full live run flagged
     solely because Gemini returned a transient 503 UNAVAILABLE ("high demand,
     try again later") -- an infra hiccup on Google's side, not a real error,
@@ -548,6 +588,13 @@ def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
     timeout (observed live, 2026-08-30: FDCPA-UNFAIR-PRACTICES-CATALOG-1692f)
     still cost a clean-pass with zero retry, the exact failure mode round 17 was
     supposed to fix. Timeouts now retry once too, same budget as a 503."""
+    if replay_response is not None:
+        raw = replay_response.get("raw") or ""
+        parsed = _parse_json_response(raw)
+        parsed["model"] = GEMINI_MODEL
+        parsed["_raw"] = raw
+        parsed["error"] = replay_response.get("error")
+        return parsed
     if dry_run:
         out = dict(dry_run_payload)
         out["model"] = GEMINI_MODEL
@@ -596,7 +643,7 @@ def call_gemini(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         return {"error": str(exc), "model": GEMINI_MODEL}
 
 
-def judge_semantic_agreement(summaries: list, keys, dry_run: bool) -> dict:
+def judge_semantic_agreement(summaries: list, keys, dry_run: bool, replay_response: dict = None) -> dict:
     """Ask a model to judge whether N independently-produced legal summaries
     substantively agree (2026-08-26, third round -- see SYSTEM_PROMPT_JUDGE
     comment for why this replaces the numeric fingerprint as the primary
@@ -616,7 +663,8 @@ def judge_semantic_agreement(summaries: list, keys, dry_run: bool) -> dict:
     }
     numbered = "\n\n".join(f"Analysis {i+1}:\n{s}" for i, s in enumerate(summaries))
     user_prompt = f"Here are {len(summaries)} independent analyses of the same legal question:\n\n{numbered}"
-    return call_anthropic(SYSTEM_PROMPT_JUDGE, user_prompt, keys, dry_run, dry_payload)
+    return call_anthropic(SYSTEM_PROMPT_JUDGE, user_prompt, keys, dry_run, dry_payload,
+                           replay_responses=([replay_response] if replay_response is not None else None))
 
 
 # -- Citation verification -----------------------------------------------------
@@ -750,7 +798,8 @@ def _raw_context_at_break(needle: str, prefix_len: int, raw_html: str):
     return raw_html[start:start + 250]
 
 
-def verify_citation(url: str, quoted_text: str, dry_run: bool, manual_verification: dict = None) -> dict:
+def verify_citation(url: str, quoted_text: str, dry_run: bool, manual_verification: dict = None,
+                     replay_page_html: str = None) -> dict:
     """Mechanically verify a cited source. Always returns a `diagnostics` block
     -- HTTP status, content length, content type, and a fuzzy word-overlap
     score -- even on success, so a `verified: False` result is self-explaining
@@ -777,6 +826,28 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool, manual_verificati
     # (method="manual", never silently, and never used to paper over an actual
     # content mismatch -- if the confirmed quote is later found wrong, the fix is
     # to correct the rules file and re-confirm, not to keep the manual flag).
+    if replay_page_html is not None:
+        # Round 26 (freeze item 2): replays the EXACT SAME needle-construction
+        # and matching logic the live path uses (not a reimplementation) --
+        # against a recorded page fixture instead of a live HTTP fetch. This
+        # is what lets a calibration fixture genuinely exercise both the
+        # round-23 paren-collapse fix and the round-24 ellipsis-split fix.
+        page = _normalize_for_match(replay_page_html, is_html=True)
+        quoted_text_for_match = (quoted_text or "").split("...", 1)[0]
+        needle = _normalize_for_match(quoted_text_for_match, is_html=False)[:120]
+        verified = needle in page if needle else False
+        prefix_len = _longest_matching_prefix_len(needle, page) if needle else 0
+        diagnostics = {
+            "http_status": 200, "content_length": len(replay_page_html),
+            "content_type": "text/html", "word_overlap_ratio": _word_overlap_ratio(needle, page),
+            "retry_attempt": 1,
+            "longest_matching_prefix_chars": prefix_len,
+            "text_at_break_point": needle[prefix_len:prefix_len + 40] if not verified else None,
+            "raw_html_context_at_break": (
+                _raw_context_at_break(needle, prefix_len, replay_page_html) if not verified else None
+            ),
+        }
+        return {"url": url, "verified": verified, "method": "replay", "error": None, "diagnostics": diagnostics}
     if manual_verification:
         return {
             "url": url, "verified": True, "method": "manual", "error": None,
@@ -975,7 +1046,8 @@ def file_disagreement(entry_md: str):
 
 # -- Per-node pipeline --------------------------------------------------------
 
-def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_id: str) -> dict:
+def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_id: str,
+             replay_fixture: dict = None) -> dict:
     node = target["node"]
     node_id = target["node_id"]
     file_path = target["file"]
@@ -995,12 +1067,16 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
         "grounded": True,
         "citation_used": derived_from[0].get("cite") if derived_from else None,
     }
+    replay = (replay_fixture or {}).get("_replay")
 
     # (a) three independent grounded derivations
     results_a = [
-        call_anthropic(SYSTEM_PROMPT_DERIVATION, user_prompt_derivation, keys, dry_run, dry_payload),
-        call_openai(SYSTEM_PROMPT_DERIVATION, user_prompt_derivation, keys, dry_run, dry_payload),
-        call_gemini(SYSTEM_PROMPT_DERIVATION, user_prompt_derivation, keys, dry_run, dry_payload),
+        call_anthropic(SYSTEM_PROMPT_DERIVATION, user_prompt_derivation, keys, dry_run, dry_payload,
+                        replay_responses=(replay["stage_a"]["anthropic"] if replay else None)),
+        call_openai(SYSTEM_PROMPT_DERIVATION, user_prompt_derivation, keys, dry_run, dry_payload,
+                     replay_response=(replay["stage_a"]["openai"] if replay else None)),
+        call_gemini(SYSTEM_PROMPT_DERIVATION, user_prompt_derivation, keys, dry_run, dry_payload,
+                     replay_response=(replay["stage_a"]["gemini"] if replay else None)),
     ]
 
     fingerprints = []
@@ -1024,7 +1100,8 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     # not a case the judge needs to weigh in on, it's already a fail.
     if all_grounded:
         summaries_for_judge = [(r.get("derivation_summary") or "") for r in results_a]
-        judge_result = judge_semantic_agreement(summaries_for_judge, keys, dry_run)
+        judge_result = judge_semantic_agreement(summaries_for_judge, keys, dry_run,
+                                                 replay_response=(replay["judge"] if replay else None))
         semantic_agreement = bool(judge_result.get("agree")) and not judge_result.get("error")
     else:
         judge_result = {
@@ -1040,7 +1117,9 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
         if skip_citation_check:
             citation_results.append({"url": d.get("url"), "verified": None, "method": "skipped", "error": None})
         else:
-            citation_results.append(verify_citation(d.get("url"), d.get("quoted_text"), dry_run, d.get("manual_verification")))
+            citation_results.append(verify_citation(
+                d.get("url"), d.get("quoted_text"), dry_run, d.get("manual_verification"),
+                replay_page_html=((replay.get("citation") or {}).get(d.get("url")) if replay else None)))
     if skip_citation_check:
         all_citations_verified = None
     else:
@@ -1064,8 +1143,17 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     # -- see call_anthropic's round-23 docstring note.
     result_b = call_anthropic(SYSTEM_PROMPT_ADVERSARIAL, user_prompt_adversarial, keys, dry_run,
                                dry_adversarial_payload, max_tokens=4000,
-                               retry_on_empty_or_truncated=True)
-    edge_cases = result_b.get("edge_cases", []) if not result_b.get("error") else []
+                               retry_on_empty_or_truncated=True,
+                               replay_responses=(replay["adversarial"] if replay else None))
+    # Round 26 fix (found during the round-25 stage-level attribution pass on
+    # run_20260831T082700Z): _parse_json_response's failure fallback dict has
+    # no "edge_cases" key at all -- so `result_b.get("edge_cases", [])` was
+    # silently returning [] on a genuine parse failure (error stays None;
+    # only _parse_error is set), identical to a real "no gaps found" result.
+    # TX-WAGE-GARNISHMENT-PROHIBITION showed CLEAN-PASS in that run despite an
+    # unrecovered _parse_error -- a Stage B failure must not read as clean.
+    stage_b_parsed_ok = ("edge_cases" in result_b) and not result_b.get("error")
+    edge_cases = result_b.get("edge_cases", []) if stage_b_parsed_ok else []
     gaps_found = [e for e in edge_cases if e.get("exposes_gap")]
 
     ended = now_iso()
@@ -1079,10 +1167,16 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     # this pipeline) from "is a website reachable via plain HTTP GET right now" (citation
     # liveness -- an infrastructure concern, re-triaged 2026-08-29 as the dominant source of
     # noise across rounds 9-17: 11 of the last 13 flags traced to this, zero to legal error).
-    clean_pass = bool(semantic_agreement) and (all_citations_verified is not False) and not gaps_found
+    clean_pass = (
+        bool(semantic_agreement) and (all_citations_verified is not False)
+        and not gaps_found and stage_b_parsed_ok
+    )
 
-    # (d) file disagreements
-    if not semantic_agreement:
+    # (d) file disagreements -- round 26: never filed during --replay, since
+    # calibration fixtures are synthetic by design (several are deliberately
+    # FLAGGED to prove the checker still catches real problems) and have no
+    # business appearing in the real, attorney-facing disagreement queue.
+    if replay_fixture is None and not semantic_agreement:
         entry = _format_disagreement_entry(
             run_id, node_id, file_path, "MODEL-DISAGREEMENT",
             f"LLM-judged semantic agreement: {judge_result.get('agreement_notes')} "
@@ -1096,7 +1190,7 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
             results_a,
         )
         file_disagreement(entry)
-    if all_citations_verified is False:
+    if replay_fixture is None and all_citations_verified is False:
         failed = [c for c in citation_results if c["verified"] is not True]
         entry = _format_disagreement_entry(
             run_id, node_id, file_path, "CITATION-CHECK-FAILED",
@@ -1105,10 +1199,20 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
             results_a,
         )
         file_disagreement(entry)
-    if gaps_found:
+    if replay_fixture is None and gaps_found:
         entry = _format_disagreement_entry(
             run_id, node_id, file_path, "ADVERSARIAL-GAP",
             f"{len(gaps_found)} adversarial edge case(s) flagged as exposing a gap: {gaps_found}",
+            results_a,
+        )
+        file_disagreement(entry)
+    if replay_fixture is None and not stage_b_parsed_ok:
+        entry = _format_disagreement_entry(
+            run_id, node_id, file_path, "STAGE-B-PARSE-FAILURE",
+            f"Adversarial check did not return parseable edge_cases even after retry "
+            f"(error={result_b.get('error')!r}, _parse_error={result_b.get('_parse_error')!r}, "
+            f"_stop_reason={result_b.get('_stop_reason')!r}) -- gaps cannot be assessed this run, "
+            f"so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).",
             results_a,
         )
         file_disagreement(entry)
@@ -1135,6 +1239,7 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
         "stage_b_adversarial": {
             "result": result_b,
             "gaps_found": gaps_found,
+            "parsed_successfully": stage_b_parsed_ok,
         },
         "status": "CLEAN-PASS" if clean_pass else "FLAGGED",
         "tier_promotion_candidate": clean_pass,
@@ -1180,20 +1285,62 @@ def _format_disagreement_entry(run_id, node_id, file_path, kind, evidence, model
 
 # -- Scenario/demo-gate metrics ------------------------------------------------
 
-def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool, citation_check_skipped: bool = False):
-    if not SCENARIOS_PATH.exists():
+def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool, citation_check_skipped: bool = False,
+                               force_include_all: bool = False) -> dict:
+    """Round 26 rewrite (freeze item 1's reconciliation finding, 2026-08-31):
+    the old single 'grounded_agreement_rate' was named for Stage A (grounded
+    derivation + cross-model agreement) but its actual computed basis was
+    full CLEAN-PASS -- semantic agreement AND citation verification AND no
+    adversarial gap. A run with 100% real Stage A agreement but a struggling
+    citation-checker (run_20260831T082700Z: 18/18 Stage A, 6/18 citations,
+    1/18 full CLEAN-PASS) reported a 5.6% "grounded-agreement rate," which
+    understated the actual grounding quality by conflating three different
+    stages into one number under a name that only described one of them.
+
+    Every metric below is documented with its exact stage, numerator, and
+    denominator (Andy's directive) -- see also
+    docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md S4's round-26 entry for the
+    canonical reference version of this table.
+
+    force_include_all (round 26): the calibration/replay harness's fixtures
+    live under scripts/corroboration/calibration_fixtures/, outside
+    rules/debt/, so the normal demo-corpus path-prefix filter would exclude
+    every one of them. Setting this bypasses that filter and treats every
+    node_result passed in as the metric-computation population -- used only
+    by run_replay_calibration(), never by a real --dry-run/--live run."""
+    if not SCENARIOS_PATH.exists() and not force_include_all:
         return None
 
-    scenarios = json.loads(SCENARIOS_PATH.read_text()).get("scenarios", [])
+    scenarios = json.loads(SCENARIOS_PATH.read_text()).get("scenarios", []) if SCENARIOS_PATH.exists() else []
     results_by_id = {r["node_id"]: r for r in node_results}
 
-    demo_node_results = [
-        r for r in node_results
-        if any(str(r["file"]).startswith(f"rules/debt/{sub}") for sub in ("federal", "state/texas", "state/california"))
-    ]
+    if force_include_all:
+        demo_node_results = list(node_results)
+    else:
+        demo_node_results = [
+            r for r in node_results
+            if any(str(r["file"]).startswith(f"rules/debt/{sub}") for sub in ("federal", "state/texas", "state/california"))
+        ]
     n_demo = len(demo_node_results)
+
     n_pass = sum(1 for r in demo_node_results if r["status"] == "CLEAN-PASS")
-    grounded_agreement_rate = (n_pass / n_demo * 100) if n_demo else None
+    full_pipeline_clean_pass_rate = (n_pass / n_demo * 100) if n_demo else None
+
+    n_stage_a_pass = sum(
+        1 for r in demo_node_results
+        if r["stage_a_grounded_derivation"]["all_grounded"] and r["stage_a_grounded_derivation"]["semantic_agreement"]
+    )
+    stage_a_grounded_agreement_rate = (n_stage_a_pass / n_demo * 100) if n_demo else None
+
+    if citation_check_skipped:
+        citation_verification_rate = None
+        n_citation_pass = None
+    else:
+        n_citation_pass = sum(1 for r in demo_node_results if r["citation_check"]["all_verified"] is True)
+        citation_verification_rate = (n_citation_pass / n_demo * 100) if n_demo else None
+
+    n_stage_b_pass = sum(1 for r in demo_node_results if r["stage_b_adversarial"].get("parsed_successfully"))
+    stage_b_parse_success_rate = (n_stage_b_pass / n_demo * 100) if n_demo else None
 
     scenario_rows = []
     n_scen_pass = 0
@@ -1214,49 +1361,212 @@ def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool, citati
     scenario_pass_rate = (n_scen_pass / len(scenarios) * 100) if scenarios else None
 
     return {
-        "grounded_agreement_rate": {
-            "value_percent": grounded_agreement_rate,
+        "stage_a_grounded_agreement_rate": {
+            "value_percent": stage_a_grounded_agreement_rate,
+            "n_demo_corpus_nodes_this_run": n_demo,
+            "n_passing": n_stage_a_pass,
+            "stage": "Stage A only",
+            "numerator": "nodes where all 3 models returned grounded==true AND the LLM judge found semantic agreement",
+            "denominator": "all demo-corpus nodes attempted this run",
+            "basis": "does NOT require citation verification or a clean adversarial check -- purely: "
+                     "did the 3 models derive the same rule from the cited text, independently.",
+        },
+        "citation_verification_rate": {
+            "value_percent": citation_verification_rate,
+            "n_demo_corpus_nodes_this_run": n_demo,
+            "n_passing": n_citation_pass,
+            "stage": "citation-check only",
+            "numerator": "nodes where every cited source's quoted_text verified as a substring of the fetched page",
+            "denominator": "all demo-corpus nodes attempted this run (null/not computed if --skip-citation-check)",
+            "basis": "mechanical HTTP fetch + substring match, no model involved.",
+        },
+        "stage_b_parse_success_rate": {
+            "value_percent": stage_b_parse_success_rate,
+            "n_demo_corpus_nodes_this_run": n_demo,
+            "n_passing": n_stage_b_pass,
+            "stage": "Stage B only",
+            "numerator": "nodes where the adversarial call returned parseable edge_cases (not truncated, not "
+                         "empty, no error) -- even after the round-23/24 retry",
+            "denominator": "all demo-corpus nodes attempted this run",
+            "basis": "an infrastructure/reliability signal, not a gap-count -- a node can parse successfully "
+                     "and still expose real gaps, or fail to parse and expose none we know of.",
+        },
+        "full_pipeline_clean_pass_rate": {
+            "value_percent": full_pipeline_clean_pass_rate,
             "n_demo_corpus_nodes_this_run": n_demo,
             "n_passing": n_pass,
+            "stage": "all three stages combined -- this is the renamed former 'grounded_agreement_rate' "
+                     "(round 26; the old name was found to be mislabeled relative to its own definition, "
+                     "see docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md S4's round-24 entry)",
+            "numerator": "nodes with status == CLEAN-PASS",
+            "denominator": "all demo-corpus nodes attempted this run",
             "basis": (
                 "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND no "
-                "adversarial gap found. Citation verification was SKIPPED this run (--skip-citation-check, "
-                "round 18 directive 2026-08-29 -- Andy: \"proceed without a live citation verification ... "
-                "validating the legal rule and not focus on the byte for byte match\") and is explicitly NOT "
-                "part of this basis while skipped. Numeric fingerprint remains a secondary diagnostic only "
-                "(round 3), not part of this basis either."
+                "adversarial gap found AND the adversarial check itself parsed successfully (round 26 -- a "
+                "Stage B parse failure no longer silently reads as \"no gaps\"). Citation verification was "
+                "SKIPPED this run (--skip-citation-check, round 18 directive 2026-08-29) and is explicitly "
+                "NOT part of this basis while skipped. Numeric fingerprint remains a secondary diagnostic "
+                "only (round 3), not part of this basis either."
                 if citation_check_skipped else
                 "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all "
-                "citations live-verified AND no adversarial gap found (numeric fingerprint is a secondary "
-                "diagnostic only as of 2026-08-26 round 3, not part of this basis)"
+                "citations live-verified AND no adversarial gap found AND the adversarial check itself "
+                "parsed successfully (round 26 -- a Stage B parse failure no longer silently reads as "
+                "\"no gaps\", see spec S4). Numeric fingerprint is a secondary diagnostic only as of "
+                "2026-08-26 round 3, not part of this basis either."
             ),
+        },
+        "grounded_agreement_rate": {
+            "value_percent": full_pipeline_clean_pass_rate,
+            "deprecated": True,
+            "note": "Deprecated alias for full_pipeline_clean_pass_rate (round 26), kept only so anything "
+                    "still reading this exact key doesn't break. This name was found to be mislabeled -- it "
+                    "was never actually a Stage-A-only measure despite the name. Use "
+                    "full_pipeline_clean_pass_rate (the honest name for the same number) or "
+                    "stage_a_grounded_agreement_rate (genuinely Stage-A-only) going forward.",
         },
         "scenario_pass_rate": {
             "value_percent": scenario_pass_rate,
             "n_scenarios": len(scenarios),
             "n_passing": n_scen_pass,
             "scenarios": scenario_rows,
+            "stage": "scenario level (depends on multiple nodes' CLEAN-PASS status)",
+            "numerator": "concept-demo scenarios where every node_id they depend on is CLEAN-PASS this run",
+            "denominator": "all concept-demo scenarios defined in the scenarios file",
             "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run",
         },
         "internal_gate_met": (
-            grounded_agreement_rate is not None and scenario_pass_rate is not None
-            and grounded_agreement_rate >= 90.0 and scenario_pass_rate >= 90.0
+            full_pipeline_clean_pass_rate is not None and scenario_pass_rate is not None
+            and full_pipeline_clean_pass_rate >= 90.0 and scenario_pass_rate >= 90.0
         ),
         "gate_threshold_percent": 90.0,
         "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this "
                 "demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an "
                 "internal readiness gate computed by this script, not itself a claim to publish -- see "
-                "spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing.",
+                "spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing. "
+                "Round 26: added stage_a_grounded_agreement_rate, citation_verification_rate, and "
+                "stage_b_parse_success_rate as separately-reported per-stage metrics (freeze item 1's "
+                "reconciliation finding) -- grounded_agreement_rate is now full_pipeline_clean_pass_rate.",
     }
 
 
 # -- Main -----------------------------------------------------------------------
+
+CALIBRATION_FIXTURES_DIR = REPO_ROOT / "scripts" / "corroboration" / "calibration_fixtures"
+
+
+def _get_nested(d, dotted_key):
+    cur = d
+    for part in dotted_key.split("."):
+        if not isinstance(cur, dict) or part not in cur:
+            return None
+        cur = cur[part]
+    return cur
+
+
+def run_replay_calibration(fixtures_dir: Path = None) -> bool:
+    """Freeze items 2/3 (2026-08-31, round 26): runs the ENTIRE pipeline
+    offline against a small, frozen, checked-in set of recorded fixtures --
+    no keys, no network, no cost -- and asserts BOTH per-fixture node-level
+    outcomes AND the aggregate demo-gate metrics against known-answer
+    expected values.
+
+    Mirrors the discipline documented at Open Question #11 in
+    docs/OPEN_QUESTIONS_AND_LIMITATIONS.md ("a known-answer calibration
+    suite proving the scorer reports correctly in every branch, including
+    forced-disagreement and malformed-output cases") and its concrete
+    implementation pattern in
+    rules/validation/tests/test_ca_notice_scorer_outcome_fallback.py: real,
+    individually-reviewable fixture files, one assertion per branch with a
+    descriptive pass/fail line, no external test framework, exit non-zero
+    on any failure.
+
+    Each fixture is a real, checked-in JSON file (same {"nodes": [...]}
+    shape discover_nodes() reads, plus "_replay" recorded-response data and
+    an "_expected" known-answer block) under
+    scripts/corroboration/calibration_fixtures/ -- outside rules/debt/, so
+    these never get picked up by a real corpus run or the schema CI check,
+    and are never mistaken for real rule content."""
+    fixtures_dir = fixtures_dir or CALIBRATION_FIXTURES_DIR
+    fixture_paths = (
+        sorted(p for p in fixtures_dir.glob("*.json") if not p.name.startswith("_"))
+        if fixtures_dir.exists() else []
+    )
+    if not fixture_paths:
+        print(f"[replay] No calibration fixtures found under {fixtures_dir}. FAIL.")
+        return False
+
+    node_results = []
+    fixture_all_ok = True
+    print(f"[replay] Running {len(fixture_paths)} calibration fixture(s), fully offline "
+          f"(no keys, no network, no cost)...\n")
+    for fp in sorted(fixture_paths):
+        fx = json.loads(fp.read_text())
+        node = fx["nodes"][0]
+        node_id = node.get("node_id")
+        target = {"file": fp, "node": node, "node_id": node_id, "node_index": 0}
+        result = run_node(target, keys=None, dry_run=False, skip_citation_check=False,
+                           run_id="replay", replay_fixture=fx)
+        node_results.append(result)
+
+        exp = fx.get("_expected", {})
+        checks = [
+            ("status", result["status"], exp.get("status")),
+            ("all_grounded", result["stage_a_grounded_derivation"]["all_grounded"], exp.get("all_grounded")),
+            ("semantic_agreement", result["stage_a_grounded_derivation"]["semantic_agreement"], exp.get("semantic_agreement")),
+            ("all_citations_verified", result["citation_check"]["all_verified"], exp.get("all_citations_verified")),
+            ("gaps_found_count", len(result["stage_b_adversarial"]["gaps_found"]), exp.get("gaps_found_count")),
+            ("stage_b_parsed_successfully", result["stage_b_adversarial"]["parsed_successfully"], exp.get("stage_b_parsed_successfully")),
+        ]
+        this_fixture_ok = True
+        for label, actual, expected in checks:
+            ok = actual == expected
+            this_fixture_ok = this_fixture_ok and ok
+            fixture_all_ok = fixture_all_ok and ok
+            mark = "OK  " if ok else "FAIL"
+            print(f"  {mark} [{fx.get('id', node_id)}] {label}: actual={actual!r} expected={expected!r}")
+        fx_label = fx.get("id", node_id)
+        fx_desc = fx.get("description", "")
+        fx_verdict = "PASS" if this_fixture_ok else "FAIL"
+        print(f"  {fx_verdict} -- {fx_label}: {fx_desc}\n")
+
+    demo_gate = compute_demo_gate_metrics(node_results, demo_corpus_only=False,
+                                           citation_check_skipped=False, force_include_all=True)
+
+    # Round 26, Andy's addition: the calibration set gets known-answer
+    # expected values for the METRICS themselves, not just per-fixture
+    # pass/fail -- so compute_demo_gate_metrics() is regression-tested, not
+    # just the pipeline stages feeding it.
+    manifest_path = fixtures_dir / "_expected_metrics.json"
+    metrics_all_ok = True
+    if manifest_path.exists():
+        expected_metrics = json.loads(manifest_path.read_text())
+        print("[replay] Aggregate metric assertions:")
+        for dotted_key, expected_value in expected_metrics.items():
+            actual_value = _get_nested(demo_gate, dotted_key)
+            ok = actual_value == expected_value
+            metrics_all_ok = metrics_all_ok and ok
+            print(f"  {'OK  ' if ok else 'FAIL'} {dotted_key}: actual={actual_value!r} expected={expected_value!r}")
+        print()
+    else:
+        print(f"[replay] WARNING: no {manifest_path.name} found -- aggregate metrics not asserted this run.\n")
+        metrics_all_ok = False
+
+    overall_ok = fixture_all_ok and metrics_all_ok
+    print(f"[replay] Result: {'PASS' if overall_ok else 'FAIL'} "
+          f"({len(fixture_paths)} fixture(s), metric assertions {'PASS' if metrics_all_ok else 'FAIL'})")
+    return overall_ok
+
 
 def main():
     ap = argparse.ArgumentParser(description="Debt-track grounded-corroboration runner")
     mode = ap.add_mutually_exclusive_group(required=True)
     mode.add_argument("--dry-run", action="store_true", help="Synthetic responses, no keys, no network cost, no cost.")
     mode.add_argument("--live", action="store_true", help="Real API calls. Requires .env with real keys. Spends money.")
+    mode.add_argument("--replay", action="store_true",
+                       help="Round 26 (freeze item 2): runs the full pipeline offline against the frozen "
+                            "calibration fixture set, no keys, no network, no cost, and asserts known-answer "
+                            "expected outcomes for every fixture AND the aggregate metrics. Exits 1 on any "
+                            "failure. Bypasses the normal corpus-discovery/budget-cap flow entirely.")
     ap.add_argument("--demo-corpus-only", action="store_true",
                      help="Restrict to federal + TX + CA (the concept-demo corpus). Recommended for the first live batch.")
     ap.add_argument("--nodes", type=str, default=None,
@@ -1266,6 +1576,10 @@ def main():
     ap.add_argument("--skip-citation-check", action="store_true",
                      help="Skip live citation verification (offline testing only).")
     args = ap.parse_args()
+
+    if args.replay:
+        ok = run_replay_calibration()
+        sys.exit(0 if ok else 1)
 
     dry_run = args.dry_run
     only_node_ids = set(x.strip() for x in args.nodes.split(",")) if args.nodes else None
@@ -1337,11 +1651,17 @@ def main():
           + (" [citation verification SKIPPED this run]" if args.skip_citation_check else ""))
     print(f"[{run_id}] Full output: {out_path.relative_to(REPO_ROOT)}")
     if demo_gate:
-        gar = demo_gate["grounded_agreement_rate"]["value_percent"]
+        fpr = demo_gate["full_pipeline_clean_pass_rate"]["value_percent"]
         spr = demo_gate["scenario_pass_rate"]["value_percent"]
-        if gar is not None and spr is not None:
-            print(f"[{run_id}] Demo-gate metrics -- grounded-agreement rate: "
-                  f"{gar:.1f}% (n={demo_gate['grounded_agreement_rate']['n_demo_corpus_nodes_this_run']}) | "
+        sar = demo_gate["stage_a_grounded_agreement_rate"]["value_percent"]
+        cvr = demo_gate["citation_verification_rate"]["value_percent"]
+        sbr = demo_gate["stage_b_parse_success_rate"]["value_percent"]
+        if fpr is not None and spr is not None:
+            print(f"[{run_id}] Demo-gate metrics (round 26: reported per-stage, not one blended number) -- "
+                  f"Stage A grounded-agreement: {sar:.1f}% | "
+                  f"citation-verification: {'n/a (skipped)' if cvr is None else f'{cvr:.1f}%'} | "
+                  f"Stage B parse-success: {sbr:.1f}% | "
+                  f"full-pipeline clean-pass: {fpr:.1f}% (n={demo_gate['full_pipeline_clean_pass_rate']['n_demo_corpus_nodes_this_run']}) | "
                   f"scenario pass rate: {spr:.1f}% (n={demo_gate['scenario_pass_rate']['n_scenarios']}) | "
                   f"gate met (both >=90%): {demo_gate['internal_gate_met']}")
         else:
