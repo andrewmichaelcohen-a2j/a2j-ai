@@ -1,0 +1,72 @@
+{
+  "id": "CAL-09-tag-boundary-before-punctuation",
+  "description": "Reproduces the exact eCFR tag-boundary pattern that broke FDCPA-REGF-CALL-FREQUENCY-1006.14b's citation check on Andy's round-26 smoke test (run_20260831T212748Z.json): an inline cross-reference like 'paragraph (b)' wrapped in a single <a> tag whose CLOSING tag lands immediately after the reference's own closing paren and before the sentence's next punctuation mark, so blanket tag-to-space stripping inserts a stray space between ')' and ',' that the round-23 paren-only fix doesn't touch. Regression guard: if this ever starts failing, the round-28 punctuation-whitespace-collapse fix has broken.",
+  "nodes": [
+    {
+      "node_id": "CAL-09-TAG-BOUNDARY-PUNCT",
+      "tier": "DRAFT",
+      "title": "Calibration fixture node CAL-09-TAG-BOUNDARY-PUNCT",
+      "logic": {
+        "note": "synthetic calibration fixture, not real law"
+      },
+      "completeness_checklist": [
+        "synthetic checklist item"
+      ],
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Cal. Test Code 9",
+            "url": "https://example-statute.test/section-9",
+            "quoted_text": "For purposes of this paragraph (b), particular debt means each transaction described in this section.",
+            "source_tier": "A",
+            "manual_verification": null
+          }
+        ]
+      }
+    }
+  ],
+  "_replay": {
+    "stage_a": {
+      "anthropic": [
+        {
+          "raw": "{\"derivation_summary\": \"For purposes of this paragraph (b), particular debt means each transaction described in this section.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 9\"}",
+          "stop_reason": "end_turn",
+          "error": null
+        }
+      ],
+      "openai": {
+        "raw": "{\"derivation_summary\": \"For purposes of this paragraph (b), particular debt means each transaction described in this section.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 9\"}",
+        "stop_reason": null,
+        "error": null
+      },
+      "gemini": {
+        "raw": "{\"derivation_summary\": \"For purposes of this paragraph (b), particular debt means each transaction described in this section.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 9\"}",
+        "stop_reason": null,
+        "error": null
+      }
+    },
+    "judge": {
+      "raw": "{\"agree\": true, \"agreement_notes\": \"All three agree on the same rule text.\"}",
+      "stop_reason": "end_turn",
+      "error": null
+    },
+    "citation": {
+      "https://example-statute.test/section-9": "<html><body><p>(4) <em>Definition.</em> For purposes of this <a href=\"#p-9(b)\">paragraph (b)</a>, particular debt means each transaction described in this section.</p></body></html>"
+    },
+    "adversarial": [
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"n/a\", \"exposes_gap\": false, \"gap_description\": null}]}",
+        "stop_reason": "end_turn",
+        "error": null
+      }
+    ]
+  },
+  "_expected": {
+    "status": "CLEAN-PASS",
+    "all_grounded": true,
+    "semantic_agreement": true,
+    "all_citations_verified": true,
+    "gaps_found_count": 0,
+    "stage_b_parsed_successfully": true
+  }
+}

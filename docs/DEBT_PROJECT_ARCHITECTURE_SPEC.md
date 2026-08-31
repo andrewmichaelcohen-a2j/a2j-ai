@@ -185,7 +185,7 @@ round-26 fix: it now additionally requires `stage_b_parsed_ok` -- a Stage B pars
 failure no longer silently computes identically to "no gaps found" (see the
 calibration-harness entry below for the real run this was found on).
 
-### 4b. Calibration + replay harness (round 26, 2026-08-31 -- freeze items 2/3)
+### 4b. Calibration + replay harness (round 26, 2026-08-31 -- freeze items 2/3; extended round 28)
 
 Mirrors Open Question #11's discipline (`docs/OPEN_QUESTIONS_AND_LIMITATIONS.md`:
 "a known-answer calibration suite proving the scorer reports correctly in every
@@ -206,7 +206,7 @@ retry, and matching code the live path uses (not a reimplementation): each of
 the existing `dry_run`/live branches, that consumes canned responses instead of
 making a real call. No keys, no network, no cost.
 
-**The frozen calibration set (8 fixtures as of round 26).** Each fixture is a
+**The frozen calibration set (9 fixtures as of round 28).** Each fixture is a
 real file (`rules`-shaped node + `_replay` recorded responses + `_expected`
 known-answer outcome), reviewable individually:
 
@@ -233,13 +233,27 @@ known-answer outcome), reviewable individually:
 - `CAL-08-genuine-citation-mismatch-still-caught` -- a real mismatch (unrelated
   page content) still fails verification; proves the round-23/24 permissiveness
   fixes didn't loosen the checker into a rubber stamp.
+- `CAL-09-tag-boundary-before-punctuation` (added round 28) -- **the round-28
+  fix's own designed-to-fail case**: reproduces the exact eCFR markup pattern
+  that broke `FDCPA-REGF-CALL-FREQUENCY-1006.14b`'s citation check on Andy's
+  round-26 smoke test (`run_20260831T212748Z.json`) -- an inline
+  cross-reference (e.g. "paragraph (b)") wrapped in a single `<a>` tag whose
+  CLOSING tag lands immediately after the reference's own closing paren and
+  before the sentence's next punctuation mark, so blanket tag-to-space
+  stripping inserts a stray space between `)` and `,` that the round-23
+  paren-only fix doesn't touch. Root-caused this round by fetching the real
+  eCFR page directly and reproducing the exact break byte-for-byte against a
+  simulated fragment of its markup before writing the fix. Confirmed by
+  temporarily reverting the fix and re-running `--replay`, which correctly
+  turned this fixture (and the whole suite) red before the fix was restored.
 
 **Metric-value assertions (Andy's addition to freeze item 2).** Beyond
 per-fixture outcomes, `scripts/corroboration/calibration_fixtures/_expected_metrics.json`
 gives known-answer expected values for the aggregate metrics themselves (e.g.
-`full_pipeline_clean_pass_rate.value_percent: 50.0` for this 8-fixture set,
-4/8 CLEAN-PASS) -- so `compute_demo_gate_metrics()`'s own arithmetic is
-regression-tested, not just the pipeline stages feeding it.
+`full_pipeline_clean_pass_rate.value_percent: 55.55555555555556` for this
+9-fixture set, 5/9 CLEAN-PASS, updated round 28 when `CAL-09` was added) -- so
+`compute_demo_gate_metrics()`'s own arithmetic is regression-tested, not just
+the pipeline stages feeding it.
 
 **CI gate (freeze item 3).** `scripts/ci/check_corroboration_calibration.py`
 runs `--replay` and fails loudly on any assertion miss, mirroring

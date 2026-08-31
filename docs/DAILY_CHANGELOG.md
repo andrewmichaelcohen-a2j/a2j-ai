@@ -2,6 +2,61 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-01, round 28 (runner fix: citation-checker whitespace-before-punctuation normalization gap)
+
+**What changed since round 27:** `scripts/corroboration/run_corroboration.py`
+(one additive line in `_normalize_for_match`, plus its explanatory comment),
+one new checked-in calibration fixture (`CAL-09-tag-boundary-before-punctuation.json`),
+and `scripts/corroboration/calibration_fixtures/_expected_metrics.json` (updated
+counts/rates for the now-9-fixture set). `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md`
+S4b updated to document the 9th fixture. No `rules/` content touched --
+runner-only round per the one-variable rule (Task A's content fix shipped
+separately as round 27).
+
+**Root cause, confirmed against the live eCFR page.** Andy's 3-node smoke test
+flagged `FDCPA-REGF-CALL-FREQUENCY-1006.14b` on its `12 C.F.R. § 1006.14(b)(4)`
+citation (`longest_matching_prefix_chars=34`, breaking exactly at "paragraph
+(b),"). Unlike round 27's node, this `quoted_text` field IS genuinely verbatim
+-- confirmed by fetching the real eCFR § 1006.14 page directly this round and
+comparing character-by-character. So this was investigated as a
+diagnostic/checker gap rather than a content problem, per Andy's "investigate
+and fix all identified issues" instruction (each flag triaged to its real
+category with evidence, per standing discipline, rather than assuming the same
+cause as round 27's node).
+
+The real markup: eCFR wraps the cross-reference "paragraph (b)" in a single
+`<a>` tag whose closing `</a>` lands immediately after the reference's own
+closing paren and before the sentence's next punctuation mark ("...this
+`<a href="...">paragraph (b)</a>`, particular debt means..."). `_strip_html`'s
+blanket tag-to-space substitution turns `</a>,` into ` ,`, inserting a stray
+space between `)` and `,` that round 23's paren-only whitespace fix (which
+only collapses whitespace immediately *inside* a paren pair) doesn't touch --
+a different specific pattern than round 23's nested-span case, though the same
+underlying tag-to-space root cause.
+
+**Verified empirically before shipping, not just asserted:** reproduced the
+exact live-run break (`prefix_len=34`) against a hand-built fragment of the
+real eCFR markup using the OLD `_normalize_for_match`, confirmed the fix
+resolves it (full 120/120 match) with the NEW version, then proved the new
+`CAL-09` calibration fixture actually catches the regression by temporarily
+reverting the fix and re-running `--replay` (correctly turned red, then green
+again after restoring) -- same discipline as round 26's `CAL-06` proof.
+
+**Fix.** One additive line in `_normalize_for_match`, checked after the
+existing paren-collapse lines (which remain untouched): collapse whitespace
+immediately before common sentence punctuation (comma/period/semicolon/colon).
+Same one-directional, additive-only reasoning as round 23 -- no normal legal
+prose (and no `quoted_text` field in this corpus) ever has a space before a
+comma/period/semicolon/colon, so this only ever helps a correct match, never
+hides a real mismatch.
+
+*Verification:* all 9 calibration fixtures + all metric assertions PASS via
+`--replay`; full CI suite (`validate_debt_schema.py`, `check_frozen_artifacts.py`,
+`check_corroboration_calibration.py`) PASS; patch verified via fresh-clone
+`git am --3way` (chained after round 27) before delivery. Per the freeze's own
+CI gate rule, this runner change ships only because calibration + replay
+passed first.
+
 ## 2026-08-31, round 27 (content-only fix: FDCPA-VALIDATION-NOTICE-1692g's 12 C.F.R. § 1006.34(c) quoted_text was a paraphrase, not verbatim)
 
 **What changed since round 26:** `rules/debt/federal/fdcpa_validation_notice_v1.json`

@@ -721,6 +721,31 @@ def _normalize_for_match(raw_html_or_text: str, is_html: bool = True) -> str:
     # raw_html_context_at_break showing the nested-span markup verbatim.
     t = re.sub(r"\(\s+", "(", t)
     t = re.sub(r"\s+\)", ")", t)
+    # Fixed 2026-08-31 (round 28): collapse whitespace immediately BEFORE
+    # common sentence punctuation (comma/period/semicolon/colon). Root-caused
+    # this round via FDCPA-REGF-CALL-FREQUENCY-1006.14b's 12 C.F.R.
+    # 1006.14(b)(4) break (run_20260831T212748Z.json,
+    # longest_matching_prefix_chars=34, breaking exactly at "paragraph (b),").
+    # The round-23 fix above handles whitespace INSIDE parens (page-side "(
+    # 1 )") but not this distinct pattern: eCFR wraps an inline
+    # cross-reference like "paragraph (b)" in a single <a> tag whose CLOSING
+    # tag lands immediately after the reference's own closing paren and
+    # before the sentence's next punctuation mark -- e.g. raw markup
+    # "...this <a href="...">paragraph (b)</a>, particular debt means...".
+    # _strip_html's blanket tag-to-space substitution turns "</a>," into
+    # " ,", inserting a stray space between ")" and "," that the round-23
+    # fix doesn't touch (it only fires immediately inside a paren pair, not
+    # after one). Confirmed directly against the live eCFR page fetched this
+    # round: the actual visible/rendered text is genuinely "paragraph (b),
+    # particular debt means..." with no space before the comma -- this is a
+    # page-side HTML-stripping artifact, not a real difference in the text.
+    # Same one-directional, additive-only reasoning as round 23: no normal
+    # legal prose (and no quoted_text field in this corpus) ever has a space
+    # before a comma/period/semicolon/colon, so this only ever helps a
+    # correct match, never hides a real mismatch. New calibration fixture
+    # (CAL-09) reproduces this exact tag-boundary-before-punctuation pattern
+    # to regression-guard it.
+    t = re.sub(r"\s+([,.;:])", r"\1", t)
     return t
 
 
