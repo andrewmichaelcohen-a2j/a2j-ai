@@ -2,6 +2,90 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-08-31, round 25 (live-run freeze steps 1-2: stage-level attribution, regression hunt, one-variable rule + smoke protocol adopted -- documentation only, no runner or content code changed)
+
+**What changed since round 24:** nothing in `run_corroboration.py` or any `rules/` file.
+This round is pure analysis of `run_20260831T082700Z.json` (already captured, no live
+call made) plus documentation. Consistent with the one-variable rule adopted below.
+
+**Context:** Andy issued a live-run freeze after round 24's 5.6% clean-pass result,
+directing five things in order before any further live run: (1) stage-level
+attribution + regression hunt on run 24, with round 23's citation-normalization change
+checked first as the prime suspect, and the 5.6% topline reconciled against the 18/18
+`all_grounded` per-node data; (2) a calibration + replay harness; (3) a CI gate on it;
+(4) a one-variable rule; (5) a `--nodes 3` smoke protocol. This entry covers (1) and
+adopts (4)/(5) as standing discipline; (2)/(3) are the next, larger piece of work.
+
+**Stage-level attribution, `run_20260831T082700Z` (18 nodes):**
+
+| Stage | Pass rate | Detail |
+|---|---|---|
+| Stage A (semantic agreement AND all_grounded) | 18/18 = 100.0% | zero cross-model legal conflicts |
+| Citation-check (`all_verified: true`) | 6/18 = 33.3% | dominant driver of the low topline |
+| Stage B adversarial (parsed, no truncation/empty) | 16/18 = 88.9% | up from ~9/18 two rounds ago |
+| Reported CLEAN-PASS (`grounded_agreement_rate`) | 1/18 = 5.6% | full-pipeline AND of all three stages |
+
+**Regression hunt: round 23's `_normalize_for_match` paren-collapse change is
+exonerated by a matched before/after comparison, not just code review.** Of the 14
+nodes whose `derived_from` content did not change in round 23, citation `verified`
+flipped True-to-False zero times between the pre-round-23 run (`run_20260830T181129Z`)
+and the post-round-23 run (`run_20260831T082700Z`); it flipped False-to-True twice
+(`FDCPA-REGF-CALL-FREQUENCY-1006.14b`'s second citation and
+`FDCPA-FALSE-DECEPTIVE-CATALOG-1692e`'s citation -- the fix's intended effect). Every
+other currently-failing citation on those 14 unchanged nodes was already failing
+before round 23 ran -- pre-existing, not caused by it. The 4 nodes round 23 also
+edited content on (`FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b`,
+`FDCPA-UNFAIR-PRACTICES-CATALOG-1692f`, `CA-SOL-WRITTEN-CONTRACT-DEBT`,
+`TX-EXEMPT-PERSONAL-PROPERTY`) show new/edited citations that were simply never
+checked before round 23 -- not regressions either. Structurally this is expected: the
+normalization function is applied identically to both the needle (quoted text) and
+the haystack (fetched page), so a change to it can only make matching more permissive,
+never less. **No Stage A regression was found either** -- both the pre- and
+post-round-23 runs show every node fully grounded and in cross-model agreement; there
+is nothing to root-cause or add as a test case on that front.
+
+**Metric reconciliation: `grounded_agreement_rate` is mislabeled relative to its own
+definition.** `compute_demo_gate_metrics()`'s own `basis` string already discloses
+this honestly (CLEAN-PASS = semantic agreement AND citation verification AND no
+adversarial gap), but the metric's *name* promises a Stage-A-only reading. The 5.6%
+topline is a full-pipeline AND of all three stages, compounding the citation-checker's
+33.3% verify rate and the adversarial stage's near-universal real findings on top of a
+Stage A rate that is actually 100%. Fix: split into a renamed
+`full_pipeline_clean_pass_rate` (same computation, honest name) plus a new,
+genuinely Stage-A-only `stage_a_grounded_agreement_rate`. This ships as part of the
+calibration-harness build (next round), with metric-value test coverage, not as a bare
+patch -- consistent with the freeze's own no-runner-change-without-calibration rule.
+
+**New finding, not previously known: a Stage B parse failure can silently read as
+CLEAN-PASS.** `TX-WAGE-GARNISHMENT-PROHIBITION` shows `status: CLEAN-PASS` in run 24
+despite its Stage B call ending in `_parse_error` (the same node round 24's changelog
+named as one of the two still-truncating even after the 1.5x retry). `clean_pass`'s
+formula treats an empty `gaps_found` list as "no gaps" regardless of *why* the list is
+empty -- a parse failure and a genuinely clean adversarial check are indistinguishable
+to the gate. This is a real bug, distinct from anything fixed in rounds 23-24, and
+becomes a calibration-harness fixture (a Stage B failure must not silently compute as
+clean) rather than a rushed runner patch, per the freeze.
+
+**Adopted as standing discipline this round (freeze items 4 and 5, documentation
+only -- see `docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md` §4):**
+- **One-variable rule.** Pipeline changes and content changes never land in the same
+  round going forward (round 23 mixed both, which is exactly what made this round's
+  regression hunt necessary work rather than a five-minute check). Every future run
+  summary and changelog entry states explicitly what changed since the prior run.
+- **Smoke protocol.** Every future live session starts with `--nodes 3` before the
+  full corpus; Claude gives Andy that two-step instruction rather than a full-run
+  command directly.
+
+**Verification:** no code changed this round; `python3 scripts/ci/validate_debt_schema.py`
+and `python3 scripts/ci/check_frozen_artifacts.py` both re-run for hygiene, both PASS.
+
+**Not done this round, next up:** the calibration + replay harness (freeze item 2/3)
+-- reading the eviction scorer's existing calibration discipline first for parity,
+then building `--replay`, the frozen fixture set (including the two round-23/24 bug
+patterns and the new Stage-B-silent-clean-pass finding above as designed-to-fail
+fixtures), and the metric rename/split with known-answer value assertions. Live-run
+freeze remains in effect until that lands and passes.
+
 ---
 
 ## 2026-08-31, round 24 (ellipsis-matching fix + Stage-B retry bump; scope of remaining work re-assessed)
