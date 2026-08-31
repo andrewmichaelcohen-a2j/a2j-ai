@@ -4,6 +4,77 @@
 
 ---
 
+## 2026-08-31, round 24 (ellipsis-matching fix + Stage-B retry bump; scope of remaining work re-assessed)
+
+**Context:** Re-ran the corpus after round 23's patch: `run_20260831T082700Z` -- 1/18
+clean-pass (5.6%), 17 flagged. Lower than the 27.8% that prompted round 23, at first
+glance a regression from the fixes just delivered. Read all 18 nodes (via structured
+extraction across `semantic_agreement`, `all_grounded`, `citation_check.all_verified`,
+and Stage-B retry/parse-error fields) before concluding anything.
+
+**Finding: round 23's fixes are confirmed active and working, and the underlying
+picture is actually the best this project has seen -- the raw percentage just doesn't
+show it yet.** Every single one of 18 nodes shows `all_grounded: true` and
+`semantic_agreement: true` -- zero actual cross-model legal conflicts anywhere.
+`_stop_reason` fields (round 23's addition) are present throughout, confirming the
+instrumentation landed. The Stage-B retry logic fired correctly on several nodes
+(`"_retried_after": "max_tokens_truncation"`), confirming round 23's retry-on-
+truncation fix is live and doing its job -- only 2 of 18 nodes still show a Stage-B
+parse failure after retry (down from roughly 9 of 18 two rounds ago), and the
+remaining 16 nodes' adversarial checks now return real, fully-parsed, often
+sophisticated findings (e.g. a *TransUnion v. Ramirez* Article III standing gap, an
+e-OSCAR/ACDV workflow mismatch, an identity-theft mandatory-block remedy under
+§ 1681c-2 -- genuinely high-value legal analysis that prior rounds' truncation was
+silently discarding).
+
+**What's actually driving the low percentage now: citation-checker false negatives,
+still.** 13 of 18 nodes have `citation_check.all_verified: false`. Diagnosed with
+`raw_html_context_at_break` evidence (captured on 3 citations this run) that this is
+a DIFFERENT bug than round 23 fixed, not a recurrence: two of the three confirmed
+breaks are the checker choking on our OWN editorial ellipsis ("...", used routinely
+in `quoted_text` fields to elide between two cited clauses) -- the actual page text at
+those points is perfectly clean and contiguous (e.g. CCP § 683.020's "(a) The judgment
+may not be enforced. (b) All enforcement procedures..." reads straight through with no
+gap), but the checker's needle was built from a blind 120-character window of the full
+`quoted_text`, which can include the literal three dots -- something no real page will
+ever contain. This is a structural gap in the checker (it never had any way to verify
+an intentionally-elided quote), not an HTML-markup artifact like round 23's fix.
+
+**Fixed this round:**
+1. **Ellipsis-aware citation matching.** `verify_citation`'s needle is now built from
+   the text before the first "..." in `quoted_text` (still capped at 120 chars) rather
+   than a blind window of the full string. Verified with a unit test reconstructing
+   the exact CCP § 683.020 break this run captured.
+2. **Stage-B retry budget bumped further.** Round 23's 1.5x retry multiplier
+   (3000/4000 -> 6000 tokens) still wasn't enough for the 2 most verbose remaining
+   nodes (`FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b`, `TX-WAGE-GARNISHMENT-PROHIBITION`
+   -- both still showed `_parse_error` even after retry). Bumped to 2.5x (10000
+   tokens) for real headroom on Claude's most detailed 3-scenario responses.
+
+Both fixes verified: syntax check, a targeted unit test, and a `--dry-run` execution.
+
+**Not fixed / not yet understood:** one break this run (`FDCPA-VALIDATION-NOTICE-1692g`'s
+12 C.F.R. § 1006.34 citation) is neither the round-23 paren pattern nor this round's
+ellipsis pattern -- the page uses an em dash where our `quoted_text` uses a colon
+immediately before "(1)". This looks like a genuine punctuation-accuracy issue in that
+one `quoted_text` field (likely from a WebSearch-reconstructed quote rather than an
+exact copy), not a systemic checker bug -- flagged for a content-round fix, not chased
+with more checker code this round.
+
+**Scope note, not yet actioned:** with Stage-B now parsing successfully on 16 of 18
+nodes, this run surfaced real, well-reasoned adversarial findings on nearly every
+flagged node -- a much larger volume of genuine content gaps than any prior round
+(previous rounds' truncation was apparently masking most of this). This is reported to
+Andy as a pacing question rather than drafted immediately: previous rounds handled
+4-7 node edits at a time; this run's real findings span roughly 15 nodes. Deferred to
+Andy's direction on how to sequence that volume of work.
+
+**Verification:** `python3 scripts/ci/validate_debt_schema.py` -- all 9 debt-track
+rules files pass (no rules content changed this round, runner-only). `python3
+scripts/ci/check_frozen_artifacts.py` -- both frozen artifacts untouched, PASS.
+
+---
+
 ## 2026-08-30, round 23 (two pipeline bugs root-caused and fixed; 4 genuine content gaps incorporated)
 
 **Context:** Re-ran the corpus after round 22's patch: `run_20260830T181129Z` -- 5/18

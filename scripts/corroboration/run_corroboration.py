@@ -485,7 +485,10 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
             empty = not parsed.get("_raw")
             truncated = parsed.get("_stop_reason") == "max_tokens" or bool(parsed.get("_parse_error"))
             if empty or truncated:
-                retry_tokens = max_tokens if empty else int(max_tokens * 1.5)
+                # Round 24: 1.5x (round 23) still wasn't enough for the 2 most
+                # verbose nodes on a live run (still _parse_error after retry)
+                # -- bumped to 2.5x for real headroom.
+                retry_tokens = max_tokens if empty else int(max_tokens * 2.5)
                 retry_parsed = _one_call(retry_tokens)
                 retry_parsed["_retried_after"] = "empty_completion" if empty else "max_tokens_truncation"
                 return retry_parsed
@@ -843,9 +846,28 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool, manual_verificati
         try:
             resp = requests.get(url, timeout=20, headers=REQUEST_HEADERS)
             page = _normalize_for_match(resp.text, is_html=True)
+            # Round 24 fix: if quoted_text contains an editorial ellipsis
+            # ("...", used to elide text between two cited clauses -- a
+            # normal, established practice in this corpus, see e.g. round 21's
+            # FDCPA-FALSE-DECEPTIVE-CATALOG-1692e fix), only the text BEFORE
+            # the first ellipsis is guaranteed to be a literal, contiguous
+            # excerpt -- everything after it is deliberately non-contiguous
+            # with the page by design. Confirmed via raw_html_context_at_break
+            # on a live run this round: two citations broke exactly at their
+            # own "..." with the actual page text perfectly clean and
+            # contiguous at that point (e.g. CCP 683.020's "(a) The judgment
+            # may not be enforced. (b) All enforcement procedures..." reads
+            # straight through with no gap on the page -- our own ellipsis was
+            # the only thing that didn't literally appear). Using a blind
+            # 120-char window of the full quoted_text could land past the
+            # ellipsis and require the literal three dots to appear on a real
+            # page, which no real page will ever contain. Text before the
+            # ellipsis is used verbatim (still capped to 120 chars); if there
+            # is no ellipsis this is a no-op.
+            quoted_text_for_match = (quoted_text or "").split("...", 1)[0]
             # Use a shortened window of the quoted text (first ~120 chars) to
             # tolerate minor HTML-entity/whitespace differences in the fetched page.
-            needle = _normalize_for_match(quoted_text, is_html=False)[:120]
+            needle = _normalize_for_match(quoted_text_for_match, is_html=False)[:120]
             verified = needle in page if needle else False
             prefix_len = _longest_matching_prefix_len(needle, page) if needle else 0
             diagnostics = {
