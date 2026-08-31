@@ -2,6 +2,61 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-08-31, round 27 (content-only fix: FDCPA-VALIDATION-NOTICE-1692g's 12 C.F.R. § 1006.34(c) quoted_text was a paraphrase, not verbatim)
+
+**What changed since round 26:** `rules/debt/federal/fdcpa_validation_notice_v1.json`
+only — one `quoted_text` field and one `drafting_revisions` entry. No changes
+to `scripts/corroboration/run_corroboration.py` or any other runner/CI file.
+Content-only round per the one-variable rule.
+
+**Investigation.** Andy's 3-node live smoke test of the round-26 runner
+(`run_20260831T212748Z.json`, `--nodes FDCPA-VALIDATION-NOTICE-1692g,
+FDCPA-REGF-CALL-FREQUENCY-1006.14b,CA-SOL-WRITTEN-CONTRACT-DEBT`) came back
+0/3 full-pipeline clean-pass, all 3 `FLAGGED`. Investigated each flag to its
+real category per standing discipline rather than assuming a single cause.
+`CA-SOL-WRITTEN-CONTRACT-DEBT` flagged purely on 3 genuine Stage-B adversarial
+gaps (citation_check was 5/5 verified) -- a real content-completeness
+question, not a checker issue, out of scope for this round and not yet
+actioned. The other two nodes both flagged on citation-check breaks, which
+this round and the next (round 28) investigate and fix separately, per
+Andy's "fix each 1 at a time... investigate and fix all identified issues"
+instruction, each root-caused against the real live eCFR page rather than
+guessed.
+
+**This node's break, root-caused.** `12 C.F.R. § 1006.34(c)`'s
+`longest_matching_prefix_chars` was 120 (the full matched window) -- meaning
+the citation checker's 120-char comparison window never even reached the
+actual problem. Fetched the real eCFR § 1006.34 page directly this round and
+compared it character-by-character against our `quoted_text`: the prior text
+was not a verbatim excerpt at all -- it was a colon-joined,
+semicolon-separated summary paraphrasing what the regulation actually states
+as four separately numbered, period-terminated subsections, each with its own
+heading (the real text reads "...validation information. (1) Debt collector
+communication disclosure. The statement required by § 1006.18(e). (2)
+Information about the debt. Except as provided in paragraph (c)(5) of this
+section: ..." -- not the semicolon-summary previously quoted). This is a
+citation-integrity issue, not a legal-content error -- the node's title,
+`logic`, `completeness_checklist`, and `consequences_and_next_steps` were all
+already correct and are unchanged.
+
+**Fix.** Replaced the paraphrase with a genuinely verbatim excerpt (the
+lead-in sentence plus subsection (c)(1) with its real heading and
+cross-reference), confirmed against the live-fetched page. Logged as a new
+`drafting_revisions` entry per the standing DRAFT-tier editing discipline
+(tier promotion still requires Andy/counsel sign-off). *Verification:* CI
+suite (`validate_debt_schema.py`, `check_frozen_artifacts.py`,
+`check_corroboration_calibration.py`) all pass; diff is 8 lines, confirmed
+via `git diff --stat`; patch verified via fresh-clone `git am --3way` before
+delivery.
+
+**Round 28 (separate, not in this patch):** `FDCPA-REGF-CALL-FREQUENCY-1006.14b`'s
+`12 C.F.R. § 1006.14(b)(4)` break is a different root cause -- the
+`quoted_text` there IS genuinely verbatim (confirmed by direct comparison
+against the live-fetched § 1006.14 page); the break is a diagnostic/checker
+gap in `_normalize_for_match`'s HTML-to-text stripping, not a content
+problem. Investigated and fixed as its own runner-only round, per the
+one-variable rule.
+
 ## 2026-08-31, round 26 (calibration + replay harness built and wired into CI; Stage-B-silent-clean-pass bug fixed -- freeze items 2/3)
 
 **What changed since round 25:** `scripts/corroboration/run_corroboration.py` (a
