@@ -2,6 +2,63 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-01, round 33 (content-only: fix 3 genuine gaps from Andy's second live smoke run, run_20260901T181628Z)
+
+**What changed since round 32:** content-only, no runner/pipeline change. Andy ran the smoke step of the
+smoke-then-full protocol a second time, now against 3 nodes (the coverage-threshold gate node was
+correctly queued this time). All 3 nodes FLAGGED and Stage A agreement dropped to 66.7% -- diagnosed by
+reading the run JSON directly rather than reacting to the headline number, per standing discipline.
+
+**Root cause 1 -- title-phrasing bug on `FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6` (drove the Stage A drop,
+NOT a real legal disagreement):** the node's title used a case-caption-style construction ("Shared Band-1
+gate node: is this entity a 'debt collector'..."). Comparing all 3 models' raw Stage A derivation text
+showed 2 of 3 (gpt-5.5, gemini-2.5-pro) misread the title's leading phrase as if it named an actual party
+needing classification from missing facts, producing `grounded: false` and a mechanically-skipped judge.
+This is a SECOND confirmed instance of the same bug category documented for
+`FDCPA-VALIDATION-NOTICE-1692g` in round 20/21. Fix: reworded the title to plain topical/definitional
+phrasing with no colon-based "X: is this Y a Z?" construction: "FDCPA/Regulation F coverage threshold --
+statutory definitions of 'debt collector,' 'debt,' and 'creditor' under 15 U.S.C. 1692a".
+
+**Root cause 2 -- `FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6`'s Henson v. Santander citation newly blocked:**
+`supreme.justia.com` now returns HTTP 403 (a new addition to the known-blocked-sites list alongside
+mass.gov, courts.ca.gov, and AZ leg.gov). Re-pinned the URL to Cornell LII
+(`law.cornell.edu/supremecourt/text/16-349`), an equally authoritative source-tier-A mirror. While
+re-verifying the quote against the fresh fetch, caught and fixed an independent, pre-existing dropped-words
+error in the node's `quoted_text` ("but also acts as a third party collection agent" was missing "because
+it regularly" before "acts").
+
+**Content additions to `FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6`:** added `derived_from` entries for
+15 U.S.C. § 1692a(5) ("debt" definition), § 1692a(3) ("consumer" definition), and Obduskey v. McCarthy &
+Holthus LLP, 587 U.S. ___ (2019) (nonjudicial foreclosure is outside "debt collector" except for the
+narrow §1692f(6) purpose, and does not grant blanket immunity) -- all verified via live fetch of
+uscode.house.gov / Cornell LII. Added 3 new logic notes and 3 completeness_checklist items covering what
+counts as "the debt" being collected, the security-interest-enforcement carve-out's narrow scope, and the
+F(iii) actual-obtained-interest clarification.
+
+**Fix 3 -- `FDCPA-REGF-CALL-FREQUENCY-1006.14b`'s exclusion-scope bug:** the node's `exclusions_from_count`
+previously implied the (b)(3) exclusions (consent, not-connected, third-party) applied only to the raw
+>7-call count. Verified via live eCFR fetch of 12 C.F.R. § 1006.14(b)(3): the chapeau excludes these calls
+from "the telephone call frequencies described in paragraph (b)(2)(i)," and (b)(2)(i) itself defines BOTH
+the raw-count test (A) and the post-conversation 7-day cooldown test (B) -- so the exclusions apply to
+both. Fixed `determination` and `exclusions_from_count` accordingly. Also added a
+`third_party_communication_note` (verified via 15 U.S.C. §§ 1692c(b), 1692b): clearing this node's 7-in-7
+count does NOT clear the separate, generally-applicable prohibition on communicating with third parties
+about the debt at all (narrow location-information exception: at most one call absent request, and the
+collector may not even state a debt is owed). Added 2 completeness_checklist items.
+
+**Explicitly deferred, not encoded (per standing discipline against encoding unverified claims):** the
+"not connected" exclusion's precise scope (whether an unanswered/voicemail call counts as "connected," and
+therefore still counts toward the limits) -- a live fetch of CFPB's Official Interpretation page
+(consumerfinance.gov/rules-policy/regulations/1006/interp-14/) returned no substantive matching content
+this session (likely JS-rendered commentary not captured by the fetch tool), so Stage B's specific claim
+about voicemail/unanswered calls is flagged as UNVERIFIED in the node rather than asserted as settled.
+Also still deferred from round 32: California's Rosenthal Act state-overlay addition, blocked on repeated
+`leginfo.legislature.ca.gov` timeouts.
+
+**Verification:** `validate_debt_schema.py`, `check_frozen_artifacts.py`, and
+`check_corroboration_calibration.py` all PASS. Patch built and independently verified via `git am --3way`
+against a fresh clone of real origin, chained through rounds 27-33, before delivery.
+
 ## 2026-09-01, round 32 (content-only: fix 2 genuine gaps found in Andy's first live smoke run since rounds 27-31)
 
 **What changed since round 31:** content-only, no runner/pipeline change. Andy ran the smoke-then-full
