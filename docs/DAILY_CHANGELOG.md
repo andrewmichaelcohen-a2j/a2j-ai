@@ -2,6 +2,71 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-01, round 34 (content-only: fix 3 genuine gaps from Andy's live re-run confirming round 33, run_20260901T184005Z)
+
+**What changed since round 33:** content-only, no runner/pipeline change. Andy re-ran the smoke step live
+immediately after applying round 33, against the same 3 nodes. Good confirmation first: Stage A
+grounded-agreement reached 100% this run (up from 66.7% two runs ago) -- the round-33 title-phrasing fix on
+`FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6` is fully working, and all 3 models now derive from the corrected
+content cleanly. All 6 of that node's citations verified too. All 3 nodes were still FLAGGED, but for
+different, more granular reasons than before -- diagnosed by reading the run JSON directly.
+
+**`CA-SOL-WRITTEN-CONTRACT-DEBT` -- 3 genuine adversarial findings, all read from a fully-parsed Stage B
+response:**
+
+1. **SCRA military-service tolling not screened.** 50 U.S.C. § 3936(a) excludes a servicemember's entire
+period of active duty from any limitations period -- a full tolling that can add years, not encoded
+anywhere in this node despite California's large military population. Added as a new threshold
+checklist question and `scra_military_tolling_note`, verified via live fetch of the official U.S. Code.
+
+2. **CCP § 361 choice-of-law framing bug.** The existing `choice_of_law_note` and checklist item wrongly
+required the contract to designate the other state's law before the borrowing statute could apply. Re-read
+against this node's own already-verified § 361 `quoted_text` (no fresh fetch needed -- leginfo.legislature.ca.gov
+continues to return unusable content to this session's fetch tool, a known limitation): the statute requires
+only that the claim arose in another state and is already time-barred there. No choice-of-law clause is
+required. Fixed both the note and the checklist item.
+
+3. **Accrual-date checklist framing bug.** The checklist defaulted to "date of last payment" as the accrual
+date, contradicting the `accrual` note's own hedge that this is an unresolved fact question. On a revolving
+account, breach/default can postdate the last payment by weeks or months. Reworded the checklist item and
+strengthened the `accrual` note to stop implying last-payment date is a reliable proxy.
+
+**`FDCPA-REGF-CALL-FREQUENCY-1006.14b` -- 2 of 3 genuine findings fixed, read from a truncated (unparsed)
+Stage B response per this project's standing practice of not discarding legible partial text:**
+
+1. **Cease-communication and § 1692c(a) restrictions not screened.** Staying under the 7-in-7 count says
+nothing about whether individual calls violate 15 U.S.C. § 1692c(a) (inconvenient time/place -- presumptively
+before 8am/after 9pm; known-prohibited workplace; known attorney representation) or, most sharply, § 1692c(c)
+(a written cease-communication notice, after which nearly all further contact is independently unlawful
+regardless of count). Added both citations (verified via live U.S. Code fetch), a new
+`cease_communication_and_representation_note`, and 2 checklist items.
+
+2. **Business/commercial debt gap -- already addressed, not duplicated.** The third Stage B finding (debt-type
+not screened) is already covered by round 33's additions to the shared `FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6`
+gate node (the new 1692a(5) checklist item there). Clarified this node's `fdcpa_coverage_threshold_note` to
+point explicitly at that screening rather than re-deriving it inline.
+
+**Diagnosed but explicitly NOT fixed this round (flagged for a future runner-only round, per the
+one-variable rule -- content and runner changes never land together):**
+
+- `FDCPA-REGF-CALL-FREQUENCY-1006.14b`'s newly-added 15 U.S.C. § 1692c(b) citation (added in round 33)
+failed live citation-check this run with `word_overlap_ratio: 1.0` but `longest_matching_prefix_chars: 32`,
+breaking right after "except as provided in section 1692b of". The raw HTML diagnostics show the break lands
+inside a `<span onclick="openDocument('1692b', ...)">` cross-reference link wrapping the "1692b" citation
+mid-sentence -- the same family of markup-normalization bug as the round-23 nested-span and round-28
+tag-boundary fixes, but on a linked inline cross-reference rather than a paragraph marker. The quoted text
+itself is correct (confirmed by the 1.0 word-overlap); this is a checker false negative, not a content bug.
+Queued as a runner-fix candidate.
+- `FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6`'s Stage B call returned an empty completion (`_stop_reason:
+max_tokens` on the first call, `empty_completion` on retry) with no gaps captured. Possible cause: this
+node's content has grown substantially over rounds 31/33 (new derived_from entries, logic notes), which may
+be pushing the Stage B prompt near its output budget. Worth investigating node-size vs. Stage-B-token-budget
+as a runner concern in a future round, separate from any content change.
+
+**Verification:** `validate_debt_schema.py`, `check_frozen_artifacts.py`, and
+`check_corroboration_calibration.py` all PASS. Patch built and independently verified via `git am --3way`
+against a fresh clone of real origin, chained through rounds 27-34, before delivery.
+
 ## 2026-09-01, round 33 (content-only: fix 3 genuine gaps from Andy's second live smoke run, run_20260901T181628Z)
 
 **What changed since round 32:** content-only, no runner/pipeline change. Andy ran the smoke step of the
