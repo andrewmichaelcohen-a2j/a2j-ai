@@ -1,0 +1,130 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "schema_version": "debt-v1",
+  "scope": {
+    "level": "federal",
+    "jurisdiction": {
+      "state": null,
+      "state_name": null
+    }
+  },
+  "provenance": {
+    "generated": {
+      "date": "2026-09-01",
+      "model": "claude-sonnet-5",
+      "method": "single-model-grounded-derivation-v1"
+    },
+    "statutory_sources": [
+      {
+        "cite": "15 U.S.C. § 1692a(6)",
+        "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+        "retrieved": true,
+        "retrieved_date": "2026-09-01"
+      },
+      {
+        "cite": "15 U.S.C. § 1692a(4)",
+        "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+        "retrieved": true,
+        "retrieved_date": "2026-09-01"
+      },
+      {
+        "cite": "Henson v. Santander Consumer USA Inc., 582 U.S. ___ (2017)",
+        "url": "https://supreme.justia.com/cases/federal/us/582/16-349/",
+        "retrieved": true,
+        "retrieved_date": "2026-09-01"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "node_id": "FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6",
+      "title": "Shared Band-1 gate node: is this entity a 'debt collector' subject to the FDCPA and Regulation F at all?",
+      "band": 1,
+      "tier": "DRAFT",
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "15 U.S.C. § 1692a(6)",
+            "quoted_text": "The term \"debt collector\" means any person who uses any instrumentality of interstate commerce or the mails in any business the principal purpose of which is the collection of any debts, or who regularly collects or attempts to collect, directly or indirectly, debts owed or due or asserted to be owed or due another. Notwithstanding the exclusion provided by clause (F) of the last sentence of this paragraph, the term includes any creditor who, in the process of collecting his own debts, uses any name other than his own which would indicate that a third person is collecting or attempting to collect such debts. For the purpose of section 1692f(6) of this title, such term also includes any person who uses any instrumentality of interstate commerce or the mails in any business the principal purpose of which is the enforcement of security interests. The term does not include-- (A) any officer or employee of a creditor while, in the name of the creditor, collecting debts for such creditor; (B) any person while acting as a debt collector for another person, both of whom are related by common ownership or affiliated by corporate control, if the person acting as a debt collector does so only for persons to whom it is so related or affiliated and if the principal business of such person is not the collection of debts; (C) any officer or employee of the United States or any State to the extent that collecting or attempting to collect any debt is in the performance of his official duties; (D) any person while serving or attempting to serve legal process on any other person in connection with the judicial enforcement of any debt; (E) any nonprofit organization which, at the request of consumers, performs bona fide consumer credit counseling and assists consumers in the liquidation of their debts by receiving payments from such consumers and distributing such amounts to creditors; and (F) any person collecting or attempting to collect any debt owed or due or asserted to be owed or due another to the extent such activity (i) is incidental to a bona fide fiduciary obligation or a bona fide escrow arrangement; (ii) concerns a debt which was originated by such person; (iii) concerns a debt which was not in default at the time it was obtained by such person; or (iv) concerns a debt obtained by such person as a secured party in a commercial credit transaction involving the creditor.",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Confirmed via direct fetch of the official U.S. Code (Office of the Law Revision Counsel, uscode.house.gov), 2026-09-01."
+          },
+          {
+            "cite": "15 U.S.C. § 1692a(4)",
+            "quoted_text": "The term \"creditor\" means any person who offers or extends credit creating a debt or to whom a debt is owed, but such term does not include any person to the extent that he receives an assignment or transfer of a debt in default solely for the purpose of facilitating collection of such debt for another.",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Companion definition -- 'creditor' and 'debt collector' are largely mutually exclusive categories under the Act (see Henson's discussion of this point), so confirming an entity IS a creditor is independently useful evidence it is NOT a debt collector. Confirmed via direct fetch of the official U.S. Code, 2026-09-01."
+          },
+          {
+            "cite": "Henson v. Santander Consumer USA Inc., 582 U.S. ___ (2017)",
+            "quoted_text": "A company may collect debts that it purchased for its own account, like Santander did here, without triggering the statutory definition in dispute. By defining debt collectors to include those who regularly seek to collect debts 'owed . . . another,' the statute's plain language seems to focus our attention on third party collection agents working for a debt owner -- not on a debt owner seeking to collect debts for itself. ... [W]e pause to note two related questions we do not attempt to answer today. First, petitioners suggest that Santander can qualify as a debt collector not only because it regularly seeks to collect for its own account debts that it has purchased, but also because it regularly acts as a third party collection agent for debts owed to others. ... Second, the parties briefly allude to another statutory definition of the term 'debt collector' -- one that encompasses those engaged 'in any business the principal purpose of which is the collection of any debts.' §1692a(6). But the parties haven't much litigated that alternative definition and in granting certiorari we didn't agree to address it either.",
+            "url": "https://supreme.justia.com/cases/federal/us/582/16-349/",
+            "source_tier": "A",
+            "tier_rationale": "Unanimous U.S. Supreme Court opinion (Gorsuch, J.), confirmed via direct fetch of the official published opinion text (mirrored at supreme.justia.com; text matches the Court's own PDF at supremecourt.gov). This is the controlling authority on whether purchasing a defaulted debt and collecting it for one's own account triggers FDCPA coverage -- and, just as importantly, on what it did NOT decide (the separate 'principal purpose' test), which this node's logic depends on to avoid overclaiming the holding."
+          }
+        ],
+        "citation_verified": true
+      },
+      "logic": {
+        "note_re_purpose": "This is a shared BAND-1 GATE node -- every other FDCPA/Regulation F node in this corpus (the 7-in-7 call-frequency rule, the validation-notice requirement, the false/deceptive-practices catalog, the unfair-practices catalog, and any future FDCPA node) presupposes that the entity being complained about is a 'debt collector' covered by the Act. That is NOT always true, and getting it wrong in either direction produces a materially wrong answer: telling a consumer their original creditor's own in-house collectors are FDCPA-covered when they are not gives false comfort; telling a consumer a debt buyer is categorically NOT covered (a common oversimplification of the Henson case, see below) can wrongly write off a real claim. This node exists so every other FDCPA node can gate on ONE threshold analysis instead of re-deriving it.",
+        "two_independent_tests": "15 U.S.C. 1692a(6) defines 'debt collector' with TWO independent tests -- meeting EITHER one is enough to trigger coverage (subject to the exclusions below): (1) the PRINCIPAL PURPOSE test -- any business whose principal purpose is the collection of debts, regardless of whether it collects debts it owns or debts owed to others; or (2) the REGULARLY-COLLECTS-FOR-ANOTHER test -- any person who regularly collects or attempts to collect debts owed or due to someone ELSE (not to themselves).",
+        "own-name_creditor_exclusion": "Exclusion (A): an officer or employee of a creditor, collecting debts for that creditor IN THE CREDITOR'S OWN NAME, is not a debt collector. This is the most common real-world exclusion -- it covers a credit card issuer's or original lender's own in-house collections department. IMPORTANT carve-BACK-IN, from the statute's own second sentence: if a creditor collecting its own debt uses ANY NAME OTHER THAN ITS OWN that would indicate a third person is collecting the debt (e.g. operating an in-house department under a name that sounds like an independent agency), the creditor becomes a covered debt collector despite exclusion (A)/(F) -- Congress anticipated and closed this evasion specifically.",
+        "current_vs_defaulted_servicer_exclusion": "Exclusion (F)(iii): a person collecting a debt owed to another is NOT a covered debt collector to the extent the debt was NOT IN DEFAULT at the time that person obtained it. This is the key distinction for loan servicers: a servicer that acquired/began servicing a loan while it was current (not yet in default) is excluded, even if the loan later defaults on that servicer's watch. A servicer or assignee that acquired the debt AFTER it was already in default does NOT get this exclusion and is a covered debt collector (assuming it is collecting for 'another' -- i.e. it does not itself own the debt outright; if it purchased the debt outright after default, see the debt-buyer note below instead).",
+        "debt_buyer_note_henson": "A company that PURCHASES a defaulted debt and then collects it for its OWN account (not on behalf of anyone else) does NOT trigger FDCPA coverage under the 'regularly collects ... debts owed ... another' test -- Henson v. Santander Consumer USA Inc., 582 U.S. ___ (2017) (unanimous). This is a narrow, frequently overstated holding: Henson decided ONLY that prong of the definition. The Supreme Court EXPRESSLY declined to decide whether such a debt buyer could still be covered under the SEPARATE 'principal purpose' test (1692a(6)'s first clause) -- and post-Henson lower-court decisions have held that a business whose principal purpose IS debt collection remains a covered debt collector under that alternative test even when collecting debts it purchased and owns outright. Practical upshot: do NOT tell a consumer 'debt buyers are never covered by the FDCPA' -- that overclaims a narrow holding. The correct question for a debt buyer is whether debt collection is the PRINCIPAL PURPOSE of that buyer's business (most dedicated debt-buying/collection companies would likely satisfy this), not simply whether it purchased the debt.",
+        "other_exclusions_B_through_E": "(B) a person acting as a debt collector only for commonly-owned/affiliated entities, if collecting debts is not that person's principal business; (C) a government officer/employee collecting in the performance of official duties; (D) a person serving or attempting to serve legal process in connection with judicial enforcement of a debt (process servers); (E) a bona fide nonprofit consumer-credit-counseling organization that receives and distributes consumer payments to creditors at the consumer's request.",
+        "other_F_exclusions": "(F)(i) activity incidental to a bona fide fiduciary obligation or bona fide escrow arrangement; (F)(ii) a debt the person ORIGINATED itself (as opposed to acquiring from someone else); (F)(iv) a debt obtained as a secured party in a commercial credit transaction involving the creditor.",
+        "determination": "COVERED as a 'debt collector' if EITHER (a) the person's business's principal purpose is debt collection (regardless of whose debts, including debts it owns after purchase), OR (b) the person regularly collects debts owed to ANOTHER (not to itself) -- UNLESS an exclusion (A)-(F) applies. In practice, check in this order for a typical consumer fact pattern: (1) is this the original creditor calling/writing in its own actual name? -> excluded under (A), UNLESS it used a name suggesting a third party. (2) Is this a servicer/assignee that acquired the loan while current (not yet in default)? -> excluded under (F)(iii). (3) Is this an entity that bought the debt outright (owns it) and is collecting only for itself? -> not covered under the 'owed another' prong per Henson, BUT may still be covered under the principal-purpose prong -- do not assume 'not covered' without checking whether debt collection is that entity's principal business. (4) Otherwise (a third-party agency collecting on behalf of a creditor it doesn't own the debt from, a debt buyer whose principal business is debt collection, etc.) -> covered, apply the FDCPA/Reg F nodes in this corpus.",
+        "state_law_reminder": "This node addresses FEDERAL coverage only. Many states have their own debt-collection statutes ('mini-FDCPAs') that reach entities the federal Act excludes -- for example, Massachusetts's 940 CMR 7.00 (see FDCPA-REGF-CALL-FREQUENCY-1006.14b's state-overlay note) defines 'creditor' broadly and regulates original creditors directly, not just federally-defined 'debt collectors.' An entity excluded here may still be regulated under state law -- always check the relevant state-layer nodes in this corpus."
+      },
+      "completeness_checklist": [
+        {
+          "fact": "Is the entity communicating with the consumer the ORIGINAL creditor (or its own officer/employee), acting in its own actual name?",
+          "dispositive": true
+        },
+        {
+          "fact": "If it is the original creditor (or its employee) using a different name -- does that name suggest a third party is collecting the debt? (Would defeat the own-name exclusion.)",
+          "dispositive": true
+        },
+        {
+          "fact": "If this is a servicer or assignee collecting on behalf of someone else: did it acquire/begin servicing the debt BEFORE or AFTER the debt went into default?",
+          "dispositive": true
+        },
+        {
+          "fact": "If this entity purchased the debt and owns it outright: is debt collection the PRINCIPAL PURPOSE of that entity's business? (Determines coverage under the alternative test Henson did not foreclose, even though the 'owed another' test does not apply to a debt it owns.)",
+          "dispositive": true
+        },
+        {
+          "fact": "Does any of the narrower exclusions (B)-(E) apply -- common-ownership affiliate, government official, process server, or nonprofit credit counselor?",
+          "dispositive": true
+        }
+      ],
+      "consequences_and_next_steps": [
+        {
+          "action": "If the entity is NOT a covered 'debt collector' under this analysis, the FDCPA/Regulation F nodes in this corpus (call-frequency, validation-notice, false/deceptive-practices catalog, unfair-practices catalog) do not apply to it. Check the relevant state-layer node(s) for a state debt-collection or UDAP statute that may reach original creditors or other excluded entities directly.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        },
+        {
+          "action": "If the entity purchased the debt and is collecting only for its own account, do not conclude 'not covered' without checking whether debt collection is the principal purpose of that entity's business (Henson left this test open) -- flag as needing further factual development (the entity's business model) if unclear.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        },
+        {
+          "action": "If the entity IS a covered debt collector, proceed to apply the specific FDCPA/Reg F nodes in this corpus to the conduct at issue.",
+          "deadline_type": "no_deadline",
+          "deadline_detail": null
+        }
+      ],
+      "provenance": {
+        "ratification": {
+          "certified_in_release": null,
+          "certifying_attorney": null,
+          "certification_date": null
+        },
+        "disagreement_flags": []
+      }
+    }
+  ]
+}

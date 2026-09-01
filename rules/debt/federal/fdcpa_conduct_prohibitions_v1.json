@@ -84,7 +84,7 @@
             "quoted_text": "The term \"debt collector\" means any person who uses any instrumentality of interstate commerce or the mails in any business the principal purpose of which is the collection of any debts, or who regularly collects or attempts to collect, directly or indirectly, debts owed or due or asserted to be owed or due another. ... The term does not include-- (A) any officer or employee of a creditor while, in the name of the creditor, collecting debts for such creditor; ... (F) any person collecting or attempting to collect any debt owed or due or asserted to be owed or due another to the extent such activity (i) is incidental to a bona fide fiduciary obligation or a bona fide escrow arrangement; (ii) concerns a debt which was originated by such person; (iii) concerns a debt which was not in default at the time it was obtained by such person; or (iv) concerns a debt obtained by such person as a secured party in a commercial credit transaction involving the creditor.",
             "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
             "source_tier": "A",
-            "tier_rationale": "Added 2026-09-01 (round 30) to encode the FDCPA coverage-threshold gap the corroboration pipeline's adversarial check found missing (run_20260901T100043Z.json): this node's 7-in-7 call-frequency rule is a Regulation F rule and Reg F only reaches 'debt collectors' as defined here -- it does not apply to an original creditor collecting its own debt in its own name (exclusion (A)), or to a servicer/assignee collecting a debt that was NOT in default when that person obtained it (exclusion (F)(iii)). Confirmed via direct fetch of the official U.S. Code (uscode.house.gov). This is a shared, cross-cutting threshold question for every node in this file (and FDCPA-VALIDATION-NOTICE-1692g) -- HORIZON note: a dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-DEFINITION node should eventually serve all affected nodes rather than repeating this analysis in each; flagged here rather than deferred silently."
+            "tier_rationale": "Added 2026-09-01 (round 30) to encode the FDCPA coverage-threshold gap the corroboration pipeline's adversarial check found missing (run_20260901T100043Z.json): this node's 7-in-7 call-frequency rule is a Regulation F rule and Reg F only reaches 'debt collectors' as defined here -- it does not apply to an original creditor collecting its own debt in its own name (exclusion (A)), or to a servicer/assignee collecting a debt that was NOT in default when that person obtained it (exclusion (F)(iii)). Confirmed via direct fetch of the official U.S. Code (uscode.house.gov). This is a shared, cross-cutting threshold question for every node in this file (and FDCPA-VALIDATION-NOTICE-1692g) -- HORIZON note: a dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node should eventually serve all affected nodes rather than repeating this analysis in each; flagged here rather than deferred silently."
           },
           {
             "cite": "940 CMR 7.04(1)(f)",
@@ -107,7 +107,7 @@
           "calls to certain third parties under §1006.6(d)(1)(ii)-(vi), not encoded in this node"
         ],
         "determination": "presumptively_unlawful under FEDERAL law if call_count_in_trailing_7_days > 7 for the same debt AND same recipient, OR a call is placed within 7 days after a conversation about that same debt with that same recipient -- SUBJECT TO: (a) the FDCPA coverage threshold above (if the caller is not a covered 'debt collector', this node's federal presumption does not apply at all); and (b) any stricter state-law limit (see state_law_may_be_stricter_note) that may render the same conduct unlawful even where the federal 7-in-7 presumption is not triggered.",
-        "fdcpa_coverage_threshold_note": "This node's 7-in-7 rule is a Regulation F rule, and Reg F only applies to 'debt collectors' as defined at 15 U.S.C. 1692a(6). It does NOT apply to an original creditor collecting its own debt in its own name, or to a loan servicer that acquired the debt while it was NOT YET in default (15 U.S.C. 1692a(6)(A), (F)(iii)). A consumer being called 10 times in 5 days by her own credit card issuer's in-house collections department, or by a mortgage servicer that acquired a then-current loan, is NOT protected by this node's presumption at all -- this is a THRESHOLD question this node's checklist did not previously ask, and it is easy to get wrong because the calling behavior can look identical regardless of whether the caller is covered.",
+        "fdcpa_coverage_threshold_note": "This node's 7-in-7 rule is a Regulation F rule and only applies to covered 'debt collectors' under 15 U.S.C. 1692a(6) -- it does NOT apply to an original creditor collecting its own debt in its own name, or a servicer that acquired the debt while it was not yet in default. See the dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node for the full two-test coverage analysis (principal-purpose test vs. regularly-collects-for-another test), the (A)-(F) exclusions, and the Henson v. Santander debt-buyer nuance -- do not re-derive coverage inline here.",
         "state_law_may_be_stricter_note": "This node encodes only the FEDERAL Reg F 7-in-7 safe harbor. Several states impose stricter call-frequency or communication-frequency limits under their own debt collection statutes/regulations -- e.g. Massachusetts (940 CMR 7.04(1)(f)) limits creditors (not just FDCPA 'debt collectors' -- a broader class) to two telephone communications per 7-day period, per debt, well below the federal 7-call ceiling. A call pattern that is presumptively lawful under this node's federal analysis can still be unlawful under a stricter state law. This node's checklist did not previously ask for the consumer's state -- a genuine, easy-to-miss gap for any consumer in a stricter-state jurisdiction. Only Massachusetts is currently encoded with a verified primary-source citation; other states' limits are flagged as HORIZON, not encoded.",
         "drafting_revisions": [
           {
@@ -115,6 +115,12 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260901T100043Z.json (Andy's re-run of the 3-node live smoke test after rounds 27-28's citation-checker fixes): this node's citation_check was 100% verified and Stage A/B both clean this run -- the FLAGGED status was driven entirely by 3 genuine, new Stage B adversarial findings (all realistic_and_common=true, would_cause_wrong_answer=true, exposes_gap=true), confirming rounds 27/28's citation-checker fixes are working on the real live pipeline, and giving Stage B room to surface content gaps that citation-check failures had previously been masking.",
             "summary": "Added 15 U.S.C. 1692a(6) (FDCPA 'debt collector' coverage threshold -- this node's rule doesn't reach original creditors or servicers of then-current loans) and 940 CMR 7.04(1)(f) (Massachusetts state-law overlay, stricter than the federal 7-in-7 safe harbor, as a verified example) as new derived_from entries. Added coverage-threshold, unit-of-count (clarifying BOTH person and debt, not just debt -- calls to different people are not aggregated), and state-law-may-be-stricter logic notes. Rewrote 'determination' to reflect the two-dimensional unit of count and flag the two threshold questions. Added 3 completeness_checklist items."
+          },
+          {
+            "date": "2026-09-01",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Andy's 2026-09-01 approval to build a dedicated FDCPA coverage-threshold node (per the round-30 HORIZON note flagging duplicative inline coverage analysis across multiple FDCPA nodes).",
+            "summary": "Shortened this node's fdcpa_coverage_threshold_note from a full inline re-derivation of 15 U.S.C. 1692a(6) coverage to a brief cross-reference to the new standalone FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node, which now carries the full two-test analysis, all statutory exclusions, and the Henson v. Santander debt-buyer nuance. Node-specific content (unit-of-count, state-law-may-be-stricter note, checklist) left unchanged."
           }
         ]
       },
@@ -261,10 +267,17 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260830T171724Z.json, FDCPA-FALSE-DECEPTIVE-CATALOG-1692e, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true).",
             "summary": "Second pass: added § 1692a(6)(F)(iii) servicer/not-in-default exclusion, the materiality requirement, and the time-barred/stale-debt collection theory; added 3 corresponding checklist items. First pass (round 21) already fixed the (6)/(7) catalog omission and the general 1692a(5)/(6) threshold predicates -- confirmed still present and working in this run's own derivations."
+          },
+          {
+            "date": "2026-09-01",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Andy's 2026-09-01 approval to build a dedicated FDCPA coverage-threshold node.",
+            "summary": "Added a lightweight cross-reference (coverage_threshold_node_ref) and one completeness_checklist item pointing to the new FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node, so its more complete coverage analysis (principal-purpose test, all exclusions, Henson nuance) is available alongside this node's existing threshold_predicates summary. Proactive fix -- not yet flagged by an adversarial run."
           }
         ],
         "materiality_note": "This catalog's determination ('any single catalog item, if the facts match, is an independent violation') omits the materiality floor courts read into § 1692e: a technically-false statement that could not plausibly influence a consumer's response to the debt (e.g., a trivial date or one-cent amount error unrelated to what the consumer would actually decide or do) is generally not actionable. This node does not itself apply a materiality filter to a catalog-item match.",
-        "stale_debt_note": "Filing or threatening suit on a debt outside the applicable statute of limitations (see the state-layer SOL nodes, e.g. CA-SOL-WRITTEN-CONTRACT-DEBT / TX-SOL-CONSUMER-DEBT) is a core, high-volume § 1692e theory under (2)(A) and (5) -- and, in some circuits, even a dunning letter alone without a litigation threat can violate § 1692e if it could mislead a consumer about a time-barred debt's enforceability. Neither the catalog gloss nor the prior checklist asked about the debt's age or the applicable limitations period."
+        "stale_debt_note": "Filing or threatening suit on a debt outside the applicable statute of limitations (see the state-layer SOL nodes, e.g. CA-SOL-WRITTEN-CONTRACT-DEBT / TX-SOL-CONSUMER-DEBT) is a core, high-volume § 1692e theory under (2)(A) and (5) -- and, in some circuits, even a dunning letter alone without a litigation threat can violate § 1692e if it could mislead a consumer about a time-barred debt's enforceability. Neither the catalog gloss nor the prior checklist asked about the debt's age or the applicable limitations period.",
+        "coverage_threshold_node_ref": "For the full FDCPA 'debt collector' coverage analysis underlying threshold_predicates[0] and [2] above (the two independent coverage tests, all statutory exclusions (A)-(F), and the Henson v. Santander nuance on debt buyers), see the dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node."
       },
       "completeness_checklist": [
         {
@@ -309,6 +322,10 @@
         },
         {
           "fact": "Whether the specific false/deceptive statement or omission found is material -- i.e., could plausibly influence how a consumer responds to the debt -- as opposed to a trivial, inconsequential inaccuracy",
+          "dispositive": true
+        },
+        {
+          "fact": "Confirm the contacting entity's covered-'debt collector' status via the full analysis in FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6, not solely the summary in threshold_predicates above",
           "dispositive": true
         }
       ],
@@ -385,8 +402,15 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260830T181129Z.json, FDCPA-UNFAIR-PRACTICES-CATALOG-1692f, all 3 adversarial-check findings (all realistic_and_common=true, would_cause_wrong_answer=true) -- this node's Stage A/citation-check pipeline ran cleanly this round, so all 3 findings were captured intact in gaps_found.",
             "summary": "Added § 1692f introductory-clause (illustrative-not-exhaustive) and § 1692a(6) debt-collector-definition derived_from entries; added general_clause_note and debt_collector_threshold_note; broadened catalog item (8)'s envelope-symbol scope beyond 'indicating debt collection' per Douglass/Daubert; added a threshold checklist item at front and a general-clause checklist item at end."
+          },
+          {
+            "date": "2026-09-01",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Andy's 2026-09-01 approval to build a dedicated FDCPA coverage-threshold node.",
+            "summary": "Added a lightweight cross-reference (coverage_threshold_node_ref) and one completeness_checklist item pointing to the new FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node, so its more complete coverage analysis (principal-purpose test, all exclusions, Henson nuance) is available alongside this node's existing debt_collector_threshold_note summary. Proactive fix -- not yet flagged by an adversarial run."
           }
-        ]
+        ],
+        "coverage_threshold_node_ref": "For the full FDCPA 'debt collector' coverage analysis underlying debt_collector_threshold_note above (the two independent coverage tests, all statutory exclusions (A)-(F), and the Henson v. Santander nuance on debt buyers), see the dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node."
       },
       "completeness_checklist": [
         {
@@ -411,6 +435,10 @@
         },
         {
           "fact": "Whether the facts, even if they match no catalog item, otherwise amount to an unfair or unconscionable collection practice under § 1692f's general clause (e.g., collecting a known-discharged or known-time-barred debt, seizing known-exempt funds, claim-splitting) -- the catalog is illustrative, not exhaustive",
+          "dispositive": true
+        },
+        {
+          "fact": "Confirm the contacting entity's covered-'debt collector' status via the full analysis in FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6, not solely the summary in debt_collector_threshold_note above",
           "dispositive": true
         }
       ],

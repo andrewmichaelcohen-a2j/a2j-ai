@@ -2,6 +2,17 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-01, round 31 (content-only: new dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node + cross-references)
+
+**What changed since round 30:** content-only, no runner/pipeline change. Andy approved (2026-09-01, "i see - thank you - yes, go ahead and build") building a dedicated coverage-threshold node after I flagged that the FDCPA "debt collector" coverage analysis under 15 U.S.C. § 1692a(6) was being independently re-derived, in shortened form, inline in multiple FDCPA nodes (round 30) -- a duplication/drift risk this round closes.
+
+- **New file `rules/debt/federal/fdcpa_coverage_threshold_v1.json`**, node `FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6`: full grounded derivation of 15 U.S.C. § 1692a(6) ("debt collector" definition, all exclusions (A)-(F), the own-name carve-back-in) and § 1692a(4) ("creditor" definition), plus *Henson v. Santander Consumer USA Inc.*, 582 U.S. ___ (2017) as a case-law citation. Henson's holding is stated narrowly and correctly: a debt buyer collecting for its own account is not covered via the "owed ... another" prong, but the Court expressly declined to decide the separate "principal purpose" prong -- most debt-buying businesses, whose principal purpose is debt collection, likely remain covered debt collectors under that alternative test. This corrects a common oversimplification ("debt buyers are excluded from the FDCPA") that would misstate the law. DRAFT tier.
+- **`rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`, node `FDCPA-REGF-CALL-FREQUENCY-1006.14b`**: shortened `logic.fdcpa_coverage_threshold_note` from a full inline re-derivation to a brief cross-reference to the new node; node-specific content (unit-of-count, state-law-may-be-stricter note, checklist) unchanged. New `drafting_revisions` entry.
+- **`rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`, nodes `FDCPA-FALSE-DECEPTIVE-CATALOG-1692e` and `FDCPA-UNFAIR-PRACTICES-CATALOG-1692f`**: added a lightweight `coverage_threshold_node_ref` cross-reference plus one new `completeness_checklist` item each, pointing to the new node's fuller analysis alongside their existing threshold_predicates / debt_collector_threshold_note summaries. Proactive fix, closing the same latent gap before a future adversarial run flags it -- not yet flagged.
+- **`rules/debt/federal/fdcpa_validation_notice_v1.json`, node `FDCPA-VALIDATION-NOTICE-1692g`**: updated the `tier_rationale` on its 15 U.S.C. § 1692a(6) `derived_from` entry, and the corresponding `completeness_checklist` item, to cross-reference the new node instead of carrying the coverage analysis solely inline.
+
+**Verification:** full CI suite (`validate_debt_schema.py`, `check_frozen_artifacts.py`, `check_corroboration_calibration.py`) run and passing; patch verified via `git am --3way` against a fresh clone of real origin (chained after rounds 27-30, all confirmed present on origin) before delivery. Content-only round -- no runner/calibration fixture change, consistent with the one-variable rule.
+
 ## 2026-09-01, round 30 (content fix: 6 new adversarial gaps on the 2 FDCPA nodes from Andy's re-run smoke test)
 
 **What changed since round 29:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
