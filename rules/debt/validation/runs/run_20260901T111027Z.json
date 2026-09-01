@@ -1,0 +1,563 @@
+{
+  "run_id": "run_20260901T111027Z",
+  "mode": "live",
+  "started": "2026-09-01T11:10:27Z",
+  "ended": "2026-09-01T11:15:57Z",
+  "models": {
+    "anthropic": "claude-opus-5",
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "demo_corpus_only": false,
+  "citation_check_skipped": false,
+  "budget_cap_usd": 15.0,
+  "approx_cost_per_node_usd_estimate": 0.45,
+  "n_queued": 2,
+  "n_completed": 2,
+  "n_clean_pass": 0,
+  "n_flagged": 2,
+  "demo_gate_metrics": {
+    "stage_a_grounded_agreement_rate": {
+      "value_percent": 100.0,
+      "n_demo_corpus_nodes_this_run": 2,
+      "n_passing": 2,
+      "stage": "Stage A only",
+      "numerator": "nodes where all 3 models returned grounded==true AND the LLM judge found semantic agreement",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "does NOT require citation verification or a clean adversarial check -- purely: did the 3 models derive the same rule from the cited text, independently."
+    },
+    "citation_verification_rate": {
+      "value_percent": 0.0,
+      "n_demo_corpus_nodes_this_run": 2,
+      "n_passing": 0,
+      "stage": "citation-check only",
+      "numerator": "nodes where every cited source's quoted_text verified as a substring of the fetched page",
+      "denominator": "all demo-corpus nodes attempted this run (null/not computed if --skip-citation-check)",
+      "basis": "mechanical HTTP fetch + substring match, no model involved."
+    },
+    "stage_b_parse_success_rate": {
+      "value_percent": 50.0,
+      "n_demo_corpus_nodes_this_run": 2,
+      "n_passing": 1,
+      "stage": "Stage B only",
+      "numerator": "nodes where the adversarial call returned parseable edge_cases (not truncated, not empty, no error) -- even after the round-23/24 retry",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "an infrastructure/reliability signal, not a gap-count -- a node can parse successfully and still expose real gaps, or fail to parse and expose none we know of."
+    },
+    "full_pipeline_clean_pass_rate": {
+      "value_percent": 0.0,
+      "n_demo_corpus_nodes_this_run": 2,
+      "n_passing": 0,
+      "stage": "all three stages combined -- this is the renamed former 'grounded_agreement_rate' (round 26; the old name was found to be mislabeled relative to its own definition, see docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md S4's round-24 entry)",
+      "numerator": "nodes with status == CLEAN-PASS",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all citations live-verified AND no adversarial gap found AND the adversarial check itself parsed successfully (round 26 -- a Stage B parse failure no longer silently reads as \"no gaps\", see spec S4). Numeric fingerprint is a secondary diagnostic only as of 2026-08-26 round 3, not part of this basis either."
+    },
+    "grounded_agreement_rate": {
+      "value_percent": 0.0,
+      "deprecated": true,
+      "note": "Deprecated alias for full_pipeline_clean_pass_rate (round 26), kept only so anything still reading this exact key doesn't break. This name was found to be mislabeled -- it was never actually a Stage-A-only measure despite the name. Use full_pipeline_clean_pass_rate (the honest name for the same number) or stage_a_grounded_agreement_rate (genuinely Stage-A-only) going forward."
+    },
+    "scenario_pass_rate": {
+      "value_percent": 0.0,
+      "n_scenarios": 5,
+      "n_passing": 0,
+      "scenarios": [
+        {
+          "scenario_id": "tx-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "ca-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "failing_deps": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT"
+          ]
+        },
+        {
+          "scenario_id": "pre-suit-validation-rights",
+          "passed": false,
+          "depends_on_node_ids": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "missing_from_this_run": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "garnishment-scenario",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "missing_from_this_run": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "band3-refusal-boundary",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "missing_from_this_run": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "failing_deps": []
+        }
+      ],
+      "stage": "scenario level (depends on multiple nodes' CLEAN-PASS status)",
+      "numerator": "concept-demo scenarios where every node_id they depend on is CLEAN-PASS this run",
+      "denominator": "all concept-demo scenarios defined in the scenarios file",
+      "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run"
+    },
+    "internal_gate_met": false,
+    "gate_threshold_percent": 90.0,
+    "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an internal readiness gate computed by this script, not itself a claim to publish -- see spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing. Round 26: added stage_a_grounded_agreement_rate, citation_verification_rate, and stage_b_parse_success_rate as separately-reported per-stage metrics (freeze item 1's reconciliation finding) -- grounded_agreement_rate is now full_pipeline_clean_pass_rate."
+  },
+  "node_results": [
+    {
+      "node_id": "FDCPA-REGF-CALL-FREQUENCY-1006.14b",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-09-01T11:10:27Z",
+      "ended": "2026-09-01T11:12:15Z",
+      "input_sha256": "e43591c920c51d1646f2fe2b4a0429fd0f3a8852a7a0d490d9529d44fb8cd929",
+      "node_sha256": "9de0a313243c89e76b8ae6af5640f5f27d739d305f00e4ce7b1bfff0d4e14a8c",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Regulation F, a debt collector is presumed to comply with the harassment prohibition (and FDCPA \u00a7 806(5)) if it places no more than seven calls to a particular person about a particular debt within seven consecutive days, and does not call that person within seven consecutive days after having had a telephone conversation with them about that debt (the conversation date counts as day one). Exceeding either limit creates a presumption of violation, subject to the exclusions in paragraph (b)(3). The limits are applied per 'particular debt,' meaning each debt in collection separately, except that student loan debts serviced under a single account number when obtained by the collector count as one debt. Note that Massachusetts imposes a stricter cap under 940 CMR 7.04(1)(f): no more than two telephone communications per seven-day period to the debtor's residence/cell/personal number for each debt (and two per 30-day period to other numbers).",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); see also 12 C.F.R. \u00a7 1006.14(b)(4); 940 CMR 7.04(1)(f)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Regulation F, a debt collector is presumed to comply with the harassment prohibition (and FDCPA \u00a7 806(5)) if it places no more than seven calls to a particular person about a particular debt within seven consecutive days, and does not call that person within seven consecutive days after having had a telephone conversation with them about that debt (the conversation date counts as day one). Exceeding either limit creates a presumption of violation, subject to the exclusions in paragraph (b)(3). The limits are applied per 'particular debt,' meaning each debt in collection separately, except that student loan debts serviced under a single account number when obtained by the collector count as one debt. Note that Massachusetts imposes a stricter cap under 940 CMR 7.04(1)(f): no more than two telephone communications per seven-day period to the debtor's residence/cell/personal number for each debt (and two per 30-day period to other numbers).\", \"grounded\": true, \"citation_used\": \"12 C.F.R. \\u00a7 1006.14(b)(2)(i)-(ii); see also 12 C.F.R. \\u00a7 1006.14(b)(4); 940 CMR 7.04(1)(f)\"}",
+            "error": null,
+            "_stop_reason": "end_turn"
+          },
+          {
+            "derivation_summary": "Subject to the stated exclusions, a debt collector is presumed to comply if, for a particular person and particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits; \u201cparticular debt\u201d means each debt in collection, except certain student-loan debts serviced under a single account number are treated together.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"Subject to the stated exclusions, a debt collector is presumed to comply if, for a particular person and particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits; \u201cparticular debt\u201d means each debt in collection, except certain student-loan debts serviced under a single account number are treated together.\",\"grounded\":true,\"citation_used\":\"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector is presumed to have violated federal law if they place a telephone call to a person more than seven times within seven consecutive days regarding a particular debt. A violation is also presumed if a debt collector calls a person within the seven consecutive days immediately following a telephone conversation with them about that debt. The date of the initial telephone conversation is counted as the first day of that seven-day period.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A debt collector is presumed to have violated federal law if they place a telephone call to a person more than seven times within seven consecutive days regarding a particular debt. A violation is also presumed if a debt collector calls a person within the seven consecutive days immediately following a telephone conversation with them about that debt. The date of the initial telephone conversation is counted as the first day of that seven-day period.\",\n  \"grounded\": true,\n  \"citation_used\": \"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same 7-in-7 call-frequency presumption plus the 7-day post-conversation waiting period with the conversation date counting as day one. Analyses 1 and 2 add completeness detail (the (b)(3) exclusions and the 'particular debt'/student-loan account aggregation rule), and Analysis 1 alone flags the stricter Massachusetts two-call cap under 940 CMR 7.04(1)(f) \u2014 omissions, not conflicts.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same 7-in-7 call-frequency presumption plus the 7-day post-conversation waiting period with the conversation date counting as day one. Analyses 1 and 2 add completeness detail (the (b)(3) exclusions and the 'particular debt'/student-loan account aggregation rule), and Analysis 1 alone flags the stricter Massachusetts two-call cap under 940 CMR 7.04(1)(f) \\u2014 omissions, not conflicts.\"}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "2",
+            "3",
+            "30",
+            "7",
+            "7.04",
+            "940"
+          ],
+          [
+            "7"
+          ],
+          [
+            "7"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 75625,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 75625,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 149896,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 0.941,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.mass.gov/doc/940-cmr-7-debt-collection-regulations/download",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 403,
+              "content_length": 14061,
+              "content_type": "text/html",
+              "word_overlap_ratio": 0.0,
+              "retry_attempt": 2,
+              "longest_matching_prefix_chars": 1,
+              "text_at_break_point": "nitiating a communication with any debto",
+              "raw_html_context_at_break": null
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "edge_cases": [
+            {
+              "scenario": "A California consumer is called 10 times in 5 days by her credit card issuer's own in-house collections department about her own defaulted account. She asks whether the call volume is unlawful.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "gap_description": "The node's coverage-threshold note tells this consumer she is 'NOT protected by this node's presumption at all' and the only encoded state overlay is Massachusetts. But California's Rosenthal Act (Cal. Civ. Code 1788.2(c), 1788.17) defines 'debt collector' to include creditors collecting their own consumer debts and incorporates 15 U.S.C. 1692d(5)/1692c wholesale, so in-house creditor call campaigns are actionable in California. Given California's population, this is a high-volume fact pattern where the encoded answer ('not covered, no federal presumption') is affirmatively misleading; the checklist asks for the state but the logic has nothing to do with the answer except for MA.",
+              "exposes_gap": true
+            },
+            {
+              "scenario": "A collector calls the consumer 5 times on her cell phone and 4 times on her direct desk line at work over 6 days about a single credit card debt; the consumer personally answers or is the intended recipient at both numbers.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "gap_description": "The unit-of-count note lists 'her workplace' as an example of a DIFFERENT person whose calls are not aggregated, but 1006.14(b)(2)(i) counts per particular PERSON, not per telephone number \u2014 calls to the same consumer at multiple numbers (cell, home, work line) all fall in one 7-call bucket. As encoded, the rule splits 9 calls into two sub-7 buckets and returns 'presumptively lawful' when the correct answer is presumptively unlawful. Multi-number dialing is standard collector practice, so this misdirection is both common and outcome-determinative.",
+              "exposes_gap": true
+            },
+            {
+              "scenario": "A consumer reports 14 contacts in 6 days about one debt from a covered collection agency: 4 phone calls, 8 SMS texts, and 2 emails. She wants to know if the frequency is unlawful.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "gap_description": "The node never defines what counts as a 'telephone call' for the 7-in-7 bucket. Applied as encoded, either (a) the intake counts all 14 'contacts' and wrongly returns presumptively unlawful, or (b) it counts only 4 calls and returns 'presumptively lawful,' which is materially misleading because texts/emails are governed by separate Reg F provisions (1006.6(b)(1) inconvenient-time/place, 1006.14(h) unlawful-communication-media, and the general 1006.14(a)/1692d harassment standard that survives an under-7 count). Mixed-channel collection is now the norm, so the omission routinely affects real answers.",
+              "exposes_gap": true
+            }
+          ],
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A California consumer is called 10 times in 5 days by her credit card issuer's own in-house collections department about her own defaulted account. She asks whether the call volume is unlawful.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"gap_description\": \"The node's coverage-threshold note tells this consumer she is 'NOT protected by this node's presumption at all' and the only encoded state overlay is Massachusetts. But California's Rosenthal Act (Cal. Civ. Code 1788.2(c), 1788.17) defines 'debt collector' to include creditors collecting their own consumer debts and incorporates 15 U.S.C. 1692d(5)/1692c wholesale, so in-house creditor call campaigns are actionable in California. Given California's population, this is a high-volume fact pattern where the encoded answer ('not covered, no federal presumption') is affirmatively misleading; the checklist asks for the state but the logic has nothing to do with the answer except for MA.\", \"exposes_gap\": true}, {\"scenario\": \"A collector calls the consumer 5 times on her cell phone and 4 times on her direct desk line at work over 6 days about a single credit card debt; the consumer personally answers or is the intended recipient at both numbers.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"gap_description\": \"The unit-of-count note lists 'her workplace' as an example of a DIFFERENT person whose calls are not aggregated, but 1006.14(b)(2)(i) counts per particular PERSON, not per telephone number \\u2014 calls to the same consumer at multiple numbers (cell, home, work line) all fall in one 7-call bucket. As encoded, the rule splits 9 calls into two sub-7 buckets and returns 'presumptively lawful' when the correct answer is presumptively unlawful. Multi-number dialing is standard collector practice, so this misdirection is both common and outcome-determinative.\", \"exposes_gap\": true}, {\"scenario\": \"A consumer reports 14 contacts in 6 days about one debt from a covered collection agency: 4 phone calls, 8 SMS texts, and 2 emails. She wants to know if the frequency is unlawful.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"gap_description\": \"The node never defines what counts as a 'telephone call' for the 7-in-7 bucket. Applied as encoded, either (a) the intake counts all 14 'contacts' and wrongly returns presumptively unlawful, or (b) it counts only 4 calls and returns 'presumptively lawful,' which is materially misleading because texts/emails are governed by separate Reg F provisions (1006.6(b)(1) inconvenient-time/place, 1006.14(h) unlawful-communication-media, and the general 1006.14(a)/1692d harassment standard that survives an under-7 count). Mixed-channel collection is now the norm, so the omission routinely affects real answers.\", \"exposes_gap\": true}]}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "gaps_found": [
+          {
+            "scenario": "A California consumer is called 10 times in 5 days by her credit card issuer's own in-house collections department about her own defaulted account. She asks whether the call volume is unlawful.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "gap_description": "The node's coverage-threshold note tells this consumer she is 'NOT protected by this node's presumption at all' and the only encoded state overlay is Massachusetts. But California's Rosenthal Act (Cal. Civ. Code 1788.2(c), 1788.17) defines 'debt collector' to include creditors collecting their own consumer debts and incorporates 15 U.S.C. 1692d(5)/1692c wholesale, so in-house creditor call campaigns are actionable in California. Given California's population, this is a high-volume fact pattern where the encoded answer ('not covered, no federal presumption') is affirmatively misleading; the checklist asks for the state but the logic has nothing to do with the answer except for MA.",
+            "exposes_gap": true
+          },
+          {
+            "scenario": "A collector calls the consumer 5 times on her cell phone and 4 times on her direct desk line at work over 6 days about a single credit card debt; the consumer personally answers or is the intended recipient at both numbers.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "gap_description": "The unit-of-count note lists 'her workplace' as an example of a DIFFERENT person whose calls are not aggregated, but 1006.14(b)(2)(i) counts per particular PERSON, not per telephone number \u2014 calls to the same consumer at multiple numbers (cell, home, work line) all fall in one 7-call bucket. As encoded, the rule splits 9 calls into two sub-7 buckets and returns 'presumptively lawful' when the correct answer is presumptively unlawful. Multi-number dialing is standard collector practice, so this misdirection is both common and outcome-determinative.",
+            "exposes_gap": true
+          },
+          {
+            "scenario": "A consumer reports 14 contacts in 6 days about one debt from a covered collection agency: 4 phone calls, 8 SMS texts, and 2 emails. She wants to know if the frequency is unlawful.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "gap_description": "The node never defines what counts as a 'telephone call' for the 7-in-7 bucket. Applied as encoded, either (a) the intake counts all 14 'contacts' and wrongly returns presumptively unlawful, or (b) it counts only 4 calls and returns 'presumptively lawful,' which is materially misleading because texts/emails are governed by separate Reg F provisions (1006.6(b)(1) inconvenient-time/place, 1006.14(h) unlawful-communication-media, and the general 1006.14(a)/1692d harassment standard that survives an under-7 count). Mixed-channel collection is now the norm, so the omission routinely affects real answers.",
+            "exposes_gap": true
+          }
+        ],
+        "parsed_successfully": true
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-09-01T11:12:15Z",
+      "ended": "2026-09-01T11:15:57Z",
+      "input_sha256": "4121fe76509eb8b2ec9a99d5b4b549dfad05567ec0c48398db7f694b87697c33",
+      "node_sha256": "41114748fe7d80939be663401e24716b0464fa617be9b31fb4c45eafbe047c4e",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 337(a), an action on any contract, obligation, or liability founded on a written instrument must be brought within four years (with a special three-month rule for deficiency judgments after a trustee's/mortgage power-of-sale foreclosure, and an exception under Section 336a). Section 337(d) adds that once that four-year period has run, no one may sue or initiate arbitration or other legal proceedings to collect the debt, and the period may be extended only under Section 360 \u2014 i.e., by a written, signed acknowledgment or promise, or by a payment of principal or interest, though no payment can revive a claim already barred. Additionally, emergency rule 9(a) tolled limitations periods exceeding 180 days (which includes this four-year period) from April 6, 2020 to October 1, 2020.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d); Cal. Code Civ. Proc. \u00a7 360; Cal. R. Ct., emergency rule 9(a)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 337(a), an action on any contract, obligation, or liability founded on a written instrument must be brought within four years (with a special three-month rule for deficiency judgments after a trustee's/mortgage power-of-sale foreclosure, and an exception under Section 336a). Section 337(d) adds that once that four-year period has run, no one may sue or initiate arbitration or other legal proceedings to collect the debt, and the period may be extended only under Section 360 \\u2014 i.e., by a written, signed acknowledgment or promise, or by a payment of principal or interest, though no payment can revive a claim already barred. Additionally, emergency rule 9(a) tolled limitations periods exceeding 180 days (which includes this four-year period) from April 6, 2020 to October 1, 2020.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a), (d); Cal. Code Civ. Proc. \u00a7 360; Cal. R. Ct., emergency rule 9(a)\"}",
+            "error": null,
+            "_stop_reason": "end_turn"
+          },
+          {
+            "derivation_summary": "An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit, initiate arbitration, or start another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit, initiate arbitration, or start another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 337(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The statute of limitations for an action upon a written contract is four years. Once this period has run, a person is barred from bringing a suit, initiating an arbitration, or starting another legal proceeding to collect the debt.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"The statute of limitations for an action upon a written contract is four years. Once this period has run, a person is barred from bringing a suit, initiating an arbitration, or starting another legal proceeding to collect the debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three agree the limitations period for an action on a written contract in California is four years (CCP \u00a7 337) and that once it runs, suit, arbitration, or other collection proceedings are barred. Analyses 1 and 2 add that the period may be extended only per \u00a7 360 (written acknowledgment/promise or payment, with no revival of already-barred claims), and Analysis 1 alone notes the deficiency-judgment three-month rule, \u00a7 336a, and Emergency Rule 9(a) tolling (April 6\u2013Oct. 1, 2020) \u2014 these are completeness differences, not conflicts.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three agree the limitations period for an action on a written contract in California is four years (CCP \\u00a7 337) and that once it runs, suit, arbitration, or other collection proceedings are barred. Analyses 1 and 2 add that the period may be extended only per \\u00a7 360 (written acknowledgment/promise or payment, with no revival of already-barred claims), and Analysis 1 alone notes the deficiency-judgment three-month rule, \\u00a7 336a, and Emergency Rule 9(a) tolling (April 6\\u2013Oct. 1, 2020) \\u2014 these are completeness differences, not conflicts.\"}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "180",
+            "2020",
+            "3",
+            "4",
+            "6"
+          ],
+          [
+            "4"
+          ],
+          [
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 165238,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.929,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164377,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.944,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=361.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 162354,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=360.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 162933,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=683.020.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 163392,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 116,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www4.courts.ca.gov/documents/appendix-i.pdf",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 403,
+              "content_length": 5843,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.059,
+              "retry_attempt": 2,
+              "longest_matching_prefix_chars": 1,
+              "text_at_break_point": "otwithstanding any other law, the statut",
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title20-section1091a&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 155303,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 0.933,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section108&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 154143,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section524&num=0&edition=prelim",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 217914,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 2,
+              "longest_matching_prefix_chars": 39,
+              "text_at_break_point": "- (1) voids any judgment at any time obt",
+              "raw_html_context_at_break": "se under this title-</p>\n\n<a name=\"substructure-location_a_1\"></a>\n\n<p class=\"statutory-body-1em\">(1) voids any judgment at any time obtained, to the extent that such judgment is a determination of the personal liability of the debtor with respect to"
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": "{\"edge_cases\": [{\"scenario\": \"A consumer defaulted on a credit card in March 2022 (last payment February 2022) and is sued in September 2026 \u2014 about 4 years and 5 months after accrual. Applying the encoded determination, the tool asks only whether the 4-year deadline 'had not already passed as of Ap",
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A consumer defaulted on a credit card in March 2022 (last payment February 2022) and is sued in September 2026 \u2014 about 4 years and 5 months after accrual. Applying the encoded determination, the tool asks only whether the 4-year deadline 'had not already passed as of April 6, 2020,' which is trivially true for a 2022 accrual, so it adds 178 days and reports the suit as timely.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The encoded emergency rule 9(a) condition is overbroad on the upper end. Rule 9(a) tolled only the window April 6, 2020 \u2013 October 1, 2020; a claim that accrued AFTER October 1, 2020 gets zero tolling. As written, the conditional ('deadline had not already passed as of April 6, 2020') is satisfied by every post-2020 accrual, so the rule silently grants 178 extra days to the entire large cohort of pandemic-era and post-pandemic defaults. That flips genuinely time-barred claims to 'not expired,' telling a consumer with a valid, complete SOL defense that they have none \u2014 the most harmful direction of error. The condition should be accrual-date-based (accrual on or before October 1, 2020, with partial tolling for accruals inside the April\u2013October 2020 window).\"}, {\"scenario\": \"A consumer defaulted on a California credit card in 2019, moved to Arizona in 2020, and is sued in California in 2026. Asked about tolling facts, she reports she has lived out of state for six years; the checklist's CCP \u00a7 351 debtor's-absence item is triggered and treated as dispositive-but-unresolved.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The node flags CCP \u00a7 351 absence tolling as an open, potentially claim-saving fact without noting that California courts (Abramson v. Brownstein; Dan Clark",
+          "error": null,
+          "_stop_reason": "max_tokens",
+          "_retried_after": "empty_completion"
+        },
+        "gaps_found": [],
+        "parsed_successfully": false
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    }
+  ]
+}

@@ -13,6 +13,74 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 ---
 ## Open
 
+### [CA-SOL-WRITTEN-CONTRACT-DEBT] STAGE-B-PARSE-FAILURE -- run run_20260901T111027Z, 2026-09-01T11:15:57Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error=None, _parse_error='{"edge_cases": [{"scenario": "A consumer defaulted on a credit card in March 2022 (last payment February 2022) and is sued in September 2026 — about 4 years and 5 months after accrual. Applying the encoded determination, the tool asks only whether the 4-year deadline \'had not already passed as of Ap', _stop_reason='max_tokens') -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Cal. Code Civ. Proc. § 337(a), an action on any contract, obligation, or liability founded on a written instrument must be brought within four years (with a special three-month rule for deficiency judgments after a trustee's/mortgage power-of-sale foreclosure, and an exception under Section 336a). Section 337(d) adds that once that four-year period has run, no one may sue or initiate arbitration or other legal proceedings to collect the debt, and the period may be extended only under Section 360 — i.e., by a written, signed acknowledgment or promise, or by a payment of principal or interest, though no payment can revive a claim already barred. Additionally, emergency rule 9(a) tolled limitations periods exceeding 180 days (which includes this four-year period) from April 6, 2020 to October 1, 2020."
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit, initiate arbitration, or start another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The statute of limitations for an action upon a written contract is four years. Once this period has run, a person is barred from bringing a suit, initiating an arbitration, or starting another legal proceeding to collect the debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-WRITTEN-CONTRACT-DEBT] CITATION-CHECK-FAILED -- run run_20260901T111027Z, 2026-09-01T11:15:57Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 9 cited source(s) could not be mechanically verified live: [{'url': 'https://www4.courts.ca.gov/documents/appendix-i.pdf', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 403, 'content_length': 5843, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 0.059, 'retry_attempt': 2, 'longest_matching_prefix_chars': 1, 'text_at_break_point': 'otwithstanding any other law, the statut', 'raw_html_context_at_break': None}}, {'url': 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section524&num=0&edition=prelim', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 217914, 'content_type': 'text/html;charset=UTF-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 39, 'text_at_break_point': '- (1) voids any judgment at any time obt', 'raw_html_context_at_break': 'se under this title-</p>\n\n<a name="substructure-location_a_1"></a>\n\n<p class="statutory-body-1em">(1) voids any judgment at any time obtained, to the extent that such judgment is a determination of the personal liability of the debtor with respect to'}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Cal. Code Civ. Proc. § 337(a), an action on any contract, obligation, or liability founded on a written instrument must be brought within four years (with a special three-month rule for deficiency judgments after a trustee's/mortgage power-of-sale foreclosure, and an exception under Section 336a). Section 337(d) adds that once that four-year period has run, no one may sue or initiate arbitration or other legal proceedings to collect the debt, and the period may be extended only under Section 360 — i.e., by a written, signed acknowledgment or promise, or by a payment of principal or interest, though no payment can revive a claim already barred. Additionally, emergency rule 9(a) tolled limitations periods exceeding 180 days (which includes this four-year period) from April 6, 2020 to October 1, 2020."
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit, initiate arbitration, or start another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The statute of limitations for an action upon a written contract is four years. Once this period has run, a person is barred from bringing a suit, initiating an arbitration, or starting another legal proceeding to collect the debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] ADVERSARIAL-GAP -- run run_20260901T111027Z, 2026-09-01T11:12:15Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** ADVERSARIAL-GAP
+**Evidence:** 3 adversarial edge case(s) flagged as exposing a gap: [{'scenario': "A California consumer is called 10 times in 5 days by her credit card issuer's own in-house collections department about her own defaulted account. She asks whether the call volume is unlawful.", 'realistic_and_common': True, 'would_cause_wrong_answer': True, 'gap_description': "The node's coverage-threshold note tells this consumer she is 'NOT protected by this node's presumption at all' and the only encoded state overlay is Massachusetts. But California's Rosenthal Act (Cal. Civ. Code 1788.2(c), 1788.17) defines 'debt collector' to include creditors collecting their own consumer debts and incorporates 15 U.S.C. 1692d(5)/1692c wholesale, so in-house creditor call campaigns are actionable in California. Given California's population, this is a high-volume fact pattern where the encoded answer ('not covered, no federal presumption') is affirmatively misleading; the checklist asks for the state but the logic has nothing to do with the answer except for MA.", 'exposes_gap': True}, {'scenario': 'A collector calls the consumer 5 times on her cell phone and 4 times on her direct desk line at work over 6 days about a single credit card debt; the consumer personally answers or is the intended recipient at both numbers.', 'realistic_and_common': True, 'would_cause_wrong_answer': True, 'gap_description': "The unit-of-count note lists 'her workplace' as an example of a DIFFERENT person whose calls are not aggregated, but 1006.14(b)(2)(i) counts per particular PERSON, not per telephone number — calls to the same consumer at multiple numbers (cell, home, work line) all fall in one 7-call bucket. As encoded, the rule splits 9 calls into two sub-7 buckets and returns 'presumptively lawful' when the correct answer is presumptively unlawful. Multi-number dialing is standard collector practice, so this misdirection is both common and outcome-determinative.", 'exposes_gap': True}, {'scenario': 'A consumer reports 14 contacts in 6 days about one debt from a covered collection agency: 4 phone calls, 8 SMS texts, and 2 emails. She wants to know if the frequency is unlawful.', 'realistic_and_common': True, 'would_cause_wrong_answer': True, 'gap_description': "The node never defines what counts as a 'telephone call' for the 7-in-7 bucket. Applied as encoded, either (a) the intake counts all 14 'contacts' and wrongly returns presumptively unlawful, or (b) it counts only 4 calls and returns 'presumptively lawful,' which is materially misleading because texts/emails are governed by separate Reg F provisions (1006.6(b)(1) inconvenient-time/place, 1006.14(h) unlawful-communication-media, and the general 1006.14(a)/1692d harassment standard that survives an under-7 count). Mixed-channel collection is now the norm, so the omission routinely affects real answers.", 'exposes_gap': True}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Regulation F, a debt collector is presumed to comply with the harassment prohibition (and FDCPA § 806(5)) if it places no more than seven calls to a particular person about a particular debt within seven consecutive days, and does not call that person within seven consecutive days after having had a telephone conversation with them about that debt (the conversation date counts as day one). Exceeding either limit creates a presumption of violation, subject to the exclusions in paragraph (b)(3). The limits are applied per 'particular debt,' meaning each debt in collection separately, except that student loan debts serviced under a single account number when obtained by the collector count as one debt. Note that Massachusetts imposes a stricter cap under 940 CMR 7.04(1)(f): no more than two telephone communications per seven-day period to the debtor's residence/cell/personal number for each debt (and two per 30-day period to other numbers)."
+  - gpt-5.5: grounded=True, error=None, summary='Subject to the stated exclusions, a debt collector is presumed to comply if, for a particular person and particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits; “particular debt” means each debt in collection, except certain student-loan debts serviced under a single account number are treated together.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='A debt collector is presumed to have violated federal law if they place a telephone call to a person more than seven times within seven consecutive days regarding a particular debt. A violation is also presumed if a debt collector calls a person within the seven consecutive days immediately following a telephone conversation with them about that debt. The date of the initial telephone conversation is counted as the first day of that seven-day period.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] CITATION-CHECK-FAILED -- run run_20260901T111027Z, 2026-09-01T11:12:15Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 4 cited source(s) could not be mechanically verified live: [{'url': 'https://www.mass.gov/doc/940-cmr-7-debt-collection-regulations/download', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 403, 'content_length': 14061, 'content_type': 'text/html', 'word_overlap_ratio': 0.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 1, 'text_at_break_point': 'nitiating a communication with any debto', 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under Regulation F, a debt collector is presumed to comply with the harassment prohibition (and FDCPA § 806(5)) if it places no more than seven calls to a particular person about a particular debt within seven consecutive days, and does not call that person within seven consecutive days after having had a telephone conversation with them about that debt (the conversation date counts as day one). Exceeding either limit creates a presumption of violation, subject to the exclusions in paragraph (b)(3). The limits are applied per 'particular debt,' meaning each debt in collection separately, except that student loan debts serviced under a single account number when obtained by the collector count as one debt. Note that Massachusetts imposes a stricter cap under 940 CMR 7.04(1)(f): no more than two telephone communications per seven-day period to the debtor's residence/cell/personal number for each debt (and two per 30-day period to other numbers)."
+  - gpt-5.5: grounded=True, error=None, summary='Subject to the stated exclusions, a debt collector is presumed to comply if, for a particular person and particular debt, it does not place more than seven calls within seven consecutive days and does not call within seven consecutive days after having a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits; “particular debt” means each debt in collection, except certain student-loan debts serviced under a single account number are treated together.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='A debt collector is presumed to have violated federal law if they place a telephone call to a person more than seven times within seven consecutive days regarding a particular debt. A violation is also presumed if a debt collector calls a person within the seven consecutive days immediately following a telephone conversation with them about that debt. The date of the initial telephone conversation is counted as the first day of that seven-day period.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [FDCPA-VALIDATION-NOTICE-1692g] ADVERSARIAL-GAP -- run run_20260901T100043Z, 2026-09-01T10:05:04Z
 
 **File:** `rules/debt/federal/fdcpa_validation_notice_v1.json`
