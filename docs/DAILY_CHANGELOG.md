@@ -2,6 +2,69 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-01, round 29 (content fix: CA-SOL-WRITTEN-CONTRACT-DEBT's 3 genuine adversarial gaps -- COVID tolling, federal student loan preemption, bankruptcy screening)
+
+**What changed since round 28:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+only -- 4 new `derived_from` entries, 3 new `logic` notes, a rewritten
+`determination` field, a new `drafting_revisions` entry, and 3 new
+`completeness_checklist` items, all on `CA-SOL-WRITTEN-CONTRACT-DEBT`. No
+runner/CI changes -- content-only round per the one-variable rule.
+
+**Background.** Andy's 3-node smoke test (`run_20260831T212748Z.json`)
+flagged this node with `citation_check` 5/5 verified -- the flag was driven
+entirely by 3 genuine Stage-B adversarial findings (all
+`realistic_and_common=true`, `would_cause_wrong_answer=true`), not a checker
+issue. Andy's instruction was to fix "each 1 at a time" but "investigate and
+fix all identified issues" from that run; rounds 27-28 handled the two
+citation-check breaks, this round handles the third (content) flag.
+
+**Gap 1 -- COVID-19 tolling.** The node's flat accrual-plus-4-years
+computation didn't account for Cal. R. Ct. emergency rule 9(a), which tolled
+all California civil SOLs exceeding 180 days for 178 days (April 6 -- October
+1, 2020) -- automatic and universal, not something a consumer would ever
+volunteer as a "fact." This is outcome-determinative for the large cohort of
+debts that defaulted in the several years before the pandemic. Confirmed via
+direct fetch of the Judicial Council's official amended rule text this round
+(the rule as *originally* adopted read differently -- tied to the end of the
+state of emergency -- and was amended May 29, 2020 to the fixed October 1,
+2020 date used here).
+
+**Gap 2 -- federal student loan SOL preemption.** 20 U.S.C. § 1091a
+eliminates any limitations period for federal actors (the Secretary,
+guaranty agencies, institutions under Direct/Perkins agreements) collecting
+on federally-held or federally-guaranteed student loans. The node's 4-year
+CA analysis simply doesn't apply to such loans at all -- but DOES still apply,
+unchanged, to a privately-held student loan from the same borrower and era,
+which a layperson would have no reason to distinguish. Confirmed via direct
+fetch of the official U.S. Code (uscode.house.gov).
+
+**Gap 3 -- bankruptcy screening.** Two distinct effects previously folded
+into a generic "other statutory tolling" checklist item, now split out: (a)
+11 U.S.C. § 108(c) extends the SOL until 30 days after notice a bankruptcy
+stay ends, if the deadline hadn't already run when the case was filed
+(notice-triggered, not a flat number of days -- confirmed via uscode.house.gov);
+and (b) 11 U.S.C. § 524(a)(1)-(2) -- an actual discharge is a complete,
+independent bar on collection regardless of the SOL (any judgment is void,
+collection is enjoined). A "not expired" SOL answer on a debt that was
+actually discharged would be badly misleading. (§524(a) quoted_text
+verbatim-confirmed via Cornell LII's mirror of the official text this round
+after this session's tooling could not fully retrieve uscode.house.gov's own
+page output for that section -- flagged for live re-verification against the
+uscode.house.gov URL itself, per this corpus's practice of flagging
+mirror-confirmed text rather than silently assuming it matches.)
+
+**Fix.** Added all 4 citations as new `derived_from` entries; added 3 new
+`logic` notes explaining each gap and how it interacts with the node's
+existing accrual/filing-date/judgment-enforcement logic; rewrote
+`determination` to incorporate the conditional +178 days and flag the two
+threshold questions (federal-loan status, discharge status) that override
+the ordinary SOL computation; added 3 new `completeness_checklist` items.
+Logged as a new `drafting_revisions` entry per the standing DRAFT-tier
+editing discipline -- tier promotion still requires Andy/counsel sign-off.
+
+*Verification:* `validate_debt_schema.py` PASS; diff is 51 lines in one
+rules file; patch verified via fresh-clone `git am --3way` before delivery.
+
 ## 2026-09-01, round 28 (runner fix: citation-checker whitespace-before-punctuation normalization gap)
 
 **What changed since round 27:** `scripts/corroboration/run_corroboration.py`
