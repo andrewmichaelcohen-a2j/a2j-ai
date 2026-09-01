@@ -1,0 +1,731 @@
+{
+  "run_id": "run_20260901T181628Z",
+  "mode": "live",
+  "started": "2026-09-01T18:16:28Z",
+  "ended": "2026-09-01T18:25:50Z",
+  "models": {
+    "anthropic": "claude-opus-5",
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "demo_corpus_only": false,
+  "citation_check_skipped": false,
+  "budget_cap_usd": 15.0,
+  "approx_cost_per_node_usd_estimate": 0.45,
+  "n_queued": 3,
+  "n_completed": 3,
+  "n_clean_pass": 0,
+  "n_flagged": 3,
+  "demo_gate_metrics": {
+    "stage_a_grounded_agreement_rate": {
+      "value_percent": 66.66666666666666,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 2,
+      "stage": "Stage A only",
+      "numerator": "nodes where all 3 models returned grounded==true AND the LLM judge found semantic agreement",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "does NOT require citation verification or a clean adversarial check -- purely: did the 3 models derive the same rule from the cited text, independently."
+    },
+    "citation_verification_rate": {
+      "value_percent": 0.0,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 0,
+      "stage": "citation-check only",
+      "numerator": "nodes where every cited source's quoted_text verified as a substring of the fetched page",
+      "denominator": "all demo-corpus nodes attempted this run (null/not computed if --skip-citation-check)",
+      "basis": "mechanical HTTP fetch + substring match, no model involved."
+    },
+    "stage_b_parse_success_rate": {
+      "value_percent": 66.66666666666666,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 2,
+      "stage": "Stage B only",
+      "numerator": "nodes where the adversarial call returned parseable edge_cases (not truncated, not empty, no error) -- even after the round-23/24 retry",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "an infrastructure/reliability signal, not a gap-count -- a node can parse successfully and still expose real gaps, or fail to parse and expose none we know of."
+    },
+    "full_pipeline_clean_pass_rate": {
+      "value_percent": 0.0,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 0,
+      "stage": "all three stages combined -- this is the renamed former 'grounded_agreement_rate' (round 26; the old name was found to be mislabeled relative to its own definition, see docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md S4's round-24 entry)",
+      "numerator": "nodes with status == CLEAN-PASS",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all citations live-verified AND no adversarial gap found AND the adversarial check itself parsed successfully (round 26 -- a Stage B parse failure no longer silently reads as \"no gaps\", see spec S4). Numeric fingerprint is a secondary diagnostic only as of 2026-08-26 round 3, not part of this basis either."
+    },
+    "grounded_agreement_rate": {
+      "value_percent": 0.0,
+      "deprecated": true,
+      "note": "Deprecated alias for full_pipeline_clean_pass_rate (round 26), kept only so anything still reading this exact key doesn't break. This name was found to be mislabeled -- it was never actually a Stage-A-only measure despite the name. Use full_pipeline_clean_pass_rate (the honest name for the same number) or stage_a_grounded_agreement_rate (genuinely Stage-A-only) going forward."
+    },
+    "scenario_pass_rate": {
+      "value_percent": 0.0,
+      "n_scenarios": 5,
+      "n_passing": 0,
+      "scenarios": [
+        {
+          "scenario_id": "tx-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "ca-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "failing_deps": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT"
+          ]
+        },
+        {
+          "scenario_id": "pre-suit-validation-rights",
+          "passed": false,
+          "depends_on_node_ids": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "missing_from_this_run": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "garnishment-scenario",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "missing_from_this_run": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "band3-refusal-boundary",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "missing_from_this_run": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "failing_deps": []
+        }
+      ],
+      "stage": "scenario level (depends on multiple nodes' CLEAN-PASS status)",
+      "numerator": "concept-demo scenarios where every node_id they depend on is CLEAN-PASS this run",
+      "denominator": "all concept-demo scenarios defined in the scenarios file",
+      "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run"
+    },
+    "internal_gate_met": false,
+    "gate_threshold_percent": 90.0,
+    "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an internal readiness gate computed by this script, not itself a claim to publish -- see spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing. Round 26: added stage_a_grounded_agreement_rate, citation_verification_rate, and stage_b_parse_success_rate as separately-reported per-stage metrics (freeze item 1's reconciliation finding) -- grounded_agreement_rate is now full_pipeline_clean_pass_rate."
+  },
+  "node_results": [
+    {
+      "node_id": "FDCPA-REGF-CALL-FREQUENCY-1006.14b",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-09-01T18:16:28Z",
+      "ended": "2026-09-01T18:18:38Z",
+      "input_sha256": "de7ec0ed7d014d4401c49c566768e9d2e5402ec0cbc717fa74298c6e44b26b1b",
+      "node_sha256": "7daf9050537f610c1538f6a9eeeb13bfcfb086bd8148b0159db936695d757da3",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under 12 C.F.R. \u00a7 1006.14(b)(2), a debt collector is presumed to comply with the harassment prohibition (and FDCPA \u00a7 806(5)) if it places no more than seven calls to a particular person about a particular debt within seven consecutive days, and does not call that person about that debt within seven consecutive days after having had a telephone conversation with them (the conversation date counts as day one of that seven-day window). Exceeding either limit creates a presumption of violation, subject to the exclusions in paragraph (b)(3). The limits are counted per 'particular debt,' meaning each separate debt in collection, except that student loans serviced under a single account number when obtained by the collector count as one debt (\u00a7 1006.14(b)(4)). Note that state law may be stricter: Massachusetts' 940 CMR 7.04(1)(f) limits debt collectors to two telephone communications per seven-day period to a debtor's residence/personal or cellular number for each debt.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4); 940 CMR 7.04(1)(f)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under 12 C.F.R. \u00a7 1006.14(b)(2), a debt collector is presumed to comply with the harassment prohibition (and FDCPA \u00a7 806(5)) if it places no more than seven calls to a particular person about a particular debt within seven consecutive days, and does not call that person about that debt within seven consecutive days after having had a telephone conversation with them (the conversation date counts as day one of that seven-day window). Exceeding either limit creates a presumption of violation, subject to the exclusions in paragraph (b)(3). The limits are counted per 'particular debt,' meaning each separate debt in collection, except that student loans serviced under a single account number when obtained by the collector count as one debt (\u00a7 1006.14(b)(4)). Note that state law may be stricter: Massachusetts' 940 CMR 7.04(1)(f) limits debt collectors to two telephone communications per seven-day period to a debtor's residence/personal or cellular number for each debt.\", \"grounded\": true, \"citation_used\": \"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4); 940 CMR 7.04(1)(f)\"}",
+            "error": null,
+            "_stop_reason": "end_turn"
+          },
+          {
+            "derivation_summary": "Subject to the stated exclusions, a debt collector is presumed to violate the rule if, in connection with collecting a particular debt, it calls a particular person more than seven times within seven consecutive days, or calls within seven consecutive days after having a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of that seven-day period. \u201cParticular debt\u201d means each debt in collection, except that certain student loan debts serviced under a single account number are treated together.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"Subject to the stated exclusions, a debt collector is presumed to violate the rule if, in connection with collecting a particular debt, it calls a particular person more than seven times within seven consecutive days, or calls within seven consecutive days after having a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of that seven-day period. \u201cParticular debt\u201d means each debt in collection, except that certain student loan debts serviced under a single account number are treated together.\",\"grounded\":true,\"citation_used\":\"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector is presumed to have violated the law if they place telephone calls to a person about a particular debt more than seven times within seven consecutive days. A violation is also presumed if the debt collector calls within seven consecutive days after having had a telephone conversation with that person regarding the debt.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A debt collector is presumed to have violated the law if they place telephone calls to a person about a particular debt more than seven times within seven consecutive days. A violation is also presumed if the debt collector calls within seven consecutive days after having had a telephone conversation with that person regarding the debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same Regulation F rule: a presumed violation for more than seven calls to a person about a particular debt in seven consecutive days, or any call within seven consecutive days after a telephone conversation about that debt. Completeness differences only: Analyses 1 and 2 add the 'particular debt'/student loan single-account-number clarification and the conversation-date-counts-as-day-one point, and Analysis 1 also notes the flip-side compliance presumption, the (b)(3) exclusions, and stricter state law (Massachusetts' two-calls-per-seven-days rule), which Analysis 3 omits entirely.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same Regulation F rule: a presumed violation for more than seven calls to a person about a particular debt in seven consecutive days, or any call within seven consecutive days after a telephone conversation about that debt. Completeness differences only: Analyses 1 and 2 add the 'particular debt'/student loan single-account-number clarification and the conversation-date-counts-as-day-one point, and Analysis 1 also notes the flip-side compliance presumption, the (b)(3) exclusions, and stricter state law (Massachusetts' two-calls-per-seven-days rule), which Analysis 3 omits entirely.\"}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "2",
+            "3",
+            "7",
+            "7.04",
+            "940"
+          ],
+          [
+            "7"
+          ],
+          [
+            "7"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 75625,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 75625,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 149916,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 0.941,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.mass.gov/doc/940-cmr-7-debt-collection-regulations/download",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 403,
+              "content_length": 14062,
+              "content_type": "text/html",
+              "word_overlap_ratio": 0.0,
+              "retry_attempt": 2,
+              "longest_matching_prefix_chars": 1,
+              "text_at_break_point": "nitiating a communication with any debto",
+              "raw_html_context_at_break": null
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "edge_cases": [
+            {
+              "scenario": "A consumer speaks with the collector on Monday, can't pay that day, and says 'call me back Thursday after I get paid and I'll set something up.' The collector calls Thursday (day 4) with a payoff figure. The consumer later asks whether the Thursday call violated the call-frequency rules.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The encoded 'determination' makes any call within 7 days of a telephone conversation presumptively unlawful with no carve-out, while the consent exclusion is filed only under 'exclusions_from_count' (i.e., appears to apply only to the >7 raw count). Under 12 CFR 1006.14(b)(3), the exclusions apply to BOTH (b)(2)(i) and (b)(2)(ii), so a call placed with the consumer's prior consent given directly to the collector during the 7-day window is excluded from the post-conversation cooldown as well. Consumer-requested callbacks are extremely common, and the node as written would tell such a consumer she has a presumptive violation when she does not."
+            },
+            {
+              "scenario": "A collector dials the consumer's cell 14 times in six days about one debt. The consumer never picks up and the collector never leaves a message; the phone simply rings and goes unanswered or to an untouched voicemail box. The consumer asks whether the 7-in-7 rule was broken.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The node lists 'calls not connected to the dialed number' as an exclusion with no definition. Official commentary to 12 CFR 1006.14(b)(3)(ii) limits that exclusion to calls that never connect (e.g., dropped by the carrier, no service); a call that rings through unanswered or reaches voicemail IS connected and counts. Unanswered ringing is the single most common fact pattern in these cases, and the undefined exclusion invites the answer 'those calls don't count,' which would wrongly negate a clear presumptive violation."
+            },
+            {
+              "scenario": "A collector calls the consumer's mother six times in one week asking her to pass along a message about her daughter's overdue account. The consumer asks whether those calls are a problem.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The node affirmatively states that a genuinely different person (expressly, 'the consumer's mother') gets her own separate 7-call bucket, which implies six calls to the mother are presumptively lawful. It never flags that FDCPA \u00a7 1692c(b)/12 CFR 1006.6(d) generally prohibit communicating with third parties about the debt at all, and that \u00a7 1692b/1006.10 limit location-information contacts to a single call absent a request. Relative-calling is a very common complaint, and the encoding would tell a consumer with a strong third-party-disclosure claim that the conduct sits inside a safe harbor."
+            }
+          ],
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A consumer speaks with the collector on Monday, can't pay that day, and says 'call me back Thursday after I get paid and I'll set something up.' The collector calls Thursday (day 4) with a payoff figure. The consumer later asks whether the Thursday call violated the call-frequency rules.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The encoded 'determination' makes any call within 7 days of a telephone conversation presumptively unlawful with no carve-out, while the consent exclusion is filed only under 'exclusions_from_count' (i.e., appears to apply only to the >7 raw count). Under 12 CFR 1006.14(b)(3), the exclusions apply to BOTH (b)(2)(i) and (b)(2)(ii), so a call placed with the consumer's prior consent given directly to the collector during the 7-day window is excluded from the post-conversation cooldown as well. Consumer-requested callbacks are extremely common, and the node as written would tell such a consumer she has a presumptive violation when she does not.\"}, {\"scenario\": \"A collector dials the consumer's cell 14 times in six days about one debt. The consumer never picks up and the collector never leaves a message; the phone simply rings and goes unanswered or to an untouched voicemail box. The consumer asks whether the 7-in-7 rule was broken.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The node lists 'calls not connected to the dialed number' as an exclusion with no definition. Official commentary to 12 CFR 1006.14(b)(3)(ii) limits that exclusion to calls that never connect (e.g., dropped by the carrier, no service); a call that rings through unanswered or reaches voicemail IS connected and counts. Unanswered ringing is the single most common fact pattern in these cases, and the undefined exclusion invites the answer 'those calls don't count,' which would wrongly negate a clear presumptive violation.\"}, {\"scenario\": \"A collector calls the consumer's mother six times in one week asking her to pass along a message about her daughter's overdue account. The consumer asks whether those calls are a problem.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The node affirmatively states that a genuinely different person (expressly, 'the consumer's mother') gets her own separate 7-call bucket, which implies six calls to the mother are presumptively lawful. It never flags that FDCPA \\u00a7 1692c(b)/12 CFR 1006.6(d) generally prohibit communicating with third parties about the debt at all, and that \\u00a7 1692b/1006.10 limit location-information contacts to a single call absent a request. Relative-calling is a very common complaint, and the encoding would tell a consumer with a strong third-party-disclosure claim that the conduct sits inside a safe harbor.\"}]}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "gaps_found": [
+          {
+            "scenario": "A consumer speaks with the collector on Monday, can't pay that day, and says 'call me back Thursday after I get paid and I'll set something up.' The collector calls Thursday (day 4) with a payoff figure. The consumer later asks whether the Thursday call violated the call-frequency rules.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The encoded 'determination' makes any call within 7 days of a telephone conversation presumptively unlawful with no carve-out, while the consent exclusion is filed only under 'exclusions_from_count' (i.e., appears to apply only to the >7 raw count). Under 12 CFR 1006.14(b)(3), the exclusions apply to BOTH (b)(2)(i) and (b)(2)(ii), so a call placed with the consumer's prior consent given directly to the collector during the 7-day window is excluded from the post-conversation cooldown as well. Consumer-requested callbacks are extremely common, and the node as written would tell such a consumer she has a presumptive violation when she does not."
+          },
+          {
+            "scenario": "A collector dials the consumer's cell 14 times in six days about one debt. The consumer never picks up and the collector never leaves a message; the phone simply rings and goes unanswered or to an untouched voicemail box. The consumer asks whether the 7-in-7 rule was broken.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The node lists 'calls not connected to the dialed number' as an exclusion with no definition. Official commentary to 12 CFR 1006.14(b)(3)(ii) limits that exclusion to calls that never connect (e.g., dropped by the carrier, no service); a call that rings through unanswered or reaches voicemail IS connected and counts. Unanswered ringing is the single most common fact pattern in these cases, and the undefined exclusion invites the answer 'those calls don't count,' which would wrongly negate a clear presumptive violation."
+          },
+          {
+            "scenario": "A collector calls the consumer's mother six times in one week asking her to pass along a message about her daughter's overdue account. The consumer asks whether those calls are a problem.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The node affirmatively states that a genuinely different person (expressly, 'the consumer's mother') gets her own separate 7-call bucket, which implies six calls to the mother are presumptively lawful. It never flags that FDCPA \u00a7 1692c(b)/12 CFR 1006.6(d) generally prohibit communicating with third parties about the debt at all, and that \u00a7 1692b/1006.10 limit location-information contacts to a single call absent a request. Relative-calling is a very common complaint, and the encoding would tell a consumer with a strong third-party-disclosure claim that the conduct sits inside a safe harbor."
+          }
+        ],
+        "parsed_successfully": true
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6",
+      "file": "rules/debt/federal/fdcpa_coverage_threshold_v1.json",
+      "started": "2026-09-01T18:18:38Z",
+      "ended": "2026-09-01T18:22:15Z",
+      "input_sha256": "72084e6dead0e50cb029b93c44dd18b0194cc852d64964d89bb9b9b0993631e3",
+      "node_sha256": "d8e5c1c025b8c7c2d43a82033fd0d437b65ed39a240799f7cfbacf00076585c5",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under \u00a7 1692a(6), an entity is a 'debt collector' if it uses interstate commerce or the mails in a business whose principal purpose is collecting debts, or if it regularly collects (directly or indirectly) debts owed or asserted to be owed to another; a creditor collecting its own debts under a false name indicating a third party is also covered, and enforcers of security interests count only for \u00a7 1692f(6) purposes. Even if a prong is met, the entity is excluded if it fits (A)\u2013(F), e.g., a creditor's own officers/employees collecting in the creditor's name, affiliated in-house collectors whose principal business is not collection, government officers, process servers, nonprofit credit counselors, or persons collecting debts they originated, that were not in default when obtained, or held under fiduciary/escrow or commercial secured-party arrangements. Henson holds that a company collecting debts it purchased for its own account is not thereby collecting debts 'owed another,' although the Court expressly left open whether such a debt buyer could still qualify under the separate 'principal purpose' definition (and \u00a7 1692a(4) excludes from 'creditor' anyone taking assignment of a defaulted debt solely to facilitate collection for another). The supplied text defines the FDCPA gate only; it says nothing about Regulation F's scope, so that part cannot be derived here.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692a(6); 15 U.S.C. \u00a7 1692a(4); Henson v. Santander Consumer USA Inc., 582 U.S. ___ (2017)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under \\u00a7 1692a(6), an entity is a 'debt collector' if it uses interstate commerce or the mails in a business whose principal purpose is collecting debts, or if it regularly collects (directly or indirectly) debts owed or asserted to be owed to another; a creditor collecting its own debts under a false name indicating a third party is also covered, and enforcers of security interests count only for \\u00a7 1692f(6) purposes. Even if a prong is met, the entity is excluded if it fits (A)\\u2013(F), e.g., a creditor's own officers/employees collecting in the creditor's name, affiliated in-house collectors whose principal business is not collection, government officers, process servers, nonprofit credit counselors, or persons collecting debts they originated, that were not in default when obtained, or held under fiduciary/escrow or commercial secured-party arrangements. Henson holds that a company collecting debts it purchased for its own account is not thereby collecting debts 'owed another,' although the Court expressly left open whether such a debt buyer could still qualify under the separate 'principal purpose' definition (and \\u00a7 1692a(4) excludes from 'creditor' anyone taking assignment of a defaulted debt solely to facilitate collection for another). The supplied text defines the FDCPA gate only; it says nothing about Regulation F's scope, so that part cannot be derived here.\", \"grounded\": true, \"citation_used\": \"15 U.S.C. \\u00a7 1692a(6); 15 U.S.C. \\u00a7 1692a(4); Henson v. Santander Consumer USA Inc., 582 U.S. ___ (2017)\"}",
+            "error": null,
+            "_stop_reason": "end_turn"
+          },
+          {
+            "derivation_summary": "The text defines a \u201cdebt collector\u201d as a person whose business\u2019s principal purpose is collecting debts, or who regularly collects or attempts to collect debts owed or due another, subject to listed exclusions and special inclusions. Henson states that collecting debts purchased for one\u2019s own account does not trigger the \u201cowed another\u201d definition, but it does not decide the separate \u201cprincipal purpose\u201d definition. The excerpt provides no facts about Shared Band-1 gate node\u2019s business purpose, whose debts it collects, whether it owns the debts, or whether any exclusion applies, so the entity\u2019s status cannot be determined from the provided text.",
+            "grounded": false,
+            "citation_used": "15 U.S.C. \u00a7 1692a(6); 15 U.S.C. \u00a7 1692a(4); Henson v. Santander Consumer USA Inc., 582 U.S. ___ (2017)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"The text defines a \u201cdebt collector\u201d as a person whose business\u2019s principal purpose is collecting debts, or who regularly collects or attempts to collect debts owed or due another, subject to listed exclusions and special inclusions. Henson states that collecting debts purchased for one\u2019s own account does not trigger the \u201cowed another\u201d definition, but it does not decide the separate \u201cprincipal purpose\u201d definition. The excerpt provides no facts about Shared Band-1 gate node\u2019s business purpose, whose debts it collects, whether it owns the debts, or whether any exclusion applies, so the entity\u2019s status cannot be determined from the provided text.\",\"grounded\":false,\"citation_used\":\"15 U.S.C. \u00a7 1692a(6); 15 U.S.C. \u00a7 1692a(4); Henson v. Santander Consumer USA Inc., 582 U.S. ___ (2017)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The provided legal texts define the term 'debt collector' and distinguish it from a 'creditor,' but they do not contain any information about the specific entity 'Shared Band-1 gate node.' The texts lay out the legal standards, such as whether an entity's principal purpose is debt collection or if it regularly collects debts owed to another. However, without any facts describing the business activities of 'Shared Band-1 gate node,' it is impossible to apply these definitions and determine its status from the text alone.",
+            "grounded": false,
+            "citation_used": null,
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n    \"derivation_summary\": \"The provided legal texts define the term 'debt collector' and distinguish it from a 'creditor,' but they do not contain any information about the specific entity 'Shared Band-1 gate node.' The texts lay out the legal standards, such as whether an entity's principal purpose is debt collection or if it regularly collects debts owed to another. However, without any facts describing the business activities of 'Shared Band-1 gate node,' it is impossible to apply these definitions and determine its status from the text alone.\",\n    \"grounded\": false,\n    \"citation_used\": null\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": false,
+        "semantic_agreement": false,
+        "semantic_agreement_judge": {
+          "agree": false,
+          "agreement_notes": "Skipped -- not all three models returned a grounded, error-free result.",
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null,
+          "_skipped": true
+        },
+        "fingerprints_diagnostic_only": [
+          [],
+          [
+            "1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 149916,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 0.941,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 149996,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://supreme.justia.com/cases/federal/us/582/16-349/",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 403,
+              "content_length": 5855,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.0,
+              "retry_attempt": 2,
+              "longest_matching_prefix_chars": 2,
+              "text_at_break_point": "company may collect debts that it purcha",
+              "raw_html_context_at_break": null
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "edge_cases": [
+            {
+              "scenario": "A sole proprietor took out a $40,000 equipment loan and a guaranty on a commercial line of credit; after default the lender placed the accounts with an outside collection agency that now calls him 10 times a day at home and threatens to 'have him arrested.' He wants to know if the agency violated the FDCPA/Reg F call-frequency and false-threat rules.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": "true",
+              "gap_description": "The node gates only on WHO the entity is and never on WHAT is being collected. The FDCPA applies only to a 'debt' as defined in 1692a(5) -- an obligation of a natural person arising from a transaction primarily for personal, family, or household purposes. Business/commercial debts (and, similarly, most government fines, tickets, tolls, and non-transactional obligations) are outside the Act entirely, no matter how squarely the collector fits 1692a(6). Applied as encoded, the checklist returns 'COVERED' for the small-business borrower and every downstream node (7-in-7, validation notice, false-practices catalog) would then be applied, telling him he has federal claims he does not have. There is also no consumer/'natural person' element in the checklist."
+            },
+            {
+              "scenario": "A consumer's car is repossessed by a repossession company retained by the auto lender, and separately a law firm handling a nonjudicial foreclosure sends her statutory notices of sale. Neither sent a 1692g validation notice, and the repo agent shouted at her in the driveway; she asks whether they broke the FDCPA.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": "true",
+              "gap_description": "The node has no treatment of security-interest enforcement. Under 1692a(6)'s final sentence, a person whose only 'debt collection' business is enforcing security interests is a debt collector solely for purposes of 1692f(6), and Obduskey v. McCarthy & Holthus (2019) holds a business engaged in no more than nonjudicial foreclosure is likewise covered only by 1692f(6). Applied as encoded, both entities are 'regularly collecting debts owed another' with no listed exclusion, so the node returns full COVERAGE and the consumer would be told the validation-notice, call-frequency and general unfair/deceptive nodes apply to them -- a materially wrong answer in both directions of a very common fact pattern (auto repossession and foreclosure)."
+            },
+            {
+              "scenario": "A consumer is 45 days past due on a credit card. An outside vendor the bank hired for 'early-out' recovery begins calling, identifying itself as a collection agency, and misstates the balance. The card agreement says the account is in default the day a payment is missed, but the bank does not charge off or 'place' accounts until 120 days.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": "true",
+              "gap_description": "Checklist item 3 asks a servicer/assignee whether it got the debt before or after 'default,' but the node never defines default (the FDCPA does not; courts look to the underlying contract or to charge-off/placement practice) and, more importantly, invites applying the (F)(iii) exclusion to a retained third-party collection agent. (F)(iii) shelters persons who 'obtained' the debt (ownership or servicing rights) not in default -- most courts do not use it to exempt a collection agency hired to work a delinquent account, and a dedicated collection agency is independently covered under the principal-purpose prong. As encoded, a user with a common early-out/pre-charge-off collector would likely be routed to 'excluded, no FDCPA claim,' a false negative on a live claim."
+            }
+          ],
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A sole proprietor took out a $40,000 equipment loan and a guaranty on a commercial line of credit; after default the lender placed the accounts with an outside collection agency that now calls him 10 times a day at home and threatens to 'have him arrested.' He wants to know if the agency violated the FDCPA/Reg F call-frequency and false-threat rules.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": \"true\", \"gap_description\": \"The node gates only on WHO the entity is and never on WHAT is being collected. The FDCPA applies only to a 'debt' as defined in 1692a(5) -- an obligation of a natural person arising from a transaction primarily for personal, family, or household purposes. Business/commercial debts (and, similarly, most government fines, tickets, tolls, and non-transactional obligations) are outside the Act entirely, no matter how squarely the collector fits 1692a(6). Applied as encoded, the checklist returns 'COVERED' for the small-business borrower and every downstream node (7-in-7, validation notice, false-practices catalog) would then be applied, telling him he has federal claims he does not have. There is also no consumer/'natural person' element in the checklist.\"}, {\"scenario\": \"A consumer's car is repossessed by a repossession company retained by the auto lender, and separately a law firm handling a nonjudicial foreclosure sends her statutory notices of sale. Neither sent a 1692g validation notice, and the repo agent shouted at her in the driveway; she asks whether they broke the FDCPA.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": \"true\", \"gap_description\": \"The node has no treatment of security-interest enforcement. Under 1692a(6)'s final sentence, a person whose only 'debt collection' business is enforcing security interests is a debt collector solely for purposes of 1692f(6), and Obduskey v. McCarthy & Holthus (2019) holds a business engaged in no more than nonjudicial foreclosure is likewise covered only by 1692f(6). Applied as encoded, both entities are 'regularly collecting debts owed another' with no listed exclusion, so the node returns full COVERAGE and the consumer would be told the validation-notice, call-frequency and general unfair/deceptive nodes apply to them -- a materially wrong answer in both directions of a very common fact pattern (auto repossession and foreclosure).\"}, {\"scenario\": \"A consumer is 45 days past due on a credit card. An outside vendor the bank hired for 'early-out' recovery begins calling, identifying itself as a collection agency, and misstates the balance. The card agreement says the account is in default the day a payment is missed, but the bank does not charge off or 'place' accounts until 120 days.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": \"true\", \"gap_description\": \"Checklist item 3 asks a servicer/assignee whether it got the debt before or after 'default,' but the node never defines default (the FDCPA does not; courts look to the underlying contract or to charge-off/placement practice) and, more importantly, invites applying the (F)(iii) exclusion to a retained third-party collection agent. (F)(iii) shelters persons who 'obtained' the debt (ownership or servicing rights) not in default -- most courts do not use it to exempt a collection agency hired to work a delinquent account, and a dedicated collection agency is independently covered under the principal-purpose prong. As encoded, a user with a common early-out/pre-charge-off collector would likely be routed to 'excluded, no FDCPA claim,' a false negative on a live claim.\"}]}",
+          "error": null,
+          "_stop_reason": "end_turn",
+          "_retried_after": "max_tokens_truncation"
+        },
+        "gaps_found": [
+          {
+            "scenario": "A sole proprietor took out a $40,000 equipment loan and a guaranty on a commercial line of credit; after default the lender placed the accounts with an outside collection agency that now calls him 10 times a day at home and threatens to 'have him arrested.' He wants to know if the agency violated the FDCPA/Reg F call-frequency and false-threat rules.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": "true",
+            "gap_description": "The node gates only on WHO the entity is and never on WHAT is being collected. The FDCPA applies only to a 'debt' as defined in 1692a(5) -- an obligation of a natural person arising from a transaction primarily for personal, family, or household purposes. Business/commercial debts (and, similarly, most government fines, tickets, tolls, and non-transactional obligations) are outside the Act entirely, no matter how squarely the collector fits 1692a(6). Applied as encoded, the checklist returns 'COVERED' for the small-business borrower and every downstream node (7-in-7, validation notice, false-practices catalog) would then be applied, telling him he has federal claims he does not have. There is also no consumer/'natural person' element in the checklist."
+          },
+          {
+            "scenario": "A consumer's car is repossessed by a repossession company retained by the auto lender, and separately a law firm handling a nonjudicial foreclosure sends her statutory notices of sale. Neither sent a 1692g validation notice, and the repo agent shouted at her in the driveway; she asks whether they broke the FDCPA.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": "true",
+            "gap_description": "The node has no treatment of security-interest enforcement. Under 1692a(6)'s final sentence, a person whose only 'debt collection' business is enforcing security interests is a debt collector solely for purposes of 1692f(6), and Obduskey v. McCarthy & Holthus (2019) holds a business engaged in no more than nonjudicial foreclosure is likewise covered only by 1692f(6). Applied as encoded, both entities are 'regularly collecting debts owed another' with no listed exclusion, so the node returns full COVERAGE and the consumer would be told the validation-notice, call-frequency and general unfair/deceptive nodes apply to them -- a materially wrong answer in both directions of a very common fact pattern (auto repossession and foreclosure)."
+          },
+          {
+            "scenario": "A consumer is 45 days past due on a credit card. An outside vendor the bank hired for 'early-out' recovery begins calling, identifying itself as a collection agency, and misstates the balance. The card agreement says the account is in default the day a payment is missed, but the bank does not charge off or 'place' accounts until 120 days.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": "true",
+            "gap_description": "Checklist item 3 asks a servicer/assignee whether it got the debt before or after 'default,' but the node never defines default (the FDCPA does not; courts look to the underlying contract or to charge-off/placement practice) and, more importantly, invites applying the (F)(iii) exclusion to a retained third-party collection agent. (F)(iii) shelters persons who 'obtained' the debt (ownership or servicing rights) not in default -- most courts do not use it to exempt a collection agency hired to work a delinquent account, and a dedicated collection agency is independently covered under the principal-purpose prong. As encoded, a user with a common early-out/pre-charge-off collector would likely be routed to 'excluded, no FDCPA claim,' a false negative on a live claim."
+          }
+        ],
+        "parsed_successfully": true
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-09-01T18:22:15Z",
+      "ended": "2026-09-01T18:25:50Z",
+      "input_sha256": "e399858f98277bc78e4e5db34de9f2efe1a4c51cb8c8b70293934a413e366c24",
+      "node_sha256": "e97462d19879ecd7644a62849af4d1d5918fb5edfc02ed713be65ad93c04743a",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 337(a), an action on a contract, obligation, or liability founded on a written instrument must be brought within four years (with a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale foreclosure). Section 337(d) adds that once that period has run, no one may sue, arbitrate, or otherwise initiate legal proceedings to collect the debt, and the period may be extended only under \u00a7 360 \u2014 i.e., by a signed written acknowledgment or promise, or by a payment of principal or interest, though no payment can revive an already time-barred claim. Other provisions may adjust the deadline in specific situations: emergency rule 9(a) tolled limitations periods over 180 days from April 6, 2020 to October 1, 2020; 11 U.S.C. \u00a7 108(c) extends the period where a bankruptcy stay applies; \u00a7 361 bars suit here if the claim is already time-barred where it arose; and 20 U.S.C. \u00a7 1091a removes any limitations period for covered federal student loan/grant collection.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a) (with \u00a7 337(d), \u00a7 360, \u00a7 361; Cal. R. Ct., emergency rule 9(a); 11 U.S.C. \u00a7 108(c); 20 U.S.C. \u00a7 1091a(a))",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 337(a), an action on a contract, obligation, or liability founded on a written instrument must be brought within four years (with a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale foreclosure). Section 337(d) adds that once that period has run, no one may sue, arbitrate, or otherwise initiate legal proceedings to collect the debt, and the period may be extended only under \u00a7 360 \\u2014 i.e., by a signed written acknowledgment or promise, or by a payment of principal or interest, though no payment can revive an already time-barred claim. Other provisions may adjust the deadline in specific situations: emergency rule 9(a) tolled limitations periods over 180 days from April 6, 2020 to October 1, 2020; 11 U.S.C. \u00a7 108(c) extends the period where a bankruptcy stay applies; \u00a7 361 bars suit here if the claim is already time-barred where it arose; and 20 U.S.C. \u00a7 1091a removes any limitations period for covered federal student loan/grant collection.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a) (with \u00a7 337(d), \u00a7 360, \u00a7 361; Cal. R. Ct., emergency rule 9(a); 11 U.S.C. \u00a7 108(c); 20 U.S.C. \u00a7 1091a(a))\"}",
+            "error": null,
+            "_stop_reason": "end_turn"
+          },
+          {
+            "derivation_summary": "In California, an action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that period has run, a person may not sue, initiate arbitration, or start another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d); Cal. Code Civ. Proc. \u00a7 360",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"In California, an action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that period has run, a person may not sue, initiate arbitration, or start another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 337(a), (d); Cal. Code Civ. Proc. \u00a7 360\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "In California, an action upon a contract, obligation, or liability founded upon a written instrument must be brought within four years. Once that period has run, a person is prohibited from bringing a suit or initiating another legal proceeding to collect the debt.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"In California, an action upon a contract, obligation, or liability founded upon a written instrument must be brought within four years. Once that period has run, a person is prohibited from bringing a suit or initiating another legal proceeding to collect the debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same core rule: four years for actions on written contracts under CCP \u00a7 337, with no suit/arbitration/collection proceeding permitted after expiration. Analyses 1 and 2 add that the period may be extended only per \u00a7 360 (written acknowledgment/promise or payment, with no revival of barred claims), and Analysis 1 further notes tolling/exception provisions (COVID emergency rule 9, 11 U.S.C. \u00a7 108(c), \u00a7 361 borrowing statute, federal student loans) and the three-month deficiency-judgment rule \u2014 these are completeness differences, not contradictions.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same core rule: four years for actions on written contracts under CCP \\u00a7 337, with no suit/arbitration/collection proceeding permitted after expiration. Analyses 1 and 2 add that the period may be extended only per \\u00a7 360 (written acknowledgment/promise or payment, with no revival of barred claims), and Analysis 1 further notes tolling/exception provisions (COVID emergency rule 9, 11 U.S.C. \\u00a7 108(c), \\u00a7 361 borrowing statute, federal student loans) and the three-month deficiency-judgment rule \\u2014 these are completeness differences, not contradictions.\"}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "180",
+            "2020",
+            "3",
+            "4",
+            "6"
+          ],
+          [
+            "4"
+          ],
+          [
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164374,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.929,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 165590,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.944,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=361.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 163730,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=360.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164146,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=683.020.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164605,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 116,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www4.courts.ca.gov/documents/appendix-i.pdf",
+            "verified": false,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 403,
+              "content_length": 5843,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.059,
+              "retry_attempt": 2,
+              "longest_matching_prefix_chars": 1,
+              "text_at_break_point": "otwithstanding any other law, the statut",
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title20-section1091a&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 155323,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 0.933,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section108&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 154103,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section524&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 218054,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          }
+        ],
+        "all_verified": false
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "derivation_summary": null,
+          "grounded": false,
+          "citation_used": null,
+          "_parse_error": null,
+          "model": "claude-opus-5",
+          "_raw": "",
+          "error": null,
+          "_stop_reason": "max_tokens",
+          "_retried_after": "empty_completion"
+        },
+        "gaps_found": [],
+        "parsed_successfully": false
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    }
+  ]
+}
