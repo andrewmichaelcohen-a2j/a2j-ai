@@ -2,6 +2,61 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-01, round 32 (content-only: fix 2 genuine gaps found in Andy's first live smoke run since rounds 27-31)
+
+**What changed since round 31:** content-only, no runner/pipeline change. Andy ran the smoke-then-full
+protocol's smoke step live (`run_20260901T111027Z.json`, 2 nodes: `FDCPA-REGF-CALL-FREQUENCY-1006.14b`,
+`CA-SOL-WRITTEN-CONTRACT-DEBT`) and shared the output. Diagnosis first, per standing discipline: the
+run's headline `citation_verification_rate: 0.0%` looked alarming but is a binary per-node metric --
+the real picture was 10 of 13 individual citations verified fine (77%), including both citations rounds
+27/28 were built to fix (eCFR § 1006.14(b), the new § 1692a(6) coverage text), confirming those fixes
+are working live. Of the 3 failing citations: 2 (mass.gov's 940 CMR download, courts.ca.gov's emergency
+rule PDF) are HTTP 403 site-level bot-blocks, not a content or checker bug -- flagged as HORIZON, not
+chased this round. The 3rd was the useful one.
+
+**Fix 1 -- CA-SOL-WRITTEN-CONTRACT-DEBT's 11 U.S.C. § 524(a) citation, root-caused via the run's own
+diagnostics** (`http_status: 200`, `word_overlap_ratio: 1.0`, but `longest_matching_prefix_chars: 39`,
+breaking immediately after "this title-"): a full live fetch of the official uscode.house.gov page
+confirmed the official text reads "title- (1) voids" (single hyphen), while this node's quoted_text
+carried "title-- (1) voids" (double hyphen) -- a typographic artifact inherited from round 29's
+Cornell LII mirror verification. Fixed to match the official source exactly; this closes the live
+re-verification round 29's tier_rationale had explicitly flagged as outstanding.
+
+**Fix 2 -- CA-SOL-WRITTEN-CONTRACT-DEBT's COVID Emergency Rule 9(a) tolling was overbroad.** This
+node's Stage B adversarial call truncated after 2 of 3 edge cases and did not parse successfully
+(`gaps_found: []` as a mechanical result) -- but the raw partial text before truncation contained a
+complete, well-reasoned first scenario, read and independently verified rather than discarded, per
+this project's standing practice of treating partial Stage B text as a real lead even when it doesn't
+formally register as a gap. The node's `determination` previously added +178 tolling days to any claim
+whose deadline "had not already passed as of April 6, 2020" -- trivially true for essentially any claim,
+including ones accruing well AFTER the tolling window closed on October 1, 2020 (e.g., a 2022 default,
+which never had its limitations clock running during the tolled window at all). Fixed by adding the
+missing accrual-before-October-1-2020 condition to both `covid_emergency_rule_9_tolling_note` and
+`determination`.
+
+**Fix 3 -- FDCPA-REGF-CALL-FREQUENCY-1006.14b's unit-of-count ambiguity and call-scope gap**, both
+genuine Stage B findings on the same run, both groundable directly in the already-cited, already-verified
+12 CFR § 1006.14(b)(2)(i) text ("a telephone call to a particular PERSON") with no new citation needed:
+(a) rewrote `unit_of_count` to state unambiguously that calls to the same consumer at different phone
+numbers (cell, home, work) are aggregated into ONE 7-call bucket -- only a genuinely different person
+gets a separate bucket -- replacing an earlier "her workplace" example that could be misread as a
+different-number case; (b) added `what_counts_as_a_call_note`: the 7-in-7 count covers phone calls only,
+not texts or emails, which are separately governed by 12 CFR 1006.6(b)/1006.14(h), not yet encoded as
+their own nodes.
+
+**Not fixed this round, deferred honestly:** the same live run's 3rd FDCPA-REGF-CALL-FREQUENCY finding
+(California's Rosenthal Act, Cal. Civ. Code § 1788 et seq., reportedly extends "debt collector" coverage
+to original creditors, unlike the federal FDCPA) was NOT encoded -- `web_fetch` to
+leginfo.legislature.ca.gov timed out 3 consecutive attempts this session, and per standing discipline
+this corpus never encodes quoted statutory text without a live verification fetch. Flagged in
+`state_law_may_be_stricter_note` and here, not silently dropped; queued for the next round once the
+fetch succeeds.
+
+**Verification:** full CI suite (`validate_debt_schema.py`, `check_frozen_artifacts.py`,
+`check_corroboration_calibration.py`) run and passing; patch verified via `git am --3way` against a
+fresh clone of real origin (chained after rounds 27-31) before delivery. Content-only round -- no
+runner/calibration fixture change, consistent with the one-variable rule.
+
 ## 2026-09-01, round 31 (content-only: new dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node + cross-references)
 
 **What changed since round 30:** content-only, no runner/pipeline change. Andy approved (2026-09-01, "i see - thank you - yes, go ahead and build") building a dedicated coverage-threshold node after I flagged that the FDCPA "debt collector" coverage analysis under 15 U.S.C. § 1692a(6) was being independently re-derived, in shortened form, inline in multiple FDCPA nodes (round 30) -- a duplication/drift risk this round closes.
