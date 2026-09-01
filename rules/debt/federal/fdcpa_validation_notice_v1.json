@@ -68,6 +68,20 @@
             "quoted_text": "Pursuant to paragraph (a)(1) of this section, a debt collector must provide the following validation information. (1) Debt collector communication disclosure. The statement required by § 1006.18(e). (2) Information about the debt.",
             "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
             "source_tier": "A"
+          },
+          {
+            "cite": "15 U.S.C. § 1692a(6)",
+            "quoted_text": "The term \"debt collector\" means any person who uses any instrumentality of interstate commerce or the mails in any business the principal purpose of which is the collection of any debts, or who regularly collects or attempts to collect, directly or indirectly, debts owed or due or asserted to be owed or due another. ... The term does not include-- (A) any officer or employee of a creditor while, in the name of the creditor, collecting debts for such creditor; ... (F) any person collecting or attempting to collect any debt owed or due or asserted to be owed or due another to the extent such activity ... (iii) concerns a debt which was not in default at the time it was obtained by such person; or (iv) concerns a debt obtained by such person as a secured party in a commercial credit transaction involving the creditor.",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-01 (round 30) to encode the FDCPA coverage-threshold gap the corroboration pipeline's adversarial check found missing (run_20260901T100043Z.json): both 1692g's statutory validation-notice duty and Reg F's fuller version only apply to 'debt collectors' as defined here -- an original creditor collecting its own debt, or a servicer that acquired the debt while it was not yet in default, has no validation-notice duty under this node at all. Confirmed via direct fetch of the official U.S. Code (uscode.house.gov). Same shared, cross-cutting threshold question flagged on FDCPA-REGF-CALL-FREQUENCY-1006.14b this round -- HORIZON note: a dedicated coverage node should eventually serve all affected nodes."
+          },
+          {
+            "cite": "12 C.F.R. § 1006.34(b)(5), Official Interpretation, comment 34(b)(5)-2",
+            "quoted_text": "If a debt collector sends a subsequent validation notice to a consumer because the consumer did not receive the original validation notice and the consumer has not otherwise received the validation information required by § 1006.34(c), the debt collector must calculate the end date of the validation period specified in the § 1006.34(c)(3) disclosures based on the date the consumer receives or is assumed to receive the subsequent validation notice. For example, assume a debt collector sends a consumer a validation notice on January 1, and that notice is returned as undeliverable. After obtaining accurate location information, the debt collector sends the consumer a subsequent validation notice on January 15. Pursuant to § 1006.34(b)(5), the end date of the validation period specified in the § 1006.34(c)(3) disclosures is based on the date the consumer receives or is assumed to receive the validation notice sent on January 15.",
+            "url": "https://www.consumerfinance.gov/rules-policy/regulations/1006/interp-34/",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-01 (round 30) to encode the non-delivery/returned-mail gap the corroboration pipeline's adversarial check found missing: this node's logic computed the validation window mechanically from the original mailing date plus the 5-day receipt assumption, with no fact in the checklist for non-delivery, returned mail, or the collector's actual knowledge that the original notice never reached the consumer. The CFPB's own official interpretation (Supplement I to Regulation F, confirmed via direct fetch of consumerfinance.gov this round) squarely addresses this: if the collector KNOWS the original notice wasn't delivered (e.g. returned undeliverable) and sends a follow-up, the window runs from the FOLLOW-UP notice, not the original. This node did not previously distinguish 'collector doesn't yet know receipt failed' (5-day assumption controls, per comment 34(b)(5)-1, even if the collector later learns otherwise) from 'collector knows receipt failed and re-sends' (follow-up notice date controls)."
           }
         ],
         "citation_verified": true
@@ -93,7 +107,7 @@
             "Sundays",
             "federal_legal_holidays"
           ],
-          "determination": "dispute_window_open_if today <= (validation_info_provided_date + mailbox_rule_assumption_days + 30_days), computed per the exclusions above"
+          "determination": "dispute_window_open_if today <= (assumed_or_actual_receipt_date + 30 calendar days), where assumed_or_actual_receipt_date = validation_info_provided_date + 5 days, counting only days that are NOT a Saturday, Sunday, or federal legal holiday (per 12 CFR 1006.34(b)(5) -- i.e. 5 BUSINESS days, not 5 calendar days). CRITICAL, previously ambiguous in this field: the Saturday/Sunday/holiday exclusion applies ONLY to computing the 5-day assumed-receipt date -- the 30-day period that follows runs in ordinary CALENDAR days, with no further weekend/holiday exclusion. Do not apply the exclusion to the whole 35-day span."
         },
         "consequence_if_disputed_in_writing_within_window": {
           "collector_must": "cease_collection_of_disputed_portion_until_verification_or_judgment_copy_mailed_to_consumer",
@@ -114,8 +128,15 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260831T212748Z.json (Andy's 3-node live smoke test of the round-26 runner), FDCPA-VALIDATION-NOTICE-1692g citation_check: 12 C.F.R. § 1006.34(c) failed verification (longest_matching_prefix_chars=120, i.e. it matched the FIRST 120 chars fully -- so the checker never even reached the actual problem within the 120-char match window; investigated further by fetching the real eCFR page directly this round). Root cause confirmed by direct comparison against the live-fetched § 1006.34(c) text: the prior quoted_text was NOT a verbatim excerpt -- it was a colon-joined, semicolon-separated paraphrase/summary of what the regulation actually states as four separately numbered, period-terminated subsections each with its own heading (e.g. the real text reads '...validation information. (1) Debt collector communication disclosure. The statement required by § 1006.18(e). (2) Information about the debt. Except as provided in paragraph (c)(5) of this section: ...' -- not the colon+semicolon summary previously quoted). This is a citation-integrity issue, not a legal-content error: the underlying rule statement and completeness_checklist were already legally correct and are unchanged. This is a content-only round per the one-variable rule -- no corroboration-runner code changes in this round.",
             "summary": "Replaced the non-verbatim 12 C.F.R. § 1006.34(c) quoted_text (a paraphrased summary of all four subsections) with a genuinely verbatim excerpt confirmed against the live eCFR page (the lead-in sentence plus the first numbered subsection, (c)(1), with its actual heading and cross-reference to § 1006.18(e)). No change to node title, logic, completeness_checklist, or consequences_and_next_steps -- this was purely a citation-verbatim-quote fix."
+          },
+          {
+            "date": "2026-09-01",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260901T100043Z.json (Andy's re-run of the 3-node live smoke test after rounds 27-28's citation-checker fixes): this node's citation_check was 100% verified and Stage A/B both clean this run -- the FLAGGED status was driven entirely by 3 genuine, new Stage B adversarial findings (all realistic_and_common=true, would_cause_wrong_answer=true, exposes_gap=true), confirming round 27's citation fix is working on the real live pipeline, and giving Stage B room to surface content gaps that the citation-check failure had previously been masking.",
+            "summary": "Rewrote dispute_window.determination to remove the ambiguity between the 5-day mailbox-assumption exclusion (business days) and the 30-day validation period itself (calendar days, no exclusion) -- the prior phrasing 'computed per the exclusions above' could be misread as applying the weekend/holiday exclusion to the whole 35-day span. Added 15 U.S.C. 1692a(6) (FDCPA coverage threshold -- same gap flagged on FDCPA-REGF-CALL-FREQUENCY-1006.14b this round) and 12 CFR 1006.34(b)(5) Official Interpretation comment 34(b)(5)-2 (non-delivery/returned-mail: a follow-up notice's date controls, not the original mailing date, once the collector knows the original wasn't received) as new derived_from entries, with a corresponding logic note. Added 3 completeness_checklist items."
           }
-        ]
+        ],
+        "non_delivery_returned_mail_note": "The 5-day receipt assumption in 12 CFR 1006.34(b)(5) is what a debt collector may use WHILE it does not yet know whether the consumer actually received the notice -- and per the CFPB's own official interpretation (comment 34(b)(5)-1), the collector may keep using that assumed date even if it LATER learns the consumer received it on a different day. But this only holds while the collector doesn't yet know delivery failed. If mail is returned as undeliverable (or the collector otherwise learns the consumer never received the notice) and the collector sends a SUBSEQUENT validation notice, the 30-day window must be calculated from the SUBSEQUENT notice's assumed-or-actual receipt date, not the original mailing date (comment 34(b)(5)-2). This node's checklist did not previously ask whether the original notice was returned/non-delivered or whether a follow-up notice was ever sent -- a consumer who never actually got a validation notice (mail returned, no follow-up sent) may not have had a validation period start running at all under this framework, a materially different answer than 'the 30-plus-5-day window from the original mailing has already closed.'"
       },
       "completeness_checklist": [
         {
@@ -148,6 +169,18 @@
         },
         {
           "fact": "Whether collection activity continued after a written dispute was sent, before verification was provided",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the entity sending the notice (or failing to) is a covered 'debt collector' under 15 U.S.C. 1692a(6) -- an original creditor collecting its own debt, or a servicer that acquired the debt while it was not yet in default, has no validation-notice duty under this node at all",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the original validation notice was returned as undeliverable, or the collector otherwise learned the consumer did not receive it, and if so whether a SUBSEQUENT validation notice was sent -- the 30-day window runs from the subsequent notice's (assumed) receipt date, not the original mailing date",
+          "dispositive": true
+        },
+        {
+          "fact": "When computing the 30-day dispute deadline: confirm the Saturday/Sunday/federal-holiday exclusion was applied ONLY to the initial 5-day receipt assumption, not to the 30-day period that follows it",
           "dispositive": true
         }
       ],

@@ -2,6 +2,71 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-01, round 30 (content fix: 6 new adversarial gaps on the 2 FDCPA nodes from Andy's re-run smoke test)
+
+**What changed since round 29:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+and `rules/debt/federal/fdcpa_validation_notice_v1.json` only -- new
+`derived_from` entries, `logic` notes/fixes, `drafting_revisions` entries, and
+`completeness_checklist` items on the two flagged nodes. No runner/CI changes
+-- content-only round per the one-variable rule.
+
+**Background.** Andy re-ran the 3-node smoke test after rounds 27-28's
+citation-checker fixes (`run_20260901T100043Z.json`). Result confirms the
+fixes: citation-verification jumped to 100% (was 33.3%), and
+`CA-SOL-WRITTEN-CONTRACT-DEBT` showed CLEAN-PASS this run (round 29's content
+fix for that node had not yet been applied to origin at the time of this run
+-- its gaps are real and verified regardless of whether this particular
+stochastic Stage-B run happened to resurface them; round 29 should still be
+applied). The two FDCPA nodes were still FLAGGED, but this time with Stage A,
+citation-verification, AND Stage B parse-success all at 100% -- meaning
+rounds 27-28's fixes hold, and this is a different class of finding: genuine,
+new Stage B adversarial gaps that citation-check failures had previously been
+masking (a FLAGGED node with a broken citation check never gets to a clean
+adversarial read the same way).
+
+**`FDCPA-REGF-CALL-FREQUENCY-1006.14b` -- 3 gaps.** (1) No FDCPA "debt
+collector" coverage threshold: this node's 7-in-7 rule is a Reg F rule, and
+Reg F only reaches "debt collectors" under 15 U.S.C. 1692a(6) -- not an
+original creditor calling in its own name, nor a servicer that acquired the
+loan while it was not yet in default. (2) The unit-of-count was encoded as
+"per particular debt" only, missing that it is ALSO per particular PERSON
+(12 CFR 1006.14(b)(2)(i)'s own text specifies both) -- calls to different
+people about the same debt are not supposed to be aggregated, but the node's
+prior encoding would have wrongly flagged that as a violation. (3) No
+state-law overlay: several states impose stricter call-frequency limits than
+the federal 7-in-7 safe harbor. Massachusetts (940 CMR 7.04(1)(f), 2
+communications per 7-day period, and notably reaching "creditors" broadly,
+not just FDCPA-covered debt collectors) is now encoded as a verified example;
+other states are flagged HORIZON, not encoded, since they weren't
+independently verified this round.
+
+**`FDCPA-VALIDATION-NOTICE-1692g` -- 3 gaps.** (1) Same coverage-threshold
+gap as above (15 U.S.C. 1692a(6)) -- an uncovered entity has no
+validation-notice duty under this node at all. (2) The `dispute_window`
+determination's weekend/holiday exclusion was ambiguously worded --
+"computed per the exclusions above" could be misread as excluding
+weekends/holidays across the whole 35-day span, when in fact the exclusion
+applies ONLY to the initial 5-business-day receipt assumption; the following
+30-day period runs in ordinary calendar days. Rewritten to be unambiguous.
+(3) No non-delivery/returned-mail handling: the CFPB's own official
+interpretation of 12 CFR 1006.34(b)(5) (comment 34(b)(5)-2, confirmed via
+direct fetch of consumerfinance.gov) states that once a collector knows the
+original notice wasn't delivered and sends a follow-up, the 30-day window
+runs from the FOLLOW-UP notice's date, not the original -- this node's
+checklist never asked about non-delivery or a follow-up notice.
+
+**Shared HORIZON note.** The coverage-threshold gap is really one
+cross-cutting question affecting every node in this file (and likely all 5
+FDCPA nodes in the corpus), not something to re-derive per node. Flagged
+inline in both nodes' `tier_rationale` fields rather than deferred silently:
+a dedicated FDCPA-coverage/"debt collector"-definition node would better
+serve all affected nodes than repeating a condensed version of the same
+analysis in each.
+
+*Verification:* `validate_debt_schema.py` PASS; diff is 73 lines across 2
+rules files; patch verified via fresh-clone `git am --3way` (chained after
+rounds 27-29) before delivery.
+
 ## 2026-09-01, round 29 (content fix: CA-SOL-WRITTEN-CONTRACT-DEBT's 3 genuine adversarial gaps -- COVID tolling, federal student loan preemption, bankruptcy screening)
 
 **What changed since round 28:** `rules/debt/state/california/ca_debt_state_layer_v1.json`

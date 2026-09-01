@@ -78,6 +78,20 @@
             "quoted_text": "For purposes of this paragraph (b), particular debt means each of a consumer's debts in collection. However, in the case of student loan debts, the term particular debt means all student loan debts that a consumer owes or allegedly owes that were serviced under a single account number at the time the debts were obtained by a debt collector.",
             "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
             "source_tier": "A"
+          },
+          {
+            "cite": "15 U.S.C. § 1692a(6)",
+            "quoted_text": "The term \"debt collector\" means any person who uses any instrumentality of interstate commerce or the mails in any business the principal purpose of which is the collection of any debts, or who regularly collects or attempts to collect, directly or indirectly, debts owed or due or asserted to be owed or due another. ... The term does not include-- (A) any officer or employee of a creditor while, in the name of the creditor, collecting debts for such creditor; ... (F) any person collecting or attempting to collect any debt owed or due or asserted to be owed or due another to the extent such activity (i) is incidental to a bona fide fiduciary obligation or a bona fide escrow arrangement; (ii) concerns a debt which was originated by such person; (iii) concerns a debt which was not in default at the time it was obtained by such person; or (iv) concerns a debt obtained by such person as a secured party in a commercial credit transaction involving the creditor.",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692a&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-01 (round 30) to encode the FDCPA coverage-threshold gap the corroboration pipeline's adversarial check found missing (run_20260901T100043Z.json): this node's 7-in-7 call-frequency rule is a Regulation F rule and Reg F only reaches 'debt collectors' as defined here -- it does not apply to an original creditor collecting its own debt in its own name (exclusion (A)), or to a servicer/assignee collecting a debt that was NOT in default when that person obtained it (exclusion (F)(iii)). Confirmed via direct fetch of the official U.S. Code (uscode.house.gov). This is a shared, cross-cutting threshold question for every node in this file (and FDCPA-VALIDATION-NOTICE-1692g) -- HORIZON note: a dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-DEFINITION node should eventually serve all affected nodes rather than repeating this analysis in each; flagged here rather than deferred silently."
+          },
+          {
+            "cite": "940 CMR 7.04(1)(f)",
+            "quoted_text": "Initiating a communication with any debtor via telephone, either in person or via text messaging or recorded audio message, in excess of two such communications in each seven-day period to either the debtor's residence, cellular telephone, or other telephone number provided by the debtor as his or her personal telephone number and two such communications in each 30-day period other than at a debtor's residence, cellular telephone, or other telephone number provided by the debtor as his or her personal telephone number, for each debt.",
+            "url": "https://www.mass.gov/doc/940-cmr-7-debt-collection-regulations/download",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-01 (round 30) to encode the state-overlay gap the corroboration pipeline's adversarial check found missing: several states impose call-frequency limits stricter than Reg F's federal 7-in-7 safe harbor, and this node's checklist never asked for the consumer's state. Massachusetts is used as a concrete, fully-verified EXAMPLE (confirmed via direct fetch of the Attorney General's official regulation text) rather than an exhaustive list -- notably, 940 CMR 7.00 applies to 'creditors' broadly (defined in 940 CMR 7.03 to include the original creditor and its agents), not only to FDCPA-covered 'debt collectors,' so it can reach calls this node's federal analysis wouldn't cover at all. Other states (e.g., New York) are known to have their own limits per secondary-source research this round, but were NOT independently verified against a primary source this round and are NOT encoded -- flagged as HORIZON, not silently assumed."
           }
         ],
         "citation_verified": true
@@ -86,13 +100,23 @@
         "presumption_type": "rebuttable — a presumption of compliance or violation, not an absolute rule; a collector could rebut a violation-presumption, or a consumer could show harassment despite staying under the count in an unusual case",
         "safe_harbor_count": "no more than 7 calls within any 7 consecutive days, per particular debt",
         "cooldown_rule": "no call within 7 consecutive days after an actual telephone CONVERSATION about that debt (the conversation date is day 1 of that 7-day window) — distinct from the raw count limit and can be more restrictive",
-        "unit_of_count": "per 'particular debt' — each separate debt in collection is counted separately (special aggregation rule for student loans serviced under one account number)",
+        "unit_of_count": "per 'particular PERSON' AND per 'particular debt' together -- both dimensions of the regulatory text (12 CFR 1006.14(b)(2)(i): 'a telephone call to a particular person in connection with the collection of a particular debt') must match for calls to count toward the same 7-call bucket. Calls to DIFFERENT people about the same debt (e.g., the consumer, then her mother, then her workplace) are NOT aggregated into one 7-call count -- each recipient has their own separate count for that debt. Each separate debt in collection is also counted separately (special aggregation rule for student loans serviced under one account number, see 12 CFR 1006.14(b)(4)).",
         "exclusions_from_count": [
           "calls made with the person's prior consent, within 7 days of that consent",
           "calls not connected to the dialed number",
           "calls to certain third parties under §1006.6(d)(1)(ii)-(vi), not encoded in this node"
         ],
-        "determination": "presumptively_unlawful if call_count_in_trailing_7_days > 7 for the same debt, OR a call is placed within 7 days after a conversation about that same debt"
+        "determination": "presumptively_unlawful under FEDERAL law if call_count_in_trailing_7_days > 7 for the same debt AND same recipient, OR a call is placed within 7 days after a conversation about that same debt with that same recipient -- SUBJECT TO: (a) the FDCPA coverage threshold above (if the caller is not a covered 'debt collector', this node's federal presumption does not apply at all); and (b) any stricter state-law limit (see state_law_may_be_stricter_note) that may render the same conduct unlawful even where the federal 7-in-7 presumption is not triggered.",
+        "fdcpa_coverage_threshold_note": "This node's 7-in-7 rule is a Regulation F rule, and Reg F only applies to 'debt collectors' as defined at 15 U.S.C. 1692a(6). It does NOT apply to an original creditor collecting its own debt in its own name, or to a loan servicer that acquired the debt while it was NOT YET in default (15 U.S.C. 1692a(6)(A), (F)(iii)). A consumer being called 10 times in 5 days by her own credit card issuer's in-house collections department, or by a mortgage servicer that acquired a then-current loan, is NOT protected by this node's presumption at all -- this is a THRESHOLD question this node's checklist did not previously ask, and it is easy to get wrong because the calling behavior can look identical regardless of whether the caller is covered.",
+        "state_law_may_be_stricter_note": "This node encodes only the FEDERAL Reg F 7-in-7 safe harbor. Several states impose stricter call-frequency or communication-frequency limits under their own debt collection statutes/regulations -- e.g. Massachusetts (940 CMR 7.04(1)(f)) limits creditors (not just FDCPA 'debt collectors' -- a broader class) to two telephone communications per 7-day period, per debt, well below the federal 7-call ceiling. A call pattern that is presumptively lawful under this node's federal analysis can still be unlawful under a stricter state law. This node's checklist did not previously ask for the consumer's state -- a genuine, easy-to-miss gap for any consumer in a stricter-state jurisdiction. Only Massachusetts is currently encoded with a verified primary-source citation; other states' limits are flagged as HORIZON, not encoded.",
+        "drafting_revisions": [
+          {
+            "date": "2026-09-01",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260901T100043Z.json (Andy's re-run of the 3-node live smoke test after rounds 27-28's citation-checker fixes): this node's citation_check was 100% verified and Stage A/B both clean this run -- the FLAGGED status was driven entirely by 3 genuine, new Stage B adversarial findings (all realistic_and_common=true, would_cause_wrong_answer=true, exposes_gap=true), confirming rounds 27/28's citation-checker fixes are working on the real live pipeline, and giving Stage B room to surface content gaps that citation-check failures had previously been masking.",
+            "summary": "Added 15 U.S.C. 1692a(6) (FDCPA 'debt collector' coverage threshold -- this node's rule doesn't reach original creditors or servicers of then-current loans) and 940 CMR 7.04(1)(f) (Massachusetts state-law overlay, stricter than the federal 7-in-7 safe harbor, as a verified example) as new derived_from entries. Added coverage-threshold, unit-of-count (clarifying BOTH person and debt, not just debt -- calls to different people are not aggregated), and state-law-may-be-stricter logic notes. Rewrote 'determination' to reflect the two-dimensional unit of count and flag the two threshold questions. Added 3 completeness_checklist items."
+          }
+        ]
       },
       "completeness_checklist": [
         {
@@ -109,6 +133,18 @@
         },
         {
           "fact": "Whether this is one debt or multiple debts (each counted separately, except aggregated student loans under one account number)",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether the caller is a covered 'debt collector' under 15 U.S.C. 1692a(6) -- an original creditor collecting its own debt in its own name, or a servicer that acquired the debt while it was not yet in default, is NOT covered by this node's Reg F analysis at all",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether calls to different people (e.g. the consumer, a family member, the workplace) about the same debt are being wrongly added together -- the 7-call count is per person AND per debt, not aggregated across different call recipients",
+          "dispositive": true
+        },
+        {
+          "fact": "The consumer's state -- some states (e.g. Massachusetts, 940 CMR 7.04(1)(f)) impose stricter call-frequency limits than the federal 7-in-7 safe harbor, and can reach original creditors that Reg F's 'debt collector' definition would exclude",
           "dispositive": true
         }
       ],
