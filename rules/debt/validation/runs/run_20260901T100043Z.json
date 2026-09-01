@@ -1,0 +1,683 @@
+{
+  "run_id": "run_20260901T100043Z",
+  "mode": "live",
+  "started": "2026-09-01T10:00:43Z",
+  "ended": "2026-09-01T10:06:49Z",
+  "models": {
+    "anthropic": "claude-opus-5",
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "demo_corpus_only": false,
+  "citation_check_skipped": false,
+  "budget_cap_usd": 15.0,
+  "approx_cost_per_node_usd_estimate": 0.45,
+  "n_queued": 3,
+  "n_completed": 3,
+  "n_clean_pass": 1,
+  "n_flagged": 2,
+  "demo_gate_metrics": {
+    "stage_a_grounded_agreement_rate": {
+      "value_percent": 100.0,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 3,
+      "stage": "Stage A only",
+      "numerator": "nodes where all 3 models returned grounded==true AND the LLM judge found semantic agreement",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "does NOT require citation verification or a clean adversarial check -- purely: did the 3 models derive the same rule from the cited text, independently."
+    },
+    "citation_verification_rate": {
+      "value_percent": 100.0,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 3,
+      "stage": "citation-check only",
+      "numerator": "nodes where every cited source's quoted_text verified as a substring of the fetched page",
+      "denominator": "all demo-corpus nodes attempted this run (null/not computed if --skip-citation-check)",
+      "basis": "mechanical HTTP fetch + substring match, no model involved."
+    },
+    "stage_b_parse_success_rate": {
+      "value_percent": 100.0,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 3,
+      "stage": "Stage B only",
+      "numerator": "nodes where the adversarial call returned parseable edge_cases (not truncated, not empty, no error) -- even after the round-23/24 retry",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "an infrastructure/reliability signal, not a gap-count -- a node can parse successfully and still expose real gaps, or fail to parse and expose none we know of."
+    },
+    "full_pipeline_clean_pass_rate": {
+      "value_percent": 33.33333333333333,
+      "n_demo_corpus_nodes_this_run": 3,
+      "n_passing": 1,
+      "stage": "all three stages combined -- this is the renamed former 'grounded_agreement_rate' (round 26; the old name was found to be mislabeled relative to its own definition, see docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md S4's round-24 entry)",
+      "numerator": "nodes with status == CLEAN-PASS",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all citations live-verified AND no adversarial gap found AND the adversarial check itself parsed successfully (round 26 -- a Stage B parse failure no longer silently reads as \"no gaps\", see spec S4). Numeric fingerprint is a secondary diagnostic only as of 2026-08-26 round 3, not part of this basis either."
+    },
+    "grounded_agreement_rate": {
+      "value_percent": 33.33333333333333,
+      "deprecated": true,
+      "note": "Deprecated alias for full_pipeline_clean_pass_rate (round 26), kept only so anything still reading this exact key doesn't break. This name was found to be mislabeled -- it was never actually a Stage-A-only measure despite the name. Use full_pipeline_clean_pass_rate (the honest name for the same number) or stage_a_grounded_agreement_rate (genuinely Stage-A-only) going forward."
+    },
+    "scenario_pass_rate": {
+      "value_percent": 0.0,
+      "n_scenarios": 5,
+      "n_passing": 0,
+      "scenarios": [
+        {
+          "scenario_id": "tx-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "ca-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "pre-suit-validation-rights",
+          "passed": false,
+          "depends_on_node_ids": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "missing_from_this_run": [],
+          "failing_deps": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ]
+        },
+        {
+          "scenario_id": "garnishment-scenario",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "missing_from_this_run": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "band3-refusal-boundary",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "missing_from_this_run": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "failing_deps": []
+        }
+      ],
+      "stage": "scenario level (depends on multiple nodes' CLEAN-PASS status)",
+      "numerator": "concept-demo scenarios where every node_id they depend on is CLEAN-PASS this run",
+      "denominator": "all concept-demo scenarios defined in the scenarios file",
+      "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run"
+    },
+    "internal_gate_met": false,
+    "gate_threshold_percent": 90.0,
+    "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an internal readiness gate computed by this script, not itself a claim to publish -- see spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing. Round 26: added stage_a_grounded_agreement_rate, citation_verification_rate, and stage_b_parse_success_rate as separately-reported per-stage metrics (freeze item 1's reconciliation finding) -- grounded_agreement_rate is now full_pipeline_clean_pass_rate."
+  },
+  "node_results": [
+    {
+      "node_id": "FDCPA-REGF-CALL-FREQUENCY-1006.14b",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "started": "2026-09-01T10:00:43Z",
+      "ended": "2026-09-01T10:03:21Z",
+      "input_sha256": "448ae11f0a43ad41ee30f1ccecdf1c14041c616c8c2e4f4d28094e23279aaec0",
+      "node_sha256": "986a6e2497c8af1743aca50245fd6e940882122b0d3f275b734c9ec9309fb835",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under 12 C.F.R. \u00a7 1006.14(b)(2)(i), a debt collector is presumed to comply with the harassment prohibition in \u00a7 1006.14(b)(1) and FDCPA \u00a7 806(5) if, as to a particular person and a particular debt, it places no more than seven calls within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt (the conversation date counts as day one). Conversely, under (b)(2)(ii), exceeding either of those frequencies creates a presumption of violation. Both presumptions are subject to the exclusions in paragraph (b)(3), and under (b)(4) the limits apply per individual debt, except that student loan debts serviced under a single account number when obtained by the collector count as one 'particular debt.'",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \u00a7 1006.14(b)(4)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under 12 C.F.R. \u00a7 1006.14(b)(2)(i), a debt collector is presumed to comply with the harassment prohibition in \u00a7 1006.14(b)(1) and FDCPA \u00a7 806(5) if, as to a particular person and a particular debt, it places no more than seven calls within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt (the conversation date counts as day one). Conversely, under (b)(2)(ii), exceeding either of those frequencies creates a presumption of violation. Both presumptions are subject to the exclusions in paragraph (b)(3), and under (b)(4) the limits apply per individual debt, except that student loan debts serviced under a single account number when obtained by the collector count as one 'particular debt.'\", \"grounded\": true, \"citation_used\": \"12 C.F.R. \\u00a7 1006.14(b)(2)(i)-(ii); 12 C.F.R. \\u00a7 1006.14(b)(4)\"}",
+            "error": null,
+            "_stop_reason": "end_turn"
+          },
+          {
+            "derivation_summary": "A debt collector is presumed to comply if, for a particular person and a particular debt, it does not call more than seven times within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For this purpose, a \u201cparticular debt\u201d means each debt in collection, except that certain student loan debts serviced under a single account number are treated together as one particular debt.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii), (b)(4)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"A debt collector is presumed to comply if, for a particular person and a particular debt, it does not call more than seven times within seven consecutive days and does not call within seven consecutive days after having had a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. A debt collector is presumed to violate the rule if it exceeds either of those call-frequency limits. For this purpose, a \u201cparticular debt\u201d means each debt in collection, except that certain student loan debts serviced under a single account number are treated together as one particular debt.\",\"grounded\":true,\"citation_used\":\"12 C.F.R. \u00a7 1006.14(b)(2)(i)-(ii), (b)(4)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt collector is presumed to have acted unlawfully if they call a person about a particular debt more than seven times within a seven-consecutive-day period. A violation is also presumed if the collector calls again within seven consecutive days after having had a telephone conversation with that person about the debt. This frequency limit generally applies to each of a consumer's individual debts, but all student loans serviced under a single account number are treated as one single debt.",
+            "grounded": true,
+            "citation_used": "12 C.F.R. \u00a7 1006.14(b)(2)(ii)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A debt collector is presumed to have acted unlawfully if they call a person about a particular debt more than seven times within a seven-consecutive-day period. A violation is also presumed if the collector calls again within seven consecutive days after having had a telephone conversation with that person about the debt. This frequency limit generally applies to each of a consumer's individual debts, but all student loans serviced under a single account number are treated as one single debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"12 C.F.R. \u00a7 1006.14(b)(2)(ii)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same Regulation F rule: no more than seven calls to a person about a particular debt in seven consecutive days, no call within seven consecutive days after a telephone conversation about that debt, applied per debt with student loans serviced under a single account number counted as one debt. Completeness differences only: Analysis 1 alone mentions the (b)(3) exclusions and that the conversation date counts as day one (Analysis 2 also notes the day-one point), and Analysis 3 frames only the violation presumption without the corresponding safe-harbor compliance presumption \u2014 none of which contradicts the others.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same Regulation F rule: no more than seven calls to a person about a particular debt in seven consecutive days, no call within seven consecutive days after a telephone conversation about that debt, applied per debt with student loans serviced under a single account number counted as one debt. Completeness differences only: Analysis 1 alone mentions the (b)(3) exclusions and that the conversation date counts as day one (Analysis 2 also notes the day-one point), and Analysis 3 frames only the violation presumption without the corresponding safe-harbor compliance presumption \\u2014 none of which contradicts the others.\"}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "2",
+            "3",
+            "4",
+            "7"
+          ],
+          [
+            "1",
+            "7"
+          ],
+          [
+            "1",
+            "7"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 75625,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.14",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 75625,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          }
+        ],
+        "all_verified": true
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "edge_cases": [
+            {
+              "scenario": "A consumer gets 10 calls in 5 days from the in-house collections department of the bank that issued her credit card (or from a mortgage servicer collecting a loan it acquired before default). She asks whether the calls are unlawful under the 7-in-7 rule.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The node never asks whether the caller is a 'debt collector' covered by the FDCPA/Regulation F. The 7-in-7 presumption in 12 CFR 1006.14(b)(2) applies only to covered debt collectors, not to original creditors collecting their own debts in their own name (and not to servicers of loans not in default at acquisition). As encoded, the rule would declare the calls presumptively unlawful under federal law when Reg F does not apply at all (any remedy would have to come from state law like the Rosenthal Act or TCPA)."
+            },
+            {
+              "scenario": "Over one week a collector calls the consumer 4 times about a single medical debt and also calls the consumer's mother and her workplace 4 times about the same debt; the consumer adds them up and reports 8 calls in 7 days on one debt.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The count under \u00a71006.14(b)(2)(i) is per person AND per particular debt \u2014 calls to different people are not aggregated. The node encodes only the 'per particular debt' dimension, so it would find the 7-call threshold exceeded and declare a presumptive violation where none exists under the frequency rule (the third-party calls raise separate \u00a71006.6(b)/\u00a71006.10 issues the node does not address)."
+            },
+            {
+              "scenario": "A Massachusetts consumer receives 5 calls in 7 days from a collection agency about one debt, with no conversation having occurred, and asks if the collector is doing anything wrong.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The checklist never asks for the consumer's state. Several states impose stricter caps than the federal 7-in-7 safe harbor (e.g., Massachusetts 940 CMR 7.04 limits collectors to two telephone communications in a 7-day period; New York and other states have their own limits). As encoded, the node would report the calls as within the safe harbor / presumptively lawful, materially misleading a consumer who in fact has a state-law violation."
+            }
+          ],
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A consumer gets 10 calls in 5 days from the in-house collections department of the bank that issued her credit card (or from a mortgage servicer collecting a loan it acquired before default). She asks whether the calls are unlawful under the 7-in-7 rule.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The node never asks whether the caller is a 'debt collector' covered by the FDCPA/Regulation F. The 7-in-7 presumption in 12 CFR 1006.14(b)(2) applies only to covered debt collectors, not to original creditors collecting their own debts in their own name (and not to servicers of loans not in default at acquisition). As encoded, the rule would declare the calls presumptively unlawful under federal law when Reg F does not apply at all (any remedy would have to come from state law like the Rosenthal Act or TCPA).\"}, {\"scenario\": \"Over one week a collector calls the consumer 4 times about a single medical debt and also calls the consumer's mother and her workplace 4 times about the same debt; the consumer adds them up and reports 8 calls in 7 days on one debt.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The count under \\u00a71006.14(b)(2)(i) is per person AND per particular debt \\u2014 calls to different people are not aggregated. The node encodes only the 'per particular debt' dimension, so it would find the 7-call threshold exceeded and declare a presumptive violation where none exists under the frequency rule (the third-party calls raise separate \\u00a71006.6(b)/\\u00a71006.10 issues the node does not address).\"}, {\"scenario\": \"A Massachusetts consumer receives 5 calls in 7 days from a collection agency about one debt, with no conversation having occurred, and asks if the collector is doing anything wrong.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The checklist never asks for the consumer's state. Several states impose stricter caps than the federal 7-in-7 safe harbor (e.g., Massachusetts 940 CMR 7.04 limits collectors to two telephone communications in a 7-day period; New York and other states have their own limits). As encoded, the node would report the calls as within the safe harbor / presumptively lawful, materially misleading a consumer who in fact has a state-law violation.\"}]}",
+          "error": null,
+          "_stop_reason": "end_turn",
+          "_retried_after": "empty_completion"
+        },
+        "gaps_found": [
+          {
+            "scenario": "A consumer gets 10 calls in 5 days from the in-house collections department of the bank that issued her credit card (or from a mortgage servicer collecting a loan it acquired before default). She asks whether the calls are unlawful under the 7-in-7 rule.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The node never asks whether the caller is a 'debt collector' covered by the FDCPA/Regulation F. The 7-in-7 presumption in 12 CFR 1006.14(b)(2) applies only to covered debt collectors, not to original creditors collecting their own debts in their own name (and not to servicers of loans not in default at acquisition). As encoded, the rule would declare the calls presumptively unlawful under federal law when Reg F does not apply at all (any remedy would have to come from state law like the Rosenthal Act or TCPA)."
+          },
+          {
+            "scenario": "Over one week a collector calls the consumer 4 times about a single medical debt and also calls the consumer's mother and her workplace 4 times about the same debt; the consumer adds them up and reports 8 calls in 7 days on one debt.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The count under \u00a71006.14(b)(2)(i) is per person AND per particular debt \u2014 calls to different people are not aggregated. The node encodes only the 'per particular debt' dimension, so it would find the 7-call threshold exceeded and declare a presumptive violation where none exists under the frequency rule (the third-party calls raise separate \u00a71006.6(b)/\u00a71006.10 issues the node does not address)."
+          },
+          {
+            "scenario": "A Massachusetts consumer receives 5 calls in 7 days from a collection agency about one debt, with no conversation having occurred, and asks if the collector is doing anything wrong.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The checklist never asks for the consumer's state. Several states impose stricter caps than the federal 7-in-7 safe harbor (e.g., Massachusetts 940 CMR 7.04 limits collectors to two telephone communications in a 7-day period; New York and other states have their own limits). As encoded, the node would report the calls as within the safe harbor / presumptively lawful, materially misleading a consumer who in fact has a state-law violation."
+          }
+        ],
+        "parsed_successfully": true
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "FDCPA-VALIDATION-NOTICE-1692g",
+      "file": "rules/debt/federal/fdcpa_validation_notice_v1.json",
+      "started": "2026-09-01T10:03:21Z",
+      "ended": "2026-09-01T10:05:04Z",
+      "input_sha256": "d4d95700480e57eba3d65b15e1a86281cbef243622e42a16bf4339fc57f6e1f7",
+      "node_sha256": "e1a19718cb294057b31d3db00fdeeaa6aedd53f89a6e62c8596868e8855b9111",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under 15 U.S.C. \u00a7 1692g(a), a debt collector must, in the initial communication or within five days after it (unless the debt is already paid), give the consumer written notice stating: the amount of the debt; the name of the creditor owed; that the debt will be assumed valid unless the consumer disputes it within thirty days of receiving the notice; that a written dispute within that thirty-day period triggers the collector's duty to obtain and mail verification of the debt or a copy of a judgment; and that on written request within the period the collector will supply the original creditor's name and address if different. Regulation F (12 C.F.R. \u00a7 1006.34(a)(1), (c)) permits the validation information to be given orally in the initial communication or by written notice in or within five days of it, and \u00a7 1006.34(b)(5) defines the 'validation period' as running from the date the information is provided until 30 days after the consumer receives or is assumed to receive it \u2014 the collector may assume receipt on any date at least five days (excluding legal public holidays, Saturdays, and Sundays) after providing it. Under \u00a7 1692g(b), a written dispute or request for the original creditor's name within the period requires the collector to cease collection of the disputed portion until verification, a judgment copy, or the creditor's name and address is mailed; otherwise, non-violative collection activity may continue during the 30-day period.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692g(a), (b); 12 C.F.R. \u00a7 1006.34(a)(1), (b)(5), (c)",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under 15 U.S.C. \u00a7 1692g(a), a debt collector must, in the initial communication or within five days after it (unless the debt is already paid), give the consumer written notice stating: the amount of the debt; the name of the creditor owed; that the debt will be assumed valid unless the consumer disputes it within thirty days of receiving the notice; that a written dispute within that thirty-day period triggers the collector's duty to obtain and mail verification of the debt or a copy of a judgment; and that on written request within the period the collector will supply the original creditor's name and address if different. Regulation F (12 C.F.R. \u00a7 1006.34(a)(1), (c)) permits the validation information to be given orally in the initial communication or by written notice in or within five days of it, and \u00a7 1006.34(b)(5) defines the 'validation period' as running from the date the information is provided until 30 days after the consumer receives or is assumed to receive it \u2014 the collector may assume receipt on any date at least five days (excluding legal public holidays, Saturdays, and Sundays) after providing it. Under \u00a7 1692g(b), a written dispute or request for the original creditor's name within the period requires the collector to cease collection of the disputed portion until verification, a judgment copy, or the creditor's name and address is mailed; otherwise, non-violative collection activity may continue during the 30-day period.\", \"grounded\": true, \"citation_used\": \"15 U.S.C. \u00a7 1692g(a), (b); 12 C.F.R. \u00a7 1006.34(a)(1), (b)(5), (c)\"}",
+            "error": null,
+            "_stop_reason": "end_turn"
+          },
+          {
+            "derivation_summary": "Within five days after the initial collection communication, unless the information was already in that communication or the debt has been paid, the debt collector must send written notice stating the debt amount, the creditor\u2019s name, and the consumer\u2019s rights to dispute the debt, obtain verification or a judgment copy, and request the original creditor\u2019s name and address if different. The consumer\u2019s dispute/request period is thirty days after receipt of the notice; under the regulation, the validation period starts when the validation information is provided and ends 30 days after the consumer receives or is assumed to receive it. For determining that end date, the collector may assume receipt on a date at least five days after providing the information, excluding legal public holidays, Saturdays, and Sundays.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692g(a); 15 U.S.C. \u00a7 1692g(b); 12 C.F.R. \u00a7 1006.34(a)(1); 12 C.F.R. \u00a7 1006.34(b)(5)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"Within five days after the initial collection communication, unless the information was already in that communication or the debt has been paid, the debt collector must send written notice stating the debt amount, the creditor\u2019s name, and the consumer\u2019s rights to dispute the debt, obtain verification or a judgment copy, and request the original creditor\u2019s name and address if different. The consumer\u2019s dispute/request period is thirty days after receipt of the notice; under the regulation, the validation period starts when the validation information is provided and ends 30 days after the consumer receives or is assumed to receive it. For determining that end date, the collector may assume receipt on a date at least five days after providing the information, excluding legal public holidays, Saturdays, and Sundays.\",\"grounded\":true,\"citation_used\":\"15 U.S.C. \u00a7 1692g(a); 15 U.S.C. \u00a7 1692g(b); 12 C.F.R. \u00a7 1006.34(a)(1); 12 C.F.R. \u00a7 1006.34(b)(5)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "A debt validation notice must contain specific information, including the amount of the debt, the name of the creditor, and several statements about the consumer's right to dispute the debt. The consumer has a 30-day window to dispute the debt, which starts when the consumer receives the validation information. For the purpose of calculating this 30-day period, the collector may assume the consumer received the notice five days after it was sent, excluding weekends and legal public holidays.",
+            "grounded": true,
+            "citation_used": "15 U.S.C. \u00a7 1692g(a), 12 C.F.R. \u00a7 1006.34(b)(5)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"A debt validation notice must contain specific information, including the amount of the debt, the name of the creditor, and several statements about the consumer's right to dispute the debt. The consumer has a 30-day window to dispute the debt, which starts when the consumer receives the validation information. For the purpose of calculating this 30-day period, the collector may assume the consumer received the notice five days after it was sent, excluding weekends and legal public holidays.\",\n  \"grounded\": true,\n  \"citation_used\": \"15 U.S.C. \u00a7 1692g(a), 12 C.F.R. \u00a7 1006.34(b)(5)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three agree on the core rule: the validation notice (amount, creditor's name, dispute/verification rights) must be given in or within five days of the initial communication, the consumer has 30 days from receipt to dispute, and the collector may presume receipt five days after sending, excluding Saturdays, Sundays, and legal public holidays. Completeness differences only: Analysis 1 adds the \u00a7 1692g(b) cease-collection-until-verification duty and the Regulation F option to provide validation information orally; Analysis 3 omits the five-day sending deadline and the itemized notice contents, and describes the period as starting at receipt rather than when information is provided \u2014 a phrasing nuance that does not change the practical end date.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three agree on the core rule: the validation notice (amount, creditor's name, dispute/verification rights) must be given in or within five days of the initial communication, the consumer has 30 days from receipt to dispute, and the collector may presume receipt five days after sending, excluding Saturdays, Sundays, and legal public holidays. Completeness differences only: Analysis 1 adds the \\u00a7 1692g(b) cease-collection-until-verification duty and the Regulation F option to provide validation information orally; Analysis 3 omits the five-day sending deadline and the itemized notice contents, and describes the period as starting at receipt rather than when information is provided \\u2014 a phrasing nuance that does not change the practical end date.\"}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "30",
+            "5"
+          ],
+          [
+            "30",
+            "5"
+          ],
+          [
+            "30",
+            "5"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": true
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692g",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 53034,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.law.cornell.edu/uscode/text/15/1692g",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 53034,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 104784,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 0.929,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 104784,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 0.938,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.34",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 104784,
+              "content_type": "text/html; charset=utf-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          }
+        ],
+        "all_verified": true
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "edge_cases": [
+            {
+              "scenario": "A consumer asks whether her dispute deadline has passed. The collector mailed the validation notice on a Friday; she wants to know the last day to dispute. The rule instructs: provided_date + 5 mailbox days + 30 days, 'computed per the exclusions above' (excluding Saturdays, Sundays, federal holidays).",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The encoded determination string applies the weekend/holiday exclusion ambiguously to the whole computation. Under 12 CFR 1006.34(b)(5) only the 5-day receipt assumption excludes Saturdays, Sundays, and legal public holidays; the 30-day validation period itself runs in calendar days. Applying the exclusion to the 30 days too pushes the end date roughly 10-12 days later, which can tell a consumer the window is still open when it closed, or cause a collector to state a wrong end date on the notice (itself a content violation). Deadline computation is the single most-used output of this node, so the ambiguity is material."
+            },
+            {
+              "scenario": "A collector mailed the validation notice to an address the consumer moved away from two years earlier; the mail was returned undeliverable and the consumer first learned of the debt from a credit report eight months later. She asks whether she can still dispute and force verification.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The logic computes the window mechanically from the 'validation_info_provided_date' plus the 5-day receipt assumption, with no fact in the checklist for non-delivery, returned mail, or the collector's knowledge that the consumer did not receive the notice. Reg F's receipt assumption is a presumption tied to the validation period ending 30 days after the consumer 'receives or is assumed to receive' the information, and a collector with actual knowledge of non-receipt (returned mail) cannot rely on it; the notice may also fail 1692g entirely. As encoded, the node would tell a consumer with a live dispute right and a likely 1692g claim that her window closed months ago."
+            },
+            {
+              "scenario": "A consumer is being called by the original creditor's own in-house collections department (or by a mortgage servicer that acquired the loan while current) and asks why she never received a validation notice and whether the 30-day dispute window applies.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "Neither the logic nor the completeness checklist contains any FDCPA coverage threshold: whether the entity is a 'debt collector' under 15 U.S.C. 1692a(6) (creditors collecting their own debts in their own name, and servicers who acquired the debt while not in default, are generally excluded) and whether the obligation is a consumer debt rather than a business/commercial one. Every checklist item is dispositive and none screens for this, so the node would generate a validation-notice analysis, a 30-day window, and a 'potential 1692g violation' flag for a person to whom 1692g does not apply at all. Original-creditor and servicer collection contacts are among the most common fact patterns consumers present."
+            }
+          ],
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A consumer asks whether her dispute deadline has passed. The collector mailed the validation notice on a Friday; she wants to know the last day to dispute. The rule instructs: provided_date + 5 mailbox days + 30 days, 'computed per the exclusions above' (excluding Saturdays, Sundays, federal holidays).\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The encoded determination string applies the weekend/holiday exclusion ambiguously to the whole computation. Under 12 CFR 1006.34(b)(5) only the 5-day receipt assumption excludes Saturdays, Sundays, and legal public holidays; the 30-day validation period itself runs in calendar days. Applying the exclusion to the 30 days too pushes the end date roughly 10-12 days later, which can tell a consumer the window is still open when it closed, or cause a collector to state a wrong end date on the notice (itself a content violation). Deadline computation is the single most-used output of this node, so the ambiguity is material.\"}, {\"scenario\": \"A collector mailed the validation notice to an address the consumer moved away from two years earlier; the mail was returned undeliverable and the consumer first learned of the debt from a credit report eight months later. She asks whether she can still dispute and force verification.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The logic computes the window mechanically from the 'validation_info_provided_date' plus the 5-day receipt assumption, with no fact in the checklist for non-delivery, returned mail, or the collector's knowledge that the consumer did not receive the notice. Reg F's receipt assumption is a presumption tied to the validation period ending 30 days after the consumer 'receives or is assumed to receive' the information, and a collector with actual knowledge of non-receipt (returned mail) cannot rely on it; the notice may also fail 1692g entirely. As encoded, the node would tell a consumer with a live dispute right and a likely 1692g claim that her window closed months ago.\"}, {\"scenario\": \"A consumer is being called by the original creditor's own in-house collections department (or by a mortgage servicer that acquired the loan while current) and asks why she never received a validation notice and whether the 30-day dispute window applies.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"Neither the logic nor the completeness checklist contains any FDCPA coverage threshold: whether the entity is a 'debt collector' under 15 U.S.C. 1692a(6) (creditors collecting their own debts in their own name, and servicers who acquired the debt while not in default, are generally excluded) and whether the obligation is a consumer debt rather than a business/commercial one. Every checklist item is dispositive and none screens for this, so the node would generate a validation-notice analysis, a 30-day window, and a 'potential 1692g violation' flag for a person to whom 1692g does not apply at all. Original-creditor and servicer collection contacts are among the most common fact patterns consumers present.\"}]}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "gaps_found": [
+          {
+            "scenario": "A consumer asks whether her dispute deadline has passed. The collector mailed the validation notice on a Friday; she wants to know the last day to dispute. The rule instructs: provided_date + 5 mailbox days + 30 days, 'computed per the exclusions above' (excluding Saturdays, Sundays, federal holidays).",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The encoded determination string applies the weekend/holiday exclusion ambiguously to the whole computation. Under 12 CFR 1006.34(b)(5) only the 5-day receipt assumption excludes Saturdays, Sundays, and legal public holidays; the 30-day validation period itself runs in calendar days. Applying the exclusion to the 30 days too pushes the end date roughly 10-12 days later, which can tell a consumer the window is still open when it closed, or cause a collector to state a wrong end date on the notice (itself a content violation). Deadline computation is the single most-used output of this node, so the ambiguity is material."
+          },
+          {
+            "scenario": "A collector mailed the validation notice to an address the consumer moved away from two years earlier; the mail was returned undeliverable and the consumer first learned of the debt from a credit report eight months later. She asks whether she can still dispute and force verification.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The logic computes the window mechanically from the 'validation_info_provided_date' plus the 5-day receipt assumption, with no fact in the checklist for non-delivery, returned mail, or the collector's knowledge that the consumer did not receive the notice. Reg F's receipt assumption is a presumption tied to the validation period ending 30 days after the consumer 'receives or is assumed to receive' the information, and a collector with actual knowledge of non-receipt (returned mail) cannot rely on it; the notice may also fail 1692g entirely. As encoded, the node would tell a consumer with a live dispute right and a likely 1692g claim that her window closed months ago."
+          },
+          {
+            "scenario": "A consumer is being called by the original creditor's own in-house collections department (or by a mortgage servicer that acquired the loan while current) and asks why she never received a validation notice and whether the 30-day dispute window applies.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "Neither the logic nor the completeness checklist contains any FDCPA coverage threshold: whether the entity is a 'debt collector' under 15 U.S.C. 1692a(6) (creditors collecting their own debts in their own name, and servicers who acquired the debt while not in default, are generally excluded) and whether the obligation is a consumer debt rather than a business/commercial one. Every checklist item is dispositive and none screens for this, so the node would generate a validation-notice analysis, a 30-day window, and a 'potential 1692g violation' flag for a person to whom 1692g does not apply at all. Original-creditor and servicer collection contacts are among the most common fact patterns consumers present."
+          }
+        ],
+        "parsed_successfully": true
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    },
+    {
+      "node_id": "CA-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-09-01T10:05:04Z",
+      "ended": "2026-09-01T10:06:49Z",
+      "input_sha256": "bb2b2678693772b40a2fa32efe422235f968f0eff3d486c0a54f56614d64f2e7",
+      "node_sha256": "44883b7182f34c7290ab471a398d93a5ea61632a5c423186969626b9bba13beb",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 337(a), an action on a contract, obligation, or liability founded on a written instrument must be brought within four years (with a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale). Section 337(d) provides that once that period has run, a person may not sue, arbitrate, or otherwise initiate legal proceedings to collect the debt, and the period may be extended only under Section 360. Section 360 allows extension only by a written acknowledgment or promise signed by the party charged, or by a payment of principal or interest (which restarts the clock from the date of payment), but expressly states no payment by itself revives a cause of action already barred. If the cause of action arose in another state or country and is time-barred there, \u00a7 361 bars suit in California as well (except for a California citizen who held the claim since it accrued); and once a money judgment is entered, \u00a7 683.020 makes it enforceable for 10 years from entry, renewable within that 10-year window.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a); see also \u00a7\u00a7 337(d), 360, 361, 683.020",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 337(a), an action on a contract, obligation, or liability founded on a written instrument must be brought within four years (with a special three-month limit for deficiency-type money judgments after a trustee's/mortgage power-of-sale). Section 337(d) provides that once that period has run, a person may not sue, arbitrate, or otherwise initiate legal proceedings to collect the debt, and the period may be extended only under Section 360. Section 360 allows extension only by a written acknowledgment or promise signed by the party charged, or by a payment of principal or interest (which restarts the clock from the date of payment), but expressly states no payment by itself revives a cause of action already barred. If the cause of action arose in another state or country and is time-barred there, \u00a7 361 bars suit in California as well (except for a California citizen who held the claim since it accrued); and once a money judgment is entered, \u00a7 683.020 makes it enforceable for 10 years from entry, renewable within that 10-year window.\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \\u00a7 337(a); see also \\u00a7\\u00a7 337(d), 360, 361, 683.020\"}",
+            "error": null,
+            "_stop_reason": "end_turn"
+          },
+          {
+            "derivation_summary": "An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that period has run, a person may not sue, arbitrate, or start another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360. Section 360 requires a signed written acknowledgment or promise, or certain payments on a promissory note before the claim is barred; payment alone does not revive an already-barred claim.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7\u00a7 337(a), 337(d), 360",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that period has run, a person may not sue, arbitrate, or start another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360. Section 360 requires a signed written acknowledgment or promise, or certain payments on a promissory note before the claim is barred; payment alone does not revive an already-barred claim.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7\u00a7 337(a), 337(d), 360\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The statute of limitations for a lawsuit on a written contract is four years. California Code of Civil Procedure \u00a7 337(a) establishes a four-year period for an action upon any contract, obligation, or liability founded upon a written instrument. Once this time period has run, a person is prohibited from bringing a suit or other legal proceeding to collect the debt.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"The statute of limitations for a lawsuit on a written contract is four years. California Code of Civil Procedure \u00a7 337(a) establishes a four-year period for an action upon any contract, obligation, or liability founded upon a written instrument. Once this time period has run, a person is prohibited from bringing a suit or other legal proceeding to collect the debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three state the same governing rule: a four-year limitations period under CCP \u00a7 337(a) for actions on written contracts, with the debt uncollectible by suit or other proceeding once it runs. Analyses 1 and 2 add the \u00a7 360 tolling/revival mechanics (signed written acknowledgment or payment, with no revival of an already-barred claim), and Analysis 1 further adds \u00a7 361 (out-of-state claims) and \u00a7 683.020 (10-year judgment enforcement); Analysis 3 is simply less complete, not contradictory.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three state the same governing rule: a four-year limitations period under CCP \u00a7 337(a) for actions on written contracts, with the debt uncollectible by suit or other proceeding once it runs. Analyses 1 and 2 add the \u00a7 360 tolling/revival mechanics (signed written acknowledgment or payment, with no revival of an already-barred claim), and Analysis 1 further adds \u00a7 361 (out-of-state claims) and \u00a7 683.020 (10-year judgment enforcement); Analysis 3 is simply less complete, not contradictory.\"}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "10",
+            "3",
+            "4"
+          ],
+          [
+            "4"
+          ],
+          [
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164214,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.929,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164214,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.944,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=361.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 162354,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=360.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 162418,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=683.020.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 165629,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 116,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          }
+        ],
+        "all_verified": true
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "edge_cases": [
+            {
+              "scenario": "A consumer defaulted on a credit card in 2019, filed Chapter 7 in 2022 and received a discharge, and in 2026 receives a collection letter and asks whether the debt is 'still good.' Under the encoded logic, accrual (2019) plus 4 years is less than today's date, so the node reports the claim time-barred; alternatively, if the default were 2023, it would report the claim live and collectible.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "gap_description": "The node has no bankruptcy dimension. A discharge permanently extinguishes personal liability regardless of the SOL, and the automatic stay plus 11 U.S.C. \u00a7 108(c)/CCP \u00a7 356 tolls the limitations period during the case. Neither the logic nor the checklist asks whether the debtor filed bankruptcy, so the node can (a) tell a discharged debtor the debt is merely 'expired' (understating a complete defense and missing a discharge-injunction violation claim) or (b) tell a debtor whose case tolled the clock that a claim is barred when it is not. Consumer bankruptcy is extremely common in exactly this fact pattern."
+            },
+            {
+              "scenario": "A borrower defaulted on a federal Direct/FFEL student loan in 2015, has made no payments, and asks in 2026 whether the government's servicer or a guaranty agency can still sue or garnish. The node classifies the promissory note as a signed written loan contract and applies the 4-year period.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "gap_description": "20 U.S.C. \u00a7 1091a abolishes any statute of limitations for collection of federal student loans, and other categories the 'applies_to' language sweeps in (e.g., certain government-held obligations) are likewise not governed by CCP \u00a7 337. The node's applies_to/checklist never asks what type of obligation the written instrument evidences, so a defaulted federal student loan borrower would be told a decades-old debt is time-barred when it is permanently collectible \u2014 a materially wrong and potentially harmful conclusion."
+            },
+            {
+              "scenario": "A consumer defaulted on a written retail installment contract in January 2020 (accelerated in full), and the creditor filed suit in California in May 2024. The consumer asks whether the suit was timely; the node compares the filing date to accrual-plus-four-years and reports the suit time-barred by about four months.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "gap_description": "California Judicial Council Emergency Rule 9(a) tolled all civil limitations periods over 180 days from April 6, 2020 to October 1, 2020 (178 days). That tolling applies automatically to every claim accruing before October 2020 \u2014 it is not a fact the consumer would 'suggest' in response to the checklist's generic tolling prompt. For the large cohort of pre-pandemic defaults litigated within a few months of the four-year line, the node's determination flips the bottom-line answer from timely to barred."
+            }
+          ],
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A consumer defaulted on a credit card in 2019, filed Chapter 7 in 2022 and received a discharge, and in 2026 receives a collection letter and asks whether the debt is 'still good.' Under the encoded logic, accrual (2019) plus 4 years is less than today's date, so the node reports the claim time-barred; alternatively, if the default were 2023, it would report the claim live and collectible.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"gap_description\": \"The node has no bankruptcy dimension. A discharge permanently extinguishes personal liability regardless of the SOL, and the automatic stay plus 11 U.S.C. \\u00a7 108(c)/CCP \\u00a7 356 tolls the limitations period during the case. Neither the logic nor the checklist asks whether the debtor filed bankruptcy, so the node can (a) tell a discharged debtor the debt is merely 'expired' (understating a complete defense and missing a discharge-injunction violation claim) or (b) tell a debtor whose case tolled the clock that a claim is barred when it is not. Consumer bankruptcy is extremely common in exactly this fact pattern.\"}, {\"scenario\": \"A borrower defaulted on a federal Direct/FFEL student loan in 2015, has made no payments, and asks in 2026 whether the government's servicer or a guaranty agency can still sue or garnish. The node classifies the promissory note as a signed written loan contract and applies the 4-year period.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"gap_description\": \"20 U.S.C. \\u00a7 1091a abolishes any statute of limitations for collection of federal student loans, and other categories the 'applies_to' language sweeps in (e.g., certain government-held obligations) are likewise not governed by CCP \\u00a7 337. The node's applies_to/checklist never asks what type of obligation the written instrument evidences, so a defaulted federal student loan borrower would be told a decades-old debt is time-barred when it is permanently collectible \\u2014 a materially wrong and potentially harmful conclusion.\"}, {\"scenario\": \"A consumer defaulted on a written retail installment contract in January 2020 (accelerated in full), and the creditor filed suit in California in May 2024. The consumer asks whether the suit was timely; the node compares the filing date to accrual-plus-four-years and reports the suit time-barred by about four months.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"gap_description\": \"California Judicial Council Emergency Rule 9(a) tolled all civil limitations periods over 180 days from April 6, 2020 to October 1, 2020 (178 days). That tolling applies automatically to every claim accruing before October 2020 \\u2014 it is not a fact the consumer would 'suggest' in response to the checklist's generic tolling prompt. For the large cohort of pre-pandemic defaults litigated within a few months of the four-year line, the node's determination flips the bottom-line answer from timely to barred.\"}]}",
+          "error": null,
+          "_stop_reason": "end_turn"
+        },
+        "gaps_found": [],
+        "parsed_successfully": true
+      },
+      "status": "CLEAN-PASS",
+      "tier_promotion_candidate": true,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    }
+  ]
+}
