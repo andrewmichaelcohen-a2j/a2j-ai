@@ -13,6 +13,57 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 ---
 ## Open
 
+### [FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b] ADVERSARIAL-GAP -- run run_20260902T082021Z, 2026-09-02T08:23:21Z
+
+**File:** `rules/debt/federal/fcra_furnisher_dispute_v1.json`
+**Classification hint (mechanical, not authoritative):** ADVERSARIAL-GAP
+**Evidence:** 3 adversarial edge case(s) flagged as exposing a gap: [{'scenario': "A consumer files an online dispute with Equifax attaching a fraud affidavit and a paid-in-full letter. Equifax transmits only an e-OSCAR ACDV with a two-digit dispute code ('not his/hers') and never forwards the attachments. The furnisher checks its records, finds the account matches the consumer's SSN and name, and verifies as accurate within 25 days.", 'realistic_and_common': True, 'would_cause_wrong_answer': True, 'gap_description': "The node's dispositive checklist item 5 treats a furnisher's failure to review 'supporting documents the consumer submitted with the CRA dispute' as establishing an inadequate investigation, but § 1681s-2(b)(1)(B) obliges the furnisher only to review 'all relevant information provided by' the CRA. Where the CRA stripped the documents (the norm under e-OSCAR/ACDV), the furnisher cannot be faulted for not reviewing them and the fault lies with the CRA under §§ 1681i(a)(2)(B)/1681e(b). Applied as encoded, the node would tell this consumer she has a furnisher claim (and would not point her to the CRA as the real defendant), which is backwards on both counts.", 'exposes_gap': True}, {'scenario': "After a CRA-forwarded dispute, the furnisher could not verify the tradeline and deleted it. Four months later the same furnisher re-reports the identical charge-off, and it reappears on the consumer's report; the consumer never filed a second CRA dispute and no reinsertion notice was sent.", 'realistic_and_common': True, 'would_cause_wrong_answer': True, 'gap_description': "The node has no fact or logic addressing re-reporting/reinsertion after a deletion. Applied as encoded, the checklist is fully satisfied by the furnisher's timely investigation and deletion, so the node would report compliance and no claim — missing both the § 1681s-2(b)(1)(E) 'permanently block ... for reporting purposes' aspect that re-furnishing unverified data implicates and the practical point that many courts require a fresh CRA-forwarded dispute to trigger a new subsection (b) duty (with the § 1681i(a)(5)(B) reinsertion-notice duty falling on the CRA). Reinsertion is one of the most frequent real-world complaints after a successful dispute.", 'exposes_gap': True}, {'scenario': 'A consumer pulls her own free annual report, sees a collection account with the wrong balance, disputes through TransUnion, and the furnisher does a bare records parrot and verifies. No lender ever pulled the report, no credit was denied, and her only claimed harm is worry and time spent disputing; she sues in federal court for statutory damages.', 'realistic_and_common': True, 'would_cause_wrong_answer': True, 'gap_description': "The node's remedies/limitations note addresses the damages element but says nothing about Article III standing after TransUnion LLC v. Ramirez — where inaccurate information was never disseminated to any third party, federal courts routinely dismiss for lack of concrete injury even on a willful-violation/statutory-damages theory. Applied as encoded, the node would tell this consumer (inaccurate info + shoddy investigation + willfulness theory = statutory damages, no actual loss needed) that she has a viable federal claim, when the case is likely dismissed at the threshold. Self-pulled-report disputes with no adverse credit action are extremely common.", 'exposes_gap': True}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeHafx7yuL6eRhca1LG4'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='After a furnisher receives notice from a consumer reporting agency of a dispute about the completeness or accuracy of information it provided, it must investigate the disputed information, review all relevant information supplied by the agency, and report the investigation results back to the agency. If the information is found incomplete, inaccurate, or unverifiable, the furnisher must report required results to other nationwide consumer reporting agencies to which it furnished the information and, as appropriate, promptly modify, delete, or permanently block reporting of the item. The required investigations, reviews, and reports must be completed before the consumer reporting agency’s deadline under § 1681i(a)(1), and the investigation duty has been read by courts to require a reasonable investigation rather than merely confirming that internal data matches what was previously reported.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="After a credit bureau notifies a furnisher of a dispute, the furnisher must conduct a reasonable investigation, review all relevant information provided, and report its findings back to the bureau. If the information is found to be inaccurate, incomplete, or unverifiable, the furnisher must report the results to all other nationwide bureaus and promptly modify, delete, or block the item. These duties must be completed before the credit bureau's own deadline for its reinvestigation expires."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b] CITATION-CHECK-FAILED -- run run_20260902T082021Z, 2026-09-02T08:23:21Z
+
+**File:** `rules/debt/federal/fcra_furnisher_dispute_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 6 cited source(s) could not be mechanically verified live: [{'url': None, 'verified': False, 'method': 'live', 'error': "Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?", 'diagnostics': {'http_status': None, 'content_length': None, 'content_type': None, 'word_overlap_ratio': None, 'retry_attempt': 2}}, {'url': 'https://www.law.cornell.edu/uscode/text/15/1681i', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 124150, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 82, 'text_at_break_point': "'s file at a consumer reporting agency", 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeHafx7yuL6eRhca1LG4'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='After a furnisher receives notice from a consumer reporting agency of a dispute about the completeness or accuracy of information it provided, it must investigate the disputed information, review all relevant information supplied by the agency, and report the investigation results back to the agency. If the information is found incomplete, inaccurate, or unverifiable, the furnisher must report required results to other nationwide consumer reporting agencies to which it furnished the information and, as appropriate, promptly modify, delete, or permanently block reporting of the item. The required investigations, reviews, and reports must be completed before the consumer reporting agency’s deadline under § 1681i(a)(1), and the investigation duty has been read by courts to require a reasonable investigation rather than merely confirming that internal data matches what was previously reported.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="After a credit bureau notifies a furnisher of a dispute, the furnisher must conduct a reasonable investigation, review all relevant information provided, and report its findings back to the bureau. If the information is found to be inaccurate, incomplete, or unverifiable, the furnisher must report the results to all other nationwide bureaus and promptly modify, delete, or block the item. These duties must be completed before the credit bureau's own deadline for its reinvestigation expires."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b] MODEL-DISAGREEMENT -- run run_20260902T082021Z, 2026-09-02T08:23:21Z
+
+**File:** `rules/debt/federal/fcra_furnisher_dispute_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=[], Gemini=[] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeHafx7yuL6eRhca1LG4'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='After a furnisher receives notice from a consumer reporting agency of a dispute about the completeness or accuracy of information it provided, it must investigate the disputed information, review all relevant information supplied by the agency, and report the investigation results back to the agency. If the information is found incomplete, inaccurate, or unverifiable, the furnisher must report required results to other nationwide consumer reporting agencies to which it furnished the information and, as appropriate, promptly modify, delete, or permanently block reporting of the item. The required investigations, reviews, and reports must be completed before the consumer reporting agency’s deadline under § 1681i(a)(1), and the investigation duty has been read by courts to require a reasonable investigation rather than merely confirming that internal data matches what was previously reported.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="After a credit bureau notifies a furnisher of a dispute, the furnisher must conduct a reasonable investigation, review all relevant information provided, and report its findings back to the bureau. If the information is found to be inaccurate, incomplete, or unverifiable, the furnisher must report the results to all other nationwide bureaus and promptly modify, delete, or block the item. These duties must be completed before the credit bureau's own deadline for its reinvestigation expires."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:30:16Z
 
 **File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
