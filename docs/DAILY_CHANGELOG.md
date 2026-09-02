@@ -2,6 +2,65 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-02, round 36 (content-only: fix 3 citation-label bugs + bonus discoveries while re-verifying)
+
+**What changed since round 35:** content-only, no runner/pipeline change. Fixes the 3 quoted_text
+citation-label bugs identified (but deferred) during round 35's diagnosis of `run_20260902T082021Z.json`:
+`TX-HOMESTEAD-EXEMPTION`, `TX-EXEMPT-PERSONAL-PROPERTY`, and `CA-CIVIL-ANSWER-DEADLINE` each had a
+citation label baked into the `quoted_text` field itself (e.g. `"26 U.S.C. § 6321: 'If any person liable...'"`),
+which will never appear verbatim on the actual source page. Fixing these required re-fetching each source
+live, which surfaced several additional, more substantive problems along the way -- each one only found
+because the citation-check failure forced a fresh look at the primary source rather than a cosmetic label
+strip.
+
+**`TX-HOMESTEAD-EXEMPTION`:** removed the `"26 U.S.C. § 6321: '...'"` label wrapper; text itself confirmed
+verbatim-correct via a fresh uscode.house.gov fetch.
+
+**`TX-EXEMPT-PERSONAL-PROPERTY` -- the most substantial node this round:**
+- Split the merged `§42.005`/`§42.004` entry into two clean, independently-citable entries.
+- While re-verifying §42.004: found the existing quote MATERIALLY mischaracterized its time bar as a flat
+  "2 years from the date the property was acquired." The actual statute measures 2 years from "the
+  transaction from which the claim arises" AND separately allows an unliquidated/contingent claim to be
+  asserted up to 1 year after judgment -- which can run well past the general 2-year window. Fixed the
+  quote and `override_exceptions_note`.
+- Fixed §42.0021's quote (had an editorial bracket inserted mid-sentence, and conflated subsection (a)'s
+  eligibility definition with (b)'s actual exemption grant into one garbled paragraph).
+- **Removed a fabricated citation.** `Tex. Prop. Code § 42.0022` does not appear to be a real, current
+  statute -- absent from a direct fetch of Property Code chapter 42 (no such section between §42.0021 and
+  §42.003), and its texas.public.law mirror URL redirects to the site's generic statutes index rather than
+  any section page. The substantive content it was meant to cover (Texas Tomorrow Fund/529 plans) is
+  already covered under §42.0021(a)(8)-(10) -- redundant, not additional, and now noted as such.
+- Fixed `Tex. Ins. Code § 1108.051`'s garbled, self-referential quote (re-pinned from texas.public.law to
+  the official statutes.capitol.texas.gov, source_tier upgraded B->A) and, while re-verifying it, found and
+  added **§1108.053's 3 exceptions** to the life-insurance exemption (fraudulent premium payment, a policy
+  pledged to secure a debt, and a child-support lien) -- a genuine, previously-missing gap; this node's
+  unlimited-categories list had described the exemption as unconditionally "fully exempt."
+- Added 2 completeness_checklist items.
+
+**`CA-CIVIL-ANSWER-DEADLINE`:** split the merged `§415.20`/`§415.40`/`§415.50` entry into three clean
+entries.
+- §415.20 re-verified and confirmed verbatim via a FindLaw CA Code mirror (leginfo.legislature.ca.gov
+  remains unfetchable by this session's tooling).
+- §415.40's label was removed but the underlying text was NOT independently re-verified this round (3
+  fetch timeouts across leginfo and FindLaw) -- flagged, not silently assumed correct.
+- §415.50 -- another material correction, not just a label fix: the existing quote asserted "service is
+  deemed complete on the 28th day after the first day of publication" as if that figure came directly from
+  §415.50. It does not -- §415.50(c) only cross-references Government Code § 6064, whose primary text
+  could not be fetched this session (3 timeouts) to confirm the 28-day figure independently. Corrected the
+  quote to §415.50's actual cross-reference text and added `publication_completion_note` explicitly
+  flagging the 28-day figure as UNVERIFIED against primary Govt. Code text this round, per this project's
+  standing discipline against silently keeping an unverified specific number. Also corrected
+  `service_method_note`, which repeated the same unverified claim.
+
+**Verification:** `validate_debt_schema.py`, `check_frozen_artifacts.py`, and
+`check_corroboration_calibration.py` all PASS. Patch built and independently verified via `git am --3way`
+against a fresh clone of real origin before delivery.
+
+**Still open, queued for round 37:** §415.40 and Govt. Code §6064 remain unverified against a live primary
+source this session (retry with a working fetch). The 40+ Stage B adversarial findings across 16 of the 19
+nodes in `run_20260902T082021Z.json` are still untriaged -- deliberately kept out of this round to keep it
+reviewable; that is the next round's full scope.
+
 ## 2026-09-02, round 35 (runner-only: fix null-url citation crash + generalize markup-diagnostic capture)
 
 **What changed since round 34: RUNNER-ONLY, no content change** (one-variable rule). Andy ran the first-ever
