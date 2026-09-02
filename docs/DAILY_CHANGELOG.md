@@ -2,6 +2,60 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-02, round 37 (content-only: clear the remaining diagnosable citation-check failures from run_20260902T185148Z)
+
+**What changed since round 36:** content-only, no runner change. Andy re-ran the 19-node demo corpus after
+rounds 35+36 landed. Citation-verification rose 36.8% -> 42.1% (the null-url and label fixes landing). Stage A
+dipped 89.5% -> 84.2% -- all three misses are transient Anthropic 529 "Overloaded" errors (two on the judge
+call, one on a derivation call), not disagreements; noise, but now recurring (1 last run, 3 this run), so a
+retry-on-529 is queued as a runner-only candidate.
+
+Round 35's diagnostic-capture change did its job: this is the first run where the near-zero-prefix failures
+came back with enough evidence to root-cause every one. Two recurring transcription patterns account for
+most of them, plus one regression of my own:
+
+**Pattern 1 -- defined terms quoted with single quotes where the statute uses double quotes.** The checker
+normalizes curly-vs-straight quotes but (correctly) not single-vs-double, so `'debt'` never matches `"debt"`.
+Found on `FDCPA-FALSE-DECEPTIVE-CATALOG-1692e` (1692a(5), (6)), `FDCPA-UNFAIR-PRACTICES-CATALOG-1692f`
+(1692a(6)), and `CA-BANK-ACCOUNT-EXEMPTION` (704.080 "Deposit account", 704.070 "Paid earnings"). Every one
+broke at exactly the quote character with word-overlap ~1.0. Fixed to match the official text; the 1692a
+entries were also re-pinned from Cornell LII to uscode.house.gov, which already verifies cleanly for the
+identical citations on the coverage-gate node.
+
+**Pattern 2 -- headings, brackets, and paraphrase inside `quoted_text`.** `FDCPA-REGF-CALL-FREQUENCY-1006.14b`'s
+1692c(b) quote (added round 33) began with the `<h4>` heading "Communication with third parties." -- raw
+HTML context showed the break at the heading/body boundary; dropped the heading. The 1692a(6)(F)(iii) entry
+opened with an editorial bracket; now quotes clause (F) verbatim. `TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY`'s
+TRCP 505.3 quote was a paraphrase with a wrong subsection letter ("(d) Ruling" -- the automatic-denial rule
+is (e)); replaced with verbatim (b) and (e) from the cited page (the node's logic was already correct).
+`CA-BANK-ACCOUNT-EXEMPTION`'s 704.225 opened with "Notwithstanding any other provision of this chapter..."
+which is not in the statute; replaced with the actual text. `CA-VEHICLE-EXEMPTION`'s 704.010(b) said
+"pursuant to" where the statute says "under". `FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b`'s 1681i entry was
+labeled (a)(3) but quoted (a)(1)(A), with a paraphrased tail -- relabeled, made verbatim, and re-pinned to
+uscode.house.gov (Cornell's page failed at "consumer's", consistent with Cornell wrapping the defined term in
+a link so tag-stripping inserts a space before the apostrophe -- queued as a runner normalization candidate).
+
+**My regression, fixed:** round 36 re-pinned `CA-CIVIL-ANSWER-DEADLINE`'s 415.20/415.50 urls to
+codes.findlaw.com because that mirror is what this session's tooling could read. The live runner gets HTTP
+403 from FindLaw (the runner's own round-11 docstring records this). Urls restored to leginfo, which the
+runner fetches fine; FindLaw stays as the verification note only.
+
+**`TX-EXEMPT-PERSONAL-PROPERTY`:** all five statutes.capitol.texas.gov citations rewritten in round 36 failed
+with word-overlap 0.06-0.21 -- the site served its SPA navigation shell to the runner, the documented
+pattern since round 17. Added `manual_verification` (2026-09-02) to those five entries, matching the
+convention already used for this domain elsewhere in the file; note records that the confirmation is Claude's
+against a full-text fetch, not yet Andy's.
+
+**Not touched (known external blocks):** mass.gov, consumerfinance.gov interp-34, courts.ca.gov appendix-i.
+
+**Verification:** `validate_debt_schema.py`, `check_frozen_artifacts.py`, `check_corroboration_calibration.py`
+all PASS. Patch verified via `git am --3way` on a fresh clone of origin.
+
+**Queued:** runner-only round -- retry-on-529 for Anthropic calls (mirrors round 17's retry-on-503 for Gemini)
+and adding the apostrophe to the round-28 whitespace-before-punctuation set. Content -- the Stage B adversarial
+findings across the 16 parsed nodes remain untriaged (deliberately; this round is citation-only so the next
+run's citation-verification number is a clean read on these fixes).
+
 ## 2026-09-02, round 36 (content-only: fix 3 citation-label bugs + bonus discoveries while re-verifying)
 
 **What changed since round 35:** content-only, no runner/pipeline change. Fixes the 3 quoted_text
