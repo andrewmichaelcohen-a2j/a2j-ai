@@ -2,6 +2,55 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-02, round 35 (runner-only: fix null-url citation crash + generalize markup-diagnostic capture)
+
+**What changed since round 34: RUNNER-ONLY, no content change** (one-variable rule). Andy ran the first-ever
+full 19-node demo-corpus live run this round, after resolving a transient Anthropic credit-balance issue
+(unrelated to this project's code -- his account ran out of API credit mid-run once, and hit a brief 529
+overload once; both are noise, not bugs, and needed no fix). The real run (`run_20260902T082021Z.json`)
+surfaced two genuine runner-level problems, diagnosed from the run JSON plus a direct read of the affected
+nodes' current content.
+
+**Bug 1 -- null-url citation crash.** Four `derived_from` entries across 3 nodes
+(`FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b`, `FDCPA-FALSE-DECEPTIVE-CATALOG-1692e` x2) cite general legal
+doctrine ("judicial gloss") rather than a single pinpoint source, and were built with `url: null` by design
+-- there's no one page a mechanical fetch could check. Every mode (`--live`, `--dry-run`, `--replay`) fell
+through `verify_citation` to the live-fetch branch for these and crashed with `"Invalid URL 'None': No
+scheme supplied"`, which surfaced as a citation-check failure even though nothing was actually wrong.
+Fixed: `verify_citation` now returns `verified: None` ("not applicable to mechanical verification") for a
+falsy url, and the node-level `all_citations_verified` aggregation now tolerates `None` the same way
+`clean_pass` already did (`is not False` rather than requiring strict `True`) -- so a doctrine citation no
+longer blocks a node's citation-verification status, while a citation that DOES have a url and genuinely
+fails to verify still blocks exactly as before. Verified end-to-end via `--dry-run` against the real
+`FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b` node: citation-verification went from a crash to 100.0% with no other
+change. New calibration fixture `CAL-10-null-url-judicial-gloss-citation` regression-guards this.
+
+**Bug 2 -- diagnostic-capture gap on near-zero-prefix breaks.** Several new citation failures this run
+(Cornell LII's `law.cornell.edu/uscode/text/15/1692a`, three `leginfo.legislature.ca.gov` CA sections) show
+the same "high word-overlap, low prefix-match" signature as the round-23/28 markup-normalization bugs, but
+`_raw_context_at_break`'s existing 20-character-minimum-prefix requirement meant NONE of them captured the
+raw HTML needed to actually diagnose the pattern (most of these breaks have `longest_matching_prefix_chars`
+under 20). This is a diagnostics-only fix (does not touch `verified` logic, cannot mask a real mismatch):
+when the matched prefix is too short to build a reliable anchor, fall back to anchoring on the needle's
+first 4+-letter word instead, so the raw markup context is captured on Andy's NEXT live run rather than
+guessing at a fourth normalization rule without evidence.
+
+**Deferred, correctly identified as CONTENT (not runner) bugs -- queued for round 36:** three
+`quoted_text` fields (`TX-HOMESTEAD-EXEMPTION`'s 26 U.S.C. 6321 citation, `TX-EXEMPT-PERSONAL-PROPERTY`'s
+Tex. Prop. Code 42.005 citation, `CA-CIVIL-ANSWER-DEADLINE`'s CCP 415.20/415.40/415.50 citation) have a
+citation label baked into the quoted text itself (e.g. `"26 U.S.C. § 6321: 'If any person liable...'"`),
+which will never appear verbatim on the actual source page -- confirmed via a corpus-wide grep sweep that
+found exactly these 3 instances and no others. Also still unread: 16 of the 19 nodes' Stage B adversarial
+checks parsed successfully and surfaced 2-3 candidate gaps each (40+ individual findings) -- not yet
+triaged, given the volume, to keep this round's runner change isolated per the one-variable rule.
+
+**Verification:** `validate_debt_schema.py` and `check_frozen_artifacts.py` PASS unchanged.
+`check_corroboration_calibration.py` PASS with the new 10-fixture set (was 9) -- all metric assertions
+recomputed and confirmed (`stage_a_grounded_agreement_rate`, `citation_verification_rate`, and
+`stage_b_parse_success_rate` each moved from 8/9=88.9% to 9/10=90.0%; `full_pipeline_clean_pass_rate` moved
+from 5/9=55.6% to 6/10=60.0%; `internal_gate_met` remains False). Patch built and independently verified via
+`git am --3way` against a fresh clone of real origin before delivery.
+
 ## 2026-09-01, round 34 (content-only: fix 3 genuine gaps from Andy's live re-run confirming round 33, run_20260901T184005Z)
 
 **What changed since round 33:** content-only, no runner/pipeline change. Andy re-ran the smoke step live

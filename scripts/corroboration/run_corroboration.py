@@ -813,14 +813,38 @@ def _raw_context_at_break(needle: str, prefix_len: int, raw_html: str):
     the last ~20 normalized characters of the matched prefix; if that anchor can't
     be found in the raw text (e.g. it fell inside an HTML entity), returns None
     rather than a misleading snippet."""
-    if prefix_len < 20 or not raw_html:
+    if not raw_html:
         return None
-    anchor = needle[max(0, prefix_len - 20):prefix_len]
+    if prefix_len >= 20:
+        anchor = needle[max(0, prefix_len - 20):prefix_len]
+    else:
+        # ROUND 35 fix (2026-09-02): near-zero-prefix breaks (match fails
+        # almost immediately -- prefix_len 0-16) previously returned no
+        # diagnostic at all here, because there wasn't enough matched
+        # prefix to build a reliable 20-char anchor. That silently dropped
+        # evidence on exactly the cases that most need it: Andy's first
+        # full-19-node live run (run_20260902T082021Z.json) surfaced several
+        # new high-word-overlap/near-zero-prefix failures (Cornell LII's
+        # law/uscode/text/15/1692a, multiple leginfo.legislature.ca.gov CA
+        # sections) with no raw_html_context_at_break captured, leaving no
+        # way to root-cause them the way CAL-03/CAL-09's markup bugs were
+        # found. Fall back to anchoring on the first meaningful word (4+
+        # letters) of the needle itself: even though it's the text that
+        # failed to match in normalized form, word_overlap_ratio is
+        # typically still high in these cases, so that word (or a close
+        # variant) is very likely present in the raw HTML near the real
+        # break -- a case-insensitive raw-HTML search for it locates the
+        # right neighborhood even when the normalized substring match
+        # failed at or near position 0.
+        m = re.search(r"[a-zA-Z]{4,}", needle)
+        anchor = m.group(0) if m else None
+    if not anchor:
+        return None
     idx = raw_html.lower().find(anchor.lower())
     if idx < 0:
         return None
-    start = max(0, idx)
-    return raw_html[start:start + 250]
+    start = max(0, idx - 80)
+    return raw_html[start:start + 330]
 
 
 def verify_citation(url: str, quoted_text: str, dry_run: bool, manual_verification: dict = None,
@@ -833,6 +857,35 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool, manual_verificati
     sources -- e.g. eCFR, Cornell LII -- returning normal 200 responses that
     simply didn't contain an exact substring match, which looked identical to
     an unreachable source before this fix)."""
+    # ROUND 35 fix (2026-09-02): a small number of derived_from entries cite
+    # general legal doctrine rather than a single pinpoint source -- e.g.
+    # "Materiality requirement (judicial gloss on § 1692e)" -- and are built
+    # with url=None BY DESIGN, since there is no one page a mechanical fetch
+    # could check. Every mode (live, dry-run, replay, manual) previously fell
+    # through to the live-fetch branch for these, which crashed with
+    # "Invalid URL 'None': No scheme supplied" -- a checker bug, not a real
+    # citation failure. Confirmed on Andy's first full-19-node demo-corpus
+    # live run (run_20260902T082021Z.json): 4 such entries across 3 nodes
+    # (FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b, FDCPA-FALSE-DECEPTIVE-CATALOG-1692e
+    # x2) all failed with this exact error. verified=None (distinct from both
+    # True and False) marks these "not applicable to mechanical verification"
+    # rather than either a fake pass or a fake failure; see the
+    # all_citations_verified aggregation below (and clean_pass's existing
+    # `is not False` pattern, already written to tolerate a None) for how
+    # this is treated as non-blocking rather than silently masking a real
+    # problem -- a genuinely wrong citation still has url set and will still
+    # be live-fetched and checked as before.
+    if not url:
+        return {
+            "url": url, "verified": None, "method": "not_applicable_no_url", "error": None,
+            "diagnostics": {
+                "http_status": None, "content_length": None, "content_type": None,
+                "word_overlap_ratio": None,
+                "note": "This citation has no url by design (general legal-doctrine/judicial-gloss "
+                        "reference, not a single pinpoint source) -- mechanical verification does not "
+                        "apply and this does not count against the node's citation-verification status.",
+            },
+        }
     # Manual-verification override (round 17): a small number of primary/official
     # sources are confirmed-correct but structurally unverifiable by a plain HTTP
     # GET -- the site is a client-rendered SPA that serves the same generic shell
@@ -1148,7 +1201,10 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     if skip_citation_check:
         all_citations_verified = None
     else:
-        all_citations_verified = bool(citation_results) and all(c["verified"] is True for c in citation_results)
+        # ROUND 35: tolerate verified=None (not-applicable, e.g. a citation with
+        # no url by design) -- only a genuine mismatch (verified=False) should block.
+        # This mirrors the `is not False` pattern already used below at clean_pass.
+        all_citations_verified = bool(citation_results) and all(c["verified"] is not False for c in citation_results)
 
     # (b) adversarial generation -- one call, Anthropic
     user_prompt_adversarial = (
@@ -1401,7 +1457,10 @@ def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool, citati
             "n_demo_corpus_nodes_this_run": n_demo,
             "n_passing": n_citation_pass,
             "stage": "citation-check only",
-            "numerator": "nodes where every cited source's quoted_text verified as a substring of the fetched page",
+            "numerator": "nodes where every cited source with a url verified as a substring of the fetched page "
+                         "(round 35: a citation intentionally built with url=None -- general legal-doctrine/judicial-gloss "
+                         "references with no single pinpoint source -- does not count against this; only a genuine mismatch "
+                         "on a citation that DOES have a url blocks this node)",
             "denominator": "all demo-corpus nodes attempted this run (null/not computed if --skip-citation-check)",
             "basis": "mechanical HTTP fetch + substring match, no model involved.",
         },

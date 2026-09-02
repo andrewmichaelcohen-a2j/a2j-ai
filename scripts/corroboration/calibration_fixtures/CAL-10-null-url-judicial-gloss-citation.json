@@ -1,0 +1,79 @@
+{
+  "id": "CAL-10-null-url-judicial-gloss-citation",
+  "description": "Reproduces the round-35 checker bug: a derived_from entry citing general legal doctrine rather than a single pinpoint source (e.g. a 'judicial gloss' note) is built with url=None by design, since there is no one page a mechanical fetch could check. Before the round-35 fix, verify_citation fell through to the live-fetch branch for every mode (including dry-run/replay) and crashed with \"Invalid URL 'None': No scheme supplied\" -- a checker bug, not a real citation failure. Confirmed on Andy's first full-19-node demo-corpus live run (run_20260902T082021Z.json): 4 such entries across 3 real nodes failed this exact way. Regression guard: if this fixture ever stops CLEAN-PASSing, the round-35 null-url skip (and its all_citations_verified 'is not False' tolerance for None) has broken.",
+  "nodes": [
+    {
+      "node_id": "CAL-10-NULL-URL-GLOSS",
+      "tier": "DRAFT",
+      "title": "Calibration fixture node CAL-10-NULL-URL-GLOSS",
+      "logic": {
+        "note": "synthetic calibration fixture, not real law"
+      },
+      "completeness_checklist": [
+        "synthetic checklist item"
+      ],
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Cal. Test Code 10",
+            "url": "https://example-statute.test/section-10",
+            "quoted_text": "A test obligation is enforceable if properly documented under this section.",
+            "source_tier": "A",
+            "manual_verification": null
+          },
+          {
+            "cite": "Materiality gloss (judicial doctrine on Cal. Test Code 10, no single pinpoint source)",
+            "url": null,
+            "quoted_text": "Courts require the documentation defect to be material, not merely technical, before treating the obligation as unenforceable.",
+            "source_tier": "C",
+            "manual_verification": null
+          }
+        ]
+      }
+    }
+  ],
+  "_replay": {
+    "stage_a": {
+      "anthropic": [
+        {
+          "raw": "{\"derivation_summary\": \"A test obligation is enforceable if properly documented, subject to a judicial materiality gloss.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 10\"}",
+          "stop_reason": "end_turn",
+          "error": null
+        }
+      ],
+      "openai": {
+        "raw": "{\"derivation_summary\": \"A test obligation is enforceable if properly documented, subject to a judicial materiality gloss.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 10\"}",
+        "stop_reason": null,
+        "error": null
+      },
+      "gemini": {
+        "raw": "{\"derivation_summary\": \"A test obligation is enforceable if properly documented, subject to a judicial materiality gloss.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 10\"}",
+        "stop_reason": null,
+        "error": null
+      }
+    },
+    "judge": {
+      "raw": "{\"agree\": true, \"agreement_notes\": \"All three agree on the same rule text.\"}",
+      "stop_reason": "end_turn",
+      "error": null
+    },
+    "citation": {
+      "https://example-statute.test/section-10": "<html><body><p>A test obligation is enforceable if properly documented under this section.</p></body></html>"
+    },
+    "adversarial": [
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"n/a\", \"exposes_gap\": false, \"gap_description\": null}]}",
+        "stop_reason": "end_turn",
+        "error": null
+      }
+    ]
+  },
+  "_expected": {
+    "status": "CLEAN-PASS",
+    "all_grounded": true,
+    "semantic_agreement": true,
+    "all_citations_verified": true,
+    "gaps_found_count": 0,
+    "stage_b_parsed_successfully": true
+  }
+}
