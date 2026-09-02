@@ -13,6 +13,856 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 ---
 ## Open
 
+### [TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:30:16Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDm5dita1c2FR7LjNe1'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDjfEzdbt3YfupjYnqS'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='In a Texas justice court debt-collection lawsuit, the answer is due 14 days after the date the defendant was served. If the 14th day is on a weekend or court holiday, the deadline extends to the next business day.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The deadline to file an answer in a Texas justice court debt lawsuit is 14 days after the date of service. If the 14th day falls on a weekend or a court holiday, the deadline is extended to the next business day.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:30:16Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['14'], Gemini=['14'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDjfEzdbt3YfupjYnqS'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='In a Texas justice court debt-collection lawsuit, the answer is due 14 days after the date the defendant was served. If the 14th day is on a weekend or court holiday, the deadline extends to the next business day.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The deadline to file an answer in a Texas justice court debt lawsuit is 14 days after the date of service. If the 14th day falls on a weekend or a court holiday, the deadline is extended to the next business day.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-EXEMPT-PERSONAL-PROPERTY] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:29:56Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDjbVGijkmCHwruuBQn'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDgR6N4MbPKGDc4wJhg'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Texas exempts personal property described in § 42.002 from garnishment, attachment, execution, or other seizure up to an aggregate fair market value of $100,000 for a family or $50,000 for a single adult, excluding liens and other encumbrances. Certain property is exempt outside those aggregate caps, including current wages, prescribed health aids, support payments, certain sacred writings, qualifying retirement/savings-plan rights, certain education savings plans, and insurance/annuity benefits. The exemptions do not apply to child support liens, and property acquired with intent to defraud, delay, or hinder creditors may lose exempt status.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Texas law exempts personal property from creditor seizure up to an aggregate fair market value of $100,000 for a family or $50,000 for a single adult. This cap applies to a specific list of property including home furnishings, tools of a trade, and vehicles. Certain other assets are fully exempt and do not count toward this cap, including current wages (except for child support), retirement accounts, insurance benefits, and prescribed health aids.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-EXEMPT-PERSONAL-PROPERTY] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:29:56Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 4 of 7 cited source(s) could not be mechanically verified live: [{'url': 'https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 250874, 'content_type': 'text/html', 'word_overlap_ratio': 0.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 0, 'text_at_break_point': '(a) in addition to the exemption prescri', 'raw_html_context_at_break': None}}, {'url': 'https://statutes.capitol.texas.gov/Docs/PR/htm/PR.42.htm', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 250874, 'content_type': 'text/html', 'word_overlap_ratio': 0.133, 'retry_attempt': 2, 'longest_matching_prefix_chars': 0, 'text_at_break_point': '§ 42.005: sections 42.001, 42.002, and 4', 'raw_html_context_at_break': None}}, {'url': 'https://texas.public.law/statutes/tex._insurance_code_section_1108.051', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 17800, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 0.308, 'retry_attempt': 2, 'longest_matching_prefix_chars': 2, 'text_at_break_point': 'cept as otherwise provided by this subch', 'raw_html_context_at_break': None}}, {'url': 'https://texas.public.law/statutes/tex._property_code_section_42.0022', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 17800, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 0.375, 'retry_attempt': 2, 'longest_matching_prefix_chars': 2, 'text_at_break_point': 'vings plans established under the texas ', 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDgR6N4MbPKGDc4wJhg'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Texas exempts personal property described in § 42.002 from garnishment, attachment, execution, or other seizure up to an aggregate fair market value of $100,000 for a family or $50,000 for a single adult, excluding liens and other encumbrances. Certain property is exempt outside those aggregate caps, including current wages, prescribed health aids, support payments, certain sacred writings, qualifying retirement/savings-plan rights, certain education savings plans, and insurance/annuity benefits. The exemptions do not apply to child support liens, and property acquired with intent to defraud, delay, or hinder creditors may lose exempt status.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Texas law exempts personal property from creditor seizure up to an aggregate fair market value of $100,000 for a family or $50,000 for a single adult. This cap applies to a specific list of property including home furnishings, tools of a trade, and vehicles. Certain other assets are fully exempt and do not count toward this cap, including current wages (except for child support), retirement accounts, insurance benefits, and prescribed health aids.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-EXEMPT-PERSONAL-PROPERTY] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:29:56Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['$100000', '$50000'], Gemini=['$100000', '$50000'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDgR6N4MbPKGDc4wJhg'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Texas exempts personal property described in § 42.002 from garnishment, attachment, execution, or other seizure up to an aggregate fair market value of $100,000 for a family or $50,000 for a single adult, excluding liens and other encumbrances. Certain property is exempt outside those aggregate caps, including current wages, prescribed health aids, support payments, certain sacred writings, qualifying retirement/savings-plan rights, certain education savings plans, and insurance/annuity benefits. The exemptions do not apply to child support liens, and property acquired with intent to defraud, delay, or hinder creditors may lose exempt status.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Texas law exempts personal property from creditor seizure up to an aggregate fair market value of $100,000 for a family or $50,000 for a single adult. This cap applies to a specific list of property including home furnishings, tools of a trade, and vehicles. Certain other assets are fully exempt and do not count toward this cap, including current wages (except for child support), retirement accounts, insurance benefits, and prescribed health aids.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-HOMESTEAD-EXEMPTION] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:29:12Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDgMGfuVuFYANHkFkQy'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDeC2zNsLnM7B9sdwbh'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Texas law exempts a homestead, and burial lots, from seizure for creditors’ claims, except for properly fixed encumbrances on the homestead. The homestead size limits are up to 10 acres for an urban home, up to 200 acres for a rural family homestead, and up to 100 acres for a rural single-adult homestead. The excerpt also states bankruptcy limits on recently acquired homestead interests and fraudulent conversions, and that federal tax liens can attach to and be enforced against homestead property despite the Texas exemption.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Under Texas law, a homestead is generally exempt from seizure by creditors, with size limits of 10 acres for an urban home or up to 200 acres for a rural family home. However, this exemption does not apply to properly fixed encumbrances on the property or to federal tax liens, which can attach to the homestead. Furthermore, in federal bankruptcy cases, the exemption may be capped for equity acquired within 1,215 days of filing or reduced if the debtor fraudulently transferred other assets into the homestead within the preceding 10 years.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-HOMESTEAD-EXEMPTION] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:29:12Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 4 cited source(s) could not be mechanically verified live: [{'url': 'https://www.law.cornell.edu/uscode/text/26/6321', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 31039, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 7, 'text_at_break_point': "c. § 6321: 'if any person liable to pay ", 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDeC2zNsLnM7B9sdwbh'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Texas law exempts a homestead, and burial lots, from seizure for creditors’ claims, except for properly fixed encumbrances on the homestead. The homestead size limits are up to 10 acres for an urban home, up to 200 acres for a rural family homestead, and up to 100 acres for a rural single-adult homestead. The excerpt also states bankruptcy limits on recently acquired homestead interests and fraudulent conversions, and that federal tax liens can attach to and be enforced against homestead property despite the Texas exemption.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Under Texas law, a homestead is generally exempt from seizure by creditors, with size limits of 10 acres for an urban home or up to 200 acres for a rural family home. However, this exemption does not apply to properly fixed encumbrances on the property or to federal tax liens, which can attach to the homestead. Furthermore, in federal bankruptcy cases, the exemption may be capped for equity acquired within 1,215 days of filing or reduced if the debtor fraudulently transferred other assets into the homestead within the preceding 10 years.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-HOMESTEAD-EXEMPTION] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:29:12Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['10', '100', '200'], Gemini=['10', '1215', '200'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDeC2zNsLnM7B9sdwbh'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Texas law exempts a homestead, and burial lots, from seizure for creditors’ claims, except for properly fixed encumbrances on the homestead. The homestead size limits are up to 10 acres for an urban home, up to 200 acres for a rural family homestead, and up to 100 acres for a rural single-adult homestead. The excerpt also states bankruptcy limits on recently acquired homestead interests and fraudulent conversions, and that federal tax liens can attach to and be enforced against homestead property despite the Texas exemption.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Under Texas law, a homestead is generally exempt from seizure by creditors, with size limits of 10 acres for an urban home or up to 200 acres for a rural family home. However, this exemption does not apply to properly fixed encumbrances on the property or to federal tax liens, which can attach to the homestead. Furthermore, in federal bankruptcy cases, the exemption may be capped for equity acquired within 1,215 days of filing or reduced if the debtor fraudulently transferred other assets into the homestead within the preceding 10 years.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-WAGE-GARNISHMENT-PROHIBITION] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:28:42Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDe8MEmi6YoQC5cMwnt'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDcfJmP8VKygAwYUnTh'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Texas law states that current wages for personal service are not subject to garnishment. The Texas Constitution allows garnishment of current wages only for court-ordered child support or spousal maintenance, so ordinary consumer debt is not within the stated exceptions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The Texas Constitution broadly prohibits current wages for personal service from ever being subject to garnishment. The only two exceptions specified in the text are for the enforcement of court-ordered child support and spousal maintenance. As ordinary consumer debt is not listed as an exception, the constitution effectively prohibits wage garnishment for it.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-WAGE-GARNISHMENT-PROHIBITION] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:28:42Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=[], Gemini=['2'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDcfJmP8VKygAwYUnTh'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Texas law states that current wages for personal service are not subject to garnishment. The Texas Constitution allows garnishment of current wages only for court-ordered child support or spousal maintenance, so ordinary consumer debt is not within the stated exceptions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The Texas Constitution broadly prohibits current wages for personal service from ever being subject to garnishment. The only two exceptions specified in the text are for the enforcement of court-ordered child support and spousal maintenance. As ordinary consumer debt is not listed as an exception, the constitution effectively prohibits wage garnishment for it.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-SOL-CONSUMER-DEBT] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:28:21Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDcbYJfHq1CQ64gzk6r'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDbVuSqNSvZncDoWdVU'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A suit on a debt must be brought not later than four years after the day the cause of action accrues. The text lists “debt” among the actions subject to this four-year limitations period.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='According to the provided text, a person must bring a lawsuit on a debt not later than four years after the day the cause of action accrues. The statute explicitly lists "debt" as an action subject to this four-year limitations period.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-SOL-CONSUMER-DEBT] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:28:21Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['4'], Gemini=['4'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDbVuSqNSvZncDoWdVU'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A suit on a debt must be brought not later than four years after the day the cause of action accrues. The text lists “debt” among the actions subject to this four-year limitations period.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='According to the provided text, a person must bring a lawsuit on a debt not later than four years after the day the cause of action accrues. The statute explicitly lists "debt" as an action subject to this four-year limitations period.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:28:05Z
+
+**File:** `rules/debt/state/texas/tx_debt_band3_discretionary_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDbRkuVra4TnbCRo5RM'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDYL42Ny9njBYyqPC9Q'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='The text establishes a conditional, multi-factor standard: a Texas default judgment should be set aside if the defendant’s failure to answer was not intentional or due to conscious indifference, but resulted from mistake or accident; the motion sets up a meritorious defense; and granting the motion will not delay or injure the plaintiff. The motion must also be timely under the applicable rule. The provided text does not expressly characterize the ruling as discretionary.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A Texas court should set aside a default judgment and grant a new trial if the defendant's failure to answer was not intentional or due to conscious indifference, but was the result of a mistake or accident. Additionally, the defendant's motion must present a meritorious defense. Finally, the motion must be filed at a time when granting it will not cause delay or otherwise injure the plaintiff."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:28:05Z
+
+**File:** `rules/debt/state/texas/tx_debt_band3_discretionary_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 6 cited source(s) could not be mechanically verified live: [{'url': 'https://www.stcl.edu/lib/TexasRulesProject/TRCP474-522/rule505-32013.html', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 2477, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 23, 'text_at_break_point': '.', 'raw_html_context_at_break': ' Motion To Reinstate; Motion For New Trial (2013)</title>\r\n<link href="../rulesstyle.css" rel="stylesheet" type="text/css">\r\n</head>\r\n\r\n<body>\r\n<p><span class="box1"><a href="https://www.stcl.edu/library/research/">Back to Main Page </a>/<a href="../'}}, {'url': None, 'verified': False, 'method': 'live', 'error': "Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?", 'diagnostics': {'http_status': None, 'content_length': None, 'content_type': None, 'word_overlap_ratio': None, 'retry_attempt': 2}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDYL42Ny9njBYyqPC9Q'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='The text establishes a conditional, multi-factor standard: a Texas default judgment should be set aside if the defendant’s failure to answer was not intentional or due to conscious indifference, but resulted from mistake or accident; the motion sets up a meritorious defense; and granting the motion will not delay or injure the plaintiff. The motion must also be timely under the applicable rule. The provided text does not expressly characterize the ruling as discretionary.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A Texas court should set aside a default judgment and grant a new trial if the defendant's failure to answer was not intentional or due to conscious indifference, but was the result of a mistake or accident. Additionally, the defendant's motion must present a meritorious defense. Finally, the motion must be filed at a time when granting it will not cause delay or otherwise injure the plaintiff."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:28:05Z
+
+**File:** `rules/debt/state/texas/tx_debt_band3_discretionary_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=[], Gemini=[] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDYL42Ny9njBYyqPC9Q'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='The text establishes a conditional, multi-factor standard: a Texas default judgment should be set aside if the defendant’s failure to answer was not intentional or due to conscious indifference, but resulted from mistake or accident; the motion sets up a meritorious defense; and granting the motion will not delay or injure the plaintiff. The motion must also be timely under the applicable rule. The provided text does not expressly characterize the ruling as discretionary.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A Texas court should set aside a default judgment and grant a new trial if the defendant's failure to answer was not intentional or due to conscious indifference, but was the result of a mistake or accident. Additionally, the defendant's motion must present a meritorious defense. Finally, the motion must be filed at a time when granting it will not cause delay or otherwise injure the plaintiff."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-CIVIL-ANSWER-DEADLINE] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:27:22Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDYGLHnWWjASaupwTr7'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDVwwCYS25K1FqeccZw'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A California summons must direct the defendant to file a written response to the complaint within 30 days after the summons is served. If the defendant does not respond within 30 days, default may be entered and the plaintiff may seek the relief demanded in the complaint, including possible wage garnishment or taking of money or property. For substituted service or certain mail service, service is deemed complete on the 10th day after mailing; for publication, service is deemed complete on the 28th day after the first publication.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A defendant must file a written pleading in response to a complaint within 30 days after the summons is served. The 30-day clock begins after service is officially 'deemed complete.' For methods like substituted service or service by mail, service is complete 10 days after mailing, while for service by publication, it is complete 28 days after the first day of publication."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-CIVIL-ANSWER-DEADLINE] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:27:22Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 4 cited source(s) could not be mechanically verified live: [{'url': 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=415.20.', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 106421, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 0.25, 'retry_attempt': 2, 'longest_matching_prefix_chars': 0, 'text_at_break_point': '§ 415.20 (substituted service): service', 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDVwwCYS25K1FqeccZw'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A California summons must direct the defendant to file a written response to the complaint within 30 days after the summons is served. If the defendant does not respond within 30 days, default may be entered and the plaintiff may seek the relief demanded in the complaint, including possible wage garnishment or taking of money or property. For substituted service or certain mail service, service is deemed complete on the 10th day after mailing; for publication, service is deemed complete on the 28th day after the first publication.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A defendant must file a written pleading in response to a complaint within 30 days after the summons is served. The 30-day clock begins after service is officially 'deemed complete.' For methods like substituted service or service by mail, service is complete 10 days after mailing, while for service by publication, it is complete 28 days after the first day of publication."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-CIVIL-ANSWER-DEADLINE] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:27:22Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['10', '28', '30'], Gemini=['10', '28', '30'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDVwwCYS25K1FqeccZw'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A California summons must direct the defendant to file a written response to the complaint within 30 days after the summons is served. If the defendant does not respond within 30 days, default may be entered and the plaintiff may seek the relief demanded in the complaint, including possible wage garnishment or taking of money or property. For substituted service or certain mail service, service is deemed complete on the 10th day after mailing; for publication, service is deemed complete on the 28th day after the first publication.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A defendant must file a written pleading in response to a complaint within 30 days after the summons is served. The 30-day clock begins after service is officially 'deemed complete.' For methods like substituted service or service by mail, service is complete 10 days after mailing, while for service by publication, it is complete 28 days after the first day of publication."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-BANK-ACCOUNT-EXEMPTION] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:26:50Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDVt2oH1jwPzfwUYjge'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDSfaNCVwHsjk5MJuX1'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Money in a judgment debtor’s deposit account is automatically exempt, without making a claim, up to an amount equal to the minimum basic standard of adequate care for a family of four for Region 1, as established and annually adjusted under the cited Welfare and Institutions Code provisions. This automatic exemption does not apply to money levied to satisfy a judgment for wages owed, child support, or spousal support. The exemptions in this chapter apply only to property of a natural person.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="An amount of money in a judgment debtor's deposit account is automatically exempt from levy without the debtor needing to make a claim. The protected amount is equal to or less than the minimum basic standard of adequate care for a family of four for Region 1, as adjusted annually by the State Department of Social Services. This automatic exemption does not apply to levies to satisfy judgments for wages owed, child support, or spousal support."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-BANK-ACCOUNT-EXEMPTION] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:26:50Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 3 of 6 cited source(s) could not be mechanically verified live: [{'url': 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.080.', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 169730, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 42, 'text_at_break_point': "'deposit account' means a deposit accoun", 'raw_html_context_at_break': None}}, {'url': 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.070.', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 164512, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 0, 'text_at_break_point': "'paid earnings' means earnings, as defin", 'raw_html_context_at_break': None}}, {'url': 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.225.', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 162502, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 0.8, 'retry_attempt': 2, 'longest_matching_prefix_chars': 3, 'text_at_break_point': 'withstanding any other provision of this', 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDSfaNCVwHsjk5MJuX1'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Money in a judgment debtor’s deposit account is automatically exempt, without making a claim, up to an amount equal to the minimum basic standard of adequate care for a family of four for Region 1, as established and annually adjusted under the cited Welfare and Institutions Code provisions. This automatic exemption does not apply to money levied to satisfy a judgment for wages owed, child support, or spousal support. The exemptions in this chapter apply only to property of a natural person.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="An amount of money in a judgment debtor's deposit account is automatically exempt from levy without the debtor needing to make a claim. The protected amount is equal to or less than the minimum basic standard of adequate care for a family of four for Region 1, as adjusted annually by the State Department of Social Services. This automatic exemption does not apply to levies to satisfy judgments for wages owed, child support, or spousal support."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-BANK-ACCOUNT-EXEMPTION] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:26:50Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['1', '4'], Gemini=['1', '4'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDSfaNCVwHsjk5MJuX1'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Money in a judgment debtor’s deposit account is automatically exempt, without making a claim, up to an amount equal to the minimum basic standard of adequate care for a family of four for Region 1, as established and annually adjusted under the cited Welfare and Institutions Code provisions. This automatic exemption does not apply to money levied to satisfy a judgment for wages owed, child support, or spousal support. The exemptions in this chapter apply only to property of a natural person.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="An amount of money in a judgment debtor's deposit account is automatically exempt from levy without the debtor needing to make a claim. The protected amount is equal to or less than the minimum basic standard of adequate care for a family of four for Region 1, as adjusted annually by the State Department of Social Services. This automatic exemption does not apply to levies to satisfy judgments for wages owed, child support, or spousal support."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-VEHICLE-EXEMPTION] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:26:05Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDSbouErHYLFZWmNWgj'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDPwErhyE53vK4Ne1yQ'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='California exempts up to $7,500 in any combination of aggregate equity in motor vehicles, execution-sale proceeds of a motor vehicle, and insurance or indemnification proceeds for loss, damage, or destruction of a motor vehicle. If the debtor has only one motor vehicle and it is sold at execution sale, $7,500 of the sale proceeds is exempt without making a claim, and the subdivision (a) exemption is not available in that case. Proceeds exempt under subdivision (a) remain exempt for 90 days after the debtor actually receives them.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='California law provides an exemption of $7,500 for the aggregate equity in motor vehicles; if a debtor has only one vehicle sold at execution, the proceeds are exempt up to this amount. A separate exemption for a commercial vehicle used for a trade or business is limited to $4,850, but is unavailable if another exempt vehicle is adequate for the job. An alternative set of exemptions allows a debtor to exempt their interest in one motor vehicle up to $8,625. If a vehicle is sold, any exempt proceeds are only protected for 90 days after the debtor receives them.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-VEHICLE-EXEMPTION] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:26:05Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 4 cited source(s) could not be mechanically verified live: [{'url': 'https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.010.', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 164282, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 0.938, 'retry_attempt': 2, 'longest_matching_prefix_chars': 16, 'text_at_break_point': 'pursuant to subdivision (a) are exempt f', 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDPwErhyE53vK4Ne1yQ'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='California exempts up to $7,500 in any combination of aggregate equity in motor vehicles, execution-sale proceeds of a motor vehicle, and insurance or indemnification proceeds for loss, damage, or destruction of a motor vehicle. If the debtor has only one motor vehicle and it is sold at execution sale, $7,500 of the sale proceeds is exempt without making a claim, and the subdivision (a) exemption is not available in that case. Proceeds exempt under subdivision (a) remain exempt for 90 days after the debtor actually receives them.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='California law provides an exemption of $7,500 for the aggregate equity in motor vehicles; if a debtor has only one vehicle sold at execution, the proceeds are exempt up to this amount. A separate exemption for a commercial vehicle used for a trade or business is limited to $4,850, but is unavailable if another exempt vehicle is adequate for the job. An alternative set of exemptions allows a debtor to exempt their interest in one motor vehicle up to $8,625. If a vehicle is sold, any exempt proceeds are only protected for 90 days after the debtor receives them.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-VEHICLE-EXEMPTION] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:26:05Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['$7500', '1', '90'], Gemini=['$4850', '$7500', '$8625', '1', '90'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDPwErhyE53vK4Ne1yQ'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='California exempts up to $7,500 in any combination of aggregate equity in motor vehicles, execution-sale proceeds of a motor vehicle, and insurance or indemnification proceeds for loss, damage, or destruction of a motor vehicle. If the debtor has only one motor vehicle and it is sold at execution sale, $7,500 of the sale proceeds is exempt without making a claim, and the subdivision (a) exemption is not available in that case. Proceeds exempt under subdivision (a) remain exempt for 90 days after the debtor actually receives them.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='California law provides an exemption of $7,500 for the aggregate equity in motor vehicles; if a debtor has only one vehicle sold at execution, the proceeds are exempt up to this amount. A separate exemption for a commercial vehicle used for a trade or business is limited to $4,850, but is unavailable if another exempt vehicle is adequate for the job. An alternative set of exemptions allows a debtor to exempt their interest in one motor vehicle up to $8,625. If a vehicle is sold, any exempt proceeds are only protected for 90 days after the debtor receives them.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-HOMESTEAD-EXEMPTION] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:25:28Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDPsUPibug2XhBsvKat'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDNY8Xmnz6a5tsr1p8F'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='The homestead exemption amount is the greater of either the countywide median sale price for a single-family home in the prior calendar year, capped at $600,000, or $300,000. These amounts are adjusted annually for inflation beginning January 1, 2022, based on the California Consumer Price Index for All Urban Consumers, with adjusted amounts rounded to the nearest $25.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="The California homestead exemption is the greater of either $300,000 or the county's median sale price for a single-family home from the prior year, not to exceed $600,000. This means the exemption amount will be between $300,000 and $600,000. These amounts are adjusted annually for inflation, beginning January 1, 2022."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-HOMESTEAD-EXEMPTION] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:25:28Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['$25', '$300000', '$600000', '1', '2022'], Gemini=['$300000', '$600000', '1', '2022'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDNY8Xmnz6a5tsr1p8F'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='The homestead exemption amount is the greater of either the countywide median sale price for a single-family home in the prior calendar year, capped at $600,000, or $300,000. These amounts are adjusted annually for inflation beginning January 1, 2022, based on the California Consumer Price Index for All Urban Consumers, with adjusted amounts rounded to the nearest $25.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="The California homestead exemption is the greater of either $300,000 or the county's median sale price for a single-family home from the prior year, not to exceed $600,000. This means the exemption amount will be between $300,000 and $600,000. These amounts are adjusted annually for inflation, beginning January 1, 2022."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-WAGE-GARNISHMENT-LIMIT] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:25:09Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDNUMZpPhhbRd3e1A5E'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDLerHnTxTXS1qo3ZZr'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Effective September 1, 2023, the amount of an individual judgment debtor’s disposable earnings subject to an earnings withholding order for a workweek is capped at the lesser of: 20% of disposable earnings for that week, or 40% of the amount by which disposable earnings exceed 48 times the applicable minimum hourly wage. If the local minimum wage where the debtor works is higher than the state minimum wage, the local minimum wage is used for that second calculation.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="For an individual judgment debtor, the maximum amount of disposable earnings that can be garnished in any workweek is the lesser of two amounts. The first is 20% of the individual's disposable earnings for that week. The second is 40% of the amount by which the disposable earnings exceed 48 times the applicable state or local minimum hourly wage."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-WAGE-GARNISHMENT-LIMIT] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:25:09Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['1', '20%', '2023', '40%', '48'], Gemini=['2', '20%', '40%', '48'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDLerHnTxTXS1qo3ZZr'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Effective September 1, 2023, the amount of an individual judgment debtor’s disposable earnings subject to an earnings withholding order for a workweek is capped at the lesser of: 20% of disposable earnings for that week, or 40% of the amount by which disposable earnings exceed 48 times the applicable minimum hourly wage. If the local minimum wage where the debtor works is higher than the state minimum wage, the local minimum wage is used for that second calculation.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="For an individual judgment debtor, the maximum amount of disposable earnings that can be garnished in any workweek is the lesser of two amounts. The first is 20% of the individual's disposable earnings for that week. The second is 40% of the amount by which the disposable earnings exceed 48 times the applicable state or local minimum hourly wage."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-ORAL-CONTRACT-DEBT] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:24:44Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDLbBn87dvjTePJwqJ2'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDJWkaAitPmQnT1jRuH'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability not founded on a written instrument must be brought within two years. The action is commenced when the complaint is filed, and if the defendant is absent from California when or after the claim accrues, the absence is not counted as part of the limitations period under the stated tolling rule.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Under California law, a lawsuit based on a contract not founded on a written instrument must be commenced within two years. An action is considered commenced when the complaint is filed. If the person being sued is out of the state, the time of their absence does not count as part of this two-year time limit for commencing the action.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-ORAL-CONTRACT-DEBT] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:24:44Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['2'], Gemini=['2'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDJWkaAitPmQnT1jRuH'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability not founded on a written instrument must be brought within two years. The action is commenced when the complaint is filed, and if the defendant is absent from California when or after the claim accrues, the absence is not counted as part of the limitations period under the stated tolling rule.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='Under California law, a lawsuit based on a contract not founded on a written instrument must be commenced within two years. An action is considered commenced when the complaint is filed. If the person being sued is out of the state, the time of their absence does not count as part of this two-year time limit for commencing the action.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-WRITTEN-CONTRACT-DEBT] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:24:15Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeDJSc335ghX627R48AB'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeD9pZt4QpXA27dLttXB'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit or start arbitration or another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The statute of limitations for a lawsuit based on a written contract is four years. The provided text specifies that an action upon any contract or liability founded upon an instrument in writing must be brought within this four-year period. Once this period has run, a person is prohibited from bringing a suit or initiating another legal proceeding to collect the debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-WRITTEN-CONTRACT-DEBT] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:24:15Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 10 cited source(s) could not be mechanically verified live: [{'url': 'https://www4.courts.ca.gov/documents/appendix-i.pdf', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 403, 'content_length': 5843, 'content_type': 'text/html; charset=UTF-8', 'word_overlap_ratio': 0.059, 'retry_attempt': 2, 'longest_matching_prefix_chars': 1, 'text_at_break_point': 'otwithstanding any other law, the statut', 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeD9pZt4QpXA27dLttXB'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit or start arbitration or another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The statute of limitations for a lawsuit based on a written contract is four years. The provided text specifies that an action upon any contract or liability founded upon an instrument in writing must be brought within this four-year period. Once this period has run, a person is prohibited from bringing a suit or initiating another legal proceeding to collect the debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [CA-SOL-WRITTEN-CONTRACT-DEBT] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:24:15Z
+
+**File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['4'], Gemini=['4'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeD9pZt4QpXA27dLttXB'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit or start arbitration or another legal proceeding to collect the debt, and the period may be extended only as provided in Section 360.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='The statute of limitations for a lawsuit based on a written contract is four years. The provided text specifies that an action upon any contract or liability founded upon an instrument in writing must be brought within this four-year period. Once this period has run, a person is prohibited from bringing a suit or initiating another legal proceeding to collect the debt.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-VALIDATION-NOTICE-1692g] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:22:17Z
+
+**File:** `rules/debt/federal/fdcpa_validation_notice_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeD9kUKnnTWC9Mo4BE5a'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeD56Wgko2jhu4H9Z3ki'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector must send a written validation notice within five days after the initial collection communication unless the initial communication already contains the information or the debt has been paid; the notice must state the amount of the debt, the current creditor, the consumer’s 30-day right to dispute, the debt collector’s obligation to obtain and mail verification or a judgment if disputed in writing, and the right to request the original creditor’s name and address. The validation period starts when the debt collector provides the validation information and ends 30 days after the consumer receives or is assumed to receive it; for calculating the end date, the collector may assume receipt on a date at least five days after providing it, excluding Saturdays, Sundays, and legal public holidays. If a subsequent validation notice is sent because the original was not received and the consumer otherwise did not receive the validation information, the end date is calculated from receipt or assumed receipt of the subsequent notice.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt validation notice must include specific information, such as the amount of the debt, the creditor's name, and several statements about the consumer's right to dispute the debt and obtain verification. The 30-day dispute period begins when the consumer receives the notice. The debt collector may assume the consumer received the notice five business days (excluding weekends and federal holidays) after the collector sent it; if a notice must be re-sent, the 30-day period is calculated based on the receipt of the subsequent notice."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-VALIDATION-NOTICE-1692g] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:22:17Z
+
+**File:** `rules/debt/federal/fdcpa_validation_notice_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 7 cited source(s) could not be mechanically verified live: [{'url': 'https://www.consumerfinance.gov/rules-policy/regulations/1006/interp-34/', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 403, 'content_length': 441, 'content_type': 'text/html', 'word_overlap_ratio': 0.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 1, 'text_at_break_point': 'f a debt collector sends a subsequent va', 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeD56Wgko2jhu4H9Z3ki'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector must send a written validation notice within five days after the initial collection communication unless the initial communication already contains the information or the debt has been paid; the notice must state the amount of the debt, the current creditor, the consumer’s 30-day right to dispute, the debt collector’s obligation to obtain and mail verification or a judgment if disputed in writing, and the right to request the original creditor’s name and address. The validation period starts when the debt collector provides the validation information and ends 30 days after the consumer receives or is assumed to receive it; for calculating the end date, the collector may assume receipt on a date at least five days after providing it, excluding Saturdays, Sundays, and legal public holidays. If a subsequent validation notice is sent because the original was not received and the consumer otherwise did not receive the validation information, the end date is calculated from receipt or assumed receipt of the subsequent notice.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt validation notice must include specific information, such as the amount of the debt, the creditor's name, and several statements about the consumer's right to dispute the debt and obtain verification. The 30-day dispute period begins when the consumer receives the notice. The debt collector may assume the consumer received the notice five business days (excluding weekends and federal holidays) after the collector sent it; if a notice must be re-sent, the 30-day period is calculated based on the receipt of the subsequent notice."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-VALIDATION-NOTICE-1692g] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:22:17Z
+
+**File:** `rules/debt/federal/fdcpa_validation_notice_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['30', '5'], Gemini=['30', '5'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeD56Wgko2jhu4H9Z3ki'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector must send a written validation notice within five days after the initial collection communication unless the initial communication already contains the information or the debt has been paid; the notice must state the amount of the debt, the current creditor, the consumer’s 30-day right to dispute, the debt collector’s obligation to obtain and mail verification or a judgment if disputed in writing, and the right to request the original creditor’s name and address. The validation period starts when the debt collector provides the validation information and ends 30 days after the consumer receives or is assumed to receive it; for calculating the end date, the collector may assume receipt on a date at least five days after providing it, excluding Saturdays, Sundays, and legal public holidays. If a subsequent validation notice is sent because the original was not received and the consumer otherwise did not receive the validation information, the end date is calculated from receipt or assumed receipt of the subsequent notice.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt validation notice must include specific information, such as the amount of the debt, the creditor's name, and several statements about the consumer's right to dispute the debt and obtain verification. The 30-day dispute period begins when the consumer receives the notice. The debt collector may assume the consumer received the notice five business days (excluding weekends and federal holidays) after the collector sent it; if a notice must be re-sent, the 30-day period is calculated based on the receipt of the subsequent notice."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:21:13Z
+
+**File:** `rules/debt/federal/fdcpa_coverage_threshold_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeD52Pe9tNMJ2aCDDPak'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCxMXt1KajQDsZm5cCL'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A covered “debt collector” includes a person using interstate commerce or the mails in a business whose principal purpose is collecting debts, or who regularly collects or attempts to collect debts owed or asserted to be owed to another; it also includes a creditor collecting its own debts under a different name suggesting a third party is collecting. A “debt” is a consumer obligation or alleged obligation to pay money arising from a transaction primarily for personal, family, or household purposes, and a “consumer” is a natural person obligated or allegedly obligated to pay such a debt. A “creditor” is a person who offers or extends credit creating a debt or to whom a debt is owed, excluding one who receives a defaulted-debt assignment solely to facilitate collection for another. The text also states that collecting purchased debts for one’s own account does not trigger the “owed another” definition, and that a business doing no more than nonjudicial foreclosure is a debt collector only for the limited purpose of § 1692f(6).'
+  - gemini-2.5-pro: grounded=True, error=None, summary="Under the statute, a 'debt' is a consumer's obligation to pay money from a transaction for personal, family, or household purposes. A 'creditor' is one who extends credit or to whom a debt is owed, but not one who acquires a defaulted debt just to collect it. A 'debt collector' is primarily a person whose main business is debt collection or who regularly collects debts for another, which does not include a company collecting on a debt it purchased for itself."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:21:13Z
+
+**File:** `rules/debt/federal/fdcpa_coverage_threshold_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['1'], Gemini=['1'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCxMXt1KajQDsZm5cCL'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A covered “debt collector” includes a person using interstate commerce or the mails in a business whose principal purpose is collecting debts, or who regularly collects or attempts to collect debts owed or asserted to be owed to another; it also includes a creditor collecting its own debts under a different name suggesting a third party is collecting. A “debt” is a consumer obligation or alleged obligation to pay money arising from a transaction primarily for personal, family, or household purposes, and a “consumer” is a natural person obligated or allegedly obligated to pay such a debt. A “creditor” is a person who offers or extends credit creating a debt or to whom a debt is owed, excluding one who receives a defaulted-debt assignment solely to facilitate collection for another. The text also states that collecting purchased debts for one’s own account does not trigger the “owed another” definition, and that a business doing no more than nonjudicial foreclosure is a debt collector only for the limited purpose of § 1692f(6).'
+  - gemini-2.5-pro: grounded=True, error=None, summary="Under the statute, a 'debt' is a consumer's obligation to pay money from a transaction for personal, family, or household purposes. A 'creditor' is one who extends credit or to whom a debt is owed, but not one who acquires a defaulted debt just to collect it. A 'debt collector' is primarily a person whose main business is debt collection or who regularly collects debts for another, which does not include a company collecting on a debt it purchased for itself."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-UNFAIR-PRACTICES-CATALOG-1692f] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:19:41Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCxHmuVJ9S39oomUrMZ'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCvBNe3PnXfsdMUHKYR'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use unfair or unconscionable means to collect or attempt to collect a debt. The listed violations include collecting unauthorized amounts; mishandling postdated checks or payment instruments; causing communication charges by concealing the communication’s purpose; wrongfully taking or threatening nonjudicial dispossession or disablement of property; communicating by postcard; and using prohibited language or symbols on mailed envelopes. The prohibition applies to persons meeting the statutory definition of “debt collector,” subject to the stated exclusions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='A debt collector is forbidden from using unfair or unconscionable means to collect a debt. This includes, but is not limited to, collecting amounts not expressly authorized by the agreement or law, and improperly handling postdated checks. It also prohibits threatening to take property without a legal right to do so, communicating about a debt via postcard, or using any language or symbol on an envelope (other than their address or non-indicative business name) that reveals its purpose.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-UNFAIR-PRACTICES-CATALOG-1692f] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:19:41Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 1 of 3 cited source(s) could not be mechanically verified live: [{'url': 'https://www.law.cornell.edu/uscode/text/15/1692a', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 48782, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 0.941, 'retry_attempt': 2, 'longest_matching_prefix_chars': 10, 'text_at_break_point': "debt collector' means any person who use", 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCvBNe3PnXfsdMUHKYR'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use unfair or unconscionable means to collect or attempt to collect a debt. The listed violations include collecting unauthorized amounts; mishandling postdated checks or payment instruments; causing communication charges by concealing the communication’s purpose; wrongfully taking or threatening nonjudicial dispossession or disablement of property; communicating by postcard; and using prohibited language or symbols on mailed envelopes. The prohibition applies to persons meeting the statutory definition of “debt collector,” subject to the stated exclusions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='A debt collector is forbidden from using unfair or unconscionable means to collect a debt. This includes, but is not limited to, collecting amounts not expressly authorized by the agreement or law, and improperly handling postdated checks. It also prohibits threatening to take property without a legal right to do so, communicating about a debt via postcard, or using any language or symbol on an envelope (other than their address or non-indicative business name) that reveals its purpose.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-UNFAIR-PRACTICES-CATALOG-1692f] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:19:41Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=[], Gemini=[] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCvBNe3PnXfsdMUHKYR'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use unfair or unconscionable means to collect or attempt to collect a debt. The listed violations include collecting unauthorized amounts; mishandling postdated checks or payment instruments; causing communication charges by concealing the communication’s purpose; wrongfully taking or threatening nonjudicial dispossession or disablement of property; communicating by postcard; and using prohibited language or symbols on mailed envelopes. The prohibition applies to persons meeting the statutory definition of “debt collector,” subject to the stated exclusions.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='A debt collector is forbidden from using unfair or unconscionable means to collect a debt. This includes, but is not limited to, collecting amounts not expressly authorized by the agreement or law, and improperly handling postdated checks. It also prohibits threatening to take property without a legal right to do so, communicating about a debt via postcard, or using any language or symbol on an envelope (other than their address or non-indicative business name) that reveals its purpose.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-FALSE-DECEPTIVE-CATALOG-1692e] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:19:12Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCv7cR1U7qXz236k1Ua'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCrTHyvYwvo9KaPx6fn'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use any false, deceptive, or misleading representation or means in connection with collecting a debt. The prohibited conduct includes falsely implying government affiliation, misrepresenting the character, amount, or legal status of a debt, falsely implying attorney involvement, threatening arrest/seizure or other action unless lawful and intended, communicating false credit information, using fake court/government documents, using deceptive collection means, failing required debt-collector disclosures, and misrepresenting legal-process or consumer-reporting-agency status. The text also states that actionable false or misleading statements under § 1692e must be material, and that threatening or filing suit on a known time-barred debt can violate the prohibitions on misrepresenting legal status or threatening unlawful action.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="Debt collectors are broadly prohibited from using any false, deceptive, or misleading representations or means to collect a debt. The statute provides a non-exhaustive list of violations, such as misrepresenting the character or legal status of a debt, falsely implying government affiliation, or threatening to take actions that cannot legally be taken. Courts generally require that a false statement be material—capable of influencing a consumer's decision—to be actionable. For example, attempting to collect a time-barred debt can be a violation if it misleads a consumer about the debt's legal enforceability."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-FALSE-DECEPTIVE-CATALOG-1692e] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:19:12Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 5 of 7 cited source(s) could not be mechanically verified live: [{'url': 'https://www.law.cornell.edu/uscode/text/15/1692a', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 48782, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 10, 'text_at_break_point': "debt' means any obligation or alleged ob", 'raw_html_context_at_break': None}}, {'url': 'https://www.law.cornell.edu/uscode/text/15/1692a', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 48782, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 0.941, 'retry_attempt': 2, 'longest_matching_prefix_chars': 10, 'text_at_break_point': "debt collector' means any person who use", 'raw_html_context_at_break': None}}, {'url': 'https://www.law.cornell.edu/uscode/text/15/1692a', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 48782, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 0.941, 'retry_attempt': 2, 'longest_matching_prefix_chars': 0, 'text_at_break_point': "[the term 'debt collector' does not incl", 'raw_html_context_at_break': None}}, {'url': None, 'verified': False, 'method': 'live', 'error': "Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?", 'diagnostics': {'http_status': None, 'content_length': None, 'content_type': None, 'word_overlap_ratio': None, 'retry_attempt': 2}}, {'url': None, 'verified': False, 'method': 'live', 'error': "Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?", 'diagnostics': {'http_status': None, 'content_length': None, 'content_type': None, 'word_overlap_ratio': None, 'retry_attempt': 2}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCrTHyvYwvo9KaPx6fn'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use any false, deceptive, or misleading representation or means in connection with collecting a debt. The prohibited conduct includes falsely implying government affiliation, misrepresenting the character, amount, or legal status of a debt, falsely implying attorney involvement, threatening arrest/seizure or other action unless lawful and intended, communicating false credit information, using fake court/government documents, using deceptive collection means, failing required debt-collector disclosures, and misrepresenting legal-process or consumer-reporting-agency status. The text also states that actionable false or misleading statements under § 1692e must be material, and that threatening or filing suit on a known time-barred debt can violate the prohibitions on misrepresenting legal status or threatening unlawful action.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="Debt collectors are broadly prohibited from using any false, deceptive, or misleading representations or means to collect a debt. The statute provides a non-exhaustive list of violations, such as misrepresenting the character or legal status of a debt, falsely implying government affiliation, or threatening to take actions that cannot legally be taken. Courts generally require that a false statement be material—capable of influencing a consumer's decision—to be actionable. For example, attempting to collect a time-barred debt can be a violation if it misleads a consumer about the debt's legal enforceability."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-FALSE-DECEPTIVE-CATALOG-1692e] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:19:12Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=[], Gemini=[] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCrTHyvYwvo9KaPx6fn'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='A debt collector may not use any false, deceptive, or misleading representation or means in connection with collecting a debt. The prohibited conduct includes falsely implying government affiliation, misrepresenting the character, amount, or legal status of a debt, falsely implying attorney involvement, threatening arrest/seizure or other action unless lawful and intended, communicating false credit information, using fake court/government documents, using deceptive collection means, failing required debt-collector disclosures, and misrepresenting legal-process or consumer-reporting-agency status. The text also states that actionable false or misleading statements under § 1692e must be material, and that threatening or filing suit on a known time-barred debt can violate the prohibitions on misrepresenting legal status or threatening unlawful action.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="Debt collectors are broadly prohibited from using any false, deceptive, or misleading representations or means to collect a debt. The statute provides a non-exhaustive list of violations, such as misrepresenting the character or legal status of a debt, falsely implying government affiliation, or threatening to take actions that cannot legally be taken. Courts generally require that a false statement be material—capable of influencing a consumer's decision—to be actionable. For example, attempting to collect a time-barred debt can be a violation if it misleads a consumer about the debt's legal enforceability."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:18:21Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCrPDurYjSjFbEK11hN'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeChxVefoZ1ucAfAL1oF'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Subject to specified exclusions, a debt collector is presumed to violate the rule if, for a particular person and a particular debt, the debt collector places telephone calls either more than seven times within seven consecutive days or within seven consecutive days after having had a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. Calls with qualifying prior consent, calls not connected to the dialed number, and calls to certain listed persons are excluded from the call-frequency count.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt collector is presumed to have violated federal law if they place a telephone call to a person about a particular debt more than seven times within seven consecutive days. A violation is also presumed if the debt collector calls a person within seven consecutive days after having a telephone conversation with them about that debt. Certain calls are excluded from this frequency count, such as calls that do not connect or those made with the person's prior consent."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:18:21Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 9 cited source(s) could not be mechanically verified live: [{'url': 'https://www.mass.gov/doc/940-cmr-7-debt-collection-regulations/download', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 403, 'content_length': 14061, 'content_type': 'text/html', 'word_overlap_ratio': 0.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 1, 'text_at_break_point': 'nitiating a communication with any debto', 'raw_html_context_at_break': None}}, {'url': 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692c&num=0&edition=prelim', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 146387, 'content_type': 'text/html;charset=UTF-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 32, 'text_at_break_point': '. except as provided in section 1692b of', 'raw_html_context_at_break': 'n with third parties</h4>\n\n<p class="statutory-body">Except as provided in <span onclick="openDocument(\'1692b\', \'15\', \'\'); return false;" onmouseout="this.style.textDecoration=\'none\';" onmouseover="this.style.textDecoration=\'underline\';" class="stdre'}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeChxVefoZ1ucAfAL1oF'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Subject to specified exclusions, a debt collector is presumed to violate the rule if, for a particular person and a particular debt, the debt collector places telephone calls either more than seven times within seven consecutive days or within seven consecutive days after having had a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. Calls with qualifying prior consent, calls not connected to the dialed number, and calls to certain listed persons are excluded from the call-frequency count.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt collector is presumed to have violated federal law if they place a telephone call to a person about a particular debt more than seven times within seven consecutive days. A violation is also presumed if the debt collector calls a person within seven consecutive days after having a telephone conversation with them about that debt. Certain calls are excluded from this frequency count, such as calls that do not connect or those made with the person's prior consent."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FDCPA-REGF-CALL-FREQUENCY-1006.14b] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:18:21Z
+
+**File:** `rules/debt/federal/fdcpa_conduct_prohibitions_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=['7'], Gemini=['7'] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeChxVefoZ1ucAfAL1oF'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='Subject to specified exclusions, a debt collector is presumed to violate the rule if, for a particular person and a particular debt, the debt collector places telephone calls either more than seven times within seven consecutive days or within seven consecutive days after having had a telephone conversation with that person about that debt. The date of the telephone conversation counts as the first day of the seven-day period. Calls with qualifying prior consent, calls not connected to the dialed number, and calls to certain listed persons are excluded from the call-frequency count.'
+  - gemini-2.5-pro: grounded=True, error=None, summary="A debt collector is presumed to have violated federal law if they place a telephone call to a person about a particular debt more than seven times within seven consecutive days. A violation is also presumed if the debt collector calls a person within seven consecutive days after having a telephone conversation with them about that debt. Certain calls are excluded from this frequency count, such as calls that do not connect or those made with the person's prior consent."
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b] STAGE-B-PARSE-FAILURE -- run run_20260902T071547Z, 2026-09-02T07:16:26Z
+
+**File:** `rules/debt/federal/fcra_furnisher_dispute_v1.json`
+**Classification hint (mechanical, not authoritative):** STAGE-B-PARSE-FAILURE
+**Evidence:** Adversarial check did not return parseable edge_cases even after retry (error="Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeChtpPx6jAqqXhC23JX'}", _parse_error=None, _stop_reason=None) -- gaps cannot be assessed this run, so this node cannot be CLEAN-PASS regardless of Stage A/citation results (round 26 fix).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCf6w53RV3mG3x1aygp'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='After receiving notice from a consumer reporting agency that a consumer disputes the completeness or accuracy of information the furnisher provided, the furnisher must investigate the disputed information, review all relevant information the agency provided, and report the investigation results back to the agency. If the information is incomplete, inaccurate, or cannot be verified, the furnisher must, as appropriate, promptly modify, delete, or permanently block reporting of the item, and must report incomplete or inaccurate findings to other nationwide consumer reporting agencies to which it furnished the information. The required investigations, reviews, and reports must be completed within the time period applicable to the consumer reporting agency’s reinvestigation, and courts have read the investigation duty to require reasonableness rather than merely checking internal data conformity.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='After receiving notice of a dispute from a consumer reporting agency, a furnisher of information must conduct a reasonable investigation, which cannot consist of merely confirming that its internal data matches what it already reported. The furnisher must review all information provided by the reporting agency and report the results of its investigation back to that agency. If the investigation finds the information is inaccurate or incomplete, the furnisher must report those results to all nationwide consumer reporting agencies to which it furnished the information and must promptly modify, delete, or block the reporting of that information.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b] CITATION-CHECK-FAILED -- run run_20260902T071547Z, 2026-09-02T07:16:26Z
+
+**File:** `rules/debt/federal/fcra_furnisher_dispute_v1.json`
+**Classification hint (mechanical, not authoritative):** CITATION-CHECK-FAILED
+**Evidence:** 2 of 6 cited source(s) could not be mechanically verified live: [{'url': None, 'verified': False, 'method': 'live', 'error': "Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?", 'diagnostics': {'http_status': None, 'content_length': None, 'content_type': None, 'word_overlap_ratio': None, 'retry_attempt': 2}}, {'url': 'https://www.law.cornell.edu/uscode/text/15/1681i', 'verified': False, 'method': 'live', 'error': None, 'diagnostics': {'http_status': 200, 'content_length': 124150, 'content_type': 'text/html; charset=utf-8', 'word_overlap_ratio': 1.0, 'retry_attempt': 2, 'longest_matching_prefix_chars': 82, 'text_at_break_point': "'s file at a consumer reporting agency", 'raw_html_context_at_break': None}}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCf6w53RV3mG3x1aygp'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='After receiving notice from a consumer reporting agency that a consumer disputes the completeness or accuracy of information the furnisher provided, the furnisher must investigate the disputed information, review all relevant information the agency provided, and report the investigation results back to the agency. If the information is incomplete, inaccurate, or cannot be verified, the furnisher must, as appropriate, promptly modify, delete, or permanently block reporting of the item, and must report incomplete or inaccurate findings to other nationwide consumer reporting agencies to which it furnished the information. The required investigations, reviews, and reports must be completed within the time period applicable to the consumer reporting agency’s reinvestigation, and courts have read the investigation duty to require reasonableness rather than merely checking internal data conformity.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='After receiving notice of a dispute from a consumer reporting agency, a furnisher of information must conduct a reasonable investigation, which cannot consist of merely confirming that its internal data matches what it already reported. The furnisher must review all information provided by the reporting agency and report the results of its investigation back to that agency. If the investigation finds the information is inaccurate or incomplete, the furnisher must report those results to all nationwide consumer reporting agencies to which it furnished the information and must promptly modify, delete, or block the reporting of that information.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
+### [FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b] MODEL-DISAGREEMENT -- run run_20260902T071547Z, 2026-09-02T07:16:26Z
+
+**File:** `rules/debt/federal/fcra_furnisher_dispute_v1.json`
+**Classification hint (mechanical, not authoritative):** MODEL-DISAGREEMENT
+**Evidence:** LLM-judged semantic agreement: Skipped -- not all three models returned a grounded, error-free result. (judge model: claude-opus-5). Numeric-fingerprint diagnostic (secondary, not gating): Anthropic=[], OpenAI=[], Gemini=[] (fingerprint_agreement=False).
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=None, error=Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeeCf6w53RV3mG3x1aygp'}, summary=None
+  - gpt-5.5: grounded=True, error=None, summary='After receiving notice from a consumer reporting agency that a consumer disputes the completeness or accuracy of information the furnisher provided, the furnisher must investigate the disputed information, review all relevant information the agency provided, and report the investigation results back to the agency. If the information is incomplete, inaccurate, or cannot be verified, the furnisher must, as appropriate, promptly modify, delete, or permanently block reporting of the item, and must report incomplete or inaccurate findings to other nationwide consumer reporting agencies to which it furnished the information. The required investigations, reviews, and reports must be completed within the time period applicable to the consumer reporting agency’s reinvestigation, and courts have read the investigation duty to require reasonableness rather than merely checking internal data conformity.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='After receiving notice of a dispute from a consumer reporting agency, a furnisher of information must conduct a reasonable investigation, which cannot consist of merely confirming that its internal data matches what it already reported. The furnisher must review all information provided by the reporting agency and report the results of its investigation back to that agency. If the investigation finds the information is inaccurate or incomplete, the furnisher must report those results to all nationwide consumer reporting agencies to which it furnished the information and must promptly modify, delete, or block the reporting of that information.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [CA-SOL-WRITTEN-CONTRACT-DEBT] ADVERSARIAL-GAP -- run run_20260901T184005Z, 2026-09-01T18:51:12Z
 
 **File:** `rules/debt/state/california/ca_debt_state_layer_v1.json`
