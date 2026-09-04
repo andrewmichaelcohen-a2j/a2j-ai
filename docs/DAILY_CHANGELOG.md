@@ -2,6 +2,40 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-04, round 43 (content: 9 findings from the re-smoke dispositioned; cross-cutting `_global` ledger section)
+
+**What changed since round 42:** rules content (three files) + ledger + triage doc. No runner change.
+
+**Re-smoke `run_20260904T212407Z`:** 1/3 CLEAN-PASS; Stage A 100%; Stage B parse 100% (round 42 worked -- and its
+diagnostics settled the cause: `_content_block_types: ['thinking', 'text']`, output 6000 tokens with 2.6K chars of
+text; the model's reasoning was eating the budget). Citation 66.7%: one break at "collector's" on the Cornell
+interp page (linked defined term + possessive -> stray space; quote re-trimmed here, normalization fix in round 44).
+Stage B: 6 material findings, 0 matched -- correctly, none overlap the ledger -- plus 3 on CA-SOL-WRITTEN the
+runner dropped because `exposes_gap` was omitted (rc/wa both true). All 9 dispositioned:
+
+- FDCPA-REGF-CALL-FREQUENCY: `independent_bars_note` (1692g(b) written dispute suspends all calls; bankruptcy
+  stay/discharge -- 11 U.S.C. 362(a)(6), 524(a)(2) pinned from official fetches) + threshold checklist item;
+  per-DEBT-COLLECTOR dimension added to `unit_of_count`/`determination` + checklist item.
+- FDCPA-COVERAGE: checklist item 1 now asks WHO does the work, not whose name is on the letter (white-label
+  vendors are covered); item 5 restores exclusion (B)'s principal-business condition; government-origin
+  consumer-transaction accounts (municipal utility, EMS) are debts under 1692a(5) -- note corrected, Pollice /
+  Piper named for counsel.
+- CA-SOL-WRITTEN (all three dangerous-direction): `deceased_debtor_note` + threshold checklist (CCP 366.2 pinned:
+  one year from death, no tolling); `book_account_and_account_stated_note` + checklist item 2 (CCP 337(b) pinned:
+  card debt is 4 years on book account / account stated even with no signed agreement -- "never signed anything"
+  no longer routes to the 2-year oral node); `judgment_enforcement_note` corrected for out-of-state judgments
+  (CCP 337.5(b) pinned; Texas 34.001/31.006 copied from the TX node; enforceable-where-rendered = counsel gloss).
+- CA sources verified against FindLaw (current as of 2026-01-01), pinned to leginfo (which the checker fetches
+  for this node's other CCP sections).
+
+**Ledger:** +9 node entries (74 / 19 nodes) and a new `_global` section (4 cross-cutting dispositions: bankruptcy,
+1692g(b) cease, 1692c bars, state overlays). Round 44 makes the runner append `_global` to every node's prompt;
+until then it is inert data.
+
+**Verification:** schema PASS; calibration+replay PASS (runner unchanged).
+
+**Next:** round 44 (runner-only), then re-smoke the same three nodes, then the full run.
+
 ## 2026-09-04, round 42 (runner-only: Stage B empty-completion-at-max_tokens -- diagnostics + bigger retry, CAL-12)
 
 **What changed since round 41:** runner + calibration set only. Zero rules-content edits.

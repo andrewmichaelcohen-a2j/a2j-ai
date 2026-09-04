@@ -1,5 +1,5 @@
 {
-  "_comment": "Round 40. Machine-readable twin of docs/DEBT_STAGE_B_TRIAGE.md. Each entry is a Stage B finding that has been dispositioned (fixed with verified source, fixed with source named but not yet quoted, flagged as a case-law gloss awaiting counsel, covered elsewhere, or HORIZON). The corroboration runner passes a node's entries into the Stage B prompt and asks the model to tag any overlapping edge case with the matching id; only UNTAGGED material findings count toward the gate (ratified 2026-09-04). Adding an entry here is a disposition decision, not a content edit: it requires the finding to have been actually addressed in the rules file or explicitly accepted for counsel review. The docs file remains the human-readable queue of record; keep the two in sync.",
+  "_comment": "Round 40. Machine-readable twin of docs/DEBT_STAGE_B_TRIAGE.md. Each entry is a Stage B finding that has been dispositioned (fixed with verified source, fixed with source named but not yet quoted, flagged as a case-law gloss awaiting counsel, covered elsewhere, or HORIZON). The corroboration runner passes a node's entries into the Stage B prompt and asks the model to tag any overlapping edge case with the matching id; only UNTAGGED material findings count toward the gate (ratified 2026-09-04). Adding an entry here is a disposition decision, not a content edit: it requires the finding to have been actually addressed in the rules file or explicitly accepted for counsel review. The docs file remains the human-readable queue of record; keep the two in sync. Round 43 adds a '_global' list: cross-cutting dispositions the runner (from round 44) appends to EVERY node's prompt, so a theme that has been dispositioned corpus-wide (bankruptcy, validation-dispute cease, 1692c bars, state overlays) is tagged rather than re-reported on each node. A global entry is not a licence to ignore a node that says something WRONG about the theme -- the prompt says so.",
   "schema": {
     "nodes": "{node_id: [{id, theme, summary, classification, dangerous_direction, source, date}]}",
     "classifications": [
@@ -10,7 +10,7 @@
       "HORIZON"
     ]
   },
-  "generated": "2026-09-04 (round 40); updated round 41",
+  "generated": "2026-09-04 (round 40); updated rounds 41, 43",
   "nodes": {
     "FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6": [
       {
@@ -38,6 +38,33 @@
         "classification": "FIXED-VERIFIED",
         "dangerous_direction": "no",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6-04",
+        "theme": "White-label vendor collecting under the creditor's brand routed to exclusion (A)",
+        "summary": "checklist item 1 rewritten to test the actor, not the name; own-name note clarified",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T212407Z (round 43)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6-05",
+        "theme": "Exclusion (B) checklist question dropped the principal-business condition",
+        "summary": "checklist item 5 rewritten with both conjunctive conditions",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T212407Z (round 43)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6-06",
+        "theme": "Government-origin consumer-transaction obligations (municipal utility, EMS, public hospital) treated as non-debts",
+        "summary": "what_is_being_collected_note corrected on the 1692a(5) transaction test; Pollice / Piper named as GLOSS-FOR-COUNSEL",
+        "classification": "FIXED-VERIFIED (statute) + GLOSS-FOR-COUNSEL (cases)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T212407Z (round 43)",
         "date": "2026-09-04"
       }
     ],
@@ -192,6 +219,33 @@
         "classification": "FIXED-VERIFIED",
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-WRITTEN-CONTRACT-DEBT-05",
+        "theme": "Deceased debtor: CCP 366.2 one-year-from-death bar not screened (finding silently dropped by runner: exposes_gap omitted)",
+        "summary": "deceased_debtor_note + threshold checklist item; 366.2(a)-(b) pinned",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T212407Z (round 43)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-WRITTEN-CONTRACT-DEBT-06",
+        "theme": "'No signed contract' routed card debt to 2-year oral period; book account / account stated (337(b), 4 years) omitted (dropped finding)",
+        "summary": "book_account_and_account_stated_note; checklist item 2 rewritten; 337(b) pinned",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T212407Z (round 43)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-WRITTEN-CONTRACT-DEBT-07",
+        "theme": "Sister-state judgment treated under CCP 683.020; rendering-state dormancy and 337.5(b) ignored (dropped finding)",
+        "summary": "judgment_enforcement_note corrected + checklist item; 337.5(b) pinned; TX 34.001/31.006 copied; enforceable-where-rendered proposition GLOSS-FOR-COUNSEL",
+        "classification": "FIXED-VERIFIED + GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T212407Z (round 43)",
         "date": "2026-09-04"
       }
     ],
@@ -633,7 +687,72 @@
         "dangerous_direction": "n/a (pre-existing marker closed)",
         "source": "round 41",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-05",
+        "theme": "Written validation dispute (1692g(b)) suspends all collection incl. calls; node counted calls anyway",
+        "summary": "independent_bars_note + threshold checklist item; 1692g(b) pinned",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T212407Z (round 43)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-06",
+        "theme": "Pending bankruptcy / discharge not screened (362(a)(6), 524(a)(2))",
+        "summary": "independent_bars_note + threshold checklist item; 362(a)(6) and 524(a)(2) pinned; also registered as a GLOBAL disposition",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T212407Z (round 43)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-07",
+        "theme": "7-in-7 count not stated as per debt collector; two collectors' calls aggregated into one presumption",
+        "summary": "unit_of_count and determination corrected; checklist item on which entity placed each call",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no (overstates claim, wrong defendant)",
+        "source": "run_20260904T212407Z (round 43)",
+        "date": "2026-09-04"
       }
     ]
-  }
+  },
+  "_global": [
+    {
+      "id": "G-BANKRUPTCY-STAY-DISCHARGE",
+      "theme": "Pending bankruptcy (automatic stay, 11 U.S.C. 362(a)(6)) or discharge (524(a)(2)) overrides any node's collection/enforcement/limitations analysis",
+      "summary": "Cross-cutting. Encoded as a threshold screen on the nodes where it has surfaced (CA-SOL-WRITTEN round 29; call-frequency round 43). Corpus-wide design: a shared BANKRUPTCY-OVERLAY gate node is on the HORIZON list; until it exists, every node is deemed to carry this disposition -- report the finding only if the node's OWN text says something WRONG about bankruptcy, not merely because it does not mention it.",
+      "classification": "COVERED (cross-cutting; HORIZON gate node)",
+      "dangerous_direction": "yes",
+      "source": "round 43",
+      "date": "2026-09-04"
+    },
+    {
+      "id": "G-1692G-VALIDATION-DISPUTE-CEASE",
+      "theme": "A timely written validation dispute under 15 U.S.C. 1692g(b) suspends all collection until verification -- overrides any conduct node's frequency/timing analysis",
+      "summary": "Cross-cutting across the FDCPA conduct nodes. Encoded in FDCPA-VALIDATION-NOTICE-1692g (verified) and as a threshold screen on the call-frequency node (round 43). Report only if a node's own text contradicts it.",
+      "classification": "COVERED (cross-cutting)",
+      "dangerous_direction": "yes",
+      "source": "round 43",
+      "date": "2026-09-04"
+    },
+    {
+      "id": "G-1692C-REPRESENTED-CEASE-TIME-PLACE",
+      "theme": "1692c(a) (represented by counsel; inconvenient time/place; employer prohibits) and 1692c(c) (written cease/refusal) independently bar contact regardless of any other node's analysis",
+      "summary": "Cross-cutting across the FDCPA conduct nodes; encoded on the call-frequency node (rounds 34, 38) and the 1692e/1692f catalog nodes. Report only if a node's own text contradicts it.",
+      "classification": "COVERED (cross-cutting)",
+      "dangerous_direction": "yes",
+      "source": "round 43",
+      "date": "2026-09-04"
+    },
+    {
+      "id": "G-STATE-OVERLAY-STRICTER",
+      "theme": "A state debt-collection statute (Rosenthal, Tex. Fin. Code ch. 392, 940 CMR 7.00, etc.) may reach conduct or actors the federal node does not",
+      "summary": "Cross-cutting. Encoded as state_law notes on the federal nodes (rounds 30, 38, 39); a state mini-FDCPA node is HORIZON. Report only a SPECIFIC state rule the node misstates, not the general point that state law may be stricter.",
+      "classification": "COVERED (cross-cutting; HORIZON node)",
+      "dangerous_direction": "varies",
+      "source": "round 43",
+      "date": "2026-09-04"
+    }
+  ]
 }

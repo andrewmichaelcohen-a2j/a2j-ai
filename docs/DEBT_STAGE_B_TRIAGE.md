@@ -123,6 +123,40 @@ state-regulations mirror) and www4.courts.ca.gov (emergency rule 9 -- PDF-only, 
 checker has no PDF extractor). Stage B parse failure on FDCPA-COVERAGE (empty completion at max_tokens, the
 dominant Stage B failure signature in every run since 09-01) is a runner matter, handled in round 42.
 
+**Round 43 (2026-09-04) -- re-smoke `run_20260904T212407Z` (rounds 41+42 applied).** Stage B parse 100% (round 42's
+retry recovered the node that had failed every run since 09-01; the diagnostics proved the cause -- content blocks
+`['thinking','text']`, the model's reasoning consuming the output budget). The run reported 6 material findings,
+**0 matched to existing dispositions -- and correctly so**: none overlaps the 7 ledger entries on those two nodes.
+Reading the JSON by hand found **3 more** on CA-SOL-WRITTEN that the runner had silently treated as non-material
+because the model omitted the `exposes_gap` field while setting both `realistic_and_common` and
+`would_cause_wrong_answer` true (runner fix: round 44 derives materiality from those two flags, per the ratified
+definition). All 9 dispositioned (ledger ids `-05..-07` on the call-frequency node, `-04..-06` on coverage,
+`-05..-07` on CA-SOL-WRITTEN):
+
+| Node | Finding | Class | DD | What changed |
+|---|---|---|---|---|
+| FDCPA-REGF-CALL-FREQUENCY | Written validation dispute (1692g(b)) suspends all calls; node counted anyway | FIXED-VERIFIED | yes | independent_bars_note + threshold checklist; 1692g(b) pinned |
+| FDCPA-REGF-CALL-FREQUENCY | Bankruptcy stay / discharge not screened | FIXED-VERIFIED | yes | same note + checklist; 11 U.S.C. 362(a)(6), 524(a)(2) pinned; registered GLOBAL |
+| FDCPA-REGF-CALL-FREQUENCY | Count not stated per debt collector | FIXED-VERIFIED | no (wrong defendant) | unit_of_count + determination corrected; checklist |
+| FDCPA-COVERAGE | White-label vendor routed to exclusion (A) by the NAME on the letter | FIXED-VERIFIED | yes | checklist item 1 tests the actor; note clarified |
+| FDCPA-COVERAGE | (B) affiliate exclusion missing the principal-business condition in the checklist | FIXED-VERIFIED | yes | checklist item 5 rewritten |
+| FDCPA-COVERAGE | Government-origin consumer accounts (municipal utility, EMS) treated as non-debts | FIXED-VERIFIED + GLOSS | yes | note corrected on the 1692a(5) transaction test; Pollice, Piper named for counsel |
+| CA-SOL-WRITTEN | Deceased debtor: CCP 366.2 one year from death (dropped finding) | FIXED-VERIFIED | yes | deceased_debtor_note + threshold checklist; 366.2 pinned |
+| CA-SOL-WRITTEN | "Never signed anything" routed card debt to the 2-year oral period; 337(b) book account / account stated omitted (dropped) | FIXED-VERIFIED | yes | note + checklist item 2; 337(b) pinned |
+| CA-SOL-WRITTEN | Sister-state judgment treated under 683.020 (dropped) | FIXED-VERIFIED + GLOSS | yes | judgment_enforcement_note corrected; 337.5(b) pinned; TX dormancy copied; enforceable-where-rendered = counsel |
+
+**Structural note (for Andy).** Two of the nine are cross-cutting themes (bankruptcy; validation-dispute cease)
+that will surface on every conduct node in turn. The ledger now has a `_global` section (four entries: bankruptcy,
+1692g(b) cease, 1692c bars, state overlays) that round 44 makes the runner append to every node's prompt, so a
+corpus-wide theme is tagged once rather than re-found node by node. That is a stop-gap for the design question
+already on the HORIZON list -- shared gate nodes for cross-cutting overlays (a BANKRUPTCY-OVERLAY node, a state
+mini-FDCPA node). The global entry is deliberately narrow: it tells the model to report only where a node's own
+text is WRONG about the theme, not merely silent.
+
+**Counsel additions this round (3):** Pollice v. National Tax Funding (3d Cir. 2000) and Piper v. Portnoff (3d Cir.
+2005) on municipal utility obligations as "debts"; the enforceable-where-rendered requirement for sister-state
+judgments (full-faith-and-credit case law); 366.2's interaction with a timely probate creditor's claim.
+
 **What "pending source" means for you.** Every pending item is a screening *question* the system now asks
 plus a note that names the governing provision. None of them quotes statutory text as verified. They change
 what the system asks before it answers, which is the safe direction; they do not assert new law as confirmed.
