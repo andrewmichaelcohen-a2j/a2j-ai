@@ -2,6 +2,47 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-04, round 40 (runner-only: disposition-aware gate, 529 retry, Stage B headroom, CAL-11)
+
+**What changed since round 39:** runner + calibration set + a new ledger file only. Zero rules-content edits
+(one-variable rule). Ships behind a green calibration+replay suite (11 fixtures, metric assertions PASS).
+
+**Disposition-aware gate (implements the redefinition Andy ratified 2026-09-04).**
+- New `rules/debt/validation/stage_b_dispositions.json`: machine-readable twin of `DEBT_STAGE_B_TRIAGE.md`,
+  generated from its table -- 61 entries across 18 nodes, ids `D-<node_id>-NN`, classifications reflecting
+  round 39's pinning (FIXED-VERIFIED 48, GLOSS-FOR-COUNSEL 9, FIXED-SOURCE-NAMED 3, COVERED 1).
+- `run_node` loads the node's entries, appends them to the Stage B prompt, and the JSON schema gains
+  `matches_disposition_id`. Findings are split into `gaps_found` (all material), `gaps_found_dispositioned`
+  (tag names a real ledger id) and `gaps_found_new` (everything else -- an unrecognised id earns no credit).
+  CLEAN-PASS and disagreement-queue filing use `gaps_found_new` only; the dispositioned ones stay in the run
+  JSON for audit.
+- `compute_demo_gate_metrics` adds `undispositioned_material_findings` {count, n_nodes_with_any,
+  n_findings_matched_to_existing_dispositions_this_run}; `internal_gate_met` is now Stage A >= 90 AND
+  citation verification >= 90 (skipped = not met) AND undispositioned == 0, with
+  `internal_gate_definition` recorded in the JSON. CLI summary line updated to match.
+- `discover_nodes` now skips `rules/debt/validation/` (the ledger's `nodes` is a dict, which crashed
+  discovery on the first dry run -- same exclusion `validate_debt_schema.py` has had since 2026-08-26).
+
+**Infrastructure.** `call_anthropic` retries once after 8 s on a 529 / "Overloaded" error at every call site
+(derivation, judge, adversarial) -- three Stage A losses across the 09-02/09-03 runs were this. Stage B
+base `max_tokens` 4000 -> 6000 (2.5x truncation retry unchanged); ~3 nodes/run were still truncating at 4000.
+
+**Calibration.** CAL-11: two Stage B edge cases, one material and tagged with a real disposition id, one
+non-material tagged with a bogus id -> expected CLEAN-PASS, gaps_found 1, gaps_new 0. Replay gains an
+optional `gaps_new_count` assertion (defaults to the actual value for fixtures that don't specify it).
+`_expected_metrics.json` re-baselined to 11 fixtures (10/11 = 90.909% on the three stage rates, clean-pass
+7/11, undispositioned 1 = CAL-07's genuine gap, gate False).
+
+**Docs.** Spec §8 "Runner implementation" paragraph replaces the "until it lands" placeholder;
+DEBT_STAGE_B_TRIAGE.md gets a pointer to the ledger and the sync rule.
+
+**Verification:** `--replay` PASS (11/11 + metrics); all three `scripts/ci` checks PASS; dry-run on two nodes
+confirms the ledger loads (61/18) and the new fields populate; dry-run artifact removed before commit.
+
+**Next (Andy):** apply, smoke `--live --nodes` on three nodes, then the full run. Expected: same Stage A /
+citation numbers as the last run; Stage B findings that overlap the 61 dispositions are tagged and do not
+flag; whatever is left in `gaps_found_new` is the real, new backlog.
+
 ## 2026-09-04, round 39 (content + docs: pin the round-38 sources; gate redefinition ratified into spec §2/§8)
 
 **Sequencing, per Andy:** round 39 lands first, then smoke, then the full run -- the run is the measurement of

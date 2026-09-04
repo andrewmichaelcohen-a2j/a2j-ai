@@ -1,0 +1,90 @@
+{
+  "id": "CAL-11-dispositioned-stage-b-finding-does-not-block-gate",
+  "description": "Round 40 regression guard for the ratified gate (Andy, 2026-09-04): Stage B reports TWO material edge cases. One is tagged matches_disposition_id 'D-CAL-11-01', which exists in this fixture's _dispositions ledger, so it is dispositioned (already fixed/for counsel) and must NOT block CLEAN-PASS. The other is tagged with an id the ledger does not contain ('D-BOGUS-99'), which must be treated as NEW (no credit for a hallucinated tag) -- but here its exposes_gap is false, so it is not material either. Expected: gaps_found_count 1 (material findings are still reported and preserved in the run JSON), gaps_new_count 0, status CLEAN-PASS. If this fixture ever FLAGS, the disposition-aware gate has regressed to the pre-round-40 'zero Stage B findings' rule; if it CLEAN-PASSes with gaps_new_count > 0 the counting is broken.",
+  "nodes": [
+    {
+      "node_id": "CAL-11-DISPOSITIONED-FINDING",
+      "tier": "DRAFT",
+      "title": "Calibration fixture node CAL-11-DISPOSITIONED-FINDING",
+      "logic": {
+        "note": "synthetic calibration fixture, not real law"
+      },
+      "completeness_checklist": [
+        "synthetic checklist item"
+      ],
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Cal. Test Code 10",
+            "url": "https://example-statute.test/section-10",
+            "quoted_text": "A test obligation is enforceable if properly documented under this section.",
+            "source_tier": "A",
+            "manual_verification": null
+          },
+          {
+            "cite": "Materiality gloss (judicial doctrine on Cal. Test Code 10, no single pinpoint source)",
+            "url": null,
+            "quoted_text": "Courts require the documentation defect to be material, not merely technical, before treating the obligation as unenforceable.",
+            "source_tier": "C",
+            "manual_verification": null
+          }
+        ]
+      }
+    }
+  ],
+  "_replay": {
+    "stage_a": {
+      "anthropic": [
+        {
+          "raw": "{\"derivation_summary\": \"A test obligation is enforceable if properly documented, subject to a judicial materiality gloss.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 10\"}",
+          "stop_reason": "end_turn",
+          "error": null
+        }
+      ],
+      "openai": {
+        "raw": "{\"derivation_summary\": \"A test obligation is enforceable if properly documented, subject to a judicial materiality gloss.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 10\"}",
+        "stop_reason": null,
+        "error": null
+      },
+      "gemini": {
+        "raw": "{\"derivation_summary\": \"A test obligation is enforceable if properly documented, subject to a judicial materiality gloss.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 10\"}",
+        "stop_reason": null,
+        "error": null
+      }
+    },
+    "judge": {
+      "raw": "{\"agree\": true, \"agreement_notes\": \"All three agree on the same rule text.\"}",
+      "stop_reason": "end_turn",
+      "error": null
+    },
+    "citation": {
+      "https://example-statute.test/section-10": "<html><body><p>A test obligation is enforceable if properly documented under this section.</p></body></html>"
+    },
+    "adversarial": [
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"Debtor is married and the obligation is community property; node never asks.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"Community-property overlay omitted.\", \"matches_disposition_id\": \"D-CAL-11-01\"}, {\"scenario\": \"Debtor is a minor.\", \"realistic_and_common\": false, \"would_cause_wrong_answer\": false, \"exposes_gap\": false, \"gap_description\": null, \"matches_disposition_id\": \"D-BOGUS-99\"}]}",
+        "stop_reason": "end_turn",
+        "error": null
+      }
+    ]
+  },
+  "_expected": {
+    "status": "CLEAN-PASS",
+    "all_grounded": true,
+    "semantic_agreement": true,
+    "all_citations_verified": true,
+    "gaps_found_count": 1,
+    "gaps_new_count": 0,
+    "stage_b_parsed_successfully": true
+  },
+  "_dispositions": [
+    {
+      "id": "D-CAL-11-01",
+      "theme": "Synthetic: married-debtor community-property overlay omitted",
+      "summary": "synthetic -- treated as fixed with a note + checklist item in an earlier round",
+      "classification": "FIXED-VERIFIED",
+      "dangerous_direction": "yes",
+      "date": "2026-09-04"
+    }
+  ]
+}

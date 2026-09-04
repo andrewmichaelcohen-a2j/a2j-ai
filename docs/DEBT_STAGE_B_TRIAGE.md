@@ -99,6 +99,8 @@ Fin. Code 392.307 is debt-buyer-specific; a Texas judgment goes dormant without 
 alone); CCP 704.720(b) covers forced-sale/insurance proceeds, voluntary-sale proceeds are the declared-homestead
 rule. Plus one carve-out: Rosenthal does not reach original creditors for 1692e(11)/1692g. (Some rows bundle the same finding across two runs or three nodes.)
 
+**Round 40 (2026-09-04, runner):** this table now has a machine-readable twin at `rules/debt/validation/stage_b_dispositions.json` (one entry per row per node, ids `D-<node_id>-NN`, classifications as updated by round 39: FIXED-VERIFIED 48 · GLOSS-FOR-COUNSEL 9 · FIXED-SOURCE-NAMED 3 · COVERED 1; the unreadable row is omitted). The corroboration runner feeds a node's entries into Stage B and counts only findings the model cannot map to one of them. New findings from future runs get dispositioned here first, then added to the ledger. Keep the two in sync.
+
 **What "pending source" means for you.** Every pending item is a screening *question* the system now asks
 plus a note that names the governing provision. None of them quotes statutory text as verified. They change
 what the system asks before it answers, which is the safe direction; they do not assert new law as confirmed.

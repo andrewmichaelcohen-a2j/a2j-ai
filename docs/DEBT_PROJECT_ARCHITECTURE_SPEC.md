@@ -479,8 +479,18 @@ phrasing implying the finding generator has been exhausted — it is a standing 
 The framing sentence for showings gains one clause after "citations verified against live sources":
 *"…, adversarially stress-tested with every material finding dispositioned in the open, …"*.
 
-Runner implementation of the disposition-aware gate is a runner-only round (one-variable rule); until
-it lands, the gate is computed from the run JSON plus the triage table by hand and stated as such.
+**Runner implementation (round 40, 2026-09-04, runner-only).** The gate is now computed by the runner.
+The queue of record gains a machine-readable twin, `rules/debt/validation/stage_b_dispositions.json`
+(node_id → list of `{id, theme, summary, classification, dangerous_direction, date}`; seeded from the
+round-38 triage table with round-39 classifications, 61 entries across 18 nodes). Each Stage B call
+receives the node's dispositions and must tag any overlapping edge case with `matches_disposition_id`;
+a finding whose tag names an id the ledger actually contains is reported (`gaps_found_dispositioned`)
+but does not count; anything else material is `gaps_found_new`, is filed to the disagreement queue,
+and is what the gate sums (`demo_gate_metrics.undispositioned_material_findings`). An unrecognised
+id gets no credit. `internal_gate_met` = Stage A ≥ 90 AND citation verification ≥ 90 (not skipped) AND
+undispositioned = 0. Adding a ledger entry is a disposition decision — it requires the finding to have
+actually been addressed in the rules file or explicitly accepted for counsel review — and the docs
+table and the ledger are kept in sync by hand. Regression guard: calibration fixture CAL-11.
 
 **Audience discipline:** concept-demo showings are for Andy-selected audiences only (friendlies,
 partners, funders, labs) — not press, not consumers, not a public link. This is a narrower

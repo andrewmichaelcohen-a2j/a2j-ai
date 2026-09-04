@@ -115,6 +115,10 @@ DEBT_RULES_DIR = REPO_ROOT / "rules" / "debt"
 RUNS_DIR = REPO_ROOT / "rules" / "debt" / "validation" / "runs"
 DISAGREEMENT_QUEUE_PATH = REPO_ROOT / "docs" / "DEBT_DISAGREEMENT_QUEUE.md"
 SCENARIOS_PATH = Path(__file__).resolve().parent / "scenarios.json"
+# Round 40: the Stage B disposition ledger -- the machine-readable twin of
+# docs/DEBT_STAGE_B_TRIAGE.md. Keyed by node_id; each entry is a finding that a
+# human or a content round has already dispositioned. See load_dispositions().
+DISPOSITIONS_PATH = REPO_ROOT / "rules" / "debt" / "validation" / "stage_b_dispositions.json"
 ENV_PATH = REPO_ROOT / ".env"
 
 DEMO_CORPUS_DIRS = [
@@ -191,7 +195,11 @@ SYSTEM_PROMPT_ADVERSARIAL = (
     "involving it. Respond ONLY in valid JSON: {\"edge_cases\": [{\"scenario\": "
     "\"<1-3 sentences>\", \"realistic_and_common\": <true/false>, "
     "\"would_cause_wrong_answer\": <true/false>, \"exposes_gap\": <true only if "
-    "both above are true>, \"gap_description\": \"<or null>\"}, ...]}"
+    "both above are true>, \"gap_description\": \"<or null>\", "
+    "\"matches_disposition_id\": \"<id of a previously-dispositioned finding this edge case "
+    "substantially overlaps, or null if it is genuinely new>\"}, ...]}. If the user prompt lists "
+    "previously dispositioned findings, treat them as already known: you MAY still report an "
+    "overlapping edge case, but you MUST tag it with the matching id so it is not counted as new."
 )
 
 # Added 2026-08-26 (third round): replaces the numeric/citation-fingerprint
@@ -512,8 +520,23 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         parsed["_stop_reason"] = getattr(resp, "stop_reason", None)
         return parsed
 
+    def _one_call_with_overload_retry(tokens: int) -> dict:
+        # Round 40: Anthropic 529 "Overloaded" is transient and cost three Stage A
+        # results plus two judge calls across the two 2026-09-02/03 live runs. Mirror
+        # round 17's Gemini 503 handling: one retry after a short pause, then give up
+        # with the error recorded (never silently). Applies to every Anthropic call
+        # site (derivation, judge, adversarial).
+        try:
+            return _one_call(tokens)
+        except Exception as exc:
+            msg = str(exc)
+            if "529" in msg or "overloaded" in msg.lower():
+                time.sleep(8)
+                return _one_call(tokens)
+            raise
+
     try:
-        parsed = _one_call(max_tokens)
+        parsed = _one_call_with_overload_retry(max_tokens)
         if retry_on_empty_or_truncated:
             empty = not parsed.get("_raw")
             truncated = parsed.get("_stop_reason") == "max_tokens" or bool(parsed.get("_parse_error"))
@@ -522,7 +545,7 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
                 # verbose nodes on a live run (still _parse_error after retry)
                 # -- bumped to 2.5x for real headroom.
                 retry_tokens = max_tokens if empty else int(max_tokens * 2.5)
-                retry_parsed = _one_call(retry_tokens)
+                retry_parsed = _one_call_with_overload_retry(retry_tokens)
                 retry_parsed["_retried_after"] = "empty_completion" if empty else "max_tokens_truncation"
                 return retry_parsed
         return parsed
@@ -1056,6 +1079,31 @@ def verify_citation(url: str, quoted_text: str, dry_run: bool, manual_verificati
 
 # -- Node discovery ---------------------------------------------------------------
 
+def load_dispositions(path: Path = None) -> dict:
+    """Round 40: read the Stage B disposition ledger (node_id -> list of
+    {id, theme, summary, classification, date}). Missing file == empty ledger;
+    the runner must never fail because nothing has been dispositioned yet."""
+    path = path or DISPOSITIONS_PATH
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text())
+    except Exception:
+        return {}
+    return data.get("nodes", {}) if isinstance(data, dict) else {}
+
+
+def _format_dispositions_for_prompt(entries: list) -> str:
+    if not entries:
+        return ""
+    lines = ["\n\nPreviously identified and DISPOSITIONED findings for this node (already fixed, "
+             "source-pinned, flagged for counsel, or ruled out of scope). Do not report these as new; "
+             "if an edge case substantially overlaps one, set matches_disposition_id to its id:"]
+    for e in entries:
+        lines.append(f"  {e.get('id')}: [{e.get('classification')}] {e.get('theme')} -- {e.get('summary')}")
+    return "\n".join(lines)
+
+
 def discover_nodes(demo_corpus_only: bool, only_node_ids=None):
     """Returns list of dicts: {file, node, node_id, node_index}."""
     if demo_corpus_only:
@@ -1068,14 +1116,24 @@ def discover_nodes(demo_corpus_only: bool, only_node_ids=None):
         if d.exists():
             files.update(Path(p) for p in glob.glob(str(d / "**" / "*.json"), recursive=True))
 
+    # Round 40: rules/debt/validation/ holds pipeline output and the Stage B
+    # disposition ledger (whose "nodes" is a dict keyed by node_id, not a list of
+    # rule nodes) -- never corpus content. Same exclusion validate_debt_schema.py
+    # has carried since 2026-08-26.
+    validation_dir = DEBT_RULES_DIR / "validation"
     out = []
     for f in sorted(files):
+        if validation_dir in f.parents:
+            continue
         try:
             data = json.loads(f.read_text())
         except (json.JSONDecodeError, OSError):
             continue
-        for idx, node in enumerate(data.get("nodes", [])):
-            if node.get("tier") != "DRAFT":
+        nodes = data.get("nodes", [])
+        if not isinstance(nodes, list):
+            continue
+        for idx, node in enumerate(nodes):
+            if not isinstance(node, dict) or node.get("tier") != "DRAFT":
                 continue  # only DRAFT nodes are corroboration candidates
             if only_node_ids and node.get("node_id") not in only_node_ids:
                 continue
@@ -1125,6 +1183,7 @@ def file_disagreement(entry_md: str):
 # -- Per-node pipeline --------------------------------------------------------
 
 def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_id: str,
+             dispositions: list = None,
              replay_fixture: dict = None) -> dict:
     node = target["node"]
     node_id = target["node_id"]
@@ -1207,10 +1266,16 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
         all_citations_verified = bool(citation_results) and all(c["verified"] is not False for c in citation_results)
 
     # (b) adversarial generation -- one call, Anthropic
+    # Round 40: fixtures may carry their own ledger under "_dispositions"; live
+    # runs get the node's entries from rules/debt/validation/stage_b_dispositions.json.
+    if dispositions is None:
+        dispositions = (replay_fixture or {}).get("_dispositions") or []
+    known_ids = {str(e.get("id")) for e in dispositions if e.get("id")}
     user_prompt_adversarial = (
         f"Node title: {node.get('title')}\n\n"
         f"Logic: {json.dumps(node.get('logic', {}))}\n\n"
         f"Completeness checklist: {json.dumps(node.get('completeness_checklist', []))}"
+        + _format_dispositions_for_prompt(dispositions)
     )
     dry_adversarial_payload = {
         "edge_cases": [
@@ -1223,7 +1288,7 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     # 3-scenario responses at 3000), and retry_on_empty_or_truncated enabled
     # -- see call_anthropic's round-23 docstring note.
     result_b = call_anthropic(SYSTEM_PROMPT_ADVERSARIAL, user_prompt_adversarial, keys, dry_run,
-                               dry_adversarial_payload, max_tokens=4000,
+                               dry_adversarial_payload, max_tokens=6000,  # round 40: 4000 still truncated ~3 nodes/run; base raised, retry stays 2.5x
                                retry_on_empty_or_truncated=True,
                                replay_responses=(replay["adversarial"] if replay else None))
     # Round 26 fix (found during the round-25 stage-level attribution pass on
@@ -1236,6 +1301,14 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     stage_b_parsed_ok = ("edge_cases" in result_b) and not result_b.get("error")
     edge_cases = result_b.get("edge_cases", []) if stage_b_parsed_ok else []
     gaps_found = [e for e in edge_cases if e.get("exposes_gap")]
+    # Round 40 (gate redefinition ratified by Andy 2026-09-04): a material finding
+    # that overlaps an already-dispositioned one is NOT new and does not block
+    # CLEAN-PASS. Only findings the model could not map to a known disposition id
+    # count. An id the ledger doesn't recognise is treated as new (no silent
+    # credit for a hallucinated tag).
+    gaps_found_new = [g for g in gaps_found
+                      if not (g.get("matches_disposition_id") and str(g.get("matches_disposition_id")) in known_ids)]
+    gaps_found_dispositioned = [g for g in gaps_found if g not in gaps_found_new]
 
     ended = now_iso()
 
@@ -1250,7 +1323,7 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     # noise across rounds 9-17: 11 of the last 13 flags traced to this, zero to legal error).
     clean_pass = (
         bool(semantic_agreement) and (all_citations_verified is not False)
-        and not gaps_found and stage_b_parsed_ok
+        and not gaps_found_new and stage_b_parsed_ok
     )
 
     # (d) file disagreements -- round 26: never filed during --replay, since
@@ -1280,10 +1353,12 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
             results_a,
         )
         file_disagreement(entry)
-    if replay_fixture is None and gaps_found:
+    if replay_fixture is None and gaps_found_new:
         entry = _format_disagreement_entry(
             run_id, node_id, file_path, "ADVERSARIAL-GAP",
-            f"{len(gaps_found)} adversarial edge case(s) flagged as exposing a gap: {gaps_found}",
+            f"{len(gaps_found_new)} NEW adversarial edge case(s) flagged as exposing a gap (round 40: "
+            f"{len(gaps_found_dispositioned)} further finding(s) matched an existing disposition and were not "
+            f"re-filed): {gaps_found_new}",
             results_a,
         )
         file_disagreement(entry)
@@ -1320,6 +1395,9 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
         "stage_b_adversarial": {
             "result": result_b,
             "gaps_found": gaps_found,
+            "gaps_found_new": gaps_found_new,
+            "gaps_found_dispositioned": gaps_found_dispositioned,
+            "dispositions_available": len(dispositions),
             "parsed_successfully": stage_b_parsed_ok,
         },
         "status": "CLEAN-PASS" if clean_pass else "FLAGGED",
@@ -1440,6 +1518,13 @@ def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool, citati
             "failing_deps": [r["node_id"] for r in dep_results if r["status"] != "CLEAN-PASS"],
         })
     scenario_pass_rate = (n_scen_pass / len(scenarios) * 100) if scenarios else None
+    # Round 40: the ratified gate's third leg -- material Stage B findings that no
+    # disposition covers, summed across the demo corpus.
+    n_undispositioned = sum(len(r["stage_b_adversarial"].get("gaps_found_new", r["stage_b_adversarial"].get("gaps_found", [])))
+                            for r in demo_node_results)
+    n_nodes_with_undispositioned = sum(1 for r in demo_node_results
+                                       if r["stage_b_adversarial"].get("gaps_found_new", r["stage_b_adversarial"].get("gaps_found", [])))
+    n_dispositioned_this_run = sum(len(r["stage_b_adversarial"].get("gaps_found_dispositioned", [])) for r in demo_node_results)
 
     return {
         "stage_a_grounded_agreement_rate": {
@@ -1518,10 +1603,20 @@ def compute_demo_gate_metrics(node_results: list, demo_corpus_only: bool, citati
             "denominator": "all concept-demo scenarios defined in the scenarios file",
             "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run",
         },
+        "undispositioned_material_findings": {
+            "count": n_undispositioned,
+            "n_nodes_with_any": n_nodes_with_undispositioned,
+            "n_findings_matched_to_existing_dispositions_this_run": n_dispositioned_this_run,
+            "stage": "Stage B, net of the disposition ledger",
+            "numerator": "material Stage B findings (realistic_and_common AND would_cause_wrong_answer) that the model could not map to an id in rules/debt/validation/stage_b_dispositions.json",
+            "basis": "round 40 -- the ratified gate's third leg (Andy, 2026-09-04): Stage B is the standing finding generator (D-4); the gate requires this count to be ZERO, not that Stage B found nothing.",
+        },
         "internal_gate_met": (
-            full_pipeline_clean_pass_rate is not None and scenario_pass_rate is not None
-            and full_pipeline_clean_pass_rate >= 90.0 and scenario_pass_rate >= 90.0
+            stage_a_grounded_agreement_rate is not None and stage_a_grounded_agreement_rate >= 90.0
+            and citation_verification_rate is not None and citation_verification_rate >= 90.0
+            and n_undispositioned == 0
         ),
+        "internal_gate_definition": "round 40 (ratified 2026-09-04): Stage A grounded agreement >= 90% AND citation verification >= 90% AND zero undispositioned material Stage B findings; Stage B parse health and full-pipeline clean-pass are reported alongside, not gated. Supersedes the round-26 definition (full-pipeline clean-pass >= 90% AND scenario pass >= 90%).",
         "gate_threshold_percent": 90.0,
         "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this "
                 "demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an "
@@ -1599,6 +1694,7 @@ def run_replay_calibration(fixtures_dir: Path = None) -> bool:
             ("semantic_agreement", result["stage_a_grounded_derivation"]["semantic_agreement"], exp.get("semantic_agreement")),
             ("all_citations_verified", result["citation_check"]["all_verified"], exp.get("all_citations_verified")),
             ("gaps_found_count", len(result["stage_b_adversarial"]["gaps_found"]), exp.get("gaps_found_count")),
+            ("gaps_new_count", len(result["stage_b_adversarial"].get("gaps_found_new", [])), exp.get("gaps_new_count", len(result["stage_b_adversarial"].get("gaps_found_new", [])))),
             ("stage_b_parsed_successfully", result["stage_b_adversarial"]["parsed_successfully"], exp.get("stage_b_parsed_successfully")),
         ]
         this_fixture_ok = True
@@ -1694,6 +1790,12 @@ def main():
 
     keys = None if dry_run else load_keys()
 
+    # Round 40: load the Stage B disposition ledger once; per-node slices go into
+    # the adversarial prompt so already-dispositioned findings are tagged, not re-counted.
+    ledger = load_dispositions()
+    print(f"[{run_id}] Stage B disposition ledger: {sum(len(v) for v in ledger.values())} entries "
+          f"across {len(ledger)} node(s) ({DISPOSITIONS_PATH.relative_to(REPO_ROOT)})")
+
     node_results = []
     spent_estimate = 0.0
     for i, target in enumerate(targets, 1):
@@ -1703,7 +1805,8 @@ def main():
                   f"{i-1} node(s) completed this run; re-run to continue.")
             break
         print(f"[{run_id}] ({i}/{len(targets)}) {target['node_id']} ...", end=" ", flush=True)
-        result = run_node(target, keys, dry_run, args.skip_citation_check, run_id)
+        result = run_node(target, keys, dry_run, args.skip_citation_check, run_id,
+                          dispositions=ledger.get(target["node_id"], []))
         node_results.append(result)
         spent_estimate += APPROX_COST_PER_NODE_USD
         print(result["status"])
@@ -1747,7 +1850,9 @@ def main():
                   f"Stage B parse-success: {sbr:.1f}% | "
                   f"full-pipeline clean-pass: {fpr:.1f}% (n={demo_gate['full_pipeline_clean_pass_rate']['n_demo_corpus_nodes_this_run']}) | "
                   f"scenario pass rate: {spr:.1f}% (n={demo_gate['scenario_pass_rate']['n_scenarios']}) | "
-                  f"gate met (both >=90%): {demo_gate['internal_gate_met']}")
+                  f"undispositioned material Stage B findings: {demo_gate['undispositioned_material_findings']['count']} "
+                  f"({demo_gate['undispositioned_material_findings']['n_findings_matched_to_existing_dispositions_this_run']} matched existing dispositions) | "
+                  f"gate met (Stage A>=90 & cites>=90 & 0 undispositioned): {demo_gate['internal_gate_met']}")
         else:
             print(f"[{run_id}] Demo-gate metrics: insufficient data this run (see {out_path.name})")
 

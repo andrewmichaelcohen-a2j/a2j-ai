@@ -1,0 +1,601 @@
+{
+  "_comment": "Round 40. Machine-readable twin of docs/DEBT_STAGE_B_TRIAGE.md. Each entry is a Stage B finding that has been dispositioned (fixed with verified source, fixed with source named but not yet quoted, flagged as a case-law gloss awaiting counsel, covered elsewhere, or HORIZON). The corroboration runner passes a node's entries into the Stage B prompt and asks the model to tag any overlapping edge case with the matching id; only UNTAGGED material findings count toward the gate (ratified 2026-09-04). Adding an entry here is a disposition decision, not a content edit: it requires the finding to have been actually addressed in the rules file or explicitly accepted for counsel review. The docs file remains the human-readable queue of record; keep the two in sync.",
+  "schema": {
+    "nodes": "{node_id: [{id, theme, summary, classification, dangerous_direction, source, date}]}",
+    "classifications": [
+      "FIXED-VERIFIED",
+      "FIXED-SOURCE-NAMED",
+      "GLOSS-FOR-COUNSEL",
+      "COVERED",
+      "HORIZON"
+    ]
+  },
+  "generated": "2026-09-04",
+  "nodes": {
+    "FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6": [
+      {
+        "id": "D-FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6-01",
+        "theme": "\"Is it a debt\" gate excludes phantom/identity-theft debts",
+        "summary": "1692a(5)/(3) already quoted say *alleged*; checklist item reworded + note",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6-02",
+        "theme": "Deceased obligor / surviving family treated as uncovered",
+        "summary": "1692c(d) added (verified round 34); Reg F 1006.6(a)(1)(iv) pending",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6-03",
+        "theme": "\"Regularly collects\" element never tested (occasional lawyer/bookkeeper)",
+        "summary": "Element is in the quoted 1692a(6); determination step 4 + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "FDCPA-FALSE-DECEPTIVE-CATALOG-1692e": [
+      {
+        "id": "D-FDCPA-FALSE-DECEPTIVE-CATALOG-1692e-01",
+        "theme": "FDCPA's own 1-yr SOL (1692k(d)) never asked",
+        "summary": "Note + checklist; Rotkiske v. Klemm gloss",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-FALSE-DECEPTIVE-CATALOG-1692e-02",
+        "theme": "Original creditor \"not covered at all\" ignores Rosenthal/TX ch. 392",
+        "summary": "Predicate softened to \"under the federal Act\"; state mini-FDCPA node is HORIZON",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-FALSE-DECEPTIVE-CATALOG-1692e-03",
+        "theme": "Article III standing for bare technical violations",
+        "summary": "TransUnion/Spokeo note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "FDCPA-UNFAIR-PRACTICES-CATALOG-1692f": [
+      {
+        "id": "D-FDCPA-UNFAIR-PRACTICES-CATALOG-1692f-01",
+        "theme": "1-yr SOL (1692k(d))",
+        "summary": "Same as 1692e",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-UNFAIR-PRACTICES-CATALOG-1692f-02",
+        "theme": "Envelope-marking rule stated categorically (Douglass) ignores 8th Cir. benign-language + standing",
+        "summary": "Catalog item (8) caveated",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-UNFAIR-PRACTICES-CATALOG-1692f-03",
+        "theme": "Pay-to-pay/convenience fees stated categorically; courts split",
+        "summary": "Catalog item (1) caveated + checklist",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "FDCPA-VALIDATION-NOTICE-1692g": [
+      {
+        "id": "D-FDCPA-VALIDATION-NOTICE-1692g-01",
+        "theme": "Formal pleading treated as initial communication (1692g(d))",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-VALIDATION-NOTICE-1692g-02",
+        "theme": "Original-creditor-name request is a 2nd cease-collection trigger",
+        "summary": "Already in the verified 1692g(b) quote; operationalized",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-VALIDATION-NOTICE-1692g-03",
+        "theme": "Overshadowing never evaluable (no intra-window facts collected)",
+        "summary": "Anti-overshadowing sentence is in the verified quote; note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-VALIDATION-NOTICE-1692g-04",
+        "theme": "Oral dispute treated as inert (1692e(8)/1006.38 credit-reporting duty)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b": [
+      {
+        "id": "D-FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b-01",
+        "theme": "Furnisher faulted for not reviewing docs the CRA never forwarded (e-OSCAR)",
+        "summary": "1681i(a)(2)(A)-(B) added (verified round 37 fetch); checklist reworded",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no (points at wrong defendant)",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b-02",
+        "theme": "\"Too old\" dispute closed as no-claim; it's obsolescence (1681c)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "CA-SOL-WRITTEN-CONTRACT-DEBT": [
+      {
+        "id": "D-CA-SOL-WRITTEN-CONTRACT-DEBT-01",
+        "theme": "Round-34 choice-of-law note over-corrected (Resurgence v. Chambers)",
+        "summary": "\u00a7 361 and a choice-of-law clause are two routes; both asked now",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-WRITTEN-CONTRACT-DEBT-02",
+        "theme": "Revival note overstates \u00a7 360 payment proviso (promissory notes only)",
+        "summary": "\u00a7 360 quote already in node; note rewritten",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-WRITTEN-CONTRACT-DEBT-03",
+        "theme": "CCP \u00a7 351 absence tolling likely unconstitutional as applied",
+        "summary": "Abramson / Heritage caveat",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-WRITTEN-CONTRACT-DEBT-04",
+        "theme": "\"Expired\" does not stop a default judgment; SOL must be pleaded",
+        "summary": "Note + checklist on all three (CCP 458 / TRCP 94)",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "CA-SOL-ORAL-CONTRACT-DEBT": [
+      {
+        "id": "D-CA-SOL-ORAL-CONTRACT-DEBT-01",
+        "theme": "\"Expired\" does not stop a default judgment; SOL must be pleaded",
+        "summary": "Note + checklist on all three (CCP 458 / TRCP 94)",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-ORAL-CONTRACT-DEBT-02",
+        "theme": "Post-expiration \"good faith\" payment treated as restarting accrual",
+        "summary": "\u00a7 360 added from sibling node's verified entry",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-ORAL-CONTRACT-DEBT-03",
+        "theme": "Installment continuous accrual",
+        "summary": "Mirrors written node's existing note",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "partial",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "TX-SOL-CONSUMER-DEBT": [
+      {
+        "id": "D-TX-SOL-CONSUMER-DEBT-01",
+        "theme": "\"Expired\" does not stop a default judgment; SOL must be pleaded",
+        "summary": "Note + checklist on all three (CCP 458 / TRCP 94)",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-SOL-CONSUMER-DEBT-02",
+        "theme": "Post-expiration payment (16.065 / Fin. Code 392.307)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-SOL-CONSUMER-DEBT-03",
+        "theme": "Installment separate accrual",
+        "summary": "Note + checklist",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "partial",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-SOL-CONSUMER-DEBT-04",
+        "theme": "Judgment already entered -> 10-yr renewable (34.001/31.006)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "CA-WAGE-GARNISHMENT-LIMIT": [
+      {
+        "id": "D-CA-WAGE-GARNISHMENT-LIMIT-01",
+        "theme": "Weekly formula applied to biweekly/monthly pay; pay period marked non-dispositive",
+        "summary": "706.050(b) note; pay period now dispositive",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-WAGE-GARNISHMENT-LIMIT-02",
+        "theme": "Support-order priority ignored (706.030/.031/.052)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no (overstates creditor)",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-WAGE-GARNISHMENT-LIMIT-03",
+        "theme": "Necessaries exemption / claim procedure omitted (706.051/.105)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "CA-HOMESTEAD-EXEMPTION": [
+      {
+        "id": "D-CA-HOMESTEAD-EXEMPTION-01",
+        "theme": "Bankruptcy overlay: 730-day rule, \u00a7 522(p) cap, \u00a7 703.140(b) election",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-HOMESTEAD-EXEMPTION-02",
+        "theme": "Support judgments / consensual liens not blocked (703.070)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-HOMESTEAD-EXEMPTION-03",
+        "theme": "Forced-sale mechanics (704.800 minimum bid; FMV + senior liens)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-HOMESTEAD-EXEMPTION-04",
+        "theme": "Sale proceeds protected 6 months (704.720(b))",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "CA-VEHICLE-EXEMPTION": [
+      {
+        "id": "D-CA-VEHICLE-EXEMPTION-01",
+        "theme": "Claim-of-exemption 10-day deadline (703.520)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-VEHICLE-EXEMPTION-02",
+        "theme": "Vehicle-dwelling is a homestead (704.710)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-VEHICLE-EXEMPTION-03",
+        "theme": "IRS levy / secured-party repossession / support not bound by \u00a7 704",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-VEHICLE-EXEMPTION-04",
+        "theme": "Married debtors / community property (703.110)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "CA-BANK-ACCOUNT-EXEMPTION": [
+      {
+        "id": "D-CA-BANK-ACCOUNT-EXEMPTION-01",
+        "theme": "Claim-of-exemption deadline (703.520)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-BANK-ACCOUNT-EXEMPTION-02",
+        "theme": "IRS / FTB administrative levies not governed by \u00a7 704",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-BANK-ACCOUNT-EXEMPTION-03",
+        "theme": "Other traceable exempt deposits (704.115/.120/.130/.140-.160)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "CA-CIVIL-ANSWER-DEADLINE": [
+      {
+        "id": "D-CA-CIVIL-ANSWER-DEADLINE-01",
+        "theme": "\u00a7 415.30 notice-and-acknowledgment service omitted",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-CIVIL-ANSWER-DEADLINE-02",
+        "theme": "Late answer before default entered still works (585 / 473(b))",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-CIVIL-ANSWER-DEADLINE-03",
+        "theme": "Filing fee / fee waiver required with answer",
+        "summary": "Note + checklist",
+        "classification": "FIXED-SOURCE-NAMED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY": [
+      {
+        "id": "D-TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY-01",
+        "theme": "Eviction defaults: TRCP 510, no MNT, 5-day appeal",
+        "summary": "Threshold checklist + note",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes (case-ending)",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY-02",
+        "theme": "Restricted appeal / bill of review not limited to service defects",
+        "summary": "Note + checklist",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "TX-WAGE-GARNISHMENT-PROHIBITION": [
+      {
+        "id": "D-TX-WAGE-GARNISHMENT-PROHIBITION-01",
+        "theme": "\"Bank accounts CAN be frozen\" ignores federal-benefit deposits (42 USC 407; 31 CFR 212)",
+        "summary": "Note qualified + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-WAGE-GARNISHMENT-PROHIBITION-02",
+        "theme": "Turnover orders / receivership (CPRC 31.002) mislabeled unconstitutional",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes (contempt risk)",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-WAGE-GARNISHMENT-PROHIBITION-03",
+        "theme": "Employer deductions / wage assignments are not garnishment (Lab. Code 61.018)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-WAGE-GARNISHMENT-PROHIBITION-04",
+        "theme": "Contractual alimony vs. Ch. 8 maintenance",
+        "summary": "Note + checklist",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "TX-HOMESTEAD-EXEMPTION": [
+      {
+        "id": "D-TX-HOMESTEAD-EXEMPTION-01",
+        "theme": "730-day bankruptcy domicile rule",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-HOMESTEAD-EXEMPTION-02",
+        "theme": "Abandonment vs. temporary absence",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-HOMESTEAD-EXEMPTION-03",
+        "theme": "Trust / LLC title (41.0021)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-HOMESTEAD-EXEMPTION-04",
+        "theme": "Mechanic's-lien formalities (art. XVI 50(a)(5))",
+        "summary": "Note + checklist",
+        "classification": "FIXED-SOURCE-NAMED",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-HOMESTEAD-EXEMPTION-05",
+        "theme": "Abstract of judgment clouds title (52.0012)",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "TX-EXEMPT-PERSONAL-PROPERTY": [
+      {
+        "id": "D-TX-EXEMPT-PERSONAL-PROPERTY-01",
+        "theme": "Everything under the cap treated as exempt; cash/bank/brokerage/boats are not listed",
+        "summary": "\u00a7 42.002(a) already quoted; threshold checklist item inserted at position 1",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes -- the worst one",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-EXEMPT-PERSONAL-PROPERTY-02",
+        "theme": "Federal benefits in bank accounts",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-EXEMPT-PERSONAL-PROPERTY-03",
+        "theme": "Student-loan AWG / spousal maintenance reach wages",
+        "summary": "Already in TX-WAGE-GARNISHMENT's federal_override_note; cross-reference added",
+        "classification": "COVERED",
+        "dangerous_direction": "--",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-EXEMPT-PERSONAL-PROPERTY-04",
+        "theme": "Independent-contractor receivables are not \"current wages\"",
+        "summary": "Note + checklist",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-EXEMPT-PERSONAL-PROPERTY-05",
+        "theme": "730-day bankruptcy domicile rule",
+        "summary": "Note + checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE": [
+      {
+        "id": "D-TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE-01",
+        "theme": "Dollar amount used as proxy for court; county/district = TRCP 99",
+        "summary": "Checklist item replaced",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE-02",
+        "theme": "Late answer before default signed still works",
+        "summary": "Note + checklist",
+        "classification": "FIXED-SOURCE-NAMED",
+        "dangerous_direction": "yes",
+        "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ]
+  }
+}
