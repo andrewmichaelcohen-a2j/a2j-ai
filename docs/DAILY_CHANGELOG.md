@@ -2,6 +2,41 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-03, round 38 (content-only, OFFLINE: triage + fix the entire Stage B adversarial backlog -- no live run spent)
+
+**Why this round exists.** Andy asked whether the last several live runs were productive. They were not: the
+deterministic stages were already fixed (Stage A 100% twice; citations 74% with only bot-blocked sites left),
+and 11 of 19 nodes were flagged solely by Stage B findings that were IDENTICAL across two consecutive runs on
+unchanged content (46 -> 40 gaps, same scenarios reworded). Each $8.55 run was re-discovering the same backlog.
+So this round works the backlog from the two run files already in hand, with zero API spend.
+
+**What changed:** 15 nodes across 6 files; 58 findings dispositioned in `docs/DEBT_STAGE_B_TRIAGE.md` (new).
+Nine fixes are grounded in statutory text already live-verified in this corpus -- among them the single worst
+finding in the backlog: `TX-EXEMPT-PERSONAL-PROPERTY` framed the analysis as "aggregate value under the cap =
+exempt," which would tell a debtor with $36,000 in savings and brokerage accounts that everything is protected;
+cash, deposits, and brokerage holdings are not on the § 42.002(a) list at all. Also verified-in-corpus: CCP
+§ 360's payment proviso is limited to promissory notes and "no payment of itself shall revive a cause of action
+once barred" (fixes the "good-faith payment restarts the clock" error on both CA SOL nodes); 1692g(b)'s second
+cease-collection trigger and its anti-overshadowing sentence (both already quoted, never operationalized);
+1692a's "alleged obligation" language (phantom/identity-theft debts are covered); 1692c(d) for decedents;
+1681i(a)(2) for the e-OSCAR forwarding gap; and the round-34 choice-of-law over-correction on CA-SOL-WRITTEN.
+
+**The constraint this round ran under:** web-fetch tooling was down for the whole session (every domain,
+including ones that worked an hour earlier), so 37 further fixes are encoded as screening questions plus notes
+that NAME the governing provision but do not quote it, each marked `[SOURCE PENDING ...]` in the rules file.
+This is deliberate: a screening question changes what the system asks before answering (the safe direction)
+without asserting unverified text as law. Round 39 pins them. Eleven case-law points are encoded as
+source_tier C glosses flagged for Andy's confirmation -- listed by name in the triage doc.
+
+**Recurring themes the backlog exposed** (each hit 2-3 nodes): the FDCPA's own one-year claim period; "expired"
+SOL does not stop a default judgment; post-expiration payments don't revive; a late answer filed before default
+is entered still works; bank accounts holding federal benefits; the 730-day bankruptcy domicile rule; state
+mini-FDCPAs reaching original creditors. Several of these are cross-cutting enough to deserve shared gate nodes
+(like the round-31 coverage node) rather than per-node notes -- flagged as a design question, not done here.
+
+**Verification:** schema, frozen-artifact, and calibration suites PASS. No runner change. No live run requested;
+the next one should wait for round 39 (source pinning) so its Stage B output is a clean read on whether the
+backlog actually shrank.
 ## 2026-09-02, round 37 (content-only: clear the remaining diagnosable citation-check failures from run_20260902T185148Z)
 
 **What changed since round 36:** content-only, no runner change. Andy re-ran the 19-node demo corpus after

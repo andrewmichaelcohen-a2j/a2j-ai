@@ -111,7 +111,8 @@
         },
         "consequence_if_disputed_in_writing_within_window": {
           "collector_must": "cease_collection_of_disputed_portion_until_verification_or_judgment_copy_mailed_to_consumer",
-          "collection_activity_during_window_before_dispute": "permitted_if_otherwise_lawful_and_does_not_overshadow_or_contradict_the_dispute_right"
+          "collection_activity_during_window_before_dispute": "permitted_if_otherwise_lawful_and_does_not_overshadow_or_contradict_the_dispute_right",
+          "SECOND_TRIGGER_original_creditor_request": "CORRECTED 2026-09-03 (round 38): the cease-collection duty in 1692g(b) (quoted above) has TWO independent written triggers -- a written dispute, OR a written request for 'the name and address of the original creditor.' A timely written original-creditor request obligates the collector to stop collection until it mails that name and address, even if the letter never says the debt is disputed. This node previously captured only the dispute trigger."
         },
         "consequence_if_no_compliant_notice_sent": {
           "flag": "potential_1692g_violation — cross-reference to a separate FDCPA-enforcement node (statutory damages under 15 U.S.C. § 1692k) not yet encoded; this node determines the validation-notice fact pattern only, does not itself compute damages exposure."
@@ -140,9 +141,18 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Andy's 2026-09-01 approval to build a dedicated FDCPA coverage-threshold node.",
             "summary": "Updated the tier_rationale on the 15 U.S.C. 1692a(6) derived_from entry, and the coverage-related completeness_checklist item, to cross-reference the new standalone FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node instead of carrying the coverage analysis solely inline."
+          },
+          {
+            "date": "2026-09-03",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
+            "summary": "Encoded 1692g(b)'s second trigger (original-creditor request) and its anti-overshadowing sentence -- both already in this node's verified 1692g(b) quote but never operationalized; added formal-pleading (1692g(d)) and oral-dispute (1692e(8)/1006.38) notes; 4 checklist questions. All from the backlog, each appearing in both runs. 1692g(d), 1006.34(b)(2), 1692e(8), 1006.38 text NOT pinned this session -- SOURCE PENDING."
           }
         ],
-        "non_delivery_returned_mail_note": "The 5-day receipt assumption in 12 CFR 1006.34(b)(5) is what a debt collector may use WHILE it does not yet know whether the consumer actually received the notice -- and per the CFPB's own official interpretation (comment 34(b)(5)-1), the collector may keep using that assumed date even if it LATER learns the consumer received it on a different day. But this only holds while the collector doesn't yet know delivery failed. If mail is returned as undeliverable (or the collector otherwise learns the consumer never received the notice) and the collector sends a SUBSEQUENT validation notice, the 30-day window must be calculated from the SUBSEQUENT notice's assumed-or-actual receipt date, not the original mailing date (comment 34(b)(5)-2). This node's checklist did not previously ask whether the original notice was returned/non-delivered or whether a follow-up notice was ever sent -- a consumer who never actually got a validation notice (mail returned, no follow-up sent) may not have had a validation period start running at all under this framework, a materially different answer than 'the 30-plus-5-day window from the original mailing has already closed.'"
+        "non_delivery_returned_mail_note": "The 5-day receipt assumption in 12 CFR 1006.34(b)(5) is what a debt collector may use WHILE it does not yet know whether the consumer actually received the notice -- and per the CFPB's own official interpretation (comment 34(b)(5)-1), the collector may keep using that assumed date even if it LATER learns the consumer received it on a different day. But this only holds while the collector doesn't yet know delivery failed. If mail is returned as undeliverable (or the collector otherwise learns the consumer never received the notice) and the collector sends a SUBSEQUENT validation notice, the 30-day window must be calculated from the SUBSEQUENT notice's assumed-or-actual receipt date, not the original mailing date (comment 34(b)(5)-2). This node's checklist did not previously ask whether the original notice was returned/non-delivered or whether a follow-up notice was ever sent -- a consumer who never actually got a validation notice (mail returned, no follow-up sent) may not have had a validation period start running at all under this framework, a materially different answer than 'the 30-plus-5-day window from the original mailing has already closed.'",
+        "overshadowing_note": "ADDED 2026-09-03 (round 38): 1692g(b)'s final sentence (quoted above) forbids collection activity during the 30-day window that 'overshadow[s] or [is] inconsistent with' the dispute-rights disclosure. A demand for payment within a period SHORTER than the 30-day window ('pay in full within 10 days to avoid further action'), or calls urging immediate payment, is the single most litigated species of 1692g(b) claim -- and it can occur even when the notice itself contains every required content item. The checklist previously collected no facts about the content, tone, or deadlines of intra-window collection activity, so the 'does not overshadow' condition in this node's own logic could never actually be evaluated.",
+        "formal_pleading_not_initial_communication_note": "ADDED 2026-09-03 (round 38): 15 U.S.C. 1692g(d) provides that a communication in the form of a formal pleading in a civil action is NOT an 'initial communication' for validation-notice purposes (Regulation F, 12 CFR 1006.34(b)(2), mirrors this and also excludes location-information communications under 1692b). A consumer whose first contact from the collector was a summons and complaint should NOT be told the 5-day validation clock ran from service, and the 30-day dispute window runs from the later actual validation notice. Suit-first collection is very common. [SOURCE PENDING: the governing text is named here but was NOT live-fetched this session (web fetch tooling was down); this note is a screening flag, not a verified quotation -- pin the citation before relying on it.]",
+        "oral_dispute_note": "ADDED 2026-09-03 (round 38): a dispute made ORALLY (by phone) within the window does not trigger 1692g(b)'s cease-collection duty (which requires writing), but it is not legally inert: 1692e(8) prohibits communicating credit information 'which is known or which should be known to be false, including the failure to communicate that a disputed debt is disputed,' and Regulation F, 12 CFR 1006.38(a)(1), defines a dispute for furnishing purposes without a writing requirement. A collector who keeps calling after an oral dispute is likely lawful as to cease-collection; a collector who reports the account to a credit bureau without a dispute flag after an oral dispute is likely NOT. Tell the consumer both halves. [SOURCE PENDING: the governing text is named here but was NOT live-fetched this session (web fetch tooling was down); this note is a screening flag, not a verified quotation -- pin the citation before relying on it.]"
       },
       "completeness_checklist": [
         {
@@ -187,6 +197,22 @@
         },
         {
           "fact": "When computing the 30-day dispute deadline: confirm the Saturday/Sunday/federal-holiday exclusion was applied ONLY to the initial 5-day receipt assumption, not to the 30-day period that follows it",
+          "dispositive": true
+        },
+        {
+          "fact": "What was the FORM of the initial communication -- a letter/call/email, or a summons and complaint in a lawsuit? A formal pleading is not an 'initial communication' (1692g(d)) and does not start the 5-day validation clock",
+          "dispositive": true
+        },
+        {
+          "fact": "Whether, and when, the consumer sent a WRITTEN request for the name and address of the ORIGINAL creditor (a second, independent cease-collection trigger under 1692g(b), even without a dispute)",
+          "dispositive": true
+        },
+        {
+          "fact": "The content, tone, and any deadlines of collection communications sent DURING the 30-day window before any dispute -- did any demand payment within fewer than 30 days, threaten action before the window closed, or otherwise overshadow/contradict the dispute right?",
+          "dispositive": true
+        },
+        {
+          "fact": "If the consumer disputed only ORALLY: did the collector subsequently report the account to a consumer reporting agency without noting it as disputed (1692e(8) / 12 CFR 1006.38), separate from the written-dispute cease-collection analysis",
           "dispositive": true
         }
       ],

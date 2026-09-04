@@ -337,7 +337,7 @@
         ],
         "determination": "any single catalog item, if the facts match, is an independent §1692e violation — items are not cumulative requirements, each stands alone",
         "threshold_predicates": [
-          "The contacting entity must be a 'debt collector' under 15 U.S.C. § 1692a(6) -- an original creditor collecting its own debt in its own name is generally excluded (see derived_from above); this catalog does not apply to that entity at all.",
+          "The contacting entity must be a 'debt collector' under 15 U.S.C. § 1692a(6) -- an original creditor collecting its own debt in its own name is generally excluded (see derived_from above); this catalog does not apply to that entity at all UNDER THE FEDERAL ACT -- but see state_law_reaches_original_creditors_note: state analogs (e.g. California's Rosenthal Act, Texas Fin. Code ch. 392) may cover the identical conduct by an original creditor.",
           "The obligation must be a 'debt' under 15 U.S.C. § 1692a(5) -- incurred primarily for personal, family, or household purposes, not a business/commercial obligation.",
           "Even a third-party servicer or assignee is NOT a 'debt collector' under § 1692a(6)(F)(iii) if it obtained the debt BEFORE it went into default (e.g., a mortgage servicer that began servicing while the loan was current). This is a separate, narrower exclusion from the general original-creditor exclusion above -- a servicer/assignee is neither 'original creditor' nor a covered third-party collector in that scenario."
         ],
@@ -365,11 +365,20 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json: 1692a(5), 1692a(6), 1692a(6)(F) citations to Cornell LII failed with high word-overlap but near-zero prefix; root cause is single-vs-double quotes around the statute's defined terms (plus one editorial bracket).",
             "summary": "Fixed quote characters to match the official text, removed the editorial bracket, re-pinned 1692a(5), 1692a(6), 1692a(6)(F) to uscode.house.gov."
+          },
+          {
+            "date": "2026-09-03",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
+            "summary": "Added three cross-cutting notes + checklist questions from the backlog (both runs): the FDCPA's own one-year limitations period (1692k(d)), state mini-FDCPA coverage of original creditors (Rosenthal / TX ch. 392), and Article III standing for bare technical violations. Threshold predicate [0] softened from 'does not apply at all' to 'does not apply under the federal Act.' Statutory text for 1692k(d) and Cal. Civ. Code 1788.2/1788.17 NOT pinned this session (fetch tooling down) -- flagged SOURCE PENDING."
           }
         ],
         "materiality_note": "This catalog's determination ('any single catalog item, if the facts match, is an independent violation') omits the materiality floor courts read into § 1692e: a technically-false statement that could not plausibly influence a consumer's response to the debt (e.g., a trivial date or one-cent amount error unrelated to what the consumer would actually decide or do) is generally not actionable. This node does not itself apply a materiality filter to a catalog-item match.",
         "stale_debt_note": "Filing or threatening suit on a debt outside the applicable statute of limitations (see the state-layer SOL nodes, e.g. CA-SOL-WRITTEN-CONTRACT-DEBT / TX-SOL-CONSUMER-DEBT) is a core, high-volume § 1692e theory under (2)(A) and (5) -- and, in some circuits, even a dunning letter alone without a litigation threat can violate § 1692e if it could mislead a consumer about a time-barred debt's enforceability. Neither the catalog gloss nor the prior checklist asked about the debt's age or the applicable limitations period.",
-        "coverage_threshold_node_ref": "For the full FDCPA 'debt collector' coverage analysis underlying threshold_predicates[0] and [2] above (the two independent coverage tests, all statutory exclusions (A)-(F), and the Henson v. Santander nuance on debt buyers), see the dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node."
+        "coverage_threshold_node_ref": "For the full FDCPA 'debt collector' coverage analysis underlying threshold_predicates[0] and [2] above (the two independent coverage tests, all statutory exclusions (A)-(F), and the Henson v. Santander nuance on debt buyers), see the dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node.",
+        "fdcpa_claim_limitations_note": "ADDED 2026-09-03 (round 38): this catalog answers whether conduct VIOLATED the section; it does not by itself mean the consumer still has a live private claim. 15 U.S.C. 1692k(d) gives a ONE-YEAR limitations period for FDCPA private actions, running from the date the violation occurs -- the Supreme Court held in Rotkiske v. Klemm (2019) that this is occurrence-based, not discovery-based (absent equitable doctrines). Consumers very commonly surface old dunning letters only after later credit damage or litigation; a letter more than a year old matches the catalog but the federal claim is presumptively time-barred. The checklist asks about the STATE limitations period on the underlying debt but previously never asked about the federal limitations period on the CLAIM. [SOURCE PENDING: the governing text is named here but was NOT live-fetched this session (web fetch tooling was down); this note is a screening flag, not a verified quotation -- pin the citation before relying on it.]",
+        "state_law_reaches_original_creditors_note": "ADDED 2026-09-03 (round 38): the original-creditor exclusion in the threshold predicates is a FEDERAL-only conclusion. Several state debt-collection statutes reach creditors collecting their own debts and incorporate the federal conduct standards by reference -- most prominently California's Rosenthal Fair Debt Collection Practices Act (Cal. Civ. Code 1788.2(c) defines 'debt collector' to include a creditor collecting in its own name; 1788.17 incorporates 1692b-1692j), and Texas Finance Code ch. 392 likewise applies to creditors as well as third-party collectors. A consumer told 'this catalog does not apply at all' because the caller was her own bank may have a strong STATE claim for the identical conduct (arrest threats, misstated balances). No state mini-FDCPA node exists in this corpus yet (HORIZON); until one does, treat 'original creditor -> not covered' as 'not covered under the FEDERAL Act -- check the consumer's state.' [SOURCE PENDING: the governing text is named here but was NOT live-fetched this session (web fetch tooling was down); this note is a screening flag, not a verified quotation -- pin the citation before relying on it.]",
+        "article_iii_standing_note": "ADDED 2026-09-03 (round 38): a catalog match establishes a statutory violation, but a private suit in FEDERAL court also requires Article III standing -- a concrete injury. After TransUnion LLC v. Ramirez (2021) and Spokeo v. Robins (2016), federal courts routinely dismiss 'bare procedural' FDCPA claims (a missing disclosure the consumer read, recognized, and ignored with no confusion, reliance, or detrimental action; an envelope marking no third party saw) for lack of standing, and the circuits differ on which intangible harms qualify. This is a case-law gloss (source_tier C, no single pinpoint source) flagged for counsel review; it does not change whether conduct is unlawful, only whether a federal-court claim is viable, and state-court standing rules may differ."
       },
       "completeness_checklist": [
         {
@@ -418,6 +427,18 @@
         },
         {
           "fact": "Confirm the contacting entity's covered-'debt collector' status via the full analysis in FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6, not solely the summary in threshold_predicates above",
+          "dispositive": true
+        },
+        {
+          "fact": "Date of the communication or conduct at issue, relative to today -- FDCPA private claims must be filed within ONE YEAR of the violation (15 U.S.C. 1692k(d), occurrence-based); a catalog match on conduct more than a year old is presumptively time-barred as a federal claim",
+          "dispositive": true
+        },
+        {
+          "fact": "The consumer's state -- if the collector is the original creditor (excluded federally), does the state's own debt-collection statute reach creditors (e.g. CA Rosenthal Act, TX Fin. Code ch. 392)? The federal 'not covered' answer is not the end of the analysis",
+          "dispositive": true
+        },
+        {
+          "fact": "What concrete effect the communication had on the consumer (confusion, a payment or other action taken in reliance, a third party who actually saw it, emotional distress) -- relevant to Article III standing for a federal-court suit; a purely technical violation the consumer noticed and ignored may not support a federal claim",
           "dispositive": true
         }
       ],
@@ -476,14 +497,14 @@
       "logic": {
         "note_re_item_6": "Item (6)'s sub-elements (whether an 'enforceable security interest' exists giving a 'present right to possession') can require legal judgment on the underlying security agreement — flagged as the one catalog item here with more fact/legal-judgment dependency than the others, though the ultimate determination (was nonjudicial repossession threatened/taken without the right to do so) remains a yes/no outcome once that judgment is made.",
         "catalog_items": [
-          "(1) collecting any amount not expressly authorized by the debt agreement or permitted by law (e.g., unauthorized fees/interest)",
+          "(1) collecting any amount not expressly authorized by the debt agreement or permitted by law (e.g., unauthorized fees/interest) -- CAVEAT added 2026-09-03 (round 38): 'pay-to-pay' / convenience fees for paying by card or phone that the consumer affirmatively opts into at the time of payment are among the most litigated 1692f(1) fact patterns and courts are split on whether an optional, separately-agreed payment-channel fee is an 'amount' collected 'incidental to the principal obligation' -- do not present that sub-case as a categorical violation; ask whether the fee was optional, disclosed, and agreed to at payment",
           "(2) depositing a check postdated >5 days without the required 3-10 business day advance written notice",
           "(3) soliciting a postdated check/instrument to threaten or institute criminal prosecution",
           "(4) depositing or threatening to deposit a postdated check/instrument before its date",
           "(5) causing communication charges via concealment of the communication's true purpose (e.g., collect calls, telegram fees)",
           "(6) threatening/taking nonjudicial repossession without a present enforceable right, without present intent, or where the property is legally exempt",
           "(7) communicating about the debt by postcard",
-          "(8) using any language or symbol on an envelope or in the address on any envelope (other than the collector's address, and a business name that does not indicate the business is in debt collection) -- NOT limited to symbols that expressly 'indicate debt collection': visible account numbers, scannable barcodes/QR codes, and other identifying marks through a windowed envelope are themselves catalog-item (8) violations even if nothing on the envelope literally says 'debt' or 'collection' (Douglass v. Convergent Outsourcing; Daubert v. NRA Group -- among the most heavily litigated § 1692f fact patterns)"
+          "(8) using any language or symbol on an envelope or in the address on any envelope (other than the collector's address, and a business name that does not indicate the business is in debt collection) -- NOT limited to symbols that expressly 'indicate debt collection': visible account numbers, scannable barcodes/QR codes, and other identifying marks through a windowed envelope are themselves catalog-item (8) violations even if nothing on the envelope literally says 'debt' or 'collection' (Douglass v. Convergent Outsourcing; Daubert v. NRA Group -- among the most heavily litigated § 1692f fact patterns) -- CAVEAT added 2026-09-03 (round 38): the visible-account-number/barcode rule is a Third Circuit line; the Eighth Circuit (Strand v. Diversified Collection Serv.) and courts following it recognize a 'benign language' exception under which markings that do not indicate debt collection are not violations, and post-TransUnion many envelope-marking claims are dismissed for lack of concrete harm where no third party saw or decoded the marking. Venue matters; this node does not resolve which line the consumer's circuit follows (case-law gloss, source_tier C, flagged for counsel)"
         ],
         "determination": "any single catalog item, if the facts match, is an independent §1692f violation",
         "general_clause_note": "The catalog above is expressly ILLUSTRATIVE, not exhaustive -- § 1692f's own text states the enumerated items apply 'without limiting the general application' of the broader ban on 'unfair or unconscionable means.' A fact pattern that matches none of the 8 catalog items can still violate § 1692f under the general clause -- common examples include continuing to collect a debt known to be discharged in bankruptcy or time-barred, garnishing or freezing funds known to be exempt, splitting a single claim into multiple suits to increase fees, or other abusive collection-litigation conduct. This node's 'determination' should not be read as a closed list requiring an item-by-item match -- absence of a catalog-item match does NOT by itself mean no § 1692f violation occurred.",
@@ -506,9 +527,17 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json: 1692a(6) citations to Cornell LII failed with high word-overlap but near-zero prefix; root cause is single-vs-double quotes around the statute's defined terms (plus one editorial bracket).",
             "summary": "Fixed quote characters to match the official text, removed the editorial bracket, re-pinned 1692a(6) to uscode.house.gov."
+          },
+          {
+            "date": "2026-09-03",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
+            "summary": "Added the 1692k(d) one-year note + checklist question and the Article III standing note; softened catalog items (1) (pay-to-pay fees) and (8) (envelope markings) from categorical to venue/consent-dependent with case-law caveats. From the backlog (run 185148Z). 1692k(d) text NOT pinned this session -- SOURCE PENDING."
           }
         ],
-        "coverage_threshold_node_ref": "For the full FDCPA 'debt collector' coverage analysis underlying debt_collector_threshold_note above (the two independent coverage tests, all statutory exclusions (A)-(F), and the Henson v. Santander nuance on debt buyers), see the dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node."
+        "coverage_threshold_node_ref": "For the full FDCPA 'debt collector' coverage analysis underlying debt_collector_threshold_note above (the two independent coverage tests, all statutory exclusions (A)-(F), and the Henson v. Santander nuance on debt buyers), see the dedicated FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6 node.",
+        "fdcpa_claim_limitations_note": "ADDED 2026-09-03 (round 38): this catalog answers whether conduct VIOLATED the section; it does not by itself mean the consumer still has a live private claim. 15 U.S.C. 1692k(d) gives a ONE-YEAR limitations period for FDCPA private actions, running from the date the violation occurs -- the Supreme Court held in Rotkiske v. Klemm (2019) that this is occurrence-based, not discovery-based (absent equitable doctrines). Consumers very commonly surface old dunning letters only after later credit damage or litigation; a letter more than a year old matches the catalog but the federal claim is presumptively time-barred. The checklist asks about the STATE limitations period on the underlying debt but previously never asked about the federal limitations period on the CLAIM. [SOURCE PENDING: the governing text is named here but was NOT live-fetched this session (web fetch tooling was down); this note is a screening flag, not a verified quotation -- pin the citation before relying on it.]",
+        "article_iii_standing_note": "ADDED 2026-09-03 (round 38): a catalog match establishes a statutory violation, but a private suit in FEDERAL court also requires Article III standing -- a concrete injury. After TransUnion LLC v. Ramirez (2021) and Spokeo v. Robins (2016), federal courts routinely dismiss 'bare procedural' FDCPA claims (a missing disclosure the consumer read, recognized, and ignored with no confusion, reliance, or detrimental action; an envelope marking no third party saw) for lack of standing, and the circuits differ on which intangible harms qualify. This is a case-law gloss (source_tier C, no single pinpoint source) flagged for counsel review; it does not change whether conduct is unlawful, only whether a federal-court claim is viable, and state-court standing rules may differ."
       },
       "completeness_checklist": [
         {
@@ -537,6 +566,14 @@
         },
         {
           "fact": "Confirm the contacting entity's covered-'debt collector' status via the full analysis in FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6, not solely the summary in debt_collector_threshold_note above",
+          "dispositive": true
+        },
+        {
+          "fact": "Date of the conduct at issue, relative to today -- FDCPA private claims must be filed within ONE YEAR of the violation (15 U.S.C. 1692k(d)); conduct more than a year old is presumptively time-barred as a federal claim",
+          "dispositive": true
+        },
+        {
+          "fact": "For a convenience/pay-to-pay fee: was it optional, disclosed, and affirmatively agreed to by the consumer at the time of payment (contested whether that is an 'amount' under item (1))? For an envelope marking: which federal circuit, and did any third party actually see or decode it?",
           "dispositive": true
         }
       ],

@@ -78,6 +78,13 @@
             "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1681i&num=0&edition=prelim",
             "source_tier": "A",
             "tier_rationale": "Added 2026-08-30 (round 23) to encode the trigger-precision gap the adversarial check found: this node's checklist previously asked only whether the consumer 'disputed the item directly with a credit bureau,' but the actual § 1681s-2(b) trigger requires the CRA to have forwarded that dispute to the furnisher under § 1681i(a)(2). Where the CRA deems the dispute frivolous under § 1681i(a)(3) (common with template/duplicate credit-repair disputes) and never forwards it, no furnisher duty arises at all -- the prior checklist wording would find a breached duty where the trigger never fired. Cornell LII primary source. CORRECTED 2026-09-02 (round 37): (1) the cite label said (a)(3) but the opening text is from (a)(1)(A) -- relabeled to cover both; (2) the post-ellipsis text paraphrased (a)(3) ('under this subsection', 'any such determination') -- now verbatim; (3) re-pinned from Cornell LII to the official uscode.house.gov text. Cornell's page failed live verification at \"consumer's\" (run_20260902T185148Z.json, prefix 82, word_overlap 1.0) -- consistent with Cornell wrapping the defined term 'consumer' in an inline link so tag-stripping inserts a space before the apostrophe; the official site does not link defined terms and verifies cleanly for every other Title 15 citation in this corpus. The apostrophe-after-tag pattern is queued as a runner-side normalization candidate, separately."
+          },
+          {
+            "cite": "15 U.S.C. § 1681i(a)(2)(A)-(B)",
+            "quoted_text": "Before the expiration of the 5-business-day period beginning on the date on which a consumer reporting agency receives notice of a dispute from any consumer or a reseller in accordance with paragraph (1), the agency shall provide notification of the dispute to any person who provided any item of information in dispute, at the address and in the manner established with the person. The notice shall include all relevant information regarding the dispute that the agency has received from the consumer or reseller. ... The consumer reporting agency shall promptly provide to the person who provided the information in dispute all relevant information regarding the dispute that is received by the agency from the consumer or the reseller after the period referred to in subparagraph (A) and before the end of the period referred to in paragraph (1)(A).",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1681i&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-03 (round 38): the furnisher's investigation duty under 1681s-2(b)(1)(B) is to review 'all relevant information provided by the consumer reporting agency' -- NOT documents the consumer sent to the CRA that the CRA never forwarded. In practice CRAs transmit a coded e-OSCAR/ACDV summary and often withhold the consumer's supporting documents; when that happens the furnisher cannot be faulted for not reviewing what it never received, and the actionable failure is the CRA's under this section. Text verified this session via a direct fetch of the official U.S. Code (round 37's 1681i fetch)."
           }
         ],
         "citation_verified": true
@@ -114,11 +121,19 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json: 1681i citation to Cornell LII failed at \"consumer's\" with word_overlap 1.0; cite label also mismatched the quoted subsection.",
             "summary": "Relabeled cite to (a)(1)(A)/(a)(3)(A)-(B), made post-ellipsis text verbatim, re-pinned to uscode.house.gov."
+          },
+          {
+            "date": "2026-09-03",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
+            "summary": "Added 1681i(a)(2)(A)-(B) (verified) and corrected checklist item on 'reviewing the consumer's documents' to track the actual duty ('all relevant information provided by the CRA'); added the CRA-did-not-forward note and an obsolescence-is-a-separate-claim note + checklist question. From the backlog's truncated-but-legible Stage B text (run 185148Z). 1681c text NOT pinned this session -- SOURCE PENDING."
           }
         ],
         "accuracy_element_note": "A § 1681s-2(b) claim requires more than a poor-quality investigation -- the consumer must also show the furnished information was actually inaccurate or materially misleading. If the reported balance, dates, and status are accurate and the consumer's real objection is that the debt 'shouldn't be there' for equitable reasons (hardship, a dispute about whether it should have been charged at all), the claim fails at the accuracy element regardless of how cursory the furnisher's investigation was. This is one of the most common ways furnisher-dispute claims are dismissed, and this node's dispositive investigation-quality checklist item should not be read to mean a shoddy investigation alone establishes a violation.",
         "remedies_and_limitations_note": "Even where a § 1681s-2(b) violation is established, what the consumer recovers depends on the violation's culpability: negligent violations (§ 1681o) require proof of actual damages (economic or emotional-distress); only WILLFUL violations (§ 1681n) open the door to statutory damages ($100-$1,000) without proof of actual loss, plus possible punitive damages. Suit must be brought within 2 years of the consumer discovering the violation, or 5 years of the violation occurring, whichever is earlier (§ 1681p) -- this is an outside limit regardless of when discovered. A consumer with no quantifiable damages and a negligence-only theory, or one outside this window, should not be told she has a straightforwardly viable claim.",
-        "cra_forwarding_trigger_note": "The dispositive trigger for this node is not merely that the consumer disputed an item with a CRA -- it is that the CRA forwarded that dispute to the furnisher as required by § 1681i(a)(2). A CRA may instead terminate a reinvestigation and never forward the dispute if it reasonably determines the dispute is frivolous or irrelevant under § 1681i(a)(3) (notifying the consumer of that determination) -- common with template or duplicate disputes, including those generated by credit-repair services. Where that happened, no § 1681s-2(b) furnisher duty ever arose, and this node should not be applied as though it did."
+        "cra_forwarding_trigger_note": "The dispositive trigger for this node is not merely that the consumer disputed an item with a CRA -- it is that the CRA forwarded that dispute to the furnisher as required by § 1681i(a)(2). A CRA may instead terminate a reinvestigation and never forward the dispute if it reasonably determines the dispute is frivolous or irrelevant under § 1681i(a)(3) (notifying the consumer of that determination) -- common with template or duplicate disputes, including those generated by credit-repair services. Where that happened, no § 1681s-2(b) furnisher duty ever arose, and this node should not be applied as though it did.",
+        "cra_did_not_forward_documents_note": "ADDED 2026-09-03 (round 38): distinguish two failures that look alike from the consumer's side. (1) The CRA forwarded the consumer's documents and the furnisher ignored them -> furnisher liability under 1681s-2(b). (2) The CRA sent only a coded summary and never forwarded the documents (the ordinary e-OSCAR practice) -> the furnisher reviewed 'all relevant information provided by the CRA' and the failure is the CRA's under 1681i(a)(2). The checklist previously framed (2) as a furnisher violation. What the CRA actually transmitted is usually discoverable only from the furnisher's ACDV records.",
+        "obsolescence_is_a_separate_claim_note": "ADDED 2026-09-03 (round 38): a dispute that the item is 'too old to be on my report' is NOT an accuracy dispute this node resolves as 'accurate reporting the consumer objects to for other reasons.' Reporting a collection or charge-off beyond the FCRA's obsolescence period (generally 7 years from the original delinquency, 15 U.S.C. 1681c(a)(4) and (c)(1)) is a distinct FCRA violation -- primarily the CRA's, and potentially the furnisher's if it reports a false date of first delinquency (1681s-2(a)(5)). Route this fact pattern to an obsolescence analysis rather than closing it as 'no claim.' [SOURCE PENDING: the governing text is named here but was NOT live-fetched this session (web fetch tooling was down); this note is a screening flag, not a verified quotation -- pin the citation before relying on it.]"
       },
       "completeness_checklist": [
         {
@@ -138,7 +153,7 @@
           "dispositive": true
         },
         {
-          "fact": "Whether the furnisher's investigation went beyond checking its own internal records to actually reviewing supporting documents the consumer submitted with the CRA dispute (a bare records-check is widely treated as an unreasonable/inadequate investigation)",
+          "fact": "Whether the furnisher's investigation went beyond checking its own internal records to actually reviewing ALL RELEVANT INFORMATION THE CRA FORWARDED with the dispute notice (1681s-2(b)(1)(B)) -- CORRECTED 2026-09-03 (round 38): the duty runs to what the CRA provided, not to documents the consumer sent the CRA that the CRA never passed along. If the consumer submitted documents and the furnisher received only a coded ACDV summary, the failure to forward is the CRA's under 1681i(a)(2)(A)-(B), and the consumer's claim against the furnisher on that theory is weak -- point at the right defendant",
           "dispositive": true
         },
         {
@@ -151,6 +166,10 @@
         },
         {
           "fact": "What damages (if any) the consumer actually suffered, and whether the violation was willful (opening statutory/punitive damages under § 1681n) or merely negligent (requiring proof of actual damages under § 1681o); and whether suit is being brought within 2 years of discovery / 5 years of the violation (§ 1681p)",
+          "dispositive": true
+        },
+        {
+          "fact": "If the consumer's complaint is that the item is TOO OLD (not that its contents are wrong): what is the date of first delinquency the furnisher reported, and has 7 years passed? This is an obsolescence question (1681c / 1681s-2(a)(5)), not an accuracy dispute under this node",
           "dispositive": true
         }
       ],

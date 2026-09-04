@@ -113,8 +113,16 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json: TRCP 505.3 citation failed at prefix 23 with word_overlap 1.0; the quoted_text was a paraphrase with a wrong subsection letter.",
             "summary": "Replaced the 505.3 paraphrase with verbatim (b) and (e); logic unchanged (already correct)."
+          },
+          {
+            "date": "2026-09-03",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
+            "summary": "Added the eviction carve-out (TRCP 510.8/510.9) as a threshold question and broadened the restricted-appeal / bill-of-review paths beyond service defects. Both backlog findings (both runs) addressed; TRCP 510 text NOT pinned this session -- SOURCE PENDING."
           }
-        ]
+        ],
+        "eviction_carve_out_note": "ADDED 2026-09-03 (round 38) -- CASE-ENDING if missed: the justice-court branch (TRCP 505.3, 14 days) does NOT apply to an EVICTION (forcible detainer) default. Eviction cases are governed by TRCP 510, which controls over the general justice-court rules; TRCP 510.8(e) bars a motion for new trial in an eviction case, and the operative remedy is an appeal (bond, cash deposit, or sworn statement of inability) within FIVE days of the judgment under TRCP 510.9, after which a writ of possession can issue. Directing an evicted tenant to a 14-day motion blows the 5-day deadline. Appeared in both backlog runs. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "restricted_appeal_not_limited_to_service_defects_note": "ADDED 2026-09-03 (round 38): this node offered the restricted appeal (Tex. R. App. P. 30, six months) and the bill of review only in the 'defective/no service' branch. That is too narrow. A restricted appeal requires only that the party did not participate in the hearing, filed within six months, and that error is apparent on the face of the record -- defective service is merely the most common such error; an unsupported unliquidated-damages award, a facially defective return of service, or a missing TRCP 239a certificate qualify equally. And a bill of review (four years) is available to a validly-served defendant who never received notice of the judgment through no fault of her own (e.g. the clerk never mailed the TRCP 306a notice and she learned of it only via garnishment months later), with a potentially lower showing than the ordinary Baker v. Goldsmith elements. As encoded, a consumer who concedes service but was hit with an inflated default months ago would be told no path remains. Case-law gloss, source_tier C, flagged for counsel confirmation."
       },
       "completeness_checklist": [
         {
@@ -143,6 +151,14 @@
         },
         {
           "fact": "Whether the person disputes that they were validly served at all (defective/no service) -- if so, Craddock's meritorious-defense element does not apply, and a restricted appeal (6 months) or bill of review (4 years) may be available even after the ordinary motion window has closed",
+          "dispositive": true
+        },
+        {
+          "fact": "THRESHOLD: is the underlying case an EVICTION (forcible detainer)? If so, TRCP 510 governs -- no motion for new trial (510.8(e)); the remedy is an appeal within 5 days of judgment (510.9). Do not apply the 14-day 505.3 window",
+          "dispositive": true
+        },
+        {
+          "fact": "Even if service was valid: (a) is it within six months of the judgment and is there error apparent on the face of the record (e.g. unsupported damages) -- restricted appeal; (b) did the defendant never receive notice of the judgment through no fault of her own -- bill of review within four years",
           "dispositive": true
         }
       ],
