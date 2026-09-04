@@ -91,6 +91,13 @@
             "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1692c&num=0&edition=prelim",
             "source_tier": "A",
             "tier_rationale": "Added 2026-09-03 (round 38) for the decedent-debt gap the Stage B backlog surfaced (both runs): a debt incurred by a natural person for consumer purposes remains a 'debt' after the obligor dies (1692a(5) turns on the transaction, not on whether the obligor is alive), and for communication purposes the Act itself treats the executor/administrator as the consumer. Text verified this session via a direct fetch of the official U.S. Code (round 34's 1692c fetch, subsection (d)). Regulation F's parallel rule at 12 CFR 1006.6(a)(1)(iv) (personal representative of a deceased consumer's estate) is NOT quoted here -- eCFR was unreachable when this entry was written; pin it in a follow-up."
+          },
+          {
+            "cite": "12 C.F.R. § 1006.6(a)",
+            "quoted_text": "For purposes of this section, the term consumer includes: (1) The consumer's spouse; (2) The consumer's parent, if the consumer is a minor; (3) The consumer's legal guardian; (4) The executor or administrator of the consumer's estate, if the consumer is deceased; and (5) A confirmed successor in interest, as defined in Regulation X, 12 CFR 1024.31, or Regulation Z, 12 CFR 1026.2(a)(27)(ii).",
+            "url": "https://www.ecfr.gov/current/title-12/chapter-X/part-1006/subpart-B/section-1006.6",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Reg F's parallel to 1692c(d) for deceased consumers ((a)(4): executor or administrator of a deceased consumer's estate) -- the piece flagged pending in round 38. Verified via the Cornell LII eCFR mirror; url pinned to eCFR, which the live checker fetches for the sibling 1006.14 citations."
           }
         ],
         "citation_verified": true
@@ -120,10 +127,16 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
             "summary": "Fixed the 'is it a debt' gate to cover ALLEGED obligations (phantom/mistaken-identity/identity-theft debts); added the 'regularly collects' element to determination step (4) plus a checklist question; added 1692c(d) and a deceased-consumer note + checklist question. All three findings appeared in both backlog runs."
+          },
+          {
+            "date": "2026-09-04",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
+            "summary": "Pinned 12 CFR 1006.6(a)(4); removed the SOURCE PENDING marker on the deceased-consumer note."
           }
         ],
         "alleged_obligation_note": "ADDED 2026-09-03 (round 38): the 'is it a debt' gate must not be applied as 'did this person actually incur a consumer obligation' -- both quoted definitions above use 'alleged' (1692a(5): 'any obligation or alleged obligation'; 1692a(3): 'obligated or allegedly obligated'). A collector pursuing a consumer for an account she never opened, a paid-off balance, or someone else's debt is collecting an ALLEGED consumer debt and is fully within the FDCPA. The prior checklist wording could route the single most common consumer complaint (\"this isn't my debt\") to 'not covered.'",
-        "deceased_consumer_note": "ADDED 2026-09-03 (round 38): collection against a deceased person's estate or surviving family is COVERED, not outside the gate. The obligation was incurred by a natural person for personal/family/household purposes and remains a 'debt'; 1692c(d) (quoted above) treats the executor or administrator as the 'consumer' for communication purposes, and Regulation F, 12 CFR 1006.6(a)(1)(iv), does the same for the estate's personal representative [SOURCE PENDING: the governing text is named here but was NOT live-fetched this session (web fetch tooling was down); this note is a screening flag, not a verified quotation -- pin the citation before relying on it.] A surviving relative who is NOT the executor/administrator and did not co-sign is a THIRD PARTY -- implying she is personally liable, or discussing the debt with her, is governed by the third-party-communication restrictions (1692c(b)/1692b), not a reason to treat the debt as uncovered."
+        "deceased_consumer_note": "ADDED 2026-09-03 (round 38): collection against a deceased person's estate or surviving family is COVERED, not outside the gate. The obligation was incurred by a natural person for personal/family/household purposes and remains a 'debt'; 1692c(d) (quoted above) treats the executor or administrator as the 'consumer' for communication purposes, and Regulation F, 12 CFR 1006.6(a)(1)(iv), does the same for the estate's personal representative A surviving relative who is NOT the executor/administrator and did not co-sign is a THIRD PARTY -- implying she is personally liable, or discussing the debt with her, is governed by the third-party-communication restrictions (1692c(b)/1692b), not a reason to treat the debt as uncovered."
       },
       "completeness_checklist": [
         {

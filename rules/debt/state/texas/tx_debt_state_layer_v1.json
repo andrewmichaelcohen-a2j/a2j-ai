@@ -107,6 +107,46 @@
               "note": "statutes.capitol.texas.gov is a client-rendered SPA: a plain HTTP GET to any specific section URL now consistently returns an identical generic shell (confirmed 2026-08-29 -- CP.16, CN.16, PR.41, and PR.42 all returned the same 250874-byte page regardless of which section was requested). Content confirmed correct via direct browser rendering (JS executed), which loads the real statute text client-side; the quoted_text below was checked against that rendered text and matches verbatim. Same class of limitation as azleg.gov's documented JS-gating.",
               "date": "2026-08-29"
             }
+          },
+          {
+            "cite": "Tex. Civ. Prac. & Rem. Code § 16.065",
+            "quoted_text": "An acknowledgment of the justness of a claim that appears to be barred by limitations is not admissible in evidence to defeat the law of limitations if made after the time that the claim is due unless the acknowledgment is in writing and is signed by the party to be charged.",
+            "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.16.htm",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://texas.public.law/statutes/tex._civ._practice_and_remedies_code_section_16.065 (mirror of the official source pinned above). ",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-04"
+            }
+          },
+          {
+            "cite": "Tex. Fin. Code § 392.307(c)-(d)",
+            "quoted_text": "A debt buyer may not, directly or indirectly, commence an action against or initiate arbitration with a consumer to collect a consumer debt after the expiration of the applicable limitations period provided by Section 16.004, Civil Practice and Remedies Code, or Section 3.118, Business & Commerce Code. ... If an action to collect a consumer debt is barred under Subsection (c), the cause of action is not revived by a payment of the consumer debt, an oral or written reaffirmation of the consumer debt, or any other activity on the consumer debt.",
+            "url": "https://statutes.capitol.texas.gov/Docs/FI/htm/FI.392.htm",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://texas.public.law/statutes/tex._fin._code_section_392.307 (mirror of the official source pinned above). SCOPE CORRECTION found while pinning: § 392.307 applies to DEBT BUYERS (as defined in (a)(2)), not to every creditor -- (d)'s no-revival-by-payment rule is a debt-buyer rule. The general rule for any creditor is § 16.065 (post-bar acknowledgment must be a signed writing). The round-38 note over-generalized 392.307.",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-04"
+            }
+          },
+          {
+            "cite": "Tex. Civ. Prac. & Rem. Code § 34.001(a)-(b); § 31.006",
+            "quoted_text": "If a writ of execution is not issued within 10 years after the rendition of a judgment of a court of record or a justice court, the judgment is dormant and execution may not be issued on the judgment unless it is revived. ... If a writ of execution is issued within 10 years after rendition of a judgment but a second writ is not issued within 10 years after issuance of the first writ, the judgment becomes dormant. A second writ may be issued at any time within 10 years after issuance of the first writ. ... A dormant judgment may be revived by scire facias or by an action of debt brought not later than the second anniversary of the date that the judgment becomes dormant.",
+            "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.34.htm",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. NUANCE found while pinning: a judgment does not stay alive 'indefinitely' by itself -- it goes DORMANT if no writ of execution issues within 10 years (and again if no second writ within 10 years of the first), and a dormant judgment can be revived only within 2 years of becoming dormant (31.006). The round-38 note said 'renewable indefinitely'; corrected below.",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-04"
+            }
+          },
+          {
+            "cite": "Tex. R. Civ. P. 94",
+            "quoted_text": "In pleading to a preceding pleading, a party shall set forth affirmatively accord and satisfaction, arbitration and award, assumption of risk, contributory negligence, discharge in bankruptcy, duress, estoppel, failure of consideration, fraud, illegality, injury by fellow servant, laches, license, payment, release, res judicata, statute of frauds, statute of limitations, waiver, and any other matter constituting an avoidance or affirmative defense.",
+            "url": "https://rulesofcivilprocedure.com/tx/rule-94/",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Statute of limitations is an affirmative defense that must be pleaded."
           }
         ],
         "citation_verified": true
@@ -117,16 +157,22 @@
         "accrual": "day the cause of action accrues — generally the date of default/breach or last payment, a fact question this node does not itself resolve",
         "note_re_tolling": "Discovery-rule and fraudulent-concealment tolling, plus minority/unsound-mind/military-service/absence-from-Texas tolling, are recognized under Texas law but NOT encoded here — this node determines the baseline 4-year period only; tolling analysis is a separate, not-yet-built node.",
         "determination": "expired_if today > (accrual_date + 4 years), subject to any tolling not yet encoded",
-        "post_expiration_payment_note": "ADDED 2026-09-03 (round 38): the accrual definition ('date of default/breach or last payment') must not be applied to a payment made AFTER the 4-year period ran. Under Tex. Civ. Prac. & Rem. Code § 16.065, revival of a barred claim requires a signed WRITTEN acknowledgment, and Tex. Fin. Code § 392.307 provides that a payment on (or acknowledgment of) an out-of-statute consumer debt does not restart limitations. Debt buyers routinely solicit small 'good faith' payments precisely to manufacture a restart argument; as previously encoded, a 2024 $25 payment on a 2016 default would report a 2025 suit as timely -- the dangerous direction. Appeared in both backlog runs. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "post_expiration_payment_note": "ADDED 2026-09-03 (round 38): the accrual definition ('date of default/breach or last payment') must not be applied to a payment made AFTER the 4-year period ran. Under Tex. Civ. Prac. & Rem. Code § 16.065, revival of a barred claim requires a signed WRITTEN acknowledgment, and, where the holder is a DEBT BUYER (Fin. Code 392.307(a)(2)), § 392.307(d) provides that a payment, reaffirmation, or any other activity on a time-barred consumer debt does not revive it (and (c) bars the debt buyer from suing at all). CORRECTED 2026-09-04 (round 39): 392.307 is a debt-buyer provision, not a rule for every creditor; the general rule is 16.065. Debt buyers routinely solicit small 'good faith' payments precisely to manufacture a restart argument; as previously encoded, a 2024 $25 payment on a 2016 default would report a 2025 suit as timely -- the dangerous direction. Appeared in both backlog runs.",
         "installment_separate_accrual_note": "ADDED 2026-09-03 (round 38): for an installment obligation (auto loan, personal installment loan) that the lender has NOT accelerated, Texas runs limitations separately on each missed installment; installments falling due within the last 4 years remain actionable even if earlier ones are barred (and on optional-acceleration notes, accrual on the full balance runs from actual acceleration). The single-accrual-date, binary output would report the whole claim expired. Case-law gloss, source_tier C; same doctrine noted on the CA nodes.",
-        "judgment_already_entered_note": "ADDED 2026-09-03 (round 38): if a JUDGMENT has already been entered (very often by default, sometimes without the consumer's knowledge), the 4-year contract period is no longer the question -- the claim merged into a judgment enforceable for 10 years and renewable indefinitely (Tex. Civ. Prac. & Rem. Code §§ 34.001, 31.006). A consumer garnished in 2025 on a 2018 default judgment should not be told the debt 'expired in 2019.' [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
-        "sol_is_an_affirmative_defense_note": "ADDED 2026-09-03 (round 38): limitations is an affirmative defense that is waived unless pleaded (Tex. R. Civ. P. 94); Texas courts routinely enter default judgments on time-barred consumer debts against non-answering defendants. An 'expired' output must always carry 'you must file an answer and plead it' -- the most common posture for this node is a pro se defendant deciding whether to respond. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "judgment_already_entered_note": "ADDED 2026-09-03 (round 38): if a JUDGMENT has already been entered (very often by default, sometimes without the consumer's knowledge), the 4-year contract period is no longer the question -- the claim merged into a judgment on which execution may issue for 10 years, kept alive by issuing a further writ within each 10-year period; if no writ issues the judgment becomes DORMANT and may be revived only within 2 years of dormancy (Tex. Civ. Prac. & Rem. Code §§ 34.001, 31.006 -- CORRECTED 2026-09-04, round 39: not 'renewable indefinitely' as round 38 said). A consumer garnished in 2025 on a 2018 default judgment should not be told the debt 'expired in 2019.'",
+        "sol_is_an_affirmative_defense_note": "ADDED 2026-09-03 (round 38): limitations is an affirmative defense that is waived unless pleaded (Tex. R. Civ. P. 94); Texas courts routinely enter default judgments on time-barred consumer debts against non-answering defendants. An 'expired' output must always carry 'you must file an answer and plead it' -- the most common posture for this node is a pro se defendant deciding whether to respond.",
         "drafting_revisions": [
           {
             "date": "2026-09-03",
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
             "summary": "Added post-expiration-payment, installment accrual, judgment-already-entered, and affirmative-defense notes + 4 checklist questions. All backlog findings (both runs) addressed; CPRC 16.065, Fin. Code 392.307, CPRC 34.001, TRCP 94 text NOT pinned this session -- SOURCE PENDING."
+          },
+          {
+            "date": "2026-09-04",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
+            "summary": "Pinned CPRC 16.065, Fin. Code 392.307(c)-(d), CPRC 34.001/31.006, TRCP 94. Two corrections: 392.307 is debt-buyer-specific; judgments go dormant without a writ within 10 years (revivable within 2 years), not 'renewable indefinitely'."
           }
         ]
       },
@@ -205,6 +251,42 @@
             "url": "https://texas.public.law/statutes/tex._civ._practice_and_remedies_code_section_63.004",
             "source_tier": "B",
             "tier_rationale": "Added 2026-08-30 (round 22) to encode the federal-law override the corroboration pipeline's adversarial check found missing -- this statute is a companion to the Tex. Const. art. XVI § 28 protection already encoded, and its own text contains the exception clause: 'except as otherwise provided by ... federal law.' This gives a clean textual hook (not just a general Supremacy Clause argument) for federal wage garnishments/levies -- IRS levies (26 U.S.C. § 6331 et seq.), Department of Education administrative wage garnishment on defaulted federal student loans (20 U.S.C. § 1095a), federal criminal restitution, and federal-court judgments -- overriding the state-law wage protection. Confirmed via WebSearch cross-referencing texas.public.law/Justia/FindLaw mirrors this session; the official Texas statutes site was not independently re-fetched this session, flagged for live verification."
+          },
+          {
+            "cite": "42 U.S.C. § 407(a)",
+            "quoted_text": "The right of any person to any future payment under this subchapter shall not be transferable or assignable, at law or in equity, and none of the moneys paid or payable or rights existing under this subchapter shall be subject to execution, levy, attachment, garnishment, or other legal process, or to the operation of any bankruptcy or insolvency law.",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section407&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. "
+          },
+          {
+            "cite": "31 C.F.R. § 212.6(a), (c); § 212.3 (lookback period)",
+            "quoted_text": "The financial institution shall immediately calculate and establish the protected amount for an account. The financial institution shall ensure that the account holder has full and customary access to the protected amount, which the financial institution shall not freeze in response to the garnishment order. An account holder shall have no requirement to assert any right of garnishment exemption prior to accessing the protected amount in the account. ... A protected amount calculated and established by a financial institution pursuant to this section shall be conclusively considered to be exempt from garnishment under law. ... Lookback period means the two month period that begins on the date preceding the date of account review and ends on the corresponding date of the month two months earlier, or on the last date of the month two months earlier if the corresponding date does not exist.",
+            "url": "https://www.ecfr.gov/current/title-31/subtitle-B/chapter-II/subchapter-A/part-212/section-212.6",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Verified via the Cornell LII eCFR mirror; url pinned to eCFR."
+          },
+          {
+            "cite": "Tex. Civ. Prac. & Rem. Code § 31.0025(a)",
+            "quoted_text": "Notwithstanding any other law, a court may not, at any time before a judgment debtor is paid wages for personal services performed by the debtor, enter or enforce an order that requires the debtor or any other person to turn over the wages for the satisfaction of the judgment.",
+            "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.31.htm",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://texas.public.law/statutes/tex._civ._practice_and_remedies_code_section_31.0025 (mirror of the official source pinned above). STATUTORY ANCHOR found while pinning -- upgrades the round-38 turnover note from case-law gloss to statute: a court may not order turnover of wages 'at any time before a judgment debtor is paid' them; by negative implication, turnover of paycheck proceeds AFTER payment is not barred by this section.",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-04"
+            }
+          },
+          {
+            "cite": "Tex. Lab. Code § 61.018",
+            "quoted_text": "An employer may not withhold or divert any part of an employee's wages unless the employer: (1) is ordered to do so by a court of competent jurisdiction; (2) is authorized to do so by state or federal law; or (3) has written authorization from the employee to deduct part of the wages for a lawful purpose.",
+            "url": "https://statutes.capitol.texas.gov/Docs/LA/htm/LA.61.htm",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://texas.public.law/statutes/tex._labor_code_section_61.018 (mirror of the official source pinned above). ",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-04"
+            }
           }
         ],
         "citation_verified": true
@@ -232,11 +314,17 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
             "summary": "Qualified the 'bank accounts CAN be frozen' statement for federal-benefit deposits; added turnover-order, employer-deduction, and contractual-alimony notes; 4 checklist questions. All 6 backlog findings (both runs) addressed; 42 U.S.C. 407 / 31 CFR 212 / CPRC 31.002 / Lab. Code 61.018 text NOT pinned this session -- SOURCE PENDING."
+          },
+          {
+            "date": "2026-09-04",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
+            "summary": "Pinned 42 U.S.C. 407(a), 31 CFR 212.6/212.3, CPRC 31.0025(a), Lab. Code 61.018; removed 3 SOURCE PENDING markers; turnover note now statute-anchored. Contractual-alimony point remains a gloss."
           }
         ],
-        "bank_account_exempt_deposits_note": "ADDED 2026-09-03 (round 38): for the very common debtor whose only income is Social Security/SSDI/VA benefits, a bank garnishment is NOT 'fair game' -- federal law protects those benefits after deposit and the bank must run a two-month lookback and shield that amount automatically (31 C.F.R. Part 212). The debtor's remedies are the bank's account-review protection plus an exemption claim, not acquiescence. Appeared in both backlog runs. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
-        "turnover_order_note": "ADDED 2026-09-03 (round 38): because wage garnishment is barred, the standard Texas post-judgment tool is a TURNOVER ORDER and receivership under Tex. Civ. Prac. & Rem. Code § 31.002. This node recognized only 'garnishment of wages vs. of a bank account,' so a turnover order directing the debtor to hand over paycheck proceeds would be labeled 'unconstitutional garnishment.' It is not: turnover cannot reach current wages still in the employer's hands, but Texas courts permit turnover/receivership reaching wages once PAID to the debtor (Beaumont Bank v. Buller line), enforceable by contempt. The debtor's remedy is an exemption objection or appeal of the order -- and defying a valid turnover order risks contempt. Appeared in both backlog runs. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
-        "employer_deductions_not_garnishment_note": "ADDED 2026-09-03 (round 38): an EMPLOYER's own payroll deductions (recouping a signed-for advance, unreturned equipment) and VOLUNTARY written wage assignments/authorized payroll deductions to a lender are not garnishment and are not reached by the constitutional prohibition; they are governed by Tex. Lab. Code § 61.018 (deductions lawful only with written authorization or legal authority) and the Texas Workforce Commission wage-claim process. Pointing such an employee at a constitutional 'garnishment' claim sends her to the wrong remedy. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "bank_account_exempt_deposits_note": "ADDED 2026-09-03 (round 38): for the very common debtor whose only income is Social Security/SSDI/VA benefits, a bank garnishment is NOT 'fair game' -- federal law protects those benefits after deposit and the bank must run a two-month lookback and shield that amount automatically (31 C.F.R. Part 212). The debtor's remedies are the bank's account-review protection plus an exemption claim, not acquiescence. Appeared in both backlog runs.",
+        "turnover_order_note": "ADDED 2026-09-03 (round 38): because wage garnishment is barred, the standard Texas post-judgment tool is a TURNOVER ORDER and receivership under Tex. Civ. Prac. & Rem. Code § 31.002. This node recognized only 'garnishment of wages vs. of a bank account,' so a turnover order directing the debtor to hand over paycheck proceeds would be labeled 'unconstitutional garnishment.' It is not: Tex. Civ. Prac. & Rem. Code § 31.0025 (quoted above) bars any turnover order 'before a judgment debtor is paid wages' -- so a turnover order cannot reach wages still in the employer's hands -- but once wages are PAID to the debtor, turnover/receivership reaching the proceeds is not barred by that section and Texas courts enforce such orders by contempt (Beaumont Bank v. Buller line). PINNED 2026-09-04 (round 39): the unpaid/paid line is now statutory, not just case law. The debtor's remedy is an exemption objection or appeal of the order -- and defying a valid turnover order risks contempt. Appeared in both backlog runs.",
+        "employer_deductions_not_garnishment_note": "ADDED 2026-09-03 (round 38): an EMPLOYER's own payroll deductions (recouping a signed-for advance, unreturned equipment) and VOLUNTARY written wage assignments/authorized payroll deductions to a lender are not garnishment and are not reached by the constitutional prohibition; they are governed by Tex. Lab. Code § 61.018 (deductions lawful only with written authorization or legal authority) and the Texas Workforce Commission wage-claim process. Pointing such an employee at a constitutional 'garnishment' claim sends her to the wrong remedy.",
         "contractual_alimony_caveat": "ADDED 2026-09-03 (round 38): the 'court-ordered spousal maintenance' exception is Chapter 8 statutory maintenance. Purely CONTRACTUAL alimony in an agreed divorce decree, to the extent it exceeds what Chapter 8 would allow, has been treated by Texas courts as an ordinary contract debt NOT enforceable by wage withholding. Case-law gloss, source_tier C, flagged for counsel confirmation."
       },
       "completeness_checklist": [
@@ -329,6 +417,46 @@
             "url": "https://www.law.cornell.edu/uscode/text/26/6321",
             "source_tier": "B",
             "tier_rationale": "Added 2026-08-30 (round 21) to encode the federal-tax-lien override the corroboration pipeline's adversarial check found missing -- this node's exceptions list previously said only 'property tax liens,' which a reasonable reading limits to state/local ad valorem property tax, not federal income tax debt. Federal law is confirmed via well-established Supreme Court precedent (Rodgers) and the statute's plain text; flagged as case-law-dependent (not a bright-line statute alone) and appropriately hedged in the logic note below rather than stated as an automatic seizure right. CORRECTED 2026-09-02 (round 36): quoted_text previously began with the citation label itself (\"26 U.S.C. § 6321: '...'\") baked into the field as if it were part of the verbatim statutory text -- that label obviously never appears on the actual Cornell/uscode.house.gov page, so the citation check failed by construction regardless of whether the underlying quote was accurate. Confirmed via a fresh live fetch of uscode.house.gov, 2026-09-02: the statutory language before the fix's ellipsis point is verbatim-correct and unchanged; only the label wrapper and quote-mark framing were removed, and the Rodgers holding sentence was moved to a parenthetical after the ellipsis (which the citation checker never treats as needing to match verbatim, per the round-24 ellipsis convention)."
+          },
+          {
+            "cite": "11 U.S.C. § 522(b)(3)(A)",
+            "quoted_text": "subject to subsections (o) and (p), any property that is exempt under Federal law, other than subsection (d) of this section, or State or local law that is applicable on the date of the filing of the petition to the place in which the debtor's domicile has been located for the 730 days immediately preceding the date of the filing of the petition or if the debtor's domicile has not been located in a single State for such 730-day period, the place in which the debtor's domicile was located for 180 days immediately preceding the 730-day period or for a longer portion of such 180-day period than in any other place;",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section522&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. "
+          },
+          {
+            "cite": "Tex. Prop. Code § 41.0021(a)-(b)",
+            "quoted_text": "In this section, \"qualifying trust\" means an express trust: (1) in which the instrument or court order creating the express trust, an instrument transferring property to the trust, or any other agreement that is binding on the trustee provides that a settlor or beneficiary of the trust has the right to: (A) revoke the trust without the consent of another person other than a spouse who is also a settlor of the trust; ... (b) Property that a settlor or beneficiary occupies and uses in a manner described by this subchapter and in which the settlor or beneficiary owns a beneficial interest through a qualifying trust is considered the homestead of the settlor or beneficiary under Section 50, Article XVI, Texas Constitution, and Section 41.001.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://texas.public.law/statutes/tex._prop._code_section_41.0021 (mirror of the official source pinned above). ",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-04"
+            }
+          },
+          {
+            "cite": "Tex. Prop. Code § 41.003",
+            "quoted_text": "Temporary renting of a homestead does not change its homestead character if the homestead claimant has not acquired another homestead.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://texas.public.law/statutes/tex._prop._code_section_41.003 (mirror of the official source pinned above). STATUTORY ANCHOR found while pinning -- upgrades the round-38 temporary-absence note from case-law gloss to statute: temporary renting does not change homestead character absent acquisition of another homestead.",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-04"
+            }
+          },
+          {
+            "cite": "Tex. Prop. Code § 52.0012(b)-(c)",
+            "quoted_text": "A judgment debtor may file in the real property records of the county in which the judgment debtor's homestead is located: (1) an affidavit that substantially complies with Subsection (f); and (2) a certificate of mailing that substantially complies with Subsection (g). ... Subject to Subsection (d) and except as provided by Subsection (e), an affidavit filed under Subsection (b) serves as a release of record of a judgment lien established under this chapter.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.52.htm",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://texas.public.law/statutes/tex._prop._code_section_52.0012 (mirror of the official source pinned above). ",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-04"
+            }
           }
         ],
         "citation_verified": true
@@ -365,13 +493,19 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
             "summary": "Added bankruptcy-domicile (730-day), abandonment/temporary-absence, form-of-ownership (41.0021), mechanic's-lien formalities, and abstract-of-judgment title-cloud notes; 5 checklist questions. All 6 backlog findings (both runs) addressed; statutory text NOT pinned this session -- SOURCE PENDING."
+          },
+          {
+            "date": "2026-09-04",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
+            "summary": "Pinned 11 U.S.C. 522(b)(3)(A), Prop. Code 41.0021, 41.003, 52.0012; removed 3 SOURCE PENDING markers; temporary-absence note now statute-anchored. Mechanic's-lien formalities (Tex. Const. art. XVI 50(a)(5)) NOT pinned this session -- marker retained."
           }
         ],
-        "bankruptcy_domicile_rule_note": "ADDED 2026-09-03 (round 38): the bankruptcy_value_cap_note covers § 522(p)'s 1,215-day cap but the more basic rule was missing -- under 11 U.S.C. § 522(b)(3)(A) a debtor domiciled in Texas for fewer than 730 days before filing cannot use Texas exemptions at all and must use the prior state's (or the federal) exemptions. A family that moved from California or Illinois 14 months ago is not 'protected up to $214,000'; it may get only the prior state's much smaller homestead figure or the federal amount. Appeared in both backlog runs. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
-        "abandonment_and_temporary_absence_note": "ADDED 2026-09-03 (round 38): the checklist's 'actual residence' question must not be read as 'currently living there.' Texas homestead status, once established, is lost only by ABANDONMENT -- proven by clear and convincing evidence of intent not to return -- and temporary absence (a job assignment out of state, caring for a parent) or even renting the house out does not forfeit it absent acquisition of a new homestead. Conversely, acquiring a new homestead elsewhere does end protection. Case-law gloss, source_tier C, flagged for counsel confirmation.",
-        "form_of_ownership_note": "ADDED 2026-09-03 (round 38): neither the logic nor the checklist asked WHO holds title. Tex. Prop. Code § 41.0021 preserves the exemption for a home held in a 'qualifying trust' (settlor/beneficiary with a present possessory right to occupy rent-free -- most revocable living trusts); property titled in an LLC, corporation, or non-qualifying trust is not the debtor's homestead and is reachable. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "bankruptcy_domicile_rule_note": "ADDED 2026-09-03 (round 38): the bankruptcy_value_cap_note covers § 522(p)'s 1,215-day cap but the more basic rule was missing -- under 11 U.S.C. § 522(b)(3)(A) a debtor domiciled in Texas for fewer than 730 days before filing cannot use Texas exemptions at all and must use the prior state's (or the federal) exemptions. A family that moved from California or Illinois 14 months ago is not 'protected up to $214,000'; it may get only the prior state's much smaller homestead figure or the federal amount. Appeared in both backlog runs.",
+        "abandonment_and_temporary_absence_note": "ADDED 2026-09-03 (round 38): the checklist's 'actual residence' question must not be read as 'currently living there.' Texas homestead status, once established, is lost only by ABANDONMENT -- proven by clear and convincing evidence of intent not to return -- and temporary absence (a job assignment out of state, caring for a parent) or even renting the house out does not forfeit it absent acquisition of a new homestead. Conversely, acquiring a new homestead elsewhere does end protection. PINNED 2026-09-04 (round 39): the renting-out point is now statutory -- Tex. Prop. Code § 41.003 (quoted above): temporary renting 'does not change its homestead character if the homestead claimant has not acquired another homestead.' The clear-and-convincing-evidence standard for abandonment remains case law.",
+        "form_of_ownership_note": "ADDED 2026-09-03 (round 38): neither the logic nor the checklist asked WHO holds title. Tex. Prop. Code § 41.0021 preserves the exemption for a home held in a 'qualifying trust' (settlor/beneficiary with a present possessory right to occupy rent-free -- most revocable living trusts); property titled in an LLC, corporation, or non-qualifying trust is not the debtor's homestead and is reachable.",
         "mechanics_lien_formalities_note": "ADDED 2026-09-03 (round 38): the 'home-improvement liens contracted in writing' exception is not self-executing. Tex. Const. art. XVI, § 50(a)(5) requires the contract to be in writing, signed by BOTH spouses if the owner is married, executed before any work is performed or material furnished, and (for homesteads) to satisfy the cooling-off and closing-location formalities; a defectively executed contract does not create an enforceable lien against the homestead. Defective execution is the most common defense in these disputes. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
-        "abstract_of_judgment_title_cloud_note": "ADDED 2026-09-03 (round 38): 'the homestead is exempt' does not mean an old recorded abstract of judgment is harmless -- it clouds title and title companies commonly refuse to close a sale until it is addressed. The mechanism is the homestead affidavit as release of judgment lien under Tex. Prop. Code § 52.0012 (notice to the judgment creditor, 30-day objection window). A seller should be told about this procedure, not just that the equity is protected. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]"
+        "abstract_of_judgment_title_cloud_note": "ADDED 2026-09-03 (round 38): 'the homestead is exempt' does not mean an old recorded abstract of judgment is harmless -- it clouds title and title companies commonly refuse to close a sale until it is addressed. The mechanism is the homestead affidavit as release of judgment lien under Tex. Prop. Code § 52.0012 (notice to the judgment creditor, 30-day objection window). A seller should be told about this procedure, not just that the equity is protected."
       },
       "completeness_checklist": [
         {
@@ -525,6 +659,27 @@
               "note": "statutes.capitol.texas.gov is a client-rendered SPA that intermittently serves a generic navigation shell to a plain HTTP GET (documented in this corpus since round 17; the live runner got the shell for every chapter-42 and chapter-1108 citation in run_20260902T185148Z.json, word_overlap 0.06-0.21). This entry's quoted_text was rewritten in round 36 against a fetch that DID return the full real statute text (2026-09-02) and matches it verbatim. Recorded here per the existing manual_verification convention used for this domain elsewhere in this file; confirmation by Claude (Cowork), not yet independently re-confirmed by Andy.",
               "date": "2026-09-02"
             }
+          },
+          {
+            "cite": "42 U.S.C. § 407(a)",
+            "quoted_text": "The right of any person to any future payment under this subchapter shall not be transferable or assignable, at law or in equity, and none of the moneys paid or payable or rights existing under this subchapter shall be subject to execution, levy, attachment, garnishment, or other legal process, or to the operation of any bankruptcy or insolvency law.",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section407&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Social Security anti-alienation -- 'none of the moneys paid or payable ... shall be subject to execution, levy, attachment, garnishment, or other legal process.'"
+          },
+          {
+            "cite": "31 C.F.R. § 212.6(a), (c); § 212.3 (lookback period)",
+            "quoted_text": "The financial institution shall immediately calculate and establish the protected amount for an account. The financial institution shall ensure that the account holder has full and customary access to the protected amount, which the financial institution shall not freeze in response to the garnishment order. An account holder shall have no requirement to assert any right of garnishment exemption prior to accessing the protected amount in the account. ... A protected amount calculated and established by a financial institution pursuant to this section shall be conclusively considered to be exempt from garnishment under law. ... Lookback period means the two month period that begins on the date preceding the date of account review and ends on the corresponding date of the month two months earlier, or on the last date of the month two months earlier if the corresponding date does not exist.",
+            "url": "https://www.ecfr.gov/current/title-31/subtitle-B/chapter-II/subchapter-A/part-212/section-212.6",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. The bank's automatic protection of two months of directly-deposited federal benefits, no claim required. Verified via the Cornell LII eCFR mirror; url pinned to eCFR."
+          },
+          {
+            "cite": "11 U.S.C. § 522(b)(3)(A)",
+            "quoted_text": "subject to subsections (o) and (p), any property that is exempt under Federal law, other than subsection (d) of this section, or State or local law that is applicable on the date of the filing of the petition to the place in which the debtor's domicile has been located for the 730 days immediately preceding the date of the filing of the petition or if the debtor's domicile has not been located in a single State for such 730-day period, the place in which the debtor's domicile was located for 180 days immediately preceding the 730-day period or for a longer portion of such 180-day period than in any other place;",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section522&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. The 730-day bankruptcy domicile rule."
           }
         ],
         "citation_verified": true
@@ -583,14 +738,20 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
             "summary": "Added the enumerated-list threshold gate (from § 42.002(a) text already verified in this node) -- cash/bank/brokerage/boats are not exempt regardless of the cap; added federal-benefits-in-bank-accounts, independent-contractor, and bankruptcy-domicile notes; cross-referenced the wage node's federal carve-outs; 4 checklist questions. All 6 backlog findings (both runs) addressed; 42 U.S.C. 407 / 31 CFR 212 / 11 U.S.C. 522(b)(3)(A) text NOT pinned this session -- SOURCE PENDING."
+          },
+          {
+            "date": "2026-09-04",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
+            "summary": "Pinned 42 U.S.C. 407(a), 31 CFR 212.6/212.3, and 11 U.S.C. 522(b)(3)(A); removed 2 SOURCE PENDING markers. Independent-contractor receivables remains a case-law gloss."
           }
         ],
         "current_wages_deposit_note": "The unlimited 'current wages' exemption above protects wages only while they remain unpaid, owed compensation for personal service. Once wages are actually paid and deposited into a bank account, Texas case law treats them as losing their 'current wages' character upon deposit and commingling with other funds (subject to limited tracing arguments for a debtor who can show the specific funds are traceable wages, e.g. a single recent, unmingled direct deposit). Bank-account garnishment -- not wage garnishment itself, which Texas separately prohibits outright for ordinary debts -- is the single most common real-world Texas debt-collection scenario, and this node's flat 'current wages are exempt in unlimited amount' framing should not be read to mean a bank account holding a recently-deposited paycheck is automatically fully protected.",
         "family_definition_note": "The 'family or single-adult-not-in-family' checklist distinction that sets the $100,000 vs. $50,000 cap is not simply about marital status. Under Texas case law, a 'family' for homestead/exemption purposes includes a head of household who lives with and has a legal or moral obligation to support dependents -- e.g., an unmarried or divorced parent supporting minor children in the home -- even without a spouse. Taking a debtor's self-description as 'single' at face value, without asking about dependents living with and supported by them, can wrongly apply the lower $50,000 cap to someone actually entitled to the $100,000 family cap.",
         "enumerated_list_gate_note": "ADDED 2026-09-03 (round 38) -- THRESHOLD, and the most consequential gap in this node: the $100,000/$50,000 aggregate cap applies ONLY to property that is on the § 42.002(a) list quoted above (home furnishings and heirlooms, provisions for consumption, farm/ranch vehicles and implements, tools/equipment/books/apparatus of a trade or profession, clothing, jewelry (capped), two firearms, athletic and sporting equipment, one motor vehicle per licensed family member, the listed animals, and household pets). Anything NOT on that list is NOT exempt under this chapter at all, no matter how far under the cap the debtor's total is: CASH, BANK DEPOSITS, brokerage/stock/crypto holdings, tax refunds, accounts receivable, and recreational items such as boats are 100% reachable (subject only to OTHER specific exemptions -- e.g. the unlimited categories above, and the federal-benefit protections flagged below). This node previously framed the analysis as 'aggregate value under the cap = exempt,' which would tell a debtor with $36,000 in savings and brokerage accounts that everything is protected. Bank garnishment is the single most common Texas judgment-collection scenario, so the prior framing ran in the dangerous direction for the modal user.",
-        "federal_benefits_in_bank_accounts_note": "ADDED 2026-09-03 (round 38): the current_wages_deposit_note's 'deposited funds generally lose exempt character' point must NOT be applied to federal benefits. Social Security (42 U.S.C. § 407) and VA benefits (38 U.S.C. § 5301) remain exempt after deposit, and the Treasury rule at 31 C.F.R. Part 212 requires the bank receiving a garnishment order to protect, automatically and without any claim by the debtor, two months' worth of directly-deposited federal benefits. Elderly and disabled debtors are a large share of Texas garnishment targets; the checklist never asked the source of deposited funds. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "federal_benefits_in_bank_accounts_note": "ADDED 2026-09-03 (round 38): the current_wages_deposit_note's 'deposited funds generally lose exempt character' point must NOT be applied to federal benefits. Social Security (42 U.S.C. § 407) and VA benefits (38 U.S.C. § 5301) remain exempt after deposit, and the Treasury rule at 31 C.F.R. Part 212 requires the bank receiving a garnishment order to protect, automatically and without any claim by the debtor, two months' worth of directly-deposited federal benefits. Elderly and disabled debtors are a large share of Texas garnishment targets; the checklist never asked the source of deposited funds.",
         "independent_contractor_receivables_note": "ADDED 2026-09-03 (round 38): the unlimited 'current wages for personal services' category protects an EMPLOYEE's unpaid wages. Texas courts distinguish those from an independent contractor's accounts receivable, commissions, and owner draws, which are generally NOT 'current wages' and can be garnished in the payor's hands. A gig/1099 worker should not be told unpaid invoices are exempt. Case-law gloss, source_tier C, flagged for counsel confirmation.",
-        "bankruptcy_domicile_rule_note": "ADDED 2026-09-03 (round 38): in BANKRUPTCY, a debtor domiciled in Texas for fewer than 730 days before filing cannot use Texas exemptions at all -- 11 U.S.C. § 522(b)(3)(A) requires the exemptions of the state of prior domicile (or the federal set), so the $100,000 cap and the unlimited retirement exemption may be unavailable to a recent transplant. Same rule flagged on TX-HOMESTEAD-EXEMPTION. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]"
+        "bankruptcy_domicile_rule_note": "ADDED 2026-09-03 (round 38): in BANKRUPTCY, a debtor domiciled in Texas for fewer than 730 days before filing cannot use Texas exemptions at all -- 11 U.S.C. § 522(b)(3)(A) requires the exemptions of the state of prior domicile (or the federal set), so the $100,000 cap and the unlimited retirement exemption may be unavailable to a recent transplant. Same rule flagged on TX-HOMESTEAD-EXEMPTION."
       },
       "completeness_checklist": [
         {
@@ -679,6 +840,13 @@
             "url": "https://texaslawhelp.org/guide/how-to-answer-a-debt-collection-case-in-justice-court",
             "source_tier": "D",
             "sourcing_note": "Secondary-source corroboration, not independently pulled from the primary TRCP text this session. Per TexasLawHelp.org (Texas Legal Services Center, a 501(c)(3) legal-aid nonprofit; guide last legally reviewed 2024-03-18, last edited 2026-08-05)."
+          },
+          {
+            "cite": "Tex. R. Civ. P. 99(b)",
+            "quoted_text": "The citation shall direct the defendant to file a written answer to the plaintiff's petition on or before 10:00 a.m. on the Monday next after the expiration of twenty days after the date of service thereof.",
+            "url": "https://rulesofcivilprocedure.com/tx/rule-99/",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Source is the rulesofcivilprocedure.com reproduction of the official Texas Rules (same source the corpus already uses for TRCP 329b); official text at txcourts.gov."
           }
         ],
         "citation_verified": false
@@ -689,7 +857,7 @@
         "weekend_holiday_rule": "extends to the next business day if the 14th day falls on a weekend or court holiday",
         "jurisdictional_ceiling": 20000,
         "note_re_sourcing": "This node's fact figures (14 days, $20,000 ceiling) are corroborated by a reputable attorney-reviewed legal-aid source (TexasLawHelp/TLSC), NOT yet independently verified against the primary Texas Rules of Civil Procedure text itself. Per spec §3(a), grounded corroboration requires derivation from primary source text; this node does not yet meet that bar and should be treated as lower-confidence than the other TX nodes in this file until the primary TRCP 502.5 text is independently pulled and cited verbatim.",
-        "which_court_is_dispositive_note": "ADDED 2026-09-03 (round 38): the checklist used 'amount claimed <= $20,000' as a proxy for justice-court jurisdiction, but county courts at law and district courts have CONCURRENT jurisdiction over small debt claims and debt buyers routinely file there, especially in urban counties. In those courts the answer deadline is Tex. R. Civ. P. 99(b) -- 10:00 a.m. on the Monday next after the expiration of 20 days from service -- not 14 days. The dispositive fact is WHICH COURT is named on the citation, not the dollar amount. A county-court defendant on day 16 told 'your deadline passed' may abandon a timely defense. Appeared in both backlog runs. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "which_court_is_dispositive_note": "ADDED 2026-09-03 (round 38): the checklist used 'amount claimed <= $20,000' as a proxy for justice-court jurisdiction, but county courts at law and district courts have CONCURRENT jurisdiction over small debt claims and debt buyers routinely file there, especially in urban counties. In those courts the answer deadline is Tex. R. Civ. P. 99(b) -- 10:00 a.m. on the Monday next after the expiration of 20 days from service -- not 14 days. The dispositive fact is WHICH COURT is named on the citation, not the dollar amount. A county-court defendant on day 16 told 'your deadline passed' may abandon a timely defense. Appeared in both backlog runs.",
         "late_answer_before_default_note": "ADDED 2026-09-03 (round 38): the 14-day date is not a hard cutoff for a defendant who has already missed it. In Texas practice a default judgment cannot be entered while an answer is on file, so a LATE answer filed at any time before the court signs a default judgment is effective and defeats the default. For the very common 'I already missed it' caller, the single most consequential instruction is: file an answer immediately, today. This node previously presented the deadline as the end of the road. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
         "drafting_revisions": [
           {
@@ -697,6 +865,12 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
             "summary": "Replaced the dollar-amount proxy with a which-court checklist question (TRCP 99 vs. 502.5); added late-answer-before-default note + question. Both backlog findings (both runs) addressed; TRCP 99 text NOT pinned this session -- SOURCE PENDING."
+          },
+          {
+            "date": "2026-09-04",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
+            "summary": "Pinned TRCP 99(b) (county/district-court answer deadline). Late-answer-before-default remains a practice note (no single rule text quoted); marker retained."
           }
         ]
       },

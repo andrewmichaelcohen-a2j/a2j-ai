@@ -46,6 +46,8 @@ Every component below is built and operated subject to this invariant without ex
 
 ## D-4 — Standing adversarial self-critique
 
+**Status update 2026-09-04 (round 39):** D-4 is **built and reclassified** — the debt track's Stage B adversarial check is the standing self-critique generator, ratified by Andy as feeding a disposition queue rather than gating CLEAN-PASS on its own. See `DEBT_PROJECT_ARCHITECTURE_SPEC.md` §2 (CLEAN-PASS definition) and §8 (demo gate). Queue of record: `DEBT_STAGE_B_TRIAGE.md`. The runner does not yet carry dispositions; that is the next runner-only round.
+
 **What it does:** generalizes proposal 16's one-off self-critique pass into a scheduled lane. Models generate novel fact patterns targeting encoded rules' edges — thresholds, exemptions, compound defects, day-count boundaries — flag where the rules produce uncertain or conflicting outcomes, and file candidate golden-set items plus rule-gap hypotheses for review. This is the literal meaning of "AI-generated stress testing" in the public two-pager.
 
 **Why:** proposal 16 already demonstrated the method works (§1946.2(a)(2) attachment-threshold pass, extended to the SB 1103 assessment) — D-4 is that method run on a cadence instead of once.

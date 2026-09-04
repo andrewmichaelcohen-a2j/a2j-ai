@@ -82,6 +82,20 @@
             "url": null,
             "source_tier": "D",
             "tier_rationale": "Added 2026-08-30 (round 22) -- Peralta is a controlling U.S. Supreme Court due-process holding (confirmed via WebSearch of multiple case-law summaries and the restricted-appeal/bill-of-review deadline sources this session), but the surrounding Texas procedural mechanics (restricted appeal, bill of review) are commentary/secondary-source-confirmed rather than independently fetched from a primary Texas court rules site this session -- tagged D, corroboration only, flagged for live verification rather than treated as fully primary-sourced. This is squarely a BAND 3 addition: it does not predict any outcome, it only names an additional remedy path and its own deterministic filing deadlines, consistent with this node's existing 'what_the_system_may_say' discipline."
+          },
+          {
+            "cite": "Tex. R. Civ. P. 510.8(e)",
+            "quoted_text": "(e) No Motion For New Trial. No motion for new trial may be filed.",
+            "url": "https://www.stcl.edu/lib/TexasRulesProject/TRCP474-522/rule510-82013.html",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Eviction cases: no motion for new trial. Same stcl.edu Texas Rules Project source as this node's TRCP 505.3 entry."
+          },
+          {
+            "cite": "Tex. R. Civ. P. 510.9(a)",
+            "quoted_text": "(a) How Taken; Time. A party may appeal a judgment in an eviction case by filing a bond, making a cash deposit, or filing a sworn statement of inability to pay with the justice court within 5 days after the judgment is signed.",
+            "url": "https://www.stcl.edu/lib/TexasRulesProject/TRCP474-522/rule510-92013.html",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Eviction appeal must be perfected within 5 days after the judgment is signed."
           }
         ],
         "citation_verified": true,
@@ -119,9 +133,15 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "run_20260902T185148Z.json + run_20260903T174510Z.json (Stage B backlog triage, offline -- see docs/DEBT_STAGE_B_TRIAGE.md)",
             "summary": "Added the eviction carve-out (TRCP 510.8/510.9) as a threshold question and broadened the restricted-appeal / bill-of-review paths beyond service defects. Both backlog findings (both runs) addressed; TRCP 510 text NOT pinned this session -- SOURCE PENDING."
+          },
+          {
+            "date": "2026-09-04",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
+            "summary": "Pinned TRCP 510.8(e) and 510.9(a); removed the SOURCE PENDING marker on the eviction carve-out. Restricted-appeal scope remains a case-law gloss."
           }
         ],
-        "eviction_carve_out_note": "ADDED 2026-09-03 (round 38) -- CASE-ENDING if missed: the justice-court branch (TRCP 505.3, 14 days) does NOT apply to an EVICTION (forcible detainer) default. Eviction cases are governed by TRCP 510, which controls over the general justice-court rules; TRCP 510.8(e) bars a motion for new trial in an eviction case, and the operative remedy is an appeal (bond, cash deposit, or sworn statement of inability) within FIVE days of the judgment under TRCP 510.9, after which a writ of possession can issue. Directing an evicted tenant to a 14-day motion blows the 5-day deadline. Appeared in both backlog runs. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "eviction_carve_out_note": "ADDED 2026-09-03 (round 38) -- CASE-ENDING if missed: the justice-court branch (TRCP 505.3, 14 days) does NOT apply to an EVICTION (forcible detainer) default. Eviction cases are governed by TRCP 510, which controls over the general justice-court rules; TRCP 510.8(e) bars a motion for new trial in an eviction case, and the operative remedy is an appeal (bond, cash deposit, or sworn statement of inability) within FIVE days of the judgment under TRCP 510.9, after which a writ of possession can issue. Directing an evicted tenant to a 14-day motion blows the 5-day deadline. Appeared in both backlog runs.",
         "restricted_appeal_not_limited_to_service_defects_note": "ADDED 2026-09-03 (round 38): this node offered the restricted appeal (Tex. R. App. P. 30, six months) and the bill of review only in the 'defective/no service' branch. That is too narrow. A restricted appeal requires only that the party did not participate in the hearing, filed within six months, and that error is apparent on the face of the record -- defective service is merely the most common such error; an unsupported unliquidated-damages award, a facially defective return of service, or a missing TRCP 239a certificate qualify equally. And a bill of review (four years) is available to a validly-served defendant who never received notice of the judgment through no fault of her own (e.g. the clerk never mailed the TRCP 306a notice and she learned of it only via garnishment months later), with a potentially lower showing than the ordinary Baker v. Goldsmith elements. As encoded, a consumer who concedes service but was hit with an inflated default months ago would be told no path remains. Case-law gloss, source_tier C, flagged for counsel confirmation."
       },
       "completeness_checklist": [

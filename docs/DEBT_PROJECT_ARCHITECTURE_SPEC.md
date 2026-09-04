@@ -67,6 +67,18 @@ Extends the existing rules-JSON format (`SCHEMA_V2_DESIGN_SPEC.md` in the evicti
 - **Confidence tiers per node.** `VALIDATED` / `CORROBORATED` / `DRAFT`, traveling with each node, visible at runtime. A single release will plausibly ship with federal-spine nodes at VALIDATED and a newly-added state's garnishment table at CORROBORATED simultaneously — tier is a node property, not a file property.
 - **Completeness checklists per node (the elicitation engine).** Drives the guided-interview / voice-demo layer in §5.
 - **Consequences-and-next-steps fields.** Never a bare classification — "and here is what to file, by when," structurally required, not prose.
+- **CLEAN-PASS and the disposition queue — RATIFIED 2026-09-04 (Andy, round 39 directive).** A node is
+  CLEAN-PASS when (i) Stage A three-model grounded agreement holds, (ii) every citation that has a url
+  verifies live (or carries a recorded `manual_verification`), and (iii) it has **zero undispositioned
+  material Stage B findings**. "Zero Stage B findings" is no longer the criterion — an adversarial model
+  asked for edge cases will produce edge cases indefinitely, and rounds 35–38 showed the findings are
+  stable across runs (real), not noise. Stage B is reclassified as the **standing finding generator
+  (Direction D-4)** feeding a disposition queue; each finding is dispositioned by a human or by a
+  content round as FIXED-VERIFIED / FIXED-PENDING-SOURCE / GLOSS-FOR-COUNSEL / COVERED / OUT-OF-SCOPE /
+  HORIZON (`docs/DEBT_STAGE_B_TRIAGE.md` is the queue of record until the runner carries it). "Material"
+  means `realistic_and_common` AND `would_cause_wrong_answer`; dangerous-direction findings (the node
+  would tell a consumer they are safe / have no claim / are out of time when the opposite is true) are
+  dispositioned first. Stage B parse health is reported alongside, never folded into the pass rate.
 - **Jurisdiction resolution as a first-class input.** Resolved once, early, gating everything downstream — a national product can't resolve jurisdiction per-file the way the eviction line does.
 
 ---
@@ -443,6 +455,32 @@ visible throughout, no exceptions.
 | Evidence basis | Permitted claim language | Prohibited |
 |---|---|---|
 | CONCEPT-DEMO (grounded-agreement rate + scenario pass rate, both machine-measured, §3a/b/d evidence only) | "X% three-model grounded agreement across the demo corpus" and "Y of Z scenarios passing against corroborated rules" — always both numbers with their basis in the same breath | Any bare "X% accurate"; any claim implying attorney validation; any population-accuracy claim; any "validated," "near-perfect," five-nines, or 99%-target language — that language activates only when Phase D actually runs, which is deferred for the concept demo. |
+
+
+### Demo gate — RATIFIED redefinition (2026-09-04, round 39)
+
+The internal readiness gate for any concept-demo showing is now three numbers reported together, not
+one blended number and not "zero Stage B findings":
+
+| Gate component | Threshold | Basis |
+|---|---|---|
+| Stage A grounded agreement | ≥ 90% of demo-corpus nodes | three independent models derive the same rule from the cited text; LLM-judged semantic agreement |
+| Citation verification | ≥ 90% of demo-corpus nodes | every url-bearing citation on the node verifies as a live substring match, or carries a recorded `manual_verification`; url-less doctrine citations are not counted against the node (round 35) |
+| Undispositioned material Stage B findings | **0** across the demo corpus | every `realistic_and_common` + `would_cause_wrong_answer` finding has a recorded disposition in the queue of record |
+| Stage B parse health | reported, not gated | infrastructure signal (truncation / empty completion); a parse failure means the node cannot be counted as fully checked this run |
+
+**Claim card — concept-demo row, amended.** Permitted claim language now includes, with its basis in
+the same breath: *"N adversarial findings surfaced and dispositioned, dangerous-direction first"* —
+where N is the count in `docs/DEBT_STAGE_B_TRIAGE.md` (58 as of round 38), "dispositioned" means every
+one carries a classification and either a fix, a pinned source, a counsel flag, or an explicit
+out-of-scope/horizon reason, and "dangerous-direction first" is literally the sort order of the triage
+table. Prohibited: describing the corpus as having "no gaps," "passed adversarial review," or any
+phrasing implying the finding generator has been exhausted — it is a standing generator by design.
+The framing sentence for showings gains one clause after "citations verified against live sources":
+*"…, adversarially stress-tested with every material finding dispositioned in the open, …"*.
+
+Runner implementation of the disposition-aware gate is a runner-only round (one-variable rule); until
+it lands, the gate is computed from the run JSON plus the triage table by hand and stated as such.
 
 **Audience discipline:** concept-demo showings are for Andy-selected audiences only (friendlies,
 partners, funders, labs) — not press, not consumers, not a public link. This is a narrower

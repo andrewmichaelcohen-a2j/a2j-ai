@@ -2,6 +2,49 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-04, round 39 (content + docs: pin the round-38 sources; gate redefinition ratified into spec §2/§8)
+
+**Sequencing, per Andy:** round 39 lands first, then smoke, then the full run -- the run is the measurement of
+the fixed corpus, not a to-do generator mid-fix.
+
+**Source pinning.** Web fetch recovered. 34 of round 38's 37 `[SOURCE PENDING]` items are now quoted verbatim
+from a fetched source and carry `derived_from` entries: 15 U.S.C. 1692k(d), 1692g(d), 1692g(b) final sentence,
+1692e(8), 1681c(a)(4)/(c)(1); 12 CFR 1006.6(a), 1006.38(b)(1)/(c); 11 U.S.C. 522(b)(3)(A); 42 U.S.C. 407(a);
+31 CFR 212.6/212.3; TRCP 94, 99(b), 510.8(e), 510.9(a); CPRC 16.065, 34.001, 31.006, 31.0025; Fin. Code
+392.307(c)-(d); Prop. Code 41.0021, 41.003, 52.0012; Lab. Code 61.018; CCP 415.30, 585(a), 473(b),
+703.520, 706.050(b), 706.051, 704.720; Civ. Code 1788.2(c), 1788.17; TransUnion v. Ramirez and Rotkiske v.
+Klemm (Cornell LII). Texas statutes are pinned to the official url with `manual_verification` recording the
+public.law mirror (the official site served its SPA shell again); three CCP sections that carry an "operative
+until Jan. 1, 2027" note get `manual_verification` because leginfo serves a multiple-versions page for them
+(that is also why 415.20 failed the last live run at 0.31 overlap). Fixed the 704.070 stray-comma transcription
+the last run caught.
+
+**Pinning caught six errors in round 38's own notes** -- the reason the pending-source discipline exists:
+703.520's deadline is 15/20 days (not 10); 706.050(b)'s multipliers are in the statute (96/104/208 hours), not
+Judicial-Council-prescribed; Fin. Code 392.307 is a debt-buyer rule, not a rule for every creditor; a Texas
+judgment goes dormant without a writ within 10 years and is revivable for 2 (not "renewable indefinitely");
+Reg F 1006.38 keys disputes to a writing, so the oral-dispute point rests on 1692e(8) alone; CCP 704.720(b)
+is forced-sale/insurance proceeds, voluntary-sale proceeds are the declared-homestead rule (704.960). Each is
+corrected in the file with a dated CORRECTED marker. Also one carve-out: Rosenthal (1788.17) does not reach
+original creditors for 1692e(11) or 1692g.
+
+**Counsel review list shrinks from 11 to 6.** Five glosses became statute- or Supreme-Court-anchored:
+TransUnion and Rotkiske (quoted), TX temporary absence (Prop. Code 41.003), TX turnover of paid wages (CPRC
+31.0025), Rosenthal reach (1788.2(c)). Still for counsel: Resurgence v. Chambers, Abramson/Heritage (CCP 351),
+the 8th-Circuit envelope split, pay-to-pay fees, contractual alimony, TX restricted-appeal scope, IC
+receivables, installment accrual. Still named-only (3): CA fee waiver, TX mechanic's-lien formalities, TX
+late-answer practice rule.
+
+**Gate redefinition ratified (Andy, 2026-09-04) -- written into spec §2 and §8 and the claim card.** CLEAN-PASS
+and the demo gate now require Stage A >= 90%, citation verification >= 90%, and ZERO UNDISPOSITIONED MATERIAL
+Stage B findings, with parse health reported alongside. Stage B is reclassified as the standing finding
+generator (D-4, marked built in `DIRECTION_D_ROADMAP.md`) feeding the disposition queue
+(`DEBT_STAGE_B_TRIAGE.md` is the queue of record). New permitted demo claim: "N findings surfaced and
+dispositioned, dangerous-direction first," with its basis. The runner does not yet compute the
+disposition-aware gate -- that is round 40 (runner-only), before the full run.
+
+**Verification:** schema, frozen artifacts, calibration (10/10) all PASS; patch verified via `git am --3way`
+on a fresh clone. No live run this round.
 ## 2026-09-03, round 38 (content-only, OFFLINE: triage + fix the entire Stage B adversarial backlog -- no live run spent)
 
 **Why this round exists.** Andy asked whether the last several live runs were productive. They were not: the

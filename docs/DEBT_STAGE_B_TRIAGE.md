@@ -80,8 +80,24 @@ claim / are out of time when the opposite is true. These were prioritized.
 | TX-JUSTICE-COURT-ANSWER | Dollar amount used as proxy for court; county/district = TRCP 99 | FIXED-PENDING-SOURCE | yes | Checklist item replaced |
 | TX-JUSTICE-COURT-ANSWER | Late answer before default signed still works | FIXED-PENDING-SOURCE | yes | Note + checklist |
 
-**Totals:** 58 findings dispositioned. FIXED-VERIFIED 9 · FIXED-PENDING-SOURCE 37 · GLOSS-FOR-COUNSEL 11 ·
-COVERED 1 · unreadable 1. (Some rows bundle the same finding across two runs or three nodes.)
+**Totals (round 38):** 58 findings dispositioned. FIXED-VERIFIED 9 · FIXED-PENDING-SOURCE 37 · GLOSS-FOR-COUNSEL 11 ·
+COVERED 1 · unreadable 1.
+
+**Round 39 update (2026-09-04, sources pinned):** of the 37 FIXED-PENDING-SOURCE rows, **34 are now FIXED-VERIFIED**
+(statutory/regulatory text quoted verbatim from a fetched source). Still named-only (3): CA filing fee / fee
+waiver (Gov. Code 70611, 68631); TX mechanic's-lien homestead formalities (Tex. Const. art. XVI § 50(a)(5)); TX
+late-answer-before-default (practice rule, no single text). Of the 11 GLOSS-FOR-COUNSEL rows, **5 are now
+statute- or Supreme-Court-anchored** and drop off the counsel list: TransUnion (quoted), Rotkiske (quoted), TX
+temporary-absence (Prop. Code 41.003), TX turnover of paid wages (CPRC 31.0025), Rosenthal reach (Civ. Code
+1788.2/1788.17). **Remaining for counsel (6):** Resurgence v. Chambers (CA choice-of-law clauses); Abramson /
+Heritage (CCP 351); 8th-Cir. envelope split; pay-to-pay fee split; contractual alimony vs. Ch. 8; TX
+restricted-appeal scope; independent-contractor receivables; installment accrual (CA/TX). Pinning also caught
+**six errors in round 38's own notes**, each now corrected in the file: CCP 703.520's claim-of-exemption deadline
+is 15/20 days, not 10; CCP 706.050(b)'s multipliers are statutory (96/104/208 hours), not Judicial-Council;
+Fin. Code 392.307 is debt-buyer-specific; a Texas judgment goes dormant without a writ within 10 years, it is not
+'renewable indefinitely'; Reg F 1006.38 keys disputes to a writing (the oral-dispute point rests on 1692e(8)
+alone); CCP 704.720(b) covers forced-sale/insurance proceeds, voluntary-sale proceeds are the declared-homestead
+rule. Plus one carve-out: Rosenthal does not reach original creditors for 1692e(11)/1692g. (Some rows bundle the same finding across two runs or three nodes.)
 
 **What "pending source" means for you.** Every pending item is a screening *question* the system now asks
 plus a note that names the governing provision. None of them quotes statutory text as verified. They change
