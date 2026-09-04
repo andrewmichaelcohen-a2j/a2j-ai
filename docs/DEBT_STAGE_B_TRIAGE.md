@@ -101,6 +101,28 @@ rule. Plus one carve-out: Rosenthal does not reach original creditors for 1692e(
 
 **Round 40 (2026-09-04, runner):** this table now has a machine-readable twin at `rules/debt/validation/stage_b_dispositions.json` (one entry per row per node, ids `D-<node_id>-NN`, classifications as updated by round 39: FIXED-VERIFIED 48 · GLOSS-FOR-COUNSEL 9 · FIXED-SOURCE-NAMED 3 · COVERED 1; the unreadable row is omitted). The corroboration runner feeds a node's entries into Stage B and counts only findings the model cannot map to one of them. New findings from future runs get dispositioned here first, then added to the ledger. Keep the two in sync.
 
+**Round 41 (2026-09-04) -- first findings under the disposition-aware gate.** Smoke run `run_20260904T184830Z`
+(3 nodes) produced 3 material findings, all on FDCPA-REGF-CALL-FREQUENCY-1006.14b, which had no ledger entries
+(it was clean in round 38), so all three were correctly NEW; the other two nodes produced no material findings.
+Dispositions (ledger ids `D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-01..04`):
+
+| Node | Finding | Class | DD | What changed |
+|---|---|---|---|---|
+| FDCPA-REGF-CALL-FREQUENCY | One agency, five accounts, ~28 calls/week called "presumptively compliant" | FIXED-VERIFIED (node was RIGHT on the presumption) | yes | Official Interpretation comment 14(b)(4)-2.i confirms per-debt counting; added the rebuttal factors (comment 14(b)(2)(i)-2) as a note, a presumption_type rewrite, and two checklist items |
+| FDCPA-REGF-CALL-FREQUENCY | Consumer's own inbound call never started the 7-day cooldown | FIXED-VERIFIED | yes | Comments 14(b)(2)(i)-1.ii and 14(b)(4)-1.ii pinned; checklist item 2 + cooldown_rule reworded |
+| FDCPA-REGF-CALL-FREQUENCY | Spouse treated as a 1692c(b) third party | FIXED-VERIFIED | no | 1692c(d) + 12 CFR 1006.6(a) pinned; note corrected |
+| FDCPA-REGF-CALL-FREQUENCY | (bonus) unconnected-call exclusion scope | FIXED-VERIFIED | -- | Round-33 UNVERIFIED marker closed from comment 14(b)(3)(ii)-1 |
+
+Source note: the CFPB Official Interpretations (Supplement I to part 1006) are fetchable from the Cornell LII
+eCFR mirror (`law.cornell.edu/cfr/text/12/appendix-Supplement_I_to_part_1006`) even though consumerfinance.gov's
+interpretation pages 403. That unblocks several earlier "interp unverifiable" markers corpus-wide; only this
+node's were closed this round.
+
+Citation-side, the same run confirmed two permanent 403s: mass.gov (940 CMR 7.04 -- re-pinned to the Cornell
+state-regulations mirror) and www4.courts.ca.gov (emergency rule 9 -- PDF-only, so `manual_verification`; the
+checker has no PDF extractor). Stage B parse failure on FDCPA-COVERAGE (empty completion at max_tokens, the
+dominant Stage B failure signature in every run since 09-01) is a runner matter, handled in round 42.
+
 **What "pending source" means for you.** Every pending item is a screening *question* the system now asks
 plus a note that names the governing provision. None of them quotes statutory text as verified. They change
 what the system asks before it answers, which is the safe direction; they do not assert new law as confirmed.

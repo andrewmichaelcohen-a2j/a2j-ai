@@ -10,7 +10,7 @@
       "HORIZON"
     ]
   },
-  "generated": "2026-09-04",
+  "generated": "2026-09-04 (round 40); updated round 41",
   "nodes": {
     "FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6": [
       {
@@ -594,6 +594,44 @@
         "classification": "FIXED-SOURCE-NAMED",
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
+        "date": "2026-09-04"
+      }
+    ],
+    "FDCPA-REGF-CALL-FREQUENCY-1006.14b": [
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-01",
+        "theme": "Multiple accounts with one collector: per-debt count treats ~28 calls/week as presumptively compliant",
+        "summary": "Per-debt counting CONFIRMED correct by Official Interpretation comment 14(b)(4)-2.i (21 calls/3 debts/7 days presumed compliant); added multi_debt_aggregate_volume_note, rebuttal-factor checklist items and presumption_type rewrite from comment 14(b)(2)(i)-2 so the aggregate pattern is surfaced as a rebuttal case rather than a bare 'compliant'",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T184830Z (round 41)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-02",
+        "theme": "Consumer-initiated telephone conversation not treated as starting the 7-day cooldown; checklist gathered outbound calls only",
+        "summary": "Checklist item 2 reworded; cooldown_rule clarified; comments 14(b)(2)(i)-1.ii and 14(b)(4)-1.ii pinned ('regardless of which party initiated')",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T184830Z (round 41)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-03",
+        "theme": "Spouse (and parent of minor / guardian / executor / administrator) treated as a 1692c(b) third party",
+        "summary": "1692c(d) and 12 CFR 1006.6(a) pinned; third_party_communication_note corrected; checklist item reworded to test 1692c(d) status first",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no (over-warns the consumer; misdirects the claim)",
+        "source": "run_20260904T184830Z (round 41)",
+        "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-04",
+        "theme": "'Not connected to the dialed number' exclusion scope (unanswered / voicemail calls count)",
+        "summary": "Round-33 UNVERIFIED reading confirmed and pinned from comment 14(b)(3)(ii)-1",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "n/a (pre-existing marker closed)",
+        "source": "round 41",
         "date": "2026-09-04"
       }
     ]

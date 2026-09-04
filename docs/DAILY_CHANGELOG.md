@@ -2,6 +2,46 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-04, round 41 (content: first findings under the disposition-aware gate; two permanent-403 citations re-pinned)
+
+**What changed since round 40:** rules content only (two files) + ledger + triage doc. No runner change.
+
+**Smoke run `run_20260904T184830Z` (3 nodes, round 40 runner):** 0/3 CLEAN-PASS, but every flag has a cause:
+Stage A 100%; citation failures = mass.gov 403 and www4.courts.ca.gov 403 (both permanent, both every run since
+09-02); Stage B = 3 material findings, all NEW (the call-frequency node had no ledger entries), plus one
+empty-completion parse failure (runner, round 42). The gate did what it was built to do: 0 matched dispositions
+because there were none to match on that node, and the two nodes that DID have ledger entries produced nothing
+material.
+
+**FDCPA-REGF-CALL-FREQUENCY-1006.14b** (all from the CFPB Official Interpretations, Supplement I to part 1006,
+fetched verbatim from the Cornell LII eCFR mirror -- consumerfinance.gov 403s but Cornell serves it):
+- Multi-account volume: the node's per-debt count is CORRECT -- comment 14(b)(4)-2.i presumes compliance for 21
+  calls in 7 days across three debts. Added `multi_debt_aggregate_volume_note`, rewrote `presumption_type` from
+  comments 14(b)(2)(i)-2 / 14(b)(2)(ii)-2 (rebuttal factors both ways), two checklist items (aggregate
+  pattern; prior-communication content). Output for a heavy aggregate pattern is now "presumptively compliant --
+  rebuttable; refer" rather than bare "compliant".
+- Consumer-initiated conversation starts the 7-day cooldown (comments 14(b)(2)(i)-1.ii, 14(b)(4)-1.ii):
+  checklist item 2 and `cooldown_rule` reworded.
+- Spouse is the "consumer" for all of 1692c (15 U.S.C. 1692c(d); 12 CFR 1006.6(a), both pinned from the
+  coverage node's verified entries): `third_party_communication_note` corrected; checklist item reworded.
+- Bonus: comment 14(b)(3)(ii)-1 pinned -- closes the round-33 UNVERIFIED marker on "not connected" calls
+  (unanswered and voicemail calls count; only busy/not-in-service are unconnected).
+- 940 CMR 7.04(1)(f) re-pinned to `law.cornell.edu/regulations/massachusetts/940-CMR-7-04` (identical text,
+  re-verified; quote trimmed to end before an inline link).
+
+**CA-SOL-WRITTEN-CONTRACT-DEBT:** emergency rule 9(a) entry moved to the Judicial Council's May 28, 2020
+amendment-order PDF (`courts.ca.gov/system/files/rules-court/...`) with `manual_verification` -- the checker
+has no PDF extractor, so no courts.ca.gov url can ever substring-match; text re-read in full this session.
+
+**Ledger:** 4 entries added for the call-frequency node (65 entries / 19 nodes). Triage doc gains a round-41
+table.
+
+**Verification:** schema validator PASS; calibration+replay PASS (unchanged runner); files keep their
+no-trailing-newline convention.
+
+**Next:** round 42 (runner-only) for the Stage B empty-completion signature, then re-smoke the same three nodes,
+then the full run.
+
 ## 2026-09-04, round 40 (runner-only: disposition-aware gate, 529 retry, Stage B headroom, CAL-11)
 
 **What changed since round 39:** runner + calibration set + a new ledger file only. Zero rules-content edits
