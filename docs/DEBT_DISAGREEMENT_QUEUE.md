@@ -13,6 +13,23 @@ the debt track, per the 2026-08-26 Phase-A-Unblock direction item 6.
 ---
 ## Open
 
+### [TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE] ADVERSARIAL-GAP -- run run_20260903T174510Z, 2026-09-03T18:31:07Z
+
+**File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
+**Classification hint (mechanical, not authoritative):** ADVERSARIAL-GAP
+**Evidence:** 2 adversarial edge case(s) flagged as exposing a gap: [{'scenario': 'A debt buyer sues a consumer for $6,400 and files in a statutory county court at law (e.g., Harris County Civil Court at Law) rather than a justice court. The defendant, served by a private process server, checks the amount claimed ($6,400, under $20,000), concludes the justice-court node applies, and is told the answer is due 14 days after service.', 'realistic_and_common': True, 'would_cause_wrong_answer': True, 'exposes_gap': True, 'gap_description': "The checklist uses 'amount claimed ≤ $20,000' as a proxy for justice-court jurisdiction, but county and district courts have concurrent jurisdiction over sub-$20,000 debt claims and debt buyers routinely file there. In those courts the deadline is TRCP 99(b) (answer due by 10:00 a.m. on the Monday next after expiration of 20 days from service), not 14 days. The checklist never asks which court is named on the citation — the actually dispositive fact. A defendant on day 16 of a county-court suit would be told the deadline has passed and may abandon a timely defense."}, {'scenario': 'A consumer was served 25 days ago with a justice-court debt claim, panicked, did nothing, and now asks whether it is worth filing an answer. No default judgment has been entered yet and the plaintiff has not requested one.', 'realistic_and_common': True, 'would_cause_wrong_answer': True, 'exposes_gap': True, 'gap_description': "The node presents the 14-day date as a hard cutoff with no treatment of the post-deadline posture. Under Texas practice a default judgment cannot be entered while an answer is on file, so a late answer filed before default is effective and is the single most consequential piece of advice for the very common 'I already missed it' fact pattern. As encoded, the rule materially misleads such a person into inaction and a default judgment that was avoidable."}]
+
+**Per-model derivation results:**
+  - claude-opus-5: grounded=True, error=None, summary="Under the cited rule text, a defendant's answer in a Texas justice court case must be filed 14 days after the date of service. If that 14th day lands on a weekend or a court holiday, the deadline rolls forward to the next business day. The same excerpt notes that Texas justice courts hear debt claims valued up to $20,000."
+  - gpt-5.5: grounded=True, error=None, summary='In a Texas justice court debt-collection lawsuit, the answer is due 14 days after the date the defendant is served. If the 14th day falls on a weekend or court holiday, the deadline extends to the next business day.'
+  - gemini-2.5-pro: grounded=True, error=None, summary='In a Texas Justice Court debt lawsuit, the answer is due 14 days after the date the party was served. If that 14th day falls on a weekend or a court holiday, the deadline is extended until the next business day. This rule applies to debt lawsuits in Texas Justice Courts, which handle cases up to $20,000.'
+
+**Resolution:** ________________
+**Resolved by:** ________________  **Date:** ________________
+
+---
+
+
 ### [TX-EXEMPT-PERSONAL-PROPERTY] ADVERSARIAL-GAP -- run run_20260903T174510Z, 2026-09-03T18:28:40Z
 
 **File:** `rules/debt/state/texas/tx_debt_state_layer_v1.json`
