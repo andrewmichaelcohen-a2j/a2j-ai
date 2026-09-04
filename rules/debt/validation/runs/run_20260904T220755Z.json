@@ -1,0 +1,557 @@
+{
+  "run_id": "run_20260904T220755Z",
+  "mode": "live",
+  "started": "2026-09-04T22:07:55Z",
+  "ended": "2026-09-04T22:12:14Z",
+  "models": {
+    "anthropic": "claude-opus-5",
+    "openai": "gpt-5.5",
+    "gemini": "gemini-2.5-pro"
+  },
+  "demo_corpus_only": false,
+  "citation_check_skipped": false,
+  "budget_cap_usd": 15.0,
+  "approx_cost_per_node_usd_estimate": 0.45,
+  "n_queued": 1,
+  "n_completed": 1,
+  "n_clean_pass": 0,
+  "n_flagged": 1,
+  "demo_gate_metrics": {
+    "stage_a_grounded_agreement_rate": {
+      "value_percent": 100.0,
+      "n_demo_corpus_nodes_this_run": 1,
+      "n_passing": 1,
+      "stage": "Stage A only",
+      "numerator": "nodes where all 3 models returned grounded==true AND the LLM judge found semantic agreement",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "does NOT require citation verification or a clean adversarial check -- purely: did the 3 models derive the same rule from the cited text, independently."
+    },
+    "citation_verification_rate": {
+      "value_percent": 100.0,
+      "n_demo_corpus_nodes_this_run": 1,
+      "n_passing": 1,
+      "stage": "citation-check only",
+      "numerator": "nodes where every cited source with a url verified as a substring of the fetched page (round 35: a citation intentionally built with url=None -- general legal-doctrine/judicial-gloss references with no single pinpoint source -- does not count against this; only a genuine mismatch on a citation that DOES have a url blocks this node)",
+      "denominator": "all demo-corpus nodes attempted this run (null/not computed if --skip-citation-check)",
+      "basis": "mechanical HTTP fetch + substring match, no model involved."
+    },
+    "stage_b_parse_success_rate": {
+      "value_percent": 100.0,
+      "n_demo_corpus_nodes_this_run": 1,
+      "n_passing": 1,
+      "stage": "Stage B only",
+      "numerator": "nodes where the adversarial call returned parseable edge_cases (not truncated, not empty, no error) -- even after the round-23/24 retry",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "an infrastructure/reliability signal, not a gap-count -- a node can parse successfully and still expose real gaps, or fail to parse and expose none we know of."
+    },
+    "full_pipeline_clean_pass_rate": {
+      "value_percent": 0.0,
+      "n_demo_corpus_nodes_this_run": 1,
+      "n_passing": 0,
+      "stage": "all three stages combined -- this is the renamed former 'grounded_agreement_rate' (round 26; the old name was found to be mislabeled relative to its own definition, see docs/DEBT_PROJECT_ARCHITECTURE_SPEC.md S4's round-24 entry)",
+      "numerator": "nodes with status == CLEAN-PASS",
+      "denominator": "all demo-corpus nodes attempted this run",
+      "basis": "CLEAN-PASS = LLM-judged semantic agreement across all 3 grounded derivations AND all citations live-verified AND no adversarial gap found AND the adversarial check itself parsed successfully (round 26 -- a Stage B parse failure no longer silently reads as \"no gaps\", see spec S4). Numeric fingerprint is a secondary diagnostic only as of 2026-08-26 round 3, not part of this basis either."
+    },
+    "grounded_agreement_rate": {
+      "value_percent": 0.0,
+      "deprecated": true,
+      "note": "Deprecated alias for full_pipeline_clean_pass_rate (round 26), kept only so anything still reading this exact key doesn't break. This name was found to be mislabeled -- it was never actually a Stage-A-only measure despite the name. Use full_pipeline_clean_pass_rate (the honest name for the same number) or stage_a_grounded_agreement_rate (genuinely Stage-A-only) going forward."
+    },
+    "scenario_pass_rate": {
+      "value_percent": 0.0,
+      "n_scenarios": 5,
+      "n_passing": 0,
+      "scenarios": [
+        {
+          "scenario_id": "tx-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "TX-SOL-CONSUMER-DEBT",
+            "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "ca-collection-suit-sol-answer",
+          "passed": false,
+          "depends_on_node_ids": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT",
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "missing_from_this_run": [
+            "CA-CIVIL-ANSWER-DEADLINE"
+          ],
+          "failing_deps": [
+            "CA-SOL-WRITTEN-CONTRACT-DEBT"
+          ]
+        },
+        {
+          "scenario_id": "pre-suit-validation-rights",
+          "passed": false,
+          "depends_on_node_ids": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "missing_from_this_run": [
+            "FDCPA-VALIDATION-NOTICE-1692g"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "garnishment-scenario",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "missing_from_this_run": [
+            "TX-WAGE-GARNISHMENT-PROHIBITION",
+            "CA-WAGE-GARNISHMENT-LIMIT"
+          ],
+          "failing_deps": []
+        },
+        {
+          "scenario_id": "band3-refusal-boundary",
+          "passed": false,
+          "depends_on_node_ids": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "missing_from_this_run": [
+            "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY"
+          ],
+          "failing_deps": []
+        }
+      ],
+      "stage": "scenario level (depends on multiple nodes' CLEAN-PASS status)",
+      "numerator": "concept-demo scenarios where every node_id they depend on is CLEAN-PASS this run",
+      "denominator": "all concept-demo scenarios defined in the scenarios file",
+      "basis": "a scenario passes iff every node_id it depends on is CLEAN-PASS in this same run"
+    },
+    "undispositioned_material_findings": {
+      "count": 3,
+      "n_nodes_with_any": 1,
+      "n_findings_matched_to_existing_dispositions_this_run": 0,
+      "stage": "Stage B, net of the disposition ledger",
+      "numerator": "material Stage B findings (realistic_and_common AND would_cause_wrong_answer) that the model could not map to an id in rules/debt/validation/stage_b_dispositions.json",
+      "basis": "round 40 -- the ratified gate's third leg (Andy, 2026-09-04): Stage B is the standing finding generator (D-4); the gate requires this count to be ZERO, not that Stage B found nothing."
+    },
+    "internal_gate_met": false,
+    "internal_gate_definition": "round 40 (ratified 2026-09-04): Stage A grounded agreement >= 90% AND citation verification >= 90% AND zero undispositioned material Stage B findings; Stage B parse health and full-pipeline clean-pass are reported alongside, not gated. Supersedes the round-26 definition (full-pipeline clean-pass >= 90% AND scenario pass >= 90%).",
+    "gate_threshold_percent": 90.0,
+    "note": "Per the 2026-08-26 Concept Demo First directive S2: both rates must be >=90% before this demo corpus is shown to ANY audience, including Stage-1.5-style friendlies. This is an internal readiness gate computed by this script, not itself a claim to publish -- see spec S8's CONCEPT-DEMO claim-language row for what may actually be said in a showing. Round 26: added stage_a_grounded_agreement_rate, citation_verification_rate, and stage_b_parse_success_rate as separately-reported per-stage metrics (freeze item 1's reconciliation finding) -- grounded_agreement_rate is now full_pipeline_clean_pass_rate."
+  },
+  "node_results": [
+    {
+      "node_id": "CA-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "started": "2026-09-04T22:07:55Z",
+      "ended": "2026-09-04T22:12:14Z",
+      "input_sha256": "1548f00eb8f72e79191ca1aaaf48b8478bd8aea96c19c7343f9f832676d2bc40",
+      "node_sha256": "bf31aed13a348688ef06726e7d02597adbfc3cd37d5bc0612be4aefbd6f0c224",
+      "stage_a_grounded_derivation": {
+        "results": [
+          {
+            "derivation_summary": "Under Cal. Code Civ. Proc. \u00a7 337(a), an action on any contract, obligation, or liability founded upon a written instrument must be brought within four years (with a narrow three-month rule for deficiency-type claims after a trustee's sale under a deed of trust or mortgage with power of sale). Section 337(d) adds that once that period has run, a person may not sue or start arbitration or other proceedings to collect the debt, and the period can be extended only under \u00a7 360 \u2014 i.e., by a signed written acknowledgment or promise, or by a payment of principal or interest, though no payment alone revives a claim already barred. Other provisions may adjust the clock in particular situations: emergency rule 9(a) tolled limitations periods over 180 days from April 6, 2020 to October 1, 2020; 50 U.S.C. \u00a7 3936(a) excludes a servicemember's military service; 11 U.S.C. \u00a7 108(c) extends the period during a bankruptcy stay; and \u00a7 366.2 substitutes a one-year period if the debtor dies. Note that separate, longer periods govern judgments (10 years under \u00a7 337.5(b) and \u00a7 683.020) and that federal student loans have no limitations period under 20 U.S.C. \u00a7 1091a(a).",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a); \u00a7 337(d); \u00a7 360",
+            "model": "claude-opus-5",
+            "_raw": "{\"derivation_summary\": \"Under Cal. Code Civ. Proc. \u00a7 337(a), an action on any contract, obligation, or liability founded upon a written instrument must be brought within four years (with a narrow three-month rule for deficiency-type claims after a trustee's sale under a deed of trust or mortgage with power of sale). Section 337(d) adds that once that period has run, a person may not sue or start arbitration or other proceedings to collect the debt, and the period can be extended only under \u00a7 360 \\u2014 i.e., by a signed written acknowledgment or promise, or by a payment of principal or interest, though no payment alone revives a claim already barred. Other provisions may adjust the clock in particular situations: emergency rule 9(a) tolled limitations periods over 180 days from April 6, 2020 to October 1, 2020; 50 U.S.C. \u00a7 3936(a) excludes a servicemember's military service; 11 U.S.C. \u00a7 108(c) extends the period during a bankruptcy stay; and \u00a7 366.2 substitutes a one-year period if the debtor dies. Note that separate, longer periods govern judgments (10 years under \u00a7 337.5(b) and \u00a7 683.020) and that federal student loans have no limitations period under 20 U.S.C. \u00a7 1091a(a).\", \"grounded\": true, \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a); \u00a7 337(d); \u00a7 360\"}",
+            "error": null,
+            "_stop_reason": "end_turn",
+            "_content_block_types": [
+              "thinking",
+              "text"
+            ],
+            "_raw_len_prestrip": 1280,
+            "_usage": {
+              "input_tokens": 2808,
+              "output_tokens": 561
+            }
+          },
+          {
+            "derivation_summary": "An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit or initiate arbitration or another legal proceeding to collect the debt, and the period may be extended only under Section 360.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a), (d)",
+            "model": "gpt-5.5",
+            "_raw": "{\"derivation_summary\":\"An action on a contract, obligation, or liability founded on a written instrument must be brought within four years. Once that limitations period has run, a person may not bring suit or initiate arbitration or another legal proceeding to collect the debt, and the period may be extended only under Section 360.\",\"grounded\":true,\"citation_used\":\"Cal. Code Civ. Proc. \u00a7 337(a), (d)\"}",
+            "error": null
+          },
+          {
+            "derivation_summary": "The statute of limitations for a lawsuit based on any contract, obligation, or liability founded upon a written instrument is four years. Once this time period has run, a person is prohibited from bringing a suit or other legal proceeding to collect the debt.",
+            "grounded": true,
+            "citation_used": "Cal. Code Civ. Proc. \u00a7 337(a)",
+            "model": "gemini-2.5-pro",
+            "_raw": "```json\n{\n  \"derivation_summary\": \"The statute of limitations for a lawsuit based on any contract, obligation, or liability founded upon a written instrument is four years. Once this time period has run, a person is prohibited from bringing a suit or other legal proceeding to collect the debt.\",\n  \"grounded\": true,\n  \"citation_used\": \"Cal. Code Civ. Proc. \u00a7 337(a)\"\n}\n```",
+            "error": null
+          }
+        ],
+        "all_grounded": true,
+        "semantic_agreement": true,
+        "semantic_agreement_judge": {
+          "agree": true,
+          "agreement_notes": "All three agree the limitations period for an action on a written contract in California is four years and that after expiration suit or other collection proceedings are barred. Analyses 1 and 2 add the Section 360 extension (written acknowledgment/promise or payment), and Analysis 1 further adds tolling doctrines (emergency rule 9, servicemember/bankruptcy tolling, \u00a7 366.2 one-year rule after death) and contrasting periods for judgments and federal student loans \u2014 these are completeness differences, not conflicts.",
+          "model": "claude-opus-5",
+          "_raw": "{\"agree\": true, \"agreement_notes\": \"All three agree the limitations period for an action on a written contract in California is four years and that after expiration suit or other collection proceedings are barred. Analyses 1 and 2 add the Section 360 extension (written acknowledgment/promise or payment), and Analysis 1 further adds tolling doctrines (emergency rule 9, servicemember/bankruptcy tolling, \\u00a7 366.2 one-year rule after death) and contrasting periods for judgments and federal student loans \\u2014 these are completeness differences, not conflicts.\"}",
+          "error": null,
+          "_stop_reason": "end_turn",
+          "_content_block_types": [
+            "text"
+          ],
+          "_raw_len_prestrip": 568,
+          "_usage": {
+            "input_tokens": 1113,
+            "output_tokens": 192
+          }
+        },
+        "fingerprints_diagnostic_only": [
+          [
+            "1",
+            "10",
+            "180",
+            "2020",
+            "3",
+            "4",
+            "6"
+          ],
+          [
+            "4"
+          ],
+          [
+            "4"
+          ]
+        ],
+        "fingerprint_agreement_diagnostic_only": false
+      },
+      "citation_check": {
+        "results": [
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164374,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.929,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 165750,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 0.944,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=361.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 163538,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=360.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164306,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=683.020.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 163069,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 116,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://courts.ca.gov/system/files/rules-court/20-05-28-rules-effective-20-05-29.pdf",
+            "verified": true,
+            "method": "manual",
+            "error": null,
+            "diagnostics": {
+              "http_status": null,
+              "content_length": null,
+              "content_type": null,
+              "word_overlap_ratio": null,
+              "manual_verification_note": "Two independent reasons the live checker cannot verify this entry mechanically: (1) the previous url (www4.courts.ca.gov/documents/appendix-i.pdf) returns HTTP 403 to the checker on every run since 2026-09-02; (2) the rule exists only as a PDF and the checker has no PDF text extractor, so no courts.ca.gov url will ever substring-match. Url moved to the Judicial Council's own amendment order (courts.ca.gov/system/files/rules-court/20-05-28-rules-effective-20-05-29.pdf, 'Amendments to the California Rules of Court, adopted by the Judicial Council on May 28, 2020, effective May 29, 2020'), fetched and read in full 2026-09-04: rule 9(a) as amended reads 'Notwithstanding any other law, the statutes of limitations and repose for civil causes of action that exceed 180 days are tolled from April 6, 2020, until October 1, 2020.' (the PDF is a redline that also shows the struck original end-date language); 9(b) tolls periods of 180 days or less until August 3, 2020; the Advisory Committee Comment confirms the rule reaches limitations periods in codes other than the CCP. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "manual_verification_date": "2026-09-04"
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title20-section1091a&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 160625,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 0.933,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section108&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 159485,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section524&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 223316,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title50-section3936&num=0&edition=prelim",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 150746,
+              "content_type": "text/html;charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=366.2.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 163443,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 164054,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.5.",
+            "verified": true,
+            "method": "live",
+            "error": null,
+            "diagnostics": {
+              "http_status": 200,
+              "content_length": 162419,
+              "content_type": "text/html; charset=UTF-8",
+              "word_overlap_ratio": 1.0,
+              "retry_attempt": 1,
+              "longest_matching_prefix_chars": 120,
+              "text_at_break_point": null,
+              "raw_html_context_at_break": null
+            }
+          },
+          {
+            "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.34.htm",
+            "verified": true,
+            "method": "manual",
+            "error": null,
+            "diagnostics": {
+              "http_status": null,
+              "content_length": null,
+              "content_type": null,
+              "word_overlap_ratio": null,
+              "manual_verification_note": "Copied from the TX-SOL-CONSUMER-DEBT node's round-39 entry, which carries its own manual_verification (statutes.capitol.texas.gov intermittently serves an SPA shell to the live checker; text verified there against the texas.public.law mirror). Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "manual_verification_date": "2026-09-04"
+            }
+          }
+        ],
+        "all_verified": true
+      },
+      "stage_b_adversarial": {
+        "result": {
+          "edge_cases": [
+            {
+              "scenario": "A consumer stopped paying a Chase card and defaulted in July 2020 (mid-pandemic hardship); the debt buyer files suit in early 2025. The consumer asks whether the suit is time-barred.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "The determination formula grants a flat +178 days to any claim accruing before October 1, 2020. Emergency Rule 9(a) tolls only during the April 6 - October 1, 2020 window, so a claim that accrued mid-window (e.g., July 1, 2020) was tolled for only the remaining ~92 days, not 178. The node over-credits up to ~178 days of tolling for every claim accruing between April 6 and September 30, 2020 -- a very common default cohort -- and will tell a consumer whose claim is in fact expired that the suit is timely, costing them a complete defense. The fix is pro-rating: days = Oct 1, 2020 minus max(accrual date, April 6, 2020).",
+              "matches_disposition_id": null
+            },
+            {
+              "scenario": "A consumer's ex-spouse was a joint cardholder on an account both stopped paying in 2019. The ex made a $200 payment to the collector in 2023 to stop calls. The consumer, sued in 2025, reports 'a payment was made on the account in 2023.'",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "Checklist items 7 and 16 and the revival note are written in terms of 'any payment' / 'if the consumer made any payment' without asking WHO made it. CCP 360 operates only against 'the party to be charged,' and a co-obligor's payment or acknowledgment does not extend or revive the period against a non-signing co-obligor. As encoded, a payment by a joint cardholder, co-signer, or authorized user would be treated as restarting/extending the clock against this consumer, telling them a barred claim is live -- the dangerous direction (they may pay or fail to plead the defense). Joint and co-signed consumer accounts, and post-divorce payments by one spouse, are common.",
+              "matches_disposition_id": null
+            },
+            {
+              "scenario": "A consumer discovers a California default judgment entered against them in 2011 on an old card debt when a collector begins wage garnishment in 2026; no renewal application was ever filed and no writ issued.",
+              "realistic_and_common": true,
+              "would_cause_wrong_answer": true,
+              "exposes_gap": true,
+              "gap_description": "judgment_enforcement_note states a California judgment is 'enforceable for 10 years from entry, renewable for additional 10-year periods without limit' and warns that the consumer 'should not be told the judgment is expired.' It omits that under CCP 683.020/683.130 the renewal application must be FILED BEFORE the 10 years run; an unrenewed judgment simply ceases to be enforceable at 10 years and cannot be revived afterward (and an independent action on it has its own 10-year limit under CCP 337.5(b)). As written, the node affirmatively tells a consumer holding a 15-year-old unrenewed judgment that it is still live and endlessly renewable, when the correct answer is that enforcement is barred and the garnishment should be quashed. Old, never-renewed default judgments are extremely common in California consumer-debt practice. This is distinct from D-07, which addresses sister-state judgments.",
+              "matches_disposition_id": null
+            }
+          ],
+          "model": "claude-opus-5",
+          "_raw": "{\"edge_cases\": [{\"scenario\": \"A consumer stopped paying a Chase card and defaulted in July 2020 (mid-pandemic hardship); the debt buyer files suit in early 2025. The consumer asks whether the suit is time-barred.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"The determination formula grants a flat +178 days to any claim accruing before October 1, 2020. Emergency Rule 9(a) tolls only during the April 6 - October 1, 2020 window, so a claim that accrued mid-window (e.g., July 1, 2020) was tolled for only the remaining ~92 days, not 178. The node over-credits up to ~178 days of tolling for every claim accruing between April 6 and September 30, 2020 -- a very common default cohort -- and will tell a consumer whose claim is in fact expired that the suit is timely, costing them a complete defense. The fix is pro-rating: days = Oct 1, 2020 minus max(accrual date, April 6, 2020).\", \"matches_disposition_id\": null}, {\"scenario\": \"A consumer's ex-spouse was a joint cardholder on an account both stopped paying in 2019. The ex made a $200 payment to the collector in 2023 to stop calls. The consumer, sued in 2025, reports 'a payment was made on the account in 2023.'\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"Checklist items 7 and 16 and the revival note are written in terms of 'any payment' / 'if the consumer made any payment' without asking WHO made it. CCP 360 operates only against 'the party to be charged,' and a co-obligor's payment or acknowledgment does not extend or revive the period against a non-signing co-obligor. As encoded, a payment by a joint cardholder, co-signer, or authorized user would be treated as restarting/extending the clock against this consumer, telling them a barred claim is live -- the dangerous direction (they may pay or fail to plead the defense). Joint and co-signed consumer accounts, and post-divorce payments by one spouse, are common.\", \"matches_disposition_id\": null}, {\"scenario\": \"A consumer discovers a California default judgment entered against them in 2011 on an old card debt when a collector begins wage garnishment in 2026; no renewal application was ever filed and no writ issued.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"judgment_enforcement_note states a California judgment is 'enforceable for 10 years from entry, renewable for additional 10-year periods without limit' and warns that the consumer 'should not be told the judgment is expired.' It omits that under CCP 683.020/683.130 the renewal application must be FILED BEFORE the 10 years run; an unrenewed judgment simply ceases to be enforceable at 10 years and cannot be revived afterward (and an independent action on it has its own 10-year limit under CCP 337.5(b)). As written, the node affirmatively tells a consumer holding a 15-year-old unrenewed judgment that it is still live and endlessly renewable, when the correct answer is that enforcement is barred and the garnishment should be quashed. Old, never-renewed default judgments are extremely common in California consumer-debt practice. This is distinct from D-07, which addresses sister-state judgments.\", \"matches_disposition_id\": null}]}",
+          "error": null,
+          "_stop_reason": "end_turn",
+          "_content_block_types": [
+            "thinking",
+            "text"
+          ],
+          "_raw_len_prestrip": 3312,
+          "_usage": {
+            "input_tokens": 14496,
+            "output_tokens": 10084
+          }
+        },
+        "gaps_found": [
+          {
+            "scenario": "A consumer stopped paying a Chase card and defaulted in July 2020 (mid-pandemic hardship); the debt buyer files suit in early 2025. The consumer asks whether the suit is time-barred.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The determination formula grants a flat +178 days to any claim accruing before October 1, 2020. Emergency Rule 9(a) tolls only during the April 6 - October 1, 2020 window, so a claim that accrued mid-window (e.g., July 1, 2020) was tolled for only the remaining ~92 days, not 178. The node over-credits up to ~178 days of tolling for every claim accruing between April 6 and September 30, 2020 -- a very common default cohort -- and will tell a consumer whose claim is in fact expired that the suit is timely, costing them a complete defense. The fix is pro-rating: days = Oct 1, 2020 minus max(accrual date, April 6, 2020).",
+            "matches_disposition_id": null
+          },
+          {
+            "scenario": "A consumer's ex-spouse was a joint cardholder on an account both stopped paying in 2019. The ex made a $200 payment to the collector in 2023 to stop calls. The consumer, sued in 2025, reports 'a payment was made on the account in 2023.'",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "Checklist items 7 and 16 and the revival note are written in terms of 'any payment' / 'if the consumer made any payment' without asking WHO made it. CCP 360 operates only against 'the party to be charged,' and a co-obligor's payment or acknowledgment does not extend or revive the period against a non-signing co-obligor. As encoded, a payment by a joint cardholder, co-signer, or authorized user would be treated as restarting/extending the clock against this consumer, telling them a barred claim is live -- the dangerous direction (they may pay or fail to plead the defense). Joint and co-signed consumer accounts, and post-divorce payments by one spouse, are common.",
+            "matches_disposition_id": null
+          },
+          {
+            "scenario": "A consumer discovers a California default judgment entered against them in 2011 on an old card debt when a collector begins wage garnishment in 2026; no renewal application was ever filed and no writ issued.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "judgment_enforcement_note states a California judgment is 'enforceable for 10 years from entry, renewable for additional 10-year periods without limit' and warns that the consumer 'should not be told the judgment is expired.' It omits that under CCP 683.020/683.130 the renewal application must be FILED BEFORE the 10 years run; an unrenewed judgment simply ceases to be enforceable at 10 years and cannot be revived afterward (and an independent action on it has its own 10-year limit under CCP 337.5(b)). As written, the node affirmatively tells a consumer holding a 15-year-old unrenewed judgment that it is still live and endlessly renewable, when the correct answer is that enforcement is barred and the garnishment should be quashed. Old, never-renewed default judgments are extremely common in California consumer-debt practice. This is distinct from D-07, which addresses sister-state judgments.",
+            "matches_disposition_id": null
+          }
+        ],
+        "gaps_found_new": [
+          {
+            "scenario": "A consumer stopped paying a Chase card and defaulted in July 2020 (mid-pandemic hardship); the debt buyer files suit in early 2025. The consumer asks whether the suit is time-barred.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "The determination formula grants a flat +178 days to any claim accruing before October 1, 2020. Emergency Rule 9(a) tolls only during the April 6 - October 1, 2020 window, so a claim that accrued mid-window (e.g., July 1, 2020) was tolled for only the remaining ~92 days, not 178. The node over-credits up to ~178 days of tolling for every claim accruing between April 6 and September 30, 2020 -- a very common default cohort -- and will tell a consumer whose claim is in fact expired that the suit is timely, costing them a complete defense. The fix is pro-rating: days = Oct 1, 2020 minus max(accrual date, April 6, 2020).",
+            "matches_disposition_id": null
+          },
+          {
+            "scenario": "A consumer's ex-spouse was a joint cardholder on an account both stopped paying in 2019. The ex made a $200 payment to the collector in 2023 to stop calls. The consumer, sued in 2025, reports 'a payment was made on the account in 2023.'",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "Checklist items 7 and 16 and the revival note are written in terms of 'any payment' / 'if the consumer made any payment' without asking WHO made it. CCP 360 operates only against 'the party to be charged,' and a co-obligor's payment or acknowledgment does not extend or revive the period against a non-signing co-obligor. As encoded, a payment by a joint cardholder, co-signer, or authorized user would be treated as restarting/extending the clock against this consumer, telling them a barred claim is live -- the dangerous direction (they may pay or fail to plead the defense). Joint and co-signed consumer accounts, and post-divorce payments by one spouse, are common.",
+            "matches_disposition_id": null
+          },
+          {
+            "scenario": "A consumer discovers a California default judgment entered against them in 2011 on an old card debt when a collector begins wage garnishment in 2026; no renewal application was ever filed and no writ issued.",
+            "realistic_and_common": true,
+            "would_cause_wrong_answer": true,
+            "exposes_gap": true,
+            "gap_description": "judgment_enforcement_note states a California judgment is 'enforceable for 10 years from entry, renewable for additional 10-year periods without limit' and warns that the consumer 'should not be told the judgment is expired.' It omits that under CCP 683.020/683.130 the renewal application must be FILED BEFORE the 10 years run; an unrenewed judgment simply ceases to be enforceable at 10 years and cannot be revived afterward (and an independent action on it has its own 10-year limit under CCP 337.5(b)). As written, the node affirmatively tells a consumer holding a 15-year-old unrenewed judgment that it is still live and endlessly renewable, when the correct answer is that enforcement is barred and the garnishment should be quashed. Old, never-renewed default judgments are extremely common in California consumer-debt practice. This is distinct from D-07, which addresses sister-state judgments.",
+            "matches_disposition_id": null
+          }
+        ],
+        "gaps_found_dispositioned": [],
+        "dispositions_available": 11,
+        "parsed_successfully": true
+      },
+      "status": "FLAGGED",
+      "tier_promotion_candidate": false,
+      "tier_promotion_note": "Evidence covers spec (a)/(b)/(d) only -- (c) mutation testing not yet built. This flag is a recommendation for Andy's review, not an automatic tier change; this script never edits any rules file."
+    }
+  ]
+}
