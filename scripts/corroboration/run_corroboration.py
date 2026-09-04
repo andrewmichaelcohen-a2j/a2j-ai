@@ -115,6 +115,12 @@ DEBT_RULES_DIR = REPO_ROOT / "rules" / "debt"
 RUNS_DIR = REPO_ROOT / "rules" / "debt" / "validation" / "runs"
 DISAGREEMENT_QUEUE_PATH = REPO_ROOT / "docs" / "DEBT_DISAGREEMENT_QUEUE.md"
 SCENARIOS_PATH = Path(__file__).resolve().parent / "scenarios.json"
+# Round 44: retry budget multiplier for a truncated / empty-at-cap adversarial call.
+# Was 2.5x on a 4000-6000 base (rounds 24-42). With the base at 16000 -- sized from
+# the round-42 diagnostics (reasoning blocks ~5K + JSON ~3K) -- 1.5x (24000) is
+# ample headroom and stays well inside any plausible output ceiling; 2.5x would
+# have asked for 40000.
+RETRY_BUDGET_MULTIPLIER = 1.5
 # Round 40: the Stage B disposition ledger -- the machine-readable twin of
 # docs/DEBT_STAGE_B_TRIAGE.md. Keyed by node_id; each entry is a finding that a
 # human or a content round has already dispositioned. See load_dispositions().
@@ -489,11 +495,11 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
                 if empty or truncated:
                     # Round 42: same three-way decision as the live path (see below).
                     if empty and hit_cap:
-                        retry_tokens, why = int(max_tokens * 2.5), "empty_completion_at_max_tokens"
+                        retry_tokens, why = int(max_tokens * RETRY_BUDGET_MULTIPLIER), "empty_completion_at_max_tokens"
                     elif empty:
                         retry_tokens, why = max_tokens, "empty_completion"
                     else:
-                        retry_tokens, why = int(max_tokens * 2.5), "max_tokens_truncation"
+                        retry_tokens, why = int(max_tokens * RETRY_BUDGET_MULTIPLIER), "max_tokens_truncation"
                     retry_parsed = _one_call_replay(retry_tokens)
                     retry_parsed["_retried_after"] = why
                     retry_parsed["_retry_tokens"] = retry_tokens
@@ -574,13 +580,13 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
                 # Treat it as truncation: retry at 2.5x. Same-budget retry is kept only
                 # for an empty completion that stopped for some other reason.
                 if empty and hit_cap:
-                    retry_tokens = int(max_tokens * 2.5)
+                    retry_tokens = int(max_tokens * RETRY_BUDGET_MULTIPLIER)
                     why = "empty_completion_at_max_tokens"
                 elif empty:
                     retry_tokens = max_tokens
                     why = "empty_completion"
                 else:
-                    retry_tokens = int(max_tokens * 2.5)
+                    retry_tokens = int(max_tokens * RETRY_BUDGET_MULTIPLIER)
                     why = "max_tokens_truncation"
                 retry_parsed = _one_call_with_overload_retry(retry_tokens)
                 retry_parsed["_retried_after"] = why
@@ -783,6 +789,14 @@ def _normalize_for_match(raw_html_or_text: str, is_html: bool = True) -> str:
     # raw_html_context_at_break showing the nested-span markup verbatim.
     t = re.sub(r"\(\s+", "(", t)
     t = re.sub(r"\s+\)", ")", t)
+    # Fixed 2026-09-05 (round 44): collapse whitespace immediately BEFORE an
+    # apostrophe. Root-caused via run_20260904T212407Z: Cornell LII wraps defined
+    # terms in <a> links, so "the debt collector's call" arrives as
+    # "...<a>debt collector</a>'s call" and tag-to-space stripping yields
+    # "collector 's" (longest_matching_prefix_chars=16, break at the possessive).
+    # No legal prose has a space before an apostrophe, so this is one-directional
+    # and a no-op on the needle side. Smart quotes were already folded to "'" above.
+    t = re.sub(r"\s+'", "'", t)
     # Fixed 2026-08-31 (round 28): collapse whitespace immediately BEFORE
     # common sentence punctuation (comma/period/semicolon/colon). Root-caused
     # this round via FDCPA-REGF-CALL-FREQUENCY-1006.14b's 12 C.F.R.
@@ -1129,7 +1143,20 @@ def load_dispositions(path: Path = None) -> dict:
         data = json.loads(path.read_text())
     except Exception:
         return {}
-    return data.get("nodes", {}) if isinstance(data, dict) else {}
+    if not isinstance(data, dict):
+        return {}
+    nodes = dict(data.get("nodes", {}))
+    # Round 44: cross-cutting dispositions (bankruptcy, validation-dispute cease,
+    # 1692c bars, state overlays) live under "_global" and apply to every node.
+    # They are appended AFTER the node's own entries; the prompt text asks the
+    # model to tag only a finding the theme actually covers, and never to treat a
+    # global entry as licence to ignore a node that says something WRONG.
+    global_entries = list(data.get("_global", []) or [])
+    if global_entries:
+        for nid in list(nodes):
+            nodes[nid] = list(nodes[nid]) + global_entries
+        nodes["_global"] = global_entries
+    return nodes
 
 
 def _format_dispositions_for_prompt(entries: list) -> str:
@@ -1137,7 +1164,10 @@ def _format_dispositions_for_prompt(entries: list) -> str:
         return ""
     lines = ["\n\nPreviously identified and DISPOSITIONED findings for this node (already fixed, "
              "source-pinned, flagged for counsel, or ruled out of scope). Do not report these as new; "
-             "if an edge case substantially overlaps one, set matches_disposition_id to its id:"]
+             "if an edge case substantially overlaps one, set matches_disposition_id to its id. Entries whose "
+             "id starts with G- are CORPUS-WIDE themes handled by a shared screen or a planned gate node: tag an "
+             "edge case with a G- id only when the finding is that this node is SILENT on the theme; if this "
+             "node's own text says something WRONG about the theme, report it as new with matches_disposition_id null:"]
     for e in entries:
         lines.append(f"  {e.get('id')}: [{e.get('classification')}] {e.get('theme')} -- {e.get('summary')}")
     return "\n".join(lines)
@@ -1327,7 +1357,7 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     # 3-scenario responses at 3000), and retry_on_empty_or_truncated enabled
     # -- see call_anthropic's round-23 docstring note.
     result_b = call_anthropic(SYSTEM_PROMPT_ADVERSARIAL, user_prompt_adversarial, keys, dry_run,
-                               dry_adversarial_payload, max_tokens=6000,  # round 40: 4000 still truncated ~3 nodes/run; base raised, retry stays 2.5x
+                               dry_adversarial_payload, max_tokens=16000,  # round 44: diagnostics proved content blocks [thinking, text] -- reasoning consumes ~5K before any JSON; 16000 base avoids the paid retry (a cap is not a spend)
                                retry_on_empty_or_truncated=True,
                                replay_responses=(replay["adversarial"] if replay else None))
     # Round 26 fix (found during the round-25 stage-level attribution pass on
@@ -1339,7 +1369,18 @@ def run_node(target: dict, keys, dry_run: bool, skip_citation_check: bool, run_i
     # unrecovered _parse_error -- a Stage B failure must not read as clean.
     stage_b_parsed_ok = ("edge_cases" in result_b) and not result_b.get("error")
     edge_cases = result_b.get("edge_cases", []) if stage_b_parsed_ok else []
-    gaps_found = [e for e in edge_cases if e.get("exposes_gap")]
+    # Round 44: materiality per the ratified definition (realistic_and_common AND
+    # would_cause_wrong_answer). run_20260904T212407Z showed the model can OMIT
+    # exposes_gap while setting both flags true; the old test silently treated
+    # those as non-material (three real, dangerous-direction findings on
+    # CA-SOL-WRITTEN went unreported). exposes_gap is honoured only when at least
+    # one of the two flags is absent (older fixtures, degraded responses).
+    def _material(e: dict) -> bool:
+        rc, wa = e.get("realistic_and_common"), e.get("would_cause_wrong_answer")
+        if rc is not None and wa is not None:
+            return bool(rc) and bool(wa)
+        return bool(e.get("exposes_gap"))
+    gaps_found = [e for e in edge_cases if _material(e)]
     # Round 40 (gate redefinition ratified by Andy 2026-09-04): a material finding
     # that overlaps an already-dispositioned one is NOT new and does not block
     # CLEAN-PASS. Only findings the model could not map to a known disposition id
@@ -1840,8 +1881,11 @@ def main():
     # Round 40: load the Stage B disposition ledger once; per-node slices go into
     # the adversarial prompt so already-dispositioned findings are tagged, not re-counted.
     ledger = load_dispositions()
-    print(f"[{run_id}] Stage B disposition ledger: {sum(len(v) for v in ledger.values())} entries "
-          f"across {len(ledger)} node(s) ({DISPOSITIONS_PATH.relative_to(REPO_ROOT)})")
+    _n_global = len(ledger.get("_global", []))
+    _n_nodes = len([k for k in ledger if k != "_global"])
+    _n_own = sum(len(v) - _n_global for k, v in ledger.items() if k != "_global")
+    print(f"[{run_id}] Stage B disposition ledger: {_n_own} node-specific entries across {_n_nodes} node(s) "
+          f"+ {_n_global} cross-cutting ({DISPOSITIONS_PATH.relative_to(REPO_ROOT)})")
 
     node_results = []
     spent_estimate = 0.0
@@ -1853,7 +1897,7 @@ def main():
             break
         print(f"[{run_id}] ({i}/{len(targets)}) {target['node_id']} ...", end=" ", flush=True)
         result = run_node(target, keys, dry_run, args.skip_citation_check, run_id,
-                          dispositions=ledger.get(target["node_id"], []))
+                          dispositions=ledger.get(target["node_id"], ledger.get("_global", [])))
         node_results.append(result)
         spent_estimate += APPROX_COST_PER_NODE_USD
         print(result["status"])

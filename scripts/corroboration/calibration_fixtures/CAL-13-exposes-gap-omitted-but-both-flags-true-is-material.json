@@ -1,11 +1,11 @@
 {
-  "id": "CAL-12-stage-b-empty-at-max-tokens-retries-bigger",
-  "description": "Round 42 regression guard for the dominant Stage B failure signature in every live run from 09-01 to 09-04: the adversarial completion comes back EMPTY (_raw == '') with stop_reason == 'max_tokens' -- the whole budget consumed with no text block returned (nine occurrences; the same-budget retry round 23 chose for 'empty' completions failed all nine times). Round 42 classifies empty+max_tokens as truncation and retries at 2.5x. Expected: retried_after == 'empty_completion_at_max_tokens', retry_tokens == 24000 (16000 base x 1.5, round 44), recovered edge cases parse, CLEAN-PASS. If this fixture ever reports retry_tokens == 16000 the round-42 decision has regressed to a same-budget retry.",
+  "id": "CAL-13-exposes-gap-omitted-but-both-flags-true-is-material",
+  "description": "Round 44 regression guard. run_20260904T212407Z: the adversarial model returned edge cases with realistic_and_common=true and would_cause_wrong_answer=true but OMITTED exposes_gap; the pre-round-44 test (exposes_gap truthy) silently counted them as non-material and CA-SOL-WRITTEN CLEAN-PASSed over three real, dangerous-direction findings. Materiality is now derived from the two flags per the ratified definition. Fixture: one edge case with both flags true and no exposes_gap key (MATERIAL); one with exposes_gap=true but realistic_and_common=false (NOT material -- the flags govern when both are present); one with no flags and exposes_gap=false. Expected: FLAGGED, gaps_found_count 1, gaps_new_count 1. If this ever CLEAN-PASSes, materiality has regressed to trusting exposes_gap alone.",
   "nodes": [
     {
-      "node_id": "CAL-12-EMPTY-AT-MAX-TOKENS",
+      "node_id": "CAL-13-FLAGS-GOVERN",
       "tier": "DRAFT",
-      "title": "Calibration fixture node CAL-12-EMPTY-AT-MAX-TOKENS",
+      "title": "Calibration fixture node CAL-13-FLAGS-GOVERN",
       "logic": {
         "note": "synthetic calibration fixture, not real law"
       },
@@ -55,25 +55,19 @@
     },
     "adversarial": [
       {
-        "raw": "",
-        "stop_reason": "max_tokens",
-        "error": null
-      },
-      {
-        "raw": "{\"edge_cases\": [{\"scenario\": \"Debtor responds late\", \"exposes_gap\": false, \"gap_description\": null}, {\"scenario\": \"Notice sent to wrong address\", \"exposes_gap\": false, \"gap_description\": null}, {\"scenario\": \"Debtor is a minor\", \"exposes_gap\": false, \"gap_description\": null}]}",
+        "raw": "{\"edge_cases\": [{\"scenario\": \"Debtor died last year; node computes the ordinary period.\", \"realistic_and_common\": true, \"would_cause_wrong_answer\": true, \"gap_description\": \"No deceased-debtor screen.\", \"matches_disposition_id\": null}, {\"scenario\": \"Debtor is an astronaut on the ISS.\", \"realistic_and_common\": false, \"would_cause_wrong_answer\": true, \"exposes_gap\": true, \"gap_description\": \"Service in orbit.\", \"matches_disposition_id\": null}, {\"scenario\": \"Debtor responds on day 29.\", \"exposes_gap\": false, \"gap_description\": null, \"matches_disposition_id\": null}]}",
         "stop_reason": "end_turn",
         "error": null
       }
     ]
   },
   "_expected": {
-    "status": "CLEAN-PASS",
+    "status": "FLAGGED",
     "all_grounded": true,
     "semantic_agreement": true,
     "all_citations_verified": true,
-    "gaps_found_count": 0,
-    "stage_b_parsed_successfully": true,
-    "stage_b_retried_after": "empty_completion_at_max_tokens",
-    "stage_b_retry_tokens": 24000
+    "gaps_found_count": 1,
+    "gaps_new_count": 1,
+    "stage_b_parsed_successfully": true
   }
 }

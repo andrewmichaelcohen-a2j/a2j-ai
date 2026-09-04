@@ -2,6 +2,37 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-05, round 44 (runner-only: materiality from the two flags, cross-cutting `_global` dispositions, 16000 base budget, possessive-after-link normalization, CAL-13/14)
+
+**What changed since round 43:** runner + calibration set only. Zero rules-content edits.
+
+Four findings from `run_20260904T212407Z`, each with its fix and its guard:
+- **Materiality.** The model can omit `exposes_gap` while setting `realistic_and_common` and
+  `would_cause_wrong_answer` true; the old test (`exposes_gap` truthy) silently dropped three real,
+  dangerous-direction findings on CA-SOL-WRITTEN. Materiality is now derived from the two flags whenever both
+  are present (the ratified definition); `exposes_gap` is honoured only when a flag is missing. CAL-13.
+- **Cross-cutting dispositions.** `load_dispositions` appends the ledger's `_global` entries (bankruptcy,
+  1692g(b) cease, 1692c bars, state overlays -- added in round 43) to every node, including nodes with no
+  entries of their own. The prompt text tells the model a `G-` id may be used only for "this node is SILENT
+  on the theme"; a node whose own text is WRONG about the theme is still a new finding. Ledger line in the CLI
+  now reads "N node-specific entries across M node(s) + K cross-cutting".
+- **Budget.** Round 42's diagnostics settled it: `_content_block_types: ['thinking', 'text']`, 6000 output
+  tokens with 2.6K chars of JSON -- reasoning was consuming the budget. Base adversarial `max_tokens` 6000 ->
+  16000 (a cap is not a spend; the paid retry is what it avoids); retry multiplier 2.5x -> 1.5x
+  (`RETRY_BUDGET_MULTIPLIER`), i.e. 24000, well inside any output ceiling. CAL-12 re-baselined to 24000.
+- **Normalization.** Cornell wraps defined terms in links; `<a>debt collector</a>'s` strips to
+  "collector 's" and the checker broke at the possessive (prefix 16). `_normalize_for_match` now collapses
+  whitespace before an apostrophe (one-directional, no-op on the needle side). CAL-14.
+
+Both new fixtures FAIL on the round-43 runner and PASS on this one (checked by stashing the runner change).
+`_expected_metrics.json` re-baselined to 14 fixtures (13/14 on the three stage rates, clean-pass 9/14,
+undispositioned 2 = CAL-07 + CAL-13, gate False).
+
+**Verification:** `--replay` PASS (14/14 + metrics); all three `scripts/ci` checks PASS; dry-run confirms
+a node with 7 own entries sees 11 and a node with none sees 4.
+
+**Next (Andy):** apply 43 then 44, re-smoke the same three nodes, then the full run.
+
 ## 2026-09-04, round 43 (content: 9 findings from the re-smoke dispositioned; cross-cutting `_global` ledger section)
 
 **What changed since round 42:** rules content (three files) + ledger + triage doc. No runner change.

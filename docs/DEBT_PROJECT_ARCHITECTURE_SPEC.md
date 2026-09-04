@@ -487,7 +487,9 @@ receives the node's dispositions and must tag any overlapping edge case with `ma
 a finding whose tag names an id the ledger actually contains is reported (`gaps_found_dispositioned`)
 but does not count; anything else material is `gaps_found_new`, is filed to the disagreement queue,
 and is what the gate sums (`demo_gate_metrics.undispositioned_material_findings`). An unrecognised
-id gets no credit. `internal_gate_met` = Stage A ≥ 90 AND citation verification ≥ 90 (not skipped) AND
+id gets no credit. Round 44 adds a `_global` ledger section for cross-cutting themes (appended to every
+node's prompt, usable only for silence, never for error) and derives materiality from the two flags
+(`realistic_and_common` AND `would_cause_wrong_answer`) rather than the model's own `exposes_gap`. `internal_gate_met` = Stage A ≥ 90 AND citation verification ≥ 90 (not skipped) AND
 undispositioned = 0. Adding a ledger entry is a disposition decision — it requires the finding to have
 actually been addressed in the rules file or explicitly accepted for counsel review — and the docs
 table and the ledger are kept in sync by hand. Regression guard: calibration fixture CAL-11.

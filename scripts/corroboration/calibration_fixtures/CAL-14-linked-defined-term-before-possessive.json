@@ -1,0 +1,72 @@
+{
+  "id": "CAL-14-linked-defined-term-before-possessive",
+  "description": "Round 44 regression guard for the Cornell LII pattern that broke FDCPA-REGF-CALL-FREQUENCY-1006.14b's Official-Interpretation citation on run_20260904T212407Z (longest_matching_prefix_chars=16, break at \"collector's\"): the page wraps the defined term 'debt collector' in an <a> link whose closing tag lands immediately before a possessive apostrophe, so tag-to-space stripping yields \"collector 's\" on the page side only. Round 44 collapses whitespace before an apostrophe in _normalize_for_match. If this fixture ever FLAGS on the citation, that normalization has broken.",
+  "nodes": [
+    {
+      "node_id": "CAL-14-LINKED-POSSESSIVE",
+      "tier": "DRAFT",
+      "title": "Calibration fixture node CAL-14-LINKED-POSSESSIVE",
+      "logic": {
+        "note": "synthetic calibration fixture, not real law"
+      },
+      "completeness_checklist": [
+        "synthetic checklist item"
+      ],
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Test Interp 14",
+            "url": "https://example-interp.test/supp-i",
+            "quoted_text": "A debt collector's telephone call does not connect to the dialed number if the collector receives a busy signal.",
+            "source_tier": "A",
+            "manual_verification": null
+          }
+        ]
+      }
+    }
+  ],
+  "_replay": {
+    "stage_a": {
+      "anthropic": [
+        {
+          "raw": "{\"derivation_summary\": \"For purposes of this paragraph (b), particular debt means each transaction described in this section.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 9\"}",
+          "stop_reason": "end_turn",
+          "error": null
+        }
+      ],
+      "openai": {
+        "raw": "{\"derivation_summary\": \"For purposes of this paragraph (b), particular debt means each transaction described in this section.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 9\"}",
+        "stop_reason": null,
+        "error": null
+      },
+      "gemini": {
+        "raw": "{\"derivation_summary\": \"For purposes of this paragraph (b), particular debt means each transaction described in this section.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 9\"}",
+        "stop_reason": null,
+        "error": null
+      }
+    },
+    "judge": {
+      "raw": "{\"agree\": true, \"agreement_notes\": \"All three agree on the same rule text.\"}",
+      "stop_reason": "end_turn",
+      "error": null
+    },
+    "citation": {
+      "https://example-interp.test/supp-i": "<html><body><p>1. Unconnected calls. A <a href=\"/def/dc\">debt collector</a>&rsquo;s telephone call does not connect to the dialed number if the collector receives a busy signal.</p></body></html>"
+    },
+    "adversarial": [
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"n/a\", \"exposes_gap\": false, \"gap_description\": null}]}",
+        "stop_reason": "end_turn",
+        "error": null
+      }
+    ]
+  },
+  "_expected": {
+    "status": "CLEAN-PASS",
+    "all_grounded": true,
+    "semantic_agreement": true,
+    "all_citations_verified": true,
+    "gaps_found_count": 0,
+    "stage_b_parsed_successfully": true
+  }
+}
