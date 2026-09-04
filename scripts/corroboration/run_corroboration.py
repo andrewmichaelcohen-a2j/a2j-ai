@@ -484,11 +484,19 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
             parsed = _one_call_replay(max_tokens)
             if retry_on_empty_or_truncated:
                 empty = not parsed.get("_raw")
-                truncated = parsed.get("_stop_reason") == "max_tokens" or bool(parsed.get("_parse_error"))
+                hit_cap = parsed.get("_stop_reason") == "max_tokens"
+                truncated = hit_cap or bool(parsed.get("_parse_error"))
                 if empty or truncated:
-                    retry_tokens = max_tokens if empty else int(max_tokens * 2.5)
+                    # Round 42: same three-way decision as the live path (see below).
+                    if empty and hit_cap:
+                        retry_tokens, why = int(max_tokens * 2.5), "empty_completion_at_max_tokens"
+                    elif empty:
+                        retry_tokens, why = max_tokens, "empty_completion"
+                    else:
+                        retry_tokens, why = int(max_tokens * 2.5), "max_tokens_truncation"
                     retry_parsed = _one_call_replay(retry_tokens)
-                    retry_parsed["_retried_after"] = "empty_completion" if empty else "max_tokens_truncation"
+                    retry_parsed["_retried_after"] = why
+                    retry_parsed["_retry_tokens"] = retry_tokens
                     return retry_parsed
             return parsed
         except Exception as exc:
@@ -518,6 +526,20 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         parsed["_raw"] = raw
         parsed["error"] = None
         parsed["_stop_reason"] = getattr(resp, "stop_reason", None)
+        # Round 42 diagnostics. Across every live run since 09-01 the dominant Stage B
+        # failure is _raw == "" WITH stop_reason == "max_tokens" -- the whole output
+        # budget was consumed yet no text block came back. That is only possible if the
+        # response carried content blocks this loop does not read (or whitespace-only
+        # text, which .strip() would hide). Record what actually came back so the next
+        # run settles it with evidence instead of inference.
+        try:
+            parsed["_content_block_types"] = [getattr(b, "type", type(b).__name__) for b in resp.content]
+            parsed["_raw_len_prestrip"] = sum(len(getattr(b, "text", "") or "") for b in resp.content)
+            usage = getattr(resp, "usage", None)
+            parsed["_usage"] = {"input_tokens": getattr(usage, "input_tokens", None),
+                                "output_tokens": getattr(usage, "output_tokens", None)} if usage else None
+        except Exception as diag_exc:  # diagnostics must never break the call
+            parsed["_diagnostics_error"] = str(diag_exc)
         return parsed
 
     def _one_call_with_overload_retry(tokens: int) -> dict:
@@ -539,14 +561,31 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
         parsed = _one_call_with_overload_retry(max_tokens)
         if retry_on_empty_or_truncated:
             empty = not parsed.get("_raw")
-            truncated = parsed.get("_stop_reason") == "max_tokens" or bool(parsed.get("_parse_error"))
+            hit_cap = parsed.get("_stop_reason") == "max_tokens"
+            truncated = hit_cap or bool(parsed.get("_parse_error"))
             if empty or truncated:
                 # Round 24: 1.5x (round 23) still wasn't enough for the 2 most
                 # verbose nodes on a live run (still _parse_error after retry)
                 # -- bumped to 2.5x for real headroom.
-                retry_tokens = max_tokens if empty else int(max_tokens * 2.5)
+                # Round 42: an EMPTY completion that also hit max_tokens is not the
+                # "transient empty" round 23 assumed -- it is the budget being eaten by
+                # something other than the answer, and retrying at the SAME budget has
+                # failed every single time it was tried (9 of 9 across runs 09-01..09-04).
+                # Treat it as truncation: retry at 2.5x. Same-budget retry is kept only
+                # for an empty completion that stopped for some other reason.
+                if empty and hit_cap:
+                    retry_tokens = int(max_tokens * 2.5)
+                    why = "empty_completion_at_max_tokens"
+                elif empty:
+                    retry_tokens = max_tokens
+                    why = "empty_completion"
+                else:
+                    retry_tokens = int(max_tokens * 2.5)
+                    why = "max_tokens_truncation"
                 retry_parsed = _one_call_with_overload_retry(retry_tokens)
-                retry_parsed["_retried_after"] = "empty_completion" if empty else "max_tokens_truncation"
+                retry_parsed["_retried_after"] = why
+                retry_parsed["_first_attempt"] = {k: parsed.get(k) for k in
+                                                  ("_stop_reason", "_content_block_types", "_raw_len_prestrip", "_usage")}
                 return retry_parsed
         return parsed
     except Exception as exc:
@@ -1697,6 +1736,14 @@ def run_replay_calibration(fixtures_dir: Path = None) -> bool:
             ("gaps_new_count", len(result["stage_b_adversarial"].get("gaps_found_new", [])), exp.get("gaps_new_count", len(result["stage_b_adversarial"].get("gaps_found_new", [])))),
             ("stage_b_parsed_successfully", result["stage_b_adversarial"]["parsed_successfully"], exp.get("stage_b_parsed_successfully")),
         ]
+        # Round 42: optional retry-path assertions, only asserted when the fixture
+        # states them (CAL-12 does), so the retry DECISION is regression-tested,
+        # not just the recovered result.
+        _b = result["stage_b_adversarial"].get("result", {}) or {}
+        for opt_key, actual in (("stage_b_retried_after", _b.get("_retried_after")),
+                                ("stage_b_retry_tokens", _b.get("_retry_tokens"))):
+            if opt_key in exp:
+                checks.append((opt_key, actual, exp[opt_key]))
         this_fixture_ok = True
         for label, actual, expected in checks:
             ok = actual == expected

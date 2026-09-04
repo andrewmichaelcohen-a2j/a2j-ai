@@ -1,0 +1,79 @@
+{
+  "id": "CAL-12-stage-b-empty-at-max-tokens-retries-bigger",
+  "description": "Round 42 regression guard for the dominant Stage B failure signature in every live run from 09-01 to 09-04: the adversarial completion comes back EMPTY (_raw == '') with stop_reason == 'max_tokens' -- the whole budget consumed with no text block returned (nine occurrences; the same-budget retry round 23 chose for 'empty' completions failed all nine times). Round 42 classifies empty+max_tokens as truncation and retries at 2.5x. Expected: retried_after == 'empty_completion_at_max_tokens', retry_tokens == 15000 (6000 base x 2.5), recovered edge cases parse, CLEAN-PASS. If this fixture ever reports retry_tokens == 6000 the round-42 decision has regressed to a same-budget retry.",
+  "nodes": [
+    {
+      "node_id": "CAL-12-EMPTY-AT-MAX-TOKENS",
+      "tier": "DRAFT",
+      "title": "Calibration fixture node CAL-12-EMPTY-AT-MAX-TOKENS",
+      "logic": {
+        "note": "synthetic calibration fixture, not real law"
+      },
+      "completeness_checklist": [
+        "synthetic checklist item"
+      ],
+      "grounded_derivation": {
+        "derived_from": [
+          {
+            "cite": "Cal. Test Code 1",
+            "url": "https://example-statute.test/section-1",
+            "quoted_text": "A debtor has 30 days to respond to the notice.",
+            "source_tier": "A",
+            "manual_verification": null
+          }
+        ]
+      }
+    }
+  ],
+  "_replay": {
+    "stage_a": {
+      "anthropic": [
+        {
+          "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+          "stop_reason": "end_turn",
+          "error": null
+        }
+      ],
+      "openai": {
+        "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+        "stop_reason": null,
+        "error": null
+      },
+      "gemini": {
+        "raw": "{\"derivation_summary\": \"A debtor has 30 days to respond.\", \"grounded\": true, \"citation_used\": \"Cal. Test Code 1\"}",
+        "stop_reason": null,
+        "error": null
+      }
+    },
+    "judge": {
+      "raw": "{\"agree\": true, \"agreement_notes\": \"All three agree.\"}",
+      "stop_reason": "end_turn",
+      "error": null
+    },
+    "citation": {
+      "https://example-statute.test/section-1": "<html><body><p>A debtor has 30 days to respond to the notice.</p></body></html>"
+    },
+    "adversarial": [
+      {
+        "raw": "",
+        "stop_reason": "max_tokens",
+        "error": null
+      },
+      {
+        "raw": "{\"edge_cases\": [{\"scenario\": \"Debtor responds late\", \"exposes_gap\": false, \"gap_description\": null}, {\"scenario\": \"Notice sent to wrong address\", \"exposes_gap\": false, \"gap_description\": null}, {\"scenario\": \"Debtor is a minor\", \"exposes_gap\": false, \"gap_description\": null}]}",
+        "stop_reason": "end_turn",
+        "error": null
+      }
+    ]
+  },
+  "_expected": {
+    "status": "CLEAN-PASS",
+    "all_grounded": true,
+    "semantic_agreement": true,
+    "all_citations_verified": true,
+    "gaps_found_count": 0,
+    "stage_b_parsed_successfully": true,
+    "stage_b_retried_after": "empty_completion_at_max_tokens",
+    "stage_b_retry_tokens": 15000
+  }
+}

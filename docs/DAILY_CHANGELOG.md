@@ -2,6 +2,35 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-04, round 42 (runner-only: Stage B empty-completion-at-max_tokens -- diagnostics + bigger retry, CAL-12)
+
+**What changed since round 41:** runner + calibration set only. Zero rules-content edits.
+
+**The finding.** Pulling the Stage B failure signature across every live run since 09-01: of the parse failures
+that were not API errors (credits, 529), NINE are `_raw == ""` with `stop_reason == "max_tokens"` -- the entire
+output budget consumed and no text returned -- and the round-23 same-budget retry for "empty" completions failed
+all nine times. An empty completion that hit the cap is not a transient blank; the budget is being spent on
+content blocks the runner does not read (the code joins only blocks with a `.text` attribute) or on whitespace
+`.strip()` erases. Which of those it is cannot be proven from the run JSON as it stood, so:
+
+- `call_anthropic` now records `_content_block_types`, `_raw_len_prestrip` and `_usage` (input/output tokens)
+  on every live Anthropic result, and on a retry keeps the first attempt's values under `_first_attempt`.
+  Next run's JSON answers the question with evidence.
+- Retry decision is now three-way: `empty_completion_at_max_tokens` -> 2.5x budget (15000 at the 6000 base);
+  `empty_completion` (any other stop reason) -> same budget as before; `max_tokens_truncation` -> 2.5x as before.
+  The replay path mirrors the same decision so fixtures exercise it.
+- CAL-12: empty + max_tokens first response, valid JSON on retry; asserts `stage_b_retried_after` and
+  `stage_b_retry_tokens` (new optional per-fixture assertions, only checked when a fixture states them).
+  `_expected_metrics.json` re-baselined to 12 fixtures (11/12 on the three stage rates, clean-pass 8/12,
+  undispositioned 1, gate False).
+
+**Not done, deliberately:** no change to the request itself (e.g. disabling any server-side reasoning) --
+that would be guessing at an API parameter without evidence; the diagnostics land first.
+
+**Verification:** `--replay` PASS (12/12 + metrics); all three `scripts/ci` checks PASS.
+
+**Next (Andy):** apply 41 then 42, re-smoke the same three nodes, then the full run.
+
 ## 2026-09-04, round 41 (content: first findings under the disposition-aware gate; two permanent-403 citations re-pinned)
 
 **What changed since round 40:** rules content only (two files) + ledger + triage doc. No runner change.
