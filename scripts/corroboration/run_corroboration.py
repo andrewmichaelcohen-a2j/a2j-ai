@@ -520,12 +520,23 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
 
     def _one_call(tokens: int) -> dict:
         client = anthropic.Anthropic(api_key=keys["ANTHROPIC_API_KEY"])
-        resp = client.messages.create(
+        # Round 45: use the streaming transport and collect the final message.
+        # The SDK refuses a NON-streaming request whose max_tokens implies more
+        # than 10 minutes of generation (its own arithmetic: 3600 s * max_tokens /
+        # 128000 -- i.e. anything above ~21,333 tokens) with "Streaming is
+        # required for operations that may take longer than 10 minutes". Round
+        # 44's 1.5x retry (24000) tripped it on 3 of 19 nodes in
+        # run_20260904T221748Z, and the exception path discarded the first
+        # attempt's diagnostics. get_final_message() returns the same Message
+        # object (content blocks, stop_reason, usage) the non-streaming call did,
+        # so everything downstream is unchanged.
+        with client.messages.stream(
             model=ANTHROPIC_MODEL,
             max_tokens=tokens,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
-        )
+        ) as _stream:
+            resp = _stream.get_final_message()
         raw = "".join(b.text for b in resp.content if hasattr(b, "text")).strip()
         parsed = _parse_json_response(raw)
         parsed["model"] = ANTHROPIC_MODEL
@@ -588,10 +599,20 @@ def call_anthropic(system_prompt: str, user_prompt: str, keys, dry_run: bool,
                 else:
                     retry_tokens = int(max_tokens * RETRY_BUDGET_MULTIPLIER)
                     why = "max_tokens_truncation"
-                retry_parsed = _one_call_with_overload_retry(retry_tokens)
+                first_attempt = {k: parsed.get(k) for k in
+                                 ("_stop_reason", "_content_block_types", "_raw_len_prestrip", "_usage")}
+                first_attempt["_max_tokens"] = max_tokens
+                try:
+                    retry_parsed = _one_call_with_overload_retry(retry_tokens)
+                except Exception as retry_exc:
+                    # Round 45: a retry that raises must not erase what the first
+                    # attempt told us (run_20260904T221748Z lost three nodes' worth).
+                    return {"error": str(retry_exc), "model": ANTHROPIC_MODEL,
+                            "_retried_after": why, "_retry_tokens": retry_tokens,
+                            "_first_attempt": first_attempt, "_raw": parsed.get("_raw", "")}
                 retry_parsed["_retried_after"] = why
-                retry_parsed["_first_attempt"] = {k: parsed.get(k) for k in
-                                                  ("_stop_reason", "_content_block_types", "_raw_len_prestrip", "_usage")}
+                retry_parsed["_retry_tokens"] = retry_tokens
+                retry_parsed["_first_attempt"] = first_attempt
                 return retry_parsed
         return parsed
     except Exception as exc:

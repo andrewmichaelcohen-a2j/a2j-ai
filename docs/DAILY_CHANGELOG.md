@@ -2,6 +2,35 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-05, round 45 (runner-only: streaming transport for Anthropic calls; keep first-attempt diagnostics when a retry raises)
+
+**What changed since round 44:** runner only. Zero rules-content edits, no fixture change (replay 14/14 PASS).
+
+**Full run `run_20260904T221748Z` (19 nodes):** Stage A 100%; citation 94.7% (one real failure: the CFPB
+interp-34 page, a permanent 403 -- content re-pin to the Cornell Supplement I mirror in round 46); Stage B parse
+84.2%; 46 material findings, 1 matched (`G-BANKRUPTCY-STAY-DISCHARGE` on the FCRA node -- the cross-cutting
+mechanism works, and the 1692f node's discharge finding was correctly NOT tagged because that node's text is
+affirmatively wrong, not silent).
+
+**The three parse failures are a round-44 regression:** "Streaming is required for operations that may take
+longer than 10 minutes." The SDK refuses a non-streaming request whose `max_tokens` implies > 10 min at its
+own 128K-tokens/hour arithmetic, i.e. anything above ~21,333. The 16000 base is under it; the 1.5x retry
+(24000) is over it, so the three nodes whose first attempt truncated at 16000 (COVERAGE, VALIDATION-NOTICE,
+CA-SOL-WRITTEN -- the three with the most dispositions in the prompt) lost the retry to a ValueError, and the
+exception path discarded the first attempt's diagnostics.
+
+- `_one_call` now uses `client.messages.stream(...)` and `get_final_message()`, which returns the same
+  Message (content blocks, stop_reason, usage) as before; nothing downstream changes. Shape validated offline
+  against the installed SDK with a mock transport (streamed request accepted at 24000; the non-streaming call
+  at 24000 reproduces the error).
+- A retry that raises now returns the error WITH `_retried_after`, `_retry_tokens`, `_first_attempt` and the
+  first attempt's `_raw`, instead of a bare error dict.
+
+**Verification:** `--replay` PASS (14/14 + metrics); all three `scripts/ci` checks PASS.
+
+**Next:** round 46 (content): the 43 real findings from the full run, plus the interp-34 re-pin. Then the
+next full run measures the fixed corpus.
+
 ## 2026-09-05, round 44 (runner-only: materiality from the two flags, cross-cutting `_global` dispositions, 16000 base budget, possessive-after-link normalization, CAL-13/14)
 
 **What changed since round 43:** runner + calibration set only. Zero rules-content edits.
