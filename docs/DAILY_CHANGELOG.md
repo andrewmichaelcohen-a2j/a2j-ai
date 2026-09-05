@@ -2,6 +2,30 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-05, LOCK series (Phase LOCK items 1-4 of the LOCK directive; no runner change, no v1.0 content change)
+
+**Directive filed:** `docs/directives/COWORK_DIRECTION_LOCK_DEBT_DEMO_V1_20260905.md`.
+
+- **LOCK-1 Freeze.** `rules/debt/validation/debt_demo_v1.0_manifest.json`: 19 nodes, 7 files, per-node
+  `node_sha256` (runner method) and per-file sha256, computed against round 46d. The seven files are added to
+  `scripts/ci/frozen_artifact_manifest.json` -- any edit to a v1.0 node now fails CI (9 frozen artifacts).
+  `docs/POST_V1_BACKLOG.md` opened; ledger gains classification `BACKLOG-V1.1`. Tag command for Andy is in the
+  measurement-of-record procedure.
+- **LOCK-2 Measurement-of-record.** `docs/DEBT_DEMO_V1_MEASUREMENT_OF_RECORD.md`: preconditions, smoke command
+  (3 nodes), full command (19), recording steps, and the conflicts flagged -- chiefly that the gate's third leg
+  will read False on a saturating generator and the record will dual-report raw and backlog-dispositioned.
+- **LOCK-3 Counsel queue.** `docs/DEBT_COUNSEL_QUEUE_V1.md`: 26 open GLOSS-FOR-COUNSEL items (federal 9, CA 9,
+  TX 8), each with the encoded proposition, authority relied on, direction-if-wrong, and confirm/strike/modify
+  boxes. Five round-38 items that were later statute-anchored are listed as excluded with the reason.
+- **LOCK-4 Census audit.** `docs/audit/` -- three books (federal, California, Texas) generated from the frozen
+  files, the ledger and the last run: full logic with per-field boxes, checklist, 166 citations with tier and
+  verification status (114 live-verified, 36 manual, 12 added after the last run, 4 doctrine), disposition
+  history, sign-off. Honest estimate in `docs/audit/README.md`: ~10-11 h audit + 2-3 h counsel session,
+  ~40 attorney-minutes per node -- the first AMPVR data point.
+
+**Held:** round 47 (severity rank) until after the measurement run. **Next:** Andy applies 46 + LOCK, tags,
+runs smoke then full; Cowork records; experiment pre-registrations (items 6-7) follow as design docs.
+
 ## 2026-09-05, round 46 (content, three patches: 46 findings from the first full run under the new gate dispositioned; ledger to 120)
 
 **What changed since round 45:** rules content (five files), ledger, triage doc, this entry. No runner change.
