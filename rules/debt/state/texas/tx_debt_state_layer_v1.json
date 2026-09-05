@@ -147,6 +147,17 @@
             "url": "https://rulesofcivilprocedure.com/tx/rule-94/",
             "source_tier": "A",
             "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Statute of limitations is an affirmative defense that must be pleaded."
+          },
+          {
+            "cite": "Tex. Civ. Prac. & Rem. Code § 16.066(a)-(b)",
+            "quoted_text": "(a) An action on a foreign judgment is barred in this state if the action is barred under the laws of the jurisdiction where rendered. (b) An action against a person who has resided in this state for 10 years prior to the action may not be brought on a foreign judgment rendered more than 10 years before the commencement of the action in this state.",
+            "url": "https://statutes.capitol.texas.gov/Docs/CP/htm/CP.16.htm",
+            "source_tier": "A",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves its SPA shell to the live checker (rounds 17-39). Text verified 2026-09-05 against the FindLaw Texas Codes mirror (current as of Jan. 1, 2026); url pinned to the official chapter page. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-05"
+            },
+            "tier_rationale": "Added 2026-09-05 (round 46). A Stage B finding in run_20260904T221748Z.json cited 16.066 as Texas's 'borrowing statute' for contractual choice-of-law clauses. Fetching it shows it is NOT: it governs actions on FOREIGN JUDGMENTS (barred here if barred where rendered; 10-year cap against 10-year residents). It is pinned because it is the right rule for the judgment_already_entered_note's out-of-state-judgment case; the choice-of-law point is addressed separately as a counsel gloss (see choice_of_law_note)."
           }
         ],
         "citation_verified": true
@@ -154,12 +165,12 @@
       "logic": {
         "limitations_period_years": 4,
         "applies_to": "actions on debt (written or oral contract), consistent with credit-card and other consumer-debt collection suits",
-        "accrual": "day the cause of action accrues — generally the date of default/breach or last payment, a fact question this node does not itself resolve",
+        "accrual": "the day the cause of action accrues -- for a revolving account, generally the date of DEFAULT or ACCELERATION (the creditor's demand for the full balance / charge-off), NOT the date of the last payment. CORRECTED 2026-09-05 (round 46), from run_20260904T221748Z.json: the prior text and checklist treated 'last payment' and 'default/breach' as interchangeable. On a credit card the last payment (March 2021) can precede the default that starts limitations (the November 2021 charge-off and demand) by six months to a year; using the last-payment date makes the July 2025 suit look barred when it is timely -- a dangerous-direction error. Texas courts have fixed accrual on revolving accounts at the date the account was charged off / the balance accelerated, or, on some facts, at the first missed payment (GLOSS-FOR-COUNSEL: the accrual date on a revolving account is not settled in a single controlling case; collect all three dates -- last payment, first missed payment, charge-off/demand -- and compute from each).",
         "note_re_tolling": "Discovery-rule and fraudulent-concealment tolling, plus minority/unsound-mind/military-service/absence-from-Texas tolling, are recognized under Texas law but NOT encoded here — this node determines the baseline 4-year period only; tolling analysis is a separate, not-yet-built node.",
-        "determination": "expired_if today > (accrual_date + 4 years), subject to any tolling not yet encoded",
+        "determination": "expired_if (the date suit was FILED -- or today, only if no suit has been filed) > (accrual_date + 4 years), subject to any tolling not yet encoded. CORRECTED 2026-09-05 (round 46), from run_20260904T221748Z.json, DANGEROUS DIRECTION: the prior formula compared TODAY to accrual + 4 years. Texas limitations is measured to the date the plaintiff FILED suit (CPRC 16.004(a): 'must bring suit ... not later than four years after the day the cause of action accrues'), provided the plaintiff then exercised diligence in obtaining service; a consumer who consults after the four-year mark about a suit the debt buyer filed within it was being told the claim was 'expired' when it is timely. Ask for the file-stamp date on the petition, not the service date and not today. GLOSS-FOR-COUNSEL: the diligence-in-service rule (filing alone does not stop the clock if service is delayed without diligence).",
         "post_expiration_payment_note": "ADDED 2026-09-03 (round 38): the accrual definition ('date of default/breach or last payment') must not be applied to a payment made AFTER the 4-year period ran. Under Tex. Civ. Prac. & Rem. Code § 16.065, revival of a barred claim requires a signed WRITTEN acknowledgment, and, where the holder is a DEBT BUYER (Fin. Code 392.307(a)(2)), § 392.307(d) provides that a payment, reaffirmation, or any other activity on a time-barred consumer debt does not revive it (and (c) bars the debt buyer from suing at all). CORRECTED 2026-09-04 (round 39): 392.307 is a debt-buyer provision, not a rule for every creditor; the general rule is 16.065. Debt buyers routinely solicit small 'good faith' payments precisely to manufacture a restart argument; as previously encoded, a 2024 $25 payment on a 2016 default would report a 2025 suit as timely -- the dangerous direction. Appeared in both backlog runs.",
         "installment_separate_accrual_note": "ADDED 2026-09-03 (round 38): for an installment obligation (auto loan, personal installment loan) that the lender has NOT accelerated, Texas runs limitations separately on each missed installment; installments falling due within the last 4 years remain actionable even if earlier ones are barred (and on optional-acceleration notes, accrual on the full balance runs from actual acceleration). The single-accrual-date, binary output would report the whole claim expired. Case-law gloss, source_tier C; same doctrine noted on the CA nodes.",
-        "judgment_already_entered_note": "ADDED 2026-09-03 (round 38): if a JUDGMENT has already been entered (very often by default, sometimes without the consumer's knowledge), the 4-year contract period is no longer the question -- the claim merged into a judgment on which execution may issue for 10 years, kept alive by issuing a further writ within each 10-year period; if no writ issues the judgment becomes DORMANT and may be revived only within 2 years of dormancy (Tex. Civ. Prac. & Rem. Code §§ 34.001, 31.006 -- CORRECTED 2026-09-04, round 39: not 'renewable indefinitely' as round 38 said). A consumer garnished in 2025 on a 2018 default judgment should not be told the debt 'expired in 2019.'",
+        "judgment_already_entered_note": "ADDED 2026-09-03 (round 38): if a JUDGMENT has already been entered (very often by default, sometimes without the consumer's knowledge), the 4-year contract period is no longer the question -- the claim merged into a judgment on which execution may issue for 10 years, kept alive by issuing a further writ within each 10-year period; if no writ issues the judgment becomes DORMANT and may be revived only within 2 years of dormancy (Tex. Civ. Prac. & Rem. Code §§ 34.001, 31.006 -- CORRECTED 2026-09-04, round 39: not 'renewable indefinitely' as round 38 said). A consumer garnished in 2025 on a 2018 default judgment should not be told the debt 'expired in 2019.' ADDED 2026-09-05 (round 46): for an OUT-OF-STATE judgment being enforced in Texas, CPRC 16.066 (quoted above) bars the action here if it is barred where rendered, and bars any action on a foreign judgment more than 10 years old against a defendant who has lived in Texas for 10 years.",
         "sol_is_an_affirmative_defense_note": "ADDED 2026-09-03 (round 38): limitations is an affirmative defense that is waived unless pleaded (Tex. R. Civ. P. 94); Texas courts routinely enter default judgments on time-barred consumer debts against non-answering defendants. An 'expired' output must always carry 'you must file an answer and plead it' -- the most common posture for this node is a pro se defendant deciding whether to respond.",
         "drafting_revisions": [
           {
@@ -173,12 +184,23 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned CPRC 16.065, Fin. Code 392.307(c)-(d), CPRC 34.001/31.006, TRCP 94. Two corrections: 392.307 is debt-buyer-specific; judgments go dormant without a writ within 10 years (revivable within 2 years), not 'renewable indefinitely'."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 8 ledger entries; two dangerous-direction): determination compared today, not the filing date; choice-of-law clauses unscreened (finding's 16.066 citation checked and found wrong -- foreign judgments only); accrual conflated last payment with default.",
+            "summary": "Round 46: determination corrected to filing date; accrual corrected to default/acceleration with all three dates collected; choice_of_law_note (GLOSS); 16.066(a)-(b) pinned for the foreign-judgment case; three checklist changes."
           }
-        ]
+        ],
+        "choice_of_law_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json; GLOSS-FOR-COUNSEL. Nearly every consumer card agreement chooses another state's law (Delaware, Utah, South Dakota), some with a 3-year limitations period. Texas has NO general borrowing statute for contract claims (the Stage B finding's citation to CPRC 16.066 was wrong -- that section covers foreign judgments only). Texas courts traditionally treat limitations as PROCEDURAL and apply the forum's (Texas's) four years regardless of a substantive choice-of-law clause; some courts have applied the chosen state's shorter period where the clause expressly reaches limitations, and debt-defense practice routinely raises the argument. The safe encoding is: default to Texas's four years, flag the clause, and refer. Checklist item added."
       },
       "completeness_checklist": [
         {
-          "fact": "Date of last payment on the debt, or date of default/breach if no payments were made",
+          "fact": "THRESHOLD: has a suit been FILED? If so, the file-stamp date on the petition (not the service date, not today) is what is compared to accrual + 4 years; a suit filed inside the period is timely no matter when the consumer consults",
+          "dispositive": true
+        },
+        {
+          "fact": "Three dates, kept separate: date of LAST PAYMENT, date of the FIRST MISSED payment, and date of CHARGE-OFF / demand for the full balance (acceleration) -- accrual on a revolving account is generally the default/acceleration date, not the last-payment date",
           "dispositive": true
         },
         {
@@ -204,6 +226,10 @@
         {
           "fact": "Whether a suit has been filed and the consumer has answered and pleaded limitations -- an expired period does not prevent a default judgment if the defense is not raised (TRCP 94)",
           "dispositive": true
+        },
+        {
+          "fact": "Does the card agreement contain a CHOICE-OF-LAW clause (Delaware, Utah, South Dakota, etc.), and does it expressly extend to limitations? Texas generally applies its own four years, but the clause is a live argument either way -- refer (choice_of_law_note)",
+          "dispositive": false
         }
       ],
       "consequences_and_next_steps": [
@@ -287,6 +313,28 @@
               "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
               "date": "2026-09-04"
             }
+          },
+          {
+            "cite": "Tex. Fam. Code § 158.009",
+            "quoted_text": "An order or writ of withholding shall direct that any employer of the obligor withhold from the obligor's disposable earnings the amount specified up to a maximum amount of 50 percent of the obligor's disposable earnings.",
+            "url": "https://statutes.capitol.texas.gov/Docs/FA/htm/FA.158.htm",
+            "source_tier": "A",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves its SPA shell to the live checker (rounds 17-39). Text verified 2026-09-05 against the FindLaw Texas Codes mirror (current as of Jan. 1, 2026); url pinned to the official chapter page. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-05"
+            },
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: the node listed 'court-ordered child support' as a flat exception and would return 'garnishable -- no protection' to a father whose employer was withholding 70% of disposable earnings. Texas caps support withholding at 50% of disposable earnings; the federal CCPA cap (15 U.S.C. 1673(b), 50-65%; NAMED) sits above it."
+          },
+          {
+            "cite": "Tex. Lab. Code § 207.075(b)-(c)",
+            "quoted_text": "(b) A right to benefits is exempt from levy, execution, attachment, or any other remedy for debt collection. (c) Benefits received by an individual are exempt from debt collection if the benefits are not mingled with other funds of the individual except for debts incurred for necessaries furnished to the individual or the individual's spouse or dependents during the time that the individual was unemployed.",
+            "url": "https://statutes.capitol.texas.gov/Docs/LA/htm/LA.207.htm",
+            "source_tier": "A",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves its SPA shell to the live checker (rounds 17-39). Text verified 2026-09-05 against the FindLaw Texas Codes mirror (current as of Jan. 1, 2026); url pinned to the official chapter page. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-05"
+            },
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: the node's bank_account_exempt_deposits_note protected only directly-deposited FEDERAL benefits. Texas unemployment benefits are exempt from any debt-collection remedy, and once received remain exempt if not commingled (necessaries exception). Workers' compensation benefits carry the same protection (Tex. Lab. Code 408.201; NAMED, not fetched)."
           }
         ],
         "citation_verified": true
@@ -320,12 +368,19 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned 42 U.S.C. 407(a), 31 CFR 212.6/212.3, CPRC 31.0025(a), Lab. Code 61.018; removed 3 SOURCE PENDING markers; turnover note now statute-anchored. Contractual-alimony point remains a gloss."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (two NEW material findings; a third was non-material): Texas statutory exemptions for deposited benefits omitted; support-withholding cap omitted (node said 'no protection').",
+            "summary": "Round 46: Fam. Code 158.009 pinned + support_withholding_cap_note + checklist; Lab. Code 207.075(b)-(c) pinned + bank_account_exempt_deposits_note expanded (408.201, 42.0021, TRCP 664a NAMED) + checklist reworded."
           }
         ],
-        "bank_account_exempt_deposits_note": "ADDED 2026-09-03 (round 38): for the very common debtor whose only income is Social Security/SSDI/VA benefits, a bank garnishment is NOT 'fair game' -- federal law protects those benefits after deposit and the bank must run a two-month lookback and shield that amount automatically (31 C.F.R. Part 212). The debtor's remedies are the bank's account-review protection plus an exemption claim, not acquiescence. Appeared in both backlog runs.",
+        "bank_account_exempt_deposits_note": "ADDED 2026-09-03 (round 38): for the very common debtor whose only income is Social Security/SSDI/VA benefits, a bank garnishment is NOT 'fair game' -- federal law protects those benefits after deposit and the bank must run a two-month lookback and shield that amount automatically (31 C.F.R. Part 212). The debtor's remedies are the bank's account-review protection plus an exemption claim, not acquiescence. Appeared in both backlog runs. EXPANDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the federal-benefit rules above are not the only shield for deposited funds. TEXAS statutory exemptions also follow certain benefits into a bank account: unemployment compensation (Lab. Code 207.075(b)-(c), quoted -- exempt 'from levy, execution, attachment, or any other remedy for debt collection,' and after receipt so long as not commingled, with a necessaries exception); workers' compensation income benefits (Lab. Code 408.201, NAMED); public and private retirement benefits (Prop. Code 42.0021, quoted on the sibling TX-EXEMPT-PERSONAL-PROPERTY node); and current wages themselves for a short window after deposit (see current_wages_deposit_note there -- GLOSS-FOR-COUNSEL, the Texas cases are split on whether wages keep their character once deposited). A debtor whose frozen account holds unemployment benefits must ASSERT the exemption in the garnishment proceeding (answer/claim under TRCP 664a; NAMED) -- Texas exemptions are not self-executing. Checklist item on deposit source expanded.",
         "turnover_order_note": "ADDED 2026-09-03 (round 38): because wage garnishment is barred, the standard Texas post-judgment tool is a TURNOVER ORDER and receivership under Tex. Civ. Prac. & Rem. Code § 31.002. This node recognized only 'garnishment of wages vs. of a bank account,' so a turnover order directing the debtor to hand over paycheck proceeds would be labeled 'unconstitutional garnishment.' It is not: Tex. Civ. Prac. & Rem. Code § 31.0025 (quoted above) bars any turnover order 'before a judgment debtor is paid wages' -- so a turnover order cannot reach wages still in the employer's hands -- but once wages are PAID to the debtor, turnover/receivership reaching the proceeds is not barred by that section and Texas courts enforce such orders by contempt (Beaumont Bank v. Buller line). PINNED 2026-09-04 (round 39): the unpaid/paid line is now statutory, not just case law. The debtor's remedy is an exemption objection or appeal of the order -- and defying a valid turnover order risks contempt. Appeared in both backlog runs.",
         "employer_deductions_not_garnishment_note": "ADDED 2026-09-03 (round 38): an EMPLOYER's own payroll deductions (recouping a signed-for advance, unreturned equipment) and VOLUNTARY written wage assignments/authorized payroll deductions to a lender are not garnishment and are not reached by the constitutional prohibition; they are governed by Tex. Lab. Code § 61.018 (deductions lawful only with written authorization or legal authority) and the Texas Workforce Commission wage-claim process. Pointing such an employee at a constitutional 'garnishment' claim sends her to the wrong remedy.",
-        "contractual_alimony_caveat": "ADDED 2026-09-03 (round 38): the 'court-ordered spousal maintenance' exception is Chapter 8 statutory maintenance. Purely CONTRACTUAL alimony in an agreed divorce decree, to the extent it exceeds what Chapter 8 would allow, has been treated by Texas courts as an ordinary contract debt NOT enforceable by wage withholding. Case-law gloss, source_tier C, flagged for counsel confirmation."
+        "contractual_alimony_caveat": "ADDED 2026-09-03 (round 38): the 'court-ordered spousal maintenance' exception is Chapter 8 statutory maintenance. Purely CONTRACTUAL alimony in an agreed divorce decree, to the extent it exceeds what Chapter 8 would allow, has been treated by Texas courts as an ordinary contract debt NOT enforceable by wage withholding. Case-law gloss, source_tier C, flagged for counsel confirmation.",
+        "support_withholding_cap_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the child-support and spousal-maintenance EXCEPTIONS to the wage-garnishment prohibition are not unlimited. Tex. Fam. Code 158.009 caps an income-withholding order for child support at 50% of the obligor's DISPOSABLE EARNINGS (and Fam. Code 8.106 caps spousal-maintenance withholding at the lesser of 20% of average monthly gross or the 158.009 amount; NAMED). An employer withholding 70% is withholding unlawfully even though the underlying order is valid; the obligor's remedy is a motion in the family court that issued the order (and, for arrears, Fam. Code 158.003-.004 govern how much of the withholding may be applied to arrears; NAMED). Federal law adds an outer ceiling (15 U.S.C. 1673(b)). Output should be 'garnishable up to 50% of disposable earnings for support; anything above is challengeable,' never 'no protection.' Checklist item added."
       },
       "completeness_checklist": [
         {
@@ -345,7 +400,7 @@
           "dispositive": true
         },
         {
-          "fact": "If a bank account is targeted: does it hold directly-deposited Social Security, SSDI, or VA benefits? Those remain protected after deposit and the bank must automatically shield two months' worth (42 U.S.C. 407; 31 C.F.R. Part 212)",
+          "fact": "If a bank account is targeted: does it hold directly-deposited Social Security, SSDI, or VA benefits? Those remain protected after deposit and the bank must automatically shield two months' worth (42 U.S.C. 407; 31 C.F.R. Part 212) -- OR Texas unemployment benefits (Lab. Code 207.075), workers' compensation (408.201), retirement benefits (Prop. Code 42.0021), or wages deposited within the last pay cycle? Each is a separate exemption that must be asserted in the garnishment proceeding",
           "dispositive": true
         },
         {
@@ -358,6 +413,10 @@
         },
         {
           "fact": "If the exception claimed is spousal maintenance: is it Chapter 8 court-ordered maintenance, or contractual alimony in an agreed decree (which may not be enforceable by withholding beyond Chapter 8 limits)?",
+          "dispositive": true
+        },
+        {
+          "fact": "If the withholding is for CHILD SUPPORT or spousal maintenance: what percentage of DISPOSABLE earnings is being withheld? Support withholding is capped at 50% of disposable earnings (Fam. Code 158.009; maintenance lower under 8.106); amounts above the cap are challengeable in the issuing family court",
           "dispositive": true
         }
       ],
@@ -457,6 +516,24 @@
               "note": "statutes.capitol.texas.gov intermittently serves an SPA navigation shell to a plain HTTP GET (documented since round 17). This entry's text was verified 2026-09-04 against the texas.public.law mirror of the same section, which reproduces the official text verbatim and cites the official URL; recorded per the manual_verification convention already used for this domain. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
               "date": "2026-09-04"
             }
+          },
+          {
+            "cite": "11 U.S.C. § 522(p)(2)(B)",
+            "quoted_text": "For purposes of paragraph (1), any amount of such interest does not include any interest transferred from a debtor's previous principal residence (which was acquired prior to the beginning of such 1215-day period) into the debtor's current principal residence, if the debtor's previous and current residences are located in the same State.",
+            "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section522&num=0&edition=prelim",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: the bankruptcy_value_cap_note said 522(p) 'particularly affects debtors who ... recently purchased a home with equity from a prior residence.' The statute says the OPPOSITE for a same-state move: equity rolled over from a previous principal residence acquired before the 1,215-day window is EXCLUDED from the cap. Text verified verbatim this session via a direct fetch of the official U.S. Code."
+          },
+          {
+            "cite": "Tex. Prop. Code § 41.002(c)",
+            "quoted_text": "(c) A homestead is considered to be urban if, at the time the designation is made, the property is: (1) located within the limits of a municipality or its extraterritorial jurisdiction or a platted subdivision; and (2) served by police protection, paid or volunteer fire protection, and at least three of the following services provided by a municipality or under contract to a municipality: (A) electric; (B) natural gas; (C) sewer; (D) storm sewer; and (E) water.",
+            "url": "https://statutes.capitol.texas.gov/Docs/PR/htm/PR.41.htm",
+            "source_tier": "A",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves its SPA shell to the live checker (rounds 17-39). Text verified 2026-09-05 against the FindLaw Texas Codes mirror (current as of Jan. 1, 2026); url pinned to the official chapter page. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-05"
+            },
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: the node stated the acreage caps but not the statutory URBAN/RURAL test, leaving the user to self-classify. A 12-acre tract outside city limits but inside the ETJ, with city water, sewer and electric and fire/police coverage, is URBAN -- capped at 10 acres, so 2 acres are exposed -- even though the owner would call it rural."
           }
         ],
         "citation_verified": true
@@ -479,7 +556,7 @@
           "federal tax liens (26 U.S.C. § 6321) and, similarly, federal criminal restitution or forfeiture judgments -- these override the Texas homestead exemption under the U.S. Constitution's Supremacy Clause (United States v. Rodgers, 461 U.S. 677 (1983)); Texas's 'property tax liens' exception in its own exemption statute does not itself reach federal tax debt, but federal supremacy independently does"
         ],
         "proceeds_protection": "sale proceeds of a homestead are protected from creditor seizure for 6 months after the sale date (§ 41.001(c))",
-        "bankruptcy_value_cap_note": "In a Chapter 7 or 13 bankruptcy filing, 11 U.S.C. § 522(p) caps the protected homestead equity ACQUIRED IN THE 1,215 DAYS (~40 months) before filing at a periodically-adjusted federal ceiling (currently $214,000, effective for cases filed April 1, 2025 through March 31, 2028) regardless of Texas's uncapped state-law exemption. This particularly affects debtors who recently relocated to Texas or recently purchased a home with equity from a prior residence. § 522(o) separately reduces protected equity traceable to a fraudulent pre-bankruptcy asset transfer. This node's 'no cap' statement applies only outside bankruptcy.",
+        "bankruptcy_value_cap_note": "In a Chapter 7 or 13 bankruptcy filing, 11 U.S.C. § 522(p) caps the protected homestead equity ACQUIRED IN THE 1,215 DAYS (~40 months) before filing at a periodically-adjusted federal ceiling (currently $214,000, effective for cases filed April 1, 2025 through March 31, 2028) regardless of Texas's uncapped state-law exemption. This particularly affects debtors who recently relocated to Texas from ANOTHER state. CORRECTED 2026-09-05 (round 46): it does NOT reach equity rolled over from a previous Texas principal residence acquired before the 1,215-day window -- 522(p)(2)(B) expressly excludes 'any interest transferred from a debtor's previous principal residence ... into the debtor's current principal residence, if the debtor's previous and current residences are located in the same State.' A lifelong Texan who sold a Houston home owned since 2005 and bought a Dallas house 18 months ago with $400,000 of rolled-over equity keeps that equity under the uncapped Texas exemption; only NEW equity added inside the window (a larger down payment from savings, paydown, appreciation attributable to improvements) counts toward the cap. An earlier version of this note said the reverse and was dangerous in the direction of steering a debtor away from a Chapter 7 she could safely file. § 522(o) separately reduces protected equity traceable to a fraudulent pre-bankruptcy asset transfer. This node's 'no cap' statement applies only outside bankruptcy.",
         "hoa_lien_caveat": "Homeowners'-association assessment liens are NOT among the clean statutory exceptions in Tex. Prop. Code § 41.001(b) (which lists only purchase-money, tax, contracted-in-writing improvement, owelty, refinance, home-equity-loan, and reverse-mortgage liens). Texas case law (e.g., Inwood North Homeowners' Ass'n v. Harris, 736 S.W.2d 632 (Tex. 1987)) has allowed HOA assessment-lien enforcement against a homestead in some circumstances, generally tied to whether the restrictive-covenant lien predates the homestead claim or fits within the constitutional exceptions. This is a genuinely unsettled, fact-specific area this node does NOT resolve -- flagged rather than asserted either way; a debtor facing HOA foreclosure should not be told the homestead exemption categorically protects the property without case-specific review.",
         "drafting_revisions": [
           {
@@ -499,13 +576,21 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned 11 U.S.C. 522(b)(3)(A), Prop. Code 41.0021, 41.003, 52.0012; removed 3 SOURCE PENDING markers; temporary-absence note now statute-anchored. Mechanic's-lien formalities (Tex. Const. art. XVI 50(a)(5)) NOT pinned this session -- marker retained."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 9 ledger entries): 522(p) note stated the rollover rule backwards; 41.002(c) urban/rural test not encoded; lien-attached-before-homestead timing rule omitted.",
+            "summary": "Round 46: 522(p)(2)(B) pinned and bankruptcy_value_cap_note corrected; 41.002(c) pinned + urban_rural_test_note + checklist item 2 rewritten; lien_attached_before_homestead_note (GLOSS) + checklist; bankruptcy checklist item extended."
           }
         ],
         "bankruptcy_domicile_rule_note": "ADDED 2026-09-03 (round 38): the bankruptcy_value_cap_note covers § 522(p)'s 1,215-day cap but the more basic rule was missing -- under 11 U.S.C. § 522(b)(3)(A) a debtor domiciled in Texas for fewer than 730 days before filing cannot use Texas exemptions at all and must use the prior state's (or the federal) exemptions. A family that moved from California or Illinois 14 months ago is not 'protected up to $214,000'; it may get only the prior state's much smaller homestead figure or the federal amount. Appeared in both backlog runs.",
         "abandonment_and_temporary_absence_note": "ADDED 2026-09-03 (round 38): the checklist's 'actual residence' question must not be read as 'currently living there.' Texas homestead status, once established, is lost only by ABANDONMENT -- proven by clear and convincing evidence of intent not to return -- and temporary absence (a job assignment out of state, caring for a parent) or even renting the house out does not forfeit it absent acquisition of a new homestead. Conversely, acquiring a new homestead elsewhere does end protection. PINNED 2026-09-04 (round 39): the renting-out point is now statutory -- Tex. Prop. Code § 41.003 (quoted above): temporary renting 'does not change its homestead character if the homestead claimant has not acquired another homestead.' The clear-and-convincing-evidence standard for abandonment remains case law.",
         "form_of_ownership_note": "ADDED 2026-09-03 (round 38): neither the logic nor the checklist asked WHO holds title. Tex. Prop. Code § 41.0021 preserves the exemption for a home held in a 'qualifying trust' (settlor/beneficiary with a present possessory right to occupy rent-free -- most revocable living trusts); property titled in an LLC, corporation, or non-qualifying trust is not the debtor's homestead and is reachable.",
         "mechanics_lien_formalities_note": "ADDED 2026-09-03 (round 38): the 'home-improvement liens contracted in writing' exception is not self-executing. Tex. Const. art. XVI, § 50(a)(5) requires the contract to be in writing, signed by BOTH spouses if the owner is married, executed before any work is performed or material furnished, and (for homesteads) to satisfy the cooling-off and closing-location formalities; a defectively executed contract does not create an enforceable lien against the homestead. Defective execution is the most common defense in these disputes. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
-        "abstract_of_judgment_title_cloud_note": "ADDED 2026-09-03 (round 38): 'the homestead is exempt' does not mean an old recorded abstract of judgment is harmless -- it clouds title and title companies commonly refuse to close a sale until it is addressed. The mechanism is the homestead affidavit as release of judgment lien under Tex. Prop. Code § 52.0012 (notice to the judgment creditor, 30-day objection window). A seller should be told about this procedure, not just that the equity is protected."
+        "abstract_of_judgment_title_cloud_note": "ADDED 2026-09-03 (round 38): 'the homestead is exempt' does not mean an old recorded abstract of judgment is harmless -- it clouds title and title companies commonly refuse to close a sale until it is addressed. The mechanism is the homestead affidavit as release of judgment lien under Tex. Prop. Code § 52.0012 (notice to the judgment creditor, 30-day objection window). A seller should be told about this procedure, not just that the equity is protected.",
+        "urban_rural_test_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the 10-acre (urban) versus 100/200-acre (rural) caps turn on a STATUTORY test, not on the owner's sense of the place. Prop. Code 41.002(c): the homestead is URBAN if, when designated, it is (1) inside a municipality, its extraterritorial jurisdiction, or a platted subdivision, AND (2) served by police protection, paid or volunteer fire protection, and at least three of electric, natural gas, sewer, storm sewer, and water provided by or under contract to a municipality. Both prongs are required; a property outside city limits can still be urban if it is inside the ETJ or a platted subdivision and has the services. On a 12-acre ETJ tract with city water, sewer and electric, the homestead is 10 acres and the remaining 2 (the debtor chooses which, if severable) are reachable by a judgment creditor. Checklist item 2 rewritten to collect the 41.002(c) facts.",
+        "lien_attached_before_homestead_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json; GLOSS-FOR-COUNSEL. Homestead protection is measured as of the time the creditor's lien ATTACHED. A judgment lien that validly attached (abstract recorded, Prop. Code 52.001 et seq.; NAMED) while the property was NON-exempt -- a rental duplex the debtor did not live in -- is not divested when the debtor later moves in and impresses homestead character; the later homestead is subject to the earlier lien. The exceptions list in this node is a list of debts that can reach a homestead; this is a different mechanism (the property was not a homestead when the lien attached). The 52.0012 affidavit route in abstract_of_judgment_title_cloud_note is for a lien that never attached because the property WAS homestead at recording; it does not clear a lien that attached first. Texas case law is consistent on the attachment-timing rule but no single statute states it; encode as a screening question and refer. Checklist item added."
       },
       "completeness_checklist": [
         {
@@ -513,7 +598,7 @@
           "dispositive": true
         },
         {
-          "fact": "Acreage of the property, if rural",
+          "fact": "Acreage, AND the Prop. Code 41.002(c) urban/rural facts: is the property inside a city, its extraterritorial jurisdiction, or a platted subdivision, and does it have police and fire protection plus at least three of municipal electric, natural gas, sewer, storm sewer, and water? If so it is URBAN and capped at 10 acres regardless of how rural it feels",
           "dispositive": true
         },
         {
@@ -521,7 +606,7 @@
           "dispositive": true
         },
         {
-          "fact": "Whether the homeowner is filing (or considering) bankruptcy, and if so, when the current homestead equity was acquired relative to the 1,215-day/~40-month lookback window (11 U.S.C. § 522(p) caps equity acquired in that window even though Texas state law has no cap)",
+          "fact": "Whether the homeowner is filing (or considering) bankruptcy, and if so, when the current homestead equity was acquired relative to the 1,215-day/~40-month lookback window (11 U.S.C. § 522(p) caps equity acquired in that window even though Texas state law has no cap) -- and, for the 522(p) cap, whether equity in the current home was rolled over from a PREVIOUS Texas principal residence acquired before the 1,215-day window (excluded from the cap, 522(p)(2)(B)) or is new equity added inside the window",
           "dispositive": true
         },
         {
@@ -546,6 +631,10 @@
         },
         {
           "fact": "If the homeowner is trying to SELL and an abstract of judgment is recorded: has the Prop. Code 52.0012 homestead affidavit / release procedure been used to clear title?",
+          "dispositive": true
+        },
+        {
+          "fact": "WHEN did the creditor's lien attach relative to when the property became the debtor's homestead? An abstract of judgment recorded while the property was a non-exempt rental (before the debtor moved in) attached to it, and the later homestead is subject to that lien -- refer (lien_attached_before_homestead_note)",
           "dispositive": true
         }
       ],
@@ -680,6 +769,17 @@
             "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section522&num=0&edition=prelim",
             "source_tier": "A",
             "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. The 730-day bankruptcy domicile rule."
+          },
+          {
+            "cite": "Tex. Fam. Code § 3.202(a)-(c)",
+            "quoted_text": "(a) A spouse's separate property is not subject to liabilities of the other spouse unless both spouses are liable by other rules of law. (b) Unless both spouses are personally liable as provided by this subchapter, the community property subject to a spouse's sole management, control, and disposition is not subject to: (1) any liabilities that the other spouse incurred before marriage; or (2) any nontortious liabilities that the other spouse incurs during marriage. (c) The community property subject to a spouse's sole or joint management, control, and disposition is subject to the liabilities incurred by the spouse before or during marriage.",
+            "url": "https://statutes.capitol.texas.gov/Docs/FA/htm/FA.3.htm",
+            "source_tier": "A",
+            "manual_verification": {
+              "note": "statutes.capitol.texas.gov intermittently serves its SPA shell to the live checker (rounds 17-39). Text verified 2026-09-05 against the FindLaw Texas Codes mirror (current as of Jan. 1, 2026); url pinned to the official chapter page. Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
+              "date": "2026-09-05"
+            },
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: the node's analysis was 'is the item listed and under the cap' with no marital-property screen. For a married debtor sued alone on a PREMARITAL card debt, the non-debtor spouse's separate property and sole-management community property (her own wages, an account in her name) are NOT subject to the judgment at all -- the question of exemption never arises for them."
           }
         ],
         "citation_verified": true
@@ -744,16 +844,28 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned 42 U.S.C. 407(a), 31 CFR 212.6/212.3, and 11 U.S.C. 522(b)(3)(A); removed 2 SOURCE PENDING markers. Independent-contractor receivables remains a case-law gloss."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 9 ledger entries): exemptions not self-executing; Texas statutory exemptions for deposited benefits omitted; no marital-property liability screen.",
+            "summary": "Round 46: exemptions_not_self_executing_note (TRCP 664a NAMED) + checklist; federal_benefits note expanded (207.075 cross-pinned on TX-WAGE; 408.201 NAMED) + checklist; Fam. Code 3.202 pinned + marital_property_liability_screen_note + threshold checklist (3.102 NAMED)."
           }
         ],
         "current_wages_deposit_note": "The unlimited 'current wages' exemption above protects wages only while they remain unpaid, owed compensation for personal service. Once wages are actually paid and deposited into a bank account, Texas case law treats them as losing their 'current wages' character upon deposit and commingling with other funds (subject to limited tracing arguments for a debtor who can show the specific funds are traceable wages, e.g. a single recent, unmingled direct deposit). Bank-account garnishment -- not wage garnishment itself, which Texas separately prohibits outright for ordinary debts -- is the single most common real-world Texas debt-collection scenario, and this node's flat 'current wages are exempt in unlimited amount' framing should not be read to mean a bank account holding a recently-deposited paycheck is automatically fully protected.",
         "family_definition_note": "The 'family or single-adult-not-in-family' checklist distinction that sets the $100,000 vs. $50,000 cap is not simply about marital status. Under Texas case law, a 'family' for homestead/exemption purposes includes a head of household who lives with and has a legal or moral obligation to support dependents -- e.g., an unmarried or divorced parent supporting minor children in the home -- even without a spouse. Taking a debtor's self-description as 'single' at face value, without asking about dependents living with and supported by them, can wrongly apply the lower $50,000 cap to someone actually entitled to the $100,000 family cap.",
         "enumerated_list_gate_note": "ADDED 2026-09-03 (round 38) -- THRESHOLD, and the most consequential gap in this node: the $100,000/$50,000 aggregate cap applies ONLY to property that is on the § 42.002(a) list quoted above (home furnishings and heirlooms, provisions for consumption, farm/ranch vehicles and implements, tools/equipment/books/apparatus of a trade or profession, clothing, jewelry (capped), two firearms, athletic and sporting equipment, one motor vehicle per licensed family member, the listed animals, and household pets). Anything NOT on that list is NOT exempt under this chapter at all, no matter how far under the cap the debtor's total is: CASH, BANK DEPOSITS, brokerage/stock/crypto holdings, tax refunds, accounts receivable, and recreational items such as boats are 100% reachable (subject only to OTHER specific exemptions -- e.g. the unlimited categories above, and the federal-benefit protections flagged below). This node previously framed the analysis as 'aggregate value under the cap = exempt,' which would tell a debtor with $36,000 in savings and brokerage accounts that everything is protected. Bank garnishment is the single most common Texas judgment-collection scenario, so the prior framing ran in the dangerous direction for the modal user.",
-        "federal_benefits_in_bank_accounts_note": "ADDED 2026-09-03 (round 38): the current_wages_deposit_note's 'deposited funds generally lose exempt character' point must NOT be applied to federal benefits. Social Security (42 U.S.C. § 407) and VA benefits (38 U.S.C. § 5301) remain exempt after deposit, and the Treasury rule at 31 C.F.R. Part 212 requires the bank receiving a garnishment order to protect, automatically and without any claim by the debtor, two months' worth of directly-deposited federal benefits. Elderly and disabled debtors are a large share of Texas garnishment targets; the checklist never asked the source of deposited funds.",
+        "federal_benefits_in_bank_accounts_note": "ADDED 2026-09-03 (round 38): the current_wages_deposit_note's 'deposited funds generally lose exempt character' point must NOT be applied to federal benefits. Social Security (42 U.S.C. § 407) and VA benefits (38 U.S.C. § 5301) remain exempt after deposit, and the Treasury rule at 31 C.F.R. Part 212 requires the bank receiving a garnishment order to protect, automatically and without any claim by the debtor, two months' worth of directly-deposited federal benefits. Elderly and disabled debtors are a large share of Texas garnishment targets; the checklist never asked the source of deposited funds. EXPANDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the enumerated-list gate ('anything not listed is 100% reachable') is subject to the TEXAS statutory exemptions that follow specific benefits into a bank account, not only the federal ones: unemployment compensation (Lab. Code 207.075(b)-(c), quoted on the sibling TX-WAGE node -- exempt after receipt if not commingled, necessaries excepted); workers' compensation income benefits (Lab. Code 408.201; NAMED); retirement benefits (Prop. Code 42.0021, quoted above). A debtor receiving workers' comp or unemployment by direct deposit whose account is garnished should assert that exemption in the garnishment answer, and should keep those deposits in an account with nothing else in it. Checklist item on deposit source expanded.",
         "independent_contractor_receivables_note": "ADDED 2026-09-03 (round 38): the unlimited 'current wages for personal services' category protects an EMPLOYEE's unpaid wages. Texas courts distinguish those from an independent contractor's accounts receivable, commissions, and owner draws, which are generally NOT 'current wages' and can be garnished in the payor's hands. A gig/1099 worker should not be told unpaid invoices are exempt. Case-law gloss, source_tier C, flagged for counsel confirmation.",
-        "bankruptcy_domicile_rule_note": "ADDED 2026-09-03 (round 38): in BANKRUPTCY, a debtor domiciled in Texas for fewer than 730 days before filing cannot use Texas exemptions at all -- 11 U.S.C. § 522(b)(3)(A) requires the exemptions of the state of prior domicile (or the federal set), so the $100,000 cap and the unlimited retirement exemption may be unavailable to a recent transplant. Same rule flagged on TX-HOMESTEAD-EXEMPTION."
+        "bankruptcy_domicile_rule_note": "ADDED 2026-09-03 (round 38): in BANKRUPTCY, a debtor domiciled in Texas for fewer than 730 days before filing cannot use Texas exemptions at all -- 11 U.S.C. § 522(b)(3)(A) requires the exemptions of the state of prior domicile (or the federal set), so the $100,000 cap and the unlimited retirement exemption may be unavailable to a recent transplant. Same rule flagged on TX-HOMESTEAD-EXEMPTION.",
+        "marital_property_liability_screen_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: before asking whether an item is EXEMPT, ask whether it is LIABLE. Texas is a community-property state and Fam. Code 3.202 sorts marital property by who incurred the debt and when: (a) a spouse's SEPARATE property is never liable for the other spouse's debt; (b) community property under the NON-debtor spouse's SOLE management (her wages, her separately titled account, property she alone controls) is not liable for the debtor spouse's PREMARITAL debts or NONTORTIOUS debts incurred during marriage; (c) community property under the debtor spouse's sole or JOINT management IS liable for that spouse's debts, before or during marriage. So on a judgment against the wife alone for a card she opened before the marriage: a joint bank account (joint management) is reachable; the husband's paycheck account in his name alone is not; a car titled to him alone and bought with his earnings is not. Fam. Code 3.102 (NAMED) defines sole-management community property (each spouse's personal earnings, revenue from separate property, recoveries for personal injuries, and increases of those). The exemption analysis in this node applies only to property that survives this screen. Checklist item added; 3.102 FIXED-SOURCE-NAMED.",
+        "exemptions_not_self_executing_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: Texas personal-property exemptions are substantive but NOT self-executing in post-judgment enforcement. When a constable levies under a writ of execution, or a bank is served with a writ of garnishment, the debtor must ASSERT the exemption: by a claim of exemption / motion to dissolve or vacate the writ in the issuing court for an execution levy, and by answering in the garnishment proceeding (TRCP 658-679, in particular the 664a motion to dissolve or modify the writ; NAMED, not fetched this round). Deadlines are short and the property can be sold, or the frozen funds paid over, while the debtor waits. There is no automatic $50,000/$100,000 shield that stops a sale on its own. Route any debtor with a levy or garnishment in hand to the procedural step first. Cross-references: TX-WAGE-GARNISHMENT-PROHIBITION's bank_account_exempt_deposits_note (garnishment answer), TX-JUSTICE-COURT node (JP-court garnishments). Checklist item added."
       },
       "completeness_checklist": [
+        {
+          "fact": "THRESHOLD, if the debtor is MARRIED: who incurred the debt and when (before or during the marriage), and for each targeted asset, is it the non-debtor spouse's SEPARATE property, community property under the NON-debtor spouse's SOLE management (her own earnings, her sole-name account), or joint/debtor-managed community property? Only the last is liable on a judgment against one spouse for a premarital or nontortious debt (Fam. Code 3.202) -- exemption is the second question, not the first",
+          "dispositive": true
+        },
         {
           "fact": "Family or single-adult-not-in-family status of the debtor (sets the $100,000 vs $50,000 cap) -- 'family' includes an unmarried head of household supporting dependents living with them, not only a debtor with a spouse; do not infer 'single adult' status merely from the debtor's own unprompted self-description",
           "dispositive": true
@@ -799,7 +911,7 @@
           "dispositive": true
         },
         {
-          "fact": "If a bank account is targeted: what is the SOURCE of the deposited funds -- directly-deposited Social Security/VA/other federal benefits are protected after deposit (42 U.S.C. 407; 31 C.F.R. Part 212 automatic 2-month protection), unlike ordinary wages",
+          "fact": "If a bank account is targeted: what is the SOURCE of the deposited funds -- directly-deposited Social Security/VA/other federal benefits are protected after deposit (42 U.S.C. 407; 31 C.F.R. Part 212 automatic 2-month protection), unlike ordinary wages -- including Texas unemployment (Lab. Code 207.075) and workers' compensation (408.201) benefits, which are exempt after deposit if not commingled",
           "dispositive": true
         },
         {
@@ -808,6 +920,10 @@
         },
         {
           "fact": "Whether the exemption is being asserted in a BANKRUPTCY case and, if so, whether the debtor has been domiciled in Texas for at least 730 days -- if not, Texas exemptions may be unavailable (11 U.S.C. 522(b)(3)(A))",
+          "dispositive": true
+        },
+        {
+          "fact": "PROCEDURAL: has a writ of execution been levied or a writ of garnishment served, and has the debtor filed a claim of exemption / motion to dissolve (TRCP 664a) or an answer asserting the exemption? Texas exemptions must be asserted; unclaimed exempt property can be sold or paid over",
           "dispositive": true
         }
       ],
@@ -847,6 +963,20 @@
             "url": "https://rulesofcivilprocedure.com/tx/rule-99/",
             "source_tier": "B",
             "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch. Source is the rulesofcivilprocedure.com reproduction of the official Texas Rules (same source the corpus already uses for TRCP 329b); official text at txcourts.gov."
+          },
+          {
+            "cite": "Tex. R. Civ. P. 506.1(a)",
+            "quoted_text": "A party may appeal a judgment by filing a bond, making a cash deposit, or filing a sworn statement of inability to pay with the justice court within 21 days after the judgment is signed or the motion to reinstate, motion to set aside, or motion for new trial, if any, is denied.",
+            "url": "https://www.stcl.edu/lib/TexasRulesProject/TRCP474-522/rule506-12013.html",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: the node's only post-deadline branch was 'if no default yet, answer now.' After a justice-court default is SIGNED the defendant has 14 days for a motion to set aside (TRCP 505.3, on the sibling TX-DEFAULT-JUDGMENT node) and 21 days to appeal for trial de novo in county court -- an appeal that requires no showing of excuse at all. Text verified verbatim this session from the South Texas College of Law Texas Rules Project (mirror of the Supreme Court of Texas's rules, 2013 text; the stcl page is the source the checker fetches for this corpus's other TRCP 500-series citations)."
+          },
+          {
+            "cite": "Tex. R. Civ. P. 502.4(d) (first sentence)",
+            "quoted_text": "If a plaintiff files suit in an improper venue, a defendant may challenge the venue selected by filing a motion to transfer venue. The motion must be filed before trial, no later than 21 days after the day the defendant's answer is filed, and must contain a sworn statement that the venue chosen by the plaintiff is improper and a specific county and precinct of proper venue to which transfer is sought.",
+            "url": "https://www.stcl.edu/lib/TexasRulesProject/TRCP474-522/rule502-42013.html",
+            "source_tier": "B",
+            "tier_rationale": "Added 2026-09-05 (round 46). A Stage B finding in run_20260904T221748Z.json asserted that a justice-court venue motion must be filed 'before or concurrently with' the answer and that a bare answer waives venue. The rule as fetched says otherwise: the motion is due 'no later than 21 days after the day the defendant's answer is filed.' The finding is classified NOT-A-GAP as stated, but a venue note is added because wrong-precinct debt-buyer filings are common and the 21-day post-answer window is short."
           }
         ],
         "citation_verified": false
@@ -871,10 +1001,23 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned TRCP 99(b) (county/district-court answer deadline). Late-answer-before-default remains a practice note (no single rule text quoted); marker retained."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 6 ledger entries): no post-default-signed branch; venue-motion timing (finding's 'before the answer' claim checked against TRCP 502.4(d) and found wrong -- 21 days AFTER the answer); eviction case type not screened (dangerous direction).",
+            "summary": "Round 46: TRCP 506.1(a) pinned + after_default_signed_note + checklist item rewritten; 502.4(d) pinned + venue_challenge_note + checklist (finding NOT-A-GAP as stated, rule encoded correctly); eviction_case_type_note + threshold checklist."
           }
-        ]
+        ],
+        "after_default_signed_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: if a default judgment HAS been signed in the justice court, the answer deadline is behind the defendant but two short, deterministic windows are not: (1) a motion to set aside / motion for new trial within 14 DAYS after the judgment is signed (TRCP 505.3(b)-(e); Craddock factors -- see TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY), and (2) an APPEAL to county court for trial de novo within 21 DAYS after the judgment is signed, or after the 505.3 motion is denied (TRCP 506.1(a)), perfected by a bond (twice the judgment for a defendant), a cash deposit, or a sworn statement of inability to pay -- and the appeal requires NO excuse for the default; the county court simply tries the case anew. For a consumer who learns of the judgment through a bank freeze three weeks after signing, the 21-day appeal is usually the live door when the 14-day motion has closed. After 21 days both are gone and the remaining routes are equitable (bill of review) -- refer. Checklist item 3 rewritten.",
+        "venue_challenge_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: a debt-claim defendant is entitled to be sued in the county AND PRECINCT where he resides (or where the contract was to be performed, etc. -- TRCP 502.4(b)). A debt buyer that files across the county, or in a neighboring county, is in an improper venue. The remedy is a sworn MOTION TO TRANSFER VENUE naming the proper county and precinct, due 'before trial, no later than 21 days after the day the defendant's answer is filed' (502.4(d)). Filing an answer first does NOT waive venue (the Stage B finding to the contrary was checked against the rule text and is wrong); missing the 21-day post-answer window does. Practical sequence for a wrong-precinct defendant: answer by the 14-day deadline, and file the venue motion with it or within 21 days after.",
+        "eviction_case_type_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json, DANGEROUS DIRECTION: this node's 14-day written-answer rule is for SMALL CLAIMS and DEBT CLAIM cases (TRCP 500.3(a)-(b)). An EVICTION (forcible detainer) petition -- even one that also seeks back rent -- is filed in the same justice court but governed by TRCP 510: no written answer is required, trial is set 10-21 days after the petition is filed, and the dispositive obligation is to APPEAR at the trial setting; a tenant who treats the papers as a debt claim and plans to 'answer within 14 days' can lose possession by default at a trial held before that. Eviction defaults, appeals (5 days) and the rest are on the TX-DEFAULT-JUDGMENT node's eviction_carve_out_note and its pinned 510.8(e)/510.9(a). This node's threshold checklist now asks the CASE TYPE before anything else; the eviction line's own nodes (vProof1) govern the substance."
       },
       "completeness_checklist": [
+        {
+          "fact": "THRESHOLD: what KIND of justice-court case is it -- a debt claim / small claim (this node: written answer within 14 days) or an EVICTION (forcible detainer, TRCP 510: no written answer, appear at the trial setting 10-21 days out, even if back rent is also claimed)? Read the caption and the citation's first lines",
+          "dispositive": true
+        },
         {
           "fact": "Date of service (date the constable or process server delivered the citation and petition)",
           "dispositive": true
@@ -884,7 +1027,11 @@
           "dispositive": true
         },
         {
-          "fact": "If the deadline has ALREADY passed: has a default judgment actually been SIGNED? If not, a late answer filed now is still effective and prevents default -- file immediately",
+          "fact": "If the deadline has ALREADY passed: has a default judgment been SIGNED? If NOT, answer immediately (late_answer_before_default_note). If YES: the date it was signed -- a motion to set aside is due within 14 days (TRCP 505.3) and an appeal to county court for a fresh trial, needing no excuse, within 21 days of the judgment or of the motion's denial (TRCP 506.1(a)); after 21 days, refer",
+          "dispositive": true
+        },
+        {
+          "fact": "Is the suit filed in the county AND precinct where the defendant lives (or another proper venue under TRCP 502.4(b))? If not, a sworn motion to transfer venue is due no later than 21 days after the answer is filed (502.4(d)) -- answering first does not waive it",
           "dispositive": true
         }
       ],
