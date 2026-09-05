@@ -7,10 +7,11 @@
       "FIXED-SOURCE-NAMED",
       "GLOSS-FOR-COUNSEL",
       "COVERED",
-      "HORIZON"
+      "HORIZON",
+      "NOT-A-GAP"
     ]
   },
-  "generated": "2026-09-04 (round 40); updated rounds 41, 43",
+  "generated": "2026-09-04 (round 40); updated rounds 41, 43, 46",
   "nodes": {
     "FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6": [
       {
@@ -95,6 +96,36 @@
         "dangerous_direction": "no",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-FALSE-DECEPTIVE-CATALOG-1692e-04",
+        "theme": "Limited-content message (1006.2(j)) treated as a 1692e(11) violation",
+        "summary": "1006.2(j) pinned; limited_content_message_note; checklist reworded",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no (overstates claim)",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A debt collector leaves the consumer six voicemails over two weeks, each saying only: 'This is Sam from ABC Services calling for Maria Lopez. Please call us bac"
+      },
+      {
+        "id": "D-FDCPA-FALSE-DECEPTIVE-CATALOG-1692e-05",
+        "theme": "Accurate-but-misleading static balance (Avila line)",
+        "summary": "accurate_but_misleading_balance_note; checklist",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "no",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A collector's letter states 'Balance due: $4,312.18' with no indication that interest and fees continue to accrue. The figure was accurate on the date of the le"
+      },
+      {
+        "id": "D-FDCPA-FALSE-DECEPTIVE-CATALOG-1692e-06",
+        "theme": "Bona fide error defense (1692k(c)) omitted",
+        "summary": "1692k(c) pinned; bona_fide_error_defense_note; checklist",
+        "classification": "FIXED-VERIFIED + GLOSS (Jerman)",
+        "dangerous_direction": "no",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A third-party collector's first letter overstates the balance by $900 because the original creditor's data file mis-mapped a payment; the collector has written "
       }
     ],
     "FDCPA-UNFAIR-PRACTICES-CATALOG-1692f": [
@@ -124,6 +155,36 @@
         "dangerous_direction": "no",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-UNFAIR-PRACTICES-CATALOG-1692f-04",
+        "theme": "Time-barred debt collection stated as a per se 1692f violation",
+        "summary": "general_clause_note corrected; 1006.26(b) pinned; time_barred_debt_note (Midland Funding); checklist",
+        "classification": "FIXED-VERIFIED (node was WRONG)",
+        "dangerous_direction": "no (overstates claim)",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer receives dunning letters from a debt buyer on a 9-year-old credit card debt, well past the state statute of limitations. The letters offer a settleme"
+      },
+      {
+        "id": "D-FDCPA-UNFAIR-PRACTICES-CATALOG-1692f-05",
+        "theme": "Discharged-debt collection stated as a per se 1692f violation (Walls split)",
+        "summary": "discharged_debt_note (Walls / Simon / Randolph); checklist",
+        "classification": "FIXED (note) + GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "yes (wrong forum in 9th Cir.)",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer whose Chapter 7 debts were discharged two years ago keeps getting collection calls and letters from a third-party collector on a discharged medical b"
+      },
+      {
+        "id": "D-FDCPA-UNFAIR-PRACTICES-CATALOG-1692f-06",
+        "theme": "Breach-of-the-peace condition on self-help repossession omitted",
+        "summary": "repossession_breach_of_peace_note; item (6) checklist extended",
+        "classification": "FIXED-SOURCE-NAMED (UCC 9-609(b)(2))",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A collection agency's repo agent, holding a valid auto security agreement with the borrower in default, cuts the padlock on the consumer's fenced yard and tows "
       }
     ],
     "FDCPA-VALIDATION-NOTICE-1692g": [
@@ -182,6 +243,26 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b-03",
+        "theme": "Identity-theft block track (1681c-2) not offered",
+        "summary": "1681c-2(a) pinned; identity_theft_block_note + threshold checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer's wallet was stolen and a collection account for a credit card she never opened appears on her report. She files an FTC identity-theft report and dis"
+      },
+      {
+        "id": "D-FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b-04",
+        "theme": "Repeat dispute with new evidence screened out as 'frivolous'",
+        "summary": "cra_forwarding_trigger_note qualified per 1681i(a)(3); checklist item 1 reworded",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer disputed a charge-off balance through TransUnion, the furnisher verified it, and she then disputed a second time attaching her bank statements and a "
       }
     ],
     "CA-SOL-WRITTEN-CONTRACT-DEBT": [
@@ -276,6 +357,36 @@
         "dangerous_direction": "partial",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-SOL-ORAL-CONTRACT-DEBT-04",
+        "theme": "No accrual rule for a no-due-date oral loan",
+        "summary": "demand_loan_accrual_note; checklist",
+        "classification": "GLOSS-FOR-COUNSEL (Civ. Code 1657 named)",
+        "dangerous_direction": "varies",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer verbally lent (or borrowed) $6,000 from a friend with no repayment date agreed -- 'pay me back when you can.' Three years later the lender demanded r"
+      },
+      {
+        "id": "D-CA-SOL-ORAL-CONTRACT-DEBT-05",
+        "theme": "'Last payment' accrual contradicts CCP 360 for unwritten debts",
+        "summary": "accrual corrected; checklist item 1 rewritten",
+        "classification": "FIXED-VERIFIED (node was WRONG)",
+        "dangerous_direction": "no (overstates creditor)",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer defaulted on a purely verbal $4,000 personal loan in March 2021, then made a single unsolicited $200 payment in January 2023 (within the 2-year perio"
+      },
+      {
+        "id": "D-CA-SOL-ORAL-CONTRACT-DEBT-06",
+        "theme": "Open book account on an oral arrangement routed to 2 years",
+        "summary": "337(b) pinned; classification_note clarified; checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A patient/homeowner had a purely verbal arrangement with a dentist (or a contractor/small supplier) who provided services over many months and kept a running le"
       }
     ],
     "TX-SOL-CONSUMER-DEBT": [
@@ -314,6 +425,36 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-SOL-CONSUMER-DEBT-05",
+        "theme": "Determination compared TODAY, not the filing date",
+        "summary": "determination corrected; threshold checklist",
+        "classification": "FIXED-VERIFIED (against 16.004(a) already pinned) + GLOSS (diligence in service)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer is served in 2026 with a credit-card collection suit that the debt buyer actually FILED in October 2023, three years after the 2020 charge-off; the c"
+      },
+      {
+        "id": "D-TX-SOL-CONSUMER-DEBT-06",
+        "theme": "Choice-of-law clause / borrowing statute unscreened (finding's 16.066 cite wrong)",
+        "summary": "choice_of_law_note; checklist; judgment note extended",
+        "classification": "GLOSS-FOR-COUNSEL; 16.066(a)-(b) pinned for foreign judgments",
+        "dangerous_direction": "varies",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "The consumer's cardholder agreement (Discover/Capital One-style) contains a Delaware or Utah choice-of-law clause with a 3-year limitations period, and the cons"
+      },
+      {
+        "id": "D-TX-SOL-CONSUMER-DEBT-07",
+        "theme": "Accrual conflated last payment with default/acceleration",
+        "summary": "accrual corrected; checklist item rewritten",
+        "classification": "FIXED (corrected) + GLOSS (revolving-account accrual date)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer made her last credit-card payment in March 2021; the issuer charged the account off and demanded the full balance in November 2021. She is sued in Ju"
       }
     ],
     "CA-WAGE-GARNISHMENT-LIMIT": [
@@ -343,6 +484,36 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-WAGE-GARNISHMENT-LIMIT-04",
+        "theme": "'Disposable earnings' undefined; net pay used",
+        "summary": "706.011(a) pinned; disposable_earnings_definition_note; checklist item 1 rewritten",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "varies",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A minimum-wage-plus retail worker in Los Angeles asks how much her creditor can take. Her paystub shows $780 gross, and $612 net after federal/state tax, SDI, h"
+      },
+      {
+        "id": "D-CA-WAGE-GARNISHMENT-LIMIT-05",
+        "theme": "Independent-contractor receivables treated as capped earnings",
+        "summary": "706.011(b) pinned ((e) named); independent_contractor_note; checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A rideshare/delivery gig worker (1099, no W-2 employer) has a default judgment on a credit-card debt. The creditor obtains a levy on the payments the platform o"
+      },
+      {
+        "id": "D-CA-WAGE-GARNISHMENT-LIMIT-06",
+        "theme": "Federal AWG / IRS / FTB withholding priority omitted",
+        "summary": "federal_and_tax_garnishment_priority_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED (20 U.S.C. 1095a; 26 U.S.C. 6331; CCP 706.070-.084, 706.023)",
+        "dangerous_direction": "no",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A debtor already has 15% of disposable pay taken by the U.S. Department of Education for a defaulted student loan under administrative wage garnishment (and in "
       }
     ],
     "CA-HOMESTEAD-EXEMPTION": [
@@ -381,6 +552,36 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-HOMESTEAD-EXEMPTION-05",
+        "theme": "Judgment lien survives the exemption; must be dealt with on sale/refinance",
+        "summary": "judgment_lien_survives_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED (CCP 697.310, 704.950)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A homeowner with $250,000 of equity (well under the exemption) has an abstract of judgment recorded against her by a credit-card creditor. She is not being levi"
+      },
+      {
+        "id": "D-CA-HOMESTEAD-EXEMPTION-06",
+        "theme": "704.710(c) attachment-and-continuous-residence test not applied",
+        "summary": "704.710(c) pinned; continuous_residence_requirement_note; checklist item 1 rewritten",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A debtor moved out of the house 14 months ago (job relocation / moved in with an adult child / entered assisted living) and now rents it out, but still calls it"
+      },
+      {
+        "id": "D-CA-HOMESTEAD-EXEMPTION-07",
+        "theme": "Forced-sale procedure and the debtor's duty to respond omitted",
+        "summary": "forced_sale_procedure_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED (CCP 704.740-704.800)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A debtor is served with a judgment creditor's application for an order of sale of the dwelling and an order to show cause. Believing the homestead exemption is "
       }
     ],
     "CA-VEHICLE-EXEMPTION": [
@@ -419,6 +620,36 @@
         "dangerous_direction": "no",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-VEHICLE-EXEMPTION-05",
+        "theme": "'Automatic' single-vehicle language read as 'no action needed'",
+        "summary": "automatic_single_vehicle_case and deadline note clarified; checklist reworded",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A debtor with one paid-off car worth $12,000 is served with a notice of levy. He reads that with only one vehicle the $7,500 exemption 'applies automatically wi"
+      },
+      {
+        "id": "D-CA-VEHICLE-EXEMPTION-06",
+        "theme": "No title/ownership variable (co-owner, third-party owner)",
+        "summary": "co_owner_and_third_party_title_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED (CCP 720.110)",
+        "dangerous_direction": "varies",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A judgment creditor levies on a car parked at the debtor's home that is titled jointly to the debtor and his mother (who co-signed and made the down payment), o"
+      },
+      {
+        "id": "D-CA-VEHICLE-EXEMPTION-07",
+        "theme": "Entity judgment debtor given an exemption (703.020(a))",
+        "summary": "703.020(a) pinned; natural_person_screen_note; threshold checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A judgment is entered against a small contractor's LLC (or against a sole proprietor's incorporated business) and the sheriff levies on a work truck titled to t"
       }
     ],
     "CA-BANK-ACCOUNT-EXEMPTION": [
@@ -448,6 +679,36 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-BANK-ACCOUNT-EXEMPTION-04",
+        "theme": "Bank setoff conflated with judgment levy",
+        "summary": "bank_setoff_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED (CCP 703.010; Fin. Code 864) + GLOSS",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A debtor with a Wells Fargo checking account also carries a delinquent Wells Fargo credit card. Before any lawsuit or writ, the bank exercises its contractual r"
+      },
+      {
+        "id": "D-CA-BANK-ACCOUNT-EXEMPTION-05",
+        "theme": "Aggregation note read as a one-time exemption",
+        "summary": "aggregation_note clarified (per levy)",
+        "classification": "FIXED-VERIFIED (clarified against 704.220 text already pinned)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A judgment creditor levies the debtor's only checking account in February and captures the non-exempt balance; the debtor keeps working and the same creditor le"
+      },
+      {
+        "id": "D-CA-BANK-ACCOUNT-EXEMPTION-06",
+        "theme": "Non-debtor spouse's account treated as recoverable; Fam. Code 910 ignored",
+        "summary": "joint_account_note corrected; checklist",
+        "classification": "FIXED-SOURCE-NAMED (Fam. Code 910, 911) + GLOSS",
+        "dangerous_direction": "no (overstates protection)",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A married debtor's paycheck is deposited into an account held solely in the non-debtor spouse's name. The creditor, holding a judgment against only one spouse, "
       }
     ],
     "CA-CIVIL-ANSWER-DEADLINE": [
@@ -477,6 +738,36 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-CA-CIVIL-ANSWER-DEADLINE-04",
+        "theme": "418.10 motion's suspension of the answer deadline not stated",
+        "summary": "418.10(b) pinned ((d) named); motion_to_quash_suspends_answer_note; checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A defendant who says the papers were left at her mother's old address follows the node's advice and files a CCP \u00a7 418.10 motion to quash on day 25. She then ask"
+      },
+      {
+        "id": "D-CA-CIVIL-ANSWER-DEADLINE-05",
+        "theme": "Answer content -- unpleaded affirmative defenses (SOL) waived",
+        "summary": "answer_content_affirmative_defenses_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED (CCP 431.30(b)(2), 458)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A defendant sued by a debt buyer on a charged-off credit card whose last payment was seven years ago files a timely general-denial answer (PLD-050) on day 28 wi"
+      },
+      {
+        "id": "D-CA-CIVIL-ANSWER-DEADLINE-06",
+        "theme": "Demurrer / motion to strike as timely responses omitted",
+        "summary": "demurrer_and_motion_to_strike_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED (CCP 430.10, 435-436, 472a(b))",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A legal-aid-assisted defendant files a demurrer (or motion to strike) on day 27 attacking a debt-buyer complaint that pleads a common count with no account docu"
       }
     ],
     "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY": [
@@ -497,6 +788,36 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY-03",
+        "theme": "TRCP 506.1 de novo appeal (21 days, no excuse) omitted",
+        "summary": "506.1(a) pinned; justice_court_variant_note expanded; checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer is sued by a debt buyer in a Harris County justice court and defaults. He learns of the judgment on day 18 after it was signed \u2014 past the TRCP 505.3 "
+      },
+      {
+        "id": "D-TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY-04",
+        "theme": "306a restart and TRAP 30 restricted appeal wrongly applied to justice court",
+        "summary": "notice_restart_note and restricted-appeal note corrected",
+        "classification": "FIXED (notes corrected; TRCP 500.3(e) named) + GLOSS (bill of review)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer with a justice-court debt-buyer default first learns of it 45 days after signing, when her bank account is frozen by garnishment. She asks what she c"
+      },
+      {
+        "id": "D-TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY-05",
+        "theme": "Post-motion appellate timetable (TRAP 26.1(a), 329b(e)) omitted",
+        "summary": "post_motion_appellate_timetable_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A defendant with a district-court default files a timely motion for new trial on day 25. The judge never rules; on day 76 the person asks what happens now."
       }
     ],
     "TX-WAGE-GARNISHMENT-PROHIBITION": [
@@ -535,6 +856,26 @@
         "dangerous_direction": "no",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-WAGE-GARNISHMENT-PROHIBITION-05",
+        "theme": "Texas statutory exemptions for deposited benefits omitted",
+        "summary": "207.075(b)-(c) pinned; bank_account_exempt_deposits_note expanded; checklist",
+        "classification": "FIXED-VERIFIED (207.075) + NAMED (408.201)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A Texas debtor with a default judgment from a credit card issuer has her bank account frozen by writ of garnishment. The account holds her Texas unemployment be"
+      },
+      {
+        "id": "D-TX-WAGE-GARNISHMENT-PROHIBITION-06",
+        "theme": "Support withholding treated as 'no protection'; 50% cap omitted",
+        "summary": "Fam. Code 158.009 pinned; support_withholding_cap_note; checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A Texas father's employer receives an income withholding order for child support arrears and begins withholding roughly 70% of his disposable earnings, leaving "
       }
     ],
     "TX-HOMESTEAD-EXEMPTION": [
@@ -582,6 +923,36 @@
         "dangerous_direction": "no",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-HOMESTEAD-EXEMPTION-06",
+        "theme": "522(p) rollover rule stated backwards",
+        "summary": "522(p)(2)(B) pinned; bankruptcy_value_cap_note corrected; checklist",
+        "classification": "FIXED-VERIFIED (node was WRONG)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A lifelong Texan sells the Houston home she has owned since 2005 and, 18 months ago, buys a Dallas house with $400,000 of rolled-over equity. She is now conside"
+      },
+      {
+        "id": "D-TX-HOMESTEAD-EXEMPTION-07",
+        "theme": "41.002(c) urban/rural test not encoded",
+        "summary": "41.002(c) pinned; urban_rural_test_note; checklist item 2 rewritten",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A judgment debtor owns a 12-acre tract with his house on it, located outside the city limits but inside the city's extraterritorial jurisdiction, served by city"
+      },
+      {
+        "id": "D-TX-HOMESTEAD-EXEMPTION-08",
+        "theme": "Lien attached before homestead character",
+        "summary": "lien_attached_before_homestead_note; checklist",
+        "classification": "GLOSS-FOR-COUNSEL",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A creditor abstracted a judgment in the county in 2019 while the debtor owned only a rental duplex there. In 2023 the debtor moved into the duplex, made it her "
       }
     ],
     "TX-EXEMPT-PERSONAL-PROPERTY": [
@@ -629,6 +1000,36 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-EXEMPT-PERSONAL-PROPERTY-06",
+        "theme": "Exemptions not self-executing; procedure omitted",
+        "summary": "exemptions_not_self_executing_note; checklist",
+        "classification": "FIXED-SOURCE-NAMED (TRCP 664a)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A judgment creditor obtains a writ of execution and a constable levies on the debtor's pickup truck and household furniture, and separately the debtor's bank is"
+      },
+      {
+        "id": "D-TX-EXEMPT-PERSONAL-PROPERTY-07",
+        "theme": "Texas statutory exemptions for deposited benefits omitted",
+        "summary": "federal_benefits note expanded; checklist",
+        "classification": "FIXED-VERIFIED (207.075 on sibling) + NAMED (408.201)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A debtor with a default judgment against her is receiving Texas workers' compensation income benefits (or state unemployment benefits) by direct deposit; the cr"
+      },
+      {
+        "id": "D-TX-EXEMPT-PERSONAL-PROPERTY-08",
+        "theme": "No marital-property liability screen (Fam. Code 3.202)",
+        "summary": "3.202 pinned; marital_property_liability_screen_note; threshold checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no (overstates creditor)",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A married Texas debtor is sued alone on a credit card she opened before the marriage; the creditor gets a judgment and garnishes a joint bank account and seeks "
       }
     ],
     "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE": [
@@ -649,6 +1050,36 @@
         "dangerous_direction": "yes",
         "source": "docs/DEBT_STAGE_B_TRIAGE.md (round 38 table; classification updated per round 39 pinning)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE-03",
+        "theme": "No branch for a default already signed (505.3 / 506.1)",
+        "summary": "506.1(a) pinned; after_default_signed_note; checklist rewritten",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A caller was served with a JP-court debt-claim citation, did nothing, and a default judgment was signed three weeks ago; she found out when her bank account was"
+      },
+      {
+        "id": "D-TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE-04",
+        "theme": "Venue motion 'must precede the answer' (checked: 21 days AFTER, TRCP 502.4(d))",
+        "summary": "502.4(d) pinned; venue_challenge_note; checklist",
+        "classification": "NOT-A-GAP as stated (rule encoded correctly)",
+        "dangerous_direction": "n/a",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A debt buyer sued a Houston-area consumer in a JP precinct on the other side of the county (or a neighboring county) where he has never lived and never signed a"
+      },
+      {
+        "id": "D-TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE-05",
+        "theme": "Eviction case type not screened (TRCP 510)",
+        "summary": "eviction_case_type_note; threshold checklist",
+        "classification": "FIXED-VERIFIED (510 pinned on sibling)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A tenant is handed a JP-court citation from her landlord over $3,400 in unpaid rent; the papers are an eviction (forcible detainer) petition seeking possession "
       }
     ],
     "FDCPA-REGF-CALL-FREQUENCY-1006.14b": [
@@ -714,6 +1145,36 @@
         "dangerous_direction": "no (overstates claim, wrong defendant)",
         "source": "run_20260904T212407Z (round 43)",
         "date": "2026-09-04"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-08",
+        "theme": "No temporal screen; 1692k(d) one-year limit",
+        "summary": "1692k(d) pinned; temporal_screen_note + threshold checklist",
+        "classification": "FIXED-VERIFIED",
+        "dangerous_direction": "no (overstates claim)",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer brings in a phone log showing 14 calls in one week from a collection agency about a credit-card debt, but the calls occurred 16 months ago (or in 202"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-09",
+        "theme": "TCPA overlay for prerecorded calls to cell phones",
+        "summary": "tcpa_overlay_note + checklist; 47 U.S.C. 227(b)(1)(A)(iii) named",
+        "classification": "HORIZON (statute named; TCPA node)",
+        "dangerous_direction": "yes",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A consumer receives six calls in a week from a collection agency about a single medical debt, all to her cell phone, most of them delivering a prerecorded/artif"
+      },
+      {
+        "id": "D-FDCPA-REGF-CALL-FREQUENCY-1006.14b-10",
+        "theme": "Calls to a relative seeking the consumer counted against the consumer's bucket",
+        "summary": "Reg text counts calls 'to a particular person'; comment 14(b)(2)(i)-1.iii; 1692b governs the relative's calls -- recorded in unit_of_count",
+        "classification": "NOT-A-GAP (node correct; reason recorded)",
+        "dangerous_direction": "n/a",
+        "source": "run_20260904T221748Z (round 46)",
+        "date": "2026-09-05",
+        "scenario_excerpt": "A collection agency, hunting for the consumer, dials her mother's landline (where she does not live) six times in one week asking for her, and also dials the co"
       }
     ]
   },

@@ -157,6 +157,58 @@ text is WRONG about the theme, not merely silent.
 2005) on municipal utility obligations as "debts"; the enforceable-where-rendered requirement for sister-state
 judgments (full-faith-and-credit case law); 366.2's interaction with a timely probate creditor's claim.
 
+**Round 46 (2026-09-05) -- first full run under the disposition-aware gate, `run_20260904T221748Z` (19 nodes).**
+Stage A 100%; citations 94.7% (one permanent 403, re-pinned); Stage B parse 84.2% (three losses to a round-44
+runner regression, fixed in round 45). 47 material findings: 1 correctly matched to the cross-cutting
+`G-BANKRUPTCY` disposition (FCRA), 46 new across 16 nodes. Read one by one, they are real -- the corpus is
+young and a strong adversarial model keeps finding real gaps; this is the standing generator working, not
+padding. All 46 dispositioned in three content patches (46a federal, 46b California, 46c Texas), ledger ids
+per node in `stage_b_dispositions.json` (120 node-specific entries). Sources fetched and pinned where a
+statute governs; case law recorded as GLOSS-FOR-COUNSEL; sections not fetched this round recorded as
+FIXED-SOURCE-NAMED for a follow-up pinning round.
+
+**Classification tally (46):** FIXED-VERIFIED 22 · FIXED-SOURCE-NAMED 12 · GLOSS-FOR-COUNSEL 8 · HORIZON 1 ·
+NOT-A-GAP 2 (some rows carry two classes; counted by the primary). **Dangerous-direction: 30 of 46.**
+
+**Three findings checked against the source and found WRONG as stated** (the discipline paying for itself):
+CPRC 16.066 is not a borrowing statute for contract choice-of-law clauses -- it governs foreign judgments
+(pinned for that purpose; the clause point is a counsel gloss); a justice-court venue motion is due 21 days
+AFTER the answer, not before it (TRCP 502.4(d), pinned; venue note added anyway); and calls to a relative
+placed to reach the consumer do not count against the consumer's 7-in-7 bucket (Reg F text and comment
+14(b)(2)(i)-1.iii). Each is recorded NOT-A-GAP with its reasoning in the node.
+
+**Where the node itself was affirmatively wrong (fixed):** 1692f said time-barred and discharged-debt
+collection violate 1692f per se (Midland Funding; Walls split); TX-HOMESTEAD stated the 522(p) rollover rule
+backwards (522(p)(2)(B) excludes same-state rollover equity); TX-SOL compared today to accrual instead of the
+filing date, and used last payment as the accrual date; CA-SOL-ORAL used last payment as accrual (CCP 360
+forbids it for unwritten debts); TX-DEFAULT-JUDGMENT applied 306a and the restricted appeal to justice court;
+CA-BANK's aggregation note read as a one-time exemption; TX-WAGE said support withholding has 'no protection'
+(Fam. Code 158.009: 50% cap).
+
+**Cross-node duplicates handled once:** TRCP 506.1 de novo appeal (pinned on both TX-DEFAULT-JUDGMENT and
+TX-JUSTICE-COURT); Texas deposited-benefit exemptions (207.075 pinned on TX-WAGE, cross-referenced on
+TX-EXEMPT-PP); bankruptcy discharge on 1692f (node text was wrong, so reported -- correct behaviour under the
+G- rule).
+
+**For counsel (this round's additions, 8):** Avila / Chuway / Taylor on static balances; Jerman scope of the
+bona fide error defense; Walls / Simon / Randolph on FDCPA claims for discharge-injunction violations; the
+revival-misrepresentation theory on time-barred debts (Buchanan, Pantoja); California demand-loan accrual
+(Civ. Code 1657); Texas choice-of-law clauses and limitations; Texas revolving-account accrual date; Texas
+lien-attached-before-homestead timing; Fam. Code 910/911 spouse-account interplay; Fin. Code 864 setoff
+figures; bill of review from a justice-court judgment.
+
+**Named-but-not-fetched this round (pinning backlog, 12):** UCC 9-609(b)(2) (Cal. Com. Code 9609 / Tex. Bus.
+& Com. Code 9.609); 47 U.S.C. 227(b)(1)(A)(iii); 20 U.S.C. 1095a; 26 U.S.C. 6331/6334; CCP 706.070-.084,
+706.023; CCP 697.310, 704.950; CCP 704.740-704.800; CCP 720.110; CCP 703.010, Fin. Code 864; Fam. Code 910/911;
+CCP 431.30(b)(2), 458; CCP 430.10, 435-436, 472a(b); Tex. Lab. Code 408.201; TRCP 664a; TRCP 500.3(e);
+TRAP 26.1(a), 26.3; TRCP 329b(e); Fam. Code 3.102, 8.106, 158.003-.004; Civ. Code 1657.
+
+**Structural observation.** Every parsed node returned exactly 3 material findings. That is the prompt asking
+for edge cases and a capable model supplying them; the gate will not reach zero until the generator's marginal
+finding is not material, and this round's findings say we are not there yet. Suggest the next runner round
+ask for a severity rank and a "would a careful legal-aid attorney consider this a must-fix" flag rather than
+three yes/no fields, so the count becomes informative rather than saturated. Spec decision for Andy.
+
 **What "pending source" means for you.** Every pending item is a screening *question* the system now asks
 plus a note that names the governing provision. None of them quotes statutory text as verified. They change
 what the system asks before it answers, which is the safe direction; they do not assert new law as confirmed.

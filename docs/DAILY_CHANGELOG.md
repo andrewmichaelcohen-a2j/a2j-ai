@@ -2,6 +2,45 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-05, round 46 (content, three patches: 46 findings from the first full run under the new gate dispositioned; ledger to 120)
+
+**What changed since round 45:** rules content (five files), ledger, triage doc, this entry. No runner change.
+Delivered as three patches so they can be applied and reviewed by jurisdiction: **46a federal** (1692e, 1692f,
+call-frequency, FCRA; validation node interp-34 re-pinned to Cornell), **46b California** (SOL-ORAL, WAGE,
+HOMESTEAD, VEHICLE, BANK, CIVIL-ANSWER), **46c Texas** (SOL, WAGE, HOMESTEAD, EXEMPT-PP, JUSTICE-COURT,
+DEFAULT-JUDGMENT), **46d** (ledger + docs).
+
+**Full run `run_20260904T221748Z`:** 47 material Stage B findings, 1 matched (G-BANKRUPTCY on FCRA -- the
+cross-cutting mechanism works), 46 new across 16 nodes; all dispositioned. Tally: FIXED-VERIFIED 22,
+FIXED-SOURCE-NAMED 12, GLOSS-FOR-COUNSEL 8, HORIZON 1, NOT-A-GAP 2; 30 of 46 dangerous-direction. Three
+findings were checked against the source and found wrong as stated (CPRC 16.066 is the foreign-judgment
+statute, not a borrowing statute; TRCP 502.4(d) venue motions are due 21 days AFTER the answer; relative's
+calls do not aggregate into the consumer's 7-in-7 bucket) -- recorded NOT-A-GAP with reasoning. Seven places
+where the node's own text was affirmatively wrong were corrected (list in DEBT_STAGE_B_TRIAGE.md).
+
+**Sources pinned this round (all fetched verbatim):** 12 CFR 1006.2(j), 1006.26(b); 15 U.S.C. 1692k(c), (d),
+1681c-2(a); 11 U.S.C. 522(p)(2)(B); CCP 337(b) (oral node), 706.011(a)-(b), 703.020(a) (vehicle node),
+704.710(c), 418.10(b); CPRC 16.066(a)-(b); Tex. Fam. Code 158.009, 3.202(a)-(c); Tex. Lab. Code
+207.075(b)-(c); Tex. Prop. Code 41.002(c); TRCP 506.1(a) (two nodes), 502.4(d). Texas statutes carry
+`manual_verification` (FindLaw mirror, official url pinned). Twelve provisions named but not fetched are
+listed in the triage doc as the next pinning backlog.
+
+**Notable corrections:** TX-SOL determination now uses the FILING date, not today, and accrues from
+default/acceleration, not last payment (both dangerous-direction); TX-HOMESTEAD's 522(p) note reversed
+(same-state rollover equity is EXCLUDED from the cap); 1692f no longer calls time-barred or discharged-debt
+collection a per se violation (1006.26(b) is the categorical rule; Midland Funding; Walls split);
+CA-VEHICLE adds the 703.020(a) natural-person screen (entity debtors get zero); CA-CIVIL-ANSWER now says an
+answer must PLEAD the statute of limitations or waive it; CA-WAGE defines disposable earnings and excludes
+1099 receivables from the cap; TX-WAGE caps support withholding at 50%; TX-JUSTICE-COURT screens for
+evictions (TRCP 510) before the 14-day rule.
+
+**Verification:** schema validator PASS on every patch; calibration+replay PASS (runner unchanged); each patch
+applies with `git am --3way` on a fresh clone of origin HEAD in sequence (verified below).
+
+**Next:** full run on the fixed corpus (runner 45 + content 46). Then a pinning round for the 12 named
+sources, and -- spec decision for Andy -- a runner round to replace the three yes/no Stage B flags with a
+severity rank so the finding count stops saturating at 3 per node.
+
 ## 2026-09-05, round 45 (runner-only: streaming transport for Anthropic calls; keep first-attempt diagnostics when a retry raises)
 
 **What changed since round 44:** runner only. Zero rules-content edits, no fixture change (replay 14/14 PASS).
