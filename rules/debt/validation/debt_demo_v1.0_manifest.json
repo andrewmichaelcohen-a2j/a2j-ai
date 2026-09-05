@@ -234,5 +234,30 @@
       "derived_from_count": 9,
       "checklist_count": 10
     }
-  ]
+  ],
+  "measurement_of_record": {
+    "run_id": "run_20260905T175137Z",
+    "path": "rules/debt/validation/runs/run_20260905T175137Z.json",
+    "sha256": "e8ca921baab1f0fcc2c7a8530e6734f2d6226eb0b6d74ada86cfd383e9a5df10",
+    "runner": "round 45 (streaming transport; 16000 base; two-flag materiality; _global dispositions)",
+    "content": "debt-demo-v1.0 (tag)",
+    "ledger_at_run": "121 node-specific + 4 cross-cutting",
+    "smoke": "run_20260905T110123Z (3 nodes; Stage A 100, citations 100, Stage B parse 100)",
+    "stage_a_grounded_agreement_pct": 100.0,
+    "citation_verification_pct": 100.0,
+    "stage_b_parse_success_pct": 100.0,
+    "material_findings_total": 54,
+    "matched_existing_dispositions": 2,
+    "undispositioned_at_run": 52,
+    "gate_raw": {
+      "internal_gate_met": false,
+      "basis": "JSON as computed: Stage A and citation legs met; third leg 52 undispositioned"
+    },
+    "gate_backlog_dispositioned": {
+      "third_leg_met": true,
+      "basis": "all 52 classified BACKLOG-V1.1 in docs/POST_V1_BACKLOG.md and the ledger the same day (OUT-OF-SCOPE-for-this-release class under spec s.8); 35 of 52 flagged dangerous-direction; no v1.0 content changed"
+    },
+    "claim_card_sentence": "v1.0: 19 nodes; Stage A three-model grounded agreement 100%; every url-bearing citation live-verified or manually verified (100%); 174 adversarial findings surfaced across rounds 38-46 and the record run, 120 dispositioned into content before the freeze and 52 carried to the v1.1 backlog, dangerous-direction first.",
+    "recorded_by": "Cowork, 2026-09-05; reading of the third leg is Andy's decision (see DEBT_DEMO_V1_MEASUREMENT_OF_RECORD.md)"
+  }
 }

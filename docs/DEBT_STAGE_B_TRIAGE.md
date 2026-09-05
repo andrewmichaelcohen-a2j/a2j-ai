@@ -209,6 +209,28 @@ finding is not material, and this round's findings say we are not there yet. Sug
 ask for a severity rank and a "would a careful legal-aid attorney consider this a must-fix" flag rather than
 three yes/no fields, so the count becomes informative rather than saturated. Spec decision for Andy.
 
+**v1.0 MEASUREMENT OF RECORD -- `run_20260905T175137Z` (2026-09-05), frozen corpus, runner at round 45.**
+Smoke `run_20260905T110123Z` (3 nodes) passed every precondition. Full run: **Stage A 100% · citation verification
+100% · Stage B parse 100%** (first run ever with all three at 100; the streaming transport and every round-46 pin
+held). Stage B: 54 material findings, 2 correctly matched to existing dispositions, **52 new -- all carried to
+`POST_V1_BACKLOG.md` (rows 2-53) and the ledger as BACKLOG-V1.1; no v1.0 content changed.** 35 of 52 are
+dangerous-direction as frozen; the worst: TX-EXEMPT-PP says boats are not exempt when 42.002(a)(4) exempts
+boats used in a trade; TX-HOMESTEAD omits refinance liens from the exceptions; CA-SOL-WRITTEN grants a flat
++178 COVID days to claims that accrued inside the window, and says judgment renewal is automatic; 1692f's
+threshold excludes repossession agencies that 1692a(6) covers for item (6); Obduskey generalized beyond
+nonjudicial foreclosure. These are recorded, not fixed.
+
+**Gate, dual-reported.** Raw JSON: `internal_gate_met` = **False** (third leg: 52 undispositioned).
+Backlog-dispositioned reading: all 52 classified the same day, third leg met on paper -- Andy decides which
+reading the claim card uses (`DEBT_DEMO_V1_MEASUREMENT_OF_RECORD.md`). What is true on either reading: 174
+adversarial findings surfaced across rounds 38-46 and the record run; 120 dispositioned into content before
+the freeze; 52 carried to v1.1, dangerous-direction first.
+
+**Would-be classes of the 52:** FIXED-VERIFIED (source already pinned; text/checklist change) 13 ·
+FIXED-SOURCE-NAMED 18 · FIXED (note/checklist, no new source) 8 · GLOSS-FOR-COUNSEL 9 · COVERED elsewhere
+(cross-reference) 6 (some rows carry two). Convergence signal: the round-46 fixes did NOT recur -- the model
+found the next layer, not the same layer; 2 findings were matched rather than re-reported.
+
 **What "pending source" means for you.** Every pending item is a screening *question* the system now asks
 plus a note that names the governing provision. None of them quotes statutory text as verified. They change
 what the system asks before it answers, which is the safe direction; they do not assert new law as confirmed.

@@ -2,6 +2,22 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-05, RECORD: debt-demo-v1.0 measurement of record (`run_20260905T175137Z`) -- recorded, no content change
+
+**Result:** Stage A 100% · citations 100% · Stage B parse 100% · 54 material findings (2 matched, 52 new).
+`internal_gate_met` raw = False (third leg); backlog-dispositioned reading = met on paper; Andy chooses.
+
+- `rules/debt/validation/debt_demo_v1.0_manifest.json` gains `measurement_of_record` (run id, sha256
+  `e8ca921b...`, runner/content/ledger state, the four numbers, both gate readings, the claim-card sentence).
+- `scripts/ci/frozen_artifact_manifest.json` freezes the run JSON (10 frozen artifacts). Andy commits the JSON
+  from his working tree; CI fails until it is in the tree with that hash -- by design.
+- 52 findings classified (would-be class + DD) into `docs/POST_V1_BACKLOG.md` rows 2-53 and the ledger as
+  `BACKLOG-V1.1` (173 node-specific entries); 2 matched findings recorded as refinements (rows 54-55).
+- `DEBT_STAGE_B_TRIAGE.md`: record section with the dual-reported gate and the class tally.
+
+**Next:** counsel session (27 items), census audit (3 books), then v1.1 = rulings + backlog + pinning round,
+then promotion. Experiments per pre-registration, on Andy's go.
+
 ## 2026-09-05, EXPERIMENT pre-registrations (Phase EXPERIMENT items 6-7; design only, no execution, no spend)
 
 - `docs/experiments/CJAC_METHOD_V1_DESIGN.md`: configuration ablation. Ground truth = the 120-entry ledger with DD
