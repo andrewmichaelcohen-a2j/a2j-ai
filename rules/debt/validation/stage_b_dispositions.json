@@ -877,6 +877,15 @@
         "source": "run_20260904T221748Z (round 46)",
         "date": "2026-09-05",
         "scenario_excerpt": "A Texas father's employer receives an income withholding order for child support arrears and begins withholding roughly 70% of his disposable earnings, leaving "
+      },
+      {
+        "id": "D-TX-WAGE-GARNISHMENT-PROHIBITION-07",
+        "theme": "Maintenance-withholding cap misattributed to Fam. Code 8.106 as 20% of gross (that is the 8.055 amount cap; 8.106 believed to be 50% of disposable earnings)",
+        "summary": "POST_V1_BACKLOG row 1; v1.1 fetch-and-correct",
+        "classification": "BACKLOG-V1.1",
+        "dangerous_direction": "no (overstates protection)",
+        "source": "Cowork self-review 2026-09-05",
+        "date": "2026-09-05"
       }
     ],
     "TX-HOMESTEAD-EXEMPTION": [

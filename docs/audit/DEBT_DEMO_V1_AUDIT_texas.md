@@ -122,6 +122,12 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json; GLOSS-FOR-COUNSEL. 
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- none detected
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -241,6 +247,12 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json, DANGEROUS DIRECTION
 - 2026-09-05 — Round 46: TRCP 506.1(a) pinned + after_default_signed_note + checklist item rewritten; 502.4(d) pinned + venue_challenge_note + checklist (finding NOT-A-GAP as stated, rule encoded correctly); eviction_case_type_note + threshold checklist.
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (late_answer_before_default_note) ...[SOURCE PENDING: named but not live-fetched this session...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 
@@ -388,6 +400,15 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: for a DISTRICT or C
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (notice_restart_note) ...NAMED, not fetched this round), and the 500-series rules contain no 306a analogue...
+- (post_motion_appellate_timetable_note) ...NAMED, not fetched this round), and the trial court keeps plenary power for 30 days after the motion is overruled (329b(e)...
+- (post_motion_appellate_timetable_note) ...NAMED) -- until day 105 -- during which it can still grant the motion or modify the judgment...
+- (post_motion_appellate_timetable_note) ...3 and TRCP 329b(e) FIXED-SOURCE-NAMED...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -530,6 +551,15 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the child-support a
 - 2026-09-05 — Round 46: Fam. Code 158.009 pinned + support_withholding_cap_note + checklist; Lab. Code 207.075(b)-(c) pinned + bank_account_exempt_deposits_note expanded (408.201, 42.0021, TRCP 664a NAMED) + checklist reworded.
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 2 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (bank_account_exempt_deposits_note) ...201, NAMED)...
+- (bank_account_exempt_deposits_note) ...NAMED) -- Texas exemptions are not self-executing...
+- (support_withholding_cap_note) ...NAMED)...
+- (support_withholding_cap_note) ...NAMED)...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 
@@ -708,6 +738,15 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: Texas personal-prop
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (federal_benefits_in_bank_accounts_note) ...NAMED)...
+- (marital_property_liability_screen_note) ...102 (NAMED) defines sole-management community property (each spouse's personal earnings, revenue from separate property, recoveries for personal injuries, and increases of those)...
+- (marital_property_liability_screen_note) ...102 FIXED-SOURCE-NAMED...
+- (exemptions_not_self_executing_note) ...NAMED, not fetched this round)...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -873,6 +912,13 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json; GLOSS-FOR-COUNSEL. 
 - 2026-09-05 — Round 46: 522(p)(2)(B) pinned and bankruptcy_value_cap_note corrected; 41.002(c) pinned + urban_rural_test_note + checklist item 2 rewritten; lien_attached_before_homestead_note (GLOSS) + checklist; bankruptcy checklist item extended.
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (mechanics_lien_formalities_note) ...[SOURCE PENDING: named but not live-fetched this session...
+- (lien_attached_before_homestead_note) ...NAMED) while the property was NON-exempt -- a rental duplex the debtor did not live in -- is not divested when the debtor later moves in and impresses homestead character...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 

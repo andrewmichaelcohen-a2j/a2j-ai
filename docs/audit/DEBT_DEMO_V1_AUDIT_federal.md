@@ -149,6 +149,12 @@ ADDED 2026-09-03 (round 38): collection against a deceased person's estate or su
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed False · material findings 0 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- none detected
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -288,6 +294,12 @@ ADDED 2026-09-03 (round 38), CORRECTED 2026-09-04 (round 39): a dispute made ORA
 - 2026-09-05 — Round 46: comment 34(b)(5)-2 entry re-pinned to the Cornell LII Supplement I mirror. No logic change.
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified False · Stage B parsed False · material findings 0 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- none detected
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 
@@ -481,6 +493,12 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json; HORIZON. Six calls 
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (tcpa_overlay_note) ...NOT encoded as a rule here (statute named, not fetched this round...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -663,6 +681,12 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the determination i
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- none detected
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -807,6 +831,12 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: catalog item (6) as
 - 2026-09-05 — Round 46: general_clause_note corrected; time_barred_debt_note (1006.26(b) pinned; Midland Funding; state disclosure overlays; GLOSS on revival misrepresentation); discharged_debt_note (Walls / Simon / Randolph circuit split, GLOSS); repossession_breach_of_peace_note (UCC 9-609(b)(2) named); three c
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (repossession_breach_of_peace_note) ...' Statute NAMED, not quoted (FIXED-SOURCE-NAMED): the state UCC enactments were not fetched this round...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 
@@ -961,6 +991,12 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: when the consumer's
 - 2026-09-05 — Round 46: 1681c-2(a) pinned + identity_theft_block_note + threshold checklist; cra_forwarding_trigger_note qualified per 1681i(a)(3)(A)-(B) + checklist item 1 reworded.
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- none detected
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 

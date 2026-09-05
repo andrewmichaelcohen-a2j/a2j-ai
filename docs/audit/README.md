@@ -31,7 +31,7 @@ MANUAL until then); 4 doctrine entries with no url by design.
 - Sign-off decisions and notes (E), including DD backlog rows: **~1 h**.
 
 **Census audit total: ~10-11 hours**, realistically 3-4 sessions of 2.5-3 h (federal spine ~4 h, California ~3.5 h,
-Texas ~3 h). The counsel-queue session (`DEBT_COUNSEL_QUEUE_V1.md`, 26 items) is separate: **~2-3 h**. Both must
+Texas ~3 h). The counsel-queue session (`DEBT_COUNSEL_QUEUE_V1.md`, 27 items) is separate: **~2-3 h**. Both must
 finish before any tier promotion (Phase LOCK item 5), so the all-in cost of CJaC's first VALIDATED release is
 **~13-14 attorney hours** for 19 nodes -- roughly 40 minutes per node, which is the first AMPVR data point for the
 debt track (spec section 3).

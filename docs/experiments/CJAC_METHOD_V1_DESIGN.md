@@ -31,6 +31,16 @@ dollars and in human triage minutes per node?
   parses and scores before any live call; they are not part of the catch-rate denominator.
 - **Fixed-bug history:** `DAILY_CHANGELOG.md` rounds 9-45 -- used only for the cost-of-alignment estimate
   (section 5), not for scoring.
+- **Circularity, acknowledged and handled (self-review amendment, 2026-09-05, before execution).** The ledger's
+  known defects were themselves found by arm (d) on T38 and T46, so arm (d)'s catch rate against the ledger
+  alone is 100% by construction and the other arms would be scored against (d)'s own output. Therefore the
+  scoring denominator is NOT the ledger as it stands. It is the **UNION** of (i) the ledger's known real defects
+  for that article and (ii) every material finding any arm produces on that article that Cowork and Andy
+  classify as a real defect after review (same classification discipline as rounds 38-46). Catch rate for every
+  arm, including (d), is measured against that union; findings that only (d) produced are still credited to (d),
+  and findings that (d) missed but (b) found count against (d). The pre-run ledger-only figure is ALSO reported,
+  labelled "ledger-only (favours (d))", so the reader can see both. This changes the execution order: all arms
+  run on an article, THEN classification, THEN scoring -- no arm is scored before the union is closed.
 
 ## 3. Arms
 
@@ -52,8 +62,8 @@ the format changes catch rate or false-flag rate. This is the only place round 4
 
 ## 4. Metrics (per arm, per test article)
 
-1. **Catch rate** = sum of weights of known real defects the arm reports / sum of weights of all known real
-   defects. A defect is "reported" when a finding substantially overlaps the ledger entry's theme -- decided
+1. **Catch rate** = sum of weights of real defects (the UNION set of section 2) the arm reports / sum of weights
+   of all real defects in the union. A defect is "reported" when a finding substantially overlaps the ledger entry's theme -- decided
    by an LLM matcher (a model family NOT used in the arm) given the finding and the ledger entry, with
    Cowork reviewing every match and every near-miss and Andy spot-checking 20% of matches. Matcher decisions
    are archived.

@@ -21,7 +21,7 @@ ruling changes v1.0 content; rulings are applied in the v1.1 content round that 
 they are safe / have no claim / are out of time; **OC** = overstates the consumer's claim or protection (a
 lawyer would catch it before filing); **N** = neutral / procedural.
 
-**Count:** 26 items. Federal 9 · California 9 · Texas 8. Estimated session: 2-3 hours with Claude.
+**Count:** 27 items. Federal 9 · California 9 · Texas 9. Estimated session: 2-3 hours with Claude.
 
 ---
 
@@ -314,6 +314,16 @@ affidavit route does not clear such a lien.
   (F-9 above is the narrower open question of the state-law periods).
 - **Turnover of already-paid wages** (round 38): anchored to CPRC 31.0025(a).
 - **Rosenthal Act reaches original creditors** (round 38): anchored to Civ. Code 1788.2(c)/1788.17.
+
+## Self-review note (2026-09-05, same day)
+
+Cowork's own review after packaging: every reporter citation in this queue and in the round 41-46 notes was written
+from memory and NOT fetched -- the notes say so where they cite cases, but this queue is where that matters most.
+Before the session, Cowork will run each citation through CourtListener (plugin connector, needs Andy's
+authorization once) and mark any that do not resolve. One named provision is already doubted: T-7's neighbour on the
+TX-WAGE node, the maintenance-withholding cap attributed to Fam. Code 8.106 as "20% of average monthly gross" --
+that figure is the 8.055 MAINTENANCE-AMOUNT cap, and 8.106 is believed to mirror 158.009's 50%-of-disposable-earnings
+withholding cap. Recorded as the first POST_V1_BACKLOG row (OC direction).
 
 ## After the session
 

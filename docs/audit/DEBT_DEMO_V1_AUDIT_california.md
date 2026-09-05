@@ -192,6 +192,12 @@ ADDED 2026-09-04 (round 43), from run_20260904T212407Z.json: 'no signed contract
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed False · material findings 0 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- none detected
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -323,6 +329,12 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json; GLOSS-FOR-COUNSEL. 
 - 2026-09-05 — Round 46: accrual corrected (default/breach only); demand_loan_accrual_note (GLOSS, Civ. Code 1657 named); 337(b) pinned + classification_note clarified; two checklist items reworded.
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (demand_loan_accrual_note) ...Code 1657, NAMED not quoted)...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 
@@ -483,6 +495,18 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the node's universe
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (filing_fee_and_fee_waiver_note) ...[SOURCE PENDING: named but not live-fetched this session...
+- (answer_content_affirmative_defenses_note) ...30(b)(2) (NAMED, not quoted this round) the answer must state 'any new matter constituting a defense,' and an affirmative defense not pleaded is waived -- the STATUTE OF LIMITATIONS above all (CCP 458 governs how it is p...
+- (answer_content_affirmative_defenses_note) ...NAMED)...
+- (demurrer_and_motion_to_strike_note) ...NAMED) or a MOTION TO STRIKE (435-436...
+- (demurrer_and_motion_to_strike_note) ...NAMED) filed within the 30 days is itself a timely responsive pleading that stops the default clock -- the defendant need not also answer...
+- (demurrer_and_motion_to_strike_note) ...If the demurrer is overruled, the time to answer runs from notice of the ruling: CCP 472a(b) (NAMED) provides that the court fixes the time, and in its absence the answer is due within 10 days after service of notice of ...
+- (demurrer_and_motion_to_strike_note) ...All three sections FIXED-SOURCE-NAMED pending a fetch round...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -612,6 +636,16 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the determination's
 - 2026-09-05 — Round 46: 706.011(a)-(b) pinned; disposable_earnings_definition_note + checklist item 1 rewritten; independent_contractor_note + checklist; federal_and_tax_garnishment_priority_note (1095a, 3720D, 6331/6334, CCP 706.070-.084, 706.023 NAMED) + checklist.
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (independent_contractor_note) ...NAMED) or by an assignment order, and the earnings-withholding cap does not apply...
+- (independent_contractor_note) ...Two escape routes to ask about: (i) misclassification -- if the worker is in fact an employee under the control test (or under Labor Code 2775's ABC test, NAMED), the cap applies and the levy was improper...
+- (federal_and_tax_garnishment_priority_note) ...NAMED, not quoted this round) and other federal agency debts (31 U...
+- (federal_and_tax_garnishment_priority_note) ...023 governs priority among orders (NAMED)...
+- (federal_and_tax_garnishment_priority_note) ...All three families are FIXED-SOURCE-NAMED pending a fetch round...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 
@@ -779,6 +813,15 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the 704.220 minimum
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (joint_account_note) ...Under Family Code 910 (NAMED, not quoted this round) the community estate is liable for a debt incurred by either spouse during marriage (and, with exceptions, before), so wages of the debtor spouse deposited into an acc...
+- (joint_account_note) ...and Family Code 911 (NAMED) shields the non-debtor spouse's OWN earnings from the other spouse's PREMARITAL debts if kept in an account the debtor spouse has no right to withdraw from...
+- (bank_setoff_note) ...NAMED)...
+- (bank_setoff_note) ...The statute that does limit setoff is Financial Code 864 (NAMED, not fetched this round): as generally described, a bank may not set off against a consumer deposit account if the setoff would leave less than a stated flo...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -930,6 +973,13 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the node collected 
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
 
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (co_owner_and_third_party_title_note) ...(NAMED) to protect her share...
+- (co_owner_and_third_party_title_note) ...110 is FIXED-SOURCE-NAMED this round...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
+
 ### E. Sign-off
 
 - [ ] Logic reviewed in full (section A)
@@ -1055,6 +1105,16 @@ ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the exemption is as
 - 2026-09-05 — Round 46: 704.710(c) pinned + continuous_residence_requirement_note + checklist item 1 rewritten; judgment_lien_survives_note (697.310, 704.950 NAMED) + checklist; forced_sale_procedure_note (704.740-704.800 NAMED) + checklist.
 
 **Last full run (run_20260904T221748Z):** Stage A agreement True · citations all verified True · Stage B parsed True · material findings 3 (all dispositioned in round 46; see D)
+
+### D2. Provisions NAMED in this node's notes but NOT pinned as citations (Cowork's word only -- treat like MANUAL rows)
+
+- (continuous_residence_requirement_note) ...NAMED) has different rules and is not encoded here...
+- (judgment_lien_survives_note) ...310, NAMED) and stays there: on a voluntary sale or refinance the title company will require it to be paid or released, and interest accrues at 10% meanwhile...
+- (judgment_lien_survives_note) ...950 (NAMED): a judgment lien on a DECLARED homestead attaches only to surplus over the exemption plus senior liens, and a buyer's or refinancer's escrow can proceed on that basis -- which is the practical reason to recor...
+- (judgment_lien_survives_note) ...' Both sections FIXED-SOURCE-NAMED pending a fetch round...
+- (forced_sale_procedure_note) ...800 are FIXED-SOURCE-NAMED this round (the forced_sale_mechanics_note already covers the 704...
+
+> Auditor: [ ] each named provision checked against its text, or listed for the v1.1 pinning round
 
 ### E. Sign-off
 

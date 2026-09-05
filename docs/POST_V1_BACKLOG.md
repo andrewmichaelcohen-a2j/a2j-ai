@@ -26,7 +26,7 @@ open DD row is Andy's call, made explicitly, never by default.
 
 | # | Date | Node | Finding | Would-be class | DD | Source run / origin | Notes |
 |---|---|---|---|---|---|---|---|
-| (none yet -- the measurement-of-record run populates this table) | | | | | | | |
+| 1 | 2026-09-05 | TX-WAGE-GARNISHMENT-PROHIBITION | `support_withholding_cap_note` attributes a "lesser of 20% of average monthly gross or the 158.009 amount" withholding cap to Fam. Code 8.106. On Cowork's self-review, 20%-of-gross is the 8.055 cap on the AMOUNT of maintenance a court may order; 8.106 (maximum withheld from earnings) is believed to mirror 158.009 at 50% of disposable earnings. Provision was NAMED, not fetched. | FIXED-VERIFIED once 8.106 is fetched | no (OC -- overstates the payor's protection) | Cowork self-review of round 46, not a run | v1.1: fetch 8.055 and 8.106, correct the note |
 
 ## Pinning backlog carried into v1.1 (from round 46 -- named, not fetched)
 
