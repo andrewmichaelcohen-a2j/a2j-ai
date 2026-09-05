@@ -1,7 +1,7 @@
 {
   "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
-  "_purpose": "ENG_HARDENING Task 2 (frozen-artifact integrity check), folded into Phase A per DEBT_PROJECT_ARCHITECTURE_SPEC.md v4 section 3. Any drift in a listed file's SHA256 fails CI. This manifest currently covers the eviction line's permanently-frozen artifacts (built here as protective value for the whole repo, not just debt) plus this file itself lists no debt artifacts yet, because nothing in rules/debt/ is frozen -- everything there is DRAFT tier and expected to change.",
-  "_manifest_updated": "2026-08-25",
+  "_purpose": "ENG_HARDENING Task 2 (frozen-artifact integrity check), folded into Phase A per DEBT_PROJECT_ARCHITECTURE_SPEC.md v4 section 3. Any drift in a listed file's SHA256 fails CI. This manifest currently covers the eviction line's permanently-frozen artifacts (built here as protective value for the whole repo, not just debt) plus this file itself lists no debt artifacts yet, because nothing in rules/debt/ is frozen -- everything there is DRAFT tier and expected to change. UPDATED 2026-09-05: the seven debt-demo-v1.0 corpus files are now frozen (Phase LOCK item 1 of the 2026-09-05 directive). Any edit to a v1.0 node fails CI; improvement candidates go to docs/POST_V1_BACKLOG.md. Unfreezing = a v1.1 release decision by Andy, recorded here with new hashes.",
+  "_manifest_updated": "2026-09-05",
   "frozen_files": [
     {
       "path": "rules/eviction/california/ca_eviction_v2.json",
@@ -12,6 +12,41 @@
       "path": "rules/validation/scorer/FROZEN/goldenset_CA_notice_v0.3_FROZEN_20260716.xlsx",
       "label": "v0.3 held-out golden set, frozen 2026-07-16. Burned after one use per house discipline.",
       "sha256": "e6dbb2fcb60de0773f9ff5594e09f74c6a6bac5670c70bd9bb76d70e2645df45"
+    },
+    {
+      "path": "rules/debt/federal/fcra_furnisher_dispute_v1.json",
+      "label": "debt-demo-v1.0 corpus (1 node(s)) -- frozen 2026-09-05 per Phase LOCK item 1; node-level hashes in rules/debt/validation/debt_demo_v1.0_manifest.json",
+      "sha256": "f4a145b302e7db92cd5fe3af2ad7aa0ebca40e1d3faa2b66f6b61b99462fab12"
+    },
+    {
+      "path": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "label": "debt-demo-v1.0 corpus (3 node(s)) -- frozen 2026-09-05 per Phase LOCK item 1; node-level hashes in rules/debt/validation/debt_demo_v1.0_manifest.json",
+      "sha256": "cd243244bce10b1591c2c560fc7822ec394a265923b68327297d261e89624b3b"
+    },
+    {
+      "path": "rules/debt/federal/fdcpa_coverage_threshold_v1.json",
+      "label": "debt-demo-v1.0 corpus (1 node(s)) -- frozen 2026-09-05 per Phase LOCK item 1; node-level hashes in rules/debt/validation/debt_demo_v1.0_manifest.json",
+      "sha256": "11c98af9d6d7af8257b6e076905900dd89206ef40c8ddf266a2c8a9314184412"
+    },
+    {
+      "path": "rules/debt/federal/fdcpa_validation_notice_v1.json",
+      "label": "debt-demo-v1.0 corpus (1 node(s)) -- frozen 2026-09-05 per Phase LOCK item 1; node-level hashes in rules/debt/validation/debt_demo_v1.0_manifest.json",
+      "sha256": "b5e235db51c903241becf4967e65d19b2455ee59b773ff16281610062e58d693"
+    },
+    {
+      "path": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "label": "debt-demo-v1.0 corpus (7 node(s)) -- frozen 2026-09-05 per Phase LOCK item 1; node-level hashes in rules/debt/validation/debt_demo_v1.0_manifest.json",
+      "sha256": "3b20d2abf6521b96479367437b9b0bb16accec089a4c0a1871088b30069783fe"
+    },
+    {
+      "path": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "label": "debt-demo-v1.0 corpus (5 node(s)) -- frozen 2026-09-05 per Phase LOCK item 1; node-level hashes in rules/debt/validation/debt_demo_v1.0_manifest.json",
+      "sha256": "8db65efe66f0c4a5f3c25b8fe5a178ee890473e443eab3b845a19cb4b04a59aa"
+    },
+    {
+      "path": "rules/debt/state/texas/tx_debt_band3_discretionary_v1.json",
+      "label": "debt-demo-v1.0 corpus (1 node(s)) -- frozen 2026-09-05 per Phase LOCK item 1; node-level hashes in rules/debt/validation/debt_demo_v1.0_manifest.json",
+      "sha256": "41a39618243e532ffe13fed2f6c280de166e2207ef8a3c11efcf91f80c14ff31"
     }
   ]
 }

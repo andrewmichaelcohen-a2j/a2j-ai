@@ -1,0 +1,238 @@
+{
+  "_copyright": "Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.",
+  "release": "debt-demo-v1.0",
+  "frozen_on": "2026-09-05",
+  "directive": "Cowork Direction -- LOCK debt-demo-v1.0 + Methodology & Lift Experiments (2026-09-05), Phase LOCK item 1",
+  "content_commit_before_lock": "round 46d (the commit this manifest was computed against; see git tag debt-demo-v1.0 for the locking commit)",
+  "immutability_rule": "No content edits to any node listed here. Every future Stage B finding, citation failure, or improvement candidate touching a v1.0 node routes to docs/POST_V1_BACKLOG.md. CI enforces file-level immutability via scripts/ci/frozen_artifact_manifest.json; this file records the per-node hashes so a node can be verified independently of the file (node_sha256 = sha256 of json.dumps(node, sort_keys=True), the same method the corroboration runner records as node_sha256 in every run JSON).",
+  "node_count": 19,
+  "files": [
+    {
+      "path": "rules/debt/federal/fcra_furnisher_dispute_v1.json",
+      "sha256": "f4a145b302e7db92cd5fe3af2ad7aa0ebca40e1d3faa2b66f6b61b99462fab12",
+      "node_count": 1
+    },
+    {
+      "path": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "sha256": "cd243244bce10b1591c2c560fc7822ec394a265923b68327297d261e89624b3b",
+      "node_count": 3
+    },
+    {
+      "path": "rules/debt/federal/fdcpa_coverage_threshold_v1.json",
+      "sha256": "11c98af9d6d7af8257b6e076905900dd89206ef40c8ddf266a2c8a9314184412",
+      "node_count": 1
+    },
+    {
+      "path": "rules/debt/federal/fdcpa_validation_notice_v1.json",
+      "sha256": "b5e235db51c903241becf4967e65d19b2455ee59b773ff16281610062e58d693",
+      "node_count": 1
+    },
+    {
+      "path": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "sha256": "3b20d2abf6521b96479367437b9b0bb16accec089a4c0a1871088b30069783fe",
+      "node_count": 7
+    },
+    {
+      "path": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "sha256": "8db65efe66f0c4a5f3c25b8fe5a178ee890473e443eab3b845a19cb4b04a59aa",
+      "node_count": 5
+    },
+    {
+      "path": "rules/debt/state/texas/tx_debt_band3_discretionary_v1.json",
+      "sha256": "41a39618243e532ffe13fed2f6c280de166e2207ef8a3c11efcf91f80c14ff31",
+      "node_count": 1
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "FCRA-FURNISHER-DISPUTE-DUTY-1681s-2b",
+      "file": "rules/debt/federal/fcra_furnisher_dispute_v1.json",
+      "node_index": 0,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "0f84c2fa534603542990f735d67341a6370bcf4e7d66211a9a28d9fb1f09fdbd",
+      "derived_from_count": 9,
+      "checklist_count": 10
+    },
+    {
+      "node_id": "FDCPA-REGF-CALL-FREQUENCY-1006.14b",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "node_index": 0,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "19e1f452d56f1293165a3d710d27f17e3c1f9c441a881e7f74d238e47d682228",
+      "derived_from_count": 19,
+      "checklist_count": 19
+    },
+    {
+      "node_id": "FDCPA-FALSE-DECEPTIVE-CATALOG-1692e",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "node_index": 1,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "363bdaac3427c4cb8895d2597bb17386bd67aacaf1c527d3eb3745c5b1b2ad42",
+      "derived_from_count": 13,
+      "checklist_count": 17
+    },
+    {
+      "node_id": "FDCPA-UNFAIR-PRACTICES-CATALOG-1692f",
+      "file": "rules/debt/federal/fdcpa_conduct_prohibitions_v1.json",
+      "node_index": 2,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "672536815e10ca12293209ce722da673ae776c805dfe4e5728d53acebbfc1c3e",
+      "derived_from_count": 6,
+      "checklist_count": 11
+    },
+    {
+      "node_id": "FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6",
+      "file": "rules/debt/federal/fdcpa_coverage_threshold_v1.json",
+      "node_index": 0,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "a92db481c4fc00245c6f42749b806a51a82a8a70f07edb87f35d0ebf3fd88387",
+      "derived_from_count": 8,
+      "checklist_count": 10
+    },
+    {
+      "node_id": "FDCPA-VALIDATION-NOTICE-1692g",
+      "file": "rules/debt/federal/fdcpa_validation_notice_v1.json",
+      "node_index": 0,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "0aa94bd358959d65f325955e56854bd949b0b51176421307fc1ae49eb422e758",
+      "derived_from_count": 11,
+      "checklist_count": 15
+    },
+    {
+      "node_id": "CA-SOL-WRITTEN-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "node_index": 0,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "bf31aed13a348688ef06726e7d02597adbfc3cd37d5bc0612be4aefbd6f0c224",
+      "derived_from_count": 14,
+      "checklist_count": 17
+    },
+    {
+      "node_id": "CA-SOL-ORAL-CONTRACT-DEBT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "node_index": 1,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "7859304f3a83d1d4ea8e538583a9c4f5ea8f7590493082c79b53078298b1508a",
+      "derived_from_count": 5,
+      "checklist_count": 8
+    },
+    {
+      "node_id": "CA-WAGE-GARNISHMENT-LIMIT",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "node_index": 2,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "69085c123dbefae08ca88bffefb7cafa18fa2936fbac52462d222601bfeb846b",
+      "derived_from_count": 5,
+      "checklist_count": 7
+    },
+    {
+      "node_id": "CA-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "node_index": 3,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "c572581907e76da718b0433d427cce13253ee39d2f973abaf3979dfddaf58f96",
+      "derived_from_count": 4,
+      "checklist_count": 9
+    },
+    {
+      "node_id": "CA-VEHICLE-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "node_index": 4,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "0d43c22ea4b819a093cf759e1c92eb4c30a2ce8cc7a0d2a848b35283f2784c01",
+      "derived_from_count": 6,
+      "checklist_count": 12
+    },
+    {
+      "node_id": "CA-BANK-ACCOUNT-EXEMPTION",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "node_index": 5,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "2a1c93b9de5f25fe11a20c05d7227e6a7e77477bde592360802dc3a7612d338c",
+      "derived_from_count": 7,
+      "checklist_count": 14
+    },
+    {
+      "node_id": "CA-CIVIL-ANSWER-DEADLINE",
+      "file": "rules/debt/state/california/ca_debt_state_layer_v1.json",
+      "node_index": 6,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "5817757c4f6c099a1513ae424c4a4178284b169bb23e27279202dd60d7bbfa1c",
+      "derived_from_count": 10,
+      "checklist_count": 10
+    },
+    {
+      "node_id": "TX-SOL-CONSUMER-DEBT",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "node_index": 0,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "d5a03cc512034f60be8408070306fa25b7a5fef07dc255ecb649bc237cadb381",
+      "derived_from_count": 6,
+      "checklist_count": 9
+    },
+    {
+      "node_id": "TX-WAGE-GARNISHMENT-PROHIBITION",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "node_index": 1,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "154763d5add9fdcf6175213c9382047595d8c0b720a107357cf590eafb37ae6c",
+      "derived_from_count": 8,
+      "checklist_count": 9
+    },
+    {
+      "node_id": "TX-HOMESTEAD-EXEMPTION",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "node_index": 2,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "e435899aa729d8e271b1cfd615a239b5a09107bdcef2da48446399720b7934a0",
+      "derived_from_count": 10,
+      "checklist_count": 11
+    },
+    {
+      "node_id": "TX-EXEMPT-PERSONAL-PROPERTY",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "node_index": 3,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "75cca1af294d98db3591199ec6ae1cc0d2f723c7b2ac642bc7a251f65bdff404",
+      "derived_from_count": 12,
+      "checklist_count": 16
+    },
+    {
+      "node_id": "TX-JUSTICE-COURT-DEBT-ANSWER-DEADLINE",
+      "file": "rules/debt/state/texas/tx_debt_state_layer_v1.json",
+      "node_index": 4,
+      "tier_at_freeze": "DRAFT",
+      "band": 1,
+      "node_sha256": "25d0999d192a9131c5c8ddc99d9f4b80f3f2cd55665555e85680c7951d7ac6a8",
+      "derived_from_count": 4,
+      "checklist_count": 5
+    },
+    {
+      "node_id": "TX-DEFAULT-JUDGMENT-SET-ASIDE-DISCRETIONARY",
+      "file": "rules/debt/state/texas/tx_debt_band3_discretionary_v1.json",
+      "node_index": 0,
+      "tier_at_freeze": "DRAFT",
+      "band": 3,
+      "node_sha256": "e8cb7e983fba809ca75d73ea52a7c3cf7f8d77e7d3639affd65279965d9cf3c0",
+      "derived_from_count": 9,
+      "checklist_count": 10
+    }
+  ]
+}

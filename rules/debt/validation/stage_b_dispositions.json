@@ -1,5 +1,5 @@
 {
-  "_comment": "Round 40. Machine-readable twin of docs/DEBT_STAGE_B_TRIAGE.md. Each entry is a Stage B finding that has been dispositioned (fixed with verified source, fixed with source named but not yet quoted, flagged as a case-law gloss awaiting counsel, covered elsewhere, or HORIZON). The corroboration runner passes a node's entries into the Stage B prompt and asks the model to tag any overlapping edge case with the matching id; only UNTAGGED material findings count toward the gate (ratified 2026-09-04). Adding an entry here is a disposition decision, not a content edit: it requires the finding to have been actually addressed in the rules file or explicitly accepted for counsel review. The docs file remains the human-readable queue of record; keep the two in sync. Round 43 adds a '_global' list: cross-cutting dispositions the runner (from round 44) appends to EVERY node's prompt, so a theme that has been dispositioned corpus-wide (bankruptcy, validation-dispute cease, 1692c bars, state overlays) is tagged rather than re-reported on each node. A global entry is not a licence to ignore a node that says something WRONG about the theme -- the prompt says so.",
+  "_comment": "Round 40. Machine-readable twin of docs/DEBT_STAGE_B_TRIAGE.md. Each entry is a Stage B finding that has been dispositioned (fixed with verified source, fixed with source named but not yet quoted, flagged as a case-law gloss awaiting counsel, covered elsewhere, or HORIZON). The corroboration runner passes a node's entries into the Stage B prompt and asks the model to tag any overlapping edge case with the matching id; only UNTAGGED material findings count toward the gate (ratified 2026-09-04). Adding an entry here is a disposition decision, not a content edit: it requires the finding to have been actually addressed in the rules file or explicitly accepted for counsel review. The docs file remains the human-readable queue of record; keep the two in sync. Round 43 adds a '_global' list: cross-cutting dispositions the runner (from round 44) appends to EVERY node's prompt, so a theme that has been dispositioned corpus-wide (bankruptcy, validation-dispute cease, 1692c bars, state overlays) is tagged rather than re-reported on each node. A global entry is not a licence to ignore a node that says something WRONG about the theme -- the prompt says so. LOCK 2026-09-05: the 19 nodes in rules/debt/validation/debt_demo_v1.0_manifest.json are frozen; new findings on them are recorded here with classification BACKLOG-V1.1 (and in docs/POST_V1_BACKLOG.md) so later runs tag repeats, but nothing is applied to v1.0 content.",
   "schema": {
     "nodes": "{node_id: [{id, theme, summary, classification, dangerous_direction, source, date}]}",
     "classifications": [
@@ -8,10 +8,11 @@
       "GLOSS-FOR-COUNSEL",
       "COVERED",
       "HORIZON",
-      "NOT-A-GAP"
+      "NOT-A-GAP",
+      "BACKLOG-V1.1"
     ]
   },
-  "generated": "2026-09-04 (round 40); updated rounds 41, 43, 46",
+  "generated": "2026-09-04 (round 40); updated rounds 41, 43, 46; LOCK 2026-09-05",
   "nodes": {
     "FDCPA-COVERAGE-DEBT-COLLECTOR-1692a6": [
       {
