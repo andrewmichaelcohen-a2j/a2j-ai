@@ -455,6 +455,13 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=360.",
             "source_tier": "B",
             "tier_rationale": "Added 2026-09-03 (round 38) to this node from the CA-SOL-WRITTEN-CONTRACT-DEBT node's already-verified § 360 entry (same statute, same text; live-verified there in this run's citation check). Encodes the backlog finding that a collector-solicited 'good faith' payment made AFTER the 2-year period ran does not revive an oral-contract claim: § 360 requires a signed writing for any new promise, and 'no payment of itself shall revive a cause of action once barred.'"
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 337(b)",
+            "quoted_text": "(b) An action to recover (1) upon a book account whether consisting of one or more entries; (2) upon an account stated based upon an account in writing, but the acknowledgment of the account stated need not be in writing; (3) a balance due upon a mutual, open and current account, the items of which are in writing;",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=337.",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: a running ledger of charges and payments on an ORAL services arrangement (dentist, contractor, small supplier) is the classic open book account, and 337(b)(1) gives it FOUR years 'whether consisting of one or more entries' -- the writing requirement in (b)(2)-(3) attaches to the account stated and the mutual open account, not to the book account itself. Same text as the CA-SOL-WRITTEN node's round-43 entry; leginfo page already verified live for that node."
           }
         ],
         "citation_verified": true
@@ -462,10 +469,10 @@
       "logic": {
         "limitations_period_years": 2,
         "applies_to": "actions on a contract/obligation NOT founded on a written instrument",
-        "accrual": "generally the date of default/breach or last payment, a fact question this node does not itself resolve",
+        "accrual": "generally the date of default/breach -- NOT the date of last payment. CORRECTED 2026-09-05 (round 46), from run_20260904T221748Z.json: an earlier version said 'default/breach or last payment.' For an UNWRITTEN obligation a payment after default does not restart the two years: CCP 360 requires a SIGNED WRITING for any acknowledgment or new promise, and its payment proviso is limited to promissory notes (see revival_and_post_bar_payment_note and the 360 entry). A voluntary $200 payment in 2023 on a loan that defaulted in March 2021 leaves the March 2023 bar date where it was; a June 2024 suit is late. For a loan with NO agreed repayment date, see demand_loan_accrual_note.",
         "note": "much shorter than the 4-year written-contract period (CA-SOL-WRITTEN-CONTRACT-DEBT) -- whether a specific debt (e.g., an open-book retail account, a verbal loan between individuals) counts as written or oral is itself a threshold fact question with real consequences and is not resolved by this node.",
         "determination": "expired_if (complaint filing date, per CCP § 350 -- NOT today's date) > (accrual_date + 2 years), subject to any tolling not yet encoded beyond the § 351 caveat above",
-        "classification_note": "Credit card and other revolving retail accounts are the single most common CA consumer-debt scenario, and the mere absence of a document the consumer can locate does NOT make the debt 'oral' for SOL purposes -- such accounts are usually governed by the 4-year period under CCP § 337 (written contract, or an open book account/account stated) rather than this node's 2-year period. A consumer who cannot find a signed agreement should NOT be assumed to be under this node without confirming there is genuinely no written cardmember agreement, account terms, or running book-account record -- see CA-SOL-WRITTEN-CONTRACT-DEBT. This node is for genuinely unwritten obligations (e.g., a purely verbal personal loan).",
+        "classification_note": "Credit card and other revolving retail accounts are the single most common CA consumer-debt scenario, and the mere absence of a document the consumer can locate does NOT make the debt 'oral' for SOL purposes -- such accounts are usually governed by the 4-year period under CCP § 337 (written contract, or an open book account/account stated) rather than this node's 2-year period. A consumer who cannot find a signed agreement should NOT be assumed to be under this node without confirming there is genuinely no written cardmember agreement, account terms, or running book-account record -- see CA-SOL-WRITTEN-CONTRACT-DEBT. This node is for genuinely unwritten obligations (e.g., a purely verbal personal loan). CLARIFIED 2026-09-05 (round 46): the 337(b) OPEN BOOK ACCOUNT does not require any writing -- a running ledger of charges and credits on an oral services or supply arrangement (dentist, contractor, tutor, small supplier) is the textbook book account and carries FOUR years even though the underlying agreement was oral. The two-year period in this node is for a genuinely unwritten obligation with no account record: a verbal personal loan, an oral promise to pay a fixed sum. Checklist item 3 reworded.",
         "tolling_note": "CCP § 351 tolls the 2-year period while the debtor is absent from California, but courts have held it unconstitutional as applied to out-of-state defendants engaged in interstate commerce, and it does not apply to corporations, limited partnerships, or nonresident motorists (Abramson v. Brownstein, 897 F.2d 389 (9th Cir. 1990)). Do NOT apply a flat day-for-day tolling add-on without confirming the debtor's absence falls within § 351's actual, constitutionally-valid scope. Bankruptcy automatic-stay tolling (11 U.S.C. § 362/108) and emergency court-order tolling are separate mechanisms, also not yet encoded here.",
         "drafting_revisions": [
           {
@@ -485,15 +492,22 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Round 39: affirmative-defense note marker removed; CCP 458 remains named-only. No other change."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 7 ledger entries): no accrual rule for a no-due-date oral loan; 'last payment' accrual contradicts CCP 360; open book account on an oral arrangement routed to 2 years.",
+            "summary": "Round 46: accrual corrected (default/breach only); demand_loan_accrual_note (GLOSS, Civ. Code 1657 named); 337(b) pinned + classification_note clarified; two checklist items reworded."
           }
         ],
         "revival_and_post_bar_payment_note": "ADDED 2026-09-03 (round 38): this node's accrual definition ('date of default/breach or last payment') must not be applied to a payment made AFTER the 2-year period already expired. Under CCP § 360 (quoted above) a payment does not by itself revive a barred claim, and an oral obligation is not a 'promissory note' so the payment-stops-the-clock proviso does not apply at all; only a signed writing can create a new promise. As previously encoded, a 2024 $25 phone payment on a 2019 default would have reset accrual and reported a 2025 suit as timely -- the dangerous direction.",
         "installment_separate_accrual_note": "ADDED 2026-09-03 (round 38): for an ORAL obligation repayable in installments (e.g. '$300 a month') that has not been accelerated, California applies continuous accrual -- each missed installment carries its own 2-year period, so installments due within 2 years of filing remain actionable even though earlier ones are barred. This node's single-accrual-date, binary expired/not-expired output would report the whole claim dead (or whole claim live) when it is partially barred. Same doctrine already noted on the written-contract node; case-law gloss, source_tier C.",
-        "sol_is_an_affirmative_defense_note": "ADDED 2026-09-03 (round 38): an 'expired' output does NOT excuse the consumer from answering a filed suit -- the limitations defense is waived if not pleaded (CCP § 458), and a default judgment on a time-barred oral debt is fully enforceable, including by wage garnishment. Always pair 'expired' with 'you must appear and plead it.' (CCP § 458's pleading-by-section-number requirement was NOT live-fetched this session; named-only.)"
+        "sol_is_an_affirmative_defense_note": "ADDED 2026-09-03 (round 38): an 'expired' output does NOT excuse the consumer from answering a filed suit -- the limitations defense is waived if not pleaded (CCP § 458), and a default judgment on a time-barred oral debt is fully enforceable, including by wage garnishment. Always pair 'expired' with 'you must appear and plead it.' (CCP § 458's pleading-by-section-number requirement was NOT live-fetched this session; named-only.)",
+        "demand_loan_accrual_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json; GLOSS-FOR-COUNSEL. The paradigm case for this node -- 'pay me back when you can' -- has no default date to accrue from. California treats an obligation with no time fixed for performance as payable on demand or within a reasonable time (Civ. Code 1657, NAMED not quoted); for a loan payable on demand the general rule is that the cause of action accrues when the loan is made or, at the latest, when demand is made and refused, and courts have refused to let a lender postpone accrual indefinitely by never demanding. The consumer-facing consequence cuts both ways: a lender who waited three years to demand may already be barred (accrual at the loan), or the clock may run from the refusal (accrual at demand). Not encoded as a rule; the checklist now collects whether a repayment date was ever agreed and when any demand was made and refused. Please confirm the accrual rule to encode."
       },
       "completeness_checklist": [
         {
-          "fact": "Date of last payment on the debt, or date of default/breach if no payments were made",
+          "fact": "Date of default/breach of the oral obligation (NOT the date of last payment -- a later payment on an unwritten debt does not restart the period, CCP 360); if no repayment date was ever agreed, the date the loan was made and the date any demand was made and refused (see demand_loan_accrual_note)",
           "dispositive": true
         },
         {
@@ -501,7 +515,7 @@
           "dispositive": true
         },
         {
-          "fact": "Whether there is genuinely no written cardmember agreement, account terms, or book-account record for this debt (vs. simply not being able to locate one) -- credit card/revolving accounts are usually 4-year written-contract debts, not 2-year oral debts",
+          "fact": "Whether there is genuinely no written cardmember agreement, account terms, or book-account record for this debt (vs. simply not being able to locate one) -- credit card/revolving accounts are usually 4-year written-contract debts, not 2-year oral debts -- AND whether the creditor kept a running account of charges and payments (a ledger, invoices, statements): an open book account is FOUR years under CCP 337(b) even where the underlying arrangement was oral",
           "dispositive": true
         },
         {
@@ -575,6 +589,13 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=706.051.",
             "source_tier": "A",
             "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-706-051/ (mirror of the official source pinned above). The necessaries exemption, with its four exceptions (notably: not available against a support withholding order or a state tax order)."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 706.011(a), (b), (e)",
+            "quoted_text": "(a) \"Disposable earnings\" means the portion of an individual's earnings that remains after deducting all amounts required to be withheld by law. (b) \"Earnings\" means compensation payable by an employer to an employee for personal services performed by such employee, whether denominated as wages, salary, commission, bonus, or otherwise.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=706.011.",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-05 (round 46) for two NEW Stage B findings in run_20260904T221748Z.json: (1) the node never defined 'disposable earnings' -- it is gross minus amounts REQUIRED to be withheld by law (taxes, SDI, mandatory retirement), so voluntary health premiums, 401(k) deferrals, union dues and wage assignments are NOT deducted, and a consumer who supplies net take-home understates the garnishable base; (2) 'earnings' means compensation 'payable by an employer to an employee,' with 'employee' defined in (e) by the right-to-control test, so an independent contractor's receivables are outside the Wage Garnishment Law's cap entirely (subsection (e) named, not quoted). Text verified this session against the FindLaw CA Codes mirror (current as of Jan. 1, 2026); url pinned to leginfo, which the live checker fetches for this node's other CCP sections."
           }
         ],
         "citation_verified": true
@@ -600,12 +621,21 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned CCP 706.050(b) (statutory multipliers -- correcting round 38) and 706.051(b)-(c). 706.030/.031/.052 (support priority) and 706.105 (claim procedure) NOT pinned -- named-only."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 7 ledger entries): 'disposable earnings' undefined (net pay used); independent contractors treated as protected; federal AWG / IRS / FTB priority omitted.",
+            "summary": "Round 46: 706.011(a)-(b) pinned; disposable_earnings_definition_note + checklist item 1 rewritten; independent_contractor_note + checklist; federal_and_tax_garnishment_priority_note (1095a, 3720D, 6331/6334, CCP 706.070-.084, 706.023 NAMED) + checklist."
           }
-        ]
+        ],
+        "disposable_earnings_definition_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: 'disposable earnings' is a DEFINED term -- CCP 706.011(a): earnings 'after deducting all amounts required to be withheld by law.' That is federal and state income tax, Social Security/Medicare, SDI, and mandatory public-retirement contributions. It is NOT net take-home pay. Voluntary deductions -- health and dental premiums, 401(k)/403(b) elective deferrals, union dues, charitable payroll deductions, a voluntary wage assignment, garnishment for another debt -- stay IN disposable earnings. A worker whose paystub shows $780 gross and $612 net after taxes, SDI, health premium and a 401(k) contribution has disposable earnings of $780 minus only the taxes and SDI; plugging in $612 understates what the creditor may take and can lead the consumer to challenge a lawful withholding or, worse, to accept an unlawful one computed by the employer on the wrong base. Checklist item 1 reworded to collect gross and each deduction.",
+        "independent_contractor_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the 20%/40% cap in 706.050 protects EARNINGS, defined as compensation 'payable by an employer to an employee' (706.011(b)), with 'employee' meaning a person whose employer controls 'both what shall be done and how it shall be done' (706.011(e)). A 1099 gig or rideshare worker's payments from a platform are, on the platform's own characterization, not employee earnings; a judgment creditor reaches them by a levy on the account receivable (writ of execution, CCP 699.510 et seq.; NAMED) or by an assignment order, and the earnings-withholding cap does not apply. Two escape routes to ask about: (i) misclassification -- if the worker is in fact an employee under the control test (or under Labor Code 2775's ABC test, NAMED), the cap applies and the levy was improper; (ii) the 704.220 minimum-basic-standard exemption and the 703.115/704.070 exemptions may still protect the funds once deposited (see CA-BANK-ACCOUNT-EXEMPTION). Dangerous direction as encoded: the node would have told a contractor that 75% of the platform payout is 'protected'. Checklist item added.",
+        "federal_and_tax_garnishment_priority_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the determination's 'anything withheld beyond that is unlawful' and the support-order carve-out are not the whole priority picture. Three families of withholding sit OUTSIDE the 706.050 cap and ahead of a consumer earnings withholding order: (1) federal ADMINISTRATIVE wage garnishment for defaulted federal student loans, up to 15% of disposable pay without a court judgment (20 U.S.C. 1095a(a)(1); NAMED, not quoted this round) and other federal agency debts (31 U.S.C. 3720D); (2) IRS levies on wages (26 U.S.C. 6331, with the 6334(d) exempt-amount table) and FTB earnings withholding orders for taxes (CCP 706.070-706.084, which have their own 25%/higher limits); (3) support orders (already noted). Where one of these is already in place, the consumer creditor's order is stacked behind it and may be reduced or deferred rather than 'unlawful' -- CCP 706.023 governs priority among orders (NAMED). The consumer-facing risk in the finding is real: a debtor already paying 15% under a Department of Education AWG who is told a further 20% is 'unlawful' may refuse to comply with a lawful stacked order. Checklist item added. All three families are FIXED-SOURCE-NAMED pending a fetch round."
       },
       "completeness_checklist": [
         {
-          "fact": "Debtor's weekly disposable earnings",
+          "fact": "Debtor's weekly GROSS earnings and each payroll deduction, labeled MANDATORY (federal/state income tax, Social Security/Medicare, SDI, mandatory retirement) or VOLUNTARY (health/dental premium, 401(k), union dues, wage assignment, other garnishment) -- 'disposable earnings' under CCP 706.011(a) is gross minus the MANDATORY ones only; do not use net take-home",
           "dispositive": true
         },
         {
@@ -622,6 +652,14 @@
         },
         {
           "fact": "Whether the debtor needs the earnings for the support of self or family -- the § 706.051 necessaries exemption and the § 706.105 claim-of-exemption procedure can reduce withholding BELOW the formula amount; the formula is a ceiling, not the answer",
+          "dispositive": true
+        },
+        {
+          "fact": "Is the debtor a W-2 EMPLOYEE (employer controls what is done and how, CCP 706.011(e)) or a 1099 independent contractor / gig worker? The 706.050 cap applies only to employee earnings; contractor receivables are reached by levy without the cap (unless the worker is misclassified) -- route to the bank-account exemption node for deposited funds",
+          "dispositive": true
+        },
+        {
+          "fact": "Is any OTHER withholding already in place -- federal student-loan administrative wage garnishment (up to 15%, no judgment needed), an IRS wage levy, an FTB tax withholding order, or a support order? These sit outside the 706.050 cap and ahead of a consumer creditor's order; the consumer order is stacked or reduced, not 'unlawful'",
           "dispositive": true
         }
       ],
@@ -668,6 +706,13 @@
             "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.720.",
             "source_tier": "A",
             "tier_rationale": "Added 2026-09-04 (round 39): pins the provision named in round 38. Text verified verbatim this session via a direct fetch of https://codes.findlaw.com/ca/code-of-civil-procedure/ccp-sect-704-720/ (mirror of the official source pinned above). SCOPE NOTE found while pinning: (b)'s six-month proceeds protection is for a homestead 'sold under this division' (i.e., a forced sale), damaged/destroyed, or taken for public use -- the round-38 sale-proceeds note framed it as covering a VOLUNTARY sale, which is the DECLARED-homestead rule (CCP 704.960, not pinned), not 704.720(b). Note corrected."
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 704.710(c)",
+            "quoted_text": "\"Homestead\" means the principal dwelling (1) in which the judgment debtor or the judgment debtor's spouse resided on the date the judgment creditor's lien attached to the dwelling, and (2) in which the judgment debtor or the judgment debtor's spouse resided continuously thereafter until the date of the court determination that the dwelling is a homestead.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=704.710.",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: the checklist reduced the threshold to 'occupied dwelling' and punted. The statutory definition has TWO residence requirements -- at lien attachment AND continuously until the homestead determination -- so a debtor who moved out 14 months ago and rents the house has, for the AUTOMATIC exemption, no homestead at all (a recorded DECLARED homestead under 704.910 et seq. survives a move-out for some purposes; NAMED). Text verified this session against the FindLaw CA Codes mirror (current as of Jan. 1, 2026); url pinned to leginfo, which the live checker fetches for this node's other CCP sections."
           }
         ],
         "citation_verified": true
@@ -692,12 +737,21 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned 11 U.S.C. 522(b)(3)(A) and CCP 704.720(a)-(b); corrected the sale-proceeds note (704.720(b) is forced-sale/insurance proceeds; voluntary-sale proceeds are the declared-homestead rule, 704.960). 703.070, 704.800, 703.140(b) NOT pinned -- named-only."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 8 ledger entries): 'occupied dwelling' threshold ignored 704.710(c)'s attachment-and-continuous-residence test; lien-survives-exemption not explained; forced-sale procedure and the debtor's obligation to respond omitted.",
+            "summary": "Round 46: 704.710(c) pinned + continuous_residence_requirement_note + checklist item 1 rewritten; judgment_lien_survives_note (697.310, 704.950 NAMED) + checklist; forced_sale_procedure_note (704.740-704.800 NAMED) + checklist."
           }
-        ]
+        ],
+        "continuous_residence_requirement_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the automatic homestead protects the PRINCIPAL DWELLING in which the debtor or spouse (1) resided when the judgment lien attached and (2) 'resided continuously thereafter' until the court's homestead determination (CCP 704.710(c)). A debtor who relocated for work, moved in with an adult child, or entered assisted living and now rents the house out does not meet (2); 'I still call it my home' and an intent to return do not substitute for residence, although temporary absences (hospitalization, a short deployment) are generally tolerated by case law (GLOSS-FOR-COUNSEL: the line between a temporary absence and an abandonment). The dangerous direction is telling that debtor the equity is 'protected.' Separately, a DECLARED homestead (a recorded declaration, CCP 704.910-704.995; NAMED) has different rules and is not encoded here. Checklist item 1 reworded to collect the move-out facts.",
+        "judgment_lien_survives_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the exemption is a shield against FORCED SALE (704.740-704.850), not an erasure of the lien. A recorded abstract of judgment attaches to the debtor's interest in the dwelling (CCP 697.310, NAMED) and stays there: on a voluntary sale or refinance the title company will require it to be paid or released, and interest accrues at 10% meanwhile. The debtor with $250,000 of equity under the exemption is protected from being sold out, not from the lien. The partial statutory relief is 704.950 (NAMED): a judgment lien on a DECLARED homestead attaches only to surplus over the exemption plus senior liens, and a buyer's or refinancer's escrow can proceed on that basis -- which is the practical reason to record a declaration before selling. Consumers should be told 'no forced sale' and 'the lien will have to be dealt with when you sell,' not 'your home is safe.' Both sections FIXED-SOURCE-NAMED pending a fetch round; checklist item added.",
+        "forced_sale_procedure_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the exemption is asserted in a PROCEEDING, and the debtor has a job to do in it. A judgment creditor who wants to sell the dwelling must apply to the court for an order of sale (CCP 704.740) and obtain an order to show cause (704.750-704.770); the court determines whether the dwelling is a homestead, the exemption amount, and fair market value, and no sale may be ordered unless a bid exceeds the exemption plus senior liens (704.800). The debtor should FILE A RESPONSE to the application before the hearing asserting the homestead and the exemption amount, appear, and contest the creditor's appraisal (the court may appoint an appraiser; the debtor may offer her own). A debtor who assumes the exemption is 'automatic' and stays home risks a hearing at which only the creditor's numbers are before the court. Sections 704.740-704.800 are FIXED-SOURCE-NAMED this round (the forced_sale_mechanics_note already covers the 704.800 arithmetic). Checklist item added."
       },
       "completeness_checklist": [
         {
-          "fact": "Whether the property qualifies as the debtor's homestead (occupied dwelling) under CCP § 704.710 et seq. (not itself encoded in this node)",
+          "fact": "Whether the property is the debtor's or spouse's PRINCIPAL dwelling both (1) on the date the judgment lien attached (abstract recorded) and (2) CONTINUOUSLY since -- if the debtor has moved out (relocation, moved in with family, assisted living) and especially if the house is rented, the automatic homestead does not apply (CCP 704.710(c)); collect move-out date, reason, and whether a homestead DECLARATION was ever recorded",
           "dispositive": true
         },
         {
@@ -722,6 +776,14 @@
         },
         {
           "fact": "If the home was recently SOLD: the sale date and where the proceeds are -- proceeds are exempt for six months (CCP 704.720(b)) even though there is no longer an occupied dwelling",
+          "dispositive": true
+        },
+        {
+          "fact": "Is the consumer facing a FORCED SALE (creditor's application for order of sale / order to show cause), or only a recorded abstract of judgment? The exemption blocks the sale but does not remove the lien, which must be paid or released on any voluntary sale or refinance (CCP 697.310; 704.950 for a declared homestead)",
+          "dispositive": true
+        },
+        {
+          "fact": "If an application for order of sale has been served: the hearing date, whether the debtor has filed a written response asserting the homestead and exemption amount, and whether she has her own valuation evidence -- the exemption must be asserted in the 704.740-704.800 proceeding, not assumed",
           "dispositive": true
         }
       ],
@@ -786,6 +848,13 @@
               "note": "leginfo.legislature.ca.gov serves a multiple-versions page for CCP sections that carry an 'operative until Jan. 1, 2027' note (this section is not one; pinned with manual_verification because its leginfo page has not yet been fetched by the live checker), so a plain fetch does not return the operative text and the live checker fails with low word-overlap (run_20260903T174510Z). Text verified 2026-09-04 against the FindLaw CA Code mirror (current as of Jan. 1, 2026). Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
               "date": "2026-09-04"
             }
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 703.020(a)",
+            "quoted_text": "The exemptions provided by this chapter apply only to property of a natural person.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=703.020.",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json (dangerous direction): the node had no natural-person screen and would give an LLC or corporate judgment debtor a $7,500 exemption on a work truck titled to the entity; the correct answer is zero. Same verified text as the CA-BANK-ACCOUNT node's entry (leginfo, live-verified). Also re-verified this session against FindLaw."
           }
         ],
         "citation_verified": true
@@ -793,7 +862,7 @@
       "logic": {
         "exemption_amount_usd": 7500,
         "applies_to": "aggregate equity across a debtor's motor vehicles, or execution-sale proceeds, or insurance/indemnification proceeds for a vehicle -- combined, not stacked separately",
-        "automatic_single_vehicle_case": "if the debtor has only one vehicle and it is sold at execution sale, the $7,500 exemption on the proceeds applies automatically without the debtor filing a claim",
+        "automatic_single_vehicle_case": "if the debtor has only one vehicle and it is sold at execution sale, the $7,500 exemption on the PROCEEDS applies automatically without the debtor filing a claim (704.010(d)). CLARIFIED 2026-09-05 (round 46), from run_20260904T221748Z.json: 'automatic' means the levying officer pays the first $7,500 of sale proceeds to the debtor without a claim -- it does NOT stop the levy or the sale. A single-car debtor with $12,000 of equity who reads 'no claim needed' and does nothing will lose the car at auction (subject to 704.800's minimum-bid rule) and receive $7,500 in cash; if she wants to keep the car she must act -- file a claim of exemption within the 703.520 deadline, negotiate, or pay the creditor the non-exempt equity. The deadline note's carve-out for the single-vehicle case has been narrowed accordingly.",
         "determination": "up to $7,500 of vehicle equity/proceeds is protected from levy; equity above that amount remains reachable",
         "tools_of_trade_note": "If the vehicle is reasonably necessary to and actually used in the debtor's trade, business, or profession, CCP § 704.060 provides a separate tools-of-trade exemption (aggregate ~$8,725, with the motor vehicle portion capped lower, ~$4,850) that can apply INSTEAD of, or alongside, this node's general § 704.010 vehicle exemption for a separate personal vehicle -- but § 704.060 itself says a trade vehicle is not separately exempt under it if an adequate § 704.010 vehicle is already available. This node alone, applied to a work vehicle without checking § 704.060, can materially understate the debtor's protection.",
         "bankruptcy_alternative_note": "This $7,500 figure is the non-bankruptcy (CCP § 704 series) exemption. A debtor filing Chapter 7 bankruptcy may instead elect California's 'System 2' exemptions under CCP § 703.140(b), which includes a separate ~$8,625 vehicle exemption PLUS a wildcard (up to ~$1,950, plus any entirely-unused portion of the ~$36,750 homestead exemption -- e.g. a renter with no homestead claim) that can be stacked onto vehicle equity. System 2 is an all-or-nothing election in place of § 704, not a add-on to it. This node does not itself determine which system is more favorable for a given debtor.",
@@ -822,14 +891,26 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned CCP 703.520 (15/20 days, corrected). IRC 6334, Com. Code 9609, CCP 704.710 and 703.110 NOT pinned this session -- notes retained as named-only screening flags."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 8 ledger entries): 'automatic' single-vehicle language read as 'no action needed'; no title/ownership variable; no natural-person screen (entity debtor given an exemption).",
+            "summary": "Round 46: automatic_single_vehicle_case and deadline note clarified; 703.020(a) pinned + natural_person_screen_note + threshold checklist; co_owner_and_third_party_title_note (720.110 NAMED) + checklist; single-vehicle checklist item reworded."
           }
         ],
-        "claim_of_exemption_deadline_note": "ADDED 2026-09-03 (round 38) -- PROCEDURAL PREDICATE: except in the single-vehicle automatic-proceeds case of § 704.010(d), the vehicle exemption is NOT self-executing. The debtor must file a claim of exemption with the levying officer within 15 days after the notice of levy is personally served, or 20 days if served by mail (CCP § 703.520(a), quoted above -- CORRECTED 2026-09-04, round 39: not 10 days), after which the creditor may oppose and a hearing follows; a debtor who reads '$7,500 is protected' and does nothing loses the exemption entirely when the vehicle is sold. Also relevant: § 704.800 bars sale unless a bid exceeds the exemption plus liens. Appeared in both backlog runs (and identically on CA-BANK-ACCOUNT-EXEMPTION).",
+        "claim_of_exemption_deadline_note": "ADDED 2026-09-03 (round 38) -- PROCEDURAL PREDICATE: the vehicle exemption is NOT self-executing (in the single-vehicle case of § 704.010(d) only the $7,500 of PROCEEDS is paid without a claim -- the sale itself still goes forward; CLARIFIED round 46). The debtor must file a claim of exemption with the levying officer within 15 days after the notice of levy is personally served, or 20 days if served by mail (CCP § 703.520(a), quoted above -- CORRECTED 2026-09-04, round 39: not 10 days), after which the creditor may oppose and a hearing follows; a debtor who reads '$7,500 is protected' and does nothing loses the exemption entirely when the vehicle is sold. Also relevant: § 704.800 bars sale unless a bid exceeds the exemption plus liens. Appeared in both backlog runs (and identically on CA-BANK-ACCOUNT-EXEMPTION).",
         "who_is_the_creditor_note": "ADDED 2026-09-03 (round 38): the $7,500 figure binds an ordinary JUDGMENT CREDITOR's levy. It does NOT bind (a) a federal tax levy -- IRC § 6334 supplies its own, narrower exempt-property list with no general vehicle exemption -- or certain other federal collection; (b) a support-arrears enforcement subject to CCP § 703.070; or (c) a SECURED PARTY repossessing under its own lien (Com. Code § 9609) -- the exemption runs against enforcement of a money judgment, not against the finance company's contractual right to the collateral. Telling a debtor facing repossession that $7,500 of equity is protected is flatly wrong and may cause him to skip reinstatement/redemption options. Appeared in both backlog runs.",
         "vehicle_as_dwelling_note": "ADDED 2026-09-03 (round 38): a motorhome, van, or RV in which the debtor actually RESIDES is a 'dwelling' under CCP § 704.710(a) and may be claimed under the HOMESTEAD exemption (hundreds of thousands of dollars), not this $7,500 vehicle exemption. Route vehicle-dwelling debtors to CA-HOMESTEAD-EXEMPTION.",
-        "community_property_spouses_note": "ADDED 2026-09-03 (round 38): for a MARRIED debtor, whether each spouse may claim a separate vehicle exemption against a judgment reaching community property is governed by CCP § 703.110; this node has no marital-property variable, so its single-debtor $7,500 figure may be off by a full exemption for a couple with two cars."
+        "community_property_spouses_note": "ADDED 2026-09-03 (round 38): for a MARRIED debtor, whether each spouse may claim a separate vehicle exemption against a judgment reaching community property is governed by CCP § 703.110; this node has no marital-property variable, so its single-debtor $7,500 figure may be off by a full exemption for a couple with two cars.",
+        "natural_person_screen_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json, DANGEROUS DIRECTION: CCP 703.020(a) -- 'the exemptions provided by this chapter apply only to property of a natural person.' A judgment against an LLC, a corporation, or a partnership gets no vehicle exemption on property titled to the entity, and a sole proprietor who incorporated and titled the truck to the corporation is in the same position as to that truck. Ask first WHO the judgment debtor is and WHOSE name is on the title. (A sole proprietorship that never incorporated is the natural person, and the exemption applies; the tools-of-trade exemption in 704.060 may then matter more than 704.010.) Threshold checklist item added.",
+        "co_owner_and_third_party_title_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the node collected only FMV and liens, with no ownership variable. (1) If the vehicle is titled JOINTLY with a non-spouse (a parent who co-signed, an adult child), only the debtor's fractional interest is subject to the judgment, and the co-owner may file a THIRD-PARTY CLAIM with the levying officer under CCP 720.110 et seq. (NAMED) to protect her share; the exemption then applies to the debtor's equity in his share. (2) If the car is titled to someone else entirely but parked at the debtor's home, the true owner's remedy is the same third-party claim -- the debtor has no exemption to claim in property that is not his. (3) For a SPOUSE, community-property rules govern instead (already in community_property_spouses_note; CCP 703.110). Checklist item added; 720.110 is FIXED-SOURCE-NAMED this round."
       },
       "completeness_checklist": [
+        {
+          "fact": "THRESHOLD: is the judgment debtor a NATURAL PERSON, and is the vehicle titled to that person? A judgment against an LLC/corporation/partnership, or a vehicle titled to such an entity, gets NO exemption (CCP 703.020(a)); the answer is zero, not $7,500",
+          "dispositive": true
+        },
         {
           "fact": "Fair market value of the debtor's motor vehicle(s) (per used-car price guides customarily used by CA dealers, per CCP § 704.010(c))",
           "dispositive": true
@@ -839,7 +920,7 @@
           "dispositive": true
         },
         {
-          "fact": "Whether the debtor has only one vehicle (triggers the automatic no-claim-needed exemption under subdivision (d))",
+          "fact": "Whether the debtor has only one vehicle (triggers the automatic no-claim-needed exemption under subdivision (d)) -- and make clear that 'automatic' covers only the first $7,500 of SALE PROCEEDS; the levy and sale proceed unless the debtor files a claim of exemption or otherwise acts",
           "dispositive": false
         },
         {
@@ -868,6 +949,10 @@
         },
         {
           "fact": "Is the debtor married and is the judgment being enforced against community property? Whether each spouse gets a separate vehicle exemption is a CCP 703.110 question",
+          "dispositive": true
+        },
+        {
+          "fact": "Exactly whose name(s) are on the title -- if a non-spouse co-owner or a third party holds title (in whole or part), the creditor reaches only the debtor's interest and the co-owner/true owner files a third-party claim (CCP 720.110 et seq.); the exemption applies to the debtor's share",
           "dispositive": true
         }
       ],
@@ -957,7 +1042,7 @@
         "exceptions": "does not apply to a levy to satisfy a judgment for wages owed, child support, or spousal support",
         "determination": "money in the debtor's deposit account up to the current W&IC §11452/§11453 figure is automatically protected from an ordinary judgment-creditor levy (not from the carved-out wages/support judgment categories)",
         "public_benefits_note": "If the levied account receives DIRECTLY DEPOSITED public benefits or Social Security payments, CCP § 704.080 provides a SEPARATE, larger automatic exemption specific to those funds (roughly $1,750-$2,600 for public benefits, $3,500-$5,250 for Social Security, depending on number of depositors, as most recently adjusted) -- this is in addition to, not instead of, the general § 704.220 minimum this node otherwise encodes. Federal law (31 C.F.R. Part 212) separately requires banks to automatically protect roughly two months' worth of certain federal benefit payments received by direct deposit, independent of any state exemption claim -- flagged as a related federal protection not yet independently encoded here.",
-        "aggregation_note": "The § 704.220 automatic minimum exemption is a SINGLE aggregate amount across all of the judgment debtor's deposit accounts subject to levy, not a separate exemption per account. A debtor with multiple accounts levied at once (or in sequence) does not get the minimum multiplied by the number of accounts.",
+        "aggregation_note": "The § 704.220 automatic minimum exemption is a SINGLE aggregate amount across all of the judgment debtor's deposit accounts subject to levy, not a separate exemption per account. A debtor with multiple accounts levied at once (or in sequence) does not get the minimum multiplied by the number of accounts. CLARIFIED 2026-09-05 (round 46), from run_20260904T221748Z.json: 'or in sequence' above refers to a single enforcement effort against several accounts. It does NOT mean the debtor gets one lifetime minimum: 704.220 exempts money in the deposit account 'up to' the figure at the time of EACH levy, so a creditor who captured the non-exempt balance in February and levies the replenished account again in June faces the exemption again in June. A consumer told 'you already used your exemption' should be told that is wrong.",
         "natural_person_note": "This exemption -- and the CCP § 704 series generally -- is available only to a natural person (CCP § 703.020(a)). An LLC, corporation, partnership, or other entity judgment debtor has no automatic minimum-balance protection under this node.",
         "drafting_revisions": [
           {
@@ -989,14 +1074,21 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned CCP 703.520 with the corrected 15/20-day deadline; fixed the 704.070 comma transcription error the live run caught. Tax-levy (IRC 6334; R&TC 18670) and other-traceable-exemption sections (704.115 etc.) NOT pinned -- markers removed from notes but the tier_rationale flags them as named-only."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 7 ledger entries): bank setoff conflated with levy; aggregation note read as a one-time exemption; non-debtor spouse's account treated as recoverable via third-party claim.",
+            "summary": "Round 46: bank_setoff_note (CCP 703.010, Fin. Code 864 NAMED; GLOSS) + checklist; aggregation_note clarified (per-levy); joint_account_note corrected (Fam. Code 910/911 NAMED; GLOSS) + checklist."
           }
         ],
         "recent_wages_note": "If the levied funds are traceable to wages actually PAID to the debtor within the 30 days before levy, CCP § 704.070 separately exempts 75% of those paid earnings (100% if they were already subject to a wage withholding or support-assignment order before payment) -- this is typically far more protection than the § 704.220 automatic minimum alone, and is the most common real-world bank-levy scenario (a recent paycheck). This exemption requires a timely-filed claim, unlike the automatic § 704.220/§ 704.080 minimums.",
         "support_need_note": "On a filed claim, CCP § 704.225 exempts deposit-account money ABOVE the automatic minimum to the extent necessary for the support of the debtor and their spouse/dependents -- no fixed dollar cap, fact-specific. This is the routine follow-on claim once the automatic minimum is exhausted; this node should not be read to imply everything above the automatic minimum is unprotected.",
-        "joint_account_note": "This node treats the levied account as simply 'the debtor's deposit account.' If the account is jointly held with a non-debtor (a spouse, family member, or other co-owner) and some or all of the funds are traceable to the co-owner's deposits, the co-owner may assert a third-party claim of ownership under CCP §§ 720.110 et seq. to recover funds that are not the debtor's -- separately, community-property rules can affect a non-debtor spouse's share differently. This node does not itself perform an ownership/tracing analysis.",
+        "joint_account_note": "This node treats the levied account as simply 'the debtor's deposit account.' If the account is jointly held with a non-debtor (a spouse, family member, or other co-owner) and some or all of the funds are traceable to the co-owner's deposits, the co-owner may assert a third-party claim of ownership under CCP §§ 720.110 et seq. to recover funds that are not the debtor's -- separately, community-property rules can affect a non-debtor spouse's share differently. This node does not itself perform an ownership/tracing analysis. CORRECTED 2026-09-05 (round 46), from run_20260904T221748Z.json: for a MARRIED debtor the 720.110 third-party-claim route in this note is the wrong first answer. Under Family Code 910 (NAMED, not quoted this round) the community estate is liable for a debt incurred by either spouse during marriage (and, with exceptions, before), so wages of the debtor spouse deposited into an account in the NON-DEBTOR spouse's sole name are community property and reachable on a judgment against the debtor spouse alone -- the non-debtor spouse cannot recover them merely because the account is hers. The 704.220 minimum still applies to the levied account; CCP 703.020(b)(2) lets the non-debtor spouse claim community-property exemptions; and Family Code 911 (NAMED) shields the non-debtor spouse's OWN earnings from the other spouse's PREMARITAL debts if kept in an account the debtor spouse has no right to withdraw from. Ask when the debt was incurred relative to the marriage, whose earnings are in the account, and who can withdraw. GLOSS-FOR-COUNSEL on the Fam. Code 910/911 interplay.",
         "claim_of_exemption_deadline_note": "ADDED 2026-09-03 (round 38) -- THE MOST CONSEQUENTIAL PRACTICAL FACT in a bank-levy matter: the § 704.070 (recent wages) and § 704.225 (support-needed) protections this node conditions on a 'timely-filed claim' have a deadline the node never stated -- a claim of exemption (with financial statement where required) filed with the levying officer within 15 days after the notice of levy is personally served, or 20 days if served by mail (CCP § 703.520(a), quoted above -- CORRECTED 2026-09-04, round 39: NOT 10 days as the Stage B finding and the round-38 note said); for a 'personal debt' § 703.520(c) permits a later claim, but the officer may release the funds after day 20, followed by the creditor's 10-day opposition window (§ 703.550) and a hearing. A debtor who files three weeks later has forfeited the largest protections available. Only the § 704.220 minimum and directly-deposited § 704.080 benefits are protected without a claim. Appeared in both backlog runs.",
         "administrative_tax_levies_note": "ADDED 2026-09-03 (round 38): this node assumes a private judgment creditor. An IRS notice of levy (IRC § 6331; § 6334 provides no bank-account exemption), a Franchise Tax Board order to withhold (R&TC § 18670 et seq.), or federal administrative garnishment for defaulted student loans is NOT enforcement of a money judgment, and the CCP § 704 exemption scheme and claim procedure do not apply in the same way. Telling such a debtor the § 704.220 minimum is 'automatically protected' is wrong. Appeared in both backlog runs.",
-        "other_traceable_exempt_deposits_note": "ADDED 2026-09-03 (round 38): the node encodes tracing protection only for directly-deposited public benefits/Social Security (§ 704.080) and recent wages (§ 704.070). Other exempt sources remain exempt after deposit to the extent traceable, several at 100%: private retirement plan and IRA funds (CCP § 704.115(b)-(d), plus ERISA anti-alienation), unemployment and disability benefits (§§ 704.120, 704.130), workers' compensation (§ 704.160), and personal-injury/wrongful-death proceeds (§§ 704.140-704.150). A retiree living on a private pension was told only the small automatic minimum applied when nearly the whole balance may be exempt. Appeared in both backlog runs."
+        "other_traceable_exempt_deposits_note": "ADDED 2026-09-03 (round 38): the node encodes tracing protection only for directly-deposited public benefits/Social Security (§ 704.080) and recent wages (§ 704.070). Other exempt sources remain exempt after deposit to the extent traceable, several at 100%: private retirement plan and IRA funds (CCP § 704.115(b)-(d), plus ERISA anti-alienation), unemployment and disability benefits (§§ 704.120, 704.130), workers' compensation (§ 704.160), and personal-injury/wrongful-death proceeds (§§ 704.140-704.150). A retiree living on a private pension was told only the small automatic minimum applied when nearly the whole balance may be exempt. Appeared in both backlog runs.",
+        "bank_setoff_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the 704.220 minimum protects deposits from a judgment creditor's LEVY under the Enforcement of Judgments Law (CCP 703.010 limits the chapter to enforcement of money judgments; NAMED). It does not govern the depositary bank's own contractual or common-law right of SETOFF against a delinquent debt the customer owes that same bank -- the Wells Fargo checking account swept for the Wells Fargo card balance, before any lawsuit. The statute that does limit setoff is Financial Code 864 (NAMED, not fetched this round): as generally described, a bank may not set off against a consumer deposit account if the setoff would leave less than a stated floor (historically $1,000) and must give notice; it also prohibits setoff against directly-deposited public benefits and Social Security. The consumer with a swept account should be routed to Fin. Code 864 and to the deposit agreement, not told 704.220 was violated. GLOSS-FOR-COUNSEL on current Fin. Code 864 figures and on whether a setoff that violates 864 supports damages. Checklist item added."
       },
       "completeness_checklist": [
         {
@@ -1045,6 +1137,14 @@
         },
         {
           "fact": "The SOURCE of every deposit in the account -- private pension/IRA (704.115), unemployment/disability (704.120/704.130), workers' compensation (704.160), personal-injury proceeds (704.140-.150) are traceable and largely or fully exempt, beyond the public-benefits and wages categories this node encodes",
+          "dispositive": true
+        },
+        {
+          "fact": "Was the money taken by a JUDGMENT CREDITOR'S LEVY, or by the DEBTOR'S OWN BANK setting off a debt owed to that bank (no lawsuit)? Setoff is governed by Financial Code 864 and the deposit agreement, not by the 704.220 levy exemption",
+          "dispositive": true
+        },
+        {
+          "fact": "If the debtor is MARRIED: when was the debt incurred relative to the marriage, whose earnings are in the levied account, and can the debtor spouse withdraw from it -- community property (including the debtor's wages in the non-debtor spouse's account) is generally liable for either spouse's debt (Fam. Code 910), subject to the 911 premarital-debt shield",
           "dispositive": true
         }
       ],
@@ -1149,6 +1249,13 @@
               "note": "leginfo.legislature.ca.gov serves a multiple-versions page for CCP sections that carry an 'operative until Jan. 1, 2027' note (this section is one), so a plain fetch does not return the operative text and the live checker fails with low word-overlap (run_20260903T174510Z). Text verified 2026-09-04 against the FindLaw CA Code mirror (current as of Jan. 1, 2026). Confirmation by Claude (Cowork); not yet independently re-confirmed by Andy.",
               "date": "2026-09-04"
             }
+          },
+          {
+            "cite": "Cal. Code Civ. Proc. § 418.10(b), (d)",
+            "quoted_text": "The service and filing of the notice shall extend the defendant's time to plead until 15 days after service upon him or her of a written notice of entry of an order denying his or her motion, except that for good cause shown the court may extend the defendant's time to plead for an additional period not exceeding 20 days.",
+            "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=418.10.",
+            "source_tier": "A",
+            "tier_rationale": "Added 2026-09-05 (round 46) for a NEW Stage B finding in run_20260904T221748Z.json: the node directs a disputing defendant to the 418.10 motion but encoded only one deadline formula (service + 30) and one consequence (default). Subdivision (b), quoted, SUSPENDS the time to plead until 15 days after notice of the order denying the motion; subdivision (d) (NAMED) provides that 'no default may be entered against the defendant before expiration of his or her time to plead.' Text verified this session against the FindLaw CA Codes mirror (current as of Jan. 1, 2026); url pinned to leginfo, which the live checker fetches for this node's other CCP sections."
           }
         ],
         "citation_verified": true
@@ -1191,12 +1298,21 @@
             "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
             "basis": "Round 39 source pinning (2026-09-04): every provision named-but-unquoted in round 38 that could be live-fetched this session is now quoted verbatim from a fetched source; [SOURCE PENDING] markers removed where pinned. Corrections found during pinning are called out in each entry's tier_rationale.",
             "summary": "Pinned CCP 415.30(c)-(d), 585(a), 473(b); manual_verification on 415.20 (leginfo multi-version page). Filing-fee/fee-waiver (Gov. Code 70611/68631) NOT pinned -- marker retained."
+          },
+          {
+            "date": "2026-09-05",
+            "author": "Claude (Cowork) -- DRAFT-tier content edit per Andy's 2026-08-30 directive; tier promotion still requires Andy/counsel sign-off",
+            "basis": "run_20260904T221748Z.json (three NEW material findings, none overlapping the node's 7 ledger entries): 418.10 motion's effect on the answer deadline not stated; answer content (affirmative defenses) not addressed -- dangerous direction; demurrer/motion to strike omitted.",
+            "summary": "Round 46: 418.10(b) pinned ((d) named) + motion_to_quash_suspends_answer_note + checklist; answer_content_affirmative_defenses_note (431.30(b)(2), 458 NAMED) + checklist; demurrer_and_motion_to_strike_note (430.10, 435-436, 472a(b) NAMED) + checklist."
           }
         ],
         "publication_completion_note": "ADDED 2026-09-02 (round 36): service-by-publication's completion date is NOT stated directly in CCP § 415.50 -- that section cross-references Government Code § 6064's four-successive-week publication requirement. This node's prior encoding stated a specific '28th day after first publication' figure as if it came straight from § 415.50; that figure could not be independently re-verified against Government Code § 6064's primary text this round (repeated fetch timeouts). Treat the exact completion date for a publication-service case as UNVERIFIED pending a fresh fetch of Govt. Code § 6064, not as a confirmed 28-day rule.",
         "notice_and_acknowledgment_service_note": "ADDED 2026-09-03 (round 38): the service-method list omitted CCP § 415.30 -- in-state MAIL service with a Notice and Acknowledgment of Receipt (form POS-015), a routine low-cost method in consumer-debt cases. Under § 415.30(c) service is complete only on the date the defendant SIGNS and returns the acknowledgment; if it is never signed and returned, NO service has occurred and no answer clock starts (the plaintiff must serve another way). As encoded, the rule would start a 30-day clock from the postmark and tell an unserved defendant she is on a deadline or in default -- and filing an answer in that posture is a general appearance that forfeits the § 418.10 motion-to-quash route. Appeared in both backlog runs.",
         "past_deadline_before_default_note": "ADDED 2026-09-03 (round 38): the node computed only the forward-looking deadline and said missing it means the plaintiff 'may apply for entry of default.' For the very common caller who is ALREADY past day 30: an answer filed at any time before default is actually ENTERED is accepted and defeats the default request (CCP § 585 -- the clerk cannot enter default while an answer is on file); after entry, CCP § 473(b) allows relief for mistake/inadvertence/excusable neglect within six months, and §§ 473(d)/473.5 for void judgments or lack of actual notice. As encoded the rule read as though the door had closed. Appeared in both backlog runs.",
-        "filing_fee_and_fee_waiver_note": "ADDED 2026-09-03 (round 38): a timely answer is rejected by the clerk unless it is accompanied by the first-appearance fee (Gov. Code §§ 70611, 70613 -- several hundred dollars, varying with limited/unlimited jurisdiction and amount) OR a fee-waiver application (form FW-001, Gov. Code § 68631) filed with it. A rejected answer does not stop default. For the low-income defendants who are this node's core audience, 'file by day 30' without 'with the fee or a fee waiver' can still produce the default the node warns about. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]"
+        "filing_fee_and_fee_waiver_note": "ADDED 2026-09-03 (round 38): a timely answer is rejected by the clerk unless it is accompanied by the first-appearance fee (Gov. Code §§ 70611, 70613 -- several hundred dollars, varying with limited/unlimited jurisdiction and amount) OR a fee-waiver application (form FW-001, Gov. Code § 68631) filed with it. A rejected answer does not stop default. For the low-income defendants who are this node's core audience, 'file by day 30' without 'with the fee or a fee waiver' can still produce the default the node warns about. [SOURCE PENDING: named but not live-fetched this session; screening flag, not a verified quotation.]",
+        "motion_to_quash_suspends_answer_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: a TIMELY 418.10 motion to quash (filed on or before the last day to plead) changes the deadline arithmetic. Under 418.10(b) the defendant's time to plead is extended until 15 days after service of written notice of entry of the order DENYING the motion (plus up to 20 more days for good cause), and under 418.10(d) no default may be entered before that time expires. So the defendant who filed on day 25 does not also have to answer by day 30; she answers within 15 days after the denial is noticed -- or, if she seeks writ review under 418.10(c), within 10 days after notice of the final judgment in the mandate proceeding. If the motion is GRANTED, service is quashed and the 30-day clock has not started; the plaintiff must serve again. Two traps: (i) the motion must be filed within the time to plead -- filed on day 35 it is untimely and the default risk is live; (ii) filing an answer or demurrer WITHOUT the motion (or before it) waives the service and jurisdiction objections (418.10(e)(3)). Checklist item added.",
+        "answer_content_affirmative_defenses_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json, DANGEROUS DIRECTION: filing an answer on time is necessary, not sufficient. Under CCP 431.30(b)(2) (NAMED, not quoted this round) the answer must state 'any new matter constituting a defense,' and an affirmative defense not pleaded is waived -- the STATUTE OF LIMITATIONS above all (CCP 458 governs how it is pleaded; NAMED). A defendant sued by a debt buyer on a card whose last payment was seven years ago who files a bare general denial (PLD-050, no affirmative defenses listed) on day 28 has answered on time and thrown away the winning defense; the case proceeds to a judgment on a stale debt. The answer should plead, at minimum: statute of limitations (citing the section -- CCP 337 or 339), lack of standing/assignment (debt buyer cannot prove the chain of title), payment, failure to state a cause of action, and, where the facts fit, identity theft and the Rosenthal Act as a cross-claim. Judicial Council form PLD-050 has an affirmative-defenses section; use it. Route the limitations analysis itself to CA-SOL-WRITTEN-CONTRACT-DEBT / CA-SOL-ORAL-CONTRACT-DEBT, whose sol_is_an_affirmative_defense_note says the same thing from the other side. Checklist item added.",
+        "demurrer_and_motion_to_strike_note": "ADDED 2026-09-05 (round 46), from run_20260904T221748Z.json: the node's universe of responses was 'answer' or 'motion to quash.' A DEMURRER (CCP 430.10; NAMED) or a MOTION TO STRIKE (435-436; NAMED) filed within the 30 days is itself a timely responsive pleading that stops the default clock -- the defendant need not also answer. If the demurrer is overruled, the time to answer runs from notice of the ruling: CCP 472a(b) (NAMED) provides that the court fixes the time, and in its absence the answer is due within 10 days after service of notice of the ruling. Debt-buyer complaints pleading a common count with no account documents, no assignment, and no date of last payment are routinely demurrable, and legal-aid defendants use the demurrer to force the plaintiff to plead facts. A defendant who demurs on day 27 has not defaulted on day 30. Checklist item added. All three sections FIXED-SOURCE-NAMED pending a fetch round."
       },
       "completeness_checklist": [
         {
@@ -1225,6 +1341,18 @@
         },
         {
           "fact": "Whether the defendant can pay the first-appearance filing fee or needs a fee waiver (FW-001) filed WITH the answer -- an answer submitted without either is rejected and does not stop default",
+          "dispositive": true
+        },
+        {
+          "fact": "If a 418.10 MOTION TO QUASH was filed within the 30 days: the date of the order on it and of any written notice of entry -- a timely motion suspends the time to answer until 15 days after notice of DENIAL (418.10(b)) and bars default meanwhile (418.10(d)); if GRANTED, the clock never started",
+          "dispositive": true
+        },
+        {
+          "fact": "If an ANSWER was or will be filed: does it PLEAD the statute of limitations and the other affirmative defenses (standing/assignment, payment, identity theft)? An unpleaded affirmative defense is waived (CCP 431.30(b)(2)); a timely bare denial on a stale debt is a timely surrender",
+          "dispositive": true
+        },
+        {
+          "fact": "Was a DEMURRER or MOTION TO STRIKE filed within the 30 days instead of an answer? It is a timely response; if overruled, the answer is due within the time the court sets or 10 days after notice of the ruling (CCP 472a(b)), not by the original day 30",
           "dispositive": true
         }
       ],
