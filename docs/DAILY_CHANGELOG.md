@@ -2,6 +2,21 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-05, EXPERIMENT pre-registrations (Phase EXPERIMENT items 6-7; design only, no execution, no spend)
+
+- `docs/experiments/CJAC_METHOD_V1_DESIGN.md`: configuration ablation. Ground truth = the 120-entry ledger with DD
+  weights; test articles = SHA-preserved snapshots T38 (commit 27d5d44, round 37) and T46 (commit b3d95db, round
+  45); five arms (single+self-critique, single+cross-family adversarial, two-model draft/verify, tri-model
+  consensus, ungrounded control) plus the round-47 finding-format variant; four metrics incl. false-flag rate
+  and projected human minutes; replay-first (arm (d) on both articles already exists as run JSONs -- zero new
+  spend); proposed live cap $70 in four gated tranches; four pre-registered predictions.
+- `docs/experiments/D5_LIFT_ABLATION_DESIGN.md`: lift ablation. Six arms (3 models x rules/no rules); 5
+  existing scenarios + 15-20 new items in three types (answerable / abstain-correct / trap), frozen with hashes
+  before any run; abstention-credit scoring table with DD-wrong counted separately; LLM judge with 20% attorney
+  audit; bootstrap intervals; proposed cap $30; three predictions.
+
+Neither runs until: LOCK items 1-2 complete, item set frozen (D-5), calibration green, and Andy's go per tranche.
+
 ## 2026-09-05, LOCK series (Phase LOCK items 1-4 of the LOCK directive; no runner change, no v1.0 content change)
 
 **Directive filed:** `docs/directives/COWORK_DIRECTION_LOCK_DEBT_DEMO_V1_20260905.md`.
