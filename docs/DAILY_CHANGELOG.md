@@ -2,6 +2,49 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-14, D-5 LIFT ABLATION BUILD (approved "$30 lift"; experiment code + frozen item set; no runner change, no v1.0 content change, $0 spent -- dry-run only)
+
+**Andy's go:** "i approve the $30 lift" (2026-09-14). Design of record: `docs/experiments/D5_LIFT_ABLATION_DESIGN.md`
+(status line + new s.10 execution protocol record the approval, the freeze, and the run order).
+
+**Item set, FROZEN before any arm runs.** `scripts/experiments/lift_items_v1.json` -- 24 items, all 19 v1.0 nodes
+covered: L01-L05 expand the five demo scenarios into concrete fact patterns; L06-L24 are new. Mix 8 answerable /
+5 abstain-correct / 11 trap (traps drawn from the dangerous-direction ledger rows: last-payment vs. charge-off accrual,
+"never signed = 2-year", single-vehicle "automatic", bank-levy "already used", county-court-vs-JP deadline, Henson
+oversimplification, in-house creditor 7-in-7, consumer-initiated-call cooldown, brokerage under the $50k cap, direct
+FCRA dispute). Each item carries facts, question, node ids, ground truth or missing dispositive fact, what a
+dangerous-direction wrong answer and a safe-direction wrong answer look like, and judge notes. Ground truth is derived
+only from frozen v1.0 content; no item rests on a GLOSS-FOR-COUNSEL proposition (TX revolving-account accrual, installment
+accrual, pay-to-pay, envelope benign-language, s.351, contractor wages all avoided). Fixed reference date 2026-09-17 for
+all date arithmetic (weekday-checked). sha256 `d4c34178b8f74998da259bd5868858d11e71dfd2dcaaa3c95b9b0c07bf4fb833` added to
+`scripts/ci/frozen_artifact_manifest.json` (11 frozen artifacts now; CI green). **Review copy: double-click
+`review/D5_LIFT_ITEMS_V1.pdf`** (24 pp, one item per page, notes field) -- corrections go to Cowork BEFORE the smoke run;
+after the first live run the set is burned.
+
+**Runner.** `scripts/experiments/run_lift_ablation.py` (new; the corroboration runner is untouched -- one-variable rule):
+six arms G-A/G-O/G-G (node JSON attached verbatim minus provenance/revision bookkeeping, checklist-driven abstention
+instruction) and R-A/R-O/R-G (facts + question + the same abstention instruction); temperature 0 where the API accepts it
+(recorded per call); judge rotation A->O, O->G, G->A with ground truth + rubric in the prompt; scoring table from design
+s.4; DD-wrong counted separately; bootstrap CIs over items, paired lift per model and pooled; `--dry-run` (canned),
+`--live` (refuses if the item hash drifted or the estimate exceeds the run cap; hard stop at the cap), `--smoke`,
+`--batch grounded|raw`, `--arms`, `--items`, `--budget-cap` (default $15), `--aggregate` (dual-report markdown + audit
+sample = all DD-wrong + seeded random 20%). Price table of record printed with every run; costs are estimates from token
+counts. Dry-run exercised end to end (144 synthetic judgments); synthetic files deleted, not committed.
+
+**Cost.** Runner's estimate on the frozen set: smoke $2.03; grounded batch $11.33; raw batch $6.25; total ~$19.60 under
+the $30 cap, each batch under the $15 per-run cap. Envelope after completion ~$185-195 of $250.
+
+**Docs.** `review/D5_LIFT_DESIGN_AND_REHEARSAL_KIT.pdf` regenerated from the amended design. Results doc
+`docs/experiments/results/D5_LIFT_V1.md` is written by `--aggregate` after Andy's runs (not yet present).
+
+**Verification.** `check_frozen_artifacts.py` PASS (11/11); `check_corroboration_calibration.py` PASS (unchanged);
+`validate_debt_schema.py` PASS; dry-run smoke + full + both batches + aggregate all ran clean; patch applied with
+`git am --3way` on a fresh clone of origin.
+
+**Next (Andy):** step 1 of design s.10 -- `python3 scripts/experiments/run_lift_ablation.py --live --smoke` (~$2), then
+the two batches, then commit the run JSONs via GitHub Desktop and send them to Cowork for aggregation + audit-sample
+review.
+
 ## 2026-09-14, ADDENDUM session (Addendum to LOCK & EXPERIMENTS, 2026-09-05 evening) -- agenda-bound; no runner change, no v1.0 content change, $0 pipeline spend
 
 **Directive filed:** `docs/directives/COWORK_DIRECTION_LOCK_ADDENDUM_20260905.md`.
