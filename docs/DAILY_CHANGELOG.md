@@ -48,9 +48,10 @@ ablation as pre-registered (~$70) would take the total to ~$265, over the envelo
 arm (d) at $0, so the trim is to run arms (a)-(c),(e) on ONE test article (T46) first (~$25) and add T38 only if
 the envelope is raised. Decision is Andy's before that phase.
 
-**Conflicts flagged.** (1) The `debt-demo-v1.0` tag is NOT on origin -- GitHub Desktop did not push it. Pushing a
-tag needs one terminal command (`git push origin debt-demo-v1.0`); it pushes the tag only, nothing else, and is
-the one exception to the Desktop-only push rule Cowork recommends. (2) s.3's "the grounded system" (singular) vs.
+**Conflicts flagged.** (1) The `debt-demo-v1.0` tag never reached origin (GitHub Desktop does not push CLI-created
+tags; creating one in Desktop was not workable). **Resolved 2026-09-14 by Andy: no tag.** The freeze identity is
+commit `89da5bc` + the manifest hashes + the CI frozen-artifact check, recorded in the manifest as `freeze_commit`;
+the measurement-of-record and certification documents now say so. The tag was a label; nothing of substance changes. (2) s.3's "the grounded system" (singular) vs.
 the pre-registered three grounded arms: resolved by designating G-A as the headline arm, keeping the other two
 as cheap robustness checks. (3) Certification attestations are worded to be true only after the counsel session
 and census audit -- do not sign before.

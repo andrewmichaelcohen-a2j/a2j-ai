@@ -6,7 +6,7 @@ Copyright 2026 Andrew M Cohen. Apache 2.0.*
 ## Certification
 
 I, the undersigned attorney, certify as to the release of the Civil Justice as Code debt-track rules corpus
-tagged **`debt-demo-v1.0`** in the repository `github.com/andrewmichaelcohen-a2j/a2j-ai` (19 nodes; per-node
+named **`debt-demo-v1.0`** (freeze commit `89da5bc`; no git tag) in the repository `github.com/andrewmichaelcohen-a2j/a2j-ai` (19 nodes; per-node
 SHA-256 hashes in `rules/debt/validation/debt_demo_v1.0_manifest.json`), as verified on the dates recorded
 in that manifest, that:
 
@@ -33,7 +33,7 @@ in that manifest, that:
   screening questions; whether they apply to a person's facts, and what a court will do, is not certified.
 - It **is not legal advice to any person**, and no attorney-client relationship is created by its use. Output
   derived from the corpus is legal information. Anyone relying on it for a decision should consult a lawyer.
-- Its **scope is limited to the tagged release** (`debt-demo-v1.0`) and the verification dates in the manifest.
+- Its **scope is limited to the named release** (`debt-demo-v1.0`) and the verification dates in the manifest.
   Law changes; the release carries a freshness commitment (quarterly re-verification, manifest
   `freshness_commitment`) but no representation that a citation remains current after its verification date.
 - It covers **process compliance**, not completeness: the corpus addresses the 19 nodes it contains, in the
@@ -47,7 +47,7 @@ Certifying attorney: ______________________________  Bar: ______________
 
 Signature: ______________________________  Date: __________
 
-Release tag: `debt-demo-v1.0` · Manifest sha256 of `debt_demo_v1.0_manifest.json` at signing: ______________________________
+Release: `debt-demo-v1.0` (freeze commit `89da5bc`) · Manifest sha256 of `debt_demo_v1.0_manifest.json` at signing: ______________________________
 
 *Cowork's note for ratification: the four attestations in the Certification section are worded to be true only
 after the counsel session and the census audit are complete; signing before then would attest to something not

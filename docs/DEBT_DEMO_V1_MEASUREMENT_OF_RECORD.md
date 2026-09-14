@@ -8,7 +8,7 @@ material Stage B findings; Stage B parse health reported alongside). The run's J
 record for v1.0 and sits in the ledger next to eviction Proof 1.
 
 **Fixed configuration for the record.** Runner at round 45 (streaming transport; 16000-token Stage B base;
-materiality from the two flags; `_global` dispositions on). Content at the `debt-demo-v1.0` tag. Ledger at 120
+materiality from the two flags; `_global` dispositions on). Content at the `debt-demo-v1.0` freeze commit `89da5bc` (no git tag; see manifest `freeze_commit`). Ledger at 120
 node-specific + 4 cross-cutting entries. No runner change lands between the smoke and the full run (one-variable
 rule); round 47 (severity ranking) is held until after this run and is folded into the EXPERIMENT phase.
 
@@ -16,7 +16,7 @@ rule); round 47 (severity ranking) is held until after this run and is folded in
 
 1. Round 46 (four patches) and the LOCK patch series applied and pushed. `python3 scripts/ci/check_frozen_artifacts.py`
    prints `PASS: all 9 frozen artifact(s)`.
-2. Tag the locking commit and push the tag (tag creation in terminal is fine; GitHub Desktop pushes tags with
+2. (Superseded 2026-09-14: no tag; freeze commit `89da5bc` is the release identity.) Originally: tag the locking commit and push the tag (tag creation in terminal is fine; GitHub Desktop pushes tags with
    "Push origin" -- confirm on the repository's Tags page afterwards):
 
 ```
