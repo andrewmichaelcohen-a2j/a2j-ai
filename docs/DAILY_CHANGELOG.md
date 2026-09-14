@@ -2,6 +2,62 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-14, ADDENDUM session (Addendum to LOCK & EXPERIMENTS, 2026-09-05 evening) -- agenda-bound; no runner change, no v1.0 content change, $0 pipeline spend
+
+**Directive filed:** `docs/directives/COWORK_DIRECTION_LOCK_ADDENDUM_20260905.md`.
+
+**s.2 -- zero-cost review artifacts (new standard).** `scripts/review/md_to_pdf.py` renders any repo markdown to a
+formatted PDF (headings, tables, checkboxes, one-item-per-page and notes-field options; reportlab, no network).
+`review/` now holds, each with its in-repo markdown:
+- **double-click `review/DEBT_COUNSEL_QUEUE_V1.pdf`** -- 27 items, one per page: proposition · authority ·
+  direction-if-wrong · CONFIRM / STRIKE / MODIFY boxes · ruled notes field (27 pages).
+- **double-click `review/DEBT_DEMO_V1_CERTIFICATION_STATEMENT.pdf`** -- s.6 draft, one page + signature block.
+- **double-click `review/D5_LIFT_DESIGN_AND_REHEARSAL_KIT.pdf`** -- s.3 design with per-arm budget (awaiting go)
+  and the s.3a three-scenario rehearsal kit (REHEARSAL ONLY -- NOT EVIDENCE).
+- **double-click `review/A2JRAG_ASSESSMENT_2026-09.pdf`** -- s.5 landscape memo.
+- `review/DEBT_DEMO_V1_AUDIT_{federal,california,texas}.pdf` -- the census-audit books (43 / 41 / 33 pages),
+  one node per page section, per-field boxes, sign-off line on every sheet.
+- `review/CJAC_METHOD_V1_DESIGN.pdf` -- the configuration-ablation pre-registration (follows the lift run).
+
+**Counsel queue -- citations resolved.** CourtListener (Free Law Project; connector authorized by Andy) was
+queried by citation for every reporter cite in the queue: **17 of 17 lower-court and state citations resolve
+to the named case, court and year**; Midland Funding resolves; the remaining U.S. Reports cites are standard.
+Resolution note added to the queue. This closes self-review item 5 from 2026-09-05. Resolution confirms
+existence, not the proposition -- that remains the CONFIRM ruling.
+
+**s.3 -- lift ablation promoted.** Design amended: per-arm dollar table (~$20 total, cap $30, single tranche;
+G-A = "the grounded system" for the headline, G-O/G-G reported as robustness checks). **Awaiting Andy's go.**
+Preconditions met except the item set, which Cowork drafts and freezes on the go.
+
+**s.4 -- refresh protocol.** `docs/DEBT_DEMO_V1_REFRESH_PROTOCOL.md`; manifest gains `freshness_commitment`
+(90-day cadence from 2026-09-05; due 2026-12-04, 2027-03-04, ...). Flag: the runner has no citation-only mode
+-- a `--citation-check-only` flag is a one-line runner round (held for the next runner window; $0 API in that
+mode); until then a pass costs ~$8.55.
+
+**s.5 -- landscape.** A2JRAG is a METHOD paper with an NC-eviction demo and evaluation dashboard (Martin/Gilchrist,
+ICAIL AIDA2J June 8, 2026; announced June 10), not a dataset or benchmark; whether its item set is public is
+unconfirmed; recommendation: conditional external-validation candidate, ask the authors, place it in the
+workflow/retrieval layer. `docs/landscape/ECOSYSTEM_MAP_DATA_2026-09.md`: one-page layered dataset with per-row
+verification status for Claude to draw from. Landscape note additions recorded (Claude for Legal 2026-05-12 [per
+directive]; LawDroid Legal Aid Plugin 2026-05-20 [publisher-confirmed open-source Claude for Legal plugin]; *U.S.
+v. Heppner*, S.D.N.Y. Feb. 17, 2026, Rakoff, J. [verified: consumer Claude chats not privileged]).
+
+**s.1 -- budget envelope accounting.** Pipeline spend to date (all live runs on record x $0.45/node estimate):
+**~$165** of the $250 LOCK+EXPERIMENT envelope. Lift ablation ~$20-30 -> ~$195. **Flag:** the configuration
+ablation as pre-registered (~$70) would take the total to ~$265, over the envelope; replay-first already covers
+arm (d) at $0, so the trim is to run arms (a)-(c),(e) on ONE test article (T46) first (~$25) and add T38 only if
+the envelope is raised. Decision is Andy's before that phase.
+
+**Conflicts flagged.** (1) The `debt-demo-v1.0` tag is NOT on origin -- GitHub Desktop did not push it. Pushing a
+tag needs one terminal command (`git push origin debt-demo-v1.0`); it pushes the tag only, nothing else, and is
+the one exception to the Desktop-only push rule Cowork recommends. (2) s.3's "the grounded system" (singular) vs.
+the pre-registered three grounded arms: resolved by designating G-A as the headline arm, keeping the other two
+as cheap robustness checks. (3) Certification attestations are worded to be true only after the counsel session
+and census audit -- do not sign before.
+
+**Next (Andy):** apply this patch; push the tag; open the counsel-queue PDF and schedule the ruling session;
+say go (or not) on the $30 lift tranche.
+
 ## 2026-09-05, RECORD: debt-demo-v1.0 measurement of record (`run_20260905T175137Z`) -- recorded, no content change
 
 **Result:** Stage A 100% · citations 100% · Stage B parse 100% · 54 material findings (2 matched, 52 new).

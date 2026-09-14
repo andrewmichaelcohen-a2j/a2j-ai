@@ -4,7 +4,7 @@
   "frozen_on": "2026-09-05",
   "directive": "Cowork Direction -- LOCK debt-demo-v1.0 + Methodology & Lift Experiments (2026-09-05), Phase LOCK item 1",
   "content_commit_before_lock": "round 46d (the commit this manifest was computed against; see git tag debt-demo-v1.0 for the locking commit)",
-  "immutability_rule": "No content edits to any node listed here. Every future Stage B finding, citation failure, or improvement candidate touching a v1.0 node routes to docs/POST_V1_BACKLOG.md. CI enforces file-level immutability via scripts/ci/frozen_artifact_manifest.json; this file records the per-node hashes so a node can be verified independently of the file (node_sha256 = sha256 of json.dumps(node, sort_keys=True), the same method the corroboration runner records as node_sha256 in every run JSON).",
+  "immutability_rule": "No content edits to any node listed here. Every future Stage B finding, citation failure, or improvement candidate touching a v1.0 node routes to docs/POST_V1_BACKLOG.md. Freeze identity = commit 89da5bc + these hashes (no git tag; see freeze_commit). CI enforces file-level immutability via scripts/ci/frozen_artifact_manifest.json; this file records the per-node hashes so a node can be verified independently of the file (node_sha256 = sha256 of json.dumps(node, sort_keys=True), the same method the corroboration runner records as node_sha256 in every run JSON).",
   "node_count": 19,
   "files": [
     {
@@ -259,5 +259,25 @@
     },
     "claim_card_sentence": "v1.0: 19 nodes; Stage A three-model grounded agreement 100%; every url-bearing citation live-verified or manually verified (100%); 174 adversarial findings surfaced across rounds 38-46 and the record run, 120 dispositioned into content before the freeze and 52 carried to the v1.1 backlog, dangerous-direction first.",
     "recorded_by": "Cowork, 2026-09-05; reading of the third leg is Andy's decision (see DEBT_DEMO_V1_MEASUREMENT_OF_RECORD.md)"
+  },
+  "freshness_commitment": {
+    "protocol": "docs/DEBT_DEMO_V1_REFRESH_PROTOCOL.md",
+    "cadence_days": 90,
+    "anchor_date": "2026-09-05",
+    "due": [
+      "2026-12-04",
+      "2027-03-04",
+      "2027-06-02",
+      "2027-08-31"
+    ],
+    "scope": "every url-bearing citation pin in the 19 v1.0 nodes; failures disclosed to POST_V1_BACKLOG as FRESHNESS rows, never edited in v1.0",
+    "cost_note": "citation checker makes no model calls; $0 API once a --citation-check-only runner flag exists (held for next runner window); ~$8.55 as a full pass today",
+    "not_covered": "amendments to the law that leave the page in place (D-3 statute watch, HORIZON)",
+    "history": []
+  },
+  "freeze_commit": {
+    "commit": "89da5bc",
+    "description": "LOCK-2: measurement-of-record procedure ... (2026-09-05) -- the commit at which the seven corpus files carried the hashes in this manifest. This commit hash, plus the per-file and per-node sha256 values here and the CI frozen-artifact check, IS the freeze identity of debt-demo-v1.0. A git tag was planned but not pushed (GitHub Desktop does not push CLI-created tags without extra steps); decision 2026-09-14 (Andy): no tag; the name debt-demo-v1.0 refers to this commit.",
+    "content_hashes_unchanged_through": "every later commit (rounds RECORD, ADDENDUM) -- CI verifies on every push"
   }
 }

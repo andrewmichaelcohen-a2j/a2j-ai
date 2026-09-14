@@ -14,8 +14,8 @@ Rosenthal reach under Civ. Code 1788.2/1788.17) are NOT here -- they dropped off
 `counsel_confirmed` in v1.1), **STRIKE** (remove the proposition; the node reverts to "not encoded, refer"),
 or **MODIFY** (write the corrected proposition in the box; it is encoded in v1.1). Because v1.0 is frozen, no
 ruling changes v1.0 content; rulings are applied in the v1.1 content round that precedes tier promotion
-(Phase LOCK item 5). Case citations are as recorded in the notes; none was fetched and read in full by Cowork
--- that is part of what a CONFIRM means.
+(Phase LOCK item 5). Case citations resolve on CourtListener (see the resolution note at the end); none was read in full by
+Cowork -- confirming the PROPOSITION is what a CONFIRM means.
 
 **Risk posture key.** *If wrong, direction:* **DD** = the encoded proposition, if wrong, would tell a consumer
 they are safe / have no claim / are out of time; **OC** = overstates the consumer's claim or protection (a
@@ -315,15 +315,21 @@ affidavit route does not clear such a lien.
 - **Turnover of already-paid wages** (round 38): anchored to CPRC 31.0025(a).
 - **Rosenthal Act reaches original creditors** (round 38): anchored to Civ. Code 1788.2(c)/1788.17.
 
-## Self-review note (2026-09-05, same day)
+## Citation resolution (2026-09-14, CourtListener)
 
-Cowork's own review after packaging: every reporter citation in this queue and in the round 41-46 notes was written
-from memory and NOT fetched -- the notes say so where they cite cases, but this queue is where that matters most.
-Before the session, Cowork will run each citation through CourtListener (plugin connector, needs Andy's
-authorization once) and mark any that do not resolve. One named provision is already doubted: T-7's neighbour on the
-TX-WAGE node, the maintenance-withholding cap attributed to Fam. Code 8.106 as "20% of average monthly gross" --
-that figure is the 8.055 MAINTENANCE-AMOUNT cap, and 8.106 is believed to mirror 158.009's 50%-of-disposable-earnings
-withholding cap. Recorded as the first POST_V1_BACKLOG row (OC direction).
+Every reporter citation in this queue was checked against CourtListener (Free Law Project) by citation lookup
+on 2026-09-14. **17 of 17 lower-court and state citations resolve to the named case, court and year:** Strand
+380 F.3d 316 (8th Cir. 2004); Douglass 765 F.3d 299 (3d Cir. 2014); Daubert 861 F.3d 382 (3d Cir. 2017);
+Alexander 23 F.4th 370 (4th Cir. 2022); Walls 276 F.3d 502 (9th Cir. 2002); Simon 732 F.3d 259 (3d Cir. 2013);
+Randolph 368 F.3d 726 (7th Cir. 2004); Buchanan 776 F.3d 393 (6th Cir. 2015); Pantoja 852 F.3d 679 (7th Cir.
+2017); Avila 817 F.3d 72 (2d Cir. 2016); Taylor 886 F.3d 212 (2d Cir. 2018); Chuway 362 F.3d 944 (7th Cir.
+2004); Pollice 225 F.3d 379 (3d Cir. 2000); Piper 396 F.3d 227 (3d Cir. 2005); Abramson 897 F.2d 389 (9th
+Cir. 1990); Heritage Marketing 160 Cal. App. 4th 754 (2008); Resurgence Financial v. Chambers, 173 Cal. App.
+4th Supp. 1 (App. Div. 2009). Midland Funding v. Johnson, 581 U.S. 224 (2017) also resolves; the remaining
+U.S. Reports citations (Jerman, Peralta, Rotkiske, TransUnion, Duguid) are standard and were not re-queried.
+Resolution confirms the citation exists and names the case; it does NOT confirm the proposition attributed to
+it -- that is what the CONFIRM ruling means. One named provision remains doubted (Fam. Code 8.106 on TX-WAGE;
+POST_V1_BACKLOG row 1).
 
 ## After the session
 

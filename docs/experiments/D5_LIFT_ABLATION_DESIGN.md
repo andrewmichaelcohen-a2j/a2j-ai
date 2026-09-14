@@ -4,8 +4,10 @@
 DESIGN ONLY -- no execution until the item set is frozen and Andy approves the budget. Copyright 2026 Andrew M
 Cohen. Apache 2.0.*
 
-**Status:** PRE-REGISTERED 2026-09-05 (design). The item set is NOT yet drafted; it is frozen (committed with
-hashes) before any arm runs, and this document is amended to record the freeze commit.
+**Status:** PRE-REGISTERED 2026-09-05 (design); **PROMOTED to demo-gating and resequenced ahead of the configuration
+ablation by the 2026-09-05 Addendum (s.3)**; amended 2026-09-14 (budget itemized per arm; grounded-system designation;
+replay-first accounting). The item set is NOT yet drafted; it is frozen (committed with hashes) before any arm runs, and
+this document is amended to record the freeze commit. **Awaiting Andy's go on the budget in section 7.**
 
 ## 1. Question
 
@@ -74,11 +76,27 @@ L2. Raw models abstain less and produce more DD-wrong answers on abstain-correct
 L3. Lift on answerable items is smaller for the strongest raw model; the corpus's value concentrates in
 abstention and traps.
 
-## 7. Budget and gating
+## 7. Budget and gating (itemized per arm -- Addendum s.1 replay-first rule)
 
-~25 items x 6 arms = 150 completions at ~$0.05-0.15 = ~$15; judge ~150 calls ≈ $6; **proposed cap $30**, run
-by Andy, smoke first (3 items x 6 arms ≈ $2). Requires: item file frozen; calibration green; the measurement-
-of-record run complete (so v1.0 is the ground truth of record).
+Nothing in this experiment can run on recorded fixtures: every arm requires fresh model output on items that
+did not exist before. So every call below is live, itemized, and gated.
+
+| Arm | Calls | Est. tokens/call (in+out) | Est. $ |
+|---|---|---|---|
+| G-A grounded claude-opus-5 | 25 | ~6K in (node context) + 1K out | ~$3.50 |
+| G-O grounded gpt-5.5 | 25 | same | ~$3.00 |
+| G-G grounded gemini-2.5-pro | 25 | same | ~$1.50 |
+| R-A raw claude-opus-5 | 25 | ~0.5K in + 1K out | ~$2.00 |
+| R-O raw gpt-5.5 | 25 | same | ~$1.50 |
+| R-G raw gemini-2.5-pro | 25 | same | ~$0.75 |
+| Judge (rotating family, 150 judgments) | 150 | ~3K in + 0.3K out | ~$6.00 |
+| Smoke (3 items x 6 arms + judge) | 24 | -- | ~$2.00 |
+
+**Total estimate ~$20; proposed cap $30** (single tranche; per-run cap $15 respected by running arms as two
+batches of three). Runs are Andy's, smoke first. Preconditions: item file frozen with hash; calibration green;
+measurement-of-record recorded (done 2026-09-05). **"The grounded system" for the headline** is arm G-A
+(claude-opus-5 with the v1.0 node attached) -- the configuration the demo skill runs; G-O and G-G are reported
+alongside as robustness checks, not as the headline.
 
 ## 8. Known limitations (stated wherever results are reported)
 
