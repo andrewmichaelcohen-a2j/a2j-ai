@@ -98,3 +98,17 @@ CCP 720.110; CCP 703.010, Fin. Code 864; Fam. Code 910/911; CCP 431.30(b)(2), 45
 
 BANKRUPTCY-OVERLAY gate; state mini-FDCPA (Rosenthal / Tex. Fin. Code ch. 392 / 940 CMR 7.00); TCPA
 (47 U.S.C. 227) overlay; Reg F electronic-communication rules (1006.6(b), 1006.14(h), 1006.22(f)).
+
+## D-5 lift ablation -- v2 item-set lessons (added 2026-09-15)
+
+- **Trap calibration.** v1's folk-legal traps (Henson debt-buyer, "never signed = 2-year", brokerage under the $50k cap,
+  county-court-vs-JP, in-house creditor 7-in-7) did not trap claude-opus-5, gpt-5.5 or gemini-2.5-pro at all. The items
+  that separated grounded from raw were precise-rule mechanics: the CA single-vehicle "automatic" proceeds rule and the
+  703.520 15/20-day claim deadline (L15), the Reg F five-business-day mailbox assumption (L03), and revolving-account
+  accrual from charge-off (L01). A v2 set should be built from the corpus's statutory figures, day-counts and rule
+  mechanics, pre-tested against a raw model on a throwaway sibling item, and only then frozen.
+- **Mechanical date check.** Every item's deadlines must be checked programmatically against the reference date before
+  the freeze (L01 was authored with a deadline two days before "today").
+- **Judge prompt carries the reference date** (fixed 2026-09-15); consider a two-judge majority on wrong calls.
+- **Cost model.** Assume 2,500-3,000 output tokens per answer (thinking tokens count) -- the v1 estimate was 1.5x low.
+

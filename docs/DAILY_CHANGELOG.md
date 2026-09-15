@@ -2,6 +2,39 @@
 
 *GREEN action log — every autonomous change Cowork makes is recorded here. Andy audits without having watched. Format: date · what changed · test/verification.*
 
+## 2026-09-15, D-5 LIFT ABLATION v1 -- all six arms run; provisional results; errata; close-out patch (no runner-of-record change, no v1.0 content change; ~$30.3 spent, approved)
+
+**Runs.** Smoke ($3.54), grounded batch (halted at the $15 cap, $15.11; G-G completed separately, $0.59), R-A (~$8),
+R-O+R-G ($3.46): five run JSONs under `docs/experiments/results/lift_v1/`, all committed by Andy. Total ~$30.3 against
+the $30 cap; Andy approved the overage before the raw arms ran. Envelope ~$195 of $250.
+
+**Provisional result (raw judge, n = 23 after the L01 erratum, pre-audit):** G-A 0.909 vs R-A 0.783 (lift +0.14,
+CI [-0.05, +0.32]); gpt-5.5 and gemini lift 0.0; pooled +0.04 [-0.06, +0.15]; DD-wrong grounded 3 vs raw 6.
+Pre-registered L1 not supported; L2 not supported on abstention, weakly on DD; L3 partly -- the corpus's demonstrable
+value sits on precise-rule items (L15 vehicle-exemption mechanics and deadline, L03 Reg F mailbox rule, L01 accrual),
+not on folk-legal traps, which current frontier models do not fall for. Full reading and the honest headline sentence:
+design doc s.11; tables: `docs/experiments/results/D5_LIFT_V1.md` (raw-judge and audited columns, dual report).
+
+**Errata (Cowork's, all recorded; item file untouched, hash unchanged).** L01 ground truth inconsistent with the
+reference date (deadline had already passed) -> excluded from the raw-judge headline, audited against a corrected ground
+truth. J-1 judge prompt lacked the reference date -> gpt-5.5 marked two correct L24 answers wrong; fixed for future runs.
+J-2 a claude judge misstated CCP 703.520's deadline on G-G/L16. J-3 a gemini judge classed over-abstention on G-O/L17
+as dangerous (Andy's call). G-A/L16 answer JSON had an unescaped quote -> unjudged; recovered by the new `--rejudge`.
+
+**Runner (`scripts/experiments/run_lift_ablation.py`; experiment code, not the corroboration runner).** ERRATA and
+JUDGE_ERRATA registries with headline exclusion / audit priority; judge prompt carries the reference date; lenient
+answer parser on the live path; `--rejudge` (re-runs only empty/unparseable judgments, recovering the answer from
+answer_raw); `--aggregate` now also writes `review/D5_LIFT_V1_RESULTS.pdf` and `review/D5_LIFT_AUDIT_SAMPLE.pdf`
+(one entry per page, notes field). Dry-run and aggregate exercised; CI green (no frozen artifact touched).
+
+**Review artifacts.** **double-click `review/D5_LIFT_AUDIT_SAMPLE.pdf`** -- 41 entries: every DD-wrong call, all six
+L01 entries (rule against the corrected ground truth), the four judge-flagged entries (marked PRIORITY), and a seeded
+random 20%; confirm or override each. `review/D5_LIFT_V1_RESULTS.pdf` -- the tables. Both regenerate when Andy
+re-aggregates after `--rejudge`.
+
+**Backlog (POST_V1_BACKLOG, v2 item-set design):** calibrate traps against what frontier models actually get wrong;
+mechanical date-consistency check of every item against the reference date; judge prompt date (done).
+
 ## 2026-09-14, D-5 LIFT ABLATION BUILD (approved "$30 lift"; experiment code + frozen item set; no runner change, no v1.0 content change, $0 spent -- dry-run only)
 
 **Andy's go:** "i approve the $30 lift" (2026-09-14). Design of record: `docs/experiments/D5_LIFT_ABLATION_DESIGN.md`

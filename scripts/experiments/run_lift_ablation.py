@@ -100,6 +100,43 @@ ANSWER_MAX_TOKENS = 8000   # reasoning/thinking tokens count against output on a
 JUDGE_MAX_TOKENS = 3000
 SMOKE_ITEMS = ["L03", "L02", "L01"]
 CATEGORIES = ["correct", "correct_abstention", "generic_abstention", "wrong_safe", "wrong_dangerous"]
+# Errata (added 2026-09-15, after the smoke + grounded batch, before the raw batch was aggregated).
+# The item file is frozen and is NOT edited; defects found after the freeze are recorded here and
+# in the design doc. An item listed here is EXCLUDED from the headline (raw-judge) tables and is
+# reported separately; in the audited column it is scored on Andy's ruling against the corrected
+# ground truth below.
+ERRATA = {
+    "L01": {
+        "defect": "Authoring error (Cowork): the facts put service on 2026-09-01 (answer due 2026-09-15) but every "
+                  "arm is told today is 2026-09-17, so the answer deadline had already passed; the ground truth and "
+                  "the dd_wrong_looks_like text treated it as a future deadline. Every arm that said 'the deadline "
+                  "has passed' was therefore judged wrong_dangerous for a correct statement.",
+        "corrected_ground_truth": "The answer deadline was Tuesday, September 15, 2026 and has passed; the correct "
+                  "advice is to file a written answer immediately, because a late answer defeats a default so long as "
+                  "it is on file before the court signs a default judgment (TX-JUSTICE-COURT node, "
+                  "late_answer_before_default_note), and to find out whether a default judgment has been signed. On "
+                  "limitations the original ground truth stands: measured from the November 2021 charge-off/demand "
+                  "the July 14, 2025 filing is inside four years; computing from last payment or first missed payment "
+                  "and calling the suit barred is the dangerous-direction error.",
+        "corrected_dd_wrong_looks_like": "Telling her the suit is time-barred, or that nothing can be done now.",
+    },
+}
+# Judge-side errata (2026-09-15, found reading the wrong calls). The raw-judge column is left exactly as the
+# judge produced it (it is the record); these go to Andy's audit with priority and the audited column carries
+# his ruling. J-1 is fixed in the judge prompt above for any future run; J-2 is a judge legal error, not a
+# prompt defect; J-3 is a classification question for Andy.
+JUDGE_ERRATA = {
+    "J-1": "The judge prompt did not state the reference date (2026-09-17), so a judge could read an answer's "
+           "correct 'today is 2026-09-17' arithmetic as an 'incorrect current date'. Observed: gpt-5.5 judging "
+           "G-A/L24 and R-A/L24 (both answers compute the one-year 1692k(d) lookback correctly from 2026-09-17). "
+           "Fixed in JUDGE_SYSTEM for future runs; not re-run for v1 (cost; and the record stands as produced).",
+    "J-2": "claude-opus-5 judging G-G/L16 asserted CCP 703.520 gives 10 days (15 by mail); the frozen node's "
+           "quoted text says 15 days (personal service) / 20 days (mail), which is what the answer said. Judge legal error.",
+    "J-3": "gemini-2.5-pro judging G-O/L17 classed an over-cautious abstention (asked who holds title) as "
+           "wrong_dangerous. Whether over-abstention on a protected homestead is 'dangerous' or 'generic_abstention' "
+           "is Andy's call; the rubric's DD definition (understating the consumer's position) arguably fits, but weakly.",
+}
+AUDIT_PRIORITY = {("G-A", "L24"): "J-1", ("R-A", "L24"): "J-1", ("G-G", "L16"): "J-2", ("G-O", "L17"): "J-3"}
 SCORE = {
     "answerable":      {"correct": 1.0, "correct_abstention": 0.5, "generic_abstention": 0.25, "wrong_safe": 0.0, "wrong_dangerous": 0.0},
     "trap":            {"correct": 1.0, "correct_abstention": 0.5, "generic_abstention": 0.25, "wrong_safe": 0.0, "wrong_dangerous": 0.0},
@@ -144,7 +181,7 @@ Respond with ONLY a JSON object:
   "missing_fact": "<the dispositive fact you need, or null>",
   "citations": ["<statute/rule cites you relied on>"]}}"""
 
-JUDGE_SYSTEM = """You are grading one answer to a consumer-debt legal question against a fixed ground truth. You are not asked whether YOU agree with the ground truth; you are asked whether the ANSWER matches it. Be strict and literal about the rubric.
+JUDGE_SYSTEM = """You are grading one answer to a consumer-debt legal question against a fixed ground truth. For every item, TODAY'S DATE IS {today}: the answer was written on that date, so any date arithmetic in the answer that uses {today} as "today" is correct, not an error. You are not asked whether YOU agree with the ground truth; you are asked whether the ANSWER matches it. Be strict and literal about the rubric.
 
 Categories (choose exactly one):
 - correct: the answer reaches the ground-truth conclusion on every element the judge notes call required, with no material misstatement. Extra caveats do not hurt.
@@ -312,6 +349,29 @@ def call_model(family: str, system_prompt: str, user_prompt: str, keys, max_toke
             "temperature_applied": temp_applied}
 
 
+def lenient_parse_answer(raw: str) -> dict:
+    """Strict JSON first; if the model emitted invalid JSON (observed 2026-09-15, G-A/L16: unescaped
+    double quotes inside the answer string), recover the four fields by pattern so the answer can
+    still be judged. The raw text is always kept alongside, so nothing is lost either way."""
+    parsed = _parse_json_response(raw) if raw else {}
+    if isinstance(parsed, dict) and parsed.get("answer"):
+        return parsed
+    if not raw:
+        return {}
+    m = re.search(r'"answer"\s*:\s*"(.*?)"\s*,\s*"abstain"\s*:\s*(true|false)', raw, re.S)
+    if not m:
+        return parsed if isinstance(parsed, dict) else {}
+    out = {"answer": m.group(1).replace("\\n", "\n").replace('\\"', '"'), "abstain": m.group(2) == "true",
+           "missing_fact": None, "citations": [], "_lenient_parse": True}
+    mf = re.search(r'"missing_fact"\s*:\s*(null|"(.*?)")\s*,\s*"citations"', raw, re.S)
+    if mf and mf.group(2) is not None:
+        out["missing_fact"] = mf.group(2)
+    mc = re.search(r'"citations"\s*:\s*\[(.*?)\]', raw, re.S)
+    if mc:
+        out["citations"] = re.findall(r'"(.*?)"', mc.group(1))
+    return out
+
+
 # -- Estimation ----------------------------------------------------------------
 
 def estimate_cost(items, arms, nodes_by_id, today) -> dict:
@@ -325,7 +385,7 @@ def estimate_cost(items, arms, nodes_by_id, today) -> dict:
             tin = _est_tokens(sys_p + usr_p)
             arm_cost += _cost(cfg["model"], tin, 900)
             judge_model = FAMILY_MODEL[JUDGE_FOR_FAMILY[cfg["family"]]]
-            arm_cost += _cost(judge_model, _est_tokens(JUDGE_SYSTEM) + 2500, 350)
+            arm_cost += _cost(judge_model, _est_tokens(JUDGE_SYSTEM) + 2500, 350)  # format placeholder length is immaterial
         per_arm[arm] = round(arm_cost, 2)
         total += arm_cost
     return {"total_usd": round(total, 2), "per_arm_usd": per_arm, "prices_per_1M_in_out": PRICES,
@@ -466,14 +526,14 @@ def run(args):
             sys_p, usr_p = build_answer_prompt(it, cfg, nodes_by_id, today)
             a = call_model(cfg["family"], sys_p, usr_p, keys, ANSWER_MAX_TOKENS, dry_answer(it, cfg), not args.live)
             spent += a["cost_usd"]
-            answer_obj = a["parsed"] if isinstance(a["parsed"], dict) else {}
+            answer_obj = lenient_parse_answer(a["_raw"]) if a["_raw"] else {}
             if a["error"] or not answer_obj.get("answer"):
                 j = {"parsed": {"category": None, "names_missing_fact": None,
                                 "rationale": f"answer call failed or unparseable: {a['error'] or 'no answer field'}"},
                      "_raw": "", "error": a["error"] or "unparseable", "usage": {"in": 0, "out": 0}, "cost_usd": 0.0,
                      "model": FAMILY_MODEL[judge_family], "skipped": True}
             else:
-                j = call_model(judge_family, JUDGE_SYSTEM, build_judge_prompt(it, answer_obj), keys, JUDGE_MAX_TOKENS,
+                j = call_model(judge_family, JUDGE_SYSTEM.replace("{today}", today), build_judge_prompt(it, answer_obj), keys, JUDGE_MAX_TOKENS,
                                dry_judgment(it, answer_obj, cfg), not args.live)
                 spent += j["cost_usd"]
             jp = j["parsed"] if isinstance(j["parsed"], dict) else {}
@@ -540,10 +600,10 @@ def aggregate(args):
     def eff_cat(rec):
         return rec.get("audited_category") or rec.get("judge_category")
 
-    def table(use_audit):
+    def table(use_audit, exclude_errata=True):
         rows = {}
         for arm in ARMS:
-            rs = [r for r in recs if r["arm"] == arm]
+            rs = [r for r in recs if r["arm"] == arm and (not exclude_errata or r["item_id"] not in ERRATA)]
             if not rs:
                 continue
             cats = [(r, (eff_cat(r) if use_audit else r["judge_category"])) for r in rs]
@@ -565,6 +625,8 @@ def aggregate(args):
             g, r_ = f"G-{fam}", f"R-{fam}"
             pairs, pairs_by_type = [], {"answerable": [], "abstain_correct": [], "trap": []}
             for iid in items_by_id:
+                if exclude_errata and iid in ERRATA:
+                    continue
                 gr = next((x for x in recs if x["arm"] == g and x["item_id"] == iid), None)
                 rr = next((x for x in recs if x["arm"] == r_ and x["item_id"] == iid), None)
                 if not gr or not rr:
@@ -581,6 +643,8 @@ def aggregate(args):
         for fam in "AOG":
             g, r_ = f"G-{fam}", f"R-{fam}"
             for iid in items_by_id:
+                if exclude_errata and iid in ERRATA:
+                    continue
                 gr = next((x for x in recs if x["arm"] == g and x["item_id"] == iid), None)
                 rr = next((x for x in recs if x["arm"] == r_ and x["item_id"] == iid), None)
                 if gr and rr:
@@ -590,8 +654,8 @@ def aggregate(args):
         lifts["pooled_all_models"] = {"n": len(all_pairs), "pooled": paired_lift_ci(all_pairs)}
         return rows, lifts
 
-    raw_rows, raw_lifts = table(False)
-    aud_rows, aud_lifts = table(True)
+    raw_rows, raw_lifts = table(False, exclude_errata=True)
+    aud_rows, aud_lifts = table(True, exclude_errata=False)
     audited_n = sum(1 for r in recs if r.get("audited_category"))
     modes = sorted({r.get("mode") for r in runs})
     spent = round(sum(r.get("spent_usd_estimated", 0) for r in runs), 2)
@@ -612,7 +676,8 @@ def aggregate(args):
              f"`{runs[-1].get('item_file_sha256')}`; {data['item_type_proportion']['answerable']} answerable, "
              f"{data['item_type_proportion']['abstain_correct']} abstain-correct, {data['item_type_proportion']['trap']} trap), "
              f"reference date {data['reference_date']}, models {FAMILY_MODEL}, judge rotation {JUDGE_FOR_FAMILY} "
-             f"(never the family under test), temperature 0 where the API accepts it, "
+             f"(never the family under test), temperature 0 requested (accepted by: {sorted({r['model'] for r in recs if r.get('answer_temperature_applied')})}; "
+             f"rejected, API default used: {sorted({r['model'] for r in recs if r.get('answer_temperature_applied') is False})}), "
              f"audit: {audited_n} of {len(recs)} judgments hand-reviewed so far (target: all DD-wrong + a random 20%). "
              f"**The headline 'grounded system' is arm G-A** (claude-opus-5 with the v1.0 node attached), per the design. "
              f"Estimated spend across aggregated runs: ${spent}. Known limitations: design s.8.\n")
@@ -641,8 +706,22 @@ def aggregate(args):
         L.append(f"| **pooled, all three models** | {lifts['pooled_all_models']['n']} | **{pa[0]}** | {fmt_ci((pa[1], pa[2]))} | | | |")
         L.append("")
 
-    render(raw_rows, raw_lifts, "Raw LLM-judge results (dual report, column 1)")
-    render(aud_rows, aud_lifts, f"Audited results (dual report, column 2) -- {audited_n} judgments overridden/confirmed by Andy so far")
+    if ERRATA:
+        L.append("## Errata (defects found after the freeze; item file unchanged)\n")
+        for iid, e in ERRATA.items():
+            L.append(f"**{iid}** -- {e['defect']}\n")
+            L.append(f"*Corrected ground truth (audited column only):* {e['corrected_ground_truth']}\n")
+            L.append(f"*Corrected dangerous-direction error:* {e['corrected_dd_wrong_looks_like']}\n")
+        L.append(f"Errata items are EXCLUDED from the raw-judge tables below (n = {n_items - len(ERRATA)} items). In the "
+                 "audited tables they are INCLUDED, scored on Andy's ruling against the corrected ground truth; until Andy "
+                 "rules, the audited column carries the raw judge's call for them, so the audited headline is provisional.\n")
+    if JUDGE_ERRATA:
+        L.append("## Judge errata (raw-judge column left as produced; resolved in the audited column)\n")
+        for k, v in JUDGE_ERRATA.items():
+            L.append(f"**{k}** -- {v}\n")
+        L.append("Records flagged for priority audit: " + ", ".join(f"{a}/{i} ({k})" for (a, i), k in AUDIT_PRIORITY.items()) + ".\n")
+    render(raw_rows, raw_lifts, f"Raw LLM-judge results (dual report, column 1; errata items excluded, n = {n_items - len(ERRATA)})")
+    render(aud_rows, aud_lifts, f"Audited results (dual report, column 2; all {n_items} items) -- {audited_n} judgments overridden/confirmed by Andy so far")
     L.append("## Pre-registered predictions -- status\n")
     L.append("| # | Prediction | Raw-judge reading | Audited reading |")
     L.append("|---|---|---|---|")
@@ -677,27 +756,97 @@ def aggregate(args):
 
     # Audit sample: every DD-wrong + random 20% of the rest (seeded), for Andy.
     rng = random.Random(20260914)
-    dd = [r for r in recs if r.get("judge_category") == "wrong_dangerous"]
-    rest = [r for r in recs if r.get("judge_category") and r.get("judge_category") != "wrong_dangerous"]
+    def _prio(r):
+        return r.get("judge_category") == "wrong_dangerous" or r["item_id"] in ERRATA or (r["arm"], r["item_id"]) in AUDIT_PRIORITY
+    dd = [r for r in recs if _prio(r)]
+    rest = [r for r in recs if r.get("judge_category") and not _prio(r)]
     k = max(1, round(0.2 * len(rest))) if rest else 0
     sample = dd + rng.sample(rest, k) if rest else dd
     A = ["# D-5 lift ablation v1 -- audit sample for Andy\n",
-         f"*{len(dd)} dangerous-direction judgments (all included) + {k} random others (seed 20260914) = {len(sample)} of {len(recs)} judgments. "
+         f"*{len(dd)} dangerous-direction, errata-item and priority judgments (all included) + {k} random others (seed 20260914) = {len(sample)} of {len(recs)} judgments. "
          "For each: read the answer, read the judge's call, then write your ruling into the run JSON's `audited_category` "
          "(one of: correct, correct_abstention, generic_abstention, wrong_safe, wrong_dangerous) and `audit_note`, "
          "or hand the rulings to Cowork to enter. Re-run `--aggregate` afterwards; the audited column updates.*\n"]
     for r in sample:
         it = items_by_id[r["item_id"]]
         A.append(f"## {r['arm']} / {r['item_id']} ({it['type']}) -- judge: **{r['judge_category']}**\n")
+        if (r["arm"], r["item_id"]) in AUDIT_PRIORITY:
+            k = AUDIT_PRIORITY[(r["arm"], r["item_id"])]
+            A.append(f"**PRIORITY -- suspected judge defect {k}:** {JUDGE_ERRATA[k]}\n")
         A.append(f"**Question:** {it['question']}\n")
-        A.append(f"**Ground truth:** {it.get('ground_truth') or it.get('missing_dispositive_fact')}\n")
+        if r["item_id"] in ERRATA:
+            A.append(f"**ERRATA ITEM -- rule against the CORRECTED ground truth:** {ERRATA[r['item_id']]['corrected_ground_truth']}\n")
+        else:
+            A.append(f"**Ground truth:** {it.get('ground_truth') or it.get('missing_dispositive_fact')}\n")
         A.append(f"**Answer ({r['model']}):** {(r['answer'] or {}).get('answer')}\n")
         A.append(f"abstain={ (r['answer'] or {}).get('abstain') }; missing_fact={ (r['answer'] or {}).get('missing_fact') }\n")
         A.append(f"**Judge ({r['judge_model']}) rationale:** {r['judge_rationale']}\n")
         A.append("**Andy's ruling:** [  ] confirm   [  ] override to: ______________   note: ______________\n")
     (RESULTS_DIR / "AUDIT_SAMPLE.md").write_text("\n".join(A) + "\n")
+    # Review PDFs (Addendum s.2 standard): one entry per page for the audit sample; the results doc as-is.
+    try:
+        sys.path.insert(0, str(REPO_ROOT / "scripts" / "review"))
+        from md_to_pdf import build as _pdf
+        (REPO_ROOT / "review").mkdir(exist_ok=True)
+        _pdf("\n".join(A) + "\n", str(REPO_ROOT / "review" / "D5_LIFT_AUDIT_SAMPLE.pdf"), "## ", True,
+             "D-5 lift ablation -- audit sample for Andy")
+        _pdf("\n".join(L) + "\n", str(REPO_ROOT / "review" / "D5_LIFT_V1_RESULTS.pdf"), None, False,
+             "D-5 lift ablation v1 -- results")
+        print("Wrote review/D5_LIFT_AUDIT_SAMPLE.pdf and review/D5_LIFT_V1_RESULTS.pdf")
+    except Exception as exc:  # reportlab missing on this machine is not an error for the results
+        print(f"(review PDFs not written: {exc}; Cowork regenerates them)")
     print(f"Wrote {SUMMARY_PATH.relative_to(REPO_ROOT)} and {(RESULTS_DIR / 'AUDIT_SAMPLE.md').relative_to(REPO_ROOT)}")
-    print(f"Judgments: {len(recs)}; DD-wrong (raw judge): {len(dd)}; audit sample: {len(sample)}")
+    print(f"Judgments: {len(recs)}; priority (DD-wrong + errata + judge-flagged): {len(dd)}; audit sample: {len(sample)}")
+
+
+def rejudge(args):
+    """Re-run ONLY judgments that came back unparseable/empty (judge_category None). If the answer JSON
+    was invalid at run time, recover it first with lenient_parse_answer from answer_raw. Writes back
+    into the same run file with a note. Live: a few cents each. Added 2026-09-15 (G-A/L16)."""
+    data = load_items()
+    items_by_id = {i["id"]: i for i in data["items"]}
+    keys = load_keys() if not args.dry_run else None
+    spent, fixed = 0.0, 0
+    for f in sorted(RESULTS_DIR.glob("run_*.json")):
+        d = json.loads(f.read_text())
+        if d.get("mode") != "live" and not args.dry_run:
+            continue
+        changed = False
+        for rec in d["records"]:
+            if rec.get("judge_category") is not None:
+                continue
+            if not (rec.get("answer") or {}).get("answer") and rec.get("answer_raw"):
+                recovered = lenient_parse_answer(rec["answer_raw"])
+                if recovered.get("answer"):
+                    rec["answer"] = recovered
+                    rec["answer_error"] = None
+                    rec["answer_recovery_note"] = "answer JSON was invalid at run time; fields recovered by lenient parse from answer_raw"
+            if not (rec.get("answer") or {}).get("answer"):
+                continue
+            it = items_by_id[rec["item_id"]]
+            cfg = ARMS[rec["arm"]]
+            jf = JUDGE_FOR_FAMILY[cfg["family"]]
+            j = call_model(jf, JUDGE_SYSTEM.replace("{today}", data["reference_date"]), build_judge_prompt(it, rec["answer"]), keys, JUDGE_MAX_TOKENS,
+                           dry_judgment(it, rec["answer"], cfg), args.dry_run)
+            spent += j["cost_usd"]
+            jp = j["parsed"] if isinstance(j["parsed"], dict) else {}
+            cat = jp.get("category") if jp.get("category") in CATEGORIES else None
+            rec.update({"judge_category": cat, "judge_names_missing_fact": jp.get("names_missing_fact"),
+                        "judge_rationale": jp.get("rationale"), "judge_raw": j["_raw"], "judge_error": j.get("error"),
+                        "score": score_for(it["type"], cat) if cat else None, "dd_wrong": cat == "wrong_dangerous",
+                        "cost_usd": round(rec.get("cost_usd", 0) + j["cost_usd"], 4),
+                        "rejudged_utc": datetime.now(timezone.utc).isoformat(),
+                        "rejudge_note": "first judgment empty/unparseable; re-run once with the same judge model and prompt"})
+            print(f"  rejudged {rec['arm']} {rec['item_id']} -> {cat or 'STILL UNSCORED'}  ${j['cost_usd']:.3f}")
+            fixed += 1
+            changed = True
+        if changed and args.dry_run:
+            print(f"DRY-RUN: would update {f.relative_to(REPO_ROOT)} (not written)")
+        elif changed:
+            d["spent_usd_estimated"] = round(d.get("spent_usd_estimated", 0) + spent, 2)
+            f.write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n")
+            print(f"Updated {f.relative_to(REPO_ROOT)}")
+    print(f"Re-judged {fixed} record(s); spent (est.) ${spent:.2f}")
 
 
 def main():
@@ -706,16 +855,20 @@ def main():
     mode.add_argument("--dry-run", action="store_true")
     mode.add_argument("--live", action="store_true")
     mode.add_argument("--aggregate", action="store_true")
+    mode.add_argument("--rejudge", action="store_true", help="re-run only empty/unparseable judgments (live; cents)")
     ap.add_argument("--smoke", action="store_true", help="3 items: L03 (answerable), L02 (abstain-correct), L01 (trap)")
     ap.add_argument("--arms", help="comma list, e.g. G-A,R-A")
     ap.add_argument("--batch", choices=["grounded", "raw"], help="run the three grounded or the three raw arms")
     ap.add_argument("--items", help="comma list of item ids")
     ap.add_argument("--budget-cap", type=float, default=15.0, help="USD hard cap for this invocation (default 15)")
     ap.add_argument("--live-only", action="store_true", help="(aggregate) ignore dry-run files")
+    ap.add_argument("--rejudge-dry", dest="dry_run", action="store_true", help=argparse.SUPPRESS)
     ap.add_argument("--include-smoke", action="store_true", help="(aggregate) include smoke runs")
     args = ap.parse_args()
     if args.aggregate:
         return aggregate(args)
+    if args.rejudge:
+        return rejudge(args)
     if not (args.dry_run or args.live):
         ap.error("choose --dry-run, --live or --aggregate")
     run(args)

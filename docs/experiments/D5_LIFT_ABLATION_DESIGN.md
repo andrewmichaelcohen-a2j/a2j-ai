@@ -11,7 +11,7 @@ replay-first accounting). **APPROVED 2026-09-14 -- Andy: "i approve the $30 lift
 `d4c34178b8f74998da259bd5868858d11e71dfd2dcaaa3c95b9b0c07bf4fb833`, recorded in `scripts/ci/frozen_artifact_manifest.json`
 (CI-enforced) BEFORE any arm ran; the runner (`scripts/experiments/run_lift_ablation.py`) refuses `--live` if the hash
 drifts. Review copy for Andy: **double-click `review/D5_LIFT_ITEMS_V1.pdf`** (one item per page, notes field).
-Execution status: **awaiting Andy's smoke run** (section 10).
+Execution status: **ALL SIX ARMS RUN 2026-09-15** (section 11); results provisional pending Andy's audit.
 
 ## 1. Question
 
@@ -146,4 +146,68 @@ twice by each arm; the batch answer is the one of record.
 
 Budget accounting: envelope $250; ~$165 spent through the measurement of record; this experiment ~$20 (cap $30) ->
 ~$185-195 after completion. The configuration ablation remains unfunded pending the trim decision.
+
+## 11. Execution record and provisional results (2026-09-15; pre-audit)
+
+**Runs (all Andy's):** smoke `run_20260915T005504Z` (3 items x 6 arms, $3.54 est.); grounded batch
+`run_20260915T140855Z` (G-A 24, G-O 24, G-G 17 -- halted at the $15 per-run cap, $15.11); G-G completion
+`run_20260915T152051Z` (7 items, $0.59); R-A `run_20260915T152510Z` (~$8); R-O + R-G `run_20260915T154855Z`
+($3.46). **Estimated spend $26.79 + smoke $3.54 = ~$30.3** (runner's price table; the design's ~$20 estimate assumed
+900-token answers -- the models wrote 2-3x that, and claude-opus-5's thinking tokens count as output). Andy approved
+the overage ("budget approved") before the raw arms ran. Envelope after this experiment: ~$195 of $250.
+
+**Errata found after the freeze (item file untouched; hash unchanged):**
+- **L01 (item):** the facts put service on 2026-09-01 (answer due 09-15) but the reference date is 2026-09-17, so the
+  deadline had already passed; my ground truth treated it as future and the rubric listed "deadline has passed" as the
+  dangerous error. Every arm was judged wrong_dangerous for a correct statement. Excluded from the raw-judge headline
+  (n = 23); scored in the audited column on Andy's ruling against the corrected ground truth (results doc, Errata).
+- **J-1 (judge prompt):** the judge was not told the reference date, so gpt-5.5 read the L24 answers' correct
+  "today is 2026-09-17" arithmetic as an error (G-A/L24, R-A/L24 both marked wrong_dangerous). Fixed in the judge
+  prompt for future runs; v1's raw-judge column stands as produced and the audit resolves it.
+- **J-2 (judge legal error):** claude-opus-5 judging G-G/L16 asserted a 10-day CCP 703.520 deadline; the node's quoted
+  text says 15/20 days, which is what the answer said.
+- **J-3 (classification):** gemini judging G-O/L17 classed an over-cautious abstention as wrong_dangerous; Andy's call.
+- **G-A/L16:** the model's answer JSON had an unescaped quote and did not parse, so no judgment was made; the answer is
+  intact in `answer_raw` and is recovered by `--rejudge` (~$0.10) with a lenient parser now used on the live path too.
+
+**Provisional raw-judge results (n = 23, L01 excluded, before the audit and before the G-A/L16 re-judge):**
+
+| Arm | mean score (95% CI) | DD-wrong | answerable / abstain-correct / trap |
+|---|---|---|---|
+| G-A (headline grounded system) | 0.909 [0.773, 1.0] (22 scored) | 1 | 0.875 / 1.0 / 0.889 |
+| G-O | 0.913 [0.783, 1.0] | 2 | 0.875 / 1.0 / 0.9 |
+| G-G | 0.913 [0.783, 1.0] | 0 | 1.0 / 0.8 / 0.9 |
+| R-A | 0.783 [0.609, 0.957] | 3 | 0.75 / 1.0 / 0.7 |
+| R-O | 0.913 [0.783, 1.0] | 1 | 1.0 / 0.8 / 0.9 |
+| R-G | 0.913 [0.783, 1.0] | 2 | 0.875 / 1.0 / 0.9 |
+
+Paired lift (G minus R): claude-opus-5 **+0.136 [-0.045, +0.318]**; gpt-5.5 0.0 [-0.174, +0.174]; gemini-2.5-pro 0.0
+[-0.174, +0.174]; pooled **+0.044 [-0.059, +0.147]**. DD-wrong: grounded 3 vs raw 6.
+
+**Reading (provisional; the audited column is the column of record once Andy has ruled):**
+- **L1 (lift > 0 for all three, largest on traps): NOT SUPPORTED.** Only the claude pair shows a positive point estimate,
+  and its interval includes zero. gpt-5.5 and gemini-2.5-pro raw score the same as grounded on this set.
+- **L2 (raw models abstain less / more DD-wrong on abstain-correct items): NOT SUPPORTED on abstention** -- every arm
+  handled 4-5 of the 5 abstain-correct items; **weakly supported on DD-wrong overall** (6 vs 3, small counts, several
+  of them judge-disputed).
+- **L3 (value concentrates in abstention and traps): PARTLY.** Where the corpus demonstrably mattered, it was
+  precise-rule items, not folk-legal traps: **L15** (CA single-vehicle "automatic" exemption -- all three raw arms gave a
+  wrong 10-day deadline or denied the automatic proceeds rule; all three grounded arms right), **L03** (Reg F five-business-
+  day mailbox assumption -- two raw arms early; all grounded right), and **L01** on the limitations half (two raw arms
+  computed from last/first-missed payment and called the suit barred; all grounded arms computed from charge-off). The
+  folk-legal traps (Henson, "never signed = 2-year", brokerage under the $50k cap, county-court-vs-JP) did not trap
+  current frontier models at all.
+- **Honest headline for the messaging, pending audit:** "On 23 frozen consumer-debt items, attaching CJaC's v1.0 rules to
+  claude-opus-5 raised its score from 0.78 to 0.91 and halved dangerous-direction errors across models (6 to 3), but the
+  pooled lift is +0.04 with a confidence interval that includes zero; the demonstrable value is on precise-rule items
+  (deadline computation, statutory dollar/day figures) where raw models were confidently wrong." That is the claim the
+  data supports; nothing stronger.
+- **Lesson for a v2 item set (POST_V1_BACKLOG):** traps must be calibrated against what current frontier models
+  actually get wrong (deadline arithmetic, statutory figures, rule-specific mechanics), not against folk-legal errors;
+  every item must be date-checked against the reference date mechanically; the judge prompt must carry the reference
+  date (done).
+
+**Next:** Andy runs `--rejudge` (G-A/L16) and `--aggregate --live-only`, commits, then rules on the audit sample
+(`review/D5_LIFT_AUDIT_SAMPLE.pdf`: 41 entries = all DD-wrong + errata + judge-flagged + a seeded random 20%). Cowork
+enters the rulings as `audited_category`, re-aggregates, and the audited column becomes the column of record.
 
