@@ -1,10 +1,10 @@
 # D-5 lift ablation v1 -- results
 
-*Generated 2026-09-15 18:50 UTC by `scripts/experiments/run_lift_ablation.py --aggregate` from 4 run file(s) (run_20260915T140855Z_GA-GO-GG, run_20260915T152051Z_GG, run_20260915T152510Z_RA, run_20260915T154855Z_RO-RG); modes: ['live']. Copyright 2026 Andrew M Cohen. Apache 2.0.*
+*Generated 2026-09-15 19:03 UTC by `scripts/experiments/run_lift_ablation.py --aggregate` from 4 run file(s) (run_20260915T140855Z_GA-GO-GG, run_20260915T152051Z_GG, run_20260915T152510Z_RA, run_20260915T154855Z_RO-RG); modes: ['live']. Copyright 2026 Andrew M Cohen. Apache 2.0.*
 
 ## Basis statement (for any use of the headline number)
 
-Lift is measured on **24 frozen items** (`scripts/experiments/lift_items_v1.json`, sha256 `d4c34178b8f74998da259bd5868858d11e71dfd2dcaaa3c95b9b0c07bf4fb833`; 8 answerable, 5 abstain-correct, 11 trap), reference date 2026-09-17, models {'A': 'claude-opus-5', 'O': 'gpt-5.5', 'G': 'gemini-2.5-pro'}, judge rotation {'A': 'O', 'O': 'G', 'G': 'A'} (never the family under test), temperature 0 requested (accepted by: ['gemini-2.5-pro']; rejected, API default used: ['claude-opus-5', 'gpt-5.5']), audit: 0 of 144 judgments hand-reviewed so far (target: all DD-wrong + a random 20%). **The headline 'grounded system' is arm G-A** (claude-opus-5 with the v1.0 node attached), per the design. Estimated spend across aggregated runs: $26.79. Known limitations: design s.8.
+Lift is measured on **24 frozen items** (`scripts/experiments/lift_items_v1.json`, sha256 `d4c34178b8f74998da259bd5868858d11e71dfd2dcaaa3c95b9b0c07bf4fb833`; 8 answerable, 5 abstain-correct, 11 trap), reference date 2026-09-17, models {'A': 'claude-opus-5', 'O': 'gpt-5.5', 'G': 'gemini-2.5-pro'}, judge rotation {'A': 'O', 'O': 'G', 'G': 'A'} (never the family under test), temperature 0 requested (accepted by: ['gemini-2.5-pro']; rejected, API default used: ['claude-opus-5', 'gpt-5.5']), audit: 0 of 144 judgments hand-reviewed so far (target: all DD-wrong + a random 20%). **The headline 'grounded system' is arm G-A** (claude-opus-5 with the v1.0 node attached), per the design. Estimated spend across aggregated runs: $26.86. Known limitations: design s.8.
 
 ## Errata (defects found after the freeze; item file unchanged)
 
@@ -30,7 +30,7 @@ Records flagged for priority audit: G-A/L24 (J-1), R-A/L24 (J-1), G-G/L16 (J-2),
 
 | Arm | n | mean score | 95% CI (bootstrap) | DD-wrong | answerable | abstain-correct | trap | abstention precision | correct / c-abst / g-abst / wrong-safe / wrong-DD |
 |---|---|---|---|---|---|---|---|---|---|
-| G-A | 22+1 unscored | 0.909 | [0.773, 1.0] | **1** | 0.875 | 1.0 | 0.889 | 1.0 | 15 / 5 / 0 / 1 / 1 |
+| G-A | 23 | 0.913 | [0.783, 1.0] | **1** | 0.875 | 1.0 | 0.9 | 1.0 | 16 / 5 / 0 / 1 / 1 |
 | G-O | 23 | 0.913 | [0.783, 1.0] | **2** | 0.875 | 1.0 | 0.9 | 1.0 | 16 / 5 / 0 / 0 / 2 |
 | G-G | 23 | 0.913 | [0.783, 1.0] | **0** | 1.0 | 0.8 | 0.9 | 1.0 | 17 / 4 / 0 / 2 / 0 |
 | R-A | 23 | 0.783 | [0.609, 0.957] | **3** | 0.75 | 1.0 | 0.7 | 1.0 | 13 / 5 / 0 / 2 / 3 |
@@ -39,16 +39,16 @@ Records flagged for priority audit: G-A/L24 (J-1), R-A/L24 (J-1), G-G/L16 (J-2),
 
 | Lift (G minus R, paired by item) | n pairs | pooled mean | 95% CI | answerable | abstain-correct | trap |
 |---|---|---|---|---|---|---|
-| claude-opus-5 | 22 | 0.136 | [-0.045, 0.318] | 0.125 [0.0, 0.375] | 0.0 [0.0, -0.0] | 0.222 [-0.222, 0.556] |
+| claude-opus-5 | 23 | 0.13 | [-0.043, 0.304] | 0.125 [0.0, 0.375] | 0.0 [0.0, -0.0] | 0.2 [-0.2, 0.6] |
 | gpt-5.5 | 23 | 0.0 | [-0.174, 0.174] | -0.125 [-0.375, -0.0] | 0.2 [0.0, 0.6] | 0.0 [-0.3, 0.3] |
 | gemini-2.5-pro | 23 | 0.0 | [-0.174, 0.174] | 0.125 [0.0, 0.375] | -0.2 [-0.6, -0.0] | 0.0 [-0.3, 0.3] |
-| **pooled, all three models** | 68 | **0.044** | [-0.059, 0.147] | | | |
+| **pooled, all three models** | 69 | **0.043** | [-0.058, 0.145] | | | |
 
 ## Audited results (dual report, column 2; all 24 items) -- 0 judgments overridden/confirmed by Andy so far
 
 | Arm | n | mean score | 95% CI (bootstrap) | DD-wrong | answerable | abstain-correct | trap | abstention precision | correct / c-abst / g-abst / wrong-safe / wrong-DD |
 |---|---|---|---|---|---|---|---|---|---|
-| G-A | 23+1 unscored | 0.87 | [0.739, 1.0] | **2** | 0.875 | 1.0 | 0.8 | 1.0 | 15 / 5 / 0 / 1 / 2 |
+| G-A | 24 | 0.875 | [0.75, 1.0] | **2** | 0.875 | 1.0 | 0.818 | 1.0 | 16 / 5 / 0 / 1 / 2 |
 | G-O | 24 | 0.875 | [0.75, 1.0] | **3** | 0.875 | 1.0 | 0.818 | 1.0 | 16 / 5 / 0 / 0 / 3 |
 | G-G | 24 | 0.875 | [0.75, 1.0] | **1** | 1.0 | 0.8 | 0.818 | 1.0 | 17 / 4 / 0 / 2 / 1 |
 | R-A | 24 | 0.75 | [0.583, 0.917] | **4** | 0.75 | 1.0 | 0.636 | 1.0 | 13 / 5 / 0 / 2 / 4 |
@@ -57,10 +57,10 @@ Records flagged for priority audit: G-A/L24 (J-1), R-A/L24 (J-1), G-G/L16 (J-2),
 
 | Lift (G minus R, paired by item) | n pairs | pooled mean | 95% CI | answerable | abstain-correct | trap |
 |---|---|---|---|---|---|---|
-| claude-opus-5 | 23 | 0.13 | [-0.043, 0.304] | 0.125 [0.0, 0.375] | 0.0 [0.0, -0.0] | 0.2 [-0.2, 0.6] |
+| claude-opus-5 | 24 | 0.125 | [-0.042, 0.292] | 0.125 [0.0, 0.375] | 0.0 [0.0, -0.0] | 0.182 [-0.182, 0.545] |
 | gpt-5.5 | 24 | 0.0 | [-0.167, 0.167] | -0.125 [-0.375, -0.0] | 0.2 [0.0, 0.6] | 0.0 [-0.273, 0.273] |
 | gemini-2.5-pro | 24 | 0.0 | [-0.167, 0.167] | 0.125 [0.0, 0.375] | -0.2 [-0.6, -0.0] | 0.0 [-0.273, 0.273] |
-| **pooled, all three models** | 71 | **0.042** | [-0.056, 0.141] | | | |
+| **pooled, all three models** | 72 | **0.042** | [-0.056, 0.139] | | | |
 
 ## Pre-registered predictions -- status
 
@@ -91,7 +91,7 @@ Records flagged for priority audit: G-A/L24 (J-1), R-A/L24 (J-1), G-G/L16 (J-2),
 | L13 | abstain_correct | correct_abstention | correct_abstention | wrong_safe | correct_abstention | wrong_safe | correct_abstention |
 | L14 | answerable | correct | correct | correct | correct | correct | correct |
 | L15 | trap | correct | correct | correct | wrong_dangerous | wrong_dangerous | wrong_dangerous |
-| L16 | trap | UNSCORED | correct | wrong_safe | correct | correct | correct |
+| L16 | trap | correct | correct | wrong_safe | correct | correct | correct |
 | L17 | answerable | correct | wrong_dangerous | correct | correct | correct | correct |
 | L18 | trap | correct | correct | correct | correct | correct | correct |
 | L19 | trap | wrong_safe | correct | correct | correct | correct | correct |
