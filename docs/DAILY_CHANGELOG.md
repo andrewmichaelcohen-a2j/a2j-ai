@@ -1180,6 +1180,11 @@ the `--nodes 3` smoke test (freeze item 5), not the full corpus.
 
 ---
 
+**Direction D-1 regression alarm — dev-set monitor (ca_notice_score_2026-10-26_non-held-out)**
+- Dev score: 0/12 (0.0%). Consensus status: SM-BOTH-ERROR.
+- Newly failing (12): CA-NOT-B-02, CA-NOT-B-05, CA-NOT-B-06, CA-NOT-B-07, CA-NOT-B-08, CA-NOT-B-09, CA-NOT-B-10, CA-NOT-B-11, CA-NOT-B-12, CA-NOT-B-15, CA-NOT-B-16, CA-NOT-B-17
+- Regression findings are reported, not auto-fixed — rules remain frozen as vProof1. Queued for Andy per Direction D read-only guardrail.
+
 ## 2026-08-31, round 25 (live-run freeze steps 1-2: stage-level attribution, regression hunt, one-variable rule + smoke protocol adopted -- documentation only, no runner or content code changed)
 
 **What changed since round 24:** nothing in `run_corroboration.py` or any `rules/` file.

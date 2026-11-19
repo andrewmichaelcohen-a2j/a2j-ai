@@ -1555,3 +1555,12 @@ Scheduled runs of ca_notice_scorer.py against the v0.2 dev split (12 items, non-
 | 2026-07-26 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-07-26_non-held-out |
 | 2026-08-15 | 12/12 (100.0%) | 0 | 0.917 | PARTIAL-CONSENSUS (11/12 items dual-model) | ca_notice_score_2026-08-15_non-held-out |
 | 2026-08-19 | 12/12 (100.0%) | 0 | 0.75 | PARTIAL-CONSENSUS (10/12 items dual-model) | ca_notice_score_2026-08-19_non-held-out |
+| 2026-10-08 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-10-08_non-held-out |
+| 2026-10-18 | 12/12 (100.0%) | 0 | 0.667 | PARTIAL-CONSENSUS (8/12 items dual-model) | ca_notice_score_2026-10-18_non-held-out |
+| 2026-10-19 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-10-19_non-held-out |
+| 2026-10-23 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-10-23_non-held-out |
+| 2026-10-26 | 0/12 (0.0%) | 12 | 0.0 | SM-BOTH-ERROR | ca_notice_score_2026-10-26_non-held-out |
+| 2026-10-30 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-10-30_non-held-out |
+| 2026-11-02 | 12/12 (100.0%) | 0 | 0.917 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-11-02_non-held-out |
+| 2026-11-06 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-11-06_non-held-out |
+| 2026-11-09 | 12/12 (100.0%) | 0 | 1.0 | DUAL-MODEL-CONSENSUS | ca_notice_score_2026-11-09_non-held-out |
