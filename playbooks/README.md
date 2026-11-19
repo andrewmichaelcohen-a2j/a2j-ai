@@ -6,6 +6,8 @@ Copyright 2026 Andrew M Cohen. Licensed under the Apache License, Version 2.0.
 
 ---
 
+**Current work:** the first self-help playbook, for people served with a collection lawsuit in California, is in [`california-debt/`](california-debt/00-START-HERE.md). It is written for the person facing the problem, not for organizations deploying a tool; the deployment guides below come later.
+
 ## What playbooks are
 
 A playbook answers the question: "I want to deploy [workflow] at [organization type] — what do I actually do?" It covers setup, configuration, validation requirements, staff training, and guardrails.

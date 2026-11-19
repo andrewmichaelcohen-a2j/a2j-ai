@@ -6,6 +6,16 @@ This file is read automatically by Cowork at session start. It carries the key c
 
 ---
 
+## CURRENT DIRECTION (November 19, 2026): read this first
+
+The project has pivoted from codified eviction rules to an open civil-justice playbook. The first slice is "Served with a collection lawsuit in California: the first 30 days."
+
+- For playbook work, start at `playbooks/california-debt/00-START-HERE.md` and follow it.
+- Eviction work is on hold. The sections below describe the earlier eviction-rules work and are historical context for the playbook, not its instructions.
+- The GREEN/YELLOW/RED rule, the work queue, and the overnight validation jobs below belong to that earlier work. For playbook work, do not pull tasks from `docs/WORK_QUEUE.md` on your own, and ask Andy before any AI spend beyond the pilot cap ($100).
+
+---
+
 ## Project identity
 
 **Name:** Civil Justice as Code (organized under "A2J project")  
