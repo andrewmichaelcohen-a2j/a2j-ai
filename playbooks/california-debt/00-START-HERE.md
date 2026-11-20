@@ -10,12 +10,14 @@ North star: reduce the access-to-justice gap by putting free, accurate, honestly
 
 This is general legal information, not legal advice. No attorney has reviewed any item yet, so nothing is labeled Attested.
 
-## Where things stand (November 19, 2026, end of day)
+## Where things stand (November 19, 2026, late evening)
 
 - A 15-item prototype exists (items D-01 to D-15). It is kept privately for now.
-- Strength labels: none of the 15 meets the strict Source-read standard yet. A first AI check (Run 1) caught both planted errors and raised 59 flags; rewriting the items as rule statements (Run 2b) produced the first Source-read candidate, D-10, which needs a second agreeing run.
+- Six AI check runs happened on November 19 (Run 1, 2a, 2b, 2c, 2d, 2e; the Checker is OpenAI, a different vendor from the drafter). Both planted errors were caught every time.
+- Rule statements (not the plain-language wording, and not the practical guidance) matched saved source text in two agreeing runs for 7 items: D-02, D-03, D-08, D-10, D-11, D-12, D-14. Five more passed one run (D-01, D-04, D-06, D-07, D-09). D-05 and D-13 still carry small flags. D-15 is a reference check, held until a person spot-checks two web pages.
 - Two California statutes change on January 1, 2027: section 415.20 (service by mail) and section 473 (relief from default). Both new versions are saved in `sources/`.
-- For the latest detail and the next steps, read the newest file in `sessions/`.
+- AI spend so far: about $5.98 of the $100 cap (ledger: `run1/spend-log.tsv`).
+- For the run-by-run detail and the next steps, read the newest file in `sessions/`. Run folders: `run1`, `run2`, `run2b`, `run2c`, `run2d`, `run2e`, `run2f` (prepared, not yet run).
 
 ## How the work is labeled
 

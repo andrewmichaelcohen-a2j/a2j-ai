@@ -1,0 +1,132 @@
+{
+ "id": "D-12",
+ "ref": "X12",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "Under §473(b), the court may relieve a party from a judgment, dismissal, order or other proceeding taken against the party, on just terms.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "(b) The court may, upon any terms as may be just, relieve a party or the party’s legal representative from a judgment, dismissal, order, or other proceeding taken against the party",
+    "note": "Relief is discretionary.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The proceeding must have been taken against the party through the party's mistake, inadvertence, surprise or excusable neglect.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "taken against the party through the party’s mistake, inadvertence, surprise, or excusable neglect.",
+    "note": "These are alternative grounds for the discretionary relief described.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The application must include a copy of the answer or other pleading proposed to be filed.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "Application for this relief shall be accompanied by a copy of the answer or other pleading proposed to be filed therein, otherwise the application shall not be granted",
+    "note": "This requirement applies to the §473(b) application described.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The application must be made within a reasonable time.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and shall be made within a reasonable time, in no case exceeding six months",
+    "note": "Filing within six months does not by itself satisfy the reasonable-time requirement.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The outer limit is six months after the judgment, dismissal, order or proceeding was taken.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "in no case exceeding six months, after the judgment, dismissal, order, or proceeding was taken.",
+    "note": "The quoted limit applies to discretionary relief under §473(b).",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 473(a)(1) allows the court, in its discretion and after notice to the adverse party, to allow a late answer.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "The court may likewise, in its discretion, after notice to the adverse party, allow, upon any terms as may be just, an amendment to any pleading or proceeding in other particulars; and may upon like terms allow an answer to be made after the time limited by this code.",
+    "note": "The court may impose just terms.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 473(d) allows the court to set aside any void judgment or order on either party's motion after notice to the other party.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and may, on motion of either party after notice to the other party, set aside any void judgment or order.",
+    "note": "The quoted power concerns a void judgment or order.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The current version is in effect through December 31, 2026.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "(e) This section shall remain in effect only until January 1, 2027, and as of that date is repealed.",
+    "note": "This is the version in effect on November 19, 2026.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement version becomes operative January 1, 2027.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "(f) This section shall become operative on January 1, 2027.",
+    "note": "The operative date is set by subdivision (f).",
+    "quote_verified": true
+   },
+   {
+    "claim": "Subdivisions (a) through (d) remain in the same words.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "subdivisions (a) through (d) read the same.",
+    "note": "The supplied versions match in those subdivisions.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement version replaces the repeal provision in subdivision (e) with a new subdivision (e).",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "The old subdivision (e) (repeal on January 1, 2027) is replaced by a new (e) on motions to vacate a default judgment void for lack of proper service",
+    "note": "The new provision concerns a specific ground for vacating a default judgment.",
+    "quote_verified": true
+   },
+   {
+    "claim": "New subdivision (e) allows a party to move to vacate a default judgment that is void for lack of proper service.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "a party to an action may bring a motion to vacate a default judgment that is void for lack of proper service",
+    "note": "The provision permits a motion; it does not promise relief.",
+    "quote_verified": true
+   },
+   {
+    "claim": "That motion may be brought at any time after entry of the judgment.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "a party to an action may bring a motion to vacate a default judgment that is void for lack of proper service at any time after entry of the judgment.",
+    "note": "This timing rule is stated in the future version.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "date_change",
+    "text": "Effective January 1, 2027, new §473(e) expressly permits a motion at any time after entry of a default judgment void for lack of proper service. It does not change the reasonable-time requirement or six-month ceiling in §473(b)."
+   }
+  ],
+  "summary": "Both supplied versions support the draft within its stated scope. The draft distinguishes the current §473(b) deadline from the future rule for default judgments void for lack of proper service."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 3480,
+  "output_tokens": 1396
+ },
+ "est_cost_usd": 0.0837
+}

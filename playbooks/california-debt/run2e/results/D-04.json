@@ -1,0 +1,180 @@
+{
+ "id": "D-04",
+ "ref": "X04",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "The current version of Section 415.20 remains in effect through December 31, 2026.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "This section shall remain in effect only until January 1, 2027, and as of that date is repealed.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Subdivision (b) permits substituted service if the summons and complaint cannot with reasonable diligence be personally delivered to the person specified in Section 416.60, 416.70, 416.80, or 416.90.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "(b) If a copy of the summons and complaint cannot with reasonable diligence be personally delivered to the person to be served, as specified in Section 416.60, 416.70, 416.80, or 416.90, a summons may be served by leaving a copy of the summons and complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The first step is leaving a copy at the dwelling house, usual place of abode, usual place of business, or usual mailing address other than a USPS post office box.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "leaving a copy of the summons and complaint at the person’s dwelling house, usual place of abode, usual place of business, or usual mailing address other than a United States Postal Service post office box",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The papers are left in the presence of a competent household member or a person apparently in charge of the office, place of business, or qualifying mailing address.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "in the presence of a competent member of the household or a person apparently in charge of their office, place of business, or usual mailing address other than a United States Postal Service post office box",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "That person must be at least 18.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "at least 18 years of age",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "That person must be informed of the contents.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "who shall be informed of the contents thereof",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The second step is subsequently mailing a copy of both papers by first-class mail with postage prepaid.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "and by thereafter mailing a copy of the summons and of the complaint by first-class mail, postage prepaid",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The mailing goes to the person to be served at the place where the copy was left.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "to the person to be served at the place where a copy of the summons and complaint were left.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the current version, service is complete on the 10th day after mailing.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "Service of a summons in this manner is deemed complete on the 10th day after the mailing.",
+    "note": "Mailing, not the earlier act of leaving the papers, is the reference date.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons directs the defendant to file a written responsive pleading with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A direction that the defendant file with the court a written pleading in response to the complaint",
+    "note": "This is the ordinary summons requirement within the stated scope.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The stated response period is 30 days after service of the summons.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Time is computed by excluding the first day and including the last.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "computed by excluding the first day, and including the last, unless the last day is a holiday",
+    "note": "Subject to the holiday exception stated in the draft.",
+    "quote_verified": true
+   },
+   {
+    "claim": "If the last day is a holiday, it is not included.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "unless the last day is a holiday, and then it is also excluded.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement Section 415.20 becomes operative January 1, 2027.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "(e) This section shall become operative on January 1, 2027.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the replacement subdivision, a party shows reasonable diligence by attempting personal delivery in good faith on at least three occasions, on three different days at three different times.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "For purposes of this subdivision, a party shows reasonable diligence by attempting personal delivery of the summons and complaint, in good faith, on at least three occasions on three different days at three different times.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "In a consumer-debt collection action, at least one attempt must be at the person's dwelling place or usual place of abode.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "In an action to collect “consumer debt,” as defined in Section 1788.2 of the Civil Code, at least one of the service attempts shall be made at the dwelling place or usual place of abode of the person to be served",
+    "note": "Subject to the address condition stated in the draft.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The dwelling-place attempt requirement applies if the location is known or could be determined with reasonable effort.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "provided that the dwelling place or usual place of abode is known or could be determined with reasonable effort.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The 2027 mailing options are USPS first-class mail, Priority Mail with tracking, or Certified Mail with return receipt requested.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "by United States Postal Service first-class mail, Priority Mail with tracking, or Certified Mail with return receipt requested, with postage prepaid",
+    "note": "The postage-prepaid requirement continues.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the replacement version, service is still complete on the 10th day after mailing.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "Service of a summons in this manner is deemed complete on the 10th day after the mailing.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "date_change",
+    "text": "Beginning January 1, 2027, subdivision (b) specifies the good-faith attempt schedule, adds the conditional dwelling-place attempt for consumer-debt actions, and expands the permitted mailing methods. The completion date does not change."
+   }
+  ],
+  "summary": "Within the stated subdivision (b) scope, the sources support the distinction between the two clocks: service is complete on the 10th day after mailing under both versions, and the summons directs a response within 30 days after service."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 3419,
+  "output_tokens": 1856
+ },
+ "est_cost_usd": 0.1016
+}

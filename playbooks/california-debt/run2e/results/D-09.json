@@ -1,0 +1,55 @@
+{
+ "id": "D-09",
+ "ref": "X09",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "Section 337(a) sets a four-year period for an action upon a contract, obligation or liability founded upon an instrument in writing.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "The mortgage or deed-of-trust proviso falls outside the stated unsecured-contract scope.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The four-year rule is subject to the exception in Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a",
+    "note": "The draft identifies the exception without claiming what it covers.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337 does not state when the four-year period starts for the ordinary written-contract claim in scope.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "This clause gives a duration but no starting event. The timing provisions for secured obligations, accounts stated and rescission do not govern the claim described.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The saved sources contain no other rule on when that period starts.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "The period in which an action may be commenced under this section shall only be extended pursuant to Section 360.",
+    "note": "CCP-337 is the only saved source. Its extension provision does not supply a start date, and no other provision in the text supplies one for this claim.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "The saved text specifies the period and names the Section 336a exception, but gives no starting event for the unsecured written-contract claim in scope. The draft limits that finding to the saved sources."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1416,
+  "output_tokens": 483
+ },
+ "est_cost_usd": 0.0306
+}

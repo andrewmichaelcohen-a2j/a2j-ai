@@ -68,3 +68,14 @@ Each item is split into three kinds of line. Each kind gets the check that fits 
 ## Reminder on what an AI check means
 
 It shows where a draft is weak or unsupported. It does not show the law is right, and it is not attorney review.
+
+## Run 2c, 2d, 2e results (November 19, 2026; $5.98 spent in total)
+
+- 2c (about $1.06): clean D-03, D-09, D-10, D-15; the rest had 1 to 4 flags, mostly omitted statute parts.
+- 2d (about $1.24): after adding the omitted text and narrowing scopes, clean D-02, D-03, D-05, D-08, D-10, D-11, D-12 (date-change note only), D-14, D-15.
+- 2e (about $1.20): fixes for six 2d flags. Clean D-01, D-02, D-03, D-04 (date-change note only), D-06, D-07, D-08, D-09, D-10, D-11, D-12 (date-change note only), D-14, D-15. Flagged: D-05 (omitted the SUM-100 "copy served on the plaintiff" sentence), D-13 ("a copy of a judgment" omitted "against the consumer").
+- Two agreeing runs on the same text: D-02, D-03, D-08, D-10, D-11, D-12, D-14 (D-15 also, but held for a human spot-check). D-09 shows the variation: clean, flagged, clean.
+- Both planted errors (D-06-SEEDED, D-11-SEEDED) were caught in every run.
+- 2f (prepared): D-05 and D-13 fixed; run D-01, D-04, D-05, D-06, D-07, D-09, D-13 for a same-text second run:
+
+      python3 ~/Developer/a2j-ai/playbooks/california-debt/run1/checker.py --run --dir ~/Developer/a2j-ai/playbooks/california-debt/run2f --only D-01,D-04,D-05,D-06,D-07,D-09,D-13

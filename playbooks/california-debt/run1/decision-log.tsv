@@ -84,3 +84,21 @@ timestamp	phase	decision	why	evidence	result
 2026-11-19T22:19:42	run1	checked D-15	Run 1 Checker pass	results/D-15.json	final label: Source-read
 2026-11-19T22:19:59	run1	checked D-06-SEEDED	Run 1 Checker pass	results/D-06-SEEDED.json	final label: Not yet checked
 2026-11-19T22:20:11	run1	checked D-11-SEEDED	Run 1 Checker pass	results/D-11-SEEDED.json	final label: Not yet checked
+2026-11-19T22:27:18	run1	checked D-01	Run 1 Checker pass	results/D-01.json	final label: Source-read
+2026-11-19T22:27:31	run1	checked D-02	Run 1 Checker pass	results/D-02.json	final label: Source-read
+2026-11-19T22:27:45	run1	checked D-03	Run 1 Checker pass	results/D-03.json	final label: Source-read
+2026-11-19T22:28:08	run1	checked D-04	Run 1 Checker pass	results/D-04.json	final label: Source-read
+2026-11-19T22:28:19	run1	checked D-05	Run 1 Checker pass	results/D-05.json	final label: Not yet checked
+2026-11-19T22:28:48	run1	checked D-06	Run 1 Checker pass	results/D-06.json	final label: Source-read
+2026-11-19T22:29:03	run1	checked D-07	Run 1 Checker pass	results/D-07.json	final label: Source-read
+2026-11-19T22:29:17	run1	checked D-08	Run 1 Checker pass	results/D-08.json	final label: Source-read
+2026-11-19T22:29:26	run1	checked D-09	Run 1 Checker pass	results/D-09.json	final label: Source-read
+2026-11-19T22:29:32	run1	checked D-10	Run 1 Checker pass	results/D-10.json	final label: Source-read
+2026-11-19T22:29:44	run1	checked D-11	Run 1 Checker pass	results/D-11.json	final label: Source-read
+2026-11-19T22:30:02	run1	checked D-12	Run 1 Checker pass	results/D-12.json	final label: Source-read
+2026-11-19T22:30:30	run1	checked D-13	Run 1 Checker pass	results/D-13.json	final label: Not yet checked
+2026-11-19T22:30:46	run1	checked D-14	Run 1 Checker pass	results/D-14.json	final label: Source-read
+2026-11-19T22:30:58	run1	checked D-15	Run 1 Checker pass	results/D-15.json	final label: Source-read
+2026-11-19T22:31:12	run1	checked D-06-SEEDED	Run 1 Checker pass	results/D-06-SEEDED.json	final label: Not yet checked
+2026-11-19T22:31:27	run1	checked D-11-SEEDED	Run 1 Checker pass	results/D-11-SEEDED.json	final label: Not yet checked
+2026-11-19T22:38:58	run1	checked D-01	Run 1 Checker pass	results/D-01.json	final label: Source-read
