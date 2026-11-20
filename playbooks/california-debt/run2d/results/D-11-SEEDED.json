@@ -1,0 +1,92 @@
+{
+ "id": "D-11-SEEDED",
+ "ref": "X17",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "Making a small payment on an old debt does not restart the clock.",
+    "supported": "partly",
+    "source_id": "CCP-360",
+    "quote": "and to start the running of a new period of time, but no such payment of itself shall revive a cause of action once barred.",
+    "note": "Timing matters. Before the claim is barred, a payment by the party to be charged on principal or interest due on a promissory note starts a new period; §360 specifies no minimum amount. After the claim is barred, such a payment alone does not revive it.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Signing something on an old debt does not restart the clock.",
+    "supported": "no",
+    "source_id": "CCP-360",
+    "quote": "",
+    "note": "The categorical claim ignores a written acknowledgment or promise signed by the party to be charged. Section 360 distinguishes such a writing from a signature alone.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The applicable limit is four years.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:",
+    "note": "Supported for claims subject to the four-year limit specified in the item's scope.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The four-year limit keeps running no matter what is paid or signed.",
+    "supported": "no",
+    "source_id": "CCP-337",
+    "quote": "",
+    "note": "Section 337(d) expressly allows extension pursuant to §360.",
+    "quote_verified": null
+   },
+   {
+    "claim": "You can safely make a payment.",
+    "supported": "no",
+    "source_id": "CCP-360",
+    "quote": "",
+    "note": "The protection for a payment on an already-barred note does not establish safety for a payment before the limit expires.",
+    "quote_verified": null
+   },
+   {
+    "claim": "You can safely sign a payment plan.",
+    "supported": "no",
+    "source_id": "CCP-360",
+    "quote": "",
+    "note": "Nothing in §360 establishes that a signed payment plan is harmless regardless of whether it contains an acknowledgment or promise.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "error",
+    "text": "The assertion that the period always keeps running conflicts with §360's express new-period rule for qualifying promissory-note payments."
+   },
+   {
+    "type": "gap",
+    "text": "The scope includes both near-limit and already-barred claims, but the draft does not distinguish them."
+   },
+   {
+    "type": "overbroad",
+    "text": "“No matter what you pay or sign” disregards both the kind of payment and the contents of the signed writing."
+   },
+   {
+    "type": "advice_like",
+    "text": "“You can safely make a payment or sign a payment plan” gives a personal assurance without knowing the timing, obligation, or plan terms."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader could make a payment that starts a new period or sign an acknowledgment or promise that weakens a limitations defense."
+   }
+  ],
+  "summary": "The four-year figure is supported within scope; the blanket assurance is not. Section 360 distinguishes payment before the bar from payment alone afterward, and a signed acknowledgment or promise can matter."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": true
+ },
+ "usage": {
+  "input_tokens": 1613,
+  "output_tokens": 755
+ },
+ "est_cost_usd": 0.0431
+}

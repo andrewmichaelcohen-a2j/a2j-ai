@@ -74,3 +74,13 @@ timestamp	phase	decision	why	evidence	result
 2026-11-19T22:16:46	run1	checked D-05	Run 1 Checker pass	results/D-05.json	final label: Source-read
 2026-11-19T22:17:17	run1	checked D-06	Run 1 Checker pass	results/D-06.json	final label: Not yet checked
 2026-11-19T22:17:36	run1	checked D-07	Run 1 Checker pass	results/D-07.json	final label: Not yet checked
+2026-11-19T22:17:50	run1	checked D-08	Run 1 Checker pass	results/D-08.json	final label: Source-read
+2026-11-19T22:18:12	run1	checked D-09	Run 1 Checker pass	results/D-09.json	final label: Not yet checked
+2026-11-19T22:18:19	run1	checked D-10	Run 1 Checker pass	results/D-10.json	final label: Source-read
+2026-11-19T22:18:33	run1	checked D-11	Run 1 Checker pass	results/D-11.json	final label: Source-read
+2026-11-19T22:18:50	run1	checked D-12	Run 1 Checker pass	results/D-12.json	final label: Source-read
+2026-11-19T22:19:12	run1	checked D-13	Run 1 Checker pass	results/D-13.json	final label: Not yet checked
+2026-11-19T22:19:30	run1	checked D-14	Run 1 Checker pass	results/D-14.json	final label: Source-read
+2026-11-19T22:19:42	run1	checked D-15	Run 1 Checker pass	results/D-15.json	final label: Source-read
+2026-11-19T22:19:59	run1	checked D-06-SEEDED	Run 1 Checker pass	results/D-06-SEEDED.json	final label: Not yet checked
+2026-11-19T22:20:11	run1	checked D-11-SEEDED	Run 1 Checker pass	results/D-11-SEEDED.json	final label: Not yet checked

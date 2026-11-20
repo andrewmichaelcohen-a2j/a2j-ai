@@ -1,0 +1,62 @@
+{
+ "id": "D-09",
+ "ref": "X09",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "Section 337(a) sets a four-year period for an action upon a contract, obligation or liability founded upon an instrument in writing.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing",
+    "note": "The deed-of-trust or mortgage proviso concerns secured obligations, outside the stated scope.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337(a) makes an exception for Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a",
+    "note": "The draft names the exception without claiming what Section 336a provides.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337 does not state when the four-year period starts for an ordinary written-contract claim.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "For the ordinary subsection (a) claim, the text gives a duration but no starting event. Subsection (c)'s timing rules concern rescission.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The saved sources contain no other start rule for that ordinary written-contract claim.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "if an account stated is based upon an account of one item, the time shall begin to run from the date of the item, and if an account stated is based upon an account of more than one item, the time shall begin to run from the date of the last item.",
+    "note": "Section 337 is the only supplied source. The item-date rules in subsection (b) are expressly for an account stated, not for the ordinary subsection (a) claim.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "The scope describes the type of account, not the claim sued on. It does not exclude an account-stated claim, for which subsection (b) does specify a starting date."
+   }
+  ],
+  "summary": "The draft's claims are supported as worded for an ordinary Section 337(a) claim. The scope statement is broader than that conclusion."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [
+   "the Checker raised error, gap or overbroad flags"
+  ],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1382,
+  "output_tokens": 1055
+ },
+ "est_cost_usd": 0.0533
+}

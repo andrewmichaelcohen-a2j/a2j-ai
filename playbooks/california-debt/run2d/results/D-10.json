@@ -1,0 +1,47 @@
+{
+ "id": "D-10",
+ "ref": "X10",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "A debt buyer shall not bring suit to collect a consumer debt if the applicable statute of limitations on the debt buyer's claim has expired.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "The prohibition expressly covers bringing suit.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A debt buyer shall not initiate an arbitration to collect a consumer debt if the applicable statute of limitations on the debt buyer's claim has expired.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "The same condition applies to initiating arbitration.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A debt buyer shall not initiate another legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer's claim has expired.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "The prohibition also expressly covers initiating other legal proceedings.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "Section 1788.56 supports all three prohibitions under the stated condition: the applicable statute of limitations on the debt buyer’s claim has expired."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 977,
+  "output_tokens": 399
+ },
+ "est_cost_usd": 0.0238
+}
