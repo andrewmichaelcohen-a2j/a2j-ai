@@ -18,11 +18,12 @@ This is general legal information, not legal advice. No attorney has reviewed an
 - Two California statutes change on January 1, 2027: section 415.20 (service by mail) and section 473 (relief from default). Both new versions are saved in `sources/`.
 - AI spend so far: about $6.59 of the $100 cap (ledger: `run1/spend-log.tsv`).
 - November 20: Andy approved the scope name, the standard for finished (**ready to show, not ready to use**) and a freeze-then-learn approach. A Pilot Charter and a Method and Scaffolding Proposal (private docs, listed in the Artifact Index) hold the detail. The aim is to demonstrate AI-driven open-source collaboration to the access-to-justice community, not to release this for use by large numbers of non-attorneys.
+- Principle (Nov 20): CJaC is part of an ecosystem. Link to the best established tools for forms, intake and finding free help rather than rebuilding them; aspire to become a reference others link to once the value and validation are earned.
 - For the run-by-run detail and the next steps, read the newest file in `sessions/`. Run folders: `run1`, `run2`, `run2b`, `run2c`, `run2d`, `run2e`, `run2f`.
 
 ## How the work is labeled
 
-- A four-band assurance framework (bands 1 and 2 are the statutory and rule text that can be looked up and quoted; see the framework spec for all four).
+- A four-band assurance framework (bands 1 and 2 are the statutory and rule text that can be looked up and quoted; the full four-band definition was not found in this repo; see docs/BANDS_SPEC_RECONSTRUCTION_DRAFT.md for a reconstruction awaiting Andy's confirmation).
 - Four strength labels: **Source-read**, **Lawyers differ**, **Not yet checked**, **Attested**.
 - Every item that states law cites a source read in full, with the date it was read. Nothing is stated from memory.
 - Open question: how these four labels map onto the repo's status ladder (DRAFT, AUTOMATED-CHECKS-PASSED, UNDER REVIEW, VALIDATED, CERTIFIED). Default: the ladder is the backbone and the labels sit on top.
