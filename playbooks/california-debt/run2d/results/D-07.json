@@ -1,0 +1,118 @@
+{
+ "id": "D-07",
+ "ref": "X07",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "An answer must contain a general or specific denial of the material allegations the defendant controverts.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "An answer must state any new matter constituting a defense.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.\n(2) A statement of any new matter constituting a defense.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Defenses must be separately stated.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "The defenses shall be separately stated",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The defenses must refer to the causes of action they answer in a way that intelligibly distinguishes them.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "the several defenses shall refer to the causes of action which they are intended to answer, in a manner by which they may be intelligibly distinguished.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial is sufficient if the complaint is subject to the specified Article 2 or is unverified, subject to the draft's stated exception.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial puts only the material allegations of the complaint in issue.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "For a claim assigned to a third party for collection, if the complaint is verified, the denial must be positive or based on the defendant's information and belief, even under Article 2.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "However, if the cause of action is a claim assigned to a third party for collection and the complaint is verified, the denial of the allegations shall be made positively or according to the information and belief of the defendant, even if the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The time limit for an action on a contract, obligation or liability founded on a written instrument is four years within the stated unsecured-contract scope.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The four-year rule is subject to Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The cited form is Judicial Council form PLD-050, revised January 1, 2024.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "Judicial Council form PLD-050 (General Denial), Rev. January 1, 2024",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Item 2 provides for the defendant to state facts as separate affirmative defenses to the plaintiff's complaint.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "2.  DEFENDANT states the following FACTS as separate affirmative defenses to plaintiff's complaint (attach additional\npages if necessary):",
+    "note": "This describes the item, not eligibility to use the form.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The scope also includes verified complaints outside Article 2 on claims not assigned for collection. Section 431.30(d) requires a denial made positively or on information and belief in those cases too; the draft addresses that requirement only for assigned claims."
+   }
+  ],
+  "summary": "The sources support each express claim. The pleading discussion leaves one in-scope category of verified complaints unaddressed."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [
+   "the Checker raised error, gap or overbroad flags"
+  ],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2823,
+  "output_tokens": 1292
+ },
+ "est_cost_usd": 0.0743
+}
