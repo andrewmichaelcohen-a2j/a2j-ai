@@ -102,3 +102,5 @@ timestamp	item_ref	model	input_tokens	output_tokens	est_cost_usd
 2026-11-19T22:31:12	X16	gpt-6.2-astra	2712	1095	0.0655
 2026-11-19T22:31:27	X17	gpt-6.2-astra	1613	860	0.0473
 2026-11-19T22:38:58	X01	gpt-6.2-astra	2670	1905	0.0976
+2026-11-19T22:39:18	X04	gpt-6.2-astra	3419	1678	0.0945
+2026-11-19T22:39:31	X05	gpt-6.2-astra	2418	943	0.0571

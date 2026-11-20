@@ -102,3 +102,5 @@ timestamp	phase	decision	why	evidence	result
 2026-11-19T22:31:12	run1	checked D-06-SEEDED	Run 1 Checker pass	results/D-06-SEEDED.json	final label: Not yet checked
 2026-11-19T22:31:27	run1	checked D-11-SEEDED	Run 1 Checker pass	results/D-11-SEEDED.json	final label: Not yet checked
 2026-11-19T22:38:58	run1	checked D-01	Run 1 Checker pass	results/D-01.json	final label: Source-read
+2026-11-19T22:39:18	run1	checked D-04	Run 1 Checker pass	results/D-04.json	final label: Source-read
+2026-11-19T22:39:31	run1	checked D-05	Run 1 Checker pass	results/D-05.json	final label: Source-read
