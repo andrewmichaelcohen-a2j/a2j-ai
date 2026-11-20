@@ -23,7 +23,7 @@ This is general legal information, not legal advice. No attorney has reviewed an
 
 ## How the work is labeled
 
-- A four-band assurance framework (bands 1 and 2 are the statutory and rule text that can be looked up and quoted; the full four-band definition was not found in this repo; see docs/BANDS_SPEC_RECONSTRUCTION_DRAFT.md for a reconstruction awaiting Andy's confirmation).
+- Background framework (not something the playbook iterates on): some questions are fixed by rule text and can be looked up, some are practical guidance, and some depend on one person's facts and are handed to a lawyer. See docs/BAND_FRAMEWORK_SPEC_v0.1.md, a draft background note.
 - Four strength labels: **Source-read**, **Lawyers differ**, **Not yet checked**, **Attested**.
 - Every item that states law cites a source read in full, with the date it was read. Nothing is stated from memory.
 - Open question: how these four labels map onto the repo's status ladder (DRAFT, AUTOMATED-CHECKS-PASSED, UNDER REVIEW, VALIDATED, CERTIFIED). Default: the ladder is the backbone and the labels sit on top.
