@@ -1,22 +1,23 @@
 # California debt playbook: start here
 
-*Front door for people and for Claude sessions. Last updated November 19, 2026 (evening). Keep this file short; link out instead of adding detail.*
+*Front door for people and for Claude sessions. Last updated November 20, 2026 (morning). Keep this file short; link out instead of adding detail.*
 
 ## What this is
 
-An open, extensible civil-justice playbook. The first slice is **"Served with a collection lawsuit in California: the first 30 days."** It is written for a person who cannot afford a lawyer, and it is also meant to be usable by legal aid staff and checkable by attorneys.
+An open, extensible civil-justice playbook. The first slice is **"Served with a collection lawsuit in California: from the first letter to filing an answer."** It is written for a person who cannot afford a lawyer, and it is also meant to be usable by legal aid staff and checkable by attorneys.
 
 North star: reduce the access-to-justice gap by putting free, accurate, honestly labeled legal help in front of people who need it.
 
 This is general legal information, not legal advice. No attorney has reviewed any item yet, so nothing is labeled Attested.
 
-## Where things stand (November 19, 2026, late evening)
+## Where things stand (November 20, 2026, morning)
 
 - A 15-item prototype exists (items D-01 to D-15). It is kept privately for now.
 - Seven AI check runs happened on November 19 (Run 1, 2a, 2b, 2c, 2d, 2e, 2f; the Checker is OpenAI, a different vendor from the drafter). Both planted errors were caught every time.
 - Rule statements (not the plain-language wording, and not the practical guidance) matched saved source text in two agreeing runs for 12 items: D-01, D-02, D-03, D-04, D-06, D-07, D-08, D-09, D-10, D-11, D-12, D-14. D-05 and D-13 have one clean run after small fixes and need a second. D-15 is a reference check, held until a person spot-checks two web pages. Run 2f (D-01, D-04, D-05, D-06, D-07, D-09, D-13) was the last run.
 - Two California statutes change on January 1, 2027: section 415.20 (service by mail) and section 473 (relief from default). Both new versions are saved in `sources/`.
 - AI spend so far: about $6.59 of the $100 cap (ledger: `run1/spend-log.tsv`).
+- November 20: Andy approved the scope name, the standard for finished (**ready to show, not ready to use**) and a freeze-then-learn approach. A Pilot Charter and a Method and Scaffolding Proposal (private docs, listed in the Artifact Index) hold the detail. The aim is to demonstrate AI-driven open-source collaboration to the access-to-justice community, not to release this for use by large numbers of non-attorneys.
 - For the run-by-run detail and the next steps, read the newest file in `sessions/`. Run folders: `run1`, `run2`, `run2b`, `run2c`, `run2d`, `run2e`, `run2f`.
 
 ## How the work is labeled

@@ -8,7 +8,7 @@ This file is read automatically by Cowork at session start. It carries the key c
 
 ## CURRENT DIRECTION (November 19, 2026): read this first
 
-The project has pivoted from codified eviction rules to an open civil-justice playbook. The first slice is "Served with a collection lawsuit in California: the first 30 days."
+The project has pivoted from codified eviction rules to an open civil-justice playbook. The first slice is "Served with a collection lawsuit in California: from the first letter to filing an answer."
 
 - For playbook work, start at `playbooks/california-debt/00-START-HERE.md` and follow it.
 - Then read the newest file in `playbooks/california-debt/sessions/` (the end-of-day handoff) and summarize it for Andy in five lines or fewer before starting work. At the end of each working day, write a new handoff file there.
