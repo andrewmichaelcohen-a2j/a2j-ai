@@ -1,0 +1,238 @@
+{
+ "id": "D-06",
+ "ref": "X06",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "An answer must contain a general or specific denial of the material allegations the defendant controverts.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "An answer must state any new matter constituting a defense.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.\n(2) A statement of any new matter constituting a defense.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Subject to the stated verified assigned-claim exception, a general denial is sufficient if the complaint is subject to the specified Article 2.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "The draft does not classify any particular complaint as subject to Article 2.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial is sufficient if the complaint is not verified.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial puts only the material allegations of the complaint in issue.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "For a verified complaint not subject to that Article 2, denials must be made positively or according to the defendant's information and belief.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is verified, unless the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1, the denial of the allegations shall be made positively or according to the information and belief of the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "For a claim assigned to a third party for collection, if the complaint is verified, that denial requirement applies even under Article 2.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "However, if the cause of action is a claim assigned to a third party for collection and the complaint is verified, the denial of the allegations shall be made positively or according to the information and belief of the defendant, even if the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1.",
+    "note": "This statutory exception has no stated dollar threshold.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Defenses must be separately stated.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(g) The defenses shall be separately stated,",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Defenses must refer to the causes of action they answer in a way that intelligibly distinguishes them.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "the several defenses shall refer to the causes of action which they are intended to answer, in a manner by which they may be intelligibly distinguished.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under section 85, all its conditions must be met for an action to be treated as a limited civil case.",
+    "supported": "yes",
+    "source_id": "CCP-85",
+    "quote": "an action or special proceeding shall be treated as a limited civil case only if all of the following conditions are satisfied:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "One section 85 condition is that the amount in controversy not exceed $35,000.",
+    "supported": "yes",
+    "source_id": "CCP-85",
+    "quote": "(a) The amount in controversy does not exceed thirty-five thousand dollars ($35,000).",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 gives the defendant 30 calendar days after service to file a written response at the court.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you to file a written response at this court and have a copy\nserved on the plaintiff.",
+    "note": "The service referred to is service of the summons and legal papers.",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 directs the defendant to have a copy served on the plaintiff within the same period.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you to file a written response at this court and have a copy\nserved on the plaintiff.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 says a defendant who cannot pay the filing fee can ask the court clerk for a fee waiver form.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "If you cannot pay the filing fee, ask the\ncourt clerk for a fee waiver form.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "PLD-050 is the General Denial form, revised January 1, 2024.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "Judicial Council form PLD-050 (General Denial), Rev. January 1, 2024",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "PLD-050 says its use is mandatory for a general denial if the amount asked for or the value of the property involved is $1,000 or less.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "If you want to file a general denial, you MUST use this form if the amount asked for in the complaint or the value of the property\ninvolved is $1,000 or less.",
+    "note": "This specifies which form to use for a general denial, not when a general denial suffices.",
+    "quote_verified": true
+   },
+   {
+    "claim": "PLD-050 lists an unverified complaint as a condition for permissive use.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "You MAY use this form for a general denial if\n1. The complaint is not verified; or",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "PLD-050 also lists a verified complaint in a limited civil case, with a $35,000-or-less parenthetical.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "2. The complaint is verified and the case is a limited civil case (the amount in controversy is $35,000 or less),",
+    "note": "The draft separately identifies the dollar limit as only one condition of section 85.",
+    "quote_verified": true
+   },
+   {
+    "claim": "PLD-050 states an exception for a complaint involving a claim for more than $1,000 assigned to a third party for collection.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "BUT NOT if the complaint involves a claim for more than $1,000 that has been assigned to a third party for collection.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The original General Denial must be filed with the court clerk.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "The original of this General Denial must be filed with the clerk of this court",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The filing must include proof that a copy was served on each plaintiff's attorney.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "with proof that a copy was served on each plaintiff's\nattorney and on each plaintiff not represented by an attorney.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The proof must also cover service on each unrepresented plaintiff.",
+    "supported": "yes",
+    "source_id": "FORM-PLD-050",
+    "quote": "with proof that a copy was served on each plaintiff's\nattorney and on each plaintiff not represented by an attorney.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "FW-001 is Request to Waive Court Fees, revised April 1, 2024.",
+    "supported": "yes",
+    "source_id": "FORM-FW-001",
+    "quote": "Judicial Council form FW-001 (Request to Waive Court Fees), Rev. April 1, 2024, page 1",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A person receiving public benefits may use FW-001 to ask for a court fee waiver.",
+    "supported": "yes",
+    "source_id": "FORM-FW-001",
+    "quote": "If you are getting public benefits, are a low-income person, or do not have\nenough income to pay for your household’s basic needs and your court fees, you\nmay use this form to ask the court to waive your court fees.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A low-income person may use FW-001 to ask for a court fee waiver.",
+    "supported": "yes",
+    "source_id": "FORM-FW-001",
+    "quote": "If you are getting public benefits, are a low-income person, or do not have\nenough income to pay for your household’s basic needs and your court fees, you\nmay use this form to ask the court to waive your court fees.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A person without enough income for household basic needs and court fees may use FW-001 to ask for a court fee waiver.",
+    "supported": "yes",
+    "source_id": "FORM-FW-001",
+    "quote": "If you are getting public benefits, are a low-income person, or do not have\nenough income to pay for your household’s basic needs and your court fees, you\nmay use this form to ask the court to waive your court fees.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The named citation to §431.30(b), (d) omits subdivision (g), which supports the separate-defense and cause-of-action instructions."
+   }
+  ],
+  "summary": "The provided texts support each claim as worded. PLD-050's $1,000 rule concerns form choice; it does not override §431.30(d)'s denial requirement for a verified claim assigned for collection."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [
+   "the Checker raised error, gap or overbroad flags"
+  ],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 5669,
+  "output_tokens": 2604
+ },
+ "est_cost_usd": 0.1495
+}
