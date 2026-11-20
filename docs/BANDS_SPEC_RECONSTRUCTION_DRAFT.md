@@ -24,3 +24,6 @@
 2. Where is the Oct 31 "definition pack" (a Claude chat, the a2j project, Drive)?
 3. Should the committed three-band docs be updated to four, or left as history with a note?
 4. How do bands map to the status ladder (DRAFT to CERTIFIED) and to the four labels?
+
+## Update (Nov 20, 12:05): related document found
+Andy supplied `CJaC_Framework_Spec_v0.1_Nov_1_2026.pdf`. It is the framework spec (item schema, ladder, tests T1 to T9), not the band definitions. It uses the bands only as metadata: "Band (1 to 4), particularity (P0 to P3), release mode (A, A*, B, C, Refer)". It says answers are written at P0 to P2 for release and P3 is never released, which matches the Oct 31 "stop at conditional guidance (level 2)". So the missing definition pack should hold three things: the four bands, the particularity scale P0 to P3, and the release modes. None of the three is defined in the Framework Spec. The table above remains an inference until that pack is found.
