@@ -1,0 +1,76 @@
+{
+ "id": "D-02",
+ "ref": "X02",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The summons must direct the defendant to file a written pleading in response to the complaint.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The instruction is supported, but subsection (a) qualifies the requirement with “Except as otherwise required by statute”.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The deadline stated in that direction is 30 days after the summons is served on the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "Supports both the length of the period and the event that starts it.",
+    "quote_verified": true
+   },
+   {
+    "claim": "For an act provided by law, exclude the first day.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "The time in which any act provided by law is to be done is computed by excluding the first day",
+    "note": "For the stated deadline, the service day is not counted.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Include the last day unless it is a holiday.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "including the last, unless the last day is a holiday",
+    "note": "The draft states the exception to counting the last day.",
+    "quote_verified": true
+   },
+   {
+    "claim": "If the last day is a holiday, it is also excluded.",
+    "supported": "partly",
+    "source_id": "CCP-12",
+    "quote": "unless the last day is a holiday, and then it is also excluded.",
+    "note": "The exclusion is accurate, but the draft does not identify the resulting deadline under CCP-12a.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "The draft's “must” omits the statutory exception in CCP-412.20(a)."
+   },
+   {
+    "type": "gap",
+    "text": "CCP-12a extends the period through the next nonholiday and expressly treats Saturdays as holidays. The draft does not explain either point."
+   },
+   {
+    "type": "harm_risk",
+    "text": "An unqualified 30-day rule or an incomplete holiday calculation could lead to a missed deadline. CCP-412.20(a)(4) states that the plaintiff may apply for entry of default if the defendant does not respond."
+   }
+  ],
+  "summary": "The sources support the stated service trigger, 30-day period, and basic counting rule. The draft omits the statutory qualification on the summons requirement and the rule identifying the deadline when the last day is a holiday."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1736,
+  "output_tokens": 659
+ },
+ "est_cost_usd": 0.0402
+}

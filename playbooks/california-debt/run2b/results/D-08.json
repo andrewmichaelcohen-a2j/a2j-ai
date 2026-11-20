@@ -1,0 +1,68 @@
+{
+ "id": "D-08",
+ "ref": "X08",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "An action upon a contract, obligation or liability founded upon an instrument in writing must be brought within four years.",
+    "supported": "partly",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "Four years is the general rule. Section 337(a) expressly excepts §336a and sets a three-month post-sale limit for certain actions to recover a secured balance.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Once the applicable §337 period has run, a person shall not bring suit or initiate arbitration or another legal proceeding to collect the debt.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "When the period in which an action must be commenced under this section has run, a person shall not bring suit or initiate an arbitration or other legal proceeding to collect the debt.",
+    "note": "The bar applies to each listed proceeding.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The §337 period can be extended only under Section 360.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "The period in which an action may be commenced under this section shall only be extended pursuant to Section 360.",
+    "note": "Section 337(d) names §360 as the sole basis for extension.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The answer must contain a statement of any new matter constituting a defense.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.\n(2) A statement of any new matter constituting a defense.",
+    "note": "This is a general requirement for an answer; the quoted provision does not specifically identify a limitations defense.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "The unqualified four-year statement omits the §336a exception and the three-month limit after a power-of-sale sale for an action seeking the balance of an obligation secured by the specified deed of trust or mortgage."
+   },
+   {
+    "type": "gap",
+    "text": "The draft gives a duration but no starting point. The provided §337(a) text does not specify when the period begins for an ordinary written-contract claim."
+   },
+   {
+    "type": "gap",
+    "text": "The bare §360 reference does not explain its signed-writing rule or its payment exception: a qualifying principal or interest payment on a promissory note starts a new period, but the payment alone cannot revive an already barred claim."
+   }
+  ],
+  "summary": "The sources support the collection bar, the §360 cross-reference, and the answer requirement. They support four years as a general rule, not a deadline for every debt founded on a writing."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2127,
+  "output_tokens": 687
+ },
+ "est_cost_usd": 0.0445
+}

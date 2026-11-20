@@ -1,0 +1,86 @@
+{
+ "id": "D-02",
+ "ref": "X02",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "The summons-content requirement applies except as otherwise required by statute.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(a) Except as otherwise required by statute, a summons shall be directed to the defendant, signed by the clerk and issued under the seal of the court in which the action is pending, and it shall contain:",
+    "note": "The exception qualifies the required contents.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must direct the defendant to file a written pleading with the court in response to the complaint.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "Specifies what to file and where.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The stated filing deadline is 30 days after service of the summons on the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "Service on the defendant is the trigger.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The first day is excluded when computing the time for an act provided by law.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "The time in which any act provided by law is to be done is computed by excluding the first day,",
+    "note": "The day of service is not counted.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The last day is included unless it is a holiday, in which case it is excluded.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "and including the last, unless the last day is a holiday, and then it is also excluded.",
+    "note": "The exception concerns the last day.",
+    "quote_verified": true
+   },
+   {
+    "claim": "If the last day is a holiday, the period extends through the next day that is not a holiday.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "If the last day for the performance of any act provided or required by law to be performed within a specified period of time is a holiday, then that period is hereby extended to and including the next day that is not a holiday.",
+    "note": "The next nonholiday is included.",
+    "quote_verified": true
+   },
+   {
+    "claim": "All day on Saturdays counts as a holiday for the last-day extension.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "For purposes of this section, “holiday” means all day on Saturdays,",
+    "note": "The draft limits the statement to that purpose.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The draft’s citation list omits §12a(a), the supplied authority for both the extension to the next nonholiday and the treatment of Saturdays."
+   }
+  ],
+  "summary": "All claims are supported within the stated scope. The gap is in the citation list, not the deadline calculation."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [
+   "the Checker raised error, gap or overbroad flags"
+  ],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1886,
+  "output_tokens": 733
+ },
+ "est_cost_usd": 0.0444
+}

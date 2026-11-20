@@ -1,0 +1,47 @@
+{
+ "id": "D-10",
+ "ref": "X10",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "A debt buyer shall not bring suit to collect a consumer debt if the applicable statute of limitations on its claim has expired.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "The prohibition on suit is expressly conditional on expiration of the applicable limitations period.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the same condition, a debt buyer shall not initiate arbitration to collect the consumer debt.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "Arbitration is expressly included.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the same condition, a debt buyer shall not initiate another legal proceeding to collect the consumer debt.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "The prohibition expressly includes other legal proceedings.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "Section 1788.56 supports all three prohibitions and the condition that the applicable statute of limitations on the debt buyer’s claim has expired."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 977,
+  "output_tokens": 381
+ },
+ "est_cost_usd": 0.0231
+}

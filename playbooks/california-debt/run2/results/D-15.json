@@ -1,0 +1,84 @@
+{
+ "id": "D-15",
+ "ref": "X15",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "Start with the California Courts Self-Help Center for free help.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source verifies this referral.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Start with your local legal aid office for free help.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source verifies this referral.",
+    "quote_verified": null
+   },
+   {
+    "claim": "LawHelpCA has a statewide directory of legal aid programs.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither the directory contents nor its statewide coverage were verified.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Tell them you were served with a collection lawsuit.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source supports this intake instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Give the date you were served.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source supports this intake instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The guidance applies to anyone in California.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source establishes this scope.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "No source texts were provided; the directory verification note is not evidence."
+   },
+   {
+    "type": "overbroad",
+    "text": "“Anyone in California” is unverified, and the intake instructions assume the reader has been served."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Tell them” and “give the date” direct the reader what to report."
+   }
+  ],
+  "summary": "None of the referrals, directory details, intake instructions, or stated scope could be checked against a provided source."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 743,
+  "output_tokens": 477
+ },
+ "est_cost_usd": 0.025
+}

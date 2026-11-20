@@ -11,6 +11,7 @@ This file is read automatically by Cowork at session start. It carries the key c
 The project has pivoted from codified eviction rules to an open civil-justice playbook. The first slice is "Served with a collection lawsuit in California: the first 30 days."
 
 - For playbook work, start at `playbooks/california-debt/00-START-HERE.md` and follow it.
+- Then read the newest file in `playbooks/california-debt/sessions/` (the end-of-day handoff) and summarize it for Andy in five lines or fewer before starting work. At the end of each working day, write a new handoff file there.
 - Eviction work is on hold. The sections below describe the earlier eviction-rules work and are historical context for the playbook, not its instructions.
 - The GREEN/YELLOW/RED rule, the work queue, and the overnight validation jobs below belong to that earlier work. For playbook work, do not pull tasks from `docs/WORK_QUEUE.md` on your own, and ask Andy before any AI spend beyond the pilot cap ($100).
 

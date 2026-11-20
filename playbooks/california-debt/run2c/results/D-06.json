@@ -1,0 +1,106 @@
+{
+ "id": "D-06",
+ "ref": "X06",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "The answer must contain a general or specific denial of the material allegations the defendant controverts.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The answer must state any new matter constituting a defense.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.\n(2) A statement of any new matter constituting a defense.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial is sufficient if the complaint is subject to the specified Article 2, subject to the verified assigned-claim exception stated later in the draft.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial is sufficient if the complaint is not verified.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial puts only the material allegations of the complaint in issue.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "For a verified complaint outside the specified Article 2, denials must be made positively or according to the defendant’s information and belief.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is verified, unless the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1, the denial of the allegations shall be made positively or according to the information and belief of the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "If the claim was assigned to a third party for collection and the complaint is verified, denials must be made positively or according to the defendant’s information and belief, even under the specified Article 2.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "However, if the cause of action is a claim assigned to a third party for collection and the complaint is verified, the denial of the allegations shall be made positively or according to the information and belief of the defendant, even if the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 85 requires all its conditions to be satisfied for an action to be treated as a limited civil case.",
+    "supported": "yes",
+    "source_id": "CCP-85",
+    "quote": "an action or special proceeding shall be treated as a limited civil case only if all of the following conditions are satisfied:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "One Section 85 condition is that the amount in controversy does not exceed $35,000.",
+    "supported": "yes",
+    "source_id": "CCP-85",
+    "quote": "(a) The amount in controversy does not exceed thirty-five thousand dollars ($35,000).",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The draft does not explain how to determine whether Article 2 applies. Section 85 addresses limited-case classification; the supplied texts do not establish the link to Article 2 coverage."
+   },
+   {
+    "type": "gap",
+    "text": "For answers asserting defenses, §431.30(g) also requires defenses to be separately stated and linked to the causes of action they answer."
+   }
+  ],
+  "summary": "The supplied statutes support each express claim, including the exception for a verified complaint on a claim assigned for collection. The $35,000 ceiling is stated as one condition of limited-case status, not as a test for using a general denial."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [
+   "the Checker raised error, gap or overbroad flags"
+  ],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2850,
+  "output_tokens": 1102
+ },
+ "est_cost_usd": 0.0669
+}

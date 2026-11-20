@@ -1,0 +1,164 @@
+{
+ "id": "D-13",
+ "ref": "X13",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The federal text reported is from the 2024 edition of the U.S. Code.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "Edition: 2024 U.S. Code.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 1692g(a) generally requires a debt collector to send written notice within five days after the initial communication with a consumer in connection with collecting a debt.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "Within five days after the initial communication with a consumer in connection with the collection of any debt, a debt collector shall, unless the following information is contained in the initial communication or the consumer has paid the debt, send the consumer a written notice",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "No separate notice is required if the initial communication contains the required information.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "unless the following information is contained in the initial communication or the consumer has paid the debt",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "No separate notice is required if the consumer has paid the debt.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "or the consumer has paid the debt",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must contain the amount of the debt.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "(1) the amount of the debt;",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must name the creditor to whom the debt is owed.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "(2) the name of the creditor to whom the debt is owed;",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must state that the collector will assume the debt is valid unless the consumer disputes the debt or a portion of it within thirty days after receipt.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "(3) a statement that unless the consumer, within thirty days after receipt of the notice, disputes the validity of the debt, or any portion thereof, the debt will be assumed to be valid by the debt collector;",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must state that a written dispute of all or part of the debt within the thirty-day period requires the collector to obtain verification or a judgment copy and mail it to the consumer.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "(4) a statement that if the consumer notifies the debt collector in writing within the thirty-day period that the debt, or any portion thereof, is disputed, the debt collector will obtain verification of the debt or a copy of a judgment against the consumer and a copy of such verification or judgment will be mailed to the consumer by the debt collector;",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must state that a written request within the thirty-day period entitles the consumer to the original creditor's name and address if different from the current creditor.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "(5) a statement that, upon the consumer's written request within the thirty-day period, the debt collector will provide the consumer with the name and address of the original creditor, if different from the current creditor.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under subsection (b), written notice disputing the debt or a portion of it within the thirty-day period requires collection of the debt or disputed portion to cease.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that the debt, or any portion thereof, is disputed, or that the consumer requests the name and address of the original creditor, the debt collector shall cease collection of the debt, or any disputed portion thereof,",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under subsection (b), collection must also cease if the consumer requests the original creditor's name and address.",
+    "supported": "partly",
+    "source_id": "USC-15-1692g",
+    "quote": "If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that the debt, or any portion thereof, is disputed, or that the consumer requests the name and address of the original creditor, the debt collector shall cease collection",
+    "note": "The source applies the writing requirement and deadline to both triggers. The draft's separate verb “or requests” does not clearly carry those conditions into the request branch of its collection-stop claim.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The collection stop lasts until the collector obtains and mails the applicable verification, judgment copy, or original creditor's name and address.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "until the debt collector obtains verification of the debt or a copy of a judgment, or the name and address of the original creditor, and a copy of such verification or judgment, or name and address of the original creditor, is mailed to the consumer by the debt collector.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under subsection (c), no court may treat failure to dispute under the section as an admission of liability.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "The failure of a consumer to dispute the validity of a debt under this section may not be construed by any court as an admission of liability by the consumer.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under subsection (d), a formal pleading in a civil action is not an initial communication for subsection (a).",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "A communication in the form of a formal pleading in a civil action shall not be treated as an initial communication for purposes of subsection (a).",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "California Civil Code section 1788.17 requires debt collectors collecting or attempting to collect consumer debt to comply with 15 U.S.C. sections 1692b through 1692j, subject to the stated exception.",
+    "supported": "yes",
+    "source_id": "CIV-1788.17",
+    "quote": "every debt collector collecting or attempting to collect a consumer debt shall comply with the provisions of Sections 1692b to 1692j, inclusive, of, and shall be subject to the remedies in Section 1692k of, Title 15 of the United States Code.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The California provision excepts the persons specified in section 1692a(6)(A) and (B), and their principals, from section 1692e(11) and section 1692g.",
+    "supported": "yes",
+    "source_id": "CIV-1788.17",
+    "quote": "However, subsection (11) of Section 1692e and Section 1692g shall not apply to any person specified in paragraphs (A) and (B) of subsection (6) of Section 1692a of Title 15 of the United States Code or that person’s principal.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 1788.17 refers to federal codes as they read on January 1, 2001.",
+    "supported": "yes",
+    "source_id": "CIV-1788.17",
+    "quote": "The references to federal codes in this section refer to those codes as they read January 1, 2001.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "The subsection (b) sentence can be read to say that an oral or late original-creditor request stops collection. The preceding notice-content sentence states both conditions, but the collection-stop sentence attaches them only to the dispute."
+   }
+  ],
+  "summary": "The sources support the notice requirements and the California cross-reference. The one qualification concerns what kind of original-creditor request stops collection under subsection (b). The draft does not claim that the 2001 federal text incorporated by California matches the 2024 edition."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2431,
+  "output_tokens": 2037
+ },
+ "est_cost_usd": 0.1009
+}

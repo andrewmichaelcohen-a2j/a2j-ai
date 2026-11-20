@@ -1,0 +1,119 @@
+{
+ "id": "D-03",
+ "ref": "X03",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "If the last day of the specified period is a holiday, the period extends through the next nonholiday.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "If the last day for the performance of any act provided or required by law to be performed within a specified period of time is a holiday, then that period is hereby extended to and including the next day that is not a holiday.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "All day on Saturday counts as a holiday under Section 12a.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "For purposes of this section, “holiday” means all day on Saturdays",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "All holidays specified in Section 135 count under Section 12a.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "all holidays specified in Section 135",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Days required to be considered holidays under Section 12b count to the extent that section provides.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "to the extent provided in Section 12b, all days that by terms of Section 12b are required to be considered as holidays.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 12b applies to a city, county, state or public office, other than a branch office, when it closes for the whole day.",
+    "supported": "yes",
+    "source_id": "CCP-12b",
+    "quote": "If any city, county, state, or public office, other than a branch office, is closed for the whole of any day",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The closure day is a holiday for deadline computation insofar as the business of that office is concerned.",
+    "supported": "yes",
+    "source_id": "CCP-12b",
+    "quote": "insofar as the business of that office is concerned, that day shall be considered as a holiday for the purposes of computing time under Sections 12 and 12a.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 135 makes full-day Government Code Section 6700 holidays judicial holidays, subject to listed exceptions.",
+    "supported": "yes",
+    "source_id": "CCP-135",
+    "quote": "Every full day designated as a holiday by Section 6700 of the Government Code, including that Thursday of November declared by the President to be Thanksgiving Day, is a judicial holiday, except the date corresponding with the second new moon following the winter solstice, or the third new moon following the winter solstice should an intercalary month intervene, known as “Lunar New Year,”",
+    "note": "The exception list continues beyond the quotation.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Government Code Section 6700 lists every Sunday as a holiday.",
+    "supported": "yes",
+    "source_id": "GOV-6700",
+    "quote": "(a) The holidays in this state are:\n(1) Every Sunday.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Every Saturday is a judicial holiday.",
+    "supported": "yes",
+    "source_id": "CCP-135",
+    "quote": "Every Saturday and the day after Thanksgiving Day are judicial holidays.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The day after Thanksgiving Day is a judicial holiday.",
+    "supported": "yes",
+    "source_id": "CCP-135",
+    "quote": "Every Saturday and the day after Thanksgiving Day are judicial holidays.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "When a judicial holiday falls on Saturday or Sunday, the Judicial Council may designate an alternative observance day.",
+    "supported": "yes",
+    "source_id": "CCP-135",
+    "quote": "If a judicial holiday falls on a Saturday or a Sunday, the Judicial Council may designate an alternative day for observance of the holiday.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 12a applies to all provisions of law requiring an act on a particular day or within a specified period.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "This section applies to Sections 659, 659a, and 921, and to all other provisions of law providing or requiring an act to be performed on a particular day or within a specified period of time, whether expressed in this or any other code or statute, ordinance, rule, or regulation.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "The provided statutes support each claim within the stated scope, including the office-specific limit on closure days and the Judicial Council’s discretion to designate an alternative observance day."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2472,
+  "output_tokens": 1106
+ },
+ "est_cost_usd": 0.064
+}

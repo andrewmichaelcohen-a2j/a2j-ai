@@ -1,0 +1,64 @@
+{
+ "id": "D-02",
+ "ref": "X02",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The summons directs the defendant to file a written response with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A direction that the defendant file with the court a written pleading in response to the complaint",
+    "note": "The statute calls the response a written pleading.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The filing deadline is 30 days after service of the summons.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "Supported within the stated scope: cases where the summons gives 30 days.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The 30 days are calendar days.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The statute says “days” without specifying calendar days. No time-counting source was provided.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The count starts on the day after service.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The statute identifies service as the trigger but does not state which day is counted as day one.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The cited section supports the deadline but does not verify either counting instruction."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A counting mistake could lead to a late filing. If the defendant does not respond in time, the plaintiff may apply for entry of default."
+   }
+  ],
+  "summary": "The source supports filing a written pleading with the court within 30 days after service. It does not verify “calendar days” or the first day to count."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1324,
+  "output_tokens": 430
+ },
+ "est_cost_usd": 0.0278
+}

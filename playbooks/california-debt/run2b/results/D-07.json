@@ -1,0 +1,72 @@
+{
+ "id": "D-07",
+ "ref": "X07",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "An answer must contain a statement of any new matter constituting a defense.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.\n(2) A statement of any new matter constituting a defense.",
+    "note": "Subsection (b)(2) expressly requires the statement.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The defenses must be separately stated.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "The defenses shall be separately stated,",
+    "note": "Subsection (g) expressly requires separate statements.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The defenses must refer to the causes of action they answer.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "the several defenses shall refer to the causes of action which they are intended to answer, in a manner by which they may be intelligibly distinguished.",
+    "note": "The reference must make clear which defense answers which cause of action.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial only puts in issue the material allegations of the complaint.",
+    "supported": "partly",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "The draft states the effect of a general denial but omits the conditions on its sufficiency and the exception for verified claims assigned for collection.",
+    "quote_verified": true
+   },
+   {
+    "claim": "An action upon a contract founded upon an instrument in writing must be brought within four years.",
+    "supported": "partly",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "Four years is the general period. Subsection (a) also limits certain actions for a secured balance to three months after a sale under a power of sale.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "harm_risk",
+    "text": "A reader could rely on a general denial for a verified complaint on a claim assigned to a third party for collection. Section 431.30(d) requires denials made positively or according to information and belief in that situation, even if Article 2 applies."
+   },
+   {
+    "type": "overbroad",
+    "text": "The unqualified four-year statement omits the Section 336a exception and could cause a reader to overlook the shorter post-sale deadline in Section 337(a)."
+   }
+  ],
+  "summary": "Section 431.30 supports the three defense-pleading requirements. The general-denial and four-year statements omit qualifications that can change the practical answer."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1878,
+  "output_tokens": 715
+ },
+ "est_cost_usd": 0.0436
+}

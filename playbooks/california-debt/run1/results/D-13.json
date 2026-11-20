@@ -1,0 +1,116 @@
+{
+ "id": "D-13",
+ "ref": "X13",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "Rights apply before a lawsuit.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No text establishes when protections begin.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The notice and dispute statements apply to third-party collectors.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Collector coverage cannot be checked.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A collector must send a notice about the debt.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The duty, method of notice and any exceptions cannot be checked.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The period to dispute the debt is generally 30 days.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither the duration nor what it limits can be checked.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The period runs from receipt of the notice.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The starting event cannot be checked.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The dispute is to be made in writing.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The role of a written dispute cannot be checked.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Keep copies of everything.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source supports this recordkeeping instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "California’s Rosenthal Act provides parallel protections for original creditors.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither original-creditor coverage nor the extent of any parallel protections can be checked.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The debt having been with a different company first is a condition relevant to original-creditor protections.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No text establishes that connection.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "No source text was supplied for §1692g, Regulation F or the Rosenthal Act. Citation names alone do not support the claims."
+   },
+   {
+    "type": "overbroad",
+    "text": "“Must send” states an unqualified notice duty. The dispute sentence could also be read as a cutoff for all disputes, without identifying what depends on timing or writing."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader who missed 30 days might conclude there is no point in questioning the debt."
+   },
+   {
+    "type": "gap",
+    "text": "The different-company condition does not identify which company is the original creditor or why the debt’s history matters to coverage."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Keep copies of everything” is a direct instruction."
+   }
+  ],
+  "summary": "No claim can be verified from the supplied materials. The notice duty, dispute deadline and creditor coverage remain unchecked."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 840,
+  "output_tokens": 752
+ },
+ "est_cost_usd": 0.0368
+}

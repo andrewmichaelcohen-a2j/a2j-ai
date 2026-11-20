@@ -1,0 +1,104 @@
+{
+ "id": "D-09",
+ "ref": "X09",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The four-year period at issue applies to credit card accounts.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The period is assumed in the question; no source establishes its applicability.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The same analysis applies to similar accounts.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The scope statement does not identify which other accounts qualify.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Practitioners may disagree about when the period starts.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source shows competing readings.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The first missed payment is a possible start point.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source identifies this event as a trigger.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The last payment is a possible start point.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source identifies this event as a trigger.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The charge-off date is a possible start point.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source identifies this event as a trigger.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The correct start date for a particular account depends on the documents.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source explains which documents matter or why.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A lawyer should review the particular account.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "This is an individualized recommendation, not a sourced instruction.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The citation is a placeholder. No source was provided for the governing start-date rule or for disagreement about it."
+   },
+   {
+    "type": "overbroad",
+    "text": "The draft lists three possible triggers across credit card and undefined “similar accounts” without specifying when any trigger applies."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader who relies on the last-payment or charge-off date without a rule supporting it could miscalculate whether the four years have elapsed."
+   },
+   {
+    "type": "advice_like",
+    "text": "“A lawyer should look at it” directs action for the reader’s particular account."
+   }
+  ],
+  "summary": "No source was provided to verify when the four years start. The draft’s assertion of disagreement does not justify a “Lawyers differ” label."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 747,
+  "output_tokens": 664
+ },
+ "est_cost_usd": 0.0325
+}

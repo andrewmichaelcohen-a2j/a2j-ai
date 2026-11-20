@@ -1,0 +1,184 @@
+{
+ "id": "D-04",
+ "ref": "X04",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The current version of §415.20 remains in effect through December 31, 2026.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "(d) This section shall remain in effect only until January 1, 2027, and as of that date is repealed.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 415.20(b) applies when the summons and complaint cannot with reasonable diligence be personally delivered to the person specified in §416.60, 416.70, 416.80 or 416.90.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "(b) If a copy of the summons and complaint cannot with reasonable diligence be personally delivered to the person to be served, as specified in Section 416.60, 416.70, 416.80, or 416.90,",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Copies may be left at the person's dwelling house, usual place of abode or usual place of business.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "a summons may be served by leaving a copy of the summons and complaint at the person’s dwelling house, usual place of abode, usual place of business,",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Copies may be left at the person's usual mailing address other than a post office box.",
+    "supported": "partly",
+    "source_id": "CCP-415.20",
+    "quote": "or usual mailing address other than a United States Postal Service post office box",
+    "note": "The exclusion specifies a USPS post office box, not every type of mailbox.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The copies may be left in the presence of a competent member of the household.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "in the presence of a competent member of the household",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The alternative recipient may be a person apparently in charge.",
+    "supported": "partly",
+    "source_id": "CCP-415.20",
+    "quote": "a person apparently in charge of their office, place of business, or usual mailing address other than a United States Postal Service post office box",
+    "note": "The source specifies what the person must appear to be in charge of.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The recipient must be at least 18 years old.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "at least 18 years of age",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The recipient must be informed of the contents.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "who shall be informed of the contents thereof",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "After leaving the copies, copies must be mailed by first-class mail with postage prepaid.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "and by thereafter mailing a copy of the summons and of the complaint by first-class mail, postage prepaid",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The follow-up mailing is sent to the place where the copies were left.",
+    "supported": "partly",
+    "source_id": "CCP-415.20",
+    "quote": "to the person to be served at the place where a copy of the summons and complaint were left.",
+    "note": "The place is correct, but the instruction omits the required addressee.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the current version, service in this manner is complete on the 10th day after mailing.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "Service of a summons in this manner is deemed complete on the 10th day after the mailing.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons directs a response within 30 days after service.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The interval and trigger are correct. A response means filing a written pleading with the court, and subdivision (a) qualifies the rule with “Except as otherwise required by statute”.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement §415.20 applies beginning January 1, 2027.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "(e) This section shall become operative on January 1, 2027.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the replacement subdivision (b), good-faith personal delivery attempts show reasonable diligence if made on at least three occasions, on three different days, at three different times.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "(2) For purposes of this subdivision, a party shows reasonable diligence by attempting personal delivery of the summons and complaint, in good faith, on at least three occasions on three different days at three different times.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "In a consumer-debt collection action, at least one attempt must be at the dwelling place or usual place of abode if known or reasonably determinable.",
+    "supported": "partly",
+    "source_id": "CCP-415.20@2027",
+    "quote": "(3) In an action to collect “consumer debt,” as defined in Section 1788.2 of the Civil Code, at least one of the service attempts shall be made at the dwelling place or usual place of abode of the person to be served, provided that the dwelling place or usual place of abode is known or could be determined with reasonable effort.",
+    "note": "The location and reasonable-effort condition are supported; the debt must meet the referenced statutory definition.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement version permits first-class mail, Priority Mail with tracking, or Certified Mail with return receipt requested.",
+    "supported": "partly",
+    "source_id": "CCP-415.20@2027",
+    "quote": "by United States Postal Service first-class mail, Priority Mail with tracking, or Certified Mail with return receipt requested, with postage prepaid, to the person to be served at the place where a copy of the summons and complaint were left.",
+    "note": "The three options are correct. The future-version description does not specify USPS or state that prepayment and the addressee requirement still apply.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the replacement version, service in this manner is still complete on the 10th day after mailing.",
+    "supported": "yes",
+    "source_id": "CCP-415.20@2027",
+    "quote": "Service of a summons in this manner is deemed complete on the 10th day after the mailing.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "“Apparently in charge” lacks its location limit, and “post office box” lacks the USPS qualifier."
+   },
+   {
+    "type": "gap",
+    "text": "Both versions require mailing to the person to be served, not merely to the correct place."
+   },
+   {
+    "type": "gap",
+    "text": "The answer covers subdivision (b), not every case of nonpersonal service. Both versions have a separate subdivision (c) first-attempt rule when the only reasonably known address is a private mailbox at a commercial mail receiving agency."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader could mistake an informal response for a timely court filing or apply the 10-day mailing rule to a different method of service. Either mistake risks missing the filing deadline."
+   },
+   {
+    "type": "gap",
+    "text": "For counting the filing period, CCP-12 excludes the first day and includes the last unless the last day is a holiday."
+   },
+   {
+    "type": "date_change",
+    "text": "The three-attempt diligence provision, consumer-debt home-attempt condition and expanded mailing options take effect January 1, 2027. The 10th-day completion rule does not change."
+   }
+  ],
+  "summary": "Both versions support the 10th day after mailing as the completion date for §415.20(b) service. Section 412.20 supports the ordinary 30-day period measured from service, but specifies a written pleading filed with the court. The draft also omits qualifications affecting whether service was made in the described manner."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 3212,
+  "output_tokens": 2000
+ },
+ "est_cost_usd": 0.1057
+}

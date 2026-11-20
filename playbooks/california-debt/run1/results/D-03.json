@@ -1,0 +1,92 @@
+{
+ "id": "D-03",
+ "ref": "X03",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "A Saturday counts as a holiday for the last-day rule.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "For purposes of this section, “holiday” means all day on Saturdays",
+    "note": "Saturday is expressly included.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A Sunday counts as a holiday for the last-day rule.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither supplied text names Sunday. The cross-referenced holiday provisions were not supplied.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A court holiday on the last day triggers an extension.",
+    "supported": "partly",
+    "source_id": "CCP-12a",
+    "quote": "For purposes of this section, “holiday” means all day on Saturdays, all holidays specified in Section 135 and, to the extent provided in Section 12b, all days that by terms of Section 12b are required to be considered as holidays.",
+    "note": "The trigger is a defined statutory holiday. The supplied text does not establish that every day described as a court holiday qualifies.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The extended deadline is the next day the court is open.",
+    "supported": "partly",
+    "source_id": "CCP-12a",
+    "quote": "then that period is hereby extended to and including the next day that is not a holiday.",
+    "note": "The endpoint is the next nonholiday. The source does not use court opening as the test.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The rule applies to any deadline counted in days.",
+    "supported": "partly",
+    "source_id": "CCP-12a",
+    "quote": "all other provisions of law providing or requiring an act to be performed on a particular day or within a specified period of time",
+    "note": "The stated scope is limited to acts provided for or required by law.",
+    "quote_verified": true
+   },
+   {
+    "claim": "When in doubt, file earlier.",
+    "supported": "no",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither statute gives this filing advice.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Do not plan around the last possible minute.",
+    "supported": "no",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither statute gives planning advice.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "Sections 135 and 12b are referenced but not supplied; Sunday coverage is unverified."
+   },
+   {
+    "type": "overbroad",
+    "text": "“Any deadline” omits the legal-act condition, and “the next day the court is open” substitutes court availability for statutory holiday status."
+   },
+   {
+    "type": "advice_like",
+    "text": "The final two sentences give practical instructions rather than state the sourced rule."
+   }
+  ],
+  "summary": "Section 12a verifies Saturday coverage and extension through the next statutory nonholiday. The supplied texts do not verify Sunday coverage or establish that court opening determines the deadline."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1119,
+  "output_tokens": 713
+ },
+ "est_cost_usd": 0.0375
+}

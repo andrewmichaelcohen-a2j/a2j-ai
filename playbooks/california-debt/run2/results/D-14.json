@@ -1,0 +1,44 @@
+{
+ "id": "D-14",
+ "ref": "X14",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "Get help immediately if any of these fit.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The draft lists no conditions that “these” could refer to. No attorney attestation or source connecting a specific condition to the need for immediate legal help was provided.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The trigger list is missing, so the draft does not answer when to talk to a lawyer right away."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Get help immediately” directs the reader to act without identifying a circumstance that warrants urgency."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader could fail to recognize an urgent situation and delay seeking help when a defense or paycheck is at risk."
+   }
+  ],
+  "summary": "The urgency recommendation cannot be checked without the triggers and support for each one."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 4218,
+  "output_tokens": 243
+ },
+ "est_cost_usd": 0.0435
+}

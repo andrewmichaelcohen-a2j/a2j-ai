@@ -1,0 +1,56 @@
+{
+ "id": "D-14",
+ "ref": "X14",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "Get help immediately if any of these fit.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No triggers are listed, and no source supports the timing instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Everyone served with a collection lawsuit.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source establishes this scope.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "“These” has no referent. Neither the trigger list nor the named attorney attestation and sources per bullet were provided."
+   },
+   {
+    "type": "overbroad",
+    "text": "The stated scope covers everyone served, with no support for that breadth."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Get help immediately” directs the reader to act based on unspecified circumstances."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader cannot identify an urgent trigger and may delay seeking help, risking a defense or a paycheck."
+   }
+  ],
+  "summary": "Neither the urgency instruction nor its scope can be checked. The draft supplies no triggers or supporting sources."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 732,
+  "output_tokens": 307
+ },
+ "est_cost_usd": 0.0181
+}

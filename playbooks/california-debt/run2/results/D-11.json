@@ -1,0 +1,108 @@
+{
+ "id": "D-11",
+ "ref": "X11",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "A payment by itself cannot revive any already-barred debt.",
+    "supported": "partly",
+    "source_id": "CCP-360",
+    "quote": "but no such payment of itself shall revive a cause of action once barred.",
+    "note": "“Such payment” refers to the specified promissory-note payment, not expressly to every payment on every debt.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Before the claim is barred, some payments can start a new limitations period.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "as any such payment is made, the running of the time within which an action may be commenced upon the principal sum or upon any installment of principal or interest due on such note, and to start the running of a new period of time",
+    "note": "The statute provides an instance in which a payment starts a new period.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Payments on a promissory note are an example of payments that can restart the clock.",
+    "supported": "partly",
+    "source_id": "CCP-360",
+    "quote": "any payment on account of principal or interest due on a promissory note made by the party to be charged shall be deemed a sufficient acknowledgment or promise of a continuing contract",
+    "note": "The example omits who must pay and what the payment must be for.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A signed writing acknowledging the debt can matter.",
+    "supported": "partly",
+    "source_id": "CCP-360",
+    "quote": "No acknowledgment or promise is sufficient evidence of a new or continuing contract, by which to take the case out of the operation of this title, unless the same is contained in some writing, signed by the party to be charged thereby",
+    "note": "The identity of the signer matters: the writing must be signed by the party to be charged.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A signed writing promising to pay can matter.",
+    "supported": "partly",
+    "source_id": "CCP-360",
+    "quote": "No acknowledgment or promise is sufficient evidence of a new or continuing contract, by which to take the case out of the operation of this title, unless the same is contained in some writing, signed by the party to be charged thereby",
+    "note": "The same signer condition applies to a promise.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Talk to a lawyer before signing anything about an old debt.",
+    "supported": "no",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither source gives this instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Talk to a lawyer before making a payment on an old debt.",
+    "supported": "no",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither source gives this instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The applicability statement refers to a four-year limit for debt claims.",
+    "supported": "partly",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "Section 337 specifies covered actions and exceptions; the applicability statement does not identify which debts fall within its scope.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "The categorical assurance about paying a barred debt is broader than §360’s “no such payment” clause."
+   },
+   {
+    "type": "gap",
+    "text": "The promissory-note example omits the payer and principal-or-interest conditions; the writing discussion omits the signer condition."
+   },
+   {
+    "type": "gap",
+    "text": "The four-year scope is not tied to the actions covered by §337."
+   },
+   {
+    "type": "advice_like",
+    "text": "The final sentence directly instructs the reader to consult a lawyer before signing or paying."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader who mistakenly believes the period has expired could rely on the opening assurance and make a qualifying note payment while the period is still running, starting a new period."
+   }
+  ],
+  "summary": "Section 360 supports a payment-based restart in a specified promissory-note setting. The draft broadens the nonrevival clause and omits conditions relevant to both payments and signed writings."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1569,
+  "output_tokens": 1001
+ },
+ "est_cost_usd": 0.0526
+}

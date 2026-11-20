@@ -1,0 +1,102 @@
+{
+ "id": "D-11",
+ "ref": "X11",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "An acknowledgment or promise must be in a writing signed by the party to be charged to serve as sufficient evidence of a new or continuing contract, subject to the payment rule stated next.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "No acknowledgment or promise is sufficient evidence of a new or continuing contract, by which to take the case out of the operation of this title, unless the same is contained in some writing, signed by the party to be charged thereby",
+    "note": "The draft states a necessary condition, not that every signed writing restarts the period.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A payment on account of principal or interest due on a promissory note made by the party to be charged is deemed a sufficient acknowledgment or promise of a continuing contract.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "any payment on account of principal or interest due on a promissory note made by the party to be charged shall be deemed a sufficient acknowledgment or promise of a continuing contract",
+    "note": "The draft limits this payment rule to promissory notes.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Each qualifying payment stops the running of the time to commence an action on the note.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "to stop, from time to time as any such payment is made, the running of the time within which an action may be commenced upon the principal sum or upon any installment of principal or interest due on such note",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A qualifying payment starts a new period.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "and to start the running of a new period of time",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "No such payment by itself revives an already barred cause of action.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "but no such payment of itself shall revive a cause of action once barred.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The period for an action on a contract, obligation or liability founded on a written instrument is four years.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing",
+    "note": "The stated scope is unsecured debt; the real-property security proviso does not apply.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The four-year rule is subject to Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Once the Section 337 period has run, a person shall not bring suit or initiate arbitration or another legal proceeding to collect the debt.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "(d) When the period in which an action must be commenced under this section has run, a person shall not bring suit or initiate an arbitration or other legal proceeding to collect the debt.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The Section 337 period may be extended only pursuant to Section 360.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "The period in which an action may be commenced under this section shall only be extended pursuant to Section 360.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The named citations omit §337(d), which supports both the collection-proceeding bar and the restriction on extensions in the final sentence."
+   }
+  ],
+  "summary": "The provided texts support each claim within the stated unsecured-debt scope. The final sentence relies on §337(d), not §337(a)."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [
+   "the Checker raised error, gap or overbroad flags"
+  ],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1784,
+  "output_tokens": 939
+ },
+ "est_cost_usd": 0.0518
+}

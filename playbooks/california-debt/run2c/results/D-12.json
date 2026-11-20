@@ -1,0 +1,138 @@
+{
+ "id": "D-12",
+ "ref": "X12",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "The court may relieve a party from a judgment, dismissal, order or other proceeding on just terms.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "(b) The court may, upon any terms as may be just, relieve a party or the party’s legal representative from a judgment, dismissal, order, or other proceeding",
+    "note": "Relief under this clause is discretionary.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The proceeding must have been taken against the party through the party's mistake, inadvertence, surprise or excusable neglect.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "taken against the party through the party’s mistake, inadvertence, surprise, or excusable neglect.",
+    "note": "These are alternative grounds.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The application for this relief must include a copy of the proposed answer or other pleading.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "Application for this relief shall be accompanied by a copy of the answer or other pleading proposed to be filed therein, otherwise the application shall not be granted",
+    "note": "The requirement applies to the relief just described.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The application must be made within a reasonable time.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and shall be made within a reasonable time, in no case exceeding six months",
+    "note": "Filing within six months alone does not establish reasonableness.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The outer limit is six months after the judgment, dismissal, order or proceeding was taken.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "in no case exceeding six months, after the judgment, dismissal, order, or proceeding was taken.",
+    "note": "The triggering event is the action from which relief is sought.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under section 473(a)(1), the court has discretion to permit a late answer after notice to the adverse party.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "The court may likewise, in its discretion, after notice to the adverse party, allow, upon any terms as may be just, an amendment to any pleading or proceeding in other particulars; and may upon like terms allow an answer to be made after the time limited by this code.",
+    "note": "Permission may be on just terms.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under section 473(d), either party may move, after notice to the other party, for the court to set aside any void judgment or order.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and may, on motion of either party after notice to the other party, set aside any void judgment or order.",
+    "note": "The court may grant relief; the motion does not itself set aside the judgment.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The current version is in effect through December 31, 2026.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "(e) This section shall remain in effect only until January 1, 2027, and as of that date is repealed.",
+    "note": "This is the operative version on November 19, 2026.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement version becomes operative January 1, 2027.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "(f) This section shall become operative on January 1, 2027.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement retains subdivisions (a) through (d) in the same words.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "Difference from the version in effect until January 1, 2027: subdivisions (a) through (d) read the same.",
+    "note": "The supplied texts match in those subdivisions.",
+    "quote_verified": true
+   },
+   {
+    "claim": "New subdivision (e) replaces the repeal provision.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "The old subdivision (e) (repeal on January 1, 2027) is replaced by a new (e) on motions to vacate a default judgment void for lack of proper service",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "New subdivision (e) allows a party to move to vacate a default judgment that is void for lack of proper service.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "a party to an action may bring a motion to vacate a default judgment that is void for lack of proper service",
+    "note": "This is permission to bring a motion, not a guarantee it will be granted.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under new subdivision (e), that motion may be brought at any time after entry of the judgment.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "a default judgment that is void for lack of proper service at any time after entry of the judgment.",
+    "note": "This timing language is in the future version.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "date_change",
+    "text": "The express “at any time after entry” rule for a default judgment void for lack of proper service becomes operative January 1, 2027. The draft correctly distinguishes it from current subdivision (d)."
+   },
+   {
+    "type": "gap",
+    "text": "The scope includes represented parties. Subdivision (b) also provides mandatory relief for specified attorney-caused defaults, default judgments or dismissals on a proper application made no more than six months after entry of judgment and accompanied by the attorney’s sworn affidavit of fault. That distinct route and timing trigger are not discussed."
+   }
+  ],
+  "summary": "The stated claims are supported. For discretionary relief under subdivision (b), reasonable time and the six-month ceiling both apply. The omitted attorney-fault route has a separate timing trigger."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [
+   "the Checker raised error, gap or overbroad flags"
+  ],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 3449,
+  "output_tokens": 1468
+ },
+ "est_cost_usd": 0.0863
+}

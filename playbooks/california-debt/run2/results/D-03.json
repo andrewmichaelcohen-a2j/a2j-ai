@@ -1,0 +1,96 @@
+{
+ "id": "D-03",
+ "ref": "X03",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "Saturday counts as a holiday when it is the last day.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "For purposes of this section, “holiday” means all day on Saturdays, all holidays specified in Section 135 and, to the extent provided in Section 12b, all days that by terms of Section 12b are required to be considered as holidays.",
+    "note": "Section 12a expressly includes Saturdays.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Sunday counts as a holiday when it is the last day.",
+    "supported": "yes",
+    "source_id": "GOV-6700",
+    "quote": "(a) The holidays in this state are:\n(1) Every Sunday.",
+    "note": "CCP-135 includes full-day GOV-6700 holidays without excluding Sundays; CCP-12a incorporates CCP-135.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A court holiday counts as a holiday when it is the last day.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "all holidays specified in Section 135",
+    "note": "Section 135 specifies judicial holidays.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The deadline moves to the next day the court is open.",
+    "supported": "partly",
+    "source_id": "CCP-12a",
+    "quote": "If the last day for the performance of any act provided or required by law to be performed within a specified period of time is a holiday, then that period is hereby extended to and including the next day that is not a holiday.",
+    "note": "The test is the next nonholiday. Under CCP-12b, a closure counts only for the business of the affected office, only for a whole-day closure, and not for a branch office.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The rule applies to any deadline counted in days.",
+    "supported": "partly",
+    "source_id": "CCP-12a",
+    "quote": "all other provisions of law providing or requiring an act to be performed on a particular day or within a specified period of time, whether expressed in this or any other code or statute, ordinance, rule, or regulation.",
+    "note": "The source covers deadlines for acts provided or required by law, not every deadline expressed in days.",
+    "quote_verified": true
+   },
+   {
+    "claim": "When in doubt, file earlier.",
+    "supported": "no",
+    "source_id": "",
+    "quote": "",
+    "note": "The statutes do not give this filing advice.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Do not plan around the last possible minute.",
+    "supported": "no",
+    "source_id": "",
+    "quote": "",
+    "note": "The statutes give a day-counting rule, not planning advice.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "“Any deadline counted in days” omits the requirement that the act be provided or required by law."
+   },
+   {
+    "type": "gap",
+    "text": "“Next day the court is open” omits the limits on which office closures count as holidays under CCP-12b."
+   },
+   {
+    "type": "harm_risk",
+    "text": "Someone who treats a branch-office closure as extending the deadline could file late."
+   },
+   {
+    "type": "advice_like",
+    "text": "The last two sentences give practical instructions not found in the cited statutes."
+   }
+  ],
+  "summary": "The sources support the weekend and judicial-holiday triggers. They do not support court openness as the deadline test, the unrestricted scope statement, or the filing advice."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2156,
+  "output_tokens": 833
+ },
+ "est_cost_usd": 0.0506
+}

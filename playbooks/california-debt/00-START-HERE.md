@@ -1,6 +1,6 @@
 # California debt playbook: start here
 
-*Front door for people and for Claude sessions. Last updated November 19, 2026. Keep this file short; link out instead of adding detail.*
+*Front door for people and for Claude sessions. Last updated November 19, 2026 (evening). Keep this file short; link out instead of adding detail.*
 
 ## What this is
 
@@ -10,12 +10,12 @@ North star: reduce the access-to-justice gap by putting free, accurate, honestly
 
 This is general legal information, not legal advice. No attorney has reviewed any item yet, so nothing is labeled Attested.
 
-## Where things stand (November 19, 2026)
+## Where things stand (November 19, 2026, end of day)
 
 - A 15-item prototype exists (items D-01 to D-15). It is kept privately for now.
-- Strength labels today: 12 Source-read, 1 Lawyers differ, 2 Not yet checked. Seven items carry a harm flag. Eighteen flags are open.
-- On November 19, statute text behind D-02, D-04, D-06, D-10, D-11 and D-12 was re-read through a legal-data connector. It corrected D-10 (the source says less than the first draft claimed) and added a missing condition to D-06.
-- Two California statutes change on January 1, 2027: section 415.20 (service by mail) and section 473 (relief from default). The new 415.20 was retrieved. The new 473 has not been retrieved yet.
+- Strength labels: none of the 15 meets the strict Source-read standard yet. A first AI check (Run 1) caught both planted errors and raised 59 flags; rewriting the items as rule statements (Run 2b) produced the first Source-read candidate, D-10, which needs a second agreeing run.
+- Two California statutes change on January 1, 2027: section 415.20 (service by mail) and section 473 (relief from default). Both new versions are saved in `sources/`.
+- For the latest detail and the next steps, read the newest file in `sessions/`.
 
 ## How the work is labeled
 
@@ -33,6 +33,7 @@ This is general legal information, not legal advice. No attorney has reviewed an
 5. Do not change `rules/` or the old validation pipeline unless asked. Do not rewrite `docs/`.
 6. Andy is the named owner and initial reviewer. Anything that needs a legal judgment call goes to him.
 7. Private strategy, messaging drafts and funding material are not kept in this repo. If a task needs something that is not here, ask.
+8. Start of every session: read the newest file in `sessions/`, then tell Andy in five lines or fewer where things stand and what is next. End of every working day (or when Andy says "wrap up"): write a new dated file in `sessions/` with where things stand, what happened, decisions made, next steps and watch-outs. Keep it free of keys and private strategy.
 
 ## The pilot plan, in short
 

@@ -1,0 +1,164 @@
+{
+ "id": "D-01",
+ "ref": "X01",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The requirements apply except as otherwise required by statute.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "Except as otherwise required by statute",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must be directed to the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "a summons shall be directed to the defendant",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The clerk must sign the summons.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "signed by the clerk",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must be issued under the seal of the court where the action is pending.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "issued under the seal of the court in which the action is pending",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must contain the title of the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(1) The title of the court in which the action is pending.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must contain the parties’ names.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(2) The names of the parties to the action.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must direct the defendant to file a written pleading with the court in response to the complaint.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A direction that the defendant file with the court a written pleading in response to the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The stated filing deadline is 30 days after service of the summons on the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must warn that if the defendant does not so respond, default will be entered upon the plaintiff’s application.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A notice that, unless the defendant so responds, their default will be entered upon application by the plaintiff",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must state that the plaintiff may apply to the court for the relief demanded in the complaint.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "the plaintiff may apply to the court for the relief demanded in the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must identify garnishment of wages, taking of money or property, or other relief as possible outcomes.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "which could result in garnishment of wages, taking of money or property, or other relief.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The legend must appear at the top, above all other matter.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "at the top of the summons above all other matter",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The legend must be in boldface.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(6) The following introductory legend at the top of the summons above all other matter, in boldface type, in English and Spanish:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The legend must appear in English and Spanish.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "in English and Spanish:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The English legend begins with “Notice!  You have been sued.”",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "Notice!  You have been sued.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Taken as a checklist, the draft identifies what an ordinary civil summons must contain.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "(5) The following statement in boldface type:  “You may seek the advice of an attorney in any matter connected with the complaint or this summons. Such attorney should be consulted promptly so that your pleading may be filed or entered within the time required by this summons.”",
+    "note": "The draft omits this required statement, which is separate from the opening legend.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The checklist omits the boldface attorney-consultation statement required by (a)(5)."
+   },
+   {
+    "type": "gap",
+    "text": "The cited range ends at (a)(4); the opening legend is supported by (a)(6). The draft gives its opening words but not the required warning about a decision without a hearing or the direction to read below."
+   },
+   {
+    "type": "gap",
+    "text": "Under (b), a county ordinance may require the legend in an additional language. This can matter within the stated ordinary-civil scope."
+   }
+  ],
+  "summary": "The listed features are supported. The checklist is incomplete, most notably because it omits a separate mandatory boldface statement."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1573,
+  "output_tokens": 1319
+ },
+ "est_cost_usd": 0.0653
+}

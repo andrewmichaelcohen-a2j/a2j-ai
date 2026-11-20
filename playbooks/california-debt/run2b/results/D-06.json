@@ -1,0 +1,116 @@
+{
+ "id": "D-06",
+ "ref": "X06",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "An answer must contain a general or specific denial of the material allegations the defendant controverts.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "An answer must state any new matter constituting a defense.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.\n(2) A statement of any new matter constituting a defense.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial is sufficient if the complaint is not verified.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 contains the economic litigation procedures.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Section 431.30(d) confirms the statutory cross-reference but does not give Article 2 that description. Article 2 itself was not provided.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A general denial is sufficient if the complaint is subject to Article 2.",
+    "supported": "partly",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "The later sentence about verified claims assigned for collection qualifies this rule.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A sufficient general denial puts only the material allegations of the complaint in issue.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "If the complaint is verified, the denial must be made positively or according to the defendant's information and belief.",
+    "supported": "partly",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is verified, unless the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1, the denial of the allegations shall be made positively or according to the information and belief of the defendant.",
+    "note": "The draft omits “unless” and its Article 2 condition. Verification alone does not trigger this requirement.",
+    "quote_verified": true
+   },
+   {
+    "claim": "If the claim was assigned to a third party for collection and the complaint is verified, a positive or information-and-belief denial is required even under Article 2.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "However, if the cause of action is a claim assigned to a third party for collection and the complaint is verified, the denial of the allegations shall be made positively or according to the information and belief of the defendant, even if the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Limited civil case treatment requires satisfaction of all Section 85 conditions.",
+    "supported": "yes",
+    "source_id": "CCP-85",
+    "quote": "an action or special proceeding shall be treated as a limited civil case only if all of the following conditions are satisfied:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "One Section 85 condition is that the amount in controversy does not exceed $35,000.",
+    "supported": "yes",
+    "source_id": "CCP-85",
+    "quote": "(a) The amount in controversy does not exceed thirty-five thousand dollars ($35,000).",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "The categorical verified-complaint sentence conflicts with the Article 2 rule for a verified complaint where the claim was not assigned to a third party for collection."
+   },
+   {
+    "type": "gap",
+    "text": "Section 85 establishes conditions for limited civil classification. Neither it nor the supplied Section 431.30 text establishes when that classification makes Article 2 applicable."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader relying on the Article 2 sentence alone could file a general denial for a verified claim assigned for collection, risking a defective response. The later assigned-claim sentence is essential."
+   }
+  ],
+  "summary": "The draft correctly states the answer contents, the special rule for verified assigned claims, and the Section 85 threshold. Its main error is treating verification alone as requiring a positive or information-and-belief denial despite the Article 2 exception."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2728,
+  "output_tokens": 1253
+ },
+ "est_cost_usd": 0.0719
+}

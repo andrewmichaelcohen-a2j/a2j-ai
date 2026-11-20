@@ -1,0 +1,530 @@
+{
+  "generated": "2026-11-19 Run 2b rewrite",
+  "note": "Run 2b: answer = rule statements only. guidance_lines and claims_needing_a_source are not sent to the Checker. D-06-SEEDED and D-11-SEEDED are unchanged controls.",
+  "items": [
+    {
+      "id": "D-01",
+      "question": "I got papers from a court. Is this a lawsuit?",
+      "answer": "A summons must name the court in which the action is pending and the parties to the action. It must direct the defendant to file a written pleading in response to the complaint within 30 days after the summons is served. It must also warn that, unless the defendant responds, their default will be entered upon application by the plaintiff, and the plaintiff may then apply to the court for the relief demanded in the complaint, which could result in garnishment of wages, taking of money or property, or other relief.",
+      "applies_when": "A summons issued by a California court.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §412.20(a)(1) to (4)"
+      ],
+      "sources_available": [
+        "CCP-412.20"
+      ],
+      "sources_not_available": [
+        "Judicial Council form SUM-100"
+      ],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [],
+        "reviewer_note": "Add a plain description of what proof of service looks like.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Look for the court's name and the 30-day response notice on the first page of the papers.",
+        "If you are not sure whether what you received is a summons, ask the court clerk or a legal aid office today."
+      ],
+      "claims_needing_a_source": [
+        "A lawsuit starts with a summons and a complaint.",
+        "The summons gives a case number (form SUM-100).",
+        "A collection letter or phone call is not a lawsuit, even if it says it may become one."
+      ]
+    },
+    {
+      "id": "D-02",
+      "question": "How long do I have to respond?",
+      "answer": "The summons must direct the defendant to file a written pleading in response to the complaint within 30 days after the summons is served on the defendant. Time to do an act provided by law is computed by excluding the first day and including the last, unless the last day is a holiday, and then it is also excluded.",
+      "applies_when": "Civil cases in which the summons directs a response within 30 days of service.",
+      "harm_flag": "Missing the deadline lets the other side ask the court for a default judgment.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §412.20(a)(3)",
+        "Cal. Code Civ. Proc. §12"
+      ],
+      "sources_available": [
+        "CCP-412.20",
+        "CCP-12",
+        "CCP-12a"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [],
+        "reviewer_note": "Confirm the \"day after service\" counting rule against CCP §12 before attestation.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Use the deadline calculator, then check the date against the summons and the Proof of Service filed with the court.",
+        "File early rather than on the last day."
+      ],
+      "claims_needing_a_source": [
+        "The 30 days are calendar days (form SUM-100 wording)."
+      ]
+    },
+    {
+      "id": "D-03",
+      "question": "What if day 30 falls on a weekend or court holiday?",
+      "answer": "If the last day for performing an act required by law within a specified period is a holiday, the period is extended to and including the next day that is not a holiday. For this purpose a holiday means all day on Saturdays, all holidays specified in Section 135, and, to the extent provided in Section 12b, all days that Section 12b requires to be considered holidays. Section 12b treats a day as a holiday when a city, county, state or public office is closed for the whole of that day, as far as the business of that office is concerned. Section 135 makes every full day designated a holiday by Government Code Section 6700 a judicial holiday, with listed exceptions, and Government Code Section 6700 lists every Sunday as a holiday. Section 135 also makes every Saturday, and the day after Thanksgiving Day, a judicial holiday. This rule applies to all provisions of law requiring an act within a specified period of time.",
+      "applies_when": "Any act required by law to be done within a specified period of time, including a response deadline.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §§12, 12a, 12b, 135",
+        "Cal. Gov. Code §6700"
+      ],
+      "sources_available": [
+        "CCP-12",
+        "CCP-12a",
+        "CCP-135",
+        "CCP-12b",
+        "GOV-6700"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Calculator rolls over weekends only. Court holiday table not built."
+        ],
+        "reviewer_note": "Need a verified list of California court holidays before the calculator can claim more.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Check which holidays apply to your county court, because courts may be closed on other days.",
+        "When in doubt, file earlier."
+      ],
+      "claims_needing_a_source": []
+    },
+    {
+      "id": "D-04",
+      "question": "Does the deadline change if I was not handed the papers?",
+      "answer": "Under Code of Civil Procedure Section 415.20, in effect through December 31, 2026, if a copy of the summons and complaint cannot with reasonable diligence be personally delivered to the person to be served, as specified in Section 416.60, 416.70, 416.80 or 416.90, a summons may be served by leaving a copy at the person's dwelling house, usual place of abode, usual place of business or usual mailing address other than a post office box, in the presence of a competent member of the household or a person apparently in charge, who is at least 18 years of age and who is informed of the contents, and by thereafter mailing a copy by first-class mail, postage prepaid, to that place. Service in this manner is deemed complete on the 10th day after the mailing. The summons directs a response within 30 days after the summons is served. Beginning January 1, 2027, a replacement version of Section 415.20 applies. It provides that a party shows reasonable diligence by attempting personal delivery in good faith on at least three occasions on three different days at three different times; that in an action to collect consumer debt at least one of the attempts shall be made at the dwelling place or usual place of abode if known or reasonably determinable; and that the mailing may be by first-class mail, Priority Mail with tracking, or Certified Mail with return receipt requested. Service is still deemed complete on the 10th day after the mailing.",
+      "applies_when": "Service of a summons by leaving papers with another person and mailing them (substituted service), under Section 415.20(b).",
+      "harm_flag": "Counting from the wrong date can make a person file too late.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §415.20, version in effect through Dec 31, 2026",
+        "Cal. Code Civ. Proc. §415.20, version operative Jan 1, 2027 (Stats. 2025, Ch. 563, Sec. 5)",
+        "Cal. Code Civ. Proc. §412.20(a)(3)"
+      ],
+      "sources_available": [
+        "CCP-415.20",
+        "CCP-415.20@2027",
+        "CCP-412.20",
+        "CCP-12"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Section 415.20 is replaced on January 1, 2027. Both versions say service is complete on the 10th day after mailing. The new version also lists accepted mailing methods, describes reasonable diligence as at least three good-faith attempts on three different days and times, and for consumer debt requires at least one attempt at the home. Show the version in effect on the date the person is reading.",
+          "Calculator still refuses this case on purpose. It could accept a mailing date later."
+        ],
+        "reviewer_note": "Both versions of the section were read on Nov 19, 2026 through a legal-data connector. Decide whether the calculator should accept a mailing date.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Look at the Proof of Service filed with the court to see how and when you were served.",
+        "Ask the court clerk or a lawyer which date starts your 30 days. Do not guess."
+      ],
+      "claims_needing_a_source": [
+        "The 30 days run from the date service is deemed complete (an inference from Sections 412.20 and 415.20; an attorney should confirm)."
+      ]
+    },
+    {
+      "id": "D-05",
+      "question": "If I call the collector or their lawyer, does that stop the clock?",
+      "answer": "The summons directs the defendant to file a written pleading in response to the complaint within 30 days after the summons is served. It warns that, unless the defendant so responds, their default will be entered upon application by the plaintiff.",
+      "applies_when": "Any time after service and before a response is filed.",
+      "harm_flag": "People wait on a phone promise and a default is entered.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §412.20(a)(3) and (4)"
+      ],
+      "sources_available": [
+        "CCP-412.20"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Check Cal. Rules of Court 3.110 on agreed extensions before attestation."
+        ],
+        "reviewer_note": "This is a trap-ledger item: the harmful direction is waiting.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Do not count on a promise of more time unless it is in writing.",
+        "Confirm any agreed extension with the court clerk or a lawyer before relying on it."
+      ],
+      "claims_needing_a_source": [
+        "Talking with the collector or its lawyer does not pause the 30 days.",
+        "Rules on agreed extensions of time (Cal. Rules of Court 3.110)."
+      ]
+    },
+    {
+      "id": "D-06",
+      "question": "What do I file to respond?",
+      "answer": "An answer to a complaint must contain the general or specific denial of the material allegations the defendant controverts and a statement of any new matter constituting a defense. If the complaint is not verified, or is subject to the economic litigation procedures of Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1, a general denial is sufficient but only puts in issue the material allegations of the complaint. If the complaint is verified, the denial must be made positively or according to the defendant's information and belief. That is also required when the cause of action is a claim assigned to a third party for collection and the complaint is verified, even if the complaint is subject to Article 2. A case is treated as a limited civil case only if all of the conditions in Code of Civil Procedure Section 85 are met, and one of them is that the amount in controversy does not exceed $35,000.",
+      "applies_when": "A response to a collection complaint. What is allowed depends on whether the complaint is verified and whether the claim was assigned for collection.",
+      "harm_flag": "Using a form that is not allowed for this kind of claim may leave the response defective, which risks a default.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §431.30(b), (d)",
+        "Cal. Code Civ. Proc. §85"
+      ],
+      "sources_available": [
+        "CCP-85",
+        "CCP-431.30",
+        "CCP-412.20"
+      ],
+      "sources_not_available": [
+        "Judicial Council form PLD-050",
+        "Judicial Council form FW-001"
+      ],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "What a proper specific answer looks like for an assigned claim is not yet written.",
+          "Statute re-read Nov 19, 2026: section 431.30(d) says a general denial is not enough when the claim was assigned for collection and the complaint is verified. The draft rests on form PLD-050 and omits the verified-complaint condition. Attorney to confirm how the statute and the form fit together, and the $35,000 threshold (CCP section 85, not read)."
+        ],
+        "reviewer_note": "Corrected in the final pass. The first draft said a general denial fits any unverified limited civil case. The form itself excludes assigned claims over $1,000. This is the kind of error attestation exists to catch.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Check the last page of the complaint to see whether it is signed under oath (verified).",
+        "If the plaintiff is a debt buyer or the claim was assigned, get help before you file.",
+        "If you cannot afford the filing fee, ask the court for a fee waiver."
+      ],
+      "claims_needing_a_source": [
+        "Form PLD-050 is the short general denial form; it cannot be used for a claim over $1,000 that was assigned for collection.",
+        "Responses are filed with the court clerk.",
+        "Form FW-001 is the request to waive court fees."
+      ]
+    },
+    {
+      "id": "D-07",
+      "question": "What defenses should I know about?",
+      "answer": "An answer must contain a statement of any new matter constituting a defense, and the defenses must be separately stated and refer to the causes of action they answer. A general denial only puts in issue the material allegations of the complaint. An action upon a contract founded upon an instrument in writing must be brought within four years.",
+      "applies_when": "Responses to consumer debt lawsuits.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §431.30(b), (d), (g)",
+        "Cal. Code Civ. Proc. §337(a)"
+      ],
+      "sources_available": [
+        "CCP-431.30",
+        "CCP-337"
+      ],
+      "sources_not_available": [
+        "Judicial Council form PLD-050"
+      ],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "PLD-050 has a free-text item for affirmative defenses and no pre-printed limitations checkbox. Attorney to confirm how limitations is pleaded in practice."
+        ],
+        "reviewer_note": "List is a starting set. An expert should add or cut.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Read the response form carefully before you file.",
+        "Ask for help before you file, because a defense you leave out may be hard to add later."
+      ],
+      "claims_needing_a_source": [
+        "Common defenses in consumer debt cases: the debt is too old, the plaintiff cannot show it owns the debt or the amount, the debt is not yours, you were not properly served.",
+        "A defense not raised in the answer can be lost."
+      ]
+    },
+    {
+      "id": "D-08",
+      "question": "How old is too old for a debt lawsuit?",
+      "answer": "An action upon a contract, obligation or liability founded upon an instrument in writing must be brought within four years. When the period in which an action must be commenced under that section has run, a person shall not bring suit or initiate an arbitration or other legal proceeding to collect the debt. The period can be extended only under Section 360. The answer must contain a statement of any new matter constituting a defense.",
+      "applies_when": "Debts founded on a written contract.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §337(a), (d)",
+        "Cal. Code Civ. Proc. §360",
+        "Cal. Code Civ. Proc. §431.30(b)(2)"
+      ],
+      "sources_available": [
+        "CCP-337",
+        "CCP-360",
+        "CCP-431.30"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "§431.30 requires new matter constituting a defense to be stated in the answer, which supports \"must raise it\". Attorney to confirm for limitations specifically."
+        ],
+        "reviewer_note": "Pair with D-09 so the start date is never left implicit.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Ask whether the four years have passed by working out the start date with help (see D-09).",
+        "Raise the time limit in your response."
+      ],
+      "claims_needing_a_source": [
+        "A credit card agreement is a written contract covered by Section 337(a).",
+        "The limitations defense must be raised in the response."
+      ]
+    },
+    {
+      "id": "D-09",
+      "question": "When does the 4 years start counting?",
+      "answer": "Code of Civil Procedure Section 337 sets a four-year period for an action founded on a written instrument. The saved sources do not say on what date that period starts for a particular credit card account.",
+      "applies_when": "Credit card and similar accounts.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §337(a)"
+      ],
+      "sources_available": [],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "contested",
+        "open_flags": [
+          "Placeholder to show how a contested item displays. Needs real sources and an expert."
+        ],
+        "reviewer_note": "Show options side by side, never a single answer, unless an expert panel converges.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Gather statements and the last payment record, and have a lawyer work out the start date."
+      ],
+      "claims_needing_a_source": [
+        "Practitioners may disagree on the start date; candidates include the first missed payment, the last payment, and the charge-off date.",
+        "The start date for your account depends on the documents."
+      ]
+    },
+    {
+      "id": "D-10",
+      "question": "Can a debt buyer sue me over a debt that is too old?",
+      "answer": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer's claim has expired.",
+      "applies_when": "A debt buyer suing on a consumer debt. A different analysis applies when the original creditor sues.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Civ. Code §1788.56"
+      ],
+      "sources_available": [
+        "CIV-1788.56"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Other debt buyer duties (disclosures, documentation) sit in sections 1788.52 to 1788.64 and have not been read. They were removed from this answer until they are.",
+          "Whether the time limit has run depends on the start date in D-09."
+        ],
+        "reviewer_note": "Corrected Nov 19, 2026 from a connector lookup. The earlier draft said a debt buyer may not threaten to sue, which section 1788.56 does not say, and listed disclosure duties that had not been read.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "If you think the time limit has run, raise it in your response and get help."
+      ],
+      "claims_needing_a_source": [
+        "This section is part of the Fair Debt Buying Practices Act (Civ. Code §1788.50 et seq.).",
+        "How the section applies when the original creditor is the plaintiff."
+      ]
+    },
+    {
+      "id": "D-11",
+      "question": "I made a small payment or signed something on an old debt. Does that restart the clock?",
+      "answer": "No acknowledgment or promise is sufficient evidence of a new or continuing contract to take a case out of the operation of the limitations statutes unless it is contained in a writing signed by the party to be charged. Any payment on account of principal or interest due on a promissory note made by the party to be charged is deemed a sufficient acknowledgment or promise of a continuing contract to stop the running of the time within which an action may be commenced on the note, as each payment is made, and to start the running of a new period. No such payment of itself revives a cause of action once barred. The period for an action on a written instrument is four years.",
+      "applies_when": "Payments or signed writings on a debt that may be near or past the four-year limit.",
+      "harm_flag": "Signing a payment plan or acknowledgment, or paying on a debt near the limit, can weaken the defense that it is too old.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §360",
+        "Cal. Code Civ. Proc. §337(a)"
+      ],
+      "sources_available": [
+        "CCP-360",
+        "CCP-337"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Check which consumer accounts count as a promissory note for this rule."
+        ],
+        "reviewer_note": "Corrected in the final pass. The first draft implied a payment never matters. §360 says a payment on a note can, but not once the claim is already barred. Highest-value trap item in this set. Double review required.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Talk to a lawyer before you sign anything about an old debt or make a payment on it."
+      ],
+      "claims_needing_a_source": [
+        "Which consumer accounts count as a promissory note for this rule."
+      ]
+    },
+    {
+      "id": "D-12",
+      "question": "The 30 days already passed. Is it too late?",
+      "answer": "The court may, upon any terms as may be just, relieve a party from a judgment, dismissal, order or other proceeding taken against the party through the party's mistake, inadvertence, surprise or excusable neglect. The application must be accompanied by a copy of the answer or other pleading proposed to be filed, and must be made within a reasonable time, in no case exceeding six months, after the judgment, dismissal, order or proceeding was taken. This is the version of Code of Civil Procedure Section 473 in effect through December 31, 2026. A replacement version operative January 1, 2027 keeps those subdivisions and adds subdivision (e), which allows a party to bring a motion to vacate a default judgment that is void for lack of proper service at any time after entry of the judgment.",
+      "applies_when": "A default or default judgment has been entered, or the response deadline has passed.",
+      "harm_flag": "Waiting and hoping makes the 6-month limit the outer edge, not a target.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §473(b), version in effect through Dec 31, 2026",
+        "Cal. Code Civ. Proc. §473, version operative Jan 1, 2027 (Stats. 2025, Ch. 563, Sec. 13)"
+      ],
+      "sources_available": [
+        "CCP-473",
+        "CCP-473@2027"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Other routes (for example improper service) not yet sourced.",
+          "Section 473 is repealed on January 1, 2027 and replaced by a version (Stats. 2025, Ch. 563, Sec. 13) whose text could not be retrieved. Check whether the six-month limit changes."
+        ],
+        "reviewer_note": "Any text that sounds like \"you can fix this\" needs Mode B review.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Move quickly: do not wait until the six months are nearly over.",
+        "See a lawyer or a court self-help center now."
+      ],
+      "claims_needing_a_source": [
+        "Other routes to set aside a default (for example improper service before 2027)."
+      ]
+    },
+    {
+      "id": "D-13",
+      "question": "A collector wrote or called, but there are no court papers. What now?",
+      "answer": "Every debt collector collecting or attempting to collect a consumer debt in California must comply with sections 1692b to 1692j of Title 15 of the United States Code (Civil Code Section 1788.17), but Section 1692g does not apply to the persons that section describes in paragraphs (A) and (B) of 15 U.S.C. 1692a(6) or their principal. Under 15 U.S.C. 1692g(a), within five days after the initial communication, a debt collector must, unless the information is in the initial communication or the consumer has paid the debt, send a written notice with the amount of the debt, the name of the creditor, and statements that the debt will be assumed valid unless the consumer disputes it within thirty days after receipt of the notice, that the collector will obtain verification if the consumer disputes it in writing within that period, and that the collector will give the name and address of the original creditor on written request within that period. If the consumer disputes the debt in writing within the thirty days, the collector must stop collection of the disputed debt until it mails verification (1692g(b)). A consumer's failure to dispute the debt may not be construed by any court as an admission of liability (1692g(c)). A formal pleading in a civil action is not an initial communication (1692g(d)).",
+      "applies_when": "A debt collector's collection of a consumer debt, with or without a lawsuit.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "15 U.S.C. §1692g",
+        "Cal. Civ. Code §1788.17"
+      ],
+      "sources_available": [
+        "USC-15-1692g",
+        "CIV-1788.17"
+      ],
+      "sources_not_available": [
+        "Rosenthal Act (Civil Code 1788 et seq.)"
+      ],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Add the specific Regulation F section for the validation notice."
+        ],
+        "reviewer_note": "Pairs well with a letter-generator tool, which is out of scope for the prototype.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Keep copies of every letter, notice and envelope.",
+        "If you want to dispute the debt, do it in writing and keep proof of when you sent it."
+      ],
+      "claims_needing_a_source": [
+        "The Rosenthal Act (Civ. Code §1788 et seq.) gives similar protections against original creditors collecting their own debts.",
+        "Regulation F validation notice details (12 C.F.R. pt. 1006)."
+      ]
+    },
+    {
+      "id": "D-14",
+      "question": "When should I talk to a lawyer right away?",
+      "answer": "A summons warns that if the defendant does not respond, their default will be entered upon application by the plaintiff, which could result in garnishment of wages, taking of money or property, or other relief. If a complaint is verified, the denial must be made positively or according to the defendant's information and belief. A limited civil case requires, among other conditions, that the amount in controversy not exceed $35,000.",
+      "applies_when": "A person served with a collection lawsuit.",
+      "harm_flag": "Treating a trigger as optional can cost someone a defense or a paycheck.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §412.20(a)(4)",
+        "Cal. Code Civ. Proc. §431.30(d)",
+        "Cal. Code Civ. Proc. §85"
+      ],
+      "sources_available": [
+        "CCP-85",
+        "CCP-431.30",
+        "CCP-473",
+        "CCP-473@2027"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "unsourced",
+        "open_flags": [
+          "Every bullet needs a source or an expert.",
+          "Active-duty protections not yet sourced."
+        ],
+        "reviewer_note": "This is the item that most needs an attorney. It is also the one most worth getting right.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Get help immediately if: a default has been entered; your wages or bank account are being taken; the claim is over $35,000 or asks for something other than money; the complaint is verified; you are on active military duty; you think the debt is not yours or is identity theft; you are thinking about signing a settlement."
+      ],
+      "claims_needing_a_source": [
+        "Each trigger in the list needs an attorney reviewer and a source.",
+        "Active-duty protections."
+      ]
+    },
+    {
+      "id": "D-15",
+      "question": "Where can I get free help?",
+      "answer": "The California Courts Self-Help Center is operated by the California courts. LawHelpCA is a statewide directory of legal aid programs.",
+      "applies_when": "People in California looking for free legal help.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Official pages (to be fetched by the reference check)"
+      ],
+      "sources_available": [],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "unsourced",
+        "open_flags": [
+          "Verify each resource, eligibility and county coverage. Resource lists go stale fast."
+        ],
+        "reviewer_note": "Resource directories need the shortest expiry of any item type.",
+        "note": "Run 2b rewrite: rule statements only in answer; guidance and unsourced claims moved to separate fields that the Checker is not sent."
+      },
+      "guidance_lines": [
+        "Start with the Self-Help Center and your local legal aid office.",
+        "Tell them you were served with a collection lawsuit and give the date you were served."
+      ],
+      "claims_needing_a_source": [
+        "Each organization's current name, link, eligibility and county coverage."
+      ]
+    },
+    {
+      "id": "D-06-SEEDED",
+      "question": "What do I file to respond?",
+      "answer": "File a written response with the court clerk before the deadline. A short general denial (form PLD-050) is allowed in any unverified limited civil case, which is a claim of $35,000 or less. If you cannot afford the filing fee, ask for a fee waiver on form FW-001.",
+      "applies_when": "Limited civil case. Whether the plaintiff is the original creditor or a debt buyer changes which form can be used.",
+      "harm_flag": "Using a form that is not allowed for this kind of claim may leave the response defective, which risks a default.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §431.30(d) (text read)",
+        "Judicial Council form PLD-050 (text read: not for assigned claims over $1,000)",
+        "Cal. Code Civ. Proc. §85 and form FW-001 (not re-read in the final pass)"
+      ],
+      "sources_available": [
+        "CCP-85",
+        "CCP-431.30",
+        "CCP-412.20"
+      ],
+      "sources_not_available": [
+        "Judicial Council form PLD-050",
+        "Judicial Council form FW-001"
+      ],
+      "private_notes": {
+        "seeded": true,
+        "seeded_error": "Says a general denial fits any unverified limited civil case. Omits the assigned-claim exception (CCP 431.30(d); form PLD-050)."
+      }
+    },
+    {
+      "id": "D-11-SEEDED",
+      "question": "I made a small payment or signed something on an old debt. Does that restart the clock?",
+      "answer": "Making a small payment or signing something on an old debt does not restart the clock. The four-year limit keeps running no matter what you pay or sign, so you can safely make a payment or sign a payment plan.",
+      "applies_when": "Debts near or past the 4-year limit.",
+      "harm_flag": "Signing a payment plan or acknowledgment, or paying on a debt near the limit, can weaken the defense that it is too old.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §360 (text read)"
+      ],
+      "sources_available": [
+        "CCP-360",
+        "CCP-337"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "seeded": true,
+        "seeded_error": "Says a payment or signature never matters. CCP 360: a signed writing, or a payment on a promissory note, can restart the period (but not revive an already barred claim)."
+      }
+    }
+  ]
+}

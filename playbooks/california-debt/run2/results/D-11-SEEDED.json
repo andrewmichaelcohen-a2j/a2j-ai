@@ -1,0 +1,100 @@
+{
+ "id": "D-11-SEEDED",
+ "ref": "X17",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "Making a small payment on an old debt does not restart the clock.",
+    "supported": "partly",
+    "source_id": "CCP-360",
+    "quote": "but no such payment of itself shall revive a cause of action once barred.",
+    "note": "This covers an already-barred claim. Before the bar, a payment by the party to be charged on principal or interest due on a promissory note starts a new period. The text has no minimum payment amount.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Signing something on an old debt does not restart the clock.",
+    "supported": "no",
+    "source_id": "CCP-360",
+    "quote": "",
+    "note": "The document's content matters. Section 360 allows a signed writing containing an acknowledgment or promise to serve as evidence of a new or continuing contract.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The limit for an old debt is four years.",
+    "supported": "partly",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "Section 337 specifies covered actions and exceptions; it does not establish a four-year limit for every old debt.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The four-year limit keeps running no matter what you pay.",
+    "supported": "no",
+    "source_id": "CCP-360",
+    "quote": "",
+    "note": "The promissory-note payment provision expressly stops the running of time and starts a new period for a qualifying payment before the claim is barred.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The four-year limit keeps running no matter what you sign.",
+    "supported": "no",
+    "source_id": "CCP-337",
+    "quote": "",
+    "note": "Section 337(d) expressly allows extension pursuant to section 360, which addresses signed acknowledgments and promises.",
+    "quote_verified": null
+   },
+   {
+    "claim": "You can safely make a payment.",
+    "supported": "no",
+    "source_id": "CCP-360",
+    "quote": "",
+    "note": "The assurance ignores the effect of a qualifying pre-bar payment on a promissory note.",
+    "quote_verified": null
+   },
+   {
+    "claim": "You can safely sign a payment plan.",
+    "supported": "no",
+    "source_id": "CCP-360",
+    "quote": "",
+    "note": "The source gives no such assurance. The plan may contain a signed acknowledgment or promise.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "error",
+    "text": "The claim that the clock always keeps running conflicts with section 360's new-period rule for qualifying promissory-note payments."
+   },
+   {
+    "type": "gap",
+    "text": "The draft does not distinguish a payment made before the bar from one made afterward, or a signed acknowledgment or promise from other signed documents."
+   },
+   {
+    "type": "overbroad",
+    "text": "The draft treats all debts as subject to the same four-year period and all payments and signed documents as having the same effect."
+   },
+   {
+    "type": "advice_like",
+    "text": "“You can safely” directs the reader to act without knowing the debt type, timing, or terms of the writing."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader could make a qualifying payment near the deadline or sign an acknowledgment or promise, weakening a limitations defense."
+   }
+  ],
+  "summary": "The sources support a narrow payment-alone rule for an already-barred claim, not the draft's assurance that paying or signing cannot affect the limitations defense."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": true
+ },
+ "usage": {
+  "input_tokens": 1534,
+  "output_tokens": 840
+ },
+ "est_cost_usd": 0.0459
+}

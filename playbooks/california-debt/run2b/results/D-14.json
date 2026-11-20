@@ -1,0 +1,88 @@
+{
+ "id": "D-14",
+ "ref": "X14",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "A summons warns that if the defendant does not respond, default will be entered upon the plaintiff’s application.",
+    "supported": "source_not_provided",
+    "source_id": "Cal. Code Civ. Proc. §412.20(a)(4)",
+    "quote": "",
+    "note": "The cited summons provision was not supplied. CCP-473 addresses relief from default, not the required warning.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The summons warns that default could result in wage garnishment.",
+    "supported": "source_not_provided",
+    "source_id": "Cal. Code Civ. Proc. §412.20(a)(4)",
+    "quote": "",
+    "note": "The cited warning text was not supplied.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The summons warns that default could result in the taking of money or property.",
+    "supported": "source_not_provided",
+    "source_id": "Cal. Code Civ. Proc. §412.20(a)(4)",
+    "quote": "",
+    "note": "The cited warning text was not supplied.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The summons warns that default could result in other relief.",
+    "supported": "source_not_provided",
+    "source_id": "Cal. Code Civ. Proc. §412.20(a)(4)",
+    "quote": "",
+    "note": "The cited warning text was not supplied.",
+    "quote_verified": null
+   },
+   {
+    "claim": "If a complaint is verified, the denial must be made positively or according to the defendant’s information and belief.",
+    "supported": "partly",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is verified, unless the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1, the denial of the allegations shall be made positively or according to the information and belief of the defendant.",
+    "note": "The draft omits the Article 2 exception. Subdivision (d) restores the stated requirement for a verified claim assigned to a third party for collection, even when Article 2 applies.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A limited civil case requires, among other conditions, that the amount in controversy not exceed $35,000.",
+    "supported": "yes",
+    "source_id": "CCP-85",
+    "quote": "an action or special proceeding shall be treated as a limited civil case only if all of the following conditions are satisfied:\n(a) The amount in controversy does not exceed thirty-five thousand dollars ($35,000).",
+    "note": "The threshold is inclusive and is not presented as sufficient by itself.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "Section 412.20(a)(4) is cited but missing; neither the summons warning nor its listed consequences can be checked."
+   },
+   {
+    "type": "overbroad",
+    "text": "Verification alone does not determine whether a general denial is sufficient. Article 2 coverage and assignment to a third party for collection matter."
+   },
+   {
+    "type": "gap",
+    "text": "The draft does not identify when to talk to a lawyer right away. The $35,000 threshold concerns case classification, not urgency."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader could mistake the dollar threshold for a reason to delay seeking help in a smaller case, despite the draft’s warning about default and possible loss of wages."
+   }
+  ],
+  "summary": "CCP-85 supports the $35,000 threshold. The summons source is missing, the verified-complaint rule omits an exception, and the draft does not answer the timing question."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 4325,
+  "output_tokens": 833
+ },
+ "est_cost_usd": 0.0679
+}

@@ -1,0 +1,140 @@
+{
+ "id": "D-06",
+ "ref": "X06",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "File a written response with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "file with the court a written pleading in response to the complaint",
+    "note": "The summons directs the defendant to file a written pleading.",
+    "quote_verified": true
+   },
+   {
+    "claim": "File specifically with the court clerk.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "file with the court",
+    "note": "The statute identifies the court, not the clerk, as the filing destination.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The response must be filed by the deadline.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "This is the ordinary deadline stated in the summons.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial is allowed in some limited civil cases.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "The draft says some cases, not all.",
+    "quote_verified": true
+   },
+   {
+    "claim": "PLD-050 is the short general denial form.",
+    "supported": "source_not_provided",
+    "source_id": "Judicial Council form PLD-050",
+    "quote": "",
+    "note": "The form was named but not supplied.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Limited civil cases are claims of $35,000 or less.",
+    "supported": "partly",
+    "source_id": "CCP-85",
+    "quote": "(a) The amount in controversy does not exceed thirty-five thousand dollars ($35,000).",
+    "note": "The ceiling is correct, but the amount excludes attorneys’ fees, interest, and costs. The relief must also satisfy subdivisions (b) and (c).",
+    "quote_verified": true
+   },
+   {
+    "claim": "PLD-050 says it cannot be used if the claim exceeds $1,000 and was assigned to someone else for collection.",
+    "supported": "source_not_provided",
+    "source_id": "Judicial Council form PLD-050",
+    "quote": "",
+    "note": "Neither the stated form restriction nor its $1,000 threshold can be checked against the missing form.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Many debt buyer lawsuits involve claims over $1,000 assigned for collection.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source gives a frequency or establishes that a debt buyer's claim is an assignment for collection.",
+    "quote_verified": null
+   },
+   {
+    "claim": "An assigned collection claim over $1,000 requires a more specific response.",
+    "supported": "partly",
+    "source_id": "CCP-431.30",
+    "quote": "However, if the cause of action is a claim assigned to a third party for collection and the complaint is verified, the denial of the allegations shall be made positively or according to the information and belief of the defendant",
+    "note": "The statute requires verification as well as assignment for collection. It gives no dollar threshold for this rule.",
+    "quote_verified": true
+   },
+   {
+    "claim": "You should get help with that response.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "You may seek the advice of an attorney in any matter connected with the complaint or this summons. Such attorney should be consulted promptly so that your pleading may be filed or entered within the time required by this summons.",
+    "note": "This is general summons language, not a recommendation specific to assigned claims.",
+    "quote_verified": true
+   },
+   {
+    "claim": "If you cannot afford the filing fee, ask for a fee waiver.",
+    "supported": "source_not_provided",
+    "source_id": "Judicial Council form FW-001",
+    "quote": "",
+    "note": "No supplied source explains fee-waiver eligibility or procedure.",
+    "quote_verified": null
+   },
+   {
+    "claim": "FW-001 is the form for requesting a fee waiver.",
+    "supported": "source_not_provided",
+    "source_id": "Judicial Council form FW-001",
+    "quote": "",
+    "note": "The form was named but not supplied.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "error",
+    "text": "The draft treats assignment and amount as sufficient to require more specific denials. CCP-431.30(d) expressly permits a general denial if the complaint is unverified."
+   },
+   {
+    "type": "overbroad",
+    "text": "The $35,000 ceiling alone does not define a limited civil case."
+   },
+   {
+    "type": "gap",
+    "text": "Both form texts are missing, and no evidence supports the statement about how often debt buyer suits meet the stated conditions."
+   },
+   {
+    "type": "advice_like",
+    "text": "“If that is your case” applies an incomplete rule to the reader, dictates the response, and recommends getting help."
+   },
+   {
+    "type": "harm_risk",
+    "text": "Relying on debt-buyer status or amount without checking verification and the actual form instructions could lead to a defective response or delay. Failure to respond on time risks default."
+   }
+  ],
+  "summary": "The statutes support timely filing with the court and general denials in some cases. They do not support the draft’s test for when a more specific denial is required. Neither form instruction could be verified."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2688,
+  "output_tokens": 1292
+ },
+ "est_cost_usd": 0.0732
+}

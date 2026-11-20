@@ -1,0 +1,84 @@
+{
+ "id": "D-01",
+ "ref": "X01",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "A lawsuit starts with two documents: a Summons and a Complaint.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "a summons shall be directed to the defendant, signed by the clerk and issued under the seal of the court in which the action is pending",
+    "note": "The section mentions both documents but describes the summons in an already pending action. It does not establish that the two documents start the lawsuit.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The Summons names the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(1) The title of the court in which the action is pending.",
+    "note": "This is a listed item of summons content.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The Summons gives a case number.",
+    "supported": "source_not_provided",
+    "source_id": "SUM-100",
+    "quote": "",
+    "note": "The statute does not list a case number. The cited form was not provided for inspection.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The Summons tells you how long you have to respond.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The required direction states the response period and when it begins.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A collection letter is not a lawsuit, even if it says it may become one.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source addressing collection letters or threatened litigation was provided.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A collection phone call is not a lawsuit, even if it says it may become one.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source addressing collection calls or threatened litigation was provided.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "A summons-content statute does not establish a two-document commencement rule for every California consumer debt matter. Its content requirements are also qualified by “Except as otherwise required by statute”."
+   },
+   {
+    "type": "gap",
+    "text": "SUM-100 is missing, and no supplied source addresses the status of collection letters or calls."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader who receives only one document could infer that no lawsuit is pending and disregard a response deadline."
+   }
+  ],
+  "summary": "The statute supports the court-name and response-period claims. It does not verify the two-document commencement rule, the case-number claim, or the statements about collection communications."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1354,
+  "output_tokens": 661
+ },
+ "est_cost_usd": 0.0373
+}

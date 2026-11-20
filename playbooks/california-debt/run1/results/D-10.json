@@ -1,0 +1,100 @@
+{
+ "id": "D-10",
+ "ref": "X10",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "California limits collection proceedings by debt buyers.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "The restriction is conditional on expiration of the applicable limitations period.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The restriction is part of the Fair Debt Buying Practices Act.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The excerpt gives the section number but not the act title.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A debt buyer may not sue to collect a consumer debt once the applicable time limit has expired.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "The relevant period is the one applicable to the debt buyer’s claim.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A debt buyer may not start arbitration to collect a consumer debt once that time limit has expired.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "Arbitration is expressly included.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A debt buyer may not start another legal proceeding to collect a consumer debt once that time limit has expired.",
+    "supported": "yes",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit or initiate an arbitration or other legal proceeding to collect a consumer debt if the applicable statute of limitations on the debt buyer’s claim has expired.",
+    "note": "Other legal proceedings are expressly included.",
+    "quote_verified": true
+   },
+   {
+    "claim": "If sued over an old debt, raise its age with the court.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The section restricts the buyer; it gives no court-response instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "If sued over an old debt, get help.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The excerpt gives no such instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "This section addresses debt buyers; an original creditor suing requires a different analysis.",
+    "supported": "partly",
+    "source_id": "CIV-1788.56",
+    "quote": "A debt buyer shall not bring suit",
+    "note": "The text identifies the regulated party but supplies no rule or definition for original creditors.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "The last sentence uses “old debt” as its trigger. Age alone does not establish that the applicable limitations period has expired."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Raise that with the court and get help” directs the reader what to do in a lawsuit without a procedural source."
+   },
+   {
+    "type": "gap",
+    "text": "The excerpt does not verify the act title or explain the treatment of original creditors."
+   }
+  ],
+  "summary": "Section 1788.56 supports the filing prohibition for all three types of proceedings when the limitations period on the debt buyer’s claim has expired. It does not establish what a defendant should do in court."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 943,
+  "output_tokens": 857
+ },
+ "est_cost_usd": 0.0418
+}

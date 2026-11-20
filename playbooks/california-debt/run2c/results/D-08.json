@@ -1,0 +1,112 @@
+{
+ "id": "D-08",
+ "ref": "X08",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The general limit for an action founded on a written contract, obligation or liability is four years.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The written-contract rule is subject to Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Once the Section 337 period has run, a person shall not sue, initiate arbitration or initiate another legal proceeding to collect the debt.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "When the period in which an action must be commenced under this section has run, a person shall not bring suit or initiate an arbitration or other legal proceeding to collect the debt.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The Section 337 period may be extended only pursuant to Section 360.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "The period in which an action may be commenced under this section shall only be extended pursuant to Section 360.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Subject to the stated payment exception, an acknowledgment or promise is insufficient evidence of a new or continuing contract for limitations purposes unless in writing and signed by the party to be charged.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "No acknowledgment or promise is sufficient evidence of a new or continuing contract, by which to take the case out of the operation of this title, unless the same is contained in some writing, signed by the party to be charged thereby",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A payment on a promissory note made by the party to be charged can start a new period.",
+    "supported": "partly",
+    "source_id": "CCP-360",
+    "quote": "any payment on account of principal or interest due on a promissory note made by the party to be charged",
+    "note": "The draft identifies the payer and the instrument but omits what the payment must be for: principal or interest due on the note.",
+    "quote_verified": true
+   },
+   {
+    "claim": "No such payment by itself revives a cause of action once barred.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "but no such payment of itself shall revive a cause of action once barred.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "An answer must contain a statement of any new matter constituting a defense.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.\n(2) A statement of any new matter constituting a defense.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337 does not itself specify when the four-year period starts for an ordinary written-contract claim.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "Subdivision (a) gives a duration but no general starting event. The express timing provisions elsewhere in the section address specific claims.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The scope statement says claims secured by a deed of trust or mortgage on real property have a separate rule.",
+    "supported": "partly",
+    "source_id": "CCP-337",
+    "quote": "any action for a money judgment for the balance due upon an obligation for the payment of which a deed of trust or mortgage with power of sale upon real property or any interest therein was given as security, following the exercise of the power of sale in such deed of trust or mortgage",
+    "note": "The proviso concerns a money judgment for the remaining balance following exercise of a power of sale, not every claim secured by real property.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The payment sentence omits Section 360’s condition that the payment be on account of principal or interest due."
+   },
+   {
+    "type": "overbroad",
+    "text": "The scope statement describes the special rule by security type alone; Section 337(a) also requires a post-sale claim for the balance."
+   }
+  ],
+  "summary": "Section 337 supports the general four-year limit and the prohibition on collection proceedings after it runs. The promissory-note payment sentence and the scope statement each omit a statutory condition."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2367,
+  "output_tokens": 1193
+ },
+ "est_cost_usd": 0.0667
+}

@@ -1,0 +1,399 @@
+{
+  "generated": "2026-11-19 (sources remapped after Run 1)",
+  "note": "Run 1 test set: 15 prototype items (D-01 to D-15) plus two seeded first-draft wordings. private_notes are never sent to the Checker.",
+  "items": [
+    {
+      "id": "D-01",
+      "question": "I got papers from a court. Is this a lawsuit?",
+      "answer": "A lawsuit starts with two documents: a Summons and a Complaint. The Summons names the court, gives a case number and tells you how long you have to respond. A collection letter or phone call is not a lawsuit, even if it says it may become one.",
+      "applies_when": "Any California consumer debt matter.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §412.20 (contents of summons)",
+        "Judicial Council form SUM-100"
+      ],
+      "sources_available": [
+        "CCP-412.20"
+      ],
+      "sources_not_available": [
+        "Judicial Council form SUM-100"
+      ],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [],
+        "reviewer_note": "Add a plain description of what proof of service looks like."
+      }
+    },
+    {
+      "id": "D-02",
+      "question": "How long do I have to respond?",
+      "answer": "The Summons says you have 30 calendar days after you were served to file a written response with the court. The count starts on the day after service.",
+      "applies_when": "Civil cases where the Summons gives 30 days.",
+      "harm_flag": "Missing the deadline lets the other side ask the court for a default judgment.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §412.20(a)(3)"
+      ],
+      "sources_available": [
+        "CCP-412.20",
+        "CCP-12",
+        "CCP-12a"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [],
+        "reviewer_note": "Confirm the \"day after service\" counting rule against CCP §12 before attestation."
+      }
+    },
+    {
+      "id": "D-03",
+      "question": "What if day 30 falls on a weekend or court holiday?",
+      "answer": "When the last day lands on a Saturday, Sunday or court holiday, the deadline moves to the next day the court is open. When in doubt, file earlier. Do not plan around the last possible minute.",
+      "applies_when": "Any deadline counted in days.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §§12, 12a"
+      ],
+      "sources_available": [
+        "CCP-12",
+        "CCP-12a",
+        "CCP-135",
+        "CCP-12b",
+        "GOV-6700"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Calculator rolls over weekends only. Court holiday table not built."
+        ],
+        "reviewer_note": "Need a verified list of California court holidays before the calculator can claim more."
+      }
+    },
+    {
+      "id": "D-04",
+      "question": "Does the deadline change if I was not handed the papers?",
+      "answer": "It can. If the papers were left with someone else and then mailed to you, service is treated as complete on the 10th day after the mailing, so the 30 days are counted from that later date. Look at the Proof of Service filed with the court and ask the court clerk or a lawyer which date counts. Do not guess.",
+      "applies_when": "Papers left with someone else and mailed (substituted service).",
+      "harm_flag": "Counting from the wrong date can make a person file too late.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §415.20, version in effect through Dec 31, 2026 (text read: complete on the 10th day after mailing)",
+        "Cal. Code Civ. Proc. §415.20, version operative Jan 1, 2027 (Stats. 2025, Ch. 563, Sec. 5; text read: still the 10th day after mailing)"
+      ],
+      "sources_available": [
+        "CCP-415.20",
+        "CCP-415.20@2027",
+        "CCP-412.20",
+        "CCP-12"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Section 415.20 is replaced on January 1, 2027. Both versions say service is complete on the 10th day after mailing. The new version also lists accepted mailing methods, describes reasonable diligence as at least three good-faith attempts on three different days and times, and for consumer debt requires at least one attempt at the home. Show the version in effect on the date the person is reading.",
+          "Calculator still refuses this case on purpose. It could accept a mailing date later."
+        ],
+        "reviewer_note": "Both versions of the section were read on Nov 19, 2026 through a legal-data connector. Decide whether the calculator should accept a mailing date."
+      }
+    },
+    {
+      "id": "D-05",
+      "question": "If I call the collector or their lawyer, does that stop the clock?",
+      "answer": "No. Talking with the other side does not pause the 30 days. Do not rely on a promise of more time unless it is in writing and you have confirmed it with the court clerk or a lawyer.",
+      "applies_when": "Any time before a response is filed.",
+      "harm_flag": "People wait on a phone promise and a default is entered.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §412.20(a)(3)"
+      ],
+      "sources_available": [
+        "CCP-412.20"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Check Cal. Rules of Court 3.110 on agreed extensions before attestation."
+        ],
+        "reviewer_note": "This is a trap-ledger item: the harmful direction is waiting."
+      }
+    },
+    {
+      "id": "D-06",
+      "question": "What do I file to respond?",
+      "answer": "File a written response with the court clerk before the deadline. A short general denial (form PLD-050) is allowed in some limited civil cases, which are claims of $35,000 or less. The form says it cannot be used if the claim is for more than $1,000 and was assigned to someone else for collection. That describes many debt buyer lawsuits. If that is your case, the response has to answer the complaint more specifically, and you should get help with it. If you cannot afford the filing fee, ask for a fee waiver on form FW-001.",
+      "applies_when": "Limited civil case. Whether the plaintiff is the original creditor or a debt buyer changes which form can be used.",
+      "harm_flag": "Using a form that is not allowed for this kind of claim may leave the response defective, which risks a default.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §431.30(d) (text read)",
+        "Judicial Council form PLD-050 (text read: not for assigned claims over $1,000)",
+        "Cal. Code Civ. Proc. §85 and form FW-001 (not re-read in the final pass)"
+      ],
+      "sources_available": [
+        "CCP-85",
+        "CCP-431.30",
+        "CCP-412.20"
+      ],
+      "sources_not_available": [
+        "Judicial Council form PLD-050",
+        "Judicial Council form FW-001"
+      ],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "What a proper specific answer looks like for an assigned claim is not yet written.",
+          "Statute re-read Nov 19, 2026: section 431.30(d) says a general denial is not enough when the claim was assigned for collection and the complaint is verified. The draft rests on form PLD-050 and omits the verified-complaint condition. Attorney to confirm how the statute and the form fit together, and the $35,000 threshold (CCP section 85, not read)."
+        ],
+        "reviewer_note": "Corrected in the final pass. The first draft said a general denial fits any unverified limited civil case. The form itself excludes assigned claims over $1,000. This is the kind of error attestation exists to catch."
+      }
+    },
+    {
+      "id": "D-07",
+      "question": "What defenses should I know about?",
+      "answer": "Common ones: the debt is too old; the plaintiff cannot show it owns the debt or the amount; the debt is not yours; you were not properly served. A defense that is not raised can be lost, so read the response form and ask for help before you file.",
+      "applies_when": "Consumer debt lawsuits.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §337",
+        "Cal. Code Civ. Proc. §431.30(b)(2), (g) (text read: new matter constituting a defense is stated separately)",
+        "Form PLD-050 item 2 (text read: facts as separate affirmative defenses)"
+      ],
+      "sources_available": [
+        "CCP-431.30",
+        "CCP-337"
+      ],
+      "sources_not_available": [
+        "Judicial Council form PLD-050"
+      ],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "PLD-050 has a free-text item for affirmative defenses and no pre-printed limitations checkbox. Attorney to confirm how limitations is pleaded in practice."
+        ],
+        "reviewer_note": "List is a starting set. An expert should add or cut."
+      }
+    },
+    {
+      "id": "D-08",
+      "question": "How old is too old for a debt lawsuit?",
+      "answer": "For a written contract such as a credit card agreement, the general limit is 4 years. After that, the debt is \"time-barred\" and the defense is available, but you generally must raise it in your response.",
+      "applies_when": "Written consumer contracts.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §337"
+      ],
+      "sources_available": [
+        "CCP-337",
+        "CCP-360",
+        "CCP-431.30"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "§431.30 requires new matter constituting a defense to be stated in the answer, which supports \"must raise it\". Attorney to confirm for limitations specifically."
+        ],
+        "reviewer_note": "Pair with D-09 so the start date is never left implicit."
+      }
+    },
+    {
+      "id": "D-09",
+      "question": "When does the 4 years start counting?",
+      "answer": "This is where practitioners may disagree. Possible start points include the first missed payment, the last payment or the date the account was charged off. The right date for your account depends on the documents. A lawyer should look at it.",
+      "applies_when": "Credit card and similar accounts.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Placeholder. No source read."
+      ],
+      "sources_available": [],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "contested",
+        "open_flags": [
+          "Placeholder to show how a contested item displays. Needs real sources and an expert."
+        ],
+        "reviewer_note": "Show options side by side, never a single answer, unless an expert panel converges."
+      }
+    },
+    {
+      "id": "D-10",
+      "question": "Can a debt buyer sue me over a debt that is too old?",
+      "answer": "California limits this. Under the Fair Debt Buying Practices Act, a debt buyer may not bring a lawsuit, or start an arbitration or other legal proceeding, to collect a consumer debt once the time limit for suing on that debt has run out. If the lawsuit is about an old debt, raise that with the court and get help.",
+      "applies_when": "Debt buyers. An original creditor suing is a different analysis.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Cal. Civ. Code §1788.56 (text read Nov 19, 2026 through a legal-data connector; not compared with the official site)"
+      ],
+      "sources_available": [
+        "CIV-1788.56"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Other debt buyer duties (disclosures, documentation) sit in sections 1788.52 to 1788.64 and have not been read. They were removed from this answer until they are.",
+          "Whether the time limit has run depends on the start date in D-09."
+        ],
+        "reviewer_note": "Corrected Nov 19, 2026 from a connector lookup. The earlier draft said a debt buyer may not threaten to sue, which section 1788.56 does not say, and listed disclosure duties that had not been read."
+      }
+    },
+    {
+      "id": "D-11",
+      "question": "I made a small payment or signed something on an old debt. Does that restart the clock?",
+      "answer": "On a debt that is already too old, a payment by itself cannot bring it back. On a debt that is not yet too old, some payments can restart the clock, for example payments on a promissory note. A signed writing that acknowledges the debt or promises to pay can also matter. Talk to a lawyer before you sign anything about an old debt or make a payment on it.",
+      "applies_when": "Debts near or past the 4-year limit.",
+      "harm_flag": "Signing a payment plan or acknowledgment, or paying on a debt near the limit, can weaken the defense that it is too old.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §360 (text read)"
+      ],
+      "sources_available": [
+        "CCP-360",
+        "CCP-337"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Check which consumer accounts count as a promissory note for this rule."
+        ],
+        "reviewer_note": "Corrected in the final pass. The first draft implied a payment never matters. §360 says a payment on a note can, but not once the claim is already barred. Highest-value trap item in this set. Double review required."
+      }
+    },
+    {
+      "id": "D-12",
+      "question": "The 30 days already passed. Is it too late?",
+      "answer": "Not always. If a default was entered, a court can sometimes set it aside. One route must be requested within a reasonable time and no later than 6 months after the default. Move quickly, because waiting costs options. See a lawyer or court self-help center now.",
+      "applies_when": "Default entered, or about to be.",
+      "harm_flag": "Waiting and hoping makes the 6-month limit the outer edge, not a target.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §473(b), version in effect through Dec 31, 2026 (text read Nov 19, 2026: relief within a reasonable time, in no case more than six months after the default or judgment)"
+      ],
+      "sources_available": [
+        "CCP-473",
+        "CCP-473@2027"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Other routes (for example improper service) not yet sourced.",
+          "Section 473 is repealed on January 1, 2027 and replaced by a version (Stats. 2025, Ch. 563, Sec. 13) whose text could not be retrieved. Check whether the six-month limit changes."
+        ],
+        "reviewer_note": "Any text that sounds like \"you can fix this\" needs Mode B review."
+      }
+    },
+    {
+      "id": "D-13",
+      "question": "A collector wrote or called, but there are no court papers. What now?",
+      "answer": "You have rights even before any lawsuit. A collector must send a notice about the debt, and you generally have 30 days from receiving it to dispute the debt in writing. Keep copies of everything. If the debt was with a different company first, California has a parallel law for original creditors.",
+      "applies_when": "Third-party collectors; original creditors under the Rosenthal Act.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "15 U.S.C. §1692g",
+        "Regulation F (12 C.F.R. pt. 1006)",
+        "Cal. Civ. Code §1788 et seq. (Rosenthal Act)"
+      ],
+      "sources_available": [
+        "USC-15-1692g",
+        "CIV-1788.17"
+      ],
+      "sources_not_available": [
+        "Rosenthal Act (Civil Code 1788 et seq.)"
+      ],
+      "private_notes": {
+        "previous_strength_label": "settled",
+        "open_flags": [
+          "Add the specific Regulation F section for the validation notice."
+        ],
+        "reviewer_note": "Pairs well with a letter-generator tool, which is out of scope for the prototype."
+      }
+    },
+    {
+      "id": "D-14",
+      "question": "When should I talk to a lawyer right away?",
+      "answer": "Get help immediately if any of these fit.",
+      "applies_when": "Everyone served with a collection lawsuit.",
+      "harm_flag": "Treating a trigger as optional can cost someone a defense or a paycheck.",
+      "cited_in_draft": [
+        "Expert judgment. Needs attorney attestation and sources per bullet."
+      ],
+      "sources_available": [
+        "CCP-85",
+        "CCP-431.30",
+        "CCP-473",
+        "CCP-473@2027"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "unsourced",
+        "open_flags": [
+          "Every bullet needs a source or an expert.",
+          "Active-duty protections not yet sourced."
+        ],
+        "reviewer_note": "This is the item that most needs an attorney. It is also the one most worth getting right."
+      }
+    },
+    {
+      "id": "D-15",
+      "question": "Where can I get free help?",
+      "answer": "Start with the California Courts Self-Help Center and your local legal aid office. A statewide directory of legal aid programs is at LawHelpCA. Tell them you were served with a collection lawsuit and give the date you were served.",
+      "applies_when": "Anyone in California.",
+      "harm_flag": null,
+      "cited_in_draft": [
+        "Directory contents not yet verified."
+      ],
+      "sources_available": [],
+      "sources_not_available": [],
+      "private_notes": {
+        "previous_strength_label": "unsourced",
+        "open_flags": [
+          "Verify each resource, eligibility and county coverage. Resource lists go stale fast."
+        ],
+        "reviewer_note": "Resource directories need the shortest expiry of any item type."
+      }
+    },
+    {
+      "id": "D-06-SEEDED",
+      "question": "What do I file to respond?",
+      "answer": "File a written response with the court clerk before the deadline. A short general denial (form PLD-050) is allowed in any unverified limited civil case, which is a claim of $35,000 or less. If you cannot afford the filing fee, ask for a fee waiver on form FW-001.",
+      "applies_when": "Limited civil case. Whether the plaintiff is the original creditor or a debt buyer changes which form can be used.",
+      "harm_flag": "Using a form that is not allowed for this kind of claim may leave the response defective, which risks a default.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §431.30(d) (text read)",
+        "Judicial Council form PLD-050 (text read: not for assigned claims over $1,000)",
+        "Cal. Code Civ. Proc. §85 and form FW-001 (not re-read in the final pass)"
+      ],
+      "sources_available": [
+        "CCP-85",
+        "CCP-431.30",
+        "CCP-412.20"
+      ],
+      "sources_not_available": [
+        "Judicial Council form PLD-050",
+        "Judicial Council form FW-001"
+      ],
+      "private_notes": {
+        "seeded": true,
+        "seeded_error": "Says a general denial fits any unverified limited civil case. Omits the assigned-claim exception (CCP 431.30(d); form PLD-050)."
+      }
+    },
+    {
+      "id": "D-11-SEEDED",
+      "question": "I made a small payment or signed something on an old debt. Does that restart the clock?",
+      "answer": "Making a small payment or signing something on an old debt does not restart the clock. The four-year limit keeps running no matter what you pay or sign, so you can safely make a payment or sign a payment plan.",
+      "applies_when": "Debts near or past the 4-year limit.",
+      "harm_flag": "Signing a payment plan or acknowledgment, or paying on a debt near the limit, can weaken the defense that it is too old.",
+      "cited_in_draft": [
+        "Cal. Code Civ. Proc. §360 (text read)"
+      ],
+      "sources_available": [
+        "CCP-360",
+        "CCP-337"
+      ],
+      "sources_not_available": [],
+      "private_notes": {
+        "seeded": true,
+        "seeded_error": "Says a payment or signature never matters. CCP 360: a signed writing, or a payment on a promissory note, can restart the period (but not revive an already barred claim)."
+      }
+    }
+  ]
+}

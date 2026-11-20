@@ -1,0 +1,108 @@
+{
+ "id": "D-13",
+ "ref": "X13",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "A consumer has rights before a lawsuit.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "Within five days after the initial communication with a consumer in connection with the collection of any debt, a debt collector shall, unless the following information is contained in the initial communication or the consumer has paid the debt, send the consumer a written notice",
+    "note": "Collection contact, not a lawsuit, triggers the notice provision.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A collector must send a notice about the debt.",
+    "supported": "partly",
+    "source_id": "USC-15-1692g",
+    "quote": "Within five days after the initial communication with a consumer in connection with the collection of any debt, a debt collector shall, unless the following information is contained in the initial communication or the consumer has paid the debt, send the consumer a written notice",
+    "note": "The draft omits the five-day deadline and both exceptions: no separate notice is required if the initial communication contains the required information or the consumer has paid the debt.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The 30-day dispute period runs from receipt of the notice.",
+    "supported": "yes",
+    "source_id": "USC-15-1692g",
+    "quote": "unless the consumer, within thirty days after receipt of the notice, disputes the validity of the debt, or any portion thereof, the debt will be assumed to be valid by the debt collector",
+    "note": "Receipt is the stated starting point.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The consumer generally has 30 days to dispute the debt in writing.",
+    "supported": "partly",
+    "source_id": "USC-15-1692g",
+    "quote": "if the consumer notifies the debt collector in writing within the thirty-day period that the debt, or any portion thereof, is disputed, the debt collector will obtain verification of the debt or a copy of a judgment against the consumer",
+    "note": "A timely written dispute triggers verification and a collection pause. The separate provision on whether the collector may assume validity does not specify writing.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Keep copies of everything.",
+    "supported": "no",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither supplied text instructs consumers to keep copies.",
+    "quote_verified": null
+   },
+   {
+    "claim": "California has a parallel debt-collection law.",
+    "supported": "yes",
+    "source_id": "CIV-1788.17",
+    "quote": "every debt collector collecting or attempting to collect a consumer debt shall comply with the provisions of Sections 1692b to 1692j, inclusive, of, and shall be subject to the remedies in Section 1692k of, Title 15 of the United States Code.",
+    "note": "California incorporates specified federal provisions, subject to exceptions.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The California law extends the described validation protections to original creditors.",
+    "supported": "partly",
+    "source_id": "CIV-1788.17",
+    "quote": "However, subsection (11) of Section 1692e and Section 1692g shall not apply to any person specified in paragraphs (A) and (B) of subsection (6) of Section 1692a of Title 15 of the United States Code or that person’s principal.",
+    "note": "Section 1788.17 incorporates §1692g but expressly excludes some persons and their principals. The definitions needed to determine which original creditors are covered were not provided.",
+    "quote_verified": true
+   },
+   {
+    "claim": "California coverage turns on whether the debt was with a different company first.",
+    "supported": "no",
+    "source_id": "CIV-1788.17",
+    "quote": "",
+    "note": "The supplied section states no such condition. In §1692g, a different original creditor matters to a request for that creditor’s name and address, not to the scope of California law.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "The unconditional notice statement could lead a reader to wait for a second notice even when the first communication already contained the required information."
+   },
+   {
+    "type": "gap",
+    "text": "The draft does not explain what a timely written dispute changes or that failure to dispute under §1692g is not an admission of liability."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Keep copies of everything” is a practical instruction, not a requirement supported by the supplied texts."
+   },
+   {
+    "type": "error",
+    "text": "Prior ownership by a different company is presented as a California coverage test without support."
+   },
+   {
+    "type": "gap",
+    "text": "Regulation F was cited but not supplied. Section 1788.17 was supplied, but not the definitions needed to check creditor coverage and its exceptions."
+   }
+  ],
+  "summary": "The federal text supports pre-suit rights and the receipt-based 30-day period. The draft omits notice exceptions, blurs the role of writing, and does not establish its original-creditor coverage claim."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1901,
+  "output_tokens": 1156
+ },
+ "est_cost_usd": 0.0614
+}

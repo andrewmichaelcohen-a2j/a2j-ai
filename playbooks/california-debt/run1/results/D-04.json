@@ -1,0 +1,124 @@
+{
+ "id": "D-04",
+ "ref": "X04",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The response deadline can change if the papers were not handed to you.",
+    "supported": "partly",
+    "source_id": "CCP-415.20",
+    "quote": "Service of a summons in this manner is deemed complete on the 10th day after the mailing.",
+    "note": "This sets a service-completion date, not a response deadline.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Leaving the papers with someone else satisfies the delivery step.",
+    "supported": "partly",
+    "source_id": "CCP-415.20",
+    "quote": "in the presence of a competent member of the household or a person apparently in charge of their office, place of business, or usual mailing address other than a United States Postal Service post office box, at least 18 years of age, who shall be informed of the contents thereof",
+    "note": "Subdivision (b) also requires reasonable diligence at personal delivery and a qualifying location. Not just anyone can receive the papers.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Mailing the papers to you afterward satisfies the mailing step.",
+    "supported": "partly",
+    "source_id": "CCP-415.20",
+    "quote": "and by thereafter mailing a copy of the summons and of the complaint by first-class mail, postage prepaid to the person to be served at the place where a copy of the summons and complaint were left.",
+    "note": "The current text specifies the documents, mail class, prepaid postage and destination.",
+    "quote_verified": true
+   },
+   {
+    "claim": "For service completed in the prescribed manner, the completion date is the 10th day after mailing.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "Service of a summons in this manner is deemed complete on the 10th day after the mailing.",
+    "note": "Mailing, not the earlier handoff, is the stated reference point.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The response period is 30 days.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No response-period provision was supplied.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The 30 days are counted from the service-completion date.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither version states when the response clock starts.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Look at the Proof of Service filed with the court.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Neither text identifies this document, establishes its filing or instructs the reader to consult it.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Ask the court clerk which date counts.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source addresses the clerk’s role in determining the date.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Ask a lawyer which date counts.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "This is practical guidance, not an instruction in the supplied texts.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Do not guess.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "This is a caution rather than a sourced legal rule.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "Leaving papers with someone and mailing them does not by itself establish service under subdivision (b). Subdivision (c) also provides a distinct first-attempt procedure when the only reasonably known address is a qualifying commercial private mailbox."
+   },
+   {
+    "type": "gap",
+    "text": "The sources establish when qualifying service is complete, but not the response period or how to count it."
+   },
+   {
+    "type": "advice_like",
+    "text": "The instructions to check a particular filing and ask a clerk or lawyer which date counts are directed to the reader’s case."
+   },
+   {
+    "type": "harm_risk",
+    "text": "Using the tenth-day rule without confirming the service method and applicable response rule could lead to a late filing."
+   },
+   {
+    "type": "date_change",
+    "text": "From January 1, 2027, subdivision (b) specifies at least three good-faith personal-delivery attempts on three different days at three different times. In consumer-debt cases, one attempt must be at the dwelling or usual abode if known or determinable with reasonable effort. The new text also permits USPS Priority Mail with tracking or Certified Mail with return receipt requested alongside first-class mail. The tenth-day rule is unchanged."
+   }
+  ],
+  "summary": "The current statute supports the tenth day after mailing as the completion date for qualifying substituted service. It does not verify the draft’s 30-day response calculation."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2299,
+  "output_tokens": 1102
+ },
+ "est_cost_usd": 0.0625
+}

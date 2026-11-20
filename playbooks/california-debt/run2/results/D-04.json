@@ -1,0 +1,132 @@
+{
+ "id": "D-04",
+ "ref": "X04",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The response deadline can change because service is completed later.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The response period is tied to service. Section 415.20 supplies the later completion date for qualifying substituted service.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Leaving the papers with someone else is sufficient for the delivery step.",
+    "supported": "partly",
+    "source_id": "CCP-415.20",
+    "quote": "If a copy of the summons and complaint cannot with reasonable diligence be personally delivered to the person to be served",
+    "note": "Subdivision (b) requires reasonable diligence and specifies the location, the recipient’s role and minimum age of 18, and that the recipient be informed of the contents. Subdivision (c) has a separate commercial-mailbox rule.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Mailing the papers to the defendant afterward is sufficient for the mailing step.",
+    "supported": "partly",
+    "source_id": "CCP-415.20",
+    "quote": "by thereafter mailing a copy of the summons and of the complaint by first-class mail, postage prepaid to the person to be served at the place where a copy of the summons and complaint were left.",
+    "note": "The sequence is correct, but the current rule specifies the documents, mail class, postage and destination.",
+    "quote_verified": true
+   },
+   {
+    "claim": "For service made in the prescribed manner, completion occurs on the 10th day after mailing.",
+    "supported": "yes",
+    "source_id": "CCP-415.20",
+    "quote": "Service of a summons in this manner is deemed complete on the 10th day after the mailing.",
+    "note": "The trigger is mailing, not the earlier handoff.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The response period is 30 days.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "This is the ordinary summons direction in the stated consumer-debt context; subdivision (a) is qualified by statute.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The 30 days are counted from the later completion date.",
+    "supported": "partly",
+    "source_id": "CCP-12",
+    "quote": "The time in which any act provided by law is to be done is computed by excluding the first day, and including the last, unless the last day is a holiday, and then it is also excluded.",
+    "note": "Completion is the correct reference date, but “from” does not clarify that this date is excluded. The draft also omits the last-day holiday rule.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A Proof of Service is filed with the court.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No supplied text establishes this filing.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Look at the Proof of Service to identify the relevant date.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No supplied text describes the document’s contents or gives this instruction.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Ask the court clerk which date counts.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No supplied text identifies the clerk as a source of a deadline determination.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Ask a lawyer which date counts.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "You may seek the advice of an attorney in any matter connected with the complaint or this summons. Such attorney should be consulted promptly so that your pleading may be filed or entered within the time required by this summons.",
+    "note": "The summons notice expressly supports consulting an attorney about timely filing.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Do not guess.",
+    "supported": "no",
+    "source_id": "",
+    "quote": "",
+    "note": "This is a caution, not an instruction stated in the sources.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "“Left with someone else and then mailed to you” does not establish that the statutory requirements for substituted service were met."
+   },
+   {
+    "type": "gap",
+    "text": "The draft does not explain first-day exclusion or the last-day holiday rule. The Proof of Service and clerk instructions lack source support."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Look at” and “ask the court clerk … which date counts” direct an individual’s deadline inquiry without support for those steps."
+   },
+   {
+    "type": "harm_risk",
+    "text": "Assuming the later completion date applies without verifying the service method could lead to late filing. The supplied sources do not establish that a clerk can resolve that question."
+   },
+   {
+    "type": "date_change",
+    "text": "On January 1, 2027, the 10th-day rule remains unchanged, but permitted mailing methods expand. Subdivision (b) then specifies at least three good-faith personal-delivery attempts on three different days at three different times. For consumer debt, at least one attempt must be at the dwelling or usual abode if known or determinable with reasonable effort."
+   }
+  ],
+  "summary": "The sources support the 10th-day completion rule for qualifying substituted service and the ordinary 30-day response period after service. The draft understates what qualifies, leaves the counting convention unclear, and gives unsupported Proof of Service and clerk instructions."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2969,
+  "output_tokens": 1305
+ },
+ "est_cost_usd": 0.076
+}

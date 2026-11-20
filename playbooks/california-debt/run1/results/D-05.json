@@ -1,0 +1,72 @@
+{
+ "id": "D-05",
+ "ref": "X05",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The response period is 30 days.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The draft omits the service trigger. Subdivision (a) also qualifies the summons requirements with “Except as otherwise required by statute”.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Talking with the collector or their lawyer does not pause the deadline.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The cited section specifies what the summons must say, not whether a call affects the deadline.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Do not rely on a promise of more time unless it is in writing.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source addresses oral or written extension promises.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A written promise must also be confirmed with the court clerk or a lawyer before relying on it.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The section mentions seeking attorney advice but gives no confirmation procedure involving a clerk or lawyer.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "No extension or tolling authority is provided for the central answer."
+   },
+   {
+    "type": "overbroad",
+    "text": "“Any time before a response is filed” does not distinguish time before service from time after the response deadline."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Do not rely” directs the reader to use an unsupported writing-and-confirmation test."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader might treat a confirmed written promise as sufficient and delay filing. The summons warns that default will be entered upon the plaintiff’s application if the defendant does not respond as directed."
+   }
+  ],
+  "summary": "The source supports the summons’s 30-day filing direction after service. It does not establish the effect of a call or how an extension can be verified."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1335,
+  "output_tokens": 531
+ },
+ "est_cost_usd": 0.0319
+}

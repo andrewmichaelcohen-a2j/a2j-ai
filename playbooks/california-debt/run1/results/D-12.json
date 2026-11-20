@@ -1,0 +1,104 @@
+{
+ "id": "D-12",
+ "ref": "X12",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "It is not always too late after the time to answer has passed.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and may upon like terms allow an answer to be made after the time limited by this code.",
+    "note": "This supports the possibility of a late answer, not an automatic extension.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A court can sometimes set aside an entered default.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "Whenever the court grants relief from a default, default judgment, or dismissal based on any of the provisions of this section",
+    "note": "The statute expressly recognizes relief from a default, distinct from relief from a default judgment.",
+    "quote_verified": true
+   },
+   {
+    "claim": "One route requires an application within a reasonable time.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and shall be made within a reasonable time, in no case exceeding six months, after the judgment, dismissal, order, or proceeding was taken.",
+    "note": "This is a timing requirement for discretionary relief under subdivision (b).",
+    "quote_verified": true
+   },
+   {
+    "claim": "The outer limit for that route is six months after the default.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "in no case exceeding six months, after the judgment, dismissal, order, or proceeding was taken.",
+    "note": "For relief from the default itself, the relevant event is the default being challenged. Six months is a ceiling, not a guaranteed filing window.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Move quickly, because waiting costs options.",
+    "supported": "partly",
+    "source_id": "CCP-473",
+    "quote": "within a reasonable time, in no case exceeding six months",
+    "note": "Delay can foreclose this route. The text does not say that every delay eliminates an option.",
+    "quote_verified": true
+   },
+   {
+    "claim": "See a lawyer now.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source provided recommends an immediate lawyer referral.",
+    "quote_verified": null
+   },
+   {
+    "claim": "See a court self-help center now as an alternative.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source provided addresses court self-help centers.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "Timing alone does not establish eligibility. Discretionary relief under (b) requires mistake, inadvertence, surprise, or excusable neglect, and the application must include a copy of the proposed answer or other pleading."
+   },
+   {
+    "type": "gap",
+    "text": "For a proceeding determining property ownership or possession, qualifying personal service of written notice can impose a shorter 90-day deadline without extending the six-month ceiling."
+   },
+   {
+    "type": "overbroad",
+    "text": "“Waiting costs options” is broader than the specific timing risk established for this route."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Move quickly” and “See a lawyer or court self-help center now” are direct instructions to the reader."
+   },
+   {
+    "type": "harm_risk",
+    "text": "Waiting until six months have nearly elapsed can still defeat an application as unreasonably late. The draft acknowledges this risk by stating both timing requirements."
+   },
+   {
+    "type": "date_change",
+    "text": "Effective January 1, 2027, new subdivision (e) expressly allows a motion at any time after entry to vacate a default judgment void for lack of proper service. It does not change the subdivision (b) deadline or apply to every default."
+   }
+  ],
+  "summary": "Current §473 supports the possibility of relief and the two timing requirements for the route described. The draft omits eligibility and filing conditions, and the provided statute does not support the referral instructions."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 3123,
+  "output_tokens": 914
+ },
+ "est_cost_usd": 0.0615
+}

@@ -1,0 +1,136 @@
+{
+ "id": "D-12",
+ "ref": "X12",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The court may grant relief to a party on just terms from a judgment, dismissal, order, or other proceeding taken against that party.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "The court may, upon any terms as may be just, relieve a party or the party’s legal representative from a judgment, dismissal, order, or other proceeding taken against the party through the party’s mistake, inadvertence, surprise, or excusable neglect.",
+    "note": "Relief on these grounds is discretionary.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The judgment or proceeding must have been taken through the party’s mistake, inadvertence, surprise, or excusable neglect for this ground of relief to apply.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "taken against the party through the party’s mistake, inadvertence, surprise, or excusable neglect.",
+    "note": "The source requires a causal connection.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The application for this relief must include a copy of the proposed answer or other pleading.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "Application for this relief shall be accompanied by a copy of the answer or other pleading proposed to be filed therein, otherwise the application shall not be granted",
+    "note": "This instruction concerns the discretionary relief just described.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The application must be made within a reasonable time.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and shall be made within a reasonable time, in no case exceeding six months",
+    "note": "Filing within six months is not by itself enough to establish timeliness.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The deadline is a reasonable time not exceeding six months after the judgment, dismissal, order, or proceeding was taken.",
+    "supported": "partly",
+    "source_id": "CCP-473",
+    "quote": "and shall be made within a reasonable time, in no case exceeding six months, after the judgment, dismissal, order, or proceeding was taken.",
+    "note": "The outer limit and starting event are correct. For a determination of ownership or possession of property, qualifying personal service in California of the specified written notice on the party and any attorney of record triggers a 90-day limit from the later service, without extending six months.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The cited current version of section 473 is in effect through December 31, 2026.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "(e) This section shall remain in effect only until January 1, 2027, and as of that date is repealed.",
+    "note": "This version governs on November 19, 2026.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement becomes operative January 1, 2027.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "(f) This section shall become operative on January 1, 2027.",
+    "note": "The operative date is explicit.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement keeps the substantive subdivisions discussed in the draft.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "subdivisions (a) through (d) read the same.",
+    "note": "This includes subdivision (b).",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement adds subdivision (e).",
+    "supported": "partly",
+    "source_id": "CCP-473@2027",
+    "quote": "The old subdivision (e) (repeal on January 1, 2027) is replaced by a new (e) on motions to vacate a default judgment void for lack of proper service, and (f) sets the operative date.",
+    "note": "The rule is new, but subdivision (e) already exists and is replaced, not appended.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under the replacement, a party may move to vacate a default judgment that is void for lack of proper service.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "a party to an action may bring a motion to vacate a default judgment that is void for lack of proper service",
+    "note": "The provision permits a motion; it does not promise relief.",
+    "quote_verified": true
+   },
+   {
+    "claim": "That motion may be brought at any time after entry of the judgment.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "(e) Notwithstanding any other requirements of this section, a party to an action may bring a motion to vacate a default judgment that is void for lack of proper service at any time after entry of the judgment.",
+    "note": "This express timing rule is in the 2027 text.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "A missed response deadline is not the same as an entered default or judgment. The draft omits current subdivision (a)(1), which allows the court, in its discretion and after notice to the adverse party, to permit a late answer."
+   },
+   {
+    "type": "overbroad",
+    "text": "The general subdivision (b) timing statement omits the conditional 90-day property-notice limit."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader could mistake six months for time available to wait. It is an outer limit measured from the challenged act, not a guaranteed filing window measured from the missed response deadline."
+   },
+   {
+    "type": "gap",
+    "text": "Current subdivision (d) already permits the court, on motion after notice to the other party, to set aside a void judgment or order. The future rule should not imply that no such relief exists today."
+   },
+   {
+    "type": "error",
+    "text": "The 2027 version replaces the repeal clause in existing subdivision (e); it does not add a previously absent subdivision (e)."
+   },
+   {
+    "type": "date_change",
+    "text": "Only the version operative January 1, 2027 expressly permits a motion at any time after entry to vacate a default judgment void for lack of proper service."
+   }
+  ],
+  "summary": "The sources support the general discretionary-relief rule and the future motion provision. The draft omits the distinction between a missed deadline and an entered default, leaves out a conditional shorter deadline, and misdescribes how subdivision (e) changes."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 3250,
+  "output_tokens": 1493
+ },
+ "est_cost_usd": 0.0857
+}

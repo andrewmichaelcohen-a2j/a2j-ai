@@ -1,0 +1,80 @@
+{
+ "id": "D-05",
+ "ref": "X05",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The response period is 30 days.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The quoted period starts when the summons is served.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Talking with the collector or their lawyer does not pause the deadline.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The statute distinguishes a filed response from a conversation but does not say whether a conversation affects the deadline.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A promise of more time must be in writing before it can be relied on.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No rule on the effect of an oral or written extension was provided.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A written promise also needs confirmation from the court clerk or a lawyer before it can be relied on.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "The statute mentions consulting an attorney, not a confirmation procedure involving either an attorney or a clerk.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The answer applies any time before a response is filed.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "The absence of a filed response does not establish that the stated period has started or that it remains open.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The cited statute establishes what the summons must say, not what pauses the deadline or makes an extension effective."
+   },
+   {
+    "type": "overbroad",
+    "text": "“Any time before a response is filed” includes time before service and after the stated deadline."
+   },
+   {
+    "type": "advice_like",
+    "text": "“Do not rely on a promise” gives the reader a specific reliance test that the source does not establish."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader could take a writing and informal confirmation as sufficient and delay filing. The statute warns of default upon the plaintiff’s application if the defendant does not respond."
+   }
+  ],
+  "summary": "The source supports the 30-day period after service. It does not resolve the question about phone calls or support the draft’s test for relying on a promise of more time."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1335,
+  "output_tokens": 710
+ },
+ "est_cost_usd": 0.0391
+}

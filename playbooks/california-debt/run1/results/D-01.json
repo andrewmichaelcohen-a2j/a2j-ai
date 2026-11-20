@@ -1,0 +1,92 @@
+{
+ "id": "D-01",
+ "ref": "X01",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "A lawsuit starts with two documents: a Summons and a Complaint.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The text mentions both documents but does not say that both are required to start an action.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The Summons names the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(1) The title of the court in which the action is pending.",
+    "note": "This identifies the court hearing the action.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The Summons gives a case number.",
+    "supported": "source_not_provided",
+    "source_id": "SUM-100",
+    "quote": "",
+    "note": "The statute does not mention a case number. The cited form was not provided.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The Summons tells you how long you have to respond.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The required direction states the response period and when it begins.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A collection letter is not a lawsuit.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source on collection letters or what commences a lawsuit was provided.",
+    "quote_verified": null
+   },
+   {
+    "claim": "A collection phone call is not a lawsuit.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No source on collection calls or what commences a lawsuit was provided.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Saying that a letter or call may become a lawsuit does not change that distinction.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "No provided source addresses a warning of possible future litigation.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "A summons-content statute does not establish a two-document commencement rule for every California consumer debt matter."
+   },
+   {
+    "type": "gap",
+    "text": "The cited form is missing, and no provided source addresses the legal significance of collection communications."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A reader who receives only one document could infer that no suit exists and overlook a summons response deadline."
+   }
+  ],
+  "summary": "The statute supports the court-name and response-period claims. It does not establish what starts a lawsuit, verify a case-number field, or address collection letters and calls."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1354,
+  "output_tokens": 686
+ },
+ "est_cost_usd": 0.0383
+}
