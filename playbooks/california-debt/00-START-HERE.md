@@ -13,11 +13,11 @@ This is general legal information, not legal advice. No attorney has reviewed an
 ## Where things stand (November 19, 2026, late evening)
 
 - A 15-item prototype exists (items D-01 to D-15). It is kept privately for now.
-- Six AI check runs happened on November 19 (Run 1, 2a, 2b, 2c, 2d, 2e; the Checker is OpenAI, a different vendor from the drafter). Both planted errors were caught every time.
-- Rule statements (not the plain-language wording, and not the practical guidance) matched saved source text in two agreeing runs for 7 items: D-02, D-03, D-08, D-10, D-11, D-12, D-14. Five more passed one run (D-01, D-04, D-06, D-07, D-09). D-05 and D-13 still carry small flags. D-15 is a reference check, held until a person spot-checks two web pages.
+- Seven AI check runs happened on November 19 (Run 1, 2a, 2b, 2c, 2d, 2e, 2f; the Checker is OpenAI, a different vendor from the drafter). Both planted errors were caught every time.
+- Rule statements (not the plain-language wording, and not the practical guidance) matched saved source text in two agreeing runs for 12 items: D-01, D-02, D-03, D-04, D-06, D-07, D-08, D-09, D-10, D-11, D-12, D-14. D-05 and D-13 have one clean run after small fixes and need a second. D-15 is a reference check, held until a person spot-checks two web pages. Run 2f (D-01, D-04, D-05, D-06, D-07, D-09, D-13) was the last run.
 - Two California statutes change on January 1, 2027: section 415.20 (service by mail) and section 473 (relief from default). Both new versions are saved in `sources/`.
-- AI spend so far: about $5.98 of the $100 cap (ledger: `run1/spend-log.tsv`).
-- For the run-by-run detail and the next steps, read the newest file in `sessions/`. Run folders: `run1`, `run2`, `run2b`, `run2c`, `run2d`, `run2e`, `run2f` (prepared, not yet run).
+- AI spend so far: about $6.59 of the $100 cap (ledger: `run1/spend-log.tsv`).
+- For the run-by-run detail and the next steps, read the newest file in `sessions/`. Run folders: `run1`, `run2`, `run2b`, `run2c`, `run2d`, `run2e`, `run2f`.
 
 ## How the work is labeled
 
