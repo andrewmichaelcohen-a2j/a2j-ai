@@ -152,3 +152,5 @@ timestamp	phase	decision	why	evidence	result
 2026-11-21T16:30:29	run1	checked D-14	Run 1 Checker pass	results/D-14.json	final label: Not yet checked
 2026-11-21T16:39:36	run1	checked D-14	Run 1 Checker pass	results/D-14.json	final label: Source-read
 2026-11-21T16:40:06	run1	checked D-14	Run 1 Checker pass	results/D-14.json	final label: Source-read
+2026-11-21T16:43:22	run1	checked D-06	Run 1 Checker pass	results/D-06.json	final label: Source-read
+2026-11-21T16:44:33	run1	checked D-06	Run 1 Checker pass	results/D-06.json	final label: Source-read
