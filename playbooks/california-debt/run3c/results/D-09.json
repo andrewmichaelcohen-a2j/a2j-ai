@@ -1,0 +1,47 @@
+{
+ "id": "D-09",
+ "ref": "X09",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "Section 337(a) sets a four-year period for an action on a contract, obligation or liability founded on a written instrument.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "The real-property security proviso is outside the stated unsecured-contract scope.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The four-year rule is subject to an exception as provided in Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a",
+    "note": "The draft identifies the exception without characterizing its terms.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337 does not specify when the four-year period starts for an ordinary written-contract claim.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "The operative clause gives a duration but no starting event. The start dates in (b) and (c) concern accounts stated and rescission, not an action on the written contract itself. Subsection (d) addresses expiration and extension, not the start date.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "Within the stated scope, Section 337 gives the length of the period and names the Section 336a exception, but does not identify the event that starts the period."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1403,
+  "output_tokens": 393
+ },
+ "est_cost_usd": 0.0269
+}
