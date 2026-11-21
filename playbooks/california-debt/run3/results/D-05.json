@@ -1,0 +1,103 @@
+{
+ "id": "D-05",
+ "ref": "X05",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "The summons requirements apply unless another statute requires otherwise.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "Except as otherwise required by statute, a summons shall be directed to the defendant, signed by the clerk and issued under the seal of the court in which the action is pending, and it shall contain:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must direct the defendant to file a written response with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A direction that the defendant file with the court a written pleading in response to the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The deadline is 30 days after the summons is served on the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must warn that if the defendant does not respond as directed, the plaintiff can request entry of default.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A notice that, unless the defendant so responds, their default will be entered upon application by the plaintiff",
+    "note": "The statute says default will be entered upon application; it does not say entry is automatic when the deadline passes.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must also say the plaintiff can apply to the court for the relief demanded in the complaint.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "and the plaintiff may apply to the court for the relief demanded in the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Possible consequences include wage garnishment, taking of money or property, or other relief.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "which could result in garnishment of wages, taking of money or property, or other relief.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The cited summons is Judicial Council form SUM-100, revised July 1, 2009.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "Judicial Council form SUM-100 (Summons), Rev. July 1, 2009",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 gives the defendant 30 calendar days after service of the summons and legal papers to file a written response at that court.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you to file a written response at this court",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 also instructs the defendant to have a copy served on the plaintiff within that period.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you to file a written response at this court and have a copy\nserved on the plaintiff.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 warns that a letter or phone call will not protect the defendant.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "A letter or phone call will not protect you.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "Section 412.20 supports the response deadline and the warning about default and possible relief. SUM-100 supports the calendar-day wording, the instruction to have a copy served on the plaintiff, and the warning about letters and phone calls."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2409,
+  "output_tokens": 923
+ },
+ "est_cost_usd": 0.0562
+}

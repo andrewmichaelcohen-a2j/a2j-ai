@@ -1,0 +1,124 @@
+{
+ "id": "D-06-SEEDED",
+ "ref": "X16",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "File a written response with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "file with the court a written pleading in response to the complaint",
+    "note": "The statute specifies a written pleading.",
+    "quote_verified": true
+   },
+   {
+    "claim": "File specifically with the court clerk.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "file with the court",
+    "note": "The filing direction names the court, not the clerk.",
+    "quote_verified": true
+   },
+   {
+    "claim": "File within the response deadline.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "The draft does not state a specific number of days.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A general denial is allowed if the complaint is unverified.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1 or is not verified, a general denial is sufficient but only puts in issue the material allegations of the complaint.",
+    "note": "This supports the type of denial, not eligibility to use a particular form.",
+    "quote_verified": true
+   },
+   {
+    "claim": "PLD-050 is the short general-denial form.",
+    "supported": "source_not_provided",
+    "source_id": "PLD-050",
+    "quote": "",
+    "note": "The form is named but its text was not provided.",
+    "quote_verified": null
+   },
+   {
+    "claim": "PLD-050 may be used in any unverified limited civil case.",
+    "supported": "source_not_provided",
+    "source_id": "PLD-050",
+    "quote": "",
+    "note": "The citation description mentions assigned claims over $1,000, but it is not the form text and does not establish whether a restriction applies to unverified complaints.",
+    "quote_verified": null
+   },
+   {
+    "claim": "The limited-civil amount ceiling is $35,000, inclusive.",
+    "supported": "yes",
+    "source_id": "CCP-85",
+    "quote": "(a) The amount in controversy does not exceed thirty-five thousand dollars ($35,000).",
+    "note": "The ceiling applies to the statutory amount in controversy, excluding attorneys’ fees, interest, and costs.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A claim of $35,000 or less is by definition a limited civil case.",
+    "supported": "partly",
+    "source_id": "CCP-85",
+    "quote": "an action or special proceeding shall be treated as a limited civil case only if all of the following conditions are satisfied:",
+    "note": "Amount is necessary but not sufficient. Subdivisions (b) and (c) also restrict the relief sought.",
+    "quote_verified": true
+   },
+   {
+    "claim": "A person who cannot afford the filing fee can request a fee waiver.",
+    "supported": "source_not_provided",
+    "source_id": "FW-001",
+    "quote": "",
+    "note": "No fee-waiver request or eligibility instructions were supplied.",
+    "quote_verified": null
+   },
+   {
+    "claim": "Use form FW-001 to request the waiver.",
+    "supported": "source_not_provided",
+    "source_id": "FW-001",
+    "quote": "",
+    "note": "The form text was not supplied.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "overbroad",
+    "text": "“Any” asserts universal PLD-050 eligibility. Section 431.30(d) supports a general denial in an unverified complaint but does not identify the form."
+   },
+   {
+    "type": "gap",
+    "text": "The stated scope includes verified complaints. The draft does not address them; §431.30(d) expressly requires a positive or information-and-belief denial for a verified claim assigned to a third party for collection."
+   },
+   {
+    "type": "error",
+    "text": "The definition of a limited civil case treats the dollar ceiling as the sole test."
+   },
+   {
+    "type": "gap",
+    "text": "Neither named Judicial Council form was supplied to check the form-specific instructions."
+   },
+   {
+    "type": "harm_risk",
+    "text": "Reliance on an unverified form-selection instruction could lead to a defective response and risk default. The supplied sources do not establish that using a particular form itself triggers default."
+   }
+  ],
+  "summary": "The statutes support timely filing of a written pleading and a general denial for an unverified complaint. They do not establish PLD-050 eligibility or the FW-001 instruction. The draft also gives an incomplete definition of a limited civil case."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": true
+ },
+ "usage": {
+  "input_tokens": 2712,
+  "output_tokens": 1104
+ },
+ "est_cost_usd": 0.0659
+}

@@ -1,0 +1,132 @@
+{
+ "id": "D-12",
+ "ref": "X12",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "Section 473(b) permits the court, on just terms, to relieve a party from a judgment, dismissal, order or other proceeding taken against that party.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "(b) The court may, upon any terms as may be just, relieve a party or the party’s legal representative from a judgment, dismissal, order, or other proceeding taken against the party",
+    "note": "Relief is discretionary.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The judgment, dismissal, order or proceeding must have been taken because of the party’s mistake, inadvertence, surprise or excusable neglect.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "taken against the party through the party’s mistake, inadvertence, surprise, or excusable neglect.",
+    "note": "These are alternative grounds for the discretionary relief described.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The application for that relief must include a copy of the proposed answer or other pleading.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "Application for this relief shall be accompanied by a copy of the answer or other pleading proposed to be filed therein, otherwise the application shall not be granted",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The application must be made within a reasonable time.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and shall be made within a reasonable time, in no case exceeding six months",
+    "note": "The reasonable-time requirement applies even within the six-month limit.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The outer limit is six months after the judgment, dismissal, order or proceeding was taken.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "in no case exceeding six months, after the judgment, dismissal, order, or proceeding was taken.",
+    "note": "This deadline concerns the subdivision (b) application described above.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under Section 473(a)(1), the court has discretion, after notice to the adverse party, to allow an answer after the code’s time limit.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "The court may likewise, in its discretion, after notice to the adverse party, allow, upon any terms as may be just, an amendment to any pleading or proceeding in other particulars; and may upon like terms allow an answer to be made after the time limited by this code.",
+    "note": "Permission to file a late answer is not automatic.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under Section 473(d), either party may move, after notice to the other, for the court to set aside any void judgment or order.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "and may, on motion of either party after notice to the other party, set aside any void judgment or order.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The current version remains in effect through December 31, 2026.",
+    "supported": "yes",
+    "source_id": "CCP-473",
+    "quote": "(e) This section shall remain in effect only until January 1, 2027, and as of that date is repealed.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement version becomes operative January 1, 2027.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "(f) This section shall become operative on January 1, 2027.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Subdivisions (a) through (d) retain the same wording.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "subdivisions (a) through (d) read the same.",
+    "note": "The supplied statutory texts match in those subdivisions.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The replacement version replaces subdivision (e)’s repeal provision with a new subdivision (e).",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "The old subdivision (e) (repeal on January 1, 2027) is replaced by a new (e) on motions to vacate a default judgment void for lack of proper service",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "New subdivision (e) allows a party to move to vacate a default judgment that is void for lack of proper service.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "a party to an action may bring a motion to vacate a default judgment that is void for lack of proper service",
+    "note": "The provision permits a motion; it does not promise that the motion will be granted.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under new subdivision (e), that motion may be brought at any time after entry of the judgment.",
+    "supported": "yes",
+    "source_id": "CCP-473@2027",
+    "quote": "a party to an action may bring a motion to vacate a default judgment that is void for lack of proper service at any time after entry of the judgment.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "date_change",
+    "text": "The express “at any time after entry” rule for default judgments void for lack of proper service becomes operative January 1, 2027. The draft correctly distinguishes it from current law."
+   }
+  ],
+  "summary": "The supplied texts support all draft claims within the stated scope. For the discretionary relief described under subdivision (b), six months is a ceiling, not a guaranteed reasonable time to wait."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 3500,
+  "output_tokens": 1353
+ },
+ "est_cost_usd": 0.0821
+}

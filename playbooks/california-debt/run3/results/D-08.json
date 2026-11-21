@@ -1,0 +1,111 @@
+{
+ "id": "D-08",
+ "ref": "X08",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "Section 337 sets a four-year limit for an action on a contract, obligation or liability founded on a written instrument.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "The real-property proviso is outside the stated scope.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337(a) makes an exception for Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a;",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Once the Section 337 period has run, a person may not sue to collect the debt.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "When the period in which an action must be commenced under this section has run, a person shall not bring suit or initiate an arbitration or other legal proceeding to collect the debt.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The same prohibition covers starting an arbitration or other legal proceeding to collect the debt.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "When the period in which an action must be commenced under this section has run, a person shall not bring suit or initiate an arbitration or other legal proceeding to collect the debt.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The Section 337 period can be extended only under Section 360.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "The period in which an action may be commenced under this section shall only be extended pursuant to Section 360.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under Section 360, an acknowledgment or promise is insufficient evidence of a new or continuing contract to take the case outside the time-limit statutes unless it is in a writing signed by the party to be charged.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "No acknowledgment or promise is sufficient evidence of a new or continuing contract, by which to take the case out of the operation of this title, unless the same is contained in some writing, signed by the party to be charged thereby,",
+    "note": "The draft separately states the promissory-note payment proviso.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The payment proviso covers a payment of principal or interest on a promissory note made by the party to be charged.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "any payment on account of principal or interest due on a promissory note made by the party to be charged shall be deemed a sufficient acknowledgment or promise of a continuing contract",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A qualifying promissory-note payment can start a new period.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "as any such payment is made, the running of the time within which an action may be commenced upon the principal sum or upon any installment of principal or interest due on such note, and to start the running of a new period of time",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "No such payment by itself revives an already-barred cause of action.",
+    "supported": "yes",
+    "source_id": "CCP-360",
+    "quote": "but no such payment of itself shall revive a cause of action once barred.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "An answer must contain a statement of any new matter constituting a defense.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "(b) The answer to a complaint shall contain:\n(1) The general or specific denial of the material allegations of the complaint controverted by the defendant.\n(2) A statement of any new matter constituting a defense.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337 itself does not specify when the four-year period starts for an ordinary written-contract claim.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "The ordinary-contract clause gives a duration but no starting event. The timing language elsewhere in the section concerns other specified claims.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "The provided texts support each claim within the stated unsecured written-contract scope."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2386,
+  "output_tokens": 1079
+ },
+ "est_cost_usd": 0.0622
+}

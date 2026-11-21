@@ -1,0 +1,244 @@
+{
+ "id": "D-01",
+ "ref": "X01",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The requirements apply unless another statute requires otherwise.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "Except as otherwise required by statute",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must be directed to the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "a summons shall be directed to the defendant",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The clerk must sign the summons.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "signed by the clerk",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must be issued under the seal of the court where the case is pending.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "issued under the seal of the court in which the action is pending",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must identify the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(1) The title of the court in which the action is pending.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must name the parties.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(2) The names of the parties to the action.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must direct the defendant to file a written response with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A direction that the defendant file with the court a written pleading in response to the complaint",
+    "note": "The statutory term for the response is a written pleading.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The stated deadline is 30 days after service of the summons on the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The required default warning is that the plaintiff can ask for entry of default if the defendant does not respond.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "unless the defendant so responds, their default will be entered upon application by the plaintiff",
+    "note": "The required warning states what will happen upon application, not just that the plaintiff can apply.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The warning must say the plaintiff can apply to the court for the relief demanded in the complaint.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "the plaintiff may apply to the court for the relief demanded in the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Possible consequences include wage garnishment, taking money or property, or other relief.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "which could result in garnishment of wages, taking of money or property, or other relief.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The quoted attorney-consultation statement is prescribed in bold type.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(5) The following statement in boldface type:  “You may seek the advice of an attorney in any matter connected with the complaint or this summons. Such attorney should be consulted promptly so that your pleading may be filed or entered within the time required by this summons.”",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The introductory legend is prescribed at the top, above everything else.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "at the top of the summons above all other matter",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The legend must be bold.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "in boldface type, in English and Spanish:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The legend must appear in English and Spanish.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "in English and Spanish:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The draft quotes the statutory English legend.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "“Notice!  You have been sued.  The court may decide against you without your being heard unless you respond within 30 days.  Read information below.”",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "A county may impose the additional legend requirement by ordinance on every summons issued by its courts.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "Each county may, by ordinance, require that the legend contained in paragraph (6) of subdivision (a) be set forth in every summons issued out of the courts of that county",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The county's authority extends to an additional language without further qualification.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "in any additional foreign language",
+    "note": "The draft omits “foreign.”",
+    "quote_verified": true
+   },
+   {
+    "claim": "The additional legend must have the same placement and bold formatting as the English and Spanish legend.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "if the legend in the additional foreign language is set forth in the summons in the same manner as required in that paragraph.",
+    "note": "The referenced paragraph is (a)(6).",
+    "quote_verified": true
+   },
+   {
+    "claim": "A Judicial Council-approved summons form is deemed to meet these requirements.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(c) A summons in a form approved by the Judicial Council is deemed to comply with this section.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 is the Judicial Council summons form for the stated scope.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "Form Adopted for Mandatory Use  Code of Civil Procedure §§ 412.20, 465\nJudicial Council of California\nSUMMONS  www.courts.ca.gov\nSUM-100 [Rev. July 1, 2009]",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The form's revision date is July 1, 2009.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "SUM-100 [Rev. July 1, 2009]",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The form's notice begins “NOTICE! You have been sued.”",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "NOTICE! You have been sued.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The form has a case-number field.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "CASE NUMBER:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The form has a field for the court's name and address.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "The name and address of the court is:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The contact field is for the name and address of the plaintiff or the plaintiff's attorney.",
+    "supported": "partly",
+    "source_id": "FORM-SUM-100",
+    "quote": "The name, address, and telephone number of plaintiff's attorney, or plaintiff without an attorney, is:",
+    "note": "The form calls for the plaintiff's own contact details only if the plaintiff has no attorney.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The default warning omits that default will be entered upon the plaintiff's application. Permission to ask for default is not the full statutory warning."
+   },
+   {
+    "type": "overbroad",
+    "text": "The ordinance provision specifies an additional foreign language, not an unqualified additional language."
+   },
+   {
+    "type": "gap",
+    "text": "The form distinguishes counsel's contact details from those of an unrepresented plaintiff; the draft does not state that condition."
+   }
+  ],
+  "summary": "The sources support the 30-day deadline, the quoted notices, and the identification of SUM-100. The main gap is the consequence of a default application; the county-language provision and the plaintiff contact field also have qualifiers missing from the draft."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2642,
+  "output_tokens": 2121
+ },
+ "est_cost_usd": 0.106
+}

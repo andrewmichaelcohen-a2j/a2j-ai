@@ -1,0 +1,151 @@
+{
+ "id": "D-15",
+ "ref": "X15",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "The California Courts Self-Help Center website is part of the Judicial Branch of California.",
+    "supported": "yes",
+    "source_id": "REF-SELFHELP",
+    "quote": "The site is part of the Judicial Branch of California",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The site offers guidance on court papers by form number.",
+    "supported": "yes",
+    "source_id": "REF-SELFHELP",
+    "quote": "It offers guidance on court papers by form number",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The site offers information on fee waivers.",
+    "supported": "yes",
+    "source_id": "REF-SELFHELP",
+    "quote": "It offers guidance on court papers by form number, steps for starting a case, general legal topics, fee waivers, forms, and help locating self-help centers",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The site offers information on forms.",
+    "supported": "yes",
+    "source_id": "REF-SELFHELP",
+    "quote": "It offers guidance on court papers by form number, steps for starting a case, general legal topics, fee waivers, forms, and help locating self-help centers",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The site helps people find self-help centers.",
+    "supported": "yes",
+    "source_id": "REF-SELFHELP",
+    "quote": "help locating self-help centers",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Those centers provide legal information to people without a lawyer.",
+    "supported": "yes",
+    "source_id": "REF-SELFHELP",
+    "quote": "self-help centers that provide legal information and resources to people without a lawyer.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Those centers provide resources to people without a lawyer.",
+    "supported": "yes",
+    "source_id": "REF-SELFHELP",
+    "quote": "self-help centers that provide legal information and resources to people without a lawyer.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The site does not say that all of its services are free.",
+    "supported": "yes",
+    "source_id": "REF-SELFHELP",
+    "quote": "Does NOT establish: that every service is free. The page does not say so.",
+    "note": "The claim concerns what the page says, not whether any service has a fee.",
+    "quote_verified": true
+   },
+   {
+    "claim": "LawHelpCA is a legal resource and referral website.",
+    "supported": "yes",
+    "source_id": "REF-LAWHELPCA",
+    "quote": "LawHelpCA is California's legal resource and referral website.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The Legal Aid Association of California maintains LawHelpCA.",
+    "supported": "yes",
+    "source_id": "REF-LAWHELPCA",
+    "quote": "The Legal Aid Association of California (LAAC) maintains it.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "LawHelpCA has a directory of pre-screened organizations.",
+    "supported": "yes",
+    "source_id": "REF-LAWHELPCA",
+    "quote": "a directory of pre-screened organizations",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The listed organizations provide free or low-cost legal advice.",
+    "supported": "yes",
+    "source_id": "REF-LAWHELPCA",
+    "quote": "a directory of pre-screened organizations that provide free or low-cost legal advice and representation.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The listed organizations provide free or low-cost legal representation.",
+    "supported": "yes",
+    "source_id": "REF-LAWHELPCA",
+    "quote": "a directory of pre-screened organizations that provide free or low-cost legal advice and representation.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "LawHelpCA describes itself as a statewide resource.",
+    "supported": "yes",
+    "source_id": "REF-LAWHELPCA",
+    "quote": "It describes itself as a statewide resource",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "LawHelpCA describes its resource as searchable by location.",
+    "supported": "yes",
+    "source_id": "REF-LAWHELPCA",
+    "quote": "It describes itself as a statewide resource, searchable by location or service area.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "LawHelpCA describes its resource as searchable by service area.",
+    "supported": "yes",
+    "source_id": "REF-LAWHELPCA",
+    "quote": "It describes itself as a statewide resource, searchable by location or service area.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "The provided sources support every claim. The draft attributes the free or low-cost services to organizations in the LawHelpCA directory and statewide scope to LawHelpCA itself."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1204,
+  "output_tokens": 1107
+ },
+ "est_cost_usd": 0.0539
+}

@@ -1,0 +1,103 @@
+{
+ "id": "D-05",
+ "ref": "X05",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "The summons requirements apply unless another statute requires otherwise.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "Except as otherwise required by statute",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must direct the defendant to file a written response with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A direction that the defendant file with the court a written pleading in response to the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The stated filing deadline is 30 days after the summons is served on the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must warn that if the defendant does not so respond, default will be entered upon the plaintiff's application.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "A notice that, unless the defendant so responds, their default will be entered upon application by the plaintiff",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must say that the plaintiff may apply to the court for the relief demanded in the complaint.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "and the plaintiff may apply to the court for the relief demanded in the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Possible results include wage garnishment, taking of money or property, or other relief.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "which could result in garnishment of wages, taking of money or property, or other relief.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The cited summons is Judicial Council form SUM-100, revised July 1, 2009.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "Judicial Council form SUM-100 (Summons), Rev. July 1, 2009",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 specifies 30 calendar days after service of the summons and legal papers to file a written response at the court.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you to file a written response at this court",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 instructs the defendant to have a copy served on the plaintiff within that period.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you to file a written response at this court and have a copy\nserved on the plaintiff.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 says a letter or phone call will not protect the defendant.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "A letter or phone call will not protect you.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "The statute and form support each claim. The draft distinguishes entry of default upon the plaintiff’s application from relief that may follow."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2410,
+  "output_tokens": 812
+ },
+ "est_cost_usd": 0.0518
+}

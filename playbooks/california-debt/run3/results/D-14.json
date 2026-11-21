@@ -1,0 +1,136 @@
+{
+ "id": "D-14",
+ "ref": "X14",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "The summons requirements apply unless another statute requires otherwise.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(a) Except as otherwise required by statute, a summons shall be directed to the defendant, signed by the clerk and issued under the seal of the court in which the action is pending, and it shall contain:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must warn that if the defendant does not respond, the plaintiff can ask the court to enter default.",
+    "supported": "partly",
+    "source_id": "CCP-412.20",
+    "quote": "(4) A notice that, unless the defendant so responds, their default will be entered upon application by the plaintiff",
+    "note": "The plaintiff can apply, but the required warning also states the consequence: default will be entered upon that application.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The notice must say the plaintiff can apply to the court for the relief demanded in the complaint.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "and the plaintiff may apply to the court for the relief demanded in the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Possible outcomes include garnishment of wages, taking of money or property, or other relief.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "which could result in garnishment of wages, taking of money or property, or other relief.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 412.20(a)(3) directs the defendant to file a written responsive pleading with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The deadline stated in that direction is 30 days after service of the summons on the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Under section 431.30(d), a verified complaint outside the specified Article 2 requires a denial made positively or according to the defendant’s information and belief.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "If the complaint is verified, unless the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1, the denial of the allegations shall be made positively or according to the information and belief of the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "For a verified complaint on a claim assigned to a third party for collection, that denial is required even if Article 2 applies.",
+    "supported": "yes",
+    "source_id": "CCP-431.30",
+    "quote": "However, if the cause of action is a claim assigned to a third party for collection and the complaint is verified, the denial of the allegations shall be made positively or according to the information and belief of the defendant, even if the complaint is subject to Article 2 (commencing with Section 90) of Chapter 5.1 of Title 1 of Part 1.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The cited summons is Judicial Council form SUM-100, revised July 1, 2009.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "Judicial Council form SUM-100 (Summons), Rev. July 1, 2009",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 warns that failing to file a response on time may result in losing the case by default.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "If you do not file your response on time, you may lose the case by default",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 warns that wages, money and property may then be taken without further warning from the court.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "and your wages, money, and property may\nbe taken without further warning from the court.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 says there are other legal requirements.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "There are other legal requirements.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 says the defendant may want to call an attorney right away.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You may want to call an attorney right away.",
+    "note": "",
+    "quote_verified": true
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The draft reports the plaintiff’s option to apply for default but omits the required warning that default will be entered upon application."
+   },
+   {
+    "type": "harm_risk",
+    "text": "A defendant could mistake entry of default for a discretionary outcome even after the plaintiff applies, and underestimate the risk of not responding."
+   }
+  ],
+  "summary": "The material mismatch is in the default warning: the plaintiff may choose whether to apply, but the statute says default will be entered upon application. The response deadline, verified-complaint rules and SUM-100 statements are supported."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 6001,
+  "output_tokens": 1287
+ },
+ "est_cost_usd": 0.0995
+}

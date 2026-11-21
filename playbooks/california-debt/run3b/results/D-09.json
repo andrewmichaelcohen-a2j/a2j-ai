@@ -1,0 +1,55 @@
+{
+ "id": "D-09",
+ "ref": "X09",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "Section 337(a) covers an action on any contract, obligation or liability founded on a written instrument.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "(a) An action upon any contract, obligation or liability founded upon an instrument in writing",
+    "note": "The stated scope is a claim on the written contract itself.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The time limit for that action is four years.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "The separate post-sale limit concerns secured obligations outside the stated scope.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337(a) expressly excepts cases provided for in Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a",
+    "note": "The draft does not claim what Section 336a provides.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337 does not specify when the four-year period starts for the ordinary written-contract claim described.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "The applicable clause gives a duration but no starting event. The start dates in (b) and (c) concern account-stated and rescission claims, not the claim described.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "The supplied text supports both the four-year limit and the narrower statement that Section 337 gives no start date for the written-contract claim in scope."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1403,
+  "output_tokens": 444
+ },
+ "est_cost_usd": 0.029
+}

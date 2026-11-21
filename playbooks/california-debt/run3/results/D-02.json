@@ -1,0 +1,119 @@
+{
+ "id": "D-02",
+ "ref": "X02",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Source-read",
+  "claims": [
+   {
+    "claim": "The summons requirements apply unless another statute requires otherwise.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "Except as otherwise required by statute, a summons shall be directed to the defendant, signed by the clerk and issued under the seal of the court in which the action is pending, and it shall contain:",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The summons must direct the defendant to file a written response with the court.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "(3) A direction that the defendant file with the court a written pleading in response to the complaint within 30 days after summons is served on the defendant.",
+    "note": "The statute describes the response as a written pleading.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The stated filing deadline is 30 days after the summons is served on the defendant.",
+    "supported": "yes",
+    "source_id": "CCP-412.20",
+    "quote": "within 30 days after summons is served on the defendant.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Exclude the first day.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "computed by excluding the first day",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Include the last day unless it is a holiday.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "and including the last, unless the last day is a holiday",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "Exclude a holiday that falls on the last day.",
+    "supported": "yes",
+    "source_id": "CCP-12",
+    "quote": "unless the last day is a holiday, and then it is also excluded.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "If the last day is a holiday, the deadline moves to the next nonholiday.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "If the last day for the performance of any act provided or required by law to be performed within a specified period of time is a holiday, then that period is hereby extended to and including the next day that is not a holiday.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "For the last-day rule, all day on Saturdays counts as a holiday.",
+    "supported": "yes",
+    "source_id": "CCP-12a",
+    "quote": "For purposes of this section, “holiday” means all day on Saturdays, all holidays specified in Section 135 and, to the extent provided in Section 12b, all days that by terms of Section 12b are required to be considered as holidays.",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "The cited summons is Judicial Council form SUM-100, revised July 1, 2009.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "Judicial Council form SUM-100 (Summons), Rev. July 1, 2009",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 specifies 30 calendar days after service of the summons and legal papers.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 directs the defendant to file a written response at the court within that period.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you to file a written response at this court",
+    "note": "",
+    "quote_verified": true
+   },
+   {
+    "claim": "SUM-100 also directs the defendant to have a copy served on the plaintiff within that period.",
+    "supported": "yes",
+    "source_id": "FORM-SUM-100",
+    "quote": "You have 30 CALENDAR DAYS after this summons and legal papers are served on you to file a written response at this court and have a copy\nserved on the plaintiff.",
+    "note": "The draft reproduces the sentence with the form's line break replaced by a space.",
+    "quote_verified": true
+   }
+  ],
+  "flags": [],
+  "summary": "The supplied sources support the 30-calendar-day deadline, the counting rules, and both instructions quoted from SUM-100 within the stated scope."
+ },
+ "checks": {
+  "model_label": "Source-read",
+  "final_label": "Source-read",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 2789,
+  "output_tokens": 1035
+ },
+ "est_cost_usd": 0.0637
+}

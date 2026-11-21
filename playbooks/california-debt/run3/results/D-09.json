@@ -1,0 +1,60 @@
+{
+ "id": "D-09",
+ "ref": "X09",
+ "model": "gpt-6.2-astra",
+ "result": {
+  "label": "Not yet checked",
+  "claims": [
+   {
+    "claim": "Section 337(a) sets a four-year period for an action on a contract, obligation or liability founded on a written instrument.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing",
+    "note": "Supported for the unsecured written-contract claim in scope.",
+    "quote_verified": true
+   },
+   {
+    "claim": "The four-year rule is subject to the exception in Section 336a.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "except as provided in Section 336a",
+    "note": "Subdivision (a) expressly names the exception.",
+    "quote_verified": true
+   },
+   {
+    "claim": "Section 337 does not state when the four-year period starts for the ordinary written-contract claim in scope.",
+    "supported": "yes",
+    "source_id": "CCP-337",
+    "quote": "Within four years:\n(a) An action upon any contract, obligation or liability founded upon an instrument in writing, except as provided in Section 336a;",
+    "note": "Subdivision (a) gives a duration but no start date for this claim. The start-date rules in (b) and (c) concern account stated and rescission, respectively.",
+    "quote_verified": true
+   },
+   {
+    "claim": "No other source saved for the playbook contains a start-date rule for this claim.",
+    "supported": "source_not_provided",
+    "source_id": "",
+    "quote": "",
+    "note": "Only Section 337 was provided for this check. Nothing establishes that it is the playbook’s entire saved source collection.",
+    "quote_verified": null
+   }
+  ],
+  "flags": [
+   {
+    "type": "gap",
+    "text": "The collection-wide claim requires the full saved source set or confirmation that the supplied set is complete."
+   }
+  ],
+  "summary": "Section 337 supports the four-year period and the statement that the section itself gives no start date for the claim in scope. The broader statement about all saved sources is unverified."
+ },
+ "checks": {
+  "model_label": "Not yet checked",
+  "final_label": "Not yet checked",
+  "downgrade_reasons": [],
+  "seeded_error_caught": null
+ },
+ "usage": {
+  "input_tokens": 1418,
+  "output_tokens": 565
+ },
+ "est_cost_usd": 0.0339
+}
